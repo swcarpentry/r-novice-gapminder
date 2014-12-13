@@ -259,7 +259,7 @@ class MarkdownValidator(object):
                         self.filename, dest, dest_path))
                 return False
         else:
-            logging.warning(
+            logging.info(
                 "In {0}: "
                 "Skipped validation of link {1}".format(self.filename, dest))
         return True
