@@ -18,5 +18,5 @@ Paragraph of introductory material.
 
 *   [Motivation](motivation.html)
 *   [Reference Guide](reference.html)
-*   [Next Steps](discussion.html)
+*   [Discussion](discussion.html)
 *   [Instructor's Guide](instructors.html)
