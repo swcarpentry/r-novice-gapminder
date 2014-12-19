@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Lesson Title
-subtitle: Reference
+subtitle: Reference Guide
 ---
 ...commands and examples...
 
