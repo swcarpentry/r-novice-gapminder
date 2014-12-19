@@ -26,6 +26,7 @@
 *   *What do the [labels](https://github.com/swcarpentry/lesson-template/issues?q=is%3Aopen+is%3Aissue) mean?*
 
     *   `bug`: something is wrong in our tools or documentation
+    *   `defer`: marks an issue that we will work on, but not now
     *   `discussion`: marks issues used for conversations about specific problems and questions
     *   `duplicate`: marks an issue that was closed as redundant (include the number of the original issue in the closing comment)
     *   `enhancement`: asks for, or adds, a new feature or new information
