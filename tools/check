@@ -450,7 +450,7 @@ class ReferencePageValidator(MarkdownValidator):
                     logging.error(
                             "In {0}:"
                             "Subsequent lines of definition must "
-                            "start with '     '.".format(
+                            "start with '    '.".format(
                                 self.filename))
                     entry_is_valid = False
         return entry_is_valid
