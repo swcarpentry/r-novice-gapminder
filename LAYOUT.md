@@ -141,8 +141,8 @@ we're trying to avoid those.
     ## Other Resources
 
     *   [Motivation](motivation.html)
-    *   [Reference Guide](reference.html)
-    *   [Next Steps](discussion.html)
+    *   [Reference](reference.html)
+    *   [Discussion](discussion.html)
     *   [Instructor's Guide](instructors.html)
 
 **Notes:**
@@ -232,7 +232,8 @@ be laid out like this:
 
     ---
     layout: slides
-    title: Why Make?
+    title: Lesson Title
+    subtitle: Motivation
     ---
     <section class="slide">
     ## Why This Topic?

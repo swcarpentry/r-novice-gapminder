@@ -17,6 +17,6 @@ Paragraph of introductory material.
 ## Other Resources
 
 *   [Motivation](motivation.html)
-*   [Reference Guide](reference.html)
-*   [Next Steps](discussion.html)
+*   [Reference](reference.html)
+*   [Discussion](discussion.html)
 *   [Instructor's Guide](instructors.html)
