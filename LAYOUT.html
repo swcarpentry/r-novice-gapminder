@@ -30,7 +30,10 @@
 <h1 id="lesson-layout">Lesson Layout</h1>
 <p>Each lesson is stored in a directory laid out as described below. That directory is a self-contained Git repository (i.e., there are no submodules or clever tricks with symbolic links).</p>
 <ol style="list-style-type: decimal">
-<li><p><code>README.md</code>: initially a copy of this file. It should be overwritten with short description of the lesson.</p></li>
+<li><p><code>README.md</code>: initially a copy of this file. It should be overwritten with short description of the lesson, but should include the following blockquote to help people find these instructions:</p>
+<pre><code>&gt; Please see [https://github.com/swcarpentry/lesson-template](https://github.com/swcarpentry/lesson-template)
+&gt; for instructions on formatting, building, and submitting lessons,
+&gt; or run `make` in this directory for a list of helpful commands.</code></pre></li>
 <li><p>Other files in the root directory: the source of the lesson's web pages (and possibly auxiliary files like IPython Notebooks and R Markdown files).</p></li>
 <li><p><code>code/</code>, <code>data/</code>, and <code>fig/</code>: sub-directories containing sample code, data files, and figures. See &quot;Code, Data, and Figures&quot; below.</p></li>
 <li><p><code>css/</code>, <code>img/</code>, <code>js/</code>, and <code>deck.js/</code>: style sheets, artwork, and Javascript used in the lesson's web site. See &quot;Support Files&quot; below.</p></li>
