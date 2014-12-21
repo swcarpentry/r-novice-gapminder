@@ -1,6 +1,6 @@
 # Files.
 MARKDOWN = $(wildcard *.md)
-EXCLUDES = README.md
+EXCLUDES = README.md LAYOUT.md FAQ.md DESIGN.md
 SRC_PAGES = $(filter-out $(EXCLUDES), $(MARKDOWN))
 DST_PAGES = $(patsubst %.md,%.html,$(SRC_PAGES))
 
