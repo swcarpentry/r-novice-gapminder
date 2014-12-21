@@ -1,5 +1,7 @@
 # Files.
-SRC_PAGES = $(wildcard *.md)
+MARKDOWN = $(wildcard *.md)
+EXCLUDES = README.md
+SRC_PAGES = $(filter-out $(EXCLUDES), $(MARKDOWN))
 DST_PAGES = $(patsubst %.md,%.html,$(SRC_PAGES))
 
 # Inclusions.
