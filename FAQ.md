@@ -40,3 +40,13 @@
 ## Debugging
 
 Please add notes about problems and solutions below.
+
+*   `pandoc: command not found`
+
+    Probably you didn't install [Pandoc](http://pandoc.org/installing.html).
+
+*   `pandoc: Error running filter tools/filters/blockquote2div.py`
+    due `ImportError: No module named 'pandocfilters'`
+
+    Probably you didn't install
+    [pandocfilters](https://pypi.python.org/pypi/pandocfilters/1.2.3).
