@@ -151,7 +151,7 @@ license, or put in the public domain (CC-0), to permit remixing.
 
 Please see the following for more information on:
 
-*   [layout out your lesson](LAYOUT.md)
+*   [lay out your lesson](LAYOUT.md)
 *   [background and design](DESIGN.md)
 *   [FAQ](FAQ.md)
 
