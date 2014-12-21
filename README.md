@@ -71,7 +71,7 @@ form of Markdown, we require lesson authors to build the HTML pages
 for their lessons on their machines with Pandoc and commit those to
 the `gh-pages` branch of their lesson website.  To do this:
 
-1. [Install Pandoc](http://www.johnmacfarlane.net/pandoc/installing.html)
+1. [Install Pandoc](http://www.pandoc.org/installing)
 
 2. Install pandocfilters, a Python module that helps with writing
    filters for Pandoc:
