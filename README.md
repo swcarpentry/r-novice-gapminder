@@ -73,7 +73,7 @@ the `gh-pages` branch of their lesson website.  To do this:
 
 1. [Install Pandoc](http://www.pandoc.org/installing)
 
-2. All python packages required for lesson creation and validation can 
+2. All Python packages required for lesson creation and validation can 
    be installed using:
    
     ~~~
