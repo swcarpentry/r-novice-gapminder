@@ -9,7 +9,8 @@ minutes: 10
 > * Learning objective 1
 > * Learning objective 2
 
-Paragraphs of text --- possibly including **definitions** ---
+Paragraphs of text
+--- possibly including [key word 2](reference.html#key-word-2) ---
 mixed with:
 
 ~~~ {.python}
@@ -34,4 +35,5 @@ and possibly including:
 > ## Challenge Title {.challenge}
 >
 > Description of a single challenge.
-> There may be several challenges.
+> There may be several challenges
+> that make reference to [Challenge Title](01-one.html#challenge-title).
