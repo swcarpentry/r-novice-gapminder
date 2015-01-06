@@ -35,6 +35,10 @@ motivation.html : motivation.md _layouts/slides.html
 	$(INCLUDES) \
 	-o $@ $<
 
+# Pattern to convert R Markdown to Markdown.
+%.md: %.Rmd $(R_CHUNK_OPTS)
+	Rscript -e "knitr::knit('$$(basename $<)', output = '$$(basename $@)')"
+
 ## unittest : Run unit test (for Python 2 and 3)
 unittest: tools/check.py tools/validation_helpers.py tools/test_check.py
 	cd tools/ && python2 test_check.py
