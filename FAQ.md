@@ -37,6 +37,21 @@
     *   `suitable-for-newcomer`: issue or pull request is a good starting point for someone who is relatively new to GitHub and/or this project
     *   `work-in-progress`: a pull request that is not yet ready for review
 
+*   *How create non-Python input cells?*
+
+    Use
+
+        ~~~ {.lang}
+        some code
+        ~~~
+
+    where `lang` is `bash` for the Unix Shell, `r` for R, `matlab` for MATLAB,
+    `sql` for SQL. For a full list, check
+
+    ~~~
+    $ pandoc -v
+    ~~~
+
 ## Debugging
 
 Please add notes about problems and solutions below.
