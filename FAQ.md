@@ -30,14 +30,15 @@
     *   `discussion`: marks issues used for conversations about specific problems and questions
     *   `duplicate`: marks an issue that was closed as redundant (include the number of the original issue in the closing comment)
     *   `enhancement`: asks for, or adds, a new feature or new information
-    *   `filed-by-newcomer`: issue or pull request was filed by someone who is relatively new to GitHub and/or this project, and would appreciate guidance as well as feedback
+    *   `filed-by-newcomer`: issue or pull request was filed by someone who is relatively new to GitHub and/or this project,
+        and would appreciate guidance as well as feedback
     *   `getting-started`: issue or pull request is suitable for someone new to GitHub and/or this project
     *   `help-wanted`: a question or request for assistance
     *   `left-as-was`: marks an issue closed because the item in question will be left as it was
     *   `suitable-for-newcomer`: issue or pull request is a good starting point for someone who is relatively new to GitHub and/or this project
     *   `work-in-progress`: a pull request that is not yet ready for review
 
-*   *How create non-Python input cells?*
+*   *How can we create input cells for particular languages?*
 
     Use
 
@@ -46,7 +47,7 @@
         ~~~
 
     where `lang` is `bash` for the Unix Shell, `r` for R, `matlab` for MATLAB,
-    `sql` for SQL. For a full list, check
+    `python` for Python, and `sql` for SQL. For a full list, check:
 
     ~~~
     $ pandoc -v

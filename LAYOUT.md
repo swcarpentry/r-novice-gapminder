@@ -223,25 +223,32 @@ Each topic page must be structured as follows:
     Nothing else should be marked as bold text --- use *italics* for
     for all other emphasis.
 
-5.  For Unix Shell commands use
+5.  When laying out source code, use `{.lang}` as a style on the
+    opening `~~~` line.  For Unix Shell commands use:
 
         ~~~ {.bash}
         $ some-command
         ~~~
 
-    For R code use
-
-        ~~~ {.r}
-        some code
-        ~~~
-
-    For MATLAB code use
+    For MATLAB use:
 
         ~~~ {.matlab}
         some code
         ~~~
 
-    For SQL code use
+    For R use:
+
+        ~~~ {.r}
+        some code
+        ~~~
+
+    For Python use:
+
+        ~~~ {.python}
+        some code
+        ~~~
+
+    For SQL use:
 
         ~~~ {.sql}
         some code
@@ -277,6 +284,9 @@ be laid out like this:
 2.  We use [deck.js](http://imakewebthings.com/deck.js/) for our slides
     as it is simpler and prettier than alternatives like
     [reveal.js](http://lab.hakim.se/reveal-js/).
+
+3.  For examples of slideshows, please see the
+    [slideshow repository](https://github.com/swcarpentry/slideshows).
 
 ## Reference Guide
 
