@@ -223,6 +223,30 @@ Each topic page must be structured as follows:
     Nothing else should be marked as bold text --- use *italics* for
     for all other emphasis.
 
+5.  For Unix Shell commands use
+
+        ~~~ {.bash}
+        $ some-command
+        ~~~
+
+    For R code use
+
+        ~~~ {.r}
+        some code
+        ~~~
+
+    For MATLAB code use
+
+        ~~~ {.matlab}
+        some code
+        ~~~
+
+    For SQL code use
+
+        ~~~ {.sql}
+        some code
+        ~~~
+
 ## Motivational Slides
 
 Every lesson must include a short slide deck suitable for a short
