@@ -167,7 +167,7 @@ Each topic page must be structured as follows:
     subtitle: Topic Title
     minutes: 10
     ---
-    > ## Learning Objectives
+    > ## Learning Objectives {.objectives}
     >
     > * Learning objective 1
     > * Learning objective 2

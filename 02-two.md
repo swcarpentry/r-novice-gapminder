@@ -4,7 +4,7 @@ title: Lesson Title
 subtitle: Topic Title Two
 minutes: 10
 ---
-> ## Learning Objectives
+> ## Learning Objectives {.objectives}
 >
 > * Learning objective 1
 > * Learning objective 2
