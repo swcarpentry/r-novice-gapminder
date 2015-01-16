@@ -9,7 +9,8 @@ minutes: 10
 > * Learning objective 1
 > * Learning objective 2
 
-Paragraphs of text --- possibly including **definitions** ---
+Paragraphs of text
+--- possibly including [key word 1](reference.html#key-word-1) ---
 mixed with:
 
 ~~~ {.python}
