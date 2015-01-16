@@ -4,7 +4,7 @@ title: Lesson Title
 ---
 Paragraph of introductory material.
 
-> ## Prerequisites
+> ## Prerequisites {.prereq}
 >
 > A short paragraph describing what learners need to know
 > before tackling this lesson.
