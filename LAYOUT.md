@@ -172,7 +172,8 @@ Each topic page must be structured as follows:
     > * Learning objective 1
     > * Learning objective 2
 
-    Paragraphs of text --- possibly including **definitions** ---
+    Paragraphs of text
+    --- possibly including [definitions](reference.html#definitions) ---
     mixed with:
 
     ~~~ {.python}
@@ -219,9 +220,9 @@ Each topic page must be structured as follows:
 3.  Every challenge should relate explicitly back to a learning
     objective.
 
-4.  Definitions of terms are marked in **bold** (like `**this**`).
-    Nothing else should be marked as bold text --- use *italics* for
-    for all other emphasis.
+4.  Definitions are links with fragment identifier to `reference.html`
+    (like `[definitions](reference.html#definitions)`).
+    This is need to enable links from name diferent from the key word defined.
 
 5.  When laying out source code, use `{.lang}` as a style on the
     opening `~~~` line.  For Unix Shell commands use:
@@ -307,10 +308,10 @@ a definition list:
 
     ## Glossary
 
-    Key Word 1
+    key word 1
     :   Definition of first term
 
-    Key Word 2
+    key word 2
     :   Definition of second term
 
 ## Discussion Page
