@@ -13,8 +13,8 @@ subtitle: Reference
 
 ## Glossary
 
-Key Word 1
+key word 1
 :   Definition of first term
 
-Key Word 2
+key word 2
 :   Definition of second term
