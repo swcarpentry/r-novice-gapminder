@@ -66,3 +66,23 @@ Please add notes about problems and solutions below.
 
     Probably you didn't install
     [pandocfilters](https://pypi.python.org/pypi/pandocfilters/1.2.3).
+
+*   `pandoc: Error running filter tools/filters/blockquote2div.py
+    tools/filters/blockquote2div.py not found in path`
+
+    Git has likely checked out the files with the incorrect line endings.
+    On Unix systems the recommended setting is 
+
+    ```bash
+    git config --global core.autocrlf input
+    ```
+    and on Windows
+
+    ```bash
+    git config --global core.autocrlf true
+    ```
+
+    Note that after changing this setting you will need to either re-clone
+    or re-checkout the files in the repository.
+ 
+
