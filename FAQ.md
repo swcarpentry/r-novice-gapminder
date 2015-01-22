@@ -49,7 +49,7 @@
     where `lang` is `bash` for the Unix Shell, `r` for R, `matlab` for MATLAB,
     `python` for Python, and `sql` for SQL. For a full list, check:
 
-    ~~~
+    ~~~ {.bash}
     $ pandoc -v
     ~~~
 
@@ -59,30 +59,29 @@ Please add notes about problems and solutions below.
 
 *   `pandoc: command not found`
 
-    Probably you didn't install [Pandoc](http://pandoc.org/installing.html).
+    You probably don't have [Pandoc](http://pandoc.org/installing.html) installed.
 
 *   `pandoc: Error running filter tools/filters/blockquote2div.py`
-    due `ImportError: No module named 'pandocfilters'`
+    due to `ImportError: No module named 'pandocfilters'`
 
-    Probably you didn't install
+    You probably haven't installed
     [pandocfilters](https://pypi.python.org/pypi/pandocfilters/1.2.3).
 
 *   `pandoc: Error running filter tools/filters/blockquote2div.py
     tools/filters/blockquote2div.py not found in path`
 
     Git has likely checked out the files with the incorrect line endings.
-    On Unix systems the recommended setting is 
+    On Unix systems the recommended setting is:
 
-    ```bash
+    ~~~ {.bash}
     git config --global core.autocrlf input
-    ```
-    and on Windows
+    ~~~
 
-    ```bash
+    and on Windows:
+
+    ~~~ {.bash}
     git config --global core.autocrlf true
-    ```
+    ~~~
 
     Note that after changing this setting you will need to either re-clone
     or re-checkout the files in the repository.
- 
-
