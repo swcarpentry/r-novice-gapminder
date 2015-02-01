@@ -53,7 +53,7 @@ To seek help on special operators, use quotes:
 ?"+"
 ~~~
 
-### So you kind of remember the function
+### When you kind of remember the function
 
 If you're not sure what package a function is in, or how its specifically spelled you can do a fuzzy search:
 

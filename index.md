@@ -6,8 +6,8 @@ Paragraph of introductory material.
 
 > ## Prerequisites {.prereq}
 >
-> A short paragraph describing what learners need to know
-> before tackling this lesson.
+> Have attended the Shell and Git sessions.
+>
 
 ## Topics
 
