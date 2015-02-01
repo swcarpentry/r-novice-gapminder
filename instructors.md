@@ -36,3 +36,13 @@ behind its running example).
 1.  Discussion of first challenge.
 
 2.  Discussion of second challenge.
+
+## [Seeking help](03-seeking-help.html)
+
+* Be sure to actually go through and example of an R help page. 
+  Knowing how to read a help file is tremendously useful, and can
+  be daunting if you've never seen one before.
+
+* Be sure to show them CRAN Task views and go into one of the topics.
+
+
