@@ -11,7 +11,7 @@ minutes: 15
 > * To be able to use CRAN taskviews to identify packages to solve a problem.
 > * To be able to seek help from your peers
 
-## Reading Help files
+### Reading Help files
 
 There are various ways to seek help on R.
 
@@ -45,7 +45,7 @@ Different functions might have different sections, but these are the main ones y
 > mean you don't have to!
 >
 
-## Special Operators
+### Special Operators
 
 To seek help on special operators, use quotes:
 
@@ -53,7 +53,7 @@ To seek help on special operators, use quotes:
 ?"+"
 ~~~
 
-## So you kind of remember the function
+### So you kind of remember the function
 
 If you're not sure what package a function is in, or how its specifically spelled you can do a fuzzy search:
 
@@ -61,14 +61,14 @@ If you're not sure what package a function is in, or how its specifically spelle
 ??function_name
 ~~~
 
-## When you have no idea where to begin
+### When you have no idea where to begin
 
 If you don't know what function or package you need to use 
 [CRAN Task Views](http://cran.at.r-project.org/web/views) 
 is a specially maintained list of packages grouped into
 fields. This can be a good starting point
 
-## Seeking help from your peers
+### Seeking help from your peers
 
 If you're having trouble using a function, 9 times out of 10, 
 the answers you are seeking have already been answered on 
@@ -92,8 +92,4 @@ sessionInfo()
 Will print out your current version of R, as well as any packages you
 have loaded. This can be useful for others to help reproduce and debug
 your issue.
-
-
-
-
 
