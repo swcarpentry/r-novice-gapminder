@@ -623,6 +623,8 @@ so was a warning.
 > occur in any type of vector. There are a few other types of
 > special objects: `Inf` denotes infinity (can be positive or negative),
 > while `NaN` means Not a number, an undefined value (i.e. `0/0`).
+> `NULL` denotes that the data structure doesn't exist (but can occur
+> in list elements).
 >
 
 Like data.frames, you can ask questions about the structure of vectors:

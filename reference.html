@@ -29,13 +29,52 @@
         <div class="span10 offset1">
           <h1 class="title">Lesson Title</h1>
           <h2 class="subtitle">Reference</h2>
-<h2 id="seeking-help"><a href="03-seeking-help.md">Seeking help</a></h2>
+<h2 id="seeking-help"><a href="04-seeking-help.html">Seeking help</a></h2>
 <ul>
 <li><code>?</code> or <code>help()</code> to seek help for a function.</li>
 <li><code>??</code> to search for a function.</li>
 <li>Wrap special operators in quotes when searching for help: <code>help(&quot;+&quot;)</code>.</li>
 <li><a href="http://cran.at.r-project.org/web/views">CRAN Task Views</a>.</li>
 <li><a href="http://stackoverflow.com/">stackoverflow</a>.</li>
+</ul>
+<h2 id="data-structures"><a href="05-data-structures.html">Data structures</a></h2>
+<p><strong>Basic data structures in R:</strong></p>
+<ul>
+<li>atomic <code>?vector</code> (can only contain one type)</li>
+<li><code>?list</code> (containers for other objects)</li>
+<li><code>?data.frame</code> two dimensional objects whose columns can contain different types of data</li>
+<li><code>?matrix</code> two dimensional objects that can contain only one type of data.</li>
+<li><code>?factor</code> vectors that contain predefined categorical data.</li>
+<li><code>?array</code> multi-dimensional objects that can only contain one type of data</li>
+</ul>
+<p>Remember that matrices are really atomic vectors underneath the hood, and that data.frames are really lists underneath the hood (this explains some of the weirder behaviour of R).</p>
+<p><strong>Data types:</strong></p>
+<ul>
+<li><code>?numeric</code> real (decimal) numbers</li>
+<li><code>?integer</code> whole numbers only</li>
+<li><code>?character</code> text</li>
+<li><code>?complex</code> complex numbers</li>
+<li><code>?logical</code> TRUE or FALSE values</li>
+</ul>
+<p><strong>Special types:</strong></p>
+<ul>
+<li><code>?NA</code> missing values</li>
+<li><code>?NaN</code> &quot;not a number&quot; for undefined values (e.g. <code>0/0</code>).</li>
+<li><code>?Inf</code>, <code>-Inf</code> infinity.</li>
+<li><code>?NULL</code> a data structure that doesn't exist</li>
+</ul>
+<p><code>NA</code> can occur in any atomic vector. <code>NaN</code>, and <code>Inf</code> can only occur in complex, integer or numeric type vectors. Atomic vectors are the building blocks for all other data structures. A <code>NULL</code> value will occur in place of an entire data structure (but can occur as list elements).</p>
+<p><strong>Useful functions for querying data structures:</strong></p>
+<ul>
+<li><code>?str</code> structure, prints out a summary of the whole data structure</li>
+<li><code>?typeof</code> tells you the type inside an atomic vector</li>
+<li><code>?class</code> what is the data structure?</li>
+<li><code>?head</code> print the first <code>n</code> elements (rows for two-dimensional objects)</li>
+<li><code>?tail</code> print the last <code>n</code> elements (rows for two-dimensional objects)</li>
+<li><code>?rownames</code>, <code>?colnames</code>, <code>?dimnames</code> retrieve or modify the row names and column names of an object.</li>
+<li><code>?names</code> retrieve or modify the names of an atomic vector or list (or columns of a data.frame).</li>
+<li><code>?length</code> get the number of elements in an atomic vector</li>
+<li><code>?nrow</code>, <code>?ncol</code>, <code>?dim</code> get the dimensions of a n-dimensional object (Won't work on atomic vectors or lists).</li>
 </ul>
         </div>
       </div>
