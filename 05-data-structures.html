@@ -43,7 +43,6 @@
 <div id="challenge-object-types" class="challenge">
 <h2>Challenge: Object types</h2>
 <p>Look at the first 6 rows of the gapminder dataset we loaded before:</p>
-</div>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gapminder)</code></pre>
 <pre class="output"><code>      country year      pop continent lifeExp gdpPercap
 1 Afghanistan 1952  8425333      Asia  28.801  779.4453
@@ -52,9 +51,8 @@
 4 Afghanistan 1967 11537966      Asia  34.020  836.1971
 5 Afghanistan 1972 13079460      Asia  36.088  739.9811
 6 Afghanistan 1977 14880372      Asia  38.438  786.1134</code></pre>
-<blockquote>
 <p>Write down what type of data you think is in each column</p>
-</blockquote>
+</div>
 <p>R has 5 basic atomic classes (meaning they can't be broken down into anything smaller):</p>
 <ul>
 <li>logical (e.g., <code>TRUE</code>, <code>FALSE</code>)</li>
@@ -334,7 +332,7 @@ gapminder &lt;-<span class="st"> </span><span class="kw">read.table</span>(
 <p>Create an empty vector with <code>vector()</code> or by using the concatenate function, <code>c()</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">vector</span>()
 x</code></pre>
-<p><sub>~</sub> {.output} logical(0) }</p>
+<pre class="output"><code>logical(0) </code></pre>
 <p>So by default, it creates an empty vector (i.e. a length of 0) of type &quot;logical&quot;.</p>
 <pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">length =</span> <span class="dv">10</span>) <span class="co"># with a predefined length</span>
 x</code></pre>
@@ -355,14 +353,14 @@ x</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(x, <span class="dv">57</span>)
 x</code></pre>
 <pre class="output"><code>[1] 10 12 45 33 57</code></pre>
-<div id="challenge" class="callout">
+<div id="challenge" class="challenge">
 <h2>Challenge</h2>
 <p>Vectors can only contain one atomic type. If you try to combine different types, R will create a vector that is the least common denominator: the type that is easiest to coerce to.</p>
 <p><strong>Guess what the following do without running them first:</strong></p>
-</div>
 <pre class="sourceCode r"><code class="sourceCode r">xx &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.7</span>, <span class="st">&quot;a&quot;</span>) 
 xx &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="dv">2</span>) 
 xx &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="ot">TRUE</span>) <span class="st">```</span></code></pre>
+</div>
 <p>This is called implicit coercion.</p>
 <p>The coersion rule goes <code>logical</code> -&gt; <code>integer</code> -&gt; <code>numeric</code> -&gt; <code>complex</code> -&gt; <code>character</code>.</p>
 <p>You can also coerce vectors explicitly using the <code>as.&lt;class_name&gt;</code>. Example</p>
