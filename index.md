@@ -32,6 +32,10 @@ usability.
 Note: these lessons are currently a work in progress. Please contact
 [Scott Ritchie](sritchie73@gmail.com) for more information. 
 
+If you are attending train-the-trainer and are looking to learn some of
+the material, the lessons are largely being adapted from 
+[http://resbaz.github.io/2014-r-materials/lessons/index.html](http://resbaz.github.io/2014-r-materials/lessons/index.html)
+
 1.  [Introduction to RStudio and RStudio Projects](01-rstudio-intro.html)
 2.  [Introduction to R](02-r-intro.html)
 3.  [Reading and writing data](03-rw-data.html)
