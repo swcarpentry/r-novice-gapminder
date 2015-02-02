@@ -555,95 +555,112 @@ Residual standard error: 11.63 on 1702 degrees of freedom
 Multiple R-squared:  0.1898,  Adjusted R-squared:  0.1893 
 F-statistic: 398.6 on 1 and 1702 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>As you might expect, life expectancy has slowly been increasing over time, so we see a significant positive association!</p>
-<p id="todo">TODO</p>
-<h2 id="matrix">Matrix</h2>
-<p>Matrices are a special vector in R. They are not a separate class of object but simply a vector but now with dimensions added on to it. Matrices have rows and columns.</p>
-<p><code>m &lt;- matrix(nrow = 2, ncol = 2) m dim(m) same as attributes(m)</code></p>
-<p>Matrices are constructed columnwise.</p>
-<p><code>m &lt;- matrix(1:6, nrow=2, ncol =3)</code></p>
-<p>Other ways to construct a matrix</p>
-<p><code>m &lt;- 1:10 dim(m) &lt;- c(2,5)</code></p>
-<p>This takes a vector and transform into a matrix with 2 rows and 5 columns.</p>
-<p>Another way is to bind columns or rows using <code>cbind()</code> and <code>rbind()</code>.</p>
-<p><code>x &lt;- 1:3 y &lt;- 10:12 cbind(x,y) # or rbind(x,y)</code></p>
-<hr />
-<hr />
-<h2 id="factors">Factors</h2>
+<h4 id="factors">Factors</h4>
 <p>Factors are special vectors that represent categorical data. Factors can be ordered or unordered and are important when for modelling functions such as <code>aov()</code>, <code>lm()</code> and <code>glm()</code> and also in plot methods.</p>
-<p>Factors can only contain pre-defined values.</p>
-<p>Factors are pretty much integers that have labels on them. While factors look (and often behave) like character vectors, they are actually integers under the hood, and you need to be careful when treating them like strings. Some string methods will coerce factors to strings, while others will throw an error.</p>
-<p>Sometimes factors can be left unordered. Example: male, female</p>
-<p>Other times you might want factors to be ordered (or ranked). Example: low, medium, high.</p>
-<p>Underlying it's represented by numbers 1,2,3.</p>
-<p>They are better than using simple integer labels because factors are what are called self describing. male and female is more descriptive than 1s and 2s. Helpful when there is no additional metadata.</p>
-<p>Which is male? 1 or 2? You wouldn't be able to tell with just integer data. Factors have this information built in.</p>
-<p>Factors can be created with <code>factor()</code>. Input is a character vector.</p>
-<p><code>x &lt;- factor(c(&quot;yes&quot;, &quot;no&quot;, &quot;no&quot;, &quot;yes&quot;, &quot;yes&quot;)) x</code></p>
-<p><code>table(x)</code> will return a frequency table.</p>
-<p><code>unclass(x)</code> strips out the class information.</p>
-<p>In modelling functions, important to know what baseline levels is. This is the first factor but by default the ordering is determined by alphabetical order of words entered. You can change this by specifying the levels.</p>
-<p><code>x &lt;- factor(c(&quot;yes&quot;, &quot;no&quot;, &quot;yes&quot;), levels = c(&quot;yes&quot;, &quot;no&quot;))</code> ## Data frame</p>
-<p>A data frame is a very important data type in R. It's pretty much the de facto data structure for most tabular data and what we use for statistics.</p>
-<p>data frames can have additional attributes such as <code>rownames()</code>. This can be useful for annotating data, like subject_id or sample_id. But most of the time they are not used.</p>
-<p>e.g. <code>rownames()</code> useful for annotating data. subject names. other times they are not useful.</p>
-<ul>
-<li><p>Data frames Usually created by read.csv and read.table.</p></li>
-<li><p>Can convert to <code>matrix</code> with <code>data.matrix()</code></p></li>
-<li><p>Coercion will force and not always what you expect.</p></li>
-<li><p>Can also create with <code>data.frame()</code> function.</p></li>
-</ul>
-<p>With and data frame, you can do <code>nrow(df)</code> and <code>ncol(df)</code> rownames are usually 1..n.</p>
-<p><strong>Combining data frames</strong></p>
-<p><code>df &lt;- data.frame(id = letters[1:10], x = 1:10, y = rnorm(10)) &gt; df    id  x          y 1   a  1 -0.3913992 2   b  2 -0.8607609 3   c  3  1.1234612    4   d  4 -0.8283688 5   e  5 -0.8785586 6   f  6  0.2116839 7   g  7    -0.3795995 8   h  8 -0.5992272 9   i  9  0.3203085 10  j 10  0.2901185</code></p>
-<p><code>cbind(df, data.frame(z = 4))</code></p>
-<p>When you combine column wise, only row numbers need to match. If you are adding a vector, it will get repeated.</p>
-<p><strong>Useful functions</strong> <code>head()</code> - see first 5 rows <code>tail()</code> - see last 5 rows <code>dim()</code> - see dimensions <code>nrow()</code> - number of rows <code>ncol()</code> - number of columns <code>str()</code> - structure of each column <code>names()</code> - will list column names for a data.frame (or any object really).</p>
-<p>A data frame is a special type of list where every element of a list has same length.</p>
-<p>See that it is actually a special list:</p>
-<pre><code>&gt; is.list(iris)
-[1] TRUE
-&gt; class(iris)
-[1] &quot;data.frame&quot;
- &gt;</code></pre>
-<p>--</p>
-<p><strong>Naming objects</strong></p>
-<p>Other R objects can also have names not just true for data.frames. Adding names is helpful since it's useful for readable code and self describing objects.</p>
-<p><code>x &lt;- 1:3 names(x) &lt;- c(&quot;rich&quot;, &quot;daniel&quot;, &quot;diego&quot;) x</code></p>
-<p>Lists can also have names.</p>
-<p><code>x &lt;- as.list(1:10) names(x) &lt;- letters[seq(x)] x</code></p>
-<p>Finally matrices can have names and these are called <code>dimnames</code></p>
-<p><code>m &lt;- matrix(1:4, nrow = 2) dimnames(m) &lt;- list(c(&quot;a&quot;, &quot;b&quot;), c(&quot;c&quot;, &quot;d&quot;)) # first element = rownames # second element = colnames</code></p>
-<hr />
-<h2 id="missing-values">Missing values</h2>
-<p>denoted by <code>NA</code> and/or <code>NaN</code> for undefined mathematical operations.</p>
-<p><code>is.na() is.nan()</code></p>
-<p>check for both.</p>
-<p>NA values have a class. So you can have both an integer NA and a missing character NA.</p>
-<p>NaN is also NA. But not the other way around.</p>
-<p><code>x &lt;- c(1,2, NA, 4, 5)</code></p>
-<p><code>is.na(x)</code> returns logical. shows third</p>
-<p><code>is.nan(x)</code> # none are NaN.</p>
-<p><code>x &lt;- c(1,2, NA, NaN, 4, 5)</code></p>
-<p><code>is.na(x)</code> shows 2 TRUE. <code>is.nan(x)</code> shows 1 TRUE</p>
-<p>Missing values are very important in R, but can be very frustrating for new users.</p>
-<p>What do these do? What should they do? <code>1 == NA NA == NA</code></p>
-<p>How can we do that sort of comparison?</p>
-<h1 id="diagnostic-functions-in-r">Diagnostic functions in R</h1>
-<p><strong>Super helpful functions</strong></p>
-<ul>
-<li><code>str()</code> Compactly display the internal structure of an R object. Perhaps the most uesful diagnostic function in R.</li>
-<li><code>names()</code> Names of elements within an object</li>
-<li><code>class()</code> Retrieves the internal class of an object</li>
-<li><code>mode()</code> Get or set the type or storage mode of an object.</li>
-<li><code>length()</code> Retrieve or set the dimension of an object.</li>
-<li><code>dim()</code> Retrieve or set the dimension of an object.</li>
-<li><code>R --vanilla</code> - Allows you to start a clean session of R. A great way to test whether your code is reproducible.</li>
-<li><code>sessionInfo()</code> Print version information about R and attached or loaded packages.</li>
-<li><code>options()</code> Allow the user to set and examine a variety of global options which affect the way in which R computes and displays its results.</li>
-</ul>
-<p><code>str()</code> is your best friend</p>
-<p><code>str</code> is short for structure. You can use it on any object. Try the following:</p>
-<p><code>r x &lt;- 1:10 class(x) mode(x) str(x)</code></p>
+<p>Factors can only contain pre-defined values, and we can create one with the <code>factor</code> function:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;yes&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>, <span class="st">&quot;yes&quot;</span>))
+x</code></pre>
+<pre class="output"><code>[1] yes no  no  yes yes
+Levels: no yes</code></pre>
+<p>So we can see that the output is very similar to a character vector, but with an attached levels component. This becomes clearer when we look at its structure:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(x)</code></pre>
+<pre class="output"><code> Factor w/ 2 levels &quot;no&quot;,&quot;yes&quot;: 2 1 1 2 2</code></pre>
+<p>This reveals something important: while factors look (and often behave) like character vectors, they are actually integers under the hood, and here, we can see that &quot;no&quot; is represented by a 1, and &quot;yes&quot; a 2.</p>
+<p>In modelling functions, important to know what baseline levels is. This is the first factor but by default the ordering is determined by alphabetical order of words entered. You can change this by specifying the levels:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;case&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;case&quot;</span>), <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;case&quot;</span>, <span class="st">&quot;control&quot;</span>))
+<span class="kw">str</span>(x)</code></pre>
+<pre class="output"><code> Factor w/ 2 levels &quot;case&quot;,&quot;control&quot;: 1 2 2 1</code></pre>
+<p>In this case, we've explicitly told R that &quot;case&quot; should represented by 1, and &quot;control&quot; by 2. This designation can be very important for interpreting the results of statistical models!</p>
+<p>and you need to be careful when treating them like text.</p>
+<h4 id="data-frames">Data frames</h4>
+<p>We've already encountered data frames in this lesson, but lets return to them now that we know a little bit more about data strcutures.</p>
+<p>Underneath the hood, data frames are really just lists, where each element is an atomic vector, with the added restriction that they're all the same length. This is why when we ran <code>typeof(gapminder)</code> it printed out &quot;list&quot;. Each column in the data frame is simply a list element, which is why when you ask for the <code>length</code> of the data frame, it tells you the number of columns.</p>
+<p>Data frames can be created manually with the <code>data.frame</code> function:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1</span>)
+df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id =</span> letters[<span class="dv">1</span>:<span class="dv">10</span>], <span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">y =</span> <span class="kw">rnorm</span>(<span class="dv">10</span>))
+df</code></pre>
+<pre class="output"><code>   id  x          y
+1   a  1 -0.6264538
+2   b  2  0.1836433
+3   c  3 -0.8356286
+4   d  4  1.5952808
+5   e  5  0.3295078
+6   f  6 -0.8204684
+7   g  7  0.4874291
+8   h  8  0.7383247
+9   i  9  0.5757814
+10  j 10 -0.3053884</code></pre>
+<p>We can add columns or rows to a data.frame using <code>rbind</code> or <code>cbind</code> (these are the two-dimensional equivalents of the <code>c</code> function):</p>
+<pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">rbind</span>(df, <span class="kw">list</span>(<span class="st">&quot;k&quot;</span>, <span class="dv">11</span>, <span class="fl">0.4</span>))<span class="er">)</span> 
+<span class="kw">tail</span>(df, <span class="dt">n=</span><span class="dv">3</span>)</code></pre>
+<pre class="output"><code>   id  x          y
+8   h  8  0.7383247
+9   i  9  0.5757814
+10  j 10 -0.3053884</code></pre>
+<p>Note that to add a row, we need to use a list, because each column is a different type! If you want to add multiple rows to a data.frame, you will need to separate the new columns in the list:</p>
+<pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">rbind</span>(df, <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;l&quot;</span>, <span class="st">&quot;m&quot;</span>), <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">13</span>), <span class="kw">c</span>(<span class="fl">0.3</span>, -<span class="fl">0.7</span>)))
+<span class="kw">tail</span>(df, <span class="dt">n=</span><span class="dv">3</span>)</code></pre>
+<pre class="output"><code>   id  x          y
+10  j 10 -0.3053884
+11  l 12  0.3000000
+12  m 13 -0.7000000</code></pre>
+<p>You can also row-bind data.frames together:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rbind</span>(df, df)</code></pre>
+<pre class="output"><code>   id  x          y
+1   a  1 -0.6264538
+2   b  2  0.1836433
+3   c  3 -0.8356286
+4   d  4  1.5952808
+5   e  5  0.3295078
+6   f  6 -0.8204684
+7   g  7  0.4874291
+8   h  8  0.7383247
+9   i  9  0.5757814
+10  j 10 -0.3053884
+11  l 12  0.3000000
+12  m 13 -0.7000000
+13  a  1 -0.6264538
+14  b  2  0.1836433
+15  c  3 -0.8356286
+16  d  4  1.5952808
+17  e  5  0.3295078
+18  f  6 -0.8204684
+19  g  7  0.4874291
+20  h  8  0.7383247
+21  i  9  0.5757814
+22  j 10 -0.3053884
+23  l 12  0.3000000
+24  m 13 -0.7000000</code></pre>
+<p>To add a column we can use <code>cbind</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">cbind</span>(df, <span class="dv">12</span>:<span class="dv">1</span>)
+df</code></pre>
+<pre class="output"><code>   id  x          y 12:1
+1   a  1 -0.6264538   12
+2   b  2  0.1836433   11
+3   c  3 -0.8356286   10
+4   d  4  1.5952808    9
+5   e  5  0.3295078    8
+6   f  6 -0.8204684    7
+7   g  7  0.4874291    6
+8   h  8  0.7383247    5
+9   i  9  0.5757814    4
+10  j 10 -0.3053884    3
+11  l 12  0.3000000    2
+12  m 13 -0.7000000    1</code></pre>
+<h4 id="matrix">Matrix</h4>
+<p>Another data structure you'll likely encounter are Matrices. These are similar to data frames, except they can only contain one atomic type. Underneath the hood, they are really just atomic vectors, with added dimension attributes.</p>
+<p>We can create one with the <code>matrix</code> function. Let's generate some random data:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1</span>) <span class="co"># make sure the random numbers are the same for each run</span>
+x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">3</span>*<span class="dv">6</span>), <span class="dt">ncol=</span><span class="dv">6</span>, <span class="dt">nrow=</span><span class="dv">3</span>)
+x</code></pre>
+<pre class="output"><code>           [,1]       [,2]      [,3]       [,4]       [,5]        [,6]
+[1,] -0.6264538  1.5952808 0.4874291 -0.3053884 -0.6212406 -0.04493361
+[2,]  0.1836433  0.3295078 0.7383247  1.5117812 -2.2146999 -0.01619026
+[3,] -0.8356286 -0.8204684 0.5757814  0.3898432  1.1249309  0.94383621</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(x)</code></pre>
+<pre class="output"><code>num [1:3, 1:6] -0.626 0.184 -0.836 1.595 0.33 ...</code></pre>
+<p>Like data frames, you can use <code>rownames</code>, <code>colnames</code>, and <code>dimnames</code> to set or retrieve the column and rownames of a matrix. The functions <code>nrow</code> and <code>ncol</code> will tell you the number of rows and columns (this also applies to data frames!), while <code>length</code> will tell you the number of elements.</p>
+<p>Like data.frames, you can also use the row-bind and column-bind function to add new rows and columns,</p>
         </div>
       </div>
       <div class="footer">

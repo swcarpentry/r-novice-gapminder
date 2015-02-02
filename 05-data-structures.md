@@ -2,7 +2,7 @@
 layout: page
 title: R for reproducible scientific analysis
 subtitle: Data structures
-minutes: 15
+minutes: lots
 ---
 
 > ## Learning Objectives {.objectives}
@@ -888,201 +888,215 @@ F-statistic: 398.6 on 1 and 1702 DF,  p-value: < 2.2e-16
 As you might expect, life expectancy has slowly been increasing over
 time, so we see a significant positive association!
 
-########## TODO
 
-## Matrix
-
-Matrices are a special vector in R. They are not a separate class of object but
-simply a vector but now with dimensions added on to it. Matrices have rows and
-columns.
-
-``` m <- matrix(nrow = 2, ncol = 2) m dim(m) same as attributes(m) ```
-
-Matrices are constructed columnwise.
-
-``` m <- matrix(1:6, nrow=2, ncol =3) ```
-
-Other ways to construct a matrix
-
-``` m <- 1:10 dim(m) <- c(2,5) ```
-
-This takes a vector and transform into a matrix with 2 rows and 5 columns.
-
-
-Another way is to bind columns or rows using `cbind()` and `rbind()`.
-
-``` x <- 1:3 y <- 10:12 cbind(x,y) # or rbind(x,y) ```
-
----
-
-
----
-
-## Factors
+#### Factors
 
 Factors are special vectors that represent categorical data. Factors can be
 ordered or unordered and are important when for modelling functions such as
 `aov()`, `lm()` and `glm()` and also in plot methods.
 
-Factors can only contain pre-defined values.
+Factors can only contain pre-defined values, and we can create one with the
+`factor` function:
 
-Factors are pretty much integers that have labels on them.  While factors look
-(and often behave) like character vectors, they are actually integers under the
-hood, and you need to be careful when treating them like strings. Some string
-methods will coerce factors to strings, while others will throw an error.
+~~~ {.r}
+x <- factor(c("yes", "no", "no", "yes", "yes"))
+x
+~~~
 
-Sometimes factors can be left unordered. Example: male, female
+~~~ {.output}
+[1] yes no  no  yes yes
+Levels: no yes
+~~~
 
-Other times you might want factors to be ordered (or ranked). Example: low,
-medium, high.
+So we can see that the output is very similar to a character vector, but with an
+attached levels component. This becomes clearer when we look at its structure:
 
+~~~ {.r}
+str(x)
+~~~
 
-Underlying it's represented by numbers 1,2,3.
+~~~ {.output}
+ Factor w/ 2 levels "no","yes": 2 1 1 2 2
+~~~
 
-
-They are better than using simple integer labels because factors are what are
-called self describing. male and female is more descriptive than 1s and 2s.
-Helpful when there is no additional metadata.
-
-Which is male? 1 or 2? You wouldn't be able to tell with just integer data.
-Factors have this information built in.
-
-Factors can be created with `factor()`. Input is a character vector.
-
-``` x <- factor(c("yes", "no", "no", "yes", "yes")) x ```
-
-`table(x)` will return a frequency table.
-
-`unclass(x)` strips out the class information.
+This reveals something important: while factors look (and often behave) like
+character vectors, they are actually integers under the hood, and here, we can
+see that "no" is represented by a 1, and "yes" a 2.
 
 In modelling functions, important to know what baseline levels is.  This is the
 first factor but by default the ordering is determined by alphabetical order of
-words entered. You can change this by specifying the levels.
+words entered. You can change this by specifying the levels:
 
-``` x <- factor(c("yes", "no", "yes"), levels = c("yes", "no")) ``` ## Data
-frame
+~~~ {.r}
+x <- factor(c("case", "control", "control", "case"), levels = c("case", "control"))
+str(x)
+~~~
 
-A data frame is a very important data type in R. It's pretty much the de facto
-data structure for most tabular data and what we use for statistics.
+~~~ {.output}
+ Factor w/ 2 levels "case","control": 1 2 2 1
+~~~
 
-data frames can have additional attributes such as `rownames()`. This can be
-useful for annotating data, like subject_id or sample_id. But most of the time
-they are not used.
+In this case, we've explicitly told R that "case" should represented by 1, and 
+"control" by 2. This designation can be very important for interpreting the
+results of statistical models!
 
-e.g. `rownames()` useful for annotating data. subject names.  other times they
-are not useful.
+and you need to be careful when treating them like text.
 
-* Data frames Usually created by read.csv and read.table.
+#### Data frames
 
-* Can convert to `matrix` with `data.matrix()`
+We've already encountered data frames in this lesson, but lets return to them
+now that we know a little bit more about data strcutures.
 
-* Coercion will force and not always what you expect.
+Underneath the hood, data frames are really just lists, where each element is
+an atomic vector, with the added restriction that they're all the same length.
+This is why when we ran `typeof(gapminder)` it printed out "list". Each column
+in the data frame is simply a list element, which is why when you ask for the
+`length` of the data frame, it tells you the number of columns.
 
-* Can also create with `data.frame()` function.
+Data frames can be created manually with the `data.frame` function:
 
+~~~ {.r}
+set.seed(1)
+df <- data.frame(id = letters[1:10], x = 1:10, y = rnorm(10))
+df
+~~~
 
-With and data frame, you can do `nrow(df)` and `ncol(df)` rownames are usually
-1..n.
+~~~ {.output}
+   id  x          y
+1   a  1 -0.6264538
+2   b  2  0.1836433
+3   c  3 -0.8356286
+4   d  4  1.5952808
+5   e  5  0.3295078
+6   f  6 -0.8204684
+7   g  7  0.4874291
+8   h  8  0.7383247
+9   i  9  0.5757814
+10  j 10 -0.3053884
+~~~
 
-**Combining data frames**
+We can add columns or rows to a data.frame using `rbind` or `cbind` (these are
+the two-dimensional equivalents of the `c` function):
 
-``` df <- data.frame(id = letters[1:10], x = 1:10, y = rnorm(10))
-> df
-   id  x          y 1   a  1 -0.3913992 2   b  2 -0.8607609 3   c  3  1.1234612
-   4   d  4 -0.8283688 5   e  5 -0.8785586 6   f  6  0.2116839 7   g  7
-   -0.3795995 8   h  8 -0.5992272 9   i  9  0.3203085 10  j 10  0.2901185 ```
+~~~ {.r}
+df <- rbind(df, list("k", 11, 0.4))) 
+tail(df, n=3)
+~~~
 
-`cbind(df, data.frame(z = 4))`
+~~~ {.output}
+   id  x          y
+8   h  8  0.7383247
+9   i  9  0.5757814
+10  j 10 -0.3053884
+~~~~
 
-When you combine column wise, only row numbers need to match. If you are adding
-a vector, it will get repeated.
+Note that to add a row, we need to use a list, because each column is a different type!
+If you want to add multiple rows to a data.frame, you will need to separate the new columns
+in the list:
 
-**Useful functions** `head()` - see first 5 rows `tail()` - see last 5 rows
-`dim()` - see dimensions `nrow()` - number of rows `ncol()` - number of columns
-`str()` - structure of each column `names()` - will list column names for a
-data.frame (or any object really).
+~~~ {.r}
+df <- rbind(df, list(c("l", "m"), c(12, 13), c(0.3, -0.7)))
+tail(df, n=3)
+~~~
 
-A data frame is a special type of list where every element of a list has same
-length.
+~~~ {.output}
+   id  x          y
+10  j 10 -0.3053884
+11  l 12  0.3000000
+12  m 13 -0.7000000
+~~~
 
-See that it is actually a special list:
+You can also row-bind data.frames together:
 
-    > is.list(iris)
-    [1] TRUE
-    > class(iris)
-    [1] "data.frame"
-     >
---
+~~~ {.r}
+rbind(df, df)
+~~~
 
-**Naming objects**
+~~~ {.output}
+   id  x          y
+1   a  1 -0.6264538
+2   b  2  0.1836433
+3   c  3 -0.8356286
+4   d  4  1.5952808
+5   e  5  0.3295078
+6   f  6 -0.8204684
+7   g  7  0.4874291
+8   h  8  0.7383247
+9   i  9  0.5757814
+10  j 10 -0.3053884
+11  l 12  0.3000000
+12  m 13 -0.7000000
+13  a  1 -0.6264538
+14  b  2  0.1836433
+15  c  3 -0.8356286
+16  d  4  1.5952808
+17  e  5  0.3295078
+18  f  6 -0.8204684
+19  g  7  0.4874291
+20  h  8  0.7383247
+21  i  9  0.5757814
+22  j 10 -0.3053884
+23  l 12  0.3000000
+24  m 13 -0.7000000
+~~~
 
-Other R objects can also have names not just true for data.frames. Adding names
-is helpful since it's useful for readable code and self describing objects.
+To add a column we can use `cbind`:
 
-``` x <- 1:3 names(x) <- c("rich", "daniel", "diego") x ```
+~~~ {.r}
+df <- cbind(df, 12:1)
+df
+~~~
 
-Lists can also have names.
+~~~ {.output}
+   id  x          y 12:1
+1   a  1 -0.6264538   12
+2   b  2  0.1836433   11
+3   c  3 -0.8356286   10
+4   d  4  1.5952808    9
+5   e  5  0.3295078    8
+6   f  6 -0.8204684    7
+7   g  7  0.4874291    6
+8   h  8  0.7383247    5
+9   i  9  0.5757814    4
+10  j 10 -0.3053884    3
+11  l 12  0.3000000    2
+12  m 13 -0.7000000    1
+~~~
 
-``` x <- as.list(1:10) names(x) <- letters[seq(x)] x ```
+#### Matrix
 
-Finally matrices can have names and these are called `dimnames`
+Another data structure you'll likely encounter are Matrices. These are similar
+to data frames, except they can only contain one atomic type. Underneath the
+hood, they are really just atomic vectors, with added dimension attributes.
 
-``` m <- matrix(1:4, nrow = 2) dimnames(m) <- list(c("a", "b"), c("c", "d")) #
-first element = rownames # second element = colnames ```
+We can create one with the `matrix` function. Let's generate some random data:
 
----
+~~~ {.r}
+set.seed(1) # make sure the random numbers are the same for each run
+x <- matrix(rnorm(3*6), ncol=6, nrow=3)
+x
+~~~
 
+~~~ {.output}
+           [,1]       [,2]      [,3]       [,4]       [,5]        [,6]
+[1,] -0.6264538  1.5952808 0.4874291 -0.3053884 -0.6212406 -0.04493361
+[2,]  0.1836433  0.3295078 0.7383247  1.5117812 -2.2146999 -0.01619026
+[3,] -0.8356286 -0.8204684 0.5757814  0.3898432  1.1249309  0.94383621
+~~~
 
-## Missing values
+~~~ {.r}
+str(x)
+~~~
 
-denoted by `NA` and/or `NaN` for undefined mathematical operations.
+~~~ {.output}
+num [1:3, 1:6] -0.626 0.184 -0.836 1.595 0.33 ...
+~~~
 
-``` is.na() is.nan() ```
+Like data frames, you can use `rownames`, `colnames`, and `dimnames` to set or 
+retrieve the column and rownames of a matrix. The functions `nrow` and `ncol` 
+will tell you the number of rows and columns (this also applies to data frames!),
+while `length` will tell you the number of elements.
 
-check for both.
+Like data.frames, you can also use the row-bind and column-bind function to add
+new rows and columns,
 
-NA values have a class. So you can have both an integer NA and a missing
-character NA.
-
-NaN is also NA. But not the other way around.
-
-``` x <- c(1,2, NA, 4, 5) ```
-
-`is.na(x)` returns logical.  shows third
-
-`is.nan(x)` # none are NaN.
-
-``` x <- c(1,2, NA, NaN, 4, 5) ```
-
-`is.na(x)` shows 2 TRUE.  `is.nan(x)` shows 1 TRUE
-
-Missing values are very important in R, but can be very frustrating for new
-users.
-
-What do these do?  What should they do?  ``` 1 == NA NA == NA ```
-
-How can we do that sort of comparison?
-
-# Diagnostic functions in R
-
-**Super helpful functions**
-
-* `str()` Compactly display the internal structure of an R object. Perhaps the
-  most uesful diagnostic function in R.
-* `names()` Names of elements within an object
-* `class()` Retrieves the internal class of an object
-* `mode()` Get or set the type or storage mode of an object.
-* `length()` Retrieve or set the dimension of an object.
-* `dim()` Retrieve or set the dimension of an object.
-* `R --vanilla` - Allows you to start a clean session of R. A great way to test
-  whether your code is reproducible.
-* `sessionInfo()` Print version information about R and attached or loaded
-  packages.
-* `options()` Allow the user to set and examine a variety of global options
-  which affect the way in which R computes and displays its results.
-
-`str()` is your best friend
-
-`str` is short for structure. You can use it on any object. Try the following:
-
-```r x <- 1:10 class(x) mode(x) str(x) ```
