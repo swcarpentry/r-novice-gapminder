@@ -43,7 +43,7 @@ the material, the lessons are largely being adapted from
 5.  [Data structures](05-data-structures.html)
 6.  [Subsetting data](06-data-subsetting.html)
 7.  [Vectorisation](07-vectorisation.html)
-8   [Control flow](08-control-flow.html)
+8.   [Control flow](08-control-flow.html)
 9.  [Functions](09-functions.html)
 10. [Apply and task repitition](10-apply.html)
 11. [Plotting](11-plotting.html)
