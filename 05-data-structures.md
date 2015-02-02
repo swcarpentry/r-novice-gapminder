@@ -22,7 +22,7 @@ manipulate on a day-to-day basis in R.
 Importantly, they are the most common source of frustration among beginners.
 
 
-> ## Challenge: Object types {.challenge}
+> ### Challenge: Object types {.challenge}
 > 
 > Look at the first 6 rows of the gapminder dataset we loaded before:
 > 
@@ -421,7 +421,8 @@ them in more detail
 
 A vector is the most common and basic data structure in `R` and is pretty much
 the workhorse of R. They are sometimes referred to as atomic vectors, because
-importantly, they can only contain one type. 
+importantly, they can only contain one type. They are the building blocks of
+every other data structure.
 
 We've seen vectors already when we retrieved the rownames and columnames of 
 the gapminder dataset, and when accessing its individual columns!
@@ -434,7 +435,7 @@ A vector can contain any of the five types we introduced before:
 * complex (e.g, 1 + 0i, 1 + 4i)
 * character (e.g, "a", "swc")
 
-> ## Tip: "Character Vectors" {.callout}
+> ### Tip: "Character Vectors" {.callout}
 >
 > You will sometimes hear the term "character vector", especially in
 > warning or error messages. This is a somewhat confusing and unfortunate
@@ -488,7 +489,41 @@ x
 [1] 10 12 45 33
 ~~~
 
-> ## Tip {.callout}
+You can also create vectors as sequence of numbers
+
+~~~ {.r}
+series <- 1:10 
+series
+~~~
+
+~~~ {.output}
+ [1]  1  2  3  4  5  6  7  8  9 10
+~~~
+
+~~~ {.r}
+seq(10) 
+~~~
+
+~~~ {.output}
+ [1]  1  2  3  4  5  6  7  8  9 10
+~~~
+
+~~~ {.r}
+seq(1, 10, by = 0.1)
+~~~
+
+~~~ {.output}
+ [1]  1.0  1.1  1.2  1.3  1.4  1.5  1.6  1.7  1.8  1.9  2.0  2.1  2.2  2.3  2.4
+ [16]  2.5  2.6  2.7  2.8  2.9  3.0  3.1  3.2  3.3  3.4  3.5  3.6  3.7  3.8  3.9
+ [31]  4.0  4.1  4.2  4.3  4.4  4.5  4.6  4.7  4.8  4.9  5.0  5.1  5.2  5.3  5.4
+ [46]  5.5  5.6  5.7  5.8  5.9  6.0  6.1  6.2  6.3  6.4  6.5  6.6  6.7  6.8  6.9
+ [61]  7.0  7.1  7.2  7.3  7.4  7.5  7.6  7.7  7.8  7.9  8.0  8.1  8.2  8.3  8.4
+ [76]  8.5  8.6  8.7  8.8  8.9  9.0  9.1  9.2  9.3  9.4  9.5  9.6  9.7  9.8  9.9
+ [91] 10.0
+~~~
+
+
+> ### Tip {.callout}
 >
 > When you combine numbers using the concatenate function, `c()` the type
 > will automatically become "numeric", that is real/decimal numbers. If you
@@ -507,7 +542,7 @@ x
 [1] 10 12 45 33 57
 ~~~
 
-> ## Challenge {.challenge}
+> ### Challenge {.challenge}
 >
 > Vectors can only contain one atomic type. If you try to combine different
 > types, R will create a vector that is the least common denominator: the
@@ -522,32 +557,78 @@ x
 > ~~~
 >
 
-
 This is called implicit coercion.
 
 The coersion rule goes `logical` -> `integer` -> `numeric` -> `complex` ->
-`character`.
+`character`. 
 
 You can also coerce vectors explicitly using the `as.<class_name>`. Example
 
-``` as.numeric() as.character() ```
+~~~ {.r}
+as.numeric() 
+as.character()
+~~~~
 
-When you coerce an existing numeric vector with `as.numeric()`, it does
-nothing.
-
-``` x <- 0:6 as.numeric(x) as.logical(x) as.character(x) as.complex(x) ```
-
-Sometimes coercions, especially nonsensical ones won't work.
-
-``` x <- c("a", "b", "c") as.numeric(x) as.logical(x) # both don't work ```
-
-**Sometimes there is implicit conversion**
-
-``` 1 < "2" # TRUE "1" > 2 # FALSE 1 < "a" # TRUE ```
-
-Some useful functions you can use to ask questions about vectors:
+R will try to do whatever makes the most sense for that value:
 
 ~~~ {.r}
+as.character(x)
+~~~
+
+~~~ {.output}
+[1] "0" "1" "2" "3" "4" "5" "6"
+~~~
+
+~~~ {.r}
+as.complex(x)
+~~~
+
+~~~ {.output}
+[1] 0+0i 1+0i 2+0i 3+0i 4+0i 5+0i 6+0i
+~~~
+
+~~~ {.r}
+x <- 0:6 
+as.logical(x)
+~~~
+
+~~~ {.output}
+[1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+~~~
+
+This is behaviour you will find in many programming languages. 0 is
+FALSE, while every other number is treated as TRUE.
+Sometimes coercions, especially nonsensical ones won't work.
+
+In some cases, R won't be able to do anything sensible:
+
+~~~ {.r}
+x <- c("a", "b", "c") 
+as.numeric(x) 
+as.logical(x)
+~~~ 
+
+~~~ {.output}
+[1] NA NA NA
+Warning message:
+NAs introduced by coercion 
+~~~
+
+In both cases, a vector of "NAs" was returned, and in the first case
+so was a warning. 
+
+> ### Special Objects {.callout}
+>
+> "NA" is a special object in R which denotes a missing value. NA can
+> occur in any type of vector. There are a few other types of
+> special objects: `Inf` denotes infinity (can be positive or negative),
+> while `NaN` means Not a number, an undefined value (i.e. `0/0`).
+>
+
+Like data.frames, you can ask questions about the structure of vectors:
+
+~~~ {.r}
+x <- 0:10
 tail(x, n=2) # get the last 'n' elements
 ~~~
 
@@ -579,44 +660,235 @@ str(x)
  num [1:4] 10 12 45 33
 ~~~
 
+Like data.frames, vectors can also be named:
 
-Yo
+~~~ {.r}
+names(x) <- c("a", "b", "c", "d")
+x
+~~~
 
-**Add elements**
+~~~ {.output}
+ a  b  c  d 
+ 10 12 45 33 
+}
 
-``` z <- c(z, "Annette") z ```
+> ### Advanced Tip {.callout}
+>
+> If you're coming from other programming languages you might 
+> recognise this as a useful tool akin to dictionaries and hash
+> tables. This is true for small vectors, but for true hash table
+> functionality, you should use the environment object. See
+> `?new.env`.
+>
 
-More examples of vectors
+#### Lists
 
-``` x <- c(0.5, 0.7) x <- c(TRUE, FALSE) x <- c("a", "b", "c", "d", "e") x <-
-9:100 x <- c(1+0i, 2+4i) ```
+If you want to combine different types of data, you will need to use lists.
+Lists act as containers, and can contain any type of data structure, even 
+themselves!
 
-You can also create vectors as sequence of numbers
+Lists can be created using `list` or coerced from other objects using `as.list()`:
 
-``` series <- 1:10 seq(10) seq(1, 10, by = 0.1) ```
+~~~ {.r} 
+x <- list(1, "a", TRUE, 1+4i)
+x
+~~~
 
-**Other objects**
+~~~ {.output}
+[[1]]
+[1] 1
 
-`Inf` is infinity. You can have positive or negative infinity.
+[[2]]
+[1] "a"
 
-``` 1/0 # [1] Inf 1/Inf # [1] 0 ```
+[[3]]
+[1] TRUE
 
-`NaN` means Not a number. it's an undefined value.
+[[4]]
+[1] 1+4i
+~~~
 
-``` 0/0 NaN.  ```
+Each element of the list is denoted by a `[[` in the output. Inside
+each list element is an atomic vector of length one containing 
 
-Each object has an attribute. Attributes can be part of an object of R. These
-include
+Lists can contain more complex objects:
 
-* names
-* dimnames
-* length
-* class
-* attributes (contain metadata)
+~~~ {.r}
+xlist <- list(a = "Research Bazaar", b = 1:10, data = head(iris))
+xlist
+~~~
 
-For a vector, `length(vector_name)` is just the total number of elements.
+~~~ {.output}
+$a
+[1] "Research Bazaar"
+
+$b
+ [1]  1  2  3  4  5  6  7  8  9 10
+
+$data
+   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+   1          5.1         3.5          1.4         0.2  setosa
+   2          4.9         3.0          1.4         0.2  setosa
+   3          4.7         3.2          1.3         0.2  setosa
+   4          4.6         3.1          1.5         0.2  setosa
+   5          5.0         3.6          1.4         0.2  setosa
+   6          5.4         3.9          1.7         0.4  setosa
+~~~
+
+In this case our list contains a character vector of lenght one,
+a numeric vector with 10 entries, and a small data frame from
+one of R's many preloaded datasets (see `?data`). We've also given
+each list element a name, which is why you see `$a` instead of `[[1]]`.
+
+Lists can also contain themselves:
+
+~~~ {.r}
+list(list(list(list())))
+~~~
+
+~~~ {.output}
+[[1]]
+[[1]][[1]]
+[[1]][[1]][[1]]
+list()
+~~~
 
 
+Lists are extremely useful inside functions. You can "staple" together lots of
+different kinds of results into a single object that a function can return. In
+fact many R functions which return complex output store their results in a list.
+
+Lets run a basic linear regression on the gapminder dataset:
+
+~~~ {.r}
+# What is the relationship between life expectancy and year?
+l1 <- lm(lifeExp ~ year, data=gapminder)
+~~~
+
+We won't go into too much detail of what I just wrote, but briefly;
+the "~" denotes a formula, which means treat the variable on the left of the 
+"~" as the left hand side of the equation (or response in this case), and
+everything on the right as the right hand side. By telling the linear 
+model function to use the gapminder data frame, it knows to look for those
+variable names as its columns.
+
+Let's look at the output:
+
+~~~ {.r}
+l1
+~~~
+
+~~~ {.output}
+
+Call:
+lm(formula = lifeExp ~ year, data = df)
+
+Coefficients:
+(Intercept)         year  
+  -585.6522       0.3259  
+
+~~~
+
+Not much there right? But if we look at the structure...
+
+~~~ {.r}
+str(l1)
+~~~
+
+~~~ {.output}
+List of 12
+ $ coefficients : Named num [1:2] -585.652 0.326
+  ..- attr(*, "names")= chr [1:2] "(Intercept)" "year"
+ $ residuals    : Named num [1:1704] -21.7 -21.8 -21.8 -21.4 -20.9 ...
+  ..- attr(*, "names")= chr [1:1704] "1" "2" "3" "4" ...
+ $ effects      : Named num [1:1704] -2455.1 232.2 -20.8 -20.5 -20.2 ...
+  ..- attr(*, "names")= chr [1:1704] "(Intercept)" "year" "" "" ...
+ $ rank         : int 2
+ $ fitted.values: Named num [1:1704] 50.5 52.1 53.8 55.4 57 ...
+  ..- attr(*, "names")= chr [1:1704] "1" "2" "3" "4" ...
+ $ assign       : int [1:2] 0 1
+ $ qr           :List of 5
+  ..$ qr   : num [1:1704, 1:2] -41.2795 0.0242 0.0242 0.0242 0.0242 ...
+  .. ..- attr(*, "dimnames")=List of 2
+  .. .. ..$ : chr [1:1704] "1" "2" "3" "4" ...
+  .. .. ..$ : chr [1:2] "(Intercept)" "year"
+  .. ..- attr(*, "assign")= int [1:2] 0 1
+  ..$ qraux: num [1:2] 1.02 1.03
+  ..$ pivot: int [1:2] 1 2
+  ..$ tol  : num 1e-07
+  ..$ rank : int 2
+  ..- attr(*, "class")= chr "qr"
+ $ df.residual  : int 1702
+ $ xlevels      : Named list()
+ $ call         : language lm(formula = lifeExp ~ year, data = df)
+ $ terms        :Classes 'terms', 'formula' length 3 lifeExp ~ year
+  .. ..- attr(*, "variables")= language list(lifeExp, year)
+  .. ..- attr(*, "factors")= int [1:2, 1] 0 1
+  .. .. ..- attr(*, "dimnames")=List of 2
+  .. .. .. ..$ : chr [1:2] "lifeExp" "year"
+  .. .. .. ..$ : chr "year"
+  .. ..- attr(*, "term.labels")= chr "year"
+  .. ..- attr(*, "order")= int 1
+  .. ..- attr(*, "intercept")= int 1
+  .. ..- attr(*, "response")= int 1
+  .. ..- attr(*, ".Environment")=<environment: R_GlobalEnv> 
+  .. ..- attr(*, "predvars")= language list(lifeExp, year)
+  .. ..- attr(*, "dataClasses")= Named chr [1:2] "numeric" "numeric"
+  .. .. ..- attr(*, "names")= chr [1:2] "lifeExp" "year"
+ $ model        :'data.frame':  1704 obs. of  2 variables:
+  ..$ lifeExp: num [1:1704] 28.8 30.3 32 34 36.1 ...
+  ..$ year   : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+  ..- attr(*, "terms")=Classes 'terms', 'formula' length 3 lifeExp ~ year
+  .. .. ..- attr(*, "variables")= language list(lifeExp, year)
+  .. .. ..- attr(*, "factors")= int [1:2, 1] 0 1
+  .. .. .. ..- attr(*, "dimnames")=List of 2
+  .. .. .. .. ..$ : chr [1:2] "lifeExp" "year"
+  .. .. .. .. ..$ : chr "year"
+  .. .. ..- attr(*, "term.labels")= chr "year"
+  .. .. ..- attr(*, "order")= int 1
+  .. .. ..- attr(*, "intercept")= int 1
+  .. .. ..- attr(*, "response")= int 1
+  .. .. ..- attr(*, ".Environment")=<environment: R_GlobalEnv> 
+  .. .. ..- attr(*, "predvars")= language list(lifeExp, year)
+  .. .. ..- attr(*, "dataClasses")= Named chr [1:2] "numeric" "numeric"
+  .. .. .. ..- attr(*, "names")= chr [1:2] "lifeExp" "year"
+ - attr(*, "class")= chr "lm"
+~~~
+
+There's a lot of stuff, stored in nested lists! This is why the structure 
+function is really useful, it allows you to see all the data available to
+you returned by a function.
+
+For now, we can look at the `summary`:
+
+~~~ {.r}
+summary(l1)
+~~~
+
+~~~ {.output}
+Call:
+lm(formula = lifeExp ~ year, data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-39.949  -9.651   1.697  10.335  22.158 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -585.65219   32.31396  -18.12   <2e-16 ***
+year           0.32590    0.01632   19.96   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 11.63 on 1702 degrees of freedom
+Multiple R-squared:  0.1898,  Adjusted R-squared:  0.1893 
+F-statistic: 398.6 on 1 and 1702 DF,  p-value: < 2.2e-16
+~~~
+
+As you might expect, life expectancy has slowly been increasing over
+time, so we see a significant positive association!
+
+########## TODO
 
 ## Matrix
 
@@ -642,42 +914,6 @@ Another way is to bind columns or rows using `cbind()` and `rbind()`.
 ``` x <- 1:3 y <- 10:12 cbind(x,y) # or rbind(x,y) ```
 
 ---
-
-## List
-
-In R lists act as containers. Unlike atomic vectors, its contents are not
-restricted to a single mode and can encompass any data type. Lists are
-sometimes called recursive vectors, because a list can contain other lists.
-This makes them fundamentally different from atomic vectors.
-
-List is a special vector. Each element can be a different class.
-
-
-
-Create lists using `list` or coerce other objects using `as.list()`
-
-
-``` x <- list(1, "a", TRUE, 1+4i) ```
-
-``` x <- 1:10 x <- as.list(x) length(x) ```
-
-What is the class of `x[1]`?  how about `x[[1]]`?
-
-``` xlist <- list(a = "University of Sydney", b = 1:10, data = head(iris)) ```
-
-what is the length of this object?  what about its structure?
-
-List can contain as many lists nested inside.
-
-``` temp <- list(list(list(list()))) temp is.recursive(temp) ```
-
-Lists are extremely useful inside functions. You can "staple" together lots of
-different kinds of results into a single object that a function can return.
-
-It doesn't print out like a vector. Prints a new line for each element.
-
-Elements are indexed by double brackets. Single brackets will still return
-another list.
 
 
 ---

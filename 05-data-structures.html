@@ -41,7 +41,7 @@
 <p>To make the best of the R language, you'll need a strong understanding of the basic data types and data structures and how to operate on those. <strong>Very Important</strong> to understand because these are the things you will manipulate on a day-to-day basis in R.</p>
 <p>Importantly, they are the most common source of frustration among beginners.</p>
 <div id="challenge-object-types" class="challenge">
-<h2>Challenge: Object types</h2>
+<h3>Challenge: Object types</h3>
 <p>Look at the first 6 rows of the gapminder dataset we loaded before:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gapminder)</code></pre>
 <pre class="output"><code>      country year      pop continent lifeExp gdpPercap
@@ -315,7 +315,7 @@ gapminder &lt;-<span class="st"> </span><span class="kw">read.table</span>(
 </ul>
 <p>We've already encountered four of them in this lesson! Let's explore them in more detail</p>
 <h4 id="vectors">Vectors</h4>
-<p>A vector is the most common and basic data structure in <code>R</code> and is pretty much the workhorse of R. They are sometimes referred to as atomic vectors, because importantly, they can only contain one type.</p>
+<p>A vector is the most common and basic data structure in <code>R</code> and is pretty much the workhorse of R. They are sometimes referred to as atomic vectors, because importantly, they can only contain one type. They are the building blocks of every other data structure.</p>
 <p>We've seen vectors already when we retrieved the rownames and columnames of the gapminder dataset, and when accessing its individual columns!</p>
 <p>A vector can contain any of the five types we introduced before:</p>
 <ul>
@@ -326,7 +326,7 @@ gapminder &lt;-<span class="st"> </span><span class="kw">read.table</span>(
 <li>character (e.g, &quot;a&quot;, &quot;swc&quot;)</li>
 </ul>
 <div id="tip-character-vectors" class="callout">
-<h2>Tip: &quot;Character Vectors&quot;</h2>
+<h3>Tip: &quot;Character Vectors&quot;</h3>
 <p>You will sometimes hear the term &quot;character vector&quot;, especially in warning or error messages. This is a somewhat confusing and unfortunate name. Remember that the type &quot;character&quot; really means some text wrapped in quotation symbols.</p>
 </div>
 <p>Create an empty vector with <code>vector()</code> or by using the concatenate function, <code>c()</code>.</p>
@@ -345,8 +345,22 @@ x</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">45</span>, <span class="dv">33</span>)
 x</code></pre>
 <pre class="output"><code>[1] 10 12 45 33</code></pre>
+<p>You can also create vectors as sequence of numbers</p>
+<pre class="sourceCode r"><code class="sourceCode r">series &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span> 
+series</code></pre>
+<pre class="output"><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dv">10</span>) </code></pre>
+<pre class="output"><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dt">by =</span> <span class="fl">0.1</span>)</code></pre>
+<pre class="output"><code> [1]  1.0  1.1  1.2  1.3  1.4  1.5  1.6  1.7  1.8  1.9  2.0  2.1  2.2  2.3  2.4
+ [16]  2.5  2.6  2.7  2.8  2.9  3.0  3.1  3.2  3.3  3.4  3.5  3.6  3.7  3.8  3.9
+ [31]  4.0  4.1  4.2  4.3  4.4  4.5  4.6  4.7  4.8  4.9  5.0  5.1  5.2  5.3  5.4
+ [46]  5.5  5.6  5.7  5.8  5.9  6.0  6.1  6.2  6.3  6.4  6.5  6.6  6.7  6.8  6.9
+ [61]  7.0  7.1  7.2  7.3  7.4  7.5  7.6  7.7  7.8  7.9  8.0  8.1  8.2  8.3  8.4
+ [76]  8.5  8.6  8.7  8.8  8.9  9.0  9.1  9.2  9.3  9.4  9.5  9.6  9.7  9.8  9.9
+ [91] 10.0</code></pre>
 <div id="tip-1" class="callout">
-<h2>Tip</h2>
+<h3>Tip</h3>
 <p>When you combine numbers using the concatenate function, <code>c()</code> the type will automatically become &quot;numeric&quot;, that is real/decimal numbers. If you specifically want to create a vector of integers (whole numbers only), you need to append each number with an L, i.e. <code>c(10L, 12L, 45L, 33L)</code>.</p>
 </div>
 <p>You can also use the concatenate function to add elements to a vector:</p>
@@ -354,7 +368,7 @@ x</code></pre>
 x</code></pre>
 <pre class="output"><code>[1] 10 12 45 33 57</code></pre>
 <div id="challenge" class="challenge">
-<h2>Challenge</h2>
+<h3>Challenge</h3>
 <p>Vectors can only contain one atomic type. If you try to combine different types, R will create a vector that is the least common denominator: the type that is easiest to coerce to.</p>
 <p><strong>Guess what the following do without running them first:</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r">xx &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.7</span>, <span class="st">&quot;a&quot;</span>) 
@@ -364,15 +378,32 @@ xx &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quo
 <p>This is called implicit coercion.</p>
 <p>The coersion rule goes <code>logical</code> -&gt; <code>integer</code> -&gt; <code>numeric</code> -&gt; <code>complex</code> -&gt; <code>character</code>.</p>
 <p>You can also coerce vectors explicitly using the <code>as.&lt;class_name&gt;</code>. Example</p>
-<p><code>as.numeric() as.character()</code></p>
-<p>When you coerce an existing numeric vector with <code>as.numeric()</code>, it does nothing.</p>
-<p><code>x &lt;- 0:6 as.numeric(x) as.logical(x) as.character(x) as.complex(x)</code></p>
-<p>Sometimes coercions, especially nonsensical ones won't work.</p>
-<p><code>x &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;) as.numeric(x) as.logical(x) # both don't work</code></p>
-<p><strong>Sometimes there is implicit conversion</strong></p>
-<p><code>1 &lt; &quot;2&quot; # TRUE &quot;1&quot; &gt; 2 # FALSE 1 &lt; &quot;a&quot; # TRUE</code></p>
-<p>Some useful functions you can use to ask questions about vectors:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(x, <span class="dt">n=</span><span class="dv">2</span>) <span class="co"># get the last &#39;n&#39; elements</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.numeric</span>() 
+<span class="kw">as.character</span>()</code></pre>
+<p>R will try to do whatever makes the most sense for that value:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.character</span>(x)</code></pre>
+<pre class="output"><code>[1] &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot; &quot;6&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.complex</span>(x)</code></pre>
+<pre class="output"><code>[1] 0+0i 1+0i 2+0i 3+0i 4+0i 5+0i 6+0i</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">0</span>:<span class="dv">6</span> 
+<span class="kw">as.logical</span>(x)</code></pre>
+<pre class="output"><code>[1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+<p>This is behaviour you will find in many programming languages. 0 is FALSE, while every other number is treated as TRUE. Sometimes coercions, especially nonsensical ones won't work.</p>
+<p>In some cases, R won't be able to do anything sensible:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>) 
+<span class="kw">as.numeric</span>(x) 
+<span class="kw">as.logical</span>(x)</code></pre>
+<pre class="output"><code>[1] NA NA NA
+Warning message:
+NAs introduced by coercion </code></pre>
+<p>In both cases, a vector of &quot;NAs&quot; was returned, and in the first case so was a warning.</p>
+<div id="special-objects" class="callout">
+<h3>Special Objects</h3>
+<p>&quot;NA&quot; is a special object in R which denotes a missing value. NA can occur in any type of vector. There are a few other types of special objects: <code>Inf</code> denotes infinity (can be positive or negative), while <code>NaN</code> means Not a number, an undefined value (i.e. <code>0/0</code>).</p>
+</div>
+<p>Like data.frames, you can ask questions about the structure of vectors:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">0</span>:<span class="dv">10</span>
+<span class="kw">tail</span>(x, <span class="dt">n=</span><span class="dv">2</span>) <span class="co"># get the last &#39;n&#39; elements</span></code></pre>
 <pre class="output"><code>[1] 45 33</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(x, <span class="dt">n=</span><span class="dv">1</span>) <span class="co"># get the first &#39;n&#39; elements</span></code></pre>
 <pre class="output"><code>[1] 33</code></pre>
@@ -380,27 +411,151 @@ xx &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quo
 <pre class="output"><code>[1] 4</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(x)</code></pre>
 <pre class="output"><code> num [1:4] 10 12 45 33</code></pre>
-<p>Yo</p>
-<p><strong>Add elements</strong></p>
-<p><code>z &lt;- c(z, &quot;Annette&quot;) z</code></p>
-<p>More examples of vectors</p>
-<p><code>x &lt;- c(0.5, 0.7) x &lt;- c(TRUE, FALSE) x &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;) x &lt;- 9:100 x &lt;- c(1+0i, 2+4i)</code></p>
-<p>You can also create vectors as sequence of numbers</p>
-<p><code>series &lt;- 1:10 seq(10) seq(1, 10, by = 0.1)</code></p>
-<p><strong>Other objects</strong></p>
-<p><code>Inf</code> is infinity. You can have positive or negative infinity.</p>
-<p><code>1/0 # [1] Inf 1/Inf # [1] 0</code></p>
-<p><code>NaN</code> means Not a number. it's an undefined value.</p>
-<p><code>0/0 NaN.</code></p>
-<p>Each object has an attribute. Attributes can be part of an object of R. These include</p>
-<ul>
-<li>names</li>
-<li>dimnames</li>
-<li>length</li>
-<li>class</li>
-<li>attributes (contain metadata)</li>
-</ul>
-<p>For a vector, <code>length(vector_name)</code> is just the total number of elements.</p>
+<p>Like data.frames, vectors can also be named:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>)
+x</code></pre>
+<p><sub>~</sub> {.output} a b c d 10 12 45 33 }</p>
+<div id="advanced-tip" class="callout">
+<h3>Advanced Tip</h3>
+<p>If you're coming from other programming languages you might recognise this as a useful tool akin to dictionaries and hash tables. This is true for small vectors, but for true hash table functionality, you should use the environment object. See <code>?new.env</code>.</p>
+</div>
+<h4 id="lists">Lists</h4>
+<p>If you want to combine different types of data, you will need to use lists. Lists act as containers, and can contain any type of data structure, even themselves!</p>
+<p>Lists can be created using <code>list</code> or coerced from other objects using <code>as.list()</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span>, <span class="st">&quot;a&quot;</span>, <span class="ot">TRUE</span>, <span class="dv">1</span>+4i)
+x</code></pre>
+<pre class="output"><code>[[1]]
+[1] 1
+
+[[2]]
+[1] &quot;a&quot;
+
+[[3]]
+[1] TRUE
+
+[[4]]
+[1] 1+4i</code></pre>
+<p>Each element of the list is denoted by a <code>[[</code> in the output. Inside each list element is an atomic vector of length one containing</p>
+<p>Lists can contain more complex objects:</p>
+<pre class="sourceCode r"><code class="sourceCode r">xlist &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="st">&quot;Research Bazaar&quot;</span>, <span class="dt">b =</span> <span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">data =</span> <span class="kw">head</span>(iris))
+xlist</code></pre>
+<pre class="output"><code>$a
+[1] &quot;Research Bazaar&quot;
+
+$b
+ [1]  1  2  3  4  5  6  7  8  9 10
+
+$data
+   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+   1          5.1         3.5          1.4         0.2  setosa
+   2          4.9         3.0          1.4         0.2  setosa
+   3          4.7         3.2          1.3         0.2  setosa
+   4          4.6         3.1          1.5         0.2  setosa
+   5          5.0         3.6          1.4         0.2  setosa
+   6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<p>In this case our list contains a character vector of lenght one, a numeric vector with 10 entries, and a small data frame from one of R's many preloaded datasets (see <code>?data</code>). We've also given each list element a name, which is why you see <code>$a</code> instead of <code>[[1]]</code>.</p>
+<p>Lists can also contain themselves:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list</span>(<span class="kw">list</span>(<span class="kw">list</span>(<span class="kw">list</span>())))</code></pre>
+<pre class="output"><code>[[1]]
+[[1]][[1]]
+[[1]][[1]][[1]]
+list()</code></pre>
+<p>Lists are extremely useful inside functions. You can &quot;staple&quot; together lots of different kinds of results into a single object that a function can return. In fact many R functions which return complex output store their results in a list.</p>
+<p>Lets run a basic linear regression on the gapminder dataset:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># What is the relationship between life expectancy and year?</span>
+l1 &lt;-<span class="st"> </span><span class="kw">lm</span>(lifeExp ~<span class="st"> </span>year, <span class="dt">data=</span>gapminder)</code></pre>
+<p>We won't go into too much detail of what I just wrote, but briefly; the &quot;~&quot; denotes a formula, which means treat the variable on the left of the &quot;~&quot; as the left hand side of the equation (or response in this case), and everything on the right as the right hand side. By telling the linear model function to use the gapminder data frame, it knows to look for those variable names as its columns.</p>
+<p>Let's look at the output:</p>
+<pre class="sourceCode r"><code class="sourceCode r">l1</code></pre>
+<pre class="output"><code>
+Call:
+lm(formula = lifeExp ~ year, data = df)
+
+Coefficients:
+(Intercept)         year  
+  -585.6522       0.3259  
+</code></pre>
+<p>Not much there right? But if we look at the structure...</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(l1)</code></pre>
+<pre class="output"><code>List of 12
+ $ coefficients : Named num [1:2] -585.652 0.326
+  ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;(Intercept)&quot; &quot;year&quot;
+ $ residuals    : Named num [1:1704] -21.7 -21.8 -21.8 -21.4 -20.9 ...
+  ..- attr(*, &quot;names&quot;)= chr [1:1704] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+ $ effects      : Named num [1:1704] -2455.1 232.2 -20.8 -20.5 -20.2 ...
+  ..- attr(*, &quot;names&quot;)= chr [1:1704] &quot;(Intercept)&quot; &quot;year&quot; &quot;&quot; &quot;&quot; ...
+ $ rank         : int 2
+ $ fitted.values: Named num [1:1704] 50.5 52.1 53.8 55.4 57 ...
+  ..- attr(*, &quot;names&quot;)= chr [1:1704] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+ $ assign       : int [1:2] 0 1
+ $ qr           :List of 5
+  ..$ qr   : num [1:1704, 1:2] -41.2795 0.0242 0.0242 0.0242 0.0242 ...
+  .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+  .. .. ..$ : chr [1:1704] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+  .. .. ..$ : chr [1:2] &quot;(Intercept)&quot; &quot;year&quot;
+  .. ..- attr(*, &quot;assign&quot;)= int [1:2] 0 1
+  ..$ qraux: num [1:2] 1.02 1.03
+  ..$ pivot: int [1:2] 1 2
+  ..$ tol  : num 1e-07
+  ..$ rank : int 2
+  ..- attr(*, &quot;class&quot;)= chr &quot;qr&quot;
+ $ df.residual  : int 1702
+ $ xlevels      : Named list()
+ $ call         : language lm(formula = lifeExp ~ year, data = df)
+ $ terms        :Classes &#39;terms&#39;, &#39;formula&#39; length 3 lifeExp ~ year
+  .. ..- attr(*, &quot;variables&quot;)= language list(lifeExp, year)
+  .. ..- attr(*, &quot;factors&quot;)= int [1:2, 1] 0 1
+  .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+  .. .. .. ..$ : chr [1:2] &quot;lifeExp&quot; &quot;year&quot;
+  .. .. .. ..$ : chr &quot;year&quot;
+  .. ..- attr(*, &quot;term.labels&quot;)= chr &quot;year&quot;
+  .. ..- attr(*, &quot;order&quot;)= int 1
+  .. ..- attr(*, &quot;intercept&quot;)= int 1
+  .. ..- attr(*, &quot;response&quot;)= int 1
+  .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_GlobalEnv&gt; 
+  .. ..- attr(*, &quot;predvars&quot;)= language list(lifeExp, year)
+  .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:2] &quot;numeric&quot; &quot;numeric&quot;
+  .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;lifeExp&quot; &quot;year&quot;
+ $ model        :&#39;data.frame&#39;:  1704 obs. of  2 variables:
+  ..$ lifeExp: num [1:1704] 28.8 30.3 32 34 36.1 ...
+  ..$ year   : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+  ..- attr(*, &quot;terms&quot;)=Classes &#39;terms&#39;, &#39;formula&#39; length 3 lifeExp ~ year
+  .. .. ..- attr(*, &quot;variables&quot;)= language list(lifeExp, year)
+  .. .. ..- attr(*, &quot;factors&quot;)= int [1:2, 1] 0 1
+  .. .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+  .. .. .. .. ..$ : chr [1:2] &quot;lifeExp&quot; &quot;year&quot;
+  .. .. .. .. ..$ : chr &quot;year&quot;
+  .. .. ..- attr(*, &quot;term.labels&quot;)= chr &quot;year&quot;
+  .. .. ..- attr(*, &quot;order&quot;)= int 1
+  .. .. ..- attr(*, &quot;intercept&quot;)= int 1
+  .. .. ..- attr(*, &quot;response&quot;)= int 1
+  .. .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_GlobalEnv&gt; 
+  .. .. ..- attr(*, &quot;predvars&quot;)= language list(lifeExp, year)
+  .. .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:2] &quot;numeric&quot; &quot;numeric&quot;
+  .. .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;lifeExp&quot; &quot;year&quot;
+ - attr(*, &quot;class&quot;)= chr &quot;lm&quot;</code></pre>
+<p>There's a lot of stuff, stored in nested lists! This is why the structure function is really useful, it allows you to see all the data available to you returned by a function.</p>
+<p>For now, we can look at the <code>summary</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(l1)</code></pre>
+<pre class="output"><code>Call:
+lm(formula = lifeExp ~ year, data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-39.949  -9.651   1.697  10.335  22.158 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -585.65219   32.31396  -18.12   &lt;2e-16 ***
+year           0.32590    0.01632   19.96   &lt;2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 11.63 on 1702 degrees of freedom
+Multiple R-squared:  0.1898,  Adjusted R-squared:  0.1893 
+F-statistic: 398.6 on 1 and 1702 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>As you might expect, life expectancy has slowly been increasing over time, so we see a significant positive association!</p>
+<p id="todo">TODO</p>
 <h2 id="matrix">Matrix</h2>
 <p>Matrices are a special vector in R. They are not a separate class of object but simply a vector but now with dimensions added on to it. Matrices have rows and columns.</p>
 <p><code>m &lt;- matrix(nrow = 2, ncol = 2) m dim(m) same as attributes(m)</code></p>
@@ -412,20 +567,6 @@ xx &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quo
 <p>Another way is to bind columns or rows using <code>cbind()</code> and <code>rbind()</code>.</p>
 <p><code>x &lt;- 1:3 y &lt;- 10:12 cbind(x,y) # or rbind(x,y)</code></p>
 <hr />
-<h2 id="list">List</h2>
-<p>In R lists act as containers. Unlike atomic vectors, its contents are not restricted to a single mode and can encompass any data type. Lists are sometimes called recursive vectors, because a list can contain other lists. This makes them fundamentally different from atomic vectors.</p>
-<p>List is a special vector. Each element can be a different class.</p>
-<p>Create lists using <code>list</code> or coerce other objects using <code>as.list()</code></p>
-<p><code>x &lt;- list(1, &quot;a&quot;, TRUE, 1+4i)</code></p>
-<p><code>x &lt;- 1:10 x &lt;- as.list(x) length(x)</code></p>
-<p>What is the class of <code>x[1]</code>? how about <code>x[[1]]</code>?</p>
-<p><code>xlist &lt;- list(a = &quot;University of Sydney&quot;, b = 1:10, data = head(iris))</code></p>
-<p>what is the length of this object? what about its structure?</p>
-<p>List can contain as many lists nested inside.</p>
-<p><code>temp &lt;- list(list(list(list()))) temp is.recursive(temp)</code></p>
-<p>Lists are extremely useful inside functions. You can &quot;staple&quot; together lots of different kinds of results into a single object that a function can return.</p>
-<p>It doesn't print out like a vector. Prints a new line for each element.</p>
-<p>Elements are indexed by double brackets. Single brackets will still return another list.</p>
 <hr />
 <h2 id="factors">Factors</h2>
 <p>Factors are special vectors that represent categorical data. Factors can be ordered or unordered and are important when for modelling functions such as <code>aov()</code>, <code>lm()</code> and <code>glm()</code> and also in plot methods.</p>
