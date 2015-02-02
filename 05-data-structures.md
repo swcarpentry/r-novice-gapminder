@@ -25,21 +25,21 @@ Importantly, they are the most common source of frustration among beginners.
 > ## Challenge: Object types {.challenge}
 > 
 > Look at the first 6 rows of the gapminder dataset we loaded before:
-
-~~~ {.r}
-head(gapminder)
-~~~
-
-~~~ {.output}
-      country year      pop continent lifeExp gdpPercap
-1 Afghanistan 1952  8425333      Asia  28.801  779.4453
-2 Afghanistan 1957  9240934      Asia  30.332  820.8530
-3 Afghanistan 1962 10267083      Asia  31.997  853.1007
-4 Afghanistan 1967 11537966      Asia  34.020  836.1971
-5 Afghanistan 1972 13079460      Asia  36.088  739.9811
-6 Afghanistan 1977 14880372      Asia  38.438  786.1134
-~~~
-
+> 
+> ~~~ {.r}
+> head(gapminder)
+> ~~~
+> 
+> ~~~ {.output}
+>       country year      pop continent lifeExp gdpPercap
+> 1 Afghanistan 1952  8425333      Asia  28.801  779.4453
+> 2 Afghanistan 1957  9240934      Asia  30.332  820.8530
+> 3 Afghanistan 1962 10267083      Asia  31.997  853.1007
+> 4 Afghanistan 1967 11537966      Asia  34.020  836.1971
+> 5 Afghanistan 1972 13079460      Asia  36.088  739.9811
+> 6 Afghanistan 1977 14880372      Asia  38.438  786.1134
+> ~~~
+> 
 > Write down what type of data you think is in each column
 >
 
@@ -452,7 +452,7 @@ x
 
 ~~~ {.output}
 logical(0) 
-}
+~~~
 
 So by default, it creates an empty vector (i.e. a length of 0) of type "logical".
 
@@ -507,7 +507,7 @@ x
 [1] 10 12 45 33 57
 ~~~
 
-> ## Challenge {.callout}
+> ## Challenge {.challenge}
 >
 > Vectors can only contain one atomic type. If you try to combine different
 > types, R will create a vector that is the least common denominator: the
@@ -515,12 +515,12 @@ x
 >
 > **Guess what the following do without running them first:**
 > 
-
-~~~ {.r}
-xx <- c(1.7, "a") 
-xx <- c(TRUE, 2) 
-xx <- c("a", TRUE) ```
-~~~
+> ~~~ {.r}
+> xx <- c(1.7, "a") 
+> xx <- c(TRUE, 2) 
+> xx <- c("a", TRUE) ```
+> ~~~
+>
 
 
 This is called implicit coercion.
