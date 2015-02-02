@@ -3,13 +3,6 @@ layout: page
 title: Lesson Title
 subtitle: Reference
 ---
-## [Topic Title One](01-one.html)
-
-...commands and examples...
-
-## [Topic Title Two](02-two.html)
-
-...commands and examples...
 
 ## [Seeking help](03-seeking-help.md)
 
@@ -19,10 +12,3 @@ subtitle: Reference
  - [CRAN Task Views](http://cran.at.r-project.org/web/views).
  - [stackoverflow](http://stackoverflow.com/).
 
-## Glossary
-
-key word 1
-:   Definition of first term
-
-key word 2
-:   Definition of second term
