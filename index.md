@@ -36,14 +36,14 @@ If you are attending train-the-trainer and are looking to learn some of
 the material, the lessons are largely being adapted from 
 [http://resbaz.github.io/2014-r-materials/lessons/index.html](http://resbaz.github.io/2014-r-materials/lessons/index.html)
 
-1.  [Introduction to RStudio and RStudio Projects](01-rstudio-intro.html)
-2.  [Introduction to R](02-r-intro.html)
+1.  [Introduction to R and RStudio](01-rstudio-intro.html)
+2.  [Project Management](02-project-intro.html)
 3.  [Reading and writing data](03-rw-data.html)
 4.  [Seeking help](04-seeking-help.html)
 5.  [Data structures](05-data-structures.html)
 6.  [Subsetting data](06-data-subsetting.html)
 7.  [Vectorisation](07-vectorisation.html)
-8.   [Control flow](08-control-flow.html)
+8.  [Control flow](08-control-flow.html)
 9.  [Functions](09-functions.html)
 10. [Apply and task repitition](10-apply.html)
 11. [Plotting](11-plotting.html)
