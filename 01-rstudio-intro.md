@@ -1,7 +1,7 @@
 ---
 layout: page
 title: R for reproducible scientific analysis
-subtitle: Introduction to RStudio and RStudio Projects
+subtitle: Introduction to R and RStudio
 minutes: 15
 ---
 
