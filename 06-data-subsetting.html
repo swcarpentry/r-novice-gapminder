@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: R for reproducible scientific analysis</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc-workshop-and-lesson.css" />
+    <link rel="stylesheet" type="text/css" href="css/lesson.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container container-full-width card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <div class="row-fluid">
+        <div class="span10 offset1">
+          <h1 class="title">R for reproducible scientific analysis</h1>
+          <h2 class="subtitle">Subsetting data</h2>
+<div id="learning-objectives" class="objectives">
+<h2>Learning Objectives</h2>
+</div>
+<p>R has many powerful subset operators and mastering them will allow you to easily perform complex operations on any kind of dataset.</p>
+<p>There are six different ways we can subset any kind of object, and three different subsetting operators for the different data structures.</p>
+<p>Let's start with the workhorse of R: atomic vectors.</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">5.4</span>, <span class="fl">6.2</span>, <span class="fl">7.1</span>, <span class="fl">4.8</span>, <span class="fl">7.5</span>) 
+<span class="kw">names</span>(x) &lt;-<span class="st"> </span>letters[<span class="dv">1</span>:<span class="dv">5</span>]</code></pre>
+<p>So now that we've created a dummy vector to play with, how do we get at its contents?</p>
+<h3 id="accessing-elements-using-their-indices">Accessing elements using their indices</h3>
+<p>To extract elements of a vector we can give their corresponding index, starting from one:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x[<span class="dv">1</span>]</code></pre>
+<pre class="output"><code>  a 
+5.4</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">x[<span class="dv">4</span>]</code></pre>
+<pre class="output"><code>  d 
+4.8 </code></pre>
+<p>The square brackets operator is just like any other function. For atomic vectors (and matrices), it means &quot;get me the nth element&quot;.</p>
+<p>We can ask for multiple elements at once:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</code></pre>
+<pre class="output"><code>  a   c 
+5.4 7.1</code></pre>
+<p>Or slices of the vector:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x[<span class="dv">1</span>:<span class="dv">4</span>]</code></pre>
+<pre class="output"><code>  a   b   c   d 
+5.4 6.2 7.1 4.8 </code></pre>
+<p>the <code>:</code> operator just creates a sequence of numbers from the left element to the right. I.e. <code>x[1:4]</code> is equivalent to <code>x[c(1,2,3,4)]</code>.</p>
+<p>We can ask for the same element multiple times:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>)]</code></pre>
+<pre class="output"><code>  a   a   c 
+5.4 5.4 7.1 </code></pre>
+<p>If we ask for a number outside of the vector, R will return missing values:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x[<span class="dv">6</span>]</code></pre>
+<pre class="output"><code>&lt;NA&gt; 
+  NA</code></pre>
+<p>This is a vector of length one containing an <code>NA</code>, whose name is also <code>NA</code>.</p>
+<p>If we ask for the 0th element, we get an empty vector:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x[<span class="dv">0</span>]</code></pre>
+<pre class="output"><code>named numeric(0)</code></pre>
+<p>But what about negative values?</p>
+<h3 id="skipping-and-removing-elements">Skipping and removing elements</h3>
+<p>If we use a negative number, R will return every element <em>except</em> for the one specified:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x[-<span class="dv">2</span>]</code></pre>
+<pre class="output"><code>  a   c   d   e 
+5.4 7.1 4.8 7.5 </code></pre>
+<p>We can skip multiple elements:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x[<span class="kw">c</span>(-<span class="dv">1</span>, -<span class="dv">5</span>)]  <span class="co"># or x[-c(1,5)]</span></code></pre>
+<pre class="output"><code>  b   c   d 
+6.2 7.1 4.8 </code></pre>
+<div id="order-of-operations" class="callout">
+<h3>Order of operations</h3>
+<p>A common trip up for novices occurs when trying to skip slices of a vector. Most people first try to negate a sequence like so:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x[-<span class="dv">1</span>:<span class="dv">3</span>]</code></pre>
+<p>This gives a somewhat cryptic error:</p>
+<pre class="output"><code>Error in x[-1:3] : only 0&#39;s may be mixed with negative subscripts</code></pre>
+<p>But remember the order of operations. <code>:</code> is really a function, so what happens is it takes its first argument as -1, and second as 3, so generates the sequence of numbers: <code>c(-1, 0, 1, 2, 3)</code>.</p>
+<p>The correct solution is to wrap that function call in brackets, so that the <code>-</code> operator applies to the results:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x[-(<span class="dv">1</span>:<span class="dv">3</span>)]</code></pre>
+<pre class="output"><code>  d   e 
+4.8 7.5 </code></pre>
+</div>
+<p>To remove elements from a vector, we need to assign the results back into the variable:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>x[-<span class="dv">4</span>]
+x</code></pre>
+<pre class="output"><code>  a   b   c   e 
+5.4 6.2 7.1 7.5 </code></pre>
+<h3 id="subsetting-by-name">Subsetting by name</h3>
+<p>We can extract elements by using their name, instead of index:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x[<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>)]</code></pre>
+<pre class="output"><code>  a   c 
+5.4 7.1 </code></pre>
+<p>This is usually a much more reliable way to subset objects: the position of various elements can often change when chaining together subsetting operations, but the names will always remain the same!</p>
+<p>Unfortunately we can't skip or remove elements so easily.</p>
+<p>To skip (or remove) a single named element:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x[-<span class="kw">which</span>(<span class="kw">names</span>(x) ==<span class="st"> &quot;a&quot;</span>)<span class="er">)</span>]</code></pre>
+<pre class="output"><code>  b   c   e 
+6.2 7.1 7.5 </code></pre>
+<p>The <code>which</code> function returns the indices of all <code>TRUE</code> elements of its argument. Remember that expressions evaluate before being passed to functions. Let's break this down so that its clearer whats happening.</p>
+<p>First this happens:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(x) ==<span class="st"> &quot;a&quot;</span></code></pre>
+<pre class="output"><code>[1]  TRUE FALSE FALSE FALSE</code></pre>
+<p>The condition operator is applied to every name of the vector <code>x</code>. Only the first name is &quot;a&quot; so that element is TRUE.</p>
+<p><code>which</code> then converts this to an index:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">which</span>(<span class="kw">names</span>(x) ==<span class="st"> &quot;a&quot;</span>)</code></pre>
+<pre class="output"><code>[1] 1</code></pre>
+<p>Only the first element is <code>TRUE</code>, so `which returns 1. Now that we have indices the skipping works because we have a negative index!</p>
+<p>Skipping multiple named indices is similar, but uses a different comparison operator:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x[-<span class="kw">which</span>(<span class="kw">names</span>(x) %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>))]</code></pre>
+<pre class="output"><code>  b   e 
+6.2 7.5 </code></pre>
+<p>The <code>%in%</code> goes through each element of its left argument, in this case the names of <code>x</code>, and asks, &quot;Does this element occur in the second argument?&quot;.</p>
+<div id="getting-help-for-operators" class="callout">
+<h3>Getting help for operators</h3>
+<p>remember you can search for help on operators by wrapping them in quotes: <code>help(&quot;%in%&quot;)</code> or <code>?&quot;%in%&quot;</code>.</p>
+</div>
+<p>So why can't we use <code>==</code> like before? That's an excellent question.</p>
+<p>Let's take a look at just the comparison component:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(x) ==<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;c&#39;</span>)</code></pre>
+<pre class="output"><code>[1]  TRUE FALSE FALSE FALSE</code></pre>
+<p>Obviously &quot;c&quot; is in the names of <code>x</code>, so why didn't this work? <code>==</code> works slightly differently to <code>%in%</code>. It will compare each element of its left argument to the corresponding element of its right argument.</p>
+<p>Here's a mock illustration:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;e&quot;</span>)  <span class="co"># names of x</span>
+   |<span class="st">    </span><span class="er">|</span><span class="st">    </span><span class="er">|</span><span class="st">    </span><span class="er">|</span><span class="st">    </span><span class="co"># The elements == is comparing</span>
+<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>)</code></pre>
+<p>When one vector is shorter than the other, it gets <em>recycled</em>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;e&quot;</span>)  <span class="co"># names of x</span>
+   |<span class="st">    </span><span class="er">|</span><span class="st">    </span><span class="er">|</span><span class="st">    </span><span class="er">|</span><span class="st">    </span><span class="co"># The elements == is comparing</span>
+<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>)</code></pre>
+<p>In this case R simply repeats <code>c(&quot;a&quot;, &quot;c&quot;)</code> twice. If the longer vector length isn't a multiple of the shorter vector length, then R will also print out a warning message:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(x) ==<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;e&#39;</span>)</code></pre>
+<pre class="output"><code>[1]  TRUE FALSE FALSE FALSE
+Warning message:
+In names(x) == c(&quot;a&quot;, &quot;c&quot;, &quot;e&quot;) :
+  longer object length is not a multiple of shorter object length</code></pre>
+<p>This difference between <code>==</code> and <code>%in%</code> is important to remember, because it can introduce hard to find and subtle bugs!</p>
+<h3 id="subsetting-through-other-logical-operations">Subsetting through other logical operations</h3>
+<p>We can also more simply subset through logical operations:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>)]</code></pre>
+<pre class="output"><code>  a   b 
+5.4 6.2 </code></pre>
+<p>Note that in this case, the logical vector is also recycled to the length of the vector we're subsetting!</p>
+<pre class="sourceCode r"><code class="sourceCode r">x[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>)]</code></pre>
+<pre class="output"><code>  a   c 
+5.4 7.1 </code></pre>
+<p>Since comparison operators evaluate to logical vectors, we can also use them to succinctly subset vectors:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x[x &gt;<span class="st"> </span><span class="dv">7</span>]</code></pre>
+<pre class="output"><code>  c   e 
+7.1 7.5 </code></pre>
+<div id="chaining-logical-operations" class="callout">
+<h3>Chaining logical operations</h3>
+<p>There are many situations in which you wish to combine multiple conditions. To do so several logical operations exist in R:</p>
+<ul>
+<li><code>|</code> logical OR: returns <code>TRUE</code>, if either the left or right are <code>TRUE</code>.</li>
+<li><code>&amp;</code> logical AND: returns <code>TRUE</code> if both the left and right are <code>TRUE</code></li>
+<li><code>!</code> logical NOT: converts <code>TRUE</code> to <code>FALSE</code> and <code>FALSE</code> to <code>TRUE</code></li>
+<li><code>&amp;&amp;</code> and <code>||</code> compare the individual elements of two vectors. Recycling rules also apply here.</li>
+</ul>
+</div>
+<h3 id="factor-subsetting">Factor subsetting</h3>
+<p>Now that we've explored the different ways to subset vectors, how do we subset the other data structures?</p>
+<p>Factor subsetting works the same way as vector subsetting.</p>
+<pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>))
+f[f ==<span class="st"> &quot;a&quot;</span>]
+f[f %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>)]
+f[<span class="dv">1</span>:<span class="dv">3</span>]</code></pre>
+<p>An important note is that skipping elements will not remove the level even if no more of that category exists in the factor:</p>
+<pre class="sourceCode r"><code class="sourceCode r">f[-<span class="dv">3</span>]</code></pre>
+<pre class="output"><code>[1] a a c c d
+Levels: a b c d</code></pre>
+<h3 id="matrix-subsetting">Matrix subsetting</h3>
+<p>Matrices are also subsetted using the <code>[</code> function. In this case it takes two arguments: the first applying to the rows, the second to its columns:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1</span>)
+m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">6</span>*<span class="dv">4</span>), <span class="dt">ncol=</span><span class="dv">4</span>, <span class="dt">nrow=</span><span class="dv">6</span>)
+m[<span class="dv">3</span>:<span class="dv">4</span>, <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)]</code></pre>
+<pre class="output"><code>            [,1]       [,2]
+[1,]  1.12493092 -0.8356286
+[2,] -0.04493361  1.5952808</code></pre>
+<p>You can leave the first or second arguments blank to retrieve all the rows or columns respectively:</p>
+<pre class="sourceCode r"><code class="sourceCode r">m[, <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)]</code></pre>
+<pre class="output"><code>            [,1]        [,2]
+[1,] -0.62124058  0.82122120
+[2,] -2.21469989  0.59390132
+[3,]  1.12493092  0.91897737
+[4,] -0.04493361  0.78213630
+[5,] -0.01619026  0.07456498
+[6,]  0.94383621 -1.98935170</code></pre>
+<p>If we only access one row or column, R will automatically convert the result to a vector:</p>
+<pre class="sourceCode r"><code class="sourceCode r">m[<span class="dv">3</span>,]</code></pre>
+<pre class="output"><code>[1] -0.8356286  0.5757814  1.1249309  0.9189774</code></pre>
+<p>If you want to keep the output as a matrix, you need to specify a <em>third</em> argument; <code>drop = FALSE</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r">m[<span class="dv">3</span>, , drop=<span class="ot">FALSE</span>]</code></pre>
+<pre class="output"><code>           [,1]      [,2]     [,3]      [,4]
+[1,] -0.8356286 0.5757814 1.124931 0.9189774</code></pre>
+<p>Unlike vectors, if we try to access a row or column outside of the matrix, R will throw an error:</p>
+<pre class="sourceCode r"><code class="sourceCode r">m[, <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">6</span>)]</code></pre>
+<pre class="output"><code>Error in m[, c(3, 6)] : subscript out of bounds</code></pre>
+<div id="higher-dimensional-arrays" class="callout">
+<h3>Higher dimensional arrays</h3>
+<p>when dealing with multi-dimensional arrays, each argument to <code>[</code> corresponds to a dimension. For example, a 3D array, the first three arguments correspond to the rows, columns, and depth dimension.</p>
+</div>
+<p>Because matrices are really just vectors underneath the hood, we can also subset using only one argument:</p>
+<pre class="sourceCode r"><code class="sourceCode r">m[<span class="dv">5</span>]</code></pre>
+<pre class="output"><code>[1] 0.3295078 </code></pre>
+<p>This usually isn't useful. However it is useful to note that matrices are laid out in <em>column-major format</em>. That is the elements of the vector are arranged column-wise:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">6</span>, <span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">ncol=</span><span class="dv">3</span>)</code></pre>
+<pre class="output"><code>     [,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6</code></pre>
+<h3 id="list-subsetting">List subsetting</h3>
+<p>Now we'll introduce some new subsetting operators. There are three functions used to subset lists. <code>[</code>, as we've seen for atomic vectors and matrices, as well as <code>[[</code> and <code>$</code>.</p>
+<p>Using <code>[</code> will always return a list. If you want to <em>subset</em> a list, but not <em>extract</em> an element, then you will likely use <code>[</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r">xlist &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="st">&quot;Research Bazaar&quot;</span>, <span class="dt">b =</span> <span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">data =</span> <span class="kw">head</span>(iris)) 
+xlist[<span class="dv">1</span>] </code></pre>
+<p>This returns a <em>list with one element</em>:</p>
+<pre class="output"><code>$a
+[1] &quot;Research Bazaar&quot;
+</code></pre>
+<p>We can subset elements of a list exactly the same was as atomic vectors using <code>[</code>. Comparison operations however won't work as they're not recursive, they will try to condition on the data structures in each element of the list, not the individual elements within those data structures.</p>
+<pre class="sourceCode r"><code class="sourceCode r">xlist[<span class="dv">1</span>:<span class="dv">2</span>]</code></pre>
+<pre class="output"><code>$a
+[1] &quot;Research Bazaar&quot;
+
+$b
+ [1]  1  2  3  4  5  6  7  8  9 10
+</code></pre>
+<p>To extract individual elements of a list, you need to use the double-square bracket function: <code>[[</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r">xlist[[<span class="dv">1</span>]]</code></pre>
+<pre class="output"><code>[1] &quot;Research Bazaar&quot;</code></pre>
+<p>Notice that now the result is a vector, not a list.</p>
+<p>You can't extract more than one element at once:</p>
+<pre class="sourceCode r"><code class="sourceCode r">xlist[[<span class="dv">1</span>:<span class="dv">2</span>]]</code></pre>
+<pre class="output"><code>Error in xlist[[1:2]] : subscript out of bounds</code></pre>
+<p>Nor use it to skip elements:</p>
+<pre class="sourceCode r"><code class="sourceCode r">xlist[[-<span class="dv">1</span>]]</code></pre>
+<pre class="output"><code>Error in xlist[[-1]] : attempt to select more than one element</code></pre>
+<p>But you can use names to both subset and extract elements:</p>
+<pre class="sourceCode r"><code class="sourceCode r">xlist[[<span class="st">&quot;a&quot;</span>]]</code></pre>
+<pre class="output"><code>[1] &quot;Research Bazaar&quot;</code></pre>
+<p>The <code>$</code> function is a shorthand way for extracting elements by name:</p>
+<pre class="sourceCode r"><code class="sourceCode r">xlist$data</code></pre>
+<pre class="output"><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+  1          5.1         3.5          1.4         0.2  setosa
+  2          4.9         3.0          1.4         0.2  setosa
+  3          4.7         3.2          1.3         0.2  setosa
+  4          4.6         3.1          1.5         0.2  setosa
+  5          5.0         3.6          1.4         0.2  setosa
+  6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<h3 id="data-frames">Data frames</h3>
+<p>Remember the data frames are lists underneath the hood, so similar rules apply. However they are also two dimensional objects:</p>
+<p><code>[</code> with one argument will act the same was as for lists, where each list element corresponds to a column. The resulting object will be a data frame:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gapminder[<span class="dv">3</span>])</code></pre>
+<pre class="output"><code>       pop
+1  8425333
+2  9240934
+3 10267083
+4 11537966
+5 13079460
+6 14880372</code></pre>
+<p>Similarly, <code>[[</code> will act to extract <em>a single column</em>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gapminder[[<span class="st">&quot;lifeExp&quot;</span>]])</code></pre>
+<pre class="output"><code>[1] 28.801 30.332 31.997 34.020 36.088 38.438</code></pre>
+<p>And <code>$</code> provides a convenient shorthand to extact columns by name:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gapminder$year)</code></pre>
+<pre class="output"><code>[1] 1952 1957 1962 1967 1972 1977</code></pre>
+<p>With two arguments, <code>[</code> behaves the same way as for matrices:</p>
+<pre class="sourceCode r"><code class="sourceCode r">gapminder[<span class="dv">1</span>:<span class="dv">3</span>,]</code></pre>
+<pre class="output"><code>      country year      pop continent lifeExp gdpPercap
+1 Afghanistan 1952  8425333      Asia  28.801  779.4453
+2 Afghanistan 1957  9240934      Asia  30.332  820.8530
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007</code></pre>
+<p>If we subset a single row, the result will be a data frame (because the elements are mixed types):</p>
+<pre class="sourceCode r"><code class="sourceCode r">gapminder[<span class="dv">3</span>,]</code></pre>
+<pre class="output"><code>      country year      pop continent lifeExp gdpPercap
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007</code></pre>
+<p>But for a single column the result will be a vector (this can be changed with the third argument, <code>drop = FALSE</code>).</p>
+<div id="challenge-1" class="challenge">
+<h3>Challenge 1</h3>
+<p>Fix each of the following common data frame subsetting errors:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Extract observations where the year is 1957</span>
+gapminder[gapminder$year =<span class="st"> </span><span class="dv">1957</span>,]</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Extract only rows 1 through 4</span>
+gapminder[-<span class="dv">1</span>:<span class="dv">4</span>,]</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># return only observations where the life expectancy is greater than 80</span>
+gapminder[gapminder$lifeExp &gt;<span class="st"> </span><span class="dv">80</span>]</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Return only years that are either 2002 or 2007</span>
+gapminder[gapminder$year ==<span class="st"> </span><span class="dv">2002</span> |<span class="st"> </span><span class="dv">2007</span>,]</code></pre>
+</div>
+<div id="challenge-2" class="challenge">
+<h3>Challenge 2</h3>
+<p>Why does <code>gapminder[1:20]</code> return an error? How does it differ from <code>gapminder[1:20, ]</code>?</p>
+</div>
+<div id="challenge-3" class="challenge">
+<h3>Challenge 3</h3>
+<p>Create a new <code>data.frame</code> called <code>gapminder_small</code> that only contains rows 1 through 9 and 19 through 23. You can do this in one or two steps.</p>
+</div>
+<div id="challenge-4-advanced" class="challenge">
+<h3>Challenge 4 (advanced)</h3>
+<p>Given a linear model:</p>
+<pre class="sourceCode r"><code class="sourceCode r">mod &lt;-<span class="st"> </span><span class="kw">aov</span>(pop ~<span class="st"> </span>lifeExp, <span class="dt">data=</span>gapminder)</code></pre>
+<p>Extract the residual degrees of freedom (hint: <code>str</code> will help you)</p>
+</div>
+        </div>
+      </div>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="http://software-carpentry.org/v5/js/bootstrap/bootstrap.min.js"></script>
+  </body>
+</html>
