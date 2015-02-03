@@ -8,7 +8,10 @@ minutes: 15
 > ## Learning Objectives {.objectives}
 >
 > * To gain familiarity with the various panes in the RStudio IDE
-> * To 
+> * To understand variables and how to assign to them
+> * To be able to manage your workspace in an interactive R session
+> * To be able to use mathematical and comparison operations
+> * To be able to call functions
 >
 
 ### Introduction to RStudio
