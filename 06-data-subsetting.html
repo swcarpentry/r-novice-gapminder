@@ -31,6 +31,14 @@
           <h2 class="subtitle">Subsetting data</h2>
 <div id="learning-objectives" class="objectives">
 <h2>Learning Objectives</h2>
+<ul>
+<li>To be able to subset vectors, factors, matrices, lists, and data frames</li>
+<li>To be able to extract individual and multiple elements:</li>
+<li>by index,</li>
+<li>by name,</li>
+<li>using comparison operations</li>
+<li>To be able to skip and remove elements from various data structures.</li>
+</ul>
 </div>
 <p>R has many powerful subset operators and mastering them will allow you to easily perform complex operations on any kind of dataset.</p>
 <p>There are six different ways we can subset any kind of object, and three different subsetting operators for the different data structures.</p>
@@ -217,6 +225,7 @@ m[<span class="dv">3</span>:<span class="dv">4</span>, <span class="kw">c</span>
 <pre class="output"><code>     [,1] [,2] [,3]
 [1,]    1    3    5
 [2,]    2    4    6</code></pre>
+<p>Matrices can also be subsetted using their rownames and column names instead of their row and column indices.</p>
 <h3 id="list-subsetting">List subsetting</h3>
 <p>Now we'll introduce some new subsetting operators. There are three functions used to subset lists. <code>[</code>, as we've seen for atomic vectors and matrices, as well as <code>[[</code> and <code>$</code>.</p>
 <p>Using <code>[</code> will always return a list. If you want to <em>subset</em> a list, but not <em>extract</em> an element, then you will likely use <code>[</code>.</p>

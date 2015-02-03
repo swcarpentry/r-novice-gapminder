@@ -7,6 +7,12 @@ minutes: 15
 
 > ## Learning Objectives {.objectives}
 >
+> * To be able to subset vectors, factors, matrices, lists, and data frames
+> * To be able to extract individual and multiple elements:
+>  * by index,
+>  * by name,
+>  * using comparison operations
+> * To be able to skip and remove elements from various data structures.
 >
 
 R has many powerful subset operators and mastering them will allow you to
@@ -487,6 +493,9 @@ matrix(1:6, nrow=2, ncol=3)
 [1,]    1    3    5
 [2,]    2    4    6
 ~~~
+
+Matrices can also be subsetted using their rownames and column names
+instead of their row and column indices.
 
 ### List subsetting
 
