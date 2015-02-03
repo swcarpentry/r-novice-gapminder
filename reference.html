@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="generator" content="pandoc">
-    <title>Software Carpentry: Lesson Title</title>
+    <title>Software Carpentry: R for reproducible scientific analysis</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
@@ -27,8 +27,29 @@
       </div>
       <div class="row-fluid">
         <div class="span10 offset1">
-          <h1 class="title">Lesson Title</h1>
+          <h1 class="title">R for reproducible scientific analysis</h1>
           <h2 class="subtitle">Reference</h2>
+<h2 id="introduction-to-r-and-rstudio"><a href="01-rstudio-intro.html">Introduction to R and RStudio</a></h2>
+<ul>
+<li>Use the escape key to cancel incomplete commands or running code (Ctrl+C) if you're using R from the shell.</li>
+<li>Basic arithmetic operations follow standard order of precedence:</li>
+<li>Brackets: <code>(</code>, <code>)</code></li>
+<li>Exponents: <code>^</code> or <code>**</code></li>
+<li>Divide: <code>/</code></li>
+<li>Multiply: <code>*</code></li>
+<li>Add: <code>+</code></li>
+<li>Subtract: <code>-</code></li>
+<li>Scientific notation is available, e.g: <code>2e-3</code></li>
+<li>Anything to the right of a <code>#</code> is a comment, R will ignore this!</li>
+<li>Functions are denoted by <code>function_name()</code>. Expressions inside the brackets are evaluated before being passed to the function, and functions can be nested.</li>
+<li>Mathematical functions: <code>exp</code>, <code>sin</code>, <code>log</code>, <code>log10</code>, <code>log2</code> etc.</li>
+<li>Comparison operators: <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code></li>
+<li>Use <code>all.equal</code> to compare numbers!</li>
+<li><code>&lt;-</code> is the assignment operator. Anything to the right is evaluate, then stored in a variable named to the left.</li>
+<li><code>ls</code> lists all variables and functions you've created</li>
+<li><code>rm</code> can be used to remove them</li>
+<li>When assigning values to function arguments, you <em>must</em> use <code>=</code>.</li>
+</ul>
 <h2 id="seeking-help"><a href="04-seeking-help.html">Seeking help</a></h2>
 <ul>
 <li><code>?</code> or <code>help()</code> to seek help for a function.</li>

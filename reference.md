@@ -1,8 +1,33 @@
 ---
 layout: page
-title: Lesson Title
+title: R for reproducible scientific analysis
 subtitle: Reference
 ---
+
+## [Introduction to R and RStudio](01-rstudio-intro.html)
+
+ - Use the escape key to cancel incomplete commands or running code 
+   (Ctrl+C) if you're using R from the shell.
+ - Basic arithmetic operations follow standard order of precedence:
+   - Brackets: `(`, `)`
+   - Exponents: `^` or `**`
+   - Divide: `/`
+   - Multiply: `*`
+   - Add: `+`
+   - Subtract: `-`
+ - Scientific notation is available, e.g: `2e-3`
+ - Anything to the right of a `#` is a comment, R will ignore this!
+ - Functions are denoted by `function_name()`. Expressions inside the
+   brackets are evaluated before being passed to the function, and 
+   functions can be nested.
+ - Mathematical functions: `exp`, `sin`, `log`, `log10`, `log2` etc.
+ - Comparison operators: `<`, `<=`, `>`, `>=`, `==`, `!=`
+ - Use `all.equal` to compare numbers!
+ - `<-` is the assignment operator. Anything to the right is evaluate, then
+   stored in a variable named to the left.
+ - `ls` lists all variables and functions you've created
+ - `rm` can be used to remove them
+ - When assigning values to function arguments, you _must_ use `=`. 
 
 ## [Seeking help](04-seeking-help.html)
 
