@@ -30,7 +30,7 @@
           <h1 class="title">R for reproducible scientific analysis</h1>
           <h2 class="subtitle">Data structures</h2>
 <div id="learning-objectives" class="objectives">
-<h2>Learning Objectives</h2>
+<h3>Learning Objectives</h3>
 <ul>
 <li>To be aware of the different types of data</li>
 <li>To be aware of the different basic data structures commonly encountered in R</li>
@@ -40,8 +40,8 @@
 <h3 id="data-types">Data Types</h3>
 <p>To make the best of the R language, you'll need a strong understanding of the basic data types and data structures and how to operate on those. <strong>Very Important</strong> to understand because these are the things you will manipulate on a day-to-day basis in R.</p>
 <p>Importantly, they are the most common source of frustration among beginners.</p>
-<div id="challenge-object-types" class="challenge">
-<h3>Challenge: Object types</h3>
+<div id="challenge-1-object-types" class="challenge">
+<h4>Challenge 1: Object types</h4>
 <p>Look at the first 6 rows of the gapminder dataset we loaded before:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gapminder)</code></pre>
 <pre class="output"><code>      country year      pop continent lifeExp gdpPercap
@@ -97,8 +97,8 @@ gapminder &lt;-<span class="st"> </span><span class="kw">read.table</span>(
 <li>It's better to explicitly convert the variables into factors when running statistical models. This forces you to think about the question you're asking, and makes it easier to specify the ordering of the categories (this can be important!).</li>
 </ol>
 <p>However there are many in the R community who find it more sensible to leave this as the default behaviour.</p>
-<div id="tip" class="callout">
-<h2>Tip</h2>
+<div id="tip-changing-options" class="callout">
+<h4>Tip: Changing options</h4>
 <p>When R starts, the first thing it does is runs any code in the file <code>.Rprofile</code> in the project directory. Any permanent changes to default behaviour you want to make should be stored in that file.</p>
 </div>
 <p>The first thing you should do when reading data in, is check that it matches what you expect, even if the command ran without warnings or errors. The <code>str</code> function, short for &quot;structure&quot;, is really useful for this:</p>
@@ -326,7 +326,7 @@ gapminder &lt;-<span class="st"> </span><span class="kw">read.table</span>(
 <li>character (e.g, &quot;a&quot;, &quot;swc&quot;)</li>
 </ul>
 <div id="tip-character-vectors" class="callout">
-<h3>Tip: &quot;Character Vectors&quot;</h3>
+<h4>Tip: &quot;Character Vectors&quot;</h4>
 <p>You will sometimes hear the term &quot;character vector&quot;, especially in warning or error messages. This is a somewhat confusing and unfortunate name. Remember that the type &quot;character&quot; really means some text wrapped in quotation symbols.</p>
 </div>
 <p>Create an empty vector with <code>vector()</code> or by using the concatenate function, <code>c()</code>.</p>
@@ -359,16 +359,16 @@ series</code></pre>
  [61]  7.0  7.1  7.2  7.3  7.4  7.5  7.6  7.7  7.8  7.9  8.0  8.1  8.2  8.3  8.4
  [76]  8.5  8.6  8.7  8.8  8.9  9.0  9.1  9.2  9.3  9.4  9.5  9.6  9.7  9.8  9.9
  [91] 10.0</code></pre>
-<div id="tip-1" class="callout">
-<h3>Tip</h3>
+<div id="tip-creating-integers" class="callout">
+<h4>Tip: Creating integers</h4>
 <p>When you combine numbers using the concatenate function, <code>c()</code> the type will automatically become &quot;numeric&quot;, that is real/decimal numbers. If you specifically want to create a vector of integers (whole numbers only), you need to append each number with an L, i.e. <code>c(10L, 12L, 45L, 33L)</code>.</p>
 </div>
 <p>You can also use the concatenate function to add elements to a vector:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(x, <span class="dv">57</span>)
 x</code></pre>
 <pre class="output"><code>[1] 10 12 45 33 57</code></pre>
-<div id="challenge" class="challenge">
-<h3>Challenge</h3>
+<div id="challenge-2" class="challenge">
+<h4>Challenge 2</h4>
 <p>Vectors can only contain one atomic type. If you try to combine different types, R will create a vector that is the least common denominator: the type that is easiest to coerce to.</p>
 <p><strong>Guess what the following do without running them first:</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r">xx &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.7</span>, <span class="st">&quot;a&quot;</span>) 
@@ -397,8 +397,8 @@ xx &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quo
 Warning message:
 NAs introduced by coercion </code></pre>
 <p>In both cases, a vector of &quot;NAs&quot; was returned, and in the first case so was a warning.</p>
-<div id="special-objects" class="callout">
-<h3>Special Objects</h3>
+<div id="tip-special-objects" class="callout">
+<h4>Tip: Special Objects</h4>
 <p>&quot;NA&quot; is a special object in R which denotes a missing value. NA can occur in any type of vector. There are a few other types of special objects: <code>Inf</code> denotes infinity (can be positive or negative), while <code>NaN</code> means Not a number, an undefined value (i.e. <code>0/0</code>). <code>NULL</code> denotes that the data structure doesn't exist (but can occur in list elements).</p>
 </div>
 <p>Like data.frames, you can ask questions about the structure of vectors:</p>
@@ -415,8 +415,8 @@ NAs introduced by coercion </code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>)
 x</code></pre>
 <p><sub>~</sub> {.output} a b c d 10 12 45 33 }</p>
-<div id="advanced-tip" class="callout">
-<h3>Advanced Tip</h3>
+<div id="advanced-tip-for-programmers" class="callout">
+<h4>Advanced Tip for Programmers</h4>
 <p>If you're coming from other programming languages you might recognise this as a useful tool akin to dictionaries and hash tables. This is true for small vectors, but for true hash table functionality, you should use the environment object. See <code>?new.env</code>.</p>
 </div>
 <h4 id="lists">Lists</h4>

@@ -30,7 +30,7 @@
           <h1 class="title">R for reproducible scientific analysis</h1>
           <h2 class="subtitle">Introduction to R and RStudio</h2>
 <div id="learning-objectives" class="objectives">
-<h2>Learning Objectives</h2>
+<h3>Learning Objectives</h3>
 <ul>
 <li>To gain familiarity with the various panes in the RStudio IDE</li>
 <li>To understand variables and how to assign to them</li>
@@ -64,8 +64,8 @@
 <pre class="sourceCode r"><code class="sourceCode r">&gt;<span class="st"> </span><span class="dv">1</span> +</code></pre>
 <pre class="output"><code>+ </code></pre>
 <p>Any time you hit return and the R session shows a &quot;+&quot; instead of a &quot;&gt;&quot;, it means it's waiting for you to complete the command. If you want to cancel a command you can simply hit &quot;Esc&quot; and RStudio will give you back the &quot;&gt;&quot; prompt.</p>
-<div id="cancelling-commands" class="callout">
-<h3>Cancelling commands</h3>
+<div id="tip-cancelling-commands" class="callout">
+<h4>Tip: Cancelling commands</h4>
 <p>If you're using R from the commandline instead of from within RStudio, you need to use <code>Ctrl+C</code> instead of <code>Esc</code> to cancel the command. This applies to Mac users as well!</p>
 <p>Cancelling a command isn't just useful for killing incomplete commands: you can also use it to tell R to stop running code (for example if its taking much longer than you expect), or to get rid of the code you're currently writing.</p>
 </div>
@@ -122,8 +122,8 @@
 <pre class="output"><code>[1] TRUE</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> &gt;=<span class="st"> </span>-<span class="dv">9</span> <span class="co"># greater than or equal to</span></code></pre>
 <pre class="output"><code>[1] TRUE</code></pre>
-<div id="comparing-numbers" class="callout">
-<h3>Comparing Numbers</h3>
+<div id="tip-comparing-numbers" class="callout">
+<h4>Tip: Comparing Numbers</h4>
 <p>A word of warning about comparing numbers: you should never use <code>==</code> to compare two numbers unless they are integers (a data type which can specifically represent only whole numbers).</p>
 <p>Computers may only represent decimal numbers with a certain degree of precision, so two numbers which look the same when printed out by R, may actually have different underlying representations and therefore be different by a small margin of error (called Machine numeric tolerance).</p>
 <p>Instead you should use the <code>all.equal</code> function.</p>
@@ -212,7 +212,7 @@
 <pre class="sourceCode r"><code class="sourceCode r">[<span class="dv">1</span>] <span class="st">&quot;list&quot;</span></code></pre>
 <p>Not only did the command not work, but we created a new variable, <code>list</code>, which stored the results of the <code>ls</code> command.</p>
 <div id="challenge-1" class="challenge">
-<h3>Challenge 1</h3>
+<h4>Challenge 1</h4>
 <p>Draw diagrams showing what variables refer to what values after each statement in the following program:</p>
 <pre class="sourceCode r"><code class="sourceCode r">mass &lt;-<span class="st"> </span><span class="fl">47.5</span>
 age &lt;-<span class="st"> </span><span class="dv">122</span>
@@ -220,11 +220,11 @@ mass &lt;-<span class="st"> </span>mass *<span class="st"> </span><span class="f
 age &lt;-<span class="st"> </span>age -<span class="st"> </span><span class="dv">20</span></code></pre>
 </div>
 <div id="challenge-2" class="challenge">
-<h3>Challenge 2</h3>
+<h4>Challenge 2</h4>
 <p>Run the code from the previous challenge, and write a command to compare mass to age. Is mass larger than age?</p>
 </div>
 <div id="challenge-3" class="challenge">
-<h3>Challenge 3</h3>
+<h4>Challenge 3</h4>
 <p>Clean up your working environment by deleting the mass and age variables.</p>
 </div>
         </div>

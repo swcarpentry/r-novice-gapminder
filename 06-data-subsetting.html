@@ -30,7 +30,7 @@
           <h1 class="title">R for reproducible scientific analysis</h1>
           <h2 class="subtitle">Subsetting data</h2>
 <div id="learning-objectives" class="objectives">
-<h2>Learning Objectives</h2>
+<h3>Learning Objectives</h3>
 <ul>
 <li>To be able to subset vectors, factors, matrices, lists, and data frames</li>
 <li>To be able to extract individual and multiple elements:</li>
@@ -92,8 +92,8 @@
 <pre class="sourceCode r"><code class="sourceCode r">x[<span class="kw">c</span>(-<span class="dv">1</span>, -<span class="dv">5</span>)]  <span class="co"># or x[-c(1,5)]</span></code></pre>
 <pre class="output"><code>  b   c   d 
 6.2 7.1 4.8 </code></pre>
-<div id="order-of-operations" class="callout">
-<h3>Order of operations</h3>
+<div id="tip-order-of-operations" class="callout">
+<h4>Tip: Order of operations</h4>
 <p>A common trip up for novices occurs when trying to skip slices of a vector. Most people first try to negate a sequence like so:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x[-<span class="dv">1</span>:<span class="dv">3</span>]</code></pre>
 <p>This gives a somewhat cryptic error:</p>
@@ -134,8 +134,8 @@ x</code></pre>
 <pre class="output"><code>  b   e 
 6.2 7.5 </code></pre>
 <p>The <code>%in%</code> goes through each element of its left argument, in this case the names of <code>x</code>, and asks, &quot;Does this element occur in the second argument?&quot;.</p>
-<div id="getting-help-for-operators" class="callout">
-<h3>Getting help for operators</h3>
+<div id="tip-getting-help-for-operators" class="callout">
+<h4>Tip: Getting help for operators</h4>
 <p>remember you can search for help on operators by wrapping them in quotes: <code>help(&quot;%in%&quot;)</code> or <code>?&quot;%in%&quot;</code>.</p>
 </div>
 <p>So why can't we use <code>==</code> like before? That's an excellent question.</p>
@@ -171,8 +171,8 @@ In names(x) == c(&quot;a&quot;, &quot;c&quot;, &quot;e&quot;) :
 <pre class="sourceCode r"><code class="sourceCode r">x[x &gt;<span class="st"> </span><span class="dv">7</span>]</code></pre>
 <pre class="output"><code>  c   e 
 7.1 7.5 </code></pre>
-<div id="chaining-logical-operations" class="callout">
-<h3>Chaining logical operations</h3>
+<div id="tip-chaining-logical-operations" class="callout">
+<h4>Tip: Chaining logical operations</h4>
 <p>There are many situations in which you wish to combine multiple conditions. To do so several logical operations exist in R:</p>
 <ul>
 <li><code>|</code> logical OR: returns <code>TRUE</code>, if either the left or right are <code>TRUE</code>.</li>
@@ -219,8 +219,8 @@ m[<span class="dv">3</span>:<span class="dv">4</span>, <span class="kw">c</span>
 <p>Unlike vectors, if we try to access a row or column outside of the matrix, R will throw an error:</p>
 <pre class="sourceCode r"><code class="sourceCode r">m[, <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">6</span>)]</code></pre>
 <pre class="output"><code>Error in m[, c(3, 6)] : subscript out of bounds</code></pre>
-<div id="higher-dimensional-arrays" class="callout">
-<h3>Higher dimensional arrays</h3>
+<div id="tip-higher-dimensional-arrays" class="callout">
+<h4>Tip: Higher dimensional arrays</h4>
 <p>when dealing with multi-dimensional arrays, each argument to <code>[</code> corresponds to a dimension. For example, a 3D array, the first three arguments correspond to the rows, columns, and depth dimension.</p>
 </div>
 <p>Because matrices are really just vectors underneath the hood, we can also subset using only one argument:</p>
