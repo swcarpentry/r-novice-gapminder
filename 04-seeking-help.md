@@ -5,7 +5,7 @@ subtitle: Seeking help
 minutes: 15
 ---
 
-> ## Learning Objectives {.objectives}
+> ### Learning Objectives {.objectives}
 >
 > * To be able read R helpfiles for functions and special operators.
 > * To be able to use CRAN taskviews to identify packages to solve a problem.
@@ -37,7 +37,7 @@ Each help page is broken down into sections:
 
 Different functions might have different sections, but these are the main ones you should be aware of.
 
-> ## Reading help files {.callout}
+> #### Tip: Reading help files {.callout}
 >
 > One of the most daunting aspects of R is the large number of functions 
 > available. It would be prohibitive, if not impossible to remember the
@@ -68,7 +68,7 @@ If you don't know what function or package you need to use
 is a specially maintained list of packages grouped into
 fields. This can be a good starting point
 
-### Seeking help from your peers
+### When your code doesn't work: seeking help from your peers
 
 If you're having trouble using a function, 9 times out of 10, 
 the answers you are seeking have already been answered on 

@@ -5,7 +5,7 @@ subtitle: Data structures
 minutes: lots
 ---
 
-> ## Learning Objectives {.objectives}
+> ### Learning Objectives {.objectives}
 >
 > - To be aware of the different types of data
 > - To be aware of the different basic data structures commonly encountered in R
@@ -22,7 +22,7 @@ manipulate on a day-to-day basis in R.
 Importantly, they are the most common source of frustration among beginners.
 
 
-> ### Challenge: Object types {.challenge}
+> #### Challenge 1: Object types {.challenge}
 > 
 > Look at the first 6 rows of the gapminder dataset we loaded before:
 > 
@@ -146,7 +146,7 @@ this behaviour:
 However there are many in the R community who find it more sensible to
 leave this as the default behaviour.
 
-> ## Tip {.callout}
+> #### Tip: Changing options {.callout}
 >
 > When R starts, the first thing it does is runs any code in the file `.Rprofile`
 > in the project directory. Any permanent changes to default behaviour you want 
@@ -435,7 +435,7 @@ A vector can contain any of the five types we introduced before:
 * complex (e.g, 1 + 0i, 1 + 4i)
 * character (e.g, "a", "swc")
 
-> ### Tip: "Character Vectors" {.callout}
+> #### Tip: "Character Vectors" {.callout}
 >
 > You will sometimes hear the term "character vector", especially in
 > warning or error messages. This is a somewhat confusing and unfortunate
@@ -523,7 +523,7 @@ seq(1, 10, by = 0.1)
 ~~~
 
 
-> ### Tip {.callout}
+> #### Tip: Creating integers {.callout}
 >
 > When you combine numbers using the concatenate function, `c()` the type
 > will automatically become "numeric", that is real/decimal numbers. If you
@@ -542,7 +542,7 @@ x
 [1] 10 12 45 33 57
 ~~~
 
-> ### Challenge {.challenge}
+> #### Challenge 2 {.challenge}
 >
 > Vectors can only contain one atomic type. If you try to combine different
 > types, R will create a vector that is the least common denominator: the
@@ -617,7 +617,7 @@ NAs introduced by coercion
 In both cases, a vector of "NAs" was returned, and in the first case
 so was a warning. 
 
-> ### Special Objects {.callout}
+> #### Tip: Special Objects {.callout}
 >
 > "NA" is a special object in R which denotes a missing value. NA can
 > occur in any type of vector. There are a few other types of
@@ -674,7 +674,7 @@ x
  10 12 45 33 
 }
 
-> ### Advanced Tip {.callout}
+> #### Advanced Tip for Programmers {.callout}
 >
 > If you're coming from other programming languages you might 
 > recognise this as a useful tool akin to dictionaries and hash

@@ -5,7 +5,7 @@ subtitle: Subsetting data
 minutes: 15
 ---
 
-> ## Learning Objectives {.objectives}
+> ### Learning Objectives {.objectives}
 >
 > * To be able to subset vectors, factors, matrices, lists, and data frames
 > * To be able to extract individual and multiple elements:
@@ -142,7 +142,7 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 6.2 7.1 4.8 
 ~~~
 
-> ### Order of operations {.callout}
+> #### Tip: Order of operations {.callout}
 >
 > A common trip up for novices occurs when trying to skip
 > slices of a vector. Most people first try to negate a
@@ -263,7 +263,7 @@ x[-which(names(x) %in% c("a", "c"))]
 The `%in%` goes through each element of its left argument, in this case the 
 names of `x`, and asks, "Does this element occur in the second argument?".
 
-> ### Getting help for operators {.callout}
+> #### Tip: Getting help for operators {.callout}
 > 
 > remember you can search for help on operators by wrapping them in quotes:
 > `help("%in%")` or `?"%in%"`.
@@ -356,7 +356,8 @@ x[x > 7]
 7.1 7.5 
 ~~~
 
-> ### Chaining logical operations {.callout}
+> #### Tip: Chaining logical operations {.callout}
+>
 > There are many situations in which you wish to combine multiple conditions.
 > To do so several logical operations exist in R:
 > 
@@ -462,7 +463,7 @@ m[, c(3,6)]
 Error in m[, c(3, 6)] : subscript out of bounds
 ~~~
 
-> ### Higher dimensional arrays {.callout}
+> #### Tip: Higher dimensional arrays {.callout}
 >
 > when dealing with multi-dimensional arrays, each argument to `[` 
 > corresponds to a dimension. For example, a 3D array, the first three

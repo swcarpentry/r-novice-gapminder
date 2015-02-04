@@ -5,7 +5,7 @@ subtitle: Introduction to R and RStudio
 minutes: 15
 ---
 
-> ## Learning Objectives {.objectives}
+> ### Learning Objectives {.objectives}
 >
 > * To gain familiarity with the various panes in the RStudio IDE
 > * To understand variables and how to assign to them
@@ -84,7 +84,7 @@ means it's waiting for you to complete the command. If you want to cancel
 a command you can simply hit "Esc" and RStudio will give you back the ">"
 prompt.
 
-> ### Cancelling commands {.callout}
+> #### Tip: Cancelling commands {.callout}
 >
 > If you're using R from the commandline instead of from within RStudio,
 > you need to use `Ctrl+C` instead of `Esc` to cancel the command. This
@@ -263,7 +263,7 @@ We can also do comparison in R:
 [1] TRUE
 ~~~
 
-> ### Comparing Numbers {.callout}
+> #### Tip: Comparing Numbers {.callout}
 > 
 > A word of warning about comparing numbers: you should 
 > never use `==` to compare two numbers unless they are
@@ -460,7 +460,7 @@ ls()
 Not only did the command not work, but we created a new variable, `list`, which
 stored the results of the `ls` command.
 
-> ### Challenge 1 {.challenge}
+> #### Challenge 1 {.challenge}
 >
 > Draw diagrams showing what variables refer to what values after each 
 > statement in the following program:
@@ -473,13 +473,13 @@ stored the results of the `ls` command.
 > ~~~
 >
 
-> ### Challenge 2 {.challenge}
+> #### Challenge 2 {.challenge}
 >
 > Run the code from the previous challenge, and write a command to
 > compare mass to age. Is mass larger than age?
 >
 
-> ### Challenge 3 {.challenge}
+> #### Challenge 3 {.challenge}
 >
 > Clean up your working environment by deleting the mass and age
 > variables.
