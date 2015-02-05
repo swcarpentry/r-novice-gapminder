@@ -85,7 +85,7 @@
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(gapminder$continent)</code></pre>
 <pre class="output"><code>[1] &quot;factor&quot;</code></pre>
 <p>One of the default behaviours of R is to treat any text columns as &quot;factors&quot; when reading in data. The reason for this is that text columns often represent categorical data, which need to be factors to be handled appropriately by the statistical modelling functions in R.</p>
-<p>However its not obvious behaviour, and something that trips novices up. We can disable this behaviour and read in the data again.</p>
+<p>However it's not obvious behaviour, and something that trips novices up. We can disable this behaviour and read in the data again.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)
 gapminder &lt;-<span class="st"> </span><span class="kw">read.table</span>(
   <span class="dt">file=</span><span class="st">&quot;data/gapminder-FiveYearData.csv&quot;</span>, <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">row.names=</span><span class="dv">1</span>, 
@@ -660,7 +660,27 @@ x</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(x)</code></pre>
 <pre class="output"><code>num [1:3, 1:6] -0.626 0.184 -0.836 1.595 0.33 ...</code></pre>
 <p>Like data frames, you can use <code>rownames</code>, <code>colnames</code>, and <code>dimnames</code> to set or retrieve the column and rownames of a matrix. The functions <code>nrow</code> and <code>ncol</code> will tell you the number of rows and columns (this also applies to data frames!), while <code>length</code> will tell you the number of elements.</p>
-<p>Like data.frames, you can also use the row-bind and column-bind function to add new rows and columns,</p>
+<p>Like data.frames, you can also use the row-bind and column-bind function to add new rows and columns.</p>
+<div id="challenge-3" class="challenge">
+<h3>Challenge 3</h3>
+<p>Create a dataframe that holds the following information for yourself:</p>
+<ul>
+<li>First name</li>
+<li>Last name</li>
+<li>Age</li>
+</ul>
+<p>Then use rbind to add the same information for the people sitting near you.</p>
+<p>Now use cbind to add a column of logicals answering the question, &quot;Is there anything in this workshop you're finding confusing?&quot;</p>
+</div>
+<div id="challenge-4" class="challenge">
+<h3>Challenge 4</h3>
+<p>Create a list containing two character vectors for each of the sections in this part of the workshop:</p>
+<ul>
+<li>Data types</li>
+<li>Data structures</li>
+</ul>
+<p>Populate each character vector with the data types and data structures we've just seen.</p>
+</div>
         </div>
       </div>
       <div class="footer">
