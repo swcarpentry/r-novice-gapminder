@@ -42,7 +42,7 @@ the material, the lessons are largely being adapted from
 4.  [Seeking help](04-seeking-help.html)
 5.  [Data structures](05-data-structures.html)
 6.  [Subsetting data](06-data-subsetting.html)
-7.  Vectorisation
+7.  [Vectorisation](07-vectorisation.html)
 8.  Control flow
 9.  Functions
 10. Apply and task repitition
