@@ -28,6 +28,15 @@ memory will trigger. It may be helpful to state this.
 You can also very quickly go through the [first lesson, introduction
 to R and Rstudio](01-rstudio-intro.html)
 
+### Whiteboard usage
+
+There are a few concepts you may want to physically draw out on
+a whiteboard:
+
+ * Vector recycling
+
+
+
 
 ## [Seeking help](04-seeking-help.html)
 
@@ -37,4 +46,5 @@ to R and Rstudio](01-rstudio-intro.html)
 
 * Be sure to show them CRAN Task views and go into one of the topics.
 
+## [Data Structures](05-data-structures.html)
 
