@@ -61,6 +61,9 @@
 <h3 id="special-operators">Special Operators</h3>
 <p>To seek help on special operators, use quotes:</p>
 <pre class="sourceCode r"><code class="sourceCode r">?<span class="st">&quot;+&quot;</span></code></pre>
+<h3 id="getting-help-on-packages">Getting help on packages</h3>
+<p>Many packages come with &quot;vignettes&quot;: tutorials and extended example documentation. <code>vignette()</code> will list all vignettes for all installed packages, <code>vignette(package=&quot;package-name&quot;)</code> will list all available vignettes for a package, and <code>vignette(&quot;vignette-name&quot;)</code> will open the vignette for that package.</p>
+<p>If a package doesn't have any vignettes, you can usually find help by typing <code>help(&quot;package-name&quot;)</code>.</p>
 <h3 id="when-you-kind-of-remember-the-function">When you kind of remember the function</h3>
 <p>If you're not sure what package a function is in, or how its specifically spelled you can do a fuzzy search:</p>
 <pre class="sourceCode r"><code class="sourceCode r">??function_name</code></pre>

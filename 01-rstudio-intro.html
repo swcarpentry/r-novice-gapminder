@@ -162,6 +162,10 @@
 <p><code>ls</code> will list all of the variables and functions stored in the global environment (your working R session):</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>()</code></pre>
 <pre class="output"><code>[1] &quot;x&quot; </code></pre>
+<div id="tip-hidden-objects" class="callout">
+<h4>Tip: hidden objects</h4>
+<p>Just like in the shell, <code>ls</code> will hide any variables or functions starting with a &quot;.&quot; by default. To list all objects, typr <code>ls(all.names=TRUE)</code> instead</p>
+</div>
 <p>Note here that we didn't given any arguments to <code>ls</code>, but we still needed to give the brackets to tell R to call the function.</p>
 <p>If we type <code>ls</code> by itself, R will print out the source code for that function!</p>
 <pre class="sourceCode r"><code class="sourceCode r">ls</code></pre>
