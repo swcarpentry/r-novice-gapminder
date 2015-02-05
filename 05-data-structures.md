@@ -123,7 +123,7 @@ when reading in data. The reason for this is that text columns often represent
 categorical data, which need to be factors to be handled appropriately by
 the statistical modelling functions in R. 
 
-However its not obvious behaviour, and something that trips novices up. We can
+However it's not obvious behaviour, and something that trips novices up. We can
 disable this behaviour and read in the data again.
 
 ~~~ {.r}
@@ -1100,5 +1100,28 @@ will tell you the number of rows and columns (this also applies to data frames!)
 while `length` will tell you the number of elements.
 
 Like data.frames, you can also use the row-bind and column-bind function to add
-new rows and columns,
+new rows and columns.
 
+> ### Challenge 3 {.challenge}
+> 
+> Create a dataframe that holds the following information for yourself:
+> 
+> * First name
+> * Last name
+> * Age
+> 
+> Then use rbind to add the same information for the people sitting near you.
+>
+> Now use cbind to add a column of logicals answering the question,
+> "Is there anything in this workshop you're finding confusing?"
+
+> ### Challenge 4 {.challenge}
+> 
+> Create a list containing two character vectors for each of the sections in this
+> part of the workshop:
+> 
+> * Data types
+> * Data structures
+> 
+> Populate each character vector with the data types and data structures we've
+> just seen.
