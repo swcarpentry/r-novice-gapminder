@@ -372,6 +372,13 @@ ls()
 [1] "x" 
 ~~~
 
+> #### Tip: hidden objects {.callout}
+> 
+> Just like in the shell, `ls` will hide any variables or functions starting
+> with a "." by default. To list all objects, typr `ls(all.names=TRUE)` 
+> instead
+>
+
 Note here that we didn't given any arguments to `ls`, but we still needed to give
 the brackets to tell R to call the function.
 

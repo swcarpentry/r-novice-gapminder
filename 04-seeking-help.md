@@ -53,6 +53,16 @@ To seek help on special operators, use quotes:
 ?"+"
 ~~~
 
+### Getting help on packages
+
+Many packages come with "vignettes": tutorials and extended example documentation.
+`vignette()` will list all vignettes for all installed packages,
+`vignette(package="package-name")` will list all available vignettes for a
+package, and `vignette("vignette-name")` will open the vignette for that package.
+
+If a package doesn't have any vignettes, you can usually find help by typing 
+`help("package-name")`.
+
 ### When you kind of remember the function
 
 If you're not sure what package a function is in, or how its specifically spelled you can do a fuzzy search:
