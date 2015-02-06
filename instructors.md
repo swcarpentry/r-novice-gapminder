@@ -36,9 +36,14 @@ a whiteboard:
  * Vector recycling
 
 
+## Individual topics
 
+### [Project management with RStudio](02-project-intro.html)
 
-## [Seeking help](04-seeking-help.html)
+* The challenges in this lesson are designed to be follow-along. Get the
+  attendees to follow as you type on-screen
+
+### [Seeking help](04-seeking-help.html)
 
 * Be sure to actually go through and example of an R help page. 
   Knowing how to read a help file is tremendously useful, and can

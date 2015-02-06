@@ -37,7 +37,7 @@ the material, the lessons are largely being adapted from
 [http://resbaz.github.io/2014-r-materials/lessons/index.html](http://resbaz.github.io/2014-r-materials/lessons/index.html)
 
 1.  [Introduction to R and RStudio](01-rstudio-intro.html)
-2.  Project Management
+2.  [Project Management](02-project-intro.html)
 3.  Reading and writing data
 4.  [Seeking help](04-seeking-help.html)
 5.  [Data structures](05-data-structures.html)
