@@ -47,7 +47,6 @@ Managing your projects in a reproducible fashion doesn't just make your science 
 <p>Most people tend to organize their projects like this:</p>
 <div class="figure">
 <img src="img/bad_layout.png" />
-
 </div>
 <p>There are many reasons why we should <em>ALWAYS</em> avoid this:</p>
 <ol style="list-style-type: decimal">
@@ -61,13 +60,34 @@ Managing your projects in a reproducible fashion doesn't just make your science 
 <li>Portability of the project</li>
 <li>Easier to pick the project back up after a break</li>
 </ul>
-<p>Fortunately, RStudio can help up with this.</p>
-<p>One of the most powerful and useful aspects of RStudio is its project management<br />functionality. We'll be using this today to create a self-contianed project.</p>
-<div id="installing-packages" class="challenge">
-<h1>Installing Packages</h1>
-<p>The first thing we're going to do is to install a third-party package, <code>packrat</code>. This is allows RStudio to create self-contained packages: any further packages<br />you download will be contained within their respective projects. This is really useful, as different versions of packages can change results as new knowledge is gained. This allows you to easily keep track of the version used for your analyses.</p>
+<h3 id="project-separation">Project separation</h3>
+<p>The scientific process can often be exploratory, and you may find yourself juggling several different projects or analyses at once. Eventually, you will need to return to a project, and work out what you've done (e.g. when writing up your thesis!).</p>
+<p>Separating different analysis into different directories is a good idea for a number of reasons, as it allows you to more easily:</p>
+<ul>
+<li>Archive a finished project</li>
+<li>Give your code to someone else (your lab-mate, collaborator, supervisor)</li>
+<li>Upload your code with your manuscript submission</li>
+<li>Move between computers (for example home and work, or to a new machine when one breaks)</li>
+</ul>
+<h3 id="the-rstudio-solution">The RStudio solution</h3>
+<p>Fortunately, RStudio can help you manage your code effectively.</p>
+<p>One of the most powerful and useful aspects of RStudio is its project management functionality. We'll be using this today to create a self-contianed, reproducible project.</p>
+<div id="challenge-installing-packages" class="challenge">
+<h4>Challenge: Installing Packages</h4>
+<p>The first thing we're going to do is to install a third-party package, <code>packrat</code>. This is allows RStudio to create self-contained packages: any further packages you download will be contained within their respective projects. This is really useful, as different versions of packages can change results as new knowledge is gained. This allows you to easily keep track of the version used for your analyses.</p>
 <p>Packages can be installed using the <code>install.packages</code> function:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;packrat&quot;</span>) </code></pre>
+</div>
+<div id="challenge-creating-a-self-contained-project" class="challenge">
+<h4>Challenge: Creating a self-contained project</h4>
+<p>Now we're going to create a new project in RStudio:</p>
+<ol style="list-style-type: decimal">
+<li>Click the &quot;File&quot; menu button, then &quot;New Project&quot;.</li>
+<li>Click &quot;New Directory&quot;</li>
+<li>Click &quot;Empty Project&quot;</li>
+<li>Type in the name of the directory to store your project, e.g. &quot;my_project&quot;</li>
+<li>Make sure that the checkboxes for &quot;Create a git repository&quot; and &quot;Use packrat with this project&quot; are selected &gt;</li>
+</ol>
 </div>
         </div>
       </div>
