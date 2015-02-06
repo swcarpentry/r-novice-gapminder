@@ -368,6 +368,21 @@ x[x > 7]
 >    also apply here.
 >
 
+
+#### Handling special values
+
+At some point you will encounter functions in R which cannot handle missing, infinite,
+or undefined data.
+
+There are a number of special functions you can use to filter out this data:
+
+ * `is.na` will return all positions in a vector, matrix, or data.frame
+   containing `NA`.
+ * likewise, `is.nan`, and `is.infinite` will do the same for `NaN` and `Inf`.
+ * `is.finite` will return all positions in a vector, matrix, or data.frame
+   that do not contain `NA`, `NaN` or `Inf`.
+ * `na.omit` will filter out all missing values from a vector
+
 ### Factor subsetting
 
 Now that we've explored the different ways to subset vectors, how

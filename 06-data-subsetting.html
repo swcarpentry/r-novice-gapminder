@@ -181,6 +181,15 @@ In names(x) == c(&quot;a&quot;, &quot;c&quot;, &quot;e&quot;) :
 <li><code>&amp;&amp;</code> and <code>||</code> compare the individual elements of two vectors. Recycling rules also apply here.</li>
 </ul>
 </div>
+<h4 id="handling-special-values">Handling special values</h4>
+<p>At some point you will encounter functions in R which cannot handle missing, infinite, or undefined data.</p>
+<p>There are a number of special functions you can use to filter out this data:</p>
+<ul>
+<li><code>is.na</code> will return all positions in a vector, matrix, or data.frame containing <code>NA</code>.</li>
+<li>likewise, <code>is.nan</code>, and <code>is.infinite</code> will do the same for <code>NaN</code> and <code>Inf</code>.</li>
+<li><code>is.finite</code> will return all positions in a vector, matrix, or data.frame that do not contain <code>NA</code>, <code>NaN</code> or <code>Inf</code>.</li>
+<li><code>na.omit</code> will filter out all missing values from a vector</li>
+</ul>
 <h3 id="factor-subsetting">Factor subsetting</h3>
 <p>Now that we've explored the different ways to subset vectors, how do we subset the other data structures?</p>
 <p>Factor subsetting works the same way as vector subsetting.</p>
