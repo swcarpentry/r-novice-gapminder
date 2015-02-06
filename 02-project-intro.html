@@ -87,8 +87,72 @@ Managing your projects in a reproducible fashion doesn't just make your science 
 <li>Click &quot;Empty Project&quot;</li>
 <li>Type in the name of the directory to store your project, e.g. &quot;my_project&quot;</li>
 <li>Make sure that the checkboxes for &quot;Create a git repository&quot; and &quot;Use packrat with this project&quot; are selected &gt;</li>
+<li>Click the &quot;Create Project&quot; button</li>
 </ol>
 </div>
+<p>Now if we start R in this project directory, or open this project with RStudio, everything will work nicely and be self-contained to this directory. Packrat will handle any package dependencies our analyses will have by installing them in a library stored in the subdirectory of our project directory. Packrat will keep track of version numbers, and later you can bundle up your project and share it with someone else and it will install the right package versions from the project's library. This means we don't have to waste time and memory keeping track of these mundane details, and even allows us to use different versions of packages in different projects.</p>
+<p>First lets, download a useful package that will create a nice project structure for us:</p>
+<div id="challenge-projecttemplate" class="challenge">
+<h4>Challenge: ProjectTemplate</h4>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;ProjectTemplate&quot;</span>)</code></pre>
+</div>
+<p>Now lets load the ProjectTemplate and packrat packages into our R session:</p>
+<div id="challenge-loading-libraries" class="challenge">
+<h4>Challenge: Loading Libraries</h4>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;ProjectTemplate&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;packrat&quot;</span>)</code></pre>
+</div>
+<p>Here we've called the function <code>library</code> and used it to load those packages into our local namespace (our interactive R session). This means all of their functions are now available to us.</p>
+<div id="challenge-project-template" class="challenge">
+<h4>Challenge: Project Template</h4>
+<p>Let's use <code>ProjectTemplate</code> to populate our directory structure:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Here &quot;.&quot; means &quot;current working directory&quot;, just like we saw in the shell</span>
+<span class="co"># lessons </span>
+<span class="kw">create.project</span>(<span class="st">&quot;.&quot;</span>) </code></pre>
+<pre class="output"><code>Error in .create.project.existing(template.path, project.name, merge.strategy) : 
+  Directory . not empty.  Use merge.strategy = &#39;allow.non.conflict&#39; to override.</code></pre>
+</div>
+<div id="tip-warnings-vs.-errors" class="callout">
+<h4>Tip: Warnings vs. Errors</h4>
+<p>Pay attention when R does something unexpected! Errors, like above, are thrown when R cannot proceed with a calculation. Warnings on the other hand usually mean that the function has run, but it probably hasn't worked as expected.</p>
+<p>In both cases, the message that R prints out usually give you clues how to fix a problem.</p>
+</div>
+<p>In this case, an error was thrown since <code>ProjectTemplate</code> is usually run on an empty directory. In this case though, we're using <code>packrat</code> to manage or project, so let's follow the advice of the error message:</p>
+<div id="challenge-project-template-continued" class="challenge">
+<h4>Challenge: Project Template continued</h4>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">create.project</span>(<span class="st">&quot;.&quot;</span>, <span class="dt">merge.strategy =</span> <span class="st">&#39;allow.non.conflict&#39;</span>)</code></pre>
+</div>
+<p>Now we see a lot of new files and directories have appeared in our project. Let's open the <code>README</code> file.</p>
+<p>You should now see a new window in your RStudio environment. This is called the &quot;scripting&quot; pane: this is where all your scripts and files will open for editing.</p>
+<h3 id="best-practices-for-project-organisation">Best practices for project organisation</h3>
+<p><code>ProjectTemplate</code> is a third-party package that attempts to create a useful project layout for you. There is no &quot;best&quot; solution for this, but it does provide a good starting point and guide.</p>
+<p><code>ProjectTemplate</code> also automates a lot of the repetitive tasks for you: library loading, data cleaning, and reading in data. We will be turning these off for the purposes of this workshop:</p>
+<p>We're simply using <code>ProjectTemplate</code> to show some design philosophies for effective project management.</p>
+<h4 id="treat-data-as-read-only">Treat data as read only</h4>
+<p>This is probably the most important goal of setting up a project. Data is typically time consuming and/or expensive to collect. Working with them interactively (e.g., in Excel) where they can be modified means you are never sure of where the data came from, or how it has been modified since collection. It's a good idea to treat your data as &quot;read-only&quot;. Any processing and analysis of the data should store results or intermediate data elsewhere. <code>ProjectTemplate</code> sets this up for you:</p>
+<ul>
+<li>The <code>data/</code> directory is where you should put your read-only data.</li>
+</ul>
+<h4 id="data-cleaning">Data Cleaning</h4>
+<p>In many cases your data will be &quot;dirty&quot;: it will need significant preprocessing to get into a format R (or any other programming language) will find useful. This task is sometimes called &quot;data munging&quot;. You should store any scripts for data processing in the <code>munge</code> directory.</p>
+<p><code>ProjectTemplate</code> suggests storing the processed data in the <code>cache</code> folder, but you may find it useful to create a separate folder for your cleaned gold-standard versions of your datasets.</p>
+<h4 id="treat-generated-output-as-disposable">Treat generated output as disposable</h4>
+<p>Anything generated by your scripts should be treated as disposable: it should all be able to be regenerated from your scripts. <code>ProjectTemplate</code> creates a number of folders to separate various types of output:</p>
+<ul>
+<li><code>graphs</code>: for any figures your code produces</li>
+<li><code>reports</code>: for any tables and generated reports (using RMarkdown for example)</li>
+</ul>
+<h4 id="separate-function-definition-and-application">Separate function definition and application</h4>
+<p>The most effective way I find to work in R, is to play around in the interactive session, then copy commands across to a script file when I'm sure they work and do what I want. You can also save all the commands you've entered using the <code>history</code> command, but I don't find it useful because when I'm typing its 90% trial and error.</p>
+<p>When your project is new and shiny, the script file usually contains many lines of directly executed code. As it matures, reusable chunks get pulled into their own functions. Its a good idea to logically separate these files, especially if you're doing lots of different analyses:</p>
+<ul>
+<li><code>src</code>: to store your analysis scripts</li>
+<li><code>lib</code>: to store your helper functions</li>
+</ul>
+<h4 id="other-folders">Other folders</h4>
+<p><code>ProjectTemplate</code> generates a lot of other folders, but we won't cover them here. If you're interested in using ProjectTemplate you can find out more on <a href="http://projecttemplate.net/">their website</a></p>
+<h3 id="version-control">Version Control</h3>
+<p>We also set up our project to integrate with git, putting it under version control. RStudio has a nicer interface to git than shell, but is very limited in what it can do, so you will find yourself occasionally needing to use the shell. Let's go through and make an initial commit of our template files.</p>
         </div>
       </div>
       <div class="footer">

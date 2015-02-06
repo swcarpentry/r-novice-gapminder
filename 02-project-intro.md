@@ -235,4 +235,10 @@ If you're interested in using ProjectTemplate you can find out more on [their
 website](http://projecttemplate.net/)
 
 
+### Version Control
+
+We also set up our project to integrate with git, putting it under version control.
+RStudio has a nicer interface to git than shell, but is very limited in what it can
+do, so you will find yourself occasionally needing to use the shell. Let's go 
+through and make an initial commit of our template files.
 
