@@ -79,7 +79,63 @@ x > 2
 [1] FALSE FALSE  TRUE  TRUE
 ~~~
 
-Vectorised operations also work element wise on data.frames and matrices.
+Logical operations are also vectorised:
+
+~~~ {.r}
+a <- x > 3
+b <- x < 3
+~~~
+
+~~~ {.r}
+a
+~~~ 
+
+~~~ {.output}
+[1] FALSE FALSE FALSE  TRUE
+~~~
+
+~~~ {.r}
+b
+~~~ 
+
+~~~ {.output}
+[1]  TRUE  TRUE FALSE FALSE
+~~~
+
+~~~ {.r}
+a | b 
+~~~
+
+~~~ {.output}
+[1]  TRUE  TRUE FALSE  TRUE
+~~~
+
+~~~ {.r}
+a & b
+~~~
+
+> #### Tip: some useful functions for logical vectors {.callout}
+>
+> `any()` will return `TRUE` if any element of a vector is `TRUE`
+> `all()` will return `TRUE` if *all* elements of a vector are `TRUE`
+>
+
+~~~ {.output}
+[1] FALSE FALSE FALSE FALSE
+~~~
+
+Many functions also operate on element-wise on vectors:
+
+~~~ {.r}
+x <- 1:4
+sin(x)
+~~~
+
+~~~ {.output}
+[1]  0.8414710  0.9092974  0.1411200 -0.7568025
+~~~
+
+Vectorised operations also work element wise on matrices:
 
 ~~~ {.r}
 m <- matrix(1:12, nrow=3, ncol=4)
@@ -124,5 +180,43 @@ guide](http://www.statmethods.net/advstats/matrix.html)
 
 > #### Challenge 1 {.challenge}
 > 
->  
- 
+> We're interested in looking at the convergence of the
+> following sequence of fractions:
+>
+> ~~~ {.output}
+>  1/(1^2) + 1/(2^2) + 1/(3^2) + ... + 1/(n^2)
+> ~~~
+>
+> This would be tedious to type out, and impossible for
+> large numbers of N.
+>
+> 1. generate a vector of numbers from 1 to 100 and square them.
+> 2. Take the inverse of that vector.
+> 3. Sum them (hint: `sum` will add together all elements in a vector).
+> 4. Do the same thing, but for numbers 1 to 10,000
+>
+
+> #### Challenge 2 {.challenge}
+> 
+> Given the following matrix:
+> 
+> ~~~ {.r}
+> m <- matrix(1:12, nrow=3, ncol=4)
+> m
+> ~~~
+>
+> ~~~ {.output}
+>      [,1] [,2] [,3] [,4]
+> [1,]    1    4    7   10
+> [2,]    2    5    8   11
+> [3,]    3    6    9   12
+> ~~~
+>
+> Write down what you think will happen when you run:
+>
+> 1. `m ^ -1`
+> 2. `m * c(1, 0, -1)`
+> 3. `m > c(0, 20)`
+>
+> Did you get the output expected? If not, ask a helper!
+>
