@@ -178,7 +178,17 @@ m %*% t(m)   # The t() function returns the transpose of a matrix
 For more on matrix algebra, see the [Quick-R reference
 guide](http://www.statmethods.net/advstats/matrix.html)
 
+
 > #### Challenge 1 {.challenge}
+> 
+> Create a subset of the `gapminder` dataset countaining entries
+> only for Australia.
+> 
+> Calculate the mean GDP (GDP per capita multiplied by total population) 
+> over all years on record
+>
+
+> #### Challenge 2 {.challenge}
 > 
 > We're interested in looking at the convergence of the
 > following sequence of fractions:
@@ -196,7 +206,7 @@ guide](http://www.statmethods.net/advstats/matrix.html)
 > 4. Do the same thing, but for numbers 1 to 10,000
 >
 
-> #### Challenge 2 {.challenge}
+> #### Challenge 3 {.challenge}
 > 
 > Given the following matrix:
 > 
@@ -220,3 +230,4 @@ guide](http://www.statmethods.net/advstats/matrix.html)
 >
 > Did you get the output expected? If not, ask a helper!
 >
+
