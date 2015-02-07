@@ -228,7 +228,7 @@ between in files between commits.
 > * `data/` for storing read-only data
 > * `munge/` for storing preprocessing scripts
 > * `cleaned-data/` for storing read-only preprocessed data
-> * `R-funcs/` for storing any functions we write
+> * `functions/` for storing any functions we write
 > * `scripts/` for storing analysis scripts 
 > * `output/` for storing any output we generate
 >

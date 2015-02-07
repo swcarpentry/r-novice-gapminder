@@ -42,13 +42,13 @@ the material, the lessons are largely being adapted from
 4.  [Seeking help](04-seeking-help.html)
 5.  [Data structures](05-data-structures.html)
 6.  [Subsetting data](06-data-subsetting.html)
-7.  [Vectorisation](07-vectorisation.html)
-8.  [Writing data](08-writing-data.html)
-8.  Control flow
-9.  Functions
-10. Apply and task repitition
-11. Plotting
-12. Wrapping up
+7.  [Writing data](07-writing-data.html)
+8.  [Vectorisation](08-vectorisation.html)
+9.  Control flow
+10. [Functions](10-functions.html)
+11. Apply and task repitition
+12. Plotting
+13. Wrapping up
 
 <!-- Final version
 1.  [Introduction to R and RStudio](01-rstudio-intro.html)
