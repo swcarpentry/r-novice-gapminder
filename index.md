@@ -44,7 +44,7 @@ the material, the lessons are largely being adapted from
 6.  [Subsetting data](06-data-subsetting.html)
 7.  [Writing data](07-writing-data.html)
 8.  [Vectorisation](08-vectorisation.html)
-9.  Control flow
+9.  [Control flow](09-control-flow.html)
 10. [Functions](10-functions.html)
 11. Apply and task repitition
 12. Plotting
