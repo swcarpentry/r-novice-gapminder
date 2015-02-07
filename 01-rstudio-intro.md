@@ -467,6 +467,18 @@ ls()
 Not only did the command not work, but we created a new variable, `list`, which
 stored the results of the `ls` command.
 
+> #### Tip: Warnings vs. Errors {.callout} 
+>
+> Pay attention when R does something unexpected! Errors, like above,
+> are thrown when R cannot proceed with a calculation. Warnings on the
+> other hand usually mean that the function has run, but it probably
+> hasn't worked as expected.
+>
+> In both cases, the message that R prints out usually give you clues
+> how to fix a problem.
+>
+
+
 > #### Challenge 1 {.challenge}
 >
 > Draw diagrams showing what variables refer to what values after each 
