@@ -14,13 +14,11 @@ minutes: lots
 
 ### Data Types
 
-To make the best of the R language, you'll need a strong understanding of 
-the basic data types and data structures and how to operate on those.
-**Very Important** to understand because these are the things you will
-manipulate on a day-to-day basis in R. 
-
-Importantly, they are the most common source of frustration among beginners.
-
+Before we can analyse the gapminder data, we'll need to have a strong
+understanding of the basic data types and data structures. It is **Very
+Important** to understand because these are the things you will
+manipulate on a day-to-day basis in R, and are the source of most
+frustration encountered by beginners.
 
 > #### Challenge 1: Object types {.challenge}
 > 
