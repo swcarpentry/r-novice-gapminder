@@ -67,12 +67,18 @@ for loading in CSV files.
 
 > #### Miscellaneous Tips {.callout}
 >
-> 1. You can also read in files from the internet by replacing
+> 1. Another type of file you might encounter are tab-separated
+> format. To specify a tab as a separator, use `"\t"`.
+> 
+> 2. You can also read in files from the internet by replacing
 > the file paths with a web address.
 >
-> 2. You can read directly from excel spreadsheets without 
+> 3. You can read directly from excel spreadsheets without 
 > converting them to plain text by using the `xlsx` package.
 >
+
+To make sure our analysis is reproducible, we should put the code
+into a script file so we can come back to it later.
 
 > #### Challenge {.challenge}
 >
