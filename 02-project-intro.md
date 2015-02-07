@@ -8,9 +8,10 @@ minutes: 15
 > ## Learning Objectives {.objectives}
 >
 > * To be able to create self-contained projects in RStudio
->
+> * To be able to use git from within RStudio
+> 
 
-### Directory layout - the general disaster
+### Introduction
 
 The scientific process is naturally incremental, and many projects
 start life as random notes, some code, then a manuscript, and
@@ -33,26 +34,12 @@ extensions together;
 things, and relate the correct figures to the exact code
 that has been used to generate it;
 
-A good project layout helps ensure the
+A good project layout will ultimately make your life easier.
 
-* Integrity of data
-* Portability of the project
-* Easier to pick the project back up after a break
-
-### Project separation
-
-The scientific process can often be exploratory, and you may find
-yourself juggling several different projects or analyses at once.
-Eventually, you will need to return to a project, and work out what
-you've done (e.g. when writing up your thesis!). 
-
-Separating different analysis into different directories is a good idea
-for a number of reasons, as it allows you to more easily:
-
- * Archive a finished project
- * Give your code to someone else (your lab-mate, collaborator, supervisor)
- * Upload your code with your manuscript submission
- * Move between computers (for example home and work, or to a new machine when one breaks)
+* It makes it easier to ensure the integrity of your data
+* Share your code with someone else (a lab-mate, collaborator, or supervisor)
+* Allows you to easily upload your code with your manuscript submission
+* Makes it easier to pick the project back up after a break
 
 ### The RStudio solution
 
@@ -90,95 +77,65 @@ project.
 > 6. Click the "Create Project" button
 >
 
-Now if we start R in this project directory, or open this project with RStudio,
-everything will work nicely and be self-contained to this directory. Packrat
-will handle any package dependencies our analyses will have by installing them
-in a library stored in the subdirectory of our project directory. Packrat will
-keep track of version numbers, and later you can bundle up your project and 
-share it with someone else and it will install the right package versions from
-the project's library. This means we don't have to waste time and memory keeping
-track of these mundane details, and even allows us to use different versions of
-packages in different projects.
+Now when we start R in this project directory, or open this project with RStudio,
+all of our work on this project will be entirely self-contained in this directory.
+By installing `packrat` and telling RStudio to use `packrat` with this project, 
+any third-party packages will be installed in a separate library in the `packrat/`
+subdirectory of our project. This means we don't have to worry about package
+versions changing, especially when returning to a project after a long period of
+time (for example when writing up your thesis!). 
 
-First lets, download a useful package that will create a nice project structure
-for us:
+> #### Tip: packrat {.callout}
+>
+> Any libraries you already have installed outside of your project will need
+> to be reinstalled in each packrat project.
+>
+> Packrat will also analyse your script files and warn you if youre using 
+> any libraries not installed and managed inside your project. This is useful
+> if you reuse code between projects.
+>
+> Packrat also allows you to easily bundle up a project to share with someone
+> else.
+>
+> RStudio has a more detailed [packrat tutorial](http://rstudio.github.io/packrat/)
+>
 
-> #### Challenge: ProjectTemplate {.challenge}
->
-> ~~~ {.r}
-> install.packages("ProjectTemplate")
-> ~~~
->
+Now lets load the packrat library:
 
-Now lets load the ProjectTemplate and packrat packages into our R session:
-
-> #### Challenge: Loading Libraries {.challenge}
->
-> ~~~ {.r}
-> library("ProjectTemplate")
-> library("packrat")
-> ~~~
->
+~~~ {.r}
+library("packrat")
+~~~
 
 Here we've called the function `library` and used it to load those packages
 into our local namespace (our interactive R session). This means all of 
 their functions are now available to us.
 
-> #### Challenge: Project Template {.challenge}
->
-> Let's use `ProjectTemplate` to populate our directory structure:
-> 
-> ~~~ {.r}
-> # Here "." means "current working directory", just like we saw in the shell
-> # lessons 
-> create.project(".") 
-> ~~~
-> 
-> ~~~ {.output}
-> Error in .create.project.existing(template.path, project.name, merge.strategy) : 
->   Directory . not empty.  Use merge.strategy = 'allow.non.conflict' to override.
-> ~~~
 
-> #### Tip: Warnings vs. Errors {.callout}
->
-> Pay attention when R does something unexpected! Errors, like above,
-> are thrown when R cannot proceed with a calculation. Warnings on the
-> other hand usually mean that the function has run, but it probably
-> hasn't worked as expected.
->
-> In both cases, the message that R prints out usually give you clues
-> how to fix a problem.
->
+The main function you'll encounter in `packrat` is the `status` function:
 
-In this case, an error was thrown since `ProjectTemplate` is usually run
-on an empty directory. In this case though, we're using `packrat` to manage
-or project, so let's follow the advice of the error message:
+~~~ {.r}
+packrat::status()
+~~~
 
-> #### Challenge: Project Template continued {.challenge}
->
-> ~~~ {.r}
-> create.project(".", merge.strategy = 'allow.non.conflict')
-> ~~~
->
+~~~ {.output}
+Up to date.
+~~~
 
-Now we see a lot of new files and directories have appeared in our project. Let's 
-open the `README` file.
+Here I've put the name of the library in front of its function, separated by
+a `::`. This explicitly tells R to call the function from that library. This
+can be useful to make your code clearer (`status` is fairly generic function
+name and might be used by other packages), and useful when two packages have
+functions with the same names (in which case order of library loading becomes
+important), or you've written your own function or variable with the same 
+name (you should try to avoid this).
 
-You should now see a new window in your RStudio environment. This is called the 
-"scripting" pane: this is where all your scripts and files will open for editing.
+You'll want to run this periodically (after installing libraries and writing
+ew code) to make sure your project is still self-contained.
 
 ### Best practices for project organisation
 
-`ProjectTemplate` is a third-party package that attempts to create a useful
-project layout for you. There is no "best" solution for this, but it does
-provide a good starting point and guide. 
-
-`ProjectTemplate` also automates a lot of the repetitive tasks for you: library 
-loading, data cleaning, and reading in data. We will be turning these off 
-for the purposes of this workshop: 
-
-We're simply using `ProjectTemplate` to 
-show some design philosophies for effective project management.
+Although there is no "best" way to lay out a project, there are some general
+principles to adhere to that will make project management easier:
 
 #### Treat data as read only
 
@@ -186,31 +143,26 @@ This is probably the most important goal of setting up a project. Data is
 typically time consuming and/or expensive to collect. Working with them
 interactively (e.g., in Excel) where they can be modified means you are never
 sure of where the data came from, or how it has been modified since collection. 
-It's a good idea to treat your data as "read-only". Any processing and analysis
-of the data should store results or intermediate data elsewhere. `ProjectTemplate`
-sets this up for you:
-
- * The `data/` directory is where you should put your read-only data.
+It is therefore a good idea to treat your data as "read-only".
 
 #### Data Cleaning
 
 In many cases your data will be "dirty": it will need significant preprocessing
 to get into a format R (or any other programming language) will find useful. This
-task is sometimes called "data munging". You should store any scripts for data
-processing in the `munge` directory. 
-
-`ProjectTemplate` suggests storing the processed data in the `cache` folder, but
-you may find it useful to create a separate folder for your cleaned gold-standard
-versions of your datasets.
+task is sometimes called "data munging". I find it useful to store these scripts
+in a separate folder, and create a second "read-only" data folder to hold the 
+"cleaned" data sets.
 
 #### Treat generated output as disposable
 
 Anything generated by your scripts should be treated as disposable: it should 
-all be able to be regenerated from your scripts. `ProjectTemplate` creates 
-a number of folders to separate various types of output:
+all be able to be regenerated from your scripts.
 
- * `graphs`: for any figures your code produces
- * `reports`: for any tables and generated reports (using RMarkdown for example)
+There are lots of different was to manage this output. I find it useful to
+have an output folder with different sub-directories for each separate 
+analysis. This makes it easier later, as many of my analyses are exploratory
+and don't end up being used in the final project, and some of the analyses
+get shared between projects.
 
 #### Separate function definition and application
 
@@ -222,23 +174,71 @@ trial and error.
 
 When your project is new and shiny, the script file usually contains many lines
 of directly executed code. As it matures, reusable chunks get pulled into their
-own functions. Its a good idea to logically separate these files, especially if 
-you're doing lots of different analyses:
+own functions. Its a good idea to separate these into separate folders; one 
+to store useful functions that you'll reuse across analyses and projects, and
+one to store the analysis scripts.
 
- * `src`: to store your analysis scripts 
- * `lib`: to store your helper functions
+> #### Tip: avoiding duplication {.callout}
+>
+> You may find yourself using data or analysis scripts across several projects.
+> Typically you want to avoid duplication to save space and avoid having to
+> make updates to code in multiple places.
+>
+> In this case I find it useful to make "symbolic links", which are essentially
+> shortcuts to files somewhere else on a filesystem. On linux and OSX you can
+> use the `ln -s` command, and on windows you can either create a shortcut or
+> use the `mklink` command from the windows terminal.
+>
 
-#### Other folders
-
-`ProjectTemplate` generates a lot of other folders, but we won't cover them here.
-If you're interested in using ProjectTemplate you can find out more on [their
-website](http://projecttemplate.net/)
-
-
-### Version Control
+#### Version Control
 
 We also set up our project to integrate with git, putting it under version control.
 RStudio has a nicer interface to git than shell, but is very limited in what it can
 do, so you will find yourself occasionally needing to use the shell. Let's go 
 through and make an initial commit of our template files.
 
+The workspace/history pane has a tab for "Git". We can stage each file by checking the box:
+you will see a Green "A" next to stage files and folders, and yellow question marks next to
+files or folders git doesn't know about yet. RStudio also nicely shows you the difference
+between in files between commits.
+
+> #### Tip: versioning disposable output {.callout}
+>
+> Generally you do not want to version disposable output (or read-only data).
+> You should modify the `.gitignore` file to tell git to ignore these files
+> and directories.
+>
+
+> #### Challenge 1 {.challenge}
+> 
+> Use packrat to install the packages we'll be using later:
+>
+> * ggplot2
+> * plyr
+>
+> Note: if you run `packrat::status` it will warn you that these libraries
+> are unecessary because they're not used in any project code. 
+>
+
+> #### Challenge 2 {.challenge}
+>
+> Create the following directories (either through bash or RStudio)
+> for the project:
+>
+> * `data/` for storing read-only data
+> * `munge/` for storing preprocessing scripts
+> * `cleaned-data/` for storing read-only preprocessed data
+> * `R-funcs/` for storing any functions we write
+> * `scripts/` for storing analysis scripts 
+> * `output/` for storing any output we generate
+>
+
+> #### Challenge 3 {.challenge}
+> 
+> Modify the `.gitignore` file to contain `data/`, `cleaned-data` and
+> `output/` so that disposable output isn't versioned.
+>
+> Add the newly created folders to version control using 
+> the git interface.
+>
+> 
