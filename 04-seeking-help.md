@@ -10,13 +10,16 @@ minutes: 15
 > * To be able read R helpfiles for functions and special operators.
 > * To be able to use CRAN taskviews to identify packages to solve a problem.
 > * To be able to seek help from your peers
+>
 
 ### Reading Help files
 
-There are various ways to seek help on R.
+Previously, I showed you the `read.table` function for reading in files. But
+how did I know what arguments to use?
 
-To search for help on a function from a specific function that is in a
-package loaded into your namespace (your interactive R session):
+R, and every package, provide help files for functions. To search for help on a
+function from a specific function that is in a package loaded into your
+namespace (your interactive R session):
 
 ~~~ {.r}
 ?function_name
