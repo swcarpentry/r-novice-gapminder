@@ -46,24 +46,9 @@ the material, the lessons are largely being adapted from
 8.  [Vectorisation](08-vectorisation.html)
 9.  [Control flow](09-control-flow.html)
 10. [Functions](10-functions.html)
-11. Apply and task repitition
+11. [Split-apply-combine](11-plyr.html)
 12. Plotting
 13. Wrapping up
-
-<!-- Final version
-1.  [Introduction to R and RStudio](01-rstudio-intro.html)
-2.  [Project Management](02-project-intro.html)
-3.  [Reading and writing data](03-rw-data.html)
-4.  [Seeking help](04-seeking-help.html)
-5.  [Data structures](05-data-structures.html)
-6.  [Subsetting data](06-data-subsetting.html)
-7.  [Vectorisation](07-vectorisation.html)
-8.  [Control flow](08-control-flow.html)
-9.  [Functions](09-functions.html)
-10. [Apply and task repitition](10-apply.html)
-11. [Plotting](11-plotting.html)
--->
-
 
 ## Other Resources
 
