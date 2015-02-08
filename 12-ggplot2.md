@@ -33,7 +33,7 @@ ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
   geom_point()
 ~~~
 
-![][img/ggplot-ex1.png]
+![](img/ggplot-ex1.png)
 
 Ggplot is based on two principles:
 
@@ -61,7 +61,7 @@ ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
   geom_point(aes(color=continent))
 ~~~
 
-![][img/ggplot-ex2.png]
+![](img/ggplot-ex2.png)
 
 Here, we've specified that we want change the color *aesthetic* for the points layer.
 We've told it to color the points based on the continents column. We can also change
@@ -73,7 +73,7 @@ ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
   geom_point(aes(color=continent, shape=continent))
 ~~~
 
-![][img/ggplot-ex3.png]
+![](img/ggplot-ex3.png)
 
 Currently it's hard to see the relationship between the points due to some strong
 outliers in GDP per capita.
@@ -87,7 +87,7 @@ ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
   scale_y_log10()
 ~~~
 
-![][img/ggplot-ex4.png]
+![](img/ggplot-ex4.png)
 
 We can also add statistical transformations and data summarisations to our plots. We'll 
 add the fits of linear models for each group by adding the `geom_smooth` geometry layer:
@@ -98,7 +98,7 @@ ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
   scale_y_log10() + geom_smooth(method="lm")
 ~~~
 
-![][img/ggplot-ex5.png]
+![](img/ggplot-ex5.png)
 
 Whoops that didn't quite do what we wanted. That's because the grouping has only been
 applied to the `geom_point` layer. Let's change that so it's a global option:
@@ -108,7 +108,7 @@ ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap, color=continent)) +
   geom_point() + scale_y_log10() + geom_smooth(method="lm")
 ~~~
 
-![][img/ggplot-ex6.png]
+![](img/ggplot-ex6.png)
 
 It's still hard to see what's going on, That's because we're currently plotting all
 years of collection. Another useful thing we can do with ggplot is *facet* our data:
@@ -140,7 +140,7 @@ ggplot(data= gapminder, aes(x=year, y=lifeExp, color=country)) +
   geom_line() + facet_grid(. ~ continent) + guides(fill=FALSE)
 ~~~
 
-![][img/ggplot-ex7.png]
+![](img/ggplot-ex7.png)
 
 To save an image, we can either use the save button inside of RStudio,
 or from the interactive console (or script) using the `ggsave` function:
