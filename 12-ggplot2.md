@@ -7,7 +7,13 @@ minutes: 15
 
 > # Learning Objectives {.objectives}
 >
-> *
+> * To be able to use ggplot2 to generate publication quality graphics
+> * To understand the basics of the grammar of graphics:
+>   - The aesthetics layer
+>   - The geometry layer
+>   - Adding statistics
+>   - Transforming scales
+>   - Coloring or panelling by groups.
 >
 
 Plotting our data is one of the best ways to
