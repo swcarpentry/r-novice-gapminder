@@ -164,4 +164,26 @@ useful.
 
 [ref]: http://docs.ggplot2.org/current/
 
+> #### Challenge 1 {.challenge}
+>
+> Create density plots of GDP per capita, colored by continent.
+> Hints:
+>  - `ggplot` to set up the basic plot
+>  - `aes` to tell ggplot what the axes of the plot are (you will only need the x-axis)
+>  - The geometry layer for density plots is `geom_density`
+>  - the color
+> 
+> Advanced:
+>  - use the `fill` aesthetic will color the area under the curve
+>  - transform the scale of the x-axis to more easily visualise the difference 
+>    between continents
+>
+
+> #### Challenge 2 {.challenge}
+>
+> Add a facet layer to panel the density plots by year. Hint: [facet_wrap][fw]
+> will be more useful than `facet_grid`
+>
+
+[fw]: http://docs.ggplot2.org/current/facet_wrap.html
 

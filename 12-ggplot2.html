@@ -108,6 +108,15 @@
 <p>To save an image, we can either use the save button inside of RStudio, or from the interactive console (or script) using the <code>ggsave</code> function:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggsave</span>(<span class="st">&quot;lifeExp-vs-time.pdf&quot;</span>)</code></pre>
 <p>This is just a taste of what you can do with <code>ggplot2</code>. A more detailed tutorial can be found <a href="ggplot.pdf">here</a>. Once you get a handle of the different layers and the grammar of graphics, the <a href="http://docs.ggplot2.org/current/">reference list of functions</a> will be useful.</p>
+<div id="challenge-1" class="challenge">
+<h4>Challenge 1</h4>
+<p>Create density plots of GDP per capita, colored by continent. Hints: - <code>ggplot</code> to set up the basic plot - <code>aes</code> to tell ggplot what the axes of the plot are (you will only need the x-axis) - The geometry layer for density plots is <code>geom_density</code> - the color</p>
+<p>Advanced: - use the <code>fill</code> aesthetic will color the area under the curve - transform the scale of the x-axis to more easily visualise the difference between continents</p>
+</div>
+<div id="challenge-2" class="challenge">
+<h4>Challenge 2</h4>
+<p>Add a facet layer to panel the density plots by year. Hint: <a href="http://docs.ggplot2.org/current/facet_wrap.html">facet_wrap</a> will be more useful than <code>facet_grid</code></p>
+</div>
         </div>
       </div>
       <div class="footer">
