@@ -41,7 +41,9 @@
 <p>Let's start off with an example:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="kw">aes</span>(<span class="dt">x =</span> lifeExp, <span class="dt">y =</span> gdpPercap)) +
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
-<p>[][img/ggplot-ex1.png]</p>
+<div class="figure">
+<img src="img/ggplot-ex1.png" />
+</div>
 <p>Ggplot is based on two principles:</p>
 <ul>
 <li>a grammar of graphics: a set of terms to define the basic components of a plot that can be used to produce figures in a coherent, consistent, and flexible way</li>
@@ -52,26 +54,36 @@
 <p>Next, lets color the points by continent:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="kw">aes</span>(<span class="dt">x =</span> lifeExp, <span class="dt">y =</span> gdpPercap)) +
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color=</span>continent))</code></pre>
-<p>[][img/ggplot-ex2.png]</p>
+<div class="figure">
+<img src="img/ggplot-ex2.png" />
+</div>
 <p>Here, we've specified that we want change the color <em>aesthetic</em> for the points layer. We've told it to color the points based on the continents column. We can also change the shape fo the points:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="kw">aes</span>(<span class="dt">x =</span> lifeExp, <span class="dt">y =</span> gdpPercap)) +
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color=</span>continent, <span class="dt">shape=</span>continent))</code></pre>
-<p>[][img/ggplot-ex3.png]</p>
+<div class="figure">
+<img src="img/ggplot-ex3.png" />
+</div>
 <p>Currently it's hard to see the relationship between the points due to some strong outliers in GDP per capita.</p>
 <p>We can change the scale of units on the y axis using the <em>scale</em> functions. These control the mapping between the data and the aesthetics:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="kw">aes</span>(<span class="dt">x =</span> lifeExp, <span class="dt">y =</span> gdpPercap)) +
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color=</span>continent, <span class="dt">shape=</span>continent)) +
 <span class="st">  </span><span class="kw">scale_y_log10</span>()</code></pre>
-<p>[][img/ggplot-ex4.png]</p>
+<div class="figure">
+<img src="img/ggplot-ex4.png" />
+</div>
 <p>We can also add statistical transformations and data summarisations to our plots. We'll add the fits of linear models for each group by adding the <code>geom_smooth</code> geometry layer:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="kw">aes</span>(<span class="dt">x =</span> lifeExp, <span class="dt">y =</span> gdpPercap)) +
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color=</span>continent, <span class="dt">shape=</span>continent)) +
 <span class="st">  </span><span class="kw">scale_y_log10</span>() +<span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>)</code></pre>
-<p>[][img/ggplot-ex5.png]</p>
+<div class="figure">
+<img src="img/ggplot-ex5.png" />
+</div>
 <p>Whoops that didn't quite do what we wanted. That's because the grouping has only been applied to the <code>geom_point</code> layer. Let's change that so it's a global option:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="kw">aes</span>(<span class="dt">x =</span> lifeExp, <span class="dt">y =</span> gdpPercap, <span class="dt">color=</span>continent)) +
 <span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">scale_y_log10</span>() +<span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>)</code></pre>
-<p>[][img/ggplot-ex6.png]</p>
+<div class="figure">
+<img src="img/ggplot-ex6.png" />
+</div>
 <p>It's still hard to see what's going on, That's because we're currently plotting all years of collection. Another useful thing we can do with ggplot is <em>facet</em> our data: create panels based on different groups.</p>
 <p>Let's take a look at how life expectancy has changed over time for each country, and create a panel, or facet, for each continent:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data=</span> gapminder, <span class="kw">aes</span>(<span class="dt">x=</span>year, <span class="dt">y=</span>lifeExp, <span class="dt">color=</span>country)) +
@@ -81,7 +93,9 @@
 <p>Currently, there's too many different countries for the legend to render properly. Since we don't care so much about the particulars of each country, lets turn the legend off:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data=</span> gapminder, <span class="kw">aes</span>(<span class="dt">x=</span>year, <span class="dt">y=</span>lifeExp, <span class="dt">color=</span>country)) +
 <span class="st">  </span><span class="kw">geom_line</span>() +<span class="st"> </span><span class="kw">facet_grid</span>(. ~<span class="st"> </span>continent) +<span class="st"> </span><span class="kw">guides</span>(<span class="dt">fill=</span><span class="ot">FALSE</span>)</code></pre>
-<p>[][img/ggplot-ex7.png]</p>
+<div class="figure">
+<img src="img/ggplot-ex7.png" />
+</div>
 <p>To save an image, we can either use the save button inside of RStudio, or from the interactive console (or script) using the <code>ggsave</code> function:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggsave</span>(<span class="st">&quot;lifeExp-vs-time.pdf&quot;</span>)</code></pre>
 <p>This is just a taste of what you can do with <code>ggplot2</code>. A more detailed tutorial can be found <a href="ggplot.pdf">here</a>. Once you get a handle of the different layers and the grammar of graphics, the <a href="http://docs.ggplot2.org/current/">reference list of functions</a> will be useful.</p>
