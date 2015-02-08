@@ -122,6 +122,8 @@ ggplot(data= gapminder, aes(x=year, y=lifeExp, color=country)) +
   geom_line() + facet_grid(. ~ continent)
 ~~~
 
+![](img/ggplot-ex7.png)
+
 We can see nice upward trends across all countries across all continents, with a 
 few unfortunate downward spikes corresponding to wars.
 
@@ -137,10 +139,10 @@ lets turn the legend off:
 
 ~~~ {.r}
 ggplot(data= gapminder, aes(x=year, y=lifeExp, color=country)) +
-  geom_line() + facet_grid(. ~ continent) + guides(fill=FALSE)
+  geom_line() + facet_grid(. ~ continent) + theme(legend.position="none")
 ~~~
 
-![](img/ggplot-ex7.png)
+![](img/ggplot-ex8.png)
 
 To save an image, we can either use the save button inside of RStudio,
 or from the interactive console (or script) using the `ggsave` function:

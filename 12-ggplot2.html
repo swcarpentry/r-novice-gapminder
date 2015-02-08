@@ -88,13 +88,16 @@
 <p>Let's take a look at how life expectancy has changed over time for each country, and create a panel, or facet, for each continent:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data=</span> gapminder, <span class="kw">aes</span>(<span class="dt">x=</span>year, <span class="dt">y=</span>lifeExp, <span class="dt">color=</span>country)) +
 <span class="st">  </span><span class="kw">geom_line</span>() +<span class="st"> </span><span class="kw">facet_grid</span>(. ~<span class="st"> </span>continent)</code></pre>
+<div class="figure">
+<img src="img/ggplot-ex7.png" />
+</div>
 <p>We can see nice upward trends across all countries across all continents, with a few unfortunate downward spikes corresponding to wars.</p>
 <p>The <code>facet_grid</code> layer took a formula as its argument, the <code>.</code> corresponds to &quot;all variables in the data&quot;, and by putting &quot;continent&quot; on the right of the formular, we told ggplot to arrange the panels along the x axis. If we put &quot;continent&quot; in the y-position of the formula, the panels would have been arranged along the y-axis.</p>
 <p>Currently, there's too many different countries for the legend to render properly. Since we don't care so much about the particulars of each country, lets turn the legend off:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data=</span> gapminder, <span class="kw">aes</span>(<span class="dt">x=</span>year, <span class="dt">y=</span>lifeExp, <span class="dt">color=</span>country)) +
-<span class="st">  </span><span class="kw">geom_line</span>() +<span class="st"> </span><span class="kw">facet_grid</span>(. ~<span class="st"> </span>continent) +<span class="st"> </span><span class="kw">guides</span>(<span class="dt">fill=</span><span class="ot">FALSE</span>)</code></pre>
+<span class="st">  </span><span class="kw">geom_line</span>() +<span class="st"> </span><span class="kw">facet_grid</span>(. ~<span class="st"> </span>continent) +<span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>)</code></pre>
 <div class="figure">
-<img src="img/ggplot-ex7.png" />
+<img src="img/ggplot-ex8.png" />
 </div>
 <p>To save an image, we can either use the save button inside of RStudio, or from the interactive console (or script) using the <code>ggsave</code> function:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggsave</span>(<span class="st">&quot;lifeExp-vs-time.pdf&quot;</span>)</code></pre>
