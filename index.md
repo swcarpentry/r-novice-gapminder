@@ -48,7 +48,7 @@ the material, the lessons are largely being adapted from
 10. [Functions](10-functions.html)
 11. [Split-apply-combine](11-plyr.html)
 12. Plotting
-13. Wrapping up
+13. [Wrapping up](13-wrap-up.html)
 
 ## Other Resources
 
