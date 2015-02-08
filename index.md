@@ -47,7 +47,7 @@ the material, the lessons are largely being adapted from
 9.  [Control flow](09-control-flow.html)
 10. [Functions](10-functions.html)
 11. [Split-apply-combine](11-plyr.html)
-12. Plotting
+12. [Plotting](12-ggplot2.html)
 13. [Wrapping up](13-wrap-up.html)
 
 ## Other Resources
