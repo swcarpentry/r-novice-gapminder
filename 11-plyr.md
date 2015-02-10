@@ -328,7 +328,7 @@ d_ply(
 > #### Challenge 1 {.challenge}
 >
 > Calculate the average life expectancy per continent. Which has the longest?
-> which had the shortest?
+> Which had the shortest?
 >
 
 > #### Challenge 2 {.challenge}
