@@ -44,21 +44,21 @@ if (x >= 10) {
 ~~~
 
 
-> #### Tip: psuedo-random numbers {.callout}
+> #### Tip: pseudo-random numbers {.callout}
 >
 > In the above case, the function `rpois` generates a random number following a
 > Poisson distribution with a mean (i.e. lambda) of 8. The function `set.seed`
 > guarantees that all machines that use the seed 10 as an input, will generate
 > the exact same 'pseudo-random' number ([more about pseudo-random
 > numbers](http://en.wikibooks.org/wiki/R_Programming/Random_Number_Generation)).
-> Now, looking at at x we see that it takes the value 8 (you should get the exact
+> Now, looking at x we see that it takes the value 8 (you should get the exact
 > same number).
 >
 
 
 **Important:** when R evaluates the condition inside `if` statements, it is
 looking for a logical element, i.e., `TRUE` or `FALSE`. This can cause some
-headache for beginners. For example:
+headaches for beginners. For example:
 
 ~~~ {.r}
 x  <-  4 == 3
@@ -78,9 +78,9 @@ x
 [1] FALSE
 ~~~
 
-Also, be careful if you a vector with more than one logical elements, the
-function `if` will still run, but will only evaluate the condition of first
-element 
+Also, be careful if you have a vector with more than one logical element.
+The function `if` will still run, but will only evaluate the condition in the first
+element.
 
 ~~~ {.r}
 set.seed(1)
@@ -105,10 +105,11 @@ The reason for that is because the first element in `y`, `y[1]` is `FALSE`
 action within the condition is not evaluated. Such cases where multiple
 comparisons/logical statements are contained within one single vector are not
 uncommon, and I suspect you are probably looking for the functions `any` or
-`all` before running an `if` statement. `any` will return TRUE if at least one
-TRUE value is found within a vector, otherwise will return `FALSE`. The
+`all` before running an `if` statement.
+The `any` function will return TRUE if at least one
+TRUE value is found within a vector, otherwise it will return `FALSE`. The
 function `all`, as the name suggests, will only return `TRUE` if all values in
-the vector are `TRUE`. We can build on the above example to make this clear -
+the vector are `TRUE`. We can build on the above example to make this clear ---
 suppose that we want to make sure that we avoid the warning message, and, on
 top of that, print a more informative message:
 
@@ -118,7 +119,7 @@ if(any(y)) {
 }
 ~~~
 
-Notice that now returns an Error message
+Notice that now returns an Error message:
 
 ~~~ {.r}
 Error: 3 and 16 found in x
@@ -135,12 +136,12 @@ that by yourself.
 ### Repeating operations
 
 Just as we saw in the shell lessons earlier, you can repeat operations in `R`
-using `for` loops. It is the most flexible of looping operations, but therefore
-also the hardest to use correctly. For loops should be avoided unless the order
-of iteration is important: i.e. the calcaulation at each iteration depends on
-the results of the previous.
+using `for` loops. This is the most flexible of looping operations, but therefore
+also the hardest to use correctly. Avoid using `for` loops unless the order
+of iteration is important: i.e. the calculation at each iteration depends on
+the results of previous iterations.
 
-When the order of iteration **is** important, we can use loops.  The basic
+When the order of iteration *is* important, we can use loops. The basic
 structure of a `for` loop is:
 
 ~~~ {.r}
@@ -160,7 +161,7 @@ for(i in 1:10){
 The `1:10` bit is basically just creating a vector on the fly; you can iterate
 over any other vector as well.
 
-We can use a for loop within another for loop to iterate over two things at
+We can use a `for` loop within another for loop to iterate over two things at
 once (e.g., rows and columns of a matrix).
 
 ~~~ {.r}
@@ -236,7 +237,7 @@ while(z > 0.1){
 
 > #### Challenge 1 {.challenge}
 >
-> Write a script that loops through each continent and prints out
+> Write a script that loops through the `gapfinder` data by continent and prints out
 > whether the mean life expectancy is smaller or larger than 50
 > years.
 >
