@@ -26,20 +26,21 @@ Most people tend to organize their projects like this:
 
 There are many reasons why we should *ALWAYS* avoid this:
 
-1. It is really hard to tell what version of your data is
-the original and what is the modified;
+1. It is really hard to tell which version of your data is
+the original and which is the modified;
 2. It gets really messy because it mixes files with various
 extensions together;
 3. It probably takes you a lot of time to actually find
 things, and relate the correct figures to the exact code
 that has been used to generate it;
 
-A good project layout will ultimately make your life easier.
+A good project layout will ultimately make your life easier:
 
-* It makes it easier to ensure the integrity of your data
-* Share your code with someone else (a lab-mate, collaborator, or supervisor)
-* Allows you to easily upload your code with your manuscript submission
-* Makes it easier to pick the project back up after a break
+* It will help ensure the integrity of your data;
+* It makes it simpler to share your code with someone else
+(a lab-mate, collaborator, or supervisor);
+* It allows you to easily upload your code with your manuscript submission;
+* It makes it easier to pick the project back up after a break.
 
 ### The RStudio solution
 
@@ -52,7 +53,7 @@ project.
 > #### Challenge: Installing Packages {.challenge} 
 > 
 > The first thing we're going to do is to install a third-party package, `packrat`. 
-> This is allows RStudio to create self-contained packages: any further packages 
+> This allows RStudio to create self-contained packages: any further packages 
 > you download will be contained within their respective projects. This is really 
 > useful, as different versions of packages can change results as new knowledge is 
 > gained. This allows you to easily keep track of the version used for your analyses. 
@@ -69,12 +70,12 @@ project.
 > Now we're going to create a new project in RStudio:
 > 
 > 1. Click the "File" menu button, then "New Project".
-> 2. Click "New Directory"
-> 3. Click "Empty Project"
-> 4. Type in the name of the directory to store your project, e.g. "my_project"
+> 2. Click "New Directory".
+> 3. Click "Empty Project".
+> 4. Type in the name of the directory to store your project, e.g. "my_project".
 > 5. Make sure that the checkboxes for "Create a git repository" and "Use
->    packrat with this project" are selected >
-> 6. Click the "Create Project" button
+>    packrat with this project" are selected.
+> 6. Click the "Create Project" button.
 >
 
 Now when we start R in this project directory, or open this project with RStudio,
@@ -130,7 +131,7 @@ important), or you've written your own function or variable with the same
 name (you should try to avoid this).
 
 You'll want to run this periodically (after installing libraries and writing
-ew code) to make sure your project is still self-contained.
+new code) to make sure your project is still self-contained.
 
 ### Best practices for project organisation
 
@@ -174,7 +175,7 @@ trial and error.
 
 When your project is new and shiny, the script file usually contains many lines
 of directly executed code. As it matures, reusable chunks get pulled into their
-own functions. Its a good idea to separate these into separate folders; one 
+own functions. It's a good idea to separate these into separate folders; one 
 to store useful functions that you'll reuse across analyses and projects, and
 one to store the analysis scripts.
 
@@ -200,7 +201,7 @@ through and make an initial commit of our template files.
 The workspace/history pane has a tab for "Git". We can stage each file by checking the box:
 you will see a Green "A" next to stage files and folders, and yellow question marks next to
 files or folders git doesn't know about yet. RStudio also nicely shows you the difference
-between in files between commits.
+between files from different commits.
 
 > #### Tip: versioning disposable output {.callout}
 >
