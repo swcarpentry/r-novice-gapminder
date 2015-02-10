@@ -19,7 +19,7 @@ If we only had one data set to analyze, it would probably be faster to load the
 file into a spreadsheet and use that to plot simple statistics. However, the 
 gapminder data is updated periodically, and we may want to pull in that new 
 information later and re-run our analysis again. We may also obtain similar data
-froma different source in the future.
+from a different source in the future.
 
 In this lesson, we'll learn how to write a function so that we can repeat
 several operations with a single command.
@@ -45,7 +45,7 @@ The list of argument names are containted within parentheses.
 Next, the body of the function -- the statements executed when you
 call the function -- is contained within curly braces (`{}`). 
 
-We've indented the statememnts in the body by two spaces. This makes
+We've indented the statements in the body by two spaces. This makes
 the code easier to read but does not affect how it operates.
 
 When we call the function, the values we pass to it are assigned 
@@ -55,7 +55,7 @@ function.
 Inside the function, we use the `return` function to send back the 
 result. This return function is optional: R will automatically 
 return the results of whatever command is executed on the last line
-of the body of the function.
+of the function.
 
 Let's `source` our script of function definitions and check that it
 works on the gapminder data:
@@ -94,13 +94,14 @@ source("functions/functions-lesson.R")
 ~~~
 
 Ok, so there's a lot going on in this function now. In plain english,
-the function now subsets the provided data by year, if the year argument isn't 
-empty, then subsets that by country, if the country argument isn't empty,
-then calculates the GDP, just for that subset. It then adds it as a new
-column to the subsetted data, and returns that subset, because it's more
-informative than just getting a vector of numbers.
+the function now subsets the provided data by year if the year argument isn't 
+empty, then subsets the result by country if the country argument isn't empty.
+Then it calculates the GDP for whatever subset emerges from the previous two steps.
+The function then adds the GDP as a new column to the subsetted data and returns
+this as the final result.
+You can see that the output is much more informative than just getting a vector of numbers.
 
-Lets take a look:
+Let's take a look at what happens when we specify the year:
 
 ~~~ {.r}
 head(calcGDP(gapminder, year=2007))
@@ -116,7 +117,7 @@ head(calcGDP(gapminder, year=2007))
 72   Australia 2007 20434176   Oceania  81.235 34435.3674 703658358894
 ~~~
 
-A specific country:
+Or for a specific country:
 
 ~~~ {.r}
 calcGDP(gapminder, country="Australia")
@@ -155,10 +156,10 @@ Let's walk through the body of the function:
 calcGDP <- function(dat, year=NULL, country=NULL) {
 ~~~
 
-Here we've added two argumets, `year`, and `country. We've set 
+Here we've added two argumets, `year`, and `country`. We've set 
 *default arguments* for both as `NULL` using the `=` operator
 in the function definition. This means that those arguments will
-take on those values, unless the user specifies otherwise.
+take on those values unless the user specifies otherwise.
 
 ~~~ {.r}
   if(!is.null(year)) {
@@ -169,17 +170,17 @@ take on those values, unless the user specifies otherwise.
   }
 ~~~
 
-Here, we check whether each additional argument is set to null,
-then overwrite the dataset stored in `dat` with the corresponding
-subset of the data. 
+Here, we check whether each additional argument is set to `null`,
+and whenever they're not `null` overwrite the dataset stored in `dat` with 
+a subset given by the non-`null` argument.
 
-I did this so that our function is more flexible for later: we 
+I did this so that our function is more flexible for later. We 
 can ask it to calculate the GDP for:
 
- * The whole dataset
- * a single year
- * a single country
- * a single combination of year and country
+ * The whole dataset;
+ * A single year;
+ * A single country;
+ * A single combination of year and country.
 
 By using `%in%` instead, we can also give multiple years or countries
 to those arguments.
@@ -213,10 +214,10 @@ to those arguments.
 }
 ~~~
 
-Finally, we caculated the GDP on our new subset, and created a new 
+Finally, we calculated the GDP on our new subset, and created a new 
 data frame with that column added. This means when we call the function
-later we can see what the GDP values belong to, rather than the first
-instance where we just got a vector of numbers.
+later we can see the context for the returned GDP values,
+which is much better than in our first attempt where we just got a vector of numbers.
 
 > #### Challenge 1 {.challenge}
 >
