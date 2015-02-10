@@ -51,11 +51,11 @@ if (x &gt;=<span class="st"> </span><span class="dv">10</span>) {
     <span class="kw">print</span>(<span class="st">&quot;x is smaller than 5&quot;</span>)
 }</code></pre>
 <pre class="output"><code>[1] &quot;x is greater or equal than 5&quot;</code></pre>
-<div id="tip-psuedo-random-numbers" class="callout">
-<h4>Tip: psuedo-random numbers</h4>
-<p>In the above case, the function <code>rpois</code> generates a random number following a Poisson distribution with a mean (i.e. lambda) of 8. The function <code>set.seed</code> guarantees that all machines that use the seed 10 as an input, will generate the exact same 'pseudo-random' number (<a href="http://en.wikibooks.org/wiki/R_Programming/Random_Number_Generation">more about pseudo-random numbers</a>). Now, looking at at x we see that it takes the value 8 (you should get the exact same number).</p>
+<div id="tip-pseudo-random-numbers" class="callout">
+<h4>Tip: pseudo-random numbers</h4>
+<p>In the above case, the function <code>rpois</code> generates a random number following a Poisson distribution with a mean (i.e. lambda) of 8. The function <code>set.seed</code> guarantees that all machines that use the seed 10 as an input, will generate the exact same 'pseudo-random' number (<a href="http://en.wikibooks.org/wiki/R_Programming/Random_Number_Generation">more about pseudo-random numbers</a>). Now, looking at x we see that it takes the value 8 (you should get the exact same number).</p>
 </div>
-<p><strong>Important:</strong> when R evaluates the condition inside <code>if</code> statements, it is looking for a logical element, i.e., <code>TRUE</code> or <code>FALSE</code>. This can cause some headache for beginners. For example:</p>
+<p><strong>Important:</strong> when R evaluates the condition inside <code>if</code> statements, it is looking for a logical element, i.e., <code>TRUE</code> or <code>FALSE</code>. This can cause some headaches for beginners. For example:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x  &lt;-<span class="st">  </span><span class="dv">4</span> ==<span class="st"> </span><span class="dv">3</span>
 if (x) {
     <span class="st">&quot;4 equals 3&quot;</span>
@@ -64,7 +64,7 @@ if (x) {
 <pre class="sourceCode r"><code class="sourceCode r">x  &lt;-<span class="st">  </span><span class="dv">4</span> ==<span class="st"> </span><span class="dv">3</span>
 x</code></pre>
 <pre class="output"><code>[1] FALSE</code></pre>
-<p>Also, be careful if you a vector with more than one logical elements, the function <code>if</code> will still run, but will only evaluate the condition of first element</p>
+<p>Also, be careful if you have a vector with more than one logical element. The function <code>if</code> will still run, but will only evaluate the condition in the first element.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1</span>)
 x  &lt;-<span class="st">  </span><span class="kw">round</span>(<span class="kw">rnorm</span>(<span class="dv">30</span>, <span class="dt">mean=</span><span class="dv">15</span>, <span class="dt">sd=</span><span class="dv">15</span>))
 y  &lt;-<span class="st">  </span>x %in%<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">16</span>)
@@ -76,16 +76,16 @@ if(y) {
 <pre class="output"><code>Warning message:
 In if (y) { :
   the condition has length &gt; 1 and only the first element will be used</code></pre>
-<p>The reason for that is because the first element in <code>y</code>, <code>y[1]</code> is <code>FALSE</code> (i.e. <code>x[1]</code> is 6 and therefore is not contained within <code>c(3, 5, 16)</code>), so the action within the condition is not evaluated. Such cases where multiple comparisons/logical statements are contained within one single vector are not uncommon, and I suspect you are probably looking for the functions <code>any</code> or <code>all</code> before running an <code>if</code> statement. <code>any</code> will return TRUE if at least one TRUE value is found within a vector, otherwise will return <code>FALSE</code>. The function <code>all</code>, as the name suggests, will only return <code>TRUE</code> if all values in the vector are <code>TRUE</code>. We can build on the above example to make this clear - suppose that we want to make sure that we avoid the warning message, and, on top of that, print a more informative message:</p>
+<p>The reason for that is because the first element in <code>y</code>, <code>y[1]</code> is <code>FALSE</code> (i.e. <code>x[1]</code> is 6 and therefore is not contained within <code>c(3, 5, 16)</code>), so the action within the condition is not evaluated. Such cases where multiple comparisons/logical statements are contained within one single vector are not uncommon, and I suspect you are probably looking for the functions <code>any</code> or <code>all</code> before running an <code>if</code> statement. The <code>any</code> function will return TRUE if at least one TRUE value is found within a vector, otherwise it will return <code>FALSE</code>. The function <code>all</code>, as the name suggests, will only return <code>TRUE</code> if all values in the vector are <code>TRUE</code>. We can build on the above example to make this clear --- suppose that we want to make sure that we avoid the warning message, and, on top of that, print a more informative message:</p>
 <pre class="sourceCode r"><code class="sourceCode r">if(<span class="kw">any</span>(y)) {
   <span class="kw">stop</span>(<span class="kw">paste0</span>(<span class="kw">paste0</span>(x[y], <span class="dt">collapse=</span><span class="st">&#39; and &#39;</span>), <span class="st">&#39; found in x&#39;</span>))
 }</code></pre>
-<p>Notice that now returns an Error message</p>
+<p>Notice that now returns an Error message:</p>
 <pre class="sourceCode r"><code class="sourceCode r">Error:<span class="st"> </span><span class="dv">3</span> and <span class="dv">16</span> found in x</code></pre>
 <p>The reason for that is because the function <code>stop</code> was evaluated. This function is widely used in what's known as <em>defensive programming</em> - if you anticipate a potential problem in your data manipulation/analysis within a function, the function can stop if this certain problem occurs and print an informative error message. The same idea works for the function <code>warning</code>. We could have also created the different statements with the function <code>all</code> instead of <code>any</code>. Try that by yourself.</p>
 <h3 id="repeating-operations">Repeating operations</h3>
-<p>Just as we saw in the shell lessons earlier, you can repeat operations in <code>R</code> using <code>for</code> loops. It is the most flexible of looping operations, but therefore also the hardest to use correctly. For loops should be avoided unless the order of iteration is important: i.e. the calcaulation at each iteration depends on the results of the previous.</p>
-<p>When the order of iteration <strong>is</strong> important, we can use loops. The basic structure of a <code>for</code> loop is:</p>
+<p>Just as we saw in the shell lessons earlier, you can repeat operations in <code>R</code> using <code>for</code> loops. This is the most flexible of looping operations, but therefore also the hardest to use correctly. Avoid using <code>for</code> loops unless the order of iteration is important: i.e. the calculation at each iteration depends on the results of previous iterations.</p>
+<p>When the order of iteration <em>is</em> important, we can use loops. The basic structure of a <code>for</code> loop is:</p>
 <pre class="sourceCode r"><code class="sourceCode r">for(iterator in set of values){
   do a thing
 }</code></pre>
@@ -94,7 +94,7 @@ In if (y) { :
   <span class="kw">print</span>(i)
 }</code></pre>
 <p>The <code>1:10</code> bit is basically just creating a vector on the fly; you can iterate over any other vector as well.</p>
-<p>We can use a for loop within another for loop to iterate over two things at once (e.g., rows and columns of a matrix).</p>
+<p>We can use a <code>for</code> loop within another for loop to iterate over two things at once (e.g., rows and columns of a matrix).</p>
 <pre class="sourceCode r"><code class="sourceCode r">for(i in <span class="dv">1</span>:<span class="dv">5</span>){
   for(j in <span class="dv">1</span>:<span class="dv">5</span>){
     <span class="kw">print</span>(<span class="kw">paste</span>(i,j))
@@ -127,7 +127,7 @@ while(z &gt;<span class="st"> </span><span class="fl">0.1</span>){
 }</code></pre>
 <div id="challenge-1" class="challenge">
 <h4>Challenge 1</h4>
-<p>Write a script that loops through each continent and prints out whether the mean life expectancy is smaller or larger than 50 years.</p>
+<p>Write a script that loops through the <code>gapfinder</code> data by continent and prints out whether the mean life expectancy is smaller or larger than 50 years.</p>
 </div>
 <div id="challenge-2" class="challenge">
 <h4>Challenge 2</h4>

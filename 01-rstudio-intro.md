@@ -35,7 +35,7 @@ When you first open RStudio, you will be greeted by three panels:
   * Workspace/History (tabbed in upper right)
   * Files/Plots/Packages/Help (tabbed in lower right)
 
-When open files, such as R scripts, a scripting panel will also open in the top left.
+Once you open files, such as R scripts, a scripting panel will also open in the top left.
 
 I'm going to reorganise these panes in such a way that makes them easier to see while
 teaching.
@@ -375,7 +375,7 @@ ls()
 > #### Tip: hidden objects {.callout}
 > 
 > Just like in the shell, `ls` will hide any variables or functions starting
-> with a "." by default. To list all objects, typr `ls(all.names=TRUE)` 
+> with a "." by default. To list all objects, type `ls(all.names=TRUE)` 
 > instead
 >
 

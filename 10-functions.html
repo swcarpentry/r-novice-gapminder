@@ -40,7 +40,7 @@
 <li>Explain why we should divide programs into small, single-purpose functions.</li>
 </ul>
 </div>
-<p>If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot simple statistics. However, the gapminder data is updated periodically, and we may want to pull in that new information later and re-run our analysis again. We may also obtain similar data froma different source in the future.</p>
+<p>If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot simple statistics. However, the gapminder data is updated periodically, and we may want to pull in that new information later and re-run our analysis again. We may also obtain similar data from a different source in the future.</p>
 <p>In this lesson, we'll learn how to write a function so that we can repeat several operations with a single command.</p>
 <h3 id="defining-a-function">Defining a function</h3>
 <p>Let's open a new R script file in the <code>functions/</code> directory and define a a function that calculates the Gross Domestic Product of a nation from the data available in our dataset:</p>
@@ -51,9 +51,9 @@ calcGDP &lt;-<span class="st"> </span>function(dat) {
   <span class="kw">return</span>(gdp)
 }</code></pre>
 <p>We define <code>calcGDP</code> by assigning it to the output of <code>function</code>. The list of argument names are containted within parentheses. Next, the body of the function -- the statements executed when you call the function -- is contained within curly braces (<code>{}</code>).</p>
-<p>We've indented the statememnts in the body by two spaces. This makes the code easier to read but does not affect how it operates.</p>
+<p>We've indented the statements in the body by two spaces. This makes the code easier to read but does not affect how it operates.</p>
 <p>When we call the function, the values we pass to it are assigned to the arguments, which become variables inside the body of the function.</p>
-<p>Inside the function, we use the <code>return</code> function to send back the result. This return function is optional: R will automatically return the results of whatever command is executed on the last line of the body of the function.</p>
+<p>Inside the function, we use the <code>return</code> function to send back the result. This return function is optional: R will automatically return the results of whatever command is executed on the last line of the function.</p>
 <p>Let's <code>source</code> our script of function definitions and check that it works on the gapminder data:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;functions/functions-lesson.R&quot;</span>)
 <span class="kw">calcGDP</span>(<span class="kw">head</span>(gapminder))</code></pre>
@@ -74,8 +74,8 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
   <span class="kw">return</span>(new)
 }</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;functions/functions-lesson.R&quot;</span>)</code></pre>
-<p>Ok, so there's a lot going on in this function now. In plain english, the function now subsets the provided data by year, if the year argument isn't empty, then subsets that by country, if the country argument isn't empty, then calculates the GDP, just for that subset. It then adds it as a new column to the subsetted data, and returns that subset, because it's more informative than just getting a vector of numbers.</p>
-<p>Lets take a look:</p>
+<p>Ok, so there's a lot going on in this function now. In plain english, the function now subsets the provided data by year if the year argument isn't empty, then subsets the result by country if the country argument isn't empty. Then it calculates the GDP for whatever subset emerges from the previous two steps. The function then adds the GDP as a new column to the subsetted data and returns this as the final result. You can see that the output is much more informative than just getting a vector of numbers.</p>
+<p>Let's take a look at what happens when we specify the year:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">calcGDP</span>(gapminder, <span class="dt">year=</span><span class="dv">2007</span>))</code></pre>
 <pre class="output"><code>       country year      pop continent lifeExp  gdpPercap          gdp
 12 Afghanistan 2007 31889923      Asia  43.828   974.5803  31079291949
@@ -84,7 +84,7 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 48      Angola 2007 12420476    Africa  42.731  4797.2313  59583895818
 60   Argentina 2007 40301927  Americas  75.320 12779.3796 515033625357
 72   Australia 2007 20434176   Oceania  81.235 34435.3674 703658358894</code></pre>
-<p>A specific country:</p>
+<p>Or for a specific country:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">calcGDP</span>(gapminder, <span class="dt">country=</span><span class="st">&quot;Australia&quot;</span>)</code></pre>
 <pre class="output"><code>     country year      pop continent lifeExp gdpPercap          gdp
 61 Australia 1952  8691212   Oceania  69.120  10039.60  87256254102
@@ -105,20 +105,20 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 72 Australia 2007 20434176   Oceania  81.235  34435.37 70365835889</code></pre>
 <p>Let's walk through the body of the function:</p>
 <pre class="sourceCode r"><code class="sourceCode r">calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span><span class="ot">NULL</span>, <span class="dt">country=</span><span class="ot">NULL</span>) {</code></pre>
-<p>Here we've added two argumets, <code>year</code>, and <code>country. We've set  *default arguments* for both as</code>NULL<code>using the</code>=` operator in the function definition. This means that those arguments will take on those values, unless the user specifies otherwise.</p>
+<p>Here we've added two argumets, <code>year</code>, and <code>country</code>. We've set <em>default arguments</em> for both as <code>NULL</code> using the <code>=</code> operator in the function definition. This means that those arguments will take on those values unless the user specifies otherwise.</p>
 <pre class="sourceCode r"><code class="sourceCode r">  if(!<span class="kw">is.null</span>(year)) {
     dat &lt;-<span class="st"> </span>dat[dat$year %in%<span class="st"> </span>year, ] 
   }
   if (!<span class="kw">is.null</span>(country)) {
     dat &lt;-<span class="st"> </span>dat[dat$country %in%<span class="st"> </span>country,]
   }</code></pre>
-<p>Here, we check whether each additional argument is set to null, then overwrite the dataset stored in <code>dat</code> with the corresponding subset of the data.</p>
-<p>I did this so that our function is more flexible for later: we can ask it to calculate the GDP for:</p>
+<p>Here, we check whether each additional argument is set to <code>null</code>, and whenever they're not <code>null</code> overwrite the dataset stored in <code>dat</code> with a subset given by the non-<code>null</code> argument.</p>
+<p>I did this so that our function is more flexible for later. We can ask it to calculate the GDP for:</p>
 <ul>
-<li>The whole dataset</li>
-<li>a single year</li>
-<li>a single country</li>
-<li>a single combination of year and country</li>
+<li>The whole dataset;</li>
+<li>A single year;</li>
+<li>A single country;</li>
+<li>A single combination of year and country.</li>
 </ul>
 <p>By using <code>%in%</code> instead, we can also give multiple years or countries to those arguments.</p>
 <div id="tip-pass-by-value" class="callout">
@@ -134,7 +134,7 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
   new &lt;-<span class="st"> </span><span class="kw">cbind</span>(dat, <span class="dt">gdp=</span>gdp)   
   <span class="kw">return</span>(new)
 <span class="er">}</span></code></pre>
-<p>Finally, we caculated the GDP on our new subset, and created a new data frame with that column added. This means when we call the function later we can see what the GDP values belong to, rather than the first instance where we just got a vector of numbers.</p>
+<p>Finally, we calculated the GDP on our new subset, and created a new data frame with that column added. This means when we call the function later we can see the context for the returned GDP values, which is much better than in our first attempt where we just got a vector of numbers.</p>
 <div id="challenge-1" class="challenge">
 <h4>Challenge 1</h4>
 <p>The <code>paste</code> function can be used to combine text together, e.g:</p>
