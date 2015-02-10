@@ -34,9 +34,9 @@ Each help page is broken down into sections:
  - Usage: The arguments of the function and their default values.
  - Arguments: An explanation of the data each argument is expecting.
  - Details: Any important details to be aware of.
- - Value: The data the function returns
- - See Also: Any related functions you might find useful
- - Examples: Some examples for how to use the function
+ - Value: The data the function returns.
+ - See Also: Any related functions you might find useful.
+ - Examples: Some examples for how to use the function.
 
 Different functions might have different sections, but these are the main ones you should be aware of.
 
@@ -59,16 +59,16 @@ To seek help on special operators, use quotes:
 ### Getting help on packages
 
 Many packages come with "vignettes": tutorials and extended example documentation.
-`vignette()` will list all vignettes for all installed packages,
-`vignette(package="package-name")` will list all available vignettes for a
-package, and `vignette("vignette-name")` will open the vignette for that package.
+Without any arguments, `vignette()` will list all vignettes for all installed packages;
+`vignette(package="package-name")` will list all available vignettes for
+`package-name`, and `vignette("vignette-name")` will open the specified vignette.
 
 If a package doesn't have any vignettes, you can usually find help by typing 
 `help("package-name")`.
 
 ### When you kind of remember the function
 
-If you're not sure what package a function is in, or how its specifically spelled you can do a fuzzy search:
+If you're not sure what package a function is in, or how it's specifically spelled you can do a fuzzy search:
 
 ~~~ {.r}
 ??function_name
@@ -79,13 +79,13 @@ If you're not sure what package a function is in, or how its specifically spelle
 If you don't know what function or package you need to use 
 [CRAN Task Views](http://cran.at.r-project.org/web/views) 
 is a specially maintained list of packages grouped into
-fields. This can be a good starting point
+fields. This can be a good starting point.
 
 ### When your code doesn't work: seeking help from your peers
 
 If you're having trouble using a function, 9 times out of 10, 
 the answers you are seeking have already been answered on 
-[stackoverflow](http://stackoverflow.com/). You can search using
+[Stack Overflow](http://stackoverflow.com/). You can search using
 the `[r]` tag.
 
 If you can't find the answer, there are a few useful functions to
@@ -95,7 +95,7 @@ help you ask a question from your peers:
 ?dput
 ~~~
 
-Will dump the data your working with into a format so that it can
+Will dump the data you're working with into a format so that it can
 be copy and pasted by anyone else into their R session.
 
 ~~~ {.r}
