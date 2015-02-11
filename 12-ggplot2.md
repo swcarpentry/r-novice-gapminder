@@ -29,7 +29,7 @@ package, and the [ggplot2][ggplot2] package.
 [ggplot2]: http://www.statmethods.net/advgraphs/ggplot2.html
 
 Today we'll be learning about the ggplot2 package, because
-it is he most effective for creating publication quality
+it is the most effective for creating publication quality
 graphics.
 
 Let's start off with an example:
@@ -53,11 +53,13 @@ In the example, we told `ggplot` to use the gapminder dataset. As second argumen
 we gave it the `aes` function, which stands for *aesthetics*. The `aes` function
 specifies how your data are represented visually: which variables to plot on 
 each axis, as well as the color, size, shape, and transparency, which we'll change
-soon. We then added a *geometry* layer, specified by a function starting with `geom`,
+soon. We then used the `+` operator to add a *geometry* layer,
+specified by a function starting with `geom`,
 in this case, a layer of points. 
 
+This is a general rule.
 Anything we specify inside the first function, `ggplot`, becomes a global setting for
-the figure, and anything that we add are built up in layers (consecutively).
+the figure. Anything that we add with `+` is built up in layers (consecutively).
 
 Next, lets color the points by continent:
 
@@ -139,7 +141,7 @@ formular, we told ggplot to arrange the panels along the x axis. If we put
 "continent" in the y-position of the formula, the panels would have been 
 arranged along the y-axis.
 
-Currently, there's too many different countries for the legend to render 
+Currently, there are too many different countries for the legend to render 
 properly. Since we don't care so much about the particulars of each country,
 lets turn the legend off:
 
@@ -168,21 +170,21 @@ useful.
 >
 > Create density plots of GDP per capita, colored by continent.
 > Hints:
->  - `ggplot` to set up the basic plot
->  - `aes` to tell ggplot what the axes of the plot are (you will only need the x-axis)
->  - The geometry layer for density plots is `geom_density`
->  - the color
+>  - Use `ggplot` to set up the basic plot.
+>  - Use `aes` to tell ggplot what the axes of the plot are (you will only need the x-axis).
+>  - Use `aes` to specify the color grouping.
+>  - The geometry layer for density plots is `geom_density`.
 > 
 > Advanced:
->  - use the `fill` aesthetic will color the area under the curve
->  - transform the scale of the x-axis to more easily visualise the difference 
+>  - The `fill` aesthetic will color the area under the curve.
+>  - Transform the scale of the x-axis to more easily visualise the difference 
 >    between continents
 >
 
 > #### Challenge 2 {.challenge}
 >
 > Add a facet layer to panel the density plots by year. Hint: [facet_wrap][fw]
-> will be more useful than `facet_grid`
+> will be more useful than `facet_grid`.
 >
 
 [fw]: http://docs.ggplot2.org/current/facet_wrap.html

@@ -265,7 +265,7 @@ names of `x`, and asks, "Does this element occur in the second argument?".
 
 > #### Tip: Getting help for operators {.callout}
 > 
-> remember you can search for help on operators by wrapping them in quotes:
+> Remember you can search for help on operators by wrapping them in quotes:
 > `help("%in%")` or `?"%in%"`.
 >
 
@@ -358,7 +358,7 @@ x[x > 7]
 
 > #### Tip: Chaining logical operations {.callout}
 >
-> There are many situations in which you wish to combine multiple conditions.
+> There are many situations in which you will wish to combine multiple conditions.
 > To do so several logical operations exist in R:
 > 
 >  * `|` logical OR: returns `TRUE`, if either the left or right are `TRUE`.

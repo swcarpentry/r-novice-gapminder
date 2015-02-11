@@ -13,7 +13,7 @@ minutes: 15
 One of the nice features of R is that most of its functions are vectorized,
 that is the function will operate on all elements of a vector without 
 needing to loop through and act on each element one at a time. This makes
-writing core more concise, easy to read, and less error prone.
+writing code more concise, easy to read, and less error prone.
 
 
 ~~~ {.r}
