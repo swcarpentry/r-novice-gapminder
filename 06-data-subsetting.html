@@ -311,14 +311,13 @@ $b
 <div id="challenge-1" class="challenge">
 <h3>Challenge 1</h3>
 <p>Fix each of the following common data frame subsetting errors:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Extract observations where the year is 1957</span>
-gapminder[gapminder$year =<span class="st"> </span><span class="dv">1957</span>,]</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Extract only rows 1 through 4</span>
-gapminder[-<span class="dv">1</span>:<span class="dv">4</span>,]</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># return only observations where the life expectancy is greater than 80</span>
-gapminder[gapminder$lifeExp &gt;<span class="st"> </span><span class="dv">80</span>]</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Return only years that are either 2002 or 2007</span>
-gapminder[gapminder$year ==<span class="st"> </span><span class="dv">2002</span> |<span class="st"> </span><span class="dv">2007</span>,]</code></pre>
+<ol style="list-style-type: decimal">
+<li><p>Extract observations collected for the year 1957 <sub>~</sub> {.r} gapminder[gapminder$year = 1957,] <sub>~</sub></p></li>
+<li><p>Extract rows 1 throught 4 <sub>~</sub> {.r} gapminder[-1:4,] <sub>~</sub></p></li>
+<li><p>Extract the rows where the life expectancy is longer the 80 years <sub>~</sub> {.r} gapminder[gapminder$lifeExp &gt; 80] <sub>~</sub></p></li>
+<li><p>Extract the first row, and the fourth and fifth column <code>lifeExp</code> and <code>gdpPercap</code>. <sub>~</sub> {.r} gapminder[1, 4, 5] <sub>~</sub></p></li>
+<li><p>Advanced: extract rows that contain information for the years 2002 and 2007 <sub>~</sub> {.r} gapminder[gapminder$year == 2002 | 2007,] <sub>~</sub></p></li>
+</ol>
 </div>
 <div id="challenge-2" class="challenge">
 <h3>Challenge 2</h3>
