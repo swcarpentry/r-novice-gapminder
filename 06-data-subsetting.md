@@ -687,23 +687,30 @@ be changed with the third argument, `drop = FALSE`).
 > 
 > Fix each of the following common data frame subsetting errors:
 > 
+> 1. Extract observations collected for the year 1957
 > ~~~ {.r}
-> # Extract observations where the year is 1957
 > gapminder[gapminder$year = 1957,]
 > ~~~
 >
+> 2. Extract rows 1 throught 4
 > ~~~ {.r}
-> # Extract only rows 1 through 4
 > gapminder[-1:4,]
 > ~~~
 >
+> 3. Extract the rows where the life expectancy is longer the 80 years
 > ~~~ {.r}
-> # return only observations where the life expectancy is greater than 80
 > gapminder[gapminder$lifeExp > 80]
 > ~~~
 >
+> 4. Extract the first row, and the fourth and fifth column 
+>   `lifeExp` and `gdpPercap`.
 > ~~~ {.r}
-> # Return only years that are either 2002 or 2007
+> gapminder[1, 4, 5]
+> ~~~
+>
+> 5. Advanced: extract rows that contain information for the years 2002
+>    and 2007
+> ~~~ {.r}
 > gapminder[gapminder$year == 2002 | 2007,]
 > ~~~
 >
