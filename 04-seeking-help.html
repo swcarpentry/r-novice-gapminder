@@ -49,9 +49,9 @@
 <li>Usage: The arguments of the function and their default values.</li>
 <li>Arguments: An explanation of the data each argument is expecting.</li>
 <li>Details: Any important details to be aware of.</li>
-<li>Value: The data the function returns</li>
-<li>See Also: Any related functions you might find useful</li>
-<li>Examples: Some examples for how to use the function</li>
+<li>Value: The data the function returns.</li>
+<li>See Also: Any related functions you might find useful.</li>
+<li>Examples: Some examples for how to use the function.</li>
 </ul>
 <p>Different functions might have different sections, but these are the main ones you should be aware of.</p>
 <div id="tip-reading-help-files" class="callout">
@@ -62,18 +62,18 @@
 <p>To seek help on special operators, use quotes:</p>
 <pre class="sourceCode r"><code class="sourceCode r">?<span class="st">&quot;+&quot;</span></code></pre>
 <h3 id="getting-help-on-packages">Getting help on packages</h3>
-<p>Many packages come with &quot;vignettes&quot;: tutorials and extended example documentation. <code>vignette()</code> will list all vignettes for all installed packages, <code>vignette(package=&quot;package-name&quot;)</code> will list all available vignettes for a package, and <code>vignette(&quot;vignette-name&quot;)</code> will open the vignette for that package.</p>
+<p>Many packages come with &quot;vignettes&quot;: tutorials and extended example documentation. Without any arguments, <code>vignette()</code> will list all vignettes for all installed packages; <code>vignette(package=&quot;package-name&quot;)</code> will list all available vignettes for <code>package-name</code>, and <code>vignette(&quot;vignette-name&quot;)</code> will open the specified vignette.</p>
 <p>If a package doesn't have any vignettes, you can usually find help by typing <code>help(&quot;package-name&quot;)</code>.</p>
 <h3 id="when-you-kind-of-remember-the-function">When you kind of remember the function</h3>
-<p>If you're not sure what package a function is in, or how its specifically spelled you can do a fuzzy search:</p>
+<p>If you're not sure what package a function is in, or how it's specifically spelled you can do a fuzzy search:</p>
 <pre class="sourceCode r"><code class="sourceCode r">??function_name</code></pre>
 <h3 id="when-you-have-no-idea-where-to-begin">When you have no idea where to begin</h3>
-<p>If you don't know what function or package you need to use <a href="http://cran.at.r-project.org/web/views">CRAN Task Views</a> is a specially maintained list of packages grouped into fields. This can be a good starting point</p>
+<p>If you don't know what function or package you need to use <a href="http://cran.at.r-project.org/web/views">CRAN Task Views</a> is a specially maintained list of packages grouped into fields. This can be a good starting point.</p>
 <h3 id="when-your-code-doesnt-work-seeking-help-from-your-peers">When your code doesn't work: seeking help from your peers</h3>
-<p>If you're having trouble using a function, 9 times out of 10, the answers you are seeking have already been answered on <a href="http://stackoverflow.com/">stackoverflow</a>. You can search using the <code>[r]</code> tag.</p>
+<p>If you're having trouble using a function, 9 times out of 10, the answers you are seeking have already been answered on <a href="http://stackoverflow.com/">Stack Overflow</a>. You can search using the <code>[r]</code> tag.</p>
 <p>If you can't find the answer, there are a few useful functions to help you ask a question from your peers:</p>
 <pre class="sourceCode r"><code class="sourceCode r">?dput</code></pre>
-<p>Will dump the data your working with into a format so that it can be copy and pasted by anyone else into their R session.</p>
+<p>Will dump the data you're working with into a format so that it can be copy and pasted by anyone else into their R session.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre>
 <p>Will print out your current version of R, as well as any packages you have loaded. This can be useful for others to help reproduce and debug your issue.</p>
         </div>

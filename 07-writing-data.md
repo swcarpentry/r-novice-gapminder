@@ -97,10 +97,10 @@ That looks better!
 
 > #### Challenge {.challenge}
 >
-> Write a data-cleaning script file subsets the gapminder
+> Write a data-cleaning script file that subsets the gapminder
 > data to include only data points collected since 1990.
 > 
 > Use this script to write out the new subset to a file
-> in the `cleaned-data/` directory, 
+> in the `cleaned-data/` directory. 
 > 
 
