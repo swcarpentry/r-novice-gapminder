@@ -10,7 +10,7 @@ The easiest way to get the data used in this lesson during a bootcamp is
 to have attendees run the following:
 
 ~~~ {.shell}
-git remote add data https://github.com/resbaz/r-novice-gapminder-data
+git remote add data https://github.com/resbaz/r-novice-gapminder-files
 git pull data master
 ~~~
 
