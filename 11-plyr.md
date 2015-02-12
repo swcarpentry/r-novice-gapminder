@@ -325,6 +325,7 @@ d_ply(
 > values "pretty" for printing out in messages.
 >
 
+
 > #### Challenge 1 {.challenge}
 >
 > Calculate the average life expectancy per continent. Which has the longest?
@@ -345,3 +346,50 @@ d_ply(
 > using one of the `plyr` functions.
 >
 
+> #### Alternate Challenge if class seems lost {.challenge}
+>
+> Without running them, which of the following will calculate the average
+> life expectancy per continent:
+>
+> 1.
+> ~~~ {.r}
+> ddply(
+>   .data = gapminder,
+>   .variables = gapminder$continent,
+>   .fun = function(dataGroup) {
+>      mean(dataGroup$lifeExp)
+>   }
+> )
+> ~~~
+>
+> 2.
+> ~~~ {.r}
+> ddply(
+>   .data = gapminder,
+>   .variables = "continent",
+>   .fun = mean(dataGroup$lifeExp)
+> )
+> ~~~
+>
+> 3.
+> ~~~ {.r}
+> ddply(
+>   .data = gapminder,
+>   .variables = "continent",
+>   .fun = function(dataGroup) {
+>      mean(dataGroup$lifeExp)
+>   }
+> )
+> ~~~
+>
+> 4.
+> ~~~ {.r}
+> adply(
+>   .data = gapminder,
+>   .variables = "continent",
+>   .fun = function(dataGroup) {
+>      mean(dataGroup$lifeExp)
+>   }
+> )
+> ~~~
+>

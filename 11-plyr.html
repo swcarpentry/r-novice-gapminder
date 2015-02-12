@@ -63,8 +63,7 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 <p>We could write a new function that is flexible like <code>calcGDP</code>, but this also takes a substantial amount of effort and testing to get right.</p>
 <p>The abstract problem we're encountering here is know as &quot;split-apply-combine&quot;:</p>
 <div class="figure">
-<img src="img/splitapply.png" alt="Split apply combine" />
-<p class="caption">Split apply combine</p>
+<img src="img/splitapply.png" alt="Split apply combine" /><p class="caption">Split apply combine</p>
 </div>
 <p>We want to <em>split</em> our data into groups, in this case continents, <em>apply</em> some calculations on that group, then optionally <em>combine</em> the results together afterwards.</p>
 <h4 id="the-plyr-package">The <code>plyr</code> package</h4>
@@ -81,8 +80,7 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 <p>This gives us 9 core functions **ply. There are an additional three functions which will only perform the split and apply steps, and not any combine step. They're named by their input data type and represent null output by a <code>_</code> (see table)</p>
 <p>Note here that plyr's use of &quot;array&quot; is different to R's, an array in ply can include a vector or matrix.</p>
 <div class="figure">
-<img src="img/full_apply_suite.png" alt="Full apply suite" />
-<p class="caption">Full apply suite</p>
+<img src="img/full_apply_suite.png" alt="Full apply suite" /><p class="caption">Full apply suite</p>
 </div>
 <p>Each of the xxply functions (<code>daply</code>, <code>ddply</code>, <code>llply</code>, <code>laply</code>, ...) has the same structure and has 4 key features and structure:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">xxply</span>(.data, .variables, .fun)</code></pre>
@@ -252,6 +250,38 @@ continent          2002         2007
 <div id="advanced-challenge" class="challenge">
 <h4>Advanced Challenge</h4>
 <p>Calculate the difference in mean life expectancy between the years 1952 and 2007 from the output of challenge 2 using one of the <code>plyr</code> functions.</p>
+</div>
+<div id="alternate-challenge-if-class-seems-lost" class="challenge">
+<h4>Alternate Challenge if class seems lost</h4>
+<p>Without running them, which of the following will calculate the average life expectancy per continent:</p>
+<ol style="list-style-type: decimal">
+<li><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ddply</span>(
+  <span class="dt">.data =</span> gapminder,
+  <span class="dt">.variables =</span> gapminder$continent,
+  <span class="dt">.fun =</span> function(dataGroup) {
+ <span class="kw">mean</span>(dataGroup$lifeExp)
+  }
+)</code></pre></li>
+<li><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ddply</span>(
+  <span class="dt">.data =</span> gapminder,
+  <span class="dt">.variables =</span> <span class="st">&quot;continent&quot;</span>,
+  <span class="dt">.fun =</span> <span class="kw">mean</span>(dataGroup$lifeExp)
+)</code></pre></li>
+<li><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ddply</span>(
+  <span class="dt">.data =</span> gapminder,
+  <span class="dt">.variables =</span> <span class="st">&quot;continent&quot;</span>,
+  <span class="dt">.fun =</span> function(dataGroup) {
+ <span class="kw">mean</span>(dataGroup$lifeExp)
+  }
+)</code></pre></li>
+<li><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">adply</span>(
+  <span class="dt">.data =</span> gapminder,
+  <span class="dt">.variables =</span> <span class="st">&quot;continent&quot;</span>,
+  <span class="dt">.fun =</span> function(dataGroup) {
+ <span class="kw">mean</span>(dataGroup$lifeExp)
+  }
+)</code></pre></li>
+</ol>
 </div>
         </div>
       </div>
