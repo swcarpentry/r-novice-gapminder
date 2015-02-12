@@ -3,10 +3,16 @@ layout: page
 title: Lesson Title
 subtitle: Instructor's Guide
 ---
-## Legend
 
-One or more paragraphs laying out the lesson's legend (i.e., the story
-behind its running example).
+## Pulling in data
+
+The easiest way to get the data used in this lesson during a bootcamp is 
+to have attendees run the following:
+
+~~~ {.shell}
+git remote add data https://github.com/resbaz/r-novice-gapminder-data
+git pull data master
+~~~
 
 ## Overall
 
