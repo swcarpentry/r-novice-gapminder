@@ -419,7 +419,7 @@ them in more detail
 
 A vector is the most common and basic data structure in `R` and is pretty much
 the workhorse of R. They are sometimes referred to as atomic vectors, because
-importantly, they can only contain one type. They are the building blocks of
+importantly, they can **only contain one type**. They are the building blocks of
 every other data structure.
 
 We've seen vectors already when we retrieved the rownames and columnames of 
