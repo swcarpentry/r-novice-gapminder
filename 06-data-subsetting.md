@@ -513,6 +513,31 @@ matrix(1:6, nrow=2, ncol=3)
 Matrices can also be subsetted using their rownames and column names
 instead of their row and column indices.
 
+> #### Challenge {.challenge}
+> 
+> ~~~ {.r}
+> m <- matrix(1:6, nrow=2, ncol=3)
+> print(m)
+> ~~~
+> 
+> ~~~ {.output}
+>      [,1] [,2] [,3]
+> [1,]    1    3    5
+> [2,]    2    4    6
+> ~~~
+> 
+> 1. Which of the following commands will extract 6?
+> 
+> A. m[1,2]
+> 
+> B. m[2:3]
+> 
+> C. m[3,2]
+> 
+> D. m[2,3]
+> 
+
+
 ### List subsetting
 
 Now we'll introduce some new subsetting operators. There are three functions 
