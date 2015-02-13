@@ -211,6 +211,12 @@ has autocompletion abilities that allow you to more easily
 look up functions, their arguments, and the values that they
 take.
 
+Typing a `?` before the name of a command will open the help page
+for that command. As well as providing a detailed description of
+the command and how it works, scrolling ot the bottom of the 
+help page will usually show a collection of code examples which
+illustrate command usage. We'll go through an example later.
+
 #### Comparing things
 
 We can also do comparison in R:
