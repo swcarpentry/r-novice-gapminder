@@ -523,20 +523,29 @@ Let's return to them now that we know a little bit more about data structures.
 Data frames are similar to matrices, except they can contain multiple atomic types. 
 Underneath the hood, data frames are really lists, where each element is
 an atomic vector, with the added restriction that they're all the same length.
-To convince yourself of this, try
+
+
+Data frames can be created manually with the `data.frame` function:
 
 ~~~ {.r}
-typeof(gapminder)
+df <- data.frame(id = c('a', 'b', 'c', 'd', 'e', 'f'), x = 1:6, y = c(214:219))
+df
 ~~~
 
 ~~~ {.output}
-[1] "list"
+  id x   y
+1  a 1 214
+2  b 2 215
+3  c 3 216
+4  d 4 217
+5  e 5 218
+6  f 6 219
 ~~~
 
 > #### Challenge 5: Dataframes {.challenge}
 >
-> Try using the 'length' function to query
-> the gapminder dataframe. Does it give the result
+> Try using the `length` function to query
+> your dataframe `df`. Does it give the result
 > you expect?
 >
 
@@ -544,11 +553,80 @@ Each column in the data frame is simply a list element, which is why when you as
 `length` of the data frame, it tells you the number of columns. If you actually want
 the number of rows, you can use the `nrow` function. 
 
-Data frames can be created manually with the `data.frame` function:
+We can add rows or columns to a data.frame using `rbind` or `cbind` (these are
+the two-dimensional equivalents of the `c` function):
 
 ~~~ {.r}
-df <- data.frame(id = letters[1:10], x = 1:10, y = c(214:223))
-df
+df <- rbind(df, list("g", 11, 42))) 
+~~~
+
+This doesn't work as expected! What does this error message tell us?
+
+~~~ {.output}
+Warning message:
+In `[<-.factor`(`*tmp*`, ri, value = 11) :
+  invalid factor level, NA generated
+~~~
+
+It sounds like it was trying to generate a factor level. Why? Perhaps our first
+column (containing characters) is to blame...
+We can access a column in a `data.frame` by using the `$` operator. 
+
+
+~~~ {.r}
+class(df$id)
+~~~
+
+~~~ {.output}
+"factor"
+~~~
+
+Indeed, R automatically made this first column a factor, not a character vector.
+We can change this in place by converting the type of this column. 
+
+~~~ {.r}
+df$id <- as.character(df$id)
+class(df$id)
+~~~
+
+~~~ {.output}
+"character"
+~~~
+
+Okay, now let's try adding that row again.
+
+~~~ {.r}
+df <- rbind(df, list("g", 11, 42))) 
+tail(df, n=3)
+~~~
+
+~~~ {.output}
+  id  x   y
+5  e  5 218
+6  f  6 219
+7  g 11  42
+~~~~
+
+Note that to add a row, we need to use a list, because each column is a different type!
+If you want to add multiple rows to a data.frame, you will need to separate the new columns
+in the list:
+
+~~~ {.r}
+df <- rbind(df, list(c("l", "m"), c(12, 13), c(534, -20)))
+tail(df, n=3)
+~~~
+
+~~~ {.output}
+  id  x   y
+7  g 11  42
+8  l 12 534
+9  m 13 -20
+~~~
+
+You can also row-bind data.frames together:
+
+~~~ {.r}
+rbind(df, df)
 ~~~
 
 ~~~ {.output}
@@ -559,98 +637,38 @@ df
 4   d  4 217
 5   e  5 218
 6   f  6 219
-7   g  7 220
-8   h  8 221
-9   i  9 222
-10  j 10 223
-~~~
-
-We can add rows or columns to a data.frame using `rbind` or `cbind` (these are
-the two-dimensional equivalents of the `c` function):
-
-~~~ {.r}
-df <- rbind(df, list("k", 11, 0.4))) 
-tail(df, n=3)
-~~~
-
-~~~ {.output}
-   id  x          y
-8   h  8  0.7383247
-9   i  9  0.5757814
-10  j 10 -0.3053884
-~~~~
-
-Note that to add a row, we need to use a list, because each column is a different type!
-If you want to add multiple rows to a data.frame, you will need to separate the new columns
-in the list:
-
-~~~ {.r}
-df <- rbind(df, list(c("l", "m"), c(12, 13), c(0.3, -0.7)))
-tail(df, n=3)
-~~~
-
-~~~ {.output}
-   id  x          y
-10  j 10 -0.3053884
-11  l 12  0.3000000
-12  m 13 -0.7000000
-~~~
-
-You can also row-bind data.frames together:
-
-~~~ {.r}
-rbind(df, df)
-~~~
-
-~~~ {.output}
-   id  x          y
-1   a  1 -0.6264538
-2   b  2  0.1836433
-3   c  3 -0.8356286
-4   d  4  1.5952808
-5   e  5  0.3295078
-6   f  6 -0.8204684
-7   g  7  0.4874291
-8   h  8  0.7383247
-9   i  9  0.5757814
-10  j 10 -0.3053884
-11  l 12  0.3000000
-12  m 13 -0.7000000
-13  a  1 -0.6264538
-14  b  2  0.1836433
-15  c  3 -0.8356286
-16  d  4  1.5952808
-17  e  5  0.3295078
-18  f  6 -0.8204684
-19  g  7  0.4874291
-20  h  8  0.7383247
-21  i  9  0.5757814
-22  j 10 -0.3053884
-23  l 12  0.3000000
-24  m 13 -0.7000000
+7   g 11  42
+8   l 12 534
+9   m 13 -20
+10  a  1 214
+11  b  2 215
+12  c  3 216
+13  d  4 217
+14  e  5 218
+15  f  6 219
+16  g 11  42
+17  l 12 534
+18  m 13 -20
 ~~~
 
 To add a column we can use `cbind`:
 
 ~~~ {.r}
-df <- cbind(df, 12:1)
+df <- cbind(df, 9:1)
 df
 ~~~
 
 ~~~ {.output}
-   id  x          y 12:1
-1   a  1 -0.6264538   12
-2   b  2  0.1836433   11
-3   c  3 -0.8356286   10
-4   d  4  1.5952808    9
-5   e  5  0.3295078    8
-6   f  6 -0.8204684    7
-7   g  7  0.4874291    6
-8   h  8  0.7383247    5
-9   i  9  0.5757814    4
-10  j 10 -0.3053884    3
-11  l 12  0.3000000    2
-12  m 13 -0.7000000    1
+  id  x   y 9:1
+1  a  1 214   9
+2  b  2 215   8
+3  c  3 216   7
+4  d  4 217   6
+5  e  5 218   5
+6  f  6 219   4
+7  g 11  42   3
+8  l 12 534   2
+9  m 13 -20   1
 ~~~
 
 > ### Challenge 6 {.challenge}
@@ -683,7 +701,18 @@ attributes() # does it have any metadata?
 str() # A full summary of the entire object
 ~~~
 
-Lets use them to explore the gapminder dataset.
+Let's use them to explore the gapminder dataset.
+
+~~~ {.r}
+typeof(gapminder)
+~~~
+
+~~~ {.output}
+[1] "list"
+~~~
+
+Remember, data frames are lists 'under the hood'. 
+
 
 ~~~ {.r}
 class(gapminder)
@@ -693,8 +722,8 @@ class(gapminder)
 [1] "data.frame"
 ~~~
 
-The gapminder data is stored in a "data.frame", this is the default data structure when you read
-in data, and is useful for storing data with mixed types of columns. 
+The gapminder data is stored in a "data.frame". This is the default data structure when you read
+in data, and (as we've heard) is useful for storing data with mixed types of columns. 
 
 Let's look at some of the columns. 
 
@@ -719,7 +748,6 @@ Let's look at some of the columns.
 > Write down what data type you think is in each column
 >
 
-We can access the columns in a `data.frame` by using the `$` operator. 
 
 ~~~ {.r}
 typeof(gapminder$year)
