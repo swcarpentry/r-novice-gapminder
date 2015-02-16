@@ -341,7 +341,7 @@ We can create one with the `matrix` function. Let's generate some random data:
 
 ~~~ {.r}
 set.seed(1) # make sure the random numbers are the same for each run
-x <- matrix(rnorm(3*6), ncol=6, nrow=3)
+x <- matrix(rnorm(18), ncol=6, nrow=3)
 x
 ~~~
 
@@ -372,6 +372,17 @@ while `length` will tell you the number of elements.
 > `length(x)`?
 > Try it.
 > Were you right? Why / why not?
+>
+
+>
+> ### Challenge 4 {.challenge}
+>
+> Make another matrix, this time containing the numbers 1:50,
+> with 5 columns and 10 rows.
+> Did the `matrix` function fill your matrix by column, or by
+> row, as its default behaviour?
+> See if you can figure out how to change this.
+> (hint: read the documentation for `matrix`!)
 >
 
 
@@ -498,7 +509,7 @@ list(list(list(list())))
 list()
 ~~~
 
-> ### Challenge 4 {.challenge}
+> ### Challenge 5 {.challenge}
 > 
 > Create a list containing two character vectors for each of the sections in this
 > part of the workshop:
@@ -542,7 +553,7 @@ df
 6  f 6 219
 ~~~
 
-> #### Challenge 5: Dataframes {.challenge}
+> #### Challenge 6: Dataframes {.challenge}
 >
 > Try using the `length` function to query
 > your dataframe `df`. Does it give the result
@@ -671,7 +682,7 @@ df
 9  m 13 -20   1
 ~~~
 
-> ### Challenge 6 {.challenge}
+> ### Challenge 7 {.challenge}
 > 
 > Create a dataframe that holds the following information for yourself:
 > 
@@ -727,7 +738,7 @@ in data, and (as we've heard) is useful for storing data with mixed types of col
 
 Let's look at some of the columns. 
 
-> #### Challenge 7: Data types in a real dataset {.challenge}
+> #### Challenge 8: Data types in a real dataset {.challenge}
 > 
 > Look at the first 6 rows of the gapminder dataframe we loaded before:
 > 
