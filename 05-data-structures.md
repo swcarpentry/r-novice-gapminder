@@ -321,7 +321,7 @@ x
 ~~~ {.output}
  a  b  c  d 
  10 12 45 33 
-}
+~~~
 
 > #### Advanced Tip for Programmers {.callout}
 >
@@ -365,6 +365,7 @@ retrieve the column and rownames of a matrix. The functions `nrow` and `ncol`
 will tell you the number of rows and columns (this also applies to data frames!),
 while `length` will tell you the number of elements.
 
+>
 > ### Challenge 3 {.challenge}
 > 
 > What do you think will be the result of 
