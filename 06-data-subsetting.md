@@ -25,7 +25,7 @@ Let's start with the workhorse of R: atomic vectors.
 
 ~~~ {.r}
 x <- c(5.4, 6.2, 7.1, 4.8, 7.5) 
-names(x) <- letters[1:5]
+names(x) <- c('a', 'b', 'c', 'd', 'e')
 ~~~
 
 So now that we've created a dummy vector to play with, how do we get at its
@@ -497,7 +497,7 @@ m[5]
 ~~~
 
 This usually isn't useful. However it is useful to note that matrices
-are laid out in *column-major format*. That is the elements of the 
+are laid out in *column-major format* by default. That is the elements of the 
 vector are arranged column-wise:
 
 ~~~ {.r}
@@ -516,25 +516,26 @@ instead of their row and column indices.
 > #### Challenge {.challenge}
 > 
 > ~~~ {.r}
-> m <- matrix(1:6, nrow=2, ncol=3)
+> m <- matrix(1:18, nrow=3, ncol=6)
 > print(m)
 > ~~~
 > 
 > ~~~ {.output}
->      [,1] [,2] [,3]
-> [1,]    1    3    5
-> [2,]    2    4    6
+>      [,1] [,2] [,3] [,4] [,5] [,6]
+> [1,]    1    4    7   10   13   16
+> [2,]    2    5    8   11   14   17
+> [3,]    3    6    9   12   15   18
 > ~~~
 > 
-> 1. Which of the following commands will extract 6?
+> 1. Which of the following commands will extract the values 11 and 14?
 > 
-> A. m[1,2]
+> A. m[2,4,2,5]
 > 
-> B. m[2:3]
+> B. m[2:5]
 > 
-> C. m[3,2]
+> C. m[4:5,2]
 > 
-> D. m[2,3]
+> D. m[2,c(4,5)]
 > 
 
 
