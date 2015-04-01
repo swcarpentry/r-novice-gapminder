@@ -241,6 +241,21 @@ m[<span class="dv">3</span>:<span class="dv">4</span>, <span class="kw">c</span>
 [1,]    1    3    5
 [2,]    2    4    6</code></pre>
 <p>Matrices can also be subsetted using their rownames and column names instead of their row and column indices.</p>
+<div id="challenge" class="challenge">
+<h4>Challenge</h4>
+<pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">6</span>, <span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">ncol=</span><span class="dv">3</span>)
+<span class="kw">print</span>(m)</code></pre>
+<pre class="output"><code>     [,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6</code></pre>
+<ol style="list-style-type: decimal">
+<li>Which of the following commands will extract 6?</li>
+</ol>
+<p>A. m[1,2]</p>
+<p>B. m[2:3]</p>
+<p>C. m[3,2]</p>
+<p>D. m[2,3]</p>
+</div>
 <h3 id="list-subsetting">List subsetting</h3>
 <p>Now we'll introduce some new subsetting operators. There are three functions used to subset lists. <code>[</code>, as we've seen for atomic vectors and matrices, as well as <code>[[</code> and <code>$</code>.</p>
 <p>Using <code>[</code> will always return a list. If you want to <em>subset</em> a list, but not <em>extract</em> an element, then you will likely use <code>[</code>.</p>
