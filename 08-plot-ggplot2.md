@@ -7,6 +7,7 @@ minutes: 15
 
 > # Learning Objectives {.objectives}
 >
+> * To be familiar with the base plotting system functions
 > * To be able to use ggplot2 to generate publication quality graphics
 > * To understand the basics of the grammar of graphics:
 >   - The aesthetics layer
@@ -28,11 +29,86 @@ package, and the [ggplot2][ggplot2] package.
 [lattice]: http://www.statmethods.net/advgraphs/trellis.html
 [ggplot2]: http://www.statmethods.net/advgraphs/ggplot2.html
 
-Today we'll be learning about the ggplot2 package, because
-it is the most effective for creating publication quality
-graphics.
+Today we'll touch on the base plotting system so you are familiar
+with some of the ways you can customise plots in R, and 
+build on what you've learnt about accessing data elements, functions
+and ***. 
+Then we'll focus on the ggplot2 package, because it is the most 
+effective for creating publication quality graphics.
 
 Let's start off with an example:
+
+~~~ {.r}
+boxplot(owls$NegPerChick~owls$FoodTreatment)
+~~~
+
+There are lots of ways we can customise this plot. We could
+add the result of a statistical test. Let's perform an 
+analysis of variance to test whether there's a significant
+effect of food treatment on the amount of negotiation per chick.
+
+~~~ {.r}
+aov1 <- aov(NegPerChick~FoodTreatment, data=owls)
+summary(aov1)
+~~~
+
+Say we want to access the P-value from this `aov1` object. 
+Let's examine its structure:
+
+~~~ {.r}
+str(summary(aov1))
+# It is a list of length 1 that contains 5 other lists.
+~~~
+
+#### Challenge 1 {.challenge}
+Figure out how to extract the P-value from the object `summary(aov1)`.
+Assign it to a new variable called `pval`.
+####
+
+Now let's add this as text to our boxplot.
+
+~~~ {.r}
+text(x=1, y=1, labels=paste("P =", pval))
+# Adjust the position
+text(x=1.3, y=6, labels=paste("P =", pval))
+# Round the p-value down to 3 significant figures
+text(x=1.3, y=6, labels=paste("P =", signif(pval, 3)))
+# Notice each text object has been added to the original plot.
+# Re-plot the whole thing with just the text you want:
+boxplot(owls$NegPerChick~owls$FoodTreatment)
+text(x=1.3, y=6, labels=paste("P =", signif(pval, 3)))
+~~~
+
+We can use the `plot` command to make a scatterplot (its default).
+
+~~~ {.r}
+plot(owls$NegPerChick~owls$ArrivalTime)
+plot(owls$NegPerChick~owls$ArrivalTime, col="red", pch=19)
+~~~
+
+#Helpful tip#
+Most of the parameters you can adjust by passing optional 
+arguments to `plot` are not actually detailed in the 
+`plot` help document! Instead they are listed under `par`.
+
+#### Challenge 2 {.challenge}
+Consult the `par` help document and figure out how to orient
+both sets of axis labels horizontally instead of parallel to 
+their axis.
+####
+
+Now let's think again about the data we're plotting. 
+`str(owls)` shows us that we've got data from a lot of 
+different nests - 27, in fact. Perhaps we want to explore
+each nest separately. 
+
+#### Challenge 3 {.challenge}
+Discuss with your two neighbours how you might go about
+exploring the data 'by nest'. What are your options?
+####
+
+
+
 
 ~~~ {.r}
 ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
