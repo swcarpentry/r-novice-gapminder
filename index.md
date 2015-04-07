@@ -31,17 +31,18 @@ usability.
 
 1.  [Introduction to R and RStudio](01-rstudio-intro.html)
 2.  [Project Management](02-project-intro.html)
-3.  [Reading data](03-reading-data.html)
-4.  [Seeking help](04-seeking-help.html)
-5.  [Data structures](05-data-structures.html)
-6.  [Subsetting data](06-data-subsetting.html)
-7.  [Writing data](07-writing-data.html)
-8.  [Vectorisation](08-vectorisation.html)
-9.  [Control flow](09-control-flow.html)
-10. [Functions](10-functions.html)
-11. [Split-apply-combine](11-plyr.html)
-12. [Plotting](12-ggplot2.html)
+3.  [Seeking help](03-seeking-help.html)
+4.  [Data structures](04-data-structures.html)
+5.  [Subsetting data](05-data-subsetting.html)
+6.  [Reading data](06-reading-data.html)
+7.  [Functions](07-functions.html)
+8.  [Plotting](08-plot-ggplot2.html)
+9.  [Vectorisation](09-vectorisation.html)
+10. [Control flow](10-control-flow.html)
+11. [Writing data](11-writing-data.html)
+12. [Split-apply-combine](12-plyr.html)
 13. [Wrapping up](13-wrap-up.html)
+
 
 ## Other Resources
 
