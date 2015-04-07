@@ -40,7 +40,7 @@ usability.
 9.  [Vectorisation](09-vectorisation.html)
 10. [Control flow](10-control-flow.html)
 11. [Writing data](11-writing-data.html)
-12. [Split-apply-combine] (12-plyr.html)
+12. [Split-apply-combine](12-plyr.html)
 13. [Wrapping up](13-wrap-up.html)
 
 
