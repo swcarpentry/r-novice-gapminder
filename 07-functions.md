@@ -27,7 +27,8 @@ several operations with a single command.
 
 ### Defining a function
 
-Let's open a new R script file in the `functions/` directory and define a
+Let's open a new R script file in the `functions/` directory and call it functions-lesson.R.
+We're going to define
 a function that calculates the Gross Domestic Product of a nation from the data
 available in our dataset:
 

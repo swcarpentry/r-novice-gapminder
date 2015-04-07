@@ -42,7 +42,7 @@
 <p>If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot simple statistics. However, the gapminder data is updated periodically, and we may want to pull in that new information later and re-run our analysis again. We may also obtain similar data from a different source in the future.</p>
 <p>In this lesson, we'll learn how to write a function so that we can repeat several operations with a single command.</p>
 <h3 id="defining-a-function">Defining a function</h3>
-<p>Let's open a new R script file in the <code>functions/</code> directory and define a a function that calculates the Gross Domestic Product of a nation from the data available in our dataset:</p>
+<p>Let's open a new R script file in the <code>functions/</code> directory and call it functions-lesson.R. We're going to define a function that calculates the Gross Domestic Product of a nation from the data available in our dataset:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Takes a dataset and multiplies the population column</span>
 <span class="co"># with the GDP per capita column.</span>
 calcGDP &lt;-<span class="st"> </span>function(dat) {
