@@ -50,6 +50,11 @@ effect of food treatment on the amount of negotiation per chick.
 ~~~ {.r}
 aov1 <- aov(NegPerChick~FoodTreatment, data=owls)
 summary(aov1)
+               Df Sum Sq Mean Sq F value   Pr(>F)    
+FoodTreatment   1   90.4   90.42   36.77 2.36e-09 ***
+Residuals     597 1468.1    2.46                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 ~~~
 
 Say we want to access the P-value from this `aov1` object. 
@@ -57,8 +62,17 @@ Let's examine its structure:
 
 ~~~ {.r}
 str(summary(aov1))
-# It is a list of length 1 that contains 5 other lists.
+List of 1
+ $ :Classes ‘anova’ and 'data.frame':	2 obs. of  5 variables:
+  ..$ Df     : num [1:2] 1 597
+  ..$ Sum Sq : num [1:2] 90.4 1468.1
+  ..$ Mean Sq: num [1:2] 90.42 2.46
+  ..$ F value: num [1:2] 36.8 NA
+  ..$ Pr(>F) : num [1:2] 2.36e-09 NA
+ - attr(*, "class")= chr [1:2] "summary.aov" "listof"
 ~~~
+
+It is a list of length 1 that contains 5 other lists.
 
 #### Challenge 1 {.challenge}
 Figure out how to extract the P-value from the object `summary(aov1)`.
@@ -69,27 +83,52 @@ Now let's add this as text to our boxplot.
 
 ~~~ {.r}
 text(x=1, y=1, labels=paste("P =", pval))
+~~~
+
+#INSERT IMAGE 2
+
+~~~ {.r}
 # Adjust the position
 text(x=1.3, y=6, labels=paste("P =", pval))
+~~~
+
+INSERT IMAGE 3
+
+~~~ {.r}
 # Round the p-value down to 3 significant figures
 text(x=1.3, y=6, labels=paste("P =", signif(pval, 3)))
+~~~
+
+INSERT IMAGE 4
+
+~~~ {.r}
 # Notice each text object has been added to the original plot.
 # Re-plot the whole thing with just the text you want:
 boxplot(owls$NegPerChick~owls$FoodTreatment)
 text(x=1.3, y=6, labels=paste("P =", signif(pval, 3)))
 ~~~
 
+INSERT IMAGE 5
+
 We can use the `plot` command to make a scatterplot (its default).
 
 ~~~ {.r}
 plot(owls$NegPerChick~owls$ArrivalTime)
+~~~
+
+INSERT IMAGE 6
+
+~~~ {.r}
 plot(owls$NegPerChick~owls$ArrivalTime, col="red", pch=19)
 ~~~
+
+INSERT IMAGE 7
 
 #Helpful tip#
 Most of the parameters you can adjust by passing optional 
 arguments to `plot` are not actually detailed in the 
-`plot` help document! Instead they are listed under `par`.
+`plot` help document! Instead they are listed in the help document 
+for `par` ('parameters').
 
 #### Challenge 2 {.challenge}
 Consult the `par` help document and figure out how to orient
@@ -98,7 +137,7 @@ their axis.
 ####
 
 Now let's think again about the data we're plotting. 
-`str(owls)` shows us that we've got data from a lot of 
+`str(owls)` shows us that we've got data here from a lot of 
 different nests - 27, in fact. Perhaps we want to explore
 each nest separately. 
 
@@ -107,12 +146,16 @@ Discuss with your two neighbours how you might go about
 exploring the data 'by nest'. What are your options?
 ####
 
-
+There are a lot of ways you could choose to display
+your data organised by nest. We will use the `ggplot2` library
+to demonstrate one of them. 
 
 
 ~~~ {.r}
-ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
-  geom_point()
+library(ggplot2)
+plot1 <- ggplot(data=owls, aes(x=ArrivalTime, y=NegPerChick)) +
+         geom_point()
+plot1
 ~~~
 
 ![](img/ggplot-ex1.png)
@@ -125,7 +168,7 @@ Ggplot is based on two principles:
  * Layers: Different basic components can be logically separated into layers
    which can be overlaid on top of each other.
 
-In the example, we told `ggplot` to use the gapminder dataset. As second argument
+In the example, we told `ggplot` to use the owls dataset. As second argument
 we gave it the `aes` function, which stands for *aesthetics*. The `aes` function
 specifies how your data are represented visually: which variables to plot on 
 each axis, as well as the color, size, shape, and transparency, which we'll change
@@ -137,33 +180,33 @@ This is a general rule.
 Anything we specify inside the first function, `ggplot`, becomes a global setting for
 the figure. Anything that we add with `+` is built up in layers (consecutively).
 
-Next, lets color the points by continent:
-
+Next, lets color the points by nest:
 
 ~~~ {.r}
-ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
-  geom_point(aes(color=continent))
+plot1 <- ggplot(data=owls, aes(x=ArrivalTime, y=NegPerChick)) +
+         geom_point(aes(colour=Nest))
+plot1
 ~~~
 
 ![](img/ggplot-ex2.png)
 
 Here, we've specified that we want change the color *aesthetic* for the points layer.
-We've told it to color the points based on the continents column. We can also change
-the shape fo the points:
+We've told it to color the points based on the nest column. We can also change
+the shape of the points (here by the sex of the parent owl):
 
 
 ~~~ {.r}
-ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
-  geom_point(aes(color=continent, shape=continent))
+plot1 <- ggplot(data=owls, aes(x=ArrivalTime, y=NegPerChick)) +
+  geom_point(aes(color=Nest, shape=SexParent))
+plot1
 ~~~
 
 ![](img/ggplot-ex3.png)
 
-Currently it's hard to see the relationship between the points due to some strong
-outliers in GDP per capita.
+Currently it's hard to see the relationship between the points because there are so many
+levels of 'Nest'. 
 
-We can change the scale of units on the y axis using the *scale* functions. These 
-control the mapping between the data and the aesthetics:
+Instead of plotting all nests on the same axes, we can add a facet
 
 ~~~ {.r}
 ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
