@@ -796,7 +796,7 @@ when reading in data. The reason for this is that text columns often represent
 categorical data, which need to be factors to be handled appropriately by
 the statistical modelling functions in R. 
 
-However it's not obvious behaviour, and something that trips novices up. We can
+However it's not obvious behaviour, and something that trips many people up. We can
 disable this behaviour and read in the data again.
 
 ~~~ {.r}
@@ -807,14 +807,11 @@ gapminder <- read.table(
 )
 ~~~
 
-This is a personal preference of mine. There are a few reasons I like to turn off
-this behaviour:
-
- 1. I'm often tripped up by this behaviour.
- 2. It's better to explicitly convert the variables into factors when
-    running statistical models. This forces you to think about the 
-    question you're asking, and makes it easier to specify the ordering
-    of the categories (this can be important!).
+Remember, if you do turn it off automatic conversion to factors you will need to 
+explicitly convert the variables into factors when
+running statistical models. 
+This can be useful, because it forces you to think about the 
+question you're asking, and makes it easier to specify the ordering of the categories.
 
 However there are many in the R community who find it more sensible to
 leave this as the default behaviour.
