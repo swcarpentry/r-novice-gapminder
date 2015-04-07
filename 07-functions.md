@@ -5,6 +5,7 @@ subtitle: Creating functions
 minutes: 15
 ---
 
+
 > ## Objectives {.objectives}
 >
 > * Define a function that takes arguments.
