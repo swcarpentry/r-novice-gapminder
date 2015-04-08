@@ -14,7 +14,7 @@ minutes: 15
 
 ### Reading Help files
 
-Previously, I showed you the `read.table` function for reading in files. But
+Previously, I showed you the `create.project` function for reading in files. But
 how did I know what arguments to use?
 
 R, and every package, provide help files for functions. To search for help on a
