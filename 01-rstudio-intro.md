@@ -544,4 +544,3 @@ stored the results of the `ls` command.
 > variables.
 >
 
-
