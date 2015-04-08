@@ -183,7 +183,11 @@ df
 
 ### Reading in data
 
-Remember earlier we obtained the gapminder dataset. Now we want to load it into R. 
+Remember earlier we obtained the gapminder dataset. 
+If you're curious about where this data comes from you might like to
+look at the [Gapminder website](http://www.gapminder.org/data/documentation/)
+
+Now we want to load the gapminder data into R. 
 Before reading in data, it's a good idea to have a look at its structure.
 Let's take a look using our newly-learned shell skills:
 
