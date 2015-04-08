@@ -48,8 +48,8 @@ df</code></pre>
 4  d 4 217
 5  e 5 218
 6  f 6 219</code></pre>
-<div id="challenge-6-dataframes" class="challenge">
-<h4>Challenge 6: Dataframes</h4>
+<div id="challenge-dataframes" class="challenge">
+<h4>Challenge: Dataframes</h4>
 <p>Try using the <code>length</code> function to query your dataframe <code>df</code>. Does it give the result you expect?</p>
 </div>
 <p>Each column in the data frame is simply a list element, which is why when you ask for the <code>length</code> of the data frame, it tells you the number of columns. If you actually want the number of rows, you can use the <code>nrow</code> function.</p>
@@ -114,8 +114,8 @@ df</code></pre>
 7  g 11  42   3
 8  l 12 534   2
 9  m 13 -20   1</code></pre>
-<div id="challenge-7" class="challenge">
-<h3>Challenge 7</h3>
+<div id="challenge" class="challenge">
+<h4>Challenge</h4>
 <p>Create a dataframe that holds the following information for yourself:</p>
 <ul>
 <li>First name</li>
@@ -168,7 +168,7 @@ gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(
 </ol>
 </div>
 <p>To make sure our analysis is reproducible, we should put the code into a script file so we can come back to it later.</p>
-<div id="challenge" class="challenge">
+<div id="challenge-1" class="challenge">
 <h4>Challenge</h4>
 <p>Go to file -&gt; new file -&gt; R script, and write an R script to load in the gapminder dataset. Put it in the <code>scripts/</code> directory and add it to version control.</p>
 <p>Run the script using the <code>source</code> function, using the file path as its argument (or by pressing the &quot;source&quot; button in RStudio).</p>
@@ -189,8 +189,8 @@ gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(
 <pre class="output"><code>[1] &quot;data.frame&quot;</code></pre>
 <p>The gapminder data is stored in a &quot;data.frame&quot;. This is the default data structure when you read in data, and (as we've heard) is useful for storing data with mixed types of columns.</p>
 <p>Let's look at some of the columns.</p>
-<div id="challenge-8-data-types-in-a-real-dataset" class="challenge">
-<h4>Challenge 8: Data types in a real dataset</h4>
+<div id="challenge-data-types-in-a-real-dataset" class="challenge">
+<h4>Challenge: Data types in a real dataset</h4>
 <p>Look at the first 6 rows of the gapminder dataframe we loaded before:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gapminder)</code></pre>
 <pre class="output"><code>      country year      pop continent lifeExp gdpPercap
