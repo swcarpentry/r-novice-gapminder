@@ -164,7 +164,7 @@ and don't end up being used in the final project, and some of the analyses
 get shared between projects.
 
 ### Project Template - a possible solution
-The next thing we're going to do is to install a third-party package, `ProjectTemplate`. 
+The next thing we're going to do is to install the third-party package, `ProjectTemplate`. 
 This package will set up an ideal directory structure for project management.
 This is very useful as it enables you to have your analysis pipeline/workflow organised and structured. 
 Together with the default Rstudio project functionality and Git you will be able to keep track of your
@@ -180,7 +180,7 @@ create.project("../my_project", merge.strategy = "allow.non.conflict")
 ~~~
 
 > #### Tip: ProjectTempate {.callout}
-> For more information on ProjectTemplate and its functionality vitit the 
+> For more information on ProjectTemplate and its functionality visit the 
 > home page [ProjectTemplate](http://projecttemplate.net/index.html)
 >
 
@@ -214,8 +214,13 @@ one to store the analysis scripts.
 
 Now we have a good directory structure we will now place/save the data file in the `data/` directory.
 > #### Challenge 1 {.challenge}
-> Download the gapminer data from ...
-> Move the file to the `data/` within your project.
+> Download the gapminer data from [here] (https://github.com/resbaz/r-novice-gapminder-files).
+>
+> 1. Use the `Download ZIP` located on the right hand side menu, last option. To download the `.zip` file to
+> your downloads folder.
+> 2. Unzip the file.
+> 3. Move the file to the `data/` within your project.
+>
 > We will load and inspect these data latter today.
 
 #### Version Control
