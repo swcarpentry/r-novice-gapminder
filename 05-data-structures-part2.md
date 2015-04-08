@@ -38,7 +38,7 @@ df
 6  f 6 219
 ~~~
 
-> #### Challenge 6: Dataframes {.challenge}
+> #### Challenge: Dataframes {.challenge}
 >
 > Try using the `length` function to query
 > your dataframe `df`. Does it give the result
@@ -167,7 +167,7 @@ df
 9  m 13 -20   1
 ~~~
 
-> ### Challenge 7 {.challenge}
+> #### Challenge {.challenge}
 > 
 > Create a dataframe that holds the following information for yourself:
 > 
@@ -311,7 +311,7 @@ in data, and (as we've heard) is useful for storing data with mixed types of col
 
 Let's look at some of the columns. 
 
-> #### Challenge 8: Data types in a real dataset {.challenge}
+> #### Challenge: Data types in a real dataset {.challenge}
 > 
 > Look at the first 6 rows of the gapminder dataframe we loaded before:
 > 
