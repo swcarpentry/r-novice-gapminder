@@ -685,6 +685,16 @@ xlist$data
 > 1. Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. Hint: the number 2 is contained within the "b" item in the list.
 > 
 
+> ### Challenge {.challenge}
+> 
+> Given a linear model:
+> 
+> ~~~ {.r}
+> mod <- aov(pop ~ lifeExp, data=gapminder)
+> ~~~
+>
+> Extract the residual degrees of freedom (hint: `attributes()` will help you)
+>
 
 ### Data frames
 
@@ -804,14 +814,4 @@ be changed with the third argument, `drop = FALSE`).
 > and 19 through 23. You can do this in one or two steps.
 >
 
-> ### Challenge (advanced) {.challenge}
-> 
-> Given a linear model:
-> 
-> ~~~ {.r}
-> mod <- aov(pop ~ lifeExp, data=gapminder)
-> ~~~
->
-> Extract the residual degrees of freedom (hint: `attributes()` will help you)
->
 
