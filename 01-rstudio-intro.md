@@ -8,6 +8,7 @@ minutes: 15
 > ### Learning Objectives {.objectives}
 >
 > * To gain familiarity with the various panes in the RStudio IDE
+> * To gain familiarity with the buttons, short cuts and options in the Rstudio IDE
 > * To understand variables and how to assign to them
 > * To be able to manage your workspace in an interactive R session
 > * To be able to use mathematical and comparison operations
@@ -39,6 +40,41 @@ Once you open files, such as R scripts, a scripting panel will also open in the 
 
 I'm going to reorganise these panes in such a way that makes them easier to see while
 teaching.
+
+#### Work flow within Rstudio
+There are two main ways one can work within Rstudio.
+
+1. Test and play within the interactive R console then copy code into a .R file to run later.
+  1.  This works well when doing small tests and initially starting off.
+  2.  Becomes laboursome.
+2. Start writing in an .R file and use Rstudio's command / short cut to push current line, selected lines or modified lines to the interactive R console.
+  1. This is great way to start and work as all workings are saved for latter reference and can be read latter.
+
+> #### Tip: Pushing to the interactive R console {.callout}
+> To run the current line click on the `Run` button just above the file pane. Or use the short cut which can be see 
+> by hovering the mouse over the button.
+>
+> To run a block of code, select it and then `Run`. If you have modified a line
+> of code within a block of code you have just run. There is no need to reselct the section and `Run`, 
+> you can use the next button along, `Re-run the previous region`. This will run the previous code block inculding 
+> the modifications you have made.
+>
+> To move between the panes use the short cut, `control` and the number of the defined view. 
+> Look at the options in the `View` menu.
+> Two key ones:
+> 1. `Control 1` for the source file (your current R script).
+> 2. `Control 2` for the interactive R console.
+>
+
+#### Changing the look and feel of Rstudio.
+Open up the prefences menu:
+
+1. To change the layout of the panes to suit your workflow, look in the `Pane layout` section.
+2. To change background colour, text colour and font size, look in the `Appearance` section.
+
+> #### Challenge 1 {.challenge}
+> Explore the options and enable the option `Highlight selected line`.
+> Change the defalt theme to something diferent.
 
 ### Introduction to R
 
@@ -309,9 +345,8 @@ x
 More precisely, the stored value is a *decimal approximation* of
 this fraction called a [floating point number](http://en.wikipedia.org/wiki/Floating_point).
 
-Look up at the top right pane of RStudio, and you'll see that `x` and its value
-have appeared in the "Workspace" pane under the environment tab. Our variable 
-`x` can be used in place of a number in any calculation that expects a number:
+Look for the `Environment` tab in one of the panes of RStudio, and you will see that `x` and its value
+have appeared. Our variable `x` can be used in place of a number in any calculation that expects a number:
 
 ~~~ {.r}
 log(x)
@@ -322,7 +357,6 @@ log(x)
 ~~~
 
 The right hand side of the assignment can be any valid R expression.
-
 
 Notice that assignment does not print a value.
 
@@ -361,7 +395,7 @@ x = 1/40
 But this is much less common among R users.  The most important thing is to
 **be consistent** with the operator you use. There are occasionally places
 where it is less confusing to use `<-` than `=`, and it is the most common
-symbol used in the community. So I'd recommend `<-`.
+symbol used in the community. So the recommendation is to use `<-`.
 
 #### Managing your environment
 
@@ -485,7 +519,7 @@ stored the results of the `ls` command.
 >
 
 
-> #### Challenge 1 {.challenge}
+> #### Challenge 2 {.challenge}
 >
 > Draw diagrams showing what variables refer to what values after each 
 > statement in the following program:
@@ -498,13 +532,13 @@ stored the results of the `ls` command.
 > ~~~
 >
 
-> #### Challenge 2 {.challenge}
+> #### Challenge 3 {.challenge}
 >
 > Run the code from the previous challenge, and write a command to
 > compare mass to age. Is mass larger than age?
 >
 
-> #### Challenge 3 {.challenge}
+> #### Challenge 4 {.challenge}
 >
 > Clean up your working environment by deleting the mass and age
 > variables.
