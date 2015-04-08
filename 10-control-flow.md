@@ -288,7 +288,7 @@ output_vector2
 
 > #### Challenge 4 {.challenge}
 >
-> Write a script that loops through the `gapfinder` data by continent and prints out
+> Write a script that loops through the `gapminder` data by continent and prints out
 > whether the mean life expectancy is smaller or larger than 50
 > years.
 >
@@ -298,5 +298,12 @@ output_vector2
 > Modify the script from Challenge 4 to also loop over each 
 > country. This time print out whether the life expectancy is
 > smaller than 50, between 50 and 70, or greater than 70.
+>
+
+> #### Challenge 6 - Advanced {.challenge}
+>
+> Write a script that loops over each country in the `gapminder` dataset,
+> tests whether the country starts with a 'B', and graphs life expectancy 
+> against time as a line graph if the mean life expectancy is under 50 years. 
 >
 
