@@ -188,7 +188,7 @@ x
 5.4 6.2 7.1 7.5 
 ~~~
 
-> ### Challenge {.challenge}
+> #### Challenge {.challenge}
 >
 > ~~~ {.r}
 > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
@@ -677,17 +677,16 @@ xlist$data
   6          5.4         3.9          1.7         0.4  setosa
 ~~~
 
-> ### Challenge {.challenge}
+> #### Challenge {.challenge}
+> 1. Given the following list:
+>
 > ~~~ {.r}
 > xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris)) 
 > ~~~
 > 
-> 1. Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. Hint: the number 2 is contained within the "b" item in the list.
+> Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. Hint: the number 2 is contained within the "b" item in the list.
 > 
-
-> ### Challenge {.challenge}
-> 
-> Given a linear model:
+> 2. Given a linear model:
 > 
 > ~~~ {.r}
 > mod <- aov(pop ~ lifeExp, data=gapminder)
@@ -766,7 +765,7 @@ gapminder[3,]
 But for a single column the result will be a vector (this can
 be changed with the third argument, `drop = FALSE`).
 
-> ### Challenge {.challenge}
+> #### Challenge {.challenge}
 > 
 > Fix each of the following common data frame subsetting errors:
 > 
@@ -803,14 +802,12 @@ be changed with the third argument, `drop = FALSE`).
 > ~~~
 >
 
-> ### Challenge {.challenge}
+> #### Challenge {.challenge}
 >
-> Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
+> 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
 >
-
-> ### Challenge {.challenge}
 > 
-> Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9 
+> 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9 
 > and 19 through 23. You can do this in one or two steps.
 >
 
