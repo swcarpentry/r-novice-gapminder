@@ -213,6 +213,7 @@ one to store the analysis scripts.
 ### Save the data in the data directory
 
 Now we have a good directory structure we will now place/save the data file in the `data/` directory.
+
 > #### Challenge 1 {.challenge}
 > Download the gapminer data from [here] (https://github.com/resbaz/r-novice-gapminder-files).
 >
