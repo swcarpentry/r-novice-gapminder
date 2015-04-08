@@ -9,9 +9,9 @@ minutes: 15
 >
 > * To be able to subset vectors, factors, matrices, lists, and data frames
 > * To be able to extract individual and multiple elements:
-> * * by index,
-> * * by name,
-> * * using comparison operations
+>   * by index,
+>   * by name,
+>   * using comparison operations
 > * To be able to skip and remove elements from various data structures.
 >
 
