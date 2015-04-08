@@ -766,10 +766,10 @@ be changed with the third argument, `drop = FALSE`).
 > gapminder[gapminder$year = 1957,]
 > ~~~
 >
-> 2. Extract rows 1 throught 4
+> 2. Extract all columns except 1 through to 4
 >
 > ~~~ {.r}
-> gapminder[-1:4,]
+> gapminder[,-1:4]
 > ~~~
 >
 > 3. Extract the rows where the life expectancy is longer the 80 years
@@ -778,8 +778,8 @@ be changed with the third argument, `drop = FALSE`).
 > gapminder[gapminder$lifeExp > 80]
 > ~~~
 >
-> 4. Extract the first row, and the fourth and fifth column 
->   `lifeExp` and `gdpPercap`.
+> 4. Extract the first row, and the fourth and fifth columns 
+>   (`lifeExp` and `gdpPercap`).
 >
 > ~~~ {.r}
 > gapminder[1, 4, 5]
@@ -812,6 +812,6 @@ be changed with the third argument, `drop = FALSE`).
 > mod <- aov(pop ~ lifeExp, data=gapminder)
 > ~~~
 >
-> Extract the residual degrees of freedom (hint: `str` will help you)
+> Extract the residual degrees of freedom (hint: `attributes()` will help you)
 >
 
