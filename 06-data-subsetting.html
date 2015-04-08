@@ -362,15 +362,15 @@ $b
 </ol>
 <pre class="sourceCode r"><code class="sourceCode r">gapminder[gapminder$year =<span class="st"> </span><span class="dv">1957</span>,]</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Extract rows 1 throught 4</li>
+<li>Extract all columns except 1 through to 4</li>
 </ol>
-<pre class="sourceCode r"><code class="sourceCode r">gapminder[-<span class="dv">1</span>:<span class="dv">4</span>,]</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">gapminder[,-<span class="dv">1</span>:<span class="dv">4</span>]</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Extract the rows where the life expectancy is longer the 80 years</li>
 </ol>
 <pre class="sourceCode r"><code class="sourceCode r">gapminder[gapminder$lifeExp &gt;<span class="st"> </span><span class="dv">80</span>]</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li>Extract the first row, and the fourth and fifth column <code>lifeExp</code> and <code>gdpPercap</code>.</li>
+<li>Extract the first row, and the fourth and fifth columns (<code>lifeExp</code> and <code>gdpPercap</code>).</li>
 </ol>
 <pre class="sourceCode r"><code class="sourceCode r">gapminder[<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">5</span>]</code></pre>
 <ol start="5" style="list-style-type: decimal">
@@ -390,7 +390,7 @@ $b
 <h3>Challenge (advanced)</h3>
 <p>Given a linear model:</p>
 <pre class="sourceCode r"><code class="sourceCode r">mod &lt;-<span class="st"> </span><span class="kw">aov</span>(pop ~<span class="st"> </span>lifeExp, <span class="dt">data=</span>gapminder)</code></pre>
-<p>Extract the residual degrees of freedom (hint: <code>str</code> will help you)</p>
+<p>Extract the residual degrees of freedom (hint: <code>attributes()</code> will help you)</p>
 </div>
         </div>
       </div>
