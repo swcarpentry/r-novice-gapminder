@@ -42,21 +42,20 @@ A good project layout will ultimately make your life easier:
 * It allows you to easily upload your code with your manuscript submission;
 * It makes it easier to pick the project back up after a break.
 
-### The RStudio solution
+### A possible solution
 
-Fortunately, RStudio can help you manage your code effectively.
+Fortunately, there are tools and packages which can help you manage your work effectively.
 
 One of the most powerful and useful aspects of RStudio is its project management 
 functionality. We'll be using this today to create a self-contianed, reproducible
 project.
  
-> #### Challenge: Installing Packages {.challenge} 
-> 
+> #### Challenge: Installing Packages {.challenge}
 > The first thing we're going to do is to install a third-party package, `packrat`. 
-> This allows RStudio to create self-contained packages: any further packages 
-> you download will be contained within their respective projects. This is really 
-> useful, as different versions of packages can change results as new knowledge is 
-> gained. This allows you to easily keep track of the version used for your analyses. 
+> This allows RStudio to create self-contained packages: any further packages you download 
+> will be contained within their respective projects. This is really useful, as different 
+> versions of packages can change results as new knowledge is gained. 
+> This allows you to easily keep track of the version used for your analyses. 
 > 
 > Packages can be installed using the `install.packages` function: 
 > 
@@ -84,7 +83,7 @@ By installing `packrat` and telling RStudio to use `packrat` with this project,
 any third-party packages will be installed in a separate library in the `packrat/`
 subdirectory of our project. This means we don't have to worry about package
 versions changing, especially when returning to a project after a long period of
-time (for example when writing up your thesis!). 
+time (for example when writing up your thesis!).
 
 > #### Tip: packrat {.callout}
 >
@@ -110,7 +109,6 @@ library("packrat")
 Here we've called the function `library` and used it to load those packages
 into our local namespace (our interactive R session). This means all of 
 their functions are now available to us.
-
 
 The main function you'll encounter in `packrat` is the `status` function:
 
@@ -165,6 +163,27 @@ analysis. This makes it easier later, as many of my analyses are exploratory
 and don't end up being used in the final project, and some of the analyses
 get shared between projects.
 
+### Project Template - a possible solution
+The next thing we're going to do is to install a third-party package, `ProjectTemplate`. 
+This package will set up an ideal directory structure for project management.
+This is very useful as it enables you to have your analysis pipeline/workflow organised and structured. 
+Together with the default Rstudio project functionality and Git you will be able to keep track of your
+work as well as be able to share your work with collaborators.
+
+1. Install `ProjectTemplate`.
+2. Load the library
+3. Initialise the project:
+~~~ {.r}
+install.packages("ProjectTemplate")
+library(ProjectTemplate)
+create.project("../my_project", merge.strategy = "allow.non.conflict")
+~~~
+
+> #### Tip: ProjectTempate {.callout}
+> For more information on ProjectTemplate and its functionality vitit the 
+> home page [ProjectTemplate](http://projecttemplate.net/index.html)
+>
+
 #### Separate function definition and application
 
 The most effective way I find to work in R, is to play around in the interactive
@@ -190,6 +209,14 @@ one to store the analysis scripts.
 > use the `ln -s` command, and on windows you can either create a shortcut or
 > use the `mklink` command from the windows terminal.
 >
+
+### Save the data in the data directory
+
+Now we have a good directory structure we will now place/save the data file in the `data/` directory.
+> #### Challenge 1 {.challenge}
+> Download the gapminer data from ...
+> Move the file to the `data/` within your project.
+> We will load and inspect these data latter today.
 
 #### Version Control
 
@@ -222,22 +249,9 @@ between files from different commits.
 >
 
 > #### Challenge 2 {.challenge}
->
-> Create the following directories (either through bash or RStudio)
-> for the project:
->
-> * `data/` for storing read-only data
-> * `munge/` for storing preprocessing scripts
-> * `cleaned-data/` for storing read-only preprocessed data
-> * `functions/` for storing any functions we write
-> * `scripts/` for storing analysis scripts 
-> * `output/` for storing any output we generate
->
-
-> #### Challenge 3 {.challenge}
 > 
-> Modify the `.gitignore` file to contain `data/`, `cleaned-data` and
-> `output/` so that disposable output isn't versioned.
+> Modify the `.gitignore` file to contain `cache/`, `graphs/`, 
+> `reports/` and `logs/` so that disposable output isn't versioned.
 >
 > Add the newly created folders to version control using 
 > the git interface.
