@@ -28,59 +28,16 @@
       <div class="row-fluid">
         <div class="span10 offset1">
           <h1 class="title">R for reproducible scientific analysis</h1>
-          <h2 class="subtitle">Reading data</h2>
+          <h2 class="subtitle">Data frames and reading in data</h2>
 <div id="learning-objectives" class="objectives">
 <h2>Learning Objectives</h2>
 <ul>
+<li>Become familiar with data frames</li>
 <li>To be able to read in regular data into R</li>
 </ul>
 </div>
-<h3 id="reading-in-data">Reading in data</h3>
-<p>Now that we've obtained the gapminder dataset, we want to load it into R. Before reading in data, it's a good idea to have a look at its structure. Let's take a look using our newly-learned shell skills:</p>
-<pre class="shell"><code>cd gapminder/data/ # navigate to the data directory of the project folder
-head gapminder-FiveYearData.csv </code></pre>
-<pre class="output"><code>country,year,pop,continent,lifeExp,gdpPercap
-Afghanistan,1952,8425333,Asia,28.801,779.4453145
-Afghanistan,1957,9240934,Asia,30.332,820.8530296
-Afghanistan,1962,10267083,Asia,31.997,853.10071
-Afghanistan,1967,11537966,Asia,34.02,836.1971382
-Afghanistan,1972,13079460,Asia,36.088,739.9811058
-Afghanistan,1977,14880372,Asia,38.438,786.11336
-Afghanistan,1982,12881816,Asia,39.854,978.0114388
-Afghanistan,1987,13867957,Asia,40.822,852.3959448
-Afghanistan,1992,16317921,Asia,41.674,649.3413952</code></pre>
-<p>As its file extension would suggest, the file contains comma-separated values, and seems to contain a header row.</p>
-<p>We can use <code>read.table</code> to read this into R</p>
-<pre class="sourceCode r"><code class="sourceCode r">gapminder &lt;-<span class="st"> </span><span class="kw">read.table</span>(
-  <span class="dt">file=</span><span class="st">&quot;data/gapminder-FiveYearData.csv&quot;</span>,
-  <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>
-)
-<span class="kw">head</span>(gapminder)</code></pre>
-<pre class="output"><code>      country year      pop continent lifeExp gdpPercap
-1 Afghanistan 1952  8425333      Asia  28.801  779.4453
-2 Afghanistan 1957  9240934      Asia  30.332  820.8530
-3 Afghanistan 1962 10267083      Asia  31.997  853.1007
-4 Afghanistan 1967 11537966      Asia  34.020  836.1971
-5 Afghanistan 1972 13079460      Asia  36.088  739.9811
-6 Afghanistan 1977 14880372      Asia  38.438  786.1134</code></pre>
-<p>Because we know the structure of the data, we're able to specify the appropriate arguments to <code>read.table</code>. Without these arguments, <code>read.table</code> will do its best to do something sensible, but it is always more reliable to explicitly tell <code>read.table</code> the structure of the data. <code>read.csv</code> function provides a convenient shortcut for loading in CSV files.</p>
-<div id="miscellaneous-tips" class="callout">
-<h4>Miscellaneous Tips</h4>
-<ol style="list-style-type: decimal">
-<li><p>Another type of file you might encounter are tab-separated format. To specify a tab as a separator, use <code>&quot;\t&quot;</code>.</p></li>
-<li><p>You can also read in files from the internet by replacing the file paths with a web address.</p></li>
-<li><p>You can read directly from excel spreadsheets without converting them to plain text by using the <code>xlsx</code> package.</p></li>
-</ol>
-</div>
-<p>To make sure our analysis is reproducible, we should put the code into a script file so we can come back to it later.</p>
-<div id="challenge" class="challenge">
-<h4>Challenge</h4>
-<p>Go to file -&gt; new file -&gt; R script, and write an R script to load in the gapminder dataset. Put it in the <code>scripts/</code> directory and add it to version control.</p>
-<p>Run the script using the <code>source</code> function, using the file path as its argument (or by pressing the &quot;source&quot; button in RStudio).</p>
-</div>
-<h4 id="data-frames">Data frames</h4>
-<p>We've already encountered a data frame in the previous lesson - the <code>gapminder</code> dataset. Let's return to them now that we know a little bit more about data structures.</p>
-<p>Data frames are similar to matrices, except they can contain multiple atomic types. Underneath the hood, data frames are really lists, where each element is an atomic vector, with the added restriction that they're all the same length.</p>
+<h3 id="data-frames">Data frames</h3>
+<p>Data frames are similar to matrices, except each column can be a different atomic type. Underneath the hood, data frames are really lists, where each element is an atomic vector, with the added restriction that they're all the same length. As you will see, if we pull out one column of a data frame, we will have a vector.</p>
 <p>Data frames can be created manually with the <code>data.frame</code> function:</p>
 <pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id =</span> <span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>, <span class="st">&#39;f&#39;</span>), <span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">6</span>, <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">214</span>:<span class="dv">219</span>))
 df</code></pre>
@@ -167,6 +124,54 @@ df</code></pre>
 </ul>
 <p>Then use rbind to add the same information for the people sitting near you.</p>
 <p>Now use cbind to add a column of logicals answering the question, &quot;Is there anything in this workshop you're finding confusing?&quot;</p>
+</div>
+<h3 id="reading-in-data">Reading in data</h3>
+<p>Remember earlier we obtained the gapminder dataset. Now we want to load it into R. Before reading in data, it's a good idea to have a look at its structure. Let's take a look using our newly-learned shell skills:</p>
+<pre class="shell"><code>cd gapminder/data/ # navigate to the data directory of the project folder
+head gapminder-FiveYearData.csv </code></pre>
+<pre class="output"><code>country,year,pop,continent,lifeExp,gdpPercap
+Afghanistan,1952,8425333,Asia,28.801,779.4453145
+Afghanistan,1957,9240934,Asia,30.332,820.8530296
+Afghanistan,1962,10267083,Asia,31.997,853.10071
+Afghanistan,1967,11537966,Asia,34.02,836.1971382
+Afghanistan,1972,13079460,Asia,36.088,739.9811058
+Afghanistan,1977,14880372,Asia,38.438,786.11336
+Afghanistan,1982,12881816,Asia,39.854,978.0114388
+Afghanistan,1987,13867957,Asia,40.822,852.3959448
+Afghanistan,1992,16317921,Asia,41.674,649.3413952</code></pre>
+<p>As its file extension would suggest, the file contains comma-separated values, and seems to contain a header row.</p>
+<p>We can use <code>read.table</code> to read this into R</p>
+<pre class="sourceCode r"><code class="sourceCode r">gapminder &lt;-<span class="st"> </span><span class="kw">read.table</span>(
+  <span class="dt">file=</span><span class="st">&quot;data/gapminder-FiveYearData.csv&quot;</span>,
+  <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>
+)
+<span class="kw">head</span>(gapminder)</code></pre>
+<pre class="output"><code>      country year      pop continent lifeExp gdpPercap
+1 Afghanistan 1952  8425333      Asia  28.801  779.4453
+2 Afghanistan 1957  9240934      Asia  30.332  820.8530
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007
+4 Afghanistan 1967 11537966      Asia  34.020  836.1971
+5 Afghanistan 1972 13079460      Asia  36.088  739.9811
+6 Afghanistan 1977 14880372      Asia  38.438  786.1134</code></pre>
+<p>Because we know the structure of the data, we're able to specify the appropriate arguments to <code>read.table</code>. Without these arguments, <code>read.table</code> will do its best to do something sensible, but it is always more reliable to explicitly tell <code>read.table</code> the structure of the data. <code>read.csv</code> function provides a convenient shortcut for loading in CSV files.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Here is the read.csv version of the above command</span>
+gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(
+  <span class="dt">file=</span><span class="st">&quot;data/gapminder-FiveYearData.csv&quot;</span>
+)
+<span class="kw">head</span>(gapminder)</code></pre>
+<div id="miscellaneous-tips" class="callout">
+<h4>Miscellaneous Tips</h4>
+<ol style="list-style-type: decimal">
+<li><p>Another type of file you might encounter are tab-separated format. To specify a tab as a separator, use <code>&quot;\t&quot;</code>.</p></li>
+<li><p>You can also read in files from the internet by replacing the file paths with a web address.</p></li>
+<li><p>You can read directly from excel spreadsheets without converting them to plain text first by using the <code>xlsx</code> package.</p></li>
+</ol>
+</div>
+<p>To make sure our analysis is reproducible, we should put the code into a script file so we can come back to it later.</p>
+<div id="challenge" class="challenge">
+<h4>Challenge</h4>
+<p>Go to file -&gt; new file -&gt; R script, and write an R script to load in the gapminder dataset. Put it in the <code>scripts/</code> directory and add it to version control.</p>
+<p>Run the script using the <code>source</code> function, using the file path as its argument (or by pressing the &quot;source&quot; button in RStudio).</p>
 </div>
 <h3 id="using-dataframes-the-gapminder-dataset">Using dataframes: the <code>gapminder</code> dataset</h3>
 <p>To recap what we've just learnt, let's have a look at our example data (life expectancy in various countries for various years).</p>
