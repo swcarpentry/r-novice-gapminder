@@ -33,6 +33,7 @@
 <h3>Learning Objectives</h3>
 <ul>
 <li>To gain familiarity with the various panes in the RStudio IDE</li>
+<li>To gain familiarity with the buttons, short cuts and options in the Rstudio IDE</li>
 <li>To understand variables and how to assign to them</li>
 <li>To be able to manage your workspace in an interactive R session</li>
 <li>To be able to use mathematical and comparison operations</li>
@@ -52,6 +53,31 @@
 </ul>
 <p>Once you open files, such as R scripts, a scripting panel will also open in the top left.</p>
 <p>I'm going to reorganise these panes in such a way that makes them easier to see while teaching.</p>
+<h4 id="work-flow-within-rstudio">Work flow within Rstudio</h4>
+<p>There are two main ways one can work within Rstudio.</p>
+<ol style="list-style-type: decimal">
+<li>Test and play within the interactive R console then copy code into a .R file to run later.</li>
+<li>This works well when doing small tests and initially starting off.</li>
+<li>Becomes laboursome.</li>
+<li>Start writing in an .R file and use Rstudio's command / short cut to push current line, selected lines or modified lines to the interactive R console.</li>
+<li>This is great way to start and work as all workings are saved for latter reference and can be read latter.</li>
+</ol>
+<div id="tip-pushing-to-the-interactive-r-console" class="callout">
+<h4>Tip: Pushing to the interactive R console</h4>
+<p>To run the current line click on the <code>Run</code> button just above the file pane. Or use the short cut which can be see by hovering the mouse over the button.</p>
+<p>To run a block of code, select it and then <code>Run</code>. If you have modified a line of code within a block of code you have just run. There is no need to reselct the section and <code>Run</code>, you can use the next button along, <code>Re-run the previous region</code>. This will run the previous code block inculding the modifications you have made.</p>
+<p>To move between the panes use the short cut, <code>control</code> and the number of the defined view. Look at the options in the <code>View</code> menu. Two key ones: 1. <code>Control 1</code> for the source file (your current R script). 2. <code>Control 2</code> for the interactive R console.</p>
+</div>
+<h4 id="changing-the-look-and-feel-of-rstudio.">Changing the look and feel of Rstudio.</h4>
+<p>Open up the prefences menu:</p>
+<ol style="list-style-type: decimal">
+<li>To change the layout of the panes to suit your workflow, look in the <code>Pane layout</code> section.</li>
+<li>To change background colour, text colour and font size, look in the <code>Appearance</code> section.</li>
+</ol>
+<div id="challenge-1" class="challenge">
+<h4>Challenge 1</h4>
+<p>Explore the options and enable the option <code>Highlight selected line</code>. Change the defalt theme to something diferent.</p>
+</div>
 <h3 id="introduction-to-r">Introduction to R</h3>
 <p>A lot of your time in R will be spent in the R interactive console. This is where you will run all of your code, and can be a useful environment to try out ideas before adding them to an R script file. This console in RStudio is the same as the one you would get if you just typed in <code>R</code> in your commandline environment.</p>
 <p>The first thing you will see in the R interactive session is a bunch of information, followed by a &quot;&gt;&quot; and a blinking cursor. In many ways this is similar to the shell environment you learnt about during the shell lessons: it operates on the same idea of a &quot;Read, evaluate, print loop&quot;: you type in commands, R tries to execute them, and then returns a result.</p>
@@ -137,7 +163,7 @@
 <pre class="sourceCode r"><code class="sourceCode r">x</code></pre>
 <pre class="output"><code>[1] 0.025</code></pre>
 <p>More precisely, the stored value is a <em>decimal approximation</em> of this fraction called a <a href="http://en.wikipedia.org/wiki/Floating_point">floating point number</a>.</p>
-<p>Look up at the top right pane of RStudio, and you'll see that <code>x</code> and its value have appeared in the &quot;Workspace&quot; pane under the environment tab. Our variable <code>x</code> can be used in place of a number in any calculation that expects a number:</p>
+<p>Look for the <code>Environment</code> tab in one of the panes of RStudio, and you will see that <code>x</code> and its value have appeared. Our variable <code>x</code> can be used in place of a number in any calculation that expects a number:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log</span>(x)</code></pre>
 <pre class="output"><code>[1] -3.688879</code></pre>
 <p>The right hand side of the assignment can be any valid R expression.</p>
@@ -157,7 +183,7 @@
 <p>What you use is up to you, but <strong>be consistent</strong>.</p>
 <p>It is also possible to use the <code>=</code> operator for assignment:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="dv">1</span>/<span class="dv">40</span></code></pre>
-<p>But this is much less common among R users. The most important thing is to <strong>be consistent</strong> with the operator you use. There are occasionally places where it is less confusing to use <code>&lt;-</code> than <code>=</code>, and it is the most common symbol used in the community. So I'd recommend <code>&lt;-</code>.</p>
+<p>But this is much less common among R users. The most important thing is to <strong>be consistent</strong> with the operator you use. There are occasionally places where it is less confusing to use <code>&lt;-</code> than <code>=</code>, and it is the most common symbol used in the community. So the recommendation is to use <code>&lt;-</code>.</p>
 <h4 id="managing-your-environment">Managing your environment</h4>
 <p>There are a few useful commands you can use to interact with the R session.</p>
 <p><code>ls</code> will list all of the variables and functions stored in the global environment (your working R session):</p>
@@ -221,20 +247,20 @@
 <p>Pay attention when R does something unexpected! Errors, like above, are thrown when R cannot proceed with a calculation. Warnings on the other hand usually mean that the function has run, but it probably hasn't worked as expected.</p>
 <p>In both cases, the message that R prints out usually give you clues how to fix a problem.</p>
 </div>
-<div id="challenge-1" class="challenge">
-<h4>Challenge 1</h4>
+<div id="challenge-2" class="challenge">
+<h4>Challenge 2</h4>
 <p>Draw diagrams showing what variables refer to what values after each statement in the following program:</p>
 <pre class="sourceCode r"><code class="sourceCode r">mass &lt;-<span class="st"> </span><span class="fl">47.5</span>
 age &lt;-<span class="st"> </span><span class="dv">122</span>
 mass &lt;-<span class="st"> </span>mass *<span class="st"> </span><span class="fl">2.3</span>
 age &lt;-<span class="st"> </span>age -<span class="st"> </span><span class="dv">20</span></code></pre>
 </div>
-<div id="challenge-2" class="challenge">
-<h4>Challenge 2</h4>
-<p>Run the code from the previous challenge, and write a command to compare mass to age. Is mass larger than age?</p>
-</div>
 <div id="challenge-3" class="challenge">
 <h4>Challenge 3</h4>
+<p>Run the code from the previous challenge, and write a command to compare mass to age. Is mass larger than age?</p>
+</div>
+<div id="challenge-4" class="challenge">
+<h4>Challenge 4</h4>
 <p>Clean up your working environment by deleting the mass and age variables.</p>
 </div>
         </div>
