@@ -173,6 +173,7 @@ work as well as be able to share your work with collaborators.
 1. Install `ProjectTemplate`.
 2. Load the library
 3. Initialise the project:
+
 ~~~ {.r}
 install.packages("ProjectTemplate")
 library(ProjectTemplate)
