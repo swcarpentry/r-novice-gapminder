@@ -188,6 +188,29 @@ x
 5.4 6.2 7.1 7.5 
 ~~~
 
+> #### Challenge {.challenge}
+>
+> ~~~ {.r}
+> x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
+> names(x) <- c('a', 'b', 'c', 'd', 'e')
+> print(x)
+> ~~~
+>
+> ~~~ {.output}
+>   a   b   c   d   e
+> 5.4 6.2 7.1 4.8 7.5
+> ~~~
+>
+> 1. Come up with at least 3 different commands that will produce the following output:
+>
+> ~~~ {.output}
+>   b   c   d
+> 6.2 7.1 4.8 
+> ~~~
+>
+> Compare notes with your neighbour. Did you have different strategies?
+>
+
 ### Subsetting by name
 
 We can extract elements by using their name, instead of index:
@@ -368,6 +391,21 @@ x[x > 7]
 >    also apply here.
 >
 
+> #### Challenge {.challenge}
+> 
+> ~~~ {.r}
+> x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
+> names(x) <- c('a', 'b', 'c', 'd', 'e')
+> print(x)
+> ~~~
+> 
+> ~~~ {.output}
+>   a   b   c   d   e 
+> 5.4 6.2 7.1 4.8 7.5 
+> ~~~
+> 
+> 1. Write a subsetting command to return the values in x that are greater than 4 and less than 7.
+> 
 
 #### Handling special values
 
