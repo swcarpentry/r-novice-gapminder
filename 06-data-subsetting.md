@@ -679,7 +679,7 @@ xlist$data
 
 > ### Challenge {.challenge}
 > ~~~ {.r}
-> xlist <- list(a = "Research Bazaar", b = 1:10, data = head(iris)) 
+> xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris)) 
 > ~~~
 > 
 > 1. Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. Hint: the number 2 is contained within the "b" item in the list.
