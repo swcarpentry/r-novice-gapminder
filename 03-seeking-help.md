@@ -106,3 +106,8 @@ Will print out your current version of R, as well as any packages you
 have loaded. This can be useful for others to help reproduce and debug
 your issue.
 
+### Other ports of call
+
+* [Quick R] (http://www.statmethods.net/)
+* [Rstudio cheat sheets] (http://www.rstudio.com/resources/cheatsheets/)
+* [Cookbook for R] (http://www.cookbook-r.com/)
