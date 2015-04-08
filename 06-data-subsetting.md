@@ -188,7 +188,7 @@ x
 5.4 6.2 7.1 7.5 
 ~~~
 
-> #### Challenge {.challenge}
+> ### Challenge {.challenge}
 >
 > ~~~ {.r}
 > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
@@ -208,7 +208,7 @@ x
 > 6.2 7.1 4.8 
 > ~~~
 >
-> Compare notes with your neighbour. Did you have different strategies?
+> 2. Compare notes with your neighbour. Did you have different strategies?
 >
 
 ### Subsetting by name
@@ -587,7 +587,7 @@ Using `[` will always return a list. If you want to *subset* a list, but not
 *extract* an element, then you will likely use `[`.
 
 ~~~ {.r}
-xlist <- list(a = "Research Bazaar", b = 1:10, data = head(iris)) 
+xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris)) 
 xlist[1] 
 ~~~
 
@@ -595,7 +595,7 @@ This returns a *list with one element*:
 
 ~~~ {.output}
 $a
-[1] "Research Bazaar"
+[1] "Software Carpentry"
 
 ~~~
 
@@ -611,7 +611,7 @@ xlist[1:2]
 
 ~~~ {.output}
 $a
-[1] "Research Bazaar"
+[1] "Software Carpentry"
 
 $b
  [1]  1  2  3  4  5  6  7  8  9 10
@@ -626,7 +626,7 @@ xlist[[1]]
 ~~~
 
 ~~~ {.output}
-[1] "Research Bazaar"
+[1] "Software Carpentry"
 ~~~
 
 Notice that now the result is a vector, not a list.
@@ -658,7 +658,7 @@ xlist[["a"]]
 ~~~
 
 ~~~ {.output}
-[1] "Research Bazaar"
+[1] "Software Carpentry"
 ~~~
 
 The `$` function is a shorthand way for extracting elements by name:
@@ -676,6 +676,15 @@ xlist$data
   5          5.0         3.6          1.4         0.2  setosa
   6          5.4         3.9          1.7         0.4  setosa
 ~~~
+
+> ### Challenge {.challenge}
+> ~~~ {.r}
+> xlist <- list(a = "Research Bazaar", b = 1:10, data = head(iris)) 
+> ~~~
+> 
+> 1. Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. Hint: the number 2 is contained within the "b" item in the list.
+> 
+
 
 ### Data frames
 
@@ -747,50 +756,55 @@ gapminder[3,]
 But for a single column the result will be a vector (this can
 be changed with the third argument, `drop = FALSE`).
 
-> ### Challenge 1 {.challenge}
+> ### Challenge {.challenge}
 > 
 > Fix each of the following common data frame subsetting errors:
 > 
 > 1. Extract observations collected for the year 1957
+>
 > ~~~ {.r}
 > gapminder[gapminder$year = 1957,]
 > ~~~
 >
 > 2. Extract rows 1 throught 4
+>
 > ~~~ {.r}
 > gapminder[-1:4,]
 > ~~~
 >
 > 3. Extract the rows where the life expectancy is longer the 80 years
+>
 > ~~~ {.r}
 > gapminder[gapminder$lifeExp > 80]
 > ~~~
 >
 > 4. Extract the first row, and the fourth and fifth column 
 >   `lifeExp` and `gdpPercap`.
+>
 > ~~~ {.r}
 > gapminder[1, 4, 5]
 > ~~~
 >
 > 5. Advanced: extract rows that contain information for the years 2002
 >    and 2007
+>
 > ~~~ {.r}
 > gapminder[gapminder$year == 2002 | 2007,]
 > ~~~
 >
 
-> ### Challenge 2 {.challenge}
+> ### Challenge {.challenge}
 >
 > Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
 >
 
-> ### Challenge 3 {.challenge}
+> ### Challenge {.challenge}
 > 
 > Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9 
 > and 19 through 23. You can do this in one or two steps.
 >
 
-> ### Challenge 4 (advanced) {.challenge}
+> ### Challenge (advanced) {.challenge}
 > 
 > Given a linear model:
 > 
