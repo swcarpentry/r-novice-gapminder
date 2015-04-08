@@ -27,6 +27,27 @@ x * 2
 
 The multiplication happened to each element of the vector.
 
+Let's try this on the `pop` column of the `gapminder` dataset. 
+
+> #### Challenge 1 {.challenge}
+>
+> Make a new column in the `gapminder` dataframe that
+> contains population in units of millions of people.
+> Check the head or tail of the dataframe to make sure
+> it worked.
+>
+
+> #### Challenge 2 {.challenge}
+> 
+> Create a subset of the `gapminder` dataset countaining entries
+> only for Australia.
+> 
+> Calculate the mean GDP (GDP per capita multiplied by total population) 
+> for Australia over all years on record.
+>
+> Refresh your ggplot skils by plotting mean GDP against year. 
+>
+
 We can also add two vectors together:
 
 ~~~ {.r}
@@ -47,6 +68,15 @@ y:  6  7  8  9
 ---------------
     7  9 11 13
 ~~~
+
+> #### Challenge 3 {.challenge}
+> 
+> What do you think will happen if you add (or subtract,
+> multiply, divide etc.) vectors of different lengths?
+> 
+> Try it.
+> What does `x + c(1,3)` give you? Why?
+>
 
 Just as we saw in the previous lesson, vectors will recycle:
 
@@ -179,34 +209,23 @@ For more on matrix algebra, see the [Quick-R reference
 guide](http://www.statmethods.net/advstats/matrix.html)
 
 
-> #### Challenge 1 {.challenge}
-> 
-> Create a subset of the `gapminder` dataset countaining entries
-> only for Australia.
-> 
-> Calculate the mean GDP (GDP per capita multiplied by total population) 
-> over all years on record
->
 
-> #### Challenge 2 {.challenge}
+> #### Challenge 4 {.challenge}
 > 
-> We're interested in looking at the convergence of the
+> We're interested in looking at the sum of the
 > following sequence of fractions:
 >
 > ~~~ {.output}
->  1/(1^2) + 1/(2^2) + 1/(3^2) + ... + 1/(n^2)
+>  x = 1/(1^2) + 1/(2^2) + 1/(3^2) + ... + 1/(n^2)
 > ~~~
 >
 > This would be tedious to type out, and impossible for
-> large numbers of N.
->
-> 1. generate a vector of numbers from 1 to 100 and square them.
-> 2. Take the inverse of that vector.
-> 3. Sum them (hint: `sum` will add together all elements in a vector).
-> 4. Do the same thing, but for numbers 1 to 10,000
+> high values of n.
+> Can you use vectorisation to solve for x, when n=100?
+> How about when n=10,000?
 >
 
-> #### Challenge 3 {.challenge}
+> #### Challenge 5 {.challenge}
 > 
 > Given the following matrix:
 > 
