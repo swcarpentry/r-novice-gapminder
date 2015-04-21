@@ -4,6 +4,23 @@ root: ../..
 title: R Markdown
 ---
 
+```{r chunk_options, include=FALSE}
+source("chunk_options.R")
+opts_chunk$set(fig.path="fig/Rmd-")
+```
+
+
+> ### Learning Objectives {.objectives}
+>
+> * Value of reproducible reports
+> * Basics of Markdown
+> * R code chunks
+> * Chunk options
+> * Inline R code
+> * LaTeX-based equations
+> * Other output formats
+
+
 I'm not quite sure the best way to get started with this. I'm trying
 to explain
 
@@ -61,3 +78,48 @@ knitr allows you to mix basically any sort of text with any sort of
 code, but we recommend that you use R Markdown, which mixes Markdown
 with R. Markdown is a light-weight mark-up language for creating web
 pages.
+
+
+### Creating an R Markdown file
+
+- Within R Studio, how to use menu-bar to create a new R Markdown file
+
+### Basic components of R Markdown
+
+- Discuss the initial yaml header
+- Point to code chunks
+- Delete all of the code chunks and start out with basic discussion of
+  R Markdown:
+  - bold and italics
+  - section headers of different sizes
+  - bulleted lists
+  - numbered lists
+  - hyperlinks
+- How to compile to html file
+
+### R code chunks
+
+- regular code
+- graphs
+
+### Chunk options
+
+- chunk names
+- chunk options: `echo`, `results`, `include`, `fig.height`, `fig.width`
+- global chunk options (e.g., `fig.path`)
+
+### Inline R code
+
+- don't let it get split across lines
+- perhaps precede the paragraph with a larger code chunk that does
+  calculations and defines things
+- rounding
+
+### LaTeX equations
+
+- `$` vs `$$`
+
+### Other output options
+
+- PDF, Word, slides
+- Refer to the [documentation](http://rmarkdown.rstudio.com/)
