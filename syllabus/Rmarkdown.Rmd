@@ -21,24 +21,6 @@ opts_chunk$set(fig.path="fig/Rmd-")
 > * Other output formats
 
 
-I'm not quite sure the best way to get started with this. I'm trying
-to explain
-
-- the value of reproducible documents (literate programming)
-- what knitr document looks like (chunks of code in the midst of text)
-- the value of having the product be a web page
-- the value of R Markdown for this
-
-I then need to explain
-
-- the basics of markdown syntax
-- the yaml header for R Markdown
-- R code chunks
-- inline R
-- chunk options
-- global chunk options
-
-
 ### Data analysis reports
 
 Data analysts tend to write a lot of reports, describing their
