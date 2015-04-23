@@ -95,6 +95,8 @@ pages.
   - bulleted lists
   - numbered lists
   - hyperlinks
+  - inserting images (maybe insert an R icon)
+  - super-scripts and subscripts
 - How to compile to html file
 
 ### R code chunks
