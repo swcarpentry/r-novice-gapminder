@@ -37,7 +37,7 @@ spend a lot of time getting the figures to look right. Mostly, the
 concern is about page breaks.
 
 Everything is easier now that I create a web page (as an html
-file). It can be one long stream, so you can have as tall figures that
+file). It can be one long stream, so I can use tall figures that
 wouldn't ordinary fit on one page. Scrolling is your friend.
 
 
@@ -64,22 +64,148 @@ pages.
 
 ### Creating an R Markdown file
 
-- Within R Studio, how to use menu-bar to create a new R Markdown file
+Within R Studio, click File &rarr; New File &rarr; R Markdown and
+you'll get a dialog box like this:
+
+![](img/New_R_Markdown.png)<br/>
+
+You can stick with the default (HTML output), but give it a title.
+
 
 ### Basic components of R Markdown
 
-- Discuss the initial yaml header
-- Point to code chunks
-- Delete all of the code chunks and start out with basic discussion of
-  R Markdown:
-  - bold and italics
-  - section headers of different sizes
-  - bulleted lists
-  - numbered lists
-  - hyperlinks
-  - inserting images (maybe insert an R icon)
-  - super-scripts and subscripts
-- How to compile to html file
+The initial chunk of text contains instructions for R: you give the
+thing a title, author, and date, and tell it that you're going to want
+to produce html output (in other words, a web page).
+
+```
+---
+title: "Initial R Markdown document"
+author: "Karl Broman"
+date: "April 23, 2015"
+output: html_document
+---
+```
+
+You can delete any of those fields if you don't want them
+included. The double-quotes aren't strictly _necessary_ in this case.
+They're mostly needed if you want to include a colon in the title.
+
+RStudio creates the document with some example text to get you
+started. Note below that there are chunks like
+
+<pre>
+&#96;&#96;&#96;{r}
+summary(cars)
+&#96;&#96;&#96;
+</pre>
+
+These are chunks of R code that will be executed by knitr and replaced
+by their results. More on this later.
+
+Also note the web address that's put between angle brackets (`< >`) as
+well as the double-asterisks in `**Knit**`. This is
+[Markdown](http://daringfireball.net/projects/markdown/syntax).
+
+### Markdown
+
+Markdown is a system for writing web pages by marking up the text much
+as you would in an email rather than writing html code. The marked-up
+text gets _converted_ to html, replacing the marks with the proper
+html code.
+
+For now, let's delete all of the stuff that's there and write a bit of
+markdown.
+
+You make things **bold** using two asterisks, like this: `**bold**`,
+and you make things _italics_ by using underscores, like this:
+`_italics_`.
+
+You can make a bulleted list by writing a list with hyphens or
+asterisks, like this:
+
+```
+* bold with double-asterisks
+* italics with underscores
+* code-type font with backticks
+```
+
+or like this:
+
+```
+- bold with double-asterisks
+- italics with underscores
+- code-type font with backticks
+```
+
+Each will appear as:
+
+- bold with double-asterisks
+- italics with underscores
+- code-type font with backticks
+
+(I prefer hyphens over asterisks, myself.)
+
+You can make a numbered list by just using numbers. You can use the
+same number over and over if you want:
+
+```
+1. bold with double-asterisks
+1. italics with underscores
+1. code-type font with backticks
+```
+
+This will appear as:
+
+1. bold with double-asterisks
+1. italics with underscores
+1. code-type font with backticks
+
+You can make section headers of different sizes by initiating a line
+with some number of `#` symbols:
+
+```
+# Title
+## Main section
+### Sub-section
+#### Sub-sub section
+```
+
+You _compile_ the R Markdown document to an html webpage by clicking
+the "Knit HTML" in the upper-left. And note the little question mark
+next to it; click the question mark and you'll get a "Markdown Quick
+Reference" (with the Markdown syntax) as well to the RStudio
+documentation on R Markdown.
+
+> ### Challenge {.challenge}
+>
+> Create a new R Markdown document. Delete all of the R code chunks
+> and write a bit of Markdown (some sections, some italicized
+> text, and an itemized list).
+>
+> Convert the document to a webpage.
+
+### A bit more Markdown
+
+You can make a hyperlink like this:
+`[text to show](http://the-web-page.com)`.
+
+You can include an image file like this: `![caption](http://url/for/file)`
+
+You can do subscripts (e.g., F~2~) with `F~2` and superscripts (e.g.,
+F^2^) with `F^2^`.
+
+If you know how to write equations in
+[LaTeX](http://www.latex-project.org/), you'll be glad to know that
+you can use `$ $` and `$$ $$` to insert math equations, like
+`$E = mc^2$` and
+
+```
+$$y = \mu + \sum_{i=1}^p \beta_i x_i + \epsilon$$
+```
+
+
+
 
 ### R code chunks
 
