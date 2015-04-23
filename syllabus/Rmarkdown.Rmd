@@ -206,11 +206,47 @@ $$y = \mu + \sum_{i=1}^p \beta_i x_i + \epsilon$$
 
 
 
-
 ### R code chunks
 
 - regular code
 - graphs
+
+
+### How things get compiled
+
+```{r rmd_to_html_fig, fig.width=8, fig.height=3, fig.align="left", echo=FALSE}
+par(mar=rep(0, 4), bty="n", cex=1.5)
+plot(0, 0, type="n", xlab="", ylab="", xaxt="n", yaxt="n",
+     xlim=c(0, 100), ylim=c(0, 100))
+xw <- 10
+yh <- 35
+xm <- 12
+ym <- 50
+rect(xm-xw/2, ym-yh/2, xm+xw/2, ym+yh/2, lwd=2)
+text(xm, ym, ".Rmd")
+
+xm <- 50
+ym <- 80
+rect(xm-xw/2, ym-yh/2, xm+xw/2, ym+yh/2, lwd=2)
+text(xm, ym, ".md")
+xm <- 50; ym <- 25
+for(i in c(2, 0, -2))
+    rect(xm-xw/2+i, ym-yh/2+i, xm+xw/2+i, ym+yh/2+i, lwd=2,
+         border="black", col="white")
+text(xm-2, ym-2, "figs/")
+
+xm <- 100-12
+ym <- 50
+rect(xm-xw/2, ym-yh/2, xm+xw/2, ym+yh/2, lwd=2)
+text(xm, ym, ".html")
+
+arrows(22, 50, 38, 50, lwd=2, col="slateblue", len=0.1)
+text((22+38)/2, 60, "knitr", col="darkslateblue", cex=1.3)
+
+arrows(62, 50, 78, 50, lwd=2, col="slateblue", len=0.1)
+text((62+78)/2, 60, "pandoc", col="darkslateblue", cex=1.3)
+```
+
 
 ### Chunk options
 
@@ -224,10 +260,6 @@ $$y = \mu + \sum_{i=1}^p \beta_i x_i + \epsilon$$
 - perhaps precede the paragraph with a larger code chunk that does
   calculations and defines things
 - rounding
-
-### LaTeX equations
-
-- `$` vs `$$`
 
 ### Other output options
 
