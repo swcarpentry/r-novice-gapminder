@@ -208,11 +208,42 @@ $$y = \mu + \sum_{i=1}^p \beta_i x_i + \epsilon$$
 
 ### R code chunks
 
-- regular code
-- graphs
+Markdown is interesting and useful, but the real power comes from
+mixing markdown with chunks of R code. This is R Markdown. When
+processed, the R code will be executed; if they produce figures, the
+figures will be inserted in the final document.
+
+The main code chunks look like this:
+
+<pre>
+&#96;&#96;&#96;{r load_data}
+gapminder <- read.csv("~/Desktop/gapminder.csv")
+&#96;&#96;&#96;
+</pre>
+
+That is, you place a chunk of R code between <code>&#96;&#96;&#96;{r chunk_name}</code>
+and <code>&#96;&#96;&#96;</code>.
+
+> ### Challenge {.challenge}
+>
+> Add code chunks to
+>
+> - Load the ggplot2 package
+> - Read the gapminder data
+> - Create a plot
 
 
 ### How things get compiled
+
+When you press the "Knit HTML" button, the R Markdown document is
+processed by [knitr](http://yihui.name/knitr) and a plain Markdown
+document is produced (as well as, potentially, a set of figure files): the R code is executed
+and replaced by both the input and the output; if figures are
+produced, links to those figures are included.
+
+The Markdown and figure documents are then processed by the tool
+[pandoc](http://pandoc.org/), which converts the Markdown file into an
+html file, with the figures embedded.
 
 ```{r rmd_to_html_fig, fig.width=8, fig.height=3, fig.align="left", echo=FALSE}
 par(mar=rep(0, 4), bty="n", cex=1.5)
@@ -246,6 +277,8 @@ text((22+38)/2, 60, "knitr", col="darkslateblue", cex=1.3)
 arrows(62, 50, 78, 50, lwd=2, col="slateblue", len=0.1)
 text((62+78)/2, 60, "pandoc", col="darkslateblue", cex=1.3)
 ```
+
+
 
 
 ### Chunk options
