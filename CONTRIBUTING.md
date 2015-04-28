@@ -40,7 +40,7 @@ You also agree to abide by our
     lists the people currently responsible for managing this repository.
     Feel free to contact them if you have any questions or languishing pull requests.
 
-[conduuct]: CONDUCT.md
+[conduct]: CONDUCT.md
 [lesson-template-issues]: https://github.com/swcarpentry/lesson-template/issues
 [license]: LICENSE.md
 [pro-git-chapter]: http://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project
