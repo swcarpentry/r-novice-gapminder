@@ -5,7 +5,10 @@ subtitle: Creating publication quality graphics
 minutes: 60
 ---
 
-
+```{r, include=FALSE}
+source("tools/chunk-options.R")
+opts_chunk$set(fig.path = "fig/08-plot-ggplot2.Rmd")
+```
 
 > # Learning Objectives {.objectives}
 >
@@ -36,17 +39,17 @@ graphics.
 
 Let's start off with an example:
 
+```{r, echo=FALSE}
+# Silently load in the data so the rest of the lesson works
+library(gapminder)
+```
 
 
-
-
-~~~{.r}
+```{r lifeExp-vs-gdpPercap-scatter, message=FALSE}
 library(ggplot2)
 ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
   geom_point()
-~~~
-
-<img src="fig/08-plot-ggplot2.RmdlifeExp-vs-gdpPercap-scatter.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter" alt="plot of chunk lifeExp-vs-gdpPercap-scatter" style="display: block; margin: auto;" />
+```
 
 Ggplot is based on two principles:
 
@@ -71,26 +74,20 @@ the figure. Anything that we add with `+` is built up in layers (consecutively).
 Next, lets color the points by continent:
 
 
-
-~~~{.r}
+```{r aes-layers}
 ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
   geom_point(aes(color=continent))
-~~~
-
-<img src="fig/08-plot-ggplot2.Rmdaes-layers.png" title="plot of chunk aes-layers" alt="plot of chunk aes-layers" style="display: block; margin: auto;" />
+```
 
 Here, we've specified that we want change the color *aesthetic* for the points layer.
 We've told it to color the points based on the continents column. We can also change
 the shape fo the points:
 
 
-
-~~~{.r}
+```{r shape-color}
 ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
   geom_point(aes(color=continent, shape=continent))
-~~~
-
-<img src="fig/08-plot-ggplot2.Rmdshape-color.png" title="plot of chunk shape-color" alt="plot of chunk shape-color" style="display: block; margin: auto;" />
+```
 
 Currently it's hard to see the relationship between the points due to some strong
 outliers in GDP per capita.
@@ -98,37 +95,28 @@ outliers in GDP per capita.
 We can change the scale of units on the y axis using the *scale* functions. These 
 control the mapping between the data and the aesthetics:
 
-
-~~~{.r}
+```{r axis-scale}
 ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
   geom_point(aes(color=continent, shape=continent)) +
   scale_y_log10()
-~~~
-
-<img src="fig/08-plot-ggplot2.Rmdaxis-scale.png" title="plot of chunk axis-scale" alt="plot of chunk axis-scale" style="display: block; margin: auto;" />
+```
 
 We can also add statistical transformations and data summarisations to our plots. We'll 
 add the fits of linear models for each group by adding the `geom_smooth` geometry layer:
 
-
-~~~{.r}
+```{r lm-fit-bad-grouping}
 ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
   geom_point(aes(color=continent, shape=continent)) +
   scale_y_log10() + geom_smooth(method="lm")
-~~~
-
-<img src="fig/08-plot-ggplot2.Rmdlm-fit-bad-grouping.png" title="plot of chunk lm-fit-bad-grouping" alt="plot of chunk lm-fit-bad-grouping" style="display: block; margin: auto;" />
+```
 
 Whoops that didn't quite do what we wanted. That's because the grouping has only been
 applied to the `geom_point` layer. Let's change that so it's a global option:
 
-
-~~~{.r}
+```{r lm-fit}
 ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap, color=continent)) +
   geom_point() + scale_y_log10() + geom_smooth(method="lm")
-~~~
-
-<img src="fig/08-plot-ggplot2.Rmdlm-fit.png" title="plot of chunk lm-fit" alt="plot of chunk lm-fit" style="display: block; margin: auto;" />
+```
 
 It's still hard to see what's going on, That's because we're currently plotting all
 years of collection. Another useful thing we can do with ggplot is *facet* our data:
@@ -137,13 +125,10 @@ create panels based on different groups.
 Let's take a look at how life expectancy has changed over time for each country,
 and create a panel, or facet, for each continent:
 
-
-~~~{.r}
+```{r facet}
 ggplot(data= gapminder, aes(x=year, y=lifeExp, color=country)) +
   geom_line() + facet_grid(. ~ continent)
-~~~
-
-<img src="fig/08-plot-ggplot2.Rmdfacet.png" title="plot of chunk facet" alt="plot of chunk facet" style="display: block; margin: auto;" />
+```
 
 We can see nice upward trends across all countries across all continents, with a 
 few unfortunate downward spikes corresponding to wars.
@@ -158,21 +143,17 @@ Currently, there are too many different countries for the legend to render
 properly. Since we don't care so much about the particulars of each country,
 lets turn the legend off:
 
-
-~~~{.r}
+```{r no-legend}
 ggplot(data= gapminder, aes(x=year, y=lifeExp, color=country)) +
   geom_line() + facet_grid(. ~ continent) + theme(legend.position="none")
-~~~
-
-<img src="fig/08-plot-ggplot2.Rmdno-legend.png" title="plot of chunk no-legend" alt="plot of chunk no-legend" style="display: block; margin: auto;" />
+```
 
 To save an image, we can either use the save button inside of RStudio,
 or from the interactive console (or script) using the `ggsave` function:
 
-
-~~~{.r}
+```{r, eval=FALSE}
 ggsave("lifeExp-vs-time.pdf")
-~~~
+```
 
 This is just a taste of what you can do with `ggplot2`. A more detailed tutorial
 can be found [here](ggplot.pdf). Once you get a handle of the different layers
