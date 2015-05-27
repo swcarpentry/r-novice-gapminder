@@ -47,10 +47,14 @@ html file(s). Including the html file(s) is required for viewing the [online
 version of the lessons][online] (you can learn more about the design of the
 build process [here][design]).
 
-[issues]: https://github.com/resbaz/novice-r/issues [dependencies]:
-https://github.com/swcarpentry/lesson-template#dependencies [knitr]:
-http://cran.r-project.org/web/packages/knitr/index.html [online]:
-http://resbaz.github.io/novice-r/ [design]:
+[issues]: https://github.com/resbaz/novice-r/issues 
+[dependencies]:
+https://github.com/swcarpentry/lesson-template#dependencies 
+[knitr]:
+http://cran.r-project.org/web/packages/knitr/index.html 
+[online]:
+http://resbaz.github.io/novice-r/ 
+[design]:
 https://github.com/swcarpentry/lesson-template/blob/gh-pages/DESIGN.md
 
 ## Getting Help
