@@ -52,7 +52,6 @@
 <li>Files/Plots/Packages/Help (tabbed in lower right)</li>
 </ul>
 <p>Once you open files, such as R scripts, a scripting panel will also open in the top left.</p>
-<p>I'm going to reorganise these panes in such a way that makes them easier to see while teaching.</p>
 <h4 id="work-flow-within-rstudio">Work flow within Rstudio</h4>
 <p>There are two main ways one can work within Rstudio.</p>
 <ol style="list-style-type: decimal">
@@ -66,17 +65,6 @@
 <h4>Tip: Pushing to the interactive R console</h4>
 <p>To run the current line click on the <code>Run</code> button just above the file pane. Or use the short cut which can be see by hovering the mouse over the button.</p>
 <p>To run a block of code, select it and then <code>Run</code>. If you have modified a line of code within a block of code you have just run. There is no need to reselct the section and <code>Run</code>, you can use the next button along, <code>Re-run the previous region</code>. This will run the previous code block inculding the modifications you have made.</p>
-<p>To move between the panes use the short cut, <code>control</code> and the number of the defined view. Look at the options in the <code>View</code> menu. Two key ones: 1. <code>Control 1</code> for the source file (your current R script). 2. <code>Control 2</code> for the interactive R console.</p>
-</div>
-<h4 id="changing-the-look-and-feel-of-rstudio.">Changing the look and feel of Rstudio.</h4>
-<p>Open up the prefences menu:</p>
-<ol style="list-style-type: decimal">
-<li>To change the layout of the panes to suit your workflow, look in the <code>Pane layout</code> section.</li>
-<li>To change background colour, text colour and font size, look in the <code>Appearance</code> section.</li>
-</ol>
-<div id="challenge-1" class="challenge">
-<h4>Challenge 1</h4>
-<p>Explore the options and enable the option <code>Highlight selected line</code>. Change the defalt theme to something diferent.</p>
 </div>
 <h3 id="introduction-to-r">Introduction to R</h3>
 <p>A lot of your time in R will be spent in the R interactive console. This is where you will run all of your code, and can be a useful environment to try out ideas before adding them to an R script file. This console in RStudio is the same as the one you would get if you just typed in <code>R</code> in your commandline environment.</p>
@@ -247,20 +235,20 @@
 <p>Pay attention when R does something unexpected! Errors, like above, are thrown when R cannot proceed with a calculation. Warnings on the other hand usually mean that the function has run, but it probably hasn't worked as expected.</p>
 <p>In both cases, the message that R prints out usually give you clues how to fix a problem.</p>
 </div>
-<div id="challenge-2" class="challenge">
-<h4>Challenge 2</h4>
+<div id="challenge-1" class="challenge">
+<h4>Challenge 1</h4>
 <p>Draw diagrams showing what variables refer to what values after each statement in the following program:</p>
 <pre class="sourceCode r"><code class="sourceCode r">mass &lt;-<span class="st"> </span><span class="fl">47.5</span>
 age &lt;-<span class="st"> </span><span class="dv">122</span>
 mass &lt;-<span class="st"> </span>mass *<span class="st"> </span><span class="fl">2.3</span>
 age &lt;-<span class="st"> </span>age -<span class="st"> </span><span class="dv">20</span></code></pre>
 </div>
-<div id="challenge-3" class="challenge">
-<h4>Challenge 3</h4>
+<div id="challenge-2" class="challenge">
+<h4>Challenge 2</h4>
 <p>Run the code from the previous challenge, and write a command to compare mass to age. Is mass larger than age?</p>
 </div>
-<div id="challenge-4" class="challenge">
-<h4>Challenge 4</h4>
+<div id="challenge-3" class="challenge">
+<h4>Challenge 3</h4>
 <p>Clean up your working environment by deleting the mass and age variables.</p>
 </div>
         </div>

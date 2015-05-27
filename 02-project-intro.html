@@ -66,40 +66,19 @@ Managing your projects in a reproducible fashion doesn't just make your science 
 <h3 id="a-possible-solution">A possible solution</h3>
 <p>Fortunately, there are tools and packages which can help you manage your work effectively.</p>
 <p>One of the most powerful and useful aspects of RStudio is its project management functionality. We'll be using this today to create a self-contianed, reproducible project.</p>
-<div id="challenge-installing-packages" class="challenge">
-<h4>Challenge: Installing Packages</h4>
-<p>The first thing we're going to do is to install a third-party package, <code>packrat</code>. This allows RStudio to create self-contained packages: any further packages you download will be contained within their respective projects. This is really useful, as different versions of packages can change results as new knowledge is gained. This allows you to easily keep track of the version used for your analyses.</p>
-<p>Packages can be installed using the <code>install.packages</code> function:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;packrat&quot;</span>) </code></pre>
-</div>
 <div id="challenge-creating-a-self-contained-project" class="challenge">
 <h4>Challenge: Creating a self-contained project</h4>
-<p>Now we're going to create a new project in RStudio:</p>
+<p>We're going to create a new project in RStudio:</p>
 <ol style="list-style-type: decimal">
 <li>Click the &quot;File&quot; menu button, then &quot;New Project&quot;.</li>
 <li>Click &quot;New Directory&quot;.</li>
 <li>Click &quot;Empty Project&quot;.</li>
 <li>Type in the name of the directory to store your project, e.g. &quot;my_project&quot;.</li>
-<li>Make sure that the checkboxes for &quot;Create a git repository&quot; and &quot;Use packrat with this project&quot; are selected.</li>
+<li>Make sure that the checkboxe for &quot;Create a git repository&quot; is selected.</li>
 <li>Click the &quot;Create Project&quot; button.</li>
 </ol>
 </div>
-<p>Now when we start R in this project directory, or open this project with RStudio, all of our work on this project will be entirely self-contained in this directory. By installing <code>packrat</code> and telling RStudio to use <code>packrat</code> with this project, any third-party packages will be installed in a separate library in the <code>packrat/</code> subdirectory of our project. This means we don't have to worry about package versions changing, especially when returning to a project after a long period of time (for example when writing up your thesis!).</p>
-<div id="tip-packrat" class="callout">
-<h4>Tip: packrat</h4>
-<p>Any libraries you already have installed outside of your project will need to be reinstalled in each packrat project.</p>
-<p>Packrat will also analyse your script files and warn you if youre using any libraries not installed and managed inside your project. This is useful if you reuse code between projects.</p>
-<p>Packrat also allows you to easily bundle up a project to share with someone else.</p>
-<p>RStudio has a more detailed <a href="http://rstudio.github.io/packrat/">packrat tutorial</a></p>
-</div>
-<p>Now lets load the packrat library:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;packrat&quot;</span>)</code></pre>
-<p>Here we've called the function <code>library</code> and used it to load those packages into our local namespace (our interactive R session). This means all of their functions are now available to us.</p>
-<p>The main function you'll encounter in <code>packrat</code> is the <code>status</code> function:</p>
-<pre class="sourceCode r"><code class="sourceCode r">packrat::<span class="kw">status</span>()</code></pre>
-<pre class="output"><code>Up to date.</code></pre>
-<p>Here I've put the name of the library in front of its function, separated by a <code>::</code>. This explicitly tells R to call the function from that library. This can be useful to make your code clearer (<code>status</code> is fairly generic function name and might be used by other packages), and useful when two packages have functions with the same names (in which case order of library loading becomes important), or you've written your own function or variable with the same name (you should try to avoid this).</p>
-<p>You'll want to run this periodically (after installing libraries and writing new code) to make sure your project is still self-contained.</p>
+<p>Now when we start R in this project directory, or open this project with RStudio, all of our work on this project will be entirely self-contained in this directory.</p>
 <h3 id="best-practices-for-project-organisation">Best practices for project organisation</h3>
 <p>Although there is no &quot;best&quot; way to lay out a project, there are some general principles to adhere to that will make project management easier:</p>
 <h4 id="treat-data-as-read-only">Treat data as read only</h4>
@@ -109,8 +88,9 @@ Managing your projects in a reproducible fashion doesn't just make your science 
 <h4 id="treat-generated-output-as-disposable">Treat generated output as disposable</h4>
 <p>Anything generated by your scripts should be treated as disposable: it should all be able to be regenerated from your scripts.</p>
 <p>There are lots of different was to manage this output. I find it useful to have an output folder with different sub-directories for each separate analysis. This makes it easier later, as many of my analyses are exploratory and don't end up being used in the final project, and some of the analyses get shared between projects.</p>
-<h3 id="project-template---a-possible-solution">Project Template - a possible solution</h3>
-<p>The next thing we're going to do is to install the third-party package, <code>ProjectTemplate</code>. This package will set up an ideal directory structure for project management. This is very useful as it enables you to have your analysis pipeline/workflow organised and structured. Together with the default Rstudio project functionality and Git you will be able to keep track of your work as well as be able to share your work with collaborators.</p>
+<div id="tip-projecttempate---a-possible-solution" class="callout">
+<h4>Tip: ProjectTempate - a possible solution</h4>
+<p>One way to automate the management of projects is to install the third-party package, <code>ProjectTemplate</code>. This package will set up an ideal directory structure for project management. This is very useful as it enables you to have your analysis pipeline/workflow organised and structured. Together with the default Rstudio project functionality and Git you will be able to keep track of your work as well as be able to share your work with collaborators.</p>
 <ol style="list-style-type: decimal">
 <li>Install <code>ProjectTemplate</code>.</li>
 <li>Load the library</li>
@@ -119,8 +99,6 @@ Managing your projects in a reproducible fashion doesn't just make your science 
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;ProjectTemplate&quot;</span>)
 <span class="kw">library</span>(ProjectTemplate)
 <span class="kw">create.project</span>(<span class="st">&quot;../my_project&quot;</span>, <span class="dt">merge.strategy =</span> <span class="st">&quot;allow.non.conflict&quot;</span>)</code></pre>
-<div id="tip-projecttempate" class="callout">
-<h4>Tip: ProjectTempate</h4>
 <p>For more information on ProjectTemplate and its functionality visit the home page <a href="http://projecttemplate.net/index.html">ProjectTemplate</a></p>
 </div>
 <h4 id="separate-function-definition-and-application">Separate function definition and application</h4>
@@ -139,9 +117,10 @@ Managing your projects in a reproducible fashion doesn't just make your science 
 <ol style="list-style-type: decimal">
 <li>Use the <code>Download ZIP</code> located on the right hand side menu, last option. To download the <code>.zip</code> file to your downloads folder.</li>
 <li>Unzip the file.</li>
+<li>Create a data directory within your project</li>
 <li>Move the file to the <code>data/</code> within your project.</li>
 </ol>
-<p>We will load and inspect these data latter today.</p>
+<p>We will load and inspect these data later.</p>
 </div>
 <h4 id="version-control">Version Control</h4>
 <p>We also set up our project to integrate with git, putting it under version control. RStudio has a nicer interface to git than shell, but is very limited in what it can do, so you will find yourself occasionally needing to use the shell. Let's go through and make an initial commit of our template files.</p>
@@ -150,18 +129,12 @@ Managing your projects in a reproducible fashion doesn't just make your science 
 <h4>Tip: versioning disposable output</h4>
 <p>Generally you do not want to version disposable output (or read-only data). You should modify the <code>.gitignore</code> file to tell git to ignore these files and directories.</p>
 </div>
-<div id="challenge-1-1" class="challenge">
-<h4>Challenge 1</h4>
-<p>Use packrat to install the packages we'll be using later:</p>
-<ul>
-<li>ggplot2</li>
-<li>plyr</li>
-</ul>
-<p>Note: if you run <code>packrat::status</code> it will warn you that these libraries are unecessary because they're not used in any project code.</p>
-</div>
 <div id="challenge-2" class="challenge">
 <h4>Challenge 2</h4>
-<p>Modify the <code>.gitignore</code> file to contain <code>cache/</code>, <code>graphs/</code>, <code>reports/</code> and <code>logs/</code> so that disposable output isn't versioned.</p>
+<ol style="list-style-type: decimal">
+<li>Create a directory within your project called <code>graphs</code>.</li>
+<li>Modify the <code>.gitignore</code> file to contain <code>graphs/</code> so that this disposable output isn't versioned.</li>
+</ol>
 <p>Add the newly created folders to version control using the git interface.</p>
 </div>
         </div>

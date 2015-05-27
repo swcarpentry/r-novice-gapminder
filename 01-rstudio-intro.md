@@ -38,9 +38,6 @@ When you first open RStudio, you will be greeted by three panels:
 
 Once you open files, such as R scripts, a scripting panel will also open in the top left.
 
-I'm going to reorganise these panes in such a way that makes them easier to see while
-teaching.
-
 #### Work flow within Rstudio
 There are two main ways one can work within Rstudio.
 
@@ -59,22 +56,6 @@ There are two main ways one can work within Rstudio.
 > you can use the next button along, `Re-run the previous region`. This will run the previous code block inculding 
 > the modifications you have made.
 >
-> To move between the panes use the short cut, `control` and the number of the defined view. 
-> Look at the options in the `View` menu.
-> Two key ones:
-> 1. `Control 1` for the source file (your current R script).
-> 2. `Control 2` for the interactive R console.
->
-
-#### Changing the look and feel of Rstudio.
-Open up the prefences menu:
-
-1. To change the layout of the panes to suit your workflow, look in the `Pane layout` section.
-2. To change background colour, text colour and font size, look in the `Appearance` section.
-
-> #### Challenge 1 {.challenge}
-> Explore the options and enable the option `Highlight selected line`.
-> Change the defalt theme to something diferent.
 
 ### Introduction to R
 
@@ -519,7 +500,7 @@ stored the results of the `ls` command.
 >
 
 
-> #### Challenge 2 {.challenge}
+> #### Challenge 1 {.challenge}
 >
 > Draw diagrams showing what variables refer to what values after each 
 > statement in the following program:
@@ -532,13 +513,13 @@ stored the results of the `ls` command.
 > ~~~
 >
 
-> #### Challenge 3 {.challenge}
+> #### Challenge 2 {.challenge}
 >
 > Run the code from the previous challenge, and write a command to
 > compare mass to age. Is mass larger than age?
 >
 
-> #### Challenge 4 {.challenge}
+> #### Challenge 3 {.challenge}
 >
 > Clean up your working environment by deleting the mass and age
 > variables.
