@@ -45,9 +45,9 @@ is.character() # is it character data?
 > a variable, to create examples of data with the
 > following characteristics:
 >
-> * 1) Variable name: 'answer', Type: logical
-> * 2) Variable name: 'height', Type: numeric
-> * 3) Variable name: 'dog_name', Type: character
+> 1) Variable name: 'answer', Type: logical
+> 2) Variable name: 'height', Type: numeric
+> 3) Variable name: 'dog_name', Type: character
 >
 > For each variable you've created, test that it
 > has the data type you intended. Do you find
