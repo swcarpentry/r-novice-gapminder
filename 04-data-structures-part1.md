@@ -23,7 +23,7 @@ frustration encountered by beginners.
 R has 5 basic atomic types (meaning they can't be broken down into anything smaller):
 
 * logical (e.g., `TRUE`, `FALSE`)
-* numeric 
+* numeric
   * integer (e.g, 3, 2L, as.integer(3))
   * double (i.e. decimal) (e.g, -24.57, 2.0, pi)
 * complex (i.e. complex numbers) (e.g, 1 + 0i, 1 + 4i)
@@ -41,8 +41,8 @@ is.character() # is it character data?
 
 > #### Challenge 1: Data types {.challenge}
 >
-> Use your knowledge of how to assign a value to 
-> a variable, to create examples of data with the 
+> Use your knowledge of how to assign a value to
+> a variable, to create examples of data with the
 > following characteristics:
 >
 > * 1) Variable name: 'answer', Type: logical
@@ -50,7 +50,7 @@ is.character() # is it character data?
 > * 3) Variable name: 'dog_name', Type: character
 >
 > For each variable you've created, test that it
-> has the data type you intended. Do you find 
+> has the data type you intended. Do you find
 > anything unexpected?
 >
 
@@ -64,7 +64,7 @@ There are five data structures you will commonly encounter in R. These include:
 * matrix
 * data.frame
 
-For now, let's focus on vectors in more detail, to discover more about data types. 
+For now, let's focus on vectors in more detail, to discover more about data types.
 
 #### Vectors
 
@@ -89,16 +89,16 @@ A vector can contain any of the five types we introduced before:
 > wrapped in quotation symbols.
 >
 
-Create an empty vector with `vector()` or by using the concatenate 
+Create an empty vector with `vector()` or by using the concatenate
 function, `c()`.
 
-~~~ {.r} 
+~~~ {.r}
 x <- vector()
 x
 ~~~
 
 ~~~ {.output}
-logical(0) 
+logical(0)
 ~~~
 
 So by default, it creates an empty vector (i.e. a length of 0) of type "logical".
@@ -138,7 +138,7 @@ x
 You can also create vectors as sequence of numbers
 
 ~~~ {.r}
-series <- 1:10 
+series <- 1:10
 series
 ~~~
 
@@ -147,7 +147,7 @@ series
 ~~~
 
 ~~~ {.r}
-seq(10) 
+seq(10)
 ~~~
 
 ~~~ {.output}
@@ -195,23 +195,23 @@ x
 > type that is easiest to coerce to.
 >
 > **Guess what the following do without running them first:**
-> 
+>
 > ~~~ {.r}
-> xx <- c(1.7, "a") 
-> xx <- c(TRUE, 2) 
-> xx <- c("a", TRUE) ```
+> xx <- c(1.7, "a")
+> xx <- c(TRUE, 2)
+> xx <- c("a", TRUE)
 > ~~~
 >
 
 This is called implicit coercion.
 
 The coersion rule goes `logical` -> `integer` -> `numeric` -> `complex` ->
-`character`. 
+`character`.
 
 You can also coerce vectors explicitly using the `as.<class_name>`. Example
 
 ~~~ {.r}
-as.numeric() 
+as.numeric()
 as.character()
 ~~~~
 
@@ -234,7 +234,7 @@ as.complex(x)
 ~~~
 
 ~~~ {.r}
-x <- 0:6 
+x <- 0:6
 as.logical(x)
 ~~~
 
@@ -249,19 +249,19 @@ Sometimes coercions, especially nonsensical ones won't work.
 In some cases, R won't be able to do anything sensible:
 
 ~~~ {.r}
-x <- c("a", "b", "c") 
-as.numeric(x) 
+x <- c("a", "b", "c")
+as.numeric(x)
 as.logical(x)
-~~~ 
+~~~
 
 ~~~ {.output}
 [1] NA NA NA
 Warning message:
-NAs introduced by coercion 
+NAs introduced by coercion
 ~~~
 
 In both cases, a vector of "NAs" was returned, and in the first case
-so was a warning. 
+so was a warning.
 
 > #### Tip: Special Objects {.callout}
 >
@@ -293,7 +293,7 @@ head(x, n=1) # get the first 'n' elements
 ~~~
 
 ~~~ {.r}
-length(x) 
+length(x)
 ~~~
 
 ~~~ {.output}
@@ -316,13 +316,13 @@ x
 ~~~
 
 ~~~ {.output}
- a  b  c  d 
- 10 12 45 33 
+ a  b  c  d
+ 10 12 45 33
 ~~~
 
 > #### Advanced Tip for Programmers {.callout}
 >
-> If you're coming from other programming languages you might 
+> If you're coming from other programming languages you might
 > recognise this as a useful tool akin to dictionaries and hash
 > tables. This is true for small vectors, but for true hash table
 > functionality, you should use the environment object. See
@@ -357,15 +357,15 @@ str(x)
 num [1:3, 1:6] -0.626 0.184 -0.836 1.595 0.33 ...
 ~~~
 
-You can use `rownames`, `colnames`, and `dimnames` to set or 
-retrieve the column and rownames of a matrix. The functions `nrow` and `ncol` 
+You can use `rownames`, `colnames`, and `dimnames` to set or
+retrieve the column and rownames of a matrix. The functions `nrow` and `ncol`
 will tell you the number of rows and columns (this also applies to data frames!),
 while `length` will tell you the number of elements.
 
 >
 > ### Challenge 3 {.challenge}
-> 
-> What do you think will be the result of 
+>
+> What do you think will be the result of
 > `length(x)`?
 > Try it.
 > Were you right? Why / why not?
@@ -430,19 +430,19 @@ str(x)
  Factor w/ 2 levels "case","control": 2 1 1 2
 ~~~
 
-In this case, we've explicitly told R that "control" should represented by 1, and 
+In this case, we've explicitly told R that "control" should represented by 1, and
 "case" by 2. This designation can be very important for interpreting the
 results of statistical models!
 
 #### Lists
 
 If you want to combine different types of data, you will need to use lists.
-Lists act as containers, and can contain any type of data structure, even 
+Lists act as containers, and can contain any type of data structure, even
 themselves!
 
 Lists can be created using `list` or coerced from other objects using `as.list()`:
 
-~~~ {.r} 
+~~~ {.r}
 x <- list(1, "a", TRUE, 1+4i)
 x
 ~~~
@@ -462,7 +462,7 @@ x
 ~~~
 
 Each element of the list is denoted by a `[[` in the output. Inside
-each list element is an atomic vector of length one containing 
+each list element is an atomic vector of length one containing
 
 Lists can contain more complex objects:
 
@@ -507,19 +507,17 @@ list()
 ~~~
 
 > ### Challenge 5 {.challenge}
-> 
+>
 > Create a list containing two character vectors for each of the sections in this
 > part of the workshop:
-> 
+>
 > * Data types
 > * Data structures
-> 
-> Populate each character vector with the names of the data types and data 
+>
+> Populate each character vector with the names of the data types and data
 > structures we've seen so far.
 >
 
 Lists are extremely useful inside functions. You can "staple" together lots of
 different kinds of results into a single object that a function can return. In
 fact many R functions which return complex output store their results in a list.
-
-
