@@ -7,10 +7,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
     <link rel="stylesheet" type="text/css" href="css/swc.css" />
-    <link rel="stylesheet" type="text/css" href="css/swc-workshop-and-lesson.css" />
-    <link rel="stylesheet" type="text/css" href="css/lesson.css" />
     <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
     <meta charset="UTF-8" />
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -19,18 +17,22 @@
     <![endif]-->
   </head>
   <body class="lesson">
-    <div class="container container-full-width card">
+    <div class="container card">
       <div class="banner">
         <a href="http://software-carpentry.org" title="Software Carpentry">
           <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
         </a>
       </div>
-      <div class="row-fluid">
-        <div class="span10 offset1">
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
           <h1 class="title">R for reproducible scientific analysis</h1>
           <h2 class="subtitle">Creating functions</h2>
-<div id="objectives" class="objectives">
-<h2>Objectives</h2>
+<div id="objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2 id="objectives" class="objectives panel panel-warning"><span class="glyphicon glyphicon-certificate"></span>Objectives</h2>
+</div>
+<div class="panel-body">
 <ul>
 <li>Define a function that takes arguments.</li>
 <li>Return a value from a function.</li>
@@ -39,25 +41,26 @@
 <li>Explain why we should divide programs into small, single-purpose functions.</li>
 </ul>
 </div>
+</div>
 <p>If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot simple statistics. However, the gapminder data is updated periodically, and we may want to pull in that new information later and re-run our analysis again. We may also obtain similar data from a different source in the future.</p>
-<p>In this lesson, we'll learn how to write a function so that we can repeat several operations with a single command.</p>
+<p>In this lesson, we’ll learn how to write a function so that we can repeat several operations with a single command.</p>
 <h3 id="defining-a-function">Defining a function</h3>
-<p>Let's open a new R script file in the <code>functions/</code> directory and call it functions-lesson.R. We're going to define a function that calculates the Gross Domestic Product of a nation from the data available in our dataset:</p>
+<p>Let’s open a new R script file in the <code>functions/</code> directory and call it functions-lesson.R. We’re going to define a function that calculates the Gross Domestic Product of a nation from the data available in our dataset:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Takes a dataset and multiplies the population column</span>
 <span class="co"># with the GDP per capita column.</span>
 calcGDP &lt;-<span class="st"> </span>function(dat) {
   gdp &lt;-<span class="st"> </span>dat$pop *<span class="st"> </span>dat$gdpPercap
   <span class="kw">return</span>(gdp)
 }</code></pre>
-<p>We define <code>calcGDP</code> by assigning it to the output of <code>function</code>. The list of argument names are containted within parentheses. Next, the body of the function -- the statements executed when you call the function -- is contained within curly braces (<code>{}</code>).</p>
-<p>We've indented the statements in the body by two spaces. This makes the code easier to read but does not affect how it operates.</p>
+<p>We define <code>calcGDP</code> by assigning it to the output of <code>function</code>. The list of argument names are containted within parentheses. Next, the body of the function – the statements executed when you call the function – is contained within curly braces (<code>{}</code>).</p>
+<p>We’ve indented the statements in the body by two spaces. This makes the code easier to read but does not affect how it operates.</p>
 <p>When we call the function, the values we pass to it are assigned to the arguments, which become variables inside the body of the function.</p>
 <p>Inside the function, we use the <code>return</code> function to send back the result. This return function is optional: R will automatically return the results of whatever command is executed on the last line of the function.</p>
-<p>Let's <code>source</code> our script of function definitions and check that it works on the gapminder data:</p>
+<p>Let’s <code>source</code> our script of function definitions and check that it works on the gapminder data:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;functions/functions-lesson.R&quot;</span>)
 <span class="kw">calcGDP</span>(<span class="kw">head</span>(gapminder))</code></pre>
 <pre class="output"><code>[1]  6567086330  7585448670  8758855797  9648014150  9678553274 11697659231</code></pre>
-<p>That's not very informative. Let's add some more arguments so we can extract that per year and country.</p>
+<p>That’s not very informative. Let’s add some more arguments so we can extract that per year and country.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Takes a dataset and multiplies the population column</span>
 <span class="co"># with the GDP per capita column.</span>
 calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span><span class="ot">NULL</span>, <span class="dt">country=</span><span class="ot">NULL</span>) {
@@ -73,8 +76,8 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
   <span class="kw">return</span>(new)
 }</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;functions/functions-lesson.R&quot;</span>)</code></pre>
-<p>Ok, so there's a lot going on in this function now. In plain english, the function now subsets the provided data by year if the year argument isn't empty, then subsets the result by country if the country argument isn't empty. Then it calculates the GDP for whatever subset emerges from the previous two steps. The function then adds the GDP as a new column to the subsetted data and returns this as the final result. You can see that the output is much more informative than just getting a vector of numbers.</p>
-<p>Let's take a look at what happens when we specify the year:</p>
+<p>Ok, so there’s a lot going on in this function now. In plain english, the function now subsets the provided data by year if the year argument isn’t empty, then subsets the result by country if the country argument isn’t empty. Then it calculates the GDP for whatever subset emerges from the previous two steps. The function then adds the GDP as a new column to the subsetted data and returns this as the final result. You can see that the output is much more informative than just getting a vector of numbers.</p>
+<p>Let’s take a look at what happens when we specify the year:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">calcGDP</span>(gapminder, <span class="dt">year=</span><span class="dv">2007</span>))</code></pre>
 <pre class="output"><code>       country year      pop continent lifeExp  gdpPercap          gdp
 12 Afghanistan 2007 31889923      Asia  43.828   974.5803  31079291949
@@ -102,16 +105,16 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">calcGDP</span>(gapminder, <span class="dt">year=</span><span class="dv">2007</span>, <span class="dt">country=</span><span class="st">&quot;Australia&quot;</span>)</code></pre>
 <pre class="output"><code>     country year      pop continent lifeExp gdpPercap          gdp
 72 Australia 2007 20434176   Oceania  81.235  34435.37 70365835889</code></pre>
-<p>Let's walk through the body of the function:</p>
+<p>Let’s walk through the body of the function:</p>
 <pre class="sourceCode r"><code class="sourceCode r">calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span><span class="ot">NULL</span>, <span class="dt">country=</span><span class="ot">NULL</span>) {</code></pre>
-<p>Here we've added two argumets, <code>year</code>, and <code>country</code>. We've set <em>default arguments</em> for both as <code>NULL</code> using the <code>=</code> operator in the function definition. This means that those arguments will take on those values unless the user specifies otherwise.</p>
+<p>Here we’ve added two argumets, <code>year</code>, and <code>country</code>. We’ve set <em>default arguments</em> for both as <code>NULL</code> using the <code>=</code> operator in the function definition. This means that those arguments will take on those values unless the user specifies otherwise.</p>
 <pre class="sourceCode r"><code class="sourceCode r">  if(!<span class="kw">is.null</span>(year)) {
     dat &lt;-<span class="st"> </span>dat[dat$year %in%<span class="st"> </span>year, ] 
   }
   if (!<span class="kw">is.null</span>(country)) {
     dat &lt;-<span class="st"> </span>dat[dat$country %in%<span class="st"> </span>country,]
   }</code></pre>
-<p>Here, we check whether each additional argument is set to <code>null</code>, and whenever they're not <code>null</code> overwrite the dataset stored in <code>dat</code> with a subset given by the non-<code>null</code> argument.</p>
+<p>Here, we check whether each additional argument is set to <code>null</code>, and whenever they’re not <code>null</code> overwrite the dataset stored in <code>dat</code> with a subset given by the non-<code>null</code> argument.</p>
 <p>I did this so that our function is more flexible for later. We can ask it to calculate the GDP for:</p>
 <ul>
 <li>The whole dataset;</li>
@@ -120,22 +123,33 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 <li>A single combination of year and country.</li>
 </ul>
 <p>By using <code>%in%</code> instead, we can also give multiple years or countries to those arguments.</p>
-<div id="tip-pass-by-value" class="callout">
-<h4>Tip: Pass by value</h4>
-<p>Functions in R almost always make copies of the data to operate on inside of a function body. When we modify <code>dat</code> inside the function we are modifying the copy of the gapminder dataset stored in <code>dat</code>, not the original variable we gave as the first argument.</p>
-<p>This is called &quot;pass-by-value&quot; and it makes writing code much safer: you can always be sure that whatever changes you make within the body of the function, stay inside the body of the function.</p>
+<div id="tip-pass-by-value" class="callout panel panel-info">
+<div class="panel-heading">
+<h4 id="tip-pass-by-value" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>Tip: Pass by value</h4>
 </div>
-<div id="tip-function-scope" class="callout">
-<h4>Tip: Function scope</h4>
-<p>Another important concept is scoping: any variables (or functions!) you create or modify inside the body of a function only exist for the lifetime of the function's execution. When we call <code>calcGDP</code>, the variables <code>dat</code>, <code>gdp</code> and <code>new</code> only exist inside the body of the function. Even if we have variables of the same name in our interactive R session, they are not modified in any way when executing a function.</p>
+<div class="panel-body">
+<p>Functions in R almost always make copies of the data to operate on inside of a function body. When we modify <code>dat</code> inside the function we are modifying the copy of the gapminder dataset stored in <code>dat</code>, not the original variable we gave as the first argument.</p>
+<p>This is called “pass-by-value” and it makes writing code much safer: you can always be sure that whatever changes you make within the body of the function, stay inside the body of the function.</p>
+</div>
+</div>
+<div id="tip-function-scope" class="callout panel panel-info">
+<div class="panel-heading">
+<h4 id="tip-function-scope" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>Tip: Function scope</h4>
+</div>
+<div class="panel-body">
+<p>Another important concept is scoping: any variables (or functions!) you create or modify inside the body of a function only exist for the lifetime of the function’s execution. When we call <code>calcGDP</code>, the variables <code>dat</code>, <code>gdp</code> and <code>new</code> only exist inside the body of the function. Even if we have variables of the same name in our interactive R session, they are not modified in any way when executing a function.</p>
+</div>
 </div>
 <pre class="sourceCode r"><code class="sourceCode r">  gdp &lt;-<span class="st"> </span>dat$pop *<span class="st"> </span>dat$gdpPercap
   new &lt;-<span class="st"> </span><span class="kw">cbind</span>(dat, <span class="dt">gdp=</span>gdp)   
   <span class="kw">return</span>(new)
 <span class="er">}</span></code></pre>
 <p>Finally, we calculated the GDP on our new subset, and created a new data frame with that column added. This means when we call the function later we can see the context for the returned GDP values, which is much better than in our first attempt where we just got a vector of numbers.</p>
-<div id="challenge-1" class="challenge">
-<h4>Challenge 1</h4>
+<div id="challenge-1" class="challenge panel panel-success">
+<div class="panel-heading">
+<h4 id="challenge-1" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h4>
+</div>
+<div class="panel-body">
 <p>The <code>paste</code> function can be used to combine text together, e.g:</p>
 <pre class="sourceCode r"><code class="sourceCode r">best_practice &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Write&quot;</span>, <span class="st">&quot;programs&quot;</span>, <span class="st">&quot;for&quot;</span>, <span class="st">&quot;people&quot;</span>, <span class="st">&quot;not&quot;</span>, <span class="st">&quot;computers&quot;</span>)
 <span class="kw">paste</span>(best_practice, <span class="dt">collapse=</span><span class="st">&quot; &quot;</span>)</code></pre>
@@ -143,11 +157,12 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 <p>Write a function called <code>fence</code> that takes two vectors as arguments, called <code>text</code> and <code>wrapper</code>, and prints out the text wrapped with the <code>wrapper</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fence</span>(<span class="dt">text=</span>best_practice, <span class="dt">wrapper=</span><span class="st">&quot;***&quot;</span>)</code></pre>
 <pre class="output"><code>[1] &quot;*** Write programs for people not computers ***&quot;</code></pre>
-<p><em>Note:</em> the <code>paste</code> function has an argument called <code>sep</code>, which specifies the separator between text. The default is a space: &quot; &quot;. The default for <code>paste0</code> is no space &quot;&quot;.</p>
+<p><em>Note:</em> the <code>paste</code> function has an argument called <code>sep</code>, which specifies the separator between text. The default is a space: &quot; “. The default for <code>paste0</code> is no space”“.</p>
+</div>
 </div>
 <h4 id="composing-functions">Composing functions</h4>
 <p>The real power of functions comes from mixing, matching and combining them into ever large chunks to get the effect we want.</p>
-<p>Let's define two functions that will convert temparature from Fahrenheit to Kelvin, and Kelvin to Celsius:</p>
+<p>Let’s define two functions that will convert temparature from Fahrenheit to Kelvin, and Kelvin to Celsius:</p>
 <pre class="sourceCode r"><code class="sourceCode r">fahr_to_kelvin &lt;-<span class="st"> </span>function(temp) {
   kelvin &lt;-<span class="st"> </span>((temp -<span class="st"> </span><span class="dv">32</span>) *<span class="st"> </span>(<span class="dv">5</span> /<span class="st"> </span><span class="dv">9</span>)) +<span class="st"> </span><span class="fl">273.15</span>
   <span class="kw">return</span>(kelvin)
@@ -163,13 +178,20 @@ kelvin_to_celsius &lt;-<span class="st"> </span>function(temp) {
   result &lt;-<span class="st"> </span><span class="kw">kelvin_to_celsius</span>(temp_k)
   <span class="kw">return</span>(result)
 }</code></pre>
-<div id="tip" class="callout">
-<h2>Tip</h2>
-<p>R has some unique aspects that can be exploited when performing more complicated operations. We will not be writing anything that requires knowledge of these more advanced concepts. In the future when you are comfortable writing functions in R, you can learn more by reading the <a href="http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects">R Language Manual</a> or this <a href="http://adv-r.had.co.nz/Environments.html">chapter</a> from <a href="http://adv-r.had.co.nz/">Advanced R Programming</a> by Hadley Wickham. For context, R uses the terminology &quot;environments&quot; instead of frames.</p>
+<div id="tip" class="callout panel panel-info">
+<div class="panel-heading">
+<h2 id="tip" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
-<div id="tip-testing-and-documenting" class="callout">
-<h4>Tip: Testing and documenting</h4>
-<p>It's important to both test functions and document them: Documentation helps you, and others, understand what the purpose of your function is, and how to use it, and its important to make sure that your function actually does what you think.</p>
+<div class="panel-body">
+<p>R has some unique aspects that can be exploited when performing more complicated operations. We will not be writing anything that requires knowledge of these more advanced concepts. In the future when you are comfortable writing functions in R, you can learn more by reading the <a href="http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects">R Language Manual</a> or this <a href="http://adv-r.had.co.nz/Environments.html">chapter</a> from <a href="http://adv-r.had.co.nz/">Advanced R Programming</a> by Hadley Wickham. For context, R uses the terminology “environments” instead of frames.</p>
+</div>
+</div>
+<div id="tip-testing-and-documenting" class="callout panel panel-info">
+<div class="panel-heading">
+<h4 id="tip-testing-and-documenting" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>Tip: Testing and documenting</h4>
+</div>
+<div class="panel-body">
+<p>It’s important to both test functions and document them: Documentation helps you, and others, understand what the purpose of your function is, and how to use it, and its important to make sure that your function actually does what you think.</p>
 <p>When you first start out, your workflow will probably look a lot like this:</p>
 <ol style="list-style-type: decimal">
 <li>Write a function</li>
@@ -182,8 +204,10 @@ kelvin_to_celsius &lt;-<span class="st"> </span>function(temp) {
 <p>Formal documentation for functions, written in separate <code>.Rd</code> files, gets turned into the documentation you see in help files. The <a href="http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html">roxygen2</a> package allows R coders to write documentation alongside the function code and then process it into the appropriate <code>.Rd</code> files. You will want to switch to this more formal method of writing documentation when you start writing more complicated R projects.</p>
 <p>Formal automated tests can be written using the <a href="http://r-pkgs.had.co.nz/tests.html">testthat</a> package.</p>
 </div>
+</div>
         </div>
       </div>
+      </article>
       <div class="footer">
         <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
         <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
@@ -193,6 +217,6 @@ kelvin_to_celsius &lt;-<span class="st"> </span>function(temp) {
     </div>
     <!-- Javascript placed at the end of the document so the pages load faster -->
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
-    <script src="http://software-carpentry.org/v5/js/bootstrap/bootstrap.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
   </body>
 </html>
