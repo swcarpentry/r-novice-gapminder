@@ -50,86 +50,21 @@ One of the most powerful and useful aspects of RStudio is its project management
 functionality. We'll be using this today to create a self-contianed, reproducible
 project.
  
-> #### Challenge: Installing Packages {.challenge}
-> The first thing we're going to do is to install a third-party package, `packrat`. 
-> This allows RStudio to create self-contained packages: any further packages you download 
-> will be contained within their respective projects. This is really useful, as different 
-> versions of packages can change results as new knowledge is gained. 
-> This allows you to easily keep track of the version used for your analyses. 
-> 
-> Packages can be installed using the `install.packages` function: 
-> 
-> ~~~ {.r} 
-> install.packages("packrat") 
-> ~~~
->
 
 > #### Challenge: Creating a self-contained project {.challenge}
 >
-> Now we're going to create a new project in RStudio:
+> We're going to create a new project in RStudio:
 > 
 > 1. Click the "File" menu button, then "New Project".
 > 2. Click "New Directory".
 > 3. Click "Empty Project".
 > 4. Type in the name of the directory to store your project, e.g. "my_project".
-> 5. Make sure that the checkboxes for "Create a git repository" and "Use
->    packrat with this project" are selected.
+> 5. Make sure that the checkboxe for "Create a git repository" is selected.
 > 6. Click the "Create Project" button.
 >
 
 Now when we start R in this project directory, or open this project with RStudio,
 all of our work on this project will be entirely self-contained in this directory.
-By installing `packrat` and telling RStudio to use `packrat` with this project, 
-any third-party packages will be installed in a separate library in the `packrat/`
-subdirectory of our project. This means we don't have to worry about package
-versions changing, especially when returning to a project after a long period of
-time (for example when writing up your thesis!).
-
-> #### Tip: packrat {.callout}
->
-> Any libraries you already have installed outside of your project will need
-> to be reinstalled in each packrat project.
->
-> Packrat will also analyse your script files and warn you if youre using 
-> any libraries not installed and managed inside your project. This is useful
-> if you reuse code between projects.
->
-> Packrat also allows you to easily bundle up a project to share with someone
-> else.
->
-> RStudio has a more detailed [packrat tutorial](http://rstudio.github.io/packrat/)
->
-
-Now lets load the packrat library:
-
-~~~ {.r}
-library("packrat")
-~~~
-
-Here we've called the function `library` and used it to load those packages
-into our local namespace (our interactive R session). This means all of 
-their functions are now available to us.
-
-The main function you'll encounter in `packrat` is the `status` function:
-
-~~~ {.r}
-packrat::status()
-~~~
-
-~~~ {.output}
-Up to date.
-~~~
-
-Here I've put the name of the library in front of its function, separated by
-a `::`. This explicitly tells R to call the function from that library. This
-can be useful to make your code clearer (`status` is fairly generic function
-name and might be used by other packages), and useful when two packages have
-functions with the same names (in which case order of library loading becomes
-important), or you've written your own function or variable with the same 
-name (you should try to avoid this).
-
-You'll want to run this periodically (after installing libraries and writing
-new code) to make sure your project is still self-contained.
 
 ### Best practices for project organisation
 
@@ -163,24 +98,24 @@ analysis. This makes it easier later, as many of my analyses are exploratory
 and don't end up being used in the final project, and some of the analyses
 get shared between projects.
 
-### Project Template - a possible solution
-The next thing we're going to do is to install the third-party package, `ProjectTemplate`. 
-This package will set up an ideal directory structure for project management.
-This is very useful as it enables you to have your analysis pipeline/workflow organised and structured. 
-Together with the default Rstudio project functionality and Git you will be able to keep track of your
-work as well as be able to share your work with collaborators.
-
-1. Install `ProjectTemplate`.
-2. Load the library
-3. Initialise the project:
-
-~~~ {.r}
-install.packages("ProjectTemplate")
-library(ProjectTemplate)
-create.project("../my_project", merge.strategy = "allow.non.conflict")
-~~~
-
-> #### Tip: ProjectTempate {.callout}
+> #### Tip: ProjectTempate - a possible solution {.callout}
+>
+> One way to automate the management of projects is to install the third-party package, `ProjectTemplate`. 
+> This package will set up an ideal directory structure for project management.
+> This is very useful as it enables you to have your analysis pipeline/workflow organised and structured. 
+> Together with the default Rstudio project functionality and Git you will be able to keep track of your
+> work as well as be able to share your work with collaborators.
+> 
+> 1. Install `ProjectTemplate`.
+> 2. Load the library
+> 3. Initialise the project:
+> 
+> ~~~ {.r}
+> install.packages("ProjectTemplate")
+> library(ProjectTemplate)
+> create.project("../my_project", merge.strategy = "allow.non.conflict")
+> ~~~
+> 
 > For more information on ProjectTemplate and its functionality visit the 
 > home page [ProjectTemplate](http://projecttemplate.net/index.html)
 >
@@ -221,9 +156,10 @@ Now we have a good directory structure we will now place/save the data file in t
 > 1. Use the `Download ZIP` located on the right hand side menu, last option. To download the `.zip` file to
 > your downloads folder.
 > 2. Unzip the file.
-> 3. Move the file to the `data/` within your project.
+> 3. Create a data directory within your project
+> 4. Move the file to the `data/` within your project.
 >
-> We will load and inspect these data latter today.
+> We will load and inspect these data later.
 
 #### Version Control
 
@@ -244,21 +180,11 @@ between files from different commits.
 > and directories.
 >
 
-> #### Challenge 1 {.challenge}
-> 
-> Use packrat to install the packages we'll be using later:
->
-> * ggplot2
-> * plyr
->
-> Note: if you run `packrat::status` it will warn you that these libraries
-> are unecessary because they're not used in any project code. 
->
-
 > #### Challenge 2 {.challenge}
 > 
-> Modify the `.gitignore` file to contain `cache/`, `graphs/`, 
-> `reports/` and `logs/` so that disposable output isn't versioned.
+> 1. Create a directory within your project called `graphs`.
+> 2. Modify the `.gitignore` file to contain `graphs/` 
+> so that this disposable output isn't versioned.
 >
 > Add the newly created folders to version control using 
 > the git interface.
