@@ -7,31 +7,8 @@ minutes: 15
 
 > ### Learning Objectives {.objectives}
 >
-> * To be able to bundle up a project using packrat
 > * To review the best practices for using R for 
 >   scientific analysis.
->
-
-### Wrapping up a project
-
-To finish up, let's use `packrat` to bundle up what we've done so far so
-you can take it home with you.
-
-~~~ {.r}
-library(packrat)
-packrat::bundle(
-  file="R-intro-workshop.tar.gz",
-  include.vcs.history=TRUE
-)
-~~~
-
-Now everything we've done, including our version history, is stored in the 
-`R-intro-workshop.tar.gz` file. You can download this and take it with you.
-
-> #### Challenge {.challenge}
->
-> Use `packrat::bundle` to bundle up your project into a single portable
-> file.
 >
 
 ### Best practices for writing nice code
