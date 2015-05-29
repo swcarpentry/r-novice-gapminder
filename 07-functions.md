@@ -36,7 +36,61 @@ my_sum <- function(a, b) {
 }
 ~~~
 
-#### Composing functions
+Let’s define a function fahr_to_kelvin that converts temperatures from Fahrenheit to Kelvin:
+
+~~~ {.r}
+fahr_to_kelvin <- function(temp) {
+  kelvin <- ((temp - 32) * (5 / 9)) + 273.15
+  return(kelvin)
+}
+~~~
+
+We define `fahr_to_kelvin` by assigning it to the output of `function`.
+The list of argument names are containted within parentheses.
+Next, the [body](reference.html#function-body) of the function--the statements that are executed when it runs--is contained within curly braces (`{}`).
+The statements in the body are indented by two spaces.
+This makes the code easier to read but does not affect how the code operates.
+
+When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function.
+Inside the function, we use a [return statement](reference.html#return-statement) to send a result back to whoever asked for it.
+
+> ## Tip {.callout}
+>
+> One feature unique to R is that the return statement is not required.
+> R automatically returns whichever variable is on the last line of the body
+> of the function. Since we are just learning, we will explicitly define the
+> return statement.
+
+Let's try running our function.
+Calling our own function is no different from calling any other function:
+
+~~~{.r}
+# freezing point of water
+fahr_to_kelvin(32)
+~~~
+
+~~~{.output}
+[1] 273.15
+~~~
+
+~~~{.r}
+# boiling point of water
+fahr_to_kelvin(212)
+~~~
+
+~~~{.output}
+[1] 373.15
+~~~
+
+> #### Challenge 1 {.challenge}
+> 
+> Write a function called `kelvin_to_celsius` that takes a temperature in kelvin
+> and returns that tempterature in celcius
+> 
+> Hint: To convert from kelvin to celcius you minus 273.15
+>
+
+#### Combining functions
 
 The real power of functions comes from mixing, matching and combining them
 into ever large chunks to get the effect we want.
@@ -56,10 +110,10 @@ kelvin_to_celsius <- function(temp) {
 }
 ~~~
 
-> #### Challenge 1 {.challenge}
+> #### Challenge 2 {.challenge}
 >
 > Define the function to convert directly from Fahrenheit to Celsius,
-> by reusing these two functions above
+> by reusing the two functions above (or using your own functions if you prefer).
 >
 
 
@@ -255,7 +309,7 @@ data frame with that column added. This means when we call the function
 later we can see the context for the returned GDP values,
 which is much better than in our first attempt where we just got a vector of numbers.
 
-> #### Challenge 2 {.challenge}
+> #### Challenge 3 {.challenge}
 >
 > The `paste` function can be used to combine text together, e.g:
 > 
@@ -331,7 +385,7 @@ which is much better than in our first attempt where we just got a vector of num
 [testthat]: http://r-pkgs.had.co.nz/tests.html
 
 
-> #### Solution for Challenge 1
+> #### Solution for Challenge 2
 >
 > Define the function to convert directly from Fahrenheit to Celsius,
 > by reusing these two functions above
