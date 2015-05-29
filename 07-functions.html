@@ -45,7 +45,32 @@
 <p>If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot simple statistics. However, the gapminder data is updated periodically, and we may want to pull in that new information later and re-run our analysis again. We may also obtain similar data from a different source in the future.</p>
 <p>In this lesson, we’ll learn how to write a function so that we can repeat several operations with a single command.</p>
 <h3 id="defining-a-function">Defining a function</h3>
-<p>Let’s open a new R script file in the <code>functions/</code> directory and call it functions-lesson.R. We’re going to define a function that calculates the Gross Domestic Product of a nation from the data available in our dataset:</p>
+<p>Let’s open a new R script file in the <code>functions/</code> directory and call it functions-lesson.R.</p>
+<pre class="sourceCode r"><code class="sourceCode r">my_sum &lt;-<span class="st"> </span>function(a, b) {
+  the_sum &lt;-<span class="st"> </span>a +<span class="st"> </span>b
+  <span class="kw">return</span>(the_sum)
+}</code></pre>
+<h4 id="composing-functions">Composing functions</h4>
+<p>The real power of functions comes from mixing, matching and combining them into ever large chunks to get the effect we want.</p>
+<p>Let’s define two functions that will convert temparature from Fahrenheit to Kelvin, and Kelvin to Celsius:</p>
+<pre class="sourceCode r"><code class="sourceCode r">fahr_to_kelvin &lt;-<span class="st"> </span>function(temp) {
+  kelvin &lt;-<span class="st"> </span>((temp -<span class="st"> </span><span class="dv">32</span>) *<span class="st"> </span>(<span class="dv">5</span> /<span class="st"> </span><span class="dv">9</span>)) +<span class="st"> </span><span class="fl">273.15</span>
+  <span class="kw">return</span>(kelvin)
+}
+
+kelvin_to_celsius &lt;-<span class="st"> </span>function(temp) {
+  celsius &lt;-<span class="st"> </span>temp -<span class="st"> </span><span class="fl">273.15</span>
+  <span class="kw">return</span>(celsius)
+}</code></pre>
+<div id="challenge-1" class="challenge panel panel-success">
+<div class="panel-heading">
+<h4 id="challenge-1" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h4>
+</div>
+<div class="panel-body">
+<p>Define the function to convert directly from Fahrenheit to Celsius, by reusing these two functions above</p>
+</div>
+</div>
+<p>We’re going to define a function that calculates the Gross Domestic Product of a nation from the data available in our dataset:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Takes a dataset and multiplies the population column</span>
 <span class="co"># with the GDP per capita column.</span>
 calcGDP &lt;-<span class="st"> </span>function(dat) {
@@ -145,9 +170,9 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
   <span class="kw">return</span>(new)
 <span class="er">}</span></code></pre>
 <p>Finally, we calculated the GDP on our new subset, and created a new data frame with that column added. This means when we call the function later we can see the context for the returned GDP values, which is much better than in our first attempt where we just got a vector of numbers.</p>
-<div id="challenge-1" class="challenge panel panel-success">
+<div id="challenge-2" class="challenge panel panel-success">
 <div class="panel-heading">
-<h4 id="challenge-1" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h4>
+<h4 id="challenge-2" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h4>
 </div>
 <div class="panel-body">
 <p>The <code>paste</code> function can be used to combine text together, e.g:</p>
@@ -160,24 +185,6 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 <p><em>Note:</em> the <code>paste</code> function has an argument called <code>sep</code>, which specifies the separator between text. The default is a space: &quot; “. The default for <code>paste0</code> is no space”“.</p>
 </div>
 </div>
-<h4 id="composing-functions">Composing functions</h4>
-<p>The real power of functions comes from mixing, matching and combining them into ever large chunks to get the effect we want.</p>
-<p>Let’s define two functions that will convert temparature from Fahrenheit to Kelvin, and Kelvin to Celsius:</p>
-<pre class="sourceCode r"><code class="sourceCode r">fahr_to_kelvin &lt;-<span class="st"> </span>function(temp) {
-  kelvin &lt;-<span class="st"> </span>((temp -<span class="st"> </span><span class="dv">32</span>) *<span class="st"> </span>(<span class="dv">5</span> /<span class="st"> </span><span class="dv">9</span>)) +<span class="st"> </span><span class="fl">273.15</span>
-  <span class="kw">return</span>(kelvin)
-}
-
-kelvin_to_celsius &lt;-<span class="st"> </span>function(temp) {
-  celsius &lt;-<span class="st"> </span>temp -<span class="st"> </span><span class="fl">273.15</span>
-  <span class="kw">return</span>(celsius)
-}</code></pre>
-<p>Now, when we define the function to convert directly from Fahrenheit to Celsius, we can simply reuse these two functions:</p>
-<pre class="sourceCode r"><code class="sourceCode r">fahr_to_celsius &lt;-<span class="st"> </span>function(temp) {
-  temp_k &lt;-<span class="st"> </span><span class="kw">fahr_to_kelvin</span>(temp)
-  result &lt;-<span class="st"> </span><span class="kw">kelvin_to_celsius</span>(temp_k)
-  <span class="kw">return</span>(result)
-}</code></pre>
 <div id="tip" class="callout panel panel-info">
 <div class="panel-heading">
 <h2 id="tip" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
@@ -205,6 +212,15 @@ kelvin_to_celsius &lt;-<span class="st"> </span>function(temp) {
 <p>Formal automated tests can be written using the <a href="http://r-pkgs.had.co.nz/tests.html">testthat</a> package.</p>
 </div>
 </div>
+<blockquote>
+<h4 id="solution-for-challenge-1">Solution for Challenge 1</h4>
+<p>Define the function to convert directly from Fahrenheit to Celsius, by reusing these two functions above</p>
+<pre class="sourceCode r"><code class="sourceCode r">fahr_to_celsius &lt;-<span class="st"> </span>function(temp) {
+  temp_k &lt;-<span class="st"> </span><span class="kw">fahr_to_kelvin</span>(temp)
+  result &lt;-<span class="st"> </span><span class="kw">kelvin_to_celsius</span>(temp_k)
+  <span class="kw">return</span>(result)
+}</code></pre>
+</blockquote>
         </div>
       </div>
       </article>

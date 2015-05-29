@@ -28,6 +28,41 @@ several operations with a single command.
 ### Defining a function
 
 Let's open a new R script file in the `functions/` directory and call it functions-lesson.R.
+
+~~~{.r}
+my_sum <- function(a, b) {
+  the_sum <- a + b
+  return(the_sum)
+}
+~~~
+
+#### Composing functions
+
+The real power of functions comes from mixing, matching and combining them
+into ever large chunks to get the effect we want.
+
+Let's define two functions that will convert temparature from Fahrenheit to
+Kelvin, and Kelvin to Celsius:
+
+~~~ {.r}
+fahr_to_kelvin <- function(temp) {
+  kelvin <- ((temp - 32) * (5 / 9)) + 273.15
+  return(kelvin)
+}
+
+kelvin_to_celsius <- function(temp) {
+  celsius <- temp - 273.15
+  return(celsius)
+}
+~~~
+
+> #### Challenge 1 {.challenge}
+>
+> Define the function to convert directly from Fahrenheit to Celsius,
+> by reusing these two functions above
+>
+
+
 We're going to define
 a function that calculates the Gross Domestic Product of a nation from the data
 available in our dataset:
@@ -220,7 +255,7 @@ data frame with that column added. This means when we call the function
 later we can see the context for the returned GDP values,
 which is much better than in our first attempt where we just got a vector of numbers.
 
-> #### Challenge 1 {.challenge}
+> #### Challenge 2 {.challenge}
 >
 > The `paste` function can be used to combine text together, e.g:
 > 
@@ -248,37 +283,6 @@ which is much better than in our first attempt where we just got a vector of num
 > separator between text. The default is a space: " ". The default for `paste0`
 > is no space "".
 >
-
-#### Composing functions
-
-The real power of functions comes from mixing, matching and combining them
-into ever large chunks to get the effect we want.
-
-Let's define two functions that will convert temparature from Fahrenheit to
-Kelvin, and Kelvin to Celsius:
-
-~~~ {.r}
-fahr_to_kelvin <- function(temp) {
-  kelvin <- ((temp - 32) * (5 / 9)) + 273.15
-  return(kelvin)
-}
-
-kelvin_to_celsius <- function(temp) {
-  celsius <- temp - 273.15
-  return(celsius)
-}
-~~~
-
-Now, when we define the function to convert directly from Fahrenheit to Celsius,
-we can simply reuse these two functions:
-
-~~~ {.r}
-fahr_to_celsius <- function(temp) {
-  temp_k <- fahr_to_kelvin(temp)
-  result <- kelvin_to_celsius(temp_k)
-  return(result)
-}
-~~~
 
 > ## Tip {.callout} 
 > 
@@ -326,4 +330,18 @@ fahr_to_celsius <- function(temp) {
 [roxygen2]: http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
 [testthat]: http://r-pkgs.had.co.nz/tests.html
 
+
+> #### Solution for Challenge 1
+>
+> Define the function to convert directly from Fahrenheit to Celsius,
+> by reusing these two functions above
+>
+> 
+> ~~~ {.r}
+> fahr_to_celsius <- function(temp) {
+>   temp_k <- fahr_to_kelvin(temp)
+>   result <- kelvin_to_celsius(temp_k)
+>   return(result)
+> }
+> ~~~
 
