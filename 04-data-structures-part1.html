@@ -30,7 +30,7 @@
           <h2 class="subtitle">Data structures</h2>
 <div id="learning-objectives" class="objectives panel panel-warning">
 <div class="panel-heading">
-<h3 id="learning-objectives" class="objectives panel panel-warning"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h3>
+<h3><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h3>
 </div>
 <div class="panel-body">
 <ul>
@@ -59,7 +59,7 @@
 <span class="kw">is.character</span>() <span class="co"># is it character data?</span></code></pre>
 <div id="challenge-1-data-types" class="challenge panel panel-success">
 <div class="panel-heading">
-<h4 id="challenge-1-data-types" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge 1: Data types</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 1: Data types</h4>
 </div>
 <div class="panel-body">
 <p>Use your knowledge of how to assign a value to a variable, to create examples of data with the following characteristics:</p>
@@ -93,7 +93,7 @@
 </ul>
 <div id="tip-character-vectors" class="callout panel panel-info">
 <div class="panel-heading">
-<h4 id="tip-character-vectors" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>Tip: “Character Vectors”</h4>
+<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: “Character Vectors”</h4>
 </div>
 <div class="panel-body">
 <p>You will sometimes hear the term “character vector”, especially in warning or error messages. This is a somewhat confusing and unfortunate name. Remember that the type “character” really means some text wrapped in quotation symbols.</p>
@@ -131,7 +131,7 @@ series</code></pre>
  [91] 10.0</code></pre>
 <div id="tip-creating-integers" class="callout panel panel-info">
 <div class="panel-heading">
-<h4 id="tip-creating-integers" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>Tip: Creating integers</h4>
+<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Creating integers</h4>
 </div>
 <div class="panel-body">
 <p>When you combine numbers using the concatenate function, <code>c()</code> the type will automatically become “numeric”, that is real/decimal numbers. If you specifically want to create a vector of integers (whole numbers only), you need to append each number with an L, i.e. <code>c(10L, 12L, 45L, 33L)</code>.</p>
@@ -143,7 +143,7 @@ x</code></pre>
 <pre class="output"><code>[1] 10 12 45 33 57</code></pre>
 <div id="challenge-2" class="challenge panel panel-success">
 <div class="panel-heading">
-<h4 id="challenge-2" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h4>
 </div>
 <div class="panel-body">
 <p>Vectors can only contain one atomic type. If you try to combine different types, R will create a vector that is the least common denominator: the type that is easiest to coerce to.</p>
@@ -177,7 +177,7 @@ NAs introduced by coercion</code></pre>
 <p>In both cases, a vector of “NAs” was returned, and in the first case so was a warning.</p>
 <div id="tip-special-objects" class="callout panel panel-info">
 <div class="panel-heading">
-<h4 id="tip-special-objects" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>Tip: Special Objects</h4>
+<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Special Objects</h4>
 </div>
 <div class="panel-body">
 <p>“NA” is a special object in R which denotes a missing value. NA can occur in any type of vector. There are a few other types of special objects: <code>Inf</code> denotes infinity (can be positive or negative), while <code>NaN</code> means Not a number, an undefined value (i.e. <code>0/0</code>). <code>NULL</code> denotes that the data structure doesn’t exist (but can occur in list elements).</p>
@@ -200,7 +200,7 @@ x</code></pre>
  10 12 45 33</code></pre>
 <div id="advanced-tip-for-programmers" class="callout panel panel-info">
 <div class="panel-heading">
-<h4 id="advanced-tip-for-programmers" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>Advanced Tip for Programmers</h4>
+<h4><span class="glyphicon glyphicon-pushpin"></span>Advanced Tip for Programmers</h4>
 </div>
 <div class="panel-body">
 <p>If you’re coming from other programming languages you might recognise this as a useful tool akin to dictionaries and hash tables. This is true for small vectors, but for true hash table functionality, you should use the environment object. See <code>?new.env</code>.</p>
@@ -221,7 +221,7 @@ x</code></pre>
 <p>You can use <code>rownames</code>, <code>colnames</code>, and <code>dimnames</code> to set or retrieve the column and rownames of a matrix. The functions <code>nrow</code> and <code>ncol</code> will tell you the number of rows and columns (this also applies to data frames!), while <code>length</code> will tell you the number of elements.</p>
 <div id="challenge-3" class="challenge panel panel-success">
 <div class="panel-heading">
-<h3 id="challenge-3" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h3>
+<h3><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h3>
 </div>
 <div class="panel-body">
 <p>What do you think will be the result of <code>length(x)</code>? Try it. Were you right? Why / why not?</p>
@@ -229,7 +229,7 @@ x</code></pre>
 </div>
 <div id="challenge-4" class="challenge panel panel-success">
 <div class="panel-heading">
-<h3 id="challenge-4" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge 4</h3>
+<h3><span class="glyphicon glyphicon-pencil"></span>Challenge 4</h3>
 </div>
 <div class="panel-body">
 <p>Make another matrix, this time containing the numbers 1:50, with 5 columns and 10 rows. Did the <code>matrix</code> function fill your matrix by column, or by row, as its default behaviour? See if you can figure out how to change this. (hint: read the documentation for <code>matrix</code>!)</p>
@@ -294,7 +294,7 @@ $data
 list()</code></pre>
 <div id="challenge-5" class="challenge panel panel-success">
 <div class="panel-heading">
-<h3 id="challenge-5" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge 5</h3>
+<h3><span class="glyphicon glyphicon-pencil"></span>Challenge 5</h3>
 </div>
 <div class="panel-body">
 <p>Create a list containing two character vectors for each of the sections in this part of the workshop:</p>

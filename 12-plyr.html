@@ -7,10 +7,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
     <link rel="stylesheet" type="text/css" href="css/swc.css" />
-    <link rel="stylesheet" type="text/css" href="css/swc-workshop-and-lesson.css" />
-    <link rel="stylesheet" type="text/css" href="css/lesson.css" />
     <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
     <meta charset="UTF-8" />
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -19,21 +17,26 @@
     <![endif]-->
   </head>
   <body class="lesson">
-    <div class="container container-full-width card">
+    <div class="container card">
       <div class="banner">
         <a href="http://software-carpentry.org" title="Software Carpentry">
           <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
         </a>
       </div>
-      <div class="row-fluid">
-        <div class="span10 offset1">
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
           <h1 class="title">R for reproducible scientific analysis</h1>
           <h2 class="subtitle">Split-apply-combine</h2>
-<div id="learning-objectives" class="objectives">
-<h2>Learning Objectives</h2>
+<div id="learning-objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+</div>
+<div class="panel-body">
 <ul>
 <li>To be able to use the split-apply-combine strategy for data analysis</li>
 </ul>
+</div>
 </div>
 <p>Previously we looked at how you can use functions to simplify your code. We defined the <code>calcGDP</code> function, which takes the gapminder dataset, and multiplies the population and GDP per capita column. We also defined additional arguments so we could filter by <code>year</code> and <code>country</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Takes a dataset and multiplies the population column</span>
@@ -50,7 +53,7 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
   new &lt;-<span class="st"> </span><span class="kw">cbind</span>(dat, <span class="dt">gdp=</span>gdp)   
   <span class="kw">return</span>(new)
 }</code></pre>
-<p>A common task you'll encounter when working with data, is that you'll want to run calculations on different groups within the data. In the above, we were simply calculating the GDP by multiplying two columns together. But what if we wanted to calculated the mean GDP per continent?</p>
+<p>A common task you’ll encounter when working with data, is that you’ll want to run calculations on different groups within the data. In the above, we were simply calculating the GDP by multiplying two columns together. But what if we wanted to calculated the mean GDP per continent?</p>
 <p>We could run <code>calcGPD</code> and then take the mean of each continent:</p>
 <pre class="sourceCode r"><code class="sourceCode r">withGDP &lt;-<span class="st"> </span><span class="kw">calcGDP</span>(gapminder)
 <span class="kw">mean</span>(withGDP[withGDP$continent ==<span class="st"> &quot;Africa&quot;</span>, <span class="st">&quot;gdp&quot;</span>]) </code></pre>
@@ -59,16 +62,16 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 <pre class="output"><code>[1] 379262350210</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(withGDP[withGDP$continent ==<span class="st"> &quot;Asia&quot;</span>, <span class="st">&quot;gdp&quot;</span>]) </code></pre>
 <pre class="output"><code>[1] 227233738153</code></pre>
-<p>But this isn't very <em>nice</em>. Yes, by using a function, you have reduced a substantial amount of repetition. That <strong>is</strong> nice. But there is still repetition. Repeating yourself will cost you time, both now and later, and potentially introduce some nasty bugs.</p>
+<p>But this isn’t very <em>nice</em>. Yes, by using a function, you have reduced a substantial amount of repetition. That <strong>is</strong> nice. But there is still repetition. Repeating yourself will cost you time, both now and later, and potentially introduce some nasty bugs.</p>
 <p>We could write a new function that is flexible like <code>calcGDP</code>, but this also takes a substantial amount of effort and testing to get right.</p>
-<p>The abstract problem we're encountering here is know as &quot;split-apply-combine&quot;:</p>
+<p>The abstract problem we’re encountering here is know as “split-apply-combine”:</p>
 <div class="figure">
 <img src="img/splitapply.png" alt="Split apply combine" /><p class="caption">Split apply combine</p>
 </div>
 <p>We want to <em>split</em> our data into groups, in this case continents, <em>apply</em> some calculations on that group, then optionally <em>combine</em> the results together afterwards.</p>
 <h4 id="the-plyr-package">The <code>plyr</code> package</h4>
-<p>For those of you who have used R before, you might be familiar with the <code>apply</code> family of functions. While R's built in functions do work, we're going to introduce you to another method for solving the &quot;split-apply-combine&quot; probelm. The <a href="http://had.co.nz/plyr/">plyr</a> package provides a set of functions that we find more user friendly for solving this problem.</p>
-<p>We installed this package in an earlier challenge. Let's load it now:</p>
+<p>For those of you who have used R before, you might be familiar with the <code>apply</code> family of functions. While R’s built in functions do work, we’re going to introduce you to another method for solving the “split-apply-combine” probelm. The <a href="http://had.co.nz/plyr/">plyr</a> package provides a set of functions that we find more user friendly for solving this problem.</p>
+<p>We installed this package in an earlier challenge. Let’s load it now:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(plyr)</code></pre>
 <p>Plyr has functions for operating on <code>lists</code>, <code>data.frames</code> and <code>arrays</code> (matrices, or n-dimensional vectors). Each function performs:</p>
 <ol style="list-style-type: decimal">
@@ -76,13 +79,13 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 <li><strong>Apply</strong> a function on each split in turn.</li>
 <li>Re<strong>combine</strong> output data as a single data object.</li>
 </ol>
-<p>The functions are named based on the data structure they expect as input, and the data structure you want returned as output: [a]rray, [l]ist, or [d]ata.frame. The first letter corresponds to the input data structure, the second letter to the output data structure, and then the rest of the function is named &quot;ply&quot;.</p>
-<p>This gives us 9 core functions **ply. There are an additional three functions which will only perform the split and apply steps, and not any combine step. They're named by their input data type and represent null output by a <code>_</code> (see table)</p>
-<p>Note here that plyr's use of &quot;array&quot; is different to R's, an array in ply can include a vector or matrix.</p>
+<p>The functions are named based on the data structure they expect as input, and the data structure you want returned as output: [a]rray, [l]ist, or [d]ata.frame. The first letter corresponds to the input data structure, the second letter to the output data structure, and then the rest of the function is named “ply”.</p>
+<p>This gives us 9 core functions **ply. There are an additional three functions which will only perform the split and apply steps, and not any combine step. They’re named by their input data type and represent null output by a <code>_</code> (see table)</p>
+<p>Note here that plyr’s use of “array” is different to R’s, an array in ply can include a vector or matrix.</p>
 <div class="figure">
 <img src="img/full_apply_suite.png" alt="Full apply suite" /><p class="caption">Full apply suite</p>
 </div>
-<p>Each of the xxply functions (<code>daply</code>, <code>ddply</code>, <code>llply</code>, <code>laply</code>, ...) has the same structure and has 4 key features and structure:</p>
+<p>Each of the xxply functions (<code>daply</code>, <code>ddply</code>, <code>llply</code>, <code>laply</code>, …) has the same structure and has 4 key features and structure:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">xxply</span>(.data, .variables, .fun)</code></pre>
 <ul>
 <li>The first letter of the function name gives the input type and the second gives the output type.</li>
@@ -102,12 +105,12 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 3      Asia 227233738153
 4    Europe 269442085301
 5   Oceania 188187105354</code></pre>
-<p>Let's walk through what just happened:</p>
+<p>Let’s walk through what just happened:</p>
 <ul>
 <li>The <code>ddply</code> function feeds in a <code>data.frame</code> (function starts with <strong>d</strong>) and returns another <code>data.frame</code> (2nd letter is a <strong>d</strong>) i</li>
 <li>the first argument we gave was the data.frame we wanted to operate on: in this case the gapminder data. We called <code>calcGDP</code> on it first so that it would have the additional <code>gdp</code> column added to it.</li>
-<li>The second argument indicated our split criteria: in this case the &quot;continent&quot; column. Note that we just gave the name of the column, not the actual column itself like we've done previously with subsetting. Plyr takes care of these implementation details for you.</li>
-<li>The third argument is the function we want to apply to each grouping of the data. We had to define our own short function here: each subset of the data gets stored in <code>x</code>, the first argument of our function. This is an anonymous function: we haven't defined it elsewhere, and it has no name. It only exists in the scope of our call to <code>ddply</code>.</li>
+<li>The second argument indicated our split criteria: in this case the “continent” column. Note that we just gave the name of the column, not the actual column itself like we’ve done previously with subsetting. Plyr takes care of these implementation details for you.</li>
+<li>The third argument is the function we want to apply to each grouping of the data. We had to define our own short function here: each subset of the data gets stored in <code>x</code>, the first argument of our function. This is an anonymous function: we haven’t defined it elsewhere, and it has no name. It only exists in the scope of our call to <code>ddply</code>.</li>
 </ul>
 <p>What if we want a different type of output data structure?:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dlply</span>(
@@ -235,24 +238,43 @@ continent          2002         2007
    ))
   }
 )</code></pre>
-<div id="tip-printing-numbers" class="callout">
-<h4>Tip: printing numbers</h4>
-<p>The <code>format</code> function can be used to make numeric values &quot;pretty&quot; for printing out in messages.</p>
+<div id="tip-printing-numbers" class="callout panel panel-info">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: printing numbers</h4>
 </div>
-<div id="challenge-1" class="challenge">
-<h4>Challenge 1</h4>
+<div class="panel-body">
+<p>The <code>format</code> function can be used to make numeric values “pretty” for printing out in messages.</p>
+</div>
+</div>
+<div id="challenge-1" class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h4>
+</div>
+<div class="panel-body">
 <p>Calculate the average life expectancy per continent. Which has the longest? Which had the shortest?</p>
 </div>
-<div id="challenge-2" class="challenge">
-<h4>Challenge 2</h4>
+</div>
+<div id="challenge-2" class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h4>
+</div>
+<div class="panel-body">
 <p>Calculate the average life expectancy per continent and year. Which had the longest and shortest in 2007? Which had the greatest change in between 1952 and 2007?</p>
 </div>
-<div id="advanced-challenge" class="challenge">
-<h4>Advanced Challenge</h4>
+</div>
+<div id="advanced-challenge" class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Advanced Challenge</h4>
+</div>
+<div class="panel-body">
 <p>Calculate the difference in mean life expectancy between the years 1952 and 2007 from the output of challenge 2 using one of the <code>plyr</code> functions.</p>
 </div>
-<div id="alternate-challenge-if-class-seems-lost" class="challenge">
-<h4>Alternate Challenge if class seems lost</h4>
+</div>
+<div id="alternate-challenge-if-class-seems-lost" class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Alternate Challenge if class seems lost</h4>
+</div>
+<div class="panel-body">
 <p>Without running them, which of the following will calculate the average life expectancy per continent:</p>
 <ol style="list-style-type: decimal">
 <li><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ddply</span>(
@@ -283,8 +305,10 @@ continent          2002         2007
 )</code></pre></li>
 </ol>
 </div>
+</div>
         </div>
       </div>
+      </article>
       <div class="footer">
         <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
         <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
@@ -294,6 +318,6 @@ continent          2002         2007
     </div>
     <!-- Javascript placed at the end of the document so the pages load faster -->
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
-    <script src="http://software-carpentry.org/v5/js/bootstrap/bootstrap.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
   </body>
 </html>

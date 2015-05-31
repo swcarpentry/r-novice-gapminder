@@ -30,7 +30,7 @@
           <h2 class="subtitle">Project management with RStudio</h2>
 <div id="learning-objectives" class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2 id="learning-objectives" class="objectives panel panel-warning"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -51,7 +51,6 @@ Managing your projects in a reproducible fashion doesn’t just make your scienc
 <p>Most people tend to organize their projects like this:</p>
 <div class="figure">
 <img src="img/bad_layout.png" />
-
 </div>
 <p>There are many reasons why we should <em>ALWAYS</em> avoid this:</p>
 <ol style="list-style-type: decimal">
@@ -71,7 +70,7 @@ Managing your projects in a reproducible fashion doesn’t just make your scienc
 <p>One of the most powerful and useful aspects of RStudio is its project management functionality. We’ll be using this today to create a self-contianed, reproducible project.</p>
 <div id="challenge-creating-a-self-contained-project" class="challenge panel panel-success">
 <div class="panel-heading">
-<h4 id="challenge-creating-a-self-contained-project" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge: Creating a self-contained project</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge: Creating a self-contained project</h4>
 </div>
 <div class="panel-body">
 <p>We’re going to create a new project in RStudio:</p>
@@ -97,7 +96,7 @@ Managing your projects in a reproducible fashion doesn’t just make your scienc
 <p>There are lots of different was to manage this output. I find it useful to have an output folder with different sub-directories for each separate analysis. This makes it easier later, as many of my analyses are exploratory and don’t end up being used in the final project, and some of the analyses get shared between projects.</p>
 <div id="tip-projecttempate---a-possible-solution" class="callout panel panel-info">
 <div class="panel-heading">
-<h4 id="tip-projecttempate---a-possible-solution" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>Tip: ProjectTempate - a possible solution</h4>
+<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: ProjectTempate - a possible solution</h4>
 </div>
 <div class="panel-body">
 <p>One way to automate the management of projects is to install the third-party package, <code>ProjectTemplate</code>. This package will set up an ideal directory structure for project management. This is very useful as it enables you to have your analysis pipeline/workflow organised and structured. Together with the default Rstudio project functionality and Git you will be able to keep track of your work as well as be able to share your work with collaborators.</p>
@@ -117,7 +116,7 @@ Managing your projects in a reproducible fashion doesn’t just make your scienc
 <p>When your project is new and shiny, the script file usually contains many lines of directly executed code. As it matures, reusable chunks get pulled into their own functions. It’s a good idea to separate these into separate folders; one to store useful functions that you’ll reuse across analyses and projects, and one to store the analysis scripts.</p>
 <div id="tip-avoiding-duplication" class="callout panel panel-info">
 <div class="panel-heading">
-<h4 id="tip-avoiding-duplication" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>Tip: avoiding duplication</h4>
+<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: avoiding duplication</h4>
 </div>
 <div class="panel-body">
 <p>You may find yourself using data or analysis scripts across several projects. Typically you want to avoid duplication to save space and avoid having to make updates to code in multiple places.</p>
@@ -128,7 +127,7 @@ Managing your projects in a reproducible fashion doesn’t just make your scienc
 <p>Now we have a good directory structure we will now place/save the data file in the <code>data/</code> directory.</p>
 <div id="challenge-1" class="challenge panel panel-success">
 <div class="panel-heading">
-<h4 id="challenge-1" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h4>
 </div>
 <div class="panel-body">
 <p>Download the gapminer data from <a href="https://github.com/resbaz/r-novice-gapminder-files">here</a>.</p>
@@ -146,7 +145,7 @@ Managing your projects in a reproducible fashion doesn’t just make your scienc
 <p>The workspace/history pane has a tab for “Git”. We can stage each file by checking the box: you will see a Green “A” next to stage files and folders, and yellow question marks next to files or folders git doesn’t know about yet. RStudio also nicely shows you the difference between files from different commits.</p>
 <div id="tip-versioning-disposable-output" class="callout panel panel-info">
 <div class="panel-heading">
-<h4 id="tip-versioning-disposable-output" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>Tip: versioning disposable output</h4>
+<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: versioning disposable output</h4>
 </div>
 <div class="panel-body">
 <p>Generally you do not want to version disposable output (or read-only data). You should modify the <code>.gitignore</code> file to tell git to ignore these files and directories.</p>
@@ -154,7 +153,7 @@ Managing your projects in a reproducible fashion doesn’t just make your scienc
 </div>
 <div id="challenge-2" class="challenge panel panel-success">
 <div class="panel-heading">
-<h4 id="challenge-2" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h4>
 </div>
 <div class="panel-body">
 <ol style="list-style-type: decimal">

@@ -30,7 +30,7 @@
           <h2 class="subtitle">Subsetting data</h2>
 <div id="learning-objectives" class="objectives panel panel-warning">
 <div class="panel-heading">
-<h3 id="learning-objectives" class="objectives panel panel-warning"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h3>
+<h3><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h3>
 </div>
 <div class="panel-body">
 <ul>
@@ -93,7 +93,7 @@
 6.2 7.1 4.8 </code></pre>
 <div id="tip-order-of-operations" class="callout panel panel-info">
 <div class="panel-heading">
-<h4 id="tip-order-of-operations" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>Tip: Order of operations</h4>
+<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Order of operations</h4>
 </div>
 <div class="panel-body">
 <p>A common trip up for novices occurs when trying to skip slices of a vector. Most people first try to negate a sequence like so:</p>
@@ -114,7 +114,7 @@ x</code></pre>
 5.4 6.2 7.1 7.5 </code></pre>
 <div id="challenge" class="challenge panel panel-success">
 <div class="panel-heading">
-<h4 id="challenge" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge</h4>
 </div>
 <div class="panel-body">
 <pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">5.4</span>, <span class="fl">6.2</span>, <span class="fl">7.1</span>, <span class="fl">4.8</span>, <span class="fl">7.5</span>)
@@ -159,7 +159,7 @@ x</code></pre>
 <p>The <code>%in%</code> goes through each element of its left argument, in this case the names of <code>x</code>, and asks, “Does this element occur in the second argument?”.</p>
 <div id="tip-getting-help-for-operators" class="callout panel panel-info">
 <div class="panel-heading">
-<h4 id="tip-getting-help-for-operators" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>Tip: Getting help for operators</h4>
+<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Getting help for operators</h4>
 </div>
 <div class="panel-body">
 <p>Remember you can search for help on operators by wrapping them in quotes: <code>help(&quot;%in%&quot;)</code> or <code>?&quot;%in%&quot;</code>.</p>
@@ -200,7 +200,7 @@ In names(x) == c(&quot;a&quot;, &quot;c&quot;, &quot;e&quot;) :
 7.1 7.5 </code></pre>
 <div id="tip-chaining-logical-operations" class="callout panel panel-info">
 <div class="panel-heading">
-<h4 id="tip-chaining-logical-operations" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>Tip: Chaining logical operations</h4>
+<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Chaining logical operations</h4>
 </div>
 <div class="panel-body">
 <p>There are many situations in which you will wish to combine multiple conditions. To do so several logical operations exist in R:</p>
@@ -214,7 +214,7 @@ In names(x) == c(&quot;a&quot;, &quot;c&quot;, &quot;e&quot;) :
 </div>
 <div id="challenge-1" class="challenge panel panel-success">
 <div class="panel-heading">
-<h4 id="challenge-1" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge</h4>
 </div>
 <div class="panel-body">
 <pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">5.4</span>, <span class="fl">6.2</span>, <span class="fl">7.1</span>, <span class="fl">4.8</span>, <span class="fl">7.5</span>)
@@ -276,7 +276,7 @@ m[<span class="dv">3</span>:<span class="dv">4</span>, <span class="kw">c</span>
 <pre class="output"><code>Error in m[, c(3, 6)] : subscript out of bounds</code></pre>
 <div id="tip-higher-dimensional-arrays" class="callout panel panel-info">
 <div class="panel-heading">
-<h4 id="tip-higher-dimensional-arrays" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>Tip: Higher dimensional arrays</h4>
+<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Higher dimensional arrays</h4>
 </div>
 <div class="panel-body">
 <p>when dealing with multi-dimensional arrays, each argument to <code>[</code> corresponds to a dimension. For example, a 3D array, the first three arguments correspond to the rows, columns, and depth dimension.</p>
@@ -293,7 +293,7 @@ m[<span class="dv">3</span>:<span class="dv">4</span>, <span class="kw">c</span>
 <p>Matrices can also be subsetted using their rownames and column names instead of their row and column indices.</p>
 <div id="challenge-2" class="challenge panel panel-success">
 <div class="panel-heading">
-<h4 id="challenge-2" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge</h4>
 </div>
 <div class="panel-body">
 <pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">18</span>, <span class="dt">nrow=</span><span class="dv">3</span>, <span class="dt">ncol=</span><span class="dv">6</span>)
@@ -352,7 +352,7 @@ $b
   6          5.4         3.9          1.7         0.4  setosa</code></pre>
 <div id="challenge-3" class="challenge panel panel-success">
 <div class="panel-heading">
-<h4 id="challenge-3" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge</h4>
 </div>
 <div class="panel-body">
 <ol style="list-style-type: decimal">
@@ -397,7 +397,7 @@ $b
 <p>But for a single column the result will be a vector (this can be changed with the third argument, <code>drop = FALSE</code>).</p>
 <div id="challenge-4" class="challenge panel panel-success">
 <div class="panel-heading">
-<h4 id="challenge-4" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge</h4>
 </div>
 <div class="panel-body">
 <p>Fix each of the following common data frame subsetting errors:</p>
@@ -425,7 +425,7 @@ $b
 </div>
 <div id="challenge-5" class="challenge panel panel-success">
 <div class="panel-heading">
-<h4 id="challenge-5" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge</h4>
 </div>
 <div class="panel-body">
 <ol style="list-style-type: decimal">

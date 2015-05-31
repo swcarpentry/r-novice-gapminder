@@ -30,7 +30,7 @@
           <h2 class="subtitle">Creating functions</h2>
 <div id="objectives" class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2 id="objectives" class="objectives panel panel-warning"><span class="glyphicon glyphicon-certificate"></span>Objectives</h2>
+<h2><span class="glyphicon glyphicon-certificate"></span>Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -59,7 +59,7 @@
 <p>When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function. Inside the function, we use a <a href="reference.html#return-statement">return statement</a> to send a result back to whoever asked for it.</p>
 <div id="tip" class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="tip" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>One feature unique to R is that the return statement is not required. R automatically returns whichever variable is on the last line of the body of the function. Since we are just learning, we will explicitly define the return statement.</p>
@@ -74,7 +74,7 @@
 <pre class="output"><code>[1] 373.15</code></pre>
 <div id="challenge-1" class="challenge panel panel-success">
 <div class="panel-heading">
-<h4 id="challenge-1" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h4>
 </div>
 <div class="panel-body">
 <p>Write a function called <code>kelvin_to_celsius</code> that takes a temperature in kelvin and returns that tempterature in celcius</p>
@@ -95,7 +95,7 @@ kelvin_to_celsius &lt;-<span class="st"> </span>function(temp) {
 }</code></pre>
 <div id="challenge-2" class="challenge panel panel-success">
 <div class="panel-heading">
-<h4 id="challenge-2" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h4>
 </div>
 <div class="panel-body">
 <p>Define the function to convert directly from Fahrenheit to Celsius, by reusing the two functions above (or using your own functions if you prefer).</p>
@@ -181,7 +181,7 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 <p>By using <code>%in%</code> instead, we can also give multiple years or countries to those arguments.</p>
 <div id="tip-pass-by-value" class="callout panel panel-info">
 <div class="panel-heading">
-<h4 id="tip-pass-by-value" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>Tip: Pass by value</h4>
+<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Pass by value</h4>
 </div>
 <div class="panel-body">
 <p>Functions in R almost always make copies of the data to operate on inside of a function body. When we modify <code>dat</code> inside the function we are modifying the copy of the gapminder dataset stored in <code>dat</code>, not the original variable we gave as the first argument.</p>
@@ -190,7 +190,7 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 </div>
 <div id="tip-function-scope" class="callout panel panel-info">
 <div class="panel-heading">
-<h4 id="tip-function-scope" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>Tip: Function scope</h4>
+<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Function scope</h4>
 </div>
 <div class="panel-body">
 <p>Another important concept is scoping: any variables (or functions!) you create or modify inside the body of a function only exist for the lifetime of the function’s execution. When we call <code>calcGDP</code>, the variables <code>dat</code>, <code>gdp</code> and <code>new</code> only exist inside the body of the function. Even if we have variables of the same name in our interactive R session, they are not modified in any way when executing a function.</p>
@@ -203,7 +203,7 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 <p>Finally, we calculated the GDP on our new subset, and created a new data frame with that column added. This means when we call the function later we can see the context for the returned GDP values, which is much better than in our first attempt where we just got a vector of numbers.</p>
 <div id="challenge-3" class="challenge panel panel-success">
 <div class="panel-heading">
-<h4 id="challenge-3" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h4>
 </div>
 <div class="panel-body">
 <p>The <code>paste</code> function can be used to combine text together, e.g:</p>
@@ -218,7 +218,7 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 </div>
 <div id="tip-1" class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="tip-1" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>R has some unique aspects that can be exploited when performing more complicated operations. We will not be writing anything that requires knowledge of these more advanced concepts. In the future when you are comfortable writing functions in R, you can learn more by reading the <a href="http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects">R Language Manual</a> or this <a href="http://adv-r.had.co.nz/Environments.html">chapter</a> from <a href="http://adv-r.had.co.nz/">Advanced R Programming</a> by Hadley Wickham. For context, R uses the terminology “environments” instead of frames.</p>
@@ -226,7 +226,7 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 </div>
 <div id="tip-testing-and-documenting" class="callout panel panel-info">
 <div class="panel-heading">
-<h4 id="tip-testing-and-documenting" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>Tip: Testing and documenting</h4>
+<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Testing and documenting</h4>
 </div>
 <div class="panel-body">
 <p>It’s important to both test functions and document them: Documentation helps you, and others, understand what the purpose of your function is, and how to use it, and its important to make sure that your function actually does what you think.</p>
@@ -244,7 +244,7 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 </div>
 </div>
 <blockquote>
-<h4 id="solution-for-challenge-2">Solution for Challenge 2</h4>
+<h4>Solution for Challenge 2</h4>
 <p>Define the function to convert directly from Fahrenheit to Celsius, by reusing these two functions above</p>
 <pre class="sourceCode r"><code class="sourceCode r">fahr_to_celsius &lt;-<span class="st"> </span>function(temp) {
   temp_k &lt;-<span class="st"> </span><span class="kw">fahr_to_kelvin</span>(temp)
