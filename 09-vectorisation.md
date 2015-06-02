@@ -27,27 +27,6 @@ x * 2
 
 The multiplication happened to each element of the vector.
 
-Let's try this on the `pop` column of the `gapminder` dataset. 
-
-> #### Challenge 1 {.challenge}
->
-> Make a new column in the `gapminder` dataframe that
-> contains population in units of millions of people.
-> Check the head or tail of the dataframe to make sure
-> it worked.
->
-
-> #### Challenge 2 {.challenge}
-> 
-> Create a subset of the `gapminder` dataset countaining entries
-> only for Australia.
-> 
-> Calculate the mean GDP (GDP per capita multiplied by total population) 
-> for Australia over all years on record.
->
-> Refresh your ggplot skils by plotting mean GDP against year. 
->
-
 We can also add two vectors together:
 
 ~~~ {.r}
@@ -69,34 +48,21 @@ y:  6  7  8  9
     7  9 11 13
 ~~~
 
-> #### Challenge 3 {.challenge}
-> 
-> What do you think will happen if you add (or subtract,
-> multiply, divide etc.) vectors of different lengths?
-> 
-> Try it.
-> What does `x + c(1,3)` give you? Why?
+
+> #### Challenge 1 {.challenge}
+>
+> Let's try this on the `pop` column of the `gapminder` dataset. 
+>
+> Make a new column in the `gapminder` dataframe that
+> contains population in units of millions of people.
+> Check the head or tail of the dataframe to make sure
+> it worked.
 >
 
-Just as we saw in the previous lesson, vectors will recycle:
-
-~~~ {.r}
-x + c(1,3)
-~~~
-
-~~~ {.output}
-[1] 2 5 4 7
-~~~
-
-Like so:
-
-~~~ {.output}
-x:  1  2  3  4
-    +  +  +  +
-y:  1  3  1  3
----------------
-    2  5  4  7
-~~~
+> #### Challenge 2 {.challenge}
+> 
+> Refresh your ggplot skils by plotting population in millions against year. 
+>
 
 Comparison operators also apply element-wise, as we saw in the
 subsetting lesson:
@@ -113,7 +79,6 @@ Logical operations are also vectorised:
 
 ~~~ {.r}
 a <- x > 3
-b <- x < 3
 ~~~
 
 ~~~ {.r}
@@ -124,25 +89,6 @@ a
 [1] FALSE FALSE FALSE  TRUE
 ~~~
 
-~~~ {.r}
-b
-~~~ 
-
-~~~ {.output}
-[1]  TRUE  TRUE FALSE FALSE
-~~~
-
-~~~ {.r}
-a | b 
-~~~
-
-~~~ {.output}
-[1]  TRUE  TRUE FALSE  TRUE
-~~~
-
-~~~ {.r}
-a & b
-~~~
 
 > #### Tip: some useful functions for logical vectors {.callout}
 >
@@ -150,19 +96,15 @@ a & b
 > `all()` will return `TRUE` if *all* elements of a vector are `TRUE`
 >
 
-~~~ {.output}
-[1] FALSE FALSE FALSE FALSE
-~~~
-
 Many functions also operate on element-wise on vectors:
 
 ~~~ {.r}
 x <- 1:4
-sin(x)
+log(x)
 ~~~
 
 ~~~ {.output}
-[1]  0.8414710  0.9092974  0.1411200 -0.7568025
+[1] 0.0000000 0.6931472 1.0986123 1.3862944
 ~~~
 
 Vectorised operations also work element wise on matrices:
@@ -179,53 +121,17 @@ m * -1
 [3,]   -3   -6   -9  -12
 ~~~
 
-Note that `*` gives you element-wise multiplication!
-
-~~~ {.r}
-m * m
-~~~
-
-~~~ {.output}
-     [,1] [,2] [,3] [,4]
-[1,]    1   16   49  100
-[2,]    4   25   64  121
-[3,]    9   36   81  144
-~~~
-
-To do matrix multiplication, we need to use the `%*%` operator:
-
-~~~ {.r}
-m %*% t(m)   # The t() function returns the transpose of a matrix
-~~~
-
-~~~ {.ouput}
-     [,1] [,2] [,3]
-[1,]  166  188  210
-[2,]  188  214  240
-[3,]  210  240  270
-~~~
-
-For more on matrix algebra, see the [Quick-R reference
-guide](http://www.statmethods.net/advstats/matrix.html)
-
-
-
-> #### Challenge 4 {.challenge}
-> 
-> We're interested in looking at the sum of the
-> following sequence of fractions:
+> #### Tip: element-wise vs. matrix multiplication {.callout}
 >
-> ~~~ {.output}
->  x = 1/(1^2) + 1/(2^2) + 1/(3^2) + ... + 1/(n^2)
-> ~~~
+> Note that `*` gives you element-wise multiplication!
+> To do matrix multiplication, we need to use the `%*%` operator:
 >
-> This would be tedious to type out, and impossible for
-> high values of n.
-> Can you use vectorisation to solve for x, when n=100?
-> How about when n=10,000?
->
+> For more on matrix algebra, see the [Quick-R reference
+> guide](http://www.statmethods.net/advstats/matrix.html)
 
-> #### Challenge 5 {.challenge}
+
+
+> #### Challenge 3 {.challenge}
 > 
 > Given the following matrix:
 > 
@@ -248,5 +154,20 @@ guide](http://www.statmethods.net/advstats/matrix.html)
 > 3. `m > c(0, 20)`
 >
 > Did you get the output expected? If not, ask a helper!
+>
+
+> #### Bonus Challenge {.challenge}
+> 
+> We're interested in looking at the sum of the
+> following sequence of fractions:
+>
+> ~~~ {.output}
+>  x = 1/(1^2) + 1/(2^2) + 1/(3^2) + ... + 1/(n^2)
+> ~~~
+>
+> This would be tedious to type out, and impossible for
+> high values of n.
+> Can you use vectorisation to solve for x, when n=100?
+> How about when n=10,000?
 >
 

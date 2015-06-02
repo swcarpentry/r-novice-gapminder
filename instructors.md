@@ -6,7 +6,7 @@ subtitle: Instructor's Guide
 
 ## Pulling in data
 
-The easiest way to get the data used in this lesson during a bootcamp is 
+The easiest way to get the data used in this lesson during a bootcamp is
 to have attendees run the following:
 
 ~~~ {.shell}
@@ -16,11 +16,11 @@ git pull data master
 
 ## Overall
 
-Make sure to emphasis could practices: put code in scripts, and make
+Make sure to emphasise good practices: put code in scripts, and make
 sure they're version controlled. Encourage students to create script
 files for challenges.
 
-If you're working in a cloud environment, get them to upload the 
+If you're working in a cloud environment, get them to upload the
 gapminder data after the second lesson.
 
 Make sure to emphasise that matrices are vectors underneath the hood
@@ -41,7 +41,7 @@ extensiveness is mostly for purposes of learning by osmosis: so that their
 memory will trigger later when they encouter a problem or some esoteric behaviour.
 
 Key lessons to take time on:
- 
+
  * Data subsetting - conceptually difficult for novices
  * Functions - learners especially struggle with this
  * Data structures - worth being thorough, but you can go through it quickly.
@@ -49,4 +49,3 @@ Key lessons to take time on:
 Don't worry about being correct or knowing the material back-to-front. Use
 mistakes as teaching moments: the most vital skill you can impart is how to
 debug and recover from unexpected errors.
-
