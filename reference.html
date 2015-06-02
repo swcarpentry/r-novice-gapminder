@@ -7,10 +7,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
     <link rel="stylesheet" type="text/css" href="css/swc.css" />
-    <link rel="stylesheet" type="text/css" href="css/swc-workshop-and-lesson.css" />
-    <link rel="stylesheet" type="text/css" href="css/lesson.css" />
     <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
     <meta charset="UTF-8" />
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -19,19 +17,20 @@
     <![endif]-->
   </head>
   <body class="lesson">
-    <div class="container container-full-width card">
+    <div class="container card">
       <div class="banner">
         <a href="http://software-carpentry.org" title="Software Carpentry">
           <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
         </a>
       </div>
-      <div class="row-fluid">
-        <div class="span10 offset1">
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
           <h1 class="title">R for reproducible scientific analysis</h1>
           <h2 class="subtitle">Reference</h2>
 <h2 id="introduction-to-r-and-rstudio"><a href="01-rstudio-intro.html">Introduction to R and RStudio</a></h2>
 <ul>
-<li>Use the escape key to cancel incomplete commands or running code (Ctrl+C) if you're using R from the shell.</li>
+<li>Use the escape key to cancel incomplete commands or running code (Ctrl+C) if you’re using R from the shell.</li>
 <li>Basic arithmetic operations follow standard order of precedence:</li>
 <li>Brackets: <code>(</code>, <code>)</code></li>
 <li>Exponents: <code>^</code> or <code>**</code></li>
@@ -46,7 +45,7 @@
 <li>Comparison operators: <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code></li>
 <li>Use <code>all.equal</code> to compare numbers!</li>
 <li><code>&lt;-</code> is the assignment operator. Anything to the right is evaluate, then stored in a variable named to the left.</li>
-<li><code>ls</code> lists all variables and functions you've created</li>
+<li><code>ls</code> lists all variables and functions you’ve created</li>
 <li><code>rm</code> can be used to remove them</li>
 <li>When assigning values to function arguments, you <em>must</em> use <code>=</code>.</li>
 </ul>
@@ -63,8 +62,8 @@
 <li><code>read.table</code> to read in data in a regular structure</li>
 <li><code>sep</code> argument to specify the separator
 <ul>
-<li>&quot;,&quot; for comma separated</li>
-<li>&quot;&quot; for tab separated</li>
+<li>“,” for comma separated</li>
+<li>“” for tab separated</li>
 </ul></li>
 <li>Other arguments:
 <ul>
@@ -101,9 +100,9 @@
 <p><strong>Special types:</strong></p>
 <ul>
 <li><code>?NA</code> missing values</li>
-<li><code>?NaN</code> &quot;not a number&quot; for undefined values (e.g. <code>0/0</code>).</li>
+<li><code>?NaN</code> “not a number” for undefined values (e.g. <code>0/0</code>).</li>
 <li><code>?Inf</code>, <code>-Inf</code> infinity.</li>
-<li><code>?NULL</code> a data structure that doesn't exist</li>
+<li><code>?NULL</code> a data structure that doesn’t exist</li>
 </ul>
 <p><code>NA</code> can occur in any atomic vector. <code>NaN</code>, and <code>Inf</code> can only occur in complex, integer or numeric type vectors. Atomic vectors are the building blocks for all other data structures. A <code>NULL</code> value will occur in place of an entire data structure (but can occur as list elements).</p>
 <p><strong>Useful functions for querying data structures:</strong></p>
@@ -116,7 +115,7 @@
 <li><code>?rownames</code>, <code>?colnames</code>, <code>?dimnames</code> retrieve or modify the row names and column names of an object.</li>
 <li><code>?names</code> retrieve or modify the names of an atomic vector or list (or columns of a data.frame).</li>
 <li><code>?length</code> get the number of elements in an atomic vector</li>
-<li><code>?nrow</code>, <code>?ncol</code>, <code>?dim</code> get the dimensions of a n-dimensional object (Won't work on atomic vectors or lists).</li>
+<li><code>?nrow</code>, <code>?ncol</code>, <code>?dim</code> get the dimensions of a n-dimensional object (Won’t work on atomic vectors or lists).</li>
 </ul>
 <h2 id="data-subsetting"><a href="06-data-subsetting.html">Data subsetting</a></h2>
 <ul>
@@ -141,7 +140,7 @@
 <h2 id="writing-data"><a href="07-writing-data.html">Writing data</a></h2>
 <ul>
 <li><code>write.table</code> to write out objects in regular format</li>
-<li>set <code>quote=FALSE</code> so that text isn't wrapped in <code>&quot;</code> marks</li>
+<li>set <code>quote=FALSE</code> so that text isn’t wrapped in <code>&quot;</code> marks</li>
 </ul>
 <h2 id="vectorisation"><a href="08-vectorisation.html">Vectorisation</a></h2>
 <ul>
@@ -166,7 +165,7 @@
 <li>Put code whose parameters change frequently in a function, then call it with different parameter values to customize its behavior.</li>
 <li>The last line of a function is returned, or you can use <code>return</code> explictly</li>
 <li>Any code written in the body of the function is isolated to the function when it is called.</li>
-<li>Document Why, then What, then lastly How (if the code isn't self explanatory)</li>
+<li>Document Why, then What, then lastly How (if the code isn’t self explanatory)</li>
 </ul>
 <h2 id="split-apply-combine"><a href="11-plyr.html">Split-apply-combine</a></h2>
 <ul>
@@ -197,11 +196,12 @@
 <li>Make it fail every time.</li>
 <li>Make it fail fast.</li>
 <li>Change one thing at a time, and for a reason.</li>
-<li>Keep track of what you've done.</li>
+<li>Keep track of what you’ve done.</li>
 <li>Be humble</li>
 </ul>
         </div>
       </div>
+      </article>
       <div class="footer">
         <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
         <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
@@ -211,6 +211,6 @@
     </div>
     <!-- Javascript placed at the end of the document so the pages load faster -->
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
-    <script src="http://software-carpentry.org/v5/js/bootstrap/bootstrap.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
   </body>
 </html>

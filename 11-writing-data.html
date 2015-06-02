@@ -7,10 +7,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
     <link rel="stylesheet" type="text/css" href="css/swc.css" />
-    <link rel="stylesheet" type="text/css" href="css/swc-workshop-and-lesson.css" />
-    <link rel="stylesheet" type="text/css" href="css/lesson.css" />
     <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
     <meta charset="UTF-8" />
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -19,27 +17,32 @@
     <![endif]-->
   </head>
   <body class="lesson">
-    <div class="container container-full-width card">
+    <div class="container card">
       <div class="banner">
         <a href="http://software-carpentry.org" title="Software Carpentry">
           <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
         </a>
       </div>
-      <div class="row-fluid">
-        <div class="span10 offset1">
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
           <h1 class="title">R for reproducible scientific analysis</h1>
           <h2 class="subtitle">Writing data</h2>
-<div id="learning-objectives" class="objectives">
-<h2>Learning Objectives</h2>
+<div id="learning-objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+</div>
+<div class="panel-body">
 <ul>
 <li>To be able to write out plots and data from R</li>
 </ul>
 </div>
+</div>
 <h3 id="saving-plots">Saving plots</h3>
 <p>You have already seen how to save the most recent plot you create in <code>ggplot2</code>, using the command <code>ggsave</code>. As a refresher:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggsave</span>(<span class="st">&quot;My_most_recent_plot.pdf&quot;</span>)</code></pre>
-<p>You can save a plot from within RStudio using the 'Export' button in the 'Plot' window. This will give you the option of saving as a .pdf or as .png, .jpg or other image formats.</p>
-<p>Sometimes you will want to save plots without creating them in the 'Plot' window first. Perhaps you want to make a pdf document with multiple pages: each one a different plot, for example. Or perhaps you're looping through multiple subsets of a file, plotting data from each subset, and you want to save each plot, but obviously can't stop the loop to click 'Export' for each one.</p>
+<p>You can save a plot from within RStudio using the ‘Export’ button in the ‘Plot’ window. This will give you the option of saving as a .pdf or as .png, .jpg or other image formats.</p>
+<p>Sometimes you will want to save plots without creating them in the ‘Plot’ window first. Perhaps you want to make a pdf document with multiple pages: each one a different plot, for example. Or perhaps you’re looping through multiple subsets of a file, plotting data from each subset, and you want to save each plot, but obviously can’t stop the loop to click ‘Export’ for each one.</p>
 <p>In this case you can use a more flexible approach. The function <code>pdf</code> creates a new pdf device. You can control the size and resolution using the arguments to this function.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pdf</span>(<span class="st">&quot;Life_Exp_vs_time.pdf&quot;</span>, <span class="dt">width=</span><span class="dv">12</span>, <span class="dt">height=</span><span class="dv">4</span>)
 <span class="kw">ggplot</span>(<span class="dt">data=</span>gapminder, <span class="kw">aes</span>(<span class="dt">x=</span>year, <span class="dt">y=</span>lifeExp, <span class="dt">colour=</span>country)) +
@@ -49,22 +52,26 @@
 
 <span class="kw">dev.off</span>()</code></pre>
 <p>Open up this document and have a look.</p>
-<div id="challenge-1" class="challenge">
-<h4>Challenge 1</h4>
-<p>Rewrite your 'pdf' command to print a second page in the pdf, showing a facet plot (hint: use <code>facet_grid</code>) of the same data with one panel per continent.</p>
+<div id="challenge-1" class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h4>
+</div>
+<div class="panel-body">
+<p>Rewrite your ‘pdf’ command to print a second page in the pdf, showing a facet plot (hint: use <code>facet_grid</code>) of the same data with one panel per continent.</p>
+</div>
 </div>
 <p>The commands <code>jpeg</code>, <code>png</code> etc. are used similarly to produce documents in different formats.</p>
 <h3 id="writing-data">Writing data</h3>
-<p>At some point, you'll also want to write out data from R.</p>
+<p>At some point, you’ll also want to write out data from R.</p>
 <p>We can use the <code>write.table</code> function for this, which is very similar to <code>read.table</code> from before.</p>
-<p>Let's create a data-cleaning script, for this analysis, we only want to focus on the gapminder data for Australia:</p>
+<p>Let’s create a data-cleaning script, for this analysis, we only want to focus on the gapminder data for Australia:</p>
 <pre class="sourceCode r"><code class="sourceCode r">aust_subset &lt;-<span class="st"> </span>gapminder[gapminder$country ==<span class="st"> &quot;Australia&quot;</span>,]
 
 <span class="kw">write.table</span>(aust_subset,
   <span class="dt">file=</span><span class="st">&quot;cleaned-data/gapminder-aus.csv&quot;</span>,
   <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>
 )</code></pre>
-<p>Let's switch back to the shell to take a look at the data to make sure it looks ok:</p>
+<p>Let’s switch back to the shell to take a look at the data to make sure it looks ok:</p>
 <pre class="shell"><code>cd ~/gapminder/cleaned-data/
 head gapminder-aus.csv</code></pre>
 <pre class="output"><code>&quot;country&quot;,&quot;year&quot;,&quot;pop&quot;,&quot;continent&quot;,&quot;lifeExp&quot;,&quot;gdpPercap&quot;
@@ -77,11 +84,11 @@ head gapminder-aus.csv</code></pre>
 &quot;67&quot;,&quot;Australia&quot;,1982,15184200,&quot;Oceania&quot;,74.74,19477.00928
 &quot;68&quot;,&quot;Australia&quot;,1987,16257249,&quot;Oceania&quot;,76.32,21888.88903
 &quot;69&quot;,&quot;Australia&quot;,1992,17481977,&quot;Oceania&quot;,77.56,23424.76683</code></pre>
-<p>Hmm, that's not quite what we wanted. Where did all these quotation marks come from? Also the row numbers are meaningless.</p>
-<p>Let's look at the help file to work out how to change this behaviour.</p>
+<p>Hmm, that’s not quite what we wanted. Where did all these quotation marks come from? Also the row numbers are meaningless.</p>
+<p>Let’s look at the help file to work out how to change this behaviour.</p>
 <pre class="sourceCode r"><code class="sourceCode r">?write.table</code></pre>
 <p>By default R will wrap character vectors with quotation marks when writing out to file. It will also write out the row and column names.</p>
-<p>Let's fix this:</p>
+<p>Let’s fix this:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.table</span>(
   gapminder[gapminder$country ==<span class="st"> &quot;Australia&quot;</span>,],
   <span class="dt">file=</span><span class="st">&quot;cleaned-data/gapminder-aus.csv&quot;</span>,
@@ -100,13 +107,18 @@ Australia,1982,15184200,Oceania,74.74,19477.00928
 Australia,1987,16257249,Oceania,76.32,21888.88903
 Australia,1992,17481977,Oceania,77.56,23424.76683</code></pre>
 <p>That looks better!</p>
-<div id="challenge-2" class="challenge">
-<h4>Challenge 2</h4>
+<div id="challenge-2" class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h4>
+</div>
+<div class="panel-body">
 <p>Write a data-cleaning script file that subsets the gapminder data to include only data points collected since 1990.</p>
 <p>Use this script to write out the new subset to a file in the <code>cleaned-data/</code> directory.</p>
 </div>
+</div>
         </div>
       </div>
+      </article>
       <div class="footer">
         <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
         <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
@@ -116,6 +128,6 @@ Australia,1992,17481977,Oceania,77.56,23424.76683</code></pre>
     </div>
     <!-- Javascript placed at the end of the document so the pages load faster -->
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
-    <script src="http://software-carpentry.org/v5/js/bootstrap/bootstrap.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
   </body>
 </html>

@@ -7,10 +7,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
     <link rel="stylesheet" type="text/css" href="css/swc.css" />
-    <link rel="stylesheet" type="text/css" href="css/swc-workshop-and-lesson.css" />
-    <link rel="stylesheet" type="text/css" href="css/lesson.css" />
     <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
     <meta charset="UTF-8" />
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -19,28 +17,33 @@
     <![endif]-->
   </head>
   <body class="lesson">
-    <div class="container container-full-width card">
+    <div class="container card">
       <div class="banner">
         <a href="http://software-carpentry.org" title="Software Carpentry">
           <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
         </a>
       </div>
-      <div class="row-fluid">
-        <div class="span10 offset1">
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
           <h1 class="title">R for reproducible scientific analysis</h1>
           <h2 class="subtitle">Project management with RStudio</h2>
-<div id="learning-objectives" class="objectives">
-<h2>Learning Objectives</h2>
+<div id="learning-objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+</div>
+<div class="panel-body">
 <ul>
 <li>To be able to create self-contained projects in RStudio</li>
 <li>To be able to use git from within RStudio</li>
 </ul>
 </div>
+</div>
 <h3 id="introduction">Introduction</h3>
 <p>The scientific process is naturally incremental, and many projects start life as random notes, some code, then a manuscript, and eventually everything is a bit mixed together.</p>
 <blockquote class="twitter-tweet">
 <p>
-Managing your projects in a reproducible fashion doesn't just make your science reproducible, it makes your life easier.
+Managing your projects in a reproducible fashion doesn’t just make your science reproducible, it makes your life easier.
 </p>
 — Vince Buffalo (<span class="citation">@vsbuffalo</span>) <a href="https://twitter.com/vsbuffalo/status/323638476153167872">April 15, 2013</a>
 </blockquote>
@@ -48,7 +51,6 @@ Managing your projects in a reproducible fashion doesn't just make your science 
 <p>Most people tend to organize their projects like this:</p>
 <div class="figure">
 <img src="img/bad_layout.png" />
-
 </div>
 <p>There are many reasons why we should <em>ALWAYS</em> avoid this:</p>
 <ol style="list-style-type: decimal">
@@ -65,52 +67,39 @@ Managing your projects in a reproducible fashion doesn't just make your science 
 </ul>
 <h3 id="a-possible-solution">A possible solution</h3>
 <p>Fortunately, there are tools and packages which can help you manage your work effectively.</p>
-<p>One of the most powerful and useful aspects of RStudio is its project management functionality. We'll be using this today to create a self-contianed, reproducible project.</p>
-<div id="challenge-installing-packages" class="challenge">
-<h4>Challenge: Installing Packages</h4>
-<p>The first thing we're going to do is to install a third-party package, <code>packrat</code>. This allows RStudio to create self-contained packages: any further packages you download will be contained within their respective projects. This is really useful, as different versions of packages can change results as new knowledge is gained. This allows you to easily keep track of the version used for your analyses.</p>
-<p>Packages can be installed using the <code>install.packages</code> function:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;packrat&quot;</span>) </code></pre>
+<p>One of the most powerful and useful aspects of RStudio is its project management functionality. We’ll be using this today to create a self-contianed, reproducible project.</p>
+<div id="challenge-creating-a-self-contained-project" class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge: Creating a self-contained project</h4>
 </div>
-<div id="challenge-creating-a-self-contained-project" class="challenge">
-<h4>Challenge: Creating a self-contained project</h4>
-<p>Now we're going to create a new project in RStudio:</p>
+<div class="panel-body">
+<p>We’re going to create a new project in RStudio:</p>
 <ol style="list-style-type: decimal">
-<li>Click the &quot;File&quot; menu button, then &quot;New Project&quot;.</li>
-<li>Click &quot;New Directory&quot;.</li>
-<li>Click &quot;Empty Project&quot;.</li>
-<li>Type in the name of the directory to store your project, e.g. &quot;my_project&quot;.</li>
-<li>Make sure that the checkboxes for &quot;Create a git repository&quot; and &quot;Use packrat with this project&quot; are selected.</li>
-<li>Click the &quot;Create Project&quot; button.</li>
+<li>Click the “File” menu button, then “New Project”.</li>
+<li>Click “New Directory”.</li>
+<li>Click “Empty Project”.</li>
+<li>Type in the name of the directory to store your project, e.g. “my_project”.</li>
+<li>Make sure that the checkbox for “Create a git repository” is selected.</li>
+<li>Click the “Create Project” button.</li>
 </ol>
 </div>
-<p>Now when we start R in this project directory, or open this project with RStudio, all of our work on this project will be entirely self-contained in this directory. By installing <code>packrat</code> and telling RStudio to use <code>packrat</code> with this project, any third-party packages will be installed in a separate library in the <code>packrat/</code> subdirectory of our project. This means we don't have to worry about package versions changing, especially when returning to a project after a long period of time (for example when writing up your thesis!).</p>
-<div id="tip-packrat" class="callout">
-<h4>Tip: packrat</h4>
-<p>Any libraries you already have installed outside of your project will need to be reinstalled in each packrat project.</p>
-<p>Packrat will also analyse your script files and warn you if youre using any libraries not installed and managed inside your project. This is useful if you reuse code between projects.</p>
-<p>Packrat also allows you to easily bundle up a project to share with someone else.</p>
-<p>RStudio has a more detailed <a href="http://rstudio.github.io/packrat/">packrat tutorial</a></p>
 </div>
-<p>Now lets load the packrat library:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;packrat&quot;</span>)</code></pre>
-<p>Here we've called the function <code>library</code> and used it to load those packages into our local namespace (our interactive R session). This means all of their functions are now available to us.</p>
-<p>The main function you'll encounter in <code>packrat</code> is the <code>status</code> function:</p>
-<pre class="sourceCode r"><code class="sourceCode r">packrat::<span class="kw">status</span>()</code></pre>
-<pre class="output"><code>Up to date.</code></pre>
-<p>Here I've put the name of the library in front of its function, separated by a <code>::</code>. This explicitly tells R to call the function from that library. This can be useful to make your code clearer (<code>status</code> is fairly generic function name and might be used by other packages), and useful when two packages have functions with the same names (in which case order of library loading becomes important), or you've written your own function or variable with the same name (you should try to avoid this).</p>
-<p>You'll want to run this periodically (after installing libraries and writing new code) to make sure your project is still self-contained.</p>
+<p>Now when we start R in this project directory, or open this project with RStudio, all of our work on this project will be entirely self-contained in this directory.</p>
 <h3 id="best-practices-for-project-organisation">Best practices for project organisation</h3>
-<p>Although there is no &quot;best&quot; way to lay out a project, there are some general principles to adhere to that will make project management easier:</p>
+<p>Although there is no “best” way to lay out a project, there are some general principles to adhere to that will make project management easier:</p>
 <h4 id="treat-data-as-read-only">Treat data as read only</h4>
-<p>This is probably the most important goal of setting up a project. Data is typically time consuming and/or expensive to collect. Working with them interactively (e.g., in Excel) where they can be modified means you are never sure of where the data came from, or how it has been modified since collection. It is therefore a good idea to treat your data as &quot;read-only&quot;.</p>
+<p>This is probably the most important goal of setting up a project. Data is typically time consuming and/or expensive to collect. Working with them interactively (e.g., in Excel) where they can be modified means you are never sure of where the data came from, or how it has been modified since collection. It is therefore a good idea to treat your data as “read-only”.</p>
 <h4 id="data-cleaning">Data Cleaning</h4>
-<p>In many cases your data will be &quot;dirty&quot;: it will need significant preprocessing to get into a format R (or any other programming language) will find useful. This task is sometimes called &quot;data munging&quot;. I find it useful to store these scripts in a separate folder, and create a second &quot;read-only&quot; data folder to hold the &quot;cleaned&quot; data sets.</p>
+<p>In many cases your data will be “dirty”: it will need significant preprocessing to get into a format R (or any other programming language) will find useful. This task is sometimes called “data munging”. I find it useful to store these scripts in a separate folder, and create a second “read-only” data folder to hold the “cleaned” data sets.</p>
 <h4 id="treat-generated-output-as-disposable">Treat generated output as disposable</h4>
 <p>Anything generated by your scripts should be treated as disposable: it should all be able to be regenerated from your scripts.</p>
-<p>There are lots of different was to manage this output. I find it useful to have an output folder with different sub-directories for each separate analysis. This makes it easier later, as many of my analyses are exploratory and don't end up being used in the final project, and some of the analyses get shared between projects.</p>
-<h3 id="project-template---a-possible-solution">Project Template - a possible solution</h3>
-<p>The next thing we're going to do is to install the third-party package, <code>ProjectTemplate</code>. This package will set up an ideal directory structure for project management. This is very useful as it enables you to have your analysis pipeline/workflow organised and structured. Together with the default Rstudio project functionality and Git you will be able to keep track of your work as well as be able to share your work with collaborators.</p>
+<p>There are lots of different was to manage this output. I find it useful to have an output folder with different sub-directories for each separate analysis. This makes it easier later, as many of my analyses are exploratory and don’t end up being used in the final project, and some of the analyses get shared between projects.</p>
+<div id="tip-projecttempate---a-possible-solution" class="callout panel panel-info">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: ProjectTempate - a possible solution</h4>
+</div>
+<div class="panel-body">
+<p>One way to automate the management of projects is to install the third-party package, <code>ProjectTemplate</code>. This package will set up an ideal directory structure for project management. This is very useful as it enables you to have your analysis pipeline/workflow organised and structured. Together with the default Rstudio project functionality and Git you will be able to keep track of your work as well as be able to share your work with collaborators.</p>
 <ol style="list-style-type: decimal">
 <li>Install <code>ProjectTemplate</code>.</li>
 <li>Load the library</li>
@@ -119,53 +108,64 @@ Managing your projects in a reproducible fashion doesn't just make your science 
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;ProjectTemplate&quot;</span>)
 <span class="kw">library</span>(ProjectTemplate)
 <span class="kw">create.project</span>(<span class="st">&quot;../my_project&quot;</span>, <span class="dt">merge.strategy =</span> <span class="st">&quot;allow.non.conflict&quot;</span>)</code></pre>
-<div id="tip-projecttempate" class="callout">
-<h4>Tip: ProjectTempate</h4>
 <p>For more information on ProjectTemplate and its functionality visit the home page <a href="http://projecttemplate.net/index.html">ProjectTemplate</a></p>
 </div>
+</div>
 <h4 id="separate-function-definition-and-application">Separate function definition and application</h4>
-<p>The most effective way I find to work in R, is to play around in the interactive session, then copy commands across to a script file when I'm sure they work and do what I want. You can also save all the commands you've entered using the <code>history</code> command, but I don't find it useful because when I'm typing its 90% trial and error.</p>
-<p>When your project is new and shiny, the script file usually contains many lines of directly executed code. As it matures, reusable chunks get pulled into their own functions. It's a good idea to separate these into separate folders; one to store useful functions that you'll reuse across analyses and projects, and one to store the analysis scripts.</p>
-<div id="tip-avoiding-duplication" class="callout">
-<h4>Tip: avoiding duplication</h4>
+<p>The most effective way I find to work in R, is to play around in the interactive session, then copy commands across to a script file when I’m sure they work and do what I want. You can also save all the commands you’ve entered using the <code>history</code> command, but I don’t find it useful because when I’m typing its 90% trial and error.</p>
+<p>When your project is new and shiny, the script file usually contains many lines of directly executed code. As it matures, reusable chunks get pulled into their own functions. It’s a good idea to separate these into separate folders; one to store useful functions that you’ll reuse across analyses and projects, and one to store the analysis scripts.</p>
+<div id="tip-avoiding-duplication" class="callout panel panel-info">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: avoiding duplication</h4>
+</div>
+<div class="panel-body">
 <p>You may find yourself using data or analysis scripts across several projects. Typically you want to avoid duplication to save space and avoid having to make updates to code in multiple places.</p>
-<p>In this case I find it useful to make &quot;symbolic links&quot;, which are essentially shortcuts to files somewhere else on a filesystem. On linux and OSX you can use the <code>ln -s</code> command, and on windows you can either create a shortcut or use the <code>mklink</code> command from the windows terminal.</p>
+<p>In this case I find it useful to make “symbolic links”, which are essentially shortcuts to files somewhere else on a filesystem. On linux and OSX you can use the <code>ln -s</code> command, and on windows you can either create a shortcut or use the <code>mklink</code> command from the windows terminal.</p>
+</div>
 </div>
 <h3 id="save-the-data-in-the-data-directory">Save the data in the data directory</h3>
 <p>Now we have a good directory structure we will now place/save the data file in the <code>data/</code> directory.</p>
-<div id="challenge-1" class="challenge">
-<h4>Challenge 1</h4>
-<p>Download the gapminer data from [here] (https://github.com/resbaz/r-novice-gapminder-files).</p>
+<div id="challenge-1" class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h4>
+</div>
+<div class="panel-body">
+<p>Download the gapminer data from <a href="https://github.com/resbaz/r-novice-gapminder-files">here</a>.</p>
 <ol style="list-style-type: decimal">
 <li>Use the <code>Download ZIP</code> located on the right hand side menu, last option. To download the <code>.zip</code> file to your downloads folder.</li>
 <li>Unzip the file.</li>
+<li>Create a data directory within your project</li>
 <li>Move the file to the <code>data/</code> within your project.</li>
 </ol>
-<p>We will load and inspect these data latter today.</p>
+<p>We will load and inspect these data later.</p>
+</div>
 </div>
 <h4 id="version-control">Version Control</h4>
-<p>We also set up our project to integrate with git, putting it under version control. RStudio has a nicer interface to git than shell, but is very limited in what it can do, so you will find yourself occasionally needing to use the shell. Let's go through and make an initial commit of our template files.</p>
-<p>The workspace/history pane has a tab for &quot;Git&quot;. We can stage each file by checking the box: you will see a Green &quot;A&quot; next to stage files and folders, and yellow question marks next to files or folders git doesn't know about yet. RStudio also nicely shows you the difference between files from different commits.</p>
-<div id="tip-versioning-disposable-output" class="callout">
-<h4>Tip: versioning disposable output</h4>
+<p>We also set up our project to integrate with git, putting it under version control. RStudio has a nicer interface to git than shell, but is very limited in what it can do, so you will find yourself occasionally needing to use the shell. Let’s go through and make an initial commit of our template files.</p>
+<p>The workspace/history pane has a tab for “Git”. We can stage each file by checking the box: you will see a Green “A” next to stage files and folders, and yellow question marks next to files or folders git doesn’t know about yet. RStudio also nicely shows you the difference between files from different commits.</p>
+<div id="tip-versioning-disposable-output" class="callout panel panel-info">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: versioning disposable output</h4>
+</div>
+<div class="panel-body">
 <p>Generally you do not want to version disposable output (or read-only data). You should modify the <code>.gitignore</code> file to tell git to ignore these files and directories.</p>
 </div>
-<div id="challenge-1-1" class="challenge">
-<h4>Challenge 1</h4>
-<p>Use packrat to install the packages we'll be using later:</p>
-<ul>
-<li>ggplot2</li>
-<li>plyr</li>
-</ul>
-<p>Note: if you run <code>packrat::status</code> it will warn you that these libraries are unecessary because they're not used in any project code.</p>
 </div>
-<div id="challenge-2" class="challenge">
-<h4>Challenge 2</h4>
-<p>Modify the <code>.gitignore</code> file to contain <code>cache/</code>, <code>graphs/</code>, <code>reports/</code> and <code>logs/</code> so that disposable output isn't versioned.</p>
+<div id="challenge-2" class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h4>
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Create a directory within your project called <code>graphs</code>.</li>
+<li>Modify the <code>.gitignore</code> file to contain <code>graphs/</code> so that this disposable output isn’t versioned.</li>
+</ol>
 <p>Add the newly created folders to version control using the git interface.</p>
+</div>
 </div>
         </div>
       </div>
+      </article>
       <div class="footer">
         <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
         <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
@@ -175,6 +175,6 @@ Managing your projects in a reproducible fashion doesn't just make your science 
     </div>
     <!-- Javascript placed at the end of the document so the pages load faster -->
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
-    <script src="http://software-carpentry.org/v5/js/bootstrap/bootstrap.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
   </body>
 </html>

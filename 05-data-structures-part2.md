@@ -6,7 +6,7 @@ minutes: 15
 ---
 
 > ## Learning Objectives {.objectives}
-> 
+>
 > * Become familiar with data frames
 > * To be able to read in regular data into R
 >
@@ -15,7 +15,7 @@ minutes: 15
 
 ### Data frames
 
-Data frames are similar to matrices, except each column can be a different atomic type. 
+Data frames are similar to matrices, except each column can be a different atomic type.
 Underneath the hood, data frames are really lists, where each element is
 an atomic vector, with the added restriction that they're all the same length.
 As you will see, if we pull out one column of a data frame, we will have a vector.
@@ -47,13 +47,13 @@ df
 
 Each column in the data frame is simply a list element, which is why when you ask for the
 `length` of the data frame, it tells you the number of columns. If you actually want
-the number of rows, you can use the `nrow` function. 
+the number of rows, you can use the `nrow` function.
 
 We can add rows or columns to a data.frame using `rbind` or `cbind` (these are
 the two-dimensional equivalents of the `c` function):
 
 ~~~ {.r}
-df <- rbind(df, list("g", 11, 42))) 
+df <- rbind(df, list("g", 11, 42))
 ~~~
 
 This doesn't work as expected! What does this error message tell us?
@@ -66,7 +66,7 @@ In `[<-.factor`(`*tmp*`, ri, value = 11) :
 
 It sounds like it was trying to generate a factor level. Why? Perhaps our first
 column (containing characters) is to blame...
-We can access a column in a `data.frame` by using the `$` operator. 
+We can access a column in a `data.frame` by using the `$` operator.
 
 
 ~~~ {.r}
@@ -78,7 +78,7 @@ class(df$id)
 ~~~
 
 Indeed, R automatically made this first column a factor, not a character vector.
-We can change this in place by converting the type of this column. 
+We can change this in place by converting the type of this column.
 
 ~~~ {.r}
 df$id <- as.character(df$id)
@@ -92,7 +92,7 @@ class(df$id)
 Okay, now let's try adding that row again.
 
 ~~~ {.r}
-df <- rbind(df, list("g", 11, 42))) 
+df <- rbind(df, list("g", 11, 42)))
 tail(df, n=3)
 ~~~
 
@@ -168,32 +168,32 @@ df
 ~~~
 
 > #### Challenge {.challenge}
-> 
+>
 > Create a dataframe that holds the following information for yourself:
-> 
+>
 > * First name
 > * Last name
 > * Age
-> 
+>
 > Then use rbind to add the same information for the people sitting near you.
 >
 > Now use cbind to add a column of logicals answering the question,
 > "Is there anything in this workshop you're finding confusing?"
-> 
+>
 
 ### Reading in data
 
-Remember earlier we obtained the gapminder dataset. 
+Remember earlier we obtained the gapminder dataset.
 If you're curious about where this data comes from you might like to
 look at the [Gapminder website](http://www.gapminder.org/data/documentation/)
 
-Now we want to load the gapminder data into R. 
+Now we want to load the gapminder data into R.
 Before reading in data, it's a good idea to have a look at its structure.
 Let's take a look using our newly-learned shell skills:
 
 ~~~ {.shell}
 cd gapminder/data/ # navigate to the data directory of the project folder
-head gapminder-FiveYearData.csv 
+head gapminder-FiveYearData.csv
 ~~~
 
 ~~~ {.output}
@@ -209,7 +209,7 @@ Afghanistan,1987,13867957,Asia,40.822,852.3959448
 Afghanistan,1992,16317921,Asia,41.674,649.3413952
 ~~~
 
-As its file extension would suggest, the file contains comma-separated 
+As its file extension would suggest, the file contains comma-separated
 values, and seems to contain a header row.
 
 We can use `read.table` to read this into R
@@ -234,7 +234,7 @@ head(gapminder)
 
 Because we know the structure of the data, we're able
 to specify the appropriate arguments to `read.table`.
-Without these arguments, `read.table` will do its 
+Without these arguments, `read.table` will do its
 best to do something sensible, but it is always more
 reliable to explicitly tell `read.table` the structure
 of the data. `read.csv` function provides a convenient shortcut
@@ -252,11 +252,11 @@ head(gapminder)
 >
 > 1. Another type of file you might encounter are tab-separated
 > format. To specify a tab as a separator, use `"\t"`.
-> 
+>
 > 2. You can also read in files from the internet by replacing
 > the file paths with a web address.
 >
-> 3. You can read directly from excel spreadsheets without 
+> 3. You can read directly from excel spreadsheets without
 > converting them to plain text first by using the `xlsx` package.
 >
 
@@ -265,11 +265,11 @@ into a script file so we can come back to it later.
 
 > #### Challenge {.challenge}
 >
-> Go to file -> new file -> R script, and write an R script 
+> Go to file -> new file -> R script, and write an R script
 > to load in the gapminder dataset. Put it in the `scripts/`
 > directory and add it to version control.
 >
-> Run the script using the `source` function, using the file path 
+> Run the script using the `source` function, using the file path
 > as its argument (or by pressing the "source" button in RStudio).
 >
 
@@ -287,6 +287,7 @@ typeof() # what is its atomic type?
 length() # how long is it? What about two dimensional objects?
 attributes() # does it have any metadata?
 str() # A full summary of the entire object
+dim() # Dimensions of the object - also try nrow(), ncol()
 ~~~
 
 Let's use them to explore the gapminder dataset.
@@ -299,7 +300,7 @@ typeof(gapminder)
 [1] "list"
 ~~~
 
-Remember, data frames are lists 'under the hood'. 
+Remember, data frames are lists 'under the hood'.
 
 
 ~~~ {.r}
@@ -311,18 +312,18 @@ class(gapminder)
 ~~~
 
 The gapminder data is stored in a "data.frame". This is the default data structure when you read
-in data, and (as we've heard) is useful for storing data with mixed types of columns. 
+in data, and (as we've heard) is useful for storing data with mixed types of columns.
 
-Let's look at some of the columns. 
+Let's look at some of the columns.
 
 > #### Challenge: Data types in a real dataset {.challenge}
-> 
+>
 > Look at the first 6 rows of the gapminder dataframe we loaded before:
-> 
+>
 > ~~~ {.r}
 > head(gapminder)
 > ~~~
-> 
+>
 > ~~~ {.output}
 >       country year      pop continent lifeExp gdpPercap
 > 1 Afghanistan 1952  8425333      Asia  28.801  779.4453
@@ -332,7 +333,7 @@ Let's look at some of the columns.
 > 5 Afghanistan 1972 13079460      Asia  36.088  739.9811
 > 6 Afghanistan 1977 14880372      Asia  38.438  786.1134
 > ~~~
-> 
+>
 > Write down what data type you think is in each column
 >
 
@@ -357,7 +358,7 @@ typeof(gapminder$continent)
 [1] "integer"
 ~~~
 
-If you were expecting a the answer to be "character", you would rightly be 
+If you were expecting a the answer to be "character", you would rightly be
 surprised by the answer. Let's take a look at the class of this column:
 
 ~~~ {.r}
@@ -371,7 +372,7 @@ class(gapminder$continent)
 One of the default behaviours of R is to treat any text columns as "factors"
 when reading in data. The reason for this is that text columns often represent
 categorical data, which need to be factors to be handled appropriately by
-the statistical modelling functions in R. 
+the statistical modelling functions in R.
 
 However it's not obvious behaviour, and something that trips many people up. We can
 disable this behaviour and read in the data again.
@@ -379,15 +380,15 @@ disable this behaviour and read in the data again.
 ~~~ {.r}
 options(stringsAsFactors=FALSE)
 gapminder <- read.table(
-  file="data/gapminder-FiveYearData.csv", header=TRUE, row.names=1, 
+  file="data/gapminder-FiveYearData.csv", header=TRUE, row.names=1,
   sep=","
 )
 ~~~
 
-Remember, if you do turn it off automatic conversion to factors you will need to 
+Remember, if you do turn it off automatic conversion to factors you will need to
 explicitly convert the variables into factors when
-running statistical models. 
-This can be useful, because it forces you to think about the 
+running statistical models.
+This can be useful, because it forces you to think about the
 question you're asking, and makes it easier to specify the ordering of the categories.
 
 However there are many in the R community who find it more sensible to
@@ -396,7 +397,7 @@ leave this as the default behaviour.
 > #### Tip: Changing options {.callout}
 >
 > When R starts, the first thing it does is runs any code in the file `.Rprofile`
-> in the project directory. Any permanent changes to default behaviour you want 
+> in the project directory. Any permanent changes to default behaviour you want
 > to make should be stored in that file.
 >
 
@@ -418,7 +419,7 @@ str(gapminder)
  $ gdpPercap: num  779 821 853 836 740 ...
 ~~~
 
-We can see that the object is a `data.frame` with 1,704 observations (rows), 
+We can see that the object is a `data.frame` with 1,704 observations (rows),
 and 6 variables (columns). Below that, we see the name of each column, followed
 by a ":", followed by the type of variable in that column, along with the first
 few entries.
@@ -447,96 +448,96 @@ rownames(gapminder)
   [61] "61"   "62"   "63"   "64"   "65"   "66"   "67"   "68"   "69"   "70"  
   [71] "71"   "72"   "73"   "74"   "75"   "76"   "77"   "78"   "79"   "80"  
   [81] "81"   "82"   "83"   "84"   "85"   "86"   "87"   "88"   "89"   "90"  
-  [91] "91"   "92"   "93"   "94"   "95"   "96"   "97"   "98"   "99"   "100" 
- [101] "101"  "102"  "103"  "104"  "105"  "106"  "107"  "108"  "109"  "110" 
- [111] "111"  "112"  "113"  "114"  "115"  "116"  "117"  "118"  "119"  "120" 
- [121] "121"  "122"  "123"  "124"  "125"  "126"  "127"  "128"  "129"  "130" 
- [131] "131"  "132"  "133"  "134"  "135"  "136"  "137"  "138"  "139"  "140" 
- [141] "141"  "142"  "143"  "144"  "145"  "146"  "147"  "148"  "149"  "150" 
- [151] "151"  "152"  "153"  "154"  "155"  "156"  "157"  "158"  "159"  "160" 
- [161] "161"  "162"  "163"  "164"  "165"  "166"  "167"  "168"  "169"  "170" 
- [171] "171"  "172"  "173"  "174"  "175"  "176"  "177"  "178"  "179"  "180" 
- [181] "181"  "182"  "183"  "184"  "185"  "186"  "187"  "188"  "189"  "190" 
- [191] "191"  "192"  "193"  "194"  "195"  "196"  "197"  "198"  "199"  "200" 
- [201] "201"  "202"  "203"  "204"  "205"  "206"  "207"  "208"  "209"  "210" 
- [211] "211"  "212"  "213"  "214"  "215"  "216"  "217"  "218"  "219"  "220" 
- [221] "221"  "222"  "223"  "224"  "225"  "226"  "227"  "228"  "229"  "230" 
- [231] "231"  "232"  "233"  "234"  "235"  "236"  "237"  "238"  "239"  "240" 
- [241] "241"  "242"  "243"  "244"  "245"  "246"  "247"  "248"  "249"  "250" 
- [251] "251"  "252"  "253"  "254"  "255"  "256"  "257"  "258"  "259"  "260" 
- [261] "261"  "262"  "263"  "264"  "265"  "266"  "267"  "268"  "269"  "270" 
- [271] "271"  "272"  "273"  "274"  "275"  "276"  "277"  "278"  "279"  "280" 
- [281] "281"  "282"  "283"  "284"  "285"  "286"  "287"  "288"  "289"  "290" 
- [291] "291"  "292"  "293"  "294"  "295"  "296"  "297"  "298"  "299"  "300" 
- [301] "301"  "302"  "303"  "304"  "305"  "306"  "307"  "308"  "309"  "310" 
- [311] "311"  "312"  "313"  "314"  "315"  "316"  "317"  "318"  "319"  "320" 
- [321] "321"  "322"  "323"  "324"  "325"  "326"  "327"  "328"  "329"  "330" 
- [331] "331"  "332"  "333"  "334"  "335"  "336"  "337"  "338"  "339"  "340" 
- [341] "341"  "342"  "343"  "344"  "345"  "346"  "347"  "348"  "349"  "350" 
- [351] "351"  "352"  "353"  "354"  "355"  "356"  "357"  "358"  "359"  "360" 
- [361] "361"  "362"  "363"  "364"  "365"  "366"  "367"  "368"  "369"  "370" 
- [371] "371"  "372"  "373"  "374"  "375"  "376"  "377"  "378"  "379"  "380" 
- [381] "381"  "382"  "383"  "384"  "385"  "386"  "387"  "388"  "389"  "390" 
- [391] "391"  "392"  "393"  "394"  "395"  "396"  "397"  "398"  "399"  "400" 
- [401] "401"  "402"  "403"  "404"  "405"  "406"  "407"  "408"  "409"  "410" 
- [411] "411"  "412"  "413"  "414"  "415"  "416"  "417"  "418"  "419"  "420" 
- [421] "421"  "422"  "423"  "424"  "425"  "426"  "427"  "428"  "429"  "430" 
- [431] "431"  "432"  "433"  "434"  "435"  "436"  "437"  "438"  "439"  "440" 
- [441] "441"  "442"  "443"  "444"  "445"  "446"  "447"  "448"  "449"  "450" 
- [451] "451"  "452"  "453"  "454"  "455"  "456"  "457"  "458"  "459"  "460" 
- [461] "461"  "462"  "463"  "464"  "465"  "466"  "467"  "468"  "469"  "470" 
- [471] "471"  "472"  "473"  "474"  "475"  "476"  "477"  "478"  "479"  "480" 
- [481] "481"  "482"  "483"  "484"  "485"  "486"  "487"  "488"  "489"  "490" 
- [491] "491"  "492"  "493"  "494"  "495"  "496"  "497"  "498"  "499"  "500" 
- [501] "501"  "502"  "503"  "504"  "505"  "506"  "507"  "508"  "509"  "510" 
- [511] "511"  "512"  "513"  "514"  "515"  "516"  "517"  "518"  "519"  "520" 
- [521] "521"  "522"  "523"  "524"  "525"  "526"  "527"  "528"  "529"  "530" 
- [531] "531"  "532"  "533"  "534"  "535"  "536"  "537"  "538"  "539"  "540" 
- [541] "541"  "542"  "543"  "544"  "545"  "546"  "547"  "548"  "549"  "550" 
- [551] "551"  "552"  "553"  "554"  "555"  "556"  "557"  "558"  "559"  "560" 
- [561] "561"  "562"  "563"  "564"  "565"  "566"  "567"  "568"  "569"  "570" 
- [571] "571"  "572"  "573"  "574"  "575"  "576"  "577"  "578"  "579"  "580" 
- [581] "581"  "582"  "583"  "584"  "585"  "586"  "587"  "588"  "589"  "590" 
- [591] "591"  "592"  "593"  "594"  "595"  "596"  "597"  "598"  "599"  "600" 
- [601] "601"  "602"  "603"  "604"  "605"  "606"  "607"  "608"  "609"  "610" 
- [611] "611"  "612"  "613"  "614"  "615"  "616"  "617"  "618"  "619"  "620" 
- [621] "621"  "622"  "623"  "624"  "625"  "626"  "627"  "628"  "629"  "630" 
- [631] "631"  "632"  "633"  "634"  "635"  "636"  "637"  "638"  "639"  "640" 
- [641] "641"  "642"  "643"  "644"  "645"  "646"  "647"  "648"  "649"  "650" 
- [651] "651"  "652"  "653"  "654"  "655"  "656"  "657"  "658"  "659"  "660" 
- [661] "661"  "662"  "663"  "664"  "665"  "666"  "667"  "668"  "669"  "670" 
- [671] "671"  "672"  "673"  "674"  "675"  "676"  "677"  "678"  "679"  "680" 
- [681] "681"  "682"  "683"  "684"  "685"  "686"  "687"  "688"  "689"  "690" 
- [691] "691"  "692"  "693"  "694"  "695"  "696"  "697"  "698"  "699"  "700" 
- [701] "701"  "702"  "703"  "704"  "705"  "706"  "707"  "708"  "709"  "710" 
- [711] "711"  "712"  "713"  "714"  "715"  "716"  "717"  "718"  "719"  "720" 
- [721] "721"  "722"  "723"  "724"  "725"  "726"  "727"  "728"  "729"  "730" 
- [731] "731"  "732"  "733"  "734"  "735"  "736"  "737"  "738"  "739"  "740" 
- [741] "741"  "742"  "743"  "744"  "745"  "746"  "747"  "748"  "749"  "750" 
- [751] "751"  "752"  "753"  "754"  "755"  "756"  "757"  "758"  "759"  "760" 
- [761] "761"  "762"  "763"  "764"  "765"  "766"  "767"  "768"  "769"  "770" 
- [771] "771"  "772"  "773"  "774"  "775"  "776"  "777"  "778"  "779"  "780" 
- [781] "781"  "782"  "783"  "784"  "785"  "786"  "787"  "788"  "789"  "790" 
- [791] "791"  "792"  "793"  "794"  "795"  "796"  "797"  "798"  "799"  "800" 
- [801] "801"  "802"  "803"  "804"  "805"  "806"  "807"  "808"  "809"  "810" 
- [811] "811"  "812"  "813"  "814"  "815"  "816"  "817"  "818"  "819"  "820" 
- [821] "821"  "822"  "823"  "824"  "825"  "826"  "827"  "828"  "829"  "830" 
- [831] "831"  "832"  "833"  "834"  "835"  "836"  "837"  "838"  "839"  "840" 
- [841] "841"  "842"  "843"  "844"  "845"  "846"  "847"  "848"  "849"  "850" 
- [851] "851"  "852"  "853"  "854"  "855"  "856"  "857"  "858"  "859"  "860" 
- [861] "861"  "862"  "863"  "864"  "865"  "866"  "867"  "868"  "869"  "870" 
- [871] "871"  "872"  "873"  "874"  "875"  "876"  "877"  "878"  "879"  "880" 
- [881] "881"  "882"  "883"  "884"  "885"  "886"  "887"  "888"  "889"  "890" 
- [891] "891"  "892"  "893"  "894"  "895"  "896"  "897"  "898"  "899"  "900" 
- [901] "901"  "902"  "903"  "904"  "905"  "906"  "907"  "908"  "909"  "910" 
- [911] "911"  "912"  "913"  "914"  "915"  "916"  "917"  "918"  "919"  "920" 
- [921] "921"  "922"  "923"  "924"  "925"  "926"  "927"  "928"  "929"  "930" 
- [931] "931"  "932"  "933"  "934"  "935"  "936"  "937"  "938"  "939"  "940" 
- [941] "941"  "942"  "943"  "944"  "945"  "946"  "947"  "948"  "949"  "950" 
- [951] "951"  "952"  "953"  "954"  "955"  "956"  "957"  "958"  "959"  "960" 
- [961] "961"  "962"  "963"  "964"  "965"  "966"  "967"  "968"  "969"  "970" 
- [971] "971"  "972"  "973"  "974"  "975"  "976"  "977"  "978"  "979"  "980" 
- [981] "981"  "982"  "983"  "984"  "985"  "986"  "987"  "988"  "989"  "990" 
+  [91] "91"   "92"   "93"   "94"   "95"   "96"   "97"   "98"   "99"   "100"
+ [101] "101"  "102"  "103"  "104"  "105"  "106"  "107"  "108"  "109"  "110"
+ [111] "111"  "112"  "113"  "114"  "115"  "116"  "117"  "118"  "119"  "120"
+ [121] "121"  "122"  "123"  "124"  "125"  "126"  "127"  "128"  "129"  "130"
+ [131] "131"  "132"  "133"  "134"  "135"  "136"  "137"  "138"  "139"  "140"
+ [141] "141"  "142"  "143"  "144"  "145"  "146"  "147"  "148"  "149"  "150"
+ [151] "151"  "152"  "153"  "154"  "155"  "156"  "157"  "158"  "159"  "160"
+ [161] "161"  "162"  "163"  "164"  "165"  "166"  "167"  "168"  "169"  "170"
+ [171] "171"  "172"  "173"  "174"  "175"  "176"  "177"  "178"  "179"  "180"
+ [181] "181"  "182"  "183"  "184"  "185"  "186"  "187"  "188"  "189"  "190"
+ [191] "191"  "192"  "193"  "194"  "195"  "196"  "197"  "198"  "199"  "200"
+ [201] "201"  "202"  "203"  "204"  "205"  "206"  "207"  "208"  "209"  "210"
+ [211] "211"  "212"  "213"  "214"  "215"  "216"  "217"  "218"  "219"  "220"
+ [221] "221"  "222"  "223"  "224"  "225"  "226"  "227"  "228"  "229"  "230"
+ [231] "231"  "232"  "233"  "234"  "235"  "236"  "237"  "238"  "239"  "240"
+ [241] "241"  "242"  "243"  "244"  "245"  "246"  "247"  "248"  "249"  "250"
+ [251] "251"  "252"  "253"  "254"  "255"  "256"  "257"  "258"  "259"  "260"
+ [261] "261"  "262"  "263"  "264"  "265"  "266"  "267"  "268"  "269"  "270"
+ [271] "271"  "272"  "273"  "274"  "275"  "276"  "277"  "278"  "279"  "280"
+ [281] "281"  "282"  "283"  "284"  "285"  "286"  "287"  "288"  "289"  "290"
+ [291] "291"  "292"  "293"  "294"  "295"  "296"  "297"  "298"  "299"  "300"
+ [301] "301"  "302"  "303"  "304"  "305"  "306"  "307"  "308"  "309"  "310"
+ [311] "311"  "312"  "313"  "314"  "315"  "316"  "317"  "318"  "319"  "320"
+ [321] "321"  "322"  "323"  "324"  "325"  "326"  "327"  "328"  "329"  "330"
+ [331] "331"  "332"  "333"  "334"  "335"  "336"  "337"  "338"  "339"  "340"
+ [341] "341"  "342"  "343"  "344"  "345"  "346"  "347"  "348"  "349"  "350"
+ [351] "351"  "352"  "353"  "354"  "355"  "356"  "357"  "358"  "359"  "360"
+ [361] "361"  "362"  "363"  "364"  "365"  "366"  "367"  "368"  "369"  "370"
+ [371] "371"  "372"  "373"  "374"  "375"  "376"  "377"  "378"  "379"  "380"
+ [381] "381"  "382"  "383"  "384"  "385"  "386"  "387"  "388"  "389"  "390"
+ [391] "391"  "392"  "393"  "394"  "395"  "396"  "397"  "398"  "399"  "400"
+ [401] "401"  "402"  "403"  "404"  "405"  "406"  "407"  "408"  "409"  "410"
+ [411] "411"  "412"  "413"  "414"  "415"  "416"  "417"  "418"  "419"  "420"
+ [421] "421"  "422"  "423"  "424"  "425"  "426"  "427"  "428"  "429"  "430"
+ [431] "431"  "432"  "433"  "434"  "435"  "436"  "437"  "438"  "439"  "440"
+ [441] "441"  "442"  "443"  "444"  "445"  "446"  "447"  "448"  "449"  "450"
+ [451] "451"  "452"  "453"  "454"  "455"  "456"  "457"  "458"  "459"  "460"
+ [461] "461"  "462"  "463"  "464"  "465"  "466"  "467"  "468"  "469"  "470"
+ [471] "471"  "472"  "473"  "474"  "475"  "476"  "477"  "478"  "479"  "480"
+ [481] "481"  "482"  "483"  "484"  "485"  "486"  "487"  "488"  "489"  "490"
+ [491] "491"  "492"  "493"  "494"  "495"  "496"  "497"  "498"  "499"  "500"
+ [501] "501"  "502"  "503"  "504"  "505"  "506"  "507"  "508"  "509"  "510"
+ [511] "511"  "512"  "513"  "514"  "515"  "516"  "517"  "518"  "519"  "520"
+ [521] "521"  "522"  "523"  "524"  "525"  "526"  "527"  "528"  "529"  "530"
+ [531] "531"  "532"  "533"  "534"  "535"  "536"  "537"  "538"  "539"  "540"
+ [541] "541"  "542"  "543"  "544"  "545"  "546"  "547"  "548"  "549"  "550"
+ [551] "551"  "552"  "553"  "554"  "555"  "556"  "557"  "558"  "559"  "560"
+ [561] "561"  "562"  "563"  "564"  "565"  "566"  "567"  "568"  "569"  "570"
+ [571] "571"  "572"  "573"  "574"  "575"  "576"  "577"  "578"  "579"  "580"
+ [581] "581"  "582"  "583"  "584"  "585"  "586"  "587"  "588"  "589"  "590"
+ [591] "591"  "592"  "593"  "594"  "595"  "596"  "597"  "598"  "599"  "600"
+ [601] "601"  "602"  "603"  "604"  "605"  "606"  "607"  "608"  "609"  "610"
+ [611] "611"  "612"  "613"  "614"  "615"  "616"  "617"  "618"  "619"  "620"
+ [621] "621"  "622"  "623"  "624"  "625"  "626"  "627"  "628"  "629"  "630"
+ [631] "631"  "632"  "633"  "634"  "635"  "636"  "637"  "638"  "639"  "640"
+ [641] "641"  "642"  "643"  "644"  "645"  "646"  "647"  "648"  "649"  "650"
+ [651] "651"  "652"  "653"  "654"  "655"  "656"  "657"  "658"  "659"  "660"
+ [661] "661"  "662"  "663"  "664"  "665"  "666"  "667"  "668"  "669"  "670"
+ [671] "671"  "672"  "673"  "674"  "675"  "676"  "677"  "678"  "679"  "680"
+ [681] "681"  "682"  "683"  "684"  "685"  "686"  "687"  "688"  "689"  "690"
+ [691] "691"  "692"  "693"  "694"  "695"  "696"  "697"  "698"  "699"  "700"
+ [701] "701"  "702"  "703"  "704"  "705"  "706"  "707"  "708"  "709"  "710"
+ [711] "711"  "712"  "713"  "714"  "715"  "716"  "717"  "718"  "719"  "720"
+ [721] "721"  "722"  "723"  "724"  "725"  "726"  "727"  "728"  "729"  "730"
+ [731] "731"  "732"  "733"  "734"  "735"  "736"  "737"  "738"  "739"  "740"
+ [741] "741"  "742"  "743"  "744"  "745"  "746"  "747"  "748"  "749"  "750"
+ [751] "751"  "752"  "753"  "754"  "755"  "756"  "757"  "758"  "759"  "760"
+ [761] "761"  "762"  "763"  "764"  "765"  "766"  "767"  "768"  "769"  "770"
+ [771] "771"  "772"  "773"  "774"  "775"  "776"  "777"  "778"  "779"  "780"
+ [781] "781"  "782"  "783"  "784"  "785"  "786"  "787"  "788"  "789"  "790"
+ [791] "791"  "792"  "793"  "794"  "795"  "796"  "797"  "798"  "799"  "800"
+ [801] "801"  "802"  "803"  "804"  "805"  "806"  "807"  "808"  "809"  "810"
+ [811] "811"  "812"  "813"  "814"  "815"  "816"  "817"  "818"  "819"  "820"
+ [821] "821"  "822"  "823"  "824"  "825"  "826"  "827"  "828"  "829"  "830"
+ [831] "831"  "832"  "833"  "834"  "835"  "836"  "837"  "838"  "839"  "840"
+ [841] "841"  "842"  "843"  "844"  "845"  "846"  "847"  "848"  "849"  "850"
+ [851] "851"  "852"  "853"  "854"  "855"  "856"  "857"  "858"  "859"  "860"
+ [861] "861"  "862"  "863"  "864"  "865"  "866"  "867"  "868"  "869"  "870"
+ [871] "871"  "872"  "873"  "874"  "875"  "876"  "877"  "878"  "879"  "880"
+ [881] "881"  "882"  "883"  "884"  "885"  "886"  "887"  "888"  "889"  "890"
+ [891] "891"  "892"  "893"  "894"  "895"  "896"  "897"  "898"  "899"  "900"
+ [901] "901"  "902"  "903"  "904"  "905"  "906"  "907"  "908"  "909"  "910"
+ [911] "911"  "912"  "913"  "914"  "915"  "916"  "917"  "918"  "919"  "920"
+ [921] "921"  "922"  "923"  "924"  "925"  "926"  "927"  "928"  "929"  "930"
+ [931] "931"  "932"  "933"  "934"  "935"  "936"  "937"  "938"  "939"  "940"
+ [941] "941"  "942"  "943"  "944"  "945"  "946"  "947"  "948"  "949"  "950"
+ [951] "951"  "952"  "953"  "954"  "955"  "956"  "957"  "958"  "959"  "960"
+ [961] "961"  "962"  "963"  "964"  "965"  "966"  "967"  "968"  "969"  "970"
+ [971] "971"  "972"  "973"  "974"  "975"  "976"  "977"  "978"  "979"  "980"
+ [981] "981"  "982"  "983"  "984"  "985"  "986"  "987"  "988"  "989"  "990"
  [991] "991"  "992"  "993"  "994"  "995"  "996"  "997"  "998"  "999"  "1000"
 [1001] "1001" "1002" "1003" "1004" "1005" "1006" "1007" "1008" "1009" "1010"
 [1011] "1011" "1012" "1013" "1014" "1015" "1016" "1017" "1018" "1019" "1020"
@@ -611,9 +612,9 @@ rownames(gapminder)
 [1701] "1701" "1702" "1703" "1704"
 ~~~
 
-See those numbers in the square brackets on the left? That tells you the 
+See those numbers in the square brackets on the left? That tells you the
 number of the first entry in that row of output. So in the last line, we
-see that the "[1701]" element has "1701" stored in it. The rownames in 
+see that the "[1701]" element has "1701" stored in it. The rownames in
 this case are simply the row numbers.
 
 We can also modify this information:
@@ -634,8 +635,8 @@ head(copy)
 6 Afghanistan 1977 14880372 Asia 38.438 786.1134
 ~~~
 
-There are a few related ways of retreiving and modifying this information. 
-`attributes` will give you both the row and column names, along with the 
+There are a few related ways of retreiving and modifying this information.
+`attributes` will give you both the row and column names, along with the
 class information, while `dimnames` will give you just the rownames and
 column names.
 
@@ -663,9 +664,9 @@ l1 <- lm(lifeExp ~ year, data=gapminder)
 ~~~
 
 We won't go into too much detail of what I just wrote, but briefly;
-the "~" denotes a formula, which means treat the variable on the left of the 
+the "~" denotes a formula, which means treat the variable on the left of the
 "~" as the left hand side of the equation (or response in this case), and
-everything on the right as the right hand side. By telling the linear 
+everything on the right as the right hand side. By telling the linear
 model function to use the gapminder data frame, it knows to look for those
 variable names as its columns.
 
@@ -728,7 +729,7 @@ List of 12
   .. ..- attr(*, "order")= int 1
   .. ..- attr(*, "intercept")= int 1
   .. ..- attr(*, "response")= int 1
-  .. ..- attr(*, ".Environment")=<environment: R_GlobalEnv> 
+  .. ..- attr(*, ".Environment")=<environment: R_GlobalEnv>
   .. ..- attr(*, "predvars")= language list(lifeExp, year)
   .. ..- attr(*, "dataClasses")= Named chr [1:2] "numeric" "numeric"
   .. .. ..- attr(*, "names")= chr [1:2] "lifeExp" "year"
@@ -745,14 +746,14 @@ List of 12
   .. .. ..- attr(*, "order")= int 1
   .. .. ..- attr(*, "intercept")= int 1
   .. .. ..- attr(*, "response")= int 1
-  .. .. ..- attr(*, ".Environment")=<environment: R_GlobalEnv> 
+  .. .. ..- attr(*, ".Environment")=<environment: R_GlobalEnv>
   .. .. ..- attr(*, "predvars")= language list(lifeExp, year)
   .. .. ..- attr(*, "dataClasses")= Named chr [1:2] "numeric" "numeric"
   .. .. .. ..- attr(*, "names")= chr [1:2] "lifeExp" "year"
  - attr(*, "class")= chr "lm"
 ~~~
 
-There's a lot of stuff, stored in nested lists! This is why the structure 
+There's a lot of stuff, stored in nested lists! This is why the structure
 function is really useful, it allows you to see all the data available to
 you returned by a function.
 
@@ -767,22 +768,20 @@ Call:
 lm(formula = lifeExp ~ year, data = df)
 
 Residuals:
-    Min      1Q  Median      3Q     Max 
--39.949  -9.651   1.697  10.335  22.158 
+    Min      1Q  Median      3Q     Max
+-39.949  -9.651   1.697  10.335  22.158
 
 Coefficients:
-              Estimate Std. Error t value Pr(>|t|)    
+              Estimate Std. Error t value Pr(>|t|)
 (Intercept) -585.65219   32.31396  -18.12   <2e-16 ***
 year           0.32590    0.01632   19.96   <2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 11.63 on 1702 degrees of freedom
-Multiple R-squared:  0.1898,  Adjusted R-squared:  0.1893 
+Multiple R-squared:  0.1898,  Adjusted R-squared:  0.1893
 F-statistic: 398.6 on 1 and 1702 DF,  p-value: < 2.2e-16
 ~~~
 
 As you might expect, life expectancy has slowly been increasing over
 time, so we see a significant positive association!
-
-

@@ -14,9 +14,6 @@ minutes: 15
 
 ### Reading Help files
 
-Previously, I showed you the `create.project` function for reading in files. But
-how did I know what arguments to use?
-
 R, and every package, provide help files for functions. To search for help on a
 function from a specific function that is in a package loaded into your
 namespace (your interactive R session):
@@ -108,6 +105,6 @@ your issue.
 
 ### Other ports of call
 
-* [Quick R] (http://www.statmethods.net/)
-* [Rstudio cheat sheets] (http://www.rstudio.com/resources/cheatsheets/)
-* [Cookbook for R] (http://www.cookbook-r.com/)
+* [Quick R](http://www.statmethods.net/)
+* [Rstudio cheat sheets](http://www.rstudio.com/resources/cheatsheets/)
+* [Cookbook for R](http://www.cookbook-r.com/)
