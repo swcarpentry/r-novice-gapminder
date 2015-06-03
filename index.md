@@ -14,12 +14,12 @@ attendees a strong foundation in the fundamentals of R, and to teach best
 practices for scientific computing: breaking down analyses into modular units,
 task automation, and encapsulation.
 
-Note that this workshop will focus on teaching the fundamentals of the 
+Note that this workshop will focus on teaching the fundamentals of the
 programming language R, and will not teach statistical analysis.
 
 A variety of third party packages are used throughout this workshop. These
-are not necessarily the best, nor are they comprehensive, but they are 
-packages we find useful, and have been chosen primarily for their 
+are not necessarily the best, nor are they comprehensive, but they are
+packages we find useful, and have been chosen primarily for their
 usability.
 
 > ## Prerequisites {.prereq}

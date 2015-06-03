@@ -6,7 +6,7 @@ subtitle: Reference
 
 ## [Introduction to R and RStudio](01-rstudio-intro.html)
 
- - Use the escape key to cancel incomplete commands or running code 
+ - Use the escape key to cancel incomplete commands or running code
    (Ctrl+C) if you're using R from the shell.
  - Basic arithmetic operations follow standard order of precedence:
    - Brackets: `(`, `)`
@@ -18,7 +18,7 @@ subtitle: Reference
  - Scientific notation is available, e.g: `2e-3`
  - Anything to the right of a `#` is a comment, R will ignore this!
  - Functions are denoted by `function_name()`. Expressions inside the
-   brackets are evaluated before being passed to the function, and 
+   brackets are evaluated before being passed to the function, and
    functions can be nested.
  - Mathematical functions: `exp`, `sin`, `log`, `log10`, `log2` etc.
  - Comparison operators: `<`, `<=`, `>`, `>=`, `==`, `!=`
@@ -27,7 +27,7 @@ subtitle: Reference
    stored in a variable named to the left.
  - `ls` lists all variables and functions you've created
  - `rm` can be used to remove them
- - When assigning values to function arguments, you _must_ use `=`. 
+ - When assigning values to function arguments, you _must_ use `=`.
 
 ## [Project management with RStudio](02-project-intro.html)
 
@@ -85,7 +85,7 @@ behaviour of R).
  - `?Inf`, `-Inf` infinity.
  - `?NULL` a data structure that doesn't exist
 
-`NA` can occur in any atomic vector. `NaN`, and `Inf` can only 
+`NA` can occur in any atomic vector. `NaN`, and `Inf` can only
 occur in complex, integer or numeric type vectors. Atomic vectors
 are the building blocks for all other data structures. A `NULL` value
 will occur in place of an entire data structure (but can occur as list
@@ -102,23 +102,23 @@ elements).
    and column names of an object.
  - `?names` retrieve or modify the names of an atomic vector or list (or
    columns of a data.frame).
- - `?length` get the number of elements in an atomic vector 
- - `?nrow`, `?ncol`, `?dim` get the dimensions of a n-dimensional object 
+ - `?length` get the number of elements in an atomic vector
+ - `?nrow`, `?ncol`, `?dim` get the dimensions of a n-dimensional object
    (Won't work on atomic vectors or lists).
 
 ## [Data subsetting](06-data-subsetting.html)
 
- - Elements can be accessed by: 
+ - Elements can be accessed by:
    - Index
    - Name
- - `:` to generate a sequence of numbers to extract slices 
+ - `:` to generate a sequence of numbers to extract slices
  - `[` single square brackets:
    - *extract* single elements or *subset*:
         - vectors
    - *extract* single elements of a list
    - *extract* columns from a data.frame
  - `[` with two arguments to:
-   - *extract* rows and/or columns of 
+   - *extract* rows and/or columns of
      - matrices
      - data.frames
  - `[[` double square brackets to subset lists
@@ -160,7 +160,7 @@ elements).
 
 ## [Split-apply-combine](11-plyr.html)
 
- - Use the `xxply` family of functions to apply functions to groups within 
+ - Use the `xxply` family of functions to apply functions to groups within
    some data.
  - the first letter, `a`rray , `d`ata.frame or `l`ist corresponds to the input data
  - the second letter denotes the output data structure
@@ -192,4 +192,3 @@ elements).
  * Change one thing at a time, and for a reason.
  * Keep track of what you've done.
  * Be humble
-

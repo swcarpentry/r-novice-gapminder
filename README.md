@@ -12,12 +12,12 @@ attendees a strong foundation in the fundamentals of R, and to teach best
 practices for scientific computing: breaking down analyses into modular units,
 task automation, and encapsulation.
 
-Note that this workshop will focus on teaching the fundamentals of the 
+Note that this workshop will focus on teaching the fundamentals of the
 programming language R, and will not teach statistical analysis.
 
 A variety of third party packages are used throughout this workshop. These
-are not necessarily the best, nor are they comprehensive, but they are 
-packages we find useful, and have been chosen primarily for their 
+are not necessarily the best, nor are they comprehensive, but they are
+packages we find useful, and have been chosen primarily for their
 usability.
 
 These lesson materials are adapted from the
@@ -42,17 +42,17 @@ the [lesson template documentation][dependencies], you also need to install the
 R package [knitr][].
 
 Once you've made your edits and looked over the rendered html files, you should
- add, commit, and push **only the source R Markdown file(s)** to your fork, and 
- then open a pull request. The repository  maintainers will run the html 
- generation process once the pull request has been merged. You can learn more 
+ add, commit, and push **only the source R Markdown file(s)** to your fork, and
+ then open a pull request. The repository  maintainers will run the html
+ generation process once the pull request has been merged. You can learn more
  about the design of the build process [here][design].
 
-[issues]: https://github.com/swcarpentry/r-novice-gapminder/issues 
+[issues]: https://github.com/swcarpentry/r-novice-gapminder/issues
 [contrib]: https://github.com/swcarpentry/r-novice-gapminder/blob/gh-pages/CONTRIBUTING.md
 [dependencies]:
-https://github.com/swcarpentry/lesson-template#dependencies 
+https://github.com/swcarpentry/lesson-template#dependencies
 [knitr]:
-http://cran.r-project.org/web/packages/knitr/index.html 
+http://cran.r-project.org/web/packages/knitr/index.html
 [design]:
 https://github.com/swcarpentry/lesson-template/blob/gh-pages/DESIGN.md
 
