@@ -5,6 +5,10 @@ subtitle: Introduction to R and RStudio
 minutes: 15
 ---
 
+```{r, include=FALSE}
+source("tools/chunk-options.R")
+```
+
 > ### Learning Objectives {.objectives}
 >
 > * To gain familiarity with the various panes in the RStudio IDE

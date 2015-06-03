@@ -5,6 +5,11 @@ subtitle: Data structures
 minutes: lots
 ---
 
+```{r, include=FALSE}
+source("tools/chunk-options.R")
+```
+
+
 > ### Learning Objectives {.objectives}
 >
 > - To be aware of the different types of data

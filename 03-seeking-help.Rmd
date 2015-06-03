@@ -5,6 +5,11 @@ subtitle: Seeking help
 minutes: 15
 ---
 
+```{r, include=FALSE}
+source("tools/chunk-options.R")
+```
+
+
 > ### Learning Objectives {.objectives}
 >
 > * To be able read R helpfiles for functions and special operators.
