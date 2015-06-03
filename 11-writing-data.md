@@ -19,16 +19,16 @@ using the command `ggsave`. As a refresher:
 ggsave("My_most_recent_plot.pdf")
 ~~~
 
-You can save a plot from within RStudio using the 'Export' button 
-in the 'Plot' window. This will give you the option of saving as a 
-.pdf or as .png, .jpg or other image formats. 
+You can save a plot from within RStudio using the 'Export' button
+in the 'Plot' window. This will give you the option of saving as a
+.pdf or as .png, .jpg or other image formats.
 
 Sometimes you will want to save plots without creating them in the
 'Plot' window first. Perhaps you want to make a pdf document with
-multiple pages: each one a different plot, for example. Or perhaps 
-you're looping through multiple subsets of a file, plotting data from 
-each subset, and you want to save each plot, but obviously can't stop 
-the loop to click 'Export' for each one. 
+multiple pages: each one a different plot, for example. Or perhaps
+you're looping through multiple subsets of a file, plotting data from
+each subset, and you want to save each plot, but obviously can't stop
+the loop to click 'Export' for each one.
 
 In this case you can use a more flexible approach. The function
 `pdf` creates a new pdf device. You can control the size and resolution
@@ -44,7 +44,7 @@ ggplot(data=gapminder, aes(x=year, y=lifeExp, colour=country)) +
 dev.off()
 ~~~
 
-Open up this document and have a look. 
+Open up this document and have a look.
 
 > #### Challenge 1 {.challenge}
 >
@@ -55,7 +55,7 @@ Open up this document and have a look.
 
 
 The commands `jpeg`, `png` etc. are used similarly to produce
-documents in different formats. 
+documents in different formats.
 
 
 
@@ -102,7 +102,7 @@ head gapminder-aus.csv
 ~~~
 
 Hmm, that's not quite what we wanted. Where did all these
-quotation marks come from? Also the row numbers are 
+quotation marks come from? Also the row numbers are
 meaningless.
 
 Let's look at the help file to work out how to change this
@@ -151,8 +151,7 @@ That looks better!
 >
 > Write a data-cleaning script file that subsets the gapminder
 > data to include only data points collected since 1990.
-> 
+>
 > Use this script to write out the new subset to a file
-> in the `cleaned-data/` directory. 
-> 
-
+> in the `cleaned-data/` directory.
+>

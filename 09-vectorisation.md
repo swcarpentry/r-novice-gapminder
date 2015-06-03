@@ -11,7 +11,7 @@ minutes: 15
 >
 
 One of the nice features of R is that most of its functions are vectorized,
-that is the function will operate on all elements of a vector without 
+that is the function will operate on all elements of a vector without
 needing to loop through and act on each element one at a time. This makes
 writing code more concise, easy to read, and less error prone.
 
@@ -19,7 +19,7 @@ writing code more concise, easy to read, and less error prone.
 ~~~ {.r}
 x <- 1:4
 x * 2
-~~~ 
+~~~
 
 ~~~ {.output}
 [1] 2 4 6 8
@@ -51,7 +51,7 @@ y:  6  7  8  9
 
 > #### Challenge 1 {.challenge}
 >
-> Let's try this on the `pop` column of the `gapminder` dataset. 
+> Let's try this on the `pop` column of the `gapminder` dataset.
 >
 > Make a new column in the `gapminder` dataframe that
 > contains population in units of millions of people.
@@ -60,8 +60,8 @@ y:  6  7  8  9
 >
 
 > #### Challenge 2 {.challenge}
-> 
-> Refresh your ggplot skils by plotting population in millions against year. 
+>
+> Refresh your ggplot skils by plotting population in millions against year.
 >
 
 Comparison operators also apply element-wise, as we saw in the
@@ -69,7 +69,7 @@ subsetting lesson:
 
 ~~~ {.r}
 x > 2
-~~~ 
+~~~
 
 ~~~ {.output}
 [1] FALSE FALSE  TRUE  TRUE
@@ -83,7 +83,7 @@ a <- x > 3
 
 ~~~ {.r}
 a
-~~~ 
+~~~
 
 ~~~ {.output}
 [1] FALSE FALSE FALSE  TRUE
@@ -132,9 +132,9 @@ m * -1
 
 
 > #### Challenge 3 {.challenge}
-> 
+>
 > Given the following matrix:
-> 
+>
 > ~~~ {.r}
 > m <- matrix(1:12, nrow=3, ncol=4)
 > m
@@ -157,7 +157,7 @@ m * -1
 >
 
 > #### Bonus Challenge {.challenge}
-> 
+>
 > We're interested in looking at the sum of the
 > following sequence of fractions:
 >
@@ -170,4 +170,3 @@ m * -1
 > Can you use vectorisation to solve for x, when n=100?
 > How about when n=10,000?
 >
-

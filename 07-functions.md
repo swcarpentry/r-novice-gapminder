@@ -16,8 +16,8 @@ minutes: 15
 >
 
 If we only had one data set to analyze, it would probably be faster to load the
-file into a spreadsheet and use that to plot simple statistics. However, the 
-gapminder data is updated periodically, and we may want to pull in that new 
+file into a spreadsheet and use that to plot simple statistics. However, the
+gapminder data is updated periodically, and we may want to pull in that new
 information later and re-run our analysis again. We may also obtain similar data
 from a different source in the future.
 
@@ -83,10 +83,10 @@ fahr_to_kelvin(212)
 ~~~
 
 > #### Challenge 1 {.challenge}
-> 
+>
 > Write a function called `kelvin_to_celsius` that takes a temperature in kelvin
 > and returns that tempterature in celcius
-> 
+>
 > Hint: To convert from kelvin to celcius you minus 273.15
 >
 
@@ -133,17 +133,17 @@ calcGDP <- function(dat) {
 We define `calcGDP` by assigning it to the output of `function`.
 The list of argument names are containted within parentheses.
 Next, the body of the function -- the statements executed when you
-call the function -- is contained within curly braces (`{}`). 
+call the function -- is contained within curly braces (`{}`).
 
 We've indented the statements in the body by two spaces. This makes
 the code easier to read but does not affect how it operates.
 
-When we call the function, the values we pass to it are assigned 
-to the arguments, which become variables inside the body of the 
+When we call the function, the values we pass to it are assigned
+to the arguments, which become variables inside the body of the
 function.
 
-Inside the function, we use the `return` function to send back the 
-result. This return function is optional: R will automatically 
+Inside the function, we use the `return` function to send back the
+result. This return function is optional: R will automatically
 return the results of whatever command is executed on the last line
 of the function.
 
@@ -159,22 +159,22 @@ calcGDP(head(gapminder))
 [1]  6567086330  7585448670  8758855797  9648014150  9678553274 11697659231
 ~~~
 
-That's not very informative. Let's add some more arguments so we can extract 
-that per year and country. 
+That's not very informative. Let's add some more arguments so we can extract
+that per year and country.
 
 ~~~{.r}
 # Takes a dataset and multiplies the population column
 # with the GDP per capita column.
 calcGDP <- function(dat, year=NULL, country=NULL) {
   if(!is.null(year)) {
-    dat <- dat[dat$year %in% year, ] 
+    dat <- dat[dat$year %in% year, ]
   }
   if (!is.null(country)) {
     dat <- dat[dat$country %in% country,]
   }
   gdp <- dat$pop * dat$gdpPercap
 
-  new <- cbind(dat, gdp=gdp)   
+  new <- cbind(dat, gdp=gdp)
   return(new)
 }
 ~~~
@@ -184,7 +184,7 @@ source("functions/functions-lesson.R")
 ~~~
 
 Ok, so there's a lot going on in this function now. In plain english,
-the function now subsets the provided data by year if the year argument isn't 
+the function now subsets the provided data by year if the year argument isn't
 empty, then subsets the result by country if the country argument isn't empty.
 Then it calculates the GDP for whatever subset emerges from the previous two steps.
 The function then adds the GDP as a new column to the subsetted data and returns
@@ -246,14 +246,14 @@ Let's walk through the body of the function:
 calcGDP <- function(dat, year=NULL, country=NULL) {
 ~~~
 
-Here we've added two argumets, `year`, and `country`. We've set 
+Here we've added two argumets, `year`, and `country`. We've set
 *default arguments* for both as `NULL` using the `=` operator
 in the function definition. This means that those arguments will
 take on those values unless the user specifies otherwise.
 
 ~~~ {.r}
   if(!is.null(year)) {
-    dat <- dat[dat$year %in% year, ] 
+    dat <- dat[dat$year %in% year, ]
   }
   if (!is.null(country)) {
     dat <- dat[dat$country %in% country,]
@@ -261,10 +261,10 @@ take on those values unless the user specifies otherwise.
 ~~~
 
 Here, we check whether each additional argument is set to `null`,
-and whenever they're not `null` overwrite the dataset stored in `dat` with 
+and whenever they're not `null` overwrite the dataset stored in `dat` with
 a subset given by the non-`null` argument.
 
-I did this so that our function is more flexible for later. We 
+I did this so that our function is more flexible for later. We
 can ask it to calculate the GDP for:
 
  * The whole dataset;
@@ -280,11 +280,11 @@ to those arguments.
 > Functions in R almost always make copies of the data to operate on
 > inside of a function body. When we modify `dat` inside the function
 > we are modifying the copy of the gapminder dataset stored in `dat`,
-> not the original variable we gave as the first argument. 
+> not the original variable we gave as the first argument.
 >
 > This is called "pass-by-value" and it makes writing code much safer:
-> you can always be sure that whatever changes you make within the 
-> body of the function, stay inside the body of the function. 
+> you can always be sure that whatever changes you make within the
+> body of the function, stay inside the body of the function.
 >
 
 > #### Tip: Function scope {.callout}
@@ -292,19 +292,19 @@ to those arguments.
 > Another important concept is scoping: any variables (or functions!) you
 > create or modify inside the body of a function only exist for the lifetime
 > of the function's execution. When we call `calcGDP`, the variables `dat`,
-> `gdp` and `new` only exist inside the body of the function. Even if we 
-> have variables of the same name in our interactive R session, they are 
+> `gdp` and `new` only exist inside the body of the function. Even if we
+> have variables of the same name in our interactive R session, they are
 > not modified in any way when executing a function.
 >
 
 ~~~ {.r}
   gdp <- dat$pop * dat$gdpPercap
-  new <- cbind(dat, gdp=gdp)   
+  new <- cbind(dat, gdp=gdp)
   return(new)
 }
 ~~~
 
-Finally, we calculated the GDP on our new subset, and created a new 
+Finally, we calculated the GDP on our new subset, and created a new
 data frame with that column added. This means when we call the function
 later we can see the context for the returned GDP values,
 which is much better than in our first attempt where we just got a vector of numbers.
@@ -312,7 +312,7 @@ which is much better than in our first attempt where we just got a vector of num
 > #### Challenge 3 {.challenge}
 >
 > The `paste` function can be used to combine text together, e.g:
-> 
+>
 > ~~~ {.r}
 > best_practice <- c("Write", "programs", "for", "people", "not", "computers")
 > paste(best_practice, collapse=" ")
@@ -328,24 +328,24 @@ which is much better than in our first attempt where we just got a vector of num
 > ~~~ {.r}
 > fence(text=best_practice, wrapper="***")
 > ~~~
-> 
+>
 > ~~~ {.output}
 > [1] "*** Write programs for people not computers ***"
 > ~~~
-> 
+>
 > *Note:* the `paste` function has an argument called `sep`, which specifies the
 > separator between text. The default is a space: " ". The default for `paste0`
 > is no space "".
 >
 
-> ## Tip {.callout} 
-> 
-> R has some unique aspects that can be exploited when performing 
-> more complicated operations. We will not be writing anything that requires 
-> knowledge of these more advanced concepts. In the future when you are 
-> comfortable writing functions in R, you can learn more by reading the 
-> [R Language Manual][man] or this [chapter][] from 
-> [Advanced R Programming][adv-r] by Hadley Wickham. For context, R uses the 
+> ## Tip {.callout}
+>
+> R has some unique aspects that can be exploited when performing
+> more complicated operations. We will not be writing anything that requires
+> knowledge of these more advanced concepts. In the future when you are
+> comfortable writing functions in R, you can learn more by reading the
+> [R Language Manual][man] or this [chapter][] from
+> [Advanced R Programming][adv-r] by Hadley Wickham. For context, R uses the
 > terminology "environments" instead of frames.
 
 [man]: http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects
@@ -356,14 +356,14 @@ which is much better than in our first attempt where we just got a vector of num
 > #### Tip: Testing and documenting {.callout}
 >
 > It's important to both test functions and document them:
-> Documentation helps you, and others, understand what the 
+> Documentation helps you, and others, understand what the
 > purpose of your function is, and how to use it, and its
 > important to make sure that your function actually does
 > what you think.
 >
 > When you first start out, your workflow will probably look a lot
 > like this:
->   
+>
 >  1. Write a function
 >  2. Comment parts of the function to document its behaviour
 >  3. Load in the source file
@@ -371,12 +371,12 @@ which is much better than in our first attempt where we just got a vector of num
 >     as you expect
 >  5. Make any necessary bug fixes
 >  6. Rinse and repeat.
-> 
+>
 > Formal documentation for functions, written in separate `.Rd`
 > files, gets turned into the documentation you see in help
-> files. The [roxygen2][] package allows R coders to write documentation alongside 
+> files. The [roxygen2][] package allows R coders to write documentation alongside
 > the function code and then process it into the appropriate `.Rd` files.
-> You will want to switch to this more formal method of writing documentation 
+> You will want to switch to this more formal method of writing documentation
 > when you start writing more complicated R projects.
 >
 > Formal automated tests can be written using the [testthat][] package.
@@ -390,7 +390,7 @@ which is much better than in our first attempt where we just got a vector of num
 > Define the function to convert directly from Fahrenheit to Celsius,
 > by reusing these two functions above
 >
-> 
+>
 > ~~~ {.r}
 > fahr_to_celsius <- function(temp) {
 >   temp_k <- fahr_to_kelvin(temp)
@@ -398,4 +398,3 @@ which is much better than in our first attempt where we just got a vector of num
 >   return(result)
 > }
 > ~~~
-

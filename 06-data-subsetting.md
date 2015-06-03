@@ -18,13 +18,13 @@ minutes: 15
 R has many powerful subset operators and mastering them will allow you to
 easily perform complex operations on any kind of dataset.
 
-There are six different ways we can subset any kind of object, and three 
+There are six different ways we can subset any kind of object, and three
 different subsetting operators for the different data structures.
 
 Let's start with the workhorse of R: atomic vectors.
 
 ~~~ {.r}
-x <- c(5.4, 6.2, 7.1, 4.8, 7.5) 
+x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 names(x) <- c('a', 'b', 'c', 'd', 'e')
 ~~~
 
@@ -33,14 +33,14 @@ contents?
 
 ### Accessing elements using their indices
 
-To extract elements of a vector we can give their corresponding index, starting 
+To extract elements of a vector we can give their corresponding index, starting
 from one:
 
 ~~~ {.r}
 x[1]
 ~~~
 ~~~ {.output}
-  a 
+  a
 5.4
 ~~~
 
@@ -49,11 +49,11 @@ x[4]
 ~~~
 
 ~~~ {.output}
-  d 
-4.8 
+  d
+4.8
 ~~~
 
-The square brackets operator is just like any other function. For atomic vectors 
+The square brackets operator is just like any other function. For atomic vectors
 (and matrices), it means "get me the nth element".
 
 We can ask for multiple elements at once:
@@ -63,7 +63,7 @@ x[c(1, 3)]
 ~~~
 
 ~~~ {.output}
-  a   c 
+  a   c
 5.4 7.1
 ~~~
 
@@ -74,8 +74,8 @@ x[1:4]
 ~~~
 
 ~~~ {.output}
-  a   b   c   d 
-5.4 6.2 7.1 4.8 
+  a   b   c   d
+5.4 6.2 7.1 4.8
 ~~~
 
 the `:` operator just creates a sequence of numbers from the left element to the right.
@@ -88,8 +88,8 @@ x[c(1,1,3)]
 ~~~
 
 ~~~ {.output}
-  a   a   c 
-5.4 5.4 7.1 
+  a   a   c
+5.4 5.4 7.1
 ~~~
 
 If we ask for a number outside of the vector, R will return missing values:
@@ -99,7 +99,7 @@ x[6]
 ~~~
 
 ~~~ {.output}
-<NA> 
+<NA>
   NA
 ~~~
 
@@ -127,8 +127,8 @@ x[-2]
 ~~~
 
 ~~~ {.output}
-  a   c   d   e 
-5.4 7.1 4.8 7.5 
+  a   c   d   e
+5.4 7.1 4.8 7.5
 ~~~
 
 We can skip multiple elements:
@@ -138,20 +138,20 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 ~~~
 
 ~~~ {.output}
-  b   c   d 
-6.2 7.1 4.8 
+  b   c   d
+6.2 7.1 4.8
 ~~~
 
 > #### Tip: Order of operations {.callout}
 >
 > A common trip up for novices occurs when trying to skip
 > slices of a vector. Most people first try to negate a
-> sequence like so: 
+> sequence like so:
 >
 > ~~~ {.r}
 > x[-1:3]
 > ~~~
-> 
+>
 > This gives a somewhat cryptic error:
 >
 > ~~~ {.output}
@@ -160,7 +160,7 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 >
 > But remember the order of operations. `:` is really a function, so
 > what happens is it takes its first argument as -1, and second as 3,
-> so generates the sequence of numbers: `c(-1, 0, 1, 2, 3)`. 
+> so generates the sequence of numbers: `c(-1, 0, 1, 2, 3)`.
 >
 > The correct solution is to wrap that function call in brackets, so
 > that the `-` operator applies to the results:
@@ -170,8 +170,8 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 > ~~~
 >
 > ~~~ {.output}
->   d   e 
-> 4.8 7.5 
+>   d   e
+> 4.8 7.5
 > ~~~
 >
 
@@ -184,8 +184,8 @@ x
 ~~~
 
 ~~~ {.output}
-  a   b   c   e 
-5.4 6.2 7.1 7.5 
+  a   b   c   e
+5.4 6.2 7.1 7.5
 ~~~
 
 > #### Challenge {.challenge}
@@ -205,7 +205,7 @@ x
 >
 > ~~~ {.output}
 >   b   c   d
-> 6.2 7.1 4.8 
+> 6.2 7.1 4.8
 > ~~~
 >
 > 2. Compare notes with your neighbour. Did you have different strategies?
@@ -220,12 +220,12 @@ x[c("a", "c")]
 ~~~
 
 ~~~ {.output}
-  a   c 
-5.4 7.1 
+  a   c
+5.4 7.1
 ~~~
 
-This is usually a much more reliable way to subset objects: the 
-position of various elements can often change when chaining together 
+This is usually a much more reliable way to subset objects: the
+position of various elements can often change when chaining together
 subsetting operations, but the names will always remain the same!
 
 Unfortunately we can't skip or remove elements so easily.
@@ -237,8 +237,8 @@ x[-which(names(x) == "a"))]
 ~~~
 
 ~~~ {.output}
-  b   c   e 
-6.2 7.1 7.5 
+  b   c   e
+6.2 7.1 7.5
 ~~~
 
 The `which` function returns the indices of all `TRUE` elements of its argument.
@@ -266,7 +266,7 @@ which(names(x) == "a")
 
 ~~~ {.output}
 [1] 1
-~~~ 
+~~~
 
 Only the first element is `TRUE`, so `which returns 1. Now that we have indices
 the skipping works because we have a negative index!
@@ -279,20 +279,20 @@ x[-which(names(x) %in% c("a", "c"))]
 ~~~
 
 ~~~ {.output}
-  b   e 
-6.2 7.5 
+  b   e
+6.2 7.5
 ~~~
 
-The `%in%` goes through each element of its left argument, in this case the 
+The `%in%` goes through each element of its left argument, in this case the
 names of `x`, and asks, "Does this element occur in the second argument?".
 
 > #### Tip: Getting help for operators {.callout}
-> 
+>
 > Remember you can search for help on operators by wrapping them in quotes:
 > `help("%in%")` or `?"%in%"`.
 >
 
-So why can't we use `==` like before? That's an excellent question. 
+So why can't we use `==` like before? That's an excellent question.
 
 Let's take a look at just the comparison component:
 
@@ -304,7 +304,7 @@ names(x) == c('a', 'c')
 [1]  TRUE FALSE FALSE FALSE
 ~~~
 
-Obviously "c" is in the names of `x`, so why didn't this work? `==` works 
+Obviously "c" is in the names of `x`, so why didn't this work? `==` works
 slightly differently to `%in%`. It will compare each element of its left argument
 to the corresponding element of its right argument.
 
@@ -348,11 +348,11 @@ We can also more simply subset through logical operations:
 
 ~~~ {.r}
 x[c(TRUE, TRUE, FALSE, FALSE)]
-~~~ 
+~~~
 
 ~~~ {.output}
-  a   b 
-5.4 6.2 
+  a   b
+5.4 6.2
 ~~~
 
 Note that in this case, the logical vector is also recycled to the
@@ -363,8 +363,8 @@ x[c(TRUE, FALSE)]
 ~~~
 
 ~~~ {.output}
-  a   c 
-5.4 7.1 
+  a   c
+5.4 7.1
 ~~~
 
 Since comparison operators evaluate to logical vectors, we can also
@@ -375,15 +375,15 @@ x[x > 7]
 ~~~
 
 ~~~ {.output}
-  c   e 
-7.1 7.5 
+  c   e
+7.1 7.5
 ~~~
 
 > #### Tip: Chaining logical operations {.callout}
 >
 > There are many situations in which you will wish to combine multiple conditions.
 > To do so several logical operations exist in R:
-> 
+>
 >  * `|` logical OR: returns `TRUE`, if either the left or right are `TRUE`.
 >  * `&` logical AND: returns `TRUE` if both the left and right are `TRUE`
 >  * `!` logical NOT: converts `TRUE` to `FALSE` and `FALSE` to `TRUE`
@@ -392,20 +392,20 @@ x[x > 7]
 >
 
 > #### Challenge {.challenge}
-> 
+>
 > ~~~ {.r}
 > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > print(x)
 > ~~~
-> 
+>
 > ~~~ {.output}
->   a   b   c   d   e 
-> 5.4 6.2 7.1 4.8 7.5 
+>   a   b   c   d   e
+> 5.4 6.2 7.1 4.8 7.5
 > ~~~
-> 
+>
 > 1. Write a subsetting command to return the values in x that are greater than 4 and less than 7.
-> 
+>
 
 #### Handling special values
 
@@ -426,7 +426,7 @@ There are a number of special functions you can use to filter out this data:
 Now that we've explored the different ways to subset vectors, how
 do we subset the other data structures?
 
-Factor subsetting works the same way as vector subsetting. 
+Factor subsetting works the same way as vector subsetting.
 
 ~~~ {.r}
 f <- factor(c("a", "a", "b", "c", "c", "d"))
@@ -518,7 +518,7 @@ Error in m[, c(3, 6)] : subscript out of bounds
 
 > #### Tip: Higher dimensional arrays {.callout}
 >
-> when dealing with multi-dimensional arrays, each argument to `[` 
+> when dealing with multi-dimensional arrays, each argument to `[`
 > corresponds to a dimension. For example, a 3D array, the first three
 > arguments correspond to the rows, columns, and depth dimension.
 >
@@ -531,11 +531,11 @@ m[5]
 ~~~
 
 ~~~ {.output}
-[1] 0.3295078 
+[1] 0.3295078
 ~~~
 
 This usually isn't useful. However it is useful to note that matrices
-are laid out in *column-major format* by default. That is the elements of the 
+are laid out in *column-major format* by default. That is the elements of the
 vector are arranged column-wise:
 
 ~~~ {.r}
@@ -552,34 +552,34 @@ Matrices can also be subsetted using their rownames and column names
 instead of their row and column indices.
 
 > #### Challenge {.challenge}
-> 
+>
 > ~~~ {.r}
 > m <- matrix(1:18, nrow=3, ncol=6)
 > print(m)
 > ~~~
-> 
+>
 > ~~~ {.output}
 >      [,1] [,2] [,3] [,4] [,5] [,6]
 > [1,]    1    4    7   10   13   16
 > [2,]    2    5    8   11   14   17
 > [3,]    3    6    9   12   15   18
 > ~~~
-> 
+>
 > 1. Which of the following commands will extract the values 11 and 14?
-> 
+>
 > A. m[2,4,2,5]
-> 
+>
 > B. m[2:5]
-> 
+>
 > C. m[4:5,2]
-> 
+>
 > D. m[2,c(4,5)]
-> 
+>
 
 
 ### List subsetting
 
-Now we'll introduce some new subsetting operators. There are three functions 
+Now we'll introduce some new subsetting operators. There are three functions
 used to subset lists. `[`, as we've seen for atomic vectors and matrices,
 as well as `[[` and `$`.
 
@@ -587,8 +587,8 @@ Using `[` will always return a list. If you want to *subset* a list, but not
 *extract* an element, then you will likely use `[`.
 
 ~~~ {.r}
-xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris)) 
-xlist[1] 
+xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
+xlist[1]
 ~~~
 
 This returns a *list with one element*:
@@ -600,7 +600,7 @@ $a
 ~~~
 
 We can subset elements of a list exactly the same was as atomic
-vectors using `[`. Comparison operations however won't work as 
+vectors using `[`. Comparison operations however won't work as
 they're not recursive, they will try to condition on the data structures
 in each element of the list, not the individual elements within those
 data structures.
@@ -681,13 +681,13 @@ xlist$data
 > 1. Given the following list:
 >
 > ~~~ {.r}
-> xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris)) 
+> xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
 > ~~~
-> 
+>
 > Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. Hint: the number 2 is contained within the "b" item in the list.
-> 
+>
 > 2. Given a linear model:
-> 
+>
 > ~~~ {.r}
 > mod <- aov(pop ~ lifeExp, data=gapminder)
 > ~~~
@@ -766,9 +766,9 @@ But for a single column the result will be a vector (this can
 be changed with the third argument, `drop = FALSE`).
 
 > #### Challenge {.challenge}
-> 
+>
 > Fix each of the following common data frame subsetting errors:
-> 
+>
 > 1. Extract observations collected for the year 1957
 >
 > ~~~ {.r}
@@ -787,7 +787,7 @@ be changed with the third argument, `drop = FALSE`).
 > gapminder[gapminder$lifeExp > 80]
 > ~~~
 >
-> 4. Extract the first row, and the fourth and fifth columns 
+> 4. Extract the first row, and the fourth and fifth columns
 >   (`lifeExp` and `gdpPercap`).
 >
 > ~~~ {.r}
@@ -806,9 +806,7 @@ be changed with the third argument, `drop = FALSE`).
 >
 > 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
 >
-> 
-> 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9 
+>
+> 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
 > and 19 through 23. You can do this in one or two steps.
 >
-
-

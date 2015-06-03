@@ -3,7 +3,7 @@ Lesson plans
 
 Guidelines
 ---
-Each lesson must be stored in its own separate repository with a 
+Each lesson must be stored in its own separate repository with a
 gh-pages branch. The lesson template repository can be found here:
 https://github.com/swcarpentry/lesson-template
 
@@ -38,7 +38,7 @@ Topic: Introduction to RStudio and Reproducible workflows
       - explain libraries
    - Create a new project for the bootcamp
    - Show packrat/ folder
-   - explain `packrat::bundle()` 
+   - explain `packrat::bundle()`
       -- we'll use this at the end to bundle up the whole course.
    - install `ProjectTemplate`, initialise project with both.
  - Explain what just happened
@@ -87,7 +87,3 @@ Topic: Functions:
 ---
  - http://swcarpentry.github.io/r-novice-inflammation/02-func-R.html
  - merge with http://resbaz.github.io/2014-r-materials/lessons/10-functions/
-
-
-
-
