@@ -5,6 +5,12 @@ subtitle: Data frames and reading in data
 minutes: 15
 ---
 
+```{r, include=FALSE}
+source("tools/chunk-options.R")
+# Silently load in the data so the rest of the lesson works
+gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
+```
+
 > ## Learning Objectives {.objectives}
 >
 > * Become familiar with data frames
