@@ -616,7 +616,7 @@ be changed with the third argument, `drop = FALSE`).
 
 ## Challenge solutions
 
-> #### Solution to Challenge 1 {.challenge}
+> #### Solution to challenge 1 {.challenge}
 >
 > Given the following code:
 >
@@ -643,7 +643,7 @@ be changed with the third argument, `drop = FALSE`).
 >
 >
 
-> #### Solution to Challenge 2 {.challenge}
+> #### Solution to challenge 2 {.challenge}
 >
 > Given the following code:
 >
@@ -671,8 +671,7 @@ be changed with the third argument, `drop = FALSE`).
 >
 > Answer: D
 
-
-> #### Solution to Challenge 3 {.challenge}
+> #### Solution to challenge 3 {.challenge}
 > Given the following list:
 >
 > ~~~ {.r}
@@ -689,7 +688,7 @@ be changed with the third argument, `drop = FALSE`).
 > ~~~
 
 
-> #### Solution to Challenge 4 {.challenge}
+> #### Solution to challenge 4 {.challenge}
 > Given a linear model:
 >
 > ~~~ {.r}
@@ -704,7 +703,7 @@ be changed with the third argument, `drop = FALSE`).
 > ~~~
 
 
-> #### Solution to Challenge 5 {.challenge}
+> #### Solution to challenge 5 {.challenge}
 >
 > Fix each of the following common data frame subsetting errors:
 >
@@ -747,7 +746,7 @@ be changed with the third argument, `drop = FALSE`).
 > ~~~
 >
 
-> #### Solution to Challenge 6 {.challenge}
+> #### Solution to challenge 6 {.challenge}
 >
 > 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
 >
