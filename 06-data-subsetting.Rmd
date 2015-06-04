@@ -148,7 +148,7 @@ x <- x[-4]
 x
 ```
 
-> #### Challenge {.challenge}
+> #### Challenge 1 {.challenge}
 >
 > Given the following code:
 >
@@ -422,7 +422,7 @@ matrix(1:6, nrow=2, ncol=3)
 Matrices can also be subsetted using their rownames and column names
 instead of their row and column indices.
 
-> #### Challenge {.challenge}
+> #### Challenge 2 {.challenge}
 >
 > Given the following code:
 >
@@ -509,16 +509,17 @@ The `$` function is a shorthand way for extracting elements by name:
 xlist$data
 ```
 
-> #### Challenge {.challenge}
-> 1. Given the following list:
+> #### Challenge 3 {.challenge}
+> Given the following list:
 >
 > ~~~ {.r}
 > xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
 > ~~~
 >
 > Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. Hint: the number 2 is contained within the "b" item in the list.
->
-> 2. Given a linear model:
+
+> #### Challenge 4 {.challenge}
+> Given a linear model:
 >
 > ~~~ {.r}
 > mod <- aov(pop ~ lifeExp, data=gapminder)
@@ -567,7 +568,7 @@ gapminder[3,]
 But for a single column the result will be a vector (this can
 be changed with the third argument, `drop = FALSE`).
 
-> #### Challenge {.challenge}
+> #### Challenge 5 {.challenge}
 >
 > Fix each of the following common data frame subsetting errors:
 >
@@ -604,11 +605,157 @@ be changed with the third argument, `drop = FALSE`).
 > ~~~
 >
 
-> #### Challenge {.challenge}
+> #### Challenge 6 {.challenge}
 >
 > 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
 >
 >
 > 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
 > and 19 through 23. You can do this in one or two steps.
+>
+
+
+> #### Solution to Challenge 1 {.challenge}
+>
+> Given the following code:
+>
+> ~~~ {.r}
+> x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
+> names(x) <- c('a', 'b', 'c', 'd', 'e')
+> print(x)
+> ~~~
+>
+> ~~~ {.output}
+> ##   a   b   c   d   e
+> ## 5.4 6.2 7.1 4.8 7.5
+> ~~~
+>
+> 1. Come up with at least 3 different commands that will produce the following output:
+>
+> ~~~ {.r}
+> x[2:4]
+>
+> x[-c(1,5)]
+> x[c("b", "c", "d")]
+> x[c(2,3,4)]
+> ~~~
+>
+>
+
+> #### Solution to Challenge 2 {.challenge}
+>
+> Given the following code:
+>
+> ~~~ {.r}
+> m <- matrix(1:18, nrow=3, ncol=6)
+> print(m)
+> ~~~
+>
+> ~~~ {.output}
+> ##      [,1] [,2] [,3] [,4] [,5] [,6]
+> ## [1,]    1    4    7   10   13   16
+> ## [2,]    2    5    8   11   14   17
+> ## [3,]    3    6    9   12   15   18
+> ~~~
+>
+> 1. Which of the following commands will extract the values 11 and 14?
+>
+> A. `m[2,4,2,5]`
+>
+> B. `m[2:5]`
+>
+> C. `m[4:5,2]`
+>
+> D. `m[2,c(4,5)]`
+>
+> Answer: D
+
+
+> #### Solution to Challenge 3 {.challenge}
+> Given the following list:
+>
+> ~~~ {.r}
+> xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
+> ~~~
+>
+> Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. Hint: the number 2 is contained within the "b" item in the list.
+>
+> ~~~{.r}
+> ## Any of the below should work:
+> xlist$b[2]
+> xlist[[2]][2]
+> xlist[["b"]][2]
+> ~~~
+
+
+> #### Solution to Challenge 4 {.challenge}
+> Given a linear model:
+>
+> ~~~ {.r}
+> mod <- aov(pop ~ lifeExp, data=gapminder)
+> ~~~
+>
+> Extract the residual degrees of freedom (hint: `attributes()` will help you)
+>
+> ~~~ {.r}
+> attributes(mod) ## `df.residual` is one of the names of `mod`
+> mod$df.residual
+> ~~~
+
+
+> #### Solution to Challenge 5 {.challenge}
+>
+> Fix each of the following common data frame subsetting errors:
+>
+> 1. Extract observations collected for the year 1957
+>
+> ~~~ {.r}
+> gapminder[gapminder$year = 1957,]
+> gapminder[gapminder$year == 1957,]
+> ~~~
+>
+> 2. Extract all columns except 1 through to 4
+>
+> ~~~ {.r}
+> gapminder[,-1:4]
+> gapminder[,-c(1:4)]
+> ~~~
+>
+> 3. Extract the rows where the life expectancy is longer the 80 years
+>
+> ~~~ {.r}
+> gapminder[gapminder$lifeExp > 80]
+> gapminder[gapminder$lifeExp > 80,]
+> ~~~
+>
+> 4. Extract the first row, and the fourth and fifth columns
+>   (`lifeExp` and `gdpPercap`).
+>
+> ~~~ {.r}
+> gapminder[1, 4, 5]
+> gapminder[1, c(4, 5)]
+> ~~~
+>
+> 5. Advanced: extract rows that contain information for the years 2002
+>    and 2007
+>
+> ~~~ {.r}
+> gapminder[gapminder$year == 2002 | 2007,]
+> gapminder[gapminder$year == 2002 | gapminder$year == 2007,]
+> gapminder[gapminder$year %in% c(2002, 2007),]
+> ~~~
+>
+
+> #### Solution to Challenge 6 {.challenge}
+>
+> 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
+>
+> Answer: `gapminder` is a data.frame so needs to be subsetted on two dimensions. `gapminder[1:20, ]` subsets the data to give the first 20 rows and all columns.
+>
+> 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
+> and 19 through 23. You can do this in one or two steps.
+>
+> ~~~ {.r}
+> gapminder_small <- gapminder[c(1:9, 19:23),]
+> ~~~
 >
