@@ -262,6 +262,7 @@ code to modify!
 >  - Add a facet layer to panel the density plots by year.
 >
 
+## Challenge solutions
 
 > #### Solution to Challenge 1 {.challenge}
 >
