@@ -51,7 +51,7 @@ A good project layout will ultimately make your life easier:
 Fortunately, there are tools and packages which can help you manage your work effectively.
 
 One of the most powerful and useful aspects of RStudio is its project management
-functionality. We'll be using this today to create a self-contianed, reproducible
+functionality. We'll be using this today to create a self-contained, reproducible
 project.
 
 
@@ -102,12 +102,12 @@ analysis. This makes it easier later, as many of my analyses are exploratory
 and don't end up being used in the final project, and some of the analyses
 get shared between projects.
 
-> #### Tip: ProjectTempate - a possible solution {.callout}
+> #### Tip: ProjectTemplate - a possible solution {.callout}
 >
 > One way to automate the management of projects is to install the third-party package, `ProjectTemplate`.
 > This package will set up an ideal directory structure for project management.
 > This is very useful as it enables you to have your analysis pipeline/workflow organised and structured.
-> Together with the default Rstudio project functionality and Git you will be able to keep track of your
+> Together with the default RStudio project functionality and Git you will be able to keep track of your
 > work as well as be able to share your work with collaborators.
 >
 > 1. Install `ProjectTemplate`.
@@ -145,7 +145,7 @@ one to store the analysis scripts.
 > make updates to code in multiple places.
 >
 > In this case I find it useful to make "symbolic links", which are essentially
-> shortcuts to files somewhere else on a filesystem. On linux and OSX you can
+> shortcuts to files somewhere else on a filesystem. On Linux and OS X you can
 > use the `ln -s` command, and on windows you can either create a shortcut or
 > use the `mklink` command from the windows terminal.
 >
@@ -155,7 +155,7 @@ one to store the analysis scripts.
 Now we have a good directory structure we will now place/save the data file in the `data/` directory.
 
 > #### Challenge 1 {.challenge}
-> Download the gapminer data from [here](https://github.com/resbaz/r-novice-gapminder-files).
+> Download the gapminder data from [here](https://github.com/resbaz/r-novice-gapminder-files).
 >
 > 1. Use the `Download ZIP` located on the right hand side menu, last option. To download the `.zip` file to
 > your downloads folder.

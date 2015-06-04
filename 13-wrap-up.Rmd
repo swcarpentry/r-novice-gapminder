@@ -43,7 +43,7 @@ functions together easily.
 
 When you first start out, problem solving and function writing can be daunting
 tasks, and hard to separate from code inexperience. Try to break down your
-problem into digestable chunks and worry about the implementation details later:
+problem into digestible chunks and worry about the implementation details later:
 keep breaking down the problem into smaller and smaller functions until you
 reach a point where you can code a solution, and build back up from there.
 

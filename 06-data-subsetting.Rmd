@@ -194,7 +194,7 @@ x[-which(names(x) == "a")]
 
 The `which` function returns the indices of all `TRUE` elements of its argument.
 Remember that expressions evaluate before being passed to functions. Let's break
-this down so that its clearer whats happening.
+this down so that its clearer what's happening.
 
 First this happens:
 
@@ -545,7 +545,7 @@ Similarly, `[[` will act to extract *a single column*:
 head(gapminder[["lifeExp"]])
 ```
 
-And `$` provides a convenient shorthand to extact columns by name:
+And `$` provides a convenient shorthand to extract columns by name:
 
 ```{r}
 head(gapminder$year)
