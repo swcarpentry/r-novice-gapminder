@@ -264,7 +264,7 @@ code to modify!
 
 ## Challenge solutions
 
-> #### Solution to Challenge 1 {.challenge}
+> #### Solution to challenge 1 {.challenge}
 >
 > Modify the example so that the figure visualise how life expectancy has
 > changed over time:
@@ -274,8 +274,7 @@ code to modify!
 > ~~~
 >
 
-
-> #### Solution to Challenge 2 {.challenge}
+> #### Solution to challenge 2 {.challenge}
 >
 > In the previous examples and challenge we've used the `aes` function to tell
 > the scatterplot **geom** about the **x** and **y** locations of each point.
@@ -289,7 +288,7 @@ code to modify!
 > ~~~
 >
 
-> #### Solution to Challenge 3 {.challenge}
+> #### Solution to challenge 3 {.challenge}
 >
 > Switch the order of the point and line layers from the previous example. What
 > happened?
@@ -303,7 +302,7 @@ code to modify!
 >
 
 
-> #### Solution to Challenge 4 {.challenge}
+> #### Solution to challenge 4 {.challenge}
 >
 > Modify the color and size of the points on the point layer in the previous
 > example.
@@ -317,7 +316,7 @@ code to modify!
 > ~~~
 >
 
-> #### Solution toChallenge 5 {.challenge}
+> #### Solution to challenge 5 {.challenge}
 >
 > Create a density plot of GDP per capita, filled by continent.
 >
