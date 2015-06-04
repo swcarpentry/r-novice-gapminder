@@ -16,7 +16,7 @@ set.seed(10)
 > ## Learning Objectives {.objectives}
 >
 > * Write conditional statements with `if` and `else`.
-> * Write and understand `while` and `for` loops.
+> * Write and understand `for` loops.
 >
 
 Often when we're coding we want to control the flow of our actions. This can be done
@@ -127,54 +127,11 @@ element. Here you need to make sure your condition is of length 1.
 > the vector are `TRUE`.
 >
 
-
 ### Repeating operations
 
-Sometimes you will find yourself needing to repeat an operation until a certain
-condition is met. You can do this with a `while` loop.
+ 
 
-```{r, eval=FALSE}
-while(this condition is true){
-  do a thing
-}
-```
-
-Let's try an example, shall we?  We'll try to come up with some simple code
-that generates random numbers from a uniform distribution (the `runif` function)
-between 0 and 1 until it gets one that's less than 0.1.
-
-```{r, error=TRUE}
-while(z > 0.1){
-  z <- runif(1)
-  print(z)
-}
-```
-
-But wait, that doesn't work!  What's the problem?
-
-The problem is that we haven't defined `z`, and so the very first time the
-while loop's condition is checked (`z > 0.1`), `while` just says "Okay, that's
-not true so I'm not going to execute this block of code".  The same thing would
-have happened if we defined `z` to be anything less than 0.1.  Let's fix it.
-
-```{r}
-z <- 1
-while(z > 0.1){
-  z <- runif(1)
-  print(z)
-}
-```
-
-> #### Challenge 2 {.challenge}
->
-> Use a `while` loop to construct a vector called 'pet_list'
-> with the value:
-> 'cat', 'dog', 'dog', 'dog', 'dog'
-> (N.B. using a loop may not be the most efficient way
-> to do this, but it illustrates the principle!)
->
-
-`while` loops will not always be appropriate. If you want to iterate over
+If you want to iterate over
 a set of values, when the order of iteration is important, and perform the
 same operation on each, a `for` loop will do the job.
 We saw `for` loops in the shell lessons earlier. This is the most
@@ -258,6 +215,34 @@ for (i in 1:5){
 output_vector2 <- as.vector(output_matrix)
 output_vector2
 ```
+
+> #### Tip: While loops {.callout}
+>
+>
+> Sometimes you will find yourself needing to repeat an operation until a certain
+> condition is met. You can do this with a `while` loop.
+> 
+> ```{r, eval=FALSE}
+> while(this condition is true){
+>   do a thing
+> }
+> ```
+> 
+> As an example, here's a while loop 
+> that generates random numbers from a uniform distribution (the `runif` function)
+> between 0 and 1 until it gets one that's less than 0.1.
+> 
+> ~~~ {.r}
+> z <- 1
+> while(z > 0.1){
+>   z <- runif(1)
+>   print(z)
+> }
+> ~~~
+> 
+> `while` loops will not always be appropriate. You have to be particularly careful
+> that you don't end up in an infinite loop because your condition is never met.
+>
 
 > #### Challenge 3 {.challenge}
 >
