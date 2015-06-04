@@ -2,7 +2,7 @@
 layout: page
 title: R for reproducible scientific analysis
 subtitle: Project management with RStudio
-minutes: 15
+minutes: 30
 ---
 
 ```{r, include=FALSE}

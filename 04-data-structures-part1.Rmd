@@ -2,7 +2,7 @@
 layout: page
 title: R for reproducible scientific analysis
 subtitle: Data structures
-minutes: lots
+minutes: 45
 ---
 
 ```{r, include=FALSE}

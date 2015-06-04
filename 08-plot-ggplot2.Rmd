@@ -2,7 +2,7 @@
 layout: page
 title: R for reproducible scientific analysis
 subtitle: Creating publication quality graphics
-minutes: 60
+minutes: 70
 ---
 
 ```{r, include=FALSE}
