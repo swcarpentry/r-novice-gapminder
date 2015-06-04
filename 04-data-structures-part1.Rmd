@@ -281,7 +281,7 @@ will tell you the number of rows and columns (this also applies to data frames!)
 while `length` will tell you the number of elements.
 
 >
-> ### Challenge 3 {.challenge}
+> #### Challenge 3 {.challenge}
 >
 > What do you think will be the result of
 > `length(x)`?
@@ -290,7 +290,7 @@ while `length` will tell you the number of elements.
 >
 
 >
-> ### Challenge 4 {.challenge}
+> #### Challenge 4 {.challenge}
 >
 > Make another matrix, this time containing the numbers 1:50,
 > with 5 columns and 10 rows.
@@ -372,7 +372,7 @@ Lists can also contain themselves:
 list(list(list(list())))
 ```
 
-> ### Challenge 5 {.challenge}
+> #### Challenge 5 {.challenge}
 >
 > Create a list of length two containing a character vector for each of the 
 > sections in this part of the workshop:
@@ -474,7 +474,7 @@ fact many R functions which return complex output store their results in a list.
 >
 
 >
-> ### Solution to challenge 3 {.challenge}
+> #### Solution to challenge 3 {.challenge}
 >
 > What do you think will be the result of
 > `length(x)`?
@@ -493,7 +493,7 @@ fact many R functions which return complex output store their results in a list.
 >
 
 >
-> ### Solution to challenge 4 {.challenge}
+> #### Solution to challenge 4 {.challenge}
 >
 > Make another matrix, this time containing the numbers 1:50,
 > with 5 columns and 10 rows.
@@ -509,7 +509,7 @@ fact many R functions which return complex output store their results in a list.
 >
 
 
-> ### Solution to challenge 5 {.challenge}
+> #### Solution to challenge 5 {.challenge}
 >
 > Create a list of length two containing a character vector for each of the 
 > sections in this part of the workshop:
