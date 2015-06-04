@@ -375,8 +375,9 @@ summary(l1)
 As you might expect, life expectancy has slowly been increasing over
 time, so we see a significant positive association!
 
+## Challenge Solutions
 
-> #### Solution to Challenge 1 {.challenge}
+> #### Challenge 1 {.challenge}
 >
 > Create a data frame that holds the following information for yourself:
 >
