@@ -11,7 +11,7 @@ source("tools/chunk-options.R")
 gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 ```
 
-> ## Learning Objectives {.objectives}
+> ## Learning objectives {.objectives}
 >
 > * To understand vectorised operations in R.
 >

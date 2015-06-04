@@ -9,7 +9,7 @@ minutes: 30
 source("tools/chunk-options.R")
 ```
 
-> ## Learning Objectives {.objectives}
+> ## Learning objectives {.objectives}
 >
 > * To be able to create self-contained projects in RStudio
 > * To be able to use git from within RStudio
