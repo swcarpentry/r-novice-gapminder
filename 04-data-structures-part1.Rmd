@@ -162,11 +162,11 @@ x
 >
 > **Guess what the following do without running them first:**
 >
-> ```{r}
+> ~~~ {.r}
 > xx <- c(1.7, "a")
 > xx <- c(TRUE, 2)
 > xx <- c("a", TRUE)
-> ```
+> ~~~
 >
 
 This is called implicit coercion.
