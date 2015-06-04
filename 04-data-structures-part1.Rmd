@@ -388,7 +388,7 @@ Lists are extremely useful inside functions. You can "staple" together lots of
 different kinds of results into a single object that a function can return. In
 fact many R functions which return complex output store their results in a list.
 
-
+## Challenge solutions
 
 > #### Solution to Challenge 1: Data types {.challenge}
 >
