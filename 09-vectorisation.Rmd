@@ -146,6 +146,7 @@ m * -1
 
 
 > #### Solution to Challenge 1 {.challenge}
+## Challenge solutions
 >
 > Let's try this on the `pop` column of the `gapminder` dataset.
 >
