@@ -614,6 +614,7 @@ be changed with the third argument, `drop = FALSE`).
 > and 19 through 23. You can do this in one or two steps.
 >
 
+## Challenge solutions
 
 > #### Solution to Challenge 1 {.challenge}
 >
