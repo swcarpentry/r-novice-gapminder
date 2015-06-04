@@ -2,7 +2,7 @@
 layout: page
 title: R for reproducible scientific analysis
 subtitle: Control flow
-minutes: 45
+minutes: 35
 ---
 
 ```{r, include=FALSE}
@@ -244,7 +244,7 @@ output_vector2
 > that you don't end up in an infinite loop because your condition is never met.
 >
 
-> #### Challenge 3 {.challenge}
+> #### Challenge 2 {.challenge}
 >
 > Compare the objects output_vector and
 > output_vector2. Are they the same? If not, why not?
@@ -252,21 +252,21 @@ output_vector2
 > the same as output_vector?
 >
 
-> #### Challenge 4 {.challenge}
+> #### Challenge 3 {.challenge}
 >
 > Write a script that loops through the `gapminder` data by continent and prints out
 > whether the mean life expectancy is smaller or larger than 50
 > years.
 >
 
-> #### Challenge 5 {.challenge}
+> #### Challenge 4 {.challenge}
 >
 > Modify the script from Challenge 4 to also loop over each
 > country. This time print out whether the life expectancy is
 > smaller than 50, between 50 and 70, or greater than 70.
 >
 
-> #### Challenge 6 - Advanced {.challenge}
+> #### Challenge 5 - Advanced {.challenge}
 >
 > Write a script that loops over each country in the `gapminder` dataset,
 > tests whether the country starts with a 'B', and graphs life expectancy
