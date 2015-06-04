@@ -114,7 +114,15 @@ your issue.
 > What is the difference between the `sep` and `collapse` arguments?
 > 
 
-> #### Solution to Challenge 1 {.challenge}
+### Other ports of call
+
+* [Quick R](http://www.statmethods.net/)
+* [RStudio cheat sheets](http://www.rstudio.com/resources/cheatsheets/)
+* [Cookbook for R](http://www.cookbook-r.com/)
+
+## Challenge solutions
+
+> #### Challenge 1 {.challenge}
 > 
 > Look at the help for the `paste` function. You'll need to use this later. 
 > 
@@ -123,10 +131,3 @@ your issue.
 > ?paste
 > ~~~
 >
-
-
-### Other ports of call
-
-* [Quick R](http://www.statmethods.net/)
-* [RStudio cheat sheets](http://www.rstudio.com/resources/cheatsheets/)
-* [Cookbook for R](http://www.cookbook-r.com/)
