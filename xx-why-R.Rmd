@@ -15,21 +15,22 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE, sep=',')
 >
 > * To get a taste of R's powerful visualisation capabilities
 > * To get a taste of R's powerful statistical analysis capabilities
-> * To show how visualisation and analysis support each other
+> * To show how interweaving those capabilities pays off
 >
 
 ### Introduction to R
 
 Welcome to the R portion of the Software Carpentry workshop. We're going to show you how R and RStudio can help you understand large data sets. We'll also guide your first steps towards using them effectively for your own work.
 
-> #### Installation
-> (d/l RStudio)
-> (d/l gapminder -- can we include in this repo?}
-> install.packages('ggplot2')
-> (what else?)
+> ### Installation
+> * Download RStudio from [http://www.rstudio.com/products/rstudio/download/](http://www.rstudio.com/products/rstudio/download/)
+> * (Download gapminder data -- can we include in this repo?}
+> * Once you've got RStudio installed, open it.
+> * In the [prompt tab] enter: install.packages('ggplot2')<return>
+> * (what else?)
 >
 
-Open RStudio, and in [the prompt panel], enter these commands:
+We're going to start with a simple but powerful example of how R can help you analyse data. In RStudio's[the prompt panel], enter these commands (we'll explain how they work soon):
 
 ```{r}
 gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE, sep=',')
@@ -56,3 +57,5 @@ Let's try squashing the influence of those high values on the Y axis:
 ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
   geom_point() + scale_y_log10()
 ```
+
+Much nicer! By using a logarithmic scale for GDP, the outliers no longer, er, lay out. Better yet, the relationship between the two factors we're graphing jumps out at us.
