@@ -349,7 +349,7 @@ which is much better than in our first attempt where we just got a vector of num
 
 ## Challenge solutions
 
-> #### Solution for Challenge 1 {.challenge}
+> #### Solution to challenge 1 {.challenge}
 >
 > Write a function called `kelvin_to_celsius` that takes a temperature in Kelvin
 > and returns that temperature in Celsius
@@ -362,7 +362,7 @@ which is much better than in our first attempt where we just got a vector of num
 > ~~~
 
 
-> #### Solution for Challenge 2 {.challenge}
+> #### Solution to challenge 2 {.challenge}
 >
 > Define the function to convert directly from Fahrenheit to Celsius,
 > by reusing these two functions above
@@ -377,7 +377,7 @@ which is much better than in our first attempt where we just got a vector of num
 > ~~~
 >
 
-> #### Solution for Challenge 3 {.challenge}
+> #### Solution to challenge 3 {.challenge}
 > 
 >
 >  Write a function called `fence` that takes two vectors as arguments, called
