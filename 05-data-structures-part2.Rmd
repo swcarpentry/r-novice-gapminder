@@ -1,0 +1,376 @@
+---
+layout: page
+title: R for reproducible scientific analysis
+subtitle: Data frames and reading in data
+minutes: 15
+---
+
+```{r, include=FALSE}
+source("tools/chunk-options.R")
+# Silently load in the data so the rest of the lesson works
+gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
+```
+
+> ## Learning Objectives {.objectives}
+>
+> * Become familiar with data frames
+> * To be able to read in regular data into R
+>
+
+### Data frames
+
+Data frames are similar to matrices, except each column can be a different atomic type.
+Underneath the hood, data frames are really lists, where each element is
+an atomic vector, with the added restriction that they're all the same length.
+As you will see, if we pull out one column of a data frame, we will have a vector.
+
+
+Data frames can be created manually with the `data.frame` function:
+
+```{r}
+df <- data.frame(id = c('a', 'b', 'c', 'd', 'e', 'f'), x = 1:6, y = c(214:219))
+df
+```
+
+> #### Challenge: Dataframes {.challenge}
+>
+> Try using the `length` function to query
+> your dataframe `df`. Does it give the result
+> you expect?
+>
+
+Each column in the data frame is simply a list element, which is why when you ask for the
+`length` of the data frame, it tells you the number of columns. If you actually want
+the number of rows, you can use the `nrow` function.
+
+We can add rows or columns to a data.frame using `rbind` or `cbind` (these are
+the two-dimensional equivalents of the `c` function):
+
+```{r}
+df <- rbind(df, list("g", 11, 42))
+```
+
+This doesn't work as expected! What does this error message tell us?
+
+It sounds like it was trying to generate a factor level. Why? Perhaps our first
+column (containing characters) is to blame...
+We can access a column in a `data.frame` by using the `$` operator.
+
+
+```{r}
+class(df$id)
+```
+
+Indeed, R automatically made this first column a factor, not a character vector.
+We can change this in place by converting the type of this column.
+
+```{r}
+df$id <- as.character(df$id)
+class(df$id)
+```
+
+Okay, now let's try adding that row again.
+
+```{r}
+df <- rbind(df, list("g", 11, 42))
+tail(df, n=3)
+```
+
+Note that to add a row, we need to use a list, because each column is a different type!
+If you want to add multiple rows to a data.frame, you will need to separate the new columns
+in the list:
+
+```{r}
+df <- rbind(df, list(c("l", "m"), c(12, 13), c(534, -20)))
+tail(df, n=3)
+```
+
+You can also row-bind data.frames together:
+
+```{r}
+rbind(df, df)
+```
+
+To add a column we can use `cbind`:
+
+```{r}
+df <- cbind(df, 10:1)
+df
+```
+
+> #### Challenge {.challenge}
+>
+> Create a dataframe that holds the following information for yourself:
+>
+> * First name
+> * Last name
+> * Age
+>
+> Then use rbind to add the same information for the people sitting near you.
+>
+> Now use cbind to add a column of logicals answering the question,
+> "Is there anything in this workshop you're finding confusing?"
+>
+
+### Reading in data
+
+Remember earlier we obtained the gapminder dataset.
+If you're curious about where this data comes from you might like to
+look at the [Gapminder website](http://www.gapminder.org/data/documentation/)
+
+Now we want to load the gapminder data into R.
+Before reading in data, it's a good idea to have a look at its structure.
+Let's take a look using our newly-learned shell skills:
+
+```{r, engine='bash'}
+cd data/ # navigate to the data directory of the project folder
+head gapminder-FiveYearData.csv
+```
+
+As its file extension would suggest, the file contains comma-separated
+values, and seems to contain a header row.
+
+We can use `read.table` to read this into R
+
+```{r}
+gapminder <- read.table(
+  file="data/gapminder-FiveYearData.csv",
+  header=TRUE, sep=","
+)
+head(gapminder)
+```
+
+Because we know the structure of the data, we're able
+to specify the appropriate arguments to `read.table`.
+Without these arguments, `read.table` will do its
+best to do something sensible, but it is always more
+reliable to explicitly tell `read.table` the structure
+of the data. `read.csv` function provides a convenient shortcut
+for loading in CSV files.
+
+```{r}
+# Here is the read.csv version of the above command
+gapminder <- read.csv(
+  file="data/gapminder-FiveYearData.csv"
+)
+head(gapminder)
+```
+
+> #### Miscellaneous Tips {.callout}
+>
+> 1. Another type of file you might encounter are tab-separated
+> format. To specify a tab as a separator, use `"\t"`.
+>
+> 2. You can also read in files from the internet by replacing
+> the file paths with a web address.
+>
+> 3. You can read directly from excel spreadsheets without
+> converting them to plain text first by using the `xlsx` package.
+>
+
+To make sure our analysis is reproducible, we should put the code
+into a script file so we can come back to it later.
+
+> #### Challenge {.challenge}
+>
+> Go to file -> new file -> R script, and write an R script
+> to load in the gapminder dataset. Put it in the `scripts/`
+> directory and add it to version control.
+>
+> Run the script using the `source` function, using the file path
+> as its argument (or by pressing the "source" button in RStudio).
+>
+
+### Using dataframes: the `gapminder` dataset
+
+
+To recap what we've just learnt, let's have a look at our example
+data (life expectancy in various countries for various years).
+
+Remember, there are a few functions we can use to interrogate data structures in R:
+
+```{r, eval=FALSE}
+class() # what is the data structure?
+typeof() # what is its atomic type?
+length() # how long is it? What about two dimensional objects?
+attributes() # does it have any metadata?
+str() # A full summary of the entire object
+dim() # Dimensions of the object - also try nrow(), ncol()
+```
+
+Let's use them to explore the gapminder dataset.
+
+```{r}
+typeof(gapminder)
+```
+
+Remember, data frames are lists 'under the hood'.
+
+```{r}
+class(gapminder)
+```
+
+The gapminder data is stored in a "data.frame". This is the default data structure when you read
+in data, and (as we've heard) is useful for storing data with mixed types of columns.
+
+Let's look at some of the columns.
+
+> #### Challenge: Data types in a real dataset {.challenge}
+>
+> Look at the first 6 rows of the gapminder dataframe we loaded before:
+>
+> ~~~ {.r}
+> head(gapminder)
+> ~~~
+>
+> ~~~ {.output}
+> ##       country year      pop continent lifeExp gdpPercap
+> ## 1 Afghanistan 1952  8425333      Asia  28.801  779.4453
+> ## 2 Afghanistan 1957  9240934      Asia  30.332  820.8530
+> ## 3 Afghanistan 1962 10267083      Asia  31.997  853.1007
+> ## 4 Afghanistan 1967 11537966      Asia  34.020  836.1971
+> ## 5 Afghanistan 1972 13079460      Asia  36.088  739.9811
+> ## 6 Afghanistan 1977 14880372      Asia  38.438  786.1134
+> ~~~
+>
+> Write down what data type you think is in each column
+>
+
+
+```{r}
+typeof(gapminder$year)
+typeof(gapminder$lifeExp)
+```
+
+Can anyone guess what we should expect the type of the continent column to be?
+
+```{r}
+typeof(gapminder$continent)
+```
+
+If you were expecting a the answer to be "character", you would rightly be
+surprised by the answer. Let's take a look at the class of this column:
+
+```{r}
+class(gapminder$continent)
+```
+
+One of the default behaviours of R is to treat any text columns as "factors"
+when reading in data. The reason for this is that text columns often represent
+categorical data, which need to be factors to be handled appropriately by
+the statistical modelling functions in R.
+
+However it's not obvious behaviour, and something that trips many people up. We can
+disable this behaviour and read in the data again.
+
+```{r}
+options(stringsAsFactors=FALSE)
+gapminder <- read.table(
+  file="data/gapminder-FiveYearData.csv", header=TRUE, sep=","
+)
+```
+
+Remember, if you do turn it off automatic conversion to factors you will need to
+explicitly convert the variables into factors when
+running statistical models.
+This can be useful, because it forces you to think about the
+question you're asking, and makes it easier to specify the ordering of the categories.
+
+However there are many in the R community who find it more sensible to
+leave this as the default behaviour.
+
+> #### Tip: Changing options {.callout}
+>
+> When R starts, the first thing it does is runs any code in the file `.Rprofile`
+> in the project directory. Any permanent changes to default behaviour you want
+> to make should be stored in that file.
+>
+
+The first thing you should do when reading data in, is check that it matches what
+you expect, even if the command ran without warnings or errors. The `str` function,
+short for "structure", is really useful for this:
+
+```{r}
+str(gapminder)
+```
+
+We can see that the object is a `data.frame` with 1,704 observations (rows),
+and 6 variables (columns). Below that, we see the name of each column, followed
+by a ":", followed by the type of variable in that column, along with the first
+few entries.
+
+We can also retrieve or modify the column or rownames of the data.frame:
+
+```{r}
+colnames(gapminder)
+```
+
+```{r}
+rownames(gapminder)
+```
+
+See those numbers in the square brackets on the left? That tells you the
+number of the first entry in that row of output. So in the last line, we
+see that the "[1701]" element has "1701" stored in it. The rownames in
+this case are simply the row numbers.
+
+We can also modify this information:
+
+```{r}
+copy <- gapminder # lets create a copy so we don't mess up the original
+colnames(copy) <- c("a", "b", "c", "d", "e", "f")
+head(copy)
+```
+
+There are a few related ways of retreiving and modifying this information.
+`attributes` will give you both the row and column names, along with the
+class information, while `dimnames` will give you just the rownames and
+column names.
+
+In both cases, the output object is stored in a `list`:
+
+```{r}
+str(dimnames(df))
+```
+
+## Understanding how lists are used in function output
+
+
+Lets run a basic linear regression on the gapminder dataset:
+
+```{r}
+# What is the relationship between life expectancy and year?
+l1 <- lm(lifeExp ~ year, data=gapminder)
+```
+
+We won't go into too much detail of what I just wrote, but briefly;
+the `~` denotes a formula, which means treat the variable on the left of the
+`~` as the left hand side of the equation (or response in this case), and
+everything on the right as the right hand side. By telling the linear
+model function to use the gapminder data frame, it knows to look for those
+variable names as its columns.
+
+Let's look at the output:
+
+```{r}
+l1
+```
+
+Not much there right? But if we look at the structure...
+
+```{r}
+str(l1)
+```
+
+There's a lot of stuff, stored in nested lists! This is why the structure
+function is really useful, it allows you to see all the data available to
+you returned by a function.
+
+For now, we can look at the `summary`:
+
+```{r}
+summary(l1)
+```
+
+As you might expect, life expectancy has slowly been increasing over
+time, so we see a significant positive association!

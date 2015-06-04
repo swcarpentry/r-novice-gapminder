@@ -5,7 +5,9 @@ subtitle: Introduction to R and RStudio
 minutes: 15
 ---
 
-
+```{r, include=FALSE}
+source("tools/chunk-options.R")
+```
 
 > ### Learning Objectives {.objectives}
 >
@@ -76,17 +78,9 @@ then returns a result.
 
 The simplest thing you could do with R is do arithmetic:
 
-
-~~~{.r}
+```{r}
 1 + 100
-~~~
-
-
-
-~~~{.output}
-[1] 101
-
-~~~
+```
 
 And R will print out the answer, with a preceding "[1]". Don't worry about this 
 for now, we'll explain that later. For now think of it as indicating ouput.
@@ -131,41 +125,24 @@ From highest to lowest precedence:
  * Add: `+`
  * Subtract: `-`
 
-
-~~~{.r}
+```{r}
 3 + 5 * 2
-~~~
-
-
-
-~~~{.output}
-[1] 13
-
-~~~
+```
 
 Use brackets (actually parentheses) to group to force the order of evaluation
 if it differs from the default, or to set your own order.
 
-
-~~~{.r}
+```{r}
 (3 + 5) * 2
-~~~
-
-
-
-~~~{.output}
-[1] 16
-
-~~~
+```
 
 But this can get unwieldy when not needed:
 
-
-~~~{.r}
+```{r, eval=FALSE}
 (3 + (5 * (2 ^ 2))) # hard to read
 3 + 5 * 2 ^ 2       # easier to read, once you know rules
 3 + 5 * (2 ^ 2)     # if you forget some rules, this might help
-~~~
+``` 
 
 
 The text I've typed after each line of code is called a comment. Anything that
@@ -174,34 +151,18 @@ executes code.
 
 Really small or large numbers get a scientific notation:
 
-
-~~~{.r}
+```{r}
 2/10000
-~~~
-
-
-
-~~~{.output}
-[1] 2e-04
-
-~~~
+``` 
 
 Which is shorthand for "multiplied by `10^XX`". So `2e-4`
 is shorthand for `2 * 10^(-4)`.
 
 You can write numbers in scientific notation too:
 
-
-~~~{.r}
+```{r}
 5e3  # Note the lack of minus here
-~~~
-
-
-
-~~~{.output}
-[1] 5000
-
-~~~
+```
 
 #### Mathematical functions
 
@@ -210,53 +171,21 @@ we simply type its name, follow by and open and closing bracket.
 Anything we type inside those brackets is called the function's
 arguments:
 
-
-~~~{.r}
+```{r}
 sin(1)  # trigonometry functions
-~~~
+```
 
-
-
-~~~{.output}
-[1] 0.8415
-
-~~~
-
-
-~~~{.r}
+```{r}
 log(1)  # natural logarithm
-~~~
+```
 
-
-
-~~~{.output}
-[1] 0
-
-~~~
-
-
-~~~{.r}
+```{r}
 log10(10) # base-10 logarithm
-~~~
+```
 
-
-
-~~~{.output}
-[1] 1
-
-~~~
-
-
-~~~{.r}
+```{r}
 exp(0.5) # e^(1/2)
-~~~
-
-
-
-~~~{.output}
-[1] 1.649
-
-~~~
+```
 
 Don't worry about trying to remember every function in R. You
 can simply look them up on google, or if you can remember the
@@ -277,77 +206,29 @@ illustrate command usage. We'll go through an example later.
 
 We can also do comparison in R:
 
-
-~~~{.r}
+```{r}
 1 == 1  # equality (note two equals signs, read as "is equal to")
-~~~
+```
 
-
-
-~~~{.output}
-[1] TRUE
-
-~~~
-
-
-~~~{.r}
+```{r}
 1 != 2  # inequality (read as "is not equal to")
-~~~
+```
 
-
-
-~~~{.output}
-[1] TRUE
-
-~~~
-
-
-~~~{.r}
+```{r}
 1 <  2  # less than
-~~~
+```
 
-
-
-~~~{.output}
-[1] TRUE
-
-~~~
-
-
-~~~{.r}
+```{r}
 1 <= 1  # less than or equal to
-~~~
+```
 
-
-
-~~~{.output}
-[1] TRUE
-
-~~~
-
-
-~~~{.r}
+```{r}
 1 > 0  # greater than
-~~~
+```
 
-
-
-~~~{.output}
-[1] TRUE
-
-~~~
-
-
-~~~{.r}
+```{r}
 1 >= -9 # greater than or equal to
-~~~
-
-
-
-~~~{.output}
-[1] TRUE
-
-~~~
+```
 
 > #### Tip: Comparing Numbers {.callout}
 > 
@@ -372,25 +253,16 @@ We can also do comparison in R:
 
 We can store values in variables using the assignment operator `<-`, like this:
 
-
-~~~{.r}
+```{r}
 x <- 1/40
-~~~
+```
 
 Notice that assignment does not print a value. Instead, we stored it for later
 in something called a **variable**. `x` now contains the **value** `0.025`:
 
-
-~~~{.r}
+```{r}
 x
-~~~
-
-
-
-~~~{.output}
-[1] 0.025
-
-~~~
+```
 
 More precisely, the stored value is a *decimal approximation* of
 this fraction called a [floating point number](http://en.wikipedia.org/wiki/Floating_point).
@@ -398,33 +270,23 @@ this fraction called a [floating point number](http://en.wikipedia.org/wiki/Floa
 Look for the `Environment` tab in one of the panes of RStudio, and you will see that `x` and its value
 have appeared. Our variable `x` can be used in place of a number in any calculation that expects a number:
 
-
-~~~{.r}
+```{r}
 log(x)
-~~~
-
-
-
-~~~{.output}
-[1] -3.689
-
-~~~
+```
 
 Notice also that variables can be reassigned:
 
-
-~~~{.r}
+```{r}
 x <- 100
-~~~
+```
 
 `x` used to contain the value 0.025 and and now it has the value 100.
 
 Assignment values can contain the variable being assigned to:
 
-
-~~~{.r}
+```{r}
 x <- x + 1 #notice how RStudio updates its description of x on the top right tab
-~~~
+```
 
 The right hand side of the assignment can be any valid R expression.
 The right hand side is *fully evaluated* before the assignment occurs.
@@ -441,10 +303,9 @@ What you use is up to you, but **be consistent**.
 
 It is also possible to use the `=` operator for assignment:
 
-
-~~~{.r}
+```{r}
 x = 1/40
-~~~
+```
 
 But this is much less common among R users.  The most important thing is to
 **be consistent** with the operator you use. There are occasionally places
@@ -458,17 +319,9 @@ There are a few useful commands you can use to interact with the R session.
 `ls` will list all of the variables and functions stored in the global environment
 (your working R session):
 
-
-~~~{.r}
+```{r}
 ls()
-~~~
-
-
-
-~~~{.output}
-[1] "hook_in"  "hook_out" "x"       
-
-~~~
+```
 
 > #### Tip: hidden objects {.callout}
 > 
@@ -482,65 +335,22 @@ the brackets to tell R to call the function.
 
 If we type `ls` by itself, R will print out the source code for that function!
 
-
-~~~{.r}
+```{r}
 ls
-~~~
-
-
-
-~~~{.output}
-function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE, 
-    pattern) 
-{
-    if (!missing(name)) {
-        nameValue <- try(name, silent = TRUE)
-        if (identical(class(nameValue), "try-error")) {
-            name <- substitute(name)
-            if (!is.character(name)) 
-                name <- deparse(name)
-            warning(gettextf("%s converted to character string", 
-                sQuote(name)), domain = NA)
-            pos <- name
-        }
-        else pos <- nameValue
-    }
-    all.names <- .Internal(ls(envir, all.names))
-    if (!missing(pattern)) {
-        if ((ll <- length(grep("[", pattern, fixed = TRUE))) && 
-            ll != length(grep("]", pattern, fixed = TRUE))) {
-            if (pattern == "[") {
-                pattern <- "\\["
-                warning("replaced regular expression pattern '[' by  '\\\\['")
-            }
-            else if (length(grep("[^\\\\]\\[<-", pattern))) {
-                pattern <- sub("\\[<-", "\\\\\\[<-", pattern)
-                warning("replaced '[<-' by '\\\\[<-' in regular expression pattern")
-            }
-        }
-        grep(pattern, all.names, value = TRUE)
-    }
-    else all.names
-}
-<bytecode: 0x7f9fca043558>
-<environment: namespace:base>
-
-~~~
+```
 
 You can use `rm` to delete objects you no longer need:
 
-
-~~~{.r}
+```{r}
 rm(x)
-~~~
+```
 
 If you have lots of things in your environment and want to delete all of them,
 you can pass the results of `ls` to the `rm` function:
 
-
-~~~{.r}
+```{r}
 rm(list = ls())
-~~~
+```
 
 In this case we've combined the two. Just like the order of operations, anything
 inside the innermost brackets is evaluated first, and so on. 
@@ -552,17 +362,9 @@ use the `=` operator!!
 If instead we use `<-`, there will be unintended side effects, or you may just 
 get an error message:
 
-
-~~~{.r}
+```{r, error=TRUE}
 rm(list <- ls())
-~~~
-
-
-
-~~~{.output}
-Error: ... must contain names or character strings
-
-~~~
+```
 
 > #### Tip: Warnings vs. Errors {.callout} 
 >

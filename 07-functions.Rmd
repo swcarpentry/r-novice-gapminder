@@ -5,7 +5,11 @@ subtitle: Creating functions
 minutes: 15
 ---
 
-
+```{r, include=FALSE}
+source("tools/chunk-options.R")
+# Silently load in the data so the rest of the lesson works
+gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
+```
 
 > ## Objectives {.objectives}
 >
@@ -30,23 +34,21 @@ several operations with a single command.
 
 Let's open a new R script file in the `functions/` directory and call it functions-lesson.R.
 
-
-~~~{.r}
+```{r}
 my_sum <- function(a, b) {
   the_sum <- a + b
   return(the_sum)
 }
-~~~
+```
 
 Let’s define a function fahr_to_kelvin that converts temperatures from Fahrenheit to Kelvin:
 
-
-~~~{.r}
+```{r}
 fahr_to_kelvin <- function(temp) {
   kelvin <- ((temp - 32) * (5 / 9)) + 273.15
   return(kelvin)
 }
-~~~
+```
 
 We define `fahr_to_kelvin` by assigning it to the output of `function`.
 The list of argument names are containted within parentheses.
@@ -67,31 +69,15 @@ Inside the function, we use a [return statement](reference.html#return-statement
 Let's try running our function.
 Calling our own function is no different from calling any other function:
 
-
-~~~{.r}
+```{r}
 # freezing point of water
 fahr_to_kelvin(32)
-~~~
+```
 
-
-
-~~~{.output}
-[1] 273.1
-
-~~~
-
-
-~~~{.r}
+```{r}
 # boiling point of water
 fahr_to_kelvin(212)
-~~~
-
-
-
-~~~{.output}
-[1] 373.1
-
-~~~
+```
 
 > #### Challenge 1 {.challenge}
 > 
@@ -109,8 +95,7 @@ into ever large chunks to get the effect we want.
 Let's define two functions that will convert temparature from Fahrenheit to
 Kelvin, and Kelvin to Celsius:
 
-
-~~~{.r}
+```{r}
 fahr_to_kelvin <- function(temp) {
   kelvin <- ((temp - 32) * (5 / 9)) + 273.15
   return(kelvin)
@@ -120,7 +105,7 @@ kelvin_to_celsius <- function(temp) {
   celsius <- temp - 273.15
   return(celsius)
 }
-~~~
+```
 
 > #### Challenge 2 {.challenge}
 >
@@ -133,15 +118,14 @@ We're going to define
 a function that calculates the Gross Domestic Product of a nation from the data
 available in our dataset:
 
-
-~~~{.r}
+```{r}
 # Takes a dataset and multiplies the population column
 # with the GDP per capita column.
 calcGDP <- function(dat) {
   gdp <- dat$pop * dat$gdpPercap
   return(gdp)
 }
-~~~
+```
 
 We define `calcGDP` by assigning it to the output of `function`.
 The list of argument names are containted within parentheses.
@@ -161,23 +145,14 @@ return the results of whatever command is executed on the last line
 of the function.
 
 
-
-~~~{.r}
+```{r}
 calcGDP(head(gapminder))
-~~~
-
-
-
-~~~{.output}
-[1] 6.567e+09 7.585e+09 8.759e+09 9.648e+09 9.679e+09 1.170e+10
-
-~~~
+```
 
 That's not very informative. Let's add some more arguments so we can extract 
 that per year and country. 
 
-
-~~~{.r}
+```{r}
 # Takes a dataset and multiplies the population column
 # with the GDP per capita column.
 calcGDP <- function(dat, year=NULL, country=NULL) {
@@ -192,16 +167,15 @@ calcGDP <- function(dat, year=NULL, country=NULL) {
   new <- cbind(dat, gdp=gdp)   
   return(new)
 }
-~~~
+```
 
 If you've been writing these functions down into a separate R script 
 (a good idea!), you can load in the functions into our R session by using the
 `source` function:
 
-
-~~~{.r}
+```{r, eval=FALSE}
 source("functions/functions-lesson.R")
-~~~
+```
 
 Ok, so there's a lot going on in this function now. In plain english,
 the function now subsets the provided data by year if the year argument isn't 
@@ -213,86 +187,41 @@ You can see that the output is much more informative than just getting a vector 
 
 Let's take a look at what happens when we specify the year:
 
-
-~~~{.r}
+```{r}
 head(calcGDP(gapminder, year=2007))
-~~~
-
-
-
-~~~{.output}
-       country year      pop continent lifeExp gdpPercap       gdp
-12 Afghanistan 2007 31889923      Asia   43.83     974.6 3.108e+10
-24     Albania 2007  3600523    Europe   76.42    5937.0 2.138e+10
-36     Algeria 2007 33333216    Africa   72.30    6223.4 2.074e+11
-48      Angola 2007 12420476    Africa   42.73    4797.2 5.958e+10
-60   Argentina 2007 40301927  Americas   75.32   12779.4 5.150e+11
-72   Australia 2007 20434176   Oceania   81.23   34435.4 7.037e+11
-
-~~~
+```
 
 Or for a specific country:
 
-
-~~~{.r}
+```{r}
 calcGDP(gapminder, country="Australia")
-~~~
-
-
-
-~~~{.output}
-     country year      pop continent lifeExp gdpPercap       gdp
-61 Australia 1952  8691212   Oceania   69.12     10040 8.726e+10
-62 Australia 1957  9712569   Oceania   70.33     10950 1.063e+11
-63 Australia 1962 10794968   Oceania   70.93     12217 1.319e+11
-64 Australia 1967 11872264   Oceania   71.10     14526 1.725e+11
-65 Australia 1972 13177000   Oceania   71.93     16789 2.212e+11
-66 Australia 1977 14074100   Oceania   73.49     18334 2.580e+11
-67 Australia 1982 15184200   Oceania   74.74     19477 2.957e+11
-68 Australia 1987 16257249   Oceania   76.32     21889 3.559e+11
-69 Australia 1992 17481977   Oceania   77.56     23425 4.095e+11
-70 Australia 1997 18565243   Oceania   78.83     26998 5.012e+11
-71 Australia 2002 19546792   Oceania   80.37     30688 5.998e+11
-72 Australia 2007 20434176   Oceania   81.23     34435 7.037e+11
-
-~~~
+```
 
 Or both:
 
-
-~~~{.r}
+```{r}
 calcGDP(gapminder, year=2007, country="Australia")
-~~~
-
-
-
-~~~{.output}
-     country year      pop continent lifeExp gdpPercap       gdp
-72 Australia 2007 20434176   Oceania   81.23     34435 7.037e+11
-
-~~~
+```
 
 Let's walk through the body of the function:
 
-
-~~~{.r}
+``` {r, eval=FALSE}
 calcGDP <- function(dat, year=NULL, country=NULL) {
-~~~
+```
 
 Here we've added two argumets, `year`, and `country`. We've set 
 *default arguments* for both as `NULL` using the `=` operator
 in the function definition. This means that those arguments will
 take on those values unless the user specifies otherwise.
 
-
-~~~{.r}
+```{r, eval=FALSE}
   if(!is.null(year)) {
     dat <- dat[dat$year %in% year, ] 
   }
   if (!is.null(country)) {
     dat <- dat[dat$country %in% country,]
   }
-~~~
+```
 
 Here, we check whether each additional argument is set to `null`,
 and whenever they're not `null` overwrite the dataset stored in `dat` with 
@@ -331,13 +260,12 @@ to those arguments.
 > not modified in any way when executing a function.
 >
 
-
-~~~{.r}
+```{r, eval=FALSE}
   gdp <- dat$pop * dat$gdpPercap
   new <- cbind(dat, gdp=gdp)   
   return(new)
 }
-~~~
+```
 
 Finally, we calculated the GDP on our new subset, and created a new 
 data frame with that column added. This means when we call the function

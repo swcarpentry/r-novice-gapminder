@@ -72,8 +72,7 @@
   <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>
 )</code></pre>
 <p>Let’s switch back to the shell to take a look at the data to make sure it looks ok:</p>
-<pre class="shell"><code>cd ~/gapminder/cleaned-data/
-head gapminder-aus.csv</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">head cleaned-data/gapminder-aus.csv</code></pre>
 <pre class="output"><code>&quot;country&quot;,&quot;year&quot;,&quot;pop&quot;,&quot;continent&quot;,&quot;lifeExp&quot;,&quot;gdpPercap&quot;
 &quot;61&quot;,&quot;Australia&quot;,1952,8691212,&quot;Oceania&quot;,69.12,10039.59564
 &quot;62&quot;,&quot;Australia&quot;,1957,9712569,&quot;Oceania&quot;,70.33,10949.64959
@@ -83,7 +82,8 @@ head gapminder-aus.csv</code></pre>
 &quot;66&quot;,&quot;Australia&quot;,1977,14074100,&quot;Oceania&quot;,73.49,18334.19751
 &quot;67&quot;,&quot;Australia&quot;,1982,15184200,&quot;Oceania&quot;,74.74,19477.00928
 &quot;68&quot;,&quot;Australia&quot;,1987,16257249,&quot;Oceania&quot;,76.32,21888.88903
-&quot;69&quot;,&quot;Australia&quot;,1992,17481977,&quot;Oceania&quot;,77.56,23424.76683</code></pre>
+&quot;69&quot;,&quot;Australia&quot;,1992,17481977,&quot;Oceania&quot;,77.56,23424.76683
+</code></pre>
 <p>Hmm, that’s not quite what we wanted. Where did all these quotation marks come from? Also the row numbers are meaningless.</p>
 <p>Let’s look at the help file to work out how to change this behaviour.</p>
 <pre class="sourceCode r"><code class="sourceCode r">?write.table</code></pre>
@@ -95,7 +95,7 @@ head gapminder-aus.csv</code></pre>
   <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>, <span class="dt">quote=</span><span class="ot">FALSE</span>, <span class="dt">row.names=</span><span class="ot">FALSE</span>
 )</code></pre>
 <p>Now lets look at the data again using our shell skills:</p>
-<pre class="shell"><code>head gapminder-aus.csv</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">head cleaned-data/gapminder-aus.csv</code></pre>
 <pre class="output"><code>country,year,pop,continent,lifeExp,gdpPercap
 Australia,1952,8691212,Oceania,69.12,10039.59564
 Australia,1957,9712569,Oceania,70.33,10949.64959
@@ -105,7 +105,8 @@ Australia,1972,13177000,Oceania,71.93,16788.62948
 Australia,1977,14074100,Oceania,73.49,18334.19751
 Australia,1982,15184200,Oceania,74.74,19477.00928
 Australia,1987,16257249,Oceania,76.32,21888.88903
-Australia,1992,17481977,Oceania,77.56,23424.76683</code></pre>
+Australia,1992,17481977,Oceania,77.56,23424.76683
+</code></pre>
 <p>That looks better!</p>
 <div id="challenge-2" class="challenge panel panel-success">
 <div class="panel-heading">

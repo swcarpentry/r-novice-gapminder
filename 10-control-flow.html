@@ -44,17 +44,14 @@
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># if</span>
 if (condition is true) {
   perform action
-  }
+}
 
 <span class="co"># if ... else</span>
-
 if (condition is true) {
   perform action
-  }
-else {                        <span class="co"># that is, if the condition is false,</span>
+} else {  <span class="co"># that is, if the condition is false,</span>
   perform alternative action
-  }
-  </code></pre>
+}</code></pre>
 <p>Say, for example, that we want R to print a message if a variable <code>x</code> has a particular value:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sample a random number from a Poisson distribution</span>
 <span class="co"># with a mean (lambda) of 8</span>
@@ -63,13 +60,14 @@ x &lt;-<span class="st"> </span><span class="kw">rpois</span>(<span class="dv">1
 
 if (x &gt;=<span class="st"> </span><span class="dv">10</span>) {
   <span class="kw">print</span>(<span class="st">&quot;x is greater than or equal to 10&quot;</span>)
-  }
+}
   
 x</code></pre>
+<pre class="output"><code>[1] 8
+</code></pre>
 <p>Note you may not get the same output as your neighbour because you may be sampling different random numbers from the same distribution.</p>
 <p>Let’s set a seed so that we all generate the same ‘pseudo-random’ number, and then print more information:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">10</span>)
-x &lt;-<span class="st"> </span><span class="kw">rpois</span>(<span class="dv">1</span>, <span class="dt">lambda=</span><span class="dv">8</span>)
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">rpois</span>(<span class="dv">1</span>, <span class="dt">lambda=</span><span class="dv">8</span>)
 
 if (x &gt;=<span class="st"> </span><span class="dv">10</span>) {
   <span class="kw">print</span>(<span class="st">&quot;x is greater than or equal to 10&quot;</span>)
@@ -77,25 +75,27 @@ if (x &gt;=<span class="st"> </span><span class="dv">10</span>) {
   <span class="kw">print</span>(<span class="st">&quot;x is greater than 5&quot;</span>)
 } else {
   <span class="kw">print</span>(<span class="st">&quot;x is less than 5&quot;</span>)
-  }</code></pre>
-<pre class="output"><code>[1] &quot;x is greater than 5&quot;</code></pre>
+}</code></pre>
+<pre class="output"><code>[1] &quot;x is greater than 5&quot;
+</code></pre>
 <div id="tip-pseudo-random-numbers" class="callout panel panel-info">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pushpin"></span>Tip: pseudo-random numbers</h4>
 </div>
 <div class="panel-body">
-<p>In the above case, the function <code>rpois</code> generates a random number following a Poisson distribution with a mean (i.e. lambda) of 8. The function <code>set.seed</code> guarantees that all machines that use the seed 10 as an input, will generate the exact same ‘pseudo-random’ number (<a href="http://en.wikibooks.org/wiki/R_Programming/Random_Number_Generation">more about pseudo-random numbers</a>). Now, looking at x we see that it takes the value 8 (you should get the exact same number).</p>
+<p>In the above case, the function <code>rpois</code> generates a random number following a Poisson distribution with a mean (i.e. lambda) of 8. The function <code>set.seed</code> guarantees that all machines will generate the exact same ‘pseudo-random’ number (<a href="http://en.wikibooks.org/wiki/R_Programming/Random_Number_Generation">more about pseudo-random numbers</a>). So if we <code>set.seed(10)</code>, we see that <code>x</code> takes the value 8. You should get the exact same number.</p>
 </div>
 </div>
 <p><strong>Important:</strong> when R evaluates the condition inside <code>if</code> statements, it is looking for a logical element, i.e., <code>TRUE</code> or <code>FALSE</code>. This can cause some headaches for beginners. For example:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x  &lt;-<span class="st">  </span><span class="dv">4</span> ==<span class="st"> </span><span class="dv">3</span>
 if (x) {
-    <span class="st">&quot;4 equals 3&quot;</span>
+  <span class="st">&quot;4 equals 3&quot;</span>
 }</code></pre>
 <p>As we can see, the message was not printed because the vector x is <code>FALSE</code></p>
-<pre class="sourceCode r"><code class="sourceCode r">x  &lt;-<span class="st">  </span><span class="dv">4</span> ==<span class="st"> </span><span class="dv">3</span>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">4</span> ==<span class="st"> </span><span class="dv">3</span>
 x</code></pre>
-<pre class="output"><code>[1] FALSE</code></pre>
+<pre class="output"><code>[1] FALSE
+</code></pre>
 <div id="challenge-1" class="challenge panel panel-success">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h4>
@@ -105,9 +105,9 @@ x</code></pre>
 </div>
 </div>
 <p>Did anyone get a warning message like this?</p>
-<pre class="output"><code>Warning message:
-In if (gapminder$year == 2012) { :
-  the condition has length &gt; 1 and only the first element will be used</code></pre>
+<pre class="output"><code>Warning: the condition has length &gt; 1 and only the first element will be
+used
+</code></pre>
 <p>If your condition evaluates to a vector with more than one logical element, the function <code>if</code> will still run, but will only evaluate the condition in the first element. Here you need to make sure your condition is of length 1.</p>
 <blockquote>
 <h4>Tip: <code>any</code> and <code class="callout">all</code></h4>
@@ -123,7 +123,8 @@ In if (gapminder$year == 2012) { :
   z &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)
   <span class="kw">print</span>(z)
 }</code></pre>
-<pre class="output"><code>Error: object &#39;z&#39; not found</code></pre>
+<pre class="output"><code>Error: object &#39;z&#39; not found
+</code></pre>
 <p>But wait, that doesn’t work! What’s the problem?</p>
 <p>The problem is that we haven’t defined <code>z</code>, and so the very first time the while loop’s condition is checked (<code>z &gt; 0.1</code>), <code>while</code> just says “Okay, that’s not true so I’m not going to execute this block of code”. The same thing would have happened if we defined <code>z</code> to be anything less than 0.1. Let’s fix it.</p>
 <pre class="sourceCode r"><code class="sourceCode r">z &lt;-<span class="st"> </span><span class="dv">1</span>
@@ -131,6 +132,10 @@ while(z &gt;<span class="st"> </span><span class="fl">0.1</span>){
   z &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)
   <span class="kw">print</span>(z)
 }</code></pre>
+<pre class="output"><code>[1] 0.4269
+[1] 0.6931
+[1] 0.08514
+</code></pre>
 <div id="challenge-2" class="challenge panel panel-success">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h4>
@@ -148,6 +153,17 @@ while(z &gt;<span class="st"> </span><span class="fl">0.1</span>){
 <pre class="sourceCode r"><code class="sourceCode r">for(i in <span class="dv">1</span>:<span class="dv">10</span>){
   <span class="kw">print</span>(i)
 }</code></pre>
+<pre class="output"><code>[1] 1
+[1] 2
+[1] 3
+[1] 4
+[1] 5
+[1] 6
+[1] 7
+[1] 8
+[1] 9
+[1] 10
+</code></pre>
 <p>The <code>1:10</code> bit creates a vector on the fly; you can iterate over any other vector as well.</p>
 <p>We can use a <code>for</code> loop nested within another <code>for</code> loop to iterate over two things at once.</p>
 <pre class="sourceCode r"><code class="sourceCode r">for (i in <span class="dv">1</span>:<span class="dv">5</span>){
@@ -155,6 +171,32 @@ while(z &gt;<span class="st"> </span><span class="fl">0.1</span>){
     <span class="kw">print</span>(<span class="kw">paste</span>(i,j))
   }
 }</code></pre>
+<pre class="output"><code>[1] &quot;1 a&quot;
+[1] &quot;1 b&quot;
+[1] &quot;1 c&quot;
+[1] &quot;1 d&quot;
+[1] &quot;1 e&quot;
+[1] &quot;2 a&quot;
+[1] &quot;2 b&quot;
+[1] &quot;2 c&quot;
+[1] &quot;2 d&quot;
+[1] &quot;2 e&quot;
+[1] &quot;3 a&quot;
+[1] &quot;3 b&quot;
+[1] &quot;3 c&quot;
+[1] &quot;3 d&quot;
+[1] &quot;3 e&quot;
+[1] &quot;4 a&quot;
+[1] &quot;4 b&quot;
+[1] &quot;4 c&quot;
+[1] &quot;4 d&quot;
+[1] &quot;4 e&quot;
+[1] &quot;5 a&quot;
+[1] &quot;5 b&quot;
+[1] &quot;5 c&quot;
+[1] &quot;5 d&quot;
+[1] &quot;5 e&quot;
+</code></pre>
 <p>Rather than printing the results, we could write the loop output to a new object.</p>
 <pre class="sourceCode r"><code class="sourceCode r">output_vector &lt;-<span class="st"> </span><span class="kw">c</span>() 
 for (i in <span class="dv">1</span>:<span class="dv">5</span>){
@@ -164,10 +206,10 @@ for (i in <span class="dv">1</span>:<span class="dv">5</span>){
   }
 }
 output_vector</code></pre>
-<pre class="output"><code> [1] &quot;1 a&quot; &quot;1 b&quot; &quot;1 c&quot; &quot;1 d&quot; &quot;1 e&quot; &quot;2 a&quot; &quot;2 b&quot; &quot;2 c&quot;
- [9] &quot;2 d&quot; &quot;2 e&quot; &quot;3 a&quot; &quot;3 b&quot; &quot;3 c&quot; &quot;3 d&quot; &quot;3 e&quot; &quot;4 a&quot;
-[17] &quot;4 b&quot; &quot;4 c&quot; &quot;4 d&quot; &quot;4 e&quot; &quot;5 a&quot; &quot;5 b&quot; &quot;5 c&quot; &quot;5 d&quot;
-[25] &quot;5 e&quot;</code></pre>
+<pre class="output"><code> [1] &quot;1 a&quot; &quot;1 b&quot; &quot;1 c&quot; &quot;1 d&quot; &quot;1 e&quot; &quot;2 a&quot; &quot;2 b&quot; &quot;2 c&quot; &quot;2 d&quot; &quot;2 e&quot; &quot;3 a&quot;
+[12] &quot;3 b&quot; &quot;3 c&quot; &quot;3 d&quot; &quot;3 e&quot; &quot;4 a&quot; &quot;4 b&quot; &quot;4 c&quot; &quot;4 d&quot; &quot;4 e&quot; &quot;5 a&quot; &quot;5 b&quot;
+[23] &quot;5 c&quot; &quot;5 d&quot; &quot;5 e&quot;
+</code></pre>
 <p>This approach can be useful, but ‘growing your results’ (building the result object incrementally) is computationally inefficient, so avoid it when you are iterating through a lot of values.</p>
 <div id="tip-dont-grow-your-results" class="callout panel panel-info">
 <div class="panel-heading">
@@ -189,6 +231,10 @@ for (i in <span class="dv">1</span>:<span class="dv">5</span>){
 }
 output_vector2 &lt;-<span class="st"> </span><span class="kw">as.vector</span>(output_matrix)
 output_vector2</code></pre>
+<pre class="output"><code> [1] &quot;1 a&quot; &quot;2 a&quot; &quot;3 a&quot; &quot;4 a&quot; &quot;5 a&quot; &quot;1 b&quot; &quot;2 b&quot; &quot;3 b&quot; &quot;4 b&quot; &quot;5 b&quot; &quot;1 c&quot;
+[12] &quot;2 c&quot; &quot;3 c&quot; &quot;4 c&quot; &quot;5 c&quot; &quot;1 d&quot; &quot;2 d&quot; &quot;3 d&quot; &quot;4 d&quot; &quot;5 d&quot; &quot;1 e&quot; &quot;2 e&quot;
+[23] &quot;3 e&quot; &quot;4 e&quot; &quot;5 e&quot;
+</code></pre>
 <div id="challenge-3" class="challenge panel panel-success">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h4>

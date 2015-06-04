@@ -5,7 +5,9 @@ subtitle: Data structures
 minutes: lots
 ---
 
-
+```{r, include=FALSE}
+source("tools/chunk-options.R")
+```
 
 
 > ### Learning Objectives {.objectives}
@@ -34,14 +36,13 @@ R has 5 basic atomic types (meaning they can't be broken down into anything smal
 
 There are a few functions we can use to interrogate data in R to determine its type:
 
-
-~~~{.r}
+```{r, eval=FALSE}
 typeof() # what is its atomic type?
 is.logical() # is it TRUE/FALSE data?
 is.numeric() # is it numeric?
 is.complex() # is it complex number data?
 is.character() # is it character data?
-~~~
+```
 
 > #### Challenge 1: Data types {.challenge}
 >
@@ -96,109 +97,47 @@ A vector can contain any of the five types we introduced before:
 Create an empty vector with `vector()` or by using the concatenate
 function, `c()`.
 
-
-~~~{.r}
+```{r}
 x <- vector()
 x
-~~~
-
-
-
-~~~{.output}
-logical(0)
-
-~~~
+```
 
 So by default, it creates an empty vector (i.e. a length of 0) of type "logical".
 
-
-~~~{.r}
+```{r}
 x <- vector(length = 10) # with a predefined length
 x
-~~~
-
-
-
-~~~{.output}
- [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-
-~~~
+```
 
 If we count the number of FALSEs there should be 10.
 
-
-~~~{.r}
+```{r}
 x <- vector("character", length = 10)  # with a predefined length and type
 x
-~~~
-
-
-
-~~~{.output}
- [1] "" "" "" "" "" "" "" "" "" ""
-
-~~~
+```
 
 Or we can use the concatenate function to combine any values we like into
 a vector (so long as they're the same atomic type!).
 
-
-~~~{.r}
+```{r}
 x <- c(10, 12, 45, 33)
 x
-~~~
-
-
-
-~~~{.output}
-[1] 10 12 45 33
-
-~~~
+```
 
 You can also create vectors as sequence of numbers
 
-
-~~~{.r}
+```{r}
 series <- 1:10
 series
-~~~
+```
 
-
-
-~~~{.output}
- [1]  1  2  3  4  5  6  7  8  9 10
-
-~~~
-
-
-~~~{.r}
+```{r}
 seq(10)
-~~~
+```
 
-
-
-~~~{.output}
- [1]  1  2  3  4  5  6  7  8  9 10
-
-~~~
-
-
-~~~{.r}
+```{r}
 seq(1, 10, by = 0.1)
-~~~
-
-
-
-~~~{.output}
- [1]  1.0  1.1  1.2  1.3  1.4  1.5  1.6  1.7  1.8  1.9  2.0  2.1  2.2  2.3
-[15]  2.4  2.5  2.6  2.7  2.8  2.9  3.0  3.1  3.2  3.3  3.4  3.5  3.6  3.7
-[29]  3.8  3.9  4.0  4.1  4.2  4.3  4.4  4.5  4.6  4.7  4.8  4.9  5.0  5.1
-[43]  5.2  5.3  5.4  5.5  5.6  5.7  5.8  5.9  6.0  6.1  6.2  6.3  6.4  6.5
-[57]  6.6  6.7  6.8  6.9  7.0  7.1  7.2  7.3  7.4  7.5  7.6  7.7  7.8  7.9
-[71]  8.0  8.1  8.2  8.3  8.4  8.5  8.6  8.7  8.8  8.9  9.0  9.1  9.2  9.3
-[85]  9.4  9.5  9.6  9.7  9.8  9.9 10.0
-
-~~~
+```
 
 > #### Tip: Creating integers {.callout}
 >
@@ -210,18 +149,10 @@ seq(1, 10, by = 0.1)
 
 You can also use the concatenate function to add elements to a vector:
 
-
-~~~{.r}
+```{r}
 x <- c(x, 57)
 x
-~~~
-
-
-
-~~~{.output}
-[1] 10 12 45 33 57
-
-~~~
+```
 
 > #### Challenge 2 {.challenge}
 >
@@ -245,69 +176,25 @@ The coersion rule goes `logical` -> `integer` -> `numeric` -> `complex` ->
 
 You can also coerce vectors explicitly using the `as.<class_name>`. Example
 
-
-~~~{.r}
+```{r}
 as.numeric()
-~~~
-
-
-
-~~~{.output}
-numeric(0)
-
-~~~
-
-
-
-~~~{.r}
 as.character()
-~~~
-
-
-
-~~~{.output}
-character(0)
-
-~~~
+```
 
 R will try to do whatever makes the most sense for that value:
 
-
-~~~{.r}
+```{r}
 as.character(x)
-~~~
+```
 
-
-
-~~~{.output}
-[1] "10" "12" "45" "33" "57"
-
-~~~
-
-
-~~~{.r}
+```{r}
 as.complex(x)
-~~~
+```
 
-
-
-~~~{.output}
-[1] 10+0i 12+0i 45+0i 33+0i 57+0i
-
-~~~
-
-
-~~~{.r}
+```{r}
 x <- 0:6
 as.logical(x)
-~~~
-
-
-
-~~~{.output}
-[1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-
-~~~
+```
 
 This is behaviour you will find in many programming languages. 0 is
 FALSE, while every other number is treated as TRUE.
@@ -315,38 +202,11 @@ Sometimes coercions, especially nonsensical ones won't work.
 
 In some cases, R won't be able to do anything sensible:
 
-
-~~~{.r}
+```{r}
 x <- c("a", "b", "c")
 as.numeric(x)
-~~~
-
-
-
-~~~{.output}
-Warning: NAs introduced by coercion
-
-~~~
-
-
-
-~~~{.output}
-[1] NA NA NA
-
-~~~
-
-
-
-~~~{.r}
 as.logical(x)
-~~~
-
-
-
-~~~{.output}
-[1] NA NA NA
-
-~~~
+```
 
 In both cases, a vector of "NAs" was returned, and in the first case
 so was a warning.
@@ -363,71 +223,30 @@ so was a warning.
 
 You can ask questions about the structure of vectors:
 
-
-~~~{.r}
+```{r}
 x <- 0:10
 tail(x, n=2) # get the last 'n' elements
-~~~
+```
 
-
-
-~~~{.output}
-[1]  9 10
-
-~~~
-
-
-~~~{.r}
+```{r}
 head(x, n=1) # get the first 'n' elements
-~~~
+```
 
-
-
-~~~{.output}
-[1] 0
-
-~~~
-
-
-~~~{.r}
+```{r}
 length(x)
-~~~
+```
 
-
-
-~~~{.output}
-[1] 11
-
-~~~
-
-
-~~~{.r}
+```{r}
 str(x)
-~~~
-
-
-
-~~~{.output}
- int [1:11] 0 1 2 3 4 5 6 7 8 9 ...
-
-~~~
+```
 
 Like data.frames, vectors can also be named:
 
-
-~~~{.r}
+```{r}
 x <- 1:4
 names(x) <- c("a", "b", "c", "d")
 x
-~~~
-
-
-
-~~~{.output}
-a b c d 
-1 2 3 4 
-
-~~~
+```
 
 > #### Advanced Tip for Programmers {.callout}
 >
@@ -445,34 +264,15 @@ hood, they are really just atomic vectors, with added dimension attributes.
 
 We can create one with the `matrix` function. Let's generate some random data:
 
-
-~~~{.r}
+```{r}
 set.seed(1) # make sure the random numbers are the same for each run
 x <- matrix(rnorm(18), ncol=6, nrow=3)
 x
-~~~
+```
 
-
-
-~~~{.output}
-        [,1]    [,2]   [,3]    [,4]    [,5]     [,6]
-[1,] -0.6265  1.5953 0.4874 -0.3054 -0.6212 -0.04493
-[2,]  0.1836  0.3295 0.7383  1.5118 -2.2147 -0.01619
-[3,] -0.8356 -0.8205 0.5758  0.3898  1.1249  0.94384
-
-~~~
-
-
-~~~{.r}
+```{r}
 str(x)
-~~~
-
-
-
-~~~{.output}
- num [1:3, 1:6] -0.626 0.184 -0.836 1.595 0.33 ...
-
-~~~
+```
 
 You can use `rownames`, `colnames`, and `dimnames` to set or
 retrieve the column and rownames of a matrix. The functions `nrow` and `ncol`
@@ -508,34 +308,17 @@ ordered or unordered and are important when for modelling functions such as
 Factors can only contain pre-defined values, and we can create one with the
 `factor` function:
 
-
-~~~{.r}
+```{r}
 x <- factor(c("yes", "no", "no", "yes", "yes"))
 x
-~~~
-
-
-
-~~~{.output}
-[1] yes no  no  yes yes
-Levels: no yes
-
-~~~
+```
 
 So we can see that the output is very similar to a character vector, but with an
 attached levels component. This becomes clearer when we look at its structure:
 
-
-~~~{.r}
+```{r}
 str(x)
-~~~
-
-
-
-~~~{.output}
- Factor w/ 2 levels "no","yes": 2 1 1 2 2
-
-~~~
+```
 
 This reveals something important: while factors look (and often behave) like
 character vectors, they are actually integers under the hood, and here, we can
@@ -545,18 +328,10 @@ In modelling functions, important to know what baseline levels is.  This is the
 first factor but by default the ordering is determined by alphabetical order of
 words entered. You can change this by specifying the levels:
 
-
-~~~{.r}
+```{r}
 x <- factor(c("case", "control", "control", "case"), levels = c("control", "case"))
 str(x)
-~~~
-
-
-
-~~~{.output}
- Factor w/ 2 levels "control","case": 2 1 1 2
-
-~~~
+```
 
 In this case, we've explicitly told R that "control" should represented by 1, and
 "case" by 2. This designation can be very important for interpreting the
@@ -570,59 +345,20 @@ themselves!
 
 Lists can be created using `list` or coerced from other objects using `as.list()`:
 
-
-~~~{.r}
+```{r}
 x <- list(1, "a", TRUE, 1+4i)
 x
-~~~
-
-
-
-~~~{.output}
-[[1]]
-[1] 1
-
-[[2]]
-[1] "a"
-
-[[3]]
-[1] TRUE
-
-[[4]]
-[1] 1+4i
-
-~~~
+```
 
 Each element of the list is denoted by a `[[` in the output. Inside
 each list element is an atomic vector of length one containing
 
 Lists can contain more complex objects:
 
-
-~~~{.r}
+```{r}
 xlist <- list(a = "Research Bazaar", b = 1:10, data = head(iris))
 xlist
-~~~
-
-
-
-~~~{.output}
-$a
-[1] "Research Bazaar"
-
-$b
- [1]  1  2  3  4  5  6  7  8  9 10
-
-$data
-  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-1          5.1         3.5          1.4         0.2  setosa
-2          4.9         3.0          1.4         0.2  setosa
-3          4.7         3.2          1.3         0.2  setosa
-4          4.6         3.1          1.5         0.2  setosa
-5          5.0         3.6          1.4         0.2  setosa
-6          5.4         3.9          1.7         0.4  setosa
-
-~~~
+```
 
 In this case our list contains a character vector of lenght one,
 a numeric vector with 10 entries, and a small data frame from
@@ -631,20 +367,9 @@ each list element a name, which is why you see `$a` instead of `[[1]]`.
 
 Lists can also contain themselves:
 
-
-~~~{.r}
+```{r}
 list(list(list(list())))
-~~~
-
-
-
-~~~{.output}
-[[1]]
-[[1]][[1]]
-[[1]][[1]][[1]]
-list()
-
-~~~
+```
 
 > ### Challenge 5 {.challenge}
 >

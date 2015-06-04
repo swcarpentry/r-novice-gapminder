@@ -5,7 +5,9 @@ subtitle: Seeking help
 minutes: 15
 ---
 
-
+```{r, include=FALSE}
+source("tools/chunk-options.R")
+```
 
 
 > ### Learning Objectives {.objectives}
@@ -21,11 +23,10 @@ R, and every package, provide help files for functions. To search for help on a
 function from a specific function that is in a package loaded into your
 namespace (your interactive R session):
 
-
-~~~{.r}
+```{r, eval=FALSE}
 ?function_name
 help(function_name)
-~~~
+```
 
 This will load up a help page in RStudio (or as plain text in R by itself).
 
@@ -53,10 +54,9 @@ Different functions might have different sections, but these are the main ones y
 
 To seek help on special operators, use quotes:
 
-
-~~~{.r}
+```{r, eval=FALSE}
 ?"+"
-~~~
+```
 
 ### Getting help on packages
 
@@ -72,10 +72,9 @@ If a package doesn't have any vignettes, you can usually find help by typing
 
 If you're not sure what package a function is in, or how it's specifically spelled you can do a fuzzy search:
 
-
-~~~{.r}
+```{r, eval=FALSE}
 ??function_name
-~~~
+```
 
 ### When you have no idea where to begin
 
@@ -94,38 +93,16 @@ the `[r]` tag.
 If you can't find the answer, there are a few useful functions to
 help you ask a question from your peers:
 
-
-~~~{.r}
+```{r, eval=FALSE}
 ?dput
-~~~
+```
 
 Will dump the data you're working with into a format so that it can
 be copy and pasted by anyone else into their R session.
 
-
-~~~{.r}
+```{r}
 sessionInfo()
-~~~
-
-
-
-~~~{.output}
-R version 3.1.0 (2014-04-10)
-Platform: x86_64-apple-darwin13.1.0 (64-bit)
-
-locale:
-[1] en_AU.UTF-8/en_AU.UTF-8/en_AU.UTF-8/C/en_AU.UTF-8/en_AU.UTF-8
-
-attached base packages:
-[1] stats     graphics  grDevices utils     datasets  base     
-
-other attached packages:
-[1] knitr_1.6
-
-loaded via a namespace (and not attached):
-[1] evaluate_0.5.5 formatR_1.0    stringr_0.6.2  tools_3.1.0   
-
-~~~
+```
 
 Will print out your current version of R, as well as any packages you
 have loaded. This can be useful for others to help reproduce and debug

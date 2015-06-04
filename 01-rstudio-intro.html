@@ -78,12 +78,13 @@
 <p>The first thing you will see in the R interactive session is a bunch of information, followed by a “&gt;” and a blinking cursor. In many ways this is similar to the shell environment you learnt about during the shell lessons: it operates on the same idea of a “Read, evaluate, print loop”: you type in commands, R tries to execute them, and then returns a result.</p>
 <h4 id="using-r-as-a-calculator">Using R as a calculator</h4>
 <p>The simplest thing you could do with R is do arithmetic:</p>
-<pre class="sourceCode r"><code class="sourceCode r">&gt;<span class="st"> </span><span class="dv">1</span> +<span class="st"> </span><span class="dv">100</span></code></pre>
-<pre class="output"><code> [1] 101</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> +<span class="st"> </span><span class="dv">100</span></code></pre>
+<pre class="output"><code>[1] 101
+</code></pre>
 <p>And R will print out the answer, with a preceding “[1]”. Don’t worry about this for now, we’ll explain that later. For now think of it as indicating ouput.</p>
 <p>Just like bash, if you type in an incomplete command, R will wait for you to complete it:</p>
 <pre class="sourceCode r"><code class="sourceCode r">&gt;<span class="st"> </span><span class="dv">1</span> +</code></pre>
-<pre class="output"><code>+ </code></pre>
+<pre class="output"><code>+</code></pre>
 <p>Any time you hit return and the R session shows a “+” instead of a “&gt;”, it means it’s waiting for you to complete the command. If you want to cancel a command you can simply hit “Esc” and RStudio will give you back the “&gt;” prompt.</p>
 <div id="tip-cancelling-commands" class="callout panel panel-info">
 <div class="panel-heading">
@@ -105,10 +106,12 @@
 <li>Subtract: <code>-</code></li>
 </ul>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span> *<span class="st"> </span><span class="dv">2</span></code></pre>
-<pre class="output"><code>[1] 13</code></pre>
+<pre class="output"><code>[1] 13
+</code></pre>
 <p>Use brackets (actually parentheses) to group to force the order of evaluation if it differs from the default, or to set your own order.</p>
 <pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span>) *<span class="st"> </span><span class="dv">2</span></code></pre>
-<pre class="output"><code>[1] 16</code></pre>
+<pre class="output"><code>[1] 16
+</code></pre>
 <p>But this can get unwieldy when not needed:</p>
 <pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">3</span> +<span class="st"> </span>(<span class="dv">5</span> *<span class="st"> </span>(<span class="dv">2</span> ^<span class="st"> </span><span class="dv">2</span>))) <span class="co"># hard to read</span>
 <span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span> *<span class="st"> </span><span class="dv">2</span> ^<span class="st"> </span><span class="dv">2</span>       <span class="co"># easier to read, once you know rules</span>
@@ -116,38 +119,50 @@
 <p>The text I’ve typed after each line of code is called a comment. Anything that follows on from the octothorpe (or hash) symbol <code>#</code> is ignored by R when it executes code.</p>
 <p>Really small or large numbers get a scientific notation:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span>/<span class="dv">10000</span></code></pre>
-<pre class="output"><code> [1] 2e-04</code></pre>
+<pre class="output"><code>[1] 2e-04
+</code></pre>
 <p>Which is shorthand for “multiplied by <code>10^XX</code>”. So <code>2e-4</code> is shorthand for <code>2 * 10^(-4)</code>.</p>
 <p>You can write numbers in scientific notation too:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="fl">5e3</span>  <span class="co"># Note the lack of minus here</span></code></pre>
-<pre class="output"><code>[1] 5000</code></pre>
+<pre class="output"><code>[1] 5000
+</code></pre>
 <h4 id="mathematical-functions">Mathematical functions</h4>
 <p>R has many built in mathematical functions. To call a function, we simply type its name, follow by and open and closing bracket. Anything we type inside those brackets is called the function’s arguments:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sin</span>(<span class="dv">1</span>)  <span class="co"># trigonometry functions</span></code></pre>
-<pre class="output"><code>[1] 0.841471</code></pre>
+<pre class="output"><code>[1] 0.8415
+</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log</span>(<span class="dv">1</span>)  <span class="co"># natural logarithm</span></code></pre>
-<pre class="output"><code>[1] 0</code></pre>
+<pre class="output"><code>[1] 0
+</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log10</span>(<span class="dv">10</span>) <span class="co"># base-10 logarithm</span></code></pre>
-<pre class="output"><code>[1] 1</code></pre>
+<pre class="output"><code>[1] 1
+</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">exp</span>(<span class="fl">0.5</span>) <span class="co"># e^(1/2)</span></code></pre>
-<pre class="output"><code>[1] 1.648721</code></pre>
+<pre class="output"><code>[1] 1.649
+</code></pre>
 <p>Don’t worry about trying to remember every function in R. You can simply look them up on google, or if you can remember the start of the function’s name, use the tab completion in RStudio.</p>
 <p>This is one advantage that RStudio has over R on its own, it has autocompletion abilities that allow you to more easily look up functions, their arguments, and the values that they take.</p>
 <p>Typing a <code>?</code> before the name of a command will open the help page for that command. As well as providing a detailed description of the command and how it works, scrolling ot the bottom of the help page will usually show a collection of code examples which illustrate command usage. We’ll go through an example later.</p>
 <h4 id="comparing-things">Comparing things</h4>
 <p>We can also do comparison in R:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> ==<span class="st"> </span><span class="dv">1</span>  <span class="co"># equality (note two equals signs, read as &quot;is equal to&quot;)</span></code></pre>
-<pre class="output"><code>[1] TRUE</code></pre>
+<pre class="output"><code>[1] TRUE
+</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> !=<span class="st"> </span><span class="dv">2</span>  <span class="co"># inequality (read as &quot;is not equal to&quot;)</span></code></pre>
-<pre class="output"><code>[1] TRUE</code></pre>
+<pre class="output"><code>[1] TRUE
+</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> &lt;<span class="st">  </span><span class="dv">2</span>  <span class="co"># less than</span></code></pre>
-<pre class="output"><code>[1] TRUE</code></pre>
+<pre class="output"><code>[1] TRUE
+</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> &lt;=<span class="st"> </span><span class="dv">1</span>  <span class="co"># less than or equal to</span></code></pre>
-<pre class="output"><code>[1] TRUE</code></pre>
+<pre class="output"><code>[1] TRUE
+</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> &gt;<span class="st"> </span><span class="dv">0</span>  <span class="co"># greater than</span></code></pre>
-<pre class="output"><code>[1] TRUE</code></pre>
+<pre class="output"><code>[1] TRUE
+</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> &gt;=<span class="st"> </span>-<span class="dv">9</span> <span class="co"># greater than or equal to</span></code></pre>
-<pre class="output"><code>[1] TRUE</code></pre>
+<pre class="output"><code>[1] TRUE
+</code></pre>
 <div id="tip-comparing-numbers" class="callout panel panel-info">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Comparing Numbers</h4>
@@ -162,21 +177,21 @@
 <h4 id="variables-and-assignment">Variables and assignment</h4>
 <p>We can store values in variables using the assignment operator <code>&lt;-</code>, like this:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>/<span class="dv">40</span></code></pre>
-<p>And now the <strong>variable</strong> <code>x</code> contains the <strong>value</strong> <code>0.025</code>:</p>
+<p>Notice that assignment does not print a value. Instead, we stored it for later in something called a <strong>variable</strong>. <code>x</code> now contains the <strong>value</strong> <code>0.025</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x</code></pre>
-<pre class="output"><code>[1] 0.025</code></pre>
+<pre class="output"><code>[1] 0.025
+</code></pre>
 <p>More precisely, the stored value is a <em>decimal approximation</em> of this fraction called a <a href="http://en.wikipedia.org/wiki/Floating_point">floating point number</a>.</p>
 <p>Look for the <code>Environment</code> tab in one of the panes of RStudio, and you will see that <code>x</code> and its value have appeared. Our variable <code>x</code> can be used in place of a number in any calculation that expects a number:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log</span>(x)</code></pre>
-<pre class="output"><code>[1] -3.688879</code></pre>
-<p>The right hand side of the assignment can be any valid R expression.</p>
-<p>Notice that assignment does not print a value.</p>
+<pre class="output"><code>[1] -3.689
+</code></pre>
 <p>Notice also that variables can be reassigned:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">100</span></code></pre>
 <p><code>x</code> used to contain the value 0.025 and and now it has the value 100.</p>
 <p>Assignment values can contain the variable being assigned to:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>x +<span class="st"> </span><span class="dv">1</span> <span class="co">#notice how RStudio updates its description of x on the top right tab</span></code></pre>
-<p>The right hand side is <em>fully evaluated</em> before the assignment occurs.</p>
+<p>The right hand side of the assignment can be any valid R expression. The right hand side is <em>fully evaluated</em> before the assignment occurs.</p>
 <p>Variable names can contain letters, numbers, underscores and periods. They cannot start with a number nor contain spaces at all. Different people use different conventions for long variable names, these include</p>
 <ul>
 <li>periods.between.words</li>
@@ -191,7 +206,8 @@
 <p>There are a few useful commands you can use to interact with the R session.</p>
 <p><code>ls</code> will list all of the variables and functions stored in the global environment (your working R session):</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>()</code></pre>
-<pre class="output"><code>[1] &quot;x&quot; </code></pre>
+<pre class="output"><code>[1] &quot;hook_in&quot;  &quot;hook_out&quot; &quot;x&quot;       
+</code></pre>
 <div id="tip-hidden-objects" class="callout panel panel-info">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pushpin"></span>Tip: hidden objects</h4>
@@ -235,8 +251,9 @@
     }
     else all.names
 }
-&lt;bytecode: 0x7feca504df58&gt;
-&lt;environment: namespace:base&gt;</code></pre>
+&lt;bytecode: 0x7f9fca043558&gt;
+&lt;environment: namespace:base&gt;
+</code></pre>
 <p>You can use <code>rm</code> to delete objects you no longer need:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(x)</code></pre>
 <p>If you have lots of things in your environment and want to delete all of them, you can pass the results of <code>ls</code> to the <code>rm</code> function:</p>
@@ -245,10 +262,8 @@
 <p>In this case we’ve specified that the results of <code>ls</code> should be used for the <code>list</code> argument in <code>rm</code>. When assigning values to arguments by name, you <em>must</em> use the <code>=</code> operator!!</p>
 <p>If instead we use <code>&lt;-</code>, there will be unintended side effects, or you may just get an error message:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(list &lt;-<span class="st"> </span><span class="kw">ls</span>())</code></pre>
-<pre class="output"><code>Error in rm(list &lt;- ls()) : ... must contain names or character strings</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>()</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">[<span class="dv">1</span>] <span class="st">&quot;list&quot;</span></code></pre>
-<p>Not only did the command not work, but we created a new variable, <code>list</code>, which stored the results of the <code>ls</code> command.</p>
+<pre class="output"><code>Error: ... must contain names or character strings
+</code></pre>
 <div id="tip-warnings-vs.errors" class="callout panel panel-info">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Warnings vs. Errors</h4>
