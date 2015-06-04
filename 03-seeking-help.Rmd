@@ -108,6 +108,23 @@ Will print out your current version of R, as well as any packages you
 have loaded. This can be useful for others to help reproduce and debug
 your issue.
 
+> #### Challenge 1 {.challenge}
+> 
+> Look at the help for the `paste` function. You'll need to use this later. 
+> What is the difference between the `sep` and `collapse` arguments?
+> 
+
+> #### Solution to Challenge 1 {.challenge}
+> 
+> Look at the help for the `paste` function. You'll need to use this later. 
+> 
+> ~~~ {.r}
+> help("paste")
+> ?paste
+> ~~~
+>
+
+
 ### Other ports of call
 
 * [Quick R](http://www.statmethods.net/)

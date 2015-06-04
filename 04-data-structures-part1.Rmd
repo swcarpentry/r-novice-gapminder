@@ -29,7 +29,7 @@ R has 5 basic atomic types (meaning they can't be broken down into anything smal
 
 * logical (e.g., `TRUE`, `FALSE`)
 * numeric
-  * integer (e.g, `3`, `2L`, `as.integer(3)`)
+  * integer (e.g, `2L`, `as.integer(3)`)
   * double (i.e. decimal) (e.g, `-24.57`, `2.0`, `pi`)
 * complex (i.e. complex numbers) (e.g, `1 + 0i`, `1 + 4i`)
 * text (called "character" in R) (e.g, `"a"`, `"swc"`, `'This is a cat'`)
@@ -40,6 +40,7 @@ There are a few functions we can use to interrogate data in R to determine its t
 typeof() # what is its atomic type?
 is.logical() # is it TRUE/FALSE data?
 is.numeric() # is it numeric?
+is.integer() # is it an integer?
 is.complex() # is it complex number data?
 is.character() # is it character data?
 ```
@@ -61,10 +62,10 @@ is.character() # is it character data?
 
 ### Data Structures
 
-There are five data structures you will commonly encounter in R. These include:
+There are five data structures you will commonly encounter in R. These are:
 
 * vector
-* factors
+* factor
 * list
 * matrix
 * data.frame
@@ -240,7 +241,7 @@ length(x)
 str(x)
 ```
 
-Like data.frames, vectors can also be named:
+Vectors can be named:
 
 ```{r}
 x <- 1:4
@@ -259,7 +260,7 @@ x
 
 #### Matrices
 
-Another data structure you'll likely encounter are Matrices. Underneath the
+Another data structure you'll likely encounter are matrices. Underneath the
 hood, they are really just atomic vectors, with added dimension attributes.
 
 We can create one with the `matrix` function. Let's generate some random data:
@@ -373,8 +374,8 @@ list(list(list(list())))
 
 > ### Challenge 5 {.challenge}
 >
-> Create a list containing two character vectors for each of the sections in this
-> part of the workshop:
+> Create a list of length two containing a character vector for each of the 
+> sections in this part of the workshop:
 >
 > * Data types
 > * Data structures
@@ -386,3 +387,141 @@ list(list(list(list())))
 Lists are extremely useful inside functions. You can "staple" together lots of
 different kinds of results into a single object that a function can return. In
 fact many R functions which return complex output store their results in a list.
+
+
+
+> #### Solution to Challenge 1: Data types {.challenge}
+>
+> Use your knowledge of how to assign a value to
+> a variable, to create examples of data with the
+> following characteristics:
+>
+> 1) Variable name: 'answer', Type: logical
+> 2) Variable name: 'height', Type: numeric
+> 3) Variable name: 'dog_name', Type: character
+>
+> For each variable you've created, test that it
+> has the data type you intended. Do you find
+> anything unexpected?
+>
+> ~~~ {.r}
+> answer <- TRUE
+> height <- 150
+> dog_name <- "Snoopy"
+>
+> is.logical(answer)
+> ~~~
+>
+> ~~~ {.output}
+> [1] TRUE
+> ~~~
+>
+> ~~~ {.r}
+> is.numeric(height)
+> ~~~
+> 
+> ~~~ {.output}
+> [1] TRUE
+> ~~~
+>
+> ~~~ {.r}
+> is.character(dog_name)
+> ~~~
+> 
+> ~~~ {.output}
+> [1] TRUE
+> ~~~
+>
+
+> ####  Solution to Challenge 2 {.challenge}
+>
+> Vectors can only contain one atomic type. If you try to combine different
+> types, R will create a vector that is the least common denominator: the
+> type that is easiest to coerce to.
+>
+> ~~~ {.r}
+> xx <- c(1.7, "a")
+> xx
+> typeof(xx)
+> ~~~
+>
+> ~~~ {.output}
+> [1] "1.7" "a"
+> [1] "character"
+> ~~~
+>
+> ~~~ {.r}
+> xx <- c(TRUE, 2)
+> xx
+> typeof(xx)
+> ~~~
+>
+> ~~~ {.output}
+> [1] 1 2
+> [1] "double"
+> ~~~
+>
+> ~~~ {.r}
+> xx <- c("a", TRUE)
+> xx
+> typeof(xx)
+> ~~~
+>
+> ~~~ {.output}
+> [1] "a" "TRUE"
+> [1] "character"
+> ~~~
+>
+
+>
+> ###  Solution to Challenge 3 {.challenge}
+>
+> What do you think will be the result of
+> `length(x)`?
+>
+> ~~~ {.r}
+> x <- matrix(rnorm(18), ncol=6, nrow=3)
+> length(x)
+> ~~~
+> 
+> ~~~ {.output}
+> [1] 18
+> ~~~
+> 
+> Because a matrix is really just a vector with added dimension attributes, `length`
+> gives you the total number of elements in the matrix.
+>
+
+>
+> ###  Solution to Challenge 4 {.challenge}
+>
+> Make another matrix, this time containing the numbers 1:50,
+> with 5 columns and 10 rows.
+> Did the `matrix` function fill your matrix by column, or by
+> row, as its default behaviour?
+> See if you can figure out how to change this.
+> (hint: read the documentation for `matrix`!)
+>
+> ~~~ {.r}
+> x <- matrix(1:50, ncol=5, nrow=10)
+> x <- matrix(1:50, ncol=5, nrow=10, byrow = TRUE) # to fill by row
+> ~~~
+>
+
+
+> ###  Solution to Challenge 5 {.challenge}
+>
+> Create a list of length two containing a character vector for each of the 
+> sections in this part of the workshop:
+>
+> * Data types
+> * Data structures
+>
+> Populate each character vector with the names of the data types and data
+> structures we've seen so far.
+>
+> ~~~ {.r}
+> my_list <- list(data_types = c("logical", "integer", "double", "complex", "character"),
+                  data_structures = c("vector", "matrix", "factor", "list"))
+> ~~~
+>
