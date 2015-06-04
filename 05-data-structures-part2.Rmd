@@ -32,10 +32,10 @@ df <- data.frame(id = c('a', 'b', 'c', 'd', 'e', 'f'), x = 1:6, y = c(214:219))
 df
 ```
 
-> #### Challenge: Dataframes {.challenge}
+> #### Challenge: Data frames {.challenge}
 >
 > Try using the `length` function to query
-> your dataframe `df`. Does it give the result
+> your data frame `df`. Does it give the result
 > you expect?
 >
 
@@ -100,7 +100,7 @@ df
 
 > #### Challenge {.challenge}
 >
-> Create a dataframe that holds the following information for yourself:
+> Create a data frame that holds the following information for yourself:
 >
 > * First name
 > * Last name
@@ -161,7 +161,7 @@ head(gapminder)
 > 1. Another type of file you might encounter are tab-separated
 > format. To specify a tab as a separator, use `"\t"`.
 >
-> 2. You can also read in files from the internet by replacing
+> 2. You can also read in files from the Internet by replacing
 > the file paths with a web address.
 >
 > 3. You can read directly from excel spreadsheets without
@@ -181,7 +181,7 @@ into a script file so we can come back to it later.
 > as its argument (or by pressing the "source" button in RStudio).
 >
 
-### Using dataframes: the `gapminder` dataset
+### Using data frames: the `gapminder` dataset
 
 
 To recap what we've just learnt, let's have a look at our example
@@ -217,7 +217,7 @@ Let's look at some of the columns.
 
 > #### Challenge: Data types in a real dataset {.challenge}
 >
-> Look at the first 6 rows of the gapminder dataframe we loaded before:
+> Look at the first 6 rows of the gapminder data frame we loaded before:
 >
 > ~~~ {.r}
 > head(gapminder)
@@ -258,7 +258,7 @@ class(gapminder$continent)
 One of the default behaviours of R is to treat any text columns as "factors"
 when reading in data. The reason for this is that text columns often represent
 categorical data, which need to be factors to be handled appropriately by
-the statistical modelling functions in R.
+the statistical modeling functions in R.
 
 However it's not obvious behaviour, and something that trips many people up. We can
 disable this behaviour and read in the data again.
@@ -322,7 +322,7 @@ colnames(copy) <- c("a", "b", "c", "d", "e", "f")
 head(copy)
 ```
 
-There are a few related ways of retreiving and modifying this information.
+There are a few related ways of retrieving and modifying this information.
 `attributes` will give you both the row and column names, along with the
 class information, while `dimnames` will give you just the rownames and
 column names.

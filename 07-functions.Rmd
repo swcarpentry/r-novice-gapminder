@@ -51,7 +51,7 @@ fahr_to_kelvin <- function(temp) {
 ```
 
 We define `fahr_to_kelvin` by assigning it to the output of `function`.
-The list of argument names are containted within parentheses.
+The list of argument names are contained within parentheses.
 Next, the [body](reference.html#function-body) of the function--the statements that are executed when it runs--is contained within curly braces (`{}`).
 The statements in the body are indented by two spaces.
 This makes the code easier to read but does not affect how the code operates.
@@ -81,10 +81,10 @@ fahr_to_kelvin(212)
 
 > #### Challenge 1 {.challenge}
 >
-> Write a function called `kelvin_to_celsius` that takes a temperature in kelvin
-> and returns that tempterature in celcius
+> Write a function called `kelvin_to_celsius` that takes a temperature in Kelvin
+> and returns that temperature in Celsius
 >
-> Hint: To convert from kelvin to celcius you minus 273.15
+> Hint: To convert from Kelvin to Celsius you minus 273.15
 >
 
 #### Combining functions
@@ -92,7 +92,7 @@ fahr_to_kelvin(212)
 The real power of functions comes from mixing, matching and combining them
 into ever large chunks to get the effect we want.
 
-Let's define two functions that will convert temparature from Fahrenheit to
+Let's define two functions that will convert temperature from Fahrenheit to
 Kelvin, and Kelvin to Celsius:
 
 ```{r}
@@ -128,7 +128,7 @@ calcGDP <- function(dat) {
 ```
 
 We define `calcGDP` by assigning it to the output of `function`.
-The list of argument names are containted within parentheses.
+The list of argument names are contained within parentheses.
 Next, the body of the function -- the statements executed when you
 call the function -- is contained within curly braces (`{}`).
 
@@ -177,7 +177,7 @@ If you've been writing these functions down into a separate R script
 source("functions/functions-lesson.R")
 ```
 
-Ok, so there's a lot going on in this function now. In plain english,
+Ok, so there's a lot going on in this function now. In plain English,
 the function now subsets the provided data by year if the year argument isn't
 empty, then subsets the result by country if the country argument isn't empty.
 Then it calculates the GDP for whatever subset emerges from the previous two steps.
@@ -209,7 +209,7 @@ Let's walk through the body of the function:
 calcGDP <- function(dat, year=NULL, country=NULL) {
 ```
 
-Here we've added two argumets, `year`, and `country`. We've set
+Here we've added two arguments, `year`, and `country`. We've set
 *default arguments* for both as `NULL` using the `=` operator
 in the function definition. This means that those arguments will
 take on those values unless the user specifies otherwise.
