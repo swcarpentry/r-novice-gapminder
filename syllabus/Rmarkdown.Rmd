@@ -343,7 +343,7 @@ Perhaps precede the paragraph with a larger code chunk that does
 calculations and defines things, with `include=FALSE` for that larger
 chunk (which is the same as `echo=FALSE` and `results="hide"`).
 
-I'm very particularly about rounding in such situations. I may want
+I'm very particular about rounding in such situations. I may want
 `2.0`, but `round(2.03, 1)` will give just `2`.
 
 The
