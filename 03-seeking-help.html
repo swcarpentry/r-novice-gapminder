@@ -26,20 +26,20 @@
       <article>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <h1 class="title">R for reproducible scientific analysis</h1>
+                    <a href="index.html"><h1 class="title">R for reproducible scientific analysis</h1></a>
           <h2 class="subtitle">Seeking help</h2>
-<div id="learning-objectives" class="objectives panel panel-warning">
+          <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h3><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h3>
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
-<li>To be able read R helpfiles for functions and special operators.</li>
-<li>To be able to use CRAN taskviews to identify packages to solve a problem.</li>
+<li>To be able read R help files for functions and special operators.</li>
+<li>To be able to use CRAN task views to identify packages to solve a problem.</li>
 <li>To be able to seek help from your peers</li>
 </ul>
 </div>
-</div>
+</section>
 <h3 id="reading-help-files">Reading Help files</h3>
 <p>R, and every package, provide help files for functions. To search for help on a function from a specific function that is in a package loaded into your namespace (your interactive R session):</p>
 <pre class="sourceCode r"><code class="sourceCode r">?function_name
@@ -56,14 +56,14 @@
 <li>Examples: Some examples for how to use the function.</li>
 </ul>
 <p>Different functions might have different sections, but these are the main ones you should be aware of.</p>
-<div id="tip-reading-help-files" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Reading help files</h4>
 </div>
 <div class="panel-body">
 <p>One of the most daunting aspects of R is the large number of functions available. It would be prohibitive, if not impossible to remember the correct usage for every function you use. Luckily, the help files mean you don’t have to!</p>
 </div>
-</div>
+</aside>
 <h3 id="special-operators">Special Operators</h3>
 <p>To seek help on special operators, use quotes:</p>
 <pre class="sourceCode r"><code class="sourceCode r">?<span class="st">&quot;+&quot;</span></code></pre>
@@ -97,12 +97,31 @@ loaded via a namespace (and not attached):
 [1] evaluate_0.5.5 formatR_1.0    stringr_0.6.2  tools_3.1.0   
 </code></pre>
 <p>Will print out your current version of R, as well as any packages you have loaded. This can be useful for others to help reproduce and debug your issue.</p>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h4>
+</div>
+<div class="panel-body">
+<p>Look at the help for the <code>paste</code> function. You’ll need to use this later. What is the difference between the <code>sep</code> and <code>collapse</code> arguments?</p>
+</div>
+</section>
 <h3 id="other-ports-of-call">Other ports of call</h3>
 <ul>
 <li><a href="http://www.statmethods.net/">Quick R</a></li>
-<li><a href="http://www.rstudio.com/resources/cheatsheets/">Rstudio cheat sheets</a></li>
+<li><a href="http://www.rstudio.com/resources/cheatsheets/">RStudio cheat sheets</a></li>
 <li><a href="http://www.cookbook-r.com/">Cookbook for R</a></li>
 </ul>
+<h2 id="challenge-solutions">Challenge solutions</h2>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 1</h4>
+</div>
+<div class="panel-body">
+<p>Look at the help for the <code>paste</code> function. You’ll need to use this later.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help</span>(<span class="st">&quot;paste&quot;</span>)
+?paste</code></pre>
+</div>
+</section>
         </div>
       </div>
       </article>

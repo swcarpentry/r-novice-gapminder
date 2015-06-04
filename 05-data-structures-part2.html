@@ -26,11 +26,11 @@
       <article>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <h1 class="title">R for reproducible scientific analysis</h1>
+                    <a href="index.html"><h1 class="title">R for reproducible scientific analysis</h1></a>
           <h2 class="subtitle">Data frames and reading in data</h2>
-<div id="learning-objectives" class="objectives panel panel-warning">
+          <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -38,7 +38,7 @@
 <li>To be able to read in regular data into R</li>
 </ul>
 </div>
-</div>
+</section>
 <h3 id="data-frames">Data frames</h3>
 <p>Data frames are similar to matrices, except each column can be a different atomic type. Underneath the hood, data frames are really lists, where each element is an atomic vector, with the added restriction that they’re all the same length. As you will see, if we pull out one column of a data frame, we will have a vector.</p>
 <p>Data frames can be created manually with the <code>data.frame</code> function:</p>
@@ -52,14 +52,14 @@ df</code></pre>
 5  e 5 218
 6  f 6 219
 </code></pre>
-<div id="challenge-dataframes" class="challenge panel panel-success">
+<section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Challenge: Dataframes</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge: Data frames</h4>
 </div>
 <div class="panel-body">
-<p>Try using the <code>length</code> function to query your dataframe <code>df</code>. Does it give the result you expect?</p>
+<p>Try using the <code>length</code> function to query your data frame <code>df</code>. Does it give the result you expect?</p>
 </div>
-</div>
+</section>
 <p>Each column in the data frame is simply a list element, which is why when you ask for the <code>length</code> of the data frame, it tells you the number of columns. If you actually want the number of rows, you can use the <code>nrow</code> function.</p>
 <p>We can add rows or columns to a data.frame using <code>rbind</code> or <code>cbind</code> (these are the two-dimensional equivalents of the <code>c</code> function):</p>
 <pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">rbind</span>(df, <span class="kw">list</span>(<span class="st">&quot;g&quot;</span>, <span class="dv">11</span>, <span class="dv">42</span>))</code></pre>
@@ -128,12 +128,12 @@ df</code></pre>
 9   l 12 534    2
 10  m 13 -20    1
 </code></pre>
-<div id="challenge" class="challenge panel panel-success">
+<section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Challenge</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h4>
 </div>
 <div class="panel-body">
-<p>Create a dataframe that holds the following information for yourself:</p>
+<p>Create a data frame that holds the following information for yourself:</p>
 <ul>
 <li>First name</li>
 <li>Last name</li>
@@ -142,7 +142,7 @@ df</code></pre>
 <p>Then use rbind to add the same information for the people sitting near you.</p>
 <p>Now use cbind to add a column of logicals answering the question, “Is there anything in this workshop you’re finding confusing?”</p>
 </div>
-</div>
+</section>
 <h3 id="reading-in-data">Reading in data</h3>
 <p>Remember earlier we obtained the gapminder dataset. If you’re curious about where this data comes from you might like to look at the <a href="http://www.gapminder.org/data/documentation/">Gapminder website</a></p>
 <p>Now we want to load the gapminder data into R. Before reading in data, it’s a good idea to have a look at its structure. Let’s take a look using our newly-learned shell skills:</p>
@@ -188,29 +188,29 @@ gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(
 5 Afghanistan 1972 13079460      Asia   36.09     740.0
 6 Afghanistan 1977 14880372      Asia   38.44     786.1
 </code></pre>
-<div id="miscellaneous-tips" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pushpin"></span>Miscellaneous Tips</h4>
 </div>
 <div class="panel-body">
 <ol style="list-style-type: decimal">
 <li><p>Another type of file you might encounter are tab-separated format. To specify a tab as a separator, use <code>&quot;\t&quot;</code>.</p></li>
-<li><p>You can also read in files from the internet by replacing the file paths with a web address.</p></li>
+<li><p>You can also read in files from the Internet by replacing the file paths with a web address.</p></li>
 <li><p>You can read directly from excel spreadsheets without converting them to plain text first by using the <code>xlsx</code> package.</p></li>
 </ol>
 </div>
-</div>
+</aside>
 <p>To make sure our analysis is reproducible, we should put the code into a script file so we can come back to it later.</p>
-<div id="challenge-1" class="challenge panel panel-success">
+<section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Challenge</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h4>
 </div>
 <div class="panel-body">
 <p>Go to file -&gt; new file -&gt; R script, and write an R script to load in the gapminder dataset. Put it in the <code>scripts/</code> directory and add it to version control.</p>
 <p>Run the script using the <code>source</code> function, using the file path as its argument (or by pressing the “source” button in RStudio).</p>
 </div>
-</div>
-<h3 id="using-dataframes-the-gapminder-dataset">Using dataframes: the <code>gapminder</code> dataset</h3>
+</section>
+<h3 id="using-data-frames-the-gapminder-dataset">Using data frames: the <code>gapminder</code> dataset</h3>
 <p>To recap what we’ve just learnt, let’s have a look at our example data (life expectancy in various countries for various years).</p>
 <p>Remember, there are a few functions we can use to interrogate data structures in R:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>() <span class="co"># what is the data structure?</span>
@@ -229,12 +229,12 @@ gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(
 </code></pre>
 <p>The gapminder data is stored in a “data.frame”. This is the default data structure when you read in data, and (as we’ve heard) is useful for storing data with mixed types of columns.</p>
 <p>Let’s look at some of the columns.</p>
-<div id="challenge-data-types-in-a-real-dataset" class="challenge panel panel-success">
+<section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Challenge: Data types in a real dataset</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 3: Data types in a real dataset</h4>
 </div>
 <div class="panel-body">
-<p>Look at the first 6 rows of the gapminder dataframe we loaded before:</p>
+<p>Look at the first 6 rows of the gapminder data frame we loaded before:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gapminder)</code></pre>
 <pre class="output"><code>##       country year      pop continent lifeExp gdpPercap
 ## 1 Afghanistan 1952  8425333      Asia  28.801  779.4453
@@ -245,7 +245,7 @@ gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(
 ## 6 Afghanistan 1977 14880372      Asia  38.438  786.1134</code></pre>
 <p>Write down what data type you think is in each column</p>
 </div>
-</div>
+</section>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(gapminder$year)</code></pre>
 <pre class="output"><code>[1] &quot;integer&quot;
 </code></pre>
@@ -260,7 +260,7 @@ gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(gapminder$continent)</code></pre>
 <pre class="output"><code>[1] &quot;character&quot;
 </code></pre>
-<p>One of the default behaviours of R is to treat any text columns as “factors” when reading in data. The reason for this is that text columns often represent categorical data, which need to be factors to be handled appropriately by the statistical modelling functions in R.</p>
+<p>One of the default behaviours of R is to treat any text columns as “factors” when reading in data. The reason for this is that text columns often represent categorical data, which need to be factors to be handled appropriately by the statistical modeling functions in R.</p>
 <p>However it’s not obvious behaviour, and something that trips many people up. We can disable this behaviour and read in the data again.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)
 gapminder &lt;-<span class="st"> </span><span class="kw">read.table</span>(
@@ -268,14 +268,14 @@ gapminder &lt;-<span class="st"> </span><span class="kw">read.table</span>(
 )</code></pre>
 <p>Remember, if you do turn it off automatic conversion to factors you will need to explicitly convert the variables into factors when running statistical models. This can be useful, because it forces you to think about the question you’re asking, and makes it easier to specify the ordering of the categories.</p>
 <p>However there are many in the R community who find it more sensible to leave this as the default behaviour.</p>
-<div id="tip-changing-options" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Changing options</h4>
 </div>
 <div class="panel-body">
 <p>When R starts, the first thing it does is runs any code in the file <code>.Rprofile</code> in the project directory. Any permanent changes to default behaviour you want to make should be stored in that file.</p>
 </div>
-</div>
+</aside>
 <p>The first thing you should do when reading data in, is check that it matches what you expect, even if the command ran without warnings or errors. The <code>str</code> function, short for “structure”, is really useful for this:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gapminder)</code></pre>
 <pre class="output"><code>&#39;data.frame&#39;:   1704 obs. of  6 variables:
@@ -496,12 +496,12 @@ gapminder &lt;-<span class="st"> </span><span class="kw">read.table</span>(
 5 Afghanistan 1972 13079460 Asia 36.09 740.0
 6 Afghanistan 1977 14880372 Asia 38.44 786.1
 </code></pre>
-<p>There are a few related ways of retreiving and modifying this information. <code>attributes</code> will give you both the row and column names, along with the class information, while <code>dimnames</code> will give you just the rownames and column names.</p>
+<p>There are a few related ways of retrieving and modifying this information. <code>attributes</code> will give you both the row and column names, along with the class information, while <code>dimnames</code> will give you just the rownames and column names.</p>
 <p>In both cases, the output object is stored in a <code>list</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(<span class="kw">dimnames</span>(df))</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(<span class="kw">dimnames</span>(gapminder))</code></pre>
 <pre class="output"><code>List of 2
- $ : chr [1:10] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
- $ : chr [1:4] &quot;id&quot; &quot;x&quot; &quot;y&quot; &quot;10:1&quot;
+ $ : chr [1:1704] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+ $ : chr [1:6] &quot;country&quot; &quot;year&quot; &quot;pop&quot; &quot;continent&quot; ...
 </code></pre>
 <h2 id="understanding-how-lists-are-used-in-function-output">Understanding how lists are used in function output</h2>
 <p>Lets run a basic linear regression on the gapminder dataset:</p>
@@ -601,6 +601,26 @@ Multiple R-squared:  0.19,  Adjusted R-squared:  0.189
 F-statistic:  399 on 1 and 1702 DF,  p-value: &lt;2e-16
 </code></pre>
 <p>As you might expect, life expectancy has slowly been increasing over time, so we see a significant positive association!</p>
+<h2 id="challenge-solutions">Challenge Solutions</h2>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 1</h4>
+</div>
+<div class="panel-body">
+<p>Create a data frame that holds the following information for yourself:</p>
+<ul>
+<li>First name</li>
+<li>Last name</li>
+<li>Age</li>
+</ul>
+<p>Then use rbind to add the same information for the people sitting near you.</p>
+<p>Now use cbind to add a column of logicals answering the question, “Is there anything in this workshop you’re finding confusing?”</p>
+<pre class="sourceCode r"><code class="sourceCode r">my_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">first_name =</span> <span class="st">&quot;Software&quot;</span>, <span class="dt">last_name =</span> <span class="st">&quot;Carpentry&quot;</span>, <span class="dt">age =</span> <span class="dv">17</span>)
+my_df &lt;-<span class="st"> </span><span class="kw">rbind</span>(my_df, <span class="kw">list</span>(<span class="st">&quot;Jane&quot;</span>, <span class="st">&quot;Smith&quot;</span>, <span class="dv">29</span>))
+my_df &lt;-<span class="st"> </span><span class="kw">rbind</span>(my_df, <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;Jo&quot;</span>, <span class="st">&quot;John&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;White&quot;</span>, <span class="st">&quot;Lee&quot;</span>), <span class="kw">c</span>(<span class="dv">23</span>, <span class="dv">41</span>)))
+my_df &lt;-<span class="st"> </span><span class="kw">cbind</span>(my_df, <span class="dt">confused =</span> <span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>))</code></pre>
+</div>
+</section>
         </div>
       </div>
       </article>

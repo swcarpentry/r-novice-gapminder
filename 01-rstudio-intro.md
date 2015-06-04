@@ -2,12 +2,12 @@
 layout: page
 title: R for reproducible scientific analysis
 subtitle: Introduction to R and RStudio
-minutes: 15
+minutes: 45
 ---
 
 
 
-> ### Learning Objectives {.objectives}
+> ## Learning objectives {.objectives}
 >
 > * To gain familiarity with the various panes in the RStudio IDE
 > * To gain familiarity with the buttons, short cuts and options in the Rstudio IDE
@@ -19,7 +19,7 @@ minutes: 15
 
 ### Introduction to RStudio
 
-Welcome to the R portion of the Software Carpentry workshop. 
+Welcome to the R portion of the Software Carpentry workshop.
 
 Throughout this lesson, we're going to teach you some of the fundamentals of
 the R language as well as some best practices for organising code for
@@ -50,26 +50,26 @@ There are two main ways one can work within Rstudio.
   1. This is great way to start and work as all workings are saved for latter reference and can be read latter.
 
 > #### Tip: Pushing to the interactive R console {.callout}
-> To run the current line click on the `Run` button just above the file pane. Or use the short cut which can be see 
+> To run the current line click on the `Run` button just above the file pane. Or use the short cut which can be see
 > by hovering the mouse over the button.
 >
 > To run a block of code, select it and then `Run`. If you have modified a line
-> of code within a block of code you have just run. There is no need to reselct the section and `Run`, 
-> you can use the next button along, `Re-run the previous region`. This will run the previous code block inculding 
+> of code within a block of code you have just run. There is no need to reselct the section and `Run`,
+> you can use the next button along, `Re-run the previous region`. This will run the previous code block inculding
 > the modifications you have made.
 >
 
 ### Introduction to R
 
 A lot of your time in R will be spent in the R interactive console. This is where you
-will run all of your code, and can be a useful environment to try out ideas before 
+will run all of your code, and can be a useful environment to try out ideas before
 adding them to an R script file. This console in RStudio is the same as the one you
 would get if you just typed in `R` in your commandline environment.
 
-The first thing you will see in the R interactive session is a bunch of information, 
+The first thing you will see in the R interactive session is a bunch of information,
 followed by a ">" and a blinking cursor. In many ways this is similar to the shell
 environment you learnt about during the shell lessons: it operates on the same idea
-of a "Read, evaluate, print loop": you type in commands, R tries to execute them, and 
+of a "Read, evaluate, print loop": you type in commands, R tries to execute them, and
 then returns a result.
 
 #### Using R as a calculator
@@ -88,7 +88,7 @@ The simplest thing you could do with R is do arithmetic:
 
 ~~~
 
-And R will print out the answer, with a preceding "[1]". Don't worry about this 
+And R will print out the answer, with a preceding "[1]". Don't worry about this
 for now, we'll explain that later. For now think of it as indicating ouput.
 
 Just like bash, if you type in an incomplete command, R will wait for you to
@@ -102,7 +102,7 @@ complete it:
 +
 ~~~
 
-Any time you hit return and the R session shows a "+" instead of a ">", it 
+Any time you hit return and the R session shows a "+" instead of a ">", it
 means it's waiting for you to complete the command. If you want to cancel
 a command you can simply hit "Esc" and RStudio will give you back the ">"
 prompt.
@@ -115,7 +115,7 @@ prompt.
 >
 > Cancelling a command isn't just useful for killing incomplete commands:
 > you can also use it to tell R to stop running code (for example if its
-> taking much longer than you expect), or to get rid of the code you're 
+> taking much longer than you expect), or to get rid of the code you're
 > currently writing.
 >
 
@@ -169,7 +169,7 @@ But this can get unwieldy when not needed:
 
 
 The text I've typed after each line of code is called a comment. Anything that
-follows on from the octothorpe (or hash) symbol `#` is ignored by R when it 
+follows on from the octothorpe (or hash) symbol `#` is ignored by R when it
 executes code.
 
 Really small or large numbers get a scientific notation:
@@ -263,13 +263,13 @@ can simply look them up on google, or if you can remember the
 start of the function's name, use the tab completion in RStudio.
 
 This is one advantage that RStudio has over R on its own, it
-has autocompletion abilities that allow you to more easily 
+has autocompletion abilities that allow you to more easily
 look up functions, their arguments, and the values that they
 take.
 
 Typing a `?` before the name of a command will open the help page
 for that command. As well as providing a detailed description of
-the command and how it works, scrolling ot the bottom of the 
+the command and how it works, scrolling ot the bottom of the
 help page will usually show a collection of code examples which
 illustrate command usage. We'll go through an example later.
 
@@ -350,19 +350,19 @@ We can also do comparison in R:
 ~~~
 
 > #### Tip: Comparing Numbers {.callout}
-> 
-> A word of warning about comparing numbers: you should 
+>
+> A word of warning about comparing numbers: you should
 > never use `==` to compare two numbers unless they are
 > integers (a data type which can specifically represent
-> only whole numbers). 
+> only whole numbers).
 >
-> Computers may only represent decimal numbers with a 
+> Computers may only represent decimal numbers with a
 > certain degree of precision, so two numbers which look
 > the same when printed out by R, may actually have
-> different underlying representations and therefore be 
-> different by a small margin of error (called Machine 
-> numeric tolerance). 
-> 
+> different underlying representations and therefore be
+> different by a small margin of error (called Machine
+> numeric tolerance).
+>
 > Instead you should use the `all.equal` function.
 >
 > Further reading: [http://floating-point-gui.de/](http://floating-point-gui.de/)
@@ -437,7 +437,7 @@ different conventions for long variable names, these include
   * underscores\_between_words
   * camelCaseToSeparateWords
 
-What you use is up to you, but **be consistent**. 
+What you use is up to you, but **be consistent**.
 
 It is also possible to use the `=` operator for assignment:
 
@@ -471,9 +471,9 @@ ls()
 ~~~
 
 > #### Tip: hidden objects {.callout}
-> 
+>
 > Just like in the shell, `ls` will hide any variables or functions starting
-> with a "." by default. To list all objects, type `ls(all.names=TRUE)` 
+> with a "." by default. To list all objects, type `ls(all.names=TRUE)`
 > instead
 >
 
@@ -522,7 +522,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7f9fca043558>
+<bytecode: 0x7f9f4d0e9f58>
 <environment: namespace:base>
 
 ~~~
@@ -543,13 +543,13 @@ rm(list = ls())
 ~~~
 
 In this case we've combined the two. Just like the order of operations, anything
-inside the innermost brackets is evaluated first, and so on. 
+inside the innermost brackets is evaluated first, and so on.
 
-In this case we've specified that the results of `ls` should be used for the 
-`list` argument in `rm`. When assigning values to arguments by name, you *must* 
-use the `=` operator!! 
+In this case we've specified that the results of `ls` should be used for the
+`list` argument in `rm`. When assigning values to arguments by name, you *must*
+use the `=` operator!!
 
-If instead we use `<-`, there will be unintended side effects, or you may just 
+If instead we use `<-`, there will be unintended side effects, or you may just
 get an error message:
 
 
@@ -564,7 +564,7 @@ Error: ... must contain names or character strings
 
 ~~~
 
-> #### Tip: Warnings vs. Errors {.callout} 
+> #### Tip: Warnings vs. Errors {.callout}
 >
 > Pay attention when R does something unexpected! Errors, like above,
 > are thrown when R cannot proceed with a calculation. Warnings on the
@@ -578,7 +578,7 @@ Error: ... must contain names or character strings
 
 > #### Challenge 1 {.challenge}
 >
-> Draw diagrams showing what variables refer to what values after each 
+> Draw diagrams showing what variables refer to what values after each
 > statement in the following program:
 >
 > ~~~ {.r}
@@ -600,4 +600,3 @@ Error: ... must contain names or character strings
 > Clean up your working environment by deleting the mass and age
 > variables.
 >
-

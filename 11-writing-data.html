@@ -26,18 +26,18 @@
       <article>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <h1 class="title">R for reproducible scientific analysis</h1>
+                    <a href="index.html"><h1 class="title">R for reproducible scientific analysis</h1></a>
           <h2 class="subtitle">Writing data</h2>
-<div id="learning-objectives" class="objectives panel panel-warning">
+          <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
 <li>To be able to write out plots and data from R</li>
 </ul>
 </div>
-</div>
+</section>
 <h3 id="saving-plots">Saving plots</h3>
 <p>You have already seen how to save the most recent plot you create in <code>ggplot2</code>, using the command <code>ggsave</code>. As a refresher:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggsave</span>(<span class="st">&quot;My_most_recent_plot.pdf&quot;</span>)</code></pre>
@@ -52,14 +52,14 @@
 
 <span class="kw">dev.off</span>()</code></pre>
 <p>Open up this document and have a look.</p>
-<div id="challenge-1" class="challenge panel panel-success">
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h4>
 </div>
 <div class="panel-body">
 <p>Rewrite your ‘pdf’ command to print a second page in the pdf, showing a facet plot (hint: use <code>facet_grid</code>) of the same data with one panel per continent.</p>
 </div>
-</div>
+</section>
 <p>The commands <code>jpeg</code>, <code>png</code> etc. are used similarly to produce documents in different formats.</p>
 <h3 id="writing-data">Writing data</h3>
 <p>At some point, you’ll also want to write out data from R.</p>
@@ -71,7 +71,7 @@
   <span class="dt">file=</span><span class="st">&quot;cleaned-data/gapminder-aus.csv&quot;</span>,
   <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>
 )</code></pre>
-<p>Let’s switch back to the shell to take a look at the data to make sure it looks ok:</p>
+<p>Let’s switch back to the shell to take a look at the data to make sure it looks OK:</p>
 <pre class="sourceCode r"><code class="sourceCode r">head cleaned-data/gapminder-aus.csv</code></pre>
 <pre class="output"><code>&quot;country&quot;,&quot;year&quot;,&quot;pop&quot;,&quot;continent&quot;,&quot;lifeExp&quot;,&quot;gdpPercap&quot;
 &quot;61&quot;,&quot;Australia&quot;,1952,8691212,&quot;Oceania&quot;,69.12,10039.59564
@@ -108,7 +108,7 @@ Australia,1987,16257249,Oceania,76.32,21888.88903
 Australia,1992,17481977,Oceania,77.56,23424.76683
 </code></pre>
 <p>That looks better!</p>
-<div id="challenge-2" class="challenge panel panel-success">
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h4>
 </div>
@@ -116,7 +116,7 @@ Australia,1992,17481977,Oceania,77.56,23424.76683
 <p>Write a data-cleaning script file that subsets the gapminder data to include only data points collected since 1990.</p>
 <p>Use this script to write out the new subset to a file in the <code>cleaned-data/</code> directory.</p>
 </div>
-</div>
+</section>
         </div>
       </div>
       </article>

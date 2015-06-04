@@ -26,43 +26,43 @@
       <article>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <h1 class="title">R for reproducible scientific analysis</h1>
+                    <a href="index.html"><h1 class="title">R for reproducible scientific analysis</h1></a>
           <h2 class="subtitle">Split-apply-combine</h2>
-<div id="learning-objectives" class="objectives panel panel-warning">
+          <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
 <li>To be able to use the split-apply-combine strategy for data analysis</li>
 </ul>
 </div>
-</div>
+</section>
 <p>Previously we looked at how you can use functions to simplify your code. We defined the <code>calcGDP</code> function, which takes the gapminder dataset, and multiplies the population and GDP per capita column. We also defined additional arguments so we could filter by <code>year</code> and <code>country</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Takes a dataset and multiplies the population column</span>
 <span class="co"># with the GDP per capita column.</span>
 calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span><span class="ot">NULL</span>, <span class="dt">country=</span><span class="ot">NULL</span>) {
   if(!<span class="kw">is.null</span>(year)) {
-    dat &lt;-<span class="st"> </span>dat[dat$year %in%<span class="st"> </span>year, ] 
+    dat &lt;-<span class="st"> </span>dat[dat$year %in%<span class="st"> </span>year, ]
   }
   if (!<span class="kw">is.null</span>(country)) {
     dat &lt;-<span class="st"> </span>dat[dat$country %in%<span class="st"> </span>country,]
   }
   gdp &lt;-<span class="st"> </span>dat$pop *<span class="st"> </span>dat$gdpPercap
 
-  new &lt;-<span class="st"> </span><span class="kw">cbind</span>(dat, <span class="dt">gdp=</span>gdp)   
+  new &lt;-<span class="st"> </span><span class="kw">cbind</span>(dat, <span class="dt">gdp=</span>gdp)
   <span class="kw">return</span>(new)
 }</code></pre>
 <p>A common task you’ll encounter when working with data, is that you’ll want to run calculations on different groups within the data. In the above, we were simply calculating the GDP by multiplying two columns together. But what if we wanted to calculated the mean GDP per continent?</p>
 <p>We could run <code>calcGPD</code> and then take the mean of each continent:</p>
 <pre class="sourceCode r"><code class="sourceCode r">withGDP &lt;-<span class="st"> </span><span class="kw">calcGDP</span>(gapminder)
-<span class="kw">mean</span>(withGDP[withGDP$continent ==<span class="st"> &quot;Africa&quot;</span>, <span class="st">&quot;gdp&quot;</span>]) </code></pre>
+<span class="kw">mean</span>(withGDP[withGDP$continent ==<span class="st"> &quot;Africa&quot;</span>, <span class="st">&quot;gdp&quot;</span>])</code></pre>
 <pre class="output"><code>[1] 2.09e+10
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(withGDP[withGDP$continent ==<span class="st"> &quot;Americas&quot;</span>, <span class="st">&quot;gdp&quot;</span>]) </code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(withGDP[withGDP$continent ==<span class="st"> &quot;Americas&quot;</span>, <span class="st">&quot;gdp&quot;</span>])</code></pre>
 <pre class="output"><code>[1] 3.793e+11
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(withGDP[withGDP$continent ==<span class="st"> &quot;Asia&quot;</span>, <span class="st">&quot;gdp&quot;</span>]) </code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(withGDP[withGDP$continent ==<span class="st"> &quot;Asia&quot;</span>, <span class="st">&quot;gdp&quot;</span>])</code></pre>
 <pre class="output"><code>[1] 2.272e+11
 </code></pre>
 <p>But this isn’t very <em>nice</em>. Yes, by using a function, you have reduced a substantial amount of repetition. That <strong>is</strong> nice. But there is still repetition. Repeating yourself will cost you time, both now and later, and potentially introduce some nasty bugs.</p>
@@ -73,7 +73,7 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 </div>
 <p>We want to <em>split</em> our data into groups, in this case continents, <em>apply</em> some calculations on that group, then optionally <em>combine</em> the results together afterwards.</p>
 <h4 id="the-plyr-package">The <code>plyr</code> package</h4>
-<p>For those of you who have used R before, you might be familiar with the <code>apply</code> family of functions. While R’s built in functions do work, we’re going to introduce you to another method for solving the “split-apply-combine” probelm. The <a href="http://had.co.nz/plyr/">plyr</a> package provides a set of functions that we find more user friendly for solving this problem.</p>
+<p>For those of you who have used R before, you might be familiar with the <code>apply</code> family of functions. While R’s built in functions do work, we’re going to introduce you to another method for solving the “split-apply-combine” problem. The <a href="http://had.co.nz/plyr/">plyr</a> package provides a set of functions that we find more user friendly for solving this problem.</p>
 <p>We installed this package in an earlier challenge. Let’s load it now:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(plyr)</code></pre>
 <p>Plyr has functions for operating on <code>lists</code>, <code>data.frames</code> and <code>arrays</code> (matrices, or n-dimensional vectors). Each function performs:</p>
@@ -254,39 +254,39 @@ continent       1982      1987      1992      1997      2002      2007
 [1] &quot;The mean GDP per capita for Europe is 14,469&quot;
 [1] &quot;The mean GDP per capita for Oceania is 18,622&quot;
 </code></pre>
-<div id="tip-printing-numbers" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pushpin"></span>Tip: printing numbers</h4>
 </div>
 <div class="panel-body">
 <p>The <code>format</code> function can be used to make numeric values “pretty” for printing out in messages.</p>
 </div>
-</div>
-<div id="challenge-1" class="challenge panel panel-success">
+</aside>
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h4>
 </div>
 <div class="panel-body">
 <p>Calculate the average life expectancy per continent. Which has the longest? Which had the shortest?</p>
 </div>
-</div>
-<div id="challenge-2" class="challenge panel panel-success">
+</section>
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h4>
 </div>
 <div class="panel-body">
 <p>Calculate the average life expectancy per continent and year. Which had the longest and shortest in 2007? Which had the greatest change in between 1952 and 2007?</p>
 </div>
-</div>
-<div id="advanced-challenge" class="challenge panel panel-success">
+</section>
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pencil"></span>Advanced Challenge</h4>
 </div>
 <div class="panel-body">
 <p>Calculate the difference in mean life expectancy between the years 1952 and 2007 from the output of challenge 2 using one of the <code>plyr</code> functions.</p>
 </div>
-</div>
-<div id="alternate-challenge-if-class-seems-lost" class="challenge panel panel-success">
+</section>
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pencil"></span>Alternate Challenge if class seems lost</h4>
 </div>
@@ -321,7 +321,7 @@ continent       1982      1987      1992      1997      2002      2007
 )</code></pre></li>
 </ol>
 </div>
-</div>
+</section>
         </div>
       </div>
       </article>
