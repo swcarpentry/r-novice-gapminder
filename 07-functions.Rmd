@@ -348,6 +348,19 @@ which is much better than in our first attempt where we just got a vector of num
 [testthat]: http://r-pkgs.had.co.nz/tests.html
 
 
+> #### Solution for Challenge 1 {.challenge}
+>
+> Write a function called `kelvin_to_celsius` that takes a temperature in Kelvin
+> and returns that temperature in Celsius
+>
+> ~~~ {.r}
+> kelvin_to_celsius <- function(temp) {
+>  celsius <- temp - 273.15
+>  return(celsius)
+> }
+> ~~~
+
+
 > #### Solution for Challenge 2 {.challenge}
 >
 > Define the function to convert directly from Fahrenheit to Celsius,
@@ -362,3 +375,22 @@ which is much better than in our first attempt where we just got a vector of num
 > }
 > ~~~
 >
+
+> #### Solution for Challenge 3 {.challenge}
+> 
+>
+>  Write a function called `fence` that takes two vectors as arguments, called
+> `text` and `wrapper`, and prints out the text wrapped with the `wrapper`:
+>
+> ~~~ {.r}
+> fence <- function(text, wrapper){
+>   text <- c(wrapper, text, wrapper)
+>   result <- paste(text, collapse = " ")
+> }
+> fence(text=best_practice, wrapper="***")
+> ~~~
+>
+> ~~~ {.output}
+> ## [1] "*** Write programs for people not computers ***"
+> ~~~
+> 

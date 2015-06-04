@@ -98,7 +98,7 @@ df <- cbind(df, 10:1)
 df
 ```
 
-> #### Challenge {.challenge}
+> #### Challenge 1 {.challenge}
 >
 > Create a data frame that holds the following information for yourself:
 >
@@ -171,7 +171,7 @@ head(gapminder)
 To make sure our analysis is reproducible, we should put the code
 into a script file so we can come back to it later.
 
-> #### Challenge {.challenge}
+> #### Challenge 2 {.challenge}
 >
 > Go to file -> new file -> R script, and write an R script
 > to load in the gapminder dataset. Put it in the `scripts/`
@@ -215,7 +215,7 @@ in data, and (as we've heard) is useful for storing data with mixed types of col
 
 Let's look at some of the columns.
 
-> #### Challenge: Data types in a real dataset {.challenge}
+> #### Challenge 3: Data types in a real dataset {.challenge}
 >
 > Look at the first 6 rows of the gapminder data frame we loaded before:
 >
@@ -330,7 +330,7 @@ column names.
 In both cases, the output object is stored in a `list`:
 
 ```{r}
-str(dimnames(df))
+str(dimnames(gapminder))
 ```
 
 ## Understanding how lists are used in function output
@@ -374,3 +374,25 @@ summary(l1)
 
 As you might expect, life expectancy has slowly been increasing over
 time, so we see a significant positive association!
+
+
+> #### Solution to Challenge 1 {.challenge}
+>
+> Create a data frame that holds the following information for yourself:
+>
+> * First name
+> * Last name
+> * Age
+>
+> Then use rbind to add the same information for the people sitting near you.
+>
+> Now use cbind to add a column of logicals answering the question,
+> "Is there anything in this workshop you're finding confusing?"
+>
+> ~~~ {.r}
+> my_df <- data.frame(first_name = "Software", last_name = "Carpentry", age = 17)
+> my_df <- rbind(my_df, list("Jane", "Smith", 29))
+> my_df <- rbind(my_df, list(c("Jo", "John"), c("White", "Lee"), c(23, 41)))
+> my_df <- cbind(my_df, confused = c(FALSE, FALSE, TRUE, FALSE))
+> ~~~
+>
