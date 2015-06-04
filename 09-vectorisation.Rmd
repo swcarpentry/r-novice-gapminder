@@ -145,8 +145,9 @@ m * -1
 >
 
 
-> #### Solution to Challenge 1 {.challenge}
 ## Challenge solutions
+
+> #### Solution to challenge 1 {.challenge}
 >
 > Let's try this on the `pop` column of the `gapminder` dataset.
 >
@@ -161,7 +162,7 @@ m * -1
 > ~~~
 >
 
-> #### Solution to Challenge 2 {.challenge}
+> #### Solution to challenge 2 {.challenge}
 >
 > Refresh your ggplot skills by plotting population in millions against year.
 >
@@ -170,7 +171,7 @@ m * -1
 > ~~~
 >
 
-> #### Solution to Challenge 3 {.challenge}
+> #### Solution to challenge 3 {.challenge}
 >
 > Given the following matrix:
 >
