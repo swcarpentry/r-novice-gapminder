@@ -5,7 +5,9 @@ subtitle: Project management with RStudio
 minutes: 15
 ---
 
-
+```{r, include=FALSE}
+source("tools/chunk-options.R")
+```
 
 > ## Learning Objectives {.objectives}
 >

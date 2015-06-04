@@ -5,7 +5,11 @@ subtitle: Vectorisation
 minutes: 15
 ---
 
-
+```{r, include=FALSE}
+source("tools/chunk-options.R")
+# Silently load in the data so the rest of the lesson works
+gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
+```
 
 > ## Learning Objectives {.objectives}
 >
@@ -18,46 +22,29 @@ needing to loop through and act on each element one at a time. This makes
 writing code more concise, easy to read, and less error prone.
 
 
-
-~~~{.r}
+```{r}
 x <- 1:4
 x * 2
-~~~
-
-
-
-~~~{.output}
-[1] 2 4 6 8
-
-~~~
+``` 
 
 The multiplication happened to each element of the vector.
 
 We can also add two vectors together:
 
-
-~~~{.r}
+```{r}
 y <- 6:9
 x + y
-~~~
-
-
-
-~~~{.output}
-[1]  7  9 11 13
-
-~~~
+```
 
 Each element of `x` was added to its corresponding element of `y`:
 
-
-~~~{.r}
+```{r, eval=FALSE}
 x:  1  2  3  4
     +  +  +  +
 y:  6  7  8  9
 ---------------
     7  9 11 13
-~~~
+```
 
 
 > #### Challenge 1 {.challenge}
@@ -78,32 +65,16 @@ y:  6  7  8  9
 Comparison operators also apply element-wise, as we saw in the
 subsetting lesson:
 
-
-~~~{.r}
+```{r}
 x > 2
-~~~
-
-
-
-~~~{.output}
-[1] FALSE FALSE  TRUE  TRUE
-
-~~~
+``` 
 
 Logical operations are also vectorised:
 
-
-~~~{.r}
+```{r}
 a <- x > 3
 a
-~~~
-
-
-
-~~~{.output}
-[1] FALSE FALSE FALSE  TRUE
-
-~~~
+```
 
 > #### Tip: some useful functions for logical vectors {.callout}
 >
@@ -113,36 +84,17 @@ a
 
 Many functions also operate on element-wise on vectors:
 
-
-~~~{.r}
+```{r}
 x <- 1:4
 log(x)
-~~~
-
-
-
-~~~{.output}
-[1] 0.0000 0.6931 1.0986 1.3863
-
-~~~
+```
 
 Vectorised operations also work element wise on matrices:
 
-
-~~~{.r}
+```{r}
 m <- matrix(1:12, nrow=3, ncol=4)
 m * -1
-~~~
-
-
-
-~~~{.output}
-     [,1] [,2] [,3] [,4]
-[1,]   -1   -4   -7  -10
-[2,]   -2   -5   -8  -11
-[3,]   -3   -6   -9  -12
-
-~~~
+```
 
 > #### Tip: element-wise vs. matrix multiplication {.callout}
 >
