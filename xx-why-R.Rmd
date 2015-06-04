@@ -26,18 +26,26 @@ Welcome to the R portion of the Software Carpentry workshop. We're going to show
 > * Download RStudio from [http://www.rstudio.com/products/rstudio/download/](http://www.rstudio.com/products/rstudio/download/)
 > * (Download gapminder data -- can we include in this repo?}
 > * Once you've got RStudio installed, open it.
-> * In the [prompt tab] enter: install.packages('ggplot2')<return>
+> * In the interactive console (left tab), type:
+> * > install.packages('ggplot2')
+> * and hit return, which will tell RStudio to find and install a graphics library we're going to use.
 > * (what else?)
 >
 
-We're going to start with a simple but powerful example of how R can help you analyse data. In RStudio's[the prompt panel], enter these commands (we'll explain how they work soon):
+We're going to start with a simple but powerful example of how R can help you analyse data. In the interactive console, enter these commands (we'll explain how they work soon):
 
 ```{r}
 gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE, sep=',')
+nrow(gapminder)
+```
+
+We told R to load a data set and tell us how big it is. 1,704 entries: that's too many to understand by reading. Let's look at the first few entries to get a better sense of what we have:
+
+```{r}
 head(gapminder)
 ```
 
-We have some data about countries, years, "pop", "lifeExp", and "gdpPercap". (The person who created the data set choose those abbreviations for "Population", "Life Expectancy", and "GDP per Capita," respectively.) Let's see if we can get a better handle on it:
+Interesting: the data concerns countries, years, "pop", "lifeExp", and "gdpPercap". (The person who created the data set choose those abbreviations for "Population", "Life Expectancy", and "GDP per Capita," respectively.) Let's see if we can get a better handle on it:
 
 ```{r lifeExp-vs-gdpPercap-scatter, message=FALSE}
 library(ggplot2)
@@ -58,4 +66,4 @@ ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
   geom_point() + scale_y_log10()
 ```
 
-Much nicer! By using a logarithmic scale for GDP, the outliers no longer, er, lay out. Better yet, the relationship between the two factors we're graphing jumps out at us.
+Much nicer! By using a logarithmic scale for GDP, the outliers no longer, er, lay outso drastically. Better yet, the relationship between the two factors we're graphing jumps out at us: it's logarithmic, or close.
