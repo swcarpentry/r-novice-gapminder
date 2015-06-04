@@ -377,7 +377,7 @@ time, so we see a significant positive association!
 
 ## Challenge Solutions
 
-> #### Challenge 1 {.challenge}
+> #### Solution to challenge 1 {.challenge}
 >
 > Create a data frame that holds the following information for yourself:
 >

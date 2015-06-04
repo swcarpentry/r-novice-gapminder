@@ -390,7 +390,7 @@ fact many R functions which return complex output store their results in a list.
 
 ## Challenge solutions
 
-> #### Challenge 1: Data types {.challenge}
+> #### Solution to challenge 1: Data types {.challenge}
 >
 > Use your knowledge of how to assign a value to
 > a variable, to create examples of data with the
@@ -433,7 +433,7 @@ fact many R functions which return complex output store their results in a list.
 > ~~~
 >
 
-> #### Challenge 2 {.challenge}
+> #### Solution to challenge 2 {.challenge}
 >
 > Vectors can only contain one atomic type. If you try to combine different
 > types, R will create a vector that is the least common denominator: the
@@ -474,7 +474,7 @@ fact many R functions which return complex output store their results in a list.
 >
 
 >
-> ### Challenge 3 {.challenge}
+> ### Solution to challenge 3 {.challenge}
 >
 > What do you think will be the result of
 > `length(x)`?
@@ -493,7 +493,7 @@ fact many R functions which return complex output store their results in a list.
 >
 
 >
-> ### Challenge 4 {.challenge}
+> ### Solution to challenge 4 {.challenge}
 >
 > Make another matrix, this time containing the numbers 1:50,
 > with 5 columns and 10 rows.
@@ -509,7 +509,7 @@ fact many R functions which return complex output store their results in a list.
 >
 
 
-> ### Challenge 5 {.challenge}
+> ### Solution to challenge 5 {.challenge}
 >
 > Create a list of length two containing a character vector for each of the 
 > sections in this part of the workshop:

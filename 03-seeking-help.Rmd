@@ -122,7 +122,7 @@ your issue.
 
 ## Challenge solutions
 
-> #### Challenge 1 {.challenge}
+> #### Solution to challenge 1 {.challenge}
 > 
 > Look at the help for the `paste` function. You'll need to use this later. 
 > 
