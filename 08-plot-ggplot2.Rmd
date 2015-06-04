@@ -20,7 +20,7 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 >   - The geometry layer
 >   - Adding statistics
 >   - Transforming scales
->   - Coloring or panelling by groups.
+>   - Coloring or paneling by groups.
 >
 
 Plotting our data is one of the best ways to
@@ -45,8 +45,8 @@ expressed from the same set of components: a **data** set, a
 points.
 
 The key to understanding ggplot2 is thinking about a figure in layers: just like
-you might do in an image editing program like photoshop, illustrator, or
-inkscape.
+you might do in an image editing program like Photoshop, Illustrator, or
+Inkscape.
 
 Let's start off with an example:
 
@@ -67,7 +67,7 @@ earlier. For the second argument we passed in the `aes` function, which
 tells `ggplot` how variables in the **data** map to *aesthetic* properties of
 the figure, in this case the **x** and **y** locations. Here we told `ggplot` we
 want to plot the "lifeExp" column of the gapminder data frame on the x-axis, and
-the "gdpPercap" column on the y-axis. Notice that we didn't need to explicity
+the "gdpPercap" column on the y-axis. Notice that we didn't need to explicitly
 pass `aes` these columns (e.g. `x = gapminder[, "lifeExp"]`), this is because
 `ggplot` is smart enough to know to look in the **data** for that column!
 
@@ -246,7 +246,7 @@ ggplot(data = gapminder, aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country)
 ```
 
-The `facet_wrap` layer took a "formula" as its argument, denoted by the tilda
+The `facet_wrap` layer took a "formula" as its argument, denoted by the tilde
 (~). This tells R to draw a panel for each unique value in the country column
 of the gapminder dataset.
 
@@ -274,7 +274,7 @@ This is just a taste of what you can do with `ggplot2`. RStudio provides a
 really useful [cheat sheet][cheat] of the different layers available, and more
 extensive documentation is available on the [ggplot2 website][ggplot-doc].
 Finally, if you have no idea how to change something, a quick google search will
-usually send you to a relevant question and answer on stackoverflow with reusable
+usually send you to a relevant question and answer on Stack Overflow with reusable
 code to modify!
 
 [cheat]: http://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf

@@ -171,7 +171,7 @@ x
 
 This is called implicit coercion.
 
-The coersion rule goes `logical` -> `integer` -> `numeric` -> `complex` ->
+The coercion rule goes `logical` -> `integer` -> `numeric` -> `complex` ->
 `character`.
 
 You can also coerce vectors explicitly using the `as.<class_name>`. Example
@@ -302,10 +302,10 @@ while `length` will tell you the number of elements.
 #### Factors
 
 Factors are special vectors that represent categorical data. Factors can be
-ordered or unordered and are important when for modelling functions such as
+ordered or unordered and are important when for modeling functions such as
 `aov()`, `lm()` and `glm()` and also in plot methods.
 
-Factors can only contain pre-defined values, and we can create one with the
+Factors can only contain predefined values, and we can create one with the
 `factor` function:
 
 ```{r}
@@ -324,7 +324,7 @@ This reveals something important: while factors look (and often behave) like
 character vectors, they are actually integers under the hood, and here, we can
 see that "no" is represented by a 1, and "yes" a 2.
 
-In modelling functions, important to know what baseline levels is.  This is the
+In modeling functions, important to know what baseline levels is.  This is the
 first factor but by default the ordering is determined by alphabetical order of
 words entered. You can change this by specifying the levels:
 
@@ -360,7 +360,7 @@ xlist <- list(a = "Research Bazaar", b = 1:10, data = head(iris))
 xlist
 ```
 
-In this case our list contains a character vector of lenght one,
+In this case our list contains a character vector of length one,
 a numeric vector with 10 entries, and a small data frame from
 one of R's many preloaded datasets (see `?data`). We've also given
 each list element a name, which is why you see `$a` instead of `[[1]]`.

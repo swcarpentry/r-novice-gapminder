@@ -12,8 +12,8 @@ source("tools/chunk-options.R")
 
 > ### Learning Objectives {.objectives}
 >
-> * To be able read R helpfiles for functions and special operators.
-> * To be able to use CRAN taskviews to identify packages to solve a problem.
+> * To be able read R help files for functions and special operators.
+> * To be able to use CRAN task views to identify packages to solve a problem.
 > * To be able to seek help from your peers
 >
 
@@ -111,5 +111,5 @@ your issue.
 ### Other ports of call
 
 * [Quick R](http://www.statmethods.net/)
-* [Rstudio cheat sheets](http://www.rstudio.com/resources/cheatsheets/)
+* [RStudio cheat sheets](http://www.rstudio.com/resources/cheatsheets/)
 * [Cookbook for R](http://www.cookbook-r.com/)

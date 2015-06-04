@@ -74,7 +74,7 @@ together afterwards.
 For those of you who have used R before, you might be familiar with the
 `apply` family of functions. While R's built in functions do work, we're
 going to introduce you to another method for solving the "split-apply-combine"
-probelm. The [plyr](http://had.co.nz/plyr/) package provides a set of
+problem. The [plyr](http://had.co.nz/plyr/) package provides a set of
 functions that we find more user friendly for solving this problem.
 
 We installed this package in an earlier challenge. Let's load it now:
