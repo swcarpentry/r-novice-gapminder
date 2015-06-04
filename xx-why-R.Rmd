@@ -6,7 +6,9 @@ minutes: xx
 ---
 
 ```{r, include=FALSE}
+library(ggplot2)
 source("tools/chunk-options.R")
+gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE, sep=',')
 ```
 
 > ### Learning Objectives {.objectives}
@@ -23,6 +25,7 @@ Welcome to the R portion of the Software Carpentry workshop. We're going to show
 > #### Installation
 > (d/l RStudio)
 > (d/l gapminder -- can we include in this repo?}
+> install.packages('ggplot2')
 > (what else?)
 >
 
@@ -33,21 +36,23 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE, sep=',')
 head(gapminder)
 ```
 
-You should see something like this: XXX formatting
+We have some data about countries, years, "pop", "lifeExp", and "gdpPercap". (The person who created the data set choose those abbreviations for "Population", "Life Expectancy", and "GDP per Capita," respectively.) Let's see if we can get a better handle on it:
 
-      country year      pop continent lifeExp gdpPercap
-1 Afghanistan 1952  8425333      Asia  28.801  779.4453
-2 Afghanistan 1957  9240934      Asia  30.332  820.8530
-3 Afghanistan 1962 10267083      Asia  31.997  853.1007
-4 Afghanistan 1967 11537966      Asia  34.020  836.1971
-5 Afghanistan 1972 13079460      Asia  36.088  739.9811
-6 Afghanistan 1977 14880372      Asia  38.438  786.1134
-
-We have some data about countries, years, "pop", "lifeExp", and "gdpPercap". Let's see if we can get a better handle on it:
-
-```{r}
+```{r lifeExp-vs-gdpPercap-scatter, message=FALSE}
 library(ggplot2)
 ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) + geom_point()
 ```
 
 In the lower right panel, you should see a graph that RStudio produced in response to your command. What can you tell about this data set from this initial graph?
+
+This first graph suggests a relationship between life expectancy and GDP per capita. How can we test that idea? Continue looking at the graph. Most of the points are in a broad cluster at the bottom that sweeps upward as life expectancy increases, but
+
+  - there are several outliers with very high GDP per capita
+  - the shape of the relationship between the two factors isn't clear
+
+Let's try squashing the influence of those high values on the Y axis:
+
+```{r axis-scale}
+ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
+  geom_point() + scale_y_log10()
+```
