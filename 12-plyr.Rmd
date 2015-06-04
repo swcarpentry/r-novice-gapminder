@@ -12,7 +12,7 @@ opts_chunk$set(fig.path = "fig/12-plyr-")
 gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 ```
 
-> ## Learning Objectives {.objectives}
+> ## Learning objectives {.objectives}
 >
 > * To be able to use the split-apply-combine strategy for data analysis
 >
