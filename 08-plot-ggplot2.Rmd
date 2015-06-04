@@ -100,12 +100,6 @@ ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
 > on the x-axis.
 >
 
-Solution:
-
-```{r challenge-1-solution}
-ggplot(data = gapminder, aes(x = year, y = lifeExp)) + geom_point()
-```
-
 > #### Challenge 2 {.challenge}
 >
 > In the previous examples and challenge we've used the `aes` function to tell
@@ -114,13 +108,6 @@ ggplot(data = gapminder, aes(x = year, y = lifeExp)) + geom_point()
 > code from the previous challenge to **color** the points by the "continent"
 > column. What trends do you see in the data? Are they what you expected?
 >
-
-Solution:
-
-```{r challenge-2-solution}
-ggplot(data = gapminder, aes(x = year, y = lifeExp, color=continent)) +
-  geom_point()
-```
 
 ### Layers
 
@@ -163,15 +150,6 @@ lines.
 > Switch the order of the point and line layers from the previous example. What
 > happened?
 >
-
-Solution:
-
-```{r lifeExp-layer-example-2}
-ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
-  geom_point() + geom_line(aes(color=continent))
-```
-
-The lines now get drawn over the points!
 
 ### Transformations and statistics
 
@@ -229,12 +207,6 @@ variables and their visual representation.
 > Hint: do not use the `aes` function.
 >
 
-```{r setting}
-ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
-  geom_point(size=3, color="orange") + scale_y_log10() +
-  geom_smooth(method="lm", size=1.5)
-```
-
 ### Multi-panel figures
 
 Earlier we visualised the change in life expectancy over time across all
@@ -290,7 +262,70 @@ code to modify!
 >  - Add a facet layer to panel the density plots by year.
 >
 
-```{r density}
-ggplot(data = gapminder, aes(x = gdpPercap, fill=continent)) +
-  geom_density(alpha=0.6) + facet_wrap( ~ year) + scale_x_log10()
-```
+
+> #### Solution to Challenge 1 {.challenge}
+>
+> Modify the example so that the figure visualise how life expectancy has
+> changed over time:
+>
+> ~~~ {.r}
+> ggplot(data = gapminder, aes(x = year, y = lifeExp)) + geom_point()
+> ~~~
+>
+
+
+> #### Solution to Challenge 2 {.challenge}
+>
+> In the previous examples and challenge we've used the `aes` function to tell
+> the scatterplot **geom** about the **x** and **y** locations of each point.
+> Another *aesthetic* property we can modify is the point *color*. Modify the
+> code from the previous challenge to **color** the points by the "continent"
+> column. What trends do you see in the data? Are they what you expected?
+>
+> ~~~ {.r}
+> ggplot(data = gapminder, aes(x = year, y = lifeExp, color=continent)) +
+>   geom_point()
+> ~~~
+>
+
+> #### Solution to Challenge 3 {.challenge}
+>
+> Switch the order of the point and line layers from the previous example. What
+> happened?
+>
+> ~~~ {.r}
+> ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
+>  geom_point() + geom_line(aes(color=continent))
+> ~~~
+> 
+> The lines now get drawn over the points!
+>
+
+
+> #### Solution to Challenge 4 {.challenge}
+>
+> Modify the color and size of the points on the point layer in the previous
+> example.
+>
+> Hint: do not use the `aes` function.
+>
+> ~~~ {.r}
+> ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
+>  geom_point(size=3, color="orange") + scale_y_log10() +
+>  geom_smooth(method="lm", size=1.5)
+> ~~~
+>
+
+> #### Solution toChallenge 5 {.challenge}
+>
+> Create a density plot of GDP per capita, filled by continent.
+>
+> Advanced:
+>  - Transform the x axis to better visualise the data spread.
+>  - Add a facet layer to panel the density plots by year.
+>
+> ~~~ {.r}
+> ggplot(data = gapminder, aes(x = gdpPercap, fill=continent)) +
+>  geom_density(alpha=0.6) + facet_wrap( ~ year) + scale_x_log10()
+> ~~~
+>
