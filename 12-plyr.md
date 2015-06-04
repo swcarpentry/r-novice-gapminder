@@ -2,12 +2,12 @@
 layout: page
 title: R for reproducible scientific analysis
 subtitle: Split-apply-combine
-minutes: 15
+minutes: 45
 ---
 
 
 
-> ## Learning Objectives {.objectives}
+> ## Learning objectives {.objectives}
 >
 > * To be able to use the split-apply-combine strategy for data analysis
 >
@@ -23,14 +23,14 @@ additional arguments so we could filter by `year` and `country`:
 # with the GDP per capita column.
 calcGDP <- function(dat, year=NULL, country=NULL) {
   if(!is.null(year)) {
-    dat <- dat[dat$year %in% year, ] 
+    dat <- dat[dat$year %in% year, ]
   }
   if (!is.null(country)) {
     dat <- dat[dat$country %in% country,]
   }
   gdp <- dat$pop * dat$gdpPercap
 
-  new <- cbind(dat, gdp=gdp)   
+  new <- cbind(dat, gdp=gdp)
   return(new)
 }
 ~~~
@@ -45,7 +45,7 @@ We could run `calcGPD` and then take the mean of each continent:
 
 ~~~{.r}
 withGDP <- calcGDP(gapminder)
-mean(withGDP[withGDP$continent == "Africa", "gdp"]) 
+mean(withGDP[withGDP$continent == "Africa", "gdp"])
 ~~~
 
 
@@ -58,7 +58,7 @@ mean(withGDP[withGDP$continent == "Africa", "gdp"])
 
 
 ~~~{.r}
-mean(withGDP[withGDP$continent == "Americas", "gdp"]) 
+mean(withGDP[withGDP$continent == "Americas", "gdp"])
 ~~~
 
 
@@ -71,7 +71,7 @@ mean(withGDP[withGDP$continent == "Americas", "gdp"])
 
 
 ~~~{.r}
-mean(withGDP[withGDP$continent == "Asia", "gdp"]) 
+mean(withGDP[withGDP$continent == "Asia", "gdp"])
 ~~~
 
 
@@ -84,7 +84,7 @@ mean(withGDP[withGDP$continent == "Asia", "gdp"])
 But this isn't very *nice*. Yes, by using a function, you have reduced a
 substantial amount of repetition. That **is** nice. But there is still
 repetition. Repeating yourself will cost you time, both now and later, and
-potentially introduce some nasty bugs. 
+potentially introduce some nasty bugs.
 
 We could write a new function that is flexible like `calcGDP`, but this
 also takes a substantial amount of effort and testing to get right.
@@ -94,15 +94,15 @@ The abstract problem we're encountering here is know as "split-apply-combine":
 ![Split apply combine](fig/splitapply.png)
 
 We want to *split* our data into groups, in this case continents, *apply*
-some calculations on that group, then optionally *combine* the results 
+some calculations on that group, then optionally *combine* the results
 together afterwards.
 
 #### The `plyr` package
 
-For those of you who have used R before, you might be familiar with the 
+For those of you who have used R before, you might be familiar with the
 `apply` family of functions. While R's built in functions do work, we're
 going to introduce you to another method for solving the "split-apply-combine"
-probelm. The [plyr](http://had.co.nz/plyr/) package provides a set of 
+problem. The [plyr](http://had.co.nz/plyr/) package provides a set of
 functions that we find more user friendly for solving this problem.
 
 We installed this package in an earlier challenge. Let's load it now:
@@ -183,11 +183,11 @@ returns another `data.frame` (2nd letter is a **d**) i
   column. Note that we just gave the name of the column, not the actual column
   itself like we've done previously with subsetting. Plyr takes care of these
   implementation details for you.
-- The third argument is the function we want to apply to each grouping of the 
+- The third argument is the function we want to apply to each grouping of the
   data. We had to define our own short function here: each subset of the data
   gets stored in `x`, the first argument of our function. This is an anonymous
   function: we haven't defined it elsewhere, and it has no name. It only exists
-  in the scope of our call to `ddply`.  
+  in the scope of our call to `ddply`.
 
 What if we want a different type of output data structure?:
 
@@ -383,7 +383,7 @@ d_ply(
 >
 
 > #### Challenge 2 {.challenge}
-> 
+>
 > Calculate the average life expectancy per continent and year. Which had the
 > longest and shortest in 2007? Which had the greatest change in between 1952
 > and 2007?
