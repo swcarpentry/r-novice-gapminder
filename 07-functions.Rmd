@@ -347,6 +347,7 @@ which is much better than in our first attempt where we just got a vector of num
 [roxygen2]: http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
 [testthat]: http://r-pkgs.had.co.nz/tests.html
 
+## Challenge solutions
 
 > #### Solution for Challenge 1 {.challenge}
 >
