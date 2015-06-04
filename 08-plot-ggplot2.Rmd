@@ -8,6 +8,8 @@ minutes: 60
 ```{r, include=FALSE}
 source("tools/chunk-options.R")
 opts_chunk$set(fig.path = "fig/08-plot-ggplot2.Rmd")
+# Silently load in the data so the rest of the lesson works
+gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 ```
 
 > # Learning Objectives {.objectives}
@@ -47,11 +49,6 @@ you might do in an image editing program like photoshop, illustrator, or
 inkscape.
 
 Let's start off with an example:
-
-```{r, echo=FALSE}
-# Silently load in the data so the rest of the lesson works
-library(gapminder)
-```
 
 ```{r lifeExp-vs-gdpPercap-scatter, message=FALSE}
 library(ggplot2)
@@ -95,7 +92,9 @@ ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
 > Modify the example so that the figure visualise how life expectancy has 
 > changed over time:
 >
->`ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) + geom_point()`
+> ~~~ {.r}
+> ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) + geom_point()
+> ~~~
 >
 > Hint: the gapminder dataset has a column called "year", which should appear 
 > on the x-axis.
