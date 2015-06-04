@@ -8,7 +8,7 @@ subtitle: Instructor's Guide
 
 Leave about 30 minutes at the start of each workshop and another 15 mins 
 at the start of each sesson for technical difficulties like WiFi and 
-installing things (even if you asked them to install in advance, longer if 
+installing things (even if you asked students to install in advance, longer if 
 not).
 
 ## Pulling in data
