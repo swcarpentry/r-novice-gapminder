@@ -7,8 +7,11 @@ minutes: xx
 
 ```{r, include=FALSE}
 library(ggplot2)
+theme_set(theme_bw())
 source("tools/chunk-options.R")
-gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE, sep=',')
+library(dplyr)
+gapminder <- tbl_df(read.csv("data/gapminder-FiveYearData.csv"))
+#gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE, sep=',')
 ```
 
 > ### Learning Objectives {.objectives}
@@ -27,43 +30,68 @@ Welcome to the R portion of the Software Carpentry workshop. We're going to show
 > * (Download gapminder data -- can we include in this repo?}
 > * Once you've got RStudio installed, open it.
 > * In the interactive console (left tab), type:
-> * > install.packages('ggplot2')
-> * and hit return, which will tell RStudio to find and install a graphics library we're going to use.
+> * > install.packages('ggplot2', 'dplyr', 'tidyr')
+> * and hit return, which will tell RStudio to find and install packages that we're going to use.
 > * (what else?)
->
 
-We're going to start with a simple but powerful example of how R can help you analyse data. In the interactive console, enter these commands (we'll explain how they work soon):
+We're going to start with a simple but powerful example of how R can help you visualize, manipulate, and analyze data. In the interactive console, enter each command. Later lessons will go more deeply into what they do and how to effectively leverage R and its packages.
 
+Let's start  by loading a data set and seeing how big it is.
 ```{r}
 gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE, sep=',')
 nrow(gapminder)
 ```
 
-We told R to load a data set and tell us how big it is. 1,704 entries: that's too many to understand by reading. Let's look at the first few entries to get a better sense of what we have:
-
+1,704 entries: that's too many to understand by reading. Let's look at the first few entries to get a better sense of what we have:
 ```{r}
 head(gapminder)
 ```
 
-Interesting: the data concerns countries, years, "pop", "lifeExp", and "gdpPercap". (The person who created the data set choose those abbreviations for "Population", "Life Expectancy", and "GDP per Capita," respectively.) Let's see if we can get a better handle on it:
-
-```{r lifeExp-vs-gdpPercap-scatter, message=FALSE}
+Interesting: the data concerns countries, years, "pop", "lifeExp", and "gdpPercap". (The person who created the data set choose those abbreviations for "Population", "Life Expectancy", and "GDP per Capita," respectively.) Let's see if we can get a better handle on it by visualizing it. Load the `ggplot2` plotting package and construct a scatter plot.
+```{r lifeExp-gdpPercap-scatter, message=FALSE}
 library(ggplot2)
-ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) + geom_point()
+ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
+  geom_point()
 ```
 
 In the lower right panel, you should see a graph that RStudio produced in response to your command. What can you tell about this data set from this initial graph?
 
-This first graph suggests a relationship between life expectancy and GDP per capita. How can we test that idea? Continue looking at the graph. Most of the points are in a broad cluster at the bottom that sweeps upward as life expectancy increases, but
-
-  - there are several outliers with very high GDP per capita
-  - the shape of the relationship between the two factors isn't clear
-
-Let's try squashing the influence of those high values on the Y axis:
-
-```{r axis-scale}
-ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
-  geom_point() + scale_y_log10()
+This first graph suggests a relationship between life expectancy and GDP per capita. Another relationship we might be interested in is the change in life expectancy over time by country and continent.
+```{r year-lifeExp}
+ggplot(data = gapminder, aes(x = year, y = lifeExp, by = country, colour = continent)) +
+  geom_line() +
+  geom_point()
 ```
 
-Much nicer! By using a logarithmic scale for GDP, the outliers no longer, er, lay outso drastically. Better yet, the relationship between the two factors we're graphing jumps out at us: it's logarithmic, or close.
+The plots above are great for visualizing data, but what if we want to figure out something quantitative about the relationships and patterns we observed? R gives you flexible and powerful tools to do manipulation and computation on your data.
+
+Let's use the `dplyr` package to find the pairwise correlations between life expectancy, GDP per capita, and population.
+```{r}
+library(dplyr)
+cors <- gapminder %>%
+  group_by(year) %>%
+  summarise(gdpPercap.lifeExp = cor(gdpPercap, lifeExp),
+            gdpPercap.pop = cor(gdpPercap, pop),
+            pop.lifeExp = cor(pop, lifeExp))
+head(cors)
+```
+
+This is interesting, but it's now in a form that's hard to give to ggplot. We can use the `tidyr` package to put the data into tidy form.
+```{r}
+library(tidyr)
+tidy.cors <- cors %>%
+  gather(variables, correlation, gdpPercap.lifeExp, gdpPercap.pop, pop.lifeExp)
+head(tidy.cors)
+```
+
+Now we can visualize all of these relationships on one plot, and see how the correlations between all these variables change over time.
+```{r year-cors, fig.width=12}
+ggplot(tidy.cors, aes(x = year, y = correlation, colour = variables)) +
+  geom_point() +
+  geom_line() +
+  theme_bw()
+```
+
+Just a few minutes with R, and we have learned that our data set contains a string and interesting relationship between GDP per capita and life expectancy.
+
+Now let's dig into the details of using R.
