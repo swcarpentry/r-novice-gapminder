@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: R for reproducible scientific analysis</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1 class="title">R for reproducible scientific analysis</h1>
+          <h2 class="subtitle">Data frames and reading in data</h2>
+<div id="learning-objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>Become familiar with data frames</li>
+<li>To be able to read in regular data into R</li>
+</ul>
+</div>
+</div>
+<h3 id="data-frames">Data frames</h3>
+<p>Data frames are similar to matrices, except each column can be a different atomic type. Underneath the hood, data frames are really lists, where each element is an atomic vector, with the added restriction that they’re all the same length. As you will see, if we pull out one column of a data frame, we will have a vector.</p>
+<p>Data frames can be created manually with the <code>data.frame</code> function:</p>
+<pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id =</span> <span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>, <span class="st">&#39;f&#39;</span>), <span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">6</span>, <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">214</span>:<span class="dv">219</span>))
+df</code></pre>
+<pre class="output"><code>  id x   y
+1  a 1 214
+2  b 2 215
+3  c 3 216
+4  d 4 217
+5  e 5 218
+6  f 6 219
+</code></pre>
+<div id="challenge-dataframes" class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge: Dataframes</h4>
+</div>
+<div class="panel-body">
+<p>Try using the <code>length</code> function to query your dataframe <code>df</code>. Does it give the result you expect?</p>
+</div>
+</div>
+<p>Each column in the data frame is simply a list element, which is why when you ask for the <code>length</code> of the data frame, it tells you the number of columns. If you actually want the number of rows, you can use the <code>nrow</code> function.</p>
+<p>We can add rows or columns to a data.frame using <code>rbind</code> or <code>cbind</code> (these are the two-dimensional equivalents of the <code>c</code> function):</p>
+<pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">rbind</span>(df, <span class="kw">list</span>(<span class="st">&quot;g&quot;</span>, <span class="dv">11</span>, <span class="dv">42</span>))</code></pre>
+<p>This doesn’t work as expected! What does this error message tell us?</p>
+<p>It sounds like it was trying to generate a factor level. Why? Perhaps our first column (containing characters) is to blame… We can access a column in a <code>data.frame</code> by using the <code>$</code> operator.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(df$id)</code></pre>
+<pre class="output"><code>[1] &quot;character&quot;
+</code></pre>
+<p>Indeed, R automatically made this first column a factor, not a character vector. We can change this in place by converting the type of this column.</p>
+<pre class="sourceCode r"><code class="sourceCode r">df$id &lt;-<span class="st"> </span><span class="kw">as.character</span>(df$id)
+<span class="kw">class</span>(df$id)</code></pre>
+<pre class="output"><code>[1] &quot;character&quot;
+</code></pre>
+<p>Okay, now let’s try adding that row again.</p>
+<pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">rbind</span>(df, <span class="kw">list</span>(<span class="st">&quot;g&quot;</span>, <span class="dv">11</span>, <span class="dv">42</span>))
+<span class="kw">tail</span>(df, <span class="dt">n=</span><span class="dv">3</span>)</code></pre>
+<pre class="output"><code>  id  x   y
+6  f  6 219
+7  g 11  42
+8  g 11  42
+</code></pre>
+<p>Note that to add a row, we need to use a list, because each column is a different type! If you want to add multiple rows to a data.frame, you will need to separate the new columns in the list:</p>
+<pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">rbind</span>(df, <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;l&quot;</span>, <span class="st">&quot;m&quot;</span>), <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">13</span>), <span class="kw">c</span>(<span class="dv">534</span>, -<span class="dv">20</span>)))
+<span class="kw">tail</span>(df, <span class="dt">n=</span><span class="dv">3</span>)</code></pre>
+<pre class="output"><code>   id  x   y
+8   g 11  42
+9   l 12 534
+10  m 13 -20
+</code></pre>
+<p>You can also row-bind data.frames together:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rbind</span>(df, df)</code></pre>
+<pre class="output"><code>   id  x   y
+1   a  1 214
+2   b  2 215
+3   c  3 216
+4   d  4 217
+5   e  5 218
+6   f  6 219
+7   g 11  42
+8   g 11  42
+9   l 12 534
+10  m 13 -20
+11  a  1 214
+12  b  2 215
+13  c  3 216
+14  d  4 217
+15  e  5 218
+16  f  6 219
+17  g 11  42
+18  g 11  42
+19  l 12 534
+20  m 13 -20
+</code></pre>
+<p>To add a column we can use <code>cbind</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">cbind</span>(df, <span class="dv">10</span>:<span class="dv">1</span>)
+df</code></pre>
+<pre class="output"><code>   id  x   y 10:1
+1   a  1 214   10
+2   b  2 215    9
+3   c  3 216    8
+4   d  4 217    7
+5   e  5 218    6
+6   f  6 219    5
+7   g 11  42    4
+8   g 11  42    3
+9   l 12 534    2
+10  m 13 -20    1
+</code></pre>
+<div id="challenge" class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge</h4>
+</div>
+<div class="panel-body">
+<p>Create a dataframe that holds the following information for yourself:</p>
+<ul>
+<li>First name</li>
+<li>Last name</li>
+<li>Age</li>
+</ul>
+<p>Then use rbind to add the same information for the people sitting near you.</p>
+<p>Now use cbind to add a column of logicals answering the question, “Is there anything in this workshop you’re finding confusing?”</p>
+</div>
+</div>
+<h3 id="reading-in-data">Reading in data</h3>
+<p>Remember earlier we obtained the gapminder dataset. If you’re curious about where this data comes from you might like to look at the <a href="http://www.gapminder.org/data/documentation/">Gapminder website</a></p>
+<p>Now we want to load the gapminder data into R. Before reading in data, it’s a good idea to have a look at its structure. Let’s take a look using our newly-learned shell skills:</p>
+<pre class="sourceCode r"><code class="sourceCode r">cd data/<span class="st"> </span><span class="co"># navigate to the data directory of the project folder</span>
+head gapminder-FiveYearData.csv</code></pre>
+<pre class="output"><code>country,year,pop,continent,lifeExp,gdpPercap
+Afghanistan,1952,8425333,Asia,28.801,779.4453145
+Afghanistan,1957,9240934,Asia,30.332,820.8530296
+Afghanistan,1962,10267083,Asia,31.997,853.10071
+Afghanistan,1967,11537966,Asia,34.02,836.1971382
+Afghanistan,1972,13079460,Asia,36.088,739.9811058
+Afghanistan,1977,14880372,Asia,38.438,786.11336
+Afghanistan,1982,12881816,Asia,39.854,978.0114388
+Afghanistan,1987,13867957,Asia,40.822,852.3959448
+Afghanistan,1992,16317921,Asia,41.674,649.3413952
+</code></pre>
+<p>As its file extension would suggest, the file contains comma-separated values, and seems to contain a header row.</p>
+<p>We can use <code>read.table</code> to read this into R</p>
+<pre class="sourceCode r"><code class="sourceCode r">gapminder &lt;-<span class="st"> </span><span class="kw">read.table</span>(
+  <span class="dt">file=</span><span class="st">&quot;data/gapminder-FiveYearData.csv&quot;</span>,
+  <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>
+)
+<span class="kw">head</span>(gapminder)</code></pre>
+<pre class="output"><code>      country year      pop continent lifeExp gdpPercap
+1 Afghanistan 1952  8425333      Asia   28.80     779.4
+2 Afghanistan 1957  9240934      Asia   30.33     820.9
+3 Afghanistan 1962 10267083      Asia   32.00     853.1
+4 Afghanistan 1967 11537966      Asia   34.02     836.2
+5 Afghanistan 1972 13079460      Asia   36.09     740.0
+6 Afghanistan 1977 14880372      Asia   38.44     786.1
+</code></pre>
+<p>Because we know the structure of the data, we’re able to specify the appropriate arguments to <code>read.table</code>. Without these arguments, <code>read.table</code> will do its best to do something sensible, but it is always more reliable to explicitly tell <code>read.table</code> the structure of the data. <code>read.csv</code> function provides a convenient shortcut for loading in CSV files.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Here is the read.csv version of the above command</span>
+gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(
+  <span class="dt">file=</span><span class="st">&quot;data/gapminder-FiveYearData.csv&quot;</span>
+)
+<span class="kw">head</span>(gapminder)</code></pre>
+<pre class="output"><code>      country year      pop continent lifeExp gdpPercap
+1 Afghanistan 1952  8425333      Asia   28.80     779.4
+2 Afghanistan 1957  9240934      Asia   30.33     820.9
+3 Afghanistan 1962 10267083      Asia   32.00     853.1
+4 Afghanistan 1967 11537966      Asia   34.02     836.2
+5 Afghanistan 1972 13079460      Asia   36.09     740.0
+6 Afghanistan 1977 14880372      Asia   38.44     786.1
+</code></pre>
+<div id="miscellaneous-tips" class="callout panel panel-info">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pushpin"></span>Miscellaneous Tips</h4>
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li><p>Another type of file you might encounter are tab-separated format. To specify a tab as a separator, use <code>&quot;\t&quot;</code>.</p></li>
+<li><p>You can also read in files from the internet by replacing the file paths with a web address.</p></li>
+<li><p>You can read directly from excel spreadsheets without converting them to plain text first by using the <code>xlsx</code> package.</p></li>
+</ol>
+</div>
+</div>
+<p>To make sure our analysis is reproducible, we should put the code into a script file so we can come back to it later.</p>
+<div id="challenge-1" class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge</h4>
+</div>
+<div class="panel-body">
+<p>Go to file -&gt; new file -&gt; R script, and write an R script to load in the gapminder dataset. Put it in the <code>scripts/</code> directory and add it to version control.</p>
+<p>Run the script using the <code>source</code> function, using the file path as its argument (or by pressing the “source” button in RStudio).</p>
+</div>
+</div>
+<h3 id="using-dataframes-the-gapminder-dataset">Using dataframes: the <code>gapminder</code> dataset</h3>
+<p>To recap what we’ve just learnt, let’s have a look at our example data (life expectancy in various countries for various years).</p>
+<p>Remember, there are a few functions we can use to interrogate data structures in R:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>() <span class="co"># what is the data structure?</span>
+<span class="kw">typeof</span>() <span class="co"># what is its atomic type?</span>
+<span class="kw">length</span>() <span class="co"># how long is it? What about two dimensional objects?</span>
+<span class="kw">attributes</span>() <span class="co"># does it have any metadata?</span>
+<span class="kw">str</span>() <span class="co"># A full summary of the entire object</span>
+<span class="kw">dim</span>() <span class="co"># Dimensions of the object - also try nrow(), ncol()</span></code></pre>
+<p>Let’s use them to explore the gapminder dataset.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(gapminder)</code></pre>
+<pre class="output"><code>[1] &quot;list&quot;
+</code></pre>
+<p>Remember, data frames are lists ‘under the hood’.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(gapminder)</code></pre>
+<pre class="output"><code>[1] &quot;data.frame&quot;
+</code></pre>
+<p>The gapminder data is stored in a “data.frame”. This is the default data structure when you read in data, and (as we’ve heard) is useful for storing data with mixed types of columns.</p>
+<p>Let’s look at some of the columns.</p>
+<div id="challenge-data-types-in-a-real-dataset" class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge: Data types in a real dataset</h4>
+</div>
+<div class="panel-body">
+<p>Look at the first 6 rows of the gapminder dataframe we loaded before:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gapminder)</code></pre>
+<pre class="output"><code>##       country year      pop continent lifeExp gdpPercap
+## 1 Afghanistan 1952  8425333      Asia  28.801  779.4453
+## 2 Afghanistan 1957  9240934      Asia  30.332  820.8530
+## 3 Afghanistan 1962 10267083      Asia  31.997  853.1007
+## 4 Afghanistan 1967 11537966      Asia  34.020  836.1971
+## 5 Afghanistan 1972 13079460      Asia  36.088  739.9811
+## 6 Afghanistan 1977 14880372      Asia  38.438  786.1134</code></pre>
+<p>Write down what data type you think is in each column</p>
+</div>
+</div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(gapminder$year)</code></pre>
+<pre class="output"><code>[1] &quot;integer&quot;
+</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(gapminder$lifeExp)</code></pre>
+<pre class="output"><code>[1] &quot;double&quot;
+</code></pre>
+<p>Can anyone guess what we should expect the type of the continent column to be?</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(gapminder$continent)</code></pre>
+<pre class="output"><code>[1] &quot;character&quot;
+</code></pre>
+<p>If you were expecting a the answer to be “character”, you would rightly be surprised by the answer. Let’s take a look at the class of this column:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(gapminder$continent)</code></pre>
+<pre class="output"><code>[1] &quot;character&quot;
+</code></pre>
+<p>One of the default behaviours of R is to treat any text columns as “factors” when reading in data. The reason for this is that text columns often represent categorical data, which need to be factors to be handled appropriately by the statistical modelling functions in R.</p>
+<p>However it’s not obvious behaviour, and something that trips many people up. We can disable this behaviour and read in the data again.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)
+gapminder &lt;-<span class="st"> </span><span class="kw">read.table</span>(
+  <span class="dt">file=</span><span class="st">&quot;data/gapminder-FiveYearData.csv&quot;</span>, <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>
+)</code></pre>
+<p>Remember, if you do turn it off automatic conversion to factors you will need to explicitly convert the variables into factors when running statistical models. This can be useful, because it forces you to think about the question you’re asking, and makes it easier to specify the ordering of the categories.</p>
+<p>However there are many in the R community who find it more sensible to leave this as the default behaviour.</p>
+<div id="tip-changing-options" class="callout panel panel-info">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Changing options</h4>
+</div>
+<div class="panel-body">
+<p>When R starts, the first thing it does is runs any code in the file <code>.Rprofile</code> in the project directory. Any permanent changes to default behaviour you want to make should be stored in that file.</p>
+</div>
+</div>
+<p>The first thing you should do when reading data in, is check that it matches what you expect, even if the command ran without warnings or errors. The <code>str</code> function, short for “structure”, is really useful for this:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gapminder)</code></pre>
+<pre class="output"><code>&#39;data.frame&#39;:   1704 obs. of  6 variables:
+ $ country  : chr  &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; ...
+ $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+ $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...
+ $ continent: chr  &quot;Asia&quot; &quot;Asia&quot; &quot;Asia&quot; &quot;Asia&quot; ...
+ $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
+ $ gdpPercap: num  779 821 853 836 740 ...
+</code></pre>
+<p>We can see that the object is a <code>data.frame</code> with 1,704 observations (rows), and 6 variables (columns). Below that, we see the name of each column, followed by a “:”, followed by the type of variable in that column, along with the first few entries.</p>
+<p>We can also retrieve or modify the column or rownames of the data.frame:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">colnames</span>(gapminder)</code></pre>
+<pre class="output"><code>[1] &quot;country&quot;   &quot;year&quot;      &quot;pop&quot;       &quot;continent&quot; &quot;lifeExp&quot;   &quot;gdpPercap&quot;
+</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rownames</span>(gapminder)</code></pre>
+<pre class="output"><code>   [1] &quot;1&quot;    &quot;2&quot;    &quot;3&quot;    &quot;4&quot;    &quot;5&quot;    &quot;6&quot;    &quot;7&quot;    &quot;8&quot;    &quot;9&quot;   
+  [10] &quot;10&quot;   &quot;11&quot;   &quot;12&quot;   &quot;13&quot;   &quot;14&quot;   &quot;15&quot;   &quot;16&quot;   &quot;17&quot;   &quot;18&quot;  
+  [19] &quot;19&quot;   &quot;20&quot;   &quot;21&quot;   &quot;22&quot;   &quot;23&quot;   &quot;24&quot;   &quot;25&quot;   &quot;26&quot;   &quot;27&quot;  
+  [28] &quot;28&quot;   &quot;29&quot;   &quot;30&quot;   &quot;31&quot;   &quot;32&quot;   &quot;33&quot;   &quot;34&quot;   &quot;35&quot;   &quot;36&quot;  
+  [37] &quot;37&quot;   &quot;38&quot;   &quot;39&quot;   &quot;40&quot;   &quot;41&quot;   &quot;42&quot;   &quot;43&quot;   &quot;44&quot;   &quot;45&quot;  
+  [46] &quot;46&quot;   &quot;47&quot;   &quot;48&quot;   &quot;49&quot;   &quot;50&quot;   &quot;51&quot;   &quot;52&quot;   &quot;53&quot;   &quot;54&quot;  
+  [55] &quot;55&quot;   &quot;56&quot;   &quot;57&quot;   &quot;58&quot;   &quot;59&quot;   &quot;60&quot;   &quot;61&quot;   &quot;62&quot;   &quot;63&quot;  
+  [64] &quot;64&quot;   &quot;65&quot;   &quot;66&quot;   &quot;67&quot;   &quot;68&quot;   &quot;69&quot;   &quot;70&quot;   &quot;71&quot;   &quot;72&quot;  
+  [73] &quot;73&quot;   &quot;74&quot;   &quot;75&quot;   &quot;76&quot;   &quot;77&quot;   &quot;78&quot;   &quot;79&quot;   &quot;80&quot;   &quot;81&quot;  
+  [82] &quot;82&quot;   &quot;83&quot;   &quot;84&quot;   &quot;85&quot;   &quot;86&quot;   &quot;87&quot;   &quot;88&quot;   &quot;89&quot;   &quot;90&quot;  
+  [91] &quot;91&quot;   &quot;92&quot;   &quot;93&quot;   &quot;94&quot;   &quot;95&quot;   &quot;96&quot;   &quot;97&quot;   &quot;98&quot;   &quot;99&quot;  
+ [100] &quot;100&quot;  &quot;101&quot;  &quot;102&quot;  &quot;103&quot;  &quot;104&quot;  &quot;105&quot;  &quot;106&quot;  &quot;107&quot;  &quot;108&quot; 
+ [109] &quot;109&quot;  &quot;110&quot;  &quot;111&quot;  &quot;112&quot;  &quot;113&quot;  &quot;114&quot;  &quot;115&quot;  &quot;116&quot;  &quot;117&quot; 
+ [118] &quot;118&quot;  &quot;119&quot;  &quot;120&quot;  &quot;121&quot;  &quot;122&quot;  &quot;123&quot;  &quot;124&quot;  &quot;125&quot;  &quot;126&quot; 
+ [127] &quot;127&quot;  &quot;128&quot;  &quot;129&quot;  &quot;130&quot;  &quot;131&quot;  &quot;132&quot;  &quot;133&quot;  &quot;134&quot;  &quot;135&quot; 
+ [136] &quot;136&quot;  &quot;137&quot;  &quot;138&quot;  &quot;139&quot;  &quot;140&quot;  &quot;141&quot;  &quot;142&quot;  &quot;143&quot;  &quot;144&quot; 
+ [145] &quot;145&quot;  &quot;146&quot;  &quot;147&quot;  &quot;148&quot;  &quot;149&quot;  &quot;150&quot;  &quot;151&quot;  &quot;152&quot;  &quot;153&quot; 
+ [154] &quot;154&quot;  &quot;155&quot;  &quot;156&quot;  &quot;157&quot;  &quot;158&quot;  &quot;159&quot;  &quot;160&quot;  &quot;161&quot;  &quot;162&quot; 
+ [163] &quot;163&quot;  &quot;164&quot;  &quot;165&quot;  &quot;166&quot;  &quot;167&quot;  &quot;168&quot;  &quot;169&quot;  &quot;170&quot;  &quot;171&quot; 
+ [172] &quot;172&quot;  &quot;173&quot;  &quot;174&quot;  &quot;175&quot;  &quot;176&quot;  &quot;177&quot;  &quot;178&quot;  &quot;179&quot;  &quot;180&quot; 
+ [181] &quot;181&quot;  &quot;182&quot;  &quot;183&quot;  &quot;184&quot;  &quot;185&quot;  &quot;186&quot;  &quot;187&quot;  &quot;188&quot;  &quot;189&quot; 
+ [190] &quot;190&quot;  &quot;191&quot;  &quot;192&quot;  &quot;193&quot;  &quot;194&quot;  &quot;195&quot;  &quot;196&quot;  &quot;197&quot;  &quot;198&quot; 
+ [199] &quot;199&quot;  &quot;200&quot;  &quot;201&quot;  &quot;202&quot;  &quot;203&quot;  &quot;204&quot;  &quot;205&quot;  &quot;206&quot;  &quot;207&quot; 
+ [208] &quot;208&quot;  &quot;209&quot;  &quot;210&quot;  &quot;211&quot;  &quot;212&quot;  &quot;213&quot;  &quot;214&quot;  &quot;215&quot;  &quot;216&quot; 
+ [217] &quot;217&quot;  &quot;218&quot;  &quot;219&quot;  &quot;220&quot;  &quot;221&quot;  &quot;222&quot;  &quot;223&quot;  &quot;224&quot;  &quot;225&quot; 
+ [226] &quot;226&quot;  &quot;227&quot;  &quot;228&quot;  &quot;229&quot;  &quot;230&quot;  &quot;231&quot;  &quot;232&quot;  &quot;233&quot;  &quot;234&quot; 
+ [235] &quot;235&quot;  &quot;236&quot;  &quot;237&quot;  &quot;238&quot;  &quot;239&quot;  &quot;240&quot;  &quot;241&quot;  &quot;242&quot;  &quot;243&quot; 
+ [244] &quot;244&quot;  &quot;245&quot;  &quot;246&quot;  &quot;247&quot;  &quot;248&quot;  &quot;249&quot;  &quot;250&quot;  &quot;251&quot;  &quot;252&quot; 
+ [253] &quot;253&quot;  &quot;254&quot;  &quot;255&quot;  &quot;256&quot;  &quot;257&quot;  &quot;258&quot;  &quot;259&quot;  &quot;260&quot;  &quot;261&quot; 
+ [262] &quot;262&quot;  &quot;263&quot;  &quot;264&quot;  &quot;265&quot;  &quot;266&quot;  &quot;267&quot;  &quot;268&quot;  &quot;269&quot;  &quot;270&quot; 
+ [271] &quot;271&quot;  &quot;272&quot;  &quot;273&quot;  &quot;274&quot;  &quot;275&quot;  &quot;276&quot;  &quot;277&quot;  &quot;278&quot;  &quot;279&quot; 
+ [280] &quot;280&quot;  &quot;281&quot;  &quot;282&quot;  &quot;283&quot;  &quot;284&quot;  &quot;285&quot;  &quot;286&quot;  &quot;287&quot;  &quot;288&quot; 
+ [289] &quot;289&quot;  &quot;290&quot;  &quot;291&quot;  &quot;292&quot;  &quot;293&quot;  &quot;294&quot;  &quot;295&quot;  &quot;296&quot;  &quot;297&quot; 
+ [298] &quot;298&quot;  &quot;299&quot;  &quot;300&quot;  &quot;301&quot;  &quot;302&quot;  &quot;303&quot;  &quot;304&quot;  &quot;305&quot;  &quot;306&quot; 
+ [307] &quot;307&quot;  &quot;308&quot;  &quot;309&quot;  &quot;310&quot;  &quot;311&quot;  &quot;312&quot;  &quot;313&quot;  &quot;314&quot;  &quot;315&quot; 
+ [316] &quot;316&quot;  &quot;317&quot;  &quot;318&quot;  &quot;319&quot;  &quot;320&quot;  &quot;321&quot;  &quot;322&quot;  &quot;323&quot;  &quot;324&quot; 
+ [325] &quot;325&quot;  &quot;326&quot;  &quot;327&quot;  &quot;328&quot;  &quot;329&quot;  &quot;330&quot;  &quot;331&quot;  &quot;332&quot;  &quot;333&quot; 
+ [334] &quot;334&quot;  &quot;335&quot;  &quot;336&quot;  &quot;337&quot;  &quot;338&quot;  &quot;339&quot;  &quot;340&quot;  &quot;341&quot;  &quot;342&quot; 
+ [343] &quot;343&quot;  &quot;344&quot;  &quot;345&quot;  &quot;346&quot;  &quot;347&quot;  &quot;348&quot;  &quot;349&quot;  &quot;350&quot;  &quot;351&quot; 
+ [352] &quot;352&quot;  &quot;353&quot;  &quot;354&quot;  &quot;355&quot;  &quot;356&quot;  &quot;357&quot;  &quot;358&quot;  &quot;359&quot;  &quot;360&quot; 
+ [361] &quot;361&quot;  &quot;362&quot;  &quot;363&quot;  &quot;364&quot;  &quot;365&quot;  &quot;366&quot;  &quot;367&quot;  &quot;368&quot;  &quot;369&quot; 
+ [370] &quot;370&quot;  &quot;371&quot;  &quot;372&quot;  &quot;373&quot;  &quot;374&quot;  &quot;375&quot;  &quot;376&quot;  &quot;377&quot;  &quot;378&quot; 
+ [379] &quot;379&quot;  &quot;380&quot;  &quot;381&quot;  &quot;382&quot;  &quot;383&quot;  &quot;384&quot;  &quot;385&quot;  &quot;386&quot;  &quot;387&quot; 
+ [388] &quot;388&quot;  &quot;389&quot;  &quot;390&quot;  &quot;391&quot;  &quot;392&quot;  &quot;393&quot;  &quot;394&quot;  &quot;395&quot;  &quot;396&quot; 
+ [397] &quot;397&quot;  &quot;398&quot;  &quot;399&quot;  &quot;400&quot;  &quot;401&quot;  &quot;402&quot;  &quot;403&quot;  &quot;404&quot;  &quot;405&quot; 
+ [406] &quot;406&quot;  &quot;407&quot;  &quot;408&quot;  &quot;409&quot;  &quot;410&quot;  &quot;411&quot;  &quot;412&quot;  &quot;413&quot;  &quot;414&quot; 
+ [415] &quot;415&quot;  &quot;416&quot;  &quot;417&quot;  &quot;418&quot;  &quot;419&quot;  &quot;420&quot;  &quot;421&quot;  &quot;422&quot;  &quot;423&quot; 
+ [424] &quot;424&quot;  &quot;425&quot;  &quot;426&quot;  &quot;427&quot;  &quot;428&quot;  &quot;429&quot;  &quot;430&quot;  &quot;431&quot;  &quot;432&quot; 
+ [433] &quot;433&quot;  &quot;434&quot;  &quot;435&quot;  &quot;436&quot;  &quot;437&quot;  &quot;438&quot;  &quot;439&quot;  &quot;440&quot;  &quot;441&quot; 
+ [442] &quot;442&quot;  &quot;443&quot;  &quot;444&quot;  &quot;445&quot;  &quot;446&quot;  &quot;447&quot;  &quot;448&quot;  &quot;449&quot;  &quot;450&quot; 
+ [451] &quot;451&quot;  &quot;452&quot;  &quot;453&quot;  &quot;454&quot;  &quot;455&quot;  &quot;456&quot;  &quot;457&quot;  &quot;458&quot;  &quot;459&quot; 
+ [460] &quot;460&quot;  &quot;461&quot;  &quot;462&quot;  &quot;463&quot;  &quot;464&quot;  &quot;465&quot;  &quot;466&quot;  &quot;467&quot;  &quot;468&quot; 
+ [469] &quot;469&quot;  &quot;470&quot;  &quot;471&quot;  &quot;472&quot;  &quot;473&quot;  &quot;474&quot;  &quot;475&quot;  &quot;476&quot;  &quot;477&quot; 
+ [478] &quot;478&quot;  &quot;479&quot;  &quot;480&quot;  &quot;481&quot;  &quot;482&quot;  &quot;483&quot;  &quot;484&quot;  &quot;485&quot;  &quot;486&quot; 
+ [487] &quot;487&quot;  &quot;488&quot;  &quot;489&quot;  &quot;490&quot;  &quot;491&quot;  &quot;492&quot;  &quot;493&quot;  &quot;494&quot;  &quot;495&quot; 
+ [496] &quot;496&quot;  &quot;497&quot;  &quot;498&quot;  &quot;499&quot;  &quot;500&quot;  &quot;501&quot;  &quot;502&quot;  &quot;503&quot;  &quot;504&quot; 
+ [505] &quot;505&quot;  &quot;506&quot;  &quot;507&quot;  &quot;508&quot;  &quot;509&quot;  &quot;510&quot;  &quot;511&quot;  &quot;512&quot;  &quot;513&quot; 
+ [514] &quot;514&quot;  &quot;515&quot;  &quot;516&quot;  &quot;517&quot;  &quot;518&quot;  &quot;519&quot;  &quot;520&quot;  &quot;521&quot;  &quot;522&quot; 
+ [523] &quot;523&quot;  &quot;524&quot;  &quot;525&quot;  &quot;526&quot;  &quot;527&quot;  &quot;528&quot;  &quot;529&quot;  &quot;530&quot;  &quot;531&quot; 
+ [532] &quot;532&quot;  &quot;533&quot;  &quot;534&quot;  &quot;535&quot;  &quot;536&quot;  &quot;537&quot;  &quot;538&quot;  &quot;539&quot;  &quot;540&quot; 
+ [541] &quot;541&quot;  &quot;542&quot;  &quot;543&quot;  &quot;544&quot;  &quot;545&quot;  &quot;546&quot;  &quot;547&quot;  &quot;548&quot;  &quot;549&quot; 
+ [550] &quot;550&quot;  &quot;551&quot;  &quot;552&quot;  &quot;553&quot;  &quot;554&quot;  &quot;555&quot;  &quot;556&quot;  &quot;557&quot;  &quot;558&quot; 
+ [559] &quot;559&quot;  &quot;560&quot;  &quot;561&quot;  &quot;562&quot;  &quot;563&quot;  &quot;564&quot;  &quot;565&quot;  &quot;566&quot;  &quot;567&quot; 
+ [568] &quot;568&quot;  &quot;569&quot;  &quot;570&quot;  &quot;571&quot;  &quot;572&quot;  &quot;573&quot;  &quot;574&quot;  &quot;575&quot;  &quot;576&quot; 
+ [577] &quot;577&quot;  &quot;578&quot;  &quot;579&quot;  &quot;580&quot;  &quot;581&quot;  &quot;582&quot;  &quot;583&quot;  &quot;584&quot;  &quot;585&quot; 
+ [586] &quot;586&quot;  &quot;587&quot;  &quot;588&quot;  &quot;589&quot;  &quot;590&quot;  &quot;591&quot;  &quot;592&quot;  &quot;593&quot;  &quot;594&quot; 
+ [595] &quot;595&quot;  &quot;596&quot;  &quot;597&quot;  &quot;598&quot;  &quot;599&quot;  &quot;600&quot;  &quot;601&quot;  &quot;602&quot;  &quot;603&quot; 
+ [604] &quot;604&quot;  &quot;605&quot;  &quot;606&quot;  &quot;607&quot;  &quot;608&quot;  &quot;609&quot;  &quot;610&quot;  &quot;611&quot;  &quot;612&quot; 
+ [613] &quot;613&quot;  &quot;614&quot;  &quot;615&quot;  &quot;616&quot;  &quot;617&quot;  &quot;618&quot;  &quot;619&quot;  &quot;620&quot;  &quot;621&quot; 
+ [622] &quot;622&quot;  &quot;623&quot;  &quot;624&quot;  &quot;625&quot;  &quot;626&quot;  &quot;627&quot;  &quot;628&quot;  &quot;629&quot;  &quot;630&quot; 
+ [631] &quot;631&quot;  &quot;632&quot;  &quot;633&quot;  &quot;634&quot;  &quot;635&quot;  &quot;636&quot;  &quot;637&quot;  &quot;638&quot;  &quot;639&quot; 
+ [640] &quot;640&quot;  &quot;641&quot;  &quot;642&quot;  &quot;643&quot;  &quot;644&quot;  &quot;645&quot;  &quot;646&quot;  &quot;647&quot;  &quot;648&quot; 
+ [649] &quot;649&quot;  &quot;650&quot;  &quot;651&quot;  &quot;652&quot;  &quot;653&quot;  &quot;654&quot;  &quot;655&quot;  &quot;656&quot;  &quot;657&quot; 
+ [658] &quot;658&quot;  &quot;659&quot;  &quot;660&quot;  &quot;661&quot;  &quot;662&quot;  &quot;663&quot;  &quot;664&quot;  &quot;665&quot;  &quot;666&quot; 
+ [667] &quot;667&quot;  &quot;668&quot;  &quot;669&quot;  &quot;670&quot;  &quot;671&quot;  &quot;672&quot;  &quot;673&quot;  &quot;674&quot;  &quot;675&quot; 
+ [676] &quot;676&quot;  &quot;677&quot;  &quot;678&quot;  &quot;679&quot;  &quot;680&quot;  &quot;681&quot;  &quot;682&quot;  &quot;683&quot;  &quot;684&quot; 
+ [685] &quot;685&quot;  &quot;686&quot;  &quot;687&quot;  &quot;688&quot;  &quot;689&quot;  &quot;690&quot;  &quot;691&quot;  &quot;692&quot;  &quot;693&quot; 
+ [694] &quot;694&quot;  &quot;695&quot;  &quot;696&quot;  &quot;697&quot;  &quot;698&quot;  &quot;699&quot;  &quot;700&quot;  &quot;701&quot;  &quot;702&quot; 
+ [703] &quot;703&quot;  &quot;704&quot;  &quot;705&quot;  &quot;706&quot;  &quot;707&quot;  &quot;708&quot;  &quot;709&quot;  &quot;710&quot;  &quot;711&quot; 
+ [712] &quot;712&quot;  &quot;713&quot;  &quot;714&quot;  &quot;715&quot;  &quot;716&quot;  &quot;717&quot;  &quot;718&quot;  &quot;719&quot;  &quot;720&quot; 
+ [721] &quot;721&quot;  &quot;722&quot;  &quot;723&quot;  &quot;724&quot;  &quot;725&quot;  &quot;726&quot;  &quot;727&quot;  &quot;728&quot;  &quot;729&quot; 
+ [730] &quot;730&quot;  &quot;731&quot;  &quot;732&quot;  &quot;733&quot;  &quot;734&quot;  &quot;735&quot;  &quot;736&quot;  &quot;737&quot;  &quot;738&quot; 
+ [739] &quot;739&quot;  &quot;740&quot;  &quot;741&quot;  &quot;742&quot;  &quot;743&quot;  &quot;744&quot;  &quot;745&quot;  &quot;746&quot;  &quot;747&quot; 
+ [748] &quot;748&quot;  &quot;749&quot;  &quot;750&quot;  &quot;751&quot;  &quot;752&quot;  &quot;753&quot;  &quot;754&quot;  &quot;755&quot;  &quot;756&quot; 
+ [757] &quot;757&quot;  &quot;758&quot;  &quot;759&quot;  &quot;760&quot;  &quot;761&quot;  &quot;762&quot;  &quot;763&quot;  &quot;764&quot;  &quot;765&quot; 
+ [766] &quot;766&quot;  &quot;767&quot;  &quot;768&quot;  &quot;769&quot;  &quot;770&quot;  &quot;771&quot;  &quot;772&quot;  &quot;773&quot;  &quot;774&quot; 
+ [775] &quot;775&quot;  &quot;776&quot;  &quot;777&quot;  &quot;778&quot;  &quot;779&quot;  &quot;780&quot;  &quot;781&quot;  &quot;782&quot;  &quot;783&quot; 
+ [784] &quot;784&quot;  &quot;785&quot;  &quot;786&quot;  &quot;787&quot;  &quot;788&quot;  &quot;789&quot;  &quot;790&quot;  &quot;791&quot;  &quot;792&quot; 
+ [793] &quot;793&quot;  &quot;794&quot;  &quot;795&quot;  &quot;796&quot;  &quot;797&quot;  &quot;798&quot;  &quot;799&quot;  &quot;800&quot;  &quot;801&quot; 
+ [802] &quot;802&quot;  &quot;803&quot;  &quot;804&quot;  &quot;805&quot;  &quot;806&quot;  &quot;807&quot;  &quot;808&quot;  &quot;809&quot;  &quot;810&quot; 
+ [811] &quot;811&quot;  &quot;812&quot;  &quot;813&quot;  &quot;814&quot;  &quot;815&quot;  &quot;816&quot;  &quot;817&quot;  &quot;818&quot;  &quot;819&quot; 
+ [820] &quot;820&quot;  &quot;821&quot;  &quot;822&quot;  &quot;823&quot;  &quot;824&quot;  &quot;825&quot;  &quot;826&quot;  &quot;827&quot;  &quot;828&quot; 
+ [829] &quot;829&quot;  &quot;830&quot;  &quot;831&quot;  &quot;832&quot;  &quot;833&quot;  &quot;834&quot;  &quot;835&quot;  &quot;836&quot;  &quot;837&quot; 
+ [838] &quot;838&quot;  &quot;839&quot;  &quot;840&quot;  &quot;841&quot;  &quot;842&quot;  &quot;843&quot;  &quot;844&quot;  &quot;845&quot;  &quot;846&quot; 
+ [847] &quot;847&quot;  &quot;848&quot;  &quot;849&quot;  &quot;850&quot;  &quot;851&quot;  &quot;852&quot;  &quot;853&quot;  &quot;854&quot;  &quot;855&quot; 
+ [856] &quot;856&quot;  &quot;857&quot;  &quot;858&quot;  &quot;859&quot;  &quot;860&quot;  &quot;861&quot;  &quot;862&quot;  &quot;863&quot;  &quot;864&quot; 
+ [865] &quot;865&quot;  &quot;866&quot;  &quot;867&quot;  &quot;868&quot;  &quot;869&quot;  &quot;870&quot;  &quot;871&quot;  &quot;872&quot;  &quot;873&quot; 
+ [874] &quot;874&quot;  &quot;875&quot;  &quot;876&quot;  &quot;877&quot;  &quot;878&quot;  &quot;879&quot;  &quot;880&quot;  &quot;881&quot;  &quot;882&quot; 
+ [883] &quot;883&quot;  &quot;884&quot;  &quot;885&quot;  &quot;886&quot;  &quot;887&quot;  &quot;888&quot;  &quot;889&quot;  &quot;890&quot;  &quot;891&quot; 
+ [892] &quot;892&quot;  &quot;893&quot;  &quot;894&quot;  &quot;895&quot;  &quot;896&quot;  &quot;897&quot;  &quot;898&quot;  &quot;899&quot;  &quot;900&quot; 
+ [901] &quot;901&quot;  &quot;902&quot;  &quot;903&quot;  &quot;904&quot;  &quot;905&quot;  &quot;906&quot;  &quot;907&quot;  &quot;908&quot;  &quot;909&quot; 
+ [910] &quot;910&quot;  &quot;911&quot;  &quot;912&quot;  &quot;913&quot;  &quot;914&quot;  &quot;915&quot;  &quot;916&quot;  &quot;917&quot;  &quot;918&quot; 
+ [919] &quot;919&quot;  &quot;920&quot;  &quot;921&quot;  &quot;922&quot;  &quot;923&quot;  &quot;924&quot;  &quot;925&quot;  &quot;926&quot;  &quot;927&quot; 
+ [928] &quot;928&quot;  &quot;929&quot;  &quot;930&quot;  &quot;931&quot;  &quot;932&quot;  &quot;933&quot;  &quot;934&quot;  &quot;935&quot;  &quot;936&quot; 
+ [937] &quot;937&quot;  &quot;938&quot;  &quot;939&quot;  &quot;940&quot;  &quot;941&quot;  &quot;942&quot;  &quot;943&quot;  &quot;944&quot;  &quot;945&quot; 
+ [946] &quot;946&quot;  &quot;947&quot;  &quot;948&quot;  &quot;949&quot;  &quot;950&quot;  &quot;951&quot;  &quot;952&quot;  &quot;953&quot;  &quot;954&quot; 
+ [955] &quot;955&quot;  &quot;956&quot;  &quot;957&quot;  &quot;958&quot;  &quot;959&quot;  &quot;960&quot;  &quot;961&quot;  &quot;962&quot;  &quot;963&quot; 
+ [964] &quot;964&quot;  &quot;965&quot;  &quot;966&quot;  &quot;967&quot;  &quot;968&quot;  &quot;969&quot;  &quot;970&quot;  &quot;971&quot;  &quot;972&quot; 
+ [973] &quot;973&quot;  &quot;974&quot;  &quot;975&quot;  &quot;976&quot;  &quot;977&quot;  &quot;978&quot;  &quot;979&quot;  &quot;980&quot;  &quot;981&quot; 
+ [982] &quot;982&quot;  &quot;983&quot;  &quot;984&quot;  &quot;985&quot;  &quot;986&quot;  &quot;987&quot;  &quot;988&quot;  &quot;989&quot;  &quot;990&quot; 
+ [991] &quot;991&quot;  &quot;992&quot;  &quot;993&quot;  &quot;994&quot;  &quot;995&quot;  &quot;996&quot;  &quot;997&quot;  &quot;998&quot;  &quot;999&quot; 
+[1000] &quot;1000&quot; &quot;1001&quot; &quot;1002&quot; &quot;1003&quot; &quot;1004&quot; &quot;1005&quot; &quot;1006&quot; &quot;1007&quot; &quot;1008&quot;
+[1009] &quot;1009&quot; &quot;1010&quot; &quot;1011&quot; &quot;1012&quot; &quot;1013&quot; &quot;1014&quot; &quot;1015&quot; &quot;1016&quot; &quot;1017&quot;
+[1018] &quot;1018&quot; &quot;1019&quot; &quot;1020&quot; &quot;1021&quot; &quot;1022&quot; &quot;1023&quot; &quot;1024&quot; &quot;1025&quot; &quot;1026&quot;
+[1027] &quot;1027&quot; &quot;1028&quot; &quot;1029&quot; &quot;1030&quot; &quot;1031&quot; &quot;1032&quot; &quot;1033&quot; &quot;1034&quot; &quot;1035&quot;
+[1036] &quot;1036&quot; &quot;1037&quot; &quot;1038&quot; &quot;1039&quot; &quot;1040&quot; &quot;1041&quot; &quot;1042&quot; &quot;1043&quot; &quot;1044&quot;
+[1045] &quot;1045&quot; &quot;1046&quot; &quot;1047&quot; &quot;1048&quot; &quot;1049&quot; &quot;1050&quot; &quot;1051&quot; &quot;1052&quot; &quot;1053&quot;
+[1054] &quot;1054&quot; &quot;1055&quot; &quot;1056&quot; &quot;1057&quot; &quot;1058&quot; &quot;1059&quot; &quot;1060&quot; &quot;1061&quot; &quot;1062&quot;
+[1063] &quot;1063&quot; &quot;1064&quot; &quot;1065&quot; &quot;1066&quot; &quot;1067&quot; &quot;1068&quot; &quot;1069&quot; &quot;1070&quot; &quot;1071&quot;
+[1072] &quot;1072&quot; &quot;1073&quot; &quot;1074&quot; &quot;1075&quot; &quot;1076&quot; &quot;1077&quot; &quot;1078&quot; &quot;1079&quot; &quot;1080&quot;
+[1081] &quot;1081&quot; &quot;1082&quot; &quot;1083&quot; &quot;1084&quot; &quot;1085&quot; &quot;1086&quot; &quot;1087&quot; &quot;1088&quot; &quot;1089&quot;
+[1090] &quot;1090&quot; &quot;1091&quot; &quot;1092&quot; &quot;1093&quot; &quot;1094&quot; &quot;1095&quot; &quot;1096&quot; &quot;1097&quot; &quot;1098&quot;
+[1099] &quot;1099&quot; &quot;1100&quot; &quot;1101&quot; &quot;1102&quot; &quot;1103&quot; &quot;1104&quot; &quot;1105&quot; &quot;1106&quot; &quot;1107&quot;
+[1108] &quot;1108&quot; &quot;1109&quot; &quot;1110&quot; &quot;1111&quot; &quot;1112&quot; &quot;1113&quot; &quot;1114&quot; &quot;1115&quot; &quot;1116&quot;
+[1117] &quot;1117&quot; &quot;1118&quot; &quot;1119&quot; &quot;1120&quot; &quot;1121&quot; &quot;1122&quot; &quot;1123&quot; &quot;1124&quot; &quot;1125&quot;
+[1126] &quot;1126&quot; &quot;1127&quot; &quot;1128&quot; &quot;1129&quot; &quot;1130&quot; &quot;1131&quot; &quot;1132&quot; &quot;1133&quot; &quot;1134&quot;
+[1135] &quot;1135&quot; &quot;1136&quot; &quot;1137&quot; &quot;1138&quot; &quot;1139&quot; &quot;1140&quot; &quot;1141&quot; &quot;1142&quot; &quot;1143&quot;
+[1144] &quot;1144&quot; &quot;1145&quot; &quot;1146&quot; &quot;1147&quot; &quot;1148&quot; &quot;1149&quot; &quot;1150&quot; &quot;1151&quot; &quot;1152&quot;
+[1153] &quot;1153&quot; &quot;1154&quot; &quot;1155&quot; &quot;1156&quot; &quot;1157&quot; &quot;1158&quot; &quot;1159&quot; &quot;1160&quot; &quot;1161&quot;
+[1162] &quot;1162&quot; &quot;1163&quot; &quot;1164&quot; &quot;1165&quot; &quot;1166&quot; &quot;1167&quot; &quot;1168&quot; &quot;1169&quot; &quot;1170&quot;
+[1171] &quot;1171&quot; &quot;1172&quot; &quot;1173&quot; &quot;1174&quot; &quot;1175&quot; &quot;1176&quot; &quot;1177&quot; &quot;1178&quot; &quot;1179&quot;
+[1180] &quot;1180&quot; &quot;1181&quot; &quot;1182&quot; &quot;1183&quot; &quot;1184&quot; &quot;1185&quot; &quot;1186&quot; &quot;1187&quot; &quot;1188&quot;
+[1189] &quot;1189&quot; &quot;1190&quot; &quot;1191&quot; &quot;1192&quot; &quot;1193&quot; &quot;1194&quot; &quot;1195&quot; &quot;1196&quot; &quot;1197&quot;
+[1198] &quot;1198&quot; &quot;1199&quot; &quot;1200&quot; &quot;1201&quot; &quot;1202&quot; &quot;1203&quot; &quot;1204&quot; &quot;1205&quot; &quot;1206&quot;
+[1207] &quot;1207&quot; &quot;1208&quot; &quot;1209&quot; &quot;1210&quot; &quot;1211&quot; &quot;1212&quot; &quot;1213&quot; &quot;1214&quot; &quot;1215&quot;
+[1216] &quot;1216&quot; &quot;1217&quot; &quot;1218&quot; &quot;1219&quot; &quot;1220&quot; &quot;1221&quot; &quot;1222&quot; &quot;1223&quot; &quot;1224&quot;
+[1225] &quot;1225&quot; &quot;1226&quot; &quot;1227&quot; &quot;1228&quot; &quot;1229&quot; &quot;1230&quot; &quot;1231&quot; &quot;1232&quot; &quot;1233&quot;
+[1234] &quot;1234&quot; &quot;1235&quot; &quot;1236&quot; &quot;1237&quot; &quot;1238&quot; &quot;1239&quot; &quot;1240&quot; &quot;1241&quot; &quot;1242&quot;
+[1243] &quot;1243&quot; &quot;1244&quot; &quot;1245&quot; &quot;1246&quot; &quot;1247&quot; &quot;1248&quot; &quot;1249&quot; &quot;1250&quot; &quot;1251&quot;
+[1252] &quot;1252&quot; &quot;1253&quot; &quot;1254&quot; &quot;1255&quot; &quot;1256&quot; &quot;1257&quot; &quot;1258&quot; &quot;1259&quot; &quot;1260&quot;
+[1261] &quot;1261&quot; &quot;1262&quot; &quot;1263&quot; &quot;1264&quot; &quot;1265&quot; &quot;1266&quot; &quot;1267&quot; &quot;1268&quot; &quot;1269&quot;
+[1270] &quot;1270&quot; &quot;1271&quot; &quot;1272&quot; &quot;1273&quot; &quot;1274&quot; &quot;1275&quot; &quot;1276&quot; &quot;1277&quot; &quot;1278&quot;
+[1279] &quot;1279&quot; &quot;1280&quot; &quot;1281&quot; &quot;1282&quot; &quot;1283&quot; &quot;1284&quot; &quot;1285&quot; &quot;1286&quot; &quot;1287&quot;
+[1288] &quot;1288&quot; &quot;1289&quot; &quot;1290&quot; &quot;1291&quot; &quot;1292&quot; &quot;1293&quot; &quot;1294&quot; &quot;1295&quot; &quot;1296&quot;
+[1297] &quot;1297&quot; &quot;1298&quot; &quot;1299&quot; &quot;1300&quot; &quot;1301&quot; &quot;1302&quot; &quot;1303&quot; &quot;1304&quot; &quot;1305&quot;
+[1306] &quot;1306&quot; &quot;1307&quot; &quot;1308&quot; &quot;1309&quot; &quot;1310&quot; &quot;1311&quot; &quot;1312&quot; &quot;1313&quot; &quot;1314&quot;
+[1315] &quot;1315&quot; &quot;1316&quot; &quot;1317&quot; &quot;1318&quot; &quot;1319&quot; &quot;1320&quot; &quot;1321&quot; &quot;1322&quot; &quot;1323&quot;
+[1324] &quot;1324&quot; &quot;1325&quot; &quot;1326&quot; &quot;1327&quot; &quot;1328&quot; &quot;1329&quot; &quot;1330&quot; &quot;1331&quot; &quot;1332&quot;
+[1333] &quot;1333&quot; &quot;1334&quot; &quot;1335&quot; &quot;1336&quot; &quot;1337&quot; &quot;1338&quot; &quot;1339&quot; &quot;1340&quot; &quot;1341&quot;
+[1342] &quot;1342&quot; &quot;1343&quot; &quot;1344&quot; &quot;1345&quot; &quot;1346&quot; &quot;1347&quot; &quot;1348&quot; &quot;1349&quot; &quot;1350&quot;
+[1351] &quot;1351&quot; &quot;1352&quot; &quot;1353&quot; &quot;1354&quot; &quot;1355&quot; &quot;1356&quot; &quot;1357&quot; &quot;1358&quot; &quot;1359&quot;
+[1360] &quot;1360&quot; &quot;1361&quot; &quot;1362&quot; &quot;1363&quot; &quot;1364&quot; &quot;1365&quot; &quot;1366&quot; &quot;1367&quot; &quot;1368&quot;
+[1369] &quot;1369&quot; &quot;1370&quot; &quot;1371&quot; &quot;1372&quot; &quot;1373&quot; &quot;1374&quot; &quot;1375&quot; &quot;1376&quot; &quot;1377&quot;
+[1378] &quot;1378&quot; &quot;1379&quot; &quot;1380&quot; &quot;1381&quot; &quot;1382&quot; &quot;1383&quot; &quot;1384&quot; &quot;1385&quot; &quot;1386&quot;
+[1387] &quot;1387&quot; &quot;1388&quot; &quot;1389&quot; &quot;1390&quot; &quot;1391&quot; &quot;1392&quot; &quot;1393&quot; &quot;1394&quot; &quot;1395&quot;
+[1396] &quot;1396&quot; &quot;1397&quot; &quot;1398&quot; &quot;1399&quot; &quot;1400&quot; &quot;1401&quot; &quot;1402&quot; &quot;1403&quot; &quot;1404&quot;
+[1405] &quot;1405&quot; &quot;1406&quot; &quot;1407&quot; &quot;1408&quot; &quot;1409&quot; &quot;1410&quot; &quot;1411&quot; &quot;1412&quot; &quot;1413&quot;
+[1414] &quot;1414&quot; &quot;1415&quot; &quot;1416&quot; &quot;1417&quot; &quot;1418&quot; &quot;1419&quot; &quot;1420&quot; &quot;1421&quot; &quot;1422&quot;
+[1423] &quot;1423&quot; &quot;1424&quot; &quot;1425&quot; &quot;1426&quot; &quot;1427&quot; &quot;1428&quot; &quot;1429&quot; &quot;1430&quot; &quot;1431&quot;
+[1432] &quot;1432&quot; &quot;1433&quot; &quot;1434&quot; &quot;1435&quot; &quot;1436&quot; &quot;1437&quot; &quot;1438&quot; &quot;1439&quot; &quot;1440&quot;
+[1441] &quot;1441&quot; &quot;1442&quot; &quot;1443&quot; &quot;1444&quot; &quot;1445&quot; &quot;1446&quot; &quot;1447&quot; &quot;1448&quot; &quot;1449&quot;
+[1450] &quot;1450&quot; &quot;1451&quot; &quot;1452&quot; &quot;1453&quot; &quot;1454&quot; &quot;1455&quot; &quot;1456&quot; &quot;1457&quot; &quot;1458&quot;
+[1459] &quot;1459&quot; &quot;1460&quot; &quot;1461&quot; &quot;1462&quot; &quot;1463&quot; &quot;1464&quot; &quot;1465&quot; &quot;1466&quot; &quot;1467&quot;
+[1468] &quot;1468&quot; &quot;1469&quot; &quot;1470&quot; &quot;1471&quot; &quot;1472&quot; &quot;1473&quot; &quot;1474&quot; &quot;1475&quot; &quot;1476&quot;
+[1477] &quot;1477&quot; &quot;1478&quot; &quot;1479&quot; &quot;1480&quot; &quot;1481&quot; &quot;1482&quot; &quot;1483&quot; &quot;1484&quot; &quot;1485&quot;
+[1486] &quot;1486&quot; &quot;1487&quot; &quot;1488&quot; &quot;1489&quot; &quot;1490&quot; &quot;1491&quot; &quot;1492&quot; &quot;1493&quot; &quot;1494&quot;
+[1495] &quot;1495&quot; &quot;1496&quot; &quot;1497&quot; &quot;1498&quot; &quot;1499&quot; &quot;1500&quot; &quot;1501&quot; &quot;1502&quot; &quot;1503&quot;
+[1504] &quot;1504&quot; &quot;1505&quot; &quot;1506&quot; &quot;1507&quot; &quot;1508&quot; &quot;1509&quot; &quot;1510&quot; &quot;1511&quot; &quot;1512&quot;
+[1513] &quot;1513&quot; &quot;1514&quot; &quot;1515&quot; &quot;1516&quot; &quot;1517&quot; &quot;1518&quot; &quot;1519&quot; &quot;1520&quot; &quot;1521&quot;
+[1522] &quot;1522&quot; &quot;1523&quot; &quot;1524&quot; &quot;1525&quot; &quot;1526&quot; &quot;1527&quot; &quot;1528&quot; &quot;1529&quot; &quot;1530&quot;
+[1531] &quot;1531&quot; &quot;1532&quot; &quot;1533&quot; &quot;1534&quot; &quot;1535&quot; &quot;1536&quot; &quot;1537&quot; &quot;1538&quot; &quot;1539&quot;
+[1540] &quot;1540&quot; &quot;1541&quot; &quot;1542&quot; &quot;1543&quot; &quot;1544&quot; &quot;1545&quot; &quot;1546&quot; &quot;1547&quot; &quot;1548&quot;
+[1549] &quot;1549&quot; &quot;1550&quot; &quot;1551&quot; &quot;1552&quot; &quot;1553&quot; &quot;1554&quot; &quot;1555&quot; &quot;1556&quot; &quot;1557&quot;
+[1558] &quot;1558&quot; &quot;1559&quot; &quot;1560&quot; &quot;1561&quot; &quot;1562&quot; &quot;1563&quot; &quot;1564&quot; &quot;1565&quot; &quot;1566&quot;
+[1567] &quot;1567&quot; &quot;1568&quot; &quot;1569&quot; &quot;1570&quot; &quot;1571&quot; &quot;1572&quot; &quot;1573&quot; &quot;1574&quot; &quot;1575&quot;
+[1576] &quot;1576&quot; &quot;1577&quot; &quot;1578&quot; &quot;1579&quot; &quot;1580&quot; &quot;1581&quot; &quot;1582&quot; &quot;1583&quot; &quot;1584&quot;
+[1585] &quot;1585&quot; &quot;1586&quot; &quot;1587&quot; &quot;1588&quot; &quot;1589&quot; &quot;1590&quot; &quot;1591&quot; &quot;1592&quot; &quot;1593&quot;
+[1594] &quot;1594&quot; &quot;1595&quot; &quot;1596&quot; &quot;1597&quot; &quot;1598&quot; &quot;1599&quot; &quot;1600&quot; &quot;1601&quot; &quot;1602&quot;
+[1603] &quot;1603&quot; &quot;1604&quot; &quot;1605&quot; &quot;1606&quot; &quot;1607&quot; &quot;1608&quot; &quot;1609&quot; &quot;1610&quot; &quot;1611&quot;
+[1612] &quot;1612&quot; &quot;1613&quot; &quot;1614&quot; &quot;1615&quot; &quot;1616&quot; &quot;1617&quot; &quot;1618&quot; &quot;1619&quot; &quot;1620&quot;
+[1621] &quot;1621&quot; &quot;1622&quot; &quot;1623&quot; &quot;1624&quot; &quot;1625&quot; &quot;1626&quot; &quot;1627&quot; &quot;1628&quot; &quot;1629&quot;
+[1630] &quot;1630&quot; &quot;1631&quot; &quot;1632&quot; &quot;1633&quot; &quot;1634&quot; &quot;1635&quot; &quot;1636&quot; &quot;1637&quot; &quot;1638&quot;
+[1639] &quot;1639&quot; &quot;1640&quot; &quot;1641&quot; &quot;1642&quot; &quot;1643&quot; &quot;1644&quot; &quot;1645&quot; &quot;1646&quot; &quot;1647&quot;
+[1648] &quot;1648&quot; &quot;1649&quot; &quot;1650&quot; &quot;1651&quot; &quot;1652&quot; &quot;1653&quot; &quot;1654&quot; &quot;1655&quot; &quot;1656&quot;
+[1657] &quot;1657&quot; &quot;1658&quot; &quot;1659&quot; &quot;1660&quot; &quot;1661&quot; &quot;1662&quot; &quot;1663&quot; &quot;1664&quot; &quot;1665&quot;
+[1666] &quot;1666&quot; &quot;1667&quot; &quot;1668&quot; &quot;1669&quot; &quot;1670&quot; &quot;1671&quot; &quot;1672&quot; &quot;1673&quot; &quot;1674&quot;
+[1675] &quot;1675&quot; &quot;1676&quot; &quot;1677&quot; &quot;1678&quot; &quot;1679&quot; &quot;1680&quot; &quot;1681&quot; &quot;1682&quot; &quot;1683&quot;
+[1684] &quot;1684&quot; &quot;1685&quot; &quot;1686&quot; &quot;1687&quot; &quot;1688&quot; &quot;1689&quot; &quot;1690&quot; &quot;1691&quot; &quot;1692&quot;
+[1693] &quot;1693&quot; &quot;1694&quot; &quot;1695&quot; &quot;1696&quot; &quot;1697&quot; &quot;1698&quot; &quot;1699&quot; &quot;1700&quot; &quot;1701&quot;
+[1702] &quot;1702&quot; &quot;1703&quot; &quot;1704&quot;
+</code></pre>
+<p>See those numbers in the square brackets on the left? That tells you the number of the first entry in that row of output. So in the last line, we see that the “[1701]” element has “1701” stored in it. The rownames in this case are simply the row numbers.</p>
+<p>We can also modify this information:</p>
+<pre class="sourceCode r"><code class="sourceCode r">copy &lt;-<span class="st"> </span>gapminder <span class="co"># lets create a copy so we don&#39;t mess up the original</span>
+<span class="kw">colnames</span>(copy) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;f&quot;</span>)
+<span class="kw">head</span>(copy)</code></pre>
+<pre class="output"><code>            a    b        c    d     e     f
+1 Afghanistan 1952  8425333 Asia 28.80 779.4
+2 Afghanistan 1957  9240934 Asia 30.33 820.9
+3 Afghanistan 1962 10267083 Asia 32.00 853.1
+4 Afghanistan 1967 11537966 Asia 34.02 836.2
+5 Afghanistan 1972 13079460 Asia 36.09 740.0
+6 Afghanistan 1977 14880372 Asia 38.44 786.1
+</code></pre>
+<p>There are a few related ways of retreiving and modifying this information. <code>attributes</code> will give you both the row and column names, along with the class information, while <code>dimnames</code> will give you just the rownames and column names.</p>
+<p>In both cases, the output object is stored in a <code>list</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(<span class="kw">dimnames</span>(df))</code></pre>
+<pre class="output"><code>List of 2
+ $ : chr [1:10] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+ $ : chr [1:4] &quot;id&quot; &quot;x&quot; &quot;y&quot; &quot;10:1&quot;
+</code></pre>
+<h2 id="understanding-how-lists-are-used-in-function-output">Understanding how lists are used in function output</h2>
+<p>Lets run a basic linear regression on the gapminder dataset:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># What is the relationship between life expectancy and year?</span>
+l1 &lt;-<span class="st"> </span><span class="kw">lm</span>(lifeExp ~<span class="st"> </span>year, <span class="dt">data=</span>gapminder)</code></pre>
+<p>We won’t go into too much detail of what I just wrote, but briefly; the <code>~</code> denotes a formula, which means treat the variable on the left of the <code>~</code> as the left hand side of the equation (or response in this case), and everything on the right as the right hand side. By telling the linear model function to use the gapminder data frame, it knows to look for those variable names as its columns.</p>
+<p>Let’s look at the output:</p>
+<pre class="sourceCode r"><code class="sourceCode r">l1</code></pre>
+<pre class="output"><code>
+Call:
+lm(formula = lifeExp ~ year, data = gapminder)
+
+Coefficients:
+(Intercept)         year  
+   -585.652        0.326  
+</code></pre>
+<p>Not much there right? But if we look at the structure…</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(l1)</code></pre>
+<pre class="output"><code>List of 12
+ $ coefficients : Named num [1:2] -585.652 0.326
+  ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;(Intercept)&quot; &quot;year&quot;
+ $ residuals    : Named num [1:1704] -21.7 -21.8 -21.8 -21.4 -20.9 ...
+  ..- attr(*, &quot;names&quot;)= chr [1:1704] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+ $ effects      : Named num [1:1704] -2455.1 232.2 -20.8 -20.5 -20.2 ...
+  ..- attr(*, &quot;names&quot;)= chr [1:1704] &quot;(Intercept)&quot; &quot;year&quot; &quot;&quot; &quot;&quot; ...
+ $ rank         : int 2
+ $ fitted.values: Named num [1:1704] 50.5 52.1 53.8 55.4 57 ...
+  ..- attr(*, &quot;names&quot;)= chr [1:1704] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+ $ assign       : int [1:2] 0 1
+ $ qr           :List of 5
+  ..$ qr   : num [1:1704, 1:2] -41.2795 0.0242 0.0242 0.0242 0.0242 ...
+  .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+  .. .. ..$ : chr [1:1704] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+  .. .. ..$ : chr [1:2] &quot;(Intercept)&quot; &quot;year&quot;
+  .. ..- attr(*, &quot;assign&quot;)= int [1:2] 0 1
+  ..$ qraux: num [1:2] 1.02 1.03
+  ..$ pivot: int [1:2] 1 2
+  ..$ tol  : num 1e-07
+  ..$ rank : int 2
+  ..- attr(*, &quot;class&quot;)= chr &quot;qr&quot;
+ $ df.residual  : int 1702
+ $ xlevels      : Named list()
+ $ call         : language lm(formula = lifeExp ~ year, data = gapminder)
+ $ terms        :Classes &#39;terms&#39;, &#39;formula&#39; length 3 lifeExp ~ year
+  .. ..- attr(*, &quot;variables&quot;)= language list(lifeExp, year)
+  .. ..- attr(*, &quot;factors&quot;)= int [1:2, 1] 0 1
+  .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+  .. .. .. ..$ : chr [1:2] &quot;lifeExp&quot; &quot;year&quot;
+  .. .. .. ..$ : chr &quot;year&quot;
+  .. ..- attr(*, &quot;term.labels&quot;)= chr &quot;year&quot;
+  .. ..- attr(*, &quot;order&quot;)= int 1
+  .. ..- attr(*, &quot;intercept&quot;)= int 1
+  .. ..- attr(*, &quot;response&quot;)= int 1
+  .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_GlobalEnv&gt; 
+  .. ..- attr(*, &quot;predvars&quot;)= language list(lifeExp, year)
+  .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:2] &quot;numeric&quot; &quot;numeric&quot;
+  .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;lifeExp&quot; &quot;year&quot;
+ $ model        :&#39;data.frame&#39;:  1704 obs. of  2 variables:
+  ..$ lifeExp: num [1:1704] 28.8 30.3 32 34 36.1 ...
+  ..$ year   : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+  ..- attr(*, &quot;terms&quot;)=Classes &#39;terms&#39;, &#39;formula&#39; length 3 lifeExp ~ year
+  .. .. ..- attr(*, &quot;variables&quot;)= language list(lifeExp, year)
+  .. .. ..- attr(*, &quot;factors&quot;)= int [1:2, 1] 0 1
+  .. .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+  .. .. .. .. ..$ : chr [1:2] &quot;lifeExp&quot; &quot;year&quot;
+  .. .. .. .. ..$ : chr &quot;year&quot;
+  .. .. ..- attr(*, &quot;term.labels&quot;)= chr &quot;year&quot;
+  .. .. ..- attr(*, &quot;order&quot;)= int 1
+  .. .. ..- attr(*, &quot;intercept&quot;)= int 1
+  .. .. ..- attr(*, &quot;response&quot;)= int 1
+  .. .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_GlobalEnv&gt; 
+  .. .. ..- attr(*, &quot;predvars&quot;)= language list(lifeExp, year)
+  .. .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:2] &quot;numeric&quot; &quot;numeric&quot;
+  .. .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;lifeExp&quot; &quot;year&quot;
+ - attr(*, &quot;class&quot;)= chr &quot;lm&quot;
+</code></pre>
+<p>There’s a lot of stuff, stored in nested lists! This is why the structure function is really useful, it allows you to see all the data available to you returned by a function.</p>
+<p>For now, we can look at the <code>summary</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(l1)</code></pre>
+<pre class="output"><code>
+Call:
+lm(formula = lifeExp ~ year, data = gapminder)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-39.95  -9.65   1.70  10.33  22.16 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -585.6522    32.3140   -18.1   &lt;2e-16 ***
+year           0.3259     0.0163    20.0   &lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 11.6 on 1702 degrees of freedom
+Multiple R-squared:  0.19,  Adjusted R-squared:  0.189 
+F-statistic:  399 on 1 and 1702 DF,  p-value: &lt;2e-16
+</code></pre>
+<p>As you might expect, life expectancy has slowly been increasing over time, so we see a significant positive association!</p>
+        </div>
+      </div>
+      </article>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>
