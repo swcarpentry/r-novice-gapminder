@@ -227,7 +227,7 @@ d_ply(
 > life expectancy per continent:
 >
 > 1.
-> ~~~ {.r}
+> ```{r, eval=FALSE}
 > ddply(
 >   .data = gapminder,
 >   .variables = gapminder$continent,
@@ -235,19 +235,19 @@ d_ply(
 >      mean(dataGroup$lifeExp)
 >   }
 > )
-> ~~~
+> ```
 >
 > 2.
-> ~~~ {.r}
+> ```{r, eval=FALSE}
 > ddply(
 >   .data = gapminder,
 >   .variables = "continent",
 >   .fun = mean(dataGroup$lifeExp)
 > )
-> ~~~
+> ```
 >
 > 3.
-> ~~~ {.r}
+> ```{r, eval=FALSE}
 > ddply(
 >   .data = gapminder,
 >   .variables = "continent",
@@ -255,10 +255,10 @@ d_ply(
 >      mean(dataGroup$lifeExp)
 >   }
 > )
-> ~~~
+> ```
 >
 > 4.
-> ~~~ {.r}
+> ```{r, eval=FALSE}
 > adply(
 >   .data = gapminder,
 >   .variables = "continent",
@@ -266,5 +266,5 @@ d_ply(
 >      mean(dataGroup$lifeExp)
 >   }
 > )
-> ~~~
+> ```
 >
