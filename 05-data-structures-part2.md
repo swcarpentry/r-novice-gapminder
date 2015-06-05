@@ -2,12 +2,12 @@
 layout: page
 title: R for reproducible scientific analysis
 subtitle: Data frames and reading in data
-minutes: 15
+minutes: 45
 ---
 
 
 
-> ## Learning Objectives {.objectives}
+> ## Learning objectives {.objectives}
 >
 > * Become familiar with data frames
 > * To be able to read in regular data into R
@@ -42,10 +42,10 @@ df
 
 ~~~
 
-> #### Challenge: Dataframes {.challenge}
+> #### Challenge: Data frames {.challenge}
 >
 > Try using the `length` function to query
-> your dataframe `df`. Does it give the result
+> your data frame `df`. Does it give the result
 > you expect?
 >
 
@@ -193,9 +193,9 @@ df
 
 ~~~
 
-> #### Challenge {.challenge}
+> #### Challenge 1 {.challenge}
 >
-> Create a dataframe that holds the following information for yourself:
+> Create a data frame that holds the following information for yourself:
 >
 > * First name
 > * Last name
@@ -258,12 +258,12 @@ head(gapminder)
 
 ~~~{.output}
       country year      pop continent lifeExp gdpPercap
-1 Afghanistan 1952  8425333      Asia   28.80     779.4
-2 Afghanistan 1957  9240934      Asia   30.33     820.9
-3 Afghanistan 1962 10267083      Asia   32.00     853.1
-4 Afghanistan 1967 11537966      Asia   34.02     836.2
-5 Afghanistan 1972 13079460      Asia   36.09     740.0
-6 Afghanistan 1977 14880372      Asia   38.44     786.1
+1 Afghanistan 1952  8425333      Asia  28.801  779.4453
+2 Afghanistan 1957  9240934      Asia  30.332  820.8530
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007
+4 Afghanistan 1967 11537966      Asia  34.020  836.1971
+5 Afghanistan 1972 13079460      Asia  36.088  739.9811
+6 Afghanistan 1977 14880372      Asia  38.438  786.1134
 
 ~~~
 
@@ -288,12 +288,12 @@ head(gapminder)
 
 ~~~{.output}
       country year      pop continent lifeExp gdpPercap
-1 Afghanistan 1952  8425333      Asia   28.80     779.4
-2 Afghanistan 1957  9240934      Asia   30.33     820.9
-3 Afghanistan 1962 10267083      Asia   32.00     853.1
-4 Afghanistan 1967 11537966      Asia   34.02     836.2
-5 Afghanistan 1972 13079460      Asia   36.09     740.0
-6 Afghanistan 1977 14880372      Asia   38.44     786.1
+1 Afghanistan 1952  8425333      Asia  28.801  779.4453
+2 Afghanistan 1957  9240934      Asia  30.332  820.8530
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007
+4 Afghanistan 1967 11537966      Asia  34.020  836.1971
+5 Afghanistan 1972 13079460      Asia  36.088  739.9811
+6 Afghanistan 1977 14880372      Asia  38.438  786.1134
 
 ~~~
 
@@ -302,7 +302,7 @@ head(gapminder)
 > 1. Another type of file you might encounter are tab-separated
 > format. To specify a tab as a separator, use `"\t"`.
 >
-> 2. You can also read in files from the internet by replacing
+> 2. You can also read in files from the Internet by replacing
 > the file paths with a web address.
 >
 > 3. You can read directly from excel spreadsheets without
@@ -312,7 +312,7 @@ head(gapminder)
 To make sure our analysis is reproducible, we should put the code
 into a script file so we can come back to it later.
 
-> #### Challenge {.challenge}
+> #### Challenge 2 {.challenge}
 >
 > Go to file -> new file -> R script, and write an R script
 > to load in the gapminder dataset. Put it in the `scripts/`
@@ -322,7 +322,7 @@ into a script file so we can come back to it later.
 > as its argument (or by pressing the "source" button in RStudio).
 >
 
-### Using dataframes: the `gapminder` dataset
+### Using data frames: the `gapminder` dataset
 
 
 To recap what we've just learnt, let's have a look at our example
@@ -373,22 +373,26 @@ in data, and (as we've heard) is useful for storing data with mixed types of col
 
 Let's look at some of the columns.
 
-> #### Challenge: Data types in a real dataset {.challenge}
+> #### Challenge 3: Data types in a real dataset {.challenge}
 >
-> Look at the first 6 rows of the gapminder dataframe we loaded before:
+> Look at the first 6 rows of the gapminder data frame we loaded before:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > head(gapminder)
 > ~~~
->
-> ~~~ {.output}
-> ##       country year      pop continent lifeExp gdpPercap
-> ## 1 Afghanistan 1952  8425333      Asia  28.801  779.4453
-> ## 2 Afghanistan 1957  9240934      Asia  30.332  820.8530
-> ## 3 Afghanistan 1962 10267083      Asia  31.997  853.1007
-> ## 4 Afghanistan 1967 11537966      Asia  34.020  836.1971
-> ## 5 Afghanistan 1972 13079460      Asia  36.088  739.9811
-> ## 6 Afghanistan 1977 14880372      Asia  38.438  786.1134
+> 
+> 
+> 
+> ~~~{.output}
+>       country year      pop continent lifeExp gdpPercap
+> 1 Afghanistan 1952  8425333      Asia  28.801  779.4453
+> 2 Afghanistan 1957  9240934      Asia  30.332  820.8530
+> 3 Afghanistan 1962 10267083      Asia  31.997  853.1007
+> 4 Afghanistan 1967 11537966      Asia  34.020  836.1971
+> 5 Afghanistan 1972 13079460      Asia  36.088  739.9811
+> 6 Afghanistan 1977 14880372      Asia  38.438  786.1134
+> 
 > ~~~
 >
 > Write down what data type you think is in each column
@@ -452,7 +456,7 @@ class(gapminder$continent)
 One of the default behaviours of R is to treat any text columns as "factors"
 when reading in data. The reason for this is that text columns often represent
 categorical data, which need to be factors to be handled appropriately by
-the statistical modelling functions in R.
+the statistical modeling functions in R.
 
 However it's not obvious behaviour, and something that trips many people up. We can
 disable this behaviour and read in the data again.
@@ -740,17 +744,17 @@ head(copy)
 
 
 ~~~{.output}
-            a    b        c    d     e     f
-1 Afghanistan 1952  8425333 Asia 28.80 779.4
-2 Afghanistan 1957  9240934 Asia 30.33 820.9
-3 Afghanistan 1962 10267083 Asia 32.00 853.1
-4 Afghanistan 1967 11537966 Asia 34.02 836.2
-5 Afghanistan 1972 13079460 Asia 36.09 740.0
-6 Afghanistan 1977 14880372 Asia 38.44 786.1
+            a    b        c    d      e        f
+1 Afghanistan 1952  8425333 Asia 28.801 779.4453
+2 Afghanistan 1957  9240934 Asia 30.332 820.8530
+3 Afghanistan 1962 10267083 Asia 31.997 853.1007
+4 Afghanistan 1967 11537966 Asia 34.020 836.1971
+5 Afghanistan 1972 13079460 Asia 36.088 739.9811
+6 Afghanistan 1977 14880372 Asia 38.438 786.1134
 
 ~~~
 
-There are a few related ways of retreiving and modifying this information.
+There are a few related ways of retrieving and modifying this information.
 `attributes` will give you both the row and column names, along with the
 class information, while `dimnames` will give you just the rownames and
 column names.
@@ -759,15 +763,15 @@ In both cases, the output object is stored in a `list`:
 
 
 ~~~{.r}
-str(dimnames(df))
+str(dimnames(gapminder))
 ~~~
 
 
 
 ~~~{.output}
 List of 2
- $ : chr [1:10] "1" "2" "3" "4" ...
- $ : chr [1:4] "id" "x" "y" "10:1"
+ $ : chr [1:1704] "1" "2" "3" "4" ...
+ $ : chr [1:6] "country" "year" "pop" "continent" ...
 
 ~~~
 
@@ -805,7 +809,7 @@ lm(formula = lifeExp ~ year, data = gapminder)
 
 Coefficients:
 (Intercept)         year  
-   -585.652        0.326  
+  -585.6522       0.3259  
 
 ~~~
 
@@ -898,21 +902,45 @@ Call:
 lm(formula = lifeExp ~ year, data = gapminder)
 
 Residuals:
-   Min     1Q Median     3Q    Max 
--39.95  -9.65   1.70  10.33  22.16 
+    Min      1Q  Median      3Q     Max 
+-39.949  -9.651   1.697  10.335  22.158 
 
 Coefficients:
-             Estimate Std. Error t value Pr(>|t|)    
-(Intercept) -585.6522    32.3140   -18.1   <2e-16 ***
-year           0.3259     0.0163    20.0   <2e-16 ***
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -585.65219   32.31396  -18.12   <2e-16 ***
+year           0.32590    0.01632   19.96   <2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 11.6 on 1702 degrees of freedom
-Multiple R-squared:  0.19,	Adjusted R-squared:  0.189 
-F-statistic:  399 on 1 and 1702 DF,  p-value: <2e-16
+Residual standard error: 11.63 on 1702 degrees of freedom
+Multiple R-squared:  0.1898,	Adjusted R-squared:  0.1893 
+F-statistic: 398.6 on 1 and 1702 DF,  p-value: < 2.2e-16
 
 ~~~
 
 As you might expect, life expectancy has slowly been increasing over
 time, so we see a significant positive association!
+
+## Challenge Solutions
+
+> #### Solution to challenge 1 {.challenge}
+>
+> Create a data frame that holds the following information for yourself:
+>
+> * First name
+> * Last name
+> * Age
+>
+> Then use rbind to add the same information for the people sitting near you.
+>
+> Now use cbind to add a column of logicals answering the question,
+> "Is there anything in this workshop you're finding confusing?"
+>
+> 
+> ~~~{.r}
+> my_df <- data.frame(first_name = "Software", last_name = "Carpentry", age = 17)
+> my_df <- rbind(my_df, list("Jane", "Smith", 29))
+> my_df <- rbind(my_df, list(c("Jo", "John"), c("White", "Lee"), c(23, 41)))
+> my_df <- cbind(my_df, confused = c(FALSE, FALSE, TRUE, FALSE))
+> ~~~
+>

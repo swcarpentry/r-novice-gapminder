@@ -11,7 +11,7 @@ source("tools/chunk-options.R")
 gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 ```
 
-> ## Objectives {.objectives}
+> ## Learning objectives {.objectives}
 >
 > * Define a function that takes arguments.
 > * Return a value from a function.
@@ -276,25 +276,17 @@ which is much better than in our first attempt where we just got a vector of num
 >
 > The `paste` function can be used to combine text together, e.g:
 >
-> ~~~ {.r}
+> ```{r}
 > best_practice <- c("Write", "programs", "for", "people", "not", "computers")
 > paste(best_practice, collapse=" ")
-> ~~~
->
-> ~~~ {.output}
-> ## [1] "Write programs for people not computers"
-> ~~~
+> ```
 >
 >  Write a function called `fence` that takes two vectors as arguments, called
 > `text` and `wrapper`, and prints out the text wrapped with the `wrapper`:
 >
-> ~~~ {.r}
+> ```{r, eval=FALSE}
 > fence(text=best_practice, wrapper="***")
-> ~~~
->
-> ~~~ {.output}
-> ## [1] "*** Write programs for people not computers ***"
-> ~~~
+> ```
 >
 > *Note:* the `paste` function has an argument called `sep`, which specifies the
 > separator between text. The default is a space: " ". The default for `paste0`
@@ -347,50 +339,49 @@ which is much better than in our first attempt where we just got a vector of num
 [roxygen2]: http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
 [testthat]: http://r-pkgs.had.co.nz/tests.html
 
+## Challenge solutions
 
-> #### Solution for Challenge 1 {.challenge}
+> #### Solution to challenge 1 {.challenge}
 >
 > Write a function called `kelvin_to_celsius` that takes a temperature in Kelvin
 > and returns that temperature in Celsius
 >
-> ~~~ {.r}
+> ```{r}
 > kelvin_to_celsius <- function(temp) {
 >  celsius <- temp - 273.15
 >  return(celsius)
 > }
-> ~~~
+> ```
 
 
-> #### Solution for Challenge 2 {.challenge}
+> #### Solution to challenge 2 {.challenge}
 >
 > Define the function to convert directly from Fahrenheit to Celsius,
 > by reusing these two functions above
 >
 >
-> ~~~ {.r}
+> ```{r}
 > fahr_to_celsius <- function(temp) {
 >   temp_k <- fahr_to_kelvin(temp)
 >   result <- kelvin_to_celsius(temp_k)
 >   return(result)
 > }
-> ~~~
+> ```
 >
 
-> #### Solution for Challenge 3 {.challenge}
+> #### Solution to challenge 3 {.challenge}
 > 
 >
 >  Write a function called `fence` that takes two vectors as arguments, called
 > `text` and `wrapper`, and prints out the text wrapped with the `wrapper`:
 >
-> ~~~ {.r}
+> ```{r}
 > fence <- function(text, wrapper){
 >   text <- c(wrapper, text, wrapper)
 >   result <- paste(text, collapse = " ")
+>   return(result)
 > }
+> best_practice <- c("Write", "programs", "for", "people", "not", "computers")
 > fence(text=best_practice, wrapper="***")
-> ~~~
->
-> ~~~ {.output}
-> ## [1] "*** Write programs for people not computers ***"
-> ~~~
+> ```
 > 
