@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: Intro to R</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1 class="title">Intro to R</h1>
+          
+<div id="learning-objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h3 id="learning-objectives" class="objectives panel panel-warning"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h3>
+</div>
+<div class="panel-body">
+<ul>
+<li>Familiarize participants with R syntax</li>
+<li>Understand the concepts of objects and assignment</li>
+<li>Understand the concepts of vector and data types</li>
+<li>Get exposed to a few functions</li>
+</ul>
+</div>
+</div>
+<h3 id="what-is-r">What is R?</h3>
+<p>R is an open source language for statistics and visualization. R is free and has a large (and growing) community, making it a popular choice for data analysis.</p>
+<p>Our real goal isn't to teach you R, but to teach you the basic concepts that all programming depends on. We use R in our lessons because:</p>
+<ul>
+<li>we have to use something for examples;</li>
+<li>it's free, well-documented, and runs almost everywhere;</li>
+<li>it has a large (and growing) user base among scientists; and</li>
+<li>it has a large library of external packages available for performing diverse tasks.</li>
+</ul>
+<p>RStudio is an IDE, or &quot;integrated development environment&quot; for R. You don't need to use RStudio to use R, but it comes with a lot of handy features.</p>
+<p>Let's start by creating a new RStudio <a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects">project</a> on our desktop. RStudio helps you organize your work into discrete projects, each with their own files and history. You can use RStudio projects to easily pick up where you left off with a project or analysis.</p>
+<p>Now that we're in our project, let's get familiar with RStudio's layout. First there is the R console, which will evaluate the commands we give it. You can type directly into the console. For example, R can do arithmetic:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> +<span class="st"> </span><span class="dv">2</span></code></pre>
+<pre class="output"><code>[1] 4
+</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">5</span> *<span class="st"> </span><span class="dv">6</span></code></pre>
+<pre class="output"><code>[1] 30
+</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span> /<span class="st"> </span><span class="dv">4</span></code></pre>
+<pre class="output"><code>[1] 2.5
+</code></pre>
+<p>The Files tab shows files that are in the directory we are currently in, e.g. <code>Home/Desktop/swc-wsu</code> -- since we are using an RStudio project, that directory should be the same directory that the project is in.</p>
+<h3 id="creating-objects">Creating objects</h3>
+<p>While you can type commands directly in the console, usually you'll want to create objects, using &quot;assignment&quot;. You assign values, data, etc. to objects using the <code>&lt;-</code> ooperator. For example:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">8</span>
+x</code></pre>
+<pre class="output"><code>[1] 8
+</code></pre>
+<p>Here we have created an object called <code>x</code> and assigned it the value 8. We can then use <code>x</code> in other calculations or other assignments.</p>
+<pre class="sourceCode r"><code class="sourceCode r">x *<span class="st"> </span><span class="dv">3</span></code></pre>
+<pre class="output"><code>[1] 24
+</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span>x /<span class="st"> </span><span class="dv">2</span>
+y</code></pre>
+<pre class="output"><code>[1] 4
+</code></pre>
+<p>You can overwrite an object's value at any time.</p>
+<pre class="sourceCode r"><code class="sourceCode r">x</code></pre>
+<pre class="output"><code>[1] 8
+</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">15</span>
+x</code></pre>
+<pre class="output"><code>[1] 15
+</code></pre>
+<p>Since <code>y</code> was defined as <code>x / 2</code>, has it changed now that we have changed <code>x</code>? The answer is <strong>no</strong>. We assigned the value of <code>x / 2</code> to <code>y</code> when <code>x</code> was 8, so the <em>value</em> that actually got assigned to <code>y</code> was 4. This will not change unless we reassign <code>y</code>.</p>
+<p>To view the objects that are in your current environment, use <code>ls()</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>()</code></pre>
+<pre class="output"><code>[1] &quot;x&quot; &quot;y&quot;
+</code></pre>
+<p>RStudio also shows thee objects in the Environment panel.</p>
+<h3 id="writing-scripts">Writing scripts</h3>
+<p>One of the major reasons to write code is to keep a record of what you have done so that you can repeat it. This way, if a reviewer asks you to slightly modify a figure in a manuscript or to clarify how you found a particular result, you don't need to remember and recreate every button click, you can just re-run the script or modify it if necessary. So far we have been typing directly into the console, but to save our work for future use we should write a script. Let's create a new script and copy the commands we have already executed from the History tab in RStudio.</p>
+<p>To execute code in the console from a script you use Ctrl-Enter (or Cmd-Enter on a Mac). If code is highlighted it will execute the entire selection; if nothing is highlighted it will execute the current line.</p>
+<p>From now on we'll be working in a script and executing the code from there. This way you will have a record of everything we did in this lesson.</p>
+<h3 id="vectors-and-data-types">Vectors and data types</h3>
+<p><em>Adapted from Christie Bahlai's <a href="https://github.com/cbahlai/2015-01-05-wise-umich/">materials</a> for the 2015-01-05 UMich workshop</em></p>
+<p>A vector is a group of values, mainly either numbers or characters. You can assign this set of values to a variable, just like you would for one item. For example we can create a vector of animal weights:</p>
+<pre class="sourceCode r"><code class="sourceCode r">weights &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">65</span>, <span class="dv">82</span>)
+weights</code></pre>
+<pre class="output"><code>[1] 50 60 65 82
+</code></pre>
+<p>The <code>c()</code> stands for &quot;combine&quot;. A vector can also contain characters:</p>
+<pre class="sourceCode r"><code class="sourceCode r">animals &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;mouse&quot;</span>, <span class="st">&quot;rat&quot;</span>, <span class="st">&quot;dog&quot;</span>)
+animals</code></pre>
+<pre class="output"><code>[1] &quot;mouse&quot; &quot;rat&quot;   &quot;dog&quot;  
+</code></pre>
+<p>The contents of a vector must all be the same type (i.e. all character or all numeric).</p>
+<p>Functions in R let you perform various operations, such as finding the mean of a set of numbers, for example. Functions have a name followed by a set of parentheses that contain arguments to the function. In many cases the first argument to a function will be an object that you are working with.</p>
+<p>If you want to learn more about a function you can look up the help file for it by typing <code>?functionname</code>.</p>
+<p>There are many functions that allow you to inspect the content of an object. <code>length()</code> tells you how many elements are in a particular vector:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(weights)</code></pre>
+<pre class="output"><code>[1] 4
+</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(animals)</code></pre>
+<pre class="output"><code>[1] 3
+</code></pre>
+<p><code>class()</code> indicates the class (the type of element) of an object:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(weights)</code></pre>
+<pre class="output"><code>[1] &quot;numeric&quot;
+</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(animals)</code></pre>
+<pre class="output"><code>[1] &quot;character&quot;
+</code></pre>
+<p>The function <code>str()</code> provides an overview of the object and the elements it contains. It is a really useful function when working with large and complex objects:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(weights)</code></pre>
+<pre class="output"><code> num [1:4] 50 60 65 82
+</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(animals)</code></pre>
+<pre class="output"><code> chr [1:3] &quot;mouse&quot; &quot;rat&quot; &quot;dog&quot;
+</code></pre>
+<p>You can add elements to your vector simply by using the <code>c()</code> function:</p>
+<pre class="sourceCode r"><code class="sourceCode r">weights &lt;-<span class="st"> </span><span class="kw">c</span>(weights, <span class="dv">90</span>) <span class="co"># adding at the end</span>
+weights &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">30</span>, weights) <span class="co"># adding at the beginning</span>
+weights</code></pre>
+<pre class="output"><code>[1] 30 50 60 65 82 90
+</code></pre>
+<p>What happens here is that we take the original vector <code>weights</code>, and we are adding another item first to the end of the other ones, and then another item at the beginning. We can do this over and over again to build a vector or a dataset. As we program, this may be useful to auto-update results that we are collecting or calculating.</p>
+<p>We just saw 2 of the 6 <strong>data types</strong> that R uses: <code>&quot;character&quot;</code> and <code>&quot;numeric&quot;</code>. The other 4 are:</p>
+<ul>
+<li><code>&quot;logical&quot;</code> for <code>TRUE</code> and <code>FALSE</code> (the boolean data type)</li>
+<li><code>&quot;integer&quot;</code> for integer numbers (e.g., <code>2L</code>, the <code>L</code> indicates to R that it's an integer)</li>
+<li><code>&quot;complex&quot;</code> to represent complex numbers with real and imaginary parts (e.g., <code>1+4i</code>) and that's all we're going to say about them</li>
+<li><code>&quot;raw&quot;</code> that we won't discuss further</li>
+</ul>
+<p>Vectors are one of the many <strong>data structures</strong> that R uses. Other important ones are lists (<code>list</code>), matrices (<code>matrix</code>), data frames (<code>data.frame</code>) and factors (<code>factor</code>).</p>
+<div id="challenge" class="challenge panel panel-success">
+<div class="panel-heading">
+<h3 id="challenge" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge</h3>
+</div>
+<div class="panel-body">
+<ul>
+<li>Combine objects <code>x</code>, <code>y</code>, and <code>weights</code> into a vector called <code>z</code>.</li>
+<li>Find the mean of this set of numbers (hint: there is a function called <code>mean()</code>).</li>
+</ul>
+</div>
+</div>
+        </div>
+      </div>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/karawoo/2015-04-27-wsu">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="../LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>

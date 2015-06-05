@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: Working with data</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1 class="title">Working with data</h1>
+          
+<div id="learning-objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h3 id="learning-objectives" class="objectives panel panel-warning"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h3>
+</div>
+<div class="panel-body">
+<ul>
+<li>Understand the concept of a working directory</li>
+<li>Understand the concept of a data frame</li>
+<li>Learn how to load data into R</li>
+<li>Examine data in R</li>
+</ul>
+</div>
+</div>
+<p>We're now going to work with some actual data. The data we'll be using is the <a href="https://github.com/jennybc/gapminder">gapminder</a> dataset which contains information on life expectancy, population, and GDP over time for 142 countries. You should have downloaded this data and placed it on your desktop for now.</p>
+<h3 id="a-word-about-working-directories">A word about working directories</h3>
+<p>To load data, R needs to know where to find it. We can use the <code>getwd()</code> function to figure out what our current <em>working directory</em> is.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getwd</span>()</code></pre>
+<p>To view the files in the current working directory, use <code>list.files()</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list.files</span>()</code></pre>
+<p>If we want to move to a different working directory, use <code>setwd()</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;~/Desktop&quot;</span>)    ## ~/ is a shortcut for the &quot;home&quot; directory</code></pre>
+<p>However beware that if you write a script that uses <code>setwd()</code>, others may not be able to run that script on their computers if they have organized their directories differently from you.</p>
+<p>For now, let's set the working directory back to our project directory since that is where the data is.</p>
+<p>To load the data into R, we use a function called <code>read.csv()</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r">gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;gapminder.csv&quot;</span>)</code></pre>
+<p>A very useful function for examining the first few rows of your data is <code>head()</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gapminder)</code></pre>
+<pre class="output"><code>      country continent year lifeExp      pop gdpPercap
+1 Afghanistan      Asia 1952  28.801  8425333  779.4453
+2 Afghanistan      Asia 1957  30.332  9240934  820.8530
+3 Afghanistan      Asia 1962  31.997 10267083  853.1007
+4 Afghanistan      Asia 1967  34.020 11537966  836.1971
+5 Afghanistan      Asia 1972  36.088 13079460  739.9811
+6 Afghanistan      Asia 1977  38.438 14880372  786.1134
+</code></pre>
+<p>Many of the functions we used to examine vectors can also be applied to data frames.</p>
+<div id="challenge" class="challenge panel panel-success">
+<div class="panel-heading">
+<h3 id="challenge" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Challenge</h3>
+</div>
+<div class="panel-body">
+<p>Based on the output of <code>str(gapminder)</code>, can you answer the following questions?</p>
+<ul>
+<li>What is the class of the object gapminder?</li>
+<li>How many rows and how many columns are in this object?</li>
+<li>How many countries are represented in this data?</li>
+</ul>
+</div>
+</div>
+        </div>
+      </div>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/karawoo/2015-04-27-wsu">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="../LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>

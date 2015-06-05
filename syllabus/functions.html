@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: Writing R functions</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1 class="title">Writing R functions</h1>
+          
+<div id="learning-objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h3><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h3>
+</div>
+<div class="panel-body">
+<ul>
+<li>Why write functions</li>
+<li>How to define a function</li>
+<li>Defining graphing functions</li>
+<li>Scope and global variables</li>
+<li>Conditional statements</li>
+<li><code>match.arg</code></li>
+</ul>
+</div>
+</div>
+<h3 id="why">Why?</h3>
+<p>There are two main reasons to write R functions.</p>
+<ul>
+<li>Avoid repeated code</li>
+<li>More readable code</li>
+</ul>
+<p>As an example, consider this code to convert 65 degrees Fahrenheit to Celsius.</p>
+<pre class="sourceCode r"><code class="sourceCode r">cel &lt;-<span class="st"> </span>(<span class="dv">65</span> -<span class="st"> </span><span class="dv">32</span>)*<span class="dv">5</span>/<span class="dv">9</span></code></pre>
+<p>If you then want to convert 100 degrees F, you'll have to retype all of that. And the code itself doesn't really explain it's purpose.</p>
+<pre class="sourceCode r"><code class="sourceCode r">f2c &lt;-<span class="st"> </span>function(fahrenheit)
+{
+    celsius &lt;-<span class="st"> </span>(fahrenheit -<span class="st"> </span><span class="dv">32</span>)*<span class="dv">5</span>/<span class="dv">9</span>
+    <span class="kw">return</span>(celsius)
+}</code></pre>
+<p>The definition of a function has three parts:</p>
+<ul>
+<li><code>function()</code>, containing any <em>arguments</em> (in other words, parameters or inputs) that the function takes</li>
+<li>The body of the function (the bit that is executed when the function is called)</li>
+<li>The assignment of the function to an object; in this case we've called it <code>f2c</code></li>
+</ul>
+<p>Having executed the above code, you'll note that there's now an object in your R workspace called <code>f2c</code>. (Try <code>ls()</code>.)</p>
+<p>You can use the function like any other R function:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">f2c</span>(<span class="dv">65</span>)</code></pre>
+<pre class="output"><code>[1] 18.33333
+</code></pre>
+<p>Note that you can even give it a vector of Fahrenheit temperatures.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">f2c</span>(<span class="kw">c</span>(<span class="dv">100</span>, <span class="dv">212</span>, <span class="dv">32</span>, -<span class="dv">40</span>))</code></pre>
+<pre class="output"><code>[1]  37.77778 100.00000   0.00000 -40.00000
+</code></pre>
+<h3 id="implicit-return-value">Implicit return value</h3>
+<p>The function definition could actually be simplified. In R functions, an explicit <code>return</code> statement is not needed; the function will <em>return</em> the value of the last statement, so we could write:</p>
+<pre class="sourceCode r"><code class="sourceCode r">f2c &lt;-<span class="st"> </span>function(fahrenheit)
+{
+    (fahrenheit -<span class="st"> </span><span class="dv">32</span>)*<span class="dv">5</span>/<span class="dv">9</span>
+}</code></pre>
+<p>And, actually, the curly braces aren't needed when the function has just one statement. We could have written:</p>
+<pre class="sourceCode r"><code class="sourceCode r">f2c &lt;-<span class="st"> </span>function(fahrenheit)
+    (fahrenheit -<span class="st"> </span><span class="dv">32</span>)*<span class="dv">5</span>/<span class="dv">9</span></code></pre>
+<div id="challenge" class="challenge panel panel-success">
+<div class="panel-heading">
+<h3><span class="glyphicon glyphicon-pencil"></span>Challenge</h3>
+</div>
+<div class="panel-body">
+<p>Write the opposite function, for converting from Celsius to Fahrenheit. Test that it works.</p>
+</div>
+</div>
+<h3 id="functions-for-plotting">Functions for plotting</h3>
+<p>Functions are particularly useful when making graphs. You'll often want to make the same sort of graph multiple times, for example, a scatterplot of <code>lifeExp</code> vs <code>gdpPercap</code> for each of several different years. Rather than repeat the code multiple times, write a function that does the work and then call it several times.</p>
+<p>Let's reload the <code>gapminder</code> data, as before.</p>
+<pre class="sourceCode r"><code class="sourceCode r">gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;~/Desktop/gapminder.csv&quot;</span>)</code></pre>
+<p>Here's a function to make a plot for a particular year.</p>
+<pre class="sourceCode r"><code class="sourceCode r">plot_year &lt;-<span class="st"> </span>function(<span class="dt">year=</span><span class="dv">2007</span>, <span class="dt">data=</span>gapminder)
+{
+    <span class="kw">library</span>(dplyr)
+    <span class="kw">library</span>(ggplot2)
+
+    the_year &lt;-<span class="st"> </span>year
+    gm_year &lt;-<span class="st"> </span><span class="kw">filter</span>(data, year==the_year)
+
+    <span class="kw">ggplot</span>(gm_year, <span class="kw">aes</span>(<span class="dt">y=</span>lifeExp, <span class="dt">x=</span>gdpPercap)) +
+<span class="st">        </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">scale_x_log10</span>()
+}</code></pre>
+<p>The function returns the ggplot object. You could add further enhancements after the fact.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_year</span>(<span class="dv">1952</span>) +<span class="st"> </span><span class="kw">aes</span>(<span class="dt">color=</span>continent) +<span class="st"> </span><span class="kw">ggtitle</span>(<span class="dv">1952</span>)</code></pre>
+<p><img src="fig/functions-use_plot_year-1.png" title="plot of chunk use_plot_year" alt="plot of chunk use_plot_year" style="display: block; margin: auto;" /></p>
+<p>Note that I passed the data as an argument and gave each argument a default value.</p>
+<div id="challenge-1" class="challenge panel panel-success">
+<div class="panel-heading">
+<h3><span class="glyphicon glyphicon-pencil"></span>Challenge</h3>
+</div>
+<div class="panel-body">
+<p>Write a function that makes a plot of <code>lifeExp</code> vs <code>gdpPercap</code> across years, for a selected country.</p>
+</div>
+</div>
+<pre class="sourceCode r"><code class="sourceCode r">plot_country &lt;-<span class="st"> </span>function(<span class="dt">country=</span><span class="st">&quot;China&quot;</span>, <span class="dt">data=</span>gapminder)
+{
+    <span class="kw">library</span>(dplyr)
+    <span class="kw">library</span>(ggplot2)
+
+    the_country &lt;-<span class="st"> </span>country
+    gm_country &lt;-<span class="st"> </span><span class="kw">filter</span>(data, country==the_country)
+
+    p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(gm_country, <span class="kw">aes</span>(<span class="dt">y=</span>lifeExp, <span class="dt">x=</span>gdpPercap)) +
+<span class="st">        </span><span class="kw">geom_point</span>()
+
+    p
+}</code></pre>
+<h3 id="scope">Scope</h3>
+<p>Variables defined within a function are destroyed on exit.</p>
+<pre class="sourceCode r"><code class="sourceCode r">f1 &lt;-<span class="st"> </span>function(x)
+{
+    p &lt;-<span class="st"> </span><span class="dv">1</span>
+    x +<span class="st"> </span>p
+}
+<span class="kw">f1</span>(<span class="dv">5</span>)</code></pre>
+<pre class="output"><code>[1] 6
+</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">p</code></pre>
+<pre class="output"><code>Error in eval(expr, envir, enclos): object &#39;p&#39; not found
+</code></pre>
+<p>The variable <code>p</code> exists within the function but doesn't exist outside the function. It's created anew each time you run the function.</p>
+<p>The function <em>arguments</em> (that is, the inputs) exist only within the function, too. Continuing from the example above, note that <code>x</code> doesn't exist:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">f1</span>(<span class="dv">5</span>)</code></pre>
+<pre class="output"><code>[1] 6
+</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">x</code></pre>
+<pre class="output"><code>Error in eval(expr, envir, enclos): object &#39;x&#39; not found
+</code></pre>
+<p>How about if you refer to a variable that hasn't been defined in the function?</p>
+<pre class="sourceCode r"><code class="sourceCode r">f2 &lt;-<span class="st"> </span>function(x)
+{
+    x +<span class="st"> </span>p
+}
+<span class="kw">f2</span>(<span class="dv">5</span>)</code></pre>
+<pre class="output"><code>Error in f2(5): object &#39;p&#39; not found
+</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="dv">3</span>
+<span class="kw">f2</span>(<span class="dv">5</span>)</code></pre>
+<pre class="output"><code>[1] 8
+</code></pre>
+<p>If you refer to a variable that you've not <em>created</em> within the function, R will look outside, to the &quot;global environment&quot;.</p>
+<p>You can use this to <em>change</em> variables sitting in your workspace.</p>
+<pre class="sourceCode r"><code class="sourceCode r">f3 &lt;-<span class="st"> </span>function(x)
+{
+    p &lt;-<span class="st"> </span>p +<span class="st"> </span>x
+}
+p &lt;-<span class="st"> </span><span class="dv">5</span>
+<span class="kw">f3</span>(<span class="dv">5</span>)
+p</code></pre>
+<pre class="output"><code>[1] 5
+</code></pre>
+<p>You might use this to avoid passing data into a function, but <em>please don't</em>! The use of global variables can make your code unpredictable and hard to read.</p>
+<p>Anything that the function needs should be input as an argument. Changes that the function makes should be through the return value.</p>
+<div id="challenge-2" class="challenge panel panel-success">
+<div class="panel-heading">
+<h3><span class="glyphicon glyphicon-pencil"></span>Challenge</h3>
+</div>
+<div class="panel-body">
+<p>Consider the following code.</p>
+<pre><code>x &lt;- 5
+g &lt;- function(y)
+{
+    x &lt;- 3
+    y + x
+}
+z &lt;- g(5)</code></pre>
+<p>What value will <code>x</code> have after this is executed?</p>
+<ol style="list-style-type: lower-alpha">
+<li>3</li>
+<li>8</li>
+<li>5</li>
+</ol>
+</div>
+</div>
+<h3 id="conditional-statements">Conditional statements</h3>
+<p>Returning to functions to make graphs: often it's nice to include some options in your function, for example, an argument that controls whether or not to add a smooth curve to the plot.</p>
+<pre class="sourceCode r"><code class="sourceCode r">plot_year &lt;-<span class="st"> </span>function(<span class="dt">year=</span><span class="dv">2007</span>, <span class="dt">data=</span>gapminder, <span class="dt">add_curve=</span><span class="ot">TRUE</span>)
+{
+    <span class="kw">library</span>(dplyr)
+    <span class="kw">library</span>(ggplot2)
+
+    the_year &lt;-<span class="st"> </span>year
+    gm_year &lt;-<span class="st"> </span><span class="kw">filter</span>(data, year==the_year)
+
+    p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(gm_year, <span class="kw">aes</span>(<span class="dt">y=</span>lifeExp, <span class="dt">x=</span>gdpPercap)) +
+<span class="st">        </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">scale_x_log10</span>()
+
+    if(add_curve) {
+        p &lt;-<span class="st"> </span>p +<span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>)
+    }
+
+    p
+}</code></pre>
+<p>Here, we've add a <em>conditional statement</em>. If <code>add_curve</code> is <code>TRUE</code>, the bit of code in the curly braces, <code>p &lt;- p + geom_smooth(method=&quot;loess&quot;)</code>, gets run. If <code>add_curve</code> is <code>FALSE</code>, it gets skipeed over.</p>
+<p>The curly braces aren't needed here, since there is just one line within the code block that is run, but some people recommend that you always include them, for the sake of clarity.</p>
+<p>Here's how you might use this:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_year</span>(<span class="dv">1952</span>)
+<span class="kw">plot_year</span>(<span class="dv">1952</span>, <span class="dt">add_curve=</span><span class="ot">FALSE</span>)</code></pre>
+<div id="challenge-3" class="challenge panel panel-success">
+<div class="panel-heading">
+<h3><span class="glyphicon glyphicon-pencil"></span>Challenge:</h3>
+</div>
+<div class="panel-body">
+<p>Add an option to your <code>plot_country</code> function, to use <code>geom_line()</code> as well as <code>geom_point()</code>.</p>
+</div>
+</div>
+<pre class="sourceCode r"><code class="sourceCode r">plot_country &lt;-<span class="st"> </span>function(<span class="dt">country=</span><span class="st">&quot;China&quot;</span>, <span class="dt">data=</span>gapminder, <span class="dt">add_line=</span><span class="ot">FALSE</span>)
+{
+    <span class="kw">library</span>(dplyr)
+    <span class="kw">library</span>(ggplot2)
+
+    the_country &lt;-<span class="st"> </span>country
+    gm_country &lt;-<span class="st"> </span><span class="kw">filter</span>(data, country==the_country)
+
+    p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(gm_country, <span class="kw">aes</span>(<span class="dt">y=</span>lifeExp, <span class="dt">x=</span>gdpPercap)) +
+<span class="st">        </span><span class="kw">geom_point</span>()
+
+    if(add_line) {
+        p &lt;-<span class="st"> </span>p +<span class="st"> </span><span class="kw">geom_line</span>()
+    }
+
+    p
+}</code></pre>
+<h3 id="multiple-choice-arguments">Multiple-choice arguments</h3>
+<p>The <code>geom_smooth</code> function can take multiple arguments, for example, we might use <code>&quot;lm&quot;</code> (which will give a straight line) rather than <code>&quot;loess&quot;</code>.</p>
+<p>We could add a <code>method</code> argument that is passed to <code>plot_year()</code>, like this:</p>
+<pre class="sourceCode r"><code class="sourceCode r">plot_year &lt;-<span class="st"> </span>function(<span class="dt">year=</span><span class="dv">2007</span>, <span class="dt">data=</span>gapminder, <span class="dt">add_curve=</span><span class="ot">TRUE</span>, <span class="dt">method=</span><span class="st">&quot;loess&quot;</span>)
+{
+    <span class="kw">library</span>(dplyr)
+    <span class="kw">library</span>(ggplot2)
+
+    the_year &lt;-<span class="st"> </span>year
+    gm_year &lt;-<span class="st"> </span><span class="kw">filter</span>(data, year==the_year)
+
+    p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(gm_year, <span class="kw">aes</span>(<span class="dt">y=</span>lifeExp, <span class="dt">x=</span>gdpPercap)) +
+<span class="st">        </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">scale_x_log10</span>()
+
+    if(add_curve)
+        p &lt;-<span class="st"> </span>p +<span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span>method)
+
+    p
+}</code></pre>
+<p>It can be helpful to give multiple choices. For example, we could drop the <code>add_curve</code> argument and allow <code>method</code> to be either <code>&quot;lm&quot;</code>, <code>&quot;loess&quot;</code>, or <code>&quot;none&quot;</code> (with no curve plotted in the latter place.</p>
+<p>The function <code>match_arg()</code> is useful here. You give a vector of choices as the default value for the argument, and <code>match_arg</code> will ensure that the selected choice is among those allowed.</p>
+<pre class="sourceCode r"><code class="sourceCode r">plot_year &lt;-<span class="st"> </span>function(<span class="dt">year=</span><span class="dv">2007</span>, <span class="dt">data=</span>gapminder, <span class="dt">curve=</span><span class="kw">c</span>(<span class="st">&quot;none&quot;</span>, <span class="st">&quot;loess&quot;</span>, <span class="st">&quot;lm&quot;</span>))
+{
+    curve &lt;-<span class="st"> </span><span class="kw">match.arg</span>(curve)
+
+    <span class="kw">library</span>(dplyr)
+    <span class="kw">library</span>(ggplot2)
+
+    the_year &lt;-<span class="st"> </span>year
+    gm_year &lt;-<span class="st"> </span><span class="kw">filter</span>(data, year==the_year)
+
+    p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(gm_year, <span class="kw">aes</span>(<span class="dt">y=</span>lifeExp, <span class="dt">x=</span>gdpPercap)) +
+<span class="st">        </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">scale_x_log10</span>()
+
+    if(curve !=<span class="st"> &quot;none&quot;</span>)
+        p &lt;-<span class="st"> </span>p +<span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span>curve)
+
+    p
+}</code></pre>
+<p>Here's how you might use this:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_year</span>(<span class="dv">1952</span>, <span class="dt">curve=</span><span class="st">&quot;none&quot;</span>)
+<span class="kw">plot_year</span>(<span class="dv">1952</span>, <span class="dt">curve=</span><span class="st">&quot;lm&quot;</span>)</code></pre>
+<div id="challenge-4" class="challenge panel panel-success">
+<div class="panel-heading">
+<h3><span class="glyphicon glyphicon-pencil"></span>Challenge</h3>
+</div>
+<div class="panel-body">
+<p>Modify your function to take an argument <code>type</code> with possible values <code>&quot;points&quot;</code>, <code>&quot;lines&quot;</code>, or <code>&quot;both&quot;</code>, indicating whether to use <code>geom_point()</code>, <code>geom_line()</code>, or both.</p>
+</div>
+</div>
+<h3 id="the-...-argument">The <code>...</code> argument</h3>
+<p>The <code>geom_smooth()</code> argument also has an argument <code>se</code> (taking values <code>TRUE</code> or <code>FALSE</code>) that indicates whether the confidence bands should be plotted or not. We might add this to <em>our</em> function as an argument. Or, we could include an argument <code>...</code> to cover any other things that we might want to pass to <code>geom_smooth</code></p>
+<pre class="sourceCode r"><code class="sourceCode r">plot_year &lt;-<span class="st"> </span>function(<span class="dt">year=</span><span class="dv">2007</span>, <span class="dt">data=</span>gapminder, <span class="dt">curve=</span><span class="kw">c</span>(<span class="st">&quot;none&quot;</span>, <span class="st">&quot;loess&quot;</span>, <span class="st">&quot;lm&quot;</span>), ...)
+{
+    curve &lt;-<span class="st"> </span><span class="kw">match.arg</span>(curve)
+
+    <span class="kw">library</span>(dplyr)
+    <span class="kw">library</span>(ggplot2)
+
+    the_year &lt;-<span class="st"> </span>year
+    gm_year &lt;-<span class="st"> </span><span class="kw">filter</span>(data, year==the_year)
+
+    p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(gm_year, <span class="kw">aes</span>(<span class="dt">y=</span>lifeExp, <span class="dt">x=</span>gdpPercap)) +
+<span class="st">        </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">scale_x_log10</span>()
+
+    if(curve !=<span class="st"> &quot;none&quot;</span>)
+        p &lt;-<span class="st"> </span>p +<span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;curve&quot;</span>, ...)
+
+    p
+}</code></pre>
+<p>Here's how you might use this:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_year</span>(<span class="dv">1952</span>, <span class="dt">curve=</span><span class="st">&quot;loess&quot;</span>)
+<span class="kw">plot_year</span>(<span class="dv">1952</span>, <span class="dt">curve=</span><span class="st">&quot;loess&quot;</span>, <span class="dt">se=</span><span class="ot">FALSE</span>)</code></pre>
+<h3 id="resources">Resources</h3>
+<ul>
+<li>See the <a href="http://adv-r.had.co.nz/Functions.html">chapter on functions</a> in <a href="http://had.co.nz/">Hadley Wickham</a>'s <a href="http://adv-r.had.co.nz/">Advanced R book</a>, also available on <a href="http://www.amazon.com/exec/obidos/ASIN/1466586966/7210-20">paper</a>.</li>
+</ul>
+        </div>
+      </div>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/karawoo/2015-04-27-wsu">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="../LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>
