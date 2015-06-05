@@ -232,7 +232,8 @@ x
 >
 > **Guess what the following do without running them first:**
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > xx <- c(1.7, "a")
 > xx <- c(TRUE, 2)
 > xx <- c("a", TRUE)
@@ -456,10 +457,10 @@ x
 
 
 ~~~{.output}
-        [,1]    [,2]   [,3]    [,4]    [,5]     [,6]
-[1,] -0.6265  1.5953 0.4874 -0.3054 -0.6212 -0.04493
-[2,]  0.1836  0.3295 0.7383  1.5118 -2.2147 -0.01619
-[3,] -0.8356 -0.8205 0.5758  0.3898  1.1249  0.94384
+           [,1]       [,2]      [,3]       [,4]       [,5]        [,6]
+[1,] -0.6264538  1.5952808 0.4874291 -0.3053884 -0.6212406 -0.04493361
+[2,]  0.1836433  0.3295078 0.7383247  1.5117812 -2.2146999 -0.01619026
+[3,] -0.8356286 -0.8204684 0.5757814  0.3898432  1.1249309  0.94383621
 
 ~~~
 
@@ -679,32 +680,43 @@ fact many R functions which return complex output store their results in a list.
 > has the data type you intended. Do you find
 > anything unexpected?
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > answer <- TRUE
 > height <- 150
 > dog_name <- "Snoopy"
->
 > is.logical(answer)
 > ~~~
->
-> ~~~ {.output}
+> 
+> 
+> 
+> ~~~{.output}
 > [1] TRUE
+> 
 > ~~~
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > is.numeric(height)
 > ~~~
 > 
-> ~~~ {.output}
+> 
+> 
+> ~~~{.output}
 > [1] TRUE
+> 
 > ~~~
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > is.character(dog_name)
 > ~~~
 > 
-> ~~~ {.output}
+> 
+> 
+> ~~~{.output}
 > [1] TRUE
+> 
 > ~~~
 >
 
@@ -714,37 +726,82 @@ fact many R functions which return complex output store their results in a list.
 > types, R will create a vector that is the least common denominator: the
 > type that is easiest to coerce to.
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > xx <- c(1.7, "a")
 > xx
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+> [1] "1.7" "a"  
+> 
+> ~~~
+> 
+> 
+> 
+> ~~~{.r}
 > typeof(xx)
 > ~~~
->
-> ~~~ {.output}
-> [1] "1.7" "a"
+> 
+> 
+> 
+> ~~~{.output}
 > [1] "character"
+> 
 > ~~~
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > xx <- c(TRUE, 2)
 > xx
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+> [1] 1 2
+> 
+> ~~~
+> 
+> 
+> 
+> ~~~{.r}
 > typeof(xx)
 > ~~~
->
-> ~~~ {.output}
-> [1] 1 2
+> 
+> 
+> 
+> ~~~{.output}
 > [1] "double"
+> 
 > ~~~
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > xx <- c("a", TRUE)
 > xx
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+> [1] "a"    "TRUE"
+> 
+> ~~~
+> 
+> 
+> 
+> ~~~{.r}
 > typeof(xx)
 > ~~~
->
-> ~~~ {.output}
-> [1] "a" "TRUE"
+> 
+> 
+> 
+> ~~~{.output}
 > [1] "character"
+> 
 > ~~~
 >
 
@@ -754,13 +811,17 @@ fact many R functions which return complex output store their results in a list.
 > What do you think will be the result of
 > `length(x)`?
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > x <- matrix(rnorm(18), ncol=6, nrow=3)
 > length(x)
 > ~~~
 > 
-> ~~~ {.output}
+> 
+> 
+> ~~~{.output}
 > [1] 18
+> 
 > ~~~
 > 
 > Because a matrix is really just a vector with added dimension attributes, `length`
@@ -777,7 +838,8 @@ fact many R functions which return complex output store their results in a list.
 > See if you can figure out how to change this.
 > (hint: read the documentation for `matrix`!)
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > x <- matrix(1:50, ncol=5, nrow=10)
 > x <- matrix(1:50, ncol=5, nrow=10, byrow = TRUE) # to fill by row
 > ~~~
@@ -795,8 +857,11 @@ fact many R functions which return complex output store their results in a list.
 > Populate each character vector with the names of the data types and data
 > structures we've seen so far.
 >
-> ~~~ {.r}
-> my_list <- list(data_types = c("logical", "integer", "double", "complex", "character"),
-                  data_structures = c("vector", "matrix", "factor", "list"))
+> 
+> ~~~{.r}
+> my_list <- list(
+>   data_types = c("logical", "integer", "double", "complex", "character"),
+>   data_structures = c("vector", "matrix", "factor", "list")
+> )
 > ~~~
 >

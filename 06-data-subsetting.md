@@ -198,12 +198,16 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 > slices of a vector. Most people first try to negate a
 > sequence like so:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > x[-1:3]
 > ~~~
->
-> ~~~ {.output}
-> ## Error in x[-1:3] : only 0's may be mixed with negative subscripts
+> 
+> 
+> 
+> ~~~{.output}
+> Error in x[-1:3]: only 0's may be mixed with negative subscripts
+> 
 > ~~~
 >
 > This gives a somewhat cryptic error:
@@ -215,13 +219,17 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 > The correct solution is to wrap that function call in brackets, so
 > that the `-` operator applies to the results:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > x[-(1:3)]
 > ~~~
->
-> ~~~ {.output}
-> ##   d   e
-> ## 4.8 7.5
+> 
+> 
+> 
+> ~~~{.output}
+>   d   e 
+> 4.8 7.5 
+> 
 > ~~~
 >
 
@@ -246,21 +254,28 @@ x
 >
 > Given the following code:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > print(x)
 > ~~~
->
-> ~~~ {.output}
-> ##   a   b   c   d   e
-> ## 5.4 6.2 7.1 4.8 7.5
+> 
+> 
+> 
+> ~~~{.output}
+>   a   b   c   d   e 
+> 5.4 6.2 7.1 4.8 7.5 
+> 
 > ~~~
 >
 > 1. Come up with at least 3 different commands that will produce the following output:
 >
-> ~~~ {.r}
-> x[2:4]
+> 
+> ~~~{.output}
+>   b   c   d 
+> 6.2 7.1 4.8 
+> 
 > ~~~
 >
 > 2. Compare notes with your neighbour. Did you have different strategies?
@@ -299,8 +314,8 @@ x[-which(names(x) == "a")]
 
 
 ~~~{.output}
-  b   c   e 
-6.2 7.1 7.5 
+  b   c   d   e 
+6.2 7.1 4.8 7.5 
 
 ~~~
 
@@ -318,7 +333,7 @@ names(x) == "a"
 
 
 ~~~{.output}
-[1]  TRUE FALSE FALSE FALSE
+[1]  TRUE FALSE FALSE FALSE FALSE
 
 ~~~
 
@@ -353,8 +368,8 @@ x[-which(names(x) %in% c("a", "c"))]
 
 
 ~~~{.output}
-  b   e 
-6.2 7.5 
+  b   d   e 
+6.2 4.8 7.5 
 
 ~~~
 
@@ -379,7 +394,15 @@ names(x) == c('a', 'c')
 
 
 ~~~{.output}
-[1]  TRUE FALSE FALSE FALSE
+Warning in names(x) == c("a", "c"): longer object length is not a multiple
+of shorter object length
+
+~~~
+
+
+
+~~~{.output}
+[1]  TRUE FALSE FALSE FALSE FALSE
 
 ~~~
 
@@ -417,14 +440,15 @@ names(x) == c('a', 'c', 'e')
 
 
 ~~~{.output}
-Warning: longer object length is not a multiple of shorter object length
+Warning in names(x) == c("a", "c", "e"): longer object length is not a
+multiple of shorter object length
 
 ~~~
 
 
 
 ~~~{.output}
-[1]  TRUE FALSE FALSE FALSE
+[1]  TRUE FALSE FALSE FALSE FALSE
 
 ~~~
 
@@ -443,8 +467,8 @@ x[c(TRUE, TRUE, FALSE, FALSE)]
 
 
 ~~~{.output}
-  a   b 
-5.4 6.2 
+  a   b   e 
+5.4 6.2 7.5 
 
 ~~~
 
@@ -459,8 +483,8 @@ x[c(TRUE, FALSE)]
 
 
 ~~~{.output}
-  a   c 
-5.4 7.1 
+  a   c   e 
+5.4 7.1 7.5 
 
 ~~~
 
@@ -496,15 +520,19 @@ x[x > 7]
 >
 > Given the following code:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > print(x)
 > ~~~
->
-> ~~~ {.output}
-> ##   a   b   c   d   e
-> ## 5.4 6.2 7.1 4.8 7.5
+> 
+> 
+> 
+> ~~~{.output}
+>   a   b   c   d   e 
+> 5.4 6.2 7.1 4.8 7.5 
+> 
 > ~~~
 >
 > 1. Write a subsetting command to return the values in x that are greater than 4 and less than 7.
@@ -605,9 +633,9 @@ m[3:4, c(3,1)]
 
 
 ~~~{.output}
-         [,1]    [,2]
-[1,]  1.12493 -0.8356
-[2,] -0.04493  1.5953
+            [,1]       [,2]
+[1,]  1.12493092 -0.8356286
+[2,] -0.04493361  1.5952808
 
 ~~~
 
@@ -622,13 +650,13 @@ m[, c(3,4)]
 
 
 ~~~{.output}
-         [,1]     [,2]
-[1,] -0.62124  0.82122
-[2,] -2.21470  0.59390
-[3,]  1.12493  0.91898
-[4,] -0.04493  0.78214
-[5,] -0.01619  0.07456
-[6,]  0.94384 -1.98935
+            [,1]        [,2]
+[1,] -0.62124058  0.82122120
+[2,] -2.21469989  0.59390132
+[3,]  1.12493092  0.91897737
+[4,] -0.04493361  0.78213630
+[5,] -0.01619026  0.07456498
+[6,]  0.94383621 -1.98935170
 
 ~~~
 
@@ -643,7 +671,7 @@ m[3,]
 
 
 ~~~{.output}
-[1] -0.8356  0.5758  1.1249  0.9190
+[1] -0.8356286  0.5757814  1.1249309  0.9189774
 
 ~~~
 
@@ -658,8 +686,8 @@ m[3, , drop=FALSE]
 
 
 ~~~{.output}
-        [,1]   [,2]  [,3]  [,4]
-[1,] -0.8356 0.5758 1.125 0.919
+           [,1]      [,2]     [,3]      [,4]
+[1,] -0.8356286 0.5757814 1.124931 0.9189774
 
 ~~~
 
@@ -674,7 +702,7 @@ m[, c(3,6)]
 
 
 ~~~{.output}
-Error: subscript out of bounds
+Error in m[, c(3, 6)]: subscript out of bounds
 
 ~~~
 
@@ -696,7 +724,7 @@ m[5]
 
 
 ~~~{.output}
-[1] 0.3295
+[1] 0.3295078
 
 ~~~
 
@@ -726,16 +754,20 @@ instead of their row and column indices.
 >
 > Given the following code:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > m <- matrix(1:18, nrow=3, ncol=6)
 > print(m)
 > ~~~
->
-> ~~~ {.output}
-> ##      [,1] [,2] [,3] [,4] [,5] [,6]
-> ## [1,]    1    4    7   10   13   16
-> ## [2,]    2    5    8   11   14   17
-> ## [3,]    3    6    9   12   15   18
+> 
+> 
+> 
+> ~~~{.output}
+>      [,1] [,2] [,3] [,4] [,5] [,6]
+> [1,]    1    4    7   10   13   16
+> [2,]    2    5    8   11   14   17
+> [3,]    3    6    9   12   15   18
+> 
 > ~~~
 >
 > 1. Which of the following commands will extract the values 11 and 14?
@@ -824,7 +856,7 @@ xlist[[1:2]]
 
 
 ~~~{.output}
-Error: subscript out of bounds
+Error in xlist[[1:2]]: subscript out of bounds
 
 ~~~
 
@@ -838,7 +870,7 @@ xlist[[-1]]
 
 
 ~~~{.output}
-Error: attempt to select more than one element
+Error in xlist[[-1]]: attempt to select more than one element
 
 ~~~
 
@@ -879,16 +911,19 @@ xlist$data
 > #### Challenge 3 {.challenge}
 > Given the following list:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
 > ~~~
 >
-> Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. Hint: the number 2 is contained within the "b" item in the list.
+> Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. 
+> Hint: the number 2 is contained within the "b" item in the list.
 
 > #### Challenge 4 {.challenge}
 > Given a linear model:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > mod <- aov(pop ~ lifeExp, data=gapminder)
 > ~~~
 >
@@ -931,7 +966,7 @@ head(gapminder[["lifeExp"]])
 
 
 ~~~{.output}
-[1] 28.80 30.33 32.00 34.02 36.09 38.44
+[1] 28.801 30.332 31.997 34.020 36.088 38.438
 
 ~~~
 
@@ -960,9 +995,9 @@ gapminder[1:3,]
 
 ~~~{.output}
       country year      pop continent lifeExp gdpPercap
-1 Afghanistan 1952  8425333      Asia   28.80     779.4
-2 Afghanistan 1957  9240934      Asia   30.33     820.9
-3 Afghanistan 1962 10267083      Asia   32.00     853.1
+1 Afghanistan 1952  8425333      Asia  28.801  779.4453
+2 Afghanistan 1957  9240934      Asia  30.332  820.8530
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007
 
 ~~~
 
@@ -978,7 +1013,7 @@ gapminder[3,]
 
 ~~~{.output}
       country year      pop continent lifeExp gdpPercap
-3 Afghanistan 1962 10267083      Asia      32     853.1
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007
 
 ~~~
 
@@ -991,33 +1026,38 @@ be changed with the third argument, `drop = FALSE`).
 >
 > 1. Extract observations collected for the year 1957
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > gapminder[gapminder$year = 1957,]
 > ~~~
 >
 > 2. Extract all columns except 1 through to 4
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > gapminder[,-1:4]
 > ~~~
 >
 > 3. Extract the rows where the life expectancy is longer the 80 years
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > gapminder[gapminder$lifeExp > 80]
 > ~~~
 >
 > 4. Extract the first row, and the fourth and fifth columns
 >   (`lifeExp` and `gdpPercap`).
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > gapminder[1, 4, 5]
 > ~~~
 >
 > 5. Advanced: extract rows that contain information for the years 2002
 >    and 2007
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > gapminder[gapminder$year == 2002 | 2007,]
 > ~~~
 >
@@ -1037,22 +1077,33 @@ be changed with the third argument, `drop = FALSE`).
 >
 > Given the following code:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > print(x)
 > ~~~
->
-> ~~~ {.output}
-> ##   a   b   c   d   e
-> ## 5.4 6.2 7.1 4.8 7.5
+> 
+> 
+> 
+> ~~~{.output}
+>   a   b   c   d   e 
+> 5.4 6.2 7.1 4.8 7.5 
+> 
 > ~~~
 >
 > 1. Come up with at least 3 different commands that will produce the following output:
 >
-> ~~~ {.r}
-> x[2:4]
+> 
+> ~~~{.output}
+>   b   c   d 
+> 6.2 7.1 4.8 
+> 
+> ~~~
 >
+> 
+> ~~~{.r}
+> x[2:4] 
 > x[-c(1,5)]
 > x[c("b", "c", "d")]
 > x[c(2,3,4)]
@@ -1064,16 +1115,20 @@ be changed with the third argument, `drop = FALSE`).
 >
 > Given the following code:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > m <- matrix(1:18, nrow=3, ncol=6)
 > print(m)
 > ~~~
->
-> ~~~ {.output}
-> ##      [,1] [,2] [,3] [,4] [,5] [,6]
-> ## [1,]    1    4    7   10   13   16
-> ## [2,]    2    5    8   11   14   17
-> ## [3,]    3    6    9   12   15   18
+> 
+> 
+> 
+> ~~~{.output}
+>      [,1] [,2] [,3] [,4] [,5] [,6]
+> [1,]    1    4    7   10   13   16
+> [2,]    2    5    8   11   14   17
+> [3,]    3    6    9   12   15   18
+> 
 > ~~~
 >
 > 1. Which of the following commands will extract the values 11 and 14?
@@ -1091,14 +1146,16 @@ be changed with the third argument, `drop = FALSE`).
 > #### Solution to challenge 3 {.challenge}
 > Given the following list:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
 > ~~~
 >
-> Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. Hint: the number 2 is contained within the "b" item in the list.
+> Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. 
+> Hint: the number 2 is contained within the "b" item in the list.
 >
+> 
 > ~~~{.r}
-> ## Any of the below should work:
 > xlist$b[2]
 > xlist[[2]][2]
 > xlist[["b"]][2]
@@ -1108,13 +1165,15 @@ be changed with the third argument, `drop = FALSE`).
 > #### Solution to challenge 4 {.challenge}
 > Given a linear model:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > mod <- aov(pop ~ lifeExp, data=gapminder)
 > ~~~
 >
 > Extract the residual degrees of freedom (hint: `attributes()` will help you)
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > attributes(mod) ## `df.residual` is one of the names of `mod`
 > mod$df.residual
 > ~~~
@@ -1126,38 +1185,43 @@ be changed with the third argument, `drop = FALSE`).
 >
 > 1. Extract observations collected for the year 1957
 >
-> ~~~ {.r}
-> gapminder[gapminder$year = 1957,]
+> 
+> ~~~{.r}
+> # gapminder[gapminder$year = 1957,]
 > gapminder[gapminder$year == 1957,]
 > ~~~
 >
 > 2. Extract all columns except 1 through to 4
 >
-> ~~~ {.r}
-> gapminder[,-1:4]
+> 
+> ~~~{.r}
+> # gapminder[,-1:4]
 > gapminder[,-c(1:4)]
 > ~~~
 >
 > 3. Extract the rows where the life expectancy is longer the 80 years
 >
-> ~~~ {.r}
-> gapminder[gapminder$lifeExp > 80]
+> 
+> ~~~{.r}
+> # gapminder[gapminder$lifeExp > 80]
 > gapminder[gapminder$lifeExp > 80,]
 > ~~~
 >
 > 4. Extract the first row, and the fourth and fifth columns
 >   (`lifeExp` and `gdpPercap`).
 >
-> ~~~ {.r}
-> gapminder[1, 4, 5]
+> 
+> ~~~{.r}
+> # gapminder[1, 4, 5]
 > gapminder[1, c(4, 5)]
 > ~~~
 >
 > 5. Advanced: extract rows that contain information for the years 2002
 >    and 2007
 >
-> ~~~ {.r}
-> gapminder[gapminder$year == 2002 | 2007,]
+> 
+> ~~~{.r}
+> # gapminder[gapminder$year == 2002 | 2007,]
 > gapminder[gapminder$year == 2002 | gapminder$year == 2007,]
 > gapminder[gapminder$year %in% c(2002, 2007),]
 > ~~~
@@ -1172,7 +1236,8 @@ be changed with the third argument, `drop = FALSE`).
 > 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
 > and 19 through 23. You can do this in one or two steps.
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > gapminder_small <- gapminder[c(1:9, 19:23),]
 > ~~~
 >

@@ -258,12 +258,12 @@ head(gapminder)
 
 ~~~{.output}
       country year      pop continent lifeExp gdpPercap
-1 Afghanistan 1952  8425333      Asia   28.80     779.4
-2 Afghanistan 1957  9240934      Asia   30.33     820.9
-3 Afghanistan 1962 10267083      Asia   32.00     853.1
-4 Afghanistan 1967 11537966      Asia   34.02     836.2
-5 Afghanistan 1972 13079460      Asia   36.09     740.0
-6 Afghanistan 1977 14880372      Asia   38.44     786.1
+1 Afghanistan 1952  8425333      Asia  28.801  779.4453
+2 Afghanistan 1957  9240934      Asia  30.332  820.8530
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007
+4 Afghanistan 1967 11537966      Asia  34.020  836.1971
+5 Afghanistan 1972 13079460      Asia  36.088  739.9811
+6 Afghanistan 1977 14880372      Asia  38.438  786.1134
 
 ~~~
 
@@ -288,12 +288,12 @@ head(gapminder)
 
 ~~~{.output}
       country year      pop continent lifeExp gdpPercap
-1 Afghanistan 1952  8425333      Asia   28.80     779.4
-2 Afghanistan 1957  9240934      Asia   30.33     820.9
-3 Afghanistan 1962 10267083      Asia   32.00     853.1
-4 Afghanistan 1967 11537966      Asia   34.02     836.2
-5 Afghanistan 1972 13079460      Asia   36.09     740.0
-6 Afghanistan 1977 14880372      Asia   38.44     786.1
+1 Afghanistan 1952  8425333      Asia  28.801  779.4453
+2 Afghanistan 1957  9240934      Asia  30.332  820.8530
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007
+4 Afghanistan 1967 11537966      Asia  34.020  836.1971
+5 Afghanistan 1972 13079460      Asia  36.088  739.9811
+6 Afghanistan 1977 14880372      Asia  38.438  786.1134
 
 ~~~
 
@@ -377,18 +377,22 @@ Let's look at some of the columns.
 >
 > Look at the first 6 rows of the gapminder data frame we loaded before:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > head(gapminder)
 > ~~~
->
-> ~~~ {.output}
-> ##       country year      pop continent lifeExp gdpPercap
-> ## 1 Afghanistan 1952  8425333      Asia  28.801  779.4453
-> ## 2 Afghanistan 1957  9240934      Asia  30.332  820.8530
-> ## 3 Afghanistan 1962 10267083      Asia  31.997  853.1007
-> ## 4 Afghanistan 1967 11537966      Asia  34.020  836.1971
-> ## 5 Afghanistan 1972 13079460      Asia  36.088  739.9811
-> ## 6 Afghanistan 1977 14880372      Asia  38.438  786.1134
+> 
+> 
+> 
+> ~~~{.output}
+>       country year      pop continent lifeExp gdpPercap
+> 1 Afghanistan 1952  8425333      Asia  28.801  779.4453
+> 2 Afghanistan 1957  9240934      Asia  30.332  820.8530
+> 3 Afghanistan 1962 10267083      Asia  31.997  853.1007
+> 4 Afghanistan 1967 11537966      Asia  34.020  836.1971
+> 5 Afghanistan 1972 13079460      Asia  36.088  739.9811
+> 6 Afghanistan 1977 14880372      Asia  38.438  786.1134
+> 
 > ~~~
 >
 > Write down what data type you think is in each column
@@ -740,13 +744,13 @@ head(copy)
 
 
 ~~~{.output}
-            a    b        c    d     e     f
-1 Afghanistan 1952  8425333 Asia 28.80 779.4
-2 Afghanistan 1957  9240934 Asia 30.33 820.9
-3 Afghanistan 1962 10267083 Asia 32.00 853.1
-4 Afghanistan 1967 11537966 Asia 34.02 836.2
-5 Afghanistan 1972 13079460 Asia 36.09 740.0
-6 Afghanistan 1977 14880372 Asia 38.44 786.1
+            a    b        c    d      e        f
+1 Afghanistan 1952  8425333 Asia 28.801 779.4453
+2 Afghanistan 1957  9240934 Asia 30.332 820.8530
+3 Afghanistan 1962 10267083 Asia 31.997 853.1007
+4 Afghanistan 1967 11537966 Asia 34.020 836.1971
+5 Afghanistan 1972 13079460 Asia 36.088 739.9811
+6 Afghanistan 1977 14880372 Asia 38.438 786.1134
 
 ~~~
 
@@ -805,7 +809,7 @@ lm(formula = lifeExp ~ year, data = gapminder)
 
 Coefficients:
 (Intercept)         year  
-   -585.652        0.326  
+  -585.6522       0.3259  
 
 ~~~
 
@@ -898,19 +902,19 @@ Call:
 lm(formula = lifeExp ~ year, data = gapminder)
 
 Residuals:
-   Min     1Q Median     3Q    Max 
--39.95  -9.65   1.70  10.33  22.16 
+    Min      1Q  Median      3Q     Max 
+-39.949  -9.651   1.697  10.335  22.158 
 
 Coefficients:
-             Estimate Std. Error t value Pr(>|t|)    
-(Intercept) -585.6522    32.3140   -18.1   <2e-16 ***
-year           0.3259     0.0163    20.0   <2e-16 ***
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -585.65219   32.31396  -18.12   <2e-16 ***
+year           0.32590    0.01632   19.96   <2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 11.6 on 1702 degrees of freedom
-Multiple R-squared:  0.19,	Adjusted R-squared:  0.189 
-F-statistic:  399 on 1 and 1702 DF,  p-value: <2e-16
+Residual standard error: 11.63 on 1702 degrees of freedom
+Multiple R-squared:  0.1898,	Adjusted R-squared:  0.1893 
+F-statistic: 398.6 on 1 and 1702 DF,  p-value: < 2.2e-16
 
 ~~~
 
@@ -932,7 +936,8 @@ time, so we see a significant positive association!
 > Now use cbind to add a column of logicals answering the question,
 > "Is there anything in this workshop you're finding confusing?"
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > my_df <- data.frame(first_name = "Software", last_name = "Carpentry", age = 17)
 > my_df <- rbind(my_df, list("Jane", "Smith", 29))
 > my_df <- rbind(my_df, list(c("Jo", "John"), c("White", "Lee"), c(23, 41)))

@@ -112,7 +112,8 @@ get shared between projects.
 > 2. Load the library
 > 3. Initialise the project:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > install.packages("ProjectTemplate")
 > library(ProjectTemplate)
 > create.project("../my_project", merge.strategy = "allow.non.conflict")

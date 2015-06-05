@@ -105,8 +105,8 @@ x</code></pre>
 </div>
 </section>
 <p>Did anyone get a warning message like this?</p>
-<pre class="output"><code>Warning: the condition has length &gt; 1 and only the first element will be
-used
+<pre class="output"><code>Warning in if (gapminder$year == 2012) {: the condition has length &gt; 1 and
+only the first element will be used
 </code></pre>
 <p>If your condition evaluates to a vector with more than one logical element, the function <code>if</code> will still run, but will only evaluate the condition in the first element. Here you need to make sure your condition is of length 1.</p>
 <blockquote>
@@ -132,9 +132,9 @@ while(z &gt;<span class="st"> </span><span class="fl">0.1</span>){
   z &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)
   <span class="kw">print</span>(z)
 }</code></pre>
-<pre class="output"><code>[1] 0.4269
-[1] 0.6931
-[1] 0.08514
+<pre class="output"><code>[1] 0.4269077
+[1] 0.6931021
+[1] 0.08513597
 </code></pre>
 <section class="challenge panel panel-success">
 <div class="panel-heading">

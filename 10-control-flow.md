@@ -133,8 +133,8 @@ Did anyone get a warning message like this?
 
 
 ~~~{.output}
-Warning: the condition has length > 1 and only the first element will be
-used
+Warning in if (gapminder$year == 2012) {: the condition has length > 1 and
+only the first element will be used
 
 ~~~
 
@@ -201,9 +201,9 @@ while(z > 0.1){
 
 
 ~~~{.output}
-[1] 0.4269
-[1] 0.6931
-[1] 0.08514
+[1] 0.4269077
+[1] 0.6931021
+[1] 0.08513597
 
 ~~~
 

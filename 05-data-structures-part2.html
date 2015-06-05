@@ -167,12 +167,12 @@ Afghanistan,1992,16317921,Asia,41.674,649.3413952
 )
 <span class="kw">head</span>(gapminder)</code></pre>
 <pre class="output"><code>      country year      pop continent lifeExp gdpPercap
-1 Afghanistan 1952  8425333      Asia   28.80     779.4
-2 Afghanistan 1957  9240934      Asia   30.33     820.9
-3 Afghanistan 1962 10267083      Asia   32.00     853.1
-4 Afghanistan 1967 11537966      Asia   34.02     836.2
-5 Afghanistan 1972 13079460      Asia   36.09     740.0
-6 Afghanistan 1977 14880372      Asia   38.44     786.1
+1 Afghanistan 1952  8425333      Asia  28.801  779.4453
+2 Afghanistan 1957  9240934      Asia  30.332  820.8530
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007
+4 Afghanistan 1967 11537966      Asia  34.020  836.1971
+5 Afghanistan 1972 13079460      Asia  36.088  739.9811
+6 Afghanistan 1977 14880372      Asia  38.438  786.1134
 </code></pre>
 <p>Because we know the structure of the data, we’re able to specify the appropriate arguments to <code>read.table</code>. Without these arguments, <code>read.table</code> will do its best to do something sensible, but it is always more reliable to explicitly tell <code>read.table</code> the structure of the data. <code>read.csv</code> function provides a convenient shortcut for loading in CSV files.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Here is the read.csv version of the above command</span>
@@ -181,12 +181,12 @@ gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(
 )
 <span class="kw">head</span>(gapminder)</code></pre>
 <pre class="output"><code>      country year      pop continent lifeExp gdpPercap
-1 Afghanistan 1952  8425333      Asia   28.80     779.4
-2 Afghanistan 1957  9240934      Asia   30.33     820.9
-3 Afghanistan 1962 10267083      Asia   32.00     853.1
-4 Afghanistan 1967 11537966      Asia   34.02     836.2
-5 Afghanistan 1972 13079460      Asia   36.09     740.0
-6 Afghanistan 1977 14880372      Asia   38.44     786.1
+1 Afghanistan 1952  8425333      Asia  28.801  779.4453
+2 Afghanistan 1957  9240934      Asia  30.332  820.8530
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007
+4 Afghanistan 1967 11537966      Asia  34.020  836.1971
+5 Afghanistan 1972 13079460      Asia  36.088  739.9811
+6 Afghanistan 1977 14880372      Asia  38.438  786.1134
 </code></pre>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
@@ -236,13 +236,14 @@ gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(
 <div class="panel-body">
 <p>Look at the first 6 rows of the gapminder data frame we loaded before:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gapminder)</code></pre>
-<pre class="output"><code>##       country year      pop continent lifeExp gdpPercap
-## 1 Afghanistan 1952  8425333      Asia  28.801  779.4453
-## 2 Afghanistan 1957  9240934      Asia  30.332  820.8530
-## 3 Afghanistan 1962 10267083      Asia  31.997  853.1007
-## 4 Afghanistan 1967 11537966      Asia  34.020  836.1971
-## 5 Afghanistan 1972 13079460      Asia  36.088  739.9811
-## 6 Afghanistan 1977 14880372      Asia  38.438  786.1134</code></pre>
+<pre class="output"><code>      country year      pop continent lifeExp gdpPercap
+1 Afghanistan 1952  8425333      Asia  28.801  779.4453
+2 Afghanistan 1957  9240934      Asia  30.332  820.8530
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007
+4 Afghanistan 1967 11537966      Asia  34.020  836.1971
+5 Afghanistan 1972 13079460      Asia  36.088  739.9811
+6 Afghanistan 1977 14880372      Asia  38.438  786.1134
+</code></pre>
 <p>Write down what data type you think is in each column</p>
 </div>
 </section>
@@ -488,13 +489,13 @@ gapminder &lt;-<span class="st"> </span><span class="kw">read.table</span>(
 <pre class="sourceCode r"><code class="sourceCode r">copy &lt;-<span class="st"> </span>gapminder <span class="co"># lets create a copy so we don&#39;t mess up the original</span>
 <span class="kw">colnames</span>(copy) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;f&quot;</span>)
 <span class="kw">head</span>(copy)</code></pre>
-<pre class="output"><code>            a    b        c    d     e     f
-1 Afghanistan 1952  8425333 Asia 28.80 779.4
-2 Afghanistan 1957  9240934 Asia 30.33 820.9
-3 Afghanistan 1962 10267083 Asia 32.00 853.1
-4 Afghanistan 1967 11537966 Asia 34.02 836.2
-5 Afghanistan 1972 13079460 Asia 36.09 740.0
-6 Afghanistan 1977 14880372 Asia 38.44 786.1
+<pre class="output"><code>            a    b        c    d      e        f
+1 Afghanistan 1952  8425333 Asia 28.801 779.4453
+2 Afghanistan 1957  9240934 Asia 30.332 820.8530
+3 Afghanistan 1962 10267083 Asia 31.997 853.1007
+4 Afghanistan 1967 11537966 Asia 34.020 836.1971
+5 Afghanistan 1972 13079460 Asia 36.088 739.9811
+6 Afghanistan 1977 14880372 Asia 38.438 786.1134
 </code></pre>
 <p>There are a few related ways of retrieving and modifying this information. <code>attributes</code> will give you both the row and column names, along with the class information, while <code>dimnames</code> will give you just the rownames and column names.</p>
 <p>In both cases, the output object is stored in a <code>list</code>:</p>
@@ -516,7 +517,7 @@ lm(formula = lifeExp ~ year, data = gapminder)
 
 Coefficients:
 (Intercept)         year  
-   -585.652        0.326  
+  -585.6522       0.3259  
 </code></pre>
 <p>Not much there right? But if we look at the structure…</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(l1)</code></pre>
@@ -586,19 +587,19 @@ Call:
 lm(formula = lifeExp ~ year, data = gapminder)
 
 Residuals:
-   Min     1Q Median     3Q    Max 
--39.95  -9.65   1.70  10.33  22.16 
+    Min      1Q  Median      3Q     Max 
+-39.949  -9.651   1.697  10.335  22.158 
 
 Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) -585.6522    32.3140   -18.1   &lt;2e-16 ***
-year           0.3259     0.0163    20.0   &lt;2e-16 ***
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -585.65219   32.31396  -18.12   &lt;2e-16 ***
+year           0.32590    0.01632   19.96   &lt;2e-16 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 11.6 on 1702 degrees of freedom
-Multiple R-squared:  0.19,  Adjusted R-squared:  0.189 
-F-statistic:  399 on 1 and 1702 DF,  p-value: &lt;2e-16
+Residual standard error: 11.63 on 1702 degrees of freedom
+Multiple R-squared:  0.1898,    Adjusted R-squared:  0.1893 
+F-statistic: 398.6 on 1 and 1702 DF,  p-value: &lt; 2.2e-16
 </code></pre>
 <p>As you might expect, life expectancy has slowly been increasing over time, so we see a significant positive association!</p>
 <h2 id="challenge-solutions">Challenge Solutions</h2>

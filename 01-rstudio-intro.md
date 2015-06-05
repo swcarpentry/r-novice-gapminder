@@ -218,7 +218,7 @@ sin(1)  # trigonometry functions
 
 
 ~~~{.output}
-[1] 0.8415
+[1] 0.841471
 
 ~~~
 
@@ -254,7 +254,7 @@ exp(0.5) # e^(1/2)
 
 
 ~~~{.output}
-[1] 1.649
+[1] 1.648721
 
 ~~~
 
@@ -406,7 +406,7 @@ log(x)
 
 
 ~~~{.output}
-[1] -3.689
+[1] -3.688879
 
 ~~~
 
@@ -522,7 +522,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7f9f4d0e9f58>
+<bytecode: 0x7fd893942358>
 <environment: namespace:base>
 
 ~~~
@@ -560,7 +560,7 @@ rm(list <- ls())
 
 
 ~~~{.output}
-Error: ... must contain names or character strings
+Error in rm(list <- ls()): ... must contain names or character strings
 
 ~~~
 
@@ -581,7 +581,8 @@ Error: ... must contain names or character strings
 > Draw diagrams showing what variables refer to what values after each
 > statement in the following program:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > mass <- 47.5
 > age <- 122
 > mass <- mass * 2.3

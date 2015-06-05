@@ -68,11 +68,11 @@
 <p>Let’s try running our function. Calling our own function is no different from calling any other function:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># freezing point of water</span>
 <span class="kw">fahr_to_kelvin</span>(<span class="dv">32</span>)</code></pre>
-<pre class="output"><code>[1] 273.1
+<pre class="output"><code>[1] 273.15
 </code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># boiling point of water</span>
 <span class="kw">fahr_to_kelvin</span>(<span class="dv">212</span>)</code></pre>
-<pre class="output"><code>[1] 373.1
+<pre class="output"><code>[1] 373.15
 </code></pre>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
@@ -115,7 +115,7 @@ calcGDP &lt;-<span class="st"> </span>function(dat) {
 <p>When we call the function, the values we pass to it are assigned to the arguments, which become variables inside the body of the function.</p>
 <p>Inside the function, we use the <code>return</code> function to send back the result. This return function is optional: R will automatically return the results of whatever command is executed on the last line of the function.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">calcGDP</span>(<span class="kw">head</span>(gapminder))</code></pre>
-<pre class="output"><code>[1] 6.567e+09 7.585e+09 8.759e+09 9.648e+09 9.679e+09 1.170e+10
+<pre class="output"><code>[1]  6567086330  7585448670  8758855797  9648014150  9678553274 11697659231
 </code></pre>
 <p>That’s not very informative. Let’s add some more arguments so we can extract that per year and country.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Takes a dataset and multiplies the population column</span>
@@ -137,34 +137,34 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 <p>Ok, so there’s a lot going on in this function now. In plain English, the function now subsets the provided data by year if the year argument isn’t empty, then subsets the result by country if the country argument isn’t empty. Then it calculates the GDP for whatever subset emerges from the previous two steps. The function then adds the GDP as a new column to the subsetted data and returns this as the final result. You can see that the output is much more informative than just getting a vector of numbers.</p>
 <p>Let’s take a look at what happens when we specify the year:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">calcGDP</span>(gapminder, <span class="dt">year=</span><span class="dv">2007</span>))</code></pre>
-<pre class="output"><code>       country year      pop continent lifeExp gdpPercap       gdp
-12 Afghanistan 2007 31889923      Asia   43.83     974.6 3.108e+10
-24     Albania 2007  3600523    Europe   76.42    5937.0 2.138e+10
-36     Algeria 2007 33333216    Africa   72.30    6223.4 2.074e+11
-48      Angola 2007 12420476    Africa   42.73    4797.2 5.958e+10
-60   Argentina 2007 40301927  Americas   75.32   12779.4 5.150e+11
-72   Australia 2007 20434176   Oceania   81.23   34435.4 7.037e+11
+<pre class="output"><code>       country year      pop continent lifeExp  gdpPercap          gdp
+12 Afghanistan 2007 31889923      Asia  43.828   974.5803  31079291949
+24     Albania 2007  3600523    Europe  76.423  5937.0295  21376411360
+36     Algeria 2007 33333216    Africa  72.301  6223.3675 207444851958
+48      Angola 2007 12420476    Africa  42.731  4797.2313  59583895818
+60   Argentina 2007 40301927  Americas  75.320 12779.3796 515033625357
+72   Australia 2007 20434176   Oceania  81.235 34435.3674 703658358894
 </code></pre>
 <p>Or for a specific country:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">calcGDP</span>(gapminder, <span class="dt">country=</span><span class="st">&quot;Australia&quot;</span>)</code></pre>
-<pre class="output"><code>     country year      pop continent lifeExp gdpPercap       gdp
-61 Australia 1952  8691212   Oceania   69.12     10040 8.726e+10
-62 Australia 1957  9712569   Oceania   70.33     10950 1.063e+11
-63 Australia 1962 10794968   Oceania   70.93     12217 1.319e+11
-64 Australia 1967 11872264   Oceania   71.10     14526 1.725e+11
-65 Australia 1972 13177000   Oceania   71.93     16789 2.212e+11
-66 Australia 1977 14074100   Oceania   73.49     18334 2.580e+11
-67 Australia 1982 15184200   Oceania   74.74     19477 2.957e+11
-68 Australia 1987 16257249   Oceania   76.32     21889 3.559e+11
-69 Australia 1992 17481977   Oceania   77.56     23425 4.095e+11
-70 Australia 1997 18565243   Oceania   78.83     26998 5.012e+11
-71 Australia 2002 19546792   Oceania   80.37     30688 5.998e+11
-72 Australia 2007 20434176   Oceania   81.23     34435 7.037e+11
+<pre class="output"><code>     country year      pop continent lifeExp gdpPercap          gdp
+61 Australia 1952  8691212   Oceania  69.120  10039.60  87256254102
+62 Australia 1957  9712569   Oceania  70.330  10949.65 106349227169
+63 Australia 1962 10794968   Oceania  70.930  12217.23 131884573002
+64 Australia 1967 11872264   Oceania  71.100  14526.12 172457986742
+65 Australia 1972 13177000   Oceania  71.930  16788.63 221223770658
+66 Australia 1977 14074100   Oceania  73.490  18334.20 258037329175
+67 Australia 1982 15184200   Oceania  74.740  19477.01 295742804309
+68 Australia 1987 16257249   Oceania  76.320  21888.89 355853119294
+69 Australia 1992 17481977   Oceania  77.560  23424.77 409511234952
+70 Australia 1997 18565243   Oceania  78.830  26997.94 501223252921
+71 Australia 2002 19546792   Oceania  80.370  30687.75 599847158654
+72 Australia 2007 20434176   Oceania  81.235  34435.37 703658358894
 </code></pre>
 <p>Or both:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">calcGDP</span>(gapminder, <span class="dt">year=</span><span class="dv">2007</span>, <span class="dt">country=</span><span class="st">&quot;Australia&quot;</span>)</code></pre>
-<pre class="output"><code>     country year      pop continent lifeExp gdpPercap       gdp
-72 Australia 2007 20434176   Oceania   81.23     34435 7.037e+11
+<pre class="output"><code>     country year      pop continent lifeExp gdpPercap          gdp
+72 Australia 2007 20434176   Oceania  81.235  34435.37 703658358894
 </code></pre>
 <p>Let’s walk through the body of the function:</p>
 <pre class="sourceCode r"><code class="sourceCode r">calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span><span class="ot">NULL</span>, <span class="dt">country=</span><span class="ot">NULL</span>) {</code></pre>
@@ -214,10 +214,10 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 <p>The <code>paste</code> function can be used to combine text together, e.g:</p>
 <pre class="sourceCode r"><code class="sourceCode r">best_practice &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Write&quot;</span>, <span class="st">&quot;programs&quot;</span>, <span class="st">&quot;for&quot;</span>, <span class="st">&quot;people&quot;</span>, <span class="st">&quot;not&quot;</span>, <span class="st">&quot;computers&quot;</span>)
 <span class="kw">paste</span>(best_practice, <span class="dt">collapse=</span><span class="st">&quot; &quot;</span>)</code></pre>
-<pre class="output"><code>## [1] &quot;Write programs for people not computers&quot;</code></pre>
+<pre class="output"><code>[1] &quot;Write programs for people not computers&quot;
+</code></pre>
 <p>Write a function called <code>fence</code> that takes two vectors as arguments, called <code>text</code> and <code>wrapper</code>, and prints out the text wrapped with the <code>wrapper</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fence</span>(<span class="dt">text=</span>best_practice, <span class="dt">wrapper=</span><span class="st">&quot;***&quot;</span>)</code></pre>
-<pre class="output"><code>## [1] &quot;*** Write programs for people not computers ***&quot;</code></pre>
 <p><em>Note:</em> the <code>paste</code> function has an argument called <code>sep</code>, which specifies the separator between text. The default is a space: &quot; “. The default for <code>paste0</code> is no space”“.</p>
 </div>
 </section>
@@ -283,9 +283,12 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 <pre class="sourceCode r"><code class="sourceCode r">fence &lt;-<span class="st"> </span>function(text, wrapper){
   text &lt;-<span class="st"> </span><span class="kw">c</span>(wrapper, text, wrapper)
   result &lt;-<span class="st"> </span><span class="kw">paste</span>(text, <span class="dt">collapse =</span> <span class="st">&quot; &quot;</span>)
+  <span class="kw">return</span>(result)
 }
+best_practice &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Write&quot;</span>, <span class="st">&quot;programs&quot;</span>, <span class="st">&quot;for&quot;</span>, <span class="st">&quot;people&quot;</span>, <span class="st">&quot;not&quot;</span>, <span class="st">&quot;computers&quot;</span>)
 <span class="kw">fence</span>(<span class="dt">text=</span>best_practice, <span class="dt">wrapper=</span><span class="st">&quot;***&quot;</span>)</code></pre>
-<pre class="output"><code>## [1] &quot;*** Write programs for people not computers ***&quot;</code></pre>
+<pre class="output"><code>[1] &quot;*** Write programs for people not computers ***&quot;
+</code></pre>
 </div>
 </section>
         </div>
