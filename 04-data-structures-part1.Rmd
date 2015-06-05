@@ -408,7 +408,6 @@ fact many R functions which return complex output store their results in a list.
 > answer <- TRUE
 > height <- 150
 > dog_name <- "Snoopy"
->
 > is.logical(answer)
 > ```
 >
