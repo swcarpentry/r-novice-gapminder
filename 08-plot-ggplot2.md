@@ -52,7 +52,7 @@ ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
   geom_point()
 ~~~
 
-<img src="fig/08-plot-ggplot2-lifeExp-vs-gdpPercap-scatter.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter" alt="plot of chunk lifeExp-vs-gdpPercap-scatter" style="display: block; margin: auto;" />
+<img src="fig/08-plot-ggplot2-lifeExp-vs-gdpPercap-scatter-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter" alt="plot of chunk lifeExp-vs-gdpPercap-scatter" style="display: block; margin: auto;" />
 
 So the first thing we do is call the `ggplot` function. This function lets R
 know that we're creating a new plot, and any of the arguments we give the
@@ -94,14 +94,15 @@ ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
   geom_point()
 ~~~
 
-<img src="fig/08-plot-ggplot2-lifeExp-vs-gdpPercap-scatter2.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter2" alt="plot of chunk lifeExp-vs-gdpPercap-scatter2" style="display: block; margin: auto;" />
+<img src="fig/08-plot-ggplot2-lifeExp-vs-gdpPercap-scatter2-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter2" alt="plot of chunk lifeExp-vs-gdpPercap-scatter2" style="display: block; margin: auto;" />
 
 > #### Challenge 1 {.challenge}
 >
 > Modify the example so that the figure visualise how life expectancy has
 > changed over time:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) + geom_point()
 > ~~~
 >
@@ -129,7 +130,7 @@ ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent)) +
   geom_line()
 ~~~
 
-<img src="fig/08-plot-ggplot2-lifeExp-line.png" title="plot of chunk lifeExp-line" alt="plot of chunk lifeExp-line" style="display: block; margin: auto;" />
+<img src="fig/08-plot-ggplot2-lifeExp-line-1.png" title="plot of chunk lifeExp-line" alt="plot of chunk lifeExp-line" style="display: block; margin: auto;" />
 
 Instead of adding a `geom_point` layer, we've added a `geom_line` layer. We've
 added the **by** *aesthetic*, which tells `ggplot` to draw a line for each
@@ -144,7 +145,7 @@ ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent)) +
   geom_line() + geom_point()
 ~~~
 
-<img src="fig/08-plot-ggplot2-lifeExp-line-point.png" title="plot of chunk lifeExp-line-point" alt="plot of chunk lifeExp-line-point" style="display: block; margin: auto;" />
+<img src="fig/08-plot-ggplot2-lifeExp-line-point-1.png" title="plot of chunk lifeExp-line-point" alt="plot of chunk lifeExp-line-point" style="display: block; margin: auto;" />
 
 It's important to note that each layer is drawn on top of the previous layer. In
 this example, the points have been drawn *on top of* the lines. Here's a
@@ -156,7 +157,7 @@ ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
   geom_line(aes(color=continent)) + geom_point()
 ~~~
 
-<img src="fig/08-plot-ggplot2-lifeExp-layer-example-1.png" title="plot of chunk lifeExp-layer-example-1" alt="plot of chunk lifeExp-layer-example-1" style="display: block; margin: auto;" />
+<img src="fig/08-plot-ggplot2-lifeExp-layer-example-1-1.png" title="plot of chunk lifeExp-layer-example-1" alt="plot of chunk lifeExp-layer-example-1" style="display: block; margin: auto;" />
 
 In this example, the *aesthetic* mapping of **color** has been moved from the
 global plot options in `ggplot` to the `geom_line` layer so it no longer applies
@@ -180,7 +181,7 @@ ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap, color=continent)) +
   geom_point()
 ~~~
 
-<img src="fig/08-plot-ggplot2-lifeExp-vs-gdpPercap-scatter3.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter3" alt="plot of chunk lifeExp-vs-gdpPercap-scatter3" style="display: block; margin: auto;" />
+<img src="fig/08-plot-ggplot2-lifeExp-vs-gdpPercap-scatter3-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter3" alt="plot of chunk lifeExp-vs-gdpPercap-scatter3" style="display: block; margin: auto;" />
 
 Currently it's hard to see the relationship between the points due to some strong
 outliers in GDP per capita. We can change the scale of units on the y axis using
@@ -193,7 +194,7 @@ ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
   geom_point() + scale_y_log10()
 ~~~
 
-<img src="fig/08-plot-ggplot2-axis-scale.png" title="plot of chunk axis-scale" alt="plot of chunk axis-scale" style="display: block; margin: auto;" />
+<img src="fig/08-plot-ggplot2-axis-scale-1.png" title="plot of chunk axis-scale" alt="plot of chunk axis-scale" style="display: block; margin: auto;" />
 
 The `log10` function applied a transformation to the values of the gdpPercap
 column before rendering them on the plot, so that each multiple of 10 now only
@@ -211,7 +212,7 @@ ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
   geom_point() + scale_y_log10() + geom_smooth(method="lm")
 ~~~
 
-<img src="fig/08-plot-ggplot2-lm-fit.png" title="plot of chunk lm-fit" alt="plot of chunk lm-fit" style="display: block; margin: auto;" />
+<img src="fig/08-plot-ggplot2-lm-fit-1.png" title="plot of chunk lm-fit" alt="plot of chunk lm-fit" style="display: block; margin: auto;" />
 
 We can make the line thicker by *setting* the **size** aesthetic in the
 `geom_smooth` layer:
@@ -222,7 +223,7 @@ ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
   geom_point() + scale_y_log10() + geom_smooth(method="lm", size=1.5)
 ~~~
 
-<img src="fig/08-plot-ggplot2-lm-fit2.png" title="plot of chunk lm-fit2" alt="plot of chunk lm-fit2" style="display: block; margin: auto;" />
+<img src="fig/08-plot-ggplot2-lm-fit2-1.png" title="plot of chunk lm-fit2" alt="plot of chunk lm-fit2" style="display: block; margin: auto;" />
 
 There are two ways an *aesthetic* can be specified. Here we *set* the **size**
 aesthetic by passing it as an argument to `geom_smooth`. Previously in the
@@ -249,7 +250,7 @@ ggplot(data = gapminder, aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country)
 ~~~
 
-<img src="fig/08-plot-ggplot2-facet.png" title="plot of chunk facet" alt="plot of chunk facet" style="display: block; margin: auto;" />
+<img src="fig/08-plot-ggplot2-facet-1.png" title="plot of chunk facet" alt="plot of chunk facet" style="display: block; margin: auto;" />
 
 The `facet_wrap` layer took a "formula" as its argument, denoted by the tilde
 (~). This tells R to draw a panel for each unique value in the country column
@@ -275,7 +276,7 @@ ggplot(data = gapminder, aes(x = year, y = lifeExp, color=continent)) +
   theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
 ~~~
 
-<img src="fig/08-plot-ggplot2-theme.png" title="plot of chunk theme" alt="plot of chunk theme" style="display: block; margin: auto;" />
+<img src="fig/08-plot-ggplot2-theme-1.png" title="plot of chunk theme" alt="plot of chunk theme" style="display: block; margin: auto;" />
 
 
 This is just a taste of what you can do with `ggplot2`. RStudio provides a
@@ -305,9 +306,12 @@ code to modify!
 > Modify the example so that the figure visualise how life expectancy has
 > changed over time:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > ggplot(data = gapminder, aes(x = year, y = lifeExp)) + geom_point()
 > ~~~
+> 
+> <img src="fig/08-plot-ggplot2-ch1-sol-1.png" title="plot of chunk ch1-sol" alt="plot of chunk ch1-sol" style="display: block; margin: auto;" />
 >
 
 > #### Solution to challenge 2 {.challenge}
@@ -318,10 +322,13 @@ code to modify!
 > code from the previous challenge to **color** the points by the "continent"
 > column. What trends do you see in the data? Are they what you expected?
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > ggplot(data = gapminder, aes(x = year, y = lifeExp, color=continent)) +
 >   geom_point()
 > ~~~
+> 
+> <img src="fig/08-plot-ggplot2-ch2-sol-1.png" title="plot of chunk ch2-sol" alt="plot of chunk ch2-sol" style="display: block; margin: auto;" />
 >
 
 > #### Solution to challenge 3 {.challenge}
@@ -329,10 +336,13 @@ code to modify!
 > Switch the order of the point and line layers from the previous example. What
 > happened?
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
 >  geom_point() + geom_line(aes(color=continent))
 > ~~~
+> 
+> <img src="fig/08-plot-ggplot2-ch3-sol-1.png" title="plot of chunk ch3-sol" alt="plot of chunk ch3-sol" style="display: block; margin: auto;" />
 > 
 > The lines now get drawn over the points!
 >
@@ -345,11 +355,14 @@ code to modify!
 >
 > Hint: do not use the `aes` function.
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
 >  geom_point(size=3, color="orange") + scale_y_log10() +
 >  geom_smooth(method="lm", size=1.5)
 > ~~~
+> 
+> <img src="fig/08-plot-ggplot2-ch4-sol-1.png" title="plot of chunk ch4-sol" alt="plot of chunk ch4-sol" style="display: block; margin: auto;" />
 >
 
 > #### Solution to challenge 5 {.challenge}
@@ -360,8 +373,11 @@ code to modify!
 >  - Transform the x axis to better visualise the data spread.
 >  - Add a facet layer to panel the density plots by year.
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > ggplot(data = gapminder, aes(x = gdpPercap, fill=continent)) +
 >  geom_density(alpha=0.6) + facet_wrap( ~ year) + scale_x_log10()
 > ~~~
+> 
+> <img src="fig/08-plot-ggplot2-ch5-sol-1.png" title="plot of chunk ch5-sol" alt="plot of chunk ch5-sol" style="display: block; margin: auto;" />
 >

@@ -120,10 +120,10 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
 
 other attached packages:
-[1] knitr_1.6
+[1] knitr_1.10.12
 
 loaded via a namespace (and not attached):
-[1] evaluate_0.5.5 formatR_1.0    stringr_0.6.2  tools_3.1.0   
+[1] evaluate_0.7  formatR_1.0   stringr_0.6.2 tools_3.1.0  
 
 ~~~
 
@@ -149,7 +149,8 @@ your issue.
 > 
 > Look at the help for the `paste` function. You'll need to use this later. 
 > 
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > help("paste")
 > ?paste
 > ~~~

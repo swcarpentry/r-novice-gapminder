@@ -76,7 +76,7 @@ fahr_to_kelvin(32)
 
 
 ~~~{.output}
-[1] 273.1
+[1] 273.15
 
 ~~~
 
@@ -89,7 +89,7 @@ fahr_to_kelvin(212)
 
 
 ~~~{.output}
-[1] 373.1
+[1] 373.15
 
 ~~~
 
@@ -169,7 +169,7 @@ calcGDP(head(gapminder))
 
 
 ~~~{.output}
-[1] 6.567e+09 7.585e+09 8.759e+09 9.648e+09 9.679e+09 1.170e+10
+[1]  6567086330  7585448670  8758855797  9648014150  9678553274 11697659231
 
 ~~~
 
@@ -221,13 +221,13 @@ head(calcGDP(gapminder, year=2007))
 
 
 ~~~{.output}
-       country year      pop continent lifeExp gdpPercap       gdp
-12 Afghanistan 2007 31889923      Asia   43.83     974.6 3.108e+10
-24     Albania 2007  3600523    Europe   76.42    5937.0 2.138e+10
-36     Algeria 2007 33333216    Africa   72.30    6223.4 2.074e+11
-48      Angola 2007 12420476    Africa   42.73    4797.2 5.958e+10
-60   Argentina 2007 40301927  Americas   75.32   12779.4 5.150e+11
-72   Australia 2007 20434176   Oceania   81.23   34435.4 7.037e+11
+       country year      pop continent lifeExp  gdpPercap          gdp
+12 Afghanistan 2007 31889923      Asia  43.828   974.5803  31079291949
+24     Albania 2007  3600523    Europe  76.423  5937.0295  21376411360
+36     Algeria 2007 33333216    Africa  72.301  6223.3675 207444851958
+48      Angola 2007 12420476    Africa  42.731  4797.2313  59583895818
+60   Argentina 2007 40301927  Americas  75.320 12779.3796 515033625357
+72   Australia 2007 20434176   Oceania  81.235 34435.3674 703658358894
 
 ~~~
 
@@ -241,19 +241,19 @@ calcGDP(gapminder, country="Australia")
 
 
 ~~~{.output}
-     country year      pop continent lifeExp gdpPercap       gdp
-61 Australia 1952  8691212   Oceania   69.12     10040 8.726e+10
-62 Australia 1957  9712569   Oceania   70.33     10950 1.063e+11
-63 Australia 1962 10794968   Oceania   70.93     12217 1.319e+11
-64 Australia 1967 11872264   Oceania   71.10     14526 1.725e+11
-65 Australia 1972 13177000   Oceania   71.93     16789 2.212e+11
-66 Australia 1977 14074100   Oceania   73.49     18334 2.580e+11
-67 Australia 1982 15184200   Oceania   74.74     19477 2.957e+11
-68 Australia 1987 16257249   Oceania   76.32     21889 3.559e+11
-69 Australia 1992 17481977   Oceania   77.56     23425 4.095e+11
-70 Australia 1997 18565243   Oceania   78.83     26998 5.012e+11
-71 Australia 2002 19546792   Oceania   80.37     30688 5.998e+11
-72 Australia 2007 20434176   Oceania   81.23     34435 7.037e+11
+     country year      pop continent lifeExp gdpPercap          gdp
+61 Australia 1952  8691212   Oceania  69.120  10039.60  87256254102
+62 Australia 1957  9712569   Oceania  70.330  10949.65 106349227169
+63 Australia 1962 10794968   Oceania  70.930  12217.23 131884573002
+64 Australia 1967 11872264   Oceania  71.100  14526.12 172457986742
+65 Australia 1972 13177000   Oceania  71.930  16788.63 221223770658
+66 Australia 1977 14074100   Oceania  73.490  18334.20 258037329175
+67 Australia 1982 15184200   Oceania  74.740  19477.01 295742804309
+68 Australia 1987 16257249   Oceania  76.320  21888.89 355853119294
+69 Australia 1992 17481977   Oceania  77.560  23424.77 409511234952
+70 Australia 1997 18565243   Oceania  78.830  26997.94 501223252921
+71 Australia 2002 19546792   Oceania  80.370  30687.75 599847158654
+72 Australia 2007 20434176   Oceania  81.235  34435.37 703658358894
 
 ~~~
 
@@ -267,8 +267,8 @@ calcGDP(gapminder, year=2007, country="Australia")
 
 
 ~~~{.output}
-     country year      pop continent lifeExp gdpPercap       gdp
-72 Australia 2007 20434176   Oceania   81.23     34435 7.037e+11
+     country year      pop continent lifeExp gdpPercap          gdp
+72 Australia 2007 20434176   Oceania  81.235  34435.37 703658358894
 
 ~~~
 
@@ -348,24 +348,25 @@ which is much better than in our first attempt where we just got a vector of num
 >
 > The `paste` function can be used to combine text together, e.g:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > best_practice <- c("Write", "programs", "for", "people", "not", "computers")
 > paste(best_practice, collapse=" ")
 > ~~~
->
-> ~~~ {.output}
-> ## [1] "Write programs for people not computers"
+> 
+> 
+> 
+> ~~~{.output}
+> [1] "Write programs for people not computers"
+> 
 > ~~~
 >
 >  Write a function called `fence` that takes two vectors as arguments, called
 > `text` and `wrapper`, and prints out the text wrapped with the `wrapper`:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > fence(text=best_practice, wrapper="***")
-> ~~~
->
-> ~~~ {.output}
-> ## [1] "*** Write programs for people not computers ***"
 > ~~~
 >
 > *Note:* the `paste` function has an argument called `sep`, which specifies the
@@ -426,7 +427,8 @@ which is much better than in our first attempt where we just got a vector of num
 > Write a function called `kelvin_to_celsius` that takes a temperature in Kelvin
 > and returns that temperature in Celsius
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > kelvin_to_celsius <- function(temp) {
 >  celsius <- temp - 273.15
 >  return(celsius)
@@ -440,7 +442,8 @@ which is much better than in our first attempt where we just got a vector of num
 > by reusing these two functions above
 >
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > fahr_to_celsius <- function(temp) {
 >   temp_k <- fahr_to_kelvin(temp)
 >   result <- kelvin_to_celsius(temp_k)
@@ -455,15 +458,21 @@ which is much better than in our first attempt where we just got a vector of num
 >  Write a function called `fence` that takes two vectors as arguments, called
 > `text` and `wrapper`, and prints out the text wrapped with the `wrapper`:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > fence <- function(text, wrapper){
 >   text <- c(wrapper, text, wrapper)
 >   result <- paste(text, collapse = " ")
+>   return(result)
 > }
+> best_practice <- c("Write", "programs", "for", "people", "not", "computers")
 > fence(text=best_practice, wrapper="***")
 > ~~~
->
-> ~~~ {.output}
-> ## [1] "*** Write programs for people not computers ***"
+> 
+> 
+> 
+> ~~~{.output}
+> [1] "*** Write programs for people not computers ***"
+> 
 > ~~~
 > 

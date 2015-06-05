@@ -51,7 +51,7 @@ mean(withGDP[withGDP$continent == "Africa", "gdp"])
 
 
 ~~~{.output}
-[1] 2.09e+10
+[1] 20904782844
 
 ~~~
 
@@ -64,7 +64,7 @@ mean(withGDP[withGDP$continent == "Americas", "gdp"])
 
 
 ~~~{.output}
-[1] 3.793e+11
+[1] 379262350210
 
 ~~~
 
@@ -77,7 +77,7 @@ mean(withGDP[withGDP$continent == "Asia", "gdp"])
 
 
 ~~~{.output}
-[1] 2.272e+11
+[1] 227233738153
 
 ~~~
 
@@ -163,12 +163,12 @@ ddply(
 
 
 ~~~{.output}
-  continent        V1
-1    Africa 2.090e+10
-2  Americas 3.793e+11
-3      Asia 2.272e+11
-4    Europe 2.694e+11
-5   Oceania 1.882e+11
+  continent           V1
+1    Africa  20904782844
+2  Americas 379262350210
+3      Asia 227233738153
+4    Europe 269442085301
+5   Oceania 188187105354
 
 ~~~
 
@@ -204,19 +204,19 @@ dlply(
 
 ~~~{.output}
 $Africa
-[1] 2.09e+10
+[1] 20904782844
 
 $Americas
-[1] 3.793e+11
+[1] 379262350210
 
 $Asia
-[1] 2.272e+11
+[1] 227233738153
 
 $Europe
-[1] 2.694e+11
+[1] 269442085301
 
 $Oceania
-[1] 1.882e+11
+[1] 188187105354
 
 attr(,"split_type")
 [1] "data.frame"
@@ -247,67 +247,67 @@ ddply(
 
 
 ~~~{.output}
-   continent year        V1
-1     Africa 1952 5.992e+09
-2     Africa 1957 7.359e+09
-3     Africa 1962 8.785e+09
-4     Africa 1967 1.144e+10
-5     Africa 1972 1.507e+10
-6     Africa 1977 1.869e+10
-7     Africa 1982 2.204e+10
-8     Africa 1987 2.411e+10
-9     Africa 1992 2.626e+10
-10    Africa 1997 3.002e+10
-11    Africa 2002 3.530e+10
-12    Africa 2007 4.578e+10
-13  Americas 1952 1.177e+11
-14  Americas 1957 1.408e+11
-15  Americas 1962 1.692e+11
-16  Americas 1967 2.179e+11
-17  Americas 1972 2.682e+11
-18  Americas 1977 3.241e+11
-19  Americas 1982 3.633e+11
-20  Americas 1987 4.394e+11
-21  Americas 1992 4.899e+11
-22  Americas 1997 5.827e+11
-23  Americas 2002 6.612e+11
-24  Americas 2007 7.767e+11
-25      Asia 1952 3.410e+10
-26      Asia 1957 4.727e+10
-27      Asia 1962 6.014e+10
-28      Asia 1967 8.465e+10
-29      Asia 1972 1.244e+11
-30      Asia 1977 1.598e+11
-31      Asia 1982 1.944e+11
-32      Asia 1987 2.418e+11
-33      Asia 1992 3.071e+11
-34      Asia 1997 3.876e+11
-35      Asia 2002 4.580e+11
-36      Asia 2007 6.275e+11
-37    Europe 1952 8.497e+10
-38    Europe 1957 1.100e+11
-39    Europe 1962 1.390e+11
-40    Europe 1967 1.734e+11
-41    Europe 1972 2.187e+11
-42    Europe 1977 2.554e+11
-43    Europe 1982 2.795e+11
-44    Europe 1987 3.165e+11
-45    Europe 1992 3.427e+11
-46    Europe 1997 3.836e+11
-47    Europe 2002 4.364e+11
-48    Europe 2007 4.932e+11
-49   Oceania 1952 5.416e+10
-50   Oceania 1957 6.683e+10
-51   Oceania 1962 8.234e+10
-52   Oceania 1967 1.060e+11
-53   Oceania 1972 1.341e+11
-54   Oceania 1977 1.547e+11
-55   Oceania 1982 1.762e+11
-56   Oceania 1987 2.095e+11
-57   Oceania 1992 2.363e+11
-58   Oceania 1997 2.893e+11
-59   Oceania 2002 3.452e+11
-60   Oceania 2007 4.037e+11
+   continent year           V1
+1     Africa 1952   5992294608
+2     Africa 1957   7359188796
+3     Africa 1962   8784876958
+4     Africa 1967  11443994101
+5     Africa 1972  15072241974
+6     Africa 1977  18694898732
+7     Africa 1982  22040401045
+8     Africa 1987  24107264108
+9     Africa 1992  26256977719
+10    Africa 1997  30023173824
+11    Africa 2002  35303511424
+12    Africa 2007  45778570846
+13  Americas 1952 117738997171
+14  Americas 1957 140817061264
+15  Americas 1962 169153069442
+16  Americas 1967 217867530844
+17  Americas 1972 268159178814
+18  Americas 1977 324085389022
+19  Americas 1982 363314008350
+20  Americas 1987 439447790357
+21  Americas 1992 489899820623
+22  Americas 1997 582693307146
+23  Americas 2002 661248623419
+24  Americas 2007 776723426068
+25      Asia 1952  34095762661
+26      Asia 1957  47267432088
+27      Asia 1962  60136869012
+28      Asia 1967  84648519224
+29      Asia 1972 124385747313
+30      Asia 1977 159802590186
+31      Asia 1982 194429049919
+32      Asia 1987 241784763369
+33      Asia 1992 307100497486
+34      Asia 1997 387597655323
+35      Asia 2002 458042336179
+36      Asia 2007 627513635079
+37    Europe 1952  84971341466
+38    Europe 1957 109989505140
+39    Europe 1962 138984693095
+40    Europe 1967 173366641137
+41    Europe 1972 218691462733
+42    Europe 1977 255367522034
+43    Europe 1982 279484077072
+44    Europe 1987 316507473546
+45    Europe 1992 342703247405
+46    Europe 1997 383606933833
+47    Europe 2002 436448815097
+48    Europe 2007 493183311052
+49   Oceania 1952  54157223944
+50   Oceania 1957  66826828013
+51   Oceania 1962  82336453245
+52   Oceania 1967 105958863585
+53   Oceania 1972 134112109227
+54   Oceania 1977 154707711162
+55   Oceania 1982 176177151380
+56   Oceania 1987 209451563998
+57   Oceania 1992 236319179826
+58   Oceania 1997 289304255183
+59   Oceania 2002 345236880176
+60   Oceania 2007 403657044512
 
 ~~~
 
@@ -324,19 +324,26 @@ daply(
 
 ~~~{.output}
           year
-continent       1952      1957      1962      1967      1972      1977
-  Africa   5.992e+09 7.359e+09 8.785e+09 1.144e+10 1.507e+10 1.869e+10
-  Americas 1.177e+11 1.408e+11 1.692e+11 2.179e+11 2.682e+11 3.241e+11
-  Asia     3.410e+10 4.727e+10 6.014e+10 8.465e+10 1.244e+11 1.598e+11
-  Europe   8.497e+10 1.100e+11 1.390e+11 1.734e+11 2.187e+11 2.554e+11
-  Oceania  5.416e+10 6.683e+10 8.234e+10 1.060e+11 1.341e+11 1.547e+11
+continent          1952         1957         1962         1967
+  Africa     5992294608   7359188796   8784876958  11443994101
+  Americas 117738997171 140817061264 169153069442 217867530844
+  Asia      34095762661  47267432088  60136869012  84648519224
+  Europe    84971341466 109989505140 138984693095 173366641137
+  Oceania   54157223944  66826828013  82336453245 105958863585
           year
-continent       1982      1987      1992      1997      2002      2007
-  Africa   2.204e+10 2.411e+10 2.626e+10 3.002e+10 3.530e+10 4.578e+10
-  Americas 3.633e+11 4.394e+11 4.899e+11 5.827e+11 6.612e+11 7.767e+11
-  Asia     1.944e+11 2.418e+11 3.071e+11 3.876e+11 4.580e+11 6.275e+11
-  Europe   2.795e+11 3.165e+11 3.427e+11 3.836e+11 4.364e+11 4.932e+11
-  Oceania  1.762e+11 2.095e+11 2.363e+11 2.893e+11 3.452e+11 4.037e+11
+continent          1972         1977         1982         1987
+  Africa    15072241974  18694898732  22040401045  24107264108
+  Americas 268159178814 324085389022 363314008350 439447790357
+  Asia     124385747313 159802590186 194429049919 241784763369
+  Europe   218691462733 255367522034 279484077072 316507473546
+  Oceania  134112109227 154707711162 176177151380 209451563998
+          year
+continent          1992         1997         2002         2007
+  Africa    26256977719  30023173824  35303511424  45778570846
+  Americas 489899820623 582693307146 661248623419 776723426068
+  Asia     307100497486 387597655323 458042336179 627513635079
+  Europe   342703247405 383606933833 436448815097 493183311052
+  Oceania  236319179826 289304255183 345236880176 403657044512
 
 ~~~
 
@@ -361,11 +368,11 @@ d_ply(
 
 
 ~~~{.output}
-[1] "The mean GDP per capita for Africa is 2,194"
-[1] "The mean GDP per capita for Americas is 7,136"
-[1] "The mean GDP per capita for Asia is 7,902"
-[1] "The mean GDP per capita for Europe is 14,469"
-[1] "The mean GDP per capita for Oceania is 18,622"
+[1] "The mean GDP per capita for Africa is 2,193.755"
+[1] "The mean GDP per capita for Americas is 7,136.11"
+[1] "The mean GDP per capita for Asia is 7,902.15"
+[1] "The mean GDP per capita for Europe is 14,469.48"
+[1] "The mean GDP per capita for Oceania is 18,621.61"
 
 ~~~
 
@@ -402,7 +409,8 @@ d_ply(
 > life expectancy per continent:
 >
 > 1.
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > ddply(
 >   .data = gapminder,
 >   .variables = gapminder$continent,
@@ -413,7 +421,8 @@ d_ply(
 > ~~~
 >
 > 2.
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > ddply(
 >   .data = gapminder,
 >   .variables = "continent",
@@ -422,7 +431,8 @@ d_ply(
 > ~~~
 >
 > 3.
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > ddply(
 >   .data = gapminder,
 >   .variables = "continent",
@@ -433,7 +443,8 @@ d_ply(
 > ~~~
 >
 > 4.
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > adply(
 >   .data = gapminder,
 >   .variables = "continent",
