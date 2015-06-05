@@ -163,11 +163,11 @@ x
 >
 > **Guess what the following do without running them first:**
 >
-> ~~~ {.r}
+> ```{r, eval=FALSE}
 > xx <- c(1.7, "a")
 > xx <- c(TRUE, 2)
 > xx <- c("a", TRUE)
-> ~~~
+> ```
 >
 
 This is called implicit coercion.
@@ -404,33 +404,21 @@ fact many R functions which return complex output store their results in a list.
 > has the data type you intended. Do you find
 > anything unexpected?
 >
-> ~~~ {.r}
+> ```{r}
 > answer <- TRUE
 > height <- 150
 > dog_name <- "Snoopy"
 >
 > is.logical(answer)
-> ~~~
+> ```
 >
-> ~~~ {.output}
-> [1] TRUE
-> ~~~
->
-> ~~~ {.r}
+> ```{r}
 > is.numeric(height)
-> ~~~
-> 
-> ~~~ {.output}
-> [1] TRUE
-> ~~~
+> ```
 >
-> ~~~ {.r}
+> ```{r}
 > is.character(dog_name)
-> ~~~
-> 
-> ~~~ {.output}
-> [1] TRUE
-> ~~~
+> ```
 >
 
 > #### Solution to challenge 2 {.challenge}
@@ -439,38 +427,23 @@ fact many R functions which return complex output store their results in a list.
 > types, R will create a vector that is the least common denominator: the
 > type that is easiest to coerce to.
 >
-> ~~~ {.r}
+> ```{r}
 > xx <- c(1.7, "a")
 > xx
 > typeof(xx)
-> ~~~
+> ```
 >
-> ~~~ {.output}
-> [1] "1.7" "a"
-> [1] "character"
-> ~~~
->
-> ~~~ {.r}
+> ```{r}
 > xx <- c(TRUE, 2)
 > xx
 > typeof(xx)
-> ~~~
+> ```
 >
-> ~~~ {.output}
-> [1] 1 2
-> [1] "double"
-> ~~~
->
-> ~~~ {.r}
+> ```{r}
 > xx <- c("a", TRUE)
 > xx
 > typeof(xx)
-> ~~~
->
-> ~~~ {.output}
-> [1] "a" "TRUE"
-> [1] "character"
-> ~~~
+> ```
 >
 
 >
@@ -479,14 +452,10 @@ fact many R functions which return complex output store their results in a list.
 > What do you think will be the result of
 > `length(x)`?
 >
-> ~~~ {.r}
+> ```{r}
 > x <- matrix(rnorm(18), ncol=6, nrow=3)
 > length(x)
-> ~~~
-> 
-> ~~~ {.output}
-> [1] 18
-> ~~~
+> ```
 > 
 > Because a matrix is really just a vector with added dimension attributes, `length`
 > gives you the total number of elements in the matrix.
@@ -502,10 +471,10 @@ fact many R functions which return complex output store their results in a list.
 > See if you can figure out how to change this.
 > (hint: read the documentation for `matrix`!)
 >
-> ~~~ {.r}
+> ```{r, eval=FALSE}
 > x <- matrix(1:50, ncol=5, nrow=10)
 > x <- matrix(1:50, ncol=5, nrow=10, byrow = TRUE) # to fill by row
-> ~~~
+> ```
 >
 
 
@@ -520,8 +489,10 @@ fact many R functions which return complex output store their results in a list.
 > Populate each character vector with the names of the data types and data
 > structures we've seen so far.
 >
-> ~~~ {.r}
-> my_list <- list(data_types = c("logical", "integer", "double", "complex", "character"),
-                  data_structures = c("vector", "matrix", "factor", "list"))
-> ~~~
+> ```{r, eval=FALSE}
+> my_list <- list(
+>   data_types = c("logical", "integer", "double", "complex", "character"),
+>   data_structures = c("vector", "matrix", "factor", "list")
+> )
+> ```
 >
