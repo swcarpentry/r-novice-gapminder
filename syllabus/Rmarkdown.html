@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: R Markdown</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1 class="title">R Markdown</h1>
+          
+<div id="learning-objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h3><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h3>
+</div>
+<div class="panel-body">
+<ul>
+<li>Value of reproducible reports</li>
+<li>Basics of Markdown</li>
+<li>R code chunks</li>
+<li>Chunk options</li>
+<li>Inline R code</li>
+<li>Other output formats</li>
+</ul>
+</div>
+</div>
+<h3 id="data-analysis-reports">Data analysis reports</h3>
+<p>Data analysts tend to write a lot of reports, describing their analyses and results, for their collaborators or to document their work for future reference.</p>
+<p>When I was first starting out, I'd write an R script with all of my work, and would just send an email to my collaborator, describing the results and attaching various graphs. In discussing the results, there would often be confusion about which graph was which.</p>
+<p>I moved to writing formal reports, with Word or LaTeX, but I'd have to spend a lot of time getting the figures to look right. Mostly, the concern is about page breaks.</p>
+<p>Everything is easier now that I create a web page (as an html file). It can be one long stream, so I can use tall figures that wouldn't ordinary fit on one page. Scrolling is your friend.</p>
+<h3 id="literate-programming">Literate programming</h3>
+<p>Ideally, such analysis reports are <em>reproducible</em> documents: If an error is discovered, or if some additional subjects are added to the data, you can just re-compile the report and get the new or corrected results (versus having to reconstruct figures, paste them into a Word document, and further hand-edit various detailed results).</p>
+<p>The key tool for R is <a href="http://yihui.name/knitr/">knitr</a>, which allows you to create a document that is a mixture of text and some chunks of code. When the document is processed by knitr, chunks of R code will be executed, and graphs or other results inserted.</p>
+<p>This sort of idea has been called &quot;literate programming&quot;.</p>
+<p>knitr allows you to mix basically any sort of text with any sort of code, but we recommend that you use R Markdown, which mixes Markdown with R. Markdown is a light-weight mark-up language for creating web pages.</p>
+<h3 id="creating-an-r-markdown-file">Creating an R Markdown file</h3>
+<p>Within R Studio, click File → New File → R Markdown and you'll get a dialog box like this:</p>
+<p><img src="img/New_R_Markdown.png" /><br/></p>
+<p>You can stick with the default (HTML output), but give it a title.</p>
+<h3 id="basic-components-of-r-markdown">Basic components of R Markdown</h3>
+<p>The initial chunk of text contains instructions for R: you give the thing a title, author, and date, and tell it that you're going to want to produce html output (in other words, a web page).</p>
+<pre><code>---
+title: &quot;Initial R Markdown document&quot;
+author: &quot;Karl Broman&quot;
+date: &quot;April 23, 2015&quot;
+output: html_document
+---</code></pre>
+<p>You can delete any of those fields if you don't want them included. The double-quotes aren't strictly <em>necessary</em> in this case. They're mostly needed if you want to include a colon in the title.</p>
+<p>RStudio creates the document with some example text to get you started. Note below that there are chunks like</p>
+<pre>
+&#96;&#96;&#96;{r}
+summary(cars)
+&#96;&#96;&#96;
+</pre>
+<p>These are chunks of R code that will be executed by knitr and replaced by their results. More on this later.</p>
+<p>Also note the web address that's put between angle brackets (<code>&lt; &gt;</code>) as well as the double-asterisks in <code>**Knit**</code>. This is <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>.</p>
+<h3 id="markdown">Markdown</h3>
+<p>Markdown is a system for writing web pages by marking up the text much as you would in an email rather than writing html code. The marked-up text gets <em>converted</em> to html, replacing the marks with the proper html code.</p>
+<p>For now, let's delete all of the stuff that's there and write a bit of markdown.</p>
+<p>You make things <strong>bold</strong> using two asterisks, like this: <code>**bold**</code>, and you make things <em>italics</em> by using underscores, like this: <code>_italics_</code>.</p>
+<p>You can make a bulleted list by writing a list with hyphens or asterisks, like this:</p>
+<pre><code>* bold with double-asterisks
+* italics with underscores
+* code-type font with backticks</code></pre>
+<p>or like this:</p>
+<pre><code>- bold with double-asterisks
+- italics with underscores
+- code-type font with backticks</code></pre>
+<p>Each will appear as:</p>
+<ul>
+<li>bold with double-asterisks</li>
+<li>italics with underscores</li>
+<li>code-type font with backticks</li>
+</ul>
+<p>(I prefer hyphens over asterisks, myself.)</p>
+<p>You can make a numbered list by just using numbers. You can use the same number over and over if you want:</p>
+<pre><code>1. bold with double-asterisks
+1. italics with underscores
+1. code-type font with backticks</code></pre>
+<p>This will appear as:</p>
+<ol style="list-style-type: decimal">
+<li>bold with double-asterisks</li>
+<li>italics with underscores</li>
+<li>code-type font with backticks</li>
+</ol>
+<p>You can make section headers of different sizes by initiating a line with some number of <code>#</code> symbols:</p>
+<pre><code># Title
+## Main section
+### Sub-section
+#### Sub-sub section</code></pre>
+<p>You <em>compile</em> the R Markdown document to an html webpage by clicking the &quot;Knit HTML&quot; in the upper-left. And note the little question mark next to it; click the question mark and you'll get a &quot;Markdown Quick Reference&quot; (with the Markdown syntax) as well to the RStudio documentation on R Markdown.</p>
+<div id="challenge" class="challenge panel panel-success">
+<div class="panel-heading">
+<h3><span class="glyphicon glyphicon-pencil"></span>Challenge</h3>
+</div>
+<div class="panel-body">
+<p>Create a new R Markdown document. Delete all of the R code chunks and write a bit of Markdown (some sections, some italicized text, and an itemized list).</p>
+<p>Convert the document to a webpage.</p>
+</div>
+</div>
+<h3 id="a-bit-more-markdown">A bit more Markdown</h3>
+<p>You can make a hyperlink like this: <code>[text to show](http://the-web-page.com)</code>.</p>
+<p>You can include an image file like this: <code>![caption](http://url/for/file)</code></p>
+<p>You can do subscripts (e.g., F<sub>2</sub>) with <code>F~2</code> and superscripts (e.g., F<sup>2</sup>) with <code>F^2^</code>.</p>
+<p>If you know how to write equations in <a href="http://www.latex-project.org/">LaTeX</a>, you'll be glad to know that you can use <code>$ $</code> and <code>$$ $$</code> to insert math equations, like <code>$E = mc^2$</code> and</p>
+<pre><code>$$y = \mu + \sum_{i=1}^p \beta_i x_i + \epsilon$$</code></pre>
+<h3 id="r-code-chunks">R code chunks</h3>
+<p>Markdown is interesting and useful, but the real power comes from mixing markdown with chunks of R code. This is R Markdown. When processed, the R code will be executed; if they produce figures, the figures will be inserted in the final document.</p>
+<p>The main code chunks look like this:</p>
+<pre>
+&#96;&#96;&#96;{r load_data}
+gapminder <- read.csv("~/Desktop/gapminder.csv")
+&#96;&#96;&#96;
+</pre>
+<p>That is, you place a chunk of R code between <code>```{r chunk_name}</code> and <code>```</code>. It's a good idea to give each chunk a name, as they will help you to fix errors and, if any graphs are produced, the file names are based on the name of the code chunk that produced them.</p>
+<div id="challenge-1" class="challenge panel panel-success">
+<div class="panel-heading">
+<h3><span class="glyphicon glyphicon-pencil"></span>Challenge</h3>
+</div>
+<div class="panel-body">
+<p>Add code chunks to</p>
+<ul>
+<li>Load the ggplot2 package</li>
+<li>Read the gapminder data</li>
+<li>Create a plot</li>
+</ul>
+</div>
+</div>
+<h3 id="how-things-get-compiled">How things get compiled</h3>
+<p>When you press the &quot;Knit HTML&quot; button, the R Markdown document is processed by <a href="http://yihui.name/knitr">knitr</a> and a plain Markdown document is produced (as well as, potentially, a set of figure files): the R code is executed and replaced by both the input and the output; if figures are produced, links to those figures are included.</p>
+<p>The Markdown and figure documents are then processed by the tool <a href="http://pandoc.org/">pandoc</a>, which converts the Markdown file into an html file, with the figures embedded.</p>
+<p><img src="fig/Rmd-rmd_to_html_fig-1.png" title="plot of chunk rmd_to_html_fig" alt="plot of chunk rmd_to_html_fig" style="display: block; margin: auto auto auto 0;" /></p>
+<h3 id="chunk-options">Chunk options</h3>
+<p>There are a variety of options to affect how the code chunks are treated.</p>
+<ul>
+<li>Use <code>echo=FALSE</code> to avoid having the code itself shown.</li>
+<li>Use <code>results=&quot;hide&quot;</code> to avoid having any results printed.</li>
+<li>Use <code>eval=FALSE</code> to have the code shown but not evaluated.</li>
+<li>Use <code>warning=FALSE</code> and <code>message=FALSE</code> to hide any warnings or messages produced.</li>
+<li>Use <code>fig.height</code> and <code>fig.width</code> to control the size of the figures produced (in inches).</li>
+</ul>
+<p>So you might write:</p>
+<pre>
+&#96;&#96;&#96;{r load_libraries, echo=FALSE, message=FALSE}
+library(dplyr)
+library(ggplot2)
+&#96;&#96;&#96;
+</pre>
+<p>Often there'll be particular options that you'll want to use repeatedly; for this, you can set <em>global</em> chunk options, like so:</p>
+<pre>
+&#96;&#96;&#96;{r global_options, echo=FALSE}
+knitr::opts_chunk$set(fig.path="Figs/", message=FALSE, warning=FALSE,
+                      echo=FALSE, results="hide", fig.width=11)
+&#96;&#96;&#96;
+</pre>
+<p>The <code>fig.path</code> option defines where the figures will be saved. The <code>/</code> here is really important; without it, the figures would be saved in the standard place but just with names that being with <code>Figs</code>.</p>
+<p>If you have multiple R Markdown files in a common directory, you might want to use <code>fig.path</code> to define separate prefixes for the figure file names, like <code>fig.path=&quot;Figs/cleaning-&quot;</code> and <code>fig.path=&quot;Figs/analysis-&quot;</code>.</p>
+<div id="challenge-2" class="challenge panel panel-success">
+<div class="panel-heading">
+<h3><span class="glyphicon glyphicon-pencil"></span>Challenge</h3>
+</div>
+<div class="panel-body">
+<p>Use chunk options to control the size of a figure and to hide the code.</p>
+</div>
+</div>
+<h3 id="inline-r-code">Inline R code</h3>
+<p>You can make <em>every</em> number in your report reproducible. Use <code>`r</code> and <code>`</code> for an in-line code chunk, like so: <code>`r round(some_value, 2)`</code>. The code will be executed and replaced with the <em>value</em> of the result.</p>
+<p>Don't let these in-line chunks get split across lines.</p>
+<p>Perhaps precede the paragraph with a larger code chunk that does calculations and defines things, with <code>include=FALSE</code> for that larger chunk (which is the same as <code>echo=FALSE</code> and <code>results=&quot;hide&quot;</code>).</p>
+<p>I'm very particularly about rounding in such situations. I may want <code>2.0</code>, but <code>round(2.03, 1)</code> will give just <code>2</code>.</p>
+<p>The <a href="https://github.com/kbroman/broman/blob/master/R/myround.R"><code>myround</code></a> function in my <a href="https://github.com/kbroman">R/broman</a> package handles this.</p>
+<div id="challenge-3" class="challenge panel panel-success">
+<div class="panel-heading">
+<h3><span class="glyphicon glyphicon-pencil"></span>Challenge</h3>
+</div>
+<div class="panel-body">
+<p>Try out a bit of in-line R code.</p>
+</div>
+</div>
+<h3 id="other-output-options">Other output options</h3>
+<p>You can also convert R Markdown to a PDF or a Word document. Click the little triangle next to the &quot;Knit HTML&quot; button to get a drop-down menu. Or you could put <code>pdf_document</code> or <code>word_document</code> in the header of the file.</p>
+<p>Actually, that drop-down menu seems to just change what's shown in the header at the top of the file!</p>
+<h3 id="resources">Resources</h3>
+<ul>
+<li><a href="http://kbroman.org/knitr_knutshell">Knitr in a knutshell tutorial</a></li>
+<li><a href="http://www.amazon.com/exec/obidos/ASIN/1482203537/7210-20">Dynamic Documents with R and knitr</a> (book)</li>
+<li><a href="http://rmarkdown.rstudio.com">R Markdown documentation</a></li>
+<li><a href="http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown cheat sheet</a></li>
+</ul>
+        </div>
+      </div>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/karawoo/2015-04-27-wsu">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="../LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>

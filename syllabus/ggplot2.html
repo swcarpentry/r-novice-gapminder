@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: Intro to ggplot2</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1 class="title">Intro to ggplot2</h1>
+          
+<div id="learning-objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h3><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h3>
+</div>
+<div class="panel-body">
+<ul>
+<li>Basics of ggplot2: aes vs geom</li>
+<li>Making scatterplots</li>
+<li>Layers and groups</li>
+<li>Various one-dimensional summaries</li>
+<li>Faceting</li>
+<li>Saving plots to a file</li>
+<li>Customizing axis limits and color choices</li>
+<li>Applying themes</li>
+</ul>
+</div>
+</div>
+<h3 id="preparations">Preparations</h3>
+<p>There are several different systems for creating data visualizations in R. We will introduce <a href="http://ggplot2.org">ggplot2</a>, which is based on Leland Wilkinson's <a href="http://www.amazon.com/exec/obidos/ASIN/0387245448/7210-20">Grammar of Graphics</a>. The learning curve is a bit steep, but ultimately you'll be able to produce complex graphs more quickly and easily.</p>
+<p>You first need to install the ggplot2 package:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</code></pre>
+<p>You then need to load the package:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)</code></pre>
+<p>We'll consider the gapminder data from the last lesson. If it's not within your R workspace, load it again with <code>read.csv</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r">gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;~/Desktop/gapminder.csv&quot;</span>)</code></pre>
+<h3 id="a-first-plot">A first plot</h3>
+<p>An initial bit of code, to make a scatterplot:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(gapminder, <span class="kw">aes</span>(<span class="dt">x=</span>gdpPercap, <span class="dt">y=</span>lifeExp)) +<span class="st"> </span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="fig/ggplot2-initial_scatter-1.png" title="plot of chunk initial_scatter" alt="plot of chunk initial_scatter" style="display: block; margin: auto;" /></p>
+<p>Two key concepts in the grammar of graphics: <em>aesthetics</em> map features of the data (for example, the <code>lifeExp</code> variable) to features of the visualization (for example, the y-axis coordinate), and <em>geoms</em> concern what actually gets plotted (here, each data point becomes a point in the plot).</p>
+<p>Another key aspect of ggplot2: the <code>ggplot()</code> function creates a graphics object; additional controls are added with the <code>+</code> operator. The actual plot is made when the object is printed.</p>
+<p>The following is equivalent to the code above. The actual plot isn't created until the <code>p2</code> object is printed. (When you type an object's name at the R prompt, it gets printed, and that's the usual way that these plots get created.)</p>
+<pre class="sourceCode r"><code class="sourceCode r">p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(gapminder, <span class="kw">aes</span>(<span class="dt">x=</span>gdpPercap, <span class="dt">y=</span>lifeExp))
+p2 &lt;-<span class="st"> </span>p1 +<span class="st"> </span><span class="kw">geom_point</span>()
+<span class="kw">print</span>(p2)</code></pre>
+<p>It's best to do the x-axis on a log scale.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(gapminder, <span class="kw">aes</span>(<span class="dt">x=</span>gdpPercap, <span class="dt">y=</span>lifeExp)) +<span class="st"> </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">scale_x_log10</span>()</code></pre>
+<p><img src="fig/ggplot2-scatter_with_log_xaxis-1.png" title="plot of chunk scatter_with_log_xaxis" alt="plot of chunk scatter_with_log_xaxis" style="display: block; margin: auto;" /></p>
+<p>We could also have used the following:</p>
+<pre class="sourceCode r"><code class="sourceCode r">p2 +<span class="st"> </span><span class="kw">scale_x_log10</span>()</code></pre>
+<p><em>Scales</em> control the aesthetics (the mapping between a column in the data and a feature on the plot). More on this later.</p>
+<div id="challenge" class="challenge panel panel-success">
+<div class="panel-heading">
+<h3><span class="glyphicon glyphicon-pencil"></span>Challenge</h3>
+</div>
+<div class="panel-body">
+<p>Make a scatterplot of <code>lifeExp</code> vs <code>gdpPercap</code> with only for the data for China.</p>
+</div>
+</div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+gm_china &lt;-<span class="st"> </span><span class="kw">filter</span>(gapminder, country==<span class="st">&quot;China&quot;</span>)
+<span class="kw">ggplot</span>(gm_china, <span class="kw">aes</span>(<span class="dt">x=</span>gdpPercap, <span class="dt">y=</span>lifeExp)) +<span class="st"> </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">scale_x_log10</span>()</code></pre>
+<p><img src="fig/ggplot2-china-1.png" title="plot of chunk china" alt="plot of chunk china" style="display: block; margin: auto;" /></p>
+<h3 id="other-aesthetics">Other aesthetics</h3>
+<p>For a scatterplot, additional aesthetics include <code>shape</code>, <code>size</code>, and <code>color</code>.</p>
+<p>For example, we might make our scatterplot for all countries, with data from 1952, and then color the points according to the continent.</p>
+<pre class="sourceCode r"><code class="sourceCode r">gm_1952 &lt;-<span class="st"> </span><span class="kw">filter</span>(gapminder, year==<span class="dv">1952</span>)
+<span class="kw">ggplot</span>(gm_1952, <span class="kw">aes</span>(<span class="dt">x=</span>gdpPercap, <span class="dt">y=</span>lifeExp)) +
+<span class="st">    </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">scale_x_log10</span>() +
+<span class="st">    </span><span class="kw">aes</span>(<span class="dt">color=</span>continent)</code></pre>
+<p><img src="fig/ggplot2-color_by_continent-1.png" title="plot of chunk color_by_continent" alt="plot of chunk color_by_continent" style="display: block; margin: auto;" /></p>
+<p>Note that we could have put <code>color=continent</code> within the call to <code>ggplot()</code>: the following is equivalent to the above.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(gm_1952, <span class="kw">aes</span>(<span class="dt">x=</span>gdpPercap, <span class="dt">y=</span>lifeExp, <span class="dt">color=</span>continent)) +
+<span class="st">    </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">scale_x_log10</span>()</code></pre>
+<div id="challenge-1" class="challenge panel panel-success">
+<div class="panel-heading">
+<h3><span class="glyphicon glyphicon-pencil"></span>Challenge</h3>
+</div>
+<div class="panel-body">
+<p>Try out the <code>size</code>, <code>shape</code>, and <code>color</code> aesthetics, both with categorical variables (such as <code>continent</code>) and numeric variables (such as <code>pop</code>).</p>
+</div>
+</div>
+<h3 id="layers">Layers</h3>
+<p>You can use <code>geom_line</code> to make a line plot, for example, for China:</p>
+<pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">filter</span>(gapminder, country==<span class="st">&quot;China&quot;</span>),
+            <span class="kw">aes</span>(<span class="dt">x=</span>gdpPercap, <span class="dt">y=</span>lifeExp))
+p +<span class="st"> </span><span class="kw">geom_line</span>()</code></pre>
+<p><img src="fig/ggplot2-china_line-1.png" title="plot of chunk china_line" alt="plot of chunk china_line" style="display: block; margin: auto;" /></p>
+<p>You can use <em>both</em> <code>geom_line</code> and <code>geom_point</code> to make a line plot with points at the data values.</p>
+<pre class="sourceCode r"><code class="sourceCode r">p +<span class="st"> </span><span class="kw">geom_line</span>() +<span class="st"> </span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="fig/ggplot2-china_line_and_point-1.png" title="plot of chunk china_line_and_point" alt="plot of chunk china_line_and_point" style="display: block; margin: auto;" /></p>
+<p>This brings up another important concept with ggplot2: <em>layers</em>. A given plot can have multiple layers of geometric objects, plotted one on top of the other.</p>
+<p>If you make the lines and points different colors, we can see that points are placed <em>on top of</em> the lines, since they are in the second layer.</p>
+<pre class="sourceCode r"><code class="sourceCode r">p +<span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">color=</span><span class="st">&quot;lightblue&quot;</span>) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">color=</span><span class="st">&quot;violetred&quot;</span>)</code></pre>
+<p><img src="fig/ggplot2-china_line_and_point_colored-1.png" title="plot of chunk china_line_and_point_colored" alt="plot of chunk china_line_and_point_colored" style="display: block; margin: auto;" /></p>
+<p>If we switch the order of <code>geom_point()</code> and <code>geom_line()</code>, we'll reverse the layers.</p>
+<pre class="sourceCode r"><code class="sourceCode r">p +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">color=</span><span class="st">&quot;violetred&quot;</span>) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">color=</span><span class="st">&quot;lightblue&quot;</span>)</code></pre>
+<p><img src="fig/ggplot2-china_line_and_point_reversed-1.png" title="plot of chunk china_line_and_point_reversed" alt="plot of chunk china_line_and_point_reversed" style="display: block; margin: auto;" /></p>
+<p>Note that aesthetics that are included in the call to <code>ggplot2()</code> (or completely separately) are made to be the defaults for all layers, but we can separately control the aesthetics for each layer. For example, we could color the points by year:</p>
+<pre class="sourceCode r"><code class="sourceCode r">p +<span class="st"> </span><span class="kw">geom_line</span>() +<span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color=</span>year))</code></pre>
+<p><img src="fig/ggplot2-china_line_and_point_colorpointsbyyear-1.png" title="plot of chunk china_line_and_point_colorpointsbyyear" alt="plot of chunk china_line_and_point_colorpointsbyyear" style="display: block; margin: auto;" /></p>
+<p>Compare that result to the following:</p>
+<pre class="sourceCode r"><code class="sourceCode r">p +<span class="st"> </span><span class="kw">geom_line</span>() +<span class="st"> </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">aes</span>(<span class="dt">color=</span>year)</code></pre>
+<p><img src="fig/ggplot2-china_line_and_point_colorallbyyear-1.png" title="plot of chunk china_line_and_point_colorallbyyear" alt="plot of chunk china_line_and_point_colorallbyyear" style="display: block; margin: auto;" /></p>
+<div id="challenge-2" class="challenge panel panel-success">
+<div class="panel-heading">
+<h3><span class="glyphicon glyphicon-pencil"></span>Challenge</h3>
+</div>
+<div class="panel-body">
+<p>Make a plot of <code>lifeExp</code> vs <code>gdpPercap</code> for China and India, with lines in black but points colored by country.</p>
+</div>
+</div>
+<h3 id="groups">Groups</h3>
+<p>One's first attempt at the previous challenge may look like this:</p>
+<pre class="sourceCode r"><code class="sourceCode r">india_china &lt;-<span class="st"> </span><span class="kw">filter</span>(gapminder, country==<span class="st">&quot;India&quot;</span> |<span class="st"> </span>country==<span class="st">&quot;China&quot;</span>)
+p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(india_china, <span class="kw">aes</span>(<span class="dt">y=</span>lifeExp, <span class="dt">x=</span>gdpPercap))
+p +<span class="st"> </span><span class="kw">geom_line</span>() +<span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color=</span>country))</code></pre>
+<p><img src="fig/ggplot2-india_china_nogroup-1.png" title="plot of chunk india_china_nogroup" alt="plot of chunk india_china_nogroup" style="display: block; margin: auto;" /></p>
+<p>The points get connected left-to-right, which is not what we want.</p>
+<p>If we were to make the <code>color=country</code> aesthetic <em>global</em>, we wouldn't have this problem.</p>
+<pre class="sourceCode r"><code class="sourceCode r">p +<span class="st"> </span><span class="kw">aes</span>(<span class="dt">color=</span>country) +<span class="st"> </span><span class="kw">geom_line</span>() +<span class="st"> </span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="fig/ggplot2-india_china_global_color-1.png" title="plot of chunk india_china_global_color" alt="plot of chunk india_china_global_color" style="display: block; margin: auto;" /></p>
+<p>Alternatively, we can use the <code>group</code> aesthetic, which indicates that certain data points go together. This way the lines can be a constant color.</p>
+<pre class="sourceCode r"><code class="sourceCode r">p +<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group=</span>country)) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color=</span>country))</code></pre>
+<p><img src="fig/ggplot2-india_china_global_group-1.png" title="plot of chunk india_china_global_group" alt="plot of chunk india_china_global_group" style="display: block; margin: auto;" /></p>
+<p>We could also make the group aesthetic global.</p>
+<pre class="sourceCode r"><code class="sourceCode r">p +<span class="st"> </span><span class="kw">aes</span>(<span class="dt">group=</span>country) +<span class="st"> </span><span class="kw">geom_line</span>() +<span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color=</span>country))</code></pre>
+<h3 id="univariate-geoms">Univariate geoms</h3>
+<p>We've focused so far on scatterplots, but one can also create one-dimensional summaries, such as histograms or boxplots.</p>
+<p>For a histogram, you want only the <code>x</code> aesthetic, and then use <code>geom_histogram()</code>, with <code>binwidth</code> to define the width of the bins. Here's a histogram of <code>lifeExp</code> for 2007.</p>
+<pre class="sourceCode r"><code class="sourceCode r">gm_2007 &lt;-<span class="st"> </span><span class="kw">filter</span>(gapminder, year==<span class="dv">2007</span>)
+<span class="kw">ggplot</span>(gm_2007, <span class="kw">aes</span>(<span class="dt">x=</span>lifeExp)) +<span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth=</span><span class="dv">2</span>)</code></pre>
+<p><img src="fig/ggplot2-example_histogram-1.png" title="plot of chunk example_histogram" alt="plot of chunk example_histogram" style="display: block; margin: auto;" /></p>
+<p>If you want to compare the distributions for the different continents, you might look at density estimates rather than histograms. <code>alpha</code> indicates the <em>opacity</em> (<code>alpha=1</code> is completely opaque).</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(gm_2007, <span class="kw">aes</span>(<span class="dt">x=</span>lifeExp)) +<span class="st"> </span><span class="kw">geom_density</span>(<span class="dt">alpha=</span><span class="fl">0.5</span>) +<span class="st"> </span><span class="kw">aes</span>(<span class="dt">fill=</span>continent)</code></pre>
+<p><img src="fig/ggplot2-example_density-1.png" title="plot of chunk example_density" alt="plot of chunk example_density" style="display: block; margin: auto;" /></p>
+<p>Alternatively, we can look at boxplots, for which you need to define a continuous variable for <code>y</code> and a categorical variable for <code>x</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(gm_2007, <span class="kw">aes</span>(<span class="dt">y=</span>lifeExp, <span class="dt">x=</span>continent)) +<span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre>
+<p><img src="fig/ggplot2-boxplot_by_continent-1.png" title="plot of chunk boxplot_by_continent" alt="plot of chunk boxplot_by_continent" style="display: block; margin: auto;" /></p>
+<div id="tip" class="callout panel panel-info">
+<div class="panel-heading">
+<h3><span class="glyphicon glyphicon-pushpin"></span>Tip</h3>
+</div>
+<div class="panel-body">
+<p>What if we wanted these to be horizontal rather than vertical?</p>
+<p>If you <a href="https://www.google.com/webhp?sourceid=chrome-instant&amp;ion=1&amp;espv=2&amp;ie=UTF-8#q=ggplot2+rotate+boxplot">google &quot;<code>ggplot2 rotate boxplot</code>&quot;</a>, the first result will get you to the <a href="http://docs.ggplot2.org/0.9.3.1/coord_flip.html">ggplot2 documentation for <code>coord_flip()</code></a>.</p>
+<p>Try <code>last_plot() + coord_flip()</code>.</p>
+</div>
+</div>
+<p>I actually prefer a scatterplot for these data:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(gm_2007, <span class="kw">aes</span>(<span class="dt">y=</span>lifeExp, <span class="dt">x=</span>continent)) +<span class="st"> </span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="fig/ggplot2-dotplot_by_continent-1.png" title="plot of chunk dotplot_by_continent" alt="plot of chunk dotplot_by_continent" style="display: block; margin: auto;" /></p>
+<p>I think it's better to include a bit of horizontal jittering.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(gm_2007, <span class="kw">aes</span>(<span class="dt">y=</span>lifeExp, <span class="dt">x=</span>continent)) +
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">position=</span><span class="kw">position_jitter</span>(<span class="dt">width=</span><span class="fl">0.1</span>, <span class="dt">height=</span><span class="dv">0</span>))</code></pre>
+<p><img src="fig/ggplot2-dotplot_with_jitter-1.png" title="plot of chunk dotplot_with_jitter" alt="plot of chunk dotplot_with_jitter" style="display: block; margin: auto;" /></p>
+<div id="challenge-3" class="challenge panel panel-success">
+<div class="panel-heading">
+<h3><span class="glyphicon glyphicon-pencil"></span>Challenge</h3>
+</div>
+<div class="panel-body">
+<p>Explore the distribution of the population sizes of countries, by continent.</p>
+</div>
+</div>
+<h3 id="faceting">Faceting</h3>
+<p>A particularly valuable feature of ggplot2 is <em>faceting</em>: the ability to make a series of plots, conditional on the values of some selected variables.</p>
+<p>For example, rather than coloring points by continent, one might separate the continents into separate panels. There are two functions for this, <code>facet_grid()</code> and <code>facet_wrap()</code>.</p>
+<p>Here's the data for 2007, separated by continent.</p>
+<pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">filter</span>(gapminder, year==<span class="dv">2007</span>), <span class="kw">aes</span>(<span class="dt">x=</span>gdpPercap, <span class="dt">y=</span>lifeExp)) +<span class="st"> </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">scale_x_log10</span>()
+p +<span class="st"> </span><span class="kw">facet_grid</span>(~<span class="st"> </span>continent)</code></pre>
+<p><img src="fig/ggplot2-faceting_example-1.png" title="plot of chunk faceting_example" alt="plot of chunk faceting_example" style="display: block; margin: auto;" /></p>
+<p>Or we could split vertically. Note the need for the dot.</p>
+<pre class="sourceCode r"><code class="sourceCode r">p +<span class="st"> </span><span class="kw">facet_grid</span>(continent ~<span class="st"> </span>.)</code></pre>
+<p><img src="fig/ggplot2-facet_vertically-1.png" title="plot of chunk facet_vertically" alt="plot of chunk facet_vertically" style="display: block; margin: auto;" /></p>
+<p>Or we could &quot;wrap&quot;</p>
+<pre class="sourceCode r"><code class="sourceCode r">p +<span class="st"> </span><span class="kw">facet_wrap</span>(~<span class="st"> </span>continent)</code></pre>
+<p><img src="fig/ggplot2-facet_wrap-1.png" title="plot of chunk facet_wrap" alt="plot of chunk facet_wrap" style="display: block; margin: auto;" /></p>
+<p>The <code>facet_wrap</code> function is particularly useful if you have a lot of facets, for example, plotting by year.</p>
+<pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(gapminder, <span class="kw">aes</span>(<span class="dt">x=</span>gdpPercap, <span class="dt">y=</span>lifeExp)) +<span class="st"> </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">scale_x_log10</span>()
+p +<span class="st"> </span><span class="kw">aes</span>(<span class="dt">color=</span>continent) +<span class="st"> </span><span class="kw">facet_wrap</span>(~<span class="st"> </span>year)</code></pre>
+<p><img src="fig/ggplot2-facet_by_year-1.png" title="plot of chunk facet_by_year" alt="plot of chunk facet_by_year" style="display: block; margin: auto;" /></p>
+<p>We could also facet by both year and continent.</p>
+<pre class="sourceCode r"><code class="sourceCode r">p +<span class="st"> </span><span class="kw">facet_grid</span>(continent ~<span class="st"> </span>year)</code></pre>
+<p><img src="fig/ggplot2-facet_by_year_and_country-1.png" title="plot of chunk facet_by_year_and_country" alt="plot of chunk facet_by_year_and_country" style="display: block; margin: auto;" /></p>
+<p>Perhaps we might drop Oceania in this.</p>
+<pre class="sourceCode r"><code class="sourceCode r">gm_no_oceania &lt;-<span class="st"> </span><span class="kw">filter</span>(gapminder, continent !=<span class="st"> &quot;Oceania&quot;</span>)
+p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(gm_no_oceania, <span class="kw">aes</span>(<span class="dt">x=</span>gdpPercap, <span class="dt">y=</span>lifeExp)) +<span class="st"> </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">scale_x_log10</span>()
+p +<span class="st"> </span><span class="kw">facet_grid</span>(continent ~<span class="st"> </span>year)</code></pre>
+<p><img src="fig/ggplot2-drop_oceania-1.png" title="plot of chunk drop_oceania" alt="plot of chunk drop_oceania" style="display: block; margin: auto;" /></p>
+<div id="challenge-4" class="challenge panel panel-success">
+<div class="panel-heading">
+<h3><span class="glyphicon glyphicon-pencil"></span>Challenge</h3>
+</div>
+<div class="panel-body">
+<p>Select five countries of interest (e.g., China, India, US, France, Nigeria) and plot <code>lifeExp</code> vs <code>gdpPercap</code> across time (with <code>geom_line</code>), faceting by country.</p>
+</div>
+</div>
+<h3 id="saving-plots-to-files">Saving plots to files</h3>
+<p>If you want to save a plot, to share with others, use the <code>ggsave</code> function.</p>
+<p>The default is to save the last plot that you created, but I think it's safer to first save the plot as an object and pass that to <code>ggsave</code>. Also give the height and width in inches.</p>
+<pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(gapminder, <span class="kw">aes</span>(<span class="dt">x=</span>gdpPercap, <span class="dt">y=</span>lifeExp)) +<span class="st"> </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">scale_x_log10</span>()
+<span class="kw">ggsave</span>(<span class="st">&quot;scatter.png&quot;</span>, p, <span class="dt">height=</span><span class="dv">6</span>, <span class="dt">width=</span><span class="dv">8</span>)</code></pre>
+<p>The image file type is taken from the file name extension. To make a PDF instead:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggsave</span>(<span class="st">&quot;scatter.pdf&quot;</span>, p, <span class="dt">height=</span><span class="dv">6</span>, <span class="dt">width=</span><span class="dv">8</span>)</code></pre>
+<p>Use <code>scale</code> to adjust the sizes of things, for example for a talk/poster versus a paper/report. Use <code>scale &lt; 1</code> to make the various elements bigger relative to the plotting area.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggsave</span>(<span class="st">&quot;scatter_2.png&quot;</span>, p, <span class="dt">height=</span><span class="dv">6</span>, <span class="dt">width=</span><span class="dv">8</span>, <span class="dt">scale=</span><span class="fl">0.8</span>)</code></pre>
+<div id="challenge-5" class="challenge panel panel-success">
+<div class="panel-heading">
+<h3><span class="glyphicon glyphicon-pencil"></span>Challenge</h3>
+</div>
+<div class="panel-body">
+<p>Revisit a few of the plots you've made and try saving PNG and PDF files. Try different heights and widths. Try out the <code>scale</code> parameter.</p>
+</div>
+</div>
+<h3 id="customizing-a-plot-axis-limits">Customizing a plot: axis limits</h3>
+<p>When faceting, the different panels are given common x- and y-axis limits. If we were to create separate plots (say one for each country), we would need to do a bit extra to ensure that common axis limits are used.</p>
+<p>Recall the <code>scale_x_log10()</code> function that we had used to create the log scale for the x axis. This can take an argument <code>limits</code> (a vector of length 2) defining the minimum and maximum values plotted.</p>
+<p>There is also a <code>scale_y_log10()</code> function, but if you want to change the y-axis limits without going to a log scale, you would use <code>scale_y_continuous()</code>. (Similarly, there's a <code>scale_x_continuous</code>.)</p>
+<p>For example, to plot the data for China, using axis limits defined by the full data, we'd do the following:</p>
+<pre class="sourceCode r"><code class="sourceCode r">gm_china &lt;-<span class="st"> </span><span class="kw">filter</span>(gapminder, country==<span class="st">&quot;China&quot;</span>)
+
+xrange &lt;-<span class="st"> </span><span class="kw">range</span>(gapminder$gdpPercap)
+yrange &lt;-<span class="st"> </span><span class="kw">range</span>(gapminder$lifeExp)
+
+p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(gm_china, <span class="kw">aes</span>(<span class="dt">y=</span>lifeExp, <span class="dt">x=</span>gdpPercap)) +<span class="st"> </span><span class="kw">geom_line</span>()
+p +<span class="st"> </span><span class="kw">scale_x_log10</span>(<span class="dt">limits=</span>xrange) +<span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits=</span>yrange)</code></pre>
+<p><img src="fig/ggplot2-limits-1.png" title="plot of chunk limits" alt="plot of chunk limits" style="display: block; margin: auto;" /></p>
+<div id="challenge-6" class="challenge panel panel-success">
+<div class="panel-heading">
+<h3><span class="glyphicon glyphicon-pencil"></span>Challenge</h3>
+</div>
+<div class="panel-body">
+<p>Create a plot with lines for the United States and Sweden, but using the axis limits defined with the full data.</p>
+</div>
+</div>
+<pre class="sourceCode r"><code class="sourceCode r">gm_us_sweden &lt;-<span class="st"> </span><span class="kw">filter</span>(gapminder, country %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;United States&quot;</span>, <span class="st">&quot;Sweden&quot;</span>))
+
+xrange &lt;-<span class="st"> </span><span class="kw">range</span>(gapminder$gdpPercap)
+yrange &lt;-<span class="st"> </span><span class="kw">range</span>(gapminder$lifeExp)
+
+p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(gm_us_sweden, <span class="kw">aes</span>(<span class="dt">y=</span>lifeExp, <span class="dt">x=</span>gdpPercap, <span class="dt">color=</span>country)) +<span class="st"> </span><span class="kw">geom_line</span>()
+p +<span class="st"> </span><span class="kw">scale_x_log10</span>(<span class="dt">limits=</span>xrange) +<span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits=</span>yrange)</code></pre>
+<p><img src="fig/ggplot2-limits_challenge-1.png" title="plot of chunk limits_challenge" alt="plot of chunk limits_challenge" style="display: block; margin: auto;" /></p>
+<h3 id="customizing-a-plot-color-choices">Customizing a plot: color choices</h3>
+<p>If you don't like the choices for point colors, you can customize them in a number of ways. First, you can use <code>scale_color_manual()</code> with a vector of your preferred choices. (If it's <code>fill</code> rather than <code>color</code> that you want to change, you'll need to use <code>scale_fill_manual()</code>.)</p>
+<pre class="sourceCode r"><code class="sourceCode r">gm_2007 &lt;-<span class="st"> </span><span class="kw">filter</span>(gapminder, year==<span class="dv">2007</span>)
+p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(gm_2007, <span class="kw">aes</span>(<span class="dt">y=</span>lifeExp, <span class="dt">x=</span>gdpPercap, <span class="dt">color=</span>continent)) +<span class="st"> </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">scale_x_log10</span>()
+colors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;orange&quot;</span>)
+p +<span class="st"> </span><span class="kw">scale_color_manual</span>(<span class="dt">values=</span>colors)</code></pre>
+<p><img src="fig/ggplot2-custom_colors-1.png" title="plot of chunk custom_colors" alt="plot of chunk custom_colors" style="display: block; margin: auto;" /></p>
+<p>You can also use RGB hex values.</p>
+<pre class="sourceCode r"><code class="sourceCode r">hexcolors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;#001F3F&quot;</span>, <span class="st">&quot;#0074D9&quot;</span>, <span class="st">&quot;#01FF70&quot;</span>, <span class="st">&quot;#FF851B&quot;</span>, <span class="st">&quot;#B10DC9&quot;</span>)
+p +<span class="st"> </span><span class="kw">scale_color_manual</span>(<span class="dt">values=</span>hexcolors)</code></pre>
+<p><img src="fig/ggplot2-custom_colors_rgb-1.png" title="plot of chunk custom_colors_rgb" alt="plot of chunk custom_colors_rgb" style="display: block; margin: auto;" /></p>
+<p>Also consider the <a href="http://colorbrewer2.org/">Color Brewer</a> palettes, available via <code>scale_color_brewer()</code>. If you install the <a href="http://cran.r-project.org/web/packages/RColorBrewer">RColorBrewer</a> package, you can use <code>display.brewer.all()</code> to view the available palettes.</p>
+<p>Install the package as follows:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;RColorBrewer&quot;</span>)</code></pre>
+<p>Then display them this way:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(RColorBrewer)
+<span class="kw">display.brewer.all</span>()</code></pre>
+<p><img src="fig/ggplot2-display_brewer_palettes-1.png" title="plot of chunk display_brewer_palettes" alt="plot of chunk display_brewer_palettes" style="display: block; margin: auto;" /></p>
+<p>I like the <code>&quot;Dark2&quot;</code> palette, which you can use this way:</p>
+<pre class="sourceCode r"><code class="sourceCode r">p +<span class="st"> </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette=</span><span class="st">&quot;Dark2&quot;</span>)</code></pre>
+<p><img src="fig/ggplot2-use_colorbrewer_palette-1.png" title="plot of chunk use_colorbrewer_palette" alt="plot of chunk use_colorbrewer_palette" style="display: block; margin: auto;" /></p>
+<p>Actually, maybe <code>&quot;Set1&quot;</code> is better in this case:</p>
+<pre class="sourceCode r"><code class="sourceCode r">p +<span class="st"> </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette=</span><span class="st">&quot;Set1&quot;</span>)</code></pre>
+<p><img src="fig/ggplot2-use_colorbrewer_palette_set1-1.png" title="plot of chunk use_colorbrewer_palette_set1" alt="plot of chunk use_colorbrewer_palette_set1" style="display: block; margin: auto;" /></p>
+<p>Also consider the <a href="https://github.com/karthik/wesanderson">wesanderson</a> package, with color palettes taken from <a href="http://wesandersonpalettes.tumblr.com/">Wes Anderson movies</a>.</p>
+<p>Install the package as follows:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;wesanderson&quot;</span>)</code></pre>
+<p>Here's an example using one.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(wesanderson)
+p +<span class="st"> </span><span class="kw">scale_color_manual</span>(<span class="dt">values=</span><span class="kw">wes_palette</span>(<span class="st">&quot;Darjeeling&quot;</span>))</code></pre>
+<p><img src="fig/ggplot2-use_wesanderson_palette-1.png" title="plot of chunk use_wesanderson_palette" alt="plot of chunk use_wesanderson_palette" style="display: block; margin: auto;" /></p>
+<div id="challenge-7" class="challenge panel panel-success">
+<div class="panel-heading">
+<h3><span class="glyphicon glyphicon-pencil"></span>Challenge</h3>
+</div>
+<div class="panel-body">
+<p>Make a set of histograms of <code>lifeExp</code> for the year 2007, using <code>facet_grid</code> to split by continent. Use different colors for the five continents, chosen manually.</p>
+</div>
+</div>
+<p>The <a href="https://github.com/jennybc/gapminder">gapminder</a> package includes a <code>country_colors</code> object that colors countries by population size and continent.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(gapminder)</code></pre>
+<p>I'm going to use that and add a bit of fanciness.</p>
+<pre class="sourceCode r"><code class="sourceCode r">gm_2007 &lt;-<span class="st"> </span>gapminder %&gt;%<span class="st"> </span><span class="kw">filter</span>(year==<span class="dv">2007</span>) %&gt;%<span class="st"> </span><span class="kw">arrange</span>(-pop)
+<span class="kw">ggplot</span>(gm_2007, <span class="kw">aes</span>(<span class="dt">y=</span>lifeExp, <span class="dt">x=</span>gdpPercap, <span class="dt">fill=</span>country, <span class="dt">size=</span><span class="kw">sqrt</span>(pop))) +
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">shape=</span><span class="dv">21</span>) +
+<span class="st">    </span><span class="kw">scale_x_log10</span>() +
+<span class="st">    </span><span class="kw">scale_fill_manual</span>(<span class="dt">values=</span>country_colors) +
+<span class="st">    </span><span class="kw">facet_wrap</span>(~continent) +
+<span class="st">    </span><span class="kw">scale_size_continuous</span>(<span class="dt">range=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">20</span>)) +
+<span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill=</span><span class="ot">FALSE</span>, <span class="dt">size=</span><span class="ot">FALSE</span>)</code></pre>
+<p><img src="fig/ggplot2-fancy_gapminder_plot_2007-1.png" title="plot of chunk fancy_gapminder_plot_2007" alt="plot of chunk fancy_gapminder_plot_2007" style="display: block; margin: auto;" /></p>
+<ul>
+<li>I used <code>shape=21</code> in the call to <code>geom_point()</code>; this makes circles, but allowing separate colors for the <code>fill</code> (interior) and <code>color</code> (outer circle).</li>
+<li>I sized the points by the square-root of the population.</li>
+<li>I used <code>dplyr::arrange()</code> to reorder the points, so that the larger points would be plotted first and the smaller ones on top.</li>
+<li>I used <code>scale_size_continuous</code> with <code>range=c(1,20)</code> to adjust the size of the points.</li>
+<li>I used <code>guides()</code> to get rid of the legends.</li>
+</ul>
+<h3 id="themes">Themes</h3>
+<p>Themes allow you to change the overall appearance of a plot.</p>
+<p>The default theme is <code>theme_gray()</code>, you might consider <code>theme_bw()</code> or <code>theme_linedraw()</code> instead.</p>
+<pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(gapminder, <span class="kw">aes</span>(<span class="dt">y=</span>lifeExp, <span class="dt">x=</span>gdpPercap, <span class="dt">color=</span>continent)) +
+<span class="st">    </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">scale_x_log10</span>() +<span class="st"> </span><span class="kw">facet_wrap</span>(~year)
+p +<span class="st"> </span><span class="kw">theme_bw</span>()</code></pre>
+<p><img src="fig/ggplot2-try_themes-1.png" title="plot of chunk try_themes" alt="plot of chunk try_themes" style="display: block; margin: auto;" /></p>
+<pre class="sourceCode r"><code class="sourceCode r">p +<span class="st"> </span><span class="kw">theme_linedraw</span>()</code></pre>
+<p><img src="fig/ggplot2-try_themes-2.png" title="plot of chunk try_themes" alt="plot of chunk try_themes" style="display: block; margin: auto;" /></p>
+<p>The package <code>ggthemes()</code> includes additional themes as well as additional color scales. Install it as follows.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;ggthemes&quot;</span>)</code></pre>
+<p>Consider <code>theme_igray()</code>, and <code>theme_solarized_2()</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggthemes)
+p +<span class="st"> </span><span class="kw">theme_igray</span>()</code></pre>
+<p><img src="fig/ggplot2-try_ggthemes-1.png" title="plot of chunk try_ggthemes" alt="plot of chunk try_ggthemes" style="display: block; margin: auto;" /></p>
+<pre class="sourceCode r"><code class="sourceCode r">p +<span class="st"> </span><span class="kw">theme_solarized_2</span>()</code></pre>
+<p><img src="fig/ggplot2-try_ggthemes-2.png" title="plot of chunk try_ggthemes" alt="plot of chunk try_ggthemes" style="display: block; margin: auto;" /></p>
+<p>Personally, I like the default ggplot theme, but I want to remove the tick marks and add a black border. You create this as follows. (Tomorrow afternoon, we'll talk more about creating functions.)</p>
+<pre class="sourceCode r"><code class="sourceCode r">theme_karl &lt;-
+<span class="st">    </span>function(...)
+    <span class="kw">theme</span>(<span class="dt">panel.border=</span><span class="kw">element_rect</span>(<span class="dt">fill=</span><span class="ot">NA</span>, <span class="dt">color=</span><span class="st">&quot;black&quot;</span>),
+          <span class="dt">strip.background=</span><span class="kw">element_rect</span>(<span class="dt">fill=</span><span class="st">&quot;gray80&quot;</span>, <span class="dt">color=</span><span class="st">&quot;black&quot;</span>),
+          <span class="dt">axis.ticks.length =</span> grid::<span class="kw">unit</span>(<span class="dv">0</span>, <span class="st">&quot;cm&quot;</span>), ...)</code></pre>
+<p>Now, put it to use:</p>
+<pre class="sourceCode r"><code class="sourceCode r">p +<span class="st"> </span><span class="kw">theme_karl</span>()</code></pre>
+<p><img src="fig/ggplot2-use_karl_theme-1.png" title="plot of chunk use_karl_theme" alt="plot of chunk use_karl_theme" style="display: block; margin: auto;" /></p>
+<h3 id="resources">Resources</h3>
+<ul>
+<li><a href="http://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf">ggplot2 cheat sheet</a></li>
+<li><a href="http://ggplot2.org">ggplot2 website</a></li>
+<li><a href="http://www.amazon.com/dp/0387981403/7210-20">ggplot2 book</a></li>
+<li><a href="http://www.amazon.com/dp/1449316956/7210-20">R graphics cookbook</a></li>
+<li><a href="http://shinyapps.stat.ubc.ca/r-graph-catalog/">R graph catalog</a>: ggplot2 code for graphs in the book <a href="http://www.amazon.com/Creating-Effective-Graphs-Naomi-Robbins/dp/0985911123/7210-20">Creating more effective graphs</a></li>
+</ul>
+        </div>
+      </div>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/karawoo/2015-04-27-wsu">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="../LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>
