@@ -92,9 +92,9 @@ ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
 > Modify the example so that the figure visualise how life expectancy has
 > changed over time:
 >
-> ~~~ {.r}
+> ```{r, eval=FALSE}
 > ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) + geom_point()
-> ~~~
+> ```
 >
 > Hint: the gapminder dataset has a column called "year", which should appear
 > on the x-axis.
@@ -269,9 +269,9 @@ code to modify!
 > Modify the example so that the figure visualise how life expectancy has
 > changed over time:
 >
-> ~~~ {.r}
+> ```{r ch1-sol}
 > ggplot(data = gapminder, aes(x = year, y = lifeExp)) + geom_point()
-> ~~~
+> ```
 >
 
 > #### Solution to challenge 2 {.challenge}
@@ -282,10 +282,10 @@ code to modify!
 > code from the previous challenge to **color** the points by the "continent"
 > column. What trends do you see in the data? Are they what you expected?
 >
-> ~~~ {.r}
+> ```{r ch2-sol}
 > ggplot(data = gapminder, aes(x = year, y = lifeExp, color=continent)) +
 >   geom_point()
-> ~~~
+> ```
 >
 
 > #### Solution to challenge 3 {.challenge}
@@ -293,10 +293,10 @@ code to modify!
 > Switch the order of the point and line layers from the previous example. What
 > happened?
 >
-> ~~~ {.r}
+> ```{r ch3-sol}
 > ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
 >  geom_point() + geom_line(aes(color=continent))
-> ~~~
+> ```
 > 
 > The lines now get drawn over the points!
 >
@@ -309,11 +309,11 @@ code to modify!
 >
 > Hint: do not use the `aes` function.
 >
-> ~~~ {.r}
+> ```{r ch4-sol}
 > ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
 >  geom_point(size=3, color="orange") + scale_y_log10() +
 >  geom_smooth(method="lm", size=1.5)
-> ~~~
+> ```
 >
 
 > #### Solution to challenge 5 {.challenge}
@@ -324,8 +324,8 @@ code to modify!
 >  - Transform the x axis to better visualise the data spread.
 >  - Add a facet layer to panel the density plots by year.
 >
-> ~~~ {.r}
+> ```{r ch5-sol}
 > ggplot(data = gapminder, aes(x = gdpPercap, fill=continent)) +
 >  geom_density(alpha=0.6) + facet_wrap( ~ year) + scale_x_log10()
-> ~~~
+> ```
 >
