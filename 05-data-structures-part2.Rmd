@@ -219,19 +219,9 @@ Let's look at some of the columns.
 >
 > Look at the first 6 rows of the gapminder data frame we loaded before:
 >
-> ~~~ {.r}
+> ```{r}
 > head(gapminder)
-> ~~~
->
-> ~~~ {.output}
-> ##       country year      pop continent lifeExp gdpPercap
-> ## 1 Afghanistan 1952  8425333      Asia  28.801  779.4453
-> ## 2 Afghanistan 1957  9240934      Asia  30.332  820.8530
-> ## 3 Afghanistan 1962 10267083      Asia  31.997  853.1007
-> ## 4 Afghanistan 1967 11537966      Asia  34.020  836.1971
-> ## 5 Afghanistan 1972 13079460      Asia  36.088  739.9811
-> ## 6 Afghanistan 1977 14880372      Asia  38.438  786.1134
-> ~~~
+> ```
 >
 > Write down what data type you think is in each column
 >
@@ -390,10 +380,10 @@ time, so we see a significant positive association!
 > Now use cbind to add a column of logicals answering the question,
 > "Is there anything in this workshop you're finding confusing?"
 >
-> ~~~ {.r}
+> ```{r, eval=FALSE}
 > my_df <- data.frame(first_name = "Software", last_name = "Carpentry", age = 17)
 > my_df <- rbind(my_df, list("Jane", "Smith", 29))
 > my_df <- rbind(my_df, list(c("Jo", "John"), c("White", "Lee"), c(23, 41)))
 > my_df <- cbind(my_df, confused = c(FALSE, FALSE, TRUE, FALSE))
-> ~~~
+> ```
 >
