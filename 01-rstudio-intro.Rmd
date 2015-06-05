@@ -383,12 +383,12 @@ rm(list <- ls())
 > Draw diagrams showing what variables refer to what values after each
 > statement in the following program:
 >
-> ~~~ {.r}
+> ```{r, eval=FALSE}
 > mass <- 47.5
 > age <- 122
 > mass <- mass * 2.3
 > age <- age - 20
-> ~~~
+> ```
 >
 
 > #### Challenge 2 {.challenge}
