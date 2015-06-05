@@ -26,11 +26,11 @@
       <article>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <h1 class="title">R for reproducible scientific analysis</h1>
+                    <a href="index.html"><h1 class="title">R for reproducible scientific analysis</h1></a>
           <h2 class="subtitle">Subsetting data</h2>
-<div id="learning-objectives" class="objectives panel panel-warning">
+          <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h3><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h3>
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -44,11 +44,11 @@
 <li>To be able to skip and remove elements from various data structures.</li>
 </ul>
 </div>
-</div>
+</section>
 <p>R has many powerful subset operators and mastering them will allow you to easily perform complex operations on any kind of dataset.</p>
 <p>There are six different ways we can subset any kind of object, and three different subsetting operators for the different data structures.</p>
 <p>Let’s start with the workhorse of R: atomic vectors.</p>
-<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">5.4</span>, <span class="fl">6.2</span>, <span class="fl">7.1</span>, <span class="fl">4.8</span>, <span class="fl">7.5</span>) 
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">5.4</span>, <span class="fl">6.2</span>, <span class="fl">7.1</span>, <span class="fl">4.8</span>, <span class="fl">7.5</span>)
 <span class="kw">names</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>)
 x</code></pre>
 <pre class="output"><code>  a   b   c   d   e 
@@ -104,48 +104,53 @@ x</code></pre>
 <pre class="output"><code>  b   c   d 
 6.2 7.1 4.8 
 </code></pre>
-<div id="tip-order-of-operations" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Order of operations</h4>
 </div>
 <div class="panel-body">
 <p>A common trip up for novices occurs when trying to skip slices of a vector. Most people first try to negate a sequence like so:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x[-<span class="dv">1</span>:<span class="dv">3</span>]</code></pre>
-<pre class="output"><code>## Error in x[-1:3] : only 0&#39;s may be mixed with negative subscripts</code></pre>
+<pre class="output"><code>Error in x[-1:3]: only 0&#39;s may be mixed with negative subscripts
+</code></pre>
 <p>This gives a somewhat cryptic error:</p>
 <p>But remember the order of operations. <code>:</code> is really a function, so what happens is it takes its first argument as -1, and second as 3, so generates the sequence of numbers: <code>c(-1, 0, 1, 2, 3)</code>.</p>
 <p>The correct solution is to wrap that function call in brackets, so that the <code>-</code> operator applies to the results:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x[-(<span class="dv">1</span>:<span class="dv">3</span>)]</code></pre>
-<pre class="output"><code>##   d   e 
-## 4.8 7.5 </code></pre>
+<pre class="output"><code>  d   e 
+4.8 7.5 
+</code></pre>
 </div>
-</div>
+</aside>
 <p>To remove elements from a vector, we need to assign the results back into the variable:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>x[-<span class="dv">4</span>]
 x</code></pre>
 <pre class="output"><code>  a   b   c   e 
 5.4 6.2 7.1 7.5 
 </code></pre>
-<div id="challenge" class="challenge panel panel-success">
+<section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Challenge</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h4>
 </div>
 <div class="panel-body">
 <p>Given the following code:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">5.4</span>, <span class="fl">6.2</span>, <span class="fl">7.1</span>, <span class="fl">4.8</span>, <span class="fl">7.5</span>)
 <span class="kw">names</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>)
 <span class="kw">print</span>(x)</code></pre>
-<pre class="output"><code>##   a   b   c   d   e 
-## 5.4 6.2 7.1 4.8 7.5 </code></pre>
+<pre class="output"><code>  a   b   c   d   e 
+5.4 6.2 7.1 4.8 7.5 
+</code></pre>
 <ol style="list-style-type: decimal">
 <li>Come up with at least 3 different commands that will produce the following output:</li>
 </ol>
-<pre class="sourceCode r"><code class="sourceCode r">x[<span class="dv">2</span>:<span class="dv">4</span>]</code></pre>
+<pre class="output"><code>  b   c   d 
+6.2 7.1 4.8 
+</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Compare notes with your neighbour. Did you have different strategies?</li>
 </ol>
 </div>
-</div>
+</section>
 <h3 id="subsetting-by-name">Subsetting by name</h3>
 <p>We can extract elements by using their name, instead of index:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x[<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>)]</code></pre>
@@ -156,13 +161,13 @@ x</code></pre>
 <p>Unfortunately we can’t skip or remove elements so easily.</p>
 <p>To skip (or remove) a single named element:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x[-<span class="kw">which</span>(<span class="kw">names</span>(x) ==<span class="st"> &quot;a&quot;</span>)]</code></pre>
-<pre class="output"><code>  b   c   e 
-6.2 7.1 7.5 
+<pre class="output"><code>  b   c   d   e 
+6.2 7.1 4.8 7.5 
 </code></pre>
-<p>The <code>which</code> function returns the indices of all <code>TRUE</code> elements of its argument. Remember that expressions evaluate before being passed to functions. Let’s break this down so that its clearer whats happening.</p>
+<p>The <code>which</code> function returns the indices of all <code>TRUE</code> elements of its argument. Remember that expressions evaluate before being passed to functions. Let’s break this down so that its clearer what’s happening.</p>
 <p>First this happens:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(x) ==<span class="st"> &quot;a&quot;</span></code></pre>
-<pre class="output"><code>[1]  TRUE FALSE FALSE FALSE
+<pre class="output"><code>[1]  TRUE FALSE FALSE FALSE FALSE
 </code></pre>
 <p>The condition operator is applied to every name of the vector <code>x</code>. Only the first name is “a” so that element is TRUE.</p>
 <p><code>which</code> then converts this to an index:</p>
@@ -172,22 +177,25 @@ x</code></pre>
 <p>Only the first element is <code>TRUE</code>, so `which returns 1. Now that we have indices the skipping works because we have a negative index!</p>
 <p>Skipping multiple named indices is similar, but uses a different comparison operator:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x[-<span class="kw">which</span>(<span class="kw">names</span>(x) %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>))]</code></pre>
-<pre class="output"><code>  b   e 
-6.2 7.5 
+<pre class="output"><code>  b   d   e 
+6.2 4.8 7.5 
 </code></pre>
 <p>The <code>%in%</code> goes through each element of its left argument, in this case the names of <code>x</code>, and asks, “Does this element occur in the second argument?”.</p>
-<div id="tip-getting-help-for-operators" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Getting help for operators</h4>
 </div>
 <div class="panel-body">
 <p>Remember you can search for help on operators by wrapping them in quotes: <code>help(&quot;%in%&quot;)</code> or <code>?&quot;%in%&quot;</code>.</p>
 </div>
-</div>
+</aside>
 <p>So why can’t we use <code>==</code> like before? That’s an excellent question.</p>
 <p>Let’s take a look at just the comparison component:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(x) ==<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;c&#39;</span>)</code></pre>
-<pre class="output"><code>[1]  TRUE FALSE FALSE FALSE
+<pre class="output"><code>Warning in names(x) == c(&quot;a&quot;, &quot;c&quot;): longer object length is not a multiple
+of shorter object length
+</code></pre>
+<pre class="output"><code>[1]  TRUE FALSE FALSE FALSE FALSE
 </code></pre>
 <p>Obviously “c” is in the names of <code>x</code>, so why didn’t this work? <code>==</code> works slightly differently to <code>%in%</code>. It will compare each element of its left argument to the corresponding element of its right argument.</p>
 <p>Here’s a mock illustration:</p>
@@ -200,28 +208,29 @@ x</code></pre>
 <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>)</code></pre>
 <p>In this case R simply repeats <code>c(&quot;a&quot;, &quot;c&quot;)</code> twice. If the longer vector length isn’t a multiple of the shorter vector length, then R will also print out a warning message:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(x) ==<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;e&#39;</span>)</code></pre>
-<pre class="output"><code>Warning: longer object length is not a multiple of shorter object length
+<pre class="output"><code>Warning in names(x) == c(&quot;a&quot;, &quot;c&quot;, &quot;e&quot;): longer object length is not a
+multiple of shorter object length
 </code></pre>
-<pre class="output"><code>[1]  TRUE FALSE FALSE FALSE
+<pre class="output"><code>[1]  TRUE FALSE FALSE FALSE FALSE
 </code></pre>
 <p>This difference between <code>==</code> and <code>%in%</code> is important to remember, because it can introduce hard to find and subtle bugs!</p>
 <h3 id="subsetting-through-other-logical-operations">Subsetting through other logical operations</h3>
 <p>We can also more simply subset through logical operations:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>)]</code></pre>
-<pre class="output"><code>  a   b 
-5.4 6.2 
+<pre class="output"><code>  a   b   e 
+5.4 6.2 7.5 
 </code></pre>
 <p>Note that in this case, the logical vector is also recycled to the length of the vector we’re subsetting!</p>
 <pre class="sourceCode r"><code class="sourceCode r">x[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>)]</code></pre>
-<pre class="output"><code>  a   c 
-5.4 7.1 
+<pre class="output"><code>  a   c   e 
+5.4 7.1 7.5 
 </code></pre>
 <p>Since comparison operators evaluate to logical vectors, we can also use them to succinctly subset vectors:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x[x &gt;<span class="st"> </span><span class="dv">7</span>]</code></pre>
 <pre class="output"><code>  c   e 
 7.1 7.5 
 </code></pre>
-<div id="tip-chaining-logical-operations" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Chaining logical operations</h4>
 </div>
@@ -234,8 +243,8 @@ x</code></pre>
 <li><code>&amp;&amp;</code> and <code>||</code> compare the individual elements of two vectors. Recycling rules also apply here.</li>
 </ul>
 </div>
-</div>
-<div id="challenge-1" class="challenge panel panel-success">
+</aside>
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pencil"></span>Challenge</h4>
 </div>
@@ -244,13 +253,14 @@ x</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">5.4</span>, <span class="fl">6.2</span>, <span class="fl">7.1</span>, <span class="fl">4.8</span>, <span class="fl">7.5</span>)
 <span class="kw">names</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>)
 <span class="kw">print</span>(x)</code></pre>
-<pre class="output"><code>##   a   b   c   d   e 
-## 5.4 6.2 7.1 4.8 7.5 </code></pre>
+<pre class="output"><code>  a   b   c   d   e 
+5.4 6.2 7.1 4.8 7.5 
+</code></pre>
 <ol style="list-style-type: decimal">
 <li>Write a subsetting command to return the values in x that are greater than 4 and less than 7.</li>
 </ol>
 </div>
-</div>
+</section>
 <h4 id="handling-special-values">Handling special values</h4>
 <p>At some point you will encounter functions in R which cannot handle missing, infinite, or undefined data.</p>
 <p>There are a number of special functions you can use to filter out this data:</p>
@@ -286,44 +296,44 @@ Levels: a b c d
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1</span>)
 m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">6</span>*<span class="dv">4</span>), <span class="dt">ncol=</span><span class="dv">4</span>, <span class="dt">nrow=</span><span class="dv">6</span>)
 m[<span class="dv">3</span>:<span class="dv">4</span>, <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)]</code></pre>
-<pre class="output"><code>         [,1]    [,2]
-[1,]  1.12493 -0.8356
-[2,] -0.04493  1.5953
+<pre class="output"><code>            [,1]       [,2]
+[1,]  1.12493092 -0.8356286
+[2,] -0.04493361  1.5952808
 </code></pre>
 <p>You can leave the first or second arguments blank to retrieve all the rows or columns respectively:</p>
 <pre class="sourceCode r"><code class="sourceCode r">m[, <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)]</code></pre>
-<pre class="output"><code>         [,1]     [,2]
-[1,] -0.62124  0.82122
-[2,] -2.21470  0.59390
-[3,]  1.12493  0.91898
-[4,] -0.04493  0.78214
-[5,] -0.01619  0.07456
-[6,]  0.94384 -1.98935
+<pre class="output"><code>            [,1]        [,2]
+[1,] -0.62124058  0.82122120
+[2,] -2.21469989  0.59390132
+[3,]  1.12493092  0.91897737
+[4,] -0.04493361  0.78213630
+[5,] -0.01619026  0.07456498
+[6,]  0.94383621 -1.98935170
 </code></pre>
 <p>If we only access one row or column, R will automatically convert the result to a vector:</p>
 <pre class="sourceCode r"><code class="sourceCode r">m[<span class="dv">3</span>,]</code></pre>
-<pre class="output"><code>[1] -0.8356  0.5758  1.1249  0.9190
+<pre class="output"><code>[1] -0.8356286  0.5757814  1.1249309  0.9189774
 </code></pre>
 <p>If you want to keep the output as a matrix, you need to specify a <em>third</em> argument; <code>drop = FALSE</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">m[<span class="dv">3</span>, , drop=<span class="ot">FALSE</span>]</code></pre>
-<pre class="output"><code>        [,1]   [,2]  [,3]  [,4]
-[1,] -0.8356 0.5758 1.125 0.919
+<pre class="output"><code>           [,1]      [,2]     [,3]      [,4]
+[1,] -0.8356286 0.5757814 1.124931 0.9189774
 </code></pre>
 <p>Unlike vectors, if we try to access a row or column outside of the matrix, R will throw an error:</p>
 <pre class="sourceCode r"><code class="sourceCode r">m[, <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">6</span>)]</code></pre>
-<pre class="output"><code>Error: subscript out of bounds
+<pre class="output"><code>Error in m[, c(3, 6)]: subscript out of bounds
 </code></pre>
-<div id="tip-higher-dimensional-arrays" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Higher dimensional arrays</h4>
 </div>
 <div class="panel-body">
 <p>when dealing with multi-dimensional arrays, each argument to <code>[</code> corresponds to a dimension. For example, a 3D array, the first three arguments correspond to the rows, columns, and depth dimension.</p>
 </div>
-</div>
+</aside>
 <p>Because matrices are really just vectors underneath the hood, we can also subset using only one argument:</p>
 <pre class="sourceCode r"><code class="sourceCode r">m[<span class="dv">5</span>]</code></pre>
-<pre class="output"><code>[1] 0.3295
+<pre class="output"><code>[1] 0.3295078
 </code></pre>
 <p>This usually isn’t useful. However it is useful to note that matrices are laid out in <em>column-major format</em> by default. That is the elements of the vector are arranged column-wise:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">6</span>, <span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">ncol=</span><span class="dv">3</span>)</code></pre>
@@ -332,18 +342,19 @@ m[<span class="dv">3</span>:<span class="dv">4</span>, <span class="kw">c</span>
 [2,]    2    4    6
 </code></pre>
 <p>Matrices can also be subsetted using their rownames and column names instead of their row and column indices.</p>
-<div id="challenge-2" class="challenge panel panel-success">
+<section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Challenge</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h4>
 </div>
 <div class="panel-body">
 <p>Given the following code:</p>
 <pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">18</span>, <span class="dt">nrow=</span><span class="dv">3</span>, <span class="dt">ncol=</span><span class="dv">6</span>)
 <span class="kw">print</span>(m)</code></pre>
-<pre class="output"><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
-## [1,]    1    4    7   10   13   16
-## [2,]    2    5    8   11   14   17
-## [3,]    3    6    9   12   15   18</code></pre>
+<pre class="output"><code>     [,1] [,2] [,3] [,4] [,5] [,6]
+[1,]    1    4    7   10   13   16
+[2,]    2    5    8   11   14   17
+[3,]    3    6    9   12   15   18
+</code></pre>
 <ol style="list-style-type: decimal">
 <li>Which of the following commands will extract the values 11 and 14?</li>
 </ol>
@@ -352,12 +363,12 @@ m[<span class="dv">3</span>:<span class="dv">4</span>, <span class="kw">c</span>
 <p>C. <code>m[4:5,2]</code></p>
 <p>D. <code>m[2,c(4,5)]</code></p>
 </div>
-</div>
+</section>
 <h3 id="list-subsetting">List subsetting</h3>
 <p>Now we’ll introduce some new subsetting operators. There are three functions used to subset lists. <code>[</code>, as we’ve seen for atomic vectors and matrices, as well as <code>[[</code> and <code>$</code>.</p>
 <p>Using <code>[</code> will always return a list. If you want to <em>subset</em> a list, but not <em>extract</em> an element, then you will likely use <code>[</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">xlist &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="st">&quot;Software Carpentry&quot;</span>, <span class="dt">b =</span> <span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">data =</span> <span class="kw">head</span>(iris)) 
-xlist[<span class="dv">1</span>] </code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">xlist &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="st">&quot;Software Carpentry&quot;</span>, <span class="dt">b =</span> <span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">data =</span> <span class="kw">head</span>(iris))
+xlist[<span class="dv">1</span>]</code></pre>
 <pre class="output"><code>$a
 [1] &quot;Software Carpentry&quot;
 </code></pre>
@@ -377,11 +388,11 @@ $b
 <p>Notice that now the result is a vector, not a list.</p>
 <p>You can’t extract more than one element at once:</p>
 <pre class="sourceCode r"><code class="sourceCode r">xlist[[<span class="dv">1</span>:<span class="dv">2</span>]]</code></pre>
-<pre class="output"><code>Error: subscript out of bounds
+<pre class="output"><code>Error in xlist[[1:2]]: subscript out of bounds
 </code></pre>
 <p>Nor use it to skip elements:</p>
 <pre class="sourceCode r"><code class="sourceCode r">xlist[[-<span class="dv">1</span>]]</code></pre>
-<pre class="output"><code>Error: attempt to select more than one element
+<pre class="output"><code>Error in xlist[[-1]]: attempt to select more than one element
 </code></pre>
 <p>But you can use names to both subset and extract elements:</p>
 <pre class="sourceCode r"><code class="sourceCode r">xlist[[<span class="st">&quot;a&quot;</span>]]</code></pre>
@@ -397,23 +408,26 @@ $b
 5          5.0         3.6          1.4         0.2  setosa
 6          5.4         3.9          1.7         0.4  setosa
 </code></pre>
-<div id="challenge-3" class="challenge panel panel-success">
+<section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Challenge</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h4>
 </div>
 <div class="panel-body">
-<ol style="list-style-type: decimal">
-<li>Given the following list:</li>
-</ol>
-<pre class="sourceCode r"><code class="sourceCode r">xlist &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="st">&quot;Software Carpentry&quot;</span>, <span class="dt">b =</span> <span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">data =</span> <span class="kw">head</span>(iris)) </code></pre>
+<p>Given the following list:</p>
+<pre class="sourceCode r"><code class="sourceCode r">xlist &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="st">&quot;Software Carpentry&quot;</span>, <span class="dt">b =</span> <span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">data =</span> <span class="kw">head</span>(iris))</code></pre>
 <p>Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. Hint: the number 2 is contained within the “b” item in the list.</p>
-<ol start="2" style="list-style-type: decimal">
-<li>Given a linear model:</li>
-</ol>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 4</h4>
+</div>
+<div class="panel-body">
+<p>Given a linear model:</p>
 <pre class="sourceCode r"><code class="sourceCode r">mod &lt;-<span class="st"> </span><span class="kw">aov</span>(pop ~<span class="st"> </span>lifeExp, <span class="dt">data=</span>gapminder)</code></pre>
 <p>Extract the residual degrees of freedom (hint: <code>attributes()</code> will help you)</p>
 </div>
-</div>
+</section>
 <h3 id="data-frames">Data frames</h3>
 <p>Remember the data frames are lists underneath the hood, so similar rules apply. However they are also two dimensional objects:</p>
 <p><code>[</code> with one argument will act the same was as for lists, where each list element corresponds to a column. The resulting object will be a data frame:</p>
@@ -428,28 +442,28 @@ $b
 </code></pre>
 <p>Similarly, <code>[[</code> will act to extract <em>a single column</em>:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gapminder[[<span class="st">&quot;lifeExp&quot;</span>]])</code></pre>
-<pre class="output"><code>[1] 28.80 30.33 32.00 34.02 36.09 38.44
+<pre class="output"><code>[1] 28.801 30.332 31.997 34.020 36.088 38.438
 </code></pre>
-<p>And <code>$</code> provides a convenient shorthand to extact columns by name:</p>
+<p>And <code>$</code> provides a convenient shorthand to extract columns by name:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gapminder$year)</code></pre>
 <pre class="output"><code>[1] 1952 1957 1962 1967 1972 1977
 </code></pre>
 <p>With two arguments, <code>[</code> behaves the same way as for matrices:</p>
 <pre class="sourceCode r"><code class="sourceCode r">gapminder[<span class="dv">1</span>:<span class="dv">3</span>,]</code></pre>
 <pre class="output"><code>      country year      pop continent lifeExp gdpPercap
-1 Afghanistan 1952  8425333      Asia   28.80     779.4
-2 Afghanistan 1957  9240934      Asia   30.33     820.9
-3 Afghanistan 1962 10267083      Asia   32.00     853.1
+1 Afghanistan 1952  8425333      Asia  28.801  779.4453
+2 Afghanistan 1957  9240934      Asia  30.332  820.8530
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007
 </code></pre>
 <p>If we subset a single row, the result will be a data frame (because the elements are mixed types):</p>
 <pre class="sourceCode r"><code class="sourceCode r">gapminder[<span class="dv">3</span>,]</code></pre>
 <pre class="output"><code>      country year      pop continent lifeExp gdpPercap
-3 Afghanistan 1962 10267083      Asia      32     853.1
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007
 </code></pre>
 <p>But for a single column the result will be a vector (this can be changed with the third argument, <code>drop = FALSE</code>).</p>
-<div id="challenge-4" class="challenge panel panel-success">
+<section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Challenge</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 5</h4>
 </div>
 <div class="panel-body">
 <p>Fix each of the following common data frame subsetting errors:</p>
@@ -474,10 +488,10 @@ $b
 </ol>
 <pre class="sourceCode r"><code class="sourceCode r">gapminder[gapminder$year ==<span class="st"> </span><span class="dv">2002</span> |<span class="st"> </span><span class="dv">2007</span>,]</code></pre>
 </div>
-</div>
-<div id="challenge-5" class="challenge panel panel-success">
+</section>
+<section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Challenge</h4>
+<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 6</h4>
 </div>
 <div class="panel-body">
 <ol style="list-style-type: decimal">
@@ -485,7 +499,129 @@ $b
 <li><p>Create a new <code>data.frame</code> called <code>gapminder_small</code> that only contains rows 1 through 9 and 19 through 23. You can do this in one or two steps.</p></li>
 </ol>
 </div>
+</section>
+<h2 id="challenge-solutions">Challenge solutions</h2>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 1</h4>
 </div>
+<div class="panel-body">
+<p>Given the following code:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">5.4</span>, <span class="fl">6.2</span>, <span class="fl">7.1</span>, <span class="fl">4.8</span>, <span class="fl">7.5</span>)
+<span class="kw">names</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>)
+<span class="kw">print</span>(x)</code></pre>
+<pre class="output"><code>  a   b   c   d   e 
+5.4 6.2 7.1 4.8 7.5 
+</code></pre>
+<ol style="list-style-type: decimal">
+<li>Come up with at least 3 different commands that will produce the following output:</li>
+</ol>
+<pre class="output"><code>  b   c   d 
+6.2 7.1 4.8 
+</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">x[<span class="dv">2</span>:<span class="dv">4</span>] 
+x[-<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>)]
+x[<span class="kw">c</span>(<span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>)]
+x[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]</code></pre>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 2</h4>
+</div>
+<div class="panel-body">
+<p>Given the following code:</p>
+<pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">18</span>, <span class="dt">nrow=</span><span class="dv">3</span>, <span class="dt">ncol=</span><span class="dv">6</span>)
+<span class="kw">print</span>(m)</code></pre>
+<pre class="output"><code>     [,1] [,2] [,3] [,4] [,5] [,6]
+[1,]    1    4    7   10   13   16
+[2,]    2    5    8   11   14   17
+[3,]    3    6    9   12   15   18
+</code></pre>
+<ol style="list-style-type: decimal">
+<li>Which of the following commands will extract the values 11 and 14?</li>
+</ol>
+<p>A. <code>m[2,4,2,5]</code></p>
+<p>B. <code>m[2:5]</code></p>
+<p>C. <code>m[4:5,2]</code></p>
+<p>D. <code>m[2,c(4,5)]</code></p>
+<p>Answer: D</p>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 3</h4>
+</div>
+<div class="panel-body">
+<p>Given the following list:</p>
+<pre class="sourceCode r"><code class="sourceCode r">xlist &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="st">&quot;Software Carpentry&quot;</span>, <span class="dt">b =</span> <span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">data =</span> <span class="kw">head</span>(iris))</code></pre>
+<p>Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. Hint: the number 2 is contained within the “b” item in the list.</p>
+<pre class="sourceCode r"><code class="sourceCode r">xlist$b[<span class="dv">2</span>]
+xlist[[<span class="dv">2</span>]][<span class="dv">2</span>]
+xlist[[<span class="st">&quot;b&quot;</span>]][<span class="dv">2</span>]</code></pre>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 4</h4>
+</div>
+<div class="panel-body">
+<p>Given a linear model:</p>
+<pre class="sourceCode r"><code class="sourceCode r">mod &lt;-<span class="st"> </span><span class="kw">aov</span>(pop ~<span class="st"> </span>lifeExp, <span class="dt">data=</span>gapminder)</code></pre>
+<p>Extract the residual degrees of freedom (hint: <code>attributes()</code> will help you)</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attributes</span>(mod) ## `df.residual` is one of the names of `mod`
+mod$df.residual</code></pre>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 5</h4>
+</div>
+<div class="panel-body">
+<p>Fix each of the following common data frame subsetting errors:</p>
+<ol style="list-style-type: decimal">
+<li>Extract observations collected for the year 1957</li>
+</ol>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># gapminder[gapminder$year = 1957,]</span>
+gapminder[gapminder$year ==<span class="st"> </span><span class="dv">1957</span>,]</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Extract all columns except 1 through to 4</li>
+</ol>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># gapminder[,-1:4]</span>
+gapminder[,-<span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">4</span>)]</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Extract the rows where the life expectancy is longer the 80 years</li>
+</ol>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># gapminder[gapminder$lifeExp &gt; 80]</span>
+gapminder[gapminder$lifeExp &gt;<span class="st"> </span><span class="dv">80</span>,]</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Extract the first row, and the fourth and fifth columns (<code>lifeExp</code> and <code>gdpPercap</code>).</li>
+</ol>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># gapminder[1, 4, 5]</span>
+gapminder[<span class="dv">1</span>, <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>)]</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Advanced: extract rows that contain information for the years 2002 and 2007</li>
+</ol>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># gapminder[gapminder$year == 2002 | 2007,]</span>
+gapminder[gapminder$year ==<span class="st"> </span><span class="dv">2002</span> |<span class="st"> </span>gapminder$year ==<span class="st"> </span><span class="dv">2007</span>,]
+gapminder[gapminder$year %in%<span class="st"> </span><span class="kw">c</span>(<span class="dv">2002</span>, <span class="dv">2007</span>),]</code></pre>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 6</h4>
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Why does <code>gapminder[1:20]</code> return an error? How does it differ from <code>gapminder[1:20, ]</code>?</li>
+</ol>
+<p>Answer: <code>gapminder</code> is a data.frame so needs to be subsetted on two dimensions. <code>gapminder[1:20, ]</code> subsets the data to give the first 20 rows and all columns.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Create a new <code>data.frame</code> called <code>gapminder_small</code> that only contains rows 1 through 9 and 19 through 23. You can do this in one or two steps.</li>
+</ol>
+<pre class="sourceCode r"><code class="sourceCode r">gapminder_small &lt;-<span class="st"> </span>gapminder[<span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">9</span>, <span class="dv">19</span>:<span class="dv">23</span>),]</code></pre>
+</div>
+</section>
         </div>
       </div>
       </article>

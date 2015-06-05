@@ -26,11 +26,11 @@
       <article>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <h1 class="title">R for reproducible scientific analysis</h1>
+                    <a href="index.html"><h1 class="title">R for reproducible scientific analysis</h1></a>
           <h2 class="subtitle">Introduction to R and RStudio</h2>
-<div id="learning-objectives" class="objectives panel panel-warning">
+          <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h3><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h3>
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -42,7 +42,7 @@
 <li>To be able to call functions</li>
 </ul>
 </div>
-</div>
+</section>
 <h3 id="introduction-to-rstudio">Introduction to RStudio</h3>
 <p>Welcome to the R portion of the Software Carpentry workshop.</p>
 <p>Throughout this lesson, we’re going to teach you some of the fundamentals of the R language as well as some best practices for organising code for scientific projects that will make your life easier.</p>
@@ -64,7 +64,7 @@
 <li>Start writing in an .R file and use Rstudio’s command / short cut to push current line, selected lines or modified lines to the interactive R console.</li>
 <li>This is great way to start and work as all workings are saved for latter reference and can be read latter.</li>
 </ol>
-<div id="tip-pushing-to-the-interactive-r-console" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Pushing to the interactive R console</h4>
 </div>
@@ -72,7 +72,7 @@
 <p>To run the current line click on the <code>Run</code> button just above the file pane. Or use the short cut which can be see by hovering the mouse over the button.</p>
 <p>To run a block of code, select it and then <code>Run</code>. If you have modified a line of code within a block of code you have just run. There is no need to reselct the section and <code>Run</code>, you can use the next button along, <code>Re-run the previous region</code>. This will run the previous code block inculding the modifications you have made.</p>
 </div>
-</div>
+</aside>
 <h3 id="introduction-to-r">Introduction to R</h3>
 <p>A lot of your time in R will be spent in the R interactive console. This is where you will run all of your code, and can be a useful environment to try out ideas before adding them to an R script file. This console in RStudio is the same as the one you would get if you just typed in <code>R</code> in your commandline environment.</p>
 <p>The first thing you will see in the R interactive session is a bunch of information, followed by a “&gt;” and a blinking cursor. In many ways this is similar to the shell environment you learnt about during the shell lessons: it operates on the same idea of a “Read, evaluate, print loop”: you type in commands, R tries to execute them, and then returns a result.</p>
@@ -86,7 +86,7 @@
 <pre class="sourceCode r"><code class="sourceCode r">&gt;<span class="st"> </span><span class="dv">1</span> +</code></pre>
 <pre class="output"><code>+</code></pre>
 <p>Any time you hit return and the R session shows a “+” instead of a “&gt;”, it means it’s waiting for you to complete the command. If you want to cancel a command you can simply hit “Esc” and RStudio will give you back the “&gt;” prompt.</p>
-<div id="tip-cancelling-commands" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Cancelling commands</h4>
 </div>
@@ -94,7 +94,7 @@
 <p>If you’re using R from the commandline instead of from within RStudio, you need to use <code>Ctrl+C</code> instead of <code>Esc</code> to cancel the command. This applies to Mac users as well!</p>
 <p>Cancelling a command isn’t just useful for killing incomplete commands: you can also use it to tell R to stop running code (for example if its taking much longer than you expect), or to get rid of the code you’re currently writing.</p>
 </div>
-</div>
+</aside>
 <p>When using R as a calculator, the order of operations is the same as you would have learnt back in school.</p>
 <p>From highest to lowest precedence:</p>
 <ul>
@@ -129,7 +129,7 @@
 <h4 id="mathematical-functions">Mathematical functions</h4>
 <p>R has many built in mathematical functions. To call a function, we simply type its name, follow by and open and closing bracket. Anything we type inside those brackets is called the function’s arguments:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sin</span>(<span class="dv">1</span>)  <span class="co"># trigonometry functions</span></code></pre>
-<pre class="output"><code>[1] 0.8415
+<pre class="output"><code>[1] 0.841471
 </code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log</span>(<span class="dv">1</span>)  <span class="co"># natural logarithm</span></code></pre>
 <pre class="output"><code>[1] 0
@@ -138,7 +138,7 @@
 <pre class="output"><code>[1] 1
 </code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">exp</span>(<span class="fl">0.5</span>) <span class="co"># e^(1/2)</span></code></pre>
-<pre class="output"><code>[1] 1.649
+<pre class="output"><code>[1] 1.648721
 </code></pre>
 <p>Don’t worry about trying to remember every function in R. You can simply look them up on google, or if you can remember the start of the function’s name, use the tab completion in RStudio.</p>
 <p>This is one advantage that RStudio has over R on its own, it has autocompletion abilities that allow you to more easily look up functions, their arguments, and the values that they take.</p>
@@ -163,7 +163,7 @@
 <pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> &gt;=<span class="st"> </span>-<span class="dv">9</span> <span class="co"># greater than or equal to</span></code></pre>
 <pre class="output"><code>[1] TRUE
 </code></pre>
-<div id="tip-comparing-numbers" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Comparing Numbers</h4>
 </div>
@@ -173,7 +173,7 @@
 <p>Instead you should use the <code>all.equal</code> function.</p>
 <p>Further reading: <a href="http://floating-point-gui.de/" class="uri">http://floating-point-gui.de/</a></p>
 </div>
-</div>
+</aside>
 <h4 id="variables-and-assignment">Variables and assignment</h4>
 <p>We can store values in variables using the assignment operator <code>&lt;-</code>, like this:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>/<span class="dv">40</span></code></pre>
@@ -184,7 +184,7 @@
 <p>More precisely, the stored value is a <em>decimal approximation</em> of this fraction called a <a href="http://en.wikipedia.org/wiki/Floating_point">floating point number</a>.</p>
 <p>Look for the <code>Environment</code> tab in one of the panes of RStudio, and you will see that <code>x</code> and its value have appeared. Our variable <code>x</code> can be used in place of a number in any calculation that expects a number:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log</span>(x)</code></pre>
-<pre class="output"><code>[1] -3.689
+<pre class="output"><code>[1] -3.688879
 </code></pre>
 <p>Notice also that variables can be reassigned:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">100</span></code></pre>
@@ -208,14 +208,14 @@
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>()</code></pre>
 <pre class="output"><code>[1] &quot;hook_in&quot;  &quot;hook_out&quot; &quot;x&quot;       
 </code></pre>
-<div id="tip-hidden-objects" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pushpin"></span>Tip: hidden objects</h4>
 </div>
 <div class="panel-body">
 <p>Just like in the shell, <code>ls</code> will hide any variables or functions starting with a “.” by default. To list all objects, type <code>ls(all.names=TRUE)</code> instead</p>
 </div>
-</div>
+</aside>
 <p>Note here that we didn’t given any arguments to <code>ls</code>, but we still needed to give the brackets to tell R to call the function.</p>
 <p>If we type <code>ls</code> by itself, R will print out the source code for that function!</p>
 <pre class="sourceCode r"><code class="sourceCode r">ls</code></pre>
@@ -251,7 +251,7 @@
     }
     else all.names
 }
-&lt;bytecode: 0x7f9fca043558&gt;
+&lt;bytecode: 0x7fd893942358&gt;
 &lt;environment: namespace:base&gt;
 </code></pre>
 <p>You can use <code>rm</code> to delete objects you no longer need:</p>
@@ -262,9 +262,9 @@
 <p>In this case we’ve specified that the results of <code>ls</code> should be used for the <code>list</code> argument in <code>rm</code>. When assigning values to arguments by name, you <em>must</em> use the <code>=</code> operator!!</p>
 <p>If instead we use <code>&lt;-</code>, there will be unintended side effects, or you may just get an error message:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(list &lt;-<span class="st"> </span><span class="kw">ls</span>())</code></pre>
-<pre class="output"><code>Error: ... must contain names or character strings
+<pre class="output"><code>Error in rm(list &lt;- ls()): ... must contain names or character strings
 </code></pre>
-<div id="tip-warnings-vs.errors" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Warnings vs. Errors</h4>
 </div>
@@ -272,8 +272,8 @@
 <p>Pay attention when R does something unexpected! Errors, like above, are thrown when R cannot proceed with a calculation. Warnings on the other hand usually mean that the function has run, but it probably hasn’t worked as expected.</p>
 <p>In both cases, the message that R prints out usually give you clues how to fix a problem.</p>
 </div>
-</div>
-<div id="challenge-1" class="challenge panel panel-success">
+</aside>
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h4>
 </div>
@@ -284,23 +284,23 @@ age &lt;-<span class="st"> </span><span class="dv">122</span>
 mass &lt;-<span class="st"> </span>mass *<span class="st"> </span><span class="fl">2.3</span>
 age &lt;-<span class="st"> </span>age -<span class="st"> </span><span class="dv">20</span></code></pre>
 </div>
-</div>
-<div id="challenge-2" class="challenge panel panel-success">
+</section>
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h4>
 </div>
 <div class="panel-body">
 <p>Run the code from the previous challenge, and write a command to compare mass to age. Is mass larger than age?</p>
 </div>
-</div>
-<div id="challenge-3" class="challenge panel panel-success">
+</section>
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h4><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h4>
 </div>
 <div class="panel-body">
 <p>Clean up your working environment by deleting the mass and age variables.</p>
 </div>
-</div>
+</section>
         </div>
       </div>
       </article>

@@ -2,23 +2,23 @@
 layout: page
 title: R for reproducible scientific analysis
 subtitle: Control flow
-minutes: 30
+minutes: 45
 ---
 
 
 
-> ## Learning Objectives {.objectives}
+> ## Learning objectives {.objectives}
 >
 > * Write conditional statements with `if` and `else`.
-> * Write and understand `while` and `for` loops. 
+> * Write and understand `while` and `for` loops.
 >
 
-Often when we're coding we want to control the flow of our actions. This can be done 
-by setting actions to occur only if a condition or a set of conditions are met. 
+Often when we're coding we want to control the flow of our actions. This can be done
+by setting actions to occur only if a condition or a set of conditions are met.
 Alternatively, we can also set an action to occur a particular number of times.
 
-There are several ways you can control flow in R. 
-For conditional statements, the most commonly used approaches are the constructs: 
+There are several ways you can control flow in R.
+For conditional statements, the most commonly used approaches are the constructs:
 
 
 ~~~{.r}
@@ -47,7 +47,7 @@ x <- rpois(1, lambda=8)
 if (x >= 10) {
   print("x is greater than or equal to 10")
 }
-  
+
 x
 ~~~
 
@@ -59,7 +59,7 @@ x
 ~~~
 
 Note you may not get the same output as your neighbour because
-you may be sampling different random numbers from the same distribution. 
+you may be sampling different random numbers from the same distribution.
 
 Let's set a seed so that we all generate the same 'pseudo-random'
 number, and then print more information:
@@ -88,9 +88,9 @@ if (x >= 10) {
 >
 > In the above case, the function `rpois` generates a random number following a
 > Poisson distribution with a mean (i.e. lambda) of 8. The function `set.seed`
-> guarantees that all machines will generate the exact same 'pseudo-random' 
+> guarantees that all machines will generate the exact same 'pseudo-random'
 > number ([more about pseudo-random numbers](http://en.wikibooks.org/wiki/R_Programming/Random_Number_Generation)).
-> So if we `set.seed(10)`, we see that `x` takes the value 8. You should get the 
+> So if we `set.seed(10)`, we see that `x` takes the value 8. You should get the
 > exact same number.
 >
 
@@ -106,7 +106,7 @@ if (x) {
 }
 ~~~
 
-As we can see, the message was not printed because the vector x is `FALSE` 
+As we can see, the message was not printed because the vector x is `FALSE`
 
 
 ~~~{.r}
@@ -122,9 +122,9 @@ x
 ~~~
 
 > #### Challenge 1 {.challenge}
-> 
+>
 > Use an `if` statement to print a suitable message
-> reporting whether there are any records from 2002 in 
+> reporting whether there are any records from 2002 in
 > the `gapminder` dataset.
 > Now do the same for 2012.
 >
@@ -133,8 +133,8 @@ Did anyone get a warning message like this?
 
 
 ~~~{.output}
-Warning: the condition has length > 1 and only the first element will be
-used
+Warning in if (gapminder$year == 2012) {: the condition has length > 1 and
+only the first element will be used
 
 ~~~
 
@@ -144,28 +144,28 @@ element. Here you need to make sure your condition is of length 1.
 
 > #### Tip: `any` and `all` {.callout}
 > The `any` function will return TRUE if at least one
-> TRUE value is found within a vector, otherwise it will return `FALSE`. 
+> TRUE value is found within a vector, otherwise it will return `FALSE`.
 > This can be used in a similar way to the `%in%` operator.
 > The function `all`, as the name suggests, will only return `TRUE` if all values in
-> the vector are `TRUE`. 
+> the vector are `TRUE`.
 >
 
 
 ### Repeating operations
 
 Sometimes you will find yourself needing to repeat an operation until a certain
-condition is met. You can do this with a `while` loop. 
+condition is met. You can do this with a `while` loop.
 
 
 ~~~{.r}
 while(this condition is true){
   do a thing
-} 
+}
 ~~~
 
 Let's try an example, shall we?  We'll try to come up with some simple code
 that generates random numbers from a uniform distribution (the `runif` function)
-between 0 and 1 until it gets one that's less than 0.1.  
+between 0 and 1 until it gets one that's less than 0.1.
 
 
 ~~~{.r}
@@ -201,14 +201,14 @@ while(z > 0.1){
 
 
 ~~~{.output}
-[1] 0.4269
-[1] 0.6931
-[1] 0.08514
+[1] 0.4269077
+[1] 0.6931021
+[1] 0.08513597
 
 ~~~
 
 > #### Challenge 2 {.challenge}
-> 
+>
 > Use a `while` loop to construct a vector called 'pet_list'
 > with the value:
 > 'cat', 'dog', 'dog', 'dog', 'dog'
@@ -217,11 +217,11 @@ while(z > 0.1){
 >
 
 `while` loops will not always be appropriate. If you want to iterate over
-a set of values, when the order of iteration is important, and perform the 
-same operation on each, a `for` loop will do the job. 
-We saw `for` loops in the shell lessons earlier. This is the most 
-flexible of looping operations, but therefore also the hardest to use 
-correctly. Avoid using `for` loops unless the order of iteration is important: 
+a set of values, when the order of iteration is important, and perform the
+same operation on each, a `for` loop will do the job.
+We saw `for` loops in the shell lessons earlier. This is the most
+flexible of looping operations, but therefore also the hardest to use
+correctly. Avoid using `for` loops unless the order of iteration is important:
 i.e. the calculation at each iteration depends on the results of previous iterations.
 
 The basic structure of a `for` loop is:
@@ -308,7 +308,7 @@ Rather than printing the results, we could write the loop output to a new object
 
 
 ~~~{.r}
-output_vector <- c() 
+output_vector <- c()
 for (i in 1:5){
   for(j in c('a', 'b', 'c', 'd', 'e')){
     temp_output <- paste(i, j)
@@ -373,7 +373,7 @@ output_vector2
 
 > #### Challenge 3 {.challenge}
 >
-> Compare the objects output_vector and 
+> Compare the objects output_vector and
 > output_vector2. Are they the same? If not, why not?
 > How would you change the last block of code to make output_vector2
 > the same as output_vector?
@@ -388,7 +388,7 @@ output_vector2
 
 > #### Challenge 5 {.challenge}
 >
-> Modify the script from Challenge 4 to also loop over each 
+> Modify the script from Challenge 4 to also loop over each
 > country. This time print out whether the life expectancy is
 > smaller than 50, between 50 and 70, or greater than 70.
 >
@@ -396,7 +396,6 @@ output_vector2
 > #### Challenge 6 - Advanced {.challenge}
 >
 > Write a script that loops over each country in the `gapminder` dataset,
-> tests whether the country starts with a 'B', and graphs life expectancy 
-> against time as a line graph if the mean life expectancy is under 50 years. 
+> tests whether the country starts with a 'B', and graphs life expectancy
+> against time as a line graph if the mean life expectancy is under 50 years.
 >
-

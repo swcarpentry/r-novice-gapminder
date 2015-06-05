@@ -10,7 +10,7 @@ source("tools/chunk-options.R")
 ```
 
 
-> ### Learning Objectives {.objectives}
+> ## Learning objectives {.objectives}
 >
 > * To be able read R help files for functions and special operators.
 > * To be able to use CRAN task views to identify packages to solve a problem.
@@ -114,19 +114,20 @@ your issue.
 > What is the difference between the `sep` and `collapse` arguments?
 > 
 
-> #### Solution to Challenge 1 {.challenge}
-> 
-> Look at the help for the `paste` function. You'll need to use this later. 
-> 
-> ~~~ {.r}
-> help("paste")
-> ?paste
-> ~~~
->
-
-
 ### Other ports of call
 
 * [Quick R](http://www.statmethods.net/)
 * [RStudio cheat sheets](http://www.rstudio.com/resources/cheatsheets/)
 * [Cookbook for R](http://www.cookbook-r.com/)
+
+## Challenge solutions
+
+> #### Solution to challenge 1 {.challenge}
+> 
+> Look at the help for the `paste` function. You'll need to use this later. 
+> 
+> ```{r, eval=FALSE}
+> help("paste")
+> ?paste
+> ```
+>

@@ -2,12 +2,12 @@
 layout: page
 title: R for reproducible scientific analysis
 subtitle: Subsetting data
-minutes: 15
+minutes: 45
 ---
 
 
 
-> ### Learning Objectives {.objectives}
+> ## Learning objectives {.objectives}
 >
 > * To be able to subset vectors, factors, matrices, lists, and data frames
 > * To be able to extract individual and multiple elements:
@@ -20,14 +20,14 @@ minutes: 15
 R has many powerful subset operators and mastering them will allow you to
 easily perform complex operations on any kind of dataset.
 
-There are six different ways we can subset any kind of object, and three 
+There are six different ways we can subset any kind of object, and three
 different subsetting operators for the different data structures.
 
 Let's start with the workhorse of R: atomic vectors.
 
 
 ~~~{.r}
-x <- c(5.4, 6.2, 7.1, 4.8, 7.5) 
+x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 names(x) <- c('a', 'b', 'c', 'd', 'e')
 x
 ~~~
@@ -45,7 +45,7 @@ contents?
 
 ### Accessing elements using their indices
 
-To extract elements of a vector we can give their corresponding index, starting 
+To extract elements of a vector we can give their corresponding index, starting
 from one:
 
 
@@ -74,7 +74,7 @@ x[4]
 
 ~~~
 
-The square brackets operator is just like any other function. For atomic vectors 
+The square brackets operator is just like any other function. For atomic vectors
 (and matrices), it means "get me the nth element".
 
 We can ask for multiple elements at once:
@@ -196,32 +196,40 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 >
 > A common trip up for novices occurs when trying to skip
 > slices of a vector. Most people first try to negate a
-> sequence like so: 
+> sequence like so:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > x[-1:3]
 > ~~~
 > 
-> ~~~ {.output}
-> ## Error in x[-1:3] : only 0's may be mixed with negative subscripts
-> ~~~ 
+> 
+> 
+> ~~~{.output}
+> Error in x[-1:3]: only 0's may be mixed with negative subscripts
+> 
+> ~~~
 >
 > This gives a somewhat cryptic error:
 >
 > But remember the order of operations. `:` is really a function, so
 > what happens is it takes its first argument as -1, and second as 3,
-> so generates the sequence of numbers: `c(-1, 0, 1, 2, 3)`. 
+> so generates the sequence of numbers: `c(-1, 0, 1, 2, 3)`.
 >
 > The correct solution is to wrap that function call in brackets, so
 > that the `-` operator applies to the results:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > x[-(1:3)]
 > ~~~
->
-> ~~~ {.output}
-> ##   d   e 
-> ## 4.8 7.5 
+> 
+> 
+> 
+> ~~~{.output}
+>   d   e 
+> 4.8 7.5 
+> 
 > ~~~
 >
 
@@ -242,25 +250,32 @@ x
 
 ~~~
 
-> #### Challenge {.challenge}
+> #### Challenge 1 {.challenge}
 >
 > Given the following code:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > print(x)
 > ~~~
->
-> ~~~ {.output}
-> ##   a   b   c   d   e 
-> ## 5.4 6.2 7.1 4.8 7.5 
+> 
+> 
+> 
+> ~~~{.output}
+>   a   b   c   d   e 
+> 5.4 6.2 7.1 4.8 7.5 
+> 
 > ~~~
 >
 > 1. Come up with at least 3 different commands that will produce the following output:
 >
-> ~~~ {.r}
-> x[2:4]
+> 
+> ~~~{.output}
+>   b   c   d 
+> 6.2 7.1 4.8 
+> 
 > ~~~
 >
 > 2. Compare notes with your neighbour. Did you have different strategies?
@@ -283,8 +298,8 @@ x[c("a", "c")]
 
 ~~~
 
-This is usually a much more reliable way to subset objects: the 
-position of various elements can often change when chaining together 
+This is usually a much more reliable way to subset objects: the
+position of various elements can often change when chaining together
 subsetting operations, but the names will always remain the same!
 
 Unfortunately we can't skip or remove elements so easily.
@@ -299,14 +314,14 @@ x[-which(names(x) == "a")]
 
 
 ~~~{.output}
-  b   c   e 
-6.2 7.1 7.5 
+  b   c   d   e 
+6.2 7.1 4.8 7.5 
 
 ~~~
 
 The `which` function returns the indices of all `TRUE` elements of its argument.
 Remember that expressions evaluate before being passed to functions. Let's break
-this down so that its clearer whats happening.
+this down so that its clearer what's happening.
 
 First this happens:
 
@@ -318,7 +333,7 @@ names(x) == "a"
 
 
 ~~~{.output}
-[1]  TRUE FALSE FALSE FALSE
+[1]  TRUE FALSE FALSE FALSE FALSE
 
 ~~~
 
@@ -353,21 +368,21 @@ x[-which(names(x) %in% c("a", "c"))]
 
 
 ~~~{.output}
-  b   e 
-6.2 7.5 
+  b   d   e 
+6.2 4.8 7.5 
 
 ~~~
 
-The `%in%` goes through each element of its left argument, in this case the 
+The `%in%` goes through each element of its left argument, in this case the
 names of `x`, and asks, "Does this element occur in the second argument?".
 
 > #### Tip: Getting help for operators {.callout}
-> 
+>
 > Remember you can search for help on operators by wrapping them in quotes:
 > `help("%in%")` or `?"%in%"`.
 >
 
-So why can't we use `==` like before? That's an excellent question. 
+So why can't we use `==` like before? That's an excellent question.
 
 Let's take a look at just the comparison component:
 
@@ -379,11 +394,19 @@ names(x) == c('a', 'c')
 
 
 ~~~{.output}
-[1]  TRUE FALSE FALSE FALSE
+Warning in names(x) == c("a", "c"): longer object length is not a multiple
+of shorter object length
 
 ~~~
 
-Obviously "c" is in the names of `x`, so why didn't this work? `==` works 
+
+
+~~~{.output}
+[1]  TRUE FALSE FALSE FALSE FALSE
+
+~~~
+
+Obviously "c" is in the names of `x`, so why didn't this work? `==` works
 slightly differently to `%in%`. It will compare each element of its left argument
 to the corresponding element of its right argument.
 
@@ -417,14 +440,15 @@ names(x) == c('a', 'c', 'e')
 
 
 ~~~{.output}
-Warning: longer object length is not a multiple of shorter object length
+Warning in names(x) == c("a", "c", "e"): longer object length is not a
+multiple of shorter object length
 
 ~~~
 
 
 
 ~~~{.output}
-[1]  TRUE FALSE FALSE FALSE
+[1]  TRUE FALSE FALSE FALSE FALSE
 
 ~~~
 
@@ -443,8 +467,8 @@ x[c(TRUE, TRUE, FALSE, FALSE)]
 
 
 ~~~{.output}
-  a   b 
-5.4 6.2 
+  a   b   e 
+5.4 6.2 7.5 
 
 ~~~
 
@@ -459,8 +483,8 @@ x[c(TRUE, FALSE)]
 
 
 ~~~{.output}
-  a   c 
-5.4 7.1 
+  a   c   e 
+5.4 7.1 7.5 
 
 ~~~
 
@@ -484,7 +508,7 @@ x[x > 7]
 >
 > There are many situations in which you will wish to combine multiple conditions.
 > To do so several logical operations exist in R:
-> 
+>
 >  * `|` logical OR: returns `TRUE`, if either the left or right are `TRUE`.
 >  * `&` logical AND: returns `TRUE` if both the left and right are `TRUE`
 >  * `!` logical NOT: converts `TRUE` to `FALSE` and `FALSE` to `TRUE`
@@ -496,19 +520,23 @@ x[x > 7]
 >
 > Given the following code:
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > print(x)
 > ~~~
->
-> ~~~ {.output}
-> ##   a   b   c   d   e 
-> ## 5.4 6.2 7.1 4.8 7.5 
+> 
+> 
+> 
+> ~~~{.output}
+>   a   b   c   d   e 
+> 5.4 6.2 7.1 4.8 7.5 
+> 
 > ~~~
 >
 > 1. Write a subsetting command to return the values in x that are greater than 4 and less than 7.
-> 
+>
 
 #### Handling special values
 
@@ -529,7 +557,7 @@ There are a number of special functions you can use to filter out this data:
 Now that we've explored the different ways to subset vectors, how
 do we subset the other data structures?
 
-Factor subsetting works the same way as vector subsetting. 
+Factor subsetting works the same way as vector subsetting.
 
 
 ~~~{.r}
@@ -605,9 +633,9 @@ m[3:4, c(3,1)]
 
 
 ~~~{.output}
-         [,1]    [,2]
-[1,]  1.12493 -0.8356
-[2,] -0.04493  1.5953
+            [,1]       [,2]
+[1,]  1.12493092 -0.8356286
+[2,] -0.04493361  1.5952808
 
 ~~~
 
@@ -622,13 +650,13 @@ m[, c(3,4)]
 
 
 ~~~{.output}
-         [,1]     [,2]
-[1,] -0.62124  0.82122
-[2,] -2.21470  0.59390
-[3,]  1.12493  0.91898
-[4,] -0.04493  0.78214
-[5,] -0.01619  0.07456
-[6,]  0.94384 -1.98935
+            [,1]        [,2]
+[1,] -0.62124058  0.82122120
+[2,] -2.21469989  0.59390132
+[3,]  1.12493092  0.91897737
+[4,] -0.04493361  0.78213630
+[5,] -0.01619026  0.07456498
+[6,]  0.94383621 -1.98935170
 
 ~~~
 
@@ -643,7 +671,7 @@ m[3,]
 
 
 ~~~{.output}
-[1] -0.8356  0.5758  1.1249  0.9190
+[1] -0.8356286  0.5757814  1.1249309  0.9189774
 
 ~~~
 
@@ -658,8 +686,8 @@ m[3, , drop=FALSE]
 
 
 ~~~{.output}
-        [,1]   [,2]  [,3]  [,4]
-[1,] -0.8356 0.5758 1.125 0.919
+           [,1]      [,2]     [,3]      [,4]
+[1,] -0.8356286 0.5757814 1.124931 0.9189774
 
 ~~~
 
@@ -674,13 +702,13 @@ m[, c(3,6)]
 
 
 ~~~{.output}
-Error: subscript out of bounds
+Error in m[, c(3, 6)]: subscript out of bounds
 
 ~~~
 
 > #### Tip: Higher dimensional arrays {.callout}
 >
-> when dealing with multi-dimensional arrays, each argument to `[` 
+> when dealing with multi-dimensional arrays, each argument to `[`
 > corresponds to a dimension. For example, a 3D array, the first three
 > arguments correspond to the rows, columns, and depth dimension.
 >
@@ -696,13 +724,13 @@ m[5]
 
 
 ~~~{.output}
-[1] 0.3295
+[1] 0.3295078
 
 ~~~
 
 
 This usually isn't useful. However it is useful to note that matrices
-are laid out in *column-major format* by default. That is the elements of the 
+are laid out in *column-major format* by default. That is the elements of the
 vector are arranged column-wise:
 
 
@@ -722,37 +750,41 @@ matrix(1:6, nrow=2, ncol=3)
 Matrices can also be subsetted using their rownames and column names
 instead of their row and column indices.
 
-> #### Challenge {.challenge}
+> #### Challenge 2 {.challenge}
 >
 > Given the following code:
+>
 > 
-> ~~~ {.r}
+> ~~~{.r}
 > m <- matrix(1:18, nrow=3, ncol=6)
 > print(m)
 > ~~~
 > 
-> ~~~ {.output}
-> ##      [,1] [,2] [,3] [,4] [,5] [,6]
-> ## [1,]    1    4    7   10   13   16
-> ## [2,]    2    5    8   11   14   17
-> ## [3,]    3    6    9   12   15   18
+> 
+> 
+> ~~~{.output}
+>      [,1] [,2] [,3] [,4] [,5] [,6]
+> [1,]    1    4    7   10   13   16
+> [2,]    2    5    8   11   14   17
+> [3,]    3    6    9   12   15   18
+> 
 > ~~~
 >
 > 1. Which of the following commands will extract the values 11 and 14?
-> 
+>
 > A. `m[2,4,2,5]`
-> 
+>
 > B. `m[2:5]`
-> 
+>
 > C. `m[4:5,2]`
-> 
+>
 > D. `m[2,c(4,5)]`
-> 
+>
 
 
 ### List subsetting
 
-Now we'll introduce some new subsetting operators. There are three functions 
+Now we'll introduce some new subsetting operators. There are three functions
 used to subset lists. `[`, as we've seen for atomic vectors and matrices,
 as well as `[[` and `$`.
 
@@ -761,8 +793,8 @@ Using `[` will always return a list. If you want to *subset* a list, but not
 
 
 ~~~{.r}
-xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris)) 
-xlist[1] 
+xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
+xlist[1]
 ~~~
 
 
@@ -776,7 +808,7 @@ $a
 This returns a *list with one element*.
 
 We can subset elements of a list exactly the same was as atomic
-vectors using `[`. Comparison operations however won't work as 
+vectors using `[`. Comparison operations however won't work as
 they're not recursive, they will try to condition on the data structures
 in each element of the list, not the individual elements within those
 data structures.
@@ -824,7 +856,7 @@ xlist[[1:2]]
 
 
 ~~~{.output}
-Error: subscript out of bounds
+Error in xlist[[1:2]]: subscript out of bounds
 
 ~~~
 
@@ -838,7 +870,7 @@ xlist[[-1]]
 
 
 ~~~{.output}
-Error: attempt to select more than one element
+Error in xlist[[-1]]: attempt to select more than one element
 
 ~~~
 
@@ -876,18 +908,22 @@ xlist$data
 
 ~~~
 
-> #### Challenge {.challenge}
-> 1. Given the following list:
+> #### Challenge 3 {.challenge}
+> Given the following list:
 >
-> ~~~ {.r}
-> xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris)) 
+> 
+> ~~~{.r}
+> xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
 > ~~~
+>
+> Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. 
+> Hint: the number 2 is contained within the "b" item in the list.
+
+> #### Challenge 4 {.challenge}
+> Given a linear model:
+>
 > 
-> Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. Hint: the number 2 is contained within the "b" item in the list.
-> 
-> 2. Given a linear model:
-> 
-> ~~~ {.r}
+> ~~~{.r}
 > mod <- aov(pop ~ lifeExp, data=gapminder)
 > ~~~
 >
@@ -930,11 +966,11 @@ head(gapminder[["lifeExp"]])
 
 
 ~~~{.output}
-[1] 28.80 30.33 32.00 34.02 36.09 38.44
+[1] 28.801 30.332 31.997 34.020 36.088 38.438
 
 ~~~
 
-And `$` provides a convenient shorthand to extact columns by name:
+And `$` provides a convenient shorthand to extract columns by name:
 
 
 ~~~{.r}
@@ -959,9 +995,9 @@ gapminder[1:3,]
 
 ~~~{.output}
       country year      pop continent lifeExp gdpPercap
-1 Afghanistan 1952  8425333      Asia   28.80     779.4
-2 Afghanistan 1957  9240934      Asia   30.33     820.9
-3 Afghanistan 1962 10267083      Asia   32.00     853.1
+1 Afghanistan 1952  8425333      Asia  28.801  779.4453
+2 Afghanistan 1957  9240934      Asia  30.332  820.8530
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007
 
 ~~~
 
@@ -977,57 +1013,231 @@ gapminder[3,]
 
 ~~~{.output}
       country year      pop continent lifeExp gdpPercap
-3 Afghanistan 1962 10267083      Asia      32     853.1
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007
 
 ~~~
 
 But for a single column the result will be a vector (this can
 be changed with the third argument, `drop = FALSE`).
 
-> #### Challenge {.challenge}
-> 
+> #### Challenge 5 {.challenge}
+>
 > Fix each of the following common data frame subsetting errors:
-> 
+>
 > 1. Extract observations collected for the year 1957
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > gapminder[gapminder$year = 1957,]
 > ~~~
 >
 > 2. Extract all columns except 1 through to 4
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > gapminder[,-1:4]
 > ~~~
 >
 > 3. Extract the rows where the life expectancy is longer the 80 years
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > gapminder[gapminder$lifeExp > 80]
 > ~~~
 >
-> 4. Extract the first row, and the fourth and fifth columns 
+> 4. Extract the first row, and the fourth and fifth columns
 >   (`lifeExp` and `gdpPercap`).
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > gapminder[1, 4, 5]
 > ~~~
 >
 > 5. Advanced: extract rows that contain information for the years 2002
 >    and 2007
 >
-> ~~~ {.r}
+> 
+> ~~~{.r}
 > gapminder[gapminder$year == 2002 | 2007,]
 > ~~~
 >
 
-> #### Challenge {.challenge}
+> #### Challenge 6 {.challenge}
 >
 > 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
 >
-> 
-> 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9 
+>
+> 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
 > and 19 through 23. You can do this in one or two steps.
 >
 
+## Challenge solutions
 
+> #### Solution to challenge 1 {.challenge}
+>
+> Given the following code:
+>
+> 
+> ~~~{.r}
+> x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
+> names(x) <- c('a', 'b', 'c', 'd', 'e')
+> print(x)
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+>   a   b   c   d   e 
+> 5.4 6.2 7.1 4.8 7.5 
+> 
+> ~~~
+>
+> 1. Come up with at least 3 different commands that will produce the following output:
+>
+> 
+> ~~~{.output}
+>   b   c   d 
+> 6.2 7.1 4.8 
+> 
+> ~~~
+>
+> 
+> ~~~{.r}
+> x[2:4] 
+> x[-c(1,5)]
+> x[c("b", "c", "d")]
+> x[c(2,3,4)]
+> ~~~
+>
+>
+
+> #### Solution to challenge 2 {.challenge}
+>
+> Given the following code:
+>
+> 
+> ~~~{.r}
+> m <- matrix(1:18, nrow=3, ncol=6)
+> print(m)
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+>      [,1] [,2] [,3] [,4] [,5] [,6]
+> [1,]    1    4    7   10   13   16
+> [2,]    2    5    8   11   14   17
+> [3,]    3    6    9   12   15   18
+> 
+> ~~~
+>
+> 1. Which of the following commands will extract the values 11 and 14?
+>
+> A. `m[2,4,2,5]`
+>
+> B. `m[2:5]`
+>
+> C. `m[4:5,2]`
+>
+> D. `m[2,c(4,5)]`
+>
+> Answer: D
+
+> #### Solution to challenge 3 {.challenge}
+> Given the following list:
+>
+> 
+> ~~~{.r}
+> xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
+> ~~~
+>
+> Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. 
+> Hint: the number 2 is contained within the "b" item in the list.
+>
+> 
+> ~~~{.r}
+> xlist$b[2]
+> xlist[[2]][2]
+> xlist[["b"]][2]
+> ~~~
+
+
+> #### Solution to challenge 4 {.challenge}
+> Given a linear model:
+>
+> 
+> ~~~{.r}
+> mod <- aov(pop ~ lifeExp, data=gapminder)
+> ~~~
+>
+> Extract the residual degrees of freedom (hint: `attributes()` will help you)
+>
+> 
+> ~~~{.r}
+> attributes(mod) ## `df.residual` is one of the names of `mod`
+> mod$df.residual
+> ~~~
+
+
+> #### Solution to challenge 5 {.challenge}
+>
+> Fix each of the following common data frame subsetting errors:
+>
+> 1. Extract observations collected for the year 1957
+>
+> 
+> ~~~{.r}
+> # gapminder[gapminder$year = 1957,]
+> gapminder[gapminder$year == 1957,]
+> ~~~
+>
+> 2. Extract all columns except 1 through to 4
+>
+> 
+> ~~~{.r}
+> # gapminder[,-1:4]
+> gapminder[,-c(1:4)]
+> ~~~
+>
+> 3. Extract the rows where the life expectancy is longer the 80 years
+>
+> 
+> ~~~{.r}
+> # gapminder[gapminder$lifeExp > 80]
+> gapminder[gapminder$lifeExp > 80,]
+> ~~~
+>
+> 4. Extract the first row, and the fourth and fifth columns
+>   (`lifeExp` and `gdpPercap`).
+>
+> 
+> ~~~{.r}
+> # gapminder[1, 4, 5]
+> gapminder[1, c(4, 5)]
+> ~~~
+>
+> 5. Advanced: extract rows that contain information for the years 2002
+>    and 2007
+>
+> 
+> ~~~{.r}
+> # gapminder[gapminder$year == 2002 | 2007,]
+> gapminder[gapminder$year == 2002 | gapminder$year == 2007,]
+> gapminder[gapminder$year %in% c(2002, 2007),]
+> ~~~
+>
+
+> #### Solution to challenge 6 {.challenge}
+>
+> 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
+>
+> Answer: `gapminder` is a data.frame so needs to be subsetted on two dimensions. `gapminder[1:20, ]` subsets the data to give the first 20 rows and all columns.
+>
+> 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
+> and 19 through 23. You can do this in one or two steps.
+>
+> 
+> ~~~{.r}
+> gapminder_small <- gapminder[c(1:9, 19:23),]
+> ~~~
+>
