@@ -20,12 +20,12 @@ You also agree to abide by our
     which is explained in the chapter [Contributing to a Project][pro-git-chapter]
     in Scott Chacon's book *Pro Git*.
 
-3.  For our lessons,
-    you should branch from and submit pull requests against the `gh-pages` branch.
+3.  When editing lessons, please only commit changes to the Markdown
+    files, *not* the generated HTML.  We will re-create the HTML after
+    your pull request is merged.  (Working this way ensures that each
+    change only needs to be reviewed once, in one place.)
 
-4.  When editing lesson pages, you need only commit changes to the Markdown source files.
-
-5.  If you're looking for things to work on,
+4.  If you're looking for things to work on,
     please see [the list of issues for this repository][issues]
     or for [the template][lesson-template-issues],
     or have a look at [our actual lessons][swc-lessons].
