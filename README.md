@@ -1,5 +1,5 @@
-R for reproducible scientific analysis
-===
+R for Reproducible Scientific Analysis
+======================================
 
 Introduction to R for non-programmers using gapminder data.
 
@@ -42,29 +42,24 @@ the [lesson template documentation][dependencies], you also need to install the
 R package [knitr][].
 
 Once you've made your edits and looked over the rendered html files, you should
- add, commit, and push **only the source R Markdown file(s)** to your fork, and 
- then open a pull request. The repository  maintainers will run the html 
- generation process once the pull request has been merged. You can learn more 
- about the design of the build process [here][design].
-
-[issues]: https://github.com/swcarpentry/r-novice-gapminder/issues 
-[contrib]: https://github.com/swcarpentry/r-novice-gapminder/blob/gh-pages/CONTRIBUTING.md
-[dependencies]:
-https://github.com/swcarpentry/lesson-template#dependencies 
-[knitr]:
-http://cran.r-project.org/web/packages/knitr/index.html 
-[design]:
-https://github.com/swcarpentry/lesson-template/blob/gh-pages/DESIGN.md
+add, commit, and push **only the source R Markdown file(s)** to your fork, and 
+then open a pull request. The repository  maintainers will run the html 
+generation process once the pull request has been merged. You can learn more 
+about the design of the build process [here][design].
 
 ## Getting Help
 
-> Please see
-> [https://github.com/swcarpentry/lesson-template](https://github.com/swcarpentry/lesson-template)
-> for instructions on formatting, building, and submitting lessons, or run
-> `make` in this directory for a list of helpful commands.
+Please see
+[https://github.com/swcarpentry/lesson-example](https://github.com/swcarpentry/lesson-example)
+for instructions on formatting, building, and submitting lessons, or run
+`make` in this directory for a list of helpful commands.
 
 If you have questions or proposals, please send them to the [r-discuss][]
 mailing list.
 
-[r-discuss]:
-http://lists.software-carpentry.org/mailman/listinfo/r-discuss_lists.software-carpentry.org
+[contrib]: https://github.com/swcarpentry/r-novice-gapminder/blob/gh-pages/CONTRIBUTING.md
+[dependencies]: https://github.com/swcarpentry/lesson-template#dependencies 
+[design]: https://github.com/swcarpentry/lesson-template/blob/gh-pages/DESIGN.md
+[issues]: https://github.com/swcarpentry/r-novice-gapminder/issues 
+[knitr]: http://cran.r-project.org/web/packages/knitr/index.html 
+[r-discuss]: http://lists.software-carpentry.org/mailman/listinfo/r-discuss_lists.software-carpentry.org
