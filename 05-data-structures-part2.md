@@ -76,7 +76,7 @@ class(df$id)
 
 
 ~~~{.output}
-[1] "character"
+[1] "factor"
 
 ~~~
 
