@@ -163,17 +163,18 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 >
 
 > #### Solution to Challenge 1 {.challenge}
->```{r, eval=FALSE}
+>```{r}
 >year_country_lifeExp_Africa <- gapminder %>%
 >                            filter(continent=="Africa") %>%
 >                            select(year,country,lifeExp)
 > ```
 
 > #### Solution to Challenge 2 {.challenge}
->```{r, eval=FALSE}
-lifeExp_bycountry <- gapminder %>%
-    group_by(country) %>%
-    summarize(mean_lifeExp=mean(lifeExp))
+>```{r}
+>lifeExp_bycountry <- gapminder %>%
+>    group_by(country) %>%
+>    summarize(mean_lifeExp=mean(lifeExp))
+>```
 
 > #### Solution to Advanced Challenge {.challenge}
 >```{r}
