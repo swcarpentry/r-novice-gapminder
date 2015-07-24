@@ -184,3 +184,7 @@ lifeExp_bycountry <- gapminder %>%
 >    summarize(mean_lifeExp=mean(lifeExp)) %>%
 >    arrange(desc(mean_lifeExp))
 >```
+
+#### Other great resources
+[Data Wrangling Cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+[Introduction to dplyr](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
