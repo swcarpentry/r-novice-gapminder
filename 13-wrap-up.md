@@ -13,7 +13,7 @@ minutes: 15
 
 ### Best practices for writing nice code
 
-#### Make code readable
+#### Make code readable 
 
 The most important part of writing code is making it readable and understandable.
 You want someone else to be able to pick up your code and be able to understand

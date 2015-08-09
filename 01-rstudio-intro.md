@@ -38,20 +38,31 @@ When you first open RStudio, you will be greeted by three panels:
   * Workspace/History (tabbed in upper right)
   * Files/Plots/Packages/Help (tabbed in lower right)
 
-Once you open files, such as R scripts, a scripting panel will also open in the top left.
+Once you open files, such as R scripts, an editor panel will also open
+in the top left.
 
 #### Work flow within Rstudio
 There are two main ways one can work within Rstudio.
 
-1. Test and play within the interactive R console then copy code into a .R file to run later.
-  1.  This works well when doing small tests and initially starting off.
-  2.  Becomes laboursome.
-2. Start writing in an .R file and use Rstudio's command / short cut to push current line, selected lines or modified lines to the interactive R console.
-  1. This is great way to start and work as all workings are saved for latter reference and can be read latter.
+1. Test and play within the interactive R console then copy code into
+a .R file to run later. 
+   *  This works well when doing small tests and initially starting off.
+   *  It quickly becomes laborious
+2. Start writing in an .R file and use Rstudio's command / short cut
+to push current line, selected lines or modified lines to the
+interactive R console. 
+   * This is great way to start; all your code is saved for later
+   * You will be able to run the file you create from within RStudio
+   or using R's `source()`  function.
 
-> #### Tip: Pushing to the interactive R console {.callout}
-> To run the current line click on the `Run` button just above the file pane. Or use the short cut which can be see
-> by hovering the mouse over the button.
+> #### Tip: Running segments of your code {.callout}
+> RStudio offers you great flexibility in running code from within
+> the editor window. There are buttons, menu choices, and keyboard
+> shortcuts. To run the current line,  you can
+>          * click on the `Run` button just above the editor panel, or
+>          * select "Run Lines" from the "Code" menu, or
+           * hit Ctrl-Enter in Windows or Linux. (This shortcut can also be
+	   seen by hovering the mouse over the button).
 >
 > To run a block of code, select it and then `Run`. If you have modified a line
 > of code within a block of code you have just run. There is no need to reselct the section and `Run`,
@@ -451,6 +462,54 @@ But this is much less common among R users.  The most important thing is to
 where it is less confusing to use `<-` than `=`, and it is the most common
 symbol used in the community. So the recommendation is to use `<-`.
 
+#### Vectorization
+
+One final thing to be aware of is that R is *vectorized*, meaning that
+variables and functions can have vectors as values. For example
+
+
+~~~{.r}
+1:5
+~~~
+
+
+
+~~~{.output}
+[1] 1 2 3 4 5
+
+~~~
+
+
+
+~~~{.r}
+2^(1:5)
+~~~
+
+
+
+~~~{.output}
+[1]  2  4  8 16 32
+
+~~~
+
+
+
+~~~{.r}
+x <- 1:5
+2^x
+~~~
+
+
+
+~~~{.output}
+[1]  2  4  8 16 32
+
+~~~
+
+This is incredibly powerful; we will discuss this further in an
+upcoming lesson.
+
+
 #### Managing your environment
 
 There are a few useful commands you can use to interact with the R session.
@@ -491,11 +550,11 @@ ls
 
 ~~~{.output}
 function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE, 
-    pattern) 
+    pattern, sorted = TRUE) 
 {
     if (!missing(name)) {
-        nameValue <- try(name, silent = TRUE)
-        if (identical(class(nameValue), "try-error")) {
+        pos <- tryCatch(name, error = function(e) e)
+        if (inherits(pos, "error")) {
             name <- substitute(name)
             if (!is.character(name)) 
                 name <- deparse(name)
@@ -503,9 +562,8 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
                 sQuote(name)), domain = NA)
             pos <- name
         }
-        else pos <- nameValue
     }
-    all.names <- .Internal(ls(envir, all.names))
+    all.names <- .Internal(ls(envir, all.names, sorted))
     if (!missing(pattern)) {
         if ((ll <- length(grep("[", pattern, fixed = TRUE))) && 
             ll != length(grep("]", pattern, fixed = TRUE))) {
@@ -522,7 +580,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7fd893942358>
+<bytecode: 0x21c2398>
 <environment: namespace:base>
 
 ~~~
