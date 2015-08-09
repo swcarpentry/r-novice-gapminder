@@ -76,14 +76,13 @@
 <h4 id="tip-running-segments-of-your-code"><span class="glyphicon glyphicon-pushpin"></span>Tip: Running segments of your code</h4>
 </div>
 <div class="panel-body">
-<p>RStudio allows you to run specific sections of code from within the editor panel. There are buttons, menu choices, and keyboard shortcuts to help you do this.</p>
-<p>To run the current line, you have three choices: 1. you can click on the <code>Run</code> button just above the editor panel, 2. select “Run Lines” from the “Code” menu, or 3. hit Ctrl+Enter in Windows or Linux or Command+Enter in OS X. (This shortcut can also be seen by hovering the mouse over the button).</p>
-<p>To run a block of code, select it and then <code>Run</code>. If you have modified a line of code within a block of code you have just run, you can use the next button to the right, <code>Re-run the previous region</code> (also Ctrl-Shift-P or Command+Shift+P). This will run the previous code block including the modifications you have made.</p>
+<p>RStudio offers you great flexibility in running code from within the editor window. There are buttons, menu choices, and keyboard shortcuts. To run the current line, you can * click on the <code>Run</code> button just above the editor panel, or * select “Run Lines” from the “Code” menu, or * hit Ctrl-Enter in Windows or Linux. (This shortcut can also be seen by hovering the mouse over the button).</p>
+<p>To run a block of code, select it and then <code>Run</code>. If you have modified a line of code within a block of code you have just run. There is no need to reselct the section and <code>Run</code>, you can use the next button along, <code>Re-run the previous region</code>. This will run the previous code block inculding the modifications you have made.</p>
 </div>
 </aside>
 <h3 id="introduction-to-r">Introduction to R</h3>
 <p>A lot of your time in R will be spent in the R interactive console. This is where you will run all of your code, and can be a useful environment to try out ideas before adding them to an R script file. This console in RStudio is the same as the one you would get if you just typed in <code>R</code> in your commandline environment.</p>
-<p>The first thing you will see in the R interactive session is a bunch of information, followed by a “&gt;” and a blinking cursor. In many ways this is similar to the shell environment you learned about during the shell lessons. The command lines provides a “Read, evaluate, print loop”: you type in commands, R tries to execute them, and then returns a result.</p>
+<p>The first thing you will see in the R interactive session is a bunch of information, followed by a “&gt;” and a blinking cursor. In many ways this is similar to the shell environment you learnt about during the shell lessons: it operates on the same idea of a “Read, evaluate, print loop”: you type in commands, R tries to execute them, and then returns a result.</p>
 <h4 id="using-r-as-a-calculator">Using R as a calculator</h4>
 <p>The simplest thing you could do with R is do arithmetic:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> +<span class="st"> </span><span class="dv">100</span></code></pre></div>
@@ -120,17 +119,16 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span>) *<span class="st"> </span><span class="dv">2</span></code></pre></div>
 <pre class="output"><code>[1] 16
 </code></pre>
-<p>This can become unwieldy, but makes your intentions crystal-clear:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">3</span> +<span class="st"> </span>(<span class="dv">5</span> *<span class="st"> </span>(<span class="dv">2</span> ^<span class="st"> </span><span class="dv">2</span>))) <span class="co"># hard to read but unambiguous</span>
+<p>But this can get unwieldy when not needed:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">3</span> +<span class="st"> </span>(<span class="dv">5</span> *<span class="st"> </span>(<span class="dv">2</span> ^<span class="st"> </span><span class="dv">2</span>))) <span class="co"># hard to read</span>
 <span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span> *<span class="st"> </span><span class="dv">2</span> ^<span class="st"> </span><span class="dv">2</span>       <span class="co"># easier to read, once you know rules</span>
 <span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span> *<span class="st"> </span>(<span class="dv">2</span> ^<span class="st"> </span><span class="dv">2</span>)     <span class="co"># if you forget some rules, this might help</span></code></pre></div>
-<p>Keep in mind that you may not be the only person reading your code.</p>
-<p>The text after each line of code is called a comment. Anything that follows the hash symbol <code>#</code> is ignored by R when it executes code.</p>
-<p>By default, R will print large or small numbers using scientific notation:</p>
+<p>The text I’ve typed after each line of code is called a comment. Anything that follows on from the octothorpe (or hash) symbol <code>#</code> is ignored by R when it executes code.</p>
+<p>Really small or large numbers get a scientific notation:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span>/<span class="dv">10000</span></code></pre></div>
 <pre class="output"><code>[1] 2e-04
 </code></pre>
-<p>This is shorthand for “multiplied by <code>10^XX</code>”. So <code>2e-4</code> is shorthand for <code>2 * 10^(-4)</code>.</p>
+<p>Which is shorthand for “multiplied by <code>10^XX</code>”. So <code>2e-4</code> is shorthand for <code>2 * 10^(-4)</code>.</p>
 <p>You can write numbers in scientific notation too:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">5e3</span>  <span class="co"># Note the lack of minus here</span></code></pre></div>
 <pre class="output"><code>[1] 5000
@@ -150,10 +148,10 @@
 <pre class="output"><code>[1] 1.648721
 </code></pre>
 <p>Don’t worry about trying to remember every function in R. You can simply look them up on google, or if you can remember the start of the function’s name, use the tab completion in RStudio.</p>
-<p>This is one advantage (among many) that RStudio has over R on its own: it has autocompletion abilities that allow you to more easily look up functions, their arguments, and the values that they take.</p>
+<p>This is one advantage that RStudio has over R on its own, it has autocompletion abilities that allow you to more easily look up functions, their arguments, and the values that they take.</p>
 <p>Typing a <code>?</code> before the name of a command will open the help page for that command. As well as providing a detailed description of the command and how it works, scrolling ot the bottom of the help page will usually show a collection of code examples which illustrate command usage. We’ll go through an example later.</p>
 <h4 id="comparing-things">Comparing things</h4>
-<p>We can also do logical comparisons in R:</p>
+<p>We can also do comparison in R:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> ==<span class="st"> </span><span class="dv">1</span>  <span class="co"># equality (note two equals signs, read as &quot;is equal to&quot;)</span></code></pre></div>
 <pre class="output"><code>[1] TRUE
 </code></pre>
@@ -179,7 +177,7 @@
 <div class="panel-body">
 <p>A word of warning about comparing numbers: you should never use <code>==</code> to compare two numbers unless they are integers (a data type which can specifically represent only whole numbers).</p>
 <p>Computers may only represent decimal numbers with a certain degree of precision, so two numbers which look the same when printed out by R, may actually have different underlying representations and therefore be different by a small margin of error (called Machine numeric tolerance).</p>
-<p>Instead you should use R’s built-in <code>all.equal</code> function, which tests for “near equality”.</p>
+<p>Instead you should use the <code>all.equal</code> function.</p>
 <p>Further reading: <a href="http://floating-point-gui.de/" class="uri">http://floating-point-gui.de/</a></p>
 </div>
 </aside>
@@ -210,7 +208,20 @@
 <p>What you use is up to you, but <strong>be consistent</strong>.</p>
 <p>It is also possible to use the <code>=</code> operator for assignment:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="dv">1</span>/<span class="dv">40</span></code></pre></div>
-<p>You should be <strong>be consistent</strong> with the operator you use. The <code>&lt;-</code> is the most common symbol used in the community for assigning a value to a variable, so the standard recommendation is to use it. We will also see that there are contexts where <code>=</code> is appropriate.</p>
+<p>But this is much less common among R users. The most important thing is to <strong>be consistent</strong> with the operator you use. There are occasionally places where it is less confusing to use <code>&lt;-</code> than <code>=</code>, and it is the most common symbol used in the community. So the recommendation is to use <code>&lt;-</code>.</p>
+<h4 id="vectorization">Vectorization</h4>
+<p>One final thing to be aware of is that R is <em>vectorized</em>, meaning that variables and functions can have vectors as values. For example</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span>:<span class="dv">5</span></code></pre></div>
+<pre class="output"><code>[1] 1 2 3 4 5
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span>^(<span class="dv">1</span>:<span class="dv">5</span>)</code></pre></div>
+<pre class="output"><code>[1]  2  4  8 16 32
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">5</span>
+<span class="dv">2</span>^x</code></pre></div>
+<pre class="output"><code>[1]  2  4  8 16 32
+</code></pre>
+<p>This is incredibly powerful; we will make much use of this ability.</p>
 <h4 id="managing-your-environment">Managing your environment</h4>
 <p>There are a few useful commands you can use to interact with the R session.</p>
 <p><code>ls</code> will list all of the variables and functions stored in the global environment (your working R session):</p>
@@ -259,7 +270,7 @@
     }
     else all.names
 }
-&lt;bytecode: 0x2f37398&gt;
+&lt;bytecode: 0x2f3c398&gt;
 &lt;environment: namespace:base&gt;
 </code></pre>
 <p>You can use <code>rm</code> to delete objects you no longer need:</p>

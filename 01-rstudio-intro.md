@@ -55,24 +55,20 @@ interactive R console.
    * You will be able to run the file you create from within RStudio
    or using R's `source()`  function.
 
-
 > #### Tip: Running segments of your code {.callout}
-> RStudio allows you to run specific sections of code from within
-> the editor panel. There are buttons, menu choices, and keyboard
-> shortcuts to help you do this.
->
-> To run the current line,  you have three choices: 1. you can
-> click on the `Run` button just above the editor panel, 2. select
-> "Run Lines" from the "Code" menu, or 3. hit Ctrl+Enter in Windows or
-> Linux or Command+Enter in OS X. (This shortcut can also be 
-> 	   seen by hovering the mouse over the button). 
+> RStudio offers you great flexibility in running code from within
+> the editor window. There are buttons, menu choices, and keyboard
+> shortcuts. To run the current line,  you can
+>          * click on the `Run` button just above the editor panel, or
+>          * select "Run Lines" from the "Code" menu, or
+           * hit Ctrl-Enter in Windows or Linux. (This shortcut can also be
+	   seen by hovering the mouse over the button).
 >
 > To run a block of code, select it and then `Run`. If you have modified a line
-> of code within a block of code you have just run, 
->  you can use the next button to the right, `Re-run the previous
-> region` (also Ctrl-Shift-P or Command+Shift+P). This will run the previous code block including
->  the modifications you have made.
-
+> of code within a block of code you have just run. There is no need to reselct the section and `Run`,
+> you can use the next button along, `Re-run the previous region`. This will run the previous code block inculding
+> the modifications you have made.
+>
 
 ### Introduction to R
 
@@ -83,8 +79,8 @@ would get if you just typed in `R` in your commandline environment.
 
 The first thing you will see in the R interactive session is a bunch of information,
 followed by a ">" and a blinking cursor. In many ways this is similar to the shell
-environment you learned about during the shell lessons. The command
-lines provides a "Read, evaluate, print loop": you type in commands, R tries to execute them, and
+environment you learnt about during the shell lessons: it operates on the same idea
+of a "Read, evaluate, print loop": you type in commands, R tries to execute them, and
 then returns a result.
 
 #### Using R as a calculator
@@ -173,23 +169,21 @@ if it differs from the default, or to set your own order.
 
 ~~~
 
-This can become unwieldy, but makes your intentions crystal-clear:
+But this can get unwieldy when not needed:
 
 
 ~~~{.r}
-(3 + (5 * (2 ^ 2))) # hard to read but unambiguous
+(3 + (5 * (2 ^ 2))) # hard to read
 3 + 5 * 2 ^ 2       # easier to read, once you know rules
 3 + 5 * (2 ^ 2)     # if you forget some rules, this might help
 ~~~
 
-Keep in mind that you may not be the only person reading your
-code. 
 
+The text I've typed after each line of code is called a comment. Anything that
+follows on from the octothorpe (or hash) symbol `#` is ignored by R when it
+executes code.
 
-The text after each line of code is called a comment. Anything that
-follows the hash symbol `#` is ignored by R when it executes code.
-
-By default, R will print large or small numbers using scientific notation:
+Really small or large numbers get a scientific notation:
 
 
 ~~~{.r}
@@ -203,7 +197,7 @@ By default, R will print large or small numbers using scientific notation:
 
 ~~~
 
-This  is shorthand for "multiplied by `10^XX`". So `2e-4`
+Which is shorthand for "multiplied by `10^XX`". So `2e-4`
 is shorthand for `2 * 10^(-4)`.
 
 You can write numbers in scientific notation too:
@@ -279,9 +273,10 @@ Don't worry about trying to remember every function in R. You
 can simply look them up on google, or if you can remember the
 start of the function's name, use the tab completion in RStudio.
 
-This is one advantage (among many) that RStudio has over R on its own:
-it has autocompletion abilities that allow you to more easily look up
-functions, their arguments, and the values that they take.
+This is one advantage that RStudio has over R on its own, it
+has autocompletion abilities that allow you to more easily
+look up functions, their arguments, and the values that they
+take.
 
 Typing a `?` before the name of a command will open the help page
 for that command. As well as providing a detailed description of
@@ -291,7 +286,7 @@ illustrate command usage. We'll go through an example later.
 
 #### Comparing things
 
-We can also do logical comparisons in R:
+We can also do comparison in R:
 
 
 ~~~{.r}
@@ -379,8 +374,7 @@ We can also do logical comparisons in R:
 > different by a small margin of error (called Machine
 > numeric tolerance).
 >
-> Instead you should use R's built-in `all.equal` function, which
-> tests for "near equality".
+> Instead you should use the `all.equal` function.
 >
 > Further reading: [http://floating-point-gui.de/](http://floating-point-gui.de/)
 >
@@ -447,7 +441,7 @@ The right hand side of the assignment can be any valid R expression.
 The right hand side is *fully evaluated* before the assignment occurs.
 
 Variable names can contain letters, numbers, underscores and periods. They
-cannot start with a number nor contain spaces. Different people use
+cannot start with a number nor contain spaces at all. Different people use
 different conventions for long variable names, these include
 
   * periods.between.words
@@ -463,10 +457,57 @@ It is also possible to use the `=` operator for assignment:
 x = 1/40
 ~~~
 
-You should be **be consistent** with the operator you use. The `<-` is
-the most common symbol used in the community for assigning a value to
-a variable, so the standard recommendation is to use it. We will also
-see that there are contexts where `=` is appropriate.
+But this is much less common among R users.  The most important thing is to
+**be consistent** with the operator you use. There are occasionally places
+where it is less confusing to use `<-` than `=`, and it is the most common
+symbol used in the community. So the recommendation is to use `<-`.
+
+#### Vectorization
+
+One final thing to be aware of is that R is *vectorized*, meaning that
+variables and functions can have vectors as values. For example
+
+
+~~~{.r}
+1:5
+~~~
+
+
+
+~~~{.output}
+[1] 1 2 3 4 5
+
+~~~
+
+
+
+~~~{.r}
+2^(1:5)
+~~~
+
+
+
+~~~{.output}
+[1]  2  4  8 16 32
+
+~~~
+
+
+
+~~~{.r}
+x <- 1:5
+2^x
+~~~
+
+
+
+~~~{.output}
+[1]  2  4  8 16 32
+
+~~~
+
+This is incredibly powerful; we will make much use of this ability.
+
 
 #### Managing your environment
 
@@ -538,7 +579,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x2f37398>
+<bytecode: 0x2f3c398>
 <environment: namespace:base>
 
 ~~~
@@ -594,7 +635,8 @@ Error in rm(list <- ls()): ... must contain names or character strings
 
 > #### Challenge 1 {.challenge}
 >
-> What values do `mass` and `age` have after running the following commands? 
+> Draw diagrams showing what variables refer to what values after each
+> statement in the following program:
 >
 > 
 > ~~~{.r}

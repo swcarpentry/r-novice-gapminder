@@ -323,6 +323,21 @@ But this is much less common among R users.  The most important thing is to
 where it is less confusing to use `<-` than `=`, and it is the most common
 symbol used in the community. So the recommendation is to use `<-`.
 
+#### Vectorization
+
+One final thing to be aware of is that R is *vectorized*, meaning that
+variables and functions can have vectors as values. For example
+
+```{r}
+1:5
+2^(1:5)
+x <- 1:5
+2^x
+```
+
+This is incredibly powerful; we will make much use of this ability.
+
+
 #### Managing your environment
 
 There are a few useful commands you can use to interact with the R session.
