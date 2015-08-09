@@ -61,6 +61,14 @@ the two-dimensional equivalents of the `c` function):
 df <- rbind(df, list("g", 11, 42))
 ~~~
 
+
+
+~~~{.output}
+Warning in `[<-.factor`(`*tmp*`, ri, value = "g"): invalid factor level, NA
+generated
+
+~~~
+
 This doesn't work as expected! What does this error message tell us?
 
 It sounds like it was trying to generate a factor level. Why? Perhaps our first
@@ -76,7 +84,7 @@ class(df$id)
 
 
 ~~~{.output}
-[1] "character"
+[1] "factor"
 
 ~~~
 
@@ -107,10 +115,10 @@ tail(df, n=3)
 
 
 ~~~{.output}
-  id  x   y
-6  f  6 219
-7  g 11  42
-8  g 11  42
+    id  x   y
+6    f  6 219
+7 <NA> 11  42
+8    g 11  42
 
 ~~~
 
@@ -144,27 +152,27 @@ rbind(df, df)
 
 
 ~~~{.output}
-   id  x   y
-1   a  1 214
-2   b  2 215
-3   c  3 216
-4   d  4 217
-5   e  5 218
-6   f  6 219
-7   g 11  42
-8   g 11  42
-9   l 12 534
-10  m 13 -20
-11  a  1 214
-12  b  2 215
-13  c  3 216
-14  d  4 217
-15  e  5 218
-16  f  6 219
-17  g 11  42
-18  g 11  42
-19  l 12 534
-20  m 13 -20
+     id  x   y
+1     a  1 214
+2     b  2 215
+3     c  3 216
+4     d  4 217
+5     e  5 218
+6     f  6 219
+7  <NA> 11  42
+8     g 11  42
+9     l 12 534
+10    m 13 -20
+11    a  1 214
+12    b  2 215
+13    c  3 216
+14    d  4 217
+15    e  5 218
+16    f  6 219
+17 <NA> 11  42
+18    g 11  42
+19    l 12 534
+20    m 13 -20
 
 ~~~
 
@@ -179,17 +187,17 @@ df
 
 
 ~~~{.output}
-   id  x   y 10:1
-1   a  1 214   10
-2   b  2 215    9
-3   c  3 216    8
-4   d  4 217    7
-5   e  5 218    6
-6   f  6 219    5
-7   g 11  42    4
-8   g 11  42    3
-9   l 12 534    2
-10  m 13 -20    1
+     id  x   y 10:1
+1     a  1 214   10
+2     b  2 215    9
+3     c  3 216    8
+4     d  4 217    7
+5     e  5 218    6
+6     f  6 219    5
+7  <NA> 11  42    4
+8     g 11  42    3
+9     l 12 534    2
+10    m 13 -20    1
 
 ~~~
 
@@ -434,7 +442,7 @@ typeof(gapminder$continent)
 
 
 ~~~{.output}
-[1] "character"
+[1] "integer"
 
 ~~~
 
@@ -449,7 +457,7 @@ class(gapminder$continent)
 
 
 ~~~{.output}
-[1] "character"
+[1] "factor"
 
 ~~~
 

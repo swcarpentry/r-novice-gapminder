@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 
-  <title>Lesson Title</title>
+  <title>R for reproducible scientific analysis</title>
 
 
   <script src="js/deckjs-custom.js"></script>
@@ -27,29 +27,100 @@
     </div>
 
     <!-- Begin slides. Just make elements with a class of slide. -->
-<section class="slide level2">
-
-<section class="slide">
-</section>
-<section id="why-topic" class="slide level2">
-<h1>Why Topic?</h1>
-</section>
-<section class="slide">
-</section>
-<section id="more-explanation" class="slide level2">
-<h1>More Explanation</h1>
+<section id="why-r" class="slide level2">
+<h1>Why R?</h1>
 <ul>
-<li>With</li>
-<li>Bullet</li>
-<li>Points</li>
+<li>Powerful statistical analysis</li>
+<li>and powerful visualisation</li>
+<li>integrated elegantly</li>
 </ul>
 </section>
-<section class="slide">
+<section id="what-well-accomplish" class="slide level2">
+<h1>What We’ll Accomplish</h1>
+<ul>
+<li>Get to know R and RStudio</li>
+<li>Analyze a meaningful data set</li>
+<li>Extract insights and deliver them visually</li>
+<li>Leave ready to learn more R independently</li>
+</ul>
 </section>
-<section id="next-steps" class="slide level2">
-<h1>Next Steps</h1>
-Here we go!
+<section id="r-loves-ingesting-data" class="slide level2">
+<h1>R loves ingesting data</h1>
+<pre><code>gapminder &lt;- read.csv(
+  &quot;data/gapminder-FiveYearData.csv&quot;,
+  header=TRUE,
+  sep=&#39;,&#39;)</code></pre>
 </section>
+<section id="data-w-column-names" class="slide level2">
+<h1>Data w/ column names</h1>
+<p>head(gapminder, 1) # Show me the first row</p>
+<p>country year pop continent lifeExp gdpPercap 1 Afghanistan 1952 8425333 Asia 28.801 779.4453</p>
+</section>
+<section id="quickly-graph" class="slide level2">
+<h1>Quickly graph …</h1>
+<pre><code>ggplot(
+  data=gapminder,
+  aes(x=lifeExp, y=gdpPercap)
+) + geom_point()</code></pre>
+</section>
+<section id="to-see-what-we-have" class="slide level2">
+<h1>… to see what we have</h1>
+<figure>
+<img src="img/first_plot.png" alt="First plot" /><figcaption>First plot</figcaption>
+</figure>
+</section>
+<section id="lets-graph-more-factors" class="slide level2">
+<h1>Let’s graph more factors</h1>
+<pre><code>ggplot(
+  data=gapminder,
+  aes(x=year, y=lifeExp, by=country, colour=continent)
+) + geom_line()
+  + geom_point()</code></pre>
+</section>
+<section id="pretty" class="slide level2">
+<h1>Pretty!</h1>
+<figure>
+<img src="img/countries_and_colors.png" alt="Countries and colors" /><figcaption>Countries and colors</figcaption>
+</figure>
+</section>
+<section id="dyplr-gives-us" class="slide level2">
+<h1>dyplr gives us …</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+cors &lt;-<span class="st"> </span>gapminder %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(year) %&gt;%
+<span class="st">  </span><span class="kw">summarise</span>(
+    <span class="dt">gdpPercap.lifeExp =</span> <span class="kw">cor</span>(gdpPercap, lifeExp),
+    <span class="dt">gdpPercap.pop =</span> <span class="kw">cor</span>(gdpPercap, pop),
+    <span class="dt">pop.lifeExp =</span> <span class="kw">cor</span>(pop, lifeExp))</code></pre></div>
+</section>
+<section id="pairwise-correlations" class="slide level2">
+<h1>… pairwise correlations</h1>
+<pre><code>head(cors, 1)
+Source: local data frame [1 x 4]
+year gdpPercap.lifeExp gdpPercap.pop  pop.lifeExp
+1 1952         0.2780236   -0.02526041 -0.002724782</code></pre>
+</section>
+<section id="restructuring-the-table" class="slide level2">
+<h1>Restructuring the table …</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyr)
+tidy.cors &lt;-<span class="st"> </span>cors %&gt;%<span class="st"> </span><span class="kw">gather</span>(
+  variables, correlation,
+  gdpPercap.lifeExp, gdpPercap.pop,
+  pop.lifeExp)</code></pre></div>
+</section>
+<section id="a-subtle-art" class="slide level2">
+<h1>… a subtle art …</h1>
+<pre><code>head(tidy.cors, 1)
+
+Source: local data frame [1 x 3]
+  year         variables   correlation
+1 1952 gdpPercap.lifeExp   0.2780236</code></pre>
+</section>
+<section id="produces-great-results" class="slide level2">
+<h1>… produces great results</h1>
+<figure>
+<img src="img/gdp_and_life.png" alt="GDP and Life" /><figcaption>GDP and Life</figcaption>
+</figure>
 </section>
     <!-- End slides. -->
 

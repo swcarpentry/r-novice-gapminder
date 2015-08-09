@@ -25,6 +25,18 @@ from a different source in the future.
 In this lesson, we'll learn how to write a function so that we can repeat
 several operations with a single command.
 
+> ## What is a function? {.callout}
+>
+> Functions gather a sequence of operations into a whole, preserving it for ongoing use. Functions provide:
+>
+> * a name we can remember and invoke it by
+> * relief from the need to remember the individual operations
+> * a defined set of inputs and expected outputs
+> * rich connections to the larger programming environment
+>
+> As the basic building block of most programming languages, user-defined functions constitute "programming" as much as any single abstraction can. If you have written a function, you are a computer programmer.
+>
+
 
 ### Defining a function
 
@@ -452,8 +464,8 @@ which is much better than in our first attempt where we just got a vector of num
 > ~~~
 >
 
+
 > #### Solution to challenge 3 {.challenge}
-> 
 >
 >  Write a function called `fence` that takes two vectors as arguments, called
 > `text` and `wrapper`, and prints out the text wrapped with the `wrapper`:
@@ -475,4 +487,3 @@ which is much better than in our first attempt where we just got a vector of num
 > [1] "*** Write programs for people not computers ***"
 > 
 > ~~~
-> 

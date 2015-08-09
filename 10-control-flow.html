@@ -30,18 +30,18 @@
           <h2 class="subtitle">Control flow</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning objectives</h2>
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
 <li>Write conditional statements with <code>if</code> and <code>else</code>.</li>
-<li>Write and understand <code>while</code> and <code>for</code> loops.</li>
+<li>Write and understand <code>for</code> loops.</li>
 </ul>
 </div>
 </section>
 <p>Often when we’re coding we want to control the flow of our actions. This can be done by setting actions to occur only if a condition or a set of conditions are met. Alternatively, we can also set an action to occur a particular number of times.</p>
 <p>There are several ways you can control flow in R. For conditional statements, the most commonly used approaches are the constructs:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># if</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># if</span>
 if (condition is true) {
   perform action
 }
@@ -51,9 +51,9 @@ if (condition is true) {
   perform action
 } else {  <span class="co"># that is, if the condition is false,</span>
   perform alternative action
-}</code></pre>
+}</code></pre></div>
 <p>Say, for example, that we want R to print a message if a variable <code>x</code> has a particular value:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sample a random number from a Poisson distribution</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sample a random number from a Poisson distribution</span>
 <span class="co"># with a mean (lambda) of 8</span>
 
 x &lt;-<span class="st"> </span><span class="kw">rpois</span>(<span class="dv">1</span>, <span class="dt">lambda=</span><span class="dv">8</span>)
@@ -62,12 +62,12 @@ if (x &gt;=<span class="st"> </span><span class="dv">10</span>) {
   <span class="kw">print</span>(<span class="st">&quot;x is greater than or equal to 10&quot;</span>)
 }
 
-x</code></pre>
+x</code></pre></div>
 <pre class="output"><code>[1] 8
 </code></pre>
 <p>Note you may not get the same output as your neighbour because you may be sampling different random numbers from the same distribution.</p>
 <p>Let’s set a seed so that we all generate the same ‘pseudo-random’ number, and then print more information:</p>
-<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">rpois</span>(<span class="dv">1</span>, <span class="dt">lambda=</span><span class="dv">8</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">rpois</span>(<span class="dv">1</span>, <span class="dt">lambda=</span><span class="dv">8</span>)
 
 if (x &gt;=<span class="st"> </span><span class="dv">10</span>) {
   <span class="kw">print</span>(<span class="st">&quot;x is greater than or equal to 10&quot;</span>)
@@ -75,30 +75,30 @@ if (x &gt;=<span class="st"> </span><span class="dv">10</span>) {
   <span class="kw">print</span>(<span class="st">&quot;x is greater than 5&quot;</span>)
 } else {
   <span class="kw">print</span>(<span class="st">&quot;x is less than 5&quot;</span>)
-}</code></pre>
+}</code></pre></div>
 <pre class="output"><code>[1] &quot;x is greater than 5&quot;
 </code></pre>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: pseudo-random numbers</h4>
+<h4 id="tip-pseudo-random-numbers"><span class="glyphicon glyphicon-pushpin"></span>Tip: pseudo-random numbers</h4>
 </div>
 <div class="panel-body">
 <p>In the above case, the function <code>rpois</code> generates a random number following a Poisson distribution with a mean (i.e. lambda) of 8. The function <code>set.seed</code> guarantees that all machines will generate the exact same ‘pseudo-random’ number (<a href="http://en.wikibooks.org/wiki/R_Programming/Random_Number_Generation">more about pseudo-random numbers</a>). So if we <code>set.seed(10)</code>, we see that <code>x</code> takes the value 8. You should get the exact same number.</p>
 </div>
 </aside>
 <p><strong>Important:</strong> when R evaluates the condition inside <code>if</code> statements, it is looking for a logical element, i.e., <code>TRUE</code> or <code>FALSE</code>. This can cause some headaches for beginners. For example:</p>
-<pre class="sourceCode r"><code class="sourceCode r">x  &lt;-<span class="st">  </span><span class="dv">4</span> ==<span class="st"> </span><span class="dv">3</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x  &lt;-<span class="st">  </span><span class="dv">4</span> ==<span class="st"> </span><span class="dv">3</span>
 if (x) {
   <span class="st">&quot;4 equals 3&quot;</span>
-}</code></pre>
+}</code></pre></div>
 <p>As we can see, the message was not printed because the vector x is <code>FALSE</code></p>
-<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">4</span> ==<span class="st"> </span><span class="dv">3</span>
-x</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">4</span> ==<span class="st"> </span><span class="dv">3</span>
+x</code></pre></div>
 <pre class="output"><code>[1] FALSE
 </code></pre>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h4>
+<h4 id="challenge-1"><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h4>
 </div>
 <div class="panel-body">
 <p>Use an <code>if</code> statement to print a suitable message reporting whether there are any records from 2002 in the <code>gapminder</code> dataset. Now do the same for 2012.</p>
@@ -110,49 +110,19 @@ only the first element will be used
 </code></pre>
 <p>If your condition evaluates to a vector with more than one logical element, the function <code>if</code> will still run, but will only evaluate the condition in the first element. Here you need to make sure your condition is of length 1.</p>
 <blockquote>
-<h4>Tip: <code>any</code> and <code class="callout">all</code></h4>
+<h4 id="tip-any-and-all">Tip: <code>any</code> and <code class="callout">all</code></h4>
 <p>The <code>any</code> function will return TRUE if at least one TRUE value is found within a vector, otherwise it will return <code>FALSE</code>. This can be used in a similar way to the <code>%in%</code> operator. The function <code>all</code>, as the name suggests, will only return <code>TRUE</code> if all values in the vector are <code>TRUE</code>.</p>
 </blockquote>
 <h3 id="repeating-operations">Repeating operations</h3>
-<p>Sometimes you will find yourself needing to repeat an operation until a certain condition is met. You can do this with a <code>while</code> loop.</p>
-<pre class="sourceCode r"><code class="sourceCode r">while(this condition is true){
-  do a thing
-}</code></pre>
-<p>Let’s try an example, shall we? We’ll try to come up with some simple code that generates random numbers from a uniform distribution (the <code>runif</code> function) between 0 and 1 until it gets one that’s less than 0.1.</p>
-<pre class="sourceCode r"><code class="sourceCode r">while(z &gt;<span class="st"> </span><span class="fl">0.1</span>){
-  z &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)
-  <span class="kw">print</span>(z)
-}</code></pre>
-<pre class="output"><code>Error: object &#39;z&#39; not found
-</code></pre>
-<p>But wait, that doesn’t work! What’s the problem?</p>
-<p>The problem is that we haven’t defined <code>z</code>, and so the very first time the while loop’s condition is checked (<code>z &gt; 0.1</code>), <code>while</code> just says “Okay, that’s not true so I’m not going to execute this block of code”. The same thing would have happened if we defined <code>z</code> to be anything less than 0.1. Let’s fix it.</p>
-<pre class="sourceCode r"><code class="sourceCode r">z &lt;-<span class="st"> </span><span class="dv">1</span>
-while(z &gt;<span class="st"> </span><span class="fl">0.1</span>){
-  z &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)
-  <span class="kw">print</span>(z)
-}</code></pre>
-<pre class="output"><code>[1] 0.4269077
-[1] 0.6931021
-[1] 0.08513597
-</code></pre>
-<section class="challenge panel panel-success">
-<div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h4>
-</div>
-<div class="panel-body">
-<p>Use a <code>while</code> loop to construct a vector called ‘pet_list’ with the value: ‘cat’, ‘dog’, ‘dog’, ‘dog’, ‘dog’ (N.B. using a loop may not be the most efficient way to do this, but it illustrates the principle!)</p>
-</div>
-</section>
-<p><code>while</code> loops will not always be appropriate. If you want to iterate over a set of values, when the order of iteration is important, and perform the same operation on each, a <code>for</code> loop will do the job. We saw <code>for</code> loops in the shell lessons earlier. This is the most flexible of looping operations, but therefore also the hardest to use correctly. Avoid using <code>for</code> loops unless the order of iteration is important: i.e. the calculation at each iteration depends on the results of previous iterations.</p>
+<p>If you want to iterate over a set of values, when the order of iteration is important, and perform the same operation on each, a <code>for</code> loop will do the job. We saw <code>for</code> loops in the shell lessons earlier. This is the most flexible of looping operations, but therefore also the hardest to use correctly. Avoid using <code>for</code> loops unless the order of iteration is important: i.e. the calculation at each iteration depends on the results of previous iterations.</p>
 <p>The basic structure of a <code>for</code> loop is:</p>
-<pre class="sourceCode r"><code class="sourceCode r">for(iterator in set of values){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for(iterator in set of values){
   do a thing
-}</code></pre>
+}</code></pre></div>
 <p>For example:</p>
-<pre class="sourceCode r"><code class="sourceCode r">for(i in <span class="dv">1</span>:<span class="dv">10</span>){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for(i in <span class="dv">1</span>:<span class="dv">10</span>){
   <span class="kw">print</span>(i)
-}</code></pre>
+}</code></pre></div>
 <pre class="output"><code>[1] 1
 [1] 2
 [1] 3
@@ -166,11 +136,11 @@ while(z &gt;<span class="st"> </span><span class="fl">0.1</span>){
 </code></pre>
 <p>The <code>1:10</code> bit creates a vector on the fly; you can iterate over any other vector as well.</p>
 <p>We can use a <code>for</code> loop nested within another <code>for</code> loop to iterate over two things at once.</p>
-<pre class="sourceCode r"><code class="sourceCode r">for (i in <span class="dv">1</span>:<span class="dv">5</span>){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for (i in <span class="dv">1</span>:<span class="dv">5</span>){
   for(j in <span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>)){
     <span class="kw">print</span>(<span class="kw">paste</span>(i,j))
   }
-}</code></pre>
+}</code></pre></div>
 <pre class="output"><code>[1] &quot;1 a&quot;
 [1] &quot;1 b&quot;
 [1] &quot;1 c&quot;
@@ -198,14 +168,14 @@ while(z &gt;<span class="st"> </span><span class="fl">0.1</span>){
 [1] &quot;5 e&quot;
 </code></pre>
 <p>Rather than printing the results, we could write the loop output to a new object.</p>
-<pre class="sourceCode r"><code class="sourceCode r">output_vector &lt;-<span class="st"> </span><span class="kw">c</span>()
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">output_vector &lt;-<span class="st"> </span><span class="kw">c</span>()
 for (i in <span class="dv">1</span>:<span class="dv">5</span>){
   for(j in <span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>)){
     temp_output &lt;-<span class="st"> </span><span class="kw">paste</span>(i, j)
     output_vector &lt;-<span class="st"> </span><span class="kw">c</span>(output_vector, temp_output)
   }
 }
-output_vector</code></pre>
+output_vector</code></pre></div>
 <pre class="output"><code> [1] &quot;1 a&quot; &quot;1 b&quot; &quot;1 c&quot; &quot;1 d&quot; &quot;1 e&quot; &quot;2 a&quot; &quot;2 b&quot; &quot;2 c&quot; &quot;2 d&quot; &quot;2 e&quot; &quot;3 a&quot;
 [12] &quot;3 b&quot; &quot;3 c&quot; &quot;3 d&quot; &quot;3 e&quot; &quot;4 a&quot; &quot;4 b&quot; &quot;4 c&quot; &quot;4 d&quot; &quot;4 e&quot; &quot;5 a&quot; &quot;5 b&quot;
 [23] &quot;5 c&quot; &quot;5 d&quot; &quot;5 e&quot;
@@ -213,14 +183,14 @@ output_vector</code></pre>
 <p>This approach can be useful, but ‘growing your results’ (building the result object incrementally) is computationally inefficient, so avoid it when you are iterating through a lot of values.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: don’t grow your results</h4>
+<h4 id="tip-dont-grow-your-results"><span class="glyphicon glyphicon-pushpin"></span>Tip: don’t grow your results</h4>
 </div>
 <div class="panel-body">
 <p>One of the biggest things that trips up novices and experienced R users alike, is building a results object (vector, list, matrix, data frame) as your for loop progresses. Computers are very bad at handling this, so your calculations can very quickly slow to a crawl. It’s much better to define an empty results object before hand of the appropriate dimensions. So if you know the end result will be stored in a matrix like above, create an empty matrix with 5 row and 5 columns, then at each iteration store the results in the appropriate location.</p>
 </div>
 </aside>
 <p>A better way is to define your (empty) output object before filling in the values. For this example, it looks more involved, but is still more efficient.</p>
-<pre class="sourceCode r"><code class="sourceCode r">output_matrix &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">nrow=</span><span class="dv">5</span>, <span class="dt">ncol=</span><span class="dv">5</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">output_matrix &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">nrow=</span><span class="dv">5</span>, <span class="dt">ncol=</span><span class="dv">5</span>)
 j_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>)
 for (i in <span class="dv">1</span>:<span class="dv">5</span>){
   for(j in <span class="dv">1</span>:<span class="dv">5</span>){
@@ -230,14 +200,32 @@ for (i in <span class="dv">1</span>:<span class="dv">5</span>){
   }
 }
 output_vector2 &lt;-<span class="st"> </span><span class="kw">as.vector</span>(output_matrix)
-output_vector2</code></pre>
+output_vector2</code></pre></div>
 <pre class="output"><code> [1] &quot;1 a&quot; &quot;2 a&quot; &quot;3 a&quot; &quot;4 a&quot; &quot;5 a&quot; &quot;1 b&quot; &quot;2 b&quot; &quot;3 b&quot; &quot;4 b&quot; &quot;5 b&quot; &quot;1 c&quot;
 [12] &quot;2 c&quot; &quot;3 c&quot; &quot;4 c&quot; &quot;5 c&quot; &quot;1 d&quot; &quot;2 d&quot; &quot;3 d&quot; &quot;4 d&quot; &quot;5 d&quot; &quot;1 e&quot; &quot;2 e&quot;
 [23] &quot;3 e&quot; &quot;4 e&quot; &quot;5 e&quot;
 </code></pre>
+<aside class="callout panel panel-info">
+<div class="panel-heading">
+<h4 id="tip-while-loops"><span class="glyphicon glyphicon-pushpin"></span>Tip: While loops</h4>
+</div>
+<div class="panel-body">
+<p>Sometimes you will find yourself needing to repeat an operation until a certain condition is met. You can do this with a <code>while</code> loop.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">while(this condition is true){
+  do a thing
+}</code></pre></div>
+<p>As an example, here’s a while loop that generates random numbers from a uniform distribution (the <code>runif</code> function) between 0 and 1 until it gets one that’s less than 0.1.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z &lt;-<span class="st"> </span><span class="dv">1</span>
+while(z &gt;<span class="st"> </span><span class="fl">0.1</span>){
+  z &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)
+  <span class="kw">print</span>(z)
+}</code></pre></div>
+<p><code>while</code> loops will not always be appropriate. You have to be particularly careful that you don’t end up in an infinite loop because your condition is never met.</p>
+</div>
+</aside>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h4>
+<h4 id="challenge-2"><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h4>
 </div>
 <div class="panel-body">
 <p>Compare the objects output_vector and output_vector2. Are they the same? If not, why not? How would you change the last block of code to make output_vector2 the same as output_vector?</p>
@@ -245,7 +233,7 @@ output_vector2</code></pre>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 4</h4>
+<h4 id="challenge-3"><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h4>
 </div>
 <div class="panel-body">
 <p>Write a script that loops through the <code>gapminder</code> data by continent and prints out whether the mean life expectancy is smaller or larger than 50 years.</p>
@@ -253,7 +241,7 @@ output_vector2</code></pre>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 5</h4>
+<h4 id="challenge-4"><span class="glyphicon glyphicon-pencil"></span>Challenge 4</h4>
 </div>
 <div class="panel-body">
 <p>Modify the script from Challenge 4 to also loop over each country. This time print out whether the life expectancy is smaller than 50, between 50 and 70, or greater than 70.</p>
@@ -261,7 +249,7 @@ output_vector2</code></pre>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 6 - Advanced</h4>
+<h4 id="challenge-5---advanced"><span class="glyphicon glyphicon-pencil"></span>Challenge 5 - Advanced</h4>
 </div>
 <div class="panel-body">
 <p>Write a script that loops over each country in the <code>gapminder</code> dataset, tests whether the country starts with a ‘B’, and graphs life expectancy against time as a line graph if the mean life expectancy is under 50 years.</p>
