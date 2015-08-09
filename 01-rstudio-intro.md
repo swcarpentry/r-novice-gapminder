@@ -506,7 +506,8 @@ x <- 1:5
 
 ~~~
 
-This is incredibly powerful; we will make much use of this ability.
+This is incredibly powerful; we will discuss this further in an
+upcoming lesson.
 
 
 #### Managing your environment
@@ -579,7 +580,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x2f3c398>
+<bytecode: 0x21c2398>
 <environment: namespace:base>
 
 ~~~
