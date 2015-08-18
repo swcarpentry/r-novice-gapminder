@@ -17,7 +17,8 @@ source("tools/chunk-options.R")
 > * To be able to manage your workspace in an interactive R session
 > * To be able to use mathematical and comparison operations
 > * To be able to call functions
->
+> * Introduction to package management
+> 
 
 ### Introduction to RStudio
 
@@ -51,27 +52,24 @@ a .R file to run later.
    *  This works well when doing small tests and initially starting off.
    *  It quickly becomes laborious
 2. Start writing in an .R file and use Rstudio's command / short cut
-to push the current line, selected lines, or modified lines to the
+to push current line, selected lines or modified lines to the
 interactive R console. 
    * This is a great way to start; all your code is saved for later
    * You will be able to run the file you create from within RStudio
-   or by using R's `source()`  function.
+   or using R's `source()`  function.
 
-> #### Tip: Running segments of your code {.callout}
-> RStudio offers you great flexibility in running code from within
-> the editor window. There are buttons, menu choices, and keyboard
-> shortcuts. To run the current line,  you can 1. 
->          click on the `Run` button just above the editor panel, or
->          2.  select "Run Lines" from the "Code" menu, or
->           3.  hit Ctrl-Enter in Windows or Linux or Command-Enter on
->  OS X. (This shortcut can also be
->	   seen by hovering the mouse over the button).
->
-> To run a block of code, select it and then `Run`. If you have modified a line
-> of code within a block of code you have just run. There is no need to reselct the section and `Run`,
-> you can use the next button along, `Re-run the previous region`. This will run the previous code block inculding
-> the modifications you have made.
->
+> #### Tip: Running segments of your code {.callout} RStudio offers
+> you great flexibility in running code from within the editor
+> window. There are buttons, menu choices, and keyboard shortcuts. To
+> run the current line, you can 1.  click on the `Run` button just
+> above the editor panel, or 2.  select "Run Lines" from the "Code"
+> menu, or 3.  hit Ctrl-Enter in Windows or Linux or Command-Enter on
+> OS X. (This shortcut can also be seen by hovering the mouse over the
+> button).  To run a block of code, select it and then `Run`. If you
+> have modified a line of code within a block of code you have just
+> run, there is no need to reselct the section and `Run`, you can use
+> the next button along, `Re-run the previous region`. This will run
+> the previous code block inculding the modifications you have made.
 
 ### Introduction to R
 
@@ -83,7 +81,7 @@ you just typed in `R` in your commandline environment.
 
 The first thing you will see in the R interactive session is a bunch
 of information, followed by a ">" and a blinking cursor. In many ways
-this is similar to the shell environment you learnt about during the
+this is similar to the shell environment you learned about during the
 shell lessons: it operates on the same idea of a "Read, evaluate,
 print loop": you type in commands, R tries to execute them, and then
 returns a result.
@@ -132,7 +130,7 @@ would have learnt back in school.
 
 From highest to lowest precedence:
 
- * Brackets: `(`, `)`
+ * Parentheses: `(`, `)`
  * Exponents: `^` or `**`
  * Divide: `/`
  * Multiply: `*`
@@ -143,8 +141,9 @@ From highest to lowest precedence:
 3 + 5 * 2
 ```
 
-Use brackets (actually parentheses) to group to force the order of evaluation
-if it differs from the default, or to set your own order.
+Use parentheses to group operations in order to force the order of
+evaluation if it differs from the default, or to make clear what you 
+intend.
 
 ```{r}
 (3 + 5) * 2
@@ -160,8 +159,8 @@ Remember that others may later read your code.
 ```
 
 
-The text I've typed after each line of code is called a
-comment. Anything that follows on from the hash (or octothorpe) symbol
+The text after each line of code is called a
+"comment". Anything that follows after the hash (or octothorpe) symbol
 `#` is ignored by R when it executes code.
 
 Really small or large numbers get a scientific notation:
@@ -182,8 +181,8 @@ You can write numbers in scientific notation too:
 #### Mathematical functions
 
 R has many built in mathematical functions. To call a function,
-we simply type its name, follow by and open and closing bracket.
-Anything we type inside those brackets is called the function's
+we simply type its name, followed by  open and closing parentheses.
+Anything we type inside the parentheses is called the function's
 arguments:
 
 ```{r}
@@ -362,7 +361,7 @@ ls()
 >
 
 Note here that we didn't given any arguments to `ls`, but we still
-needed to give the brackets to tell R to call the function.
+needed to give the parentheses to tell R to call the function.
 
 If we type `ls` by itself, R will print out the source code for that function!
 
@@ -384,7 +383,7 @@ rm(list = ls())
 ```
 
 In this case we've combined the two. Just like the order of operations, anything
-inside the innermost brackets is evaluated first, and so on.
+inside the innermost parentheses is evaluated first, and so on.
 
 In this case we've specified that the results of `ls` should be used for the
 `list` argument in `rm`. When assigning values to arguments by name, you *must*
@@ -407,6 +406,22 @@ rm(list <- ls())
 > In both cases, the message that R prints out usually give you clues
 > how to fix a problem.
 >
+
+
+#### R Packages
+
+It is possible to add functions to R by writing a package, or by
+obtaining a package written by someone else. As of this writing, there
+are over 7,000 packages available on CRAN (the comprehensive R archive
+network). R and RStudio have functionality for managing packages:
+
+* You can see what packages are installed by typing
+  `installed.packages()`
+* You can install packages by typing `install.packages("packagename")`,
+  where `packagename` is the package name, in quotes.
+* You can update installed packages by typing `update.packages()`
+* You can remove a package with `remove.packages("packagename")`
+* You can make a package available for use with `library(packagename)`
 
 
 > #### Challenge 1 {.challenge}
@@ -433,3 +448,8 @@ rm(list <- ls())
 > Clean up your working environment by deleting the mass and age
 > variables.
 >
+
+> #### Challenge 4 {.challenge}
+> 
+> Install the following packages: `ggplot2`, `plyr`, `gapminder`
+> 
