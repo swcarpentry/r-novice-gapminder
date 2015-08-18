@@ -73,7 +73,7 @@ interactive R console.
 
 ### Introduction to R
 
-A lot of your time in R will be spent in the R interactive
+Much of your time in R will be spent in the R interactive
 console. This is where you will run all of your code, and can be a
 useful environment to try out ideas before adding them to an R script
 file. This console in RStudio is the same as the one you would get if
