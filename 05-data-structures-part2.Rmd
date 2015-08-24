@@ -87,7 +87,9 @@ To add a row we use `rbind`:
 df <- rbind(df, list("g", 11, 42, 0, "G"))
 ```
 
-This doesn't work as expected! What do the error messages tell us?
+Note that we add the row as a list, because we have multiple types
+across the columns. Nevertheless, this doesn't work as expected! What
+do the error messages tell us?
 
 It appears that R was trying to append "g" and "G" as factor
 levels. Why? Let's examine the first column.  We can access a column
