@@ -110,8 +110,8 @@ your issue.
 
 > #### Challenge 1 {.challenge}
 > 
-> Look at the help for the `c` function. What do you expect will
-> happen if you evaluate the following: 
+> Look at the help for the `c` function. What kind of vector do you
+> expect you will create if you evaluate the following: 
 > ```{r, eval=FALSE}
 > c(1, 2, 3)
 > c('d', 'e', 'f')
