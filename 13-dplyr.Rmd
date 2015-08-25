@@ -14,10 +14,10 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 
 > ## Learning objectives {.objectives}
 >
-> * To be able to use 6 main dataframe manipulation 'verbs' with pipes in `dplyr`
+> * To be able to use the 6 main dataframe manipulation 'verbs' with pipes in `dplyr`
 >
 
-Manipulation of dataframes means many things to many researchers, we often select certain observations (rows) or variables (columns), we often group the data by a certain variable(s), or we even calculate summary statitistic. We can do these operations using the normal base R operations
+Manipulation of dataframes means many things to many researchers, we often select certain observations (rows) or variables (columns), we often group the data by a certain variable(s), or we even calculate summary statistic. We can do these operations using the normal base R operations:
 
 ```{r}
 mean(gapminder[gapminder$continent == "Africa", "gdpPercap"])
@@ -31,7 +31,7 @@ But this isn't very *nice* because there is a fair bit of repetition. Repeating 
 
 Luckily, the [`dplyr`](https://cran.r-project.org/web/packages/dplyr/dplyr.pdf) package provides a number of very useful functions for manipulating dataframes in a way that will reduce the above repetition, reduce the probability of making errors, and probably even save you some typing. As an added bonus, you might even find the `dplyr` grammar easier to read.
 
-Here we're going to cover 6  of the most commonly used functions as well as using pipes (`%>%`) to combine them. 
+Here we're going to cover 6 of the most commonly used functions as well as using pipes (`%>%`) to combine them. 
 
 1. `select()`
 2. `filter()`
@@ -53,7 +53,7 @@ library(dplyr)
 
 #### Using select()
 
-If, for example, we wanted to move forward with only a few of the variables in our dataframe we could use the `select` function. This will keep only the variables you select.
+If, for example, we wanted to move forward with only a few of the variables in our dataframe we could use the `select()` function. This will keep only the variables you select.
 
 ```{r}
 year_country_gdp <- select(gapminder,year,country,gdpPercap)
@@ -61,7 +61,7 @@ year_country_gdp <- select(gapminder,year,country,gdpPercap)
 
 > draw this on the board? I'd like to include a diagram here too
 
-If we open up `year_country_gdp` we'll see that it only contains the year, country and gdpPercap. Above we used 'normal' grammar, but `dplyr` strengths lie in combining several functions using pipes. Since the pipes grammar is unlike anything we've seen in R before, let's repeat what we've done above using pipes.
+If we open up `year_country_gdp` we'll see that it only contains the year, country and gdpPercap. Above we used 'normal' grammar, but the strengths of `dplyr` lie in combining several functions using pipes. Since the pipes grammar is unlike anything we've seen in R before, let's repeat what we've done above using pipes.
 
 ```{r}
 year_country_gdp <- gapminder %>% select(year,country,gdpPercap)
@@ -69,7 +69,7 @@ year_country_gdp <- gapminder %>% select(year,country,gdpPercap)
 
 > draw this on the board? I'd like to include a diagram here too
 
-To help you understand why we wrote that in that way, let's walk through it step by step. First we summon the gapminder dataframe and pass it on, using the pipe symbol `%>%`, to the next step which is the select function. In this case we don't specify which data object we use in the `select` function since in gets that from the previous pipe.
+To help you understand why we wrote that in that way, let's walk through it step by step. First we summon the gapminder dataframe and pass it on, using the pipe symbol `%>%`, to the next step which is the `select()` function. In this case we don't specify which data object we use in the `select()` function since in gets that from the previous pipe. **Fun Fact**: There is a good chance you have encountered pipes before in the shell. In R, a pipe symbol is `%>%` while in the shell it is `|` but the concept is the same!
 
 #### Using filter()
 
@@ -83,27 +83,29 @@ year_country_gdp_euro <- gapminder %>%
 
 > #### Challenge 1 {.challenge}
 >
-> Can you write a single command (which can span multiple lines and includes pipes) that will produce a dataframe that has the African values for `lifeExp`, `country` and `year`, but not for other Continents. 
+> Write a single command (which can span multiple lines and includes pipes) that will produce a dataframe that has the African values for `lifeExp`, `country` and `year`, but not for other Continents. 
 >How many rows does your dataframe have and why?
 >
 
 
-As with last time, first we pass the gapminder dataframe to the filter function, then we pass the filtered version of the gapminder dataframe to the select function. **Note:** The order of operations is very important in this case. If we used 'select' first, filter would not be able to find the variable continent since we would have removed it in the previous step.
+As with last time, first we pass the gapminder dataframe to the `filter()` function, then we pass the filtered version of the gapminder dataframe to the `select()` function. **Note:** The order of operations is very important in this case. If we used 'select' first, filter would not be able to find the variable continent since we would have removed it in the previous step.
 
-#### Using group_by()
+#### Using group_by() and summarize()
 
-Now, I told you all that I would be reducing the error prone repetitiveness of what we can do with base R, but up to now we haven't done that since we would have to repeat the above for each continent. Instead of `filter`, which will only pass observations that meet your criteria (in the above: `continent=="Europe"`), we can use `group_by`, which will essentially use every unique criteria that you could have used in filter.
+Now, we were supposed to be reducing the error prone repetitiveness of what can be done with base R, but up to now we haven't done that since we would have to repeat the above for each continent. Instead of `filter()`, which will only pass observations that meet your criteria (in the above: `continent=="Europe"`), we can use `group_by()`, which will essentially use every unique criteria that you could have used in filter.
 
 ```{r}
-year_country_gdp_bycontinents <- gapminder %>%
-    group_by(continent) %>%
-    select(year,country,gdpPercap)
+str(gapminder)
+
+str(gapminder %>% group_by(continent))
 ```
-You will have noticed that `year_country_gdp_bycontinents` is the same as `year_country_gdp` where we had just used `select` and no `group_by`. That's because we essentially passed a dataframe for each continent to the `select` but then we just put those 5 dataframe into `year_country_gdp_bycontinents`. So in other words, we grouped them, them ungrouped them without doing anything special except `select` which we could have done without grouping.
+You will notice that the structure of the dataframe where we used `group_by()` (`grouped_df`) is not the same as the original `gapminder` (`data.frame`). A `grouped_df` can be thought of as a `list` where each item in the `list`is a `data.frame` which contains only the rows that correspond to the a particular value `continent` (at least in the example above)
+
+> draw this on the board? I'd like to include a diagram here too
 
 #### Using summarize()
 
-The above was a bit on the uneventful side because `group_by` works much better in conjunction with `summarize`, which is that 'something special' I alluded to above.
+The above was a bit on the uneventful side because `group_by()` much more exciting in conjunction with `summarize()`. This will allow use to create new variable(s) by using functions that repeat for each of the continent-specific data frames. That is to say, using the `group_by()` function, we split our original dataframe into multiple pieces, then we can run functions (e.g. `mean()` or `sd()`) within `summarize()`.
 
 ```{r}
 gdp_bycontinents <- gapminder %>%
@@ -111,14 +113,18 @@ gdp_bycontinents <- gapminder %>%
     summarize(mean_gdpPercap=mean(gdpPercap))
 ```
 
+> draw this on the board? I'd like to include a diagram here too
 
-Now that's getting exciting! That allowed us to calculate the mean gdpPercap for each continent, but it gets even better! Let's set we wanted to also group by year
+
+That allowed us to calculate the mean gdpPercap for each continent, but it gets even better.
 
 > #### Challenge 2 {.challenge}
 >
-> Calculate the average life expectancy per country. Which had the
-> longest and shortest?
+> Calculate the average life expectancy per country. Which had the longest life expectancy and which had the shortest life expectancy?
 >
+
+The function `group_by()` allows us to group by multiple variables. Let's group by `year` and `continent`
+
 
 ```{r}
 gdp_bycontinents_byyear <- gapminder %>%
@@ -126,7 +132,7 @@ gdp_bycontinents_byyear <- gapminder %>%
     summarize(mean_gdpPercap=mean(gdpPercap))
 ```
 
-That is pretty impressive, but it gets even better! You're not limited to defining 1 new variable in `summarize`.
+That is already quite powerful, but it gets even better! You're not limited to defining 1 new variable in `summarize()`.
 
 ```{r}
 gdp_pop_bycontinents_byyear <- gapminder %>%
@@ -139,7 +145,7 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 
 #### Using mutate()
 
-We can also create new variables prior to (or even after) summarizing information using `mutate'.
+We can also create new variables prior to (or even after) summarizing information using `mutate()`.
 ```{r}
 gdp_pop_bycontinents_byyear <- gapminder %>%
     mutate(gdp_billion=gdpPercap*pop/10^9) %>%
@@ -158,8 +164,8 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 
 
 > #### Advanced Challenge {.challenge}
-> Calculate the average life expectancy in 2002 of 2 randomly selected countries for each continent. Then arrange the continent names in reverse order
-> **Hint:** Use the `dplyr` functions `arrange()` and `sample_n()`, they have similar syntax to other dplyr functions
+> Calculate the average life expectancy in 2002 of 2 randomly selected countries for each continent. Then arrange the continent names in reverse order.
+> **Hint:** Use the `dplyr` functions `arrange()` and `sample_n()`, they have similar syntax to other dplyr functions.
 >
 
 > #### Solution to Challenge 1 {.challenge}
