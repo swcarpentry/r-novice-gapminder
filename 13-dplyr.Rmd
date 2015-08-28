@@ -17,7 +17,7 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 > * To be able to use the 6 main dataframe manipulation 'verbs' with pipes in `dplyr`
 >
 
-Manipulation of dataframes means many things to many researchers, we often select certain observations (rows) or variables (columns), we often group the data by a certain variable(s), or we even calculate summary statistic. We can do these operations using the normal base R operations:
+Manipulation of dataframes means many things to many researchers, we often select certain observations (rows) or variables (columns), we often group the data by a certain variable(s), or we even calculate summary statistics. We can do these operations using the normal base R operations:
 
 ```{r}
 mean(gapminder[gapminder$continent == "Africa", "gdpPercap"])
@@ -136,7 +136,7 @@ If we open up `year_country_gdp` we'll see that it only contains the year, count
 year_country_gdp <- gapminder %>% select(year,country,gdpPercap)
 ```
 
-To help you understand why we wrote that in that way, let's walk through it step by step. First we summon the gapminder dataframe and pass it on, using the pipe symbol `%>%`, to the next step which is the `select()` function. In this case we don't specify which data object we use in the `select()` function since in gets that from the previous pipe. **Fun Fact**: There is a good chance you have encountered pipes before in the shell. In R, a pipe symbol is `%>%` while in the shell it is `|` but the concept is the same!
+To help you understand why we wrote that in that way, let's walk through it step by step. First we summon the gapminder dataframe and pass it on, using the pipe symbol `%>%`, to the next step, which is the `select()` function. In this case we don't specify which data object we use in the `select()` function since in gets that from the previous pipe. **Fun Fact**: There is a good chance you have encountered pipes before in the shell. In R, a pipe symbol is `%>%` while in the shell it is `|` but the concept is the same!
 
 #### Using filter()
 
@@ -166,7 +166,7 @@ str(gapminder)
 
 str(gapminder %>% group_by(continent))
 ```
-You will notice that the structure of the dataframe where we used `group_by()` (`grouped_df`) is not the same as the original `gapminder` (`data.frame`). A `grouped_df` can be thought of as a `list` where each item in the `list`is a `data.frame` which contains only the rows that correspond to the a particular value `continent` (at least in the example above)
+You will notice that the structure of the dataframe where we used `group_by()` (`grouped_df`) is not the same as the original `gapminder` (`data.frame`). A `grouped_df` can be thought of as a `list` where each item in the `list`is a `data.frame` which contains only the rows that correspond to the a particular value `continent` (at least in the example above).
 
 ```{r,echo=FALSE}
 library(DiagrammeR)
@@ -504,7 +504,7 @@ That allowed us to calculate the mean gdpPercap for each continent, but it gets 
 > Calculate the average life expectancy per country. Which had the longest life expectancy and which had the shortest life expectancy?
 >
 
-The function `group_by()` allows us to group by multiple variables. Let's group by `year` and `continent`
+The function `group_by()` allows us to group by multiple variables. Let's group by `year` and `continent`.
 
 
 ```{r}
