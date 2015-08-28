@@ -10,18 +10,23 @@ source("tools/chunk-options.R")
 opts_chunk$set(fig.path = "fig/12-plyr-")
 # Silently load in the data so the rest of the lesson works
 gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE, stringsAsFactors = FALSE)
-gap_wide <- read.csv("data/gapminder_wide.csv", header=TRUE, stringsAsFactors = FALSE)
+
+# To create gapminder_wide.csv:
 # library(dplyr)
+# library(tidyr)
+# 
+# #transform the data to the wide format
 # gap_wide <- gapminder %>% gather(obs_type,obs_values,-continent,-country,-year) %>% 
 #     unite(ID_var,continent,country,sep="_") %>%
 #     unite(var_names,obs_type,year,sep="_") %>%
 #     spread(var_names,obs_values) %>% 
 #     separate(ID_var,into=c('continent','country'),sep='_')
-# write.csv(gap_wide,"data/gapminder_wide.csv",row.names = FALSE)
-# gap_wide2 <- read.csv("data/gapminder_wide.csv", header=TRUE, stringsAsFactors = FALSE)
-# identical(str(gap_wide),str(gap_wide2))
-# all.equal(gap_wide,gap_wide2)
-# identical(gap_wide,gap_wide2)
+# 
+# #write our the .csv so students can use it
+# write.csv(gap_wide_betterID,"data/gapminder_wide.csv",row.names = FALSE)
+
+#load the "student" data
+gap_wide <- read.csv("data/gapminder_wide.csv", header=TRUE, stringsAsFactors = FALSE)
 ```
 
 > ## Learning objectives {.objectives}
@@ -509,11 +514,11 @@ names(gap_normal)
 names(gapminder)
 ```
 
-Now we've got an intermediate dataframe `gap_normal` with the same dimensions as the original `gapminder`, but the order of the variables is different. Let's fix that before checking if they are `identical()`.
+Now we've got an intermediate dataframe `gap_normal` with the same dimensions as the original `gapminder`, but the order of the variables is different. Let's fix that before checking if they are `all.equal()`.
 
 ```{r}
 gap_normal <- gap_normal[,names(gapminder)]
-identical(gap_normal,gapminder)
+all.equal(gap_normal,gapminder)
 head(gap_normal)
 head(gapminder)
 ```
@@ -522,7 +527,7 @@ We're almost there, the original was sorted by `country`, `continent`, then `yea
 
 ```{r}
 gap_normal <- gap_normal %>% arrange(country,continent,year)
-identical(gap_normal,gapminder)
+all.equal(gap_normal,gapminder)
 ```
 
 That's great! We've gone from the longest format back to the intermediate and we didn't introduce any errors in our code.
@@ -567,14 +572,14 @@ gap_wide_betterID <- gap_long %>%
     separate(ID_var,c("continent","country"),sep="_")
 str(gap_wide_betterID)
 
-identical(gap_wide,gap_wide_betterID)
+all.equal(gap_wide,gap_wide_betterID)
 ```
 
 There and back again!
 
 > #### Solution to Challenge 1 {.challenge}
 >
-> The original gapminder data.frame is in an intermediate format. It is not purely long since it had multiple observation variables ()
+> The original gapminder data.frame is in an intermediate format. It is not purely long since it had multiple observation variables (`pop`,`lifeExp`,`gdpPercap`).
 >
 >
 
