@@ -43,6 +43,7 @@ is.numeric() # is it numeric?
 is.integer() # is it an integer?
 is.complex() # is it complex number data?
 is.character() # is it character data?
+str()  # what is it?
 ```
 
 > #### Challenge 1: Data types {.challenge}
