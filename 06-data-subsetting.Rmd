@@ -218,15 +218,17 @@ names of `x`, and asks, "Does this element occur in the second argument?".
 > #### Tip: Non-unique names {.callout}
 >
 > You should be aware that it is possible for multiple elements in a
-> vector to have the same name. For example:
+> vector to have the same name. (For a data frame, columns can have
+> the same name --- although R tries to avoid this --- but row names
+> must be unique.) Consider these examples:
 
 >```{r}
 > x <- 1:3
 > x
 > names(x) <- c('a', 'a', 'a')  
 > x
-> x['a']
-> x[which(names(x) == 'a')]
+> x['a']  # only returns first value
+> x[which(names(x) == 'a')]  # returns all three values
 > ```
 
 
