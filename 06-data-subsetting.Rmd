@@ -89,12 +89,15 @@ If we ask for the 0th element, we get an empty vector:
 x[0]
 ```
 
-But what about negative values?
+> ####Vector numbering in R starts at 1 {.callout} 
+> 
+> In many programming languages (C and python, for example), the first
+> element of a vector has an index of 0. In R, the first element is 1.
 
 ### Skipping and removing elements
 
-If we use a negative number, R will return every element *except* for the
-one specified:
+If we use a negative number as the index of a vector, R will return
+every element *except* for the one specified:
 
 ```{r}
 x[-2]
@@ -197,7 +200,9 @@ first name is "a" so that element is TRUE.
 which(names(x) == "a")
 ```
 
-Only the first element is `TRUE`, so `which returns 1. Now that we have indices
+
+
+Only the first element is `TRUE`, so `which` returns 1. Now that we have indices
 the skipping works because we have a negative index!
 
 Skipping multiple named indices is similar, but uses a different comparison
@@ -209,6 +214,22 @@ x[-which(names(x) %in% c("a", "c"))]
 
 The `%in%` goes through each element of its left argument, in this case the
 names of `x`, and asks, "Does this element occur in the second argument?".
+
+> #### Tip: Non-unique names {.callout}
+>
+> You should be aware that it is possible for multiple elements in a
+> vector to have the same name. For example:
+
+>```{r}
+> x <- 1:3
+> x
+> names(x) <- c('a', 'a', 'a')  
+> x
+> x['a']
+> x[which(names(x) == 'a')]
+> ```
+
+
 
 > #### Tip: Getting help for operators {.callout}
 >
@@ -225,7 +246,7 @@ names(x) == c('a', 'c')
 ```
 
 Obviously "c" is in the names of `x`, so why didn't this work? `==` works
-slightly differently to `%in%`. It will compare each element of its left argument
+slightly differently than `%in%`. It will compare each element of its left argument
 to the corresponding element of its right argument.
 
 Here's a mock illustration:
@@ -398,6 +419,12 @@ vector are arranged column-wise:
 
 ```{r}
 matrix(1:6, nrow=2, ncol=3)
+```
+
+If you wish to populate the matrix by row, use `byrow=TRUE`:
+
+```{r}
+matrix(1:6, nrow=2, ncol=3, byrow=TRUE)
 ```
 
 Matrices can also be subsetted using their rownames and column names
