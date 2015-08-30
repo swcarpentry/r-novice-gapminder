@@ -8,21 +8,27 @@ minutes: 45
 ```{r, include=FALSE}
 source("tools/chunk-options.R")
 # Silently load in the data so the rest of the lesson works
-gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
+library(gapminder)
+#gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 ```
 
 > ## Learning objectives {.objectives}
 >
 > * Become familiar with data frames
-> * To be able to read in regular data into R
+> * Be able to read regular data into R
 >
 
 ### Data frames
 
-Data frames are similar to matrices, except each column can be a different atomic type.
-Underneath the hood, data frames are really lists, where each element is
-an atomic vector, with the added restriction that they're all the same length.
-As you will see, if we pull out one column of a data frame, we will have a vector.
+Data frames are similar to matrices, except each column can be a
+different atomic type. A data frames is the standard structure for
+storing and manipulating rectangular data sets.  Underneath the hood,
+data frames are really lists, where each element is an atomic vector,
+with the added restriction that they're all the same length.  As you
+will see, if we pull out one column of a data frame,we will have a
+vector. You will probably find that data frames are more complicated
+than vectors and other data structures we have considered, but they
+provide powerful capabilities.
 
 
 Data frames can be created manually with the `data.frame` function:
@@ -32,73 +38,152 @@ df <- data.frame(id = c('a', 'b', 'c', 'd', 'e', 'f'), x = 1:6, y = c(214:219))
 df
 ```
 
-> #### Challenge: Data frames {.challenge}
+> #### Challenge 1: Data frames {.challenge}
 >
 > Try using the `length` function to query
 > your data frame `df`. Does it give the result
 > you expect?
 >
 
-Each column in the data frame is simply a list element, which is why when you ask for the
-`length` of the data frame, it tells you the number of columns. If you actually want
-the number of rows, you can use the `nrow` function.
+Each column in the data frame is simply a list element, which is why
+when you ask for the `length` of the data frame, it tells you the
+number of columns. If you actually want the number of rows, you can
+use the `nrow` function.
 
-We can add rows or columns to a data.frame using `rbind` or `cbind` (these are
-the two-dimensional equivalents of the `c` function):
+We can add columns or rows to a data.frame using `cbind` or `rbind`
+(these are the two-dimensional equivalents of the `c` function):
+
+#### Adding columns to a data frame
+
+To add a column we can use `cbind`:
 
 ```{r}
-df <- rbind(df, list("g", 11, 42))
+df <- cbind(df, 6:1)
+df
 ```
 
-This doesn't work as expected! What does this error message tell us?
+Note that R automatically names the column. We may decide to change
+the name by assigning a value using the `names` function:
 
-It sounds like it was trying to generate a factor level. Why? Perhaps our first
-column (containing characters) is to blame...
-We can access a column in a `data.frame` by using the `$` operator.
+```{r}
+names(df)[4] <- 'SixToOne'
+```
+
+We can also provide a name when we add the column:
+
+```{r}
+df <- cbind(df, caps=LETTERS[1:6])
+df
+```
+
+(`LETTERS` and `letters` are built-in constants.)
+
+
+#### Adding rows to a data frame 
+
+To add a row we use `rbind`:
+
+```{r}
+df <- rbind(df, list("g", 11, 42, 0, "G"))
+```
+
+Note that we add the row as a list, because we have multiple types
+across the columns. Nevertheless, this doesn't work as expected! What
+do the error messages tell us?
+
+It appears that R was trying to append "g" and "G" as factor
+levels. Why? Let's examine the first column.  We can access a column
+in a `data.frame` by using the `$` operator.
 
 
 ```{r}
 class(df$id)
+str(df)
 ```
 
-Indeed, R automatically made this first column a factor, not a character vector.
-We can change this in place by converting the type of this column.
+When we created the data frame, R automatically made the first
+and last columns into factors, not character vectors. There are no
+pre-existing levels "g" and "G", so the attempt to add these values
+fails. A row was added to the data frame, only there are missing
+values in the factor columns:
 
 ```{r}
-df$id <- as.character(df$id)
+df
+```
+
+
+There are two ways we can work around this issue:
+
+1. We can convert the factor columns into characters. This is
+convenient, but we lose the factor structure. 
+
+2. We can add factor levels to accomodate the new additions. If we
+really do want the columns to be factors, this is the correct way to
+proceed.
+
+We will illustrate both solutions in the same data frame:
+
+```{r}
+df$id <- as.character(df$id)  # convert to character
 class(df$id)
+levels(df$caps) <- c(levels(df$caps), 'G') # add a factor level
+class(df$caps)
 ```
 
 Okay, now let's try adding that row again.
 
 ```{r}
-df <- rbind(df, list("g", 11, 42))
+df <- rbind(df, list("g", 11, 42, 0, 'G'))
 tail(df, n=3)
 ```
 
-Note that to add a row, we need to use a list, because each column is a different type!
-If you want to add multiple rows to a data.frame, you will need to separate the new columns
-in the list:
+We successfully added the last row, but we have an undesired row with
+two `NA` values. How do delete it?
+
+#### Deleting rows and handling NA
+
+
+There are multiple ways to delete a row containing `NA`:
 
 ```{r}
-df <- rbind(df, list(c("l", "m"), c(12, 13), c(534, -20)))
-tail(df, n=3)
+df[-7, ]  # The minus sign tells R to delete the row
+df[complete.cases(df), ]  # Return `TRUE` when no missing values
+na.omit(df)  # Another function for the same purpose
+df <- na.omit(df)
 ```
 
-You can also row-bind data.frames together:
+#### Combining data frames
+
+We  can also row-bind data.frames together, but notice what happens to
+the rownames:
 
 ```{r}
 rbind(df, df)
 ```
 
-To add a column we can use `cbind`:
+R is making sure that rownames are unique. You can restore sequential
+numbering by setting rownames to NULL:
 
 ```{r}
-df <- cbind(df, 10:1)
-df
+df2 <- rbind(df, df)
+rownames(df2) <- NULL
+df2
 ```
 
-> #### Challenge 1 {.challenge}
+
+<!-- 
+When we add a row we need to use a list, because each column is
+a different type!  If you want to add multiple rows to a data.frame,
+you will need to separate the new columns in the list:
+
+```{r}
+df <- rbind(df, list(c("l", "m"), c(12, 13), c(534, -20), c(-1, -2),
+c('H', 'I')))
+tail(df, n=3)
+```
+-->
+
+> #### Challenge 2 {.challenge}
 >
 > Create a data frame that holds the following information for yourself:
 >
@@ -108,7 +193,8 @@ df
 >
 > Then use rbind to add the same information for the people sitting near you.
 >
-> Now use cbind to add a column of logicals answering the question,
+> Now use cbind to add a column of logicals that will, for each
+>person, hold the answer to the question,
 > "Is there anything in this workshop you're finding confusing?"
 >
 
@@ -116,7 +202,7 @@ df
 
 Remember earlier we obtained the gapminder dataset.
 If you're curious about where this data comes from you might like to
-look at the [Gapminder website](http://www.gapminder.org/data/documentation/)
+look at the [Gapminder website](http://www.gapminder.org/data/documentation/).
 
 Now we want to load the gapminder data into R.
 Before reading in data, it's a good idea to have a look at its structure.
@@ -171,7 +257,7 @@ head(gapminder)
 To make sure our analysis is reproducible, we should put the code
 into a script file so we can come back to it later.
 
-> #### Challenge 2 {.challenge}
+> #### Challenge 3 {.challenge}
 >
 > Go to file -> new file -> R script, and write an R script
 > to load in the gapminder dataset. Put it in the `scripts/`
@@ -184,7 +270,7 @@ into a script file so we can come back to it later.
 ### Using data frames: the `gapminder` dataset
 
 
-To recap what we've just learnt, let's have a look at our example
+To recap what we've just learned, let's have a look at our example
 data (life expectancy in various countries for various years).
 
 Remember, there are a few functions we can use to interrogate data structures in R:
@@ -210,12 +296,13 @@ Remember, data frames are lists 'under the hood'.
 class(gapminder)
 ```
 
-The gapminder data is stored in a "data.frame". This is the default data structure when you read
-in data, and (as we've heard) is useful for storing data with mixed types of columns.
+The gapminder data is stored in a "data.frame". This is the default
+data structure when you read in data, and (as we've heard) is useful
+for storing data with mixed types of columns.
 
 Let's look at some of the columns.
 
-> #### Challenge 3: Data types in a real dataset {.challenge}
+> #### Challenge 4: Data types in a real dataset {.challenge}
 >
 > Look at the first 6 rows of the gapminder data frame we loaded before:
 >
@@ -269,12 +356,14 @@ question you're asking, and makes it easier to specify the ordering of the categ
 However there are many in the R community who find it more sensible to
 leave this as the default behaviour.
 
-> #### Tip: Changing options {.callout}
->
-> When R starts, the first thing it does is runs any code in the file `.Rprofile`
-> in the project directory. Any permanent changes to default behaviour you want
-> to make should be stored in that file.
->
+> #### Tip: Changing options {.callout} 
+> When R starts, it runs any
+>code in the file `.Rprofile` in the project directory. You can make
+>permanent changes to default behaviour by storing the changes in that
+>file. BE CAREFUL, however. If you change R's default options,
+>programs written by others may not run correctly in your environment
+>and vice versa. For this reason, some argue that most such changes
+>should be in your scripts, where they are visible.
 
 The first thing you should do when reading data in, is check that it matches what
 you expect, even if the command ran without warnings or errors. The `str` function,
@@ -289,28 +378,32 @@ and 6 variables (columns). Below that, we see the name of each column, followed
 by a ":", followed by the type of variable in that column, along with the first
 few entries.
 
-We can also retrieve or modify the column or rownames of the data.frame:
+As discussed above, we can retrieve or modify the column or row names
+of the data.frame:
 
 ```{r}
-colnames(gapminder)
+colnames(gapminder)  
+copy <- gapminder
+colnames(copy) <- letters[1:6]
+head(copy, n=3)
 ```
+
+> #### Challenge 5 {.challenge}
+>
+> Recall that we also used the `names` function (above) to modify
+> column names. Does it matter which you use? You can check help with
+> `?names` and `?colnames` to see whether it should matter.
+
 
 ```{r}
-rownames(gapminder)
+rownames(gapminder)[1:20]
 ```
 
-See those numbers in the square brackets on the left? That tells you the
-number of the first entry in that row of output. So in the last line, we
-see that the "[1701]" element has "1701" stored in it. The rownames in
-this case are simply the row numbers.
+See those numbers in the square brackets on the left? That tells you
+the number of the first entry in that row of output. So we see that
+for the 5th row, the rowname is "5". In this case, the rownames are
+simply the row numbers.
 
-We can also modify this information:
-
-```{r}
-copy <- gapminder # lets create a copy so we don't mess up the original
-colnames(copy) <- c("a", "b", "c", "d", "e", "f")
-head(copy)
-```
 
 There are a few related ways of retrieving and modifying this information.
 `attributes` will give you both the row and column names, along with the
@@ -330,44 +423,49 @@ Lets run a basic linear regression on the gapminder dataset:
 
 ```{r}
 # What is the relationship between life expectancy and year?
-l1 <- lm(lifeExp ~ year, data=gapminder)
+reg <- lm(lifeExp ~ year, data=gapminder)
 ```
 
-We won't go into too much detail of what I just wrote, but briefly;
-the `~` denotes a formula, which means treat the variable on the left of the
-`~` as the left hand side of the equation (or response in this case), and
-everything on the right as the right hand side. By telling the linear
-model function to use the gapminder data frame, it knows to look for those
-variable names as its columns.
+We won't go into too much detail, but briefly: 
+
+* `lm` estimates linear statistical models
+* The first argument is a formula, with  `a ~ b` meaning that `a`,
+     the dependent (or response) variable, is a
+    function of `b`, the independent variable. 
+* We tell `lm` to use the gapminder data frame, so it knows where to
+ find the variables `lifeExp` and `year`. 
+
+
 
 Let's look at the output:
 
 ```{r}
-l1
+reg
 ```
 
 Not much there right? But if we look at the structure...
 
 ```{r}
-str(l1)
+str(reg)
 ```
 
-There's a lot of stuff, stored in nested lists! This is why the structure
-function is really useful, it allows you to see all the data available to
-you returned by a function.
+There's a great deal stored in nested lists! The structure function
+allows you to see all the data available, in this case, the data that
+was returned by the `lm` function.
 
 For now, we can look at the `summary`:
 
 ```{r}
-summary(l1)
+summary(reg)
 ```
 
 As you might expect, life expectancy has slowly been increasing over
 time, so we see a significant positive association!
 
+
 ## Challenge Solutions
 
-> #### Solution to challenge 1 {.challenge}
+> #### Solution to Challenge 2 {.challenge}
 >
 > Create a data frame that holds the following information for yourself:
 >
@@ -386,4 +484,15 @@ time, so we see a significant positive association!
 > my_df <- rbind(my_df, list(c("Jo", "John"), c("White", "Lee"), c(23, 41)))
 > my_df <- cbind(my_df, confused = c(FALSE, FALSE, TRUE, FALSE))
 > ```
->
+
+> #### Solution to Challenge 5 {.challenge}
+> 
+> `?colnames` tells you that the `colnames` function is the same as
+> `names` for a data frame. For other structures, they may not be the
+> same. In particular, `names` does not work for matrices, but
+> `colnames` does. You can verify this with 
+> ```{r}
+> m <- matrix(1:9, nrow=3)
+> colnames(m) <- letters[1:3] # works as you would expect
+> names(m) <- letters[1:3]  # destroys the matrix
+> ```
