@@ -7,7 +7,7 @@ minutes: 45
 
 
 
-> ## Learning objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > * To be able to use the split-apply-combine strategy for data analysis
 >
@@ -97,7 +97,7 @@ We want to *split* our data into groups, in this case continents, *apply*
 some calculations on that group, then optionally *combine* the results
 together afterwards.
 
-#### The `plyr` package
+## The `plyr` package
 
 For those of you who have used R before, you might be familiar with the
 `apply` family of functions. While R's built in functions do work, we're
@@ -376,34 +376,34 @@ d_ply(
 
 ~~~
 
-> #### Tip: printing numbers {.callout}
+> ## Tip: printing numbers {.callout}
 >
 > The `format` function can be used to make numeric
 > values "pretty" for printing out in messages.
 >
 
 
-> #### Challenge 1 {.challenge}
+> ## Challenge 1 {.challenge}
 >
 > Calculate the average life expectancy per continent. Which has the longest?
 > Which had the shortest?
 >
 
-> #### Challenge 2 {.challenge}
+> ## Challenge 2 {.challenge}
 >
 > Calculate the average life expectancy per continent and year. Which had the
 > longest and shortest in 2007? Which had the greatest change in between 1952
 > and 2007?
 >
 
-> #### Advanced Challenge {.challenge}
+> ## Advanced Challenge {.challenge}
 >
 > Calculate the difference in mean life expectancy between
 > the years 1952 and 2007 from the output of challenge 2
 > using one of the `plyr` functions.
 >
 
-> #### Alternate Challenge if class seems lost {.challenge}
+> ## Alternate Challenge if class seems lost {.challenge}
 >
 > Without running them, which of the following will calculate the average
 > life expectancy per continent:

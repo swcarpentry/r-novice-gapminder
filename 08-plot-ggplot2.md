@@ -7,7 +7,7 @@ minutes: 70
 
 
 
-> ## Learning objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > * To be able to use ggplot2 to generate publication quality graphics
 > * To understand the basics of the grammar of graphics:
@@ -96,7 +96,7 @@ ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
 
 <img src="fig/08-plot-ggplot2-lifeExp-vs-gdpPercap-scatter2-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter2" alt="plot of chunk lifeExp-vs-gdpPercap-scatter2" style="display: block; margin: auto;" />
 
-> #### Challenge 1 {.challenge}
+> ## Challenge 1 {.challenge}
 >
 > Modify the example so that the figure visualise how life expectancy has
 > changed over time:
@@ -110,7 +110,7 @@ ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
 > on the x-axis.
 >
 
-> #### Challenge 2 {.challenge}
+> ## Challenge 2 {.challenge}
 >
 > In the previous examples and challenge we've used the `aes` function to tell
 > the scatterplot **geom** about the **x** and **y** locations of each point.
@@ -119,7 +119,7 @@ ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
 > column. What trends do you see in the data? Are they what you expected?
 >
 
-### Layers
+## Layers
 
 Using a scatterplot probably isn't the best for visualising change over time.
 Instead, let's tell `ggplot` to visualise the data as a line plot:
@@ -164,13 +164,13 @@ global plot options in `ggplot` to the `geom_line` layer so it no longer applies
 to the points. Now we can clearly see that the points are drawn on top of the
 lines.
 
-> #### Challenge 3 {.challenge}
+> ## Challenge 3 {.challenge}
 >
 > Switch the order of the point and line layers from the previous example. What
 > happened?
 >
 
-### Transformations and statistics
+## Transformations and statistics
 
 Ggplot also makes it easy to overlay statistical models over the data. To
 demonstrate we'll go back to our first example:
@@ -230,7 +230,7 @@ aesthetic by passing it as an argument to `geom_smooth`. Previously in the
 lesson we've used the `aes` function to define a *mapping* between data
 variables and their visual representation.
 
-> #### Challenge 4 {.challenge}
+> ## Challenge 4 {.challenge}
 >
 > Modify the color and size of the points on the point layer in the previous
 > example.
@@ -238,7 +238,7 @@ variables and their visual representation.
 > Hint: do not use the `aes` function.
 >
 
-### Multi-panel figures
+## Multi-panel figures
 
 Earlier we visualised the change in life expectancy over time across all
 countries in one plot. Alternatively, we can split this out over multiple panels
@@ -256,7 +256,7 @@ The `facet_wrap` layer took a "formula" as its argument, denoted by the tilde
 (~). This tells R to draw a panel for each unique value in the country column
 of the gapminder dataset.
 
-### Modifying text
+## Modifying text
 
 To clean this figure up for a publication we need to change some of the text
 elements. The x-axis is way too cluttered, and the y axis should read
@@ -290,7 +290,7 @@ code to modify!
 [ggplot-doc]: http://docs.ggplot2.org/current/
 
 
-> #### Challenge 5 {.challenge}
+> ## Challenge 5 {.challenge}
 >
 > Create a density plot of GDP per capita, filled by continent.
 >
@@ -301,7 +301,7 @@ code to modify!
 
 ## Challenge solutions
 
-> #### Solution to challenge 1 {.challenge}
+> ## Solution to challenge 1 {.challenge}
 >
 > Modify the example so that the figure visualise how life expectancy has
 > changed over time:
@@ -314,7 +314,7 @@ code to modify!
 > <img src="fig/08-plot-ggplot2-ch1-sol-1.png" title="plot of chunk ch1-sol" alt="plot of chunk ch1-sol" style="display: block; margin: auto;" />
 >
 
-> #### Solution to challenge 2 {.challenge}
+> ## Solution to challenge 2 {.challenge}
 >
 > In the previous examples and challenge we've used the `aes` function to tell
 > the scatterplot **geom** about the **x** and **y** locations of each point.
@@ -331,7 +331,7 @@ code to modify!
 > <img src="fig/08-plot-ggplot2-ch2-sol-1.png" title="plot of chunk ch2-sol" alt="plot of chunk ch2-sol" style="display: block; margin: auto;" />
 >
 
-> #### Solution to challenge 3 {.challenge}
+> ## Solution to challenge 3 {.challenge}
 >
 > Switch the order of the point and line layers from the previous example. What
 > happened?
@@ -348,7 +348,7 @@ code to modify!
 >
 
 
-> #### Solution to challenge 4 {.challenge}
+> ## Solution to challenge 4 {.challenge}
 >
 > Modify the color and size of the points on the point layer in the previous
 > example.
@@ -365,7 +365,7 @@ code to modify!
 > <img src="fig/08-plot-ggplot2-ch4-sol-1.png" title="plot of chunk ch4-sol" alt="plot of chunk ch4-sol" style="display: block; margin: auto;" />
 >
 
-> #### Solution to challenge 5 {.challenge}
+> ## Solution to challenge 5 {.challenge}
 >
 > Create a density plot of GDP per capita, filled by continent.
 >

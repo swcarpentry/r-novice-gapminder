@@ -16,12 +16,12 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 dir.create("cleaned-data")
 ```
 
-> ## Learning objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > * To be able to write out plots and data from R
 >
 
-### Saving plots
+## Saving plots
 
 You have already seen how to save the most recent plot you create in `ggplot2`,
 using the command `ggsave`. As a refresher:
@@ -57,7 +57,7 @@ dev.off()
 
 Open up this document and have a look.
 
-> #### Challenge 1 {.challenge}
+> ## Challenge 1 {.challenge}
 >
 > Rewrite your 'pdf' command to print a second
 > page in the pdf, showing a facet plot (hint: use `facet_grid`)
@@ -68,7 +68,7 @@ Open up this document and have a look.
 The commands `jpeg`, `png` etc. are used similarly to produce
 documents in different formats.
 
-### Writing data
+## Writing data
 
 At some point, you'll also want to write out data from R.
 
@@ -127,7 +127,7 @@ head cleaned-data/gapminder-aus.csv
 
 That looks better!
 
-> #### Challenge 2 {.challenge}
+> ## Challenge 2 {.challenge}
 >
 > Write a data-cleaning script file that subsets the gapminder
 > data to include only data points collected since 1990.

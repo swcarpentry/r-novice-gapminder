@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: R for reproducible scientific analysis</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+                    <a href="index.html"><h1 class="title">R for reproducible scientific analysis</h1></a>
+          <h2 class="subtitle">Dataframe manipulation with dplyr</h2>
+          <section class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>To be able to use the 6 main dataframe manipulation ‘verbs’ with pipes in <code>dplyr</code></li>
+</ul>
+</div>
+</section>
+<p>Manipulation of dataframes means many things to many researchers, we often select certain observations (rows) or variables (columns), we often group the data by a certain variable(s), or we even calculate summary statistics. We can do these operations using the normal base R operations:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(gapminder[gapminder$continent ==<span class="st"> &quot;Africa&quot;</span>, <span class="st">&quot;gdpPercap&quot;</span>])</code></pre></div>
+<pre class="output"><code>[1] 2193.755
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(gapminder[gapminder$continent ==<span class="st"> &quot;Americas&quot;</span>, <span class="st">&quot;gdpPercap&quot;</span>])</code></pre></div>
+<pre class="output"><code>[1] 7136.11
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(gapminder[gapminder$continent ==<span class="st"> &quot;Asia&quot;</span>, <span class="st">&quot;gdpPercap&quot;</span>])</code></pre></div>
+<pre class="output"><code>[1] 7902.15
+</code></pre>
+<p>But this isn’t very <em>nice</em> because there is a fair bit of repetition. Repeating yourself will cost you time, both now and later, and potentially introduce some nasty bugs.</p>
+<h2 id="the-dplyr-package">The <code>dplyr</code> package</h2>
+<p>Luckily, the <a href="https://cran.r-project.org/web/packages/dplyr/dplyr.pdf"><code>dplyr</code></a> package provides a number of very useful functions for manipulating dataframes in a way that will reduce the above repetition, reduce the probability of making errors, and probably even save you some typing. As an added bonus, you might even find the <code>dplyr</code> grammar easier to read.</p>
+<p>Here we’re going to cover 6 of the most commonly used functions as well as using pipes (<code>%&gt;%</code>) to combine them.</p>
+<ol style="list-style-type: decimal">
+<li><code>select()</code></li>
+<li><code>filter()</code></li>
+<li><code>group_by()</code></li>
+<li><code>summarize()</code></li>
+<li><code>mutate()</code></li>
+</ol>
+<p>If you have have not installed this package earlier, please do so:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&#39;dplyr&#39;</span>)</code></pre></div>
+<p>Now let’s load the package:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)</code></pre></div>
+<h2 id="using-select">Using select()</h2>
+<p>If, for example, we wanted to move forward with only a few of the variables in our dataframe we could use the <code>select()</code> function. This will keep only the variables you select.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">year_country_gdp &lt;-<span class="st"> </span><span class="kw">select</span>(gapminder,year,country,gdpPercap)</code></pre></div>
+<!--html_preserve-->
+<div id="htmlwidget-3388" class="grViz" style="width:504px;height:504px;">
+
+</div>
+<script type="application/json" data-for="htmlwidget-3388">{"x":{"diagram":"digraph html {\n    table1 [shape=none, margin=0,label=<\n    <TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"1\" CELLPADDING=\"6\">\n        <TR>\n            <TD PORT=\"f0\" BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">a</TD>\n            <TD BGCOLOR=\"#FF7400\" CELLPADDING=\"0\">b</TD>\n            <TD PORT=\"f1\" BGCOLOR=\"#009999\" CELLPADDING=\"0\">c</TD>\n            <TD BGCOLOR=\"#00CC00\" CELLPADDING=\"0\">d</TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\"></TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\"></TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\"></TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n    </TABLE>>];\n\n    table2 [shape=none, margin=0, label=<\n    <TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"1\" CELLPADDING=\"6\">\n        <TR>\n            <TD PORT=\"f0\" BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">a</TD>\n            <TD PORT=\"f1\" BGCOLOR=\"#009999\" CELLPADDING=\"0\">c</TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n        </TR>\n    </TABLE>>];\n   \n    table1:f1 -> table2:f1 \n    table1:f0 -> table2:f0\n\n    subgraph {\n        rank = same; table1; table2;\n    }\n    \n\n    labelloc=\"t\";\n    label=\"select(data.frame,a,c)\";\n}\n","config":{"engine":"dot","options":null}},"evals":[]}</script>
+<!--/html_preserve-->
+<p>If we open up <code>year_country_gdp</code> we’ll see that it only contains the year, country and gdpPercap. Above we used ‘normal’ grammar, but the strengths of <code>dplyr</code> lie in combining several functions using pipes. Since the pipes grammar is unlike anything we’ve seen in R before, let’s repeat what we’ve done above using pipes.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">year_country_gdp &lt;-<span class="st"> </span>gapminder %&gt;%<span class="st"> </span><span class="kw">select</span>(year,country,gdpPercap)</code></pre></div>
+<p>To help you understand why we wrote that in that way, let’s walk through it step by step. First we summon the gapminder dataframe and pass it on, using the pipe symbol <code>%&gt;%</code>, to the next step, which is the <code>select()</code> function. In this case we don’t specify which data object we use in the <code>select()</code> function since in gets that from the previous pipe. <strong>Fun Fact</strong>: There is a good chance you have encountered pipes before in the shell. In R, a pipe symbol is <code>%&gt;%</code> while in the shell it is <code>|</code> but the concept is the same!</p>
+<h2 id="using-filter">Using filter()</h2>
+<p>If we now wanted to move forward with the above, but only with European countries, we can combine <code>select</code> and <code>filter</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">year_country_gdp_euro &lt;-<span class="st"> </span>gapminder %&gt;%
+<span class="st">    </span><span class="kw">filter</span>(continent==<span class="st">&quot;Europe&quot;</span>) %&gt;%
+<span class="st">    </span><span class="kw">select</span>(year,country,gdpPercap)</code></pre></div>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="challenge-1"><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h2>
+</div>
+<div class="panel-body">
+<p>Write a single command (which can span multiple lines and includes pipes) that will produce a dataframe that has the African values for <code>lifeExp</code>, <code>country</code> and <code>year</code>, but not for other Continents. How many rows does your dataframe have and why?</p>
+</div>
+</section>
+<p>As with last time, first we pass the gapminder dataframe to the <code>filter()</code> function, then we pass the filtered version of the gapminder dataframe to the <code>select()</code> function. <strong>Note:</strong> The order of operations is very important in this case. If we used ‘select’ first, filter would not be able to find the variable continent since we would have removed it in the previous step.</p>
+<h2 id="using-group_by-and-summarize">Using group_by() and summarize()</h2>
+<p>Now, we were supposed to be reducing the error prone repetitiveness of what can be done with base R, but up to now we haven’t done that since we would have to repeat the above for each continent. Instead of <code>filter()</code>, which will only pass observations that meet your criteria (in the above: <code>continent==&quot;Europe&quot;</code>), we can use <code>group_by()</code>, which will essentially use every unique criteria that you could have used in filter.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gapminder)</code></pre></div>
+<pre class="output"><code>&#39;data.frame&#39;:   1704 obs. of  6 variables:
+ $ country  : Factor w/ 142 levels &quot;Afghanistan&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+ $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...
+ $ continent: Factor w/ 5 levels &quot;Africa&quot;,&quot;Americas&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
+ $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
+ $ gdpPercap: num  779 821 853 836 740 ...
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gapminder %&gt;%<span class="st"> </span><span class="kw">group_by</span>(continent))</code></pre></div>
+<pre class="output"><code>Classes &#39;grouped_df&#39;, &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;: 1704 obs. of  6 variables:
+ $ country  : Factor w/ 142 levels &quot;Afghanistan&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+ $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...
+ $ continent: Factor w/ 5 levels &quot;Africa&quot;,&quot;Americas&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
+ $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
+ $ gdpPercap: num  779 821 853 836 740 ...
+ - attr(*, &quot;vars&quot;)=List of 1
+  ..$ : symbol continent
+ - attr(*, &quot;drop&quot;)= logi TRUE
+ - attr(*, &quot;indices&quot;)=List of 5
+  ..$ : int  24 25 26 27 28 29 30 31 32 33 ...
+  ..$ : int  48 49 50 51 52 53 54 55 56 57 ...
+  ..$ : int  0 1 2 3 4 5 6 7 8 9 ...
+  ..$ : int  12 13 14 15 16 17 18 19 20 21 ...
+  ..$ : int  60 61 62 63 64 65 66 67 68 69 ...
+ - attr(*, &quot;group_sizes&quot;)= int  624 300 396 360 24
+ - attr(*, &quot;biggest_group_size&quot;)= int 624
+ - attr(*, &quot;labels&quot;)=&#39;data.frame&#39;:  5 obs. of  1 variable:
+  ..$ continent: Factor w/ 5 levels &quot;Africa&quot;,&quot;Americas&quot;,..: 1 2 3 4 5
+  ..- attr(*, &quot;vars&quot;)=List of 1
+  .. ..$ : symbol continent
+  ..- attr(*, &quot;drop&quot;)= logi TRUE
+</code></pre>
+<p>You will notice that the structure of the dataframe where we used <code>group_by()</code> (<code>grouped_df</code>) is not the same as the original <code>gapminder</code> (<code>data.frame</code>). A <code>grouped_df</code> can be thought of as a <code>list</code> where each item in the <code>list</code>is a <code>data.frame</code> which contains only the rows that correspond to the a particular value <code>continent</code> (at least in the example above).</p>
+<!--html_preserve-->
+<div id="htmlwidget-1400" class="grViz" style="width:504px;height:504px;">
+
+</div>
+<script type="application/json" data-for="htmlwidget-1400">{"x":{"diagram":"digraph html {\n    table1 [shape=none, margin=0,label=<\n    <TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"1\" CELLPADDING=\"6\">\n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">a</TD>\n            <TD BGCOLOR=\"#FF7400\" CELLPADDING=\"0\">b</TD>\n            <TD BGCOLOR=\"#009999\" CELLPADDING=\"0\">c</TD>\n            <TD BGCOLOR=\"#00CC00\" CELLPADDING=\"0\">d</TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">1</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD PORT=\"f0\" BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">1</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">2</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD PORT=\"f1\" BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">2</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">3</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD PORT=\"f2\" BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">3</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n    </TABLE>>];\ntable2 [shape=none, margin=0,label=<\n    <TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"1\" CELLPADDING=\"6\">\n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">a</TD>\n            <TD BGCOLOR=\"#FF7400\" CELLPADDING=\"0\">b</TD>\n            <TD BGCOLOR=\"#009999\" CELLPADDING=\"0\">c</TD>\n            <TD BGCOLOR=\"#00CC00\" CELLPADDING=\"0\">d</TD>\n        </TR>\n        \n        <TR>\n            <TD PORT=\"f0\" BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">1</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">1</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n\n    </TABLE>>];\ntable3 [shape=none, margin=0,label=<\n    <TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"1\" CELLPADDING=\"6\">\n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">a</TD>\n            <TD BGCOLOR=\"#FF7400\" CELLPADDING=\"0\">b</TD>\n            <TD BGCOLOR=\"#009999\" CELLPADDING=\"0\">c</TD>\n            <TD BGCOLOR=\"#00CC00\" CELLPADDING=\"0\">d</TD>\n        </TR>\n\n        <TR>\n            <TD PORT=\"f1\" BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">2</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">2</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n    </TABLE>>];\ntable4 [shape=none, margin=0,label=<\n    <TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"1\" CELLPADDING=\"6\">\n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">a</TD>\n            <TD BGCOLOR=\"#FF7400\" CELLPADDING=\"0\">b</TD>\n            <TD BGCOLOR=\"#009999\" CELLPADDING=\"0\">c</TD>\n            <TD BGCOLOR=\"#00CC00\" CELLPADDING=\"0\">d</TD>\n        </TR>\n        \n        <TR>\n            <TD PORT=\"f2\" BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">3</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">3</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n    </TABLE>>];\n\n   \n   \n    table1:f0 -> table2:f0 \n    table1:f1 -> table3:f1\n    table1:f2 -> table4:f2\n\n    subgraph {\n        rank = same; table1; table2; table3 ;table4;\n    }\n    subgraph {\n        table2\n        table3\n        table4\n    }\n\n    labelloc=\"t\";\n    label=\"gapminder %>% group_by(a)\";\n}\n","config":{"engine":"dot","options":null}},"evals":[]}</script>
+<!--/html_preserve-->
+<h2 id="using-summarize">Using summarize()</h2>
+<p>The above was a bit on the uneventful side because <code>group_by()</code> much more exciting in conjunction with <code>summarize()</code>. This will allow use to create new variable(s) by using functions that repeat for each of the continent-specific data frames. That is to say, using the <code>group_by()</code> function, we split our original dataframe into multiple pieces, then we can run functions (e.g. <code>mean()</code> or <code>sd()</code>) within <code>summarize()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gdp_bycontinents &lt;-<span class="st"> </span>gapminder %&gt;%
+<span class="st">    </span><span class="kw">group_by</span>(continent) %&gt;%
+<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean_gdpPercap=</span><span class="kw">mean</span>(gdpPercap))</code></pre></div>
+<!--html_preserve-->
+<div id="htmlwidget-6380" class="grViz" style="width:504px;height:504px;">
+
+</div>
+<script type="application/json" data-for="htmlwidget-6380">{"x":{"diagram":"digraph html {\n    table1 [shape=none, margin=0,label=<\n    <TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"1\" CELLPADDING=\"6\">\n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">a</TD>\n            <TD BGCOLOR=\"#FF7400\" CELLPADDING=\"0\">b</TD>\n            <TD BGCOLOR=\"#009999\" CELLPADDING=\"0\">c</TD>\n            <TD BGCOLOR=\"#00CC00\" CELLPADDING=\"0\">d</TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">1</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD PORT=\"f0\" BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">1</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">2</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD PORT=\"f1\" BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">2</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">3</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD PORT=\"f2\" BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">3</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n    </TABLE>>];\n\ntable2 [shape=none, margin=0,label=<\n    <TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"1\" CELLPADDING=\"6\">\n        <TR>\n            <TD PORT=\"f0\" BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">a</TD>\n            <TD BGCOLOR=\"#FF7400\" CELLPADDING=\"0\">b</TD>\n            <TD BGCOLOR=\"#009999\" CELLPADDING=\"0\">c</TD>\n            <TD BGCOLOR=\"#00CC00\" CELLPADDING=\"0\">d</TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">1</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n        \n        <TR>\n            <TD PORT=\"f3\" BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">1</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n\n    </TABLE>>];\n\ntable3 [shape=none, margin=0,label=<\n    <TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"1\" CELLPADDING=\"6\">\n        <TR>\n            <TD PORT=\"f1\" BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">a</TD>\n            <TD BGCOLOR=\"#FF7400\" CELLPADDING=\"0\">b</TD>\n            <TD BGCOLOR=\"#009999\" CELLPADDING=\"0\">c</TD>\n            <TD BGCOLOR=\"#00CC00\" CELLPADDING=\"0\">d</TD>\n        </TR>\n\n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">2</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n        \n        <TR>\n            <TD PORT=\"f3\" BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">2</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n    </TABLE>>];\n\ntable4 [shape=none, margin=0,label=<\n    <TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"1\" CELLPADDING=\"6\">\n        <TR>\n            <TD PORT=\"f2\" BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">a</TD>\n            <TD BGCOLOR=\"#FF7400\" CELLPADDING=\"0\">b</TD>\n            <TD BGCOLOR=\"#009999\" CELLPADDING=\"0\">c</TD>\n            <TD BGCOLOR=\"#00CC00\" CELLPADDING=\"0\">d</TD>\n        </TR>\n        \n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">3</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n        \n        <TR>\n            <TD PORT=\"f3\" BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">3</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n            <TD BGCOLOR=\"#009999\"></TD>\n            <TD BGCOLOR=\"#00CC00\"></TD>\n        </TR>\n    </TABLE>>];\n\n    table5 [shape=none, margin=0,label=<\n    <TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"1\" CELLPADDING=\"6\">\n        <TR>\n            <TD BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">a</TD>\n            <TD BGCOLOR=\"#FF7400\" CELLPADDING=\"0\">mean_b</TD>\n        </TR>\n        \n        <TR>\n            <TD PORT=\"f0\" BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">1</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n        </TR>\n       \n        <TR>\n            <TD PORT=\"f1\" BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">2</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n        </TR>\n        \n        <TR>\n            <TD PORT=\"f2\" BGCOLOR=\"#FF0000\" CELLPADDING=\"0\">3</TD>\n            <TD BGCOLOR=\"#FF7400\"></TD>\n        </TR>\n        \n    </TABLE>>];\n   \n   \n    table1:f0 -> table2:f0 \n    table1:f1 -> table3:f1\n    table1:f2 -> table4:f2\n    table2:f3 -> table5:f0 \n    table3:f3 -> table5:f1\n    table4:f3 -> table5:f2\n    subgraph {\n        rank = same; table1; table2; table3 ; table4;\n    }\n    subgraph {\n        table2\n        table3\n        table4\n    }\n\n    labelloc=\"t\";\n    label=\"gapminder %>% group_by(a) %>% summarize(mean_b=mean(b))\";\n}\n","config":{"engine":"dot","options":null}},"evals":[]}</script>
+<!--/html_preserve-->
+<p>That allowed us to calculate the mean gdpPercap for each continent, but it gets even better.</p>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="challenge-2"><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h2>
+</div>
+<div class="panel-body">
+<p>Calculate the average life expectancy per country. Which had the longest life expectancy and which had the shortest life expectancy?</p>
+</div>
+</section>
+<p>The function <code>group_by()</code> allows us to group by multiple variables. Let’s group by <code>year</code> and <code>continent</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gdp_bycontinents_byyear &lt;-<span class="st"> </span>gapminder %&gt;%
+<span class="st">    </span><span class="kw">group_by</span>(continent,year) %&gt;%
+<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean_gdpPercap=</span><span class="kw">mean</span>(gdpPercap))</code></pre></div>
+<p>That is already quite powerful, but it gets even better! You’re not limited to defining 1 new variable in <code>summarize()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gdp_pop_bycontinents_byyear &lt;-<span class="st"> </span>gapminder %&gt;%
+<span class="st">    </span><span class="kw">group_by</span>(continent,year) %&gt;%
+<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean_gdpPercap=</span><span class="kw">mean</span>(gdpPercap),
+              <span class="dt">sd_gdpPercap=</span><span class="kw">sd</span>(gdpPercap),
+              <span class="dt">mean_pop=</span><span class="kw">mean</span>(pop),
+              <span class="dt">sd_pop=</span><span class="kw">sd</span>(pop))</code></pre></div>
+<h2 id="using-mutate">Using mutate()</h2>
+<p>We can also create new variables prior to (or even after) summarizing information using <code>mutate()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gdp_pop_bycontinents_byyear &lt;-<span class="st"> </span>gapminder %&gt;%
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">gdp_billion=</span>gdpPercap*pop/<span class="dv">10</span>^<span class="dv">9</span>) %&gt;%
+<span class="st">    </span><span class="kw">group_by</span>(continent,year) %&gt;%
+<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean_gdpPercap=</span><span class="kw">mean</span>(gdpPercap),
+              <span class="dt">sd_gdpPercap=</span><span class="kw">sd</span>(gdpPercap),
+              <span class="dt">mean_pop=</span><span class="kw">mean</span>(pop),
+              <span class="dt">sd_pop=</span><span class="kw">sd</span>(pop),
+              <span class="dt">mean_pop=</span><span class="kw">mean</span>(pop),
+              <span class="dt">sd_pop=</span><span class="kw">sd</span>(pop))</code></pre></div>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="advanced-challenge"><span class="glyphicon glyphicon-pencil"></span>Advanced Challenge</h2>
+</div>
+<div class="panel-body">
+<p>Calculate the average life expectancy in 2002 of 2 randomly selected countries for each continent. Then arrange the continent names in reverse order. <strong>Hint:</strong> Use the <code>dplyr</code> functions <code>arrange()</code> and <code>sample_n()</code>, they have similar syntax to other dplyr functions.</p>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="solution-to-challenge-1"><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 1</h2>
+</div>
+<div class="panel-body">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">year_country_lifeExp_Africa &lt;-<span class="st"> </span>gapminder %&gt;%
+<span class="st">                           </span><span class="kw">filter</span>(continent==<span class="st">&quot;Africa&quot;</span>) %&gt;%
+<span class="st">                           </span><span class="kw">select</span>(year,country,lifeExp)</code></pre></div>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="solution-to-challenge-2"><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 2</h2>
+</div>
+<div class="panel-body">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lifeExp_bycountry &lt;-<span class="st"> </span>gapminder %&gt;%
+<span class="st">   </span><span class="kw">group_by</span>(country) %&gt;%
+<span class="st">   </span><span class="kw">summarize</span>(<span class="dt">mean_lifeExp=</span><span class="kw">mean</span>(lifeExp))</code></pre></div>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="solution-to-advanced-challenge"><span class="glyphicon glyphicon-pencil"></span>Solution to Advanced Challenge</h2>
+</div>
+<div class="panel-body">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lifeExp_2countries_bycontinents &lt;-<span class="st"> </span>gapminder %&gt;%<span class="st"> </span>
+<span class="st">   </span><span class="kw">filter</span>(year==<span class="dv">2002</span>) %&gt;%
+<span class="st">   </span><span class="kw">group_by</span>(continent) %&gt;%
+<span class="st">   </span><span class="kw">sample_n</span>(<span class="dv">2</span>) %&gt;%
+<span class="st">   </span><span class="kw">summarize</span>(<span class="dt">mean_lifeExp=</span><span class="kw">mean</span>(lifeExp)) %&gt;%
+<span class="st">   </span><span class="kw">arrange</span>(<span class="kw">desc</span>(mean_lifeExp))</code></pre></div>
+</div>
+</section>
+<h2 id="other-great-resources">Other great resources</h2>
+<p><a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">Data Wrangling Cheat sheet</a> <a href="https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">Introduction to dplyr</a></p>
+        </div>
+      </div>
+      </article>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>

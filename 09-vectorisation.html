@@ -30,7 +30,7 @@
           <h2 class="subtitle">Vectorisation</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning objectives</h2>
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -38,26 +38,26 @@
 </ul>
 </div>
 </section>
-<p>One of the nice features of R is that most of its functions are vectorised, that is the function will operate on all elements of a vector without needing to loop through and act on each element one at a time. This makes writing code more concise, easy to read, and less error prone.</p>
-<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">4</span>
-x *<span class="st"> </span><span class="dv">2</span></code></pre>
+<p>Most of R’s functions are vectorised, meaning that the function will operate on all elements of a vector without needing to loop through and act on each element one at a time. This makes writing code more concise, easy to read, and less error prone.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">4</span>
+x *<span class="st"> </span><span class="dv">2</span></code></pre></div>
 <pre class="output"><code>[1] 2 4 6 8
 </code></pre>
 <p>The multiplication happened to each element of the vector.</p>
 <p>We can also add two vectors together:</p>
-<pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="dv">6</span>:<span class="dv">9</span>
-x +<span class="st"> </span>y</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="dv">6</span>:<span class="dv">9</span>
+x +<span class="st"> </span>y</code></pre></div>
 <pre class="output"><code>[1]  7  9 11 13
 </code></pre>
 <p>Each element of <code>x</code> was added to its corresponding element of <code>y</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r">x:<span class="st">  </span><span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x:<span class="st">  </span><span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>
     +<span class="st">  </span>+<span class="st">  </span>+<span class="st">  </span>+
 y:<span class="st">  </span><span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span>
 ---------------
-<span class="st">    </span><span class="dv">7</span>  <span class="dv">9</span> <span class="dv">11</span> <span class="dv">13</span></code></pre>
+<span class="st">    </span><span class="dv">7</span>  <span class="dv">9</span> <span class="dv">11</span> <span class="dv">13</span></code></pre></div>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h4>
+<h2 id="challenge-1"><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h2>
 </div>
 <div class="panel-body">
 <p>Let’s try this on the <code>pop</code> column of the <code>gapminder</code> dataset.</p>
@@ -66,37 +66,40 @@ y:<span class="st">  </span><span class="dv">6</span>  <span class="dv">7</span>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h4>
+<h2 id="challenge-2"><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h2>
 </div>
 <div class="panel-body">
-<p>Refresh your ggplot skills by plotting population in millions against year.</p>
+<p>On a single graph, plot population, in millions, against year, for all countries. Don’t worry about identifying which country is which.</p>
+<p>Repeat the exercise, graphing only for China, India, and Indonesia. Again, don’t worry about which is which.</p>
 </div>
 </section>
-<p>Comparison operators also apply element-wise, as we saw in the subsetting lesson:</p>
-<pre class="sourceCode r"><code class="sourceCode r">x &gt;<span class="st"> </span><span class="dv">2</span></code></pre>
+<p>Comparison operators, logical operators, and many functions are also vectorized:</p>
+<p><strong>Comparison operators</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &gt;<span class="st"> </span><span class="dv">2</span></code></pre></div>
 <pre class="output"><code>[1] FALSE FALSE  TRUE  TRUE
 </code></pre>
-<p>Logical operations are also vectorised:</p>
-<pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span>x &gt;<span class="st"> </span><span class="dv">3</span>
-a</code></pre>
+<p><strong>Logical operators</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span>x &gt;<span class="st"> </span><span class="dv">3</span>  <span class="co"># or, for clarity, a &lt;- (x &gt; 3)</span>
+a</code></pre></div>
 <pre class="output"><code>[1] FALSE FALSE FALSE  TRUE
 </code></pre>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: some useful functions for logical vectors</h4>
+<h2 id="tip-some-useful-functions-for-logical-vectors"><span class="glyphicon glyphicon-pushpin"></span>Tip: some useful functions for logical vectors</h2>
 </div>
 <div class="panel-body">
-<p><code>any()</code> will return <code>TRUE</code> if any element of a vector is <code>TRUE</code> <code>all()</code> will return <code>TRUE</code> if <em>all</em> elements of a vector are <code>TRUE</code></p>
+<p><code>any()</code> will return <code>TRUE</code> if <em>any</em> element of a vector is <code>TRUE</code> <code>all()</code> will return <code>TRUE</code> if <em>all</em> elements of a vector are <code>TRUE</code></p>
 </div>
 </aside>
-<p>Many functions also operate on element-wise on vectors:</p>
-<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">4</span>
-<span class="kw">log</span>(x)</code></pre>
+<p>Most functions also operate element-wise on vectors:</p>
+<p><strong>Functions</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">4</span>
+<span class="kw">log</span>(x)</code></pre></div>
 <pre class="output"><code>[1] 0.0000000 0.6931472 1.0986123 1.3862944
 </code></pre>
-<p>Vectorised operations also work element wise on matrices:</p>
-<pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">nrow=</span><span class="dv">3</span>, <span class="dt">ncol=</span><span class="dv">4</span>)
-m *<span class="st"> </span>-<span class="dv">1</span></code></pre>
+<p>Vectorised operations work element-wise on matrices:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">nrow=</span><span class="dv">3</span>, <span class="dt">ncol=</span><span class="dv">4</span>)
+m *<span class="st"> </span>-<span class="dv">1</span>  </code></pre></div>
 <pre class="output"><code>     [,1] [,2] [,3] [,4]
 [1,]   -1   -4   -7  -10
 [2,]   -2   -5   -8  -11
@@ -104,21 +107,31 @@ m *<span class="st"> </span>-<span class="dv">1</span></code></pre>
 </code></pre>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: element-wise vs. matrix multiplication</h4>
+<h2 id="tip-element-wise-vs.matrix-multiplication"><span class="glyphicon glyphicon-pushpin"></span>Tip: element-wise vs. matrix multiplication</h2>
 </div>
 <div class="panel-body">
-<p>Note that <code>*</code> gives you element-wise multiplication! To do matrix multiplication, we need to use the <code>%*%</code> operator:</p>
+<p>Very important: the operator <code>*</code> gives you element-wise multiplication! To do matrix multiplication, we need to use the <code>%*%</code> operator:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m %*%<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>, <span class="dt">nrow=</span><span class="dv">4</span>, <span class="dt">ncol=</span><span class="dv">1</span>)</code></pre></div>
+<pre class="output"><code>     [,1]
+[1,]   22
+[2,]   26
+[3,]   30
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">4</span>, <span class="dt">nrow=</span><span class="dv">1</span>) %*%<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">4</span>, <span class="dt">ncol=</span><span class="dv">1</span>)</code></pre></div>
+<pre class="output"><code>     [,1]
+[1,]   30
+</code></pre>
 <p>For more on matrix algebra, see the <a href="http://www.statmethods.net/advstats/matrix.html">Quick-R reference guide</a></p>
 </div>
 </aside>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h4>
+<h2 id="challenge-3"><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h2>
 </div>
 <div class="panel-body">
 <p>Given the following matrix:</p>
-<pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">nrow=</span><span class="dv">3</span>, <span class="dt">ncol=</span><span class="dv">4</span>)
-m</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">nrow=</span><span class="dv">3</span>, <span class="dt">ncol=</span><span class="dv">4</span>)
+m</code></pre></div>
 <pre class="output"><code>     [,1] [,2] [,3] [,4]
 [1,]    1    4    7   10
 [2,]    2    5    8   11
@@ -129,30 +142,31 @@ m</code></pre>
 <li><code>m ^ -1</code></li>
 <li><code>m * c(1, 0, -1)</code></li>
 <li><code>m &gt; c(0, 20)</code></li>
+<li><code>m * c(1, 0, -1, 2)</code></li>
 </ol>
-<p>Did you get the output expected? If not, ask a helper!</p>
+<p>Did you get the output you expected? If not, ask a helper!</p>
 </div>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Bonus Challenge</h4>
+<h2 id="challenge-4"><span class="glyphicon glyphicon-pencil"></span>Challenge 4</h2>
 </div>
 <div class="panel-body">
 <p>We’re interested in looking at the sum of the following sequence of fractions:</p>
-<pre class="sourceCode r"><code class="sourceCode r"> x =<span class="st"> </span><span class="dv">1</span>/(<span class="dv">1</span>^<span class="dv">2</span>) +<span class="st"> </span><span class="dv">1</span>/(<span class="dv">2</span>^<span class="dv">2</span>) +<span class="st"> </span><span class="dv">1</span>/(<span class="dv">3</span>^<span class="dv">2</span>) +<span class="st"> </span>... +<span class="st"> </span><span class="dv">1</span>/(n^<span class="dv">2</span>)</code></pre>
-<p>This would be tedious to type out, and impossible for high values of n. Can you use vectorisation to solve for x, when n=100? How about when n=10,000?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> x =<span class="st"> </span><span class="dv">1</span>/(<span class="dv">1</span>^<span class="dv">2</span>) +<span class="st"> </span><span class="dv">1</span>/(<span class="dv">2</span>^<span class="dv">2</span>) +<span class="st"> </span><span class="dv">1</span>/(<span class="dv">3</span>^<span class="dv">2</span>) +<span class="st"> </span>... +<span class="st"> </span><span class="dv">1</span>/(n^<span class="dv">2</span>)</code></pre></div>
+<p>This would be tedious to type out, and impossible for high values of n. Use vectorisation to compute x when n=100. What is the sum when n=10,000?</p>
 </div>
 </section>
 <h2 id="challenge-solutions">Challenge solutions</h2>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 1</h4>
+<h2 id="solution-to-challenge-1"><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 1</h2>
 </div>
 <div class="panel-body">
 <p>Let’s try this on the <code>pop</code> column of the <code>gapminder</code> dataset.</p>
 <p>Make a new column in the <code>gapminder</code> data frame that contains population in units of millions of people. Check the head or tail of the data frame to make sure it worked.</p>
-<pre class="sourceCode r"><code class="sourceCode r">gapminder$pop_millions &lt;-<span class="st"> </span>gapminder$pop /<span class="st"> </span><span class="fl">1e6</span>
-<span class="kw">head</span>(gapminder)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gapminder$pop_millions &lt;-<span class="st"> </span>gapminder$pop /<span class="st"> </span><span class="fl">1e6</span>
+<span class="kw">head</span>(gapminder)</code></pre></div>
 <pre class="output"><code>      country year      pop continent lifeExp gdpPercap pop_millions
 1 Afghanistan 1952  8425333      Asia  28.801  779.4453     8.425333
 2 Afghanistan 1957  9240934      Asia  30.332  820.8530     9.240934
@@ -165,22 +179,26 @@ m</code></pre>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 2</h4>
+<h2 id="solution-to-challenge-2"><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 2</h2>
 </div>
 <div class="panel-body">
-<p>Refresh your ggplot skills by plotting population in millions against year.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(gapminder, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> pop_millions)) +<span class="st"> </span><span class="kw">geom_point</span>()</code></pre>
+<p>Refresh your plotting skills by plotting population in millions against year.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(gapminder$year, gapminder$pop_millions)</code></pre></div>
 <p><img src="fig/09-vectorisation-ch2-sol-1.png" title="plot of chunk ch2-sol" alt="plot of chunk ch2-sol" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">countryset &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;China&#39;</span>, <span class="st">&#39;India&#39;</span>, <span class="st">&#39;Indonesia&#39;</span>)
+y &lt;-<span class="st"> </span>gapminder[gapminder$country %in%<span class="st"> </span>countryset, ]
+<span class="kw">plot</span>(y$year, y$pop_millions)</code></pre></div>
+<p><img src="fig/09-vectorisation-ch2-sol-2.png" title="plot of chunk ch2-sol" alt="plot of chunk ch2-sol" style="display: block; margin: auto;" /></p>
 </div>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 3</h4>
+<h2 id="solution-to-challenge-3"><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 3</h2>
 </div>
 <div class="panel-body">
 <p>Given the following matrix:</p>
-<pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">nrow=</span><span class="dv">3</span>, <span class="dt">ncol=</span><span class="dv">4</span>)
-m</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">12</span>, <span class="dt">nrow=</span><span class="dv">3</span>, <span class="dt">ncol=</span><span class="dv">4</span>)
+m</code></pre></div>
 <pre class="output"><code>     [,1] [,2] [,3] [,4]
 [1,]    1    4    7   10
 [2,]    2    5    8   11
@@ -215,22 +233,34 @@ m</code></pre>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Bonus Challenge</h4>
+<h2 id="challenge-4-1"><span class="glyphicon glyphicon-pencil"></span>Challenge 4</h2>
 </div>
 <div class="panel-body">
 <p>We’re interested in looking at the sum of the following sequence of fractions:</p>
-<pre class="sourceCode r"><code class="sourceCode r"> x =<span class="st"> </span><span class="dv">1</span>/(<span class="dv">1</span>^<span class="dv">2</span>) +<span class="st"> </span><span class="dv">1</span>/(<span class="dv">2</span>^<span class="dv">2</span>) +<span class="st"> </span><span class="dv">1</span>/(<span class="dv">3</span>^<span class="dv">2</span>) +<span class="st"> </span>... +<span class="st"> </span><span class="dv">1</span>/(n^<span class="dv">2</span>)</code></pre>
-<p>This would be tedious to type out, and impossible for high values of n. Can you use vectorisation to solve for x, when n=100? How about when n=10,000?</p>
-<pre class="sourceCode r"><code class="sourceCode r">inverse_sum_of_squares &lt;-<span class="st"> </span>function(n) {
-  sequence &lt;-<span class="st"> </span><span class="dv">1</span>:n
-  y &lt;-<span class="st"> </span><span class="dv">1</span>/(sequence^<span class="dv">2</span>)
-  result &lt;-<span class="st"> </span><span class="kw">sum</span>(y)
-  <span class="kw">return</span>(result)
-}
-<span class="kw">inverse_sum_of_squares</span>(<span class="dv">100</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> x =<span class="st"> </span><span class="dv">1</span>/(<span class="dv">1</span>^<span class="dv">2</span>) +<span class="st"> </span><span class="dv">1</span>/(<span class="dv">2</span>^<span class="dv">2</span>) +<span class="st"> </span><span class="dv">1</span>/(<span class="dv">3</span>^<span class="dv">2</span>) +<span class="st"> </span>... +<span class="st"> </span><span class="dv">1</span>/(n^<span class="dv">2</span>)</code></pre></div>
+<p>This would be tedious to type out, and impossible for high values of n. Can you use vectorisation to compute x, when n=100? How about when n=10,000?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(<span class="dv">1</span>/(<span class="dv">1</span>:<span class="dv">100</span>)^<span class="dv">2</span>)</code></pre></div>
 <pre class="output"><code>[1] 1.634984
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">inverse_sum_of_squares</span>(<span class="dv">10000</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(<span class="dv">1</span>/(<span class="dv">1</span>:<span class="fl">1e04</span>)^<span class="dv">2</span>)</code></pre></div>
+<pre class="output"><code>[1] 1.644834
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">10000</span>
+<span class="kw">sum</span>(<span class="dv">1</span>/(<span class="dv">1</span>:n)^<span class="dv">2</span>)</code></pre></div>
+<pre class="output"><code>[1] 1.644834
+</code></pre>
+<p>We can also obtain the same results using a function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">inverse_sum_of_squares &lt;-<span class="st"> </span>function(n) {
+  <span class="kw">sum</span>(<span class="dv">1</span>/(<span class="dv">1</span>:n)^<span class="dv">2</span>)
+}
+<span class="kw">inverse_sum_of_squares</span>(<span class="dv">100</span>)</code></pre></div>
+<pre class="output"><code>[1] 1.634984
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">inverse_sum_of_squares</span>(<span class="dv">10000</span>)</code></pre></div>
+<pre class="output"><code>[1] 1.644834
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">10000</span>
+<span class="kw">inverse_sum_of_squares</span>(n)</code></pre></div>
 <pre class="output"><code>[1] 1.644834
 </code></pre>
 </div>

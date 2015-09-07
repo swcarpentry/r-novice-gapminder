@@ -8,14 +8,14 @@ minutes: 45
 
 
 
-> ## Learning objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > - To be aware of the different types of data
 > - To be aware of the different basic data structures commonly encountered in R
 > - To be able to ask questions from R about the type, class, and structure of an object.
 >
 
-### Data Types
+## Data Types
 
 Before we can analyse any data, we'll need to have a strong
 understanding of the basic data types and data structures. It is **Very
@@ -42,9 +42,10 @@ is.numeric() # is it numeric?
 is.integer() # is it an integer?
 is.complex() # is it complex number data?
 is.character() # is it character data?
+str()  # what is it?
 ~~~
 
-> #### Challenge 1: Data types {.challenge}
+> ## Challenge 1: Data types {.challenge}
 >
 > Use your knowledge of how to assign a value to
 > a variable, to create examples of data with the
@@ -59,7 +60,7 @@ is.character() # is it character data?
 > anything unexpected?
 >
 
-### Data Structures
+## Data Structures
 
 There are five data structures you will commonly encounter in R. These are:
 
@@ -71,7 +72,7 @@ There are five data structures you will commonly encounter in R. These are:
 
 For now, let's focus on vectors in more detail, to discover more about data types.
 
-#### Vectors
+## Vectors
 
 A vector is the most common and basic data structure in `R` and is pretty much
 the workhorse of R. They are sometimes referred to as atomic vectors, because
@@ -86,7 +87,7 @@ A vector can contain any of the five types we introduced before:
 * complex (e.g, `1 + 0i`, `1 + 4i`)
 * character (e.g, `"a"`, `"swc"`)
 
-> #### Tip: "Character Vectors" {.callout}
+> ## Tip: "Character Vectors" {.callout}
 >
 > You will sometimes hear the term "character vector", especially in
 > warning or error messages. This is a somewhat confusing and unfortunate
@@ -201,7 +202,7 @@ seq(1, 10, by = 0.1)
 
 ~~~
 
-> #### Tip: Creating integers {.callout}
+> ## Tip: Creating integers {.callout}
 >
 > When you combine numbers using the concatenate function, `c()` the type
 > will automatically become "numeric", that is real/decimal numbers. If you
@@ -224,7 +225,7 @@ x
 
 ~~~
 
-> #### Challenge 2 {.challenge}
+> ## Challenge 2 {.challenge}
 >
 > Vectors can only contain one atomic type. If you try to combine different
 > types, R will create a vector that is the least common denominator: the
@@ -353,7 +354,7 @@ as.logical(x)
 In both cases, a vector of "NAs" was returned, and in the first case
 so was a warning.
 
-> #### Tip: Special Objects {.callout}
+> ## Tip: Special Objects {.callout}
 >
 > "NA" is a special object in R which denotes a missing value. NA can
 > occur in any type of vector. There are a few other types of
@@ -431,7 +432,7 @@ a b c d
 
 ~~~
 
-> #### Advanced Tip for Programmers {.callout}
+> ## Advanced Tip for Programmers {.callout}
 >
 > If you're coming from other programming languages you might
 > recognise this as a useful tool akin to dictionaries and hash
@@ -440,7 +441,7 @@ a b c d
 > `?new.env`.
 >
 
-#### Matrices
+## Matrices
 
 Another data structure you'll likely encounter are matrices. Underneath the
 hood, they are really just atomic vectors, with added dimension attributes.
@@ -482,7 +483,7 @@ will tell you the number of rows and columns (this also applies to data frames!)
 while `length` will tell you the number of elements.
 
 >
-> #### Challenge 3 {.challenge}
+> ## Challenge 3 {.challenge}
 >
 > What do you think will be the result of
 > `length(x)`?
@@ -491,7 +492,7 @@ while `length` will tell you the number of elements.
 >
 
 >
-> #### Challenge 4 {.challenge}
+> ## Challenge 4 {.challenge}
 >
 > Make another matrix, this time containing the numbers 1:50,
 > with 5 columns and 10 rows.
@@ -501,7 +502,7 @@ while `length` will tell you the number of elements.
 > (hint: read the documentation for `matrix`!)
 >
 
-#### Factors
+## Factors
 
 Factors are special vectors that represent categorical data. Factors can be
 ordered or unordered and are important when for modeling functions such as
@@ -564,7 +565,7 @@ In this case, we've explicitly told R that "control" should represented by 1, an
 "case" by 2. This designation can be very important for interpreting the
 results of statistical models!
 
-#### Lists
+## Lists
 
 If you want to combine different types of data, you will need to use lists.
 Lists act as containers, and can contain any type of data structure, even
@@ -648,7 +649,7 @@ list()
 
 ~~~
 
-> #### Challenge 5 {.challenge}
+> ## Challenge 5 {.challenge}
 >
 > Create a list of length two containing a character vector for each of the 
 > sections in this part of the workshop:
@@ -666,7 +667,7 @@ fact many R functions which return complex output store their results in a list.
 
 ## Challenge solutions
 
-> #### Solution to challenge 1: Data types {.challenge}
+> ## Solution to challenge 1: Data types {.challenge}
 >
 > Use your knowledge of how to assign a value to
 > a variable, to create examples of data with the
@@ -720,7 +721,7 @@ fact many R functions which return complex output store their results in a list.
 > ~~~
 >
 
-> #### Solution to challenge 2 {.challenge}
+> ## Solution to challenge 2 {.challenge}
 >
 > Vectors can only contain one atomic type. If you try to combine different
 > types, R will create a vector that is the least common denominator: the
@@ -806,7 +807,7 @@ fact many R functions which return complex output store their results in a list.
 >
 
 >
-> #### Solution to challenge 3 {.challenge}
+> ## Solution to challenge 3 {.challenge}
 >
 > What do you think will be the result of
 > `length(x)`?
@@ -829,7 +830,7 @@ fact many R functions which return complex output store their results in a list.
 >
 
 >
-> #### Solution to challenge 4 {.challenge}
+> ## Solution to challenge 4 {.challenge}
 >
 > Make another matrix, this time containing the numbers 1:50,
 > with 5 columns and 10 rows.
@@ -846,7 +847,7 @@ fact many R functions which return complex output store their results in a list.
 >
 
 
-> #### Solution to challenge 5 {.challenge}
+> ## Solution to challenge 5 {.challenge}
 >
 > Create a list of length two containing a character vector for each of the 
 > sections in this part of the workshop:
