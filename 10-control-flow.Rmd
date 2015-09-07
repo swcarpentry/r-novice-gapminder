@@ -13,7 +13,7 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 set.seed(10)
 ```
 
-> ## Learning objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > * Write conditional statements with `if` and `else`.
 > * Write and understand `for` loops.

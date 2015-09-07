@@ -16,7 +16,7 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 dir.create("cleaned-data")
 ```
 
-> ## Learning objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > * To be able to write out plots and data from R
 >

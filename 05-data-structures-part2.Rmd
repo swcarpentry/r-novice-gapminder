@@ -12,7 +12,7 @@ library(gapminder)
 #gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 ```
 
-> ## Learning objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > * Become familiar with data frames
 > * Be able to read regular data into R
