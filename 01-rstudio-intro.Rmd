@@ -20,7 +20,7 @@ source("tools/chunk-options.R")
 > * Introduction to package management
 > 
 
-### Introduction to RStudio
+## Introduction to RStudio
 
 Welcome to the R portion of the Software Carpentry workshop.
 
@@ -44,7 +44,7 @@ When you first open RStudio, you will be greeted by three panels:
 Once you open files, such as R scripts, an editor panel will also open
 in the top left.
 
-#### Work flow within Rstudio
+## Work flow within Rstudio
 There are two main ways one can work within Rstudio.
 
 1. Test and play within the interactive R console then copy code into
@@ -58,7 +58,7 @@ interactive R console.
    * You will be able to run the file you create from within RStudio
    or using R's `source()`  function.
 
-> #### Tip: Running segments of your code {.callout} RStudio offers
+> ## Tip: Running segments of your code {.callout} RStudio offers
 > you great flexibility in running code from within the editor
 > window. There are buttons, menu choices, and keyboard shortcuts. To
 > run the current line, you can 1.  click on the `Run` button just
@@ -71,7 +71,7 @@ interactive R console.
 > the next button along, `Re-run the previous region`. This will run
 > the previous code block inculding the modifications you have made.
 
-### Introduction to R
+## Introduction to R
 
 Much of your time in R will be spent in the R interactive
 console. This is where you will run all of your code, and can be a
@@ -86,7 +86,7 @@ shell lessons: it operates on the same idea of a "Read, evaluate,
 print loop": you type in commands, R tries to execute them, and then
 returns a result.
 
-#### Using R as a calculator
+## Using R as a calculator
 
 The simplest thing you could do with R is do arithmetic:
 
@@ -113,7 +113,7 @@ means it's waiting for you to complete the command. If you want to cancel
 a command you can simply hit "Esc" and RStudio will give you back the ">"
 prompt.
 
-> #### Tip: Cancelling commands {.callout}
+> ## Tip: Cancelling commands {.callout}
 >
 > If you're using R from the commandline instead of from within RStudio,
 > you need to use `Ctrl+C` instead of `Esc` to cancel the command. This
@@ -178,7 +178,7 @@ You can write numbers in scientific notation too:
 5e3  # Note the lack of minus here
 ```
 
-#### Mathematical functions
+## Mathematical functions
 
 R has many built in mathematical functions. To call a function,
 we simply type its name, followed by  open and closing parentheses.
@@ -216,7 +216,7 @@ the command and how it works, scrolling ot the bottom of the
 help page will usually show a collection of code examples which
 illustrate command usage. We'll go through an example later.
 
-#### Comparing things
+## Comparing things
 
 We can also do comparison in R:
 
@@ -244,7 +244,7 @@ We can also do comparison in R:
 1 >= -9 # greater than or equal to
 ```
 
-> #### Tip: Comparing Numbers {.callout}
+> ## Tip: Comparing Numbers {.callout}
 >
 > A word of warning about comparing numbers: you should
 > never use `==` to compare two numbers unless they are
@@ -263,7 +263,7 @@ We can also do comparison in R:
 > Further reading: [http://floating-point-gui.de/](http://floating-point-gui.de/)
 >
 
-#### Variables and assignment
+## Variables and assignment
 
 We can store values in variables using the assignment operator `<-`, like this:
 
@@ -326,7 +326,7 @@ But this is much less common among R users.  The most important thing is to
 where it is less confusing to use `<-` than `=`, and it is the most common
 symbol used in the community. So the recommendation is to use `<-`.
 
-#### Vectorization
+## Vectorization
 
 One final thing to be aware of is that R is *vectorized*, meaning that
 variables and functions can have vectors as values. For example
@@ -342,7 +342,7 @@ This is incredibly powerful; we will discuss this further in an
 upcoming lesson.
 
 
-#### Managing your environment
+## Managing your environment
 
 There are a few useful commands you can use to interact with the R session.
 
@@ -353,7 +353,7 @@ There are a few useful commands you can use to interact with the R session.
 ls()
 ```
 
-> #### Tip: hidden objects {.callout}
+> ## Tip: hidden objects {.callout}
 >
 > Just like in the shell, `ls` will hide any variables or functions starting
 > with a "." by default. To list all objects, type `ls(all.names=TRUE)`
@@ -396,7 +396,7 @@ get an error message:
 rm(list <- ls())
 ```
 
-> #### Tip: Warnings vs. Errors {.callout}
+> ## Tip: Warnings vs. Errors {.callout}
 >
 > Pay attention when R does something unexpected! Errors, like above,
 > are thrown when R cannot proceed with a calculation. Warnings on the
@@ -408,7 +408,7 @@ rm(list <- ls())
 >
 
 
-#### R Packages
+## R Packages
 
 It is possible to add functions to R by writing a package, or by
 obtaining a package written by someone else. As of this writing, there
@@ -424,7 +424,7 @@ network). R and RStudio have functionality for managing packages:
 * You can make a package available for use with `library(packagename)`
 
 
-> #### Challenge 1 {.challenge}
+> ## Challenge 1 {.challenge}
 >
 > What will be the value of each  variable  after each
 > statement in the following program?
@@ -437,19 +437,19 @@ network). R and RStudio have functionality for managing packages:
 > ```
 >
 
-> #### Challenge 2 {.challenge}
+> ## Challenge 2 {.challenge}
 >
 > Run the code from the previous challenge, and write a command to
 > compare mass to age. Is mass larger than age?
 >
 
-> #### Challenge 3 {.challenge}
+> ## Challenge 3 {.challenge}
 >
 > Clean up your working environment by deleting the mass and age
 > variables.
 >
 
-> #### Challenge 4 {.challenge}
+> ## Challenge 4 {.challenge}
 > 
 > Install the following packages: `ggplot2`, `plyr`, `gapminder`
 > 

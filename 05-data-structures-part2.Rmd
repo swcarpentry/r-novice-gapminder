@@ -18,7 +18,7 @@ library(gapminder)
 > * Be able to read regular data into R
 >
 
-### Data frames
+## Data frames
 
 Data frames are similar to matrices, except each column can be a
 different atomic type. A data frames is the standard structure for
@@ -38,7 +38,7 @@ df <- data.frame(id = c('a', 'b', 'c', 'd', 'e', 'f'), x = 1:6, y = c(214:219))
 df
 ```
 
-> #### Challenge 1: Data frames {.challenge}
+> ## Challenge 1: Data frames {.challenge}
 >
 > Try using the `length` function to query
 > your data frame `df`. Does it give the result
@@ -53,7 +53,7 @@ use the `nrow` function.
 We can add columns or rows to a data.frame using `cbind` or `rbind`
 (these are the two-dimensional equivalents of the `c` function):
 
-#### Adding columns to a data frame
+## Adding columns to a data frame
 
 To add a column we can use `cbind`:
 
@@ -79,7 +79,7 @@ df
 (`LETTERS` and `letters` are built-in constants.)
 
 
-#### Adding rows to a data frame 
+## Adding rows to a data frame 
 
 To add a row we use `rbind`:
 
@@ -140,7 +140,7 @@ tail(df, n=3)
 We successfully added the last row, but we have an undesired row with
 two `NA` values. How do delete it?
 
-#### Deleting rows and handling NA
+## Deleting rows and handling NA
 
 
 There are multiple ways to delete a row containing `NA`:
@@ -152,7 +152,7 @@ na.omit(df)  # Another function for the same purpose
 df <- na.omit(df)
 ```
 
-#### Combining data frames
+## Combining data frames
 
 We  can also row-bind data.frames together, but notice what happens to
 the rownames:
@@ -183,7 +183,7 @@ tail(df, n=3)
 ```
 -->
 
-> #### Challenge 2 {.challenge}
+> ## Challenge 2 {.challenge}
 >
 > Create a data frame that holds the following information for yourself:
 >
@@ -198,7 +198,7 @@ tail(df, n=3)
 > "Is there anything in this workshop you're finding confusing?"
 >
 
-### Reading in data
+## Reading in data
 
 Remember earlier we obtained the gapminder dataset.
 If you're curious about where this data comes from you might like to
@@ -242,7 +242,7 @@ gapminder <- read.csv(
 head(gapminder)
 ```
 
-> #### Miscellaneous Tips {.callout}
+> ## Miscellaneous Tips {.callout}
 >
 > 1. Another type of file you might encounter are tab-separated
 > format. To specify a tab as a separator, use `"\t"`.
@@ -257,7 +257,7 @@ head(gapminder)
 To make sure our analysis is reproducible, we should put the code
 into a script file so we can come back to it later.
 
-> #### Challenge 3 {.challenge}
+> ## Challenge 3 {.challenge}
 >
 > Go to file -> new file -> R script, and write an R script
 > to load in the gapminder dataset. Put it in the `scripts/`
@@ -267,7 +267,7 @@ into a script file so we can come back to it later.
 > as its argument (or by pressing the "source" button in RStudio).
 >
 
-### Using data frames: the `gapminder` dataset
+## Using data frames: the `gapminder` dataset
 
 
 To recap what we've just learned, let's have a look at our example
@@ -302,7 +302,7 @@ for storing data with mixed types of columns.
 
 Let's look at some of the columns.
 
-> #### Challenge 4: Data types in a real dataset {.challenge}
+> ## Challenge 4: Data types in a real dataset {.challenge}
 >
 > Look at the first 6 rows of the gapminder data frame we loaded before:
 >
@@ -356,7 +356,7 @@ question you're asking, and makes it easier to specify the ordering of the categ
 However there are many in the R community who find it more sensible to
 leave this as the default behaviour.
 
-> #### Tip: Changing options {.callout} 
+> ## Tip: Changing options {.callout} 
 > When R starts, it runs any
 >code in the file `.Rprofile` in the project directory. You can make
 >permanent changes to default behaviour by storing the changes in that
@@ -388,7 +388,7 @@ colnames(copy) <- letters[1:6]
 head(copy, n=3)
 ```
 
-> #### Challenge 5 {.challenge}
+> ## Challenge 5 {.challenge}
 >
 > Recall that we also used the `names` function (above) to modify
 > column names. Does it matter which you use? You can check help with
@@ -465,7 +465,7 @@ time, so we see a significant positive association!
 
 ## Challenge Solutions
 
-> #### Solution to Challenge 2 {.challenge}
+> ## Solution to Challenge 2 {.challenge}
 >
 > Create a data frame that holds the following information for yourself:
 >
@@ -485,7 +485,7 @@ time, so we see a significant positive association!
 > my_df <- cbind(my_df, confused = c(FALSE, FALSE, TRUE, FALSE))
 > ```
 
-> #### Solution to Challenge 5 {.challenge}
+> ## Solution to Challenge 5 {.challenge}
 > 
 > `?colnames` tells you that the `colnames` function is the same as
 > `names` for a data frame. For other structures, they may not be the
