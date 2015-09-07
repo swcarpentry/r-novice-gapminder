@@ -30,7 +30,7 @@
           <h2 class="subtitle">Writing data</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning objectives</h2>
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -38,41 +38,41 @@
 </ul>
 </div>
 </section>
-<h3 id="saving-plots">Saving plots</h3>
+<h2 id="saving-plots">Saving plots</h2>
 <p>You have already seen how to save the most recent plot you create in <code>ggplot2</code>, using the command <code>ggsave</code>. As a refresher:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggsave</span>(<span class="st">&quot;My_most_recent_plot.pdf&quot;</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggsave</span>(<span class="st">&quot;My_most_recent_plot.pdf&quot;</span>)</code></pre></div>
 <p>You can save a plot from within RStudio using the ‘Export’ button in the ‘Plot’ window. This will give you the option of saving as a .pdf or as .png, .jpg or other image formats.</p>
 <p>Sometimes you will want to save plots without creating them in the ‘Plot’ window first. Perhaps you want to make a pdf document with multiple pages: each one a different plot, for example. Or perhaps you’re looping through multiple subsets of a file, plotting data from each subset, and you want to save each plot, but obviously can’t stop the loop to click ‘Export’ for each one.</p>
 <p>In this case you can use a more flexible approach. The function <code>pdf</code> creates a new pdf device. You can control the size and resolution using the arguments to this function.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pdf</span>(<span class="st">&quot;Life_Exp_vs_time.pdf&quot;</span>, <span class="dt">width=</span><span class="dv">12</span>, <span class="dt">height=</span><span class="dv">4</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pdf</span>(<span class="st">&quot;Life_Exp_vs_time.pdf&quot;</span>, <span class="dt">width=</span><span class="dv">12</span>, <span class="dt">height=</span><span class="dv">4</span>)
 <span class="kw">ggplot</span>(<span class="dt">data=</span>gapminder, <span class="kw">aes</span>(<span class="dt">x=</span>year, <span class="dt">y=</span>lifeExp, <span class="dt">colour=</span>country)) +
 <span class="st">  </span><span class="kw">geom_line</span>()
 
 <span class="co"># You then have to make sure to turn off the pdf device!</span>
 
-<span class="kw">dev.off</span>()</code></pre>
+<span class="kw">dev.off</span>()</code></pre></div>
 <p>Open up this document and have a look.</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h4>
+<h2 id="challenge-1"><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h2>
 </div>
 <div class="panel-body">
 <p>Rewrite your ‘pdf’ command to print a second page in the pdf, showing a facet plot (hint: use <code>facet_grid</code>) of the same data with one panel per continent.</p>
 </div>
 </section>
 <p>The commands <code>jpeg</code>, <code>png</code> etc. are used similarly to produce documents in different formats.</p>
-<h3 id="writing-data">Writing data</h3>
+<h2 id="writing-data">Writing data</h2>
 <p>At some point, you’ll also want to write out data from R.</p>
 <p>We can use the <code>write.table</code> function for this, which is very similar to <code>read.table</code> from before.</p>
 <p>Let’s create a data-cleaning script, for this analysis, we only want to focus on the gapminder data for Australia:</p>
-<pre class="sourceCode r"><code class="sourceCode r">aust_subset &lt;-<span class="st"> </span>gapminder[gapminder$country ==<span class="st"> &quot;Australia&quot;</span>,]
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aust_subset &lt;-<span class="st"> </span>gapminder[gapminder$country ==<span class="st"> &quot;Australia&quot;</span>,]
 
 <span class="kw">write.table</span>(aust_subset,
   <span class="dt">file=</span><span class="st">&quot;cleaned-data/gapminder-aus.csv&quot;</span>,
   <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>
-)</code></pre>
+)</code></pre></div>
 <p>Let’s switch back to the shell to take a look at the data to make sure it looks OK:</p>
-<pre class="sourceCode r"><code class="sourceCode r">head cleaned-data/gapminder-aus.csv</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">head cleaned-data/gapminder-aus.csv</code></pre></div>
 <pre class="output"><code>&quot;country&quot;,&quot;year&quot;,&quot;pop&quot;,&quot;continent&quot;,&quot;lifeExp&quot;,&quot;gdpPercap&quot;
 &quot;61&quot;,&quot;Australia&quot;,1952,8691212,&quot;Oceania&quot;,69.12,10039.59564
 &quot;62&quot;,&quot;Australia&quot;,1957,9712569,&quot;Oceania&quot;,70.33,10949.64959
@@ -86,16 +86,16 @@
 </code></pre>
 <p>Hmm, that’s not quite what we wanted. Where did all these quotation marks come from? Also the row numbers are meaningless.</p>
 <p>Let’s look at the help file to work out how to change this behaviour.</p>
-<pre class="sourceCode r"><code class="sourceCode r">?write.table</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?write.table</code></pre></div>
 <p>By default R will wrap character vectors with quotation marks when writing out to file. It will also write out the row and column names.</p>
 <p>Let’s fix this:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.table</span>(
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.table</span>(
   gapminder[gapminder$country ==<span class="st"> &quot;Australia&quot;</span>,],
   <span class="dt">file=</span><span class="st">&quot;cleaned-data/gapminder-aus.csv&quot;</span>,
   <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>, <span class="dt">quote=</span><span class="ot">FALSE</span>, <span class="dt">row.names=</span><span class="ot">FALSE</span>
-)</code></pre>
+)</code></pre></div>
 <p>Now lets look at the data again using our shell skills:</p>
-<pre class="sourceCode r"><code class="sourceCode r">head cleaned-data/gapminder-aus.csv</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">head cleaned-data/gapminder-aus.csv</code></pre></div>
 <pre class="output"><code>country,year,pop,continent,lifeExp,gdpPercap
 Australia,1952,8691212,Oceania,69.12,10039.59564
 Australia,1957,9712569,Oceania,70.33,10949.64959
@@ -110,7 +110,7 @@ Australia,1992,17481977,Oceania,77.56,23424.76683
 <p>That looks better!</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h4>
+<h2 id="challenge-2"><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h2>
 </div>
 <div class="panel-body">
 <p>Write a data-cleaning script file that subsets the gapminder data to include only data points collected since 1990.</p>

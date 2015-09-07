@@ -7,7 +7,7 @@ minutes: 45
 
 
 
-> ## Learning objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > * Define a function that takes arguments.
 > * Return a value from a function.
@@ -25,8 +25,20 @@ from a different source in the future.
 In this lesson, we'll learn how to write a function so that we can repeat
 several operations with a single command.
 
+> ## What is a function? {.callout}
+>
+> Functions gather a sequence of operations into a whole, preserving it for ongoing use. Functions provide:
+>
+> * a name we can remember and invoke it by
+> * relief from the need to remember the individual operations
+> * a defined set of inputs and expected outputs
+> * rich connections to the larger programming environment
+>
+> As the basic building block of most programming languages, user-defined functions constitute "programming" as much as any single abstraction can. If you have written a function, you are a computer programmer.
+>
 
-### Defining a function
+
+## Defining a function
 
 Let's open a new R script file in the `functions/` directory and call it functions-lesson.R.
 
@@ -93,7 +105,7 @@ fahr_to_kelvin(212)
 
 ~~~
 
-> #### Challenge 1 {.challenge}
+> ## Challenge 1 {.challenge}
 >
 > Write a function called `kelvin_to_celsius` that takes a temperature in Kelvin
 > and returns that temperature in Celsius
@@ -101,7 +113,7 @@ fahr_to_kelvin(212)
 > Hint: To convert from Kelvin to Celsius you minus 273.15
 >
 
-#### Combining functions
+## Combining functions
 
 The real power of functions comes from mixing, matching and combining them
 into ever large chunks to get the effect we want.
@@ -122,7 +134,7 @@ kelvin_to_celsius <- function(temp) {
 }
 ~~~
 
-> #### Challenge 2 {.challenge}
+> ## Challenge 2 {.challenge}
 >
 > Define the function to convert directly from Fahrenheit to Celsius,
 > by reusing the two functions above (or using your own functions if you prefer).
@@ -309,7 +321,7 @@ can ask it to calculate the GDP for:
 By using `%in%` instead, we can also give multiple years or countries
 to those arguments.
 
-> #### Tip: Pass by value {.callout}
+> ## Tip: Pass by value {.callout}
 >
 > Functions in R almost always make copies of the data to operate on
 > inside of a function body. When we modify `dat` inside the function
@@ -321,7 +333,7 @@ to those arguments.
 > body of the function, stay inside the body of the function.
 >
 
-> #### Tip: Function scope {.callout}
+> ## Tip: Function scope {.callout}
 >
 > Another important concept is scoping: any variables (or functions!) you
 > create or modify inside the body of a function only exist for the lifetime
@@ -344,7 +356,7 @@ data frame with that column added. This means when we call the function
 later we can see the context for the returned GDP values,
 which is much better than in our first attempt where we just got a vector of numbers.
 
-> #### Challenge 3 {.challenge}
+> ## Challenge 3 {.challenge}
 >
 > The `paste` function can be used to combine text together, e.g:
 >
@@ -389,7 +401,7 @@ which is much better than in our first attempt where we just got a vector of num
 [adv-r]: http://adv-r.had.co.nz/
 
 
-> #### Tip: Testing and documenting {.callout}
+> ## Tip: Testing and documenting {.callout}
 >
 > It's important to both test functions and document them:
 > Documentation helps you, and others, understand what the
@@ -422,7 +434,7 @@ which is much better than in our first attempt where we just got a vector of num
 
 ## Challenge solutions
 
-> #### Solution to challenge 1 {.challenge}
+> ## Solution to challenge 1 {.challenge}
 >
 > Write a function called `kelvin_to_celsius` that takes a temperature in Kelvin
 > and returns that temperature in Celsius
@@ -436,7 +448,7 @@ which is much better than in our first attempt where we just got a vector of num
 > ~~~
 
 
-> #### Solution to challenge 2 {.challenge}
+> ## Solution to challenge 2 {.challenge}
 >
 > Define the function to convert directly from Fahrenheit to Celsius,
 > by reusing these two functions above
@@ -452,8 +464,8 @@ which is much better than in our first attempt where we just got a vector of num
 > ~~~
 >
 
-> #### Solution to challenge 3 {.challenge}
-> 
+
+> ## Solution to challenge 3 {.challenge}
 >
 >  Write a function called `fence` that takes two vectors as arguments, called
 > `text` and `wrapper`, and prints out the text wrapped with the `wrapper`:
@@ -475,4 +487,3 @@ which is much better than in our first attempt where we just got a vector of num
 > [1] "*** Write programs for people not computers ***"
 > 
 > ~~~
-> 

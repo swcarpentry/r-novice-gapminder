@@ -30,7 +30,7 @@
           <h2 class="subtitle">Seeking help</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning objectives</h2>
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -40,10 +40,10 @@
 </ul>
 </div>
 </section>
-<h3 id="reading-help-files">Reading Help files</h3>
+<h2 id="reading-help-files">Reading Help files</h2>
 <p>R, and every package, provide help files for functions. To search for help on a function from a specific function that is in a package loaded into your namespace (your interactive R session):</p>
-<pre class="sourceCode r"><code class="sourceCode r">?function_name
-<span class="kw">help</span>(function_name)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?function_name
+<span class="kw">help</span>(function_name)</code></pre></div>
 <p>This will load up a help page in RStudio (or as plain text in R by itself).</p>
 <p>Each help page is broken down into sections:</p>
 <ul>
@@ -58,54 +58,67 @@
 <p>Different functions might have different sections, but these are the main ones you should be aware of.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pushpin"></span>Tip: Reading help files</h4>
+<h2 id="tip-reading-help-files"><span class="glyphicon glyphicon-pushpin"></span>Tip: Reading help files</h2>
 </div>
 <div class="panel-body">
 <p>One of the most daunting aspects of R is the large number of functions available. It would be prohibitive, if not impossible to remember the correct usage for every function you use. Luckily, the help files mean you don’t have to!</p>
 </div>
 </aside>
-<h3 id="special-operators">Special Operators</h3>
+<h2 id="special-operators">Special Operators</h2>
 <p>To seek help on special operators, use quotes:</p>
-<pre class="sourceCode r"><code class="sourceCode r">?<span class="st">&quot;+&quot;</span></code></pre>
-<h3 id="getting-help-on-packages">Getting help on packages</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?<span class="st">&quot;+&quot;</span></code></pre></div>
+<h2 id="getting-help-on-packages">Getting help on packages</h2>
 <p>Many packages come with “vignettes”: tutorials and extended example documentation. Without any arguments, <code>vignette()</code> will list all vignettes for all installed packages; <code>vignette(package=&quot;package-name&quot;)</code> will list all available vignettes for <code>package-name</code>, and <code>vignette(&quot;vignette-name&quot;)</code> will open the specified vignette.</p>
 <p>If a package doesn’t have any vignettes, you can usually find help by typing <code>help(&quot;package-name&quot;)</code>.</p>
-<h3 id="when-you-kind-of-remember-the-function">When you kind of remember the function</h3>
+<h2 id="when-you-kind-of-remember-the-function">When you kind of remember the function</h2>
 <p>If you’re not sure what package a function is in, or how it’s specifically spelled you can do a fuzzy search:</p>
-<pre class="sourceCode r"><code class="sourceCode r">??function_name</code></pre>
-<h3 id="when-you-have-no-idea-where-to-begin">When you have no idea where to begin</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">??function_name</code></pre></div>
+<h2 id="when-you-have-no-idea-where-to-begin">When you have no idea where to begin</h2>
 <p>If you don’t know what function or package you need to use <a href="http://cran.at.r-project.org/web/views">CRAN Task Views</a> is a specially maintained list of packages grouped into fields. This can be a good starting point.</p>
-<h3 id="when-your-code-doesnt-work-seeking-help-from-your-peers">When your code doesn’t work: seeking help from your peers</h3>
+<h2 id="when-your-code-doesnt-work-seeking-help-from-your-peers">When your code doesn’t work: seeking help from your peers</h2>
 <p>If you’re having trouble using a function, 9 times out of 10, the answers you are seeking have already been answered on <a href="http://stackoverflow.com/">Stack Overflow</a>. You can search using the <code>[r]</code> tag.</p>
 <p>If you can’t find the answer, there are a few useful functions to help you ask a question from your peers:</p>
-<pre class="sourceCode r"><code class="sourceCode r">?dput</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?dput</code></pre></div>
 <p>Will dump the data you’re working with into a format so that it can be copy and pasted by anyone else into their R session.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre>
-<pre class="output"><code>R version 3.1.0 (2014-04-10)
-Platform: x86_64-apple-darwin13.1.0 (64-bit)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre></div>
+<pre class="output"><code>R version 3.2.2 (2015-08-14)
+Platform: x86_64-apple-darwin13.4.0 (64-bit)
+Running under: OS X 10.10.5 (Yosemite)
 
 locale:
-[1] en_AU.UTF-8/en_AU.UTF-8/en_AU.UTF-8/C/en_AU.UTF-8/en_AU.UTF-8
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
 
 other attached packages:
-[1] knitr_1.10.12
+[1] knitr_1.11
 
 loaded via a namespace (and not attached):
-[1] evaluate_0.7  formatR_1.0   stringr_0.6.2 tools_3.1.0  
+[1] magrittr_1.5   formatR_1.2    tools_3.2.2    stringi_0.5-5 
+[5] methods_3.2.2  stringr_1.0.0  evaluate_0.7.2
 </code></pre>
 <p>Will print out your current version of R, as well as any packages you have loaded. This can be useful for others to help reproduce and debug your issue.</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h4>
+<h2 id="challenge-1"><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h2>
+</div>
+<div class="panel-body">
+<p>Look at the help for the <code>c</code> function. What kind of vector do you expect you will create if you evaluate the following:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)
+<span class="kw">c</span>(<span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>, <span class="st">&#39;f&#39;</span>)
+<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">&#39;f&#39;</span>)<span class="st">`</span></code></pre></div>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="challenge-2"><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h2>
 </div>
 <div class="panel-body">
 <p>Look at the help for the <code>paste</code> function. You’ll need to use this later. What is the difference between the <code>sep</code> and <code>collapse</code> arguments?</p>
 </div>
 </section>
-<h3 id="other-ports-of-call">Other ports of call</h3>
+<h2 id="other-ports-of-call">Other ports of call</h2>
 <ul>
 <li><a href="http://www.statmethods.net/">Quick R</a></li>
 <li><a href="http://www.rstudio.com/resources/cheatsheets/">RStudio cheat sheets</a></li>
@@ -114,12 +127,20 @@ loaded via a namespace (and not attached):
 <h2 id="challenge-solutions">Challenge solutions</h2>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 1</h4>
+<h2 id="solution-to-challenge-1"><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 1</h2>
+</div>
+<div class="panel-body">
+<p>The <code>c()</code> function creates a vector, in which all elements are the same type. In the first case, the elements are numeric, in the second, they are characters, and in the third they are characters: the numeric values “coerced” to be characters.</p>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="solution-to-challenge-2"><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 2</h2>
 </div>
 <div class="panel-body">
 <p>Look at the help for the <code>paste</code> function. You’ll need to use this later.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help</span>(<span class="st">&quot;paste&quot;</span>)
-?paste</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help</span>(<span class="st">&quot;paste&quot;</span>)
+?paste</code></pre></div>
 </div>
 </section>
         </div>
