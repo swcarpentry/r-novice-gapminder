@@ -27,7 +27,7 @@ mean(gapminder[gapminder$continent == "Asia", "gdpPercap"])
 
 But this isn't very *nice* because there is a fair bit of repetition. Repeating yourself will cost you time, both now and later, and potentially introduce some nasty bugs.
 
-#### The `dplyr` package
+## The `dplyr` package
 
 Luckily, the [`dplyr`](https://cran.r-project.org/web/packages/dplyr/dplyr.pdf) package provides a number of very useful functions for manipulating dataframes in a way that will reduce the above repetition, reduce the probability of making errors, and probably even save you some typing. As an added bonus, you might even find the `dplyr` grammar easier to read.
 
@@ -51,7 +51,7 @@ Now let's load the package:
 library(dplyr)
 ```
 
-#### Using select()
+## Using select()
 
 If, for example, we wanted to move forward with only a few of the variables in our dataframe we could use the `select()` function. This will keep only the variables you select.
 
@@ -138,7 +138,7 @@ year_country_gdp <- gapminder %>% select(year,country,gdpPercap)
 
 To help you understand why we wrote that in that way, let's walk through it step by step. First we summon the gapminder dataframe and pass it on, using the pipe symbol `%>%`, to the next step, which is the `select()` function. In this case we don't specify which data object we use in the `select()` function since in gets that from the previous pipe. **Fun Fact**: There is a good chance you have encountered pipes before in the shell. In R, a pipe symbol is `%>%` while in the shell it is `|` but the concept is the same!
 
-#### Using filter()
+## Using filter()
 
 If we now wanted to move forward with the above, but only with European countries, we can combine `select` and `filter`
 
@@ -148,7 +148,7 @@ year_country_gdp_euro <- gapminder %>%
     select(year,country,gdpPercap)
 ```
 
-> #### Challenge 1 {.challenge}
+> ## Challenge 1 {.challenge}
 >
 > Write a single command (which can span multiple lines and includes pipes) that will produce a dataframe that has the African values for `lifeExp`, `country` and `year`, but not for other Continents. 
 >How many rows does your dataframe have and why?
@@ -157,7 +157,7 @@ year_country_gdp_euro <- gapminder %>%
 
 As with last time, first we pass the gapminder dataframe to the `filter()` function, then we pass the filtered version of the gapminder dataframe to the `select()` function. **Note:** The order of operations is very important in this case. If we used 'select' first, filter would not be able to find the variable continent since we would have removed it in the previous step.
 
-#### Using group_by() and summarize()
+## Using group_by() and summarize()
 
 Now, we were supposed to be reducing the error prone repetitiveness of what can be done with base R, but up to now we haven't done that since we would have to repeat the above for each continent. Instead of `filter()`, which will only pass observations that meet your criteria (in the above: `continent=="Europe"`), we can use `group_by()`, which will essentially use every unique criteria that you could have used in filter.
 
@@ -313,7 +313,7 @@ table4 [shape=none, margin=0,label=<
 }
 ')
 ```
-#### Using summarize()
+## Using summarize()
 
 The above was a bit on the uneventful side because `group_by()` much more exciting in conjunction with `summarize()`. This will allow use to create new variable(s) by using functions that repeat for each of the continent-specific data frames. That is to say, using the `group_by()` function, we split our original dataframe into multiple pieces, then we can run functions (e.g. `mean()` or `sd()`) within `summarize()`.
 
@@ -499,7 +499,7 @@ table4 [shape=none, margin=0,label=<
 
 That allowed us to calculate the mean gdpPercap for each continent, but it gets even better.
 
-> #### Challenge 2 {.challenge}
+> ## Challenge 2 {.challenge}
 >
 > Calculate the average life expectancy per country. Which had the longest life expectancy and which had the shortest life expectancy?
 >
@@ -524,7 +524,7 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
               sd_pop=sd(pop))
 ```
 
-#### Using mutate()
+## Using mutate()
 
 We can also create new variables prior to (or even after) summarizing information using `mutate()`.
 ```{r}
@@ -544,26 +544,26 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 
 
 
-> #### Advanced Challenge {.challenge}
+> ## Advanced Challenge {.challenge}
 > Calculate the average life expectancy in 2002 of 2 randomly selected countries for each continent. Then arrange the continent names in reverse order.
 > **Hint:** Use the `dplyr` functions `arrange()` and `sample_n()`, they have similar syntax to other dplyr functions.
 >
 
-> #### Solution to Challenge 1 {.challenge}
+> ## Solution to Challenge 1 {.challenge}
 >```{r}
 >year_country_lifeExp_Africa <- gapminder %>%
 >                            filter(continent=="Africa") %>%
 >                            select(year,country,lifeExp)
 > ```
 
-> #### Solution to Challenge 2 {.challenge}
+> ## Solution to Challenge 2 {.challenge}
 >```{r}
 >lifeExp_bycountry <- gapminder %>%
 >    group_by(country) %>%
 >    summarize(mean_lifeExp=mean(lifeExp))
 >```
 
-> #### Solution to Advanced Challenge {.challenge}
+> ## Solution to Advanced Challenge {.challenge}
 >```{r}
 >lifeExp_2countries_bycontinents <- gapminder %>% 
 >    filter(year==2002) %>%
@@ -573,6 +573,6 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 >    arrange(desc(mean_lifeExp))
 >```
 
-#### Other great resources
+## Other great resources
 [Data Wrangling Cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 [Introduction to dplyr](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
