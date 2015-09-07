@@ -7,7 +7,7 @@ minutes: 90
 
 ```{r, include=FALSE}
 source("tools/chunk-options.R")
-opts_chunk$set(fig.path = "fig/12-plyr-")
+opts_chunk$set(fig.path = "fig/13-dplyr-")
 # Silently load in the data so the rest of the lesson works
 gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 ```
