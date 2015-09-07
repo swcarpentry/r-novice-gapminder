@@ -11,7 +11,7 @@ source("tools/chunk-options.R")
 gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 ```
 
-> ## Learning objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > * To be able to subset vectors, factors, matrices, lists, and data frames
 > * To be able to extract individual and multiple elements:

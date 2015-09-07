@@ -10,7 +10,7 @@ source("tools/chunk-options.R")
 ```
 
 
-> ## Learning objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > * To be able read R help files for functions and special operators.
 > * To be able to use CRAN task views to identify packages to solve a problem.

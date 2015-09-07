@@ -12,7 +12,7 @@ opts_chunk$set(fig.path = "fig/12-plyr-")
 gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 ```
 
-> ## Learning objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > * To be able to use the 6 main dataframe manipulation 'verbs' with pipes in `dplyr`
 >

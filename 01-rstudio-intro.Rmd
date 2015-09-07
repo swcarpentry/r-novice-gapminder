@@ -9,7 +9,7 @@ minutes: 45
 source("tools/chunk-options.R")
 ```
 
-> ## Learning objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > * To gain familiarity with the various panes in the RStudio IDE
 > * To gain familiarity with the buttons, short cuts and options in the Rstudio IDE

@@ -10,7 +10,7 @@ source("tools/chunk-options.R")
 ```
 
 
-> ## Learning objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > - To be aware of the different types of data
 > - To be aware of the different basic data structures commonly encountered in R

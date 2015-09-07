@@ -5,7 +5,7 @@ subtitle: Wrapping up
 minutes: 15
 ---
 
-> ## Learning objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > * To review the best practices for using R for
 >   scientific analysis.

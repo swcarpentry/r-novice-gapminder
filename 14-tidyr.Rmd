@@ -29,7 +29,7 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE, stringsAsF
 gap_wide <- read.csv("data/gapminder_wide.csv", header=TRUE, stringsAsFactors = FALSE)
 ```
 
-> ## Learning objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > * To be understand the concepts of 'long' and 'wide' data formats and be able to convert between them with `tidyr`
 >

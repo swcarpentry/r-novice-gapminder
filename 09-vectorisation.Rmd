@@ -13,7 +13,7 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 library(ggplot2)
 ```
 
-> ## Learning objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > * To understand vectorised operations in R.
 >
