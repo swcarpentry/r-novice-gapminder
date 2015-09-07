@@ -2,15 +2,15 @@
 layout: page
 title: R for reproducible scientific analysis
 subtitle: Control flow
-minutes: 45
+minutes: 35
 ---
 
 
 
-> ## Learning objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > * Write conditional statements with `if` and `else`.
-> * Write and understand `while` and `for` loops.
+> * Write and understand `for` loops.
 >
 
 Often when we're coding we want to control the flow of our actions. This can be done
@@ -84,7 +84,7 @@ if (x >= 10) {
 
 ~~~
 
-> #### Tip: pseudo-random numbers {.callout}
+> ## Tip: pseudo-random numbers {.callout}
 >
 > In the above case, the function `rpois` generates a random number following a
 > Poisson distribution with a mean (i.e. lambda) of 8. The function `set.seed`
@@ -121,7 +121,7 @@ x
 
 ~~~
 
-> #### Challenge 1 {.challenge}
+> ## Challenge 1 {.challenge}
 >
 > Use an `if` statement to print a suitable message
 > reporting whether there are any records from 2002 in
@@ -142,7 +142,7 @@ If your condition evaluates to a vector with more than one logical element,
 the function `if` will still run, but will only evaluate the condition in the first
 element. Here you need to make sure your condition is of length 1.
 
-> #### Tip: `any` and `all` {.callout}
+> ## Tip: `any` and `all` {.callout}
 > The `any` function will return TRUE if at least one
 > TRUE value is found within a vector, otherwise it will return `FALSE`.
 > This can be used in a similar way to the `%in%` operator.
@@ -150,73 +150,11 @@ element. Here you need to make sure your condition is of length 1.
 > the vector are `TRUE`.
 >
 
+## Repeating operations
 
-### Repeating operations
+ 
 
-Sometimes you will find yourself needing to repeat an operation until a certain
-condition is met. You can do this with a `while` loop.
-
-
-~~~{.r}
-while(this condition is true){
-  do a thing
-}
-~~~
-
-Let's try an example, shall we?  We'll try to come up with some simple code
-that generates random numbers from a uniform distribution (the `runif` function)
-between 0 and 1 until it gets one that's less than 0.1.
-
-
-~~~{.r}
-while(z > 0.1){
-  z <- runif(1)
-  print(z)
-}
-~~~
-
-
-
-~~~{.output}
-Error: object 'z' not found
-
-~~~
-
-But wait, that doesn't work!  What's the problem?
-
-The problem is that we haven't defined `z`, and so the very first time the
-while loop's condition is checked (`z > 0.1`), `while` just says "Okay, that's
-not true so I'm not going to execute this block of code".  The same thing would
-have happened if we defined `z` to be anything less than 0.1.  Let's fix it.
-
-
-~~~{.r}
-z <- 1
-while(z > 0.1){
-  z <- runif(1)
-  print(z)
-}
-~~~
-
-
-
-~~~{.output}
-[1] 0.4269077
-[1] 0.6931021
-[1] 0.08513597
-
-~~~
-
-> #### Challenge 2 {.challenge}
->
-> Use a `while` loop to construct a vector called 'pet_list'
-> with the value:
-> 'cat', 'dog', 'dog', 'dog', 'dog'
-> (N.B. using a loop may not be the most efficient way
-> to do this, but it illustrates the principle!)
->
-
-`while` loops will not always be appropriate. If you want to iterate over
+If you want to iterate over
 a set of values, when the order of iteration is important, and perform the
 same operation on each, a `for` loop will do the job.
 We saw `for` loops in the shell lessons earlier. This is the most
@@ -331,7 +269,7 @@ This approach can be useful, but 'growing your results' (building
 the result object incrementally) is computationally inefficient, so avoid
 it when you are iterating through a lot of values.
 
-> #### Tip: don't grow your results {.callout}
+> ## Tip: don't grow your results {.callout}
 >
 > One of the biggest things that trips up novices and
 > experienced R users alike, is building a results object
@@ -371,7 +309,36 @@ output_vector2
 
 ~~~
 
-> #### Challenge 3 {.challenge}
+> ## Tip: While loops {.callout}
+>
+>
+> Sometimes you will find yourself needing to repeat an operation until a certain
+> condition is met. You can do this with a `while` loop.
+> 
+> 
+> ~~~{.r}
+> while(this condition is true){
+>   do a thing
+> }
+> ~~~
+> 
+> As an example, here's a while loop 
+> that generates random numbers from a uniform distribution (the `runif` function)
+> between 0 and 1 until it gets one that's less than 0.1.
+> 
+> ~~~ {.r}
+> z <- 1
+> while(z > 0.1){
+>   z <- runif(1)
+>   print(z)
+> }
+> ~~~
+> 
+> `while` loops will not always be appropriate. You have to be particularly careful
+> that you don't end up in an infinite loop because your condition is never met.
+>
+
+> ## Challenge 2 {.challenge}
 >
 > Compare the objects output_vector and
 > output_vector2. Are they the same? If not, why not?
@@ -379,21 +346,21 @@ output_vector2
 > the same as output_vector?
 >
 
-> #### Challenge 4 {.challenge}
+> ## Challenge 3 {.challenge}
 >
 > Write a script that loops through the `gapminder` data by continent and prints out
 > whether the mean life expectancy is smaller or larger than 50
 > years.
 >
 
-> #### Challenge 5 {.challenge}
+> ## Challenge 4 {.challenge}
 >
 > Modify the script from Challenge 4 to also loop over each
 > country. This time print out whether the life expectancy is
 > smaller than 50, between 50 and 70, or greater than 70.
 >
 
-> #### Challenge 6 - Advanced {.challenge}
+> ## Challenge 5 - Advanced {.challenge}
 >
 > Write a script that loops over each country in the `gapminder` dataset,
 > tests whether the country starts with a 'B', and graphs life expectancy

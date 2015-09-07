@@ -7,7 +7,7 @@ minutes: 45
 
 
 
-> ## Learning objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > * To be able to subset vectors, factors, matrices, lists, and data frames
 > * To be able to extract individual and multiple elements:
@@ -43,7 +43,7 @@ x
 So now that we've created a dummy vector to play with, how do we get at its
 contents?
 
-### Accessing elements using their indices
+## Accessing elements using their indices
 
 To extract elements of a vector we can give their corresponding index, starting
 from one:
@@ -156,12 +156,15 @@ named numeric(0)
 
 ~~~
 
-But what about negative values?
+> ##Vector numbering in R starts at 1 {.callout} 
+> 
+> In many programming languages (C and python, for example), the first
+> element of a vector has an index of 0. In R, the first element is 1.
 
-### Skipping and removing elements
+## Skipping and removing elements
 
-If we use a negative number, R will return every element *except* for the
-one specified:
+If we use a negative number as the index of a vector, R will return
+every element *except* for the one specified:
 
 
 ~~~{.r}
@@ -192,7 +195,7 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 
 ~~~
 
-> #### Tip: Order of operations {.callout}
+> ## Tip: Order of operations {.callout}
 >
 > A common trip up for novices occurs when trying to skip
 > slices of a vector. Most people first try to negate a
@@ -250,7 +253,7 @@ x
 
 ~~~
 
-> #### Challenge 1 {.challenge}
+> ## Challenge 1 {.challenge}
 >
 > Given the following code:
 >
@@ -281,7 +284,7 @@ x
 > 2. Compare notes with your neighbour. Did you have different strategies?
 >
 
-### Subsetting by name
+## Subsetting by name
 
 We can extract elements by using their name, instead of index:
 
@@ -354,7 +357,9 @@ which(names(x) == "a")
 
 ~~~
 
-Only the first element is `TRUE`, so `which returns 1. Now that we have indices
+
+
+Only the first element is `TRUE`, so `which` returns 1. Now that we have indices
 the skipping works because we have a negative index!
 
 Skipping multiple named indices is similar, but uses a different comparison
@@ -376,7 +381,72 @@ x[-which(names(x) %in% c("a", "c"))]
 The `%in%` goes through each element of its left argument, in this case the
 names of `x`, and asks, "Does this element occur in the second argument?".
 
-> #### Tip: Getting help for operators {.callout}
+> ## Tip: Non-unique names {.callout}
+>
+> You should be aware that it is possible for multiple elements in a
+> vector to have the same name. (For a data frame, columns can have
+> the same name --- although R tries to avoid this --- but row names
+> must be unique.) Consider these examples:
+
+>
+>~~~{.r}
+> x <- 1:3
+> x
+>~~~
+>
+>
+>
+>~~~{.output}
+>[1] 1 2 3
+>
+>~~~
+>
+>
+>
+>~~~{.r}
+> names(x) <- c('a', 'a', 'a')  
+> x
+>~~~
+>
+>
+>
+>~~~{.output}
+>a a a 
+>1 2 3 
+>
+>~~~
+>
+>
+>
+>~~~{.r}
+> x['a']  # only returns first value
+>~~~
+>
+>
+>
+>~~~{.output}
+>a 
+>1 
+>
+>~~~
+>
+>
+>
+>~~~{.r}
+> x[which(names(x) == 'a')]  # returns all three values
+>~~~
+>
+>
+>
+>~~~{.output}
+>a a a 
+>1 2 3 
+>
+>~~~
+
+
+
+> ## Tip: Getting help for operators {.callout}
 >
 > Remember you can search for help on operators by wrapping them in quotes:
 > `help("%in%")` or `?"%in%"`.
@@ -402,12 +472,12 @@ of shorter object length
 
 
 ~~~{.output}
-[1]  TRUE FALSE FALSE FALSE FALSE
+[1]  TRUE FALSE  TRUE
 
 ~~~
 
 Obviously "c" is in the names of `x`, so why didn't this work? `==` works
-slightly differently to `%in%`. It will compare each element of its left argument
+slightly differently than `%in%`. It will compare each element of its left argument
 to the corresponding element of its right argument.
 
 Here's a mock illustration:
@@ -440,22 +510,14 @@ names(x) == c('a', 'c', 'e')
 
 
 ~~~{.output}
-Warning in names(x) == c("a", "c", "e"): longer object length is not a
-multiple of shorter object length
-
-~~~
-
-
-
-~~~{.output}
-[1]  TRUE FALSE FALSE FALSE FALSE
+[1]  TRUE FALSE FALSE
 
 ~~~
 
 This difference between `==` and `%in%` is important to remember,
 because it can introduce hard to find and subtle bugs!
 
-### Subsetting through other logical operations
+## Subsetting through other logical operations
 
 We can also more simply subset through logical operations:
 
@@ -467,8 +529,8 @@ x[c(TRUE, TRUE, FALSE, FALSE)]
 
 
 ~~~{.output}
-  a   b   e 
-5.4 6.2 7.5 
+a a 
+1 2 
 
 ~~~
 
@@ -483,8 +545,8 @@ x[c(TRUE, FALSE)]
 
 
 ~~~{.output}
-  a   c   e 
-5.4 7.1 7.5 
+a a 
+1 3 
 
 ~~~
 
@@ -499,12 +561,11 @@ x[x > 7]
 
 
 ~~~{.output}
-  c   e 
-7.1 7.5 
+named integer(0)
 
 ~~~
 
-> #### Tip: Chaining logical operations {.callout}
+> ## Tip: Chaining logical operations {.callout}
 >
 > There are many situations in which you will wish to combine multiple conditions.
 > To do so several logical operations exist in R:
@@ -516,7 +577,7 @@ x[x > 7]
 >    also apply here.
 >
 
-> #### Challenge {.challenge}
+> ## Challenge {.challenge}
 >
 > Given the following code:
 >
@@ -538,7 +599,7 @@ x[x > 7]
 > 1. Write a subsetting command to return the values in x that are greater than 4 and less than 7.
 >
 
-#### Handling special values
+## Handling special values
 
 At some point you will encounter functions in R which cannot handle missing, infinite,
 or undefined data.
@@ -552,7 +613,7 @@ There are a number of special functions you can use to filter out this data:
    that do not contain `NA`, `NaN` or `Inf`.
  * `na.omit` will filter out all missing values from a vector
 
-### Factor subsetting
+## Factor subsetting
 
 Now that we've explored the different ways to subset vectors, how
 do we subset the other data structures?
@@ -617,7 +678,7 @@ Levels: a b c d
 
 ~~~
 
-### Matrix subsetting
+## Matrix subsetting
 
 Matrices are also subsetted using the `[` function. In this case
 it takes two arguments: the first applying to the rows, the second
@@ -706,7 +767,7 @@ Error in m[, c(3, 6)]: subscript out of bounds
 
 ~~~
 
-> #### Tip: Higher dimensional arrays {.callout}
+> ## Tip: Higher dimensional arrays {.callout}
 >
 > when dealing with multi-dimensional arrays, each argument to `[`
 > corresponds to a dimension. For example, a 3D array, the first three
@@ -747,10 +808,26 @@ matrix(1:6, nrow=2, ncol=3)
 
 ~~~
 
+If you wish to populate the matrix by row, use `byrow=TRUE`:
+
+
+~~~{.r}
+matrix(1:6, nrow=2, ncol=3, byrow=TRUE)
+~~~
+
+
+
+~~~{.output}
+     [,1] [,2] [,3]
+[1,]    1    2    3
+[2,]    4    5    6
+
+~~~
+
 Matrices can also be subsetted using their rownames and column names
 instead of their row and column indices.
 
-> #### Challenge 2 {.challenge}
+> ## Challenge 2 {.challenge}
 >
 > Given the following code:
 >
@@ -782,7 +859,7 @@ instead of their row and column indices.
 >
 
 
-### List subsetting
+## List subsetting
 
 Now we'll introduce some new subsetting operators. There are three functions
 used to subset lists. `[`, as we've seen for atomic vectors and matrices,
@@ -908,7 +985,7 @@ xlist$data
 
 ~~~
 
-> #### Challenge 3 {.challenge}
+> ## Challenge 3 {.challenge}
 > Given the following list:
 >
 > 
@@ -919,7 +996,7 @@ xlist$data
 > Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. 
 > Hint: the number 2 is contained within the "b" item in the list.
 
-> #### Challenge 4 {.challenge}
+> ## Challenge 4 {.challenge}
 > Given a linear model:
 >
 > 
@@ -930,7 +1007,7 @@ xlist$data
 > Extract the residual degrees of freedom (hint: `attributes()` will help you)
 >
 
-### Data frames
+## Data frames
 
 Remember the data frames are lists underneath the hood, so similar rules
 apply. However they are also two dimensional objects:
@@ -1020,7 +1097,7 @@ gapminder[3,]
 But for a single column the result will be a vector (this can
 be changed with the third argument, `drop = FALSE`).
 
-> #### Challenge 5 {.challenge}
+> ## Challenge 5 {.challenge}
 >
 > Fix each of the following common data frame subsetting errors:
 >
@@ -1062,7 +1139,7 @@ be changed with the third argument, `drop = FALSE`).
 > ~~~
 >
 
-> #### Challenge 6 {.challenge}
+> ## Challenge 6 {.challenge}
 >
 > 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
 >
@@ -1073,7 +1150,7 @@ be changed with the third argument, `drop = FALSE`).
 
 ## Challenge solutions
 
-> #### Solution to challenge 1 {.challenge}
+> ## Solution to challenge 1 {.challenge}
 >
 > Given the following code:
 >
@@ -1111,7 +1188,7 @@ be changed with the third argument, `drop = FALSE`).
 >
 >
 
-> #### Solution to challenge 2 {.challenge}
+> ## Solution to challenge 2 {.challenge}
 >
 > Given the following code:
 >
@@ -1143,7 +1220,7 @@ be changed with the third argument, `drop = FALSE`).
 >
 > Answer: D
 
-> #### Solution to challenge 3 {.challenge}
+> ## Solution to challenge 3 {.challenge}
 > Given the following list:
 >
 > 
@@ -1162,7 +1239,7 @@ be changed with the third argument, `drop = FALSE`).
 > ~~~
 
 
-> #### Solution to challenge 4 {.challenge}
+> ## Solution to challenge 4 {.challenge}
 > Given a linear model:
 >
 > 
@@ -1179,7 +1256,7 @@ be changed with the third argument, `drop = FALSE`).
 > ~~~
 
 
-> #### Solution to challenge 5 {.challenge}
+> ## Solution to challenge 5 {.challenge}
 >
 > Fix each of the following common data frame subsetting errors:
 >
@@ -1227,7 +1304,7 @@ be changed with the third argument, `drop = FALSE`).
 > ~~~
 >
 
-> #### Solution to challenge 6 {.challenge}
+> ## Solution to challenge 6 {.challenge}
 >
 > 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
 >
