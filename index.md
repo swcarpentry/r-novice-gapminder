@@ -41,7 +41,9 @@ usability.
 10. [Control flow](10-control-flow.html)
 11. [Writing data](11-writing-data.html)
 12. [Split-apply-combine](12-plyr.html)
-13. [Wrapping up](13-wrap-up.html)
+13. [Dataframe manipulation with dplyr](13-dplyr.html)
+14. [Dataframe manipulation with tidyr](14-tidyr.html)
+15. [Wrapping up](15-wrap-up.html)
 
 
 ## Other Resources
