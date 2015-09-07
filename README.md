@@ -59,7 +59,7 @@ mailing list.
 
 [contrib]: https://github.com/swcarpentry/r-novice-gapminder/blob/gh-pages/CONTRIBUTING.md
 [dependencies]: https://github.com/swcarpentry/lesson-template#dependencies 
-[design]: https://github.com/swcarpentry/lesson-template/blob/gh-pages/DESIGN.md
+[design]: https://github.com/swcarpentry/r-novice-gapminder/blob/gh-pages/DESIGN.md
 [issues]: https://github.com/swcarpentry/r-novice-gapminder/issues 
 [knitr]: http://cran.r-project.org/web/packages/knitr/index.html 
 [r-discuss]: http://lists.software-carpentry.org/mailman/listinfo/r-discuss_lists.software-carpentry.org

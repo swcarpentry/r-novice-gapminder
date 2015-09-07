@@ -30,18 +30,20 @@ usability.
 ## Topics
 
 1.  [Introduction to R and RStudio](01-rstudio-intro.html)
-2.  [Project Management](02-project-intro.html)
+2.  [Project management with RStudio](02-project-intro.html)
 3.  [Seeking help](03-seeking-help.html)
-4.  [Data types and structures](04-data-structures-part1.html)
-5.  [Data structures: data frames](05-data-structures-part2.html)
+4.  [Data structures](04-data-structures-part1.html)
+5.  [Data frames and reading in data](05-data-structures-part2.html)
 6.  [Subsetting data](06-data-subsetting.html)
-7.  [Functions](07-functions.html)
-8.  [Plotting](08-plot-ggplot2.html)
+7.  [Creating functions](07-functions.html)
+8.  [Creating publication quality graphics](08-plot-ggplot2.html)
 9.  [Vectorisation](09-vectorisation.html)
 10. [Control flow](10-control-flow.html)
 11. [Writing data](11-writing-data.html)
 12. [Split-apply-combine](12-plyr.html)
-13. [Wrapping up](13-wrap-up.html)
+13. [Dataframe manipulation with dplyr](13-dplyr.html)
+14. [Dataframe manipulation with tidyr](14-tidyr.html)
+15. [Wrapping up](15-wrap-up.html)
 
 
 ## Other Resources

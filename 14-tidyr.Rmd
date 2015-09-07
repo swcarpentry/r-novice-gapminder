@@ -7,7 +7,7 @@ minutes: 60
 
 ```{r, include=FALSE}
 source("tools/chunk-options.R")
-opts_chunk$set(fig.path = "fig/12-plyr-")
+opts_chunk$set(fig.path = "fig/14-tidyr-")
 # Silently load in the data so the rest of the lesson works
 gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE, stringsAsFactors = FALSE)
 
@@ -29,7 +29,7 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE, stringsAsF
 gap_wide <- read.csv("data/gapminder_wide.csv", header=TRUE, stringsAsFactors = FALSE)
 ```
 
-> ## Learning objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > * To be understand the concepts of 'long' and 'wide' data formats and be able to convert between them with `tidyr`
 >
@@ -48,7 +48,7 @@ For the 'wide' format each row is often a site/subject/patient and you have mult
 
 These data formats mainly affect readability. For humans, the wide format is often more intuitive since we can often see more of the data on the screen due to it's shape. However, the long format is more machine readable and is closer to the formating of databases. The ID variables in our dataframes are similar to the fields in a database and observed variables are like the database values.
 
-###Getting started
+##Getting started
 First install the packages if you haven't already done so (you probably installed dplyr in the previous lesson):
 ```{r,eval=FALSE}
 #install.packages("tidyr")
@@ -66,7 +66,7 @@ First, lets look at the structure of our original gapminder dataframe:
 str(gapminder)
 ```
 
-> #### Challenge 1 {.challenge}
+> ## Challenge 1 {.challenge}
 >
 > Is gapminder a purely long, purely wide, or some intermediate format?
 >
@@ -76,7 +76,7 @@ Sometimes, as with the gapminder dataset, we have multiple types of observed dat
 While using many of the functions in R, which are often vector based, you usually do not want to do mathematical operations on values with different units. For example, using the purely long format, a single mean for all of the values of population, life expectancy, and GDP would not be meaningful since it would return the mean of values with 3 incompatible units. The solution is that we first manipulate the data either by grouping (see the lesson on `dplyr`), or we change the structure of the dataframe.
 **Note:** Some plotting functions in R actually work better in the wide format data.
 
-#### From wide to long format with gather()
+## From wide to long format with gather()
 Until now, we've been using the nicely formatted original gapminder dataset, but 'real' data (i.e. our own research data) will never be so well organized. Here let's start with the wide format version of the gapminder dataset.
 
 ```{r}
@@ -114,13 +114,13 @@ gap_long$year <- as.integer(gap_long$year)
 ```
 
 
-> #### Challenge 2 {.challenge}
+> ## Challenge 2 {.challenge}
 >
 > Using `gap_long`, calculate the mean life expectancy, population, and gdpPercap for each continent.
 >**Hint:** use the `group_by()` and `summarize()` functions we learned in the `dplyr` lesson
 >
 
-#### From long to intermediate format with spread()
+## From long to intermediate format with spread()
 Now just to double-check our work, let's use the opposite of `gather()` to spread our observation variables back out with the aptly named `spread()`. We can then spread our `gap_long()` to the original intermediate format or the widest format. Let's start with the intermediate format.
 
 ```{r}
@@ -171,7 +171,7 @@ gap_wide_new <- gap_long %>%
 str(gap_wide_new)
 ```
 
-> #### Challenge 3 {.challenge}
+> ## Challenge 3 {.challenge}
 >
 > Take this 1 step further and create a `gap_ludicrously_wide` format data by spreading over countries, year and the 3 metrics?
 >**Hint** this new dataframe should only have 5 rows.
@@ -194,19 +194,19 @@ all.equal(gap_wide,gap_wide_betterID)
 
 There and back again!
 
-> #### Solution to Challenge 1 {.challenge}
+> ## Solution to Challenge 1 {.challenge}
 >
 > The original gapminder data.frame is in an intermediate format. It is not purely long since it had multiple observation variables (`pop`,`lifeExp`,`gdpPercap`).
 >
 >
 
-> #### Solution to Challenge 2 {.challenge}
+> ## Solution to Challenge 2 {.challenge}
 >```{r}
 >gap_long %>% group_by(continent,obs_type) %>%
 >    summarize(means=mean(obs_values))
 >```
 
-> #### Solution to Challenge 3 {.challenge}
+> ## Solution to Challenge 3 {.challenge}
 >```{r}
 >gap_ludicrously_wide <- gap_long %>% 
 >    unite(var_names,obs_type,year,country,sep="_") %>%
@@ -214,6 +214,6 @@ There and back again!
 >```
 
 
-#### Other great resources
+## Other great resources
 [Data Wrangling Cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 [Introduction to tidyr](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html)	 
