@@ -128,13 +128,6 @@ df <- rbind(df, list("g", 11, 42, 0, "G"))
 
 
 
-~~~{.output}
-Warning in `[<-.factor`(`*tmp*`, ri, value = "g"): invalid factor level, NA
-generated
-
-~~~
-
-
 
 ~~~{.output}
 Warning in `[<-.factor`(`*tmp*`, ri, value = "G"): invalid factor level, NA
