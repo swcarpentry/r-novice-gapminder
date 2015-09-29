@@ -27,8 +27,8 @@ R has 5 basic atomic types (meaning they can't be broken down into anything smal
 
 * logical (e.g., `TRUE`, `FALSE`)
 * numeric
-  * integer (e.g, `2L`, `as.integer(3)`)
-  * double (i.e. decimal) (e.g, `-24.57`, `2.0`, `pi`)
+    * integer (e.g, `2L`, `as.integer(3)`)
+    * double (i.e. decimal) (e.g, `-24.57`, `2.0`, `pi`)
 * complex (i.e. complex numbers) (e.g, `1 + 0i`, `1 + 4i`)
 * text (called "character" in R) (e.g, `"a"`, `"swc"`, `'This is a cat'`)
 
