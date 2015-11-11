@@ -12,7 +12,7 @@ source("tools/chunk-options.R")
 > ## Learning Objectives {.objectives}
 >
 > * To gain familiarity with the various panes in the RStudio IDE
-> * To gain familiarity with the buttons, short cuts and options in the Rstudio IDE
+> * To gain familiarity with the buttons, short cuts and options in the RStudio IDE
 > * To understand variables and how to assign to them
 > * To be able to manage your workspace in an interactive R session
 > * To be able to use mathematical and comparison operations
@@ -44,14 +44,14 @@ When you first open RStudio, you will be greeted by three panels:
 Once you open files, such as R scripts, an editor panel will also open
 in the top left.
 
-## Work flow within Rstudio
-There are two main ways one can work within Rstudio.
+## Work flow within RStudio
+There are two main ways one can work within RStudio.
 
 1. Test and play within the interactive R console then copy code into
 a .R file to run later. 
    *  This works well when doing small tests and initially starting off.
    *  It quickly becomes laborious
-2. Start writing in an .R file and use Rstudio's command / short cut
+2. Start writing in an .R file and use RStudio's command / short cut
 to push current line, selected lines or modified lines to the
 interactive R console. 
    * This is a great way to start; all your code is saved for later
