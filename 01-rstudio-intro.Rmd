@@ -58,18 +58,18 @@ interactive R console.
    * You will be able to run the file you create from within RStudio
    or using R's `source()`  function.
 
-> ## Tip: Running segments of your code {.callout} RStudio offers
-> you great flexibility in running code from within the editor
-> window. There are buttons, menu choices, and keyboard shortcuts. To
-> run the current line, you can 1.  click on the `Run` button just
-> above the editor panel, or 2.  select "Run Lines" from the "Code"
-> menu, or 3.  hit Ctrl-Enter in Windows or Linux or Command-Enter on
-> OS X. (This shortcut can also be seen by hovering the mouse over the
-> button).  To run a block of code, select it and then `Run`. If you
-> have modified a line of code within a block of code you have just
-> run, there is no need to reselct the section and `Run`, you can use
-> the next button along, `Re-run the previous region`. This will run
-> the previous code block inculding the modifications you have made.
+> ## Tip: Running segments of your code {.callout}
+>
+> RStudio offers you great flexibility in running code from within the editor
+> window. There are buttons, menu choices, and keyboard shortcuts. To run the
+> current line, you can 1. click on the `Run` button just above the editor panel,
+> or 2. select "Run Lines" from the "Code" menu, or 3. hit Ctrl-Enter in Windows
+> or Linux or Command-Enter on OS X. (This shortcut can also be seen by hovering
+> the mouse over the button). To run a block of code, select it and then `Run`.
+> If you have modified a line of code within a block of code you have just run,
+> there is no need to reselct the section and `Run`, you can use the next button
+> along, `Re-run the previous region`. This will run the previous code block
+> inculding the modifications you have made.
 
 ## Introduction to R
 
