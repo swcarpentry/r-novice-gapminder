@@ -128,7 +128,7 @@ df <- rbind(df, list("g", 11, 42, 0, "G"))
 
 
 
-~~~{.output}
+~~~{.error}
 Warning in `[<-.factor`(`*tmp*`, ri, value = "g"): invalid factor level, NA
 generated
 
@@ -136,7 +136,7 @@ generated
 
 
 
-~~~{.output}
+~~~{.error}
 Warning in `[<-.factor`(`*tmp*`, ri, value = "G"): invalid factor level, NA
 generated
 
@@ -412,7 +412,7 @@ c('H', 'I')))
 
 
 
-~~~{.output}
+~~~{.error}
 Warning in `[<-.factor`(`*tmp*`, ri, value = c("H", "I")): invalid factor
 level, NA generated
 
