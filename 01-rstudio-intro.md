@@ -10,7 +10,7 @@ minutes: 45
 > ## Learning Objectives {.objectives}
 >
 > * To gain familiarity with the various panes in the RStudio IDE
-> * To gain familiarity with the buttons, short cuts and options in the Rstudio IDE
+> * To gain familiarity with the buttons, short cuts and options in the RStudio IDE
 > * To understand variables and how to assign to them
 > * To be able to manage your workspace in an interactive R session
 > * To be able to use mathematical and comparison operations
@@ -42,32 +42,32 @@ When you first open RStudio, you will be greeted by three panels:
 Once you open files, such as R scripts, an editor panel will also open
 in the top left.
 
-## Work flow within Rstudio
-There are two main ways one can work within Rstudio.
+## Work flow within RStudio
+There are two main ways one can work within RStudio.
 
 1. Test and play within the interactive R console then copy code into
 a .R file to run later. 
    *  This works well when doing small tests and initially starting off.
    *  It quickly becomes laborious
-2. Start writing in an .R file and use Rstudio's command / short cut
+2. Start writing in an .R file and use RStudio's command / short cut
 to push current line, selected lines or modified lines to the
 interactive R console. 
    * This is a great way to start; all your code is saved for later
    * You will be able to run the file you create from within RStudio
    or using R's `source()`  function.
 
-> ## Tip: Running segments of your code {.callout} RStudio offers
-> you great flexibility in running code from within the editor
-> window. There are buttons, menu choices, and keyboard shortcuts. To
-> run the current line, you can 1.  click on the `Run` button just
-> above the editor panel, or 2.  select "Run Lines" from the "Code"
-> menu, or 3.  hit Ctrl-Enter in Windows or Linux or Command-Enter on
-> OS X. (This shortcut can also be seen by hovering the mouse over the
-> button).  To run a block of code, select it and then `Run`. If you
-> have modified a line of code within a block of code you have just
-> run, there is no need to reselct the section and `Run`, you can use
-> the next button along, `Re-run the previous region`. This will run
-> the previous code block inculding the modifications you have made.
+> ## Tip: Running segments of your code {.callout}
+>
+> RStudio offers you great flexibility in running code from within the editor
+> window. There are buttons, menu choices, and keyboard shortcuts. To run the
+> current line, you can 1. click on the `Run` button just above the editor panel,
+> or 2. select "Run Lines" from the "Code" menu, or 3. hit Ctrl-Enter in Windows
+> or Linux or Command-Enter on OS X. (This shortcut can also be seen by hovering
+> the mouse over the button). To run a block of code, select it and then `Run`.
+> If you have modified a line of code within a block of code you have just run,
+> there is no need to reselct the section and `Run`, you can use the next button
+> along, `Re-run the previous region`. This will run the previous code block
+> inculding the modifications you have made.
 
 ## Introduction to R
 
@@ -528,7 +528,7 @@ ls()
 
 
 ~~~{.output}
-[1] "hook_in"  "hook_out" "x"       
+[1] "hook_error" "hook_in"    "hook_out"   "x"         
 
 ~~~
 
@@ -583,7 +583,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7fa6090f27c8>
+<bytecode: 0x7f851b927f40>
 <environment: namespace:base>
 
 ~~~
@@ -620,7 +620,7 @@ rm(list <- ls())
 
 
 
-~~~{.output}
+~~~{.error}
 Error in rm(list <- ls()): ... must contain names or character strings
 
 ~~~

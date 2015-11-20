@@ -132,7 +132,7 @@ x
 Did anyone get a warning message like this?
 
 
-~~~{.output}
+~~~{.error}
 Warning in if (gapminder$year == 2012) {: the condition has length > 1 and
 only the first element will be used
 

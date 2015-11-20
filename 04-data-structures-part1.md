@@ -326,7 +326,7 @@ as.numeric(x)
 
 
 
-~~~{.output}
+~~~{.error}
 Warning: NAs introduced by coercion
 
 ~~~

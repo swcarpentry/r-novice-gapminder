@@ -105,7 +105,7 @@ x</code></pre></div>
 </div>
 </section>
 <p>Did anyone get a warning message like this?</p>
-<pre class="output"><code>Warning in if (gapminder$year == 2012) {: the condition has length &gt; 1 and
+<pre class="error"><code>Warning in if (gapminder$year == 2012) {: the condition has length &gt; 1 and
 only the first element will be used
 </code></pre>
 <p>If your condition evaluates to a vector with more than one logical element, the function <code>if</code> will still run, but will only evaluate the condition in the first element. Here you need to make sure your condition is of length 1.</p>

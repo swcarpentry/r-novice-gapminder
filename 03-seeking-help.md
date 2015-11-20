@@ -112,7 +112,7 @@ sessionInfo()
 ~~~{.output}
 R version 3.2.2 (2015-08-14)
 Platform: x86_64-apple-darwin13.4.0 (64-bit)
-Running under: OS X 10.10.5 (Yosemite)
+Running under: OS X 10.11.1 (El Capitan)
 
 locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -124,8 +124,8 @@ other attached packages:
 [1] knitr_1.11
 
 loaded via a namespace (and not attached):
-[1] magrittr_1.5   formatR_1.2    tools_3.2.2    stringi_0.5-5 
-[5] methods_3.2.2  stringr_1.0.0  evaluate_0.7.2
+[1] magrittr_1.5  formatR_1.2.1 tools_3.2.2   stringi_1.0-1 methods_3.2.2
+[6] stringr_1.0.0 evaluate_0.8 
 
 ~~~
 

@@ -208,7 +208,7 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 > 
 > 
 > 
-> ~~~{.output}
+> ~~~{.error}
 > Error in x[-1:3]: only 0's may be mixed with negative subscripts
 > 
 > ~~~
@@ -463,7 +463,7 @@ names(x) == c('a', 'c')
 
 
 
-~~~{.output}
+~~~{.error}
 Warning in names(x) == c("a", "c"): longer object length is not a multiple
 of shorter object length
 
@@ -762,7 +762,7 @@ m[, c(3,6)]
 
 
 
-~~~{.output}
+~~~{.error}
 Error in m[, c(3, 6)]: subscript out of bounds
 
 ~~~
@@ -932,7 +932,7 @@ xlist[[1:2]]
 
 
 
-~~~{.output}
+~~~{.error}
 Error in xlist[[1:2]]: subscript out of bounds
 
 ~~~
@@ -946,7 +946,7 @@ xlist[[-1]]
 
 
 
-~~~{.output}
+~~~{.error}
 Error in xlist[[-1]]: attempt to select more than one element
 
 ~~~

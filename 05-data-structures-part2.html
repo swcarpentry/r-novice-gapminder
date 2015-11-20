@@ -91,10 +91,10 @@ df</code></pre></div>
 <h2 id="adding-rows-to-a-data-frame">Adding rows to a data frame</h2>
 <p>To add a row we use <code>rbind</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">rbind</span>(df, <span class="kw">list</span>(<span class="st">&quot;g&quot;</span>, <span class="dv">11</span>, <span class="dv">42</span>, <span class="dv">0</span>, <span class="st">&quot;G&quot;</span>))</code></pre></div>
-<pre class="output"><code>Warning in `[&lt;-.factor`(`*tmp*`, ri, value = &quot;g&quot;): invalid factor level, NA
+<pre class="error"><code>Warning in `[&lt;-.factor`(`*tmp*`, ri, value = &quot;g&quot;): invalid factor level, NA
 generated
 </code></pre>
-<pre class="output"><code>Warning in `[&lt;-.factor`(`*tmp*`, ri, value = &quot;G&quot;): invalid factor level, NA
+<pre class="error"><code>Warning in `[&lt;-.factor`(`*tmp*`, ri, value = &quot;G&quot;): invalid factor level, NA
 generated
 </code></pre>
 <p>Note that we add the row as a list, because we have multiple types across the columns. Nevertheless, this doesn’t work as expected! What do the error messages tell us?</p>
@@ -229,7 +229,7 @@ c('H', 'I')))
 
 
 
-~~~{.output}
+~~~{.error}
 Warning in `[<-.factor`(`*tmp*`, ri, value = c("H", "I")): invalid factor
 level, NA generated
 

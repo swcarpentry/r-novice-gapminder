@@ -78,7 +78,7 @@ ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap))
 
 
 
-~~~{.output}
+~~~{.error}
 Error: No layers in plot
 
 ~~~
