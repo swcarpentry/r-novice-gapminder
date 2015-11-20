@@ -63,3 +63,7 @@ mailing list.
 [issues]: https://github.com/swcarpentry/r-novice-gapminder/issues 
 [knitr]: http://cran.r-project.org/web/packages/knitr/index.html 
 [r-discuss]: http://lists.software-carpentry.org/mailman/listinfo/r-discuss_lists.software-carpentry.org
+
+## Rendered version of lessons
+
+You can also view [the rendered version of this material](https://swcarpentry.github.io/r-novice-gapminder).
