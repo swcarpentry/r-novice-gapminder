@@ -154,13 +154,11 @@ one to store the analysis scripts.
 Now we have a good directory structure we will now place/save the data file in the `data/` directory.
 
 > ## Challenge 1 {.challenge}
-> Download the gapminder data from [here](https://github.com/resbaz/r-novice-gapminder-files).
+> Download the gapminder data from [here](https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv).
 >
-> 1. Use the `Download ZIP` located on the right hand side menu, last option. To download the `.zip` file to
-> your downloads folder.
-> 2. Unzip the file.
-> 3. Create a data directory within your project
-> 4. Move the file to the `data/` within your project.
+> 1. Download the file (CTRL + S, right mouse click -> "Save as", or File -> "Save page as")
+> 2. Make sure it's saved under the name `gapminder-FiveYearData.csv`
+> 3. Save the file in the `data/` folder within your project.
 >
 > We will load and inspect these data later.
 
