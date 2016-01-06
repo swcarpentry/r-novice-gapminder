@@ -1148,6 +1148,19 @@ be changed with the third argument, `drop = FALSE`).
 > and 19 through 23. You can do this in one or two steps.
 >
 
+> ## Challenge 7 {.challenge}
+>
+> How many countries in Asia had a population in either 2002 or 2007 above 20 million? 
+> Tip: Use subsetting to maintain the relevant data and then use the function `unique()` to remove duplicate countries.
+>
+> A. 19
+>
+> B. 20
+>
+> C. 21
+>
+> D. 22
+
 ## Challenge solutions
 
 > ## Solution to challenge 1 {.challenge}
@@ -1318,3 +1331,25 @@ be changed with the third argument, `drop = FALSE`).
 > gapminder_small <- gapminder[c(1:9, 19:23),]
 > ~~~
 >
+
+> ## Solution to challenge 7 {.challenge}
+>
+> How many countries in Asia had a population in either 2002 or 2007 above 20 million? 
+> Tip: Use subsetting to maintain the relevant data and then use the function `unique()` to remove duplicate countries.
+>
+> A. 19
+>
+> B. 20
+>
+> C. 21
+>
+> D. 22
+>
+> Answer: B
+> 
+> The answer can be derived using the following statement
+> ~~~{.r}
+> length(unique(
+>   gapminder[gapminder$year >= 2002 & gapminder$year <= 2007 & gapminder$continent=='Asia' & gapminder$pop > 2e7, ]$country
+> ))
+> ~~~
