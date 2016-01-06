@@ -1350,6 +1350,10 @@ be changed with the third argument, `drop = FALSE`).
 > The answer can be derived using the following statement
 > ~~~{.r}
 > length(unique(
->   gapminder[gapminder$year >= 2002 & gapminder$year <= 2007 & gapminder$continent=='Asia' & gapminder$pop > 2e7, ]$country
+>   gapminder[
+>     gapminder$year >= 2002 & 
+>     gapminder$year <= 2007 & 
+>     gapminder$continent=='Asia' & 
+>     gapminder$pop > 2e7, ]$country
 > ))
 > ~~~
