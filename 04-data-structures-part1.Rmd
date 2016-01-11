@@ -339,6 +339,16 @@ In this case, we've explicitly told R that "control" should represented by 1, an
 "case" by 2. This designation can be very important for interpreting the
 results of statistical models!
 
+> ## Challenge 5 {.challenge}
+> Having to factors:
+> ```{r, eval=FALSE}
+> sex <- factor(c("M", "F", "F", "M", "M", "F"))
+> age <- factor(sample(100, size=6))
+>```
+> Can you extract values stored by those factors?
+> How will you do it for `sex` and how for `age`?
+
+
 ## Lists
 
 If you want to combine different types of data, you will need to use lists.
@@ -373,7 +383,7 @@ Lists can also contain themselves:
 list(list(list(list())))
 ```
 
-> ## Challenge 5 {.challenge}
+> ## Challenge 6 {.challenge}
 >
 > Create a list of length two containing a character vector for each of the 
 > sections in this part of the workshop:
@@ -477,8 +487,25 @@ fact many R functions which return complex output store their results in a list.
 > ```
 >
 
+> ## Solution to challenge 5: Factors {.challenge}
+> extracting character vector from factor works as we would expected:
+> ```{r, eval=FALSE}
+> as.character(sex)
+> [1] "M" "F" "F" "M" "M" "F"
+> ```
+> but not for factor with numerical values
+> ```{r, eval=FALSE}
+> as.numeric(age) # returns the labels from the factor
+> [1] 5 1 3 4 6 2
+> ```
+> three possible ways to do it are:
+> ```{r, eval=FALSE}
+> as.numeric(levels(age))[age]
+> as.numeric(levels(age)[age])
+> as.numeric(as.character(age))
+> ```
 
-> ## Solution to challenge 5 {.challenge}
+> ## Solution to challenge 6 {.challenge}
 >
 > Create a list of length two containing a character vector for each of the 
 > sections in this part of the workshop:
