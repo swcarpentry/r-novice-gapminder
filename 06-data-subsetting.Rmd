@@ -215,6 +215,33 @@ x[-which(names(x) %in% c("a", "c"))]
 The `%in%` goes through each element of its left argument, in this case the
 names of `x`, and asks, "Does this element occur in the second argument?".
 
+> ## Challenge 2 {.challenge}
+>
+> Run the following code to define vector `x` as above:
+>
+> ```{.r}
+> x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
+> names(x) <- c('a', 'b', 'c', 'd', 'e')
+> print(x)
+> ```
+>
+> Given this vector `x`, what would you expect the following to do?
+>```{.r, eval=FALSE}
+> x[-which(names(x) == "g")]
+>```
+>
+> Try out this command and see what you get. Did this match your expectation?
+> Why did we get this result? (Tip: test out each part of the command on it's own like we just did above - this is a useful debugging strategy)
+>
+> Which of the following are true:
+>
+> * A) if there are no `TRUE` values passed to `which`, an empty vector is returned
+> * B) if there are no `TRUE` values passed to `which`, an error message is shown
+> * C) `integer()` is an empty vector
+> * D) making an empty vector negative produces an "everything" vector
+> * E) `x[]` gives the same result as `x[integer()]`
+>
+
 > ## Tip: Non-unique names {.callout}
 >
 > You should be aware that it is possible for multiple elements in a
@@ -312,7 +339,7 @@ x[x > 7]
 >    also apply here.
 >
 
-> ## Challenge {.challenge}
+> ## Challenge 3 {.challenge}
 >
 > Given the following code:
 >
@@ -432,7 +459,7 @@ matrix(1:6, nrow=2, ncol=3, byrow=TRUE)
 Matrices can also be subsetted using their rownames and column names
 instead of their row and column indices.
 
-> ## Challenge 2 {.challenge}
+> ## Challenge 4 {.challenge}
 >
 > Given the following code:
 >
@@ -512,7 +539,7 @@ The `$` function is a shorthand way for extracting elements by name:
 xlist$data
 ```
 
-> ## Challenge 3 {.challenge}
+> ## Challenge 5 {.challenge}
 > Given the following list:
 >
 > ```{r, eval=FALSE}
@@ -522,7 +549,7 @@ xlist$data
 > Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. 
 > Hint: the number 2 is contained within the "b" item in the list.
 
-> ## Challenge 4 {.challenge}
+> ## Challenge 6 {.challenge}
 > Given a linear model:
 >
 > ```{r, eval=FALSE}
@@ -572,7 +599,7 @@ gapminder[3,]
 But for a single column the result will be a vector (this can
 be changed with the third argument, `drop = FALSE`).
 
-> ## Challenge 5 {.challenge}
+> ## Challenge 7 {.challenge}
 >
 > Fix each of the following common data frame subsetting errors:
 >
@@ -609,7 +636,7 @@ be changed with the third argument, `drop = FALSE`).
 > ```
 >
 
-> ## Challenge 6 {.challenge}
+> ## Challenge 8 {.challenge}
 >
 > 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
 >
@@ -645,7 +672,41 @@ be changed with the third argument, `drop = FALSE`).
 >
 >
 
+
 > ## Solution to challenge 2 {.challenge}
+>
+> Run the following code to define vector `x` as above:
+>
+> ```{.r}
+> x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
+> names(x) <- c('a', 'b', 'c', 'd', 'e')
+> print(x)
+> ```
+>
+> Given this vector `x`, what would you expect the following to do?
+>```{.r, eval=FALSE}
+> x[-which(names(x) == "g")]
+>```
+>
+> Try out this command and see what you get. Did this match your expectation?
+>
+> Why did we get this result? (Tip: test out each part of the command on it's own like we just did above - this is a useful debugging strategy)
+>
+> Which of the following are true:
+>
+> * A) if there are no `TRUE` values passed to "which", an empty vector is returned
+> * B) if there are no `TRUE` values passed to "which", an error message is shown
+> * C) `integer()` is an empty vector
+> * D) making an empty vector negative produces an "everything" vector
+> * E) `x[]` gives the same result as `x[integer()]`
+>
+> Answer: A and C are correct.
+>
+> The `which` command returns the index of every `TRUE` value in its input. The `names(x) == "g"` command didn't return any `TRUE` values. Because there were no `TRUE` values passed to the `which` command, it returned an empty vector. Negating this vector with the minus sign didn't change its meaning. Because we used this empty vector to retrieve values from `x`, it produced an empty numeric vector. It was a `named numeric` empty vector because the vector type of x is "named numeric" since we assigned names to the values (try `str(x)` ).
+
+
+
+> ## Solution to challenge 4 {.challenge}
 >
 > Given the following code:
 >
@@ -666,7 +727,7 @@ be changed with the third argument, `drop = FALSE`).
 >
 > Answer: D
 
-> ## Solution to challenge 3 {.challenge}
+> ## Solution to challenge 5 {.challenge}
 > Given the following list:
 >
 > ```{r}
@@ -683,7 +744,7 @@ be changed with the third argument, `drop = FALSE`).
 > ```
 
 
-> ## Solution to challenge 4 {.challenge}
+> ## Solution to challenge 6 {.challenge}
 > Given a linear model:
 >
 > ```{r}
@@ -698,7 +759,7 @@ be changed with the third argument, `drop = FALSE`).
 > ```
 
 
-> ## Solution to challenge 5 {.challenge}
+> ## Solution to challenge 7 {.challenge}
 >
 > Fix each of the following common data frame subsetting errors:
 >
@@ -741,7 +802,7 @@ be changed with the third argument, `drop = FALSE`).
 > ```
 >
 
-> ## Solution to challenge 6 {.challenge}
+> ## Solution to challenge 8 {.challenge}
 >
 > 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
 >
