@@ -125,8 +125,9 @@ your issue.
 > 
 
 > ## Challenge 3 {.challenge}
-> Use help to find out which function should you use to load data
-> from csv file with columns delimited with "tab" and decimal point ".".
+> Use help to find out which function and with what parameters should you use
+> to load data from csv file with columns delimited with "tab" and decimal point ".".
+> hint: use `??csv` to lookup csv related functions.
 
 ## Other ports of call
 
