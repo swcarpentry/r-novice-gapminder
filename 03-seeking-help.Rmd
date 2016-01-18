@@ -125,10 +125,6 @@ your issue.
 > 
 
 > ## Challenge 3 {.challenge}
-> Use one of the functions from this lesson to find out wich version of R
-> you are using.
-
-> ## Challenge 4 {.challenge}
 > Use help to find out which function should you use to load data
 > from csv file with columns delimited with "tab" and decimal point ".".
 
