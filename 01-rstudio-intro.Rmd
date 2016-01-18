@@ -423,21 +423,7 @@ network). R and RStudio have functionality for managing packages:
 * You can remove a package with `remove.packages("packagename")`
 * You can make a package available for use with `library(packagename)`
 
-
 > ## Challenge 1 {.challenge}
->
-> What will be the value of each  variable  after each
-> statement in the following program?
->
-> ```{r, eval=FALSE}
-> mass <- 47.5
-> age <- 122
-> mass <- mass * 2.3
-> age <- age - 20
-> ```
->
-
-> ## Challenge 2 {.challenge}
 > Which of the following are valid R variable names?
 > ```{r, eval=FALSE}
 > min_height
@@ -449,6 +435,19 @@ network). R and RStudio have functionality for managing packages:
 > 2widths
 > celsius2kelvin
 > ```
+
+> ## Challenge 2 {.challenge}
+>
+> What will be the value of each  variable  after each
+> statement in the following program?
+>
+> ```{r, eval=FALSE}
+> mass <- 47.5
+> age <- 122
+> mass <- mass * 2.3
+> age <- age - 20
+> ```
+>
 
 > ## Challenge 3 {.challenge}
 >
