@@ -38,8 +38,8 @@ control and project management.
 When you first open RStudio, you will be greeted by three panels:
 
   * The interactive R console (entire left)
-  * Workspace/History (tabbed in upper right)
-  * Files/Plots/Packages/Help (tabbed in lower right)
+  * Environment/History (tabbed in upper right)
+  * Files/Plots/Packages/Help/Viewer (tabbed in lower right)
 
 Once you open files, such as R scripts, an editor panel will also open
 in the top left.
