@@ -340,7 +340,7 @@ In this case, we've explicitly told R that "control" should represented by 1, an
 results of statistical models!
 
 > ## Challenge 5 {.challenge}
-> Having to factors:
+> The following code creates two variables of type factor:
 > ```{r, eval=FALSE}
 > sex <- factor(c("M", "F", "F", "M", "M", "F"))
 > age <- factor(sample(100, size=6))
