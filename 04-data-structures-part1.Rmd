@@ -345,8 +345,9 @@ results of statistical models!
 > sex <- factor(c("M", "F", "F", "M", "M", "F"))
 > age <- factor(sample(100, size=6))
 >```
-> Can you extract values stored by those factors?
-> How will you do it for `sex` and how for `age`?
+> Try to get character vector of sex values from `sex` factor
+> and numeric vector from `age`.
+> Does using `as.character()` and `as.numeric()` return results you expect?
 
 
 ## Lists
