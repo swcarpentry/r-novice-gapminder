@@ -345,9 +345,10 @@ results of statistical models!
 > sex <- factor(c("M", "F", "F", "M", "M", "F"))
 > age <- factor(sample(100, size=6))
 >```
-> Try to get character vector of sex values from `sex` factor
-> and numeric vector from `age`.
-> Does using `as.character()` and `as.numeric()` return results you expect?
+> Try to get character vector of sex values from `sex` vector (currently of type
+> factor) and numeric vector from `age`.
+> Does using function `as.character()` or the function `as.numeric()` return
+results you expect?
 
 
 ## Lists
@@ -489,12 +490,12 @@ fact many R functions which return complex output store their results in a list.
 >
 
 > ## Solution to challenge 5: Factors {.challenge}
-> extracting character vector from factor works as we would expected:
+> extracting character vector from factor vactor works as we would expect:
 > ```{r, eval=FALSE}
 > as.character(sex)
 > [1] "M" "F" "F" "M" "M" "F"
 > ```
-> but not for factor with numerical values
+> but not for a factor vector with numeric values
 > ```{r, eval=FALSE}
 > as.numeric(age) # returns the labels from the factor
 > [1] 5 1 3 4 6 2
