@@ -168,7 +168,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > command line, before loading it into R. Understanding better the dataset
 > will come handy when making decisions on how to load it in R. Use Unix shell
 > to answer following questions:
-> 1. How large is the file.
+> 1. What is the size of the file?
 > 2. How many rows of data does it contain?
 > 3. What are the data types of values stored in this file?
 
