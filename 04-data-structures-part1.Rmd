@@ -345,10 +345,10 @@ results of statistical models!
 > sex <- factor(c("M", "F", "F", "M", "M", "F"))
 > age <- factor(sample(100, size=6))
 >```
-> Try to get character vector of sex values from `sex` vector (currently of type
-> factor) and numeric vector from `age`.
-> Does using function `as.character()` or the function `as.numeric()` return
-results you expect?
+> Try to get a character vector of sex values from the `sex` vector (currently of type
+> factor) and a numeric vector from `age`.
+> Does using the function `as.character()` or the function `as.numeric()` return
+> the results you expect?
 
 
 ## Lists
