@@ -164,8 +164,9 @@ Now we have a good directory structure we will now place/save the data file in t
 > We will load and inspect these data later.
 
 > ## Challenge 2 {.challenge}
-> It is usefull to get some general idea about the dataset, directly from the
-> command line, before loading it into R.
+> It is useful to get some general idea about the dataset, directly from the
+> command line, before loading it into R. Understanding better the dataset
+> will come handy when making decisions on how to load it in R.
 > 1. Check on the command line how large is the file.
 > 2. How many rows of data does it contain?
 > 3. What kind of columns are there?
