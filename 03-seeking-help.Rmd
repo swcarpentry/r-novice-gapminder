@@ -125,8 +125,8 @@ your issue.
 > 
 
 > ## Challenge 3 {.challenge}
-> Use help to find out which function and with what parameters should you use
-> to load data from a csv file in witch columns are delimited with "\t" (tab) and
+> Use help to find a function (and it's assosiated parameters) that you could use
+> to load data from a csv file in which columns are delimited with "\t" (tab) and
 > decimal point is a "." (period).
 > hint: use `??csv` to lookup csv related functions.
 
