@@ -423,8 +423,20 @@ network). R and RStudio have functionality for managing packages:
 * You can remove a package with `remove.packages("packagename")`
 * You can make a package available for use with `library(packagename)`
 
-
 > ## Challenge 1 {.challenge}
+> Which of the following are valid R variable names?
+> ```{r, eval=FALSE}
+> min_height
+> max.height
+> _age
+> .mass
+> MaxLength
+> min-length
+> 2widths
+> celsius2kelvin
+> ```
+
+> ## Challenge 2 {.challenge}
 >
 > What will be the value of each  variable  after each
 > statement in the following program?
@@ -437,19 +449,19 @@ network). R and RStudio have functionality for managing packages:
 > ```
 >
 
-> ## Challenge 2 {.challenge}
+> ## Challenge 3 {.challenge}
 >
 > Run the code from the previous challenge, and write a command to
 > compare mass to age. Is mass larger than age?
 >
 
-> ## Challenge 3 {.challenge}
+> ## Challenge 4 {.challenge}
 >
 > Clean up your working environment by deleting the mass and age
 > variables.
 >
 
-> ## Challenge 4 {.challenge}
+> ## Challenge 5 {.challenge}
 > 
 > Install the following packages: `ggplot2`, `plyr`, `gapminder`
 > 
