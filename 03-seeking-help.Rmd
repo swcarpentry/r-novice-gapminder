@@ -124,6 +124,15 @@ your issue.
 > What is the difference between the `sep` and `collapse` arguments?
 > 
 
+> ## Challenge 3 {.challenge}
+> Use help to find a function (and its associated parameters) that you could
+> use to load data from a csv file in which columns are delimited with "\t"
+> (tab) and the decimal point is a "." (period). This check for decimal
+> separator is important, especially if you are working with international
+> colleagues, because different countries have different conventions for the
+> decimal point (i.e. comma vs period).
+> hint: use `??csv` to lookup csv related functions.
+
 ## Other ports of call
 
 * [Quick R](http://www.statmethods.net/)
