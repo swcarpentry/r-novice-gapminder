@@ -1,0 +1,4 @@
+## this is to go at line 322 of functions.md
+## Challenge Instructor Training HW {.challenge}
+1. Call this function so that it gives you the GDP for Australia for years 1990-2000 inclusive.
+2. Modify the functuion so it will return the GDP for all the countries on one continent.
