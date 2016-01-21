@@ -490,7 +490,7 @@ fact many R functions which return complex output store their results in a list.
 >
 
 > ## Solution to challenge 5: Factors {.challenge}
-> extracting character vector from factor vactor works as we would expect:
+> extracting a character vector from factor vector works as we would expect:
 > ```{r, eval=FALSE}
 > as.character(sex)
 > [1] "M" "F" "F" "M" "M" "F"
