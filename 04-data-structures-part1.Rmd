@@ -301,6 +301,26 @@ while `length` will tell you the number of elements.
 > (hint: read the documentation for `matrix`!)
 >
 
+> ## Challenge 5 {.challenge}
+>
+> Consider the matrix below:
+>
+> \[ \left[ \begin{array}{cc}
+>         4 & 1 \\
+>         9 & 5 \\
+>         10 & 7
+>       \end{array} \right] \]
+>
+> What would be the correct command to write this matrix in R? Examine
+> each command and try to figure out the correct one before typing them.
+> Think about what matrices the other commands will produce.
+>
+> 1) `matrix(c(4, 1, 9, 5, 10, 7), nrow = 3)`
+> 2) `matrix(c(4, 9, 10, 1, 5, 7), ncol = 2, byrow = TRUE)`
+> 3) `matrix(c(4, 9, 10, 1, 5, 7), nrow = 2)`
+> 4) `matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)`
+>
+
 ## Factors
 
 Factors are special vectors that represent categorical data. Factors can be
@@ -339,7 +359,7 @@ In this case, we've explicitly told R that "control" should represented by 1, an
 "case" by 2. This designation can be very important for interpreting the
 results of statistical models!
 
-> ## Challenge 5 {.challenge}
+> ## Challenge 6 {.challenge}
 > The following code creates two variables of type factor:
 > ```{r, eval=FALSE}
 > sex <- factor(c("M", "F", "F", "M", "M", "F"))
@@ -385,9 +405,9 @@ Lists can also contain themselves:
 list(list(list(list())))
 ```
 
-> ## Challenge 6 {.challenge}
+> ## Challenge 7 {.challenge}
 >
-> Create a list of length two containing a character vector for each of the 
+> Create a list of length two containing a character vector for each of the
 > sections in this part of the workshop:
 >
 > * Data types
@@ -468,7 +488,7 @@ fact many R functions which return complex output store their results in a list.
 > x <- matrix(rnorm(18), ncol=6, nrow=3)
 > length(x)
 > ```
-> 
+>
 > Because a matrix is really just a vector with added dimension attributes, `length`
 > gives you the total number of elements in the matrix.
 >
@@ -489,7 +509,27 @@ fact many R functions which return complex output store their results in a list.
 > ```
 >
 
-> ## Solution to challenge 5: Factors {.challenge}
+>
+> ## Solution to challenge 5 {.challenge}
+>
+> Consider the matrix below:
+>
+> \[ \left[ \begin{array}{cc}
+>         4 & 1 \\
+>         9 & 5 \\
+>         10 & 7
+>       \end{array} \right] \]
+>
+> What would be the correct command to write this matrix in R? Examine
+> each command and try to figure out the correct one before typing them.
+> Think about what matrices the other commands will produce.
+>
+> ```{r, eval=FALSE}
+> matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)
+> ```
+>
+
+> ## Solution to challenge 6: Factors {.challenge}
 > extracting a character vector from a factor vector works as we would expect:
 > ```{r, eval=FALSE}
 > as.character(sex)
@@ -507,9 +547,9 @@ fact many R functions which return complex output store their results in a list.
 > as.numeric(as.character(age))
 > ```
 
-> ## Solution to challenge 6 {.challenge}
+> ## Solution to challenge 7 {.challenge}
 >
-> Create a list of length two containing a character vector for each of the 
+> Create a list of length two containing a character vector for each of the
 > sections in this part of the workshop:
 >
 > * Data types
