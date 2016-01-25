@@ -301,24 +301,21 @@ while `length` will tell you the number of elements.
 > (hint: read the documentation for `matrix`!)
 >
 
+>
 > ## Challenge 5 {.challenge}
 >
-> Consider the matrix below:
->
-> \[ \left[ \begin{array}{cc}
->         4 & 1 \\
->         9 & 5 \\
->         10 & 7
->       \end{array} \right] \]
->
-> What would be the correct command to write this matrix in R? Examine
+> Consider the R output of the matrix below:
+> ```{r, echo=FALSE}
+> matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)
+> ```
+> What was the correct command used to write this matrix? Examine
 > each command and try to figure out the correct one before typing them.
 > Think about what matrices the other commands will produce.
 >
-> 1) `matrix(c(4, 1, 9, 5, 10, 7), nrow = 3)`
-> 2) `matrix(c(4, 9, 10, 1, 5, 7), ncol = 2, byrow = TRUE)`
-> 3) `matrix(c(4, 9, 10, 1, 5, 7), nrow = 2)`
-> 4) `matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)`
+> 1. `matrix(c(4, 1, 9, 5, 10, 7), nrow = 3)`
+> 2. `matrix(c(4, 9, 10, 1, 5, 7), ncol = 2, byrow = TRUE)`
+> 3. `matrix(c(4, 9, 10, 1, 5, 7), nrow = 2)`
+> 4. `matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)`
 >
 
 ## Factors
@@ -512,18 +509,13 @@ fact many R functions which return complex output store their results in a list.
 >
 > ## Solution to challenge 5 {.challenge}
 >
-> Consider the matrix below:
->
-> \[ \left[ \begin{array}{cc}
->         4 & 1 \\
->         9 & 5 \\
->         10 & 7
->       \end{array} \right] \]
->
-> What would be the correct command to write this matrix in R? Examine
+> Consider the R output of the matrix below:
+> ```{r, echo=FALSE}
+> matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)
+> ```
+> What was the correct command used to write this matrix? Examine
 > each command and try to figure out the correct one before typing them.
 > Think about what matrices the other commands will produce.
->
 > ```{r, eval=FALSE}
 > matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)
 > ```
