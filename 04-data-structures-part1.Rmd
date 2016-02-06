@@ -129,7 +129,7 @@ we see that that's a vector, too - *the columns of data we load into R data.fram
 
 You can also make vectors with explicit contents with the concatenate function:
 
-```{r
+```{r}
 x <- c(2,6,3)
 x
 ```
