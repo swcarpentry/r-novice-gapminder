@@ -9,7 +9,6 @@ minutes: 90
 source("tools/chunk-options.R")
 ```
 
-
 > ## Learning Objectives {.objectives}
 >
 > - To be aware of the different types of data
@@ -192,7 +191,7 @@ length(x)
 Finally, you can give names to elements in your vector, and ask for them that way:
 
 ```{r}
-x <- 1:4
+x <- 5:8
 names(x) <- c("a", "b", "c", "d")
 x
 x['b']
@@ -244,7 +243,7 @@ typeof(CATegories[1])
 > ## Challenge 2 {.challenge}
 > When we loaded our `cats` data, the coats column was interpreted as a factor; 
 > try using the help for `read.table` to figure out how to keep text columns as character vectors instead of factors; 
-> then write a command or two to show that coats actually is a character vector when loaded in this way.
+> then write a command or two to show that the cats$coats column actually is a character vector when loaded in this way.
 >
 
 In modeling functions, it's important to know what the baseline levels are. This is assumed to be the
