@@ -159,7 +159,7 @@ z <- as.logical(y)
 z
 ```
 
-As you can see, some surprising things can happen when R forces one basic data type into another! Nitty-gritty of type coercion aside, the point is: if you're data doesn't look like what you thought it was going to look like, type coercion may well be to blame; make sure everything is the same type in your vectors and your columns of data.frames, or you will get nasty surprises!
+As you can see, some surprising things can happen when R forces one basic data type into another! Nitty-gritty of type coercion aside, the point is: if your data doesn't look like what you thought it was going to look like, type coercion may well be to blame; make sure everything is the same type in your vectors and your columns of data.frames, or you will get nasty surprises!
 
 Concatenate will also append things to an existing vector:
 
@@ -277,7 +277,7 @@ We can now understand something a bit surprising in our data.frame; what happens
 typeof(cats)
 ```
 
-We see that data.frames look like lists 'under the hood' - this is because a data.frame is really a list of vectors, as they have to be - in order to hold those columns that are a mix of vectors and factors, the data.frame needs something a bit more flexible than a vector to put all the columns together into a familiar table.
+We see that data.frames look like lists 'under the hood' - this is because a data.frame is really a list of vectors and factors, as they have to be - in order to hold those columns that are a mix of vectors and factors, the data.frame needs something a bit more flexible than a vector to put all the columns together into a familiar table.
 
 ## Matrices
 
@@ -345,7 +345,7 @@ x
 > a long way to making our lives easier in R. 
 >
 
-> ## Challenge 1 {.challenge}
+> ## Solution to Challenge 1 {.challenge}
 > ```{r}
 > x <- [11:20]
 > firstFive <- head(x, 5)
@@ -354,7 +354,7 @@ x
 > ```
 >
 
-> ## Challenge 2 {.challenge}
+> ## Solution to Challenge 2 {.challenge}
 > ```{r}
 > cats <- read.table(file="data/feline-data.csv", header=TRUE, sep=",", stringsAsFactors=FALSE)
 > str(cats$coat)
@@ -370,7 +370,7 @@ x
 > `length(x)`?
 >
 > ```{r}
-> x <- matrix(rnorm(18), ncol=6, nrow=3)
+>x <- matrix(0, ncol=6, nrow=3)
 > length(x)
 > ```
 > 
@@ -394,7 +394,7 @@ x
 > ```
 >
 
-> ## Challenge 5 {.challenge}
+> ## Solution to Challenge 5 {.challenge}
 > ```{r}
 > dataTypes <- c('double', 'complex', 'integer', 'character', 'logical')
 > dataStructures <- c('data.frame', 'vector', 'factor', 'list', 'matrix')

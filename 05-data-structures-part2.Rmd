@@ -144,16 +144,16 @@ gapminder <- read.table("data/gapminder-FiveYearData.csv", header=TRUE, sep=',')
 Let's investigate gapminder a bit; the first thing we should always do is check out what the data looks like with `str`:
 
 ```{r}
-str(gappy)
+str(gapminder)
 ```
 
 We can also examine individual columns of the data.frame with our `typeof` function:
 
 ```{r}
-typeof(gappy$year)
-typeof(gappy$lifeExp)
-typeof(gappy$country)
-str(gappy$country)
+typeof(gapminder$year)
+typeof(gapminder$lifeExp)
+typeof(gapminder$country)
+str(gapminder$country)
 ```
 
 We can also interrogate the data.frame for information about its dimensions; remembering that `str(gapminder)` said there were 1704 observations of 6 variables in gapminder, what do you think the following will produce, and why?
@@ -168,7 +168,7 @@ A fair guess would have been to say that the length of a data.frame would be the
 typeof(gapminder)
 ```
 
-When `length` gave us 6, it's because gapminder is a list of 6 columns. To get the number of rows and columns in our dataset, try:
+When `length` gave us 6, it's because gapminder is built out of a list of 6 columns. To get the number of rows and columns in our dataset, try:
 
 ```{r}
 nrow(gapminder)
@@ -224,7 +224,7 @@ into a script file so we can come back to it later.
 > cats[4,] is still well-defined (and pointing at the row named '5').
 >
 
-> ## Challenge 1 {.challenge}
+> ## Solution to Challenge 1 {.challenge}
 > ```{r}
 > df <- data.frame(first = c('Grace'), last = c('Hopper'), lucky_number = c(0), stringsAsFactors = FALSE)
 > df <- rbind(df, list('Marie', 'Curie', 238) )
