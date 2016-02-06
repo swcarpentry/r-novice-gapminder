@@ -9,6 +9,12 @@ minutes: 45
 source("tools/chunk-options.R")
 ```
 
+> ## Learning Objectives {.objectives}
+>
+> - To learn how to manipulate a data.frame in memory
+> - To tour some best practices of exploring and understanding a data.frame when it is first loaded.
+>
+
 At this ponit, you've see it all - those are all the basic data types and data structures in R; everything you do will be working with those things. But a whole lot of the time, the star of the show is going to be the `data.frame` - that table that we started with that information from a CSV gets dumped into when we load it. In this lesson, we'll learn a few more things about working with `data.frame`.
 
 We learned last time that the columns in a data.frame were vectors, so that our data is reliable and consistent throughout the column. As such, if we want to add a new column, we need to start by making a new vector:
