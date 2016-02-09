@@ -15,9 +15,9 @@ source("tools/chunk-options.R")
 > - To tour some best practices of exploring and understanding a data.frame when it is first loaded.
 >
 
-At this ponit, you've see it all - in the last lesson, we toured all the basic data types and data structures in R. Everything you do will be a manipulation of those tools. But a whole lot of the time, the star of the show is going to be the data.frame - that table that we started with that information from a CSV gets dumped into when we load it. In this lesson, we'll learn a few more things about working with data.frame.
+At this point, you've see it all - in the last lesson, we toured all the basic data types and data structures in R. Everything you do will be a manipulation of those tools. But a whole lot of the time, the star of the show is going to be the data.frame - that table that we started with that information from a CSV gets dumped into when we load it. In this lesson, we'll learn a few more things about working with data.frame.
 
-We learned last time that the columns in a data.frame were vectors, so that our data is reliable and consistent throughout the column. As such, if we want to add a new column, we need to start by making a new vector:
+We learned last time that the columns in a data.frame were vectors, so that our data are consistent in type throughout the column. As such, if we want to add a new column, we need to start by making a new vector:
 
 ```{r}
 newCol <- c(2,3,5,12)
@@ -47,7 +47,7 @@ names(cats)[4] <- 'age'
 Now how about adding rows - in this case, we saw last time that the rows of a data.frame are made of lists:
 
 ```{r}
-newRow <- list("tortoise", 3.3, TRUE, 9)
+newRow <- list("tortoiseshell", 3.3, TRUE, 9)
 cats <- rbind(cats, newRow)
 ```
 
@@ -55,15 +55,15 @@ Another thing to look out for has emerged - when R creates a factor, it only all
 
 ```{r}
 levels(cats$coat)
-levels(cats$coat) <- c(levels(cats$coat), 'tortoise')
-cats <- rbind(cats, list("tortoise", 3.3, TRUE, 9))
+levels(cats$coat) <- c(levels(cats$coat), 'tortoiseshell')
+cats <- rbind(cats, list("tortoiseshell", 3.3, TRUE, 9))
 ```
 
 Alternatively, we can change a factor column to a character vector; we lose the handy categories of the factor, but can subsequently add any word we want to the column without babysitting the factor levels:
 
 ```{r}
 str(cats)
-cats$coat <- as.character(cats$coat)
+cats$coat <- levels(cats$coat)[cats$coat]
 str(cats)
 ```
 
@@ -83,7 +83,7 @@ na.omit(cats)
 In either case, we need to reassign our variable to persist the changes:
 
 ```{r}
-cats = na.omit(cats)
+cats <- na.omit(cats)
 ```
 
 > ## Discussion 1 {.challenge} 
