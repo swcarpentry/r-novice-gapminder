@@ -88,7 +88,22 @@ Oh no, our weights aren't the double type anymore! If we try to do the same math
 cats$weight[1] + cats$weight[2]
 ```
 
-What happened? When R reads a csv into one of these tables, it insists that everything in a column be the same basic type; if it can't understand *everything* in the column as a double, then *nobody* in the column gets to be a double. The table that R loaded our cats data into is something called a *data.frame*, and it is our first example of something called a *data structure* - things that R knows how to build out of the basic data types. In order to successfully use our data in R, we need to understand what these basic data structures are, and how they behave.
+What happened? When R reads a csv into one of these tables, it insists that everything in a column be the same basic type; if it can't understand *everything* in the column as a double, then *nobody* in the column gets to be a double. The table that R loaded our cats data into is something called a *data.frame*, and it is our first example of something called a *data structure* - things that R knows how to build out of the basic data types. In order to successfully use our data in R, we need to understand what these basic data structures are, and how they behave. For now, let's remove that extra line from our cats data and reload it, while we investigate this behavior further:
+
+feline-data.csv:
+
+```
+coat,weight,likes_string
+calico,2.1,TRUE   
+black,5.0,FALSE   
+tabby,3.2,TRUE 
+```
+
+And back in RStudio:
+
+```
+cats <- read.table(file="data/feline-data.csv", header=TRUE, sep=",")
+```
 
 ## Vectors & Type Coercion
 
