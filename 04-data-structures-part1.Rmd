@@ -102,7 +102,7 @@ x
 Just like you might be familiar with from vectors elsewhere, a vector in R is essentially an ordered list of things, with the special condition that *everything in the vector must be the same basic data type*. If you don't choose the datatype, it'll default to `logical`; or, you can declare an empty vector of whatever type you like.
 
 ```{r}
-x <- vector('character', length=3)
+x <- vector(mode='character', length=3)
 x
 ```
 
@@ -221,7 +221,7 @@ str(cats$coat)
 Another important data structure is called a *factor*. Factors usually look like character data, but are typically used to represent categorical information. For example, let's make a vector of strings labeling cat colorations for all the cats in our study:
 
 ```{r}
-coats <- c('tabby', 'tortoise', 'tortoise', 'black', 'tabby')
+coats <- c('tabby', 'tortoiseshell', 'tortoiseshell', 'black', 'tabby')
 coats
 str(coats)
 ```
@@ -348,9 +348,8 @@ x
 > ## Solution to Challenge 1 {.challenge}
 > ```{r}
 > x <- [11:20]
-> firstFive <- head(x, 5)
-> thirdToFifth <- tail(firstFive, 3)
-> names(thirdToFifth) <- c('S', 'W', 'C')
+> subset <- x[3:5]
+> names(subset) <- c('S', 'W', 'C')
 > ```
 >
 
