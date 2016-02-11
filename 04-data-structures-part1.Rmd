@@ -32,8 +32,6 @@ cats <- read.csv(file="data/feline-data.csv")
 cats
 ```
 
-The extra arguments after the filename help R get its hands around our data; `header=TRUE` lets it know there's a title row, and `sep=","` lets it know our columns are separated by `,` characters. Note that if you like to maintain the English idiom and put spaces after your commas, you'll need to use `sep=", "`; either is fine, as long as you're consistent.
-
 We can begin exploring our dataset right away, pulling out columns and rows via the following:
 
 ```{r}
