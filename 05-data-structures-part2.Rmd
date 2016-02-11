@@ -21,6 +21,7 @@ We learned last time that the columns in a data.frame were vectors, so that our 
 
 ```{r}
 newCol <- c(2,3,5,12)
+cats
 ```
 
 We can then add this as a column via:
@@ -99,6 +100,7 @@ We can also glue two dataframes together with `rbind`:
 
 ```{r}
 cats <- rbind(cats, cats)
+cats
 ```
 But now the row names are unnecessarily complicated. We can ask R to re-name everything sequentially:
 

@@ -168,7 +168,7 @@ character_vector_example <- c('0','2','4')
 character_vector_example
 character_coerced_to_numeric <- as.numeric(character_vector_example)
 character_coerced_to_numeric
-numeric_coerced_to_logical <- as.logical(y)
+numeric_coerced_to_logical <- as.logical(character_coerced_to_numeric)
 numeric_coerced_to_logical
 ```
 
@@ -207,7 +207,7 @@ Finally, you can give names to elements in your vector, and ask for them that wa
 names_example <- 5:8
 names(names_example) <- c("a", "b", "c", "d")
 names_example
-names_example$b
+names_example['b']
 ```
 
 > ## Challenge 1 {.challenge}
