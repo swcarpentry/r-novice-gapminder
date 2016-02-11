@@ -28,7 +28,7 @@ tabby,3.2,TRUE
 We can load this into R via the following:
 
 ```{r}
-cats <- read.table(file="data/feline-data.csv", header=TRUE, sep=",")
+cats <- read.csv(file="data/feline-data.csv")
 cats
 ```
 
@@ -69,7 +69,7 @@ typeof(TRUE)
 typeof('banana')
 ```
 
-Note the `L` suffix to insist that a number is an integer. No matter how complicated our analyses become, all data in R is interpreted as one of these basic data types. This strictness has some really important concequences. Try adding this row to your cat data:
+Note the `L` suffix to insist that a number is an integer. No matter how complicated our analyses become, all data in R is interpreted as one of these basic data types. This strictness has some really important concequences. Go back to your text editor and add add this line to feline-data.csv:
 
 ```{r, eval=FALSE}
 tabby,2.3 or 2.4,TRUE
@@ -78,7 +78,7 @@ tabby,2.3 or 2.4,TRUE
 Reload your cats data like before, and check what type of data we find in the `weight` column:
 
 ```{r}
-cats <- read.table(file="data/feline-data.csv", header=TRUE, sep=",")
+cats <- read.csv(file="data/feline-data.csv")
 typeof(cats$weight[1])
 ```
 
@@ -102,7 +102,7 @@ tabby,3.2,TRUE
 And back in RStudio:
 
 ```
-cats <- read.table(file="data/feline-data.csv", header=TRUE, sep=",")
+cats <- read.csv(file="data/feline-data.csv")
 ```
 
 ## Vectors & Type Coercion
@@ -110,21 +110,21 @@ cats <- read.table(file="data/feline-data.csv", header=TRUE, sep=",")
 To better understand the behavior we just saw, let's meet another of the data structures: the *vector*.
 
 ```{r}
-x <- vector(length=3)
-x
+my_vector <- vector(length=3)
+my_vector
 ```
 
 Just like you might be familiar with from vectors elsewhere, a vector in R is essentially an ordered list of things, with the special condition that *everything in the vector must be the same basic data type*. If you don't choose the datatype, it'll default to `logical`; or, you can declare an empty vector of whatever type you like.
 
 ```{r}
-x <- vector(mode='character', length=3)
-x
+another_vector <- vector(mode='character', length=3)
+another_vector
 ```
 
 You can check if something is a vector:
 
 ```{r}
-str(x)
+str(another_vector)
 ```
 
 The somewhat cryptic output from this command indicates the basic data type found in this vector; the number of things in the vector; and a few examples of what's actually in the vector. If we similarly do
@@ -144,34 +144,34 @@ we see that that's a vector, too - *the columns of data we load into R data.fram
 You can also make vectors with explicit contents with the concatenate function:
 
 ```{r}
-x <- c(2,6,3)
-x
+concat_vector <- c(2,6,3)
+concat_vector
 ```
 
 Given what we've learned so far, what do you think the following will produce?
 
 ```{r}
-x <- c(2,6,'3')
+quiz_vector <- c(2,6,'3')
 ```
 
 This is something called *type coercion*, and it is the source of many surprises and the reason why we need to be aware of the basic data types and how R will interpret them. Consider:
 
 ```{r}
-x <- c('a', TRUE)
-x
-x <- c(0, TRUE)
-x
+coercion_vector <- c('a', TRUE)
+coercion_vector
+another_coercion_vector <- c(0, TRUE)
+another_coercion_vector
 ```
 
 The coercion rules go: `logical` -> `integer` -> `numeric` -> `complex` -> `character`. You can try to force coercion against this flow using the `as.` functions:
 
 ```{r}
-x <- c('0','2','4')
-x
-y <- as.numeric(x)
-y
-z <- as.logical(y)
-z
+character_vector_example <- c('0','2','4')
+character_vector_example
+character_coerced_to_numeric <- as.numeric(character_vector_example)
+character_coerced_to_numeric
+numeric_coerced_to_logical <- as.logical(y)
+numeric_coerced_to_logical
 ```
 
 As you can see, some surprising things can happen when R forces one basic data type into another! Nitty-gritty of type coercion aside, the point is: if your data doesn't look like what you thought it was going to look like, type coercion may well be to blame; make sure everything is the same type in your vectors and your columns of data.frames, or you will get nasty surprises!
@@ -179,10 +179,10 @@ As you can see, some surprising things can happen when R forces one basic data t
 Concatenate will also append things to an existing vector:
 
 ```{r}
-x <- c('a', 'b')
-x
-x <- c(x, 'SWC')
-x
+ab_vector <- c('a', 'b')
+ab_vector
+concat_example <- c(ab_vector, 'SWC')
+concat_example
 ```
 
 You can also make series of numbers:
@@ -197,19 +197,19 @@ seq(1,10, by=0.1)
 In addition to asking for elements of a vector with the square bracket notation, we can ask a few other questions about vectors:
 
 ```{r}
-x <- seq(10)
-head(x, n=2)
-tail(x, n=4)
-length(x)
+sequence_example <- seq(10)
+head(sequence_example, n=2)
+tail(sequence_example, n=4)
+length(sequence_example)
 ```
 
 Finally, you can give names to elements in your vector, and ask for them that way:
 
 ```{r}
-x <- 5:8
-names(x) <- c("a", "b", "c", "d")
-x
-x['b']
+names_example <- 5:8
+names(names_example) <- c("a", "b", "c", "d")
+names_example
+names_example$b
 ```
 
 > ## Challenge 1 {.challenge}
@@ -256,9 +256,9 @@ typeof(CATegories[1])
 ```
 
 > ## Challenge 2 {.challenge}
-> When we loaded our `cats` data, the coats column was interpreted as a factor; 
-> try using the help for `read.table` to figure out how to keep text columns as character vectors instead of factors; 
-> then write a command or two to show that the cats$coats column actually is a character vector when loaded in this way.
+> Is there a factor in our `cats` data.frame? what is its name? 
+> Try using `?read.csv` to figure out how to keep text columns as character vectors instead of factors; 
+> then write a command or two to show that the factor in `cats` is actually is a character vector when loaded in this way.
 >
 
 In modeling functions, it's important to know what the baseline levels are. This is assumed to be the
@@ -266,8 +266,8 @@ first factor, but by default factors are labeled in alphabetical order. You can 
 
 ```{r}
 mydata <- c("case", "control", "control", "case")
-x <- factor(mydata, levels = c("control", "case"))
-str(x)
+factor_ordering_example <- factor(mydata, levels = c("control", "case"))
+str(factor_ordering_example)
 ```
 
 In this case, we've explicitly told R that "control" should represented by 1, and
@@ -279,11 +279,11 @@ results of statistical models!
 Another data structure you'll want in your bag of tricks is the `list`. A list is simpler in some ways than the other types, because you can put anything you want in it:
 
 ```{r}
-x <- list(1, "a", TRUE, 1+4i)
-x
-x[2]
-x <- list(title = "Research Bazaar", numbers = 1:10, data = TRUE )
-x
+list_example <- list(1, "a", TRUE, 1+4i)
+list_example
+list_example[2]
+another_list <- list(title = "Research Bazaar", numbers = 1:10, data = TRUE )
+another_list
 ```
 
 We can now understand something a bit surprising in our data.frame; what happens if we run:
@@ -299,19 +299,19 @@ We see that data.frames look like lists 'under the hood' - this is because a dat
 Last but not least is the matrix. We can declare a matrix full of zeros:
 
 ```{r}
-x <- matrix(0, ncol=6, nrow=3)
-x
+matrix_example <- matrix(0, ncol=6, nrow=3)
+matrix_example
 ```
 
 and we can ask for and put values in the elements of our matrix with a couple of different notations:
 
 ```{r}
-x[1,1] = 1
-x
-x[1][1]
-x[1][1] = 2
-x[1,1]
-x
+matrix_example[1,1] <- 1
+matrix_example
+matrix_example[1][1]
+matrix_example[1][1] <- 2
+matrix_example[1,1]
+matrix_example
 ```
 
 >
@@ -370,7 +370,7 @@ x
 
 > ## Solution to Challenge 2 {.challenge}
 > ```{r}
-> cats <- read.table(file="data/feline-data.csv", header=TRUE, sep=",", stringsAsFactors=FALSE)
+> cats <- read.csv(file="data/feline-data.csv", stringsAsFactors=FALSE)
 > str(cats$coat)
 > ``` 
 > Note: new students find the help files difficult to understand; make sure to let them know
