@@ -63,7 +63,7 @@ Alternatively, we can change a factor column to a character vector; we lose the 
 
 ```{r}
 str(cats)
-cats$coat <- levels(cats$coat)[cats$coat]
+cats$coat <- as.character(cats$coat)
 str(cats)
 ```
 
@@ -126,7 +126,7 @@ cats
 So far, you've seen the basics of manipulating data.frames with our cat data; now, let's use those skills to digest a more realistic dataset. Lets read in the gapminder dataset that we downloaded previously:
 
 ```{r}
-gapminder <- read.table("data/gapminder-FiveYearData.csv", header=TRUE, sep=',')
+gapminder <- read.csv("data/gapminder-FiveYearData.csv")
 ```
 
 > ## Miscellaneous Tips {.callout}
