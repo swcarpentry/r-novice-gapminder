@@ -158,6 +158,14 @@ for(i in 1:10){
 The `1:10` bit creates a vector on the fly; you can iterate
 over any other vector as well.
 
+Here is an example that iterates over a character vector:
+
+```{r}
+for(i in c("dog", "cat", "rat")){
+      print(i)
+}
+```
+
 We can use a `for` loop nested within another `for` loop to iterate over two things at
 once.
 
