@@ -330,7 +330,7 @@ x[x > 7]
 > ## Tip: Combining logical conditions {.callout}
 >
 > There are many situations in which you will wish to combine multiple logical
-> criteria For example, we might want to find all the countries that are
+> criteria. For example, we might want to find all the countries that are
 > located in Asia **or** Europe **and** have life expectancies within a certain
 > range. Several operations for combining logical vectors exist in R:
 >
