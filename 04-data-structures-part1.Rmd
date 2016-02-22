@@ -38,19 +38,27 @@ cats <- read.csv(file = "data/feline-data.csv")
 cats
 ```
 
-We can begin exploring our dataset right away, pulling out columns and rows via the following:
+The `read.csv` function is used for reading in tabular data stored in a text file where the columns of data are delimited by commas (csv = comma separated values). Tabs are also commonly used to separated colums - if you data are in this format you can use the function `read.delim`. If the columns in your data are delimited by a character other than commas or tabs, you can use the more general `read.table` function.
+
+We can begin exploring our dataset right away, pulling out columns by specifying them using the `$` operator:
 
 ```{r}
 cats$weight
-cats$weight[1]
-cats$weight[2]
-cats$weight[1] + cats$weight[2]
+cats$coat
+```
+
+We can do other operations on the columns:
+
+```{r}
+## Say we discovered that the scale weighs one Kg light:
+cats$weight + 2
+paste("My cat is", cats$coat)
 ```
 
 But what about
 
 ```{r}
-cats$weight[1] + cats$coat[2]
+cats$weight + cats$coat
 ```
 
 Understanding what happened here is key to successfully analyzing data in R.
