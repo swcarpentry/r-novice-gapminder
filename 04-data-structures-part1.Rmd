@@ -26,9 +26,9 @@ One of R's most powerful features is its ability to deal with tabular data - lik
 
 ```{r, eval=FALSE}
 coat,weight,likes_string
-calico,2.1,TRUE   
-black,5.0,FALSE   
-tabby,3.2,TRUE 
+calico,2.1,1
+black,5.0,0
+tabby,3.2,1
 ```
 
 We can load this into R via the following:
