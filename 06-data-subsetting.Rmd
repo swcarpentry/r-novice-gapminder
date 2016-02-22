@@ -327,17 +327,37 @@ use them to succinctly subset vectors:
 x[x > 7]
 ```
 
-> ## Tip: Chaining logical operations {.callout}
+> ## Tip: Combining logical conditions {.callout}
 >
-> There are many situations in which you will wish to combine multiple conditions.
-> To do so several logical operations exist in R:
+> There are many situations in which you will wish to combine multiple logical
+> criteria. For example, we might want to find all the countries that are
+> located in Asia **or** Europe **and** have life expectancies within a certain
+> range. Several operations for combining logical vectors exist in R:
 >
->  * `|` logical OR: returns `TRUE`, if either the left or right are `TRUE`.
->  * `&` logical AND: returns `TRUE` if both the left and right are `TRUE`
->  * `!` logical NOT: converts `TRUE` to `FALSE` and `FALSE` to `TRUE`
->  * `&&` and `||` compare the individual elements of two vectors. Recycling rules
->    also apply here.
+>  * `&`, the "logical AND" operator: returns `TRUE` if both the left and right
+>    are `TRUE`.
+>  * `|`, the "logical OR" operator: returns `TRUE`, if either the left or right
+>    (or both) are `TRUE`.
 >
+> The recycling rule applies with both of these, so `TRUE & c(TRUE, FALSE, TRUE)`
+> will compare the first `TRUE` on the left of the `&` sign with each of the
+> three conditions on the right.
+>
+> You may sometimes see `&&` and `||` instead of `&` and `|`. These operators
+> do not use the recycling rule: they only look at the first element of each
+> vector and ignore the remaining elements. The longer operators are mainly used
+> in programming, rather than data analysis.
+>
+>  * `!`, the "logical NOT" operator: converts `TRUE` to `FALSE` and `FALSE` to
+>    `TRUE`. It can negate a single logical condition (eg `!TRUE` becomes
+>    `FALSE`), or a whole vector of conditions(eg `!c(TRUE, FALSE)` becomes
+>    `c(FALSE, TRUE)`).
+>
+> Additionally, you can compare the elements within a single vector using the
+> `all` function (which returns `TRUE` if every element of the vector is `TRUE`)
+> and the `any` function (which returns `TRUE` if one or more elements of the
+> vector are `TRUE`).
+
 
 > ## Challenge 3 {.challenge}
 >
