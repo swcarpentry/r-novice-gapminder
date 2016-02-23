@@ -403,15 +403,16 @@ matrix_example
 >
 
 > ## Solution to Challenge 1 {.challenge}
+>
 > ```{r}
-> x <- [11:20]
+> x <- 11:20
 > subset <- x[3:5]
 > names(subset) <- c('S', 'W', 'C')
 > ```
 >
 
 > ## Solution to Challenge 2 {.challenge}
-> ```{r}
+> ```{r, eval = FALSE}
 > cats <- read.csv(file="data/feline-data.csv", stringsAsFactors=FALSE)
 > str(cats$coat)
 > ``` 
@@ -426,7 +427,7 @@ matrix_example
 > `length(x)`?
 >
 > ```{r}
->x <- matrix(0, ncol=6, nrow=3)
+> x <- matrix(0, ncol=6, nrow=3)
 > length(x)
 > ```
 > 
