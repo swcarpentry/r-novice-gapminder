@@ -237,7 +237,7 @@ for changing the axis labels. To change the legend title, we need to use the
 ggplot(data = gapminder, aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country) +
   xlab("Year") + ylab("Life expectancy") + ggtitle("Figure 1") +
-  scale_fill_discrete(name="Continent") +
+  scale_colour_discrete(name="Continent") +
   theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
 ```
 
