@@ -68,12 +68,12 @@ Understanding what happened here is key to successfully analyzing data in R.
 If you guessed that the last command will return an error because 2.1 plus black is nonsense, you're right - and you already have some intuition for an important concept in programming called *data types*. We can ask what type of data something is:
 
 ```{r}
-typeof(cats$weight[1])
+typeof(cats$weight)
 ```
 
 There are 5 main types: doubles, integers, complex, logical and character.
 
-```
+```{r}
 typeof(3.14)
 typeof(1L)
 typeof(1+1i)
@@ -87,11 +87,18 @@ Note the `L` suffix to insist that a number is an integer. No matter how complic
 tabby,2.3 or 2.4,TRUE
 ```
 
+```{r, include=FALSE}
+cats <- data.frame(coat = c("calico", "black", "tabby", "tabby"),
+                   weight = c(2.1, 5.0, 3.2, '2.3 or 2.4'), 
+                   likes_string = c(1, 0, 1, 1))
+write.csv(cats, "data/feline-data.csv", row.names = FALSE, quote = FALSE)
+```
+
 Reload your cats data like before, and check what type of data we find in the `weight` column:
 
 ```{r}
 cats <- read.csv(file="data/feline-data.csv")
-typeof(cats$weight[1])
+typeof(cats$weight)
 ```
 
 Oh no, our weights aren't the double type anymore! If we try to do the same math we did on them before, we run into trouble:
