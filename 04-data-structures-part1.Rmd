@@ -9,10 +9,13 @@ minutes: 90
 source("tools/chunk-options.R")
 
 ## Save the data
-cats <- data.frame(coat = c("calico", "black", "tabby"),
+cats_orig <- data.frame(coat = c("calico", "black", "tabby"),
                    weight = c(2.1, 5.0, 3.2), 
                    likes_string = c(1, 0, 1))
-write.csv(cats, "data/feline-data.csv", row.names = FALSE, quote = FALSE)
+cats_bad <- data.frame(coat = c("calico", "black", "tabby", "tabby"),
+                   weight = c(2.1, 5.0, 3.2, '2.3 or 2.4'), 
+                   likes_string = c(1, 0, 1, 1))
+cats <- cats_orig
 ```
 
 > ## Learning Objectives {.objectives}
@@ -33,10 +36,14 @@ tabby,3.2,1
 
 We can load this into R via the following:
 
-```{r}
+```{r, eval=FALSE}
 cats <- read.csv(file = "data/feline-data.csv")
+```
+
+```{r}
 cats
 ```
+
 
 The `read.csv` function is used for reading in tabular data stored in a text file where the columns of data are delimited by commas (csv = comma separated values). Tabs are also commonly used to separated colums - if you data are in this format you can use the function `read.delim`. If the columns in your data are delimited by a character other than commas or tabs, you can use the more general `read.table` function.
 
@@ -96,19 +103,21 @@ Go back to your text editor and add this line to feline-data.csv:
 tabby,2.3 or 2.4,TRUE
 ```
 
-```{r, include=FALSE}
-cats <- data.frame(coat = c("calico", "black", "tabby", "tabby"),
-                   weight = c(2.1, 5.0, 3.2, '2.3 or 2.4'), 
-                   likes_string = c(1, 0, 1, 1))
-write.csv(cats, "data/feline-data.csv", row.names = FALSE, quote = FALSE)
-```
-
 Reload your cats data like before, and check what type of data we find in the `weight` column:
 
-```{r}
+
+```{r, include=FALSE}
+cats <- cats_bad
+```
+
+```{r, eval=FALSE}
 cats <- read.csv(file="data/feline-data.csv")
+```
+
+```{r}
 typeof(cats$weight)
 ```
+
 
 Oh no, our weights aren't the double type anymore! If we try to do the same math we did on them before, we run into trouble:
 
@@ -132,6 +141,11 @@ And back in RStudio:
 ```
 cats <- read.csv(file="data/feline-data.csv")
 ```
+
+```{r, include=FALSE}
+cats <- cats_orig
+```
+
 
 ## Vectors & Type Coercion
 
