@@ -81,7 +81,16 @@ typeof(TRUE)
 typeof('banana')
 ```
 
-Note the `L` suffix to insist that a number is an integer. No matter how complicated our analyses become, all data in R is interpreted as one of these basic data types. This strictness has some really important concequences. Go back to your text editor and add add this line to feline-data.csv:
+Note the `L` suffix to insist that a number is an integer. No matter how complicated our analyses become, all data in R is interpreted as one of these basic data types. This strictness has some really important concequences.
+
+The *type* of an R object refers to the basic data type. Objects also have a *class*, accessible with the `class` function, which can give you further information about an object. For example:
+
+```{r}
+class(cats)
+class(cats$likes_string)
+```
+
+Go back to your text editor and add this line to feline-data.csv:
 
 ```{r, eval=FALSE}
 tabby,2.3 or 2.4,TRUE
