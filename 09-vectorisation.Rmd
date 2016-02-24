@@ -175,10 +175,12 @@ m * -1
 > Refresh your plotting skills by plotting population in millions against year.
 >
 > ```{r ch2-sol}
-> plot(gapminder$year, gapminder$pop_millions)
-> countryset <- c('China', 'India', 'Indonesia')
-> y <- gapminder[gapminder$country %in% countryset, ]
-> plot(y$year, y$pop_millions)
+> ggplot(gapminder, aes(x = year, y = pop_millions)) + 
+>  geom_point()
+> countryset <- c("China","India","Indonesia")
+> ggplot(gapminder[gapminder$country %in% countryset,],
+>        aes(x = year, y = pop_millions)) + 
+>   geom_point()
 > ```
 >
 
