@@ -20,9 +20,9 @@ One of R's most powerful features is its ability to deal with tabular data - lik
 
 ```{r, eval=FALSE}
 coat,weight,likes_string
-calico,2.1,TRUE   
-black,5.0,FALSE   
-tabby,3.2,TRUE 
+calico,2.1,TRUE
+black,5.0,FALSE
+tabby,3.2,TRUE
 ```
 
 We can load this into R via the following:
@@ -67,7 +67,7 @@ typeof(TRUE)
 typeof('banana')
 ```
 
-Note the `L` suffix to insist that a number is an integer. No matter how complicated our analyses become, all data in R is interpreted as one of these basic data types. This strictness has some really important concequences. Go back to your text editor and add add this line to feline-data.csv:
+Note the `L` suffix to insist that a number is an integer. No matter how complicated our analyses become, all data in R is interpreted as one of these basic data types. This strictness has some really important consequences. Go back to your text editor and add add this line to feline-data.csv:
 
 ```{r, eval=FALSE}
 tabby,2.3 or 2.4,TRUE
@@ -92,9 +92,9 @@ feline-data.csv:
 
 ```
 coat,weight,likes_string
-calico,2.1,TRUE   
-black,5.0,FALSE   
-tabby,3.2,TRUE 
+calico,2.1,TRUE
+black,5.0,FALSE
+tabby,3.2,TRUE
 ```
 
 And back in RStudio:
@@ -211,8 +211,8 @@ names_example['b']
 ```
 
 > ## Challenge 1 {.challenge}
-> Start by making a vector with the numbers 11 to 20. 
-> Then use the functions we just learned to extract the 3rd through 5th element in that vector into a new vector; 
+> Start by making a vector with the numbers 11 to 20.
+> Then use the functions we just learned to extract the 3rd through 5th element in that vector into a new vector;
 > name the elements in that new vector 'S', 'W', 'C'.
 >
 
@@ -230,6 +230,8 @@ But what about
 ```{r}
 str(cats$coat)
 ```
+
+## Factors
 
 Another important data structure is called a *factor*. Factors usually look like character data, but are typically used to represent categorical information. For example, let's make a vector of strings labeling cat colorations for all the cats in our study:
 
@@ -254,8 +256,8 @@ typeof(CATegories[1])
 ```
 
 > ## Challenge 2 {.challenge}
-> Is there a factor in our `cats` data.frame? what is its name? 
-> Try using `?read.csv` to figure out how to keep text columns as character vectors instead of factors; 
+> Is there a factor in our `cats` data.frame? what is its name?
+> Try using `?read.csv` to figure out how to keep text columns as character vectors instead of factors;
 > then write a command or two to show that the factor in `cats` is actually is a character vector when loaded in this way.
 >
 
@@ -316,7 +318,7 @@ matrix_example
 > ## Challenge 3 {.challenge}
 >
 > What do you think will be the result of
-> `length(x)`?
+> `length(matrix_example)`?
 > Try it.
 > Were you right? Why / why not?
 >
@@ -341,6 +343,23 @@ matrix_example
 > Populate each character vector with the names of the data types and data structures we've seen so far.
 >
 
+>
+> ## Challenge 6 {.challenge}
+>
+> Consider the R output of the matrix below:
+> ```{r, echo=FALSE}
+> matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)
+> ```
+> What was the correct command used to write this matrix? Examine
+> each command and try to figure out the correct one before typing them.
+> Think about what matrices the other commands will produce.
+>
+> 1. `matrix(c(4, 1, 9, 5, 10, 7), nrow = 3)`
+> 2. `matrix(c(4, 9, 10, 1, 5, 7), ncol = 2, byrow = TRUE)`
+> 3. `matrix(c(4, 9, 10, 1, 5, 7), nrow = 2)`
+> 4. `matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)`
+>
+
 
 
 
@@ -353,9 +372,9 @@ matrix_example
 > ## Discussion 1 {.challenge}
 > By keeping everything in a column the same, we allow ourselves to make simple assumptions about our data;
 > if you can interpret one entry in the column as a number, then you can interpret *all* of them as numbers,
-> so we don't have to check every time. This consistency, like consistently using the same separator in our 
-> data files, is what people mean when they talk about *clean data*; in the long run, strict consistency goes 
-> a long way to making our lives easier in R. 
+> so we don't have to check every time. This consistency, like consistently using the same separator in our
+> data files, is what people mean when they talk about *clean data*; in the long run, strict consistency goes
+> a long way to making our lives easier in R.
 >
 
 > ## Solution to Challenge 1 {.challenge}
@@ -370,7 +389,7 @@ matrix_example
 > ```{r}
 > cats <- read.csv(file="data/feline-data.csv", stringsAsFactors=FALSE)
 > str(cats$coat)
-> ``` 
+> ```
 > Note: new students find the help files difficult to understand; make sure to let them know
 > that this is typical, and encourage them to take their best guess based on semantic meaning,
 > even if they aren't sure.
@@ -382,10 +401,9 @@ matrix_example
 > `length(x)`?
 >
 > ```{r}
->x <- matrix(0, ncol=6, nrow=3)
-> length(x)
+> length(matrix_example)
 > ```
-> 
+>
 > Because a matrix is really just a vector with added dimension attributes, `length`
 > gives you the total number of elements in the matrix.
 >
@@ -415,4 +433,19 @@ matrix_example
 > Note: it's nice to make a list in big writing on the board or taped to the wall
 > listing all of these types and structures - leave it up for the rest of the workshop
 > to remind people of the importance of these basics.
+>
+
+>
+> ## Solution to challenge 6 {.challenge}
+>
+> Consider the R output of the matrix below:
+> ```{r, echo=FALSE}
+> matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)
+> ```
+> What was the correct command used to write this matrix? Examine
+> each command and try to figure out the correct one before typing them.
+> Think about what matrices the other commands will produce.
+> ```{r, eval=FALSE}
+> matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)
+> ```
 >
