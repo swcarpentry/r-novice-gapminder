@@ -253,13 +253,13 @@ tail(sequence_example, n=4)
 length(sequence_example)
 ```
 
-Finally, you can give names to elements in your vector, and ask for them that way:
+Finally, you can give names to elements in your vector:
 
 ```{r}
 names_example <- 5:8
 names(names_example) <- c("a", "b", "c", "d")
 names_example
-names_example['b']
+names(names_example)
 ```
 
 > ## Challenge 1 {.challenge}
