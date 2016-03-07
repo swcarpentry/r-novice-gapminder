@@ -138,7 +138,7 @@ tabby,3.2,TRUE
 
 And back in RStudio:
 
-```
+```{r, eval=FALSE}
 cats <- read.csv(file="data/feline-data.csv")
 ```
 
