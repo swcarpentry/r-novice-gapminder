@@ -9,11 +9,11 @@ minutes: 90
 source("tools/chunk-options.R")
 
 ## Save the data
-cats_orig <- data.frame(coat = c("calico", "black", "tabby"),
+cats_orig <- data.frame(coat = factor(c("calico", "black", "tabby")),
                    weight = c(2.1, 5.0, 3.2), 
                    likes_string = c(1, 0, 1))
-cats_bad <- data.frame(coat = c("calico", "black", "tabby", "tabby"),
-                   weight = c(2.1, 5.0, 3.2, '2.3 or 2.4'), 
+cats_bad <- data.frame(coat = factor(c("calico", "black", "tabby", "tabby")),
+                   weight = factor(c(2.1, 5.0, 3.2, '2.3 or 2.4')), 
                    likes_string = c(1, 0, 1, 1))
 cats <- cats_orig
 ```
