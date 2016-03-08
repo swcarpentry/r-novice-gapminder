@@ -265,9 +265,9 @@ names(names_example)
 ```
 
 > ## Challenge 1 {.challenge}
-> Start by making a vector with the numbers 11 to 20. 
-> Then use the functions we just learned to extract the 3rd through 5th element in that vector into a new vector; 
-> name the elements in that new vector 'S', 'W', 'C'.
+> Start by making a vector with the numbers 1 through 26. 
+> Multiply the vector by 2, and give the resulting vector 
+> names A through Z (hint: there is a built in vector called `LETTERS`)
 >
 
 ## Factors
