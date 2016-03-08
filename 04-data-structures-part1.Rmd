@@ -297,6 +297,7 @@ We can turn a vector into a factor like so:
 
 ```{r}
 CATegories <- factor(coats)
+class(CATegories)
 str(CATegories)
 ```
 
@@ -369,7 +370,7 @@ matrix_example
 > ## Challenge 3 {.challenge}
 >
 > What do you think will be the result of
-> `length(x)`?
+> `length(matrix_example)`?
 > Try it.
 > Were you right? Why / why not?
 >
@@ -414,9 +415,9 @@ matrix_example
 > ## Solution to Challenge 1 {.challenge}
 >
 > ```{r}
-> x <- 11:20
-> subset <- x[3:5]
-> names(subset) <- c('S', 'W', 'C')
+> x <- 1:26
+> x <- x * 2
+> names(x) <- LETTERS
 > ```
 >
 
@@ -433,11 +434,11 @@ matrix_example
 > ## Solution to challenge 3 {.challenge}
 >
 > What do you think will be the result of
-> `length(x)`?
+> `length(matrtix_example)`?
 >
 > ```{r}
-> x <- matrix(0, ncol=6, nrow=3)
-> length(x)
+> matrix_example <- matrix(0, ncol=6, nrow=3)
+> length(matrix_example)
 > ```
 > 
 > Because a matrix is really just a vector with added dimension attributes, `length`
