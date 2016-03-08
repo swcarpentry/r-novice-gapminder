@@ -279,7 +279,7 @@ str(cats$weight)
 str(cats$likes_string)
 ```
 
-But what about
+These make sense. But what about
 
 ```{r}
 str(cats$coat)
@@ -303,8 +303,8 @@ str(CATegories)
 Now R has noticed that there are three possible categories in our data - but it also did something surprising; instead of printing out the strings we gave it, we got a bunch of numbers instead. R has replaced our human-readable categories with numbered indices under the hood:
 
 ```{r}
-typeof(coats[1])
-typeof(CATegories[1])
+typeof(coats)
+typeof(CATegories)
 ```
 
 > ## Challenge 2 {.challenge}
