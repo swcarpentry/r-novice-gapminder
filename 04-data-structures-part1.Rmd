@@ -45,7 +45,7 @@ cats
 ```
 
 
-The `read.csv` function is used for reading in tabular data stored in a text file where the columns of data are delimited by commas (csv = comma separated values). Tabs are also commonly used to separated colums - if you data are in this format you can use the function `read.delim`. If the columns in your data are delimited by a character other than commas or tabs, you can use the more general `read.table` function.
+The `read.csv` function is used for reading in tabular data stored in a text file where the columns of data are delimited by commas (csv = comma separated values). Tabs are also commonly used to separated colums - if your data are in this format you can use the function `read.delim`. If the columns in your data are delimited by a character other than commas or tabs, you can use the more general and flexible `read.table` function.
 
 We can begin exploring our dataset right away, pulling out columns by specifying them using the `$` operator:
 
