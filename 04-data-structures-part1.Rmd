@@ -333,7 +333,6 @@ Another data structure you'll want in your bag of tricks is the `list`. A list i
 ```{r}
 list_example <- list(1, "a", TRUE, 1+4i)
 list_example
-list_example[2]
 another_list <- list(title = "Research Bazaar", numbers = 1:10, data = TRUE )
 another_list
 ```
