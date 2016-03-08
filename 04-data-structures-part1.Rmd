@@ -203,7 +203,7 @@ Given what we've learned so far, what do you think the following will produce?
 quiz_vector <- c(2,6,'3')
 ```
 
-This is something called *type coercion*, and it is the source of many surprises and the reason why we need to be aware of the basic data types and how R will interpret them. Consider:
+This is something called *type coercion*, and it is the source of many surprises and the reason why we need to be aware of the basic data types and how R will interpret them. When R encounters a mix of types (here numeric and character) to be combined into a single vector, it will force them all to be the same type. Consider:
 
 ```{r}
 coercion_vector <- c('a', TRUE)
