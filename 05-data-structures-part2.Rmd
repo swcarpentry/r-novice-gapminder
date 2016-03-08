@@ -25,29 +25,23 @@ At this point, you've see it all - in the last lesson, we toured all the basic d
 We learned last time that the columns in a data.frame were vectors, so that our data are consistent in type throughout the column. As such, if we want to add a new column, we need to start by making a new vector:
 
 ```{r}
-newCol <- c(2,3,5,12)
+age <- c(2,3,5,12)
 cats
 ```
 
 We can then add this as a column via:
 
-```{r}
-cats <- cbind(cats,  newCol)
+```{r, error=TRUE}
+cats <- cbind(cats, age)
 ```
 
 Why didn't this work? Of course, R wants to see one element in our new column for every row in the table:
 
 ```{r}
 cats
-newCol <- c(4,5,8)
-cats <- cbind(cats, newCol)
+age <- c(4,5,8)
+cats <- cbind(cats, age)
 cats
-```
-
-Our new column has appeared, but it's got that ugly name at the top; let's give it something a little easier to understand:
-
-```{r}
-names(cats)[4] <- 'age'
 ```
 
 Now how about adding rows - in this case, we saw last time that the rows of a data.frame are made of lists:
