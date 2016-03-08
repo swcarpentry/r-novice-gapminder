@@ -362,15 +362,15 @@ matrix_example <- matrix(0, ncol=6, nrow=3)
 matrix_example
 ```
 
-and we can ask for and put values in the elements of our matrix with a couple of different notations:
+And similar to other data structures, we can ask things about our matrix:
 
 ```{r}
-matrix_example[1,1] <- 1
-matrix_example
-matrix_example[1][1]
-matrix_example[1][1] <- 2
-matrix_example[1,1]
-matrix_example
+class(matrix_example)
+typeof(matrix_example)
+str(matrix_example)
+dim(matrix_example)
+nrow(matrix_example)
+ncol(matrix_example)
 ```
 
 >
