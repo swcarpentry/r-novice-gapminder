@@ -93,7 +93,6 @@ Note the `L` suffix to insist that a number is an integer. No matter how complic
 The *type* of an R object refers to the basic data type. Objects also have a *class*, accessible with the `class` function, which can give you further information about an object. For example:
 
 ```{r}
-class(cats)
 class(cats$likes_string)
 ```
 
@@ -125,7 +124,15 @@ Oh no, our weights aren't the double type anymore! If we try to do the same math
 cats$weight + 2
 ```
 
-What happened? When R reads a csv into one of these tables, it insists that everything in a column be the same basic type; if it can't understand *everything* in the column as a double, then *nobody* in the column gets to be a double. The table that R loaded our cats data into is something called a *data.frame*, and it is our first example of something called a *data structure* - things that R knows how to build out of the basic data types. In order to successfully use our data in R, we need to understand what these basic data structures are, and how they behave. For now, let's remove that extra line from our cats data and reload it, while we investigate this behavior further:
+What happened? When R reads a csv into one of these tables, it insists that everything in a column be the same basic type; if it can't understand *everything* in the column as a double, then *nobody* in the column gets to be a double. 
+
+The table that R loaded our cats data into is something called a *data.frame*, and it is our first example of something called a *data structure* - things that R knows how to build out of the basic data types. We can see that it is a *data.frame* by calling the `class` function on it:
+
+```{r}
+class(cats)
+```
+
+In order to successfully use our data in R, we need to understand what the basic data structures are, and how they behave. For now, let's remove that extra line from our cats data and reload it, while we investigate this behavior further:
 
 feline-data.csv:
 
