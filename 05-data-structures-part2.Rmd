@@ -67,20 +67,13 @@ cats$coat <- as.character(cats$coat)
 str(cats)
 ```
 
-We now know how to add rows and columns to our data.frame in R - but in our work we've accidentally added a garbage row. We can ask for a data.frame minus this offender:
-
-```{r}
-cats[-4,]
-```
-
-Notice the comma with nothing after it to indicate we want to drop the entire fourth row. 
-Alternatively, we can drop all rows with `NA` values:
+We now know how to add rows and columns to our data.frame in R - but in our work we've accidentally added a garbage row. We can drop all rows with `NA` values:
 
 ```{r}
 na.omit(cats)
 ```
 
-In either case, we need to reassign our variable to persist the changes:
+Let's reassign our variable to persist the changes:
 
 ```{r}
 cats <- na.omit(cats)
