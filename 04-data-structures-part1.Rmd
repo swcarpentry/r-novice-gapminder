@@ -244,13 +244,15 @@ seq(10)
 seq(1,10, by=0.1)
 ```
 
-In addition to asking for elements of a vector with the square bracket notation, we can ask a few other questions about vectors:
+We can ask a few questions about vectors:
 
 ```{r}
 sequence_example <- seq(10)
 head(sequence_example, n=2)
 tail(sequence_example, n=4)
 length(sequence_example)
+class(sequence_example)
+typeof(sequence_example)
 ```
 
 Finally, you can give names to elements in your vector:
