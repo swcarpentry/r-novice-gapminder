@@ -79,14 +79,6 @@ Let's reassign our variable to persist the changes:
 cats <- na.omit(cats)
 ```
 
-> ## Discussion 1 {.challenge} 
-> What do you think
-> ```
-> cats$weight[4]
-> ```
-> will print at this point?
->
-
 The key to remember when adding data to a data.frame is that *columns are vectors or factors, and rows are lists.*
 We can also glue two dataframes together with `rbind`:
 
@@ -94,7 +86,7 @@ We can also glue two dataframes together with `rbind`:
 cats <- rbind(cats, cats)
 cats
 ```
-But now the row names are unnecessarily complicated. We can ask R to re-name everything sequentially:
+But now the row names are unnecessarily complicated. We can remove the rownames, and R will re-name them sequentially:
 
 ```{r}
 rownames(cats) <- NULL
@@ -211,12 +203,6 @@ into a script file so we can come back to it later.
 >
 
 ## Challenge solutions
-
-> ## Discussion 1 {.challenge}
-> Note the difference between row indices, and default row names;
-> even though there's no more row named '4',
-> cats[4,] is still well-defined (and pointing at the row named '5').
->
 
 > ## Solution to Challenge 1 {.challenge}
 > ```{r}
