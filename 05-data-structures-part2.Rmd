@@ -208,7 +208,6 @@ into a script file so we can come back to it later.
 > ```{r}
 > df <- data.frame(first = c('Grace'), last = c('Hopper'), lucky_number = c(0), stringsAsFactors = FALSE)
 > df <- rbind(df, list('Marie', 'Curie', 238) )
-> df <- cbind(df, c(TRUE,TRUE))
-> names(df)[4] <- 'coffeetime'
+> df <- cbind(df, coffeetime = c(TRUE,TRUE))
 > ```
 >
