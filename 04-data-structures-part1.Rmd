@@ -7,6 +7,15 @@ minutes: 90
 
 ```{r, include=FALSE}
 source("tools/chunk-options.R")
+
+## Save the data
+cats_orig <- data.frame(coat = factor(c("calico", "black", "tabby")),
+                   weight = c(2.1, 5.0, 3.2), 
+                   likes_string = c(1, 0, 1))
+cats_bad <- data.frame(coat = factor(c("calico", "black", "tabby", "tabby")),
+                   weight = factor(c(2.1, 5.0, 3.2, '2.3 or 2.4')), 
+                   likes_string = c(1, 0, 1, 1))
+cats <- cats_orig
 ```
 
 > ## Learning Objectives {.objectives}
@@ -20,31 +29,43 @@ One of R's most powerful features is its ability to deal with tabular data - lik
 
 ```{r, eval=FALSE}
 coat,weight,likes_string
-calico,2.1,TRUE
-black,5.0,FALSE
-tabby,3.2,TRUE
+calico,2.1,1
+black,5.0,0
+tabby,3.2,1
 ```
 
 We can load this into R via the following:
 
+```{r, eval=FALSE}
+cats <- read.csv(file = "data/feline-data.csv")
+```
+
 ```{r}
-cats <- read.csv(file="data/feline-data.csv")
 cats
 ```
 
-We can begin exploring our dataset right away, pulling out columns and rows via the following:
+
+The `read.csv` function is used for reading in tabular data stored in a text file where the columns of data are delimited by commas (csv = comma separated values). Tabs are also commonly used to separated colums - if your data are in this format you can use the function `read.delim`. If the columns in your data are delimited by a character other than commas or tabs, you can use the more general and flexible `read.table` function.
+
+We can begin exploring our dataset right away, pulling out columns by specifying them using the `$` operator:
 
 ```{r}
 cats$weight
-cats$weight[1]
-cats$weight[2]
-cats$weight[1] + cats$weight[2]
+cats$coat
+```
+
+We can do other operations on the columns:
+
+```{r}
+## Say we discovered that the scale weighs one Kg light:
+cats$weight + 2
+paste("My cat is", cats$coat)
 ```
 
 But what about
 
 ```{r}
-cats$weight[1] + cats$coat[2]
+cats$weight + cats$coat
 ```
 
 Understanding what happened here is key to successfully analyzing data in R.
@@ -54,12 +75,12 @@ Understanding what happened here is key to successfully analyzing data in R.
 If you guessed that the last command will return an error because 2.1 plus black is nonsense, you're right - and you already have some intuition for an important concept in programming called *data types*. We can ask what type of data something is:
 
 ```{r}
-typeof(cats$weight[1])
+typeof(cats$weight)
 ```
 
 There are 5 main types: doubles, integers, complex, logical and character.
 
-```
+```{r}
 typeof(3.14)
 typeof(1L)
 typeof(1+1i)
@@ -67,7 +88,15 @@ typeof(TRUE)
 typeof('banana')
 ```
 
-Note the `L` suffix to insist that a number is an integer. No matter how complicated our analyses become, all data in R is interpreted as one of these basic data types. This strictness has some really important consequences. Go back to your text editor and add add this line to feline-data.csv:
+Note the `L` suffix to insist that a number is an integer. No matter how complicated our analyses become, all data in R is interpreted as one of these basic data types. This strictness has some really important concequences.
+
+The *type* of an R object refers to the basic data type. Objects also have a *class*, accessible with the `class` function, which can give you further information about an object. For example:
+
+```{r}
+class(cats$likes_string)
+```
+
+Go back to your text editor and add this line to feline-data.csv:
 
 ```{r, eval=FALSE}
 tabby,2.3 or 2.4,TRUE
@@ -75,18 +104,35 @@ tabby,2.3 or 2.4,TRUE
 
 Reload your cats data like before, and check what type of data we find in the `weight` column:
 
-```{r}
-cats <- read.csv(file="data/feline-data.csv")
-typeof(cats$weight[1])
+
+```{r, include=FALSE}
+cats <- cats_bad
 ```
+
+```{r, eval=FALSE}
+cats <- read.csv(file="data/feline-data.csv")
+```
+
+```{r}
+typeof(cats$weight)
+```
+
 
 Oh no, our weights aren't the double type anymore! If we try to do the same math we did on them before, we run into trouble:
 
 ```{r}
-cats$weight[1] + cats$weight[2]
+cats$weight + 2
 ```
 
-What happened? When R reads a csv into one of these tables, it insists that everything in a column be the same basic type; if it can't understand *everything* in the column as a double, then *nobody* in the column gets to be a double. The table that R loaded our cats data into is something called a *data.frame*, and it is our first example of something called a *data structure* - things that R knows how to build out of the basic data types. In order to successfully use our data in R, we need to understand what these basic data structures are, and how they behave. For now, let's remove that extra line from our cats data and reload it, while we investigate this behavior further:
+What happened? When R reads a csv into one of these tables, it insists that everything in a column be the same basic type; if it can't understand *everything* in the column as a double, then *nobody* in the column gets to be a double. 
+
+The table that R loaded our cats data into is something called a *data.frame*, and it is our first example of something called a *data structure* - things that R knows how to build out of the basic data types. We can see that it is a *data.frame* by calling the `class` function on it:
+
+```{r}
+class(cats)
+```
+
+In order to successfully use our data in R, we need to understand what the basic data structures are, and how they behave. For now, let's remove that extra line from our cats data and reload it, while we investigate this behavior further:
 
 feline-data.csv:
 
@@ -99,16 +145,21 @@ tabby,3.2,TRUE
 
 And back in RStudio:
 
-```
+```{r, eval=FALSE}
 cats <- read.csv(file="data/feline-data.csv")
 ```
+
+```{r, include=FALSE}
+cats <- cats_orig
+```
+
 
 ## Vectors & Type Coercion
 
 To better understand the behavior we just saw, let's meet another of the data structures: the *vector*.
 
 ```{r}
-my_vector <- vector(length=3)
+my_vector <- vector(length = 3)
 my_vector
 ```
 
@@ -152,7 +203,7 @@ Given what we've learned so far, what do you think the following will produce?
 quiz_vector <- c(2,6,'3')
 ```
 
-This is something called *type coercion*, and it is the source of many surprises and the reason why we need to be aware of the basic data types and how R will interpret them. Consider:
+This is something called *type coercion*, and it is the source of many surprises and the reason why we need to be aware of the basic data types and how R will interpret them. When R encounters a mix of types (here numeric and character) to be combined into a single vector, it will force them all to be the same type. Consider:
 
 ```{r}
 coercion_vector <- c('a', TRUE)
@@ -174,6 +225,14 @@ numeric_coerced_to_logical
 
 As you can see, some surprising things can happen when R forces one basic data type into another! Nitty-gritty of type coercion aside, the point is: if your data doesn't look like what you thought it was going to look like, type coercion may well be to blame; make sure everything is the same type in your vectors and your columns of data.frames, or you will get nasty surprises!
 
+But coercion can also be very useful! For example, in our `cats` data `likes_string` is numeric, but we know that the 1s and 0s actually represent `TRUE` and `FALSE` (a common way of representing them). We should use the `logical` datatype here, which has two states: `TRUE` or `FALSE`, which is exactly what our data represents. We can 'coerce' this column to be `logical` by using the `as.logical` function:
+
+```{r}
+cats$likes_string
+cats$likes_string <- as.logical(cats$likes_string)
+cats$likes_string
+```
+
 Concatenate will also append things to an existing vector:
 
 ```{r}
@@ -192,28 +251,30 @@ seq(10)
 seq(1,10, by=0.1)
 ```
 
-In addition to asking for elements of a vector with the square bracket notation, we can ask a few other questions about vectors:
+We can ask a few questions about vectors:
 
 ```{r}
 sequence_example <- seq(10)
 head(sequence_example, n=2)
 tail(sequence_example, n=4)
 length(sequence_example)
+class(sequence_example)
+typeof(sequence_example)
 ```
 
-Finally, you can give names to elements in your vector, and ask for them that way:
+Finally, you can give names to elements in your vector:
 
 ```{r}
 names_example <- 5:8
 names(names_example) <- c("a", "b", "c", "d")
 names_example
-names_example['b']
+names(names_example)
 ```
 
 > ## Challenge 1 {.challenge}
-> Start by making a vector with the numbers 11 to 20.
-> Then use the functions we just learned to extract the 3rd through 5th element in that vector into a new vector;
-> name the elements in that new vector 'S', 'W', 'C'.
+> Start by making a vector with the numbers 1 through 26. 
+> Multiply the vector by 2, and give the resulting vector 
+> names A through Z (hint: there is a built in vector called `LETTERS`)
 >
 
 ## Factors
@@ -225,7 +286,7 @@ str(cats$weight)
 str(cats$likes_string)
 ```
 
-But what about
+These make sense. But what about
 
 ```{r}
 str(cats$coat)
@@ -245,14 +306,15 @@ We can turn a vector into a factor like so:
 
 ```{r}
 CATegories <- factor(coats)
+class(CATegories)
 str(CATegories)
 ```
 
 Now R has noticed that there are three possible categories in our data - but it also did something surprising; instead of printing out the strings we gave it, we got a bunch of numbers instead. R has replaced our human-readable categories with numbered indices under the hood:
 
 ```{r}
-typeof(coats[1])
-typeof(CATegories[1])
+typeof(coats)
+typeof(CATegories)
 ```
 
 > ## Challenge 2 {.challenge}
@@ -281,7 +343,6 @@ Another data structure you'll want in your bag of tricks is the `list`. A list i
 ```{r}
 list_example <- list(1, "a", TRUE, 1+4i)
 list_example
-list_example[2]
 another_list <- list(title = "Research Bazaar", numbers = 1:10, data = TRUE )
 another_list
 ```
@@ -303,15 +364,15 @@ matrix_example <- matrix(0, ncol=6, nrow=3)
 matrix_example
 ```
 
-and we can ask for and put values in the elements of our matrix with a couple of different notations:
+And similar to other data structures, we can ask things about our matrix:
 
 ```{r}
-matrix_example[1,1] <- 1
-matrix_example
-matrix_example[1][1]
-matrix_example[1][1] <- 2
-matrix_example[1,1]
-matrix_example
+class(matrix_example)
+typeof(matrix_example)
+str(matrix_example)
+dim(matrix_example)
+nrow(matrix_example)
+ncol(matrix_example)
 ```
 
 >
@@ -378,15 +439,16 @@ matrix_example
 >
 
 > ## Solution to Challenge 1 {.challenge}
+>
 > ```{r}
-> x <- [11:20]
-> subset <- x[3:5]
-> names(subset) <- c('S', 'W', 'C')
+> x <- 1:26
+> x <- x * 2
+> names(x) <- LETTERS
 > ```
 >
 
 > ## Solution to Challenge 2 {.challenge}
-> ```{r}
+> ```{r, eval = FALSE}
 > cats <- read.csv(file="data/feline-data.csv", stringsAsFactors=FALSE)
 > str(cats$coat)
 > ```
@@ -398,9 +460,10 @@ matrix_example
 > ## Solution to challenge 3 {.challenge}
 >
 > What do you think will be the result of
-> `length(x)`?
+> `length(matrtix_example)`?
 >
 > ```{r}
+> matrix_example <- matrix(0, ncol=6, nrow=3)
 > length(matrix_example)
 > ```
 >
