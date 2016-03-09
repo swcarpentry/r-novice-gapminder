@@ -86,7 +86,7 @@ We can also glue two dataframes together with `rbind`:
 cats <- rbind(cats, cats)
 cats
 ```
-But now the row names are unnecessarily complicated. We can remove the rownames, and R will re-name them sequentially:
+But now the row names are unnecessarily complicated. We can remove the rownames, and R will automatically re-name them sequentially:
 
 ```{r}
 rownames(cats) <- NULL
