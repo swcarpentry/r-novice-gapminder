@@ -19,6 +19,10 @@ At this point, you've see it all - in the last lesson, we toured all the basic d
 
 We learned last time that the columns in a data.frame were vectors, so that our data are consistent in type throughout the column. As such, if we want to add a new column, we need to start by making a new vector:
 
+```{r, echo = FALSE}
+cats <- read.csv("data/feline-data.csv")
+```
+
 ```{r}
 newCol <- c(2,3,5,12)
 cats
