@@ -9,7 +9,7 @@ minutes: 70
 source("tools/chunk-options.R")
 opts_chunk$set(fig.path = "fig/08-plot-ggplot2-")
 # Silently load in the data so the rest of the lesson works
-gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
+gapminder <- read.csv("data/gapminder-FiveYearData.csv", header = TRUE)
 ```
 
 > ## Learning Objectives {.objectives}
@@ -51,7 +51,7 @@ Inkscape.
 Let's start off with an example:
 
 ```{r lifeExp-vs-gdpPercap-scatter, message=FALSE}
-library(ggplot2)
+library("ggplot2")
 ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
   geom_point()
 ```
