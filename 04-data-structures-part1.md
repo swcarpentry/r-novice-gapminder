@@ -24,38 +24,23 @@ black,5.0,FALSE
 tabby,3.2,TRUE
 ~~~
 
+
+
 We can load this into R via the following:
 
 
 ~~~{.r}
-cats <- read.csv(file="data/feline-data.csv")
-~~~
-
-
-
-~~~{.error}
-Warning in file(file, "rt"): cannot open file 'data/feline-data.csv': No
-such file or directory
-
-~~~
-
-
-
-~~~{.error}
-Error in file(file, "rt"): cannot open the connection
-
-~~~
-
-
-
-~~~{.r}
+cats <- read.csv(file = "data/feline-data.csv")
 cats
 ~~~
 
 
 
-~~~{.error}
-Error in eval(expr, envir, enclos): object 'cats' not found
+~~~{.output}
+    coat weight likes_string
+1 calico    2.1         TRUE
+2  black    5.0        FALSE
+3  tabby    3.2         TRUE
 
 ~~~
 
@@ -68,8 +53,8 @@ cats$weight
 
 
 
-~~~{.error}
-Error in eval(expr, envir, enclos): object 'cats' not found
+~~~{.output}
+[1] 2.1 5.0 3.2
 
 ~~~
 
@@ -81,8 +66,8 @@ cats$weight[1]
 
 
 
-~~~{.error}
-Error in eval(expr, envir, enclos): object 'cats' not found
+~~~{.output}
+[1] 2.1
 
 ~~~
 
@@ -94,8 +79,8 @@ cats$weight[2]
 
 
 
-~~~{.error}
-Error in eval(expr, envir, enclos): object 'cats' not found
+~~~{.output}
+[1] 5
 
 ~~~
 
@@ -107,8 +92,8 @@ cats$weight[1] + cats$weight[2]
 
 
 
-~~~{.error}
-Error in eval(expr, envir, enclos): object 'cats' not found
+~~~{.output}
+[1] 7.1
 
 ~~~
 
@@ -122,7 +107,15 @@ cats$weight[1] + cats$coat[2]
 
 
 ~~~{.error}
-Error in eval(expr, envir, enclos): object 'cats' not found
+Warning in Ops.factor(cats$weight[1], cats$coat[2]): '+' not meaningful for
+factors
+
+~~~
+
+
+
+~~~{.output}
+[1] NA
 
 ~~~
 
@@ -139,8 +132,8 @@ typeof(cats$weight[1])
 
 
 
-~~~{.error}
-Error in typeof(cats$weight[1]): object 'cats' not found
+~~~{.output}
+[1] "double"
 
 ~~~
 
@@ -166,33 +159,13 @@ Reload your cats data like before, and check what type of data we find in the `w
 
 ~~~{.r}
 cats <- read.csv(file="data/feline-data.csv")
-~~~
-
-
-
-~~~{.error}
-Warning in file(file, "rt"): cannot open file 'data/feline-data.csv': No
-such file or directory
-
-~~~
-
-
-
-~~~{.error}
-Error in file(file, "rt"): cannot open the connection
-
-~~~
-
-
-
-~~~{.r}
 typeof(cats$weight[1])
 ~~~
 
 
 
-~~~{.error}
-Error in typeof(cats$weight[1]): object 'cats' not found
+~~~{.output}
+[1] "double"
 
 ~~~
 
@@ -205,8 +178,8 @@ cats$weight[1] + cats$weight[2]
 
 
 
-~~~{.error}
-Error in eval(expr, envir, enclos): object 'cats' not found
+~~~{.output}
+[1] 7.1
 
 ~~~
 
@@ -282,8 +255,8 @@ str(cats$weight)
 
 
 
-~~~{.error}
-Error in str(cats$weight): object 'cats' not found
+~~~{.output}
+ num [1:3] 2.1 5 3.2
 
 ~~~
 
@@ -556,8 +529,8 @@ str(cats$weight)
 
 
 
-~~~{.error}
-Error in str(cats$weight): object 'cats' not found
+~~~{.output}
+ num [1:3] 2.1 5 3.2
 
 ~~~
 
@@ -569,8 +542,8 @@ str(cats$likes_string)
 
 
 
-~~~{.error}
-Error in str(cats$likes_string): object 'cats' not found
+~~~{.output}
+ logi [1:3] TRUE FALSE TRUE
 
 ~~~
 
@@ -583,8 +556,8 @@ str(cats$coat)
 
 
 
-~~~{.error}
-Error in str(cats$coat): object 'cats' not found
+~~~{.output}
+ Factor w/ 3 levels "black","calico",..: 2 1 3
 
 ~~~
 
@@ -759,8 +732,8 @@ typeof(cats)
 
 
 
-~~~{.error}
-Error in typeof(cats): object 'cats' not found
+~~~{.output}
+[1] "list"
 
 ~~~
 
@@ -928,33 +901,13 @@ matrix_example
 > 
 > ~~~{.r}
 > cats <- read.csv(file="data/feline-data.csv", stringsAsFactors=FALSE)
-> ~~~
-> 
-> 
-> 
-> ~~~{.error}
-> Warning in file(file, "rt"): cannot open file 'data/feline-data.csv': No
-> such file or directory
-> 
-> ~~~
-> 
-> 
-> 
-> ~~~{.error}
-> Error in file(file, "rt"): cannot open the connection
-> 
-> ~~~
-> 
-> 
-> 
-> ~~~{.r}
 > str(cats$coat)
 > ~~~
 > 
 > 
 > 
-> ~~~{.error}
-> Error in str(cats$coat): object 'cats' not found
+> ~~~{.output}
+>  chr [1:3] "calico" "black" "tabby"
 > 
 > ~~~
 > Note: new students find the help files difficult to understand; make sure to let them know

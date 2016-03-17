@@ -46,37 +46,38 @@ calico,<span class="fl">2.1</span>,<span class="ot">TRUE</span>
 black,<span class="fl">5.0</span>,<span class="ot">FALSE</span>
 tabby,<span class="fl">3.2</span>,<span class="ot">TRUE</span></code></pre></div>
 <p>We can load this into R via the following:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/feline-data.csv&quot;</span>)</code></pre></div>
-<pre class="error"><code>Warning in file(file, &quot;rt&quot;): cannot open file &#39;data/feline-data.csv&#39;: No
-such file or directory
-</code></pre>
-<pre class="error"><code>Error in file(file, &quot;rt&quot;): cannot open the connection
-</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats</code></pre></div>
-<pre class="error"><code>Error in eval(expr, envir, enclos): object &#39;cats&#39; not found
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/feline-data.csv&quot;</span>)
+cats</code></pre></div>
+<pre class="output"><code>    coat weight likes_string
+1 calico    2.1         TRUE
+2  black    5.0        FALSE
+3  tabby    3.2         TRUE
 </code></pre>
 <p>We can begin exploring our dataset right away, pulling out columns and rows via the following:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$weight</code></pre></div>
-<pre class="error"><code>Error in eval(expr, envir, enclos): object &#39;cats&#39; not found
+<pre class="output"><code>[1] 2.1 5.0 3.2
 </code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$weight[<span class="dv">1</span>]</code></pre></div>
-<pre class="error"><code>Error in eval(expr, envir, enclos): object &#39;cats&#39; not found
+<pre class="output"><code>[1] 2.1
 </code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$weight[<span class="dv">2</span>]</code></pre></div>
-<pre class="error"><code>Error in eval(expr, envir, enclos): object &#39;cats&#39; not found
+<pre class="output"><code>[1] 5
 </code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$weight[<span class="dv">1</span>] +<span class="st"> </span>cats$weight[<span class="dv">2</span>]</code></pre></div>
-<pre class="error"><code>Error in eval(expr, envir, enclos): object &#39;cats&#39; not found
+<pre class="output"><code>[1] 7.1
 </code></pre>
 <p>But what about</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$weight[<span class="dv">1</span>] +<span class="st"> </span>cats$coat[<span class="dv">2</span>]</code></pre></div>
-<pre class="error"><code>Error in eval(expr, envir, enclos): object &#39;cats&#39; not found
+<pre class="error"><code>Warning in Ops.factor(cats$weight[1], cats$coat[2]): &#39;+&#39; not meaningful for
+factors
+</code></pre>
+<pre class="output"><code>[1] NA
 </code></pre>
 <p>Understanding what happened here is key to successfully analyzing data in R.</p>
 <h2 id="data-types">Data Types</h2>
 <p>If you guessed that the last command will return an error because 2.1 plus black is nonsense, you’re right - and you already have some intuition for an important concept in programming called <em>data types</em>. We can ask what type of data something is:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(cats$weight[<span class="dv">1</span>])</code></pre></div>
-<pre class="error"><code>Error in typeof(cats$weight[1]): object &#39;cats&#39; not found
+<pre class="output"><code>[1] &quot;double&quot;
 </code></pre>
 <p>There are 5 main types: doubles, integers, complex, logical and character.</p>
 <pre><code>typeof(3.14)
@@ -87,18 +88,13 @@ typeof(&#39;banana&#39;)</code></pre>
 <p>Note the <code>L</code> suffix to insist that a number is an integer. No matter how complicated our analyses become, all data in R is interpreted as one of these basic data types. This strictness has some really important consequences. Go back to your text editor and add add this line to feline-data.csv:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tabby,<span class="fl">2.3</span> or <span class="fl">2.4</span>,<span class="ot">TRUE</span></code></pre></div>
 <p>Reload your cats data like before, and check what type of data we find in the <code>weight</code> column:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/feline-data.csv&quot;</span>)</code></pre></div>
-<pre class="error"><code>Warning in file(file, &quot;rt&quot;): cannot open file &#39;data/feline-data.csv&#39;: No
-such file or directory
-</code></pre>
-<pre class="error"><code>Error in file(file, &quot;rt&quot;): cannot open the connection
-</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(cats$weight[<span class="dv">1</span>])</code></pre></div>
-<pre class="error"><code>Error in typeof(cats$weight[1]): object &#39;cats&#39; not found
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/feline-data.csv&quot;</span>)
+<span class="kw">typeof</span>(cats$weight[<span class="dv">1</span>])</code></pre></div>
+<pre class="output"><code>[1] &quot;double&quot;
 </code></pre>
 <p>Oh no, our weights aren’t the double type anymore! If we try to do the same math we did on them before, we run into trouble:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$weight[<span class="dv">1</span>] +<span class="st"> </span>cats$weight[<span class="dv">2</span>]</code></pre></div>
-<pre class="error"><code>Error in eval(expr, envir, enclos): object &#39;cats&#39; not found
+<pre class="output"><code>[1] 7.1
 </code></pre>
 <p>What happened? When R reads a csv into one of these tables, it insists that everything in a column be the same basic type; if it can’t understand <em>everything</em> in the column as a double, then <em>nobody</em> in the column gets to be a double. The table that R loaded our cats data into is something called a <em>data.frame</em>, and it is our first example of something called a <em>data structure</em> - things that R knows how to build out of the basic data types. In order to successfully use our data in R, we need to understand what these basic data structures are, and how they behave. For now, let’s remove that extra line from our cats data and reload it, while we investigate this behavior further:</p>
 <p>feline-data.csv:</p>
@@ -125,7 +121,7 @@ another_vector</code></pre></div>
 </code></pre>
 <p>The somewhat cryptic output from this command indicates the basic data type found in this vector; the number of things in the vector; and a few examples of what’s actually in the vector. If we similarly do</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cats$weight)</code></pre></div>
-<pre class="error"><code>Error in str(cats$weight): object &#39;cats&#39; not found
+<pre class="output"><code> num [1:3] 2.1 5 3.2
 </code></pre>
 <p>we see that that’s a vector, too - <em>the columns of data we load into R data.frames are all vectors</em>, and that’s the root of why R forces everything in a column to be the same basic data type.</p>
 <section class="challenge panel panel-success">
@@ -225,14 +221,14 @@ names_example</code></pre></div>
 <h2 id="factors">Factors</h2>
 <p>We said that columns in data.frames were vectors:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cats$weight)</code></pre></div>
-<pre class="error"><code>Error in str(cats$weight): object &#39;cats&#39; not found
+<pre class="output"><code> num [1:3] 2.1 5 3.2
 </code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cats$likes_string)</code></pre></div>
-<pre class="error"><code>Error in str(cats$likes_string): object &#39;cats&#39; not found
+<pre class="output"><code> logi [1:3] TRUE FALSE TRUE
 </code></pre>
 <p>But what about</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cats$coat)</code></pre></div>
-<pre class="error"><code>Error in str(cats$coat): object &#39;cats&#39; not found
+<pre class="output"><code> Factor w/ 3 levels &quot;black&quot;,&quot;calico&quot;,..: 2 1 3
 </code></pre>
 <h2 id="factors-1">Factors</h2>
 <p>Another important data structure is called a <em>factor</em>. Factors usually look like character data, but are typically used to represent categorical information. For example, let’s make a vector of strings labeling cat colorations for all the cats in our study:</p>
@@ -304,7 +300,7 @@ $data
 </code></pre>
 <p>We can now understand something a bit surprising in our data.frame; what happens if we run:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(cats)</code></pre></div>
-<pre class="error"><code>Error in typeof(cats): object &#39;cats&#39; not found
+<pre class="output"><code>[1] &quot;list&quot;
 </code></pre>
 <p>We see that data.frames look like lists ‘under the hood’ - this is because a data.frame is really a list of vectors and factors, as they have to be - in order to hold those columns that are a mix of vectors and factors, the data.frame needs something a bit more flexible than a vector to put all the columns together into a familiar table.</p>
 <h2 id="matrices">Matrices</h2>
@@ -410,14 +406,9 @@ subset &lt;-<span class="st"> </span>x[<span class="dv">3</span>:<span class="dv
 <h2 id="solution-to-challenge-2"><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 2</h2>
 </div>
 <div class="panel-body">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/feline-data.csv&quot;</span>, <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</code></pre></div>
-<pre class="error"><code>Warning in file(file, &quot;rt&quot;): cannot open file &#39;data/feline-data.csv&#39;: No
-such file or directory
-</code></pre>
-<pre class="error"><code>Error in file(file, &quot;rt&quot;): cannot open the connection
-</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cats$coat)</code></pre></div>
-<pre class="error"><code>Error in str(cats$coat): object &#39;cats&#39; not found
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/feline-data.csv&quot;</span>, <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)
+<span class="kw">str</span>(cats$coat)</code></pre></div>
+<pre class="output"><code> chr [1:3] &quot;calico&quot; &quot;black&quot; &quot;tabby&quot;
 </code></pre>
 <p>Note: new students find the help files difficult to understand; make sure to let them know that this is typical, and encourage them to take their best guess based on semantic meaning, even if they aren’t sure.</p>
 </div>

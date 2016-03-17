@@ -43,64 +43,78 @@
 <p>We learned last time that the columns in a data.frame were vectors, so that our data are consistent in type throughout the column. As such, if we want to add a new column, we need to start by making a new vector:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">newCol &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">12</span>)
 cats</code></pre></div>
-<pre class="error"><code>Error in eval(expr, envir, enclos): object &#39;cats&#39; not found
+<pre class="output"><code>    coat weight likes_string
+1 calico    2.1         TRUE
+2  black    5.0        FALSE
+3  tabby    3.2         TRUE
 </code></pre>
 <p>We can then add this as a column via:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">cbind</span>(cats,  newCol)</code></pre></div>
-<pre class="error"><code>Error in cbind(cats, newCol): object &#39;cats&#39; not found
+<pre class="error"><code>Error in data.frame(..., check.names = FALSE): arguments imply differing number of rows: 3, 4
 </code></pre>
 <p>Why didn’t this work? Of course, R wants to see one element in our new column for every row in the table:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats</code></pre></div>
-<pre class="error"><code>Error in eval(expr, envir, enclos): object &#39;cats&#39; not found
+<pre class="output"><code>    coat weight likes_string
+1 calico    2.1         TRUE
+2  black    5.0        FALSE
+3  tabby    3.2         TRUE
 </code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">newCol &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">8</span>)
-cats &lt;-<span class="st"> </span><span class="kw">cbind</span>(cats, newCol)</code></pre></div>
-<pre class="error"><code>Error in cbind(cats, newCol): object &#39;cats&#39; not found
-</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats</code></pre></div>
-<pre class="error"><code>Error in eval(expr, envir, enclos): object &#39;cats&#39; not found
+cats &lt;-<span class="st"> </span><span class="kw">cbind</span>(cats, newCol)
+cats</code></pre></div>
+<pre class="output"><code>    coat weight likes_string newCol
+1 calico    2.1         TRUE      4
+2  black    5.0        FALSE      5
+3  tabby    3.2         TRUE      8
 </code></pre>
 <p>Our new column has appeared, but it’s got that ugly name at the top; let’s give it something a little easier to understand:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(cats)[<span class="dv">4</span>] &lt;-<span class="st"> &#39;age&#39;</span></code></pre></div>
-<pre class="error"><code>Error in names(cats)[4] &lt;- &quot;age&quot;: object &#39;cats&#39; not found
-</code></pre>
 <p>Now how about adding rows - in this case, we saw last time that the rows of a data.frame are made of lists:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">newRow &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;tortoiseshell&quot;</span>, <span class="fl">3.3</span>, <span class="ot">TRUE</span>, <span class="dv">9</span>)
 cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, newRow)</code></pre></div>
-<pre class="error"><code>Error in rbind(cats, newRow): object &#39;cats&#39; not found
+<pre class="error"><code>Warning in `[&lt;-.factor`(`*tmp*`, ri, value = &quot;tortoiseshell&quot;): invalid
+factor level, NA generated
 </code></pre>
 <p>Another thing to look out for has emerged - when R creates a factor, it only allows whatever is originally there when our data was first loaded, which was ‘black’, ‘calico’ and ‘tabby’ in our case. Anything new that doesn’t fit into one of its categories is rejected as nonsense, until we explicitly add that as a <em>level</em> in the factor:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(cats$coat)</code></pre></div>
-<pre class="error"><code>Error in levels(cats$coat): object &#39;cats&#39; not found
+<pre class="output"><code>[1] &quot;black&quot;  &quot;calico&quot; &quot;tabby&quot; 
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(cats$coat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">levels</span>(cats$coat), <span class="st">&#39;tortoiseshell&#39;</span>)</code></pre></div>
-<pre class="error"><code>Error in levels(cats$coat): object &#39;cats&#39; not found
-</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, <span class="kw">list</span>(<span class="st">&quot;tortoiseshell&quot;</span>, <span class="fl">3.3</span>, <span class="ot">TRUE</span>, <span class="dv">9</span>))</code></pre></div>
-<pre class="error"><code>Error in rbind(cats, list(&quot;tortoiseshell&quot;, 3.3, TRUE, 9)): object &#39;cats&#39; not found
-</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(cats$coat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">levels</span>(cats$coat), <span class="st">&#39;tortoiseshell&#39;</span>)
+cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, <span class="kw">list</span>(<span class="st">&quot;tortoiseshell&quot;</span>, <span class="fl">3.3</span>, <span class="ot">TRUE</span>, <span class="dv">9</span>))</code></pre></div>
 <p>Alternatively, we can change a factor column to a character vector; we lose the handy categories of the factor, but can subsequently add any word we want to the column without babysitting the factor levels:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cats)</code></pre></div>
-<pre class="error"><code>Error in str(cats): object &#39;cats&#39; not found
+<pre class="output"><code>&#39;data.frame&#39;:   5 obs. of  4 variables:
+ $ coat        : Factor w/ 4 levels &quot;black&quot;,&quot;calico&quot;,..: 2 1 3 NA 4
+ $ weight      : num  2.1 5 3.2 3.3 3.3
+ $ likes_string: logi  TRUE FALSE TRUE TRUE TRUE
+ $ age         : num  4 5 8 9 9
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$coat &lt;-<span class="st"> </span><span class="kw">as.character</span>(cats$coat)</code></pre></div>
-<pre class="error"><code>Error in eval(expr, envir, enclos): object &#39;cats&#39; not found
-</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cats)</code></pre></div>
-<pre class="error"><code>Error in str(cats): object &#39;cats&#39; not found
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$coat &lt;-<span class="st"> </span><span class="kw">as.character</span>(cats$coat)
+<span class="kw">str</span>(cats)</code></pre></div>
+<pre class="output"><code>&#39;data.frame&#39;:   5 obs. of  4 variables:
+ $ coat        : chr  &quot;calico&quot; &quot;black&quot; &quot;tabby&quot; NA ...
+ $ weight      : num  2.1 5 3.2 3.3 3.3
+ $ likes_string: logi  TRUE FALSE TRUE TRUE TRUE
+ $ age         : num  4 5 8 9 9
 </code></pre>
 <p>We now know how to add rows and columns to our data.frame in R - but in our work we’ve accidentally added a garbage row. We can ask for a data.frame minus this offender:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats[-<span class="dv">4</span>,]</code></pre></div>
-<pre class="error"><code>Error in eval(expr, envir, enclos): object &#39;cats&#39; not found
+<pre class="output"><code>           coat weight likes_string age
+1        calico    2.1         TRUE   4
+2         black    5.0        FALSE   5
+3         tabby    3.2         TRUE   8
+5 tortoiseshell    3.3         TRUE   9
 </code></pre>
 <p>Notice the comma with nothing after it to indicate we want to drop the entire fourth row. Alternatively, we can drop all rows with <code>NA</code> values:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">na.omit</span>(cats)</code></pre></div>
-<pre class="error"><code>Error in na.omit(cats): object &#39;cats&#39; not found
+<pre class="output"><code>           coat weight likes_string age
+1        calico    2.1         TRUE   4
+2         black    5.0        FALSE   5
+3         tabby    3.2         TRUE   8
+5 tortoiseshell    3.3         TRUE   9
 </code></pre>
 <p>In either case, we need to reassign our variable to persist the changes:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">na.omit</span>(cats)</code></pre></div>
-<pre class="error"><code>Error in na.omit(cats): object &#39;cats&#39; not found
-</code></pre>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2 id="discussion-1"><span class="glyphicon glyphicon-pencil"></span>Discussion 1</h2>
@@ -112,18 +126,30 @@ cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, newRow)</
 </div>
 </section>
 <p>The key to remember when adding data to a data.frame is that <em>columns are vectors or factors, and rows are lists.</em> We can also glue two dataframes together with <code>rbind</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, cats)</code></pre></div>
-<pre class="error"><code>Error in rbind(cats, cats): object &#39;cats&#39; not found
-</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats</code></pre></div>
-<pre class="error"><code>Error in eval(expr, envir, enclos): object &#39;cats&#39; not found
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, cats)
+cats</code></pre></div>
+<pre class="output"><code>            coat weight likes_string age
+1         calico    2.1         TRUE   4
+2          black    5.0        FALSE   5
+3          tabby    3.2         TRUE   8
+5  tortoiseshell    3.3         TRUE   9
+11        calico    2.1         TRUE   4
+21         black    5.0        FALSE   5
+31         tabby    3.2         TRUE   8
+51 tortoiseshell    3.3         TRUE   9
 </code></pre>
 <p>But now the row names are unnecessarily complicated. We can ask R to re-name everything sequentially:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rownames</span>(cats) &lt;-<span class="st"> </span><span class="ot">NULL</span></code></pre></div>
-<pre class="error"><code>Error in rownames(cats) &lt;- NULL: object &#39;cats&#39; not found
-</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats</code></pre></div>
-<pre class="error"><code>Error in eval(expr, envir, enclos): object &#39;cats&#39; not found
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rownames</span>(cats) &lt;-<span class="st"> </span><span class="ot">NULL</span>
+cats</code></pre></div>
+<pre class="output"><code>           coat weight likes_string age
+1        calico    2.1         TRUE   4
+2         black    5.0        FALSE   5
+3         tabby    3.2         TRUE   8
+4 tortoiseshell    3.3         TRUE   9
+5        calico    2.1         TRUE   4
+6         black    5.0        FALSE   5
+7         tabby    3.2         TRUE   8
+8 tortoiseshell    3.3         TRUE   9
 </code></pre>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
