@@ -18,6 +18,8 @@ At this point, you've see it all - in the last lesson, we toured all the basic d
 We learned last time that the columns in a data.frame were vectors, so that our data are consistent in type throughout the column. As such, if we want to add a new column, we need to start by making a new vector:
 
 
+
+
 ~~~{.r}
 newCol <- c(2,3,5,12)
 cats
@@ -25,8 +27,11 @@ cats
 
 
 
-~~~{.error}
-Error in eval(expr, envir, enclos): object 'cats' not found
+~~~{.output}
+    coat weight likes_string
+1 calico    2.1         TRUE
+2  black    5.0        FALSE
+3  tabby    3.2         TRUE
 
 ~~~
 
@@ -40,7 +45,7 @@ cats <- cbind(cats,  newCol)
 
 
 ~~~{.error}
-Error in cbind(cats, newCol): object 'cats' not found
+Error in data.frame(..., check.names = FALSE): arguments imply differing number of rows: 3, 4
 
 ~~~
 
@@ -53,8 +58,11 @@ cats
 
 
 
-~~~{.error}
-Error in eval(expr, envir, enclos): object 'cats' not found
+~~~{.output}
+    coat weight likes_string
+1 calico    2.1         TRUE
+2  black    5.0        FALSE
+3  tabby    3.2         TRUE
 
 ~~~
 
@@ -63,25 +71,16 @@ Error in eval(expr, envir, enclos): object 'cats' not found
 ~~~{.r}
 newCol <- c(4,5,8)
 cats <- cbind(cats, newCol)
-~~~
-
-
-
-~~~{.error}
-Error in cbind(cats, newCol): object 'cats' not found
-
-~~~
-
-
-
-~~~{.r}
 cats
 ~~~
 
 
 
-~~~{.error}
-Error in eval(expr, envir, enclos): object 'cats' not found
+~~~{.output}
+    coat weight likes_string newCol
+1 calico    2.1         TRUE      4
+2  black    5.0        FALSE      5
+3  tabby    3.2         TRUE      8
 
 ~~~
 
@@ -90,13 +89,6 @@ Our new column has appeared, but it's got that ugly name at the top; let's give 
 
 ~~~{.r}
 names(cats)[4] <- 'age'
-~~~
-
-
-
-~~~{.error}
-Error in names(cats)[4] <- "age": object 'cats' not found
-
 ~~~
 
 Now how about adding rows - in this case, we saw last time that the rows of a data.frame are made of lists:
@@ -110,7 +102,8 @@ cats <- rbind(cats, newRow)
 
 
 ~~~{.error}
-Error in rbind(cats, newRow): object 'cats' not found
+Warning in `[<-.factor`(`*tmp*`, ri, value = "tortoiseshell"): invalid
+factor level, NA generated
 
 ~~~
 
@@ -123,8 +116,8 @@ levels(cats$coat)
 
 
 
-~~~{.error}
-Error in levels(cats$coat): object 'cats' not found
+~~~{.output}
+[1] "black"  "calico" "tabby" 
 
 ~~~
 
@@ -132,26 +125,7 @@ Error in levels(cats$coat): object 'cats' not found
 
 ~~~{.r}
 levels(cats$coat) <- c(levels(cats$coat), 'tortoiseshell')
-~~~
-
-
-
-~~~{.error}
-Error in levels(cats$coat): object 'cats' not found
-
-~~~
-
-
-
-~~~{.r}
 cats <- rbind(cats, list("tortoiseshell", 3.3, TRUE, 9))
-~~~
-
-
-
-~~~{.error}
-Error in rbind(cats, list("tortoiseshell", 3.3, TRUE, 9)): object 'cats' not found
-
 ~~~
 
 Alternatively, we can change a factor column to a character vector; we lose the handy categories of the factor, but can subsequently add any word we want to the column without babysitting the factor levels:
@@ -163,8 +137,12 @@ str(cats)
 
 
 
-~~~{.error}
-Error in str(cats): object 'cats' not found
+~~~{.output}
+'data.frame':	5 obs. of  4 variables:
+ $ coat        : Factor w/ 4 levels "black","calico",..: 2 1 3 NA 4
+ $ weight      : num  2.1 5 3.2 3.3 3.3
+ $ likes_string: logi  TRUE FALSE TRUE TRUE TRUE
+ $ age         : num  4 5 8 9 9
 
 ~~~
 
@@ -172,25 +150,17 @@ Error in str(cats): object 'cats' not found
 
 ~~~{.r}
 cats$coat <- as.character(cats$coat)
-~~~
-
-
-
-~~~{.error}
-Error in eval(expr, envir, enclos): object 'cats' not found
-
-~~~
-
-
-
-~~~{.r}
 str(cats)
 ~~~
 
 
 
-~~~{.error}
-Error in str(cats): object 'cats' not found
+~~~{.output}
+'data.frame':	5 obs. of  4 variables:
+ $ coat        : chr  "calico" "black" "tabby" NA ...
+ $ weight      : num  2.1 5 3.2 3.3 3.3
+ $ likes_string: logi  TRUE FALSE TRUE TRUE TRUE
+ $ age         : num  4 5 8 9 9
 
 ~~~
 
@@ -203,8 +173,12 @@ cats[-4,]
 
 
 
-~~~{.error}
-Error in eval(expr, envir, enclos): object 'cats' not found
+~~~{.output}
+           coat weight likes_string age
+1        calico    2.1         TRUE   4
+2         black    5.0        FALSE   5
+3         tabby    3.2         TRUE   8
+5 tortoiseshell    3.3         TRUE   9
 
 ~~~
 
@@ -218,8 +192,12 @@ na.omit(cats)
 
 
 
-~~~{.error}
-Error in na.omit(cats): object 'cats' not found
+~~~{.output}
+           coat weight likes_string age
+1        calico    2.1         TRUE   4
+2         black    5.0        FALSE   5
+3         tabby    3.2         TRUE   8
+5 tortoiseshell    3.3         TRUE   9
 
 ~~~
 
@@ -228,13 +206,6 @@ In either case, we need to reassign our variable to persist the changes:
 
 ~~~{.r}
 cats <- na.omit(cats)
-~~~
-
-
-
-~~~{.error}
-Error in na.omit(cats): object 'cats' not found
-
 ~~~
 
 > ## Discussion 1 {.challenge} 
@@ -251,25 +222,21 @@ We can also glue two dataframes together with `rbind`:
 
 ~~~{.r}
 cats <- rbind(cats, cats)
-~~~
-
-
-
-~~~{.error}
-Error in rbind(cats, cats): object 'cats' not found
-
-~~~
-
-
-
-~~~{.r}
 cats
 ~~~
 
 
 
-~~~{.error}
-Error in eval(expr, envir, enclos): object 'cats' not found
+~~~{.output}
+            coat weight likes_string age
+1         calico    2.1         TRUE   4
+2          black    5.0        FALSE   5
+3          tabby    3.2         TRUE   8
+5  tortoiseshell    3.3         TRUE   9
+11        calico    2.1         TRUE   4
+21         black    5.0        FALSE   5
+31         tabby    3.2         TRUE   8
+51 tortoiseshell    3.3         TRUE   9
 
 ~~~
 But now the row names are unnecessarily complicated. We can ask R to re-name everything sequentially:
@@ -277,25 +244,21 @@ But now the row names are unnecessarily complicated. We can ask R to re-name eve
 
 ~~~{.r}
 rownames(cats) <- NULL
-~~~
-
-
-
-~~~{.error}
-Error in rownames(cats) <- NULL: object 'cats' not found
-
-~~~
-
-
-
-~~~{.r}
 cats
 ~~~
 
 
 
-~~~{.error}
-Error in eval(expr, envir, enclos): object 'cats' not found
+~~~{.output}
+           coat weight likes_string age
+1        calico    2.1         TRUE   4
+2         black    5.0        FALSE   5
+3         tabby    3.2         TRUE   8
+4 tortoiseshell    3.3         TRUE   9
+5        calico    2.1         TRUE   4
+6         black    5.0        FALSE   5
+7         tabby    3.2         TRUE   8
+8 tortoiseshell    3.3         TRUE   9
 
 ~~~
 
