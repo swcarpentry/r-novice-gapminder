@@ -109,7 +109,7 @@ rownames(cats) <- NULL
 cats
 ```
 
-> ### Challenge 1 {.challenge}
+> ## Challenge 1 {.challenge}
 >
 > You can create a new data.frame right from within R with the following syntax:
 > ```{r}
