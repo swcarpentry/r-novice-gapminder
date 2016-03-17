@@ -27,290 +27,122 @@
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
                     <a href="index.html"><h1 class="title">R for reproducible scientific analysis</h1></a>
-          <h2 class="subtitle">Data frames and reading in data</h2>
+          <h2 class="subtitle">Exploring Data Frames</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
 <h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
-<li>Become familiar with data frames</li>
-<li>Be able to read regular data into R</li>
+<li>To learn how to manipulate a data.frame in memory</li>
+<li>To tour some best practices of exploring and understanding a data.frame when it is first loaded.</li>
 </ul>
 </div>
 </section>
-<h2 id="data-frames">Data frames</h2>
-<p>Data frames are similar to matrices, except each column can be a different atomic type. A data frames is the standard structure for storing and manipulating rectangular data sets. Underneath the hood, data frames are really lists, where each element is an atomic vector, with the added restriction that they’re all the same length. As you will see, if we pull out one column of a data frame,we will have a vector. You will probably find that data frames are more complicated than vectors and other data structures we have considered, but they provide powerful capabilities.</p>
-<p>Data frames can be created manually with the <code>data.frame</code> function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id =</span> <span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>, <span class="st">&#39;f&#39;</span>), <span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">6</span>, <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">214</span>:<span class="dv">219</span>))
-df</code></pre></div>
-<pre class="output"><code>  id x   y
-1  a 1 214
-2  b 2 215
-3  c 3 216
-4  d 4 217
-5  e 5 218
-6  f 6 219
+<p>At this point, you’ve see it all - in the last lesson, we toured all the basic data types and data structures in R. Everything you do will be a manipulation of those tools. But a whole lot of the time, the star of the show is going to be the data.frame - that table that we started with that information from a CSV gets dumped into when we load it. In this lesson, we’ll learn a few more things about working with data.frame.</p>
+<p>We learned last time that the columns in a data.frame were vectors, so that our data are consistent in type throughout the column. As such, if we want to add a new column, we need to start by making a new vector:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">newCol &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">12</span>)
+cats</code></pre></div>
+<pre class="error"><code>Error in eval(expr, envir, enclos): object &#39;cats&#39; not found
+</code></pre>
+<p>We can then add this as a column via:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">cbind</span>(cats,  newCol)</code></pre></div>
+<pre class="error"><code>Error in cbind(cats, newCol): object &#39;cats&#39; not found
+</code></pre>
+<p>Why didn’t this work? Of course, R wants to see one element in our new column for every row in the table:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats</code></pre></div>
+<pre class="error"><code>Error in eval(expr, envir, enclos): object &#39;cats&#39; not found
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">newCol &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">8</span>)
+cats &lt;-<span class="st"> </span><span class="kw">cbind</span>(cats, newCol)</code></pre></div>
+<pre class="error"><code>Error in cbind(cats, newCol): object &#39;cats&#39; not found
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats</code></pre></div>
+<pre class="error"><code>Error in eval(expr, envir, enclos): object &#39;cats&#39; not found
+</code></pre>
+<p>Our new column has appeared, but it’s got that ugly name at the top; let’s give it something a little easier to understand:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(cats)[<span class="dv">4</span>] &lt;-<span class="st"> &#39;age&#39;</span></code></pre></div>
+<pre class="error"><code>Error in names(cats)[4] &lt;- &quot;age&quot;: object &#39;cats&#39; not found
+</code></pre>
+<p>Now how about adding rows - in this case, we saw last time that the rows of a data.frame are made of lists:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">newRow &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;tortoiseshell&quot;</span>, <span class="fl">3.3</span>, <span class="ot">TRUE</span>, <span class="dv">9</span>)
+cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, newRow)</code></pre></div>
+<pre class="error"><code>Error in rbind(cats, newRow): object &#39;cats&#39; not found
+</code></pre>
+<p>Another thing to look out for has emerged - when R creates a factor, it only allows whatever is originally there when our data was first loaded, which was ‘black’, ‘calico’ and ‘tabby’ in our case. Anything new that doesn’t fit into one of its categories is rejected as nonsense, until we explicitly add that as a <em>level</em> in the factor:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(cats$coat)</code></pre></div>
+<pre class="error"><code>Error in levels(cats$coat): object &#39;cats&#39; not found
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(cats$coat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">levels</span>(cats$coat), <span class="st">&#39;tortoiseshell&#39;</span>)</code></pre></div>
+<pre class="error"><code>Error in levels(cats$coat): object &#39;cats&#39; not found
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, <span class="kw">list</span>(<span class="st">&quot;tortoiseshell&quot;</span>, <span class="fl">3.3</span>, <span class="ot">TRUE</span>, <span class="dv">9</span>))</code></pre></div>
+<pre class="error"><code>Error in rbind(cats, list(&quot;tortoiseshell&quot;, 3.3, TRUE, 9)): object &#39;cats&#39; not found
+</code></pre>
+<p>Alternatively, we can change a factor column to a character vector; we lose the handy categories of the factor, but can subsequently add any word we want to the column without babysitting the factor levels:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cats)</code></pre></div>
+<pre class="error"><code>Error in str(cats): object &#39;cats&#39; not found
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$coat &lt;-<span class="st"> </span><span class="kw">as.character</span>(cats$coat)</code></pre></div>
+<pre class="error"><code>Error in eval(expr, envir, enclos): object &#39;cats&#39; not found
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cats)</code></pre></div>
+<pre class="error"><code>Error in str(cats): object &#39;cats&#39; not found
+</code></pre>
+<p>We now know how to add rows and columns to our data.frame in R - but in our work we’ve accidentally added a garbage row. We can ask for a data.frame minus this offender:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats[-<span class="dv">4</span>,]</code></pre></div>
+<pre class="error"><code>Error in eval(expr, envir, enclos): object &#39;cats&#39; not found
+</code></pre>
+<p>Notice the comma with nothing after it to indicate we want to drop the entire fourth row. Alternatively, we can drop all rows with <code>NA</code> values:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">na.omit</span>(cats)</code></pre></div>
+<pre class="error"><code>Error in na.omit(cats): object &#39;cats&#39; not found
+</code></pre>
+<p>In either case, we need to reassign our variable to persist the changes:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">na.omit</span>(cats)</code></pre></div>
+<pre class="error"><code>Error in na.omit(cats): object &#39;cats&#39; not found
 </code></pre>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="challenge-1-data-frames"><span class="glyphicon glyphicon-pencil"></span>Challenge 1: Data frames</h2>
+<h2 id="discussion-1"><span class="glyphicon glyphicon-pencil"></span>Discussion 1</h2>
 </div>
 <div class="panel-body">
-<p>Try using the <code>length</code> function to query your data frame <code>df</code>. Does it give the result you expect?</p>
+<p>What do you think</p>
+<pre><code>cats$weight[4]</code></pre>
+<p>will print at this point?</p>
 </div>
 </section>
-<p>Each column in the data frame is simply a list element, which is why when you ask for the <code>length</code> of the data frame, it tells you the number of columns. If you actually want the number of rows, you can use the <code>nrow</code> function.</p>
-<p>We can add columns or rows to a data.frame using <code>cbind</code> or <code>rbind</code> (these are the two-dimensional equivalents of the <code>c</code> function):</p>
-<h2 id="adding-columns-to-a-data-frame">Adding columns to a data frame</h2>
-<p>To add a column we can use <code>cbind</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">cbind</span>(df, <span class="dv">6</span>:<span class="dv">1</span>)
-df</code></pre></div>
-<pre class="output"><code>  id x   y 6:1
-1  a 1 214   6
-2  b 2 215   5
-3  c 3 216   4
-4  d 4 217   3
-5  e 5 218   2
-6  f 6 219   1
+<p>The key to remember when adding data to a data.frame is that <em>columns are vectors or factors, and rows are lists.</em> We can also glue two dataframes together with <code>rbind</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, cats)</code></pre></div>
+<pre class="error"><code>Error in rbind(cats, cats): object &#39;cats&#39; not found
 </code></pre>
-<p>Note that R automatically names the column. We may decide to change the name by assigning a value using the <code>names</code> function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(df)[<span class="dv">4</span>] &lt;-<span class="st"> &#39;SixToOne&#39;</span></code></pre></div>
-<p>We can also provide a name when we add the column:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">cbind</span>(df, <span class="dt">caps=</span>LETTERS[<span class="dv">1</span>:<span class="dv">6</span>])
-df</code></pre></div>
-<pre class="output"><code>  id x   y SixToOne caps
-1  a 1 214        6    A
-2  b 2 215        5    B
-3  c 3 216        4    C
-4  d 4 217        3    D
-5  e 5 218        2    E
-6  f 6 219        1    F
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats</code></pre></div>
+<pre class="error"><code>Error in eval(expr, envir, enclos): object &#39;cats&#39; not found
 </code></pre>
-<p>(<code>LETTERS</code> and <code>letters</code> are built-in constants.)</p>
-<h2 id="adding-rows-to-a-data-frame">Adding rows to a data frame</h2>
-<p>To add a row we use <code>rbind</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">rbind</span>(df, <span class="kw">list</span>(<span class="st">&quot;g&quot;</span>, <span class="dv">11</span>, <span class="dv">42</span>, <span class="dv">0</span>, <span class="st">&quot;G&quot;</span>))</code></pre></div>
-<pre class="error"><code>Warning in `[&lt;-.factor`(`*tmp*`, ri, value = &quot;g&quot;): invalid factor level, NA
-generated
+<p>But now the row names are unnecessarily complicated. We can ask R to re-name everything sequentially:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rownames</span>(cats) &lt;-<span class="st"> </span><span class="ot">NULL</span></code></pre></div>
+<pre class="error"><code>Error in rownames(cats) &lt;- NULL: object &#39;cats&#39; not found
 </code></pre>
-<pre class="error"><code>Warning in `[&lt;-.factor`(`*tmp*`, ri, value = &quot;G&quot;): invalid factor level, NA
-generated
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats</code></pre></div>
+<pre class="error"><code>Error in eval(expr, envir, enclos): object &#39;cats&#39; not found
 </code></pre>
-<p>Note that we add the row as a list, because we have multiple types across the columns. Nevertheless, this doesn’t work as expected! What do the error messages tell us?</p>
-<p>It appears that R was trying to append “g” and “G” as factor levels. Why? Let’s examine the first column. We can access a column in a <code>data.frame</code> by using the <code>$</code> operator.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(df$id)</code></pre></div>
-<pre class="output"><code>[1] &quot;factor&quot;
-</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(df)</code></pre></div>
-<pre class="output"><code>&#39;data.frame&#39;:   7 obs. of  5 variables:
- $ id      : Factor w/ 6 levels &quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,..: 1 2 3 4 5 6 NA
- $ x       : num  1 2 3 4 5 6 11
- $ y       : num  214 215 216 217 218 219 42
- $ SixToOne: num  6 5 4 3 2 1 0
- $ caps    : Factor w/ 6 levels &quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,..: 1 2 3 4 5 6 NA
-</code></pre>
-<p>When we created the data frame, R automatically made the first and last columns into factors, not character vectors. There are no pre-existing levels “g” and “G”, so the attempt to add these values fails. A row was added to the data frame, only there are missing values in the factor columns:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df</code></pre></div>
-<pre class="output"><code>    id  x   y SixToOne caps
-1    a  1 214        6    A
-2    b  2 215        5    B
-3    c  3 216        4    C
-4    d  4 217        3    D
-5    e  5 218        2    E
-6    f  6 219        1    F
-7 &lt;NA&gt; 11  42        0 &lt;NA&gt;
-</code></pre>
-<p>There are two ways we can work around this issue:</p>
-<ol style="list-style-type: decimal">
-<li><p>We can convert the factor columns into characters. This is convenient, but we lose the factor structure.</p></li>
-<li><p>We can add factor levels to accomodate the new additions. If we really do want the columns to be factors, this is the correct way to proceed.</p></li>
-</ol>
-<p>We will illustrate both solutions in the same data frame:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df$id &lt;-<span class="st"> </span><span class="kw">as.character</span>(df$id)  <span class="co"># convert to character</span>
-<span class="kw">class</span>(df$id)</code></pre></div>
-<pre class="output"><code>[1] &quot;character&quot;
-</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(df$caps) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">levels</span>(df$caps), <span class="st">&#39;G&#39;</span>) <span class="co"># add a factor level</span>
-<span class="kw">class</span>(df$caps)</code></pre></div>
-<pre class="output"><code>[1] &quot;factor&quot;
-</code></pre>
-<p>Okay, now let’s try adding that row again.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">rbind</span>(df, <span class="kw">list</span>(<span class="st">&quot;g&quot;</span>, <span class="dv">11</span>, <span class="dv">42</span>, <span class="dv">0</span>, <span class="st">&#39;G&#39;</span>))
-<span class="kw">tail</span>(df, <span class="dt">n=</span><span class="dv">3</span>)</code></pre></div>
-<pre class="output"><code>    id  x   y SixToOne caps
-6    f  6 219        1    F
-7 &lt;NA&gt; 11  42        0 &lt;NA&gt;
-8    g 11  42        0    G
-</code></pre>
-<p>We successfully added the last row, but we have an undesired row with two <code>NA</code> values. How do delete it?</p>
-<h2 id="deleting-rows-and-handling-na">Deleting rows and handling NA</h2>
-<p>There are multiple ways to delete a row containing <code>NA</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df[-<span class="dv">7</span>, ]  <span class="co"># The minus sign tells R to delete the row</span></code></pre></div>
-<pre class="output"><code>  id  x   y SixToOne caps
-1  a  1 214        6    A
-2  b  2 215        5    B
-3  c  3 216        4    C
-4  d  4 217        3    D
-5  e  5 218        2    E
-6  f  6 219        1    F
-8  g 11  42        0    G
-</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df[<span class="kw">complete.cases</span>(df), ]  <span class="co"># Return `TRUE` when no missing values</span></code></pre></div>
-<pre class="output"><code>  id  x   y SixToOne caps
-1  a  1 214        6    A
-2  b  2 215        5    B
-3  c  3 216        4    C
-4  d  4 217        3    D
-5  e  5 218        2    E
-6  f  6 219        1    F
-8  g 11  42        0    G
-</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">na.omit</span>(df)  <span class="co"># Another function for the same purpose</span></code></pre></div>
-<pre class="output"><code>  id  x   y SixToOne caps
-1  a  1 214        6    A
-2  b  2 215        5    B
-3  c  3 216        4    C
-4  d  4 217        3    D
-5  e  5 218        2    E
-6  f  6 219        1    F
-8  g 11  42        0    G
-</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">na.omit</span>(df)</code></pre></div>
-<h2 id="combining-data-frames">Combining data frames</h2>
-<p>We can also row-bind data.frames together, but notice what happens to the rownames:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rbind</span>(df, df)</code></pre></div>
-<pre class="output"><code>   id  x   y SixToOne caps
-1   a  1 214        6    A
-2   b  2 215        5    B
-3   c  3 216        4    C
-4   d  4 217        3    D
-5   e  5 218        2    E
-6   f  6 219        1    F
-8   g 11  42        0    G
-11  a  1 214        6    A
-21  b  2 215        5    B
-31  c  3 216        4    C
-41  d  4 217        3    D
-51  e  5 218        2    E
-61  f  6 219        1    F
-81  g 11  42        0    G
-</code></pre>
-<p>R is making sure that rownames are unique. You can restore sequential numbering by setting rownames to NULL:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2 &lt;-<span class="st"> </span><span class="kw">rbind</span>(df, df)
-<span class="kw">rownames</span>(df2) &lt;-<span class="st"> </span><span class="ot">NULL</span>
-df2</code></pre></div>
-<pre class="output"><code>   id  x   y SixToOne caps
-1   a  1 214        6    A
-2   b  2 215        5    B
-3   c  3 216        4    C
-4   d  4 217        3    D
-5   e  5 218        2    E
-6   f  6 219        1    F
-7   g 11  42        0    G
-8   a  1 214        6    A
-9   b  2 215        5    B
-10  c  3 216        4    C
-11  d  4 217        3    D
-12  e  5 218        2    E
-13  f  6 219        1    F
-14  g 11  42        0    G
-</code></pre>
-<!-- 
-When we add a row we need to use a list, because each column is
-a different type!  If you want to add multiple rows to a data.frame,
-you will need to separate the new columns in the list:
-
-
-~~~{.r}
-df <- rbind(df, list(c("l", "m"), c(12, 13), c(534, -20), c(-1, -2),
-c('H', 'I')))
-~~~
-
-
-
-~~~{.error}
-Warning in `[<-.factor`(`*tmp*`, ri, value = c("H", "I")): invalid factor
-level, NA generated
-
-~~~
-
-
-
-~~~{.r}
-tail(df, n=3)
-~~~
-
-
-
-~~~{.output}
-   id  x   y SixToOne caps
-8   g 11  42        0    G
-81  l 12 534       -1 <NA>
-9   m 13 -20       -2 <NA>
-
-~~~
--->
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="challenge-2"><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h2>
+<h2 id="challenge-1"><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h2>
 </div>
 <div class="panel-body">
-<p>Create a data frame that holds the following information for yourself:</p>
+<p>You can create a new data.frame right from within R with the following syntax:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id =</span> <span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>), <span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">3</span>, <span class="dt">y =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>), <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p>Make a data.frame that holds the following information for yourself:</p>
 <ul>
-<li>First name</li>
-<li>Last name</li>
-<li>Age</li>
+<li>first name</li>
+<li>last name</li>
+<li>lucky number</li>
 </ul>
-<p>Then use rbind to add the same information for the people sitting near you.</p>
-<p>Now use cbind to add a column of logicals that will, for each person, hold the answer to the question, “Is there anything in this workshop you’re finding confusing?”</p>
+<p>Then use <code>rbind</code> to add an entry for the people sitting beside you. Finally, use <code>cbind</code> to add a column with each person’s answer to the question, “Is it time for coffee break?”</p>
 </div>
 </section>
-<h2 id="reading-in-data">Reading in data</h2>
-<p>Remember earlier we obtained the gapminder dataset. If you’re curious about where this data comes from you might like to look at the <a href="http://www.gapminder.org/data/documentation/">Gapminder website</a>.</p>
-<p>Now we want to load the gapminder data into R. Before reading in data, it’s a good idea to have a look at its structure. Let’s take a look using our newly-learned shell skills:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cd data/<span class="st"> </span><span class="co"># navigate to the data directory of the project folder</span>
-head gapminder-FiveYearData.csv</code></pre></div>
-<pre class="output"><code>country,year,pop,continent,lifeExp,gdpPercap
-Afghanistan,1952,8425333,Asia,28.801,779.4453145
-Afghanistan,1957,9240934,Asia,30.332,820.8530296
-Afghanistan,1962,10267083,Asia,31.997,853.10071
-Afghanistan,1967,11537966,Asia,34.02,836.1971382
-Afghanistan,1972,13079460,Asia,36.088,739.9811058
-Afghanistan,1977,14880372,Asia,38.438,786.11336
-Afghanistan,1982,12881816,Asia,39.854,978.0114388
-Afghanistan,1987,13867957,Asia,40.822,852.3959448
-Afghanistan,1992,16317921,Asia,41.674,649.3413952
-</code></pre>
-<p>As its file extension would suggest, the file contains comma-separated values, and seems to contain a header row.</p>
-<p>We can use <code>read.table</code> to read this into R</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gapminder &lt;-<span class="st"> </span><span class="kw">read.table</span>(
-  <span class="dt">file=</span><span class="st">&quot;data/gapminder-FiveYearData.csv&quot;</span>,
-  <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>
-)
-<span class="kw">head</span>(gapminder)</code></pre></div>
-<pre class="output"><code>      country year      pop continent lifeExp gdpPercap
-1 Afghanistan 1952  8425333      Asia  28.801  779.4453
-2 Afghanistan 1957  9240934      Asia  30.332  820.8530
-3 Afghanistan 1962 10267083      Asia  31.997  853.1007
-4 Afghanistan 1967 11537966      Asia  34.020  836.1971
-5 Afghanistan 1972 13079460      Asia  36.088  739.9811
-6 Afghanistan 1977 14880372      Asia  38.438  786.1134
-</code></pre>
-<p>Because we know the structure of the data, we’re able to specify the appropriate arguments to <code>read.table</code>. Without these arguments, <code>read.table</code> will do its best to do something sensible, but it is always more reliable to explicitly tell <code>read.table</code> the structure of the data. <code>read.csv</code> function provides a convenient shortcut for loading in CSV files.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Here is the read.csv version of the above command</span>
-gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(
-  <span class="dt">file=</span><span class="st">&quot;data/gapminder-FiveYearData.csv&quot;</span>
-)
-<span class="kw">head</span>(gapminder)</code></pre></div>
-<pre class="output"><code>      country year      pop continent lifeExp gdpPercap
-1 Afghanistan 1952  8425333      Asia  28.801  779.4453
-2 Afghanistan 1957  9240934      Asia  30.332  820.8530
-3 Afghanistan 1962 10267083      Asia  31.997  853.1007
-4 Afghanistan 1967 11537966      Asia  34.020  836.1971
-5 Afghanistan 1972 13079460      Asia  36.088  739.9811
-6 Afghanistan 1977 14880372      Asia  38.438  786.1134
-</code></pre>
+<p>So far, you’ve seen the basics of manipulating data.frames with our cat data; now, let’s use those skills to digest a more realistic dataset. Lets read in the gapminder dataset that we downloaded previously:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/gapminder-FiveYearData.csv&quot;</span>)</code></pre></div>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2 id="miscellaneous-tips"><span class="glyphicon glyphicon-pushpin"></span>Miscellaneous Tips</h2>
@@ -323,41 +155,54 @@ gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(
 </ol>
 </div>
 </aside>
-<p>To make sure our analysis is reproducible, we should put the code into a script file so we can come back to it later.</p>
-<section class="challenge panel panel-success">
-<div class="panel-heading">
-<h2 id="challenge-3"><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h2>
-</div>
-<div class="panel-body">
-<p>Go to file -&gt; new file -&gt; R script, and write an R script to load in the gapminder dataset. Put it in the <code>scripts/</code> directory and add it to version control.</p>
-<p>Run the script using the <code>source</code> function, using the file path as its argument (or by pressing the “source” button in RStudio).</p>
-</div>
-</section>
-<h2 id="using-data-frames-the-gapminder-dataset">Using data frames: the <code>gapminder</code> dataset</h2>
-<p>To recap what we’ve just learned, let’s have a look at our example data (life expectancy in various countries for various years).</p>
-<p>Remember, there are a few functions we can use to interrogate data structures in R:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>() <span class="co"># what is the data structure?</span>
-<span class="kw">typeof</span>() <span class="co"># what is its atomic type?</span>
-<span class="kw">length</span>() <span class="co"># how long is it? What about two dimensional objects?</span>
-<span class="kw">attributes</span>() <span class="co"># does it have any metadata?</span>
-<span class="kw">str</span>() <span class="co"># A full summary of the entire object</span>
-<span class="kw">dim</span>() <span class="co"># Dimensions of the object - also try nrow(), ncol()</span></code></pre></div>
-<p>Let’s use them to explore the gapminder dataset.</p>
+<p>Let’s investigate gapminder a bit; the first thing we should always do is check out what the data looks like with <code>str</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gapminder)</code></pre></div>
+<pre class="output"><code>&#39;data.frame&#39;:   1704 obs. of  6 variables:
+ $ country  : Factor w/ 142 levels &quot;Afghanistan&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+ $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...
+ $ continent: Factor w/ 5 levels &quot;Africa&quot;,&quot;Americas&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
+ $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
+ $ gdpPercap: num  779 821 853 836 740 ...
+</code></pre>
+<p>We can also examine individual columns of the data.frame with our <code>typeof</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(gapminder$year)</code></pre></div>
+<pre class="output"><code>[1] &quot;integer&quot;
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(gapminder$lifeExp)</code></pre></div>
+<pre class="output"><code>[1] &quot;double&quot;
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(gapminder$country)</code></pre></div>
+<pre class="output"><code>[1] &quot;integer&quot;
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gapminder$country)</code></pre></div>
+<pre class="output"><code> Factor w/ 142 levels &quot;Afghanistan&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+</code></pre>
+<p>We can also interrogate the data.frame for information about its dimensions; remembering that <code>str(gapminder)</code> said there were 1704 observations of 6 variables in gapminder, what do you think the following will produce, and why?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(gapminder)</code></pre></div>
+<pre class="output"><code>[1] 6
+</code></pre>
+<p>A fair guess would have been to say that the length of a data.frame would be the number of rows it has (1704), but this is not the case; remember, a data.frame is a <em>list of vectors and factors</em>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(gapminder)</code></pre></div>
 <pre class="output"><code>[1] &quot;list&quot;
 </code></pre>
-<p>Remember, data frames are lists ‘under the hood’.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(gapminder)</code></pre></div>
-<pre class="output"><code>[1] &quot;data.frame&quot;
+<p>When <code>length</code> gave us 6, it’s because gapminder is built out of a list of 6 columns. To get the number of rows and columns in our dataset, try:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(gapminder)</code></pre></div>
+<pre class="output"><code>[1] 1704
 </code></pre>
-<p>The gapminder data is stored in a “data.frame”. This is the default data structure when you read in data, and (as we’ve heard) is useful for storing data with mixed types of columns.</p>
-<p>Let’s look at some of the columns.</p>
-<section class="challenge panel panel-success">
-<div class="panel-heading">
-<h2 id="challenge-4-data-types-in-a-real-dataset"><span class="glyphicon glyphicon-pencil"></span>Challenge 4: Data types in a real dataset</h2>
-</div>
-<div class="panel-body">
-<p>Look at the first 6 rows of the gapminder data frame we loaded before:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ncol</span>(gapminder)</code></pre></div>
+<pre class="output"><code>[1] 6
+</code></pre>
+<p>Or, both at once:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(gapminder)</code></pre></div>
+<pre class="output"><code>[1] 1704    6
+</code></pre>
+<p>We’ll also likely want to know what the titles of all the columns are, so we can ask for them later:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">colnames</span>(gapminder)</code></pre></div>
+<pre class="output"><code>[1] &quot;country&quot;   &quot;year&quot;      &quot;pop&quot;       &quot;continent&quot; &quot;lifeExp&quot;   &quot;gdpPercap&quot;
+</code></pre>
+<p>At this stage, it’s important to ask ourselves if the structure R is reporting matches our intuition or expectations; do the basic data types reported for each column make sense? If not, we need to sort any problems out now before they turn into bad surprises down the road, using what we’ve learned about how R interprets data, and the importance of <em>strict consistency</em> in how we record our data.</p>
+<p>Once we’re happy that the data types and structures seem reasonable, it’s time to start digging into our data proper. Check out the first few lines:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gapminder)</code></pre></div>
 <pre class="output"><code>      country year      pop continent lifeExp gdpPercap
 1 Afghanistan 1952  8425333      Asia  28.801  779.4453
@@ -367,214 +212,42 @@ gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(
 5 Afghanistan 1972 13079460      Asia  36.088  739.9811
 6 Afghanistan 1977 14880372      Asia  38.438  786.1134
 </code></pre>
-<p>Write down what data type you think is in each column</p>
-</div>
-</section>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(gapminder$year)</code></pre></div>
-<pre class="output"><code>[1] &quot;integer&quot;
-</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(gapminder$lifeExp)</code></pre></div>
-<pre class="output"><code>[1] &quot;double&quot;
-</code></pre>
-<p>Can anyone guess what we should expect the type of the continent column to be?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(gapminder$continent)</code></pre></div>
-<pre class="output"><code>[1] &quot;integer&quot;
-</code></pre>
-<p>If you were expecting a the answer to be “character”, you would rightly be surprised by the answer. Let’s take a look at the class of this column:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(gapminder$continent)</code></pre></div>
-<pre class="output"><code>[1] &quot;factor&quot;
-</code></pre>
-<p>One of the default behaviours of R is to treat any text columns as “factors” when reading in data. The reason for this is that text columns often represent categorical data, which need to be factors to be handled appropriately by the statistical modeling functions in R.</p>
-<p>However it’s not obvious behaviour, and something that trips many people up. We can disable this behaviour and read in the data again.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)
-gapminder &lt;-<span class="st"> </span><span class="kw">read.table</span>(
-  <span class="dt">file=</span><span class="st">&quot;data/gapminder-FiveYearData.csv&quot;</span>, <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>
-)</code></pre></div>
-<p>Remember, if you do turn it off automatic conversion to factors you will need to explicitly convert the variables into factors when running statistical models. This can be useful, because it forces you to think about the question you’re asking, and makes it easier to specify the ordering of the categories.</p>
-<p>However there are many in the R community who find it more sensible to leave this as the default behaviour.</p>
-<aside class="callout panel panel-info">
-<div class="panel-heading">
-<h2 id="tip-changing-options"><span class="glyphicon glyphicon-pushpin"></span>Tip: Changing options</h2>
-</div>
-<div class="panel-body">
-<p>When R starts, it runs any code in the file <code>.Rprofile</code> in the project directory. You can make permanent changes to default behaviour by storing the changes in that file. BE CAREFUL, however. If you change R’s default options, programs written by others may not run correctly in your environment and vice versa. For this reason, some argue that most such changes should be in your scripts, where they are visible.</p>
-</div>
-</aside>
-<p>The first thing you should do when reading data in, is check that it matches what you expect, even if the command ran without warnings or errors. The <code>str</code> function, short for “structure”, is really useful for this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gapminder)</code></pre></div>
-<pre class="output"><code>&#39;data.frame&#39;:   1704 obs. of  6 variables:
- $ country  : chr  &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; ...
- $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
- $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...
- $ continent: chr  &quot;Asia&quot; &quot;Asia&quot; &quot;Asia&quot; &quot;Asia&quot; ...
- $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
- $ gdpPercap: num  779 821 853 836 740 ...
-</code></pre>
-<p>We can see that the object is a <code>data.frame</code> with 1,704 observations (rows), and 6 variables (columns). Below that, we see the name of each column, followed by a “:”, followed by the type of variable in that column, along with the first few entries.</p>
-<p>As discussed above, we can retrieve or modify the column or row names of the data.frame:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">colnames</span>(gapminder)  </code></pre></div>
-<pre class="output"><code>[1] &quot;country&quot;   &quot;year&quot;      &quot;pop&quot;       &quot;continent&quot; &quot;lifeExp&quot;   &quot;gdpPercap&quot;
-</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">copy &lt;-<span class="st"> </span>gapminder
-<span class="kw">colnames</span>(copy) &lt;-<span class="st"> </span>letters[<span class="dv">1</span>:<span class="dv">6</span>]
-<span class="kw">head</span>(copy, <span class="dt">n=</span><span class="dv">3</span>)</code></pre></div>
-<pre class="output"><code>            a    b        c    d      e        f
-1 Afghanistan 1952  8425333 Asia 28.801 779.4453
-2 Afghanistan 1957  9240934 Asia 30.332 820.8530
-3 Afghanistan 1962 10267083 Asia 31.997 853.1007
-</code></pre>
+<p>To make sure our analysis is reproducible, we should put the code into a script file so we can come back to it later.</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="challenge-5"><span class="glyphicon glyphicon-pencil"></span>Challenge 5</h2>
+<h2 id="challenge-2"><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h2>
 </div>
 <div class="panel-body">
-<p>Recall that we also used the <code>names</code> function (above) to modify column names. Does it matter which you use? You can check help with <code>?names</code> and <code>?colnames</code> to see whether it should matter.</p>
-</div>
-</section>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rownames</span>(gapminder)[<span class="dv">1</span>:<span class="dv">20</span>]</code></pre></div>
-<pre class="output"><code> [1] &quot;1&quot;  &quot;2&quot;  &quot;3&quot;  &quot;4&quot;  &quot;5&quot;  &quot;6&quot;  &quot;7&quot;  &quot;8&quot;  &quot;9&quot;  &quot;10&quot; &quot;11&quot; &quot;12&quot; &quot;13&quot; &quot;14&quot;
-[15] &quot;15&quot; &quot;16&quot; &quot;17&quot; &quot;18&quot; &quot;19&quot; &quot;20&quot;
-</code></pre>
-<p>See those numbers in the square brackets on the left? That tells you the number of the first entry in that row of output. So we see that for the 5th row, the rowname is “5”. In this case, the rownames are simply the row numbers.</p>
-<p>There are a few related ways of retrieving and modifying this information. <code>attributes</code> will give you both the row and column names, along with the class information, while <code>dimnames</code> will give you just the rownames and column names.</p>
-<p>In both cases, the output object is stored in a <code>list</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(<span class="kw">dimnames</span>(gapminder))</code></pre></div>
-<pre class="output"><code>List of 2
- $ : chr [1:1704] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
- $ : chr [1:6] &quot;country&quot; &quot;year&quot; &quot;pop&quot; &quot;continent&quot; ...
-</code></pre>
-<h2 id="understanding-how-lists-are-used-in-function-output">Understanding how lists are used in function output</h2>
-<p>Lets run a basic linear regression on the gapminder dataset:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># What is the relationship between life expectancy and year?</span>
-reg &lt;-<span class="st"> </span><span class="kw">lm</span>(lifeExp ~<span class="st"> </span>year, <span class="dt">data=</span>gapminder)</code></pre></div>
-<p>We won’t go into too much detail, but briefly:</p>
-<ul>
-<li><code>lm</code> estimates linear statistical models</li>
-<li>The first argument is a formula, with <code>a ~ b</code> meaning that <code>a</code>, the dependent (or response) variable, is a function of <code>b</code>, the independent variable.</li>
-<li>We tell <code>lm</code> to use the gapminder data frame, so it knows where to find the variables <code>lifeExp</code> and <code>year</code>.</li>
-</ul>
-<p>Let’s look at the output:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">reg</code></pre></div>
-<pre class="output"><code>
-Call:
-lm(formula = lifeExp ~ year, data = gapminder)
-
-Coefficients:
-(Intercept)         year  
-  -585.6522       0.3259  
-</code></pre>
-<p>Not much there right? But if we look at the structure…</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(reg)</code></pre></div>
-<pre class="output"><code>List of 12
- $ coefficients : Named num [1:2] -585.652 0.326
-  ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;(Intercept)&quot; &quot;year&quot;
- $ residuals    : Named num [1:1704] -21.7 -21.8 -21.8 -21.4 -20.9 ...
-  ..- attr(*, &quot;names&quot;)= chr [1:1704] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
- $ effects      : Named num [1:1704] -2455.1 232.2 -20.8 -20.5 -20.2 ...
-  ..- attr(*, &quot;names&quot;)= chr [1:1704] &quot;(Intercept)&quot; &quot;year&quot; &quot;&quot; &quot;&quot; ...
- $ rank         : int 2
- $ fitted.values: Named num [1:1704] 50.5 52.1 53.8 55.4 57 ...
-  ..- attr(*, &quot;names&quot;)= chr [1:1704] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
- $ assign       : int [1:2] 0 1
- $ qr           :List of 5
-  ..$ qr   : num [1:1704, 1:2] -41.2795 0.0242 0.0242 0.0242 0.0242 ...
-  .. ..- attr(*, &quot;dimnames&quot;)=List of 2
-  .. .. ..$ : chr [1:1704] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
-  .. .. ..$ : chr [1:2] &quot;(Intercept)&quot; &quot;year&quot;
-  .. ..- attr(*, &quot;assign&quot;)= int [1:2] 0 1
-  ..$ qraux: num [1:2] 1.02 1.03
-  ..$ pivot: int [1:2] 1 2
-  ..$ tol  : num 1e-07
-  ..$ rank : int 2
-  ..- attr(*, &quot;class&quot;)= chr &quot;qr&quot;
- $ df.residual  : int 1702
- $ xlevels      : Named list()
- $ call         : language lm(formula = lifeExp ~ year, data = gapminder)
- $ terms        :Classes &#39;terms&#39;, &#39;formula&#39; length 3 lifeExp ~ year
-  .. ..- attr(*, &quot;variables&quot;)= language list(lifeExp, year)
-  .. ..- attr(*, &quot;factors&quot;)= int [1:2, 1] 0 1
-  .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2
-  .. .. .. ..$ : chr [1:2] &quot;lifeExp&quot; &quot;year&quot;
-  .. .. .. ..$ : chr &quot;year&quot;
-  .. ..- attr(*, &quot;term.labels&quot;)= chr &quot;year&quot;
-  .. ..- attr(*, &quot;order&quot;)= int 1
-  .. ..- attr(*, &quot;intercept&quot;)= int 1
-  .. ..- attr(*, &quot;response&quot;)= int 1
-  .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_GlobalEnv&gt; 
-  .. ..- attr(*, &quot;predvars&quot;)= language list(lifeExp, year)
-  .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:2] &quot;numeric&quot; &quot;numeric&quot;
-  .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;lifeExp&quot; &quot;year&quot;
- $ model        :&#39;data.frame&#39;:  1704 obs. of  2 variables:
-  ..$ lifeExp: num [1:1704] 28.8 30.3 32 34 36.1 ...
-  ..$ year   : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
-  ..- attr(*, &quot;terms&quot;)=Classes &#39;terms&#39;, &#39;formula&#39; length 3 lifeExp ~ year
-  .. .. ..- attr(*, &quot;variables&quot;)= language list(lifeExp, year)
-  .. .. ..- attr(*, &quot;factors&quot;)= int [1:2, 1] 0 1
-  .. .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2
-  .. .. .. .. ..$ : chr [1:2] &quot;lifeExp&quot; &quot;year&quot;
-  .. .. .. .. ..$ : chr &quot;year&quot;
-  .. .. ..- attr(*, &quot;term.labels&quot;)= chr &quot;year&quot;
-  .. .. ..- attr(*, &quot;order&quot;)= int 1
-  .. .. ..- attr(*, &quot;intercept&quot;)= int 1
-  .. .. ..- attr(*, &quot;response&quot;)= int 1
-  .. .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_GlobalEnv&gt; 
-  .. .. ..- attr(*, &quot;predvars&quot;)= language list(lifeExp, year)
-  .. .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:2] &quot;numeric&quot; &quot;numeric&quot;
-  .. .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;lifeExp&quot; &quot;year&quot;
- - attr(*, &quot;class&quot;)= chr &quot;lm&quot;
-</code></pre>
-<p>There’s a great deal stored in nested lists! The structure function allows you to see all the data available, in this case, the data that was returned by the <code>lm</code> function.</p>
-<p>For now, we can look at the <code>summary</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(reg)</code></pre></div>
-<pre class="output"><code>
-Call:
-lm(formula = lifeExp ~ year, data = gapminder)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--39.949  -9.651   1.697  10.335  22.158 
-
-Coefficients:
-              Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) -585.65219   32.31396  -18.12   &lt;2e-16 ***
-year           0.32590    0.01632   19.96   &lt;2e-16 ***
----
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-
-Residual standard error: 11.63 on 1702 degrees of freedom
-Multiple R-squared:  0.1898,    Adjusted R-squared:  0.1893 
-F-statistic: 398.6 on 1 and 1702 DF,  p-value: &lt; 2.2e-16
-</code></pre>
-<p>As you might expect, life expectancy has slowly been increasing over time, so we see a significant positive association!</p>
-<h2 id="challenge-solutions">Challenge Solutions</h2>
-<section class="challenge panel panel-success">
-<div class="panel-heading">
-<h2 id="solution-to-challenge-2"><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 2</h2>
-</div>
-<div class="panel-body">
-<p>Create a data frame that holds the following information for yourself:</p>
-<ul>
-<li>First name</li>
-<li>Last name</li>
-<li>Age</li>
-</ul>
-<p>Then use rbind to add the same information for the people sitting near you.</p>
-<p>Now use cbind to add a column of logicals answering the question, “Is there anything in this workshop you’re finding confusing?”</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">first_name =</span> <span class="st">&quot;Software&quot;</span>, <span class="dt">last_name =</span> <span class="st">&quot;Carpentry&quot;</span>, <span class="dt">age =</span> <span class="dv">17</span>)
-my_df &lt;-<span class="st"> </span><span class="kw">rbind</span>(my_df, <span class="kw">list</span>(<span class="st">&quot;Jane&quot;</span>, <span class="st">&quot;Smith&quot;</span>, <span class="dv">29</span>))
-my_df &lt;-<span class="st"> </span><span class="kw">rbind</span>(my_df, <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;Jo&quot;</span>, <span class="st">&quot;John&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;White&quot;</span>, <span class="st">&quot;Lee&quot;</span>), <span class="kw">c</span>(<span class="dv">23</span>, <span class="dv">41</span>)))
-my_df &lt;-<span class="st"> </span><span class="kw">cbind</span>(my_df, <span class="dt">confused =</span> <span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>))</code></pre></div>
+<p>Go to file -&gt; new file -&gt; R script, and write an R script to load in the gapminder dataset. Put it in the <code>scripts/</code> directory and add it to version control.</p>
+<p>Run the script using the <code>source</code> function, using the file path as its argument (or by pressing the “source” button in RStudio).</p>
 </div>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="solution-to-challenge-5"><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 5</h2>
+<h2 id="challenge-3"><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h2>
 </div>
 <div class="panel-body">
-<p><code>?colnames</code> tells you that the <code>colnames</code> function is the same as <code>names</code> for a data frame. For other structures, they may not be the same. In particular, <code>names</code> does not work for matrices, but <code>colnames</code> does. You can verify this with</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">9</span>, <span class="dt">nrow=</span><span class="dv">3</span>)
-<span class="kw">colnames</span>(m) &lt;-<span class="st"> </span>letters[<span class="dv">1</span>:<span class="dv">3</span>] <span class="co"># works as you would expect</span>
-<span class="kw">names</span>(m) &lt;-<span class="st"> </span>letters[<span class="dv">1</span>:<span class="dv">3</span>]  <span class="co"># destroys the matrix</span></code></pre></div>
+<p>Read the output of <code>str(gapminder)</code> again; this time, use what you’ve learned about factors, lists and vectors, as well as the output of functions like <code>colnames</code> and <code>dim</code> to explain what everything that <code>str</code> prints out for gapminder means. If there are any parts you can’t interpret, discuss with your neighbors!</p>
+</div>
+</section>
+<h2 id="challenge-solutions">Challenge solutions</h2>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="discussion-1-1"><span class="glyphicon glyphicon-pencil"></span>Discussion 1</h2>
+</div>
+<div class="panel-body">
+<p>Note the difference between row indices, and default row names; even though there’s no more row named ‘4’, cats[4,] is still well-defined (and pointing at the row named ‘5’).</p>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="solution-to-challenge-1"><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 1</h2>
+</div>
+<div class="panel-body">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">first =</span> <span class="kw">c</span>(<span class="st">&#39;Grace&#39;</span>), <span class="dt">last =</span> <span class="kw">c</span>(<span class="st">&#39;Hopper&#39;</span>), <span class="dt">lucky_number =</span> <span class="kw">c</span>(<span class="dv">0</span>), <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)
+df &lt;-<span class="st"> </span><span class="kw">rbind</span>(df, <span class="kw">list</span>(<span class="st">&#39;Marie&#39;</span>, <span class="st">&#39;Curie&#39;</span>, <span class="dv">238</span>) )
+df &lt;-<span class="st"> </span><span class="kw">cbind</span>(df, <span class="kw">c</span>(<span class="ot">TRUE</span>,<span class="ot">TRUE</span>))
+<span class="kw">names</span>(df)[<span class="dv">4</span>] &lt;-<span class="st"> &#39;coffeetime&#39;</span></code></pre></div>
 </div>
 </section>
         </div>
@@ -590,5 +263,6 @@ my_df &lt;-<span class="st"> </span><span class="kw">cbind</span>(my_df, <span c
     <!-- Javascript placed at the end of the document so the pages load faster -->
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
   </body>
 </html>

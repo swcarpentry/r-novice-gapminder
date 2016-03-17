@@ -52,8 +52,8 @@
 <p>When you first open RStudio, you will be greeted by three panels:</p>
 <ul>
 <li>The interactive R console (entire left)</li>
-<li>Workspace/History (tabbed in upper right)</li>
-<li>Files/Plots/Packages/Help (tabbed in lower right)</li>
+<li>Environment/History (tabbed in upper right)</li>
+<li>Files/Plots/Packages/Help/Viewer (tabbed in lower right)</li>
 </ul>
 <p>Once you open files, such as R scripts, an editor panel will also open in the top left.</p>
 <h2 id="work-flow-within-rstudio">Work flow within RStudio</h2>
@@ -270,7 +270,7 @@
     }
     else all.names
 }
-&lt;bytecode: 0x7f851b927f40&gt;
+&lt;bytecode: 0x7f877b2fbd50&gt;
 &lt;environment: namespace:base&gt;
 </code></pre>
 <p>You can use <code>rm</code> to delete objects you no longer need:</p>
@@ -306,6 +306,22 @@
 <h2 id="challenge-1"><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h2>
 </div>
 <div class="panel-body">
+<p>Which of the following are valid R variable names?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">min_height
+max.height
+_age
+.mass
+MaxLength
+min-length
+2widths
+celsius2kelvin</code></pre></div>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="challenge-2"><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h2>
+</div>
+<div class="panel-body">
 <p>What will be the value of each variable after each statement in the following program?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mass &lt;-<span class="st"> </span><span class="fl">47.5</span>
 age &lt;-<span class="st"> </span><span class="dv">122</span>
@@ -315,7 +331,7 @@ age &lt;-<span class="st"> </span>age -<span class="st"> </span><span class="dv"
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="challenge-2"><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h2>
+<h2 id="challenge-3"><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h2>
 </div>
 <div class="panel-body">
 <p>Run the code from the previous challenge, and write a command to compare mass to age. Is mass larger than age?</p>
@@ -323,7 +339,7 @@ age &lt;-<span class="st"> </span>age -<span class="st"> </span><span class="dv"
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="challenge-3"><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h2>
+<h2 id="challenge-4"><span class="glyphicon glyphicon-pencil"></span>Challenge 4</h2>
 </div>
 <div class="panel-body">
 <p>Clean up your working environment by deleting the mass and age variables.</p>
@@ -331,7 +347,7 @@ age &lt;-<span class="st"> </span>age -<span class="st"> </span><span class="dv"
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="challenge-4"><span class="glyphicon glyphicon-pencil"></span>Challenge 4</h2>
+<h2 id="challenge-5"><span class="glyphicon glyphicon-pencil"></span>Challenge 5</h2>
 </div>
 <div class="panel-body">
 <p>Install the following packages: <code>ggplot2</code>, <code>plyr</code>, <code>gapminder</code></p>
@@ -350,5 +366,6 @@ age &lt;-<span class="st"> </span>age -<span class="st"> </span><span class="dv"
     <!-- Javascript placed at the end of the document so the pages load faster -->
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
   </body>
 </html>

@@ -51,41 +51,41 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">5.4</span>, <span class="fl">6.2</span>, <span class="fl">7.1</span>, <span class="fl">4.8</span>, <span class="fl">7.5</span>)
 <span class="kw">names</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>)
 x</code></pre></div>
-<pre class="output"><code>  a   b   c   d   e 
-5.4 6.2 7.1 4.8 7.5 
+<pre class="output"><code>  a   b   c   d   e
+5.4 6.2 7.1 4.8 7.5
 </code></pre>
 <p>So now that we’ve created a dummy vector to play with, how do we get at its contents?</p>
 <h2 id="accessing-elements-using-their-indices">Accessing elements using their indices</h2>
 <p>To extract elements of a vector we can give their corresponding index, starting from one:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[<span class="dv">1</span>]</code></pre></div>
-<pre class="output"><code>  a 
-5.4 
+<pre class="output"><code>  a
+5.4
 </code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[<span class="dv">4</span>]</code></pre></div>
-<pre class="output"><code>  d 
-4.8 
+<pre class="output"><code>  d
+4.8
 </code></pre>
 <p>The square brackets operator is just like any other function. For atomic vectors (and matrices), it means “get me the nth element”.</p>
 <p>We can ask for multiple elements at once:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</code></pre></div>
-<pre class="output"><code>  a   c 
-5.4 7.1 
+<pre class="output"><code>  a   c
+5.4 7.1
 </code></pre>
 <p>Or slices of the vector:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[<span class="dv">1</span>:<span class="dv">4</span>]</code></pre></div>
-<pre class="output"><code>  a   b   c   d 
-5.4 6.2 7.1 4.8 
+<pre class="output"><code>  a   b   c   d
+5.4 6.2 7.1 4.8
 </code></pre>
 <p>the <code>:</code> operator just creates a sequence of numbers from the left element to the right. I.e. <code>x[1:4]</code> is equivalent to <code>x[c(1,2,3,4)]</code>.</p>
 <p>We can ask for the same element multiple times:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>)]</code></pre></div>
-<pre class="output"><code>  a   a   c 
-5.4 5.4 7.1 
+<pre class="output"><code>  a   a   c
+5.4 5.4 7.1
 </code></pre>
 <p>If we ask for a number outside of the vector, R will return missing values:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[<span class="dv">6</span>]</code></pre></div>
-<pre class="output"><code>&lt;NA&gt; 
-  NA 
+<pre class="output"><code>&lt;NA&gt;
+  NA
 </code></pre>
 <p>This is a vector of length one containing an <code>NA</code>, whose name is also <code>NA</code>.</p>
 <p>If we ask for the 0th element, we get an empty vector:</p>
@@ -103,13 +103,13 @@ x</code></pre></div>
 <h2 id="skipping-and-removing-elements">Skipping and removing elements</h2>
 <p>If we use a negative number as the index of a vector, R will return every element <em>except</em> for the one specified:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[-<span class="dv">2</span>]</code></pre></div>
-<pre class="output"><code>  a   c   d   e 
-5.4 7.1 4.8 7.5 
+<pre class="output"><code>  a   c   d   e
+5.4 7.1 4.8 7.5
 </code></pre>
 <p>We can skip multiple elements:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[<span class="kw">c</span>(-<span class="dv">1</span>, -<span class="dv">5</span>)]  <span class="co"># or x[-c(1,5)]</span></code></pre></div>
-<pre class="output"><code>  b   c   d 
-6.2 7.1 4.8 
+<pre class="output"><code>  b   c   d
+6.2 7.1 4.8
 </code></pre>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
@@ -124,16 +124,16 @@ x</code></pre></div>
 <p>But remember the order of operations. <code>:</code> is really a function, so what happens is it takes its first argument as -1, and second as 3, so generates the sequence of numbers: <code>c(-1, 0, 1, 2, 3)</code>.</p>
 <p>The correct solution is to wrap that function call in brackets, so that the <code>-</code> operator applies to the results:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[-(<span class="dv">1</span>:<span class="dv">3</span>)]</code></pre></div>
-<pre class="output"><code>  d   e 
-4.8 7.5 
+<pre class="output"><code>  d   e
+4.8 7.5
 </code></pre>
 </div>
 </aside>
 <p>To remove elements from a vector, we need to assign the results back into the variable:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>x[-<span class="dv">4</span>]
 x</code></pre></div>
-<pre class="output"><code>  a   b   c   e 
-5.4 6.2 7.1 7.5 
+<pre class="output"><code>  a   b   c   e
+5.4 6.2 7.1 7.5
 </code></pre>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
@@ -144,14 +144,14 @@ x</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">5.4</span>, <span class="fl">6.2</span>, <span class="fl">7.1</span>, <span class="fl">4.8</span>, <span class="fl">7.5</span>)
 <span class="kw">names</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>)
 <span class="kw">print</span>(x)</code></pre></div>
-<pre class="output"><code>  a   b   c   d   e 
-5.4 6.2 7.1 4.8 7.5 
+<pre class="output"><code>  a   b   c   d   e
+5.4 6.2 7.1 4.8 7.5
 </code></pre>
 <ol style="list-style-type: decimal">
 <li>Come up with at least 3 different commands that will produce the following output:</li>
 </ol>
-<pre class="output"><code>  b   c   d 
-6.2 7.1 4.8 
+<pre class="output"><code>  b   c   d
+6.2 7.1 4.8
 </code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Compare notes with your neighbour. Did you have different strategies?</li>
@@ -161,15 +161,15 @@ x</code></pre></div>
 <h2 id="subsetting-by-name">Subsetting by name</h2>
 <p>We can extract elements by using their name, instead of index:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>)]</code></pre></div>
-<pre class="output"><code>  a   c 
-5.4 7.1 
+<pre class="output"><code>  a   c
+5.4 7.1
 </code></pre>
 <p>This is usually a much more reliable way to subset objects: the position of various elements can often change when chaining together subsetting operations, but the names will always remain the same!</p>
 <p>Unfortunately we can’t skip or remove elements so easily.</p>
 <p>To skip (or remove) a single named element:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[-<span class="kw">which</span>(<span class="kw">names</span>(x) ==<span class="st"> &quot;a&quot;</span>)]</code></pre></div>
-<pre class="output"><code>  b   c   d   e 
-6.2 7.1 4.8 7.5 
+<pre class="output"><code>  b   c   d   e
+6.2 7.1 4.8 7.5
 </code></pre>
 <p>The <code>which</code> function returns the indices of all <code>TRUE</code> elements of its argument. Remember that expressions evaluate before being passed to functions. Let’s break this down so that its clearer what’s happening.</p>
 <p>First this happens:</p>
@@ -184,8 +184,8 @@ x</code></pre></div>
 <p>Only the first element is <code>TRUE</code>, so <code>which</code> returns 1. Now that we have indices the skipping works because we have a negative index!</p>
 <p>Skipping multiple named indices is similar, but uses a different comparison operator:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[-<span class="kw">which</span>(<span class="kw">names</span>(x) %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>))]</code></pre></div>
-<pre class="output"><code>  b   d   e 
-6.2 4.8 7.5 
+<pre class="output"><code>  b   d   e
+6.2 4.8 7.5
 </code></pre>
 <p>The <code>%in%</code> goes through each element of its left argument, in this case the names of <code>x</code>, and asks, “Does this element occur in the second argument?”.</p>
 <aside class="callout panel panel-info">
@@ -203,16 +203,16 @@ x</code></pre></div>
 </code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;a&#39;</span>, <span class="st">&#39;a&#39;</span>)  
 x</code></pre></div>
-<pre class="output"><code>a a a 
-1 2 3 
+<pre class="output"><code>a a a
+1 2 3
 </code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[<span class="st">&#39;a&#39;</span>]  <span class="co"># only returns first value</span></code></pre></div>
-<pre class="output"><code>a 
-1 
+<pre class="output"><code>a
+1
 </code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[<span class="kw">which</span>(<span class="kw">names</span>(x) ==<span class="st"> &#39;a&#39;</span>)]  <span class="co"># returns all three values</span></code></pre></div>
-<pre class="output"><code>a a a 
-1 2 3 
+<pre class="output"><code>a a a
+1 2 3
 </code></pre>
 </blockquote>
 <aside class="callout panel panel-info">
@@ -248,13 +248,13 @@ of shorter object length
 <h2 id="subsetting-through-other-logical-operations">Subsetting through other logical operations</h2>
 <p>We can also more simply subset through logical operations:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>)]</code></pre></div>
-<pre class="output"><code>a a 
-1 2 
+<pre class="output"><code>a a
+1 2
 </code></pre>
 <p>Note that in this case, the logical vector is also recycled to the length of the vector we’re subsetting!</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>)]</code></pre></div>
-<pre class="output"><code>a a 
-1 3 
+<pre class="output"><code>a a
+1 3
 </code></pre>
 <p>Since comparison operators evaluate to logical vectors, we can also use them to succinctly subset vectors:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[x &gt;<span class="st"> </span><span class="dv">7</span>]</code></pre></div>
@@ -283,8 +283,8 @@ of shorter object length
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">5.4</span>, <span class="fl">6.2</span>, <span class="fl">7.1</span>, <span class="fl">4.8</span>, <span class="fl">7.5</span>)
 <span class="kw">names</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>)
 <span class="kw">print</span>(x)</code></pre></div>
-<pre class="output"><code>  a   b   c   d   e 
-5.4 6.2 7.1 4.8 7.5 
+<pre class="output"><code>  a   b   c   d   e
+5.4 6.2 7.1 4.8 7.5
 </code></pre>
 <ol style="list-style-type: decimal">
 <li>Write a subsetting command to return the values in x that are greater than 4 and less than 7.</li>
@@ -536,6 +536,18 @@ $b
 </ol>
 </div>
 </section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="challenge-7"><span class="glyphicon glyphicon-pencil"></span>Challenge 7</h2>
+</div>
+<div class="panel-body">
+<p>How many countries in Asia had a population in either 2002 or 2007 above 20 million? Tip: Use subsetting to maintain the relevant data and then use the function <code>unique()</code> to remove duplicate countries.</p>
+<p>A. 19</p>
+<p>B. 20</p>
+<p>C. 21</p>
+<p>D. 22</p>
+</div>
+</section>
 <h2 id="challenge-solutions">Challenge solutions</h2>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
@@ -546,16 +558,16 @@ $b
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">5.4</span>, <span class="fl">6.2</span>, <span class="fl">7.1</span>, <span class="fl">4.8</span>, <span class="fl">7.5</span>)
 <span class="kw">names</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span>)
 <span class="kw">print</span>(x)</code></pre></div>
-<pre class="output"><code>  a   b   c   d   e 
-5.4 6.2 7.1 4.8 7.5 
+<pre class="output"><code>  a   b   c   d   e
+5.4 6.2 7.1 4.8 7.5
 </code></pre>
 <ol style="list-style-type: decimal">
 <li>Come up with at least 3 different commands that will produce the following output:</li>
 </ol>
-<pre class="output"><code>  b   c   d 
-6.2 7.1 4.8 
+<pre class="output"><code>  b   c   d
+6.2 7.1 4.8
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[<span class="dv">2</span>:<span class="dv">4</span>] 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[<span class="dv">2</span>:<span class="dv">4</span>]
 x[-<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>)]
 x[<span class="kw">c</span>(<span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>)]
 x[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]</code></pre></div>
@@ -658,6 +670,20 @@ gapminder[gapminder$year %in%<span class="st"> </span><span class="kw">c</span>(
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gapminder_small &lt;-<span class="st"> </span>gapminder[<span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">9</span>, <span class="dv">19</span>:<span class="dv">23</span>),]</code></pre></div>
 </div>
 </section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="solution-to-challenge-7"><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 7</h2>
+</div>
+<div class="panel-body">
+<p>How many countries in Asia had a population in either 2002 or 2007 above 20 million? Tip: Use subsetting to maintain the relevant data and then use the function <code>unique()</code> to remove duplicate countries.</p>
+<p>A. 19</p>
+<p>B. 20</p>
+<p>C. 21</p>
+<p>D. 22</p>
+<p>Answer: B</p>
+<p>The answer can be derived using the following statement <sub><del>{.r} length(unique( gapminder[ gapminder<span class="math inline">\(year == 2002 &amp;  gapminder\)</span>year == 2007 &amp; gapminder<span class="math inline">\(continent == &quot;Asia&quot; &amp;  gapminder\)</span>pop &gt; 2e7, ]$country ))</del></sub> Note on logical operators: In R, both &amp; and &amp;&amp; or | and || indicate a logical AND and OR respectively. The shorter form (&amp;), used here, performs element wise comparisons, while the longer form (&amp;&amp;) evaluates only the first element of each vector. For more information type <code>help(&quot;&amp;&quot;)</code>.</p>
+</div>
+</section>
         </div>
       </div>
       </article>
@@ -671,5 +697,6 @@ gapminder[gapminder$year %in%<span class="st"> </span><span class="kw">c</span>(
     <!-- Javascript placed at the end of the document so the pages load faster -->
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
   </body>
 </html>
