@@ -162,6 +162,15 @@ Now we have a good directory structure we will now place/save the data file in t
 >
 > We will load and inspect these data later.
 
+> ## Challenge 2 {.challenge}
+> It is useful to get some general idea about the dataset, directly from the
+> command line, before loading it into R. Understanding the dataset better
+> will come handy when making decisions on how to load it in R. Use command-line
+> shell to answer the following questions:
+> 1. What is the size of the file?
+> 2. How many rows of data does it contain?
+> 3. What are the data types of values stored in this file?
+
 ## Version Control
 
 We also set up our project to integrate with git, putting it under version control.
@@ -181,7 +190,7 @@ between files from different commits.
 > and directories.
 >
 
-> ## Challenge 2 {.challenge}
+> ## Challenge 3 {.challenge}
 >
 > 1. Create a directory within your project called `graphs`.
 > 2. Modify the `.gitignore` file to contain `graphs/`
