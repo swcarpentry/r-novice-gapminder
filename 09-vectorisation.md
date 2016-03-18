@@ -343,7 +343,7 @@ m * -1
 > ~~~
 >
 
-> ##  Challenge 4 {.challenge}
+> ## Solution to challenge 4 {.challenge}
 >
 > We're interested in looking at the sum of the
 > following sequence of fractions:
