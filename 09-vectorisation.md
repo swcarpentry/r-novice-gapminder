@@ -233,6 +233,30 @@ m * -1
 > This would be tedious to type out, and impossible for high values of
 > n.  Use vectorisation to compute x when n=100. What is the sum when
 > n=10,000?
+>
+
+> ## Challenge 5 {.challenge}
+>
+> The `outer` function can be used to apply a function onto two arrays, 
+> taking arguments as the two arrays and the function to be applied to these arrays. e.g:
+> 
+> ~~~{.r}
+> x <- c(1,2,3)
+> y <- c(2,4)
+> outer(x,y,"+")
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+>      [,1] [,2]
+> [1,]    3    5
+> [2,]    4    6
+> [3,]    5    7
+> ~~~
+>
+>  Use the `outer` function to display a multiplication table of 1 through 5
+>
 
 
 ## Challenge solutions
@@ -345,7 +369,7 @@ m * -1
 > ~~~
 >
 
-> ##  Challenge 4 {.challenge}
+> ## Solution to challenge 4 {.challenge}
 >
 > We're interested in looking at the sum of the
 > following sequence of fractions:
@@ -442,4 +466,37 @@ m * -1
 > 
 > ~~~
 >
+
+> ## Solution to challenge 5 {.challenge}
+>
+> The `outer` function can be used to apply a function onto two arrays, 
+> taking arguments as the two arrays and the function to be applied to these arrays. e.g:
+> 
+> ~~~{.r}
+> x <- c(1,2,3)
+> y <- c(2,4)
+> outer(x,y,"+")
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+>      [,1] [,2]
+> [1,]    3    5
+> [2,]    4    6
+> [3,]    5    7
+> ~~~
+>
+>  Use the `outer` function to display a multiplication table of 1 through 5.
+>
+> outer(1:5, 1:5,"*")
+>      [,1] [,2] [,3] [,4] [,5]
+> [1,]    1    2    3    4    5
+> [2,]    2    4    6    8   10
+> [3,]    3    6    9   12   15
+> [4,]    4    8   12   16   20
+> [5,]    5   10   15   20   25
+> 
+> note that the default function is multiply, hence `outer(1:5, 1:5,"*")` is the same as above.
+>  
 
