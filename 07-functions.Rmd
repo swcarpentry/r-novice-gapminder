@@ -290,7 +290,7 @@ which is much better than in our first attempt where we just got a vector of num
 >
 > ```{r}
 > best_practice <- c("Write", "programs", "for", "people", "not", "computers")
-> paste(best_practice, collapse=" ")
+> paste(best_practice, sep=" ")
 > ```
 >
 >  Write a function called `fence` that takes two vectors as arguments, called
@@ -300,8 +300,8 @@ which is much better than in our first attempt where we just got a vector of num
 > fence(text=best_practice, wrapper="***")
 > ```
 >
-> *Note:* the `paste` function has an argument called `sep`, which specifies the
-> separator between text. The default is a space: " ". The default for `paste0`
+> *Note:* the `paste` function has an argument called `collapse`, which is equivalent 
+> to use sep = "" (add strings without a separator). The default is a space: " ". The default for `paste0`
 > is no space "".
 >
 
