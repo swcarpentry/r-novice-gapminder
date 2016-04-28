@@ -492,3 +492,7 @@ Test out your GDP function by calculating the GDP for New Zealand in 1987.  How 
 > [1] "*** Write programs for people not computers ***"
 > 
 > ~~~
+## Solution to challenge 4 {.challenge}
+
+GDP for New Zealand in 1987: 63050008703
+GDP for New Zealand in 1952: 21058193787
