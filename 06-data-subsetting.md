@@ -35,8 +35,8 @@ x
 
 
 ~~~{.output}
-  a   b   c   d   e
-5.4 6.2 7.1 4.8 7.5
+  a   b   c   d   e 
+5.4 6.2 7.1 4.8 7.5 
 
 ~~~
 
@@ -56,8 +56,8 @@ x[1]
 
 
 ~~~{.output}
-  a
-5.4
+  a 
+5.4 
 
 ~~~
 
@@ -69,8 +69,8 @@ x[4]
 
 
 ~~~{.output}
-  d
-4.8
+  d 
+4.8 
 
 ~~~
 
@@ -87,8 +87,8 @@ x[c(1, 3)]
 
 
 ~~~{.output}
-  a   c
-5.4 7.1
+  a   c 
+5.4 7.1 
 
 ~~~
 
@@ -102,8 +102,8 @@ x[1:4]
 
 
 ~~~{.output}
-  a   b   c   d
-5.4 6.2 7.1 4.8
+  a   b   c   d 
+5.4 6.2 7.1 4.8 
 
 ~~~
 
@@ -120,8 +120,8 @@ x[c(1,1,3)]
 
 
 ~~~{.output}
-  a   a   c
-5.4 5.4 7.1
+  a   a   c 
+5.4 5.4 7.1 
 
 ~~~
 
@@ -135,8 +135,8 @@ x[6]
 
 
 ~~~{.output}
-<NA>
-  NA
+<NA> 
+  NA 
 
 ~~~
 
@@ -156,8 +156,8 @@ named numeric(0)
 
 ~~~
 
-> ##Vector numbering in R starts at 1 {.callout}
->
+> ##Vector numbering in R starts at 1 {.callout} 
+> 
 > In many programming languages (C and python, for example), the first
 > element of a vector has an index of 0. In R, the first element is 1.
 
@@ -174,8 +174,8 @@ x[-2]
 
 
 ~~~{.output}
-  a   c   d   e
-5.4 7.1 4.8 7.5
+  a   c   d   e 
+5.4 7.1 4.8 7.5 
 
 ~~~
 
@@ -190,8 +190,8 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 
 
 ~~~{.output}
-  b   c   d
-6.2 7.1 4.8
+  b   c   d 
+6.2 7.1 4.8 
 
 ~~~
 
@@ -201,16 +201,16 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 > slices of a vector. Most people first try to negate a
 > sequence like so:
 >
->
+> 
 > ~~~{.r}
 > x[-1:3]
 > ~~~
->
->
->
+> 
+> 
+> 
 > ~~~{.error}
 > Error in x[-1:3]: only 0's may be mixed with negative subscripts
->
+> 
 > ~~~
 >
 > This gives a somewhat cryptic error:
@@ -222,17 +222,17 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 > The correct solution is to wrap that function call in brackets, so
 > that the `-` operator applies to the results:
 >
->
+> 
 > ~~~{.r}
 > x[-(1:3)]
 > ~~~
->
->
->
+> 
+> 
+> 
 > ~~~{.output}
->   d   e
-> 4.8 7.5
->
+>   d   e 
+> 4.8 7.5 
+> 
 > ~~~
 >
 
@@ -248,8 +248,8 @@ x
 
 
 ~~~{.output}
-  a   b   c   e
-5.4 6.2 7.1 7.5
+  a   b   c   e 
+5.4 6.2 7.1 7.5 
 
 ~~~
 
@@ -257,28 +257,28 @@ x
 >
 > Given the following code:
 >
->
+> 
 > ~~~{.r}
 > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > print(x)
 > ~~~
->
->
->
+> 
+> 
+> 
 > ~~~{.output}
->   a   b   c   d   e
-> 5.4 6.2 7.1 4.8 7.5
->
+>   a   b   c   d   e 
+> 5.4 6.2 7.1 4.8 7.5 
+> 
 > ~~~
 >
 > 1. Come up with at least 3 different commands that will produce the following output:
 >
->
+> 
 > ~~~{.output}
->   b   c   d
-> 6.2 7.1 4.8
->
+>   b   c   d 
+> 6.2 7.1 4.8 
+> 
 > ~~~
 >
 > 2. Compare notes with your neighbour. Did you have different strategies?
@@ -296,8 +296,8 @@ x[c("a", "c")]
 
 
 ~~~{.output}
-  a   c
-5.4 7.1
+  a   c 
+5.4 7.1 
 
 ~~~
 
@@ -317,8 +317,8 @@ x[-which(names(x) == "a")]
 
 
 ~~~{.output}
-  b   c   d   e
-6.2 7.1 4.8 7.5
+  b   c   d   e 
+6.2 7.1 4.8 7.5 
 
 ~~~
 
@@ -373,13 +373,50 @@ x[-which(names(x) %in% c("a", "c"))]
 
 
 ~~~{.output}
-  b   d   e
-6.2 4.8 7.5
+  b   d   e 
+6.2 4.8 7.5 
 
 ~~~
 
 The `%in%` goes through each element of its left argument, in this case the
 names of `x`, and asks, "Does this element occur in the second argument?".
+
+> ## Challenge 2 {.challenge}
+>
+> Run the following code to define vector `x` as above:
+>
+> 
+> ~~~{.r}
+> x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
+> names(x) <- c('a', 'b', 'c', 'd', 'e')
+> print(x)
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+>   a   b   c   d   e 
+> 5.4 6.2 7.1 4.8 7.5 
+> 
+> ~~~
+>
+> Given this vector `x`, what would you expect the following to do?
+>
+>~~~{.r}
+> x[-which(names(x) == "g")]
+>~~~
+>
+> Try out this command and see what you get. Did this match your expectation?
+> Why did we get this result? (Tip: test out each part of the command on it's own like we just did above - this is a useful debugging strategy)
+>
+> Which of the following are true:
+>
+> * A) if there are no `TRUE` values passed to `which`, an empty vector is returned
+> * B) if there are no `TRUE` values passed to `which`, an error message is shown
+> * C) `integer()` is an empty vector
+> * D) making an empty vector negative produces an "everything" vector
+> * E) `x[]` gives the same result as `x[integer()]`
+>
 
 > ## Tip: Non-unique names {.callout}
 >
@@ -411,8 +448,8 @@ names of `x`, and asks, "Does this element occur in the second argument?".
 >
 >
 >~~~{.output}
->a a a
->1 2 3
+>a a a 
+>1 2 3 
 >
 >~~~
 >
@@ -425,8 +462,8 @@ names of `x`, and asks, "Does this element occur in the second argument?".
 >
 >
 >~~~{.output}
->a
->1
+>a 
+>1 
 >
 >~~~
 >
@@ -439,8 +476,8 @@ names of `x`, and asks, "Does this element occur in the second argument?".
 >
 >
 >~~~{.output}
->a a a
->1 2 3
+>a a a 
+>1 2 3 
 >
 >~~~
 
@@ -529,8 +566,8 @@ x[c(TRUE, TRUE, FALSE, FALSE)]
 
 
 ~~~{.output}
-a a
-1 2
+a a 
+1 2 
 
 ~~~
 
@@ -545,8 +582,8 @@ x[c(TRUE, FALSE)]
 
 
 ~~~{.output}
-a a
-1 3
+a a 
+1 3 
 
 ~~~
 
@@ -565,35 +602,55 @@ named integer(0)
 
 ~~~
 
-> ## Tip: Chaining logical operations {.callout}
+> ## Tip: Combining logical conditions {.callout}
 >
-> There are many situations in which you will wish to combine multiple conditions.
-> To do so several logical operations exist in R:
+> There are many situations in which you will wish to combine multiple logical
+> criteria. For example, we might want to find all the countries that are
+> located in Asia **or** Europe **and** have life expectancies within a certain
+> range. Several operations for combining logical vectors exist in R:
 >
->  * `|` logical OR: returns `TRUE`, if either the left or right are `TRUE`.
->  * `&` logical AND: returns `TRUE` if both the left and right are `TRUE`
->  * `!` logical NOT: converts `TRUE` to `FALSE` and `FALSE` to `TRUE`
->  * `&&` and `||` compare the individual elements of two vectors. Recycling rules
->    also apply here.
+>  * `&`, the "logical AND" operator: returns `TRUE` if both the left and right
+>    are `TRUE`.
+>  * `|`, the "logical OR" operator: returns `TRUE`, if either the left or right
+>    (or both) are `TRUE`.
 >
+> The recycling rule applies with both of these, so `TRUE & c(TRUE, FALSE, TRUE)`
+> will compare the first `TRUE` on the left of the `&` sign with each of the
+> three conditions on the right.
+>
+> You may sometimes see `&&` and `||` instead of `&` and `|`. These operators
+> do not use the recycling rule: they only look at the first element of each
+> vector and ignore the remaining elements. The longer operators are mainly used
+> in programming, rather than data analysis.
+>
+>  * `!`, the "logical NOT" operator: converts `TRUE` to `FALSE` and `FALSE` to
+>    `TRUE`. It can negate a single logical condition (eg `!TRUE` becomes
+>    `FALSE`), or a whole vector of conditions(eg `!c(TRUE, FALSE)` becomes
+>    `c(FALSE, TRUE)`).
+>
+> Additionally, you can compare the elements within a single vector using the
+> `all` function (which returns `TRUE` if every element of the vector is `TRUE`)
+> and the `any` function (which returns `TRUE` if one or more elements of the
+> vector are `TRUE`).
 
-> ## Challenge {.challenge}
+
+> ## Challenge 3 {.challenge}
 >
 > Given the following code:
 >
->
+> 
 > ~~~{.r}
 > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > print(x)
 > ~~~
->
->
->
+> 
+> 
+> 
 > ~~~{.output}
->   a   b   c   d   e
-> 5.4 6.2 7.1 4.8 7.5
->
+>   a   b   c   d   e 
+> 5.4 6.2 7.1 4.8 7.5 
+> 
 > ~~~
 >
 > 1. Write a subsetting command to return the values in x that are greater than 4 and less than 7.
@@ -827,24 +884,24 @@ matrix(1:6, nrow=2, ncol=3, byrow=TRUE)
 Matrices can also be subsetted using their rownames and column names
 instead of their row and column indices.
 
-> ## Challenge 2 {.challenge}
+> ## Challenge 4 {.challenge}
 >
 > Given the following code:
 >
->
+> 
 > ~~~{.r}
 > m <- matrix(1:18, nrow=3, ncol=6)
 > print(m)
 > ~~~
->
->
->
+> 
+> 
+> 
 > ~~~{.output}
 >      [,1] [,2] [,3] [,4] [,5] [,6]
 > [1,]    1    4    7   10   13   16
 > [2,]    2    5    8   11   14   17
 > [3,]    3    6    9   12   15   18
->
+> 
 > ~~~
 >
 > 1. Which of the following commands will extract the values 11 and 14?
@@ -985,21 +1042,21 @@ xlist$data
 
 ~~~
 
-> ## Challenge 3 {.challenge}
+> ## Challenge 5 {.challenge}
 > Given the following list:
 >
->
+> 
 > ~~~{.r}
 > xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
 > ~~~
 >
-> Using your knowledge of both list and vector subsetting, extract the number 2 from xlist.
+> Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. 
 > Hint: the number 2 is contained within the "b" item in the list.
 
-> ## Challenge 4 {.challenge}
+> ## Challenge 6 {.challenge}
 > Given a linear model:
 >
->
+> 
 > ~~~{.r}
 > mod <- aov(pop ~ lifeExp, data=gapminder)
 > ~~~
@@ -1097,27 +1154,27 @@ gapminder[3,]
 But for a single column the result will be a vector (this can
 be changed with the third argument, `drop = FALSE`).
 
-> ## Challenge 5 {.challenge}
+> ## Challenge 7 {.challenge}
 >
 > Fix each of the following common data frame subsetting errors:
 >
 > 1. Extract observations collected for the year 1957
 >
->
+> 
 > ~~~{.r}
 > gapminder[gapminder$year = 1957,]
 > ~~~
 >
 > 2. Extract all columns except 1 through to 4
 >
->
+> 
 > ~~~{.r}
 > gapminder[,-1:4]
 > ~~~
 >
 > 3. Extract the rows where the life expectancy is longer the 80 years
 >
->
+> 
 > ~~~{.r}
 > gapminder[gapminder$lifeExp > 80]
 > ~~~
@@ -1125,7 +1182,7 @@ be changed with the third argument, `drop = FALSE`).
 > 4. Extract the first row, and the fourth and fifth columns
 >   (`lifeExp` and `gdpPercap`).
 >
->
+> 
 > ~~~{.r}
 > gapminder[1, 4, 5]
 > ~~~
@@ -1133,13 +1190,13 @@ be changed with the third argument, `drop = FALSE`).
 > 5. Advanced: extract rows that contain information for the years 2002
 >    and 2007
 >
->
+> 
 > ~~~{.r}
 > gapminder[gapminder$year == 2002 | 2007,]
 > ~~~
 >
 
-> ## Challenge 6 {.challenge}
+> ## Challenge 8 {.challenge}
 >
 > 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
 >
@@ -1148,52 +1205,39 @@ be changed with the third argument, `drop = FALSE`).
 > and 19 through 23. You can do this in one or two steps.
 >
 
-> ## Challenge 7 {.challenge}
->
-> How many countries in Asia had a population in either 2002 or 2007 above 20 million?
-> Tip: Use subsetting to maintain the relevant data and then use the function `unique()` to remove duplicate countries.
->
-> A. 19
->
-> B. 20
->
-> C. 21
->
-> D. 22
-
 ## Challenge solutions
 
 > ## Solution to challenge 1 {.challenge}
 >
 > Given the following code:
 >
->
+> 
 > ~~~{.r}
 > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > print(x)
 > ~~~
->
->
->
+> 
+> 
+> 
 > ~~~{.output}
->   a   b   c   d   e
-> 5.4 6.2 7.1 4.8 7.5
->
+>   a   b   c   d   e 
+> 5.4 6.2 7.1 4.8 7.5 
+> 
 > ~~~
 >
 > 1. Come up with at least 3 different commands that will produce the following output:
 >
->
+> 
 > ~~~{.output}
->   b   c   d
-> 6.2 7.1 4.8
->
+>   b   c   d 
+> 6.2 7.1 4.8 
+> 
 > ~~~
 >
->
+> 
 > ~~~{.r}
-> x[2:4]
+> x[2:4] 
 > x[-c(1,5)]
 > x[c("b", "c", "d")]
 > x[c(2,3,4)]
@@ -1201,24 +1245,68 @@ be changed with the third argument, `drop = FALSE`).
 >
 >
 
+
 > ## Solution to challenge 2 {.challenge}
+>
+> Run the following code to define vector `x` as above:
+>
+> 
+> ~~~{.r}
+> x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
+> names(x) <- c('a', 'b', 'c', 'd', 'e')
+> print(x)
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+>   a   b   c   d   e 
+> 5.4 6.2 7.1 4.8 7.5 
+> 
+> ~~~
+>
+> Given this vector `x`, what would you expect the following to do?
+>
+>~~~{.r}
+> x[-which(names(x) == "g")]
+>~~~
+>
+> Try out this command and see what you get. Did this match your expectation?
+>
+> Why did we get this result? (Tip: test out each part of the command on it's own like we just did above - this is a useful debugging strategy)
+>
+> Which of the following are true:
+>
+> * A) if there are no `TRUE` values passed to "which", an empty vector is returned
+> * B) if there are no `TRUE` values passed to "which", an error message is shown
+> * C) `integer()` is an empty vector
+> * D) making an empty vector negative produces an "everything" vector
+> * E) `x[]` gives the same result as `x[integer()]`
+>
+> Answer: A and C are correct.
+>
+> The `which` command returns the index of every `TRUE` value in its input. The `names(x) == "g"` command didn't return any `TRUE` values. Because there were no `TRUE` values passed to the `which` command, it returned an empty vector. Negating this vector with the minus sign didn't change its meaning. Because we used this empty vector to retrieve values from `x`, it produced an empty numeric vector. It was a `named numeric` empty vector because the vector type of x is "named numeric" since we assigned names to the values (try `str(x)` ).
+
+
+
+> ## Solution to challenge 4 {.challenge}
 >
 > Given the following code:
 >
->
+> 
 > ~~~{.r}
 > m <- matrix(1:18, nrow=3, ncol=6)
 > print(m)
 > ~~~
->
->
->
+> 
+> 
+> 
 > ~~~{.output}
 >      [,1] [,2] [,3] [,4] [,5] [,6]
 > [1,]    1    4    7   10   13   16
 > [2,]    2    5    8   11   14   17
 > [3,]    3    6    9   12   15   18
->
+> 
 > ~~~
 >
 > 1. Which of the following commands will extract the values 11 and 14?
@@ -1233,18 +1321,18 @@ be changed with the third argument, `drop = FALSE`).
 >
 > Answer: D
 
-> ## Solution to challenge 3 {.challenge}
+> ## Solution to challenge 5 {.challenge}
 > Given the following list:
 >
->
+> 
 > ~~~{.r}
 > xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
 > ~~~
 >
-> Using your knowledge of both list and vector subsetting, extract the number 2 from xlist.
+> Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. 
 > Hint: the number 2 is contained within the "b" item in the list.
 >
->
+> 
 > ~~~{.r}
 > xlist$b[2]
 > xlist[[2]][2]
@@ -1252,30 +1340,30 @@ be changed with the third argument, `drop = FALSE`).
 > ~~~
 
 
-> ## Solution to challenge 4 {.challenge}
+> ## Solution to challenge 6 {.challenge}
 > Given a linear model:
 >
->
+> 
 > ~~~{.r}
 > mod <- aov(pop ~ lifeExp, data=gapminder)
 > ~~~
 >
 > Extract the residual degrees of freedom (hint: `attributes()` will help you)
 >
->
+> 
 > ~~~{.r}
 > attributes(mod) ## `df.residual` is one of the names of `mod`
 > mod$df.residual
 > ~~~
 
 
-> ## Solution to challenge 5 {.challenge}
+> ## Solution to challenge 7 {.challenge}
 >
 > Fix each of the following common data frame subsetting errors:
 >
 > 1. Extract observations collected for the year 1957
 >
->
+> 
 > ~~~{.r}
 > # gapminder[gapminder$year = 1957,]
 > gapminder[gapminder$year == 1957,]
@@ -1283,7 +1371,7 @@ be changed with the third argument, `drop = FALSE`).
 >
 > 2. Extract all columns except 1 through to 4
 >
->
+> 
 > ~~~{.r}
 > # gapminder[,-1:4]
 > gapminder[,-c(1:4)]
@@ -1291,7 +1379,7 @@ be changed with the third argument, `drop = FALSE`).
 >
 > 3. Extract the rows where the life expectancy is longer the 80 years
 >
->
+> 
 > ~~~{.r}
 > # gapminder[gapminder$lifeExp > 80]
 > gapminder[gapminder$lifeExp > 80,]
@@ -1300,7 +1388,7 @@ be changed with the third argument, `drop = FALSE`).
 > 4. Extract the first row, and the fourth and fifth columns
 >   (`lifeExp` and `gdpPercap`).
 >
->
+> 
 > ~~~{.r}
 > # gapminder[1, 4, 5]
 > gapminder[1, c(4, 5)]
@@ -1309,7 +1397,7 @@ be changed with the third argument, `drop = FALSE`).
 > 5. Advanced: extract rows that contain information for the years 2002
 >    and 2007
 >
->
+> 
 > ~~~{.r}
 > # gapminder[gapminder$year == 2002 | 2007,]
 > gapminder[gapminder$year == 2002 | gapminder$year == 2007,]
@@ -1317,7 +1405,7 @@ be changed with the third argument, `drop = FALSE`).
 > ~~~
 >
 
-> ## Solution to challenge 6 {.challenge}
+> ## Solution to challenge 8 {.challenge}
 >
 > 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
 >
@@ -1326,39 +1414,8 @@ be changed with the third argument, `drop = FALSE`).
 > 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
 > and 19 through 23. You can do this in one or two steps.
 >
->
+> 
 > ~~~{.r}
 > gapminder_small <- gapminder[c(1:9, 19:23),]
 > ~~~
->
-
-> ## Solution to challenge 7 {.challenge}
->
-> How many countries in Asia had a population in either 2002 or 2007 above 20 million?
-> Tip: Use subsetting to maintain the relevant data and then use the function `unique()` to remove duplicate countries.
->
-> A. 19
->
-> B. 20
->
-> C. 21
->
-> D. 22
->
-> Answer: B
->
-> The answer can be derived using the following statement
-> ~~~{.r}
-> length(unique(
->   gapminder[
->     gapminder$year == 2002 &
->     gapminder$year == 2007 &
->     gapminder$continent == "Asia" &
->     gapminder$pop > 2e7, ]$country
-> ))
-> ~~~
-> Note on logical operators: In R, both & and && or | and || indicate a logical
-> AND and OR respectively. The shorter form (&), used here, performs element wise
-> comparisons, while the longer form (&&) evaluates only the first element of
-> each vector. For more information type `help("&")`.
 >

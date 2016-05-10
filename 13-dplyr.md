@@ -234,8 +234,8 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
               sd_gdpPercap=sd(gdpPercap),
               mean_pop=mean(pop),
               sd_pop=sd(pop),
-              mean_pop=mean(pop),
-              sd_pop=sd(pop))
+              mean_gdp_billion=mean(gdp_billion),
+              sd_gdp_billion=sd(gdp_billion))
 ~~~
 
 
