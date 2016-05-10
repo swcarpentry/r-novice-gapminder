@@ -67,7 +67,7 @@
 <p>If, for example, we wanted to move forward with only a few of the variables in our dataframe we could use the <code>select()</code> function. This will keep only the variables you select.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">year_country_gdp &lt;-<span class="st"> </span><span class="kw">select</span>(gapminder,year,country,gdpPercap)</code></pre></div>
 <div class="figure">
-<img src="fig/13-dplyr-fig1.png" alt="" />
+<img src="fig/13-dplyr-fig1.png" />
 
 </div>
 <p>If we open up <code>year_country_gdp</code> we’ll see that it only contains the year, country and gdpPercap. Above we used ‘normal’ grammar, but the strengths of <code>dplyr</code> lie in combining several functions using pipes. Since the pipes grammar is unlike anything we’ve seen in R before, let’s repeat what we’ve done above using pipes.</p>
@@ -125,7 +125,7 @@
 </code></pre>
 <p>You will notice that the structure of the dataframe where we used <code>group_by()</code> (<code>grouped_df</code>) is not the same as the original <code>gapminder</code> (<code>data.frame</code>). A <code>grouped_df</code> can be thought of as a <code>list</code> where each item in the <code>list</code>is a <code>data.frame</code> which contains only the rows that correspond to the a particular value <code>continent</code> (at least in the example above).</p>
 <div class="figure">
-<img src="fig/13-dplyr-fig2.png" alt="" />
+<img src="fig/13-dplyr-fig2.png" />
 
 </div>
 <h2 id="using-summarize">Using summarize()</h2>
@@ -134,7 +134,7 @@
 <span class="st">    </span><span class="kw">group_by</span>(continent) %&gt;%
 <span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean_gdpPercap=</span><span class="kw">mean</span>(gdpPercap))</code></pre></div>
 <div class="figure">
-<img src="fig/13-dplyr-fig3.png" alt="" />
+<img src="fig/13-dplyr-fig3.png" />
 
 </div>
 <p>That allowed us to calculate the mean gdpPercap for each continent, but it gets even better.</p>
@@ -166,8 +166,8 @@
               <span class="dt">sd_gdpPercap=</span><span class="kw">sd</span>(gdpPercap),
               <span class="dt">mean_pop=</span><span class="kw">mean</span>(pop),
               <span class="dt">sd_pop=</span><span class="kw">sd</span>(pop),
-              <span class="dt">mean_pop=</span><span class="kw">mean</span>(pop),
-              <span class="dt">sd_pop=</span><span class="kw">sd</span>(pop))</code></pre></div>
+              <span class="dt">mean_gdp_billion=</span><span class="kw">mean</span>(gdp_billion),
+              <span class="dt">sd_gdp_billion=</span><span class="kw">sd</span>(gdp_billion))</code></pre></div>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2 id="advanced-challenge"><span class="glyphicon glyphicon-pencil"></span>Advanced Challenge</h2>
@@ -216,7 +216,7 @@
       </article>
       <div class="footer">
         <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
-        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/r-novice-gapminder">Source</a>
         <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
         <a class="label swc-blue-bg" href="LICENSE.html">License</a>
       </div>
@@ -224,5 +224,6 @@
     <!-- Javascript placed at the end of the document so the pages load faster -->
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
   </body>
 </html>

@@ -514,3 +514,16 @@ into a script file so we can come back to it later.
 > names(df)[4] <- 'coffeetime'
 > ~~~
 >
+
+> ## Solution to Challenge 2 {.challenge}
+> The contents of `script/load-gapminder.R`:
+> 
+> ~~~{.r}
+> gapminder <- read.csv(file = "data/gapminder-FiveYearData.csv")
+> ~~~
+> To run the script and load the data into the `gapminder` variable:
+> 
+> ~~~{.r}
+> source(file = "scripts/load-gapminder.R")
+> ~~~
+>
