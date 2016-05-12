@@ -165,7 +165,7 @@ typeof(cats$weight[1])
 
 
 ~~~{.output}
-[1] "double"
+[1] "integer"
 
 ~~~
 
