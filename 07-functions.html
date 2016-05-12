@@ -30,7 +30,7 @@
           <h2 class="subtitle">Creating functions</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -46,7 +46,7 @@
 <p>In this lesson, we’ll learn how to write a function so that we can repeat several operations with a single command.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="what-is-a-function"><span class="glyphicon glyphicon-pushpin"></span>What is a function?</h2>
+<h2><span class="glyphicon glyphicon-pushpin"></span>What is a function?</h2>
 </div>
 <div class="panel-body">
 <p>Functions gather a sequence of operations into a whole, preserving it for ongoing use. Functions provide:</p>
@@ -61,37 +61,37 @@
 </aside>
 <h2 id="defining-a-function">Defining a function</h2>
 <p>Let’s open a new R script file in the <code>functions/</code> directory and call it functions-lesson.R.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_sum &lt;-<span class="st"> </span>function(a, b) {
+<pre class="sourceCode r"><code class="sourceCode r">my_sum &lt;-<span class="st"> </span>function(a, b) {
   the_sum &lt;-<span class="st"> </span>a +<span class="st"> </span>b
   <span class="kw">return</span>(the_sum)
-}</code></pre></div>
+}</code></pre>
 <p>Let’s define a function fahr_to_kelvin that converts temperatures from Fahrenheit to Kelvin:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fahr_to_kelvin &lt;-<span class="st"> </span>function(temp) {
+<pre class="sourceCode r"><code class="sourceCode r">fahr_to_kelvin &lt;-<span class="st"> </span>function(temp) {
   kelvin &lt;-<span class="st"> </span>((temp -<span class="st"> </span><span class="dv">32</span>) *<span class="st"> </span>(<span class="dv">5</span> /<span class="st"> </span><span class="dv">9</span>)) +<span class="st"> </span><span class="fl">273.15</span>
   <span class="kw">return</span>(kelvin)
-}</code></pre></div>
+}</code></pre>
 <p>We define <code>fahr_to_kelvin</code> by assigning it to the output of <code>function</code>. The list of argument names are contained within parentheses. Next, the <a href="reference.html#function-body">body</a> of the function–the statements that are executed when it runs–is contained within curly braces (<code>{}</code>). The statements in the body are indented by two spaces. This makes the code easier to read but does not affect how the code operates.</p>
 <p>When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function. Inside the function, we use a <a href="reference.html#return-statement">return statement</a> to send a result back to whoever asked for it.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="tip"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>One feature unique to R is that the return statement is not required. R automatically returns whichever variable is on the last line of the body of the function. Since we are just learning, we will explicitly define the return statement.</p>
 </div>
 </aside>
 <p>Let’s try running our function. Calling our own function is no different from calling any other function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># freezing point of water</span>
-<span class="kw">fahr_to_kelvin</span>(<span class="dv">32</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># freezing point of water</span>
+<span class="kw">fahr_to_kelvin</span>(<span class="dv">32</span>)</code></pre>
 <pre class="output"><code>[1] 273.15
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># boiling point of water</span>
-<span class="kw">fahr_to_kelvin</span>(<span class="dv">212</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># boiling point of water</span>
+<span class="kw">fahr_to_kelvin</span>(<span class="dv">212</span>)</code></pre>
 <pre class="output"><code>[1] 373.15
 </code></pre>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="challenge-1"><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h2>
 </div>
 <div class="panel-body">
 <p>Write a function called <code>kelvin_to_celsius</code> that takes a temperature in Kelvin and returns that temperature in Celsius</p>
@@ -101,7 +101,7 @@
 <h2 id="combining-functions">Combining functions</h2>
 <p>The real power of functions comes from mixing, matching and combining them into ever large chunks to get the effect we want.</p>
 <p>Let’s define two functions that will convert temperature from Fahrenheit to Kelvin, and Kelvin to Celsius:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fahr_to_kelvin &lt;-<span class="st"> </span>function(temp) {
+<pre class="sourceCode r"><code class="sourceCode r">fahr_to_kelvin &lt;-<span class="st"> </span>function(temp) {
   kelvin &lt;-<span class="st"> </span>((temp -<span class="st"> </span><span class="dv">32</span>) *<span class="st"> </span>(<span class="dv">5</span> /<span class="st"> </span><span class="dv">9</span>)) +<span class="st"> </span><span class="fl">273.15</span>
   <span class="kw">return</span>(kelvin)
 }
@@ -109,31 +109,31 @@
 kelvin_to_celsius &lt;-<span class="st"> </span>function(temp) {
   celsius &lt;-<span class="st"> </span>temp -<span class="st"> </span><span class="fl">273.15</span>
   <span class="kw">return</span>(celsius)
-}</code></pre></div>
+}</code></pre>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="challenge-2"><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h2>
 </div>
 <div class="panel-body">
 <p>Define the function to convert directly from Fahrenheit to Celsius, by reusing the two functions above (or using your own functions if you prefer).</p>
 </div>
 </section>
 <p>We’re going to define a function that calculates the Gross Domestic Product of a nation from the data available in our dataset:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Takes a dataset and multiplies the population column</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Takes a dataset and multiplies the population column</span>
 <span class="co"># with the GDP per capita column.</span>
 calcGDP &lt;-<span class="st"> </span>function(dat) {
   gdp &lt;-<span class="st"> </span>dat$pop *<span class="st"> </span>dat$gdpPercap
   <span class="kw">return</span>(gdp)
-}</code></pre></div>
+}</code></pre>
 <p>We define <code>calcGDP</code> by assigning it to the output of <code>function</code>. The list of argument names are contained within parentheses. Next, the body of the function – the statements executed when you call the function – is contained within curly braces (<code>{}</code>).</p>
 <p>We’ve indented the statements in the body by two spaces. This makes the code easier to read but does not affect how it operates.</p>
 <p>When we call the function, the values we pass to it are assigned to the arguments, which become variables inside the body of the function.</p>
 <p>Inside the function, we use the <code>return</code> function to send back the result. This return function is optional: R will automatically return the results of whatever command is executed on the last line of the function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">calcGDP</span>(<span class="kw">head</span>(gapminder))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">calcGDP</span>(<span class="kw">head</span>(gapminder))</code></pre>
 <pre class="output"><code>[1]  6567086330  7585448670  8758855797  9648014150  9678553274 11697659231
 </code></pre>
 <p>That’s not very informative. Let’s add some more arguments so we can extract that per year and country.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Takes a dataset and multiplies the population column</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Takes a dataset and multiplies the population column</span>
 <span class="co"># with the GDP per capita column.</span>
 calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span><span class="ot">NULL</span>, <span class="dt">country=</span><span class="ot">NULL</span>) {
   if(!<span class="kw">is.null</span>(year)) {
@@ -146,12 +146,12 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 
   new &lt;-<span class="st"> </span><span class="kw">cbind</span>(dat, <span class="dt">gdp=</span>gdp)
   <span class="kw">return</span>(new)
-}</code></pre></div>
+}</code></pre>
 <p>If you’ve been writing these functions down into a separate R script (a good idea!), you can load in the functions into our R session by using the <code>source</code> function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;functions/functions-lesson.R&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;functions/functions-lesson.R&quot;</span>)</code></pre>
 <p>Ok, so there’s a lot going on in this function now. In plain English, the function now subsets the provided data by year if the year argument isn’t empty, then subsets the result by country if the country argument isn’t empty. Then it calculates the GDP for whatever subset emerges from the previous two steps. The function then adds the GDP as a new column to the subsetted data and returns this as the final result. You can see that the output is much more informative than just getting a vector of numbers.</p>
 <p>Let’s take a look at what happens when we specify the year:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">calcGDP</span>(gapminder, <span class="dt">year=</span><span class="dv">2007</span>))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">calcGDP</span>(gapminder, <span class="dt">year=</span><span class="dv">2007</span>))</code></pre>
 <pre class="output"><code>       country year      pop continent lifeExp  gdpPercap          gdp
 12 Afghanistan 2007 31889923      Asia  43.828   974.5803  31079291949
 24     Albania 2007  3600523    Europe  76.423  5937.0295  21376411360
@@ -161,7 +161,7 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 72   Australia 2007 20434176   Oceania  81.235 34435.3674 703658358894
 </code></pre>
 <p>Or for a specific country:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">calcGDP</span>(gapminder, <span class="dt">country=</span><span class="st">&quot;Australia&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">calcGDP</span>(gapminder, <span class="dt">country=</span><span class="st">&quot;Australia&quot;</span>)</code></pre>
 <pre class="output"><code>     country year      pop continent lifeExp gdpPercap          gdp
 61 Australia 1952  8691212   Oceania  69.120  10039.60  87256254102
 62 Australia 1957  9712569   Oceania  70.330  10949.65 106349227169
@@ -177,19 +177,19 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 72 Australia 2007 20434176   Oceania  81.235  34435.37 703658358894
 </code></pre>
 <p>Or both:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">calcGDP</span>(gapminder, <span class="dt">year=</span><span class="dv">2007</span>, <span class="dt">country=</span><span class="st">&quot;Australia&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">calcGDP</span>(gapminder, <span class="dt">year=</span><span class="dv">2007</span>, <span class="dt">country=</span><span class="st">&quot;Australia&quot;</span>)</code></pre>
 <pre class="output"><code>     country year      pop continent lifeExp gdpPercap          gdp
 72 Australia 2007 20434176   Oceania  81.235  34435.37 703658358894
 </code></pre>
 <p>Let’s walk through the body of the function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span><span class="ot">NULL</span>, <span class="dt">country=</span><span class="ot">NULL</span>) {</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span><span class="ot">NULL</span>, <span class="dt">country=</span><span class="ot">NULL</span>) {</code></pre>
 <p>Here we’ve added two arguments, <code>year</code>, and <code>country</code>. We’ve set <em>default arguments</em> for both as <code>NULL</code> using the <code>=</code> operator in the function definition. This means that those arguments will take on those values unless the user specifies otherwise.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  if(!<span class="kw">is.null</span>(year)) {
+<pre class="sourceCode r"><code class="sourceCode r">  if(!<span class="kw">is.null</span>(year)) {
     dat &lt;-<span class="st"> </span>dat[dat$year %in%<span class="st"> </span>year, ]
   }
   if (!<span class="kw">is.null</span>(country)) {
     dat &lt;-<span class="st"> </span>dat[dat$country %in%<span class="st"> </span>country,]
-  }</code></pre></div>
+  }</code></pre>
 <p>Here, we check whether each additional argument is set to <code>null</code>, and whenever they’re not <code>null</code> overwrite the dataset stored in <code>dat</code> with a subset given by the non-<code>null</code> argument.</p>
 <p>I did this so that our function is more flexible for later. We can ask it to calculate the GDP for:</p>
 <ul>
@@ -201,7 +201,7 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 <p>By using <code>%in%</code> instead, we can also give multiple years or countries to those arguments.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="tip-pass-by-value"><span class="glyphicon glyphicon-pushpin"></span>Tip: Pass by value</h2>
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip: Pass by value</h2>
 </div>
 <div class="panel-body">
 <p>Functions in R almost always make copies of the data to operate on inside of a function body. When we modify <code>dat</code> inside the function we are modifying the copy of the gapminder dataset stored in <code>dat</code>, not the original variable we gave as the first argument.</p>
@@ -210,35 +210,35 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 </aside>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="tip-function-scope"><span class="glyphicon glyphicon-pushpin"></span>Tip: Function scope</h2>
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip: Function scope</h2>
 </div>
 <div class="panel-body">
 <p>Another important concept is scoping: any variables (or functions!) you create or modify inside the body of a function only exist for the lifetime of the function’s execution. When we call <code>calcGDP</code>, the variables <code>dat</code>, <code>gdp</code> and <code>new</code> only exist inside the body of the function. Even if we have variables of the same name in our interactive R session, they are not modified in any way when executing a function.</p>
 </div>
 </aside>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  gdp &lt;-<span class="st"> </span>dat$pop *<span class="st"> </span>dat$gdpPercap
+<pre class="sourceCode r"><code class="sourceCode r">  gdp &lt;-<span class="st"> </span>dat$pop *<span class="st"> </span>dat$gdpPercap
   new &lt;-<span class="st"> </span><span class="kw">cbind</span>(dat, <span class="dt">gdp=</span>gdp)
   <span class="kw">return</span>(new)
-<span class="er">}</span></code></pre></div>
+<span class="er">}</span></code></pre>
 <p>Finally, we calculated the GDP on our new subset, and created a new data frame with that column added. This means when we call the function later we can see the context for the returned GDP values, which is much better than in our first attempt where we just got a vector of numbers.</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="challenge-3"><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h2>
 </div>
 <div class="panel-body">
 <p>The <code>paste</code> function can be used to combine text together, e.g:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">best_practice &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Write&quot;</span>, <span class="st">&quot;programs&quot;</span>, <span class="st">&quot;for&quot;</span>, <span class="st">&quot;people&quot;</span>, <span class="st">&quot;not&quot;</span>, <span class="st">&quot;computers&quot;</span>)
-<span class="kw">paste</span>(best_practice, <span class="dt">collapse=</span><span class="st">&quot; &quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">best_practice &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Write&quot;</span>, <span class="st">&quot;programs&quot;</span>, <span class="st">&quot;for&quot;</span>, <span class="st">&quot;people&quot;</span>, <span class="st">&quot;not&quot;</span>, <span class="st">&quot;computers&quot;</span>)
+<span class="kw">paste</span>(best_practice, <span class="dt">collapse=</span><span class="st">&quot; &quot;</span>)</code></pre>
 <pre class="output"><code>[1] &quot;Write programs for people not computers&quot;
 </code></pre>
 <p>Write a function called <code>fence</code> that takes two vectors as arguments, called <code>text</code> and <code>wrapper</code>, and prints out the text wrapped with the <code>wrapper</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fence</span>(<span class="dt">text=</span>best_practice, <span class="dt">wrapper=</span><span class="st">&quot;***&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fence</span>(<span class="dt">text=</span>best_practice, <span class="dt">wrapper=</span><span class="st">&quot;***&quot;</span>)</code></pre>
 <p><em>Note:</em> the <code>paste</code> function has an argument called <code>sep</code>, which specifies the separator between text. The default is a space: &quot; “. The default for <code>paste0</code> is no space”“.</p>
 </div>
 </section>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="tip-1"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>R has some unique aspects that can be exploited when performing more complicated operations. We will not be writing anything that requires knowledge of these more advanced concepts. In the future when you are comfortable writing functions in R, you can learn more by reading the <a href="http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects">R Language Manual</a> or this <a href="http://adv-r.had.co.nz/Environments.html">chapter</a> from <a href="http://adv-r.had.co.nz/">Advanced R Programming</a> by Hadley Wickham. For context, R uses the terminology “environments” instead of frames.</p>
@@ -246,7 +246,7 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 </aside>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="tip-testing-and-documenting"><span class="glyphicon glyphicon-pushpin"></span>Tip: Testing and documenting</h2>
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip: Testing and documenting</h2>
 </div>
 <div class="panel-body">
 <p>It’s important to both test functions and document them: Documentation helps you, and others, understand what the purpose of your function is, and how to use it, and its important to make sure that your function actually does what you think.</p>
@@ -266,42 +266,42 @@ calcGDP &lt;-<span class="st"> </span>function(dat, <span class="dt">year=</span
 <h2 id="challenge-solutions">Challenge solutions</h2>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="solution-to-challenge-1"><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 1</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 1</h2>
 </div>
 <div class="panel-body">
 <p>Write a function called <code>kelvin_to_celsius</code> that takes a temperature in Kelvin and returns that temperature in Celsius</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">kelvin_to_celsius &lt;-<span class="st"> </span>function(temp) {
+<pre class="sourceCode r"><code class="sourceCode r">kelvin_to_celsius &lt;-<span class="st"> </span>function(temp) {
  celsius &lt;-<span class="st"> </span>temp -<span class="st"> </span><span class="fl">273.15</span>
  <span class="kw">return</span>(celsius)
-}</code></pre></div>
+}</code></pre>
 </div>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="solution-to-challenge-2"><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 2</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 2</h2>
 </div>
 <div class="panel-body">
 <p>Define the function to convert directly from Fahrenheit to Celsius, by reusing these two functions above</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fahr_to_celsius &lt;-<span class="st"> </span>function(temp) {
+<pre class="sourceCode r"><code class="sourceCode r">fahr_to_celsius &lt;-<span class="st"> </span>function(temp) {
   temp_k &lt;-<span class="st"> </span><span class="kw">fahr_to_kelvin</span>(temp)
   result &lt;-<span class="st"> </span><span class="kw">kelvin_to_celsius</span>(temp_k)
   <span class="kw">return</span>(result)
-}</code></pre></div>
+}</code></pre>
 </div>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="solution-to-challenge-3"><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 3</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 3</h2>
 </div>
 <div class="panel-body">
 <p>Write a function called <code>fence</code> that takes two vectors as arguments, called <code>text</code> and <code>wrapper</code>, and prints out the text wrapped with the <code>wrapper</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fence &lt;-<span class="st"> </span>function(text, wrapper){
+<pre class="sourceCode r"><code class="sourceCode r">fence &lt;-<span class="st"> </span>function(text, wrapper){
   text &lt;-<span class="st"> </span><span class="kw">c</span>(wrapper, text, wrapper)
   result &lt;-<span class="st"> </span><span class="kw">paste</span>(text, <span class="dt">collapse =</span> <span class="st">&quot; &quot;</span>)
   <span class="kw">return</span>(result)
 }
 best_practice &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Write&quot;</span>, <span class="st">&quot;programs&quot;</span>, <span class="st">&quot;for&quot;</span>, <span class="st">&quot;people&quot;</span>, <span class="st">&quot;not&quot;</span>, <span class="st">&quot;computers&quot;</span>)
-<span class="kw">fence</span>(<span class="dt">text=</span>best_practice, <span class="dt">wrapper=</span><span class="st">&quot;***&quot;</span>)</code></pre></div>
+<span class="kw">fence</span>(<span class="dt">text=</span>best_practice, <span class="dt">wrapper=</span><span class="st">&quot;***&quot;</span>)</code></pre>
 <pre class="output"><code>[1] &quot;*** Write programs for people not computers ***&quot;
 </code></pre>
 </div>
@@ -320,5 +320,15 @@ best_practice &lt;-<span class="st"> </span><span class="kw">c</span>(<span clas
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
     <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-37305346-2', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
   </body>
 </html>

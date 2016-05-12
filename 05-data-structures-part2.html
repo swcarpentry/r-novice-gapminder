@@ -30,7 +30,7 @@
           <h2 class="subtitle">Exploring Data Frames</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -41,56 +41,56 @@
 </section>
 <p>At this point, you’ve see it all - in the last lesson, we toured all the basic data types and data structures in R. Everything you do will be a manipulation of those tools. But a whole lot of the time, the star of the show is going to be the data.frame - that table that we started with that information from a CSV gets dumped into when we load it. In this lesson, we’ll learn a few more things about working with data.frame.</p>
 <p>We learned last time that the columns in a data.frame were vectors, so that our data are consistent in type throughout the column. As such, if we want to add a new column, we need to start by making a new vector:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">newCol &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">12</span>)
-cats</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">newCol &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">12</span>)
+cats</code></pre>
 <pre class="output"><code>    coat weight likes_string
 1 calico    2.1         TRUE
 2  black    5.0        FALSE
 3  tabby    3.2         TRUE
 </code></pre>
 <p>We can then add this as a column via:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">cbind</span>(cats,  newCol)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">cbind</span>(cats,  newCol)</code></pre>
 <pre class="error"><code>Error in data.frame(..., check.names = FALSE): arguments imply differing number of rows: 3, 4
 </code></pre>
 <p>Why didn’t this work? Of course, R wants to see one element in our new column for every row in the table:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">cats</code></pre>
 <pre class="output"><code>    coat weight likes_string
 1 calico    2.1         TRUE
 2  black    5.0        FALSE
 3  tabby    3.2         TRUE
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">newCol &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">8</span>)
+<pre class="sourceCode r"><code class="sourceCode r">newCol &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">8</span>)
 cats &lt;-<span class="st"> </span><span class="kw">cbind</span>(cats, newCol)
-cats</code></pre></div>
+cats</code></pre>
 <pre class="output"><code>    coat weight likes_string newCol
 1 calico    2.1         TRUE      4
 2  black    5.0        FALSE      5
 3  tabby    3.2         TRUE      8
 </code></pre>
 <p>Our new column has appeared, but it’s got that ugly name at the top; let’s give it something a little easier to understand:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(cats)[<span class="dv">4</span>] &lt;-<span class="st"> &#39;age&#39;</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(cats)[<span class="dv">4</span>] &lt;-<span class="st"> &#39;age&#39;</span></code></pre>
 <p>Now how about adding rows - in this case, we saw last time that the rows of a data.frame are made of lists:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">newRow &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;tortoiseshell&quot;</span>, <span class="fl">3.3</span>, <span class="ot">TRUE</span>, <span class="dv">9</span>)
-cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, newRow)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">newRow &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;tortoiseshell&quot;</span>, <span class="fl">3.3</span>, <span class="ot">TRUE</span>, <span class="dv">9</span>)
+cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, newRow)</code></pre>
 <pre class="error"><code>Warning in `[&lt;-.factor`(`*tmp*`, ri, value = &quot;tortoiseshell&quot;): invalid
 factor level, NA generated
 </code></pre>
 <p>Another thing to look out for has emerged - when R creates a factor, it only allows whatever is originally there when our data was first loaded, which was ‘black’, ‘calico’ and ‘tabby’ in our case. Anything new that doesn’t fit into one of its categories is rejected as nonsense, until we explicitly add that as a <em>level</em> in the factor:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(cats$coat)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(cats$coat)</code></pre>
 <pre class="output"><code>[1] &quot;black&quot;  &quot;calico&quot; &quot;tabby&quot; 
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(cats$coat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">levels</span>(cats$coat), <span class="st">&#39;tortoiseshell&#39;</span>)
-cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, <span class="kw">list</span>(<span class="st">&quot;tortoiseshell&quot;</span>, <span class="fl">3.3</span>, <span class="ot">TRUE</span>, <span class="dv">9</span>))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(cats$coat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">levels</span>(cats$coat), <span class="st">&#39;tortoiseshell&#39;</span>)
+cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, <span class="kw">list</span>(<span class="st">&quot;tortoiseshell&quot;</span>, <span class="fl">3.3</span>, <span class="ot">TRUE</span>, <span class="dv">9</span>))</code></pre>
 <p>Alternatively, we can change a factor column to a character vector; we lose the handy categories of the factor, but can subsequently add any word we want to the column without babysitting the factor levels:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cats)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cats)</code></pre>
 <pre class="output"><code>&#39;data.frame&#39;:   5 obs. of  4 variables:
  $ coat        : Factor w/ 4 levels &quot;black&quot;,&quot;calico&quot;,..: 2 1 3 NA 4
  $ weight      : num  2.1 5 3.2 3.3 3.3
  $ likes_string: logi  TRUE FALSE TRUE TRUE TRUE
  $ age         : num  4 5 8 9 9
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$coat &lt;-<span class="st"> </span><span class="kw">as.character</span>(cats$coat)
-<span class="kw">str</span>(cats)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">cats$coat &lt;-<span class="st"> </span><span class="kw">as.character</span>(cats$coat)
+<span class="kw">str</span>(cats)</code></pre>
 <pre class="output"><code>&#39;data.frame&#39;:   5 obs. of  4 variables:
  $ coat        : chr  &quot;calico&quot; &quot;black&quot; &quot;tabby&quot; NA ...
  $ weight      : num  2.1 5 3.2 3.3 3.3
@@ -98,7 +98,7 @@ cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, <span cla
  $ age         : num  4 5 8 9 9
 </code></pre>
 <p>We now know how to add rows and columns to our data.frame in R - but in our work we’ve accidentally added a garbage row. We can ask for a data.frame minus this offender:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats[-<span class="dv">4</span>,]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">cats[-<span class="dv">4</span>,]</code></pre>
 <pre class="output"><code>           coat weight likes_string age
 1        calico    2.1         TRUE   4
 2         black    5.0        FALSE   5
@@ -106,7 +106,7 @@ cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, <span cla
 5 tortoiseshell    3.3         TRUE   9
 </code></pre>
 <p>Notice the comma with nothing after it to indicate we want to drop the entire fourth row. Alternatively, we can drop all rows with <code>NA</code> values:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">na.omit</span>(cats)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">na.omit</span>(cats)</code></pre>
 <pre class="output"><code>           coat weight likes_string age
 1        calico    2.1         TRUE   4
 2         black    5.0        FALSE   5
@@ -114,10 +114,10 @@ cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, <span cla
 5 tortoiseshell    3.3         TRUE   9
 </code></pre>
 <p>In either case, we need to reassign our variable to persist the changes:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">na.omit</span>(cats)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">na.omit</span>(cats)</code></pre>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="discussion-1"><span class="glyphicon glyphicon-pencil"></span>Discussion 1</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Discussion 1</h2>
 </div>
 <div class="panel-body">
 <p>What do you think</p>
@@ -126,8 +126,8 @@ cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, <span cla
 </div>
 </section>
 <p>The key to remember when adding data to a data.frame is that <em>columns are vectors or factors, and rows are lists.</em> We can also glue two dataframes together with <code>rbind</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, cats)
-cats</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, cats)
+cats</code></pre>
 <pre class="output"><code>            coat weight likes_string age
 1         calico    2.1         TRUE   4
 2          black    5.0        FALSE   5
@@ -139,8 +139,8 @@ cats</code></pre></div>
 51 tortoiseshell    3.3         TRUE   9
 </code></pre>
 <p>But now the row names are unnecessarily complicated. We can ask R to re-name everything sequentially:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rownames</span>(cats) &lt;-<span class="st"> </span><span class="ot">NULL</span>
-cats</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rownames</span>(cats) &lt;-<span class="st"> </span><span class="ot">NULL</span>
+cats</code></pre>
 <pre class="output"><code>           coat weight likes_string age
 1        calico    2.1         TRUE   4
 2         black    5.0        FALSE   5
@@ -153,11 +153,11 @@ cats</code></pre></div>
 </code></pre>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="challenge-1"><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h2>
 </div>
 <div class="panel-body">
 <p>You can create a new data.frame right from within R with the following syntax:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id =</span> <span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>), <span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">3</span>, <span class="dt">y =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>), <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id =</span> <span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>), <span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">3</span>, <span class="dt">y =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>), <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</code></pre>
 <p>Make a data.frame that holds the following information for yourself:</p>
 <ul>
 <li>first name</li>
@@ -168,10 +168,10 @@ cats</code></pre></div>
 </div>
 </section>
 <p>So far, you’ve seen the basics of manipulating data.frames with our cat data; now, let’s use those skills to digest a more realistic dataset. Lets read in the gapminder dataset that we downloaded previously:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/gapminder-FiveYearData.csv&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/gapminder-FiveYearData.csv&quot;</span>)</code></pre>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="miscellaneous-tips"><span class="glyphicon glyphicon-pushpin"></span>Miscellaneous Tips</h2>
+<h2><span class="glyphicon glyphicon-pushpin"></span>Miscellaneous Tips</h2>
 </div>
 <div class="panel-body">
 <ol style="list-style-type: decimal">
@@ -182,7 +182,7 @@ cats</code></pre></div>
 </div>
 </aside>
 <p>Let’s investigate gapminder a bit; the first thing we should always do is check out what the data looks like with <code>str</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gapminder)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gapminder)</code></pre>
 <pre class="output"><code>&#39;data.frame&#39;:   1704 obs. of  6 variables:
  $ country  : Factor w/ 142 levels &quot;Afghanistan&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
  $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
@@ -192,44 +192,44 @@ cats</code></pre></div>
  $ gdpPercap: num  779 821 853 836 740 ...
 </code></pre>
 <p>We can also examine individual columns of the data.frame with our <code>typeof</code> function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(gapminder$year)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(gapminder$year)</code></pre>
 <pre class="output"><code>[1] &quot;integer&quot;
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(gapminder$lifeExp)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(gapminder$lifeExp)</code></pre>
 <pre class="output"><code>[1] &quot;double&quot;
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(gapminder$country)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(gapminder$country)</code></pre>
 <pre class="output"><code>[1] &quot;integer&quot;
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gapminder$country)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gapminder$country)</code></pre>
 <pre class="output"><code> Factor w/ 142 levels &quot;Afghanistan&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
 </code></pre>
 <p>We can also interrogate the data.frame for information about its dimensions; remembering that <code>str(gapminder)</code> said there were 1704 observations of 6 variables in gapminder, what do you think the following will produce, and why?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(gapminder)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(gapminder)</code></pre>
 <pre class="output"><code>[1] 6
 </code></pre>
 <p>A fair guess would have been to say that the length of a data.frame would be the number of rows it has (1704), but this is not the case; remember, a data.frame is a <em>list of vectors and factors</em>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(gapminder)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(gapminder)</code></pre>
 <pre class="output"><code>[1] &quot;list&quot;
 </code></pre>
 <p>When <code>length</code> gave us 6, it’s because gapminder is built out of a list of 6 columns. To get the number of rows and columns in our dataset, try:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(gapminder)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(gapminder)</code></pre>
 <pre class="output"><code>[1] 1704
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ncol</span>(gapminder)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ncol</span>(gapminder)</code></pre>
 <pre class="output"><code>[1] 6
 </code></pre>
 <p>Or, both at once:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(gapminder)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(gapminder)</code></pre>
 <pre class="output"><code>[1] 1704    6
 </code></pre>
 <p>We’ll also likely want to know what the titles of all the columns are, so we can ask for them later:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">colnames</span>(gapminder)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">colnames</span>(gapminder)</code></pre>
 <pre class="output"><code>[1] &quot;country&quot;   &quot;year&quot;      &quot;pop&quot;       &quot;continent&quot; &quot;lifeExp&quot;   &quot;gdpPercap&quot;
 </code></pre>
 <p>At this stage, it’s important to ask ourselves if the structure R is reporting matches our intuition or expectations; do the basic data types reported for each column make sense? If not, we need to sort any problems out now before they turn into bad surprises down the road, using what we’ve learned about how R interprets data, and the importance of <em>strict consistency</em> in how we record our data.</p>
 <p>Once we’re happy that the data types and structures seem reasonable, it’s time to start digging into our data proper. Check out the first few lines:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gapminder)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gapminder)</code></pre>
 <pre class="output"><code>      country year      pop continent lifeExp gdpPercap
 1 Afghanistan 1952  8425333      Asia  28.801  779.4453
 2 Afghanistan 1957  9240934      Asia  30.332  820.8530
@@ -241,7 +241,7 @@ cats</code></pre></div>
 <p>To make sure our analysis is reproducible, we should put the code into a script file so we can come back to it later.</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="challenge-2"><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h2>
 </div>
 <div class="panel-body">
 <p>Go to file -&gt; new file -&gt; R script, and write an R script to load in the gapminder dataset. Put it in the <code>scripts/</code> directory and add it to version control.</p>
@@ -250,7 +250,7 @@ cats</code></pre></div>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="challenge-3"><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h2>
 </div>
 <div class="panel-body">
 <p>Read the output of <code>str(gapminder)</code> again; this time, use what you’ve learned about factors, lists and vectors, as well as the output of functions like <code>colnames</code> and <code>dim</code> to explain what everything that <code>str</code> prints out for gapminder means. If there are any parts you can’t interpret, discuss with your neighbors!</p>
@@ -259,7 +259,7 @@ cats</code></pre></div>
 <h2 id="challenge-solutions">Challenge solutions</h2>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="discussion-1-1"><span class="glyphicon glyphicon-pencil"></span>Discussion 1</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Discussion 1</h2>
 </div>
 <div class="panel-body">
 <p>Note the difference between row indices, and default row names; even though there’s no more row named ‘4’, cats[4,] is still well-defined (and pointing at the row named ‘5’).</p>
@@ -267,24 +267,24 @@ cats</code></pre></div>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="solution-to-challenge-1"><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 1</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 1</h2>
 </div>
 <div class="panel-body">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">first =</span> <span class="kw">c</span>(<span class="st">&#39;Grace&#39;</span>), <span class="dt">last =</span> <span class="kw">c</span>(<span class="st">&#39;Hopper&#39;</span>), <span class="dt">lucky_number =</span> <span class="kw">c</span>(<span class="dv">0</span>), <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)
+<pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">first =</span> <span class="kw">c</span>(<span class="st">&#39;Grace&#39;</span>), <span class="dt">last =</span> <span class="kw">c</span>(<span class="st">&#39;Hopper&#39;</span>), <span class="dt">lucky_number =</span> <span class="kw">c</span>(<span class="dv">0</span>), <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)
 df &lt;-<span class="st"> </span><span class="kw">rbind</span>(df, <span class="kw">list</span>(<span class="st">&#39;Marie&#39;</span>, <span class="st">&#39;Curie&#39;</span>, <span class="dv">238</span>) )
 df &lt;-<span class="st"> </span><span class="kw">cbind</span>(df, <span class="kw">c</span>(<span class="ot">TRUE</span>,<span class="ot">TRUE</span>))
-<span class="kw">names</span>(df)[<span class="dv">4</span>] &lt;-<span class="st"> &#39;coffeetime&#39;</span></code></pre></div>
+<span class="kw">names</span>(df)[<span class="dv">4</span>] &lt;-<span class="st"> &#39;coffeetime&#39;</span></code></pre>
 </div>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="solution-to-challenge-2"><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 2</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 2</h2>
 </div>
 <div class="panel-body">
 <p>The contents of <code>script/load-gapminder.R</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/gapminder-FiveYearData.csv&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/gapminder-FiveYearData.csv&quot;</span>)</code></pre>
 <p>To run the script and load the data into the <code>gapminder</code> variable:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="dt">file =</span> <span class="st">&quot;scripts/load-gapminder.R&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="dt">file =</span> <span class="st">&quot;scripts/load-gapminder.R&quot;</span>)</code></pre>
 </div>
 </section>
         </div>
@@ -301,5 +301,15 @@ df &lt;-<span class="st"> </span><span class="kw">cbind</span>(df, <span class="
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
     <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-37305346-2', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
   </body>
 </html>

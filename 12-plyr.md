@@ -112,6 +112,13 @@ We installed this package in an earlier challenge. Let's load it now:
 library(plyr)
 ~~~
 
+
+
+~~~{.error}
+Warning: package 'plyr' was built under R version 3.1.3
+
+~~~
+
 Plyr has functions for operating on `lists`, `data.frames` and `arrays`
 (matrices, or n-dimensional vectors). Each function performs:
 

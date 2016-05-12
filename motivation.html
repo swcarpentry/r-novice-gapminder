@@ -56,8 +56,7 @@
 ) + geom_point()</code></pre>
 <h2 id="to-see-what-we-have">… to see what we have</h2>
 <div class="figure">
-<img src="img/first_plot.png" alt="First plot" />
-<p class="caption">First plot</p>
+<img src="img/first_plot.png" alt="First plot" /><p class="caption">First plot</p>
 </div>
 <h2 id="lets-graph-more-factors">Let’s graph more factors</h2>
 <pre><code>ggplot(
@@ -67,28 +66,27 @@
   + geom_point()</code></pre>
 <h2 id="pretty">Pretty!</h2>
 <div class="figure">
-<img src="img/countries_and_colors.png" alt="Countries and colors" />
-<p class="caption">Countries and colors</p>
+<img src="img/countries_and_colors.png" alt="Countries and colors" /><p class="caption">Countries and colors</p>
 </div>
 <h2 id="dyplr-gives-us">dyplr gives us …</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
 cors &lt;-<span class="st"> </span>gapminder %&gt;%
 <span class="st">  </span><span class="kw">group_by</span>(year) %&gt;%
 <span class="st">  </span><span class="kw">summarise</span>(
     <span class="dt">gdpPercap.lifeExp =</span> <span class="kw">cor</span>(gdpPercap, lifeExp),
     <span class="dt">gdpPercap.pop =</span> <span class="kw">cor</span>(gdpPercap, pop),
-    <span class="dt">pop.lifeExp =</span> <span class="kw">cor</span>(pop, lifeExp))</code></pre></div>
+    <span class="dt">pop.lifeExp =</span> <span class="kw">cor</span>(pop, lifeExp))</code></pre>
 <h2 id="pairwise-correlations">… pairwise correlations</h2>
 <pre><code>head(cors, 1)
 Source: local data frame [1 x 4]
 year gdpPercap.lifeExp gdpPercap.pop  pop.lifeExp
 1 1952         0.2780236   -0.02526041 -0.002724782</code></pre>
 <h2 id="restructuring-the-table">Restructuring the table …</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyr)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyr)
 tidy.cors &lt;-<span class="st"> </span>cors %&gt;%<span class="st"> </span><span class="kw">gather</span>(
   variables, correlation,
   gdpPercap.lifeExp, gdpPercap.pop,
-  pop.lifeExp)</code></pre></div>
+  pop.lifeExp)</code></pre>
 <h2 id="a-subtle-art">… a subtle art …</h2>
 <pre><code>head(tidy.cors, 1)
 
@@ -97,8 +95,7 @@ Source: local data frame [1 x 3]
 1 1952 gdpPercap.lifeExp   0.2780236</code></pre>
 <h2 id="produces-great-results">… produces great results</h2>
 <div class="figure">
-<img src="img/gdp_and_life.png" alt="GDP and Life" />
-<p class="caption">GDP and Life</p>
+<img src="img/gdp_and_life.png" alt="GDP and Life" /><p class="caption">GDP and Life</p>
 </div>
         </div>
       </div>
@@ -114,5 +111,15 @@ Source: local data frame [1 x 3]
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
     <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-37305346-2', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
   </body>
 </html>

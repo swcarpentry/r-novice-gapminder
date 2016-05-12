@@ -30,7 +30,7 @@
           <h2 class="subtitle">Project management with RStudio</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -51,7 +51,6 @@ Managing your projects in a reproducible fashion doesn’t just make your scienc
 <p>Most people tend to organize their projects like this:</p>
 <div class="figure">
 <img src="fig/bad_layout.png" />
-
 </div>
 <p>There are many reasons why we should <em>ALWAYS</em> avoid this:</p>
 <ol style="list-style-type: decimal">
@@ -71,7 +70,7 @@ Managing your projects in a reproducible fashion doesn’t just make your scienc
 <p>One of the most powerful and useful aspects of RStudio is its project management functionality. We’ll be using this today to create a self-contained, reproducible project.</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="challenge-creating-a-self-contained-project"><span class="glyphicon glyphicon-pencil"></span>Challenge: Creating a self-contained project</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge: Creating a self-contained project</h2>
 </div>
 <div class="panel-body">
 <p>We’re going to create a new project in RStudio:</p>
@@ -97,7 +96,7 @@ Managing your projects in a reproducible fashion doesn’t just make your scienc
 <p>There are lots of different was to manage this output. I find it useful to have an output folder with different sub-directories for each separate analysis. This makes it easier later, as many of my analyses are exploratory and don’t end up being used in the final project, and some of the analyses get shared between projects.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="tip-projecttemplate---a-possible-solution"><span class="glyphicon glyphicon-pushpin"></span>Tip: ProjectTemplate - a possible solution</h2>
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip: ProjectTemplate - a possible solution</h2>
 </div>
 <div class="panel-body">
 <p>One way to automate the management of projects is to install the third-party package, <code>ProjectTemplate</code>. This package will set up an ideal directory structure for project management. This is very useful as it enables you to have your analysis pipeline/workflow organised and structured. Together with the default RStudio project functionality and Git you will be able to keep track of your work as well as be able to share your work with collaborators.</p>
@@ -106,9 +105,9 @@ Managing your projects in a reproducible fashion doesn’t just make your scienc
 <li>Load the library</li>
 <li>Initialise the project:</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;ProjectTemplate&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;ProjectTemplate&quot;</span>)
 <span class="kw">library</span>(ProjectTemplate)
-<span class="kw">create.project</span>(<span class="st">&quot;../my_project&quot;</span>, <span class="dt">merge.strategy =</span> <span class="st">&quot;allow.non.conflict&quot;</span>)</code></pre></div>
+<span class="kw">create.project</span>(<span class="st">&quot;../my_project&quot;</span>, <span class="dt">merge.strategy =</span> <span class="st">&quot;allow.non.conflict&quot;</span>)</code></pre>
 <p>For more information on ProjectTemplate and its functionality visit the home page <a href="http://projecttemplate.net/index.html">ProjectTemplate</a></p>
 </div>
 </aside>
@@ -117,7 +116,7 @@ Managing your projects in a reproducible fashion doesn’t just make your scienc
 <p>When your project is new and shiny, the script file usually contains many lines of directly executed code. As it matures, reusable chunks get pulled into their own functions. It’s a good idea to separate these into separate folders; one to store useful functions that you’ll reuse across analyses and projects, and one to store the analysis scripts.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="tip-avoiding-duplication"><span class="glyphicon glyphicon-pushpin"></span>Tip: avoiding duplication</h2>
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip: avoiding duplication</h2>
 </div>
 <div class="panel-body">
 <p>You may find yourself using data or analysis scripts across several projects. Typically you want to avoid duplication to save space and avoid having to make updates to code in multiple places.</p>
@@ -128,7 +127,7 @@ Managing your projects in a reproducible fashion doesn’t just make your scienc
 <p>Now we have a good directory structure we will now place/save the data file in the <code>data/</code> directory.</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="challenge-1"><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h2>
 </div>
 <div class="panel-body">
 <p>Download the gapminder data from <a href="https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv">here</a>.</p>
@@ -142,7 +141,7 @@ Managing your projects in a reproducible fashion doesn’t just make your scienc
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="challenge-2"><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h2>
 </div>
 <div class="panel-body">
 <p>It is useful to get some general idea about the dataset, directly from the command line, before loading it into R. Understanding the dataset better will come handy when making decisions on how to load it in R. Use command-line shell to answer the following questions: 1. What is the size of the file? 2. How many rows of data does it contain? 3. What are the data types of values stored in this file?</p>
@@ -153,7 +152,7 @@ Managing your projects in a reproducible fashion doesn’t just make your scienc
 <p>The workspace/history pane has a tab for “Git”. We can stage each file by checking the box: you will see a Green “A” next to stage files and folders, and yellow question marks next to files or folders git doesn’t know about yet. RStudio also nicely shows you the difference between files from different commits.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="tip-versioning-disposable-output"><span class="glyphicon glyphicon-pushpin"></span>Tip: versioning disposable output</h2>
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip: versioning disposable output</h2>
 </div>
 <div class="panel-body">
 <p>Generally you do not want to version disposable output (or read-only data). You should modify the <code>.gitignore</code> file to tell git to ignore these files and directories.</p>
@@ -161,7 +160,7 @@ Managing your projects in a reproducible fashion doesn’t just make your scienc
 </aside>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="challenge-3"><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h2>
 </div>
 <div class="panel-body">
 <ol style="list-style-type: decimal">
@@ -185,5 +184,15 @@ Managing your projects in a reproducible fashion doesn’t just make your scienc
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
     <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-37305346-2', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
   </body>
 </html>
