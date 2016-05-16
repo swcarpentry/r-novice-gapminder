@@ -234,7 +234,7 @@ names_example['b']
 > name the elements in that new vector 'S', 'W', 'C'.
 >
 
-## Factors
+## Data Frames
 
 We said that columns in data.frames were vectors:
 
