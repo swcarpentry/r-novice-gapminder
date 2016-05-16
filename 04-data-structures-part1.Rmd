@@ -79,11 +79,19 @@ Note the `L` suffix to insist that a number is an integer. No matter how complic
 A user has added details of another cat. This information is in the file `data/feline-data_v2.csv`.
 
 
-```{r}
+```{r, eval=FALSE}
 file.show("data/feline-data_v2.csv")
 ```
 
-Reload your cats data like before, and check what type of data we find in the `weight` column:
+```{r, eval=FALSE}
+coat,weight,likes_string
+calico,2.1,TRUE
+black,5.0,FALSE
+tabby,3.2,TRUE
+tabby,2.3 or 2.4,TRUE
+```
+
+Load the new cats data like before, and check what type of data we find in the `weight` column:
 
 ```{r}
 cats <- read.csv(file="data/feline-data_v2.csv")
