@@ -26,8 +26,8 @@ tabby,3.2,TRUE
 ```
 
 ```{r, echo = FALSE}
-cats.df <- data.frame(coat = c("calico", "black", "tabby"), 
-                      weight = c(2.1, 5.0, 3.2), 
+cats.df <- data.frame(coat = c("calico", "black", "tabby"),
+                      weight = c(2.1, 5.0, 3.2),
                       likes_string = c(TRUE, FALSE, TRUE))
 write.csv(cats.df, "data/feline-data.csv", row.names = FALSE)
 ```
@@ -74,16 +74,27 @@ typeof(TRUE)
 typeof('banana')
 ```
 
-Note the `L` suffix to insist that a number is an integer. No matter how complicated our analyses become, all data in R is interpreted as one of these basic data types. This strictness has some really important consequences. Go back to your text editor and add add this line to feline-data.csv:
+Note the `L` suffix to insist that a number is an integer. No matter how complicated our analyses become, all data in R is interpreted as one of these basic data types. This strictness has some really important consequences.
+
+A user has added details of another cat. This information is in the file `data/feline-data_v2.csv`.
+
 
 ```{r, eval=FALSE}
+file.show("data/feline-data_v2.csv")
+```
+
+```{r, eval=FALSE}
+coat,weight,likes_string
+calico,2.1,TRUE
+black,5.0,FALSE
+tabby,3.2,TRUE
 tabby,2.3 or 2.4,TRUE
 ```
 
-Reload your cats data like before, and check what type of data we find in the `weight` column:
+Load the new cats data like before, and check what type of data we find in the `weight` column:
 
 ```{r}
-cats <- read.csv(file="data/feline-data.csv")
+cats <- read.csv(file="data/feline-data_v2.csv")
 typeof(cats$weight[1])
 ```
 
@@ -93,7 +104,7 @@ Oh no, our weights aren't the double type anymore! If we try to do the same math
 cats$weight[1] + cats$weight[2]
 ```
 
-What happened? When R reads a csv into one of these tables, it insists that everything in a column be the same basic type; if it can't understand *everything* in the column as a double, then *nobody* in the column gets to be a double. The table that R loaded our cats data into is something called a *data.frame*, and it is our first example of something called a *data structure* - things that R knows how to build out of the basic data types. In order to successfully use our data in R, we need to understand what these basic data structures are, and how they behave. For now, let's remove that extra line from our cats data and reload it, while we investigate this behavior further:
+What happened? When R reads a csv into one of these tables, it insists that everything in a column be the same basic type; if it can't understand *everything* in the column as a double, then *nobody* in the column gets to be a double. The table that R loaded our cats data into is something called a *data.frame*, and it is our first example of something called a *data structure* - things that R knows how to build out of the basic data types. In order to successfully use our data in R, we need to understand what these basic data structures are, and how they behave. For now, let's return to our original cats data and reload it, while we investigate this behavior further:
 
 feline-data.csv:
 
@@ -223,7 +234,7 @@ names_example['b']
 > name the elements in that new vector 'S', 'W', 'C'.
 >
 
-## Factors
+## Data Frames
 
 We said that columns in data.frames were vectors:
 
