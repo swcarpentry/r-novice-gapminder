@@ -165,7 +165,7 @@ typeof(cats$weight[1])
 
 
 ~~~{.output}
-[1] "double"
+[1] "integer"
 
 ~~~
 
@@ -179,7 +179,10 @@ cats$weight[1] + cats$weight[2]
 
 
 ~~~{.output}
-[1] 7.1
+[1] NA
+Warning message:
+In Ops.factor(cats$weight[1], cats$weight[2]) :
+  ‘+’ not meaningful for factors
 
 ~~~
 
