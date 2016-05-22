@@ -1,9 +1,4 @@
----
-layout: page
-title: R for reproducible scientific analysis
-subtitle: Introduction to R and RStudio
-minutes: 45
----
+# R for reproducible scientific analysis
 
 
 
@@ -583,7 +578,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7f9dc4e56720>
+<bytecode: 0x0000000014b8ce68>
 <environment: namespace:base>
 
 ~~~
@@ -696,3 +691,97 @@ network). R and RStudio have functionality for managing packages:
 > 
 > Install the following packages: `ggplot2`, `plyr`, `gapminder`
 > 
+
+
+## Challenge Solutions
+
+> ## Solution to challenge 1 {.challenge}
+>
+> The following can be used as R variables:
+> 
+> ~~~{.r}
+> min_height
+> max.height
+> MaxLength
+> celsius2kelvin
+> ~~~
+>
+> The following creates a hidden variable:
+> 
+> ~~~{.r}
+> .mass
+> ~~~
+>
+> The following will not be able to be used to create a variable
+> 
+> ~~~{.r}
+> _age
+> min-length
+> 2widths
+> ~~~
+>
+
+> ## Solution to challenge 2 {.challenge}
+>
+> 
+> ~~~{.r}
+> mass <- 47.5
+> ~~~
+> This will give a value of 47.5 for the variable mass
+> 
+> 
+> ~~~{.r}
+> age <- 122
+> ~~~
+> This will give a value of 122 for the variable age
+>
+> 
+> ~~~{.r}
+> mass <- mass * 2.3
+> ~~~
+> This will multiply the existing value of 47.5 by 2.3 to give a new value of 
+> 109.25 to the variable mass.
+>
+> 
+> ~~~{.r}
+> age <- age - 20
+> ~~~
+> This will subtract 20 from the existing value of 122 to give a new value 
+> of 102 to the variable age.
+
+> ## Solution to challenge 3 {.challenge}
+>
+> One way of answering this question in R is to use the `>` to set up the following:
+> 
+> ~~~{.r}
+> mass > age
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+> [1] TRUE
+> 
+> ~~~
+> This should yield a boolean value of TRUE since 109.25 is greater than 102.
+
+> ## Solution to challenge 4 {.challenge}
+>
+> We can use the `rm` command to accomplish this task
+> 
+> ~~~{.r}
+> rm(age, mass)
+> ~~~
+>
+
+> ## Solution to challenge 4 {.challenge}
+>
+> We can use the `install.packages()` command to install the required packages.
+> We can also install them in one go like so:
+> 
+> ~~~{.r}
+> install.packages("ggplot2", "plyr", "gapminder")
+> ~~~
+>
+
+
