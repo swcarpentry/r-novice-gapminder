@@ -101,7 +101,7 @@ Just like bash, if you type in an incomplete command, R will wait for you to
 complete it:
 
 ~~~ {.r}
-> 1 +
+> 1 + 2 -
 ~~~
 
 ~~~ {.output}
