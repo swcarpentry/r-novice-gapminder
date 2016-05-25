@@ -70,6 +70,10 @@ project.
 Now when we start R in this project directory, or open this project with RStudio,
 all of our work on this project will be entirely self-contained in this directory.
 
+See the figure below for an example of a simple project folder. For an example of a full project folder structure, check the [Architecture page](http://projecttemplate.net/architecture.html) of the ProjectTemplate package site.  
+
+![](fig/02-SimpleExampleLayout.png)
+
 ## Best practices for project organisation
 
 Although there is no "best" way to lay out a project, there are some general
