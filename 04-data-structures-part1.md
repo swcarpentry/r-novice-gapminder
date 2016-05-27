@@ -165,7 +165,7 @@ typeof(cats$weight[1])
 
 
 ~~~{.output}
-[1] "double"
+[1] "integer"
 
 ~~~
 
@@ -179,8 +179,7 @@ cats$weight[1] + cats$weight[2]
 
 
 ~~~{.output}
-[1] 7.1
-
+Warning in Ops.factor(cats$weight[1], cats$coat[2]): '+' not meaningful for factors
 ~~~
 
 What happened? When R reads a csv into one of these tables, it insists that everything in a column be the same basic type; if it can't understand *everything* in the column as a double, then *nobody* in the column gets to be a double. The table that R loaded our cats data into is something called a *data.frame*, and it is our first example of something called a *data structure* - things that R knows how to build out of the basic data types. In order to successfully use our data in R, we need to understand what these basic data structures are, and how they behave. For now, let's remove that extra line from our cats data and reload it, while we investigate this behavior further:
