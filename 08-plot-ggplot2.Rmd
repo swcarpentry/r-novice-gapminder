@@ -52,7 +52,7 @@ Let's start off with an example:
 
 ```{r lifeExp-vs-gdpPercap-scatter, message=FALSE}
 library("ggplot2")
-ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ```
 
@@ -66,15 +66,15 @@ want to show on our figure, in this example the gapminder data we read in
 earlier. For the second argument we passed in the `aes` function, which
 tells `ggplot` how variables in the **data** map to *aesthetic* properties of
 the figure, in this case the **x** and **y** locations. Here we told `ggplot` we
-want to plot the "lifeExp" column of the gapminder data frame on the x-axis, and
-the "gdpPercap" column on the y-axis. Notice that we didn't need to explicitly
-pass `aes` these columns (e.g. `x = gapminder[, "lifeExp"]`), this is because
+want to plot the "gdpPercap" column of the gapminder data frame on the x-axis, and
+the "lifeExp" column on the y-axis. Notice that we didn't need to explicitly
+pass `aes` these columns (e.g. `x = gapminder[, "gdpPercap"]`), this is because
 `ggplot` is smart enough to know to look in the **data** for that column!
 
 By itself, the call to `ggplot` isn't enough to draw a figure:
 
 ```{r}
-ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap))
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp))
 ```
 
 We need to tell `ggplot` how we want to visually represent the data, which we
@@ -83,7 +83,7 @@ tells `ggplot` we want to visually represent the relationship between **x** and
 **y** as a scatterplot of points:
 
 ```{r lifeExp-vs-gdpPercap-scatter2}
-ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ```
 
@@ -93,7 +93,7 @@ ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
 > changed over time:
 >
 > ```{r, eval=FALSE}
-> ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) + geom_point()
+> ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) + geom_point()
 > ```
 >
 > Hint: the gapminder dataset has a column called "year", which should appear
@@ -157,18 +157,18 @@ Ggplot also makes it easy to overlay statistical models over the data. To
 demonstrate we'll go back to our first example:
 
 ```{r lifeExp-vs-gdpPercap-scatter3, message=FALSE}
-ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap, color=continent)) +
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color=continent)) +
   geom_point()
 ```
 
 Currently it's hard to see the relationship between the points due to some strong
-outliers in GDP per capita. We can change the scale of units on the y axis using
+outliers in GDP per capita. We can change the scale of units on the x axis using
 the *scale* functions. These control the mapping between the data values and
 visual values of an aesthetic.
 
 ```{r axis-scale}
-ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
-  geom_point() + scale_y_log10()
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point() + scale_x_log10()
 ```
 
 The `log10` function applied a transformation to the values of the gdpPercap
@@ -176,22 +176,22 @@ column before rendering them on the plot, so that each multiple of 10 now only
 corresponds to an increase in 1 on the transformed scale, e.g. a GDP per capita
 of 1,000 is now 3 on the y axis, a value of 10,000 corresponds to 4 on the y
 axis and so on. This makes it easier to visualise the spread of data on the
-y-axis.
+x-axis.
 
 We can fit a simple relationship to the data by adding another layer,
 `geom_smooth`:
 
 ```{r lm-fit}
-ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
-  geom_point() + scale_y_log10() + geom_smooth(method="lm")
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point() + scale_x_log10() + geom_smooth(method="lm")
 ```
 
 We can make the line thicker by *setting* the **size** aesthetic in the
 `geom_smooth` layer:
 
 ```{r lm-fit2}
-ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
-  geom_point() + scale_y_log10() + geom_smooth(method="lm", size=1.5)
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point() + scale_x_log10() + geom_smooth(method="lm", size=1.5)
 ```
 
 There are two ways an *aesthetic* can be specified. Here we *set* the **size**
@@ -310,8 +310,8 @@ code to modify!
 > Hint: do not use the `aes` function.
 >
 > ```{r ch4-sol}
-> ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
->  geom_point(size=3, color="orange") + scale_y_log10() +
+> ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+>  geom_point(size=3, color="orange") + scale_x_log10() +
 >  geom_smooth(method="lm", size=1.5)
 > ```
 >
