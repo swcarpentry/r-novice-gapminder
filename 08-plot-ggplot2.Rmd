@@ -99,7 +99,6 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 > Hint: the gapminder dataset has a column called "year", which should appear
 > on the x-axis.
 >
-
 > ## Challenge 2 {.challenge}
 >
 > In the previous examples and challenge we've used the `aes` function to tell
@@ -164,11 +163,13 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color=continent)) +
 Currently it's hard to see the relationship between the points due to some strong
 outliers in GDP per capita. We can change the scale of units on the x axis using
 the *scale* functions. These control the mapping between the data values and
-visual values of an aesthetic.
+visual values of an aesthetic. We can also modify the transparency  of the 
+points, using the *alpha* funtion, which is especially helpful when you have 
+a large amount of data which is very clustered.
 
 ```{r axis-scale}
 ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
-  geom_point() + scale_x_log10()
+  geom_point(alpha = 0.5) + scale_x_log10()
 ```
 
 The `log10` function applied a transformation to the values of the gdpPercap
