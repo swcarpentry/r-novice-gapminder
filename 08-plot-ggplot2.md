@@ -367,6 +367,7 @@ code to modify!
 > Advanced:
 >  - Transform the x axis to better visualise the data spread.
 >  - Add a facet layer to panel the density plots by year.
+>  - Use the alpha function to set the transparency of layers in the plot
 >
 > 
 > ~~~{.r}
