@@ -211,10 +211,23 @@ variables and their visual representation.
 
 Earlier we visualised the change in life expectancy over time across all
 countries in one plot. Alternatively, we can split this out over multiple panels
-by adding a layer of **facet** panels:
+by adding a layer of **facet** panels. Focusing only on those countries with 
+names that start with the letter "A" or "Z".
+
+> ## Tip {.callout}
+> 
+> We start by subsetting the data.  We use the `substr` function to 
+> pull out a part of a character string; in this case, the letters that occur 
+> in positions `start` through `stop`, inclusive, of the `gapminder$country` 
+> vector. The operator `%in%` allows us to make multiple comparisons rather 
+> than write out long subsetting conditions (in this case, 
+> `starts.with %in% c("A", "Z")` is equivalent to 
+> `starts.with == "A" | starts.with == "Z"`)
 
 ```{r facet}
-ggplot(data = gapminder, aes(x = year, y = lifeExp, color=continent)) +
+starts.with <- substr(gapminder$country, start = 1, stop = 1)
+az.countries <- gapminder[starts.with %in% c("A", "Z"), ]
+ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country)
 ```
 
@@ -225,7 +238,7 @@ of the gapminder dataset.
 ## Modifying text
 
 To clean this figure up for a publication we need to change some of the text
-elements. The x-axis is way too cluttered, and the y axis should read
+elements. The x-axis is too cluttered, and the y axis should read
 "Life expectancy", rather than the column name in the data frame.
 
 We can do this by adding a couple of different layers. The **theme** layer
@@ -234,7 +247,7 @@ for changing the axis labels. To change the legend title, we need to use the
 **scales** layer.
 
 ```{r theme}
-ggplot(data = gapminder, aes(x = year, y = lifeExp, color=continent)) +
+ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country) +
   xlab("Year") + ylab("Life expectancy") + ggtitle("Figure 1") +
   scale_colour_discrete(name="Continent") +
