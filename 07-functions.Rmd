@@ -290,19 +290,29 @@ which is much better than in our first attempt where we just got a vector of num
 >
 > ```{r}
 > best_practice <- c("Write", "programs", "for", "people", "not", "computers")
-> paste(best_practice, sep=" ")
+> paste(best_practice, collapse = " ")
 > ```
+[1] "Write programs for people not computers"
 >
->  Write a function called `fence` that takes two vectors as arguments, called
+> *Note:* The function `paste` converts items into a character type and puts them together. It can be used for single elements, elements of one vector or multiple vector's elements. The function `paste` has three arguments:
+> `paste (..., sep = " ", collapse = NULL)`
+>
+> The `...` is what you want to paste together, `sep` and `collapse` are the arguments which hold the separator between items or  between the whole result, respectively. But, when do we use `sep` or `collapse`?
+
+>  1. If you have a set of individual characters to put together – use sep
+>  2. If you have a set of strings you want to paste element by element – use sep
+>  3. If you have a string or single characters to smushed together into a single string - use collapse
+>  4. If you have to paste individual strings and then items into a single string - use sep and collapse 
+>  5. If you are pasting together vectors of length one, then the arguments sep and collapse will produce the same output
+
+> `paste0` is short for `paste(..., sep="", collapse = NULL)`.
+>
+>  Challenge: Write a function called `fence` that takes two vectors as arguments, called
 > `text` and `wrapper`, and prints out the text wrapped with the `wrapper`:
 >
 > ```{r, eval=FALSE}
-> fence(text=best_practice, wrapper="***")
+> fence(text = best_practice, wrapper = "***")
 > ```
->
-> *Note:* the `paste` function has an argument called `collapse`, which is equivalent 
-> to use sep = "" (add strings without a separator). The default is a space: " ". The default for `paste0`
-> is no space "".
 >
 
 > ## Tip {.callout}
