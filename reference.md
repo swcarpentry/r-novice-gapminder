@@ -165,7 +165,7 @@ behaviour of R).
   - Any code written in the body of the function will preferably look for variables defined inside the function.
   - Document Why, then What, then lastly How (if the code isn't self explanatory)
 
-## [Creating graphics](08-plot-ggplot2.html)
+## [Creating publication quality graphics](08-plot-ggplot2.html)
 
  - figures can be created with the grammar of graphics:
    - `library(ggplot2)`
