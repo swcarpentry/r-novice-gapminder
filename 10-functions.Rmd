@@ -1,7 +1,7 @@
 ---
 layout: page
 title: R for reproducible scientific analysis
-subtitle: Creating functions
+subtitle: Functions explained
 minutes: 45
 ---
 
