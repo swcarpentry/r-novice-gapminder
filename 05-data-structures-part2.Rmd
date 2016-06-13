@@ -109,7 +109,7 @@ cats <- na.omit(cats)
 >
 
 The key to remember when adding data to a data.frame is that *columns are vectors or factors, and rows are lists.*
-We can also glue two dataframes together with `rbind`:
+We can also glue two data frames together with `rbind`:
 
 ```{r}
 cats <- rbind(cats, cats)
@@ -138,7 +138,7 @@ cats
 > Finally, use `cbind` to add a column with each person's answer to the question, "Is it time for coffee break?"
 >
 
-So far, you've seen the basics of manipulating data.frames with our cat data; now, let's use those skills to digest a more realistic dataset. Lets read in the gapminder dataset that we downloaded previously:
+So far, you've seen the basics of manipulating data.frames with our cat data; now, let's use those skills to digest a more realistic dataset. Lets read in the Gapminder dataset that we downloaded previously:
 
 ```{r}
 gapminder <- read.csv("data/gapminder-FiveYearData.csv")
@@ -156,7 +156,7 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv")
 > converting them to plain text first by using the `xlsx` package.
 >
 
-Let's investigate gapminder a bit; the first thing we should always do is check out what the data looks like with `str`:
+Let's investigate `gapminder` a bit; the first thing we should always do is check out what the data looks like with `str`:
 
 ```{r}
 str(gapminder)
@@ -171,7 +171,7 @@ typeof(gapminder$country)
 str(gapminder$country)
 ```
 
-We can also interrogate the data.frame for information about its dimensions; remembering that `str(gapminder)` said there were 1704 observations of 6 variables in gapminder, what do you think the following will produce, and why?
+We can also interrogate the data.frame for information about its dimensions; remembering that `str(gapminder)` said there were 1704 observations of 6 variables in `gapminder`, what do you think the following will produce, and why?
 
 ```{r}
 length(gapminder)
@@ -183,7 +183,7 @@ A fair guess would have been to say that the length of a data.frame would be the
 typeof(gapminder)
 ```
 
-When `length` gave us 6, it's because gapminder is built out of a list of 6 columns. To get the number of rows and columns in our dataset, try:
+When `length` gave us 6, it's because `gapminder` is built out of a list of 6 columns. To get the number of rows and columns in our dataset, try:
 
 ```{r}
 nrow(gapminder)

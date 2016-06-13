@@ -409,7 +409,7 @@ f[-3]
 
 ## Matrix subsetting
 
-Matrices are also subsetted using the `[` function. In this case
+Matrices are also subset using the `[` function. In this case
 it takes two arguments: the first applying to the rows, the second
 to its columns:
 

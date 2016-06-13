@@ -35,16 +35,16 @@ package, and the [ggplot2][ggplot2] package.
 [lattice]: http://www.statmethods.net/advgraphs/trellis.html
 [ggplot2]: http://www.statmethods.net/advgraphs/ggplot2.html
 
-Today we'll be learning about the ggplot2 package, because
+Today we'll be learning about the **ggplot2** package, because
 it is the most effective for creating publication quality
 graphics.
 
-ggplot2 is built on the grammar of graphics, the idea that any plot can be
-expressed from the same set of components: a **data** set, a
-**coordinate system**, and a set of **geoms**--the visual representation of data
+**ggplot2** is built on the grammar of graphics, the idea that any plot can be
+expressed from the same set of components: a *data* set, a
+*coordinate system*, and a set of *geoms*--the visual representation of data
 points.
 
-The key to understanding ggplot2 is thinking about a figure in layers: just like
+The key to understanding **ggplot2** is thinking about a figure in layers: just like
 you might do in an image editing program like Photoshop, Illustrator, or
 Inkscape.
 
@@ -62,12 +62,12 @@ know that we're creating a new plot, and any of the arguments we give the
 layers on the plot.
 
 We've passed in two arguments to `ggplot`. First, we tell `ggplot` what data we
-want to show on our figure, in this example the gapminder data we read in
+want to show on our figure, in this example the `gapminder` data we read in
 earlier. For the second argument we passed in the `aes` function, which
 tells `ggplot` how variables in the **data** map to *aesthetic* properties of
 the figure, in this case the **x** and **y** locations. Here we told `ggplot` we
-want to plot the "gdpPercap" column of the gapminder data frame on the x-axis, and
-the "lifeExp" column on the y-axis. Notice that we didn't need to explicitly
+want to plot the `gdpPercap` column of the gapminder data frame on the x-axis, and
+the `lifeExp` column on the y-axis. Notice that we didn't need to explicitly
 pass `aes` these columns (e.g. `x = gapminder[, "gdpPercap"]`), this is because
 `ggplot` is smart enough to know to look in the **data** for that column!
 
@@ -96,7 +96,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 > ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) + geom_point()
 > ```
 >
-> Hint: the gapminder dataset has a column called "year", which should appear
+> Hint: the `gapminder` data frame has a column called `year`, which should appear
 > on the x-axis.
 >
 
@@ -105,7 +105,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 > In the previous examples and challenge we've used the `aes` function to tell
 > the scatterplot **geom** about the **x** and **y** locations of each point.
 > Another *aesthetic* property we can modify is the point *color*. Modify the
-> code from the previous challenge to **color** the points by the "continent"
+> code from the previous challenge to **color** the points by the `continent`
 > column. What trends do you see in the data? Are they what you expected?
 >
 
@@ -171,7 +171,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point() + scale_x_log10()
 ```
 
-The `log10` function applied a transformation to the values of the gdpPercap
+The `log10` function applied a transformation to the values of the `gdpPercap`
 column before rendering them on the plot, so that each multiple of 10 now only
 corresponds to an increase in 1 on the transformed scale, e.g. a GDP per capita
 of 1,000 is now 3 on the y axis, a value of 10,000 corresponds to 4 on the y
@@ -232,8 +232,8 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
 ```
 
 The `facet_wrap` layer took a "formula" as its argument, denoted by the tilde
-(~). This tells R to draw a panel for each unique value in the country column
-of the gapminder dataset.
+(~). This tells R to draw a panel for each unique value in the `country` column
+of the `gapminder` dataset.
 
 ## Modifying text
 
@@ -255,7 +255,7 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
 ```
 
 
-This is just a taste of what you can do with `ggplot2`. RStudio provides a
+This is just a taste of what you can do with **ggplot2**. RStudio provides a
 really useful [cheat sheet][cheat] of the different layers available, and more
 extensive documentation is available on the [ggplot2 website][ggplot-doc].
 Finally, if you have no idea how to change something, a quick google search will
@@ -292,7 +292,7 @@ code to modify!
 > In the previous examples and challenge we've used the `aes` function to tell
 > the scatterplot **geom** about the **x** and **y** locations of each point.
 > Another *aesthetic* property we can modify is the point *color*. Modify the
-> code from the previous challenge to **color** the points by the "continent"
+> code from the previous challenge to **color** the points by the `continent`
 > column. What trends do you see in the data? Are they what you expected?
 >
 > ```{r ch2-sol}

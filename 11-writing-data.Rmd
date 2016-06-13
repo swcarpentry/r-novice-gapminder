@@ -76,7 +76,7 @@ We can use the `write.table` function for this, which is
 very similar to `read.table` from before.
 
 Let's create a data-cleaning script, for this analysis, we
-only want to focus on the gapminder data for Australia:
+only want to focus on the `gapminder` data for Australia:
 
 ```{r}
 aust_subset <- gapminder[gapminder$country == "Australia",]
@@ -129,7 +129,7 @@ That looks better!
 
 > ## Challenge 2 {.challenge}
 >
-> Write a data-cleaning script file that subsets the gapminder
+> Write a data-cleaning script file that subsets the `gapminder`
 > data to include only data points collected since 1990.
 >
 > Use this script to write out the new subset to a file

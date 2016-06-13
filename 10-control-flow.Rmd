@@ -254,7 +254,7 @@ output_vector2
 
 > ## Challenge 3 {.challenge}
 >
-> Write a script that loops through the `gapminder` data by continent and prints out
+> Write a script that loops through the `gapminder` data frame by continent and prints out
 > whether the mean life expectancy is smaller or larger than 50
 > years.
 >

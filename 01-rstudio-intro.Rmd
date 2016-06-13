@@ -89,7 +89,7 @@ Much of your time in R will be spent in the R interactive
 console. This is where you will run all of your code, and can be a
 useful environment to try out ideas before adding them to an R script
 file. This console in RStudio is the same as the one you would get if
-you just typed in `R` in your commandline environment.
+you just typed in `R` in your command line environment.
 
 The first thing you will see in the R interactive session is a bunch
 of information, followed by a ">" and a blinking cursor. In many ways
@@ -107,7 +107,7 @@ The simplest thing you could do with R is do arithmetic:
 ```
 
 And R will print out the answer, with a preceding "[1]". Don't worry about this
-for now, we'll explain that later. For now think of it as indicating ouput.
+for now, we'll explain that later. For now think of it as indicating output.
 
 Just like bash, if you type in an incomplete command, R will wait for you to
 complete it:
@@ -122,7 +122,7 @@ complete it:
 
 Any time you hit return and the R session shows a "+" instead of a ">", it
 means it's waiting for you to complete the command. If you want to cancel
-a command you can simply hit "Esc" and RStudio will give you back the ">"
+a command you can simply hit <kbd>Esc</kbd> and RStudio will give you back the ">"
 prompt.
 
 > ## Tip: Cancelling commands {.callout}
@@ -172,7 +172,7 @@ Remember that others may later read your code.
 
 
 The text after each line of code is called a
-"comment". Anything that follows after the hash (or octothorpe) symbol
+"comment". Anything that follows after the hash (or pound sign or octothorpe) symbol
 `#` is ignored by R when it executes code.
 
 Really small or large numbers get a scientific notation:
@@ -214,7 +214,7 @@ exp(0.5) # e^(1/2)
 ```
 
 Don't worry about trying to remember every function in R. You
-can simply look them up on google, or if you can remember the
+can simply look them up on Google, or if you can remember the
 start of the function's name, use the tab completion in RStudio.
 
 This is one advantage that RStudio has over R on its own, it
@@ -224,7 +224,7 @@ take.
 
 Typing a `?` before the name of a command will open the help page
 for that command. As well as providing a detailed description of
-the command and how it works, scrolling ot the bottom of the
+the command and how it works, scrolling to the bottom of the
 help page will usually show a collection of code examples which
 illustrate command usage. We'll go through an example later.
 
@@ -321,9 +321,9 @@ Variable names can contain letters, numbers, underscores and periods. They
 cannot start with a number nor contain spaces at all. Different people use
 different conventions for long variable names, these include
 
-  * periods.between.words
-  * underscores\_between_words
-  * camelCaseToSeparateWords
+  * `periods.between.words`
+  * `underscores_between_words`
+  * `camelCaseToSeparateWords`
 
 What you use is up to you, but **be consistent**.
 

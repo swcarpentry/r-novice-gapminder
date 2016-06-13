@@ -161,7 +161,7 @@ behaviour of R).
   - `?"function"`
   - Put code whose parameters change frequently in a function, then call it with
     different parameter values to customize its behavior.
-  - The last line of a function is returned, or you can use `return` explictly
+  - The last line of a function is returned, or you can use `return` explicitly
   - Any code written in the body of the function will preferably look for variables defined inside the function.
   - Document Why, then What, then lastly How (if the code isn't self explanatory)
 
@@ -227,8 +227,8 @@ behaviour of R).
 - `library(tidyr)`
 - '?gather' convert data from *wide* to *long* format.
 - '?spread' convert data from *long* to *wide* format.
-- '?seprarate' split a single value into multiple values.
-- '?unite' merge multipe values into a single value.
+- '?separate' split a single value into multiple values.
+- '?unite' merge multiple values into a single value.
 
 ## [Defensive Programming](15-wrap-up.html)
 
