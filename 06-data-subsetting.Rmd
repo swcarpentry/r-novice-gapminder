@@ -739,7 +739,7 @@ be changed with the third argument, `drop = FALSE`).
 >
 > ```{r}
 > subset.x <- x[x<7 & x>4]
-> print(x)
+> print(subset.x)
 >```
 
 
