@@ -28,8 +28,9 @@ R and RStudio. We will begin with raw data, perform exploratory analyses, and le
 how to plot results graphically. This example starts with the 
 `data/gapminder-FiveYearData.csv` dataset containing population information for many 
 countries through time. Can you read the data into R? Can you plot the population for 
-Senegal? What about Croatia? By the end of these lessons you will be able to plot the 
-populations for all of these countries in under a minute!
+Senegal? Can you calculate the average income for countries on continent of Asia? 
+By the end of these lessons you will be able to do things like plot the populations 
+for all of these countries in under a minute!
 
 ## Introduction to RStudio
 
