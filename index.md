@@ -35,7 +35,7 @@ usability.
 4.  [Data structures](04-data-structures-part1.html)
 5.  [Exploring Data Frames](05-data-structures-part2.html)
 6.  [Subsetting data](06-data-subsetting.html)
-7.  [Creating functions](07-functions.html)
+7.  [Functions explained](07-functions.html)
 8.  [Creating publication quality graphics](08-plot-ggplot2.html)
 9.  [Vectorisation](09-vectorisation.html)
 10. [Control flow](10-control-flow.html)
