@@ -124,7 +124,7 @@ behaviour of R).
  - `?nrow`, `?ncol`, `?dim` get the dimensions of a n-dimensional object
    (Won't work on atomic vectors or lists).
 
-## [Reading data](05-data-structures-part2.html)
+## [Exploring Data Frames](05-data-structures-part2.html)
 
  - `read.csv` to read in data in a regular structure
    - `sep` argument to specify the separator
@@ -156,7 +156,7 @@ behaviour of R).
  - `$` to access columns or list elements by name
  - negative indices skip elements
 
-## [Functions](07-functions.html)
+## [Functions explained](07-functions.html)
 
   - `?"function"`
   - Put code whose parameters change frequently in a function, then call it with
@@ -165,7 +165,7 @@ behaviour of R).
   - Any code written in the body of the function will preferably look for variables defined inside the function.
   - Document Why, then What, then lastly How (if the code isn't self explanatory)
 
-## [Creating graphics](08-plot-ggplot2.html)
+## [Creating publication quality graphics](08-plot-ggplot2.html)
 
  - figures can be created with the grammar of graphics:
    - `library(ggplot2)`
@@ -230,7 +230,7 @@ behaviour of R).
 - '?seprarate' split a single value into multiple values.
 - '?unite' merge multipe values into a single value.
 
-## [Defensive Programming](15-wrap-up.html)
+## [Best practices for writing good code](15-wrap-up.html)
 
  * Program defensively, i.e., assume that errors are going to arise, and write code to detect them when they do.
  * Write tests before writing code in order to help determine exactly what that code is supposed to do.
