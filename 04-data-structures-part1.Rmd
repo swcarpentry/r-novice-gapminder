@@ -83,6 +83,7 @@ A user has added details of another cat. This information is in the file `data/f
 file.show("data/feline-data_v2.csv")
 ```
 
+
 ```{r, eval=FALSE}
 coat,weight,likes_string
 calico,2.1,TRUE
@@ -104,9 +105,13 @@ Oh no, our weights aren't the double type anymore! If we try to do the same math
 cats$weight[1] + cats$weight[2]
 ```
 
+<<<<<<< a9dc3d64bcc69800f7f6e56a703f9afb0062382b
 What happened? When R reads a csv into one of these tables, it insists that everything in a column be the same basic type; if it can't understand *everything* in the column as a double, then *nobody* in the column gets to be a double. The table that R loaded our cats data into is something called a *data.frame*, and it is our first example of something called a *data structure* - things that R knows how to build out of the basic data types. In order to successfully use our data in R, we need to understand what these basic data structures are, and how they behave. For now, let's return to our original cats data and reload it, while we investigate this behavior further:
+=======
+What happened? When R reads a csv file into one of these tables, it insists that everything in a column be the same basic type; if it can't understand *everything* in the column as a double, then *nobody* in the column gets to be a double. The table that R loaded our cats data into is something called a *data.frame*, and it is our first example of something called a *data structure* - things that R knows how to build out of the basic data types. In order to successfully use our data in R, we need to understand what these basic data structures are, and how they behave. For now, let's remove that extra line from our cats data and reload it, while we investigate this behavior further:
+>>>>>>> Fix minor typos and formatting
 
-feline-data.csv:
+`feline-data.csv`:
 
 ```
 coat,weight,likes_string

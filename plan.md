@@ -46,7 +46,7 @@ Topic: Introduction to RStudio and Reproducible workflows
    - explain folders
    - show `packrat::status()`
    - modify .gitignore to ignore data/ and munge/ directories
- - Upload gapminder data set
+ - Upload Gapminder data set
  - Run `load.project`, explain what happened
  - Show config
   - add `packrat` to libraries
@@ -65,7 +65,7 @@ Topic: Introduction to R
 
 Topic: Seeking help
 ---
- - Show helpfile for read.table
+ - Show help file for read.table
  - http://resbaz.github.io/2014-r-materials/lessons/01-intro_r/seeking-help.html
  - Stackoverflow
  - CRAN Task views

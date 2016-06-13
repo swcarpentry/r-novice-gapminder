@@ -18,7 +18,7 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 >
 
 Previously we looked at how you can use functions to simplify your code.
-We defined the `calcGDP` function, which takes the gapminder dataset,
+We defined the `calcGDP` function, which takes the `gapminder` dataset,
 and multiplies the population and GDP per capita column. We also defined
 additional arguments so we could filter by `year` and `country`:
 
@@ -69,7 +69,7 @@ We want to *split* our data into groups, in this case continents, *apply*
 some calculations on that group, then optionally *combine* the results
 together afterwards.
 
-## The `plyr` package
+## The **plyr** package
 
 For those of you who have used R before, you might be familiar with the
 `apply` family of functions. While R's built in functions do work, we're
@@ -83,7 +83,7 @@ We installed this package in an earlier challenge. Let's load it now:
 library(plyr)
 ```
 
-Plyr has functions for operating on `lists`, `data.frames` and `arrays`
+The **plyr** package has functions for operating on `lists`, `data.frames` and `arrays`
 (matrices, or n-dimensional vectors). Each function performs:
 
 1. A **split**ting operation
@@ -101,7 +101,7 @@ which will only perform the split and apply steps, and not any combine step.
 They're named by their input data type and represent null output by a `_` (see
 table)
 
-Note here that plyr's use of "array" is different to R's,
+Note here that **plyr**'s use of "array" is different to R's,
 an array in ply can include a vector or matrix.
 
 ![Full apply suite](fig/full_apply_suite.png)
@@ -134,11 +134,11 @@ Let's walk through what just happened:
 - The `ddply` function feeds in a `data.frame` (function starts with **d**) and
 returns another `data.frame` (2nd letter is a **d**) i
 - the first argument we gave was the data.frame we wanted to operate on: in this
-  case the gapminder data. We called `calcGDP` on it first so that it would have
+  case the `gapminder` data. We called `calcGDP` on it first so that it would have
   the additional `gdp` column added to it.
 - The second argument indicated our split criteria: in this case the "continent"
   column. Note that we just gave the name of the column, not the actual column
-  itself like we've done previously with subsetting. Plyr takes care of these
+  itself like we've done previously with subsetting. **plyr** takes care of these
   implementation details for you.
 - The third argument is the function we want to apply to each grouping of the
   data. We had to define our own short function here: each subset of the data
@@ -218,7 +218,7 @@ d_ply(
 >
 > Calculate the difference in mean life expectancy between
 > the years 1952 and 2007 from the output of challenge 2
-> using one of the `plyr` functions.
+> using one of the **plyr** functions.
 >
 
 > ## Alternate Challenge if class seems lost {.challenge}

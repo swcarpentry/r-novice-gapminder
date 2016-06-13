@@ -22,7 +22,7 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 
 If we only had one data set to analyze, it would probably be faster to load the
 file into a spreadsheet and use that to plot simple statistics. However, the
-gapminder data is updated periodically, and we may want to pull in that new
+Gapminder data is updated periodically, and we may want to pull in that new
 information later and re-run our analysis again. We may also obtain similar data
 from a different source in the future.
 
@@ -53,7 +53,7 @@ my_sum <- function(a, b) {
 }
 ```
 
-Let’s define a function fahr_to_kelvin that converts temperatures from Fahrenheit to Kelvin:
+Let’s define a function `fahr_to_kelvin` that converts temperatures from Fahrenheit to Kelvin:
 
 ```{r}
 fahr_to_kelvin <- function(temp) {
@@ -189,7 +189,7 @@ If you've been writing these functions down into a separate R script
 source("functions/functions-lesson.R")
 ```
 
-Ok, so there's a lot going on in this function now. In plain English,
+OK, so there's a lot going on in this function now. In plain English,
 the function now subsets the provided data by year if the year argument isn't
 empty, then subsets the result by country if the country argument isn't empty.
 Then it calculates the GDP for whatever subset emerges from the previous two steps.
