@@ -738,8 +738,8 @@ be changed with the third argument, `drop = FALSE`).
 > 1. Write a subsetting command to return the values in x that are greater than 4 and less than 7.
 >
 > ```{r}
-> subset.x <- x[x<7 & x>4]
-> print(subset.x)
+> x_subset <- x[x<7 & x>4]
+> print(x_subset)
 >```
 
 
