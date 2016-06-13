@@ -156,7 +156,7 @@ behaviour of R).
  - `$` to access columns or list elements by name
  - negative indices skip elements
 
-## [Functions](07-functions.html)
+## [Functions explained](07-functions.html)
 
   - `?"function"`
   - Put code whose parameters change frequently in a function, then call it with
