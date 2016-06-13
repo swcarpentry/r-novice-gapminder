@@ -178,13 +178,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > You can quickly open up a shell in RStudio using the **Tools -> Shell...** menu item.
 > 
 
-> ## Solution to Challenge 2 {.challenge}
-> The size of the file is 
-> ```{r ch2-sol, engine='sh'}
-> ls -lh data/gapminder-FiveYearData.csv
-> wc -l data/gapminder-FiveYearData.csv
-> head data/gapminder-FiveYearData.csv
-> ```
+`
 
 ## Version Control
 
@@ -215,6 +209,17 @@ between files from different commits.
 > the git interface.
 >
 
+## Challenge Solutions
+
+> ## Solution to Challenge 2 {.challenge}
+>
+> The size of the file is 
+> ```{r ch2-sol, engine='sh'}
+> ls -lh data/gapminder-FiveYearData.csv
+> wc -l data/gapminder-FiveYearData.csv
+> head data/gapminder-FiveYearData.csv
+> ``
+
 > ## Solution to Challenge 3 {.challenge}
 > 
 > This can be done manually or with the command line,
@@ -222,3 +227,4 @@ between files from different commits.
 > $ mkdir graphs
 > $ echo "graphs/" >> .gitignore
 > ```
+>
