@@ -11,13 +11,13 @@ source("tools/chunk-options.R")
 
 > ## Learning Objectives {.objectives}
 >
-> - To learn how to manipulate a data frame in memory
-> - To tour some best practices of exploring and understanding a data frame when it is first loaded.
+> - To learn how to manipulate a data.frame in memory
+> - To tour some best practices of exploring and understanding a data.frame when it is first loaded.
 >
 
-At this point, you've see it all - in the last lesson, we toured all the basic data types and data structures in R. Everything you do will be a manipulation of those tools. But a whole lot of the time, the star of the show is going to be the data frame - that table that we started with that information from a CSV gets dumped into when we load it. In this lesson, we'll learn a few more things about working with data frame.
+At this point, you've see it all - in the last lesson, we toured all the basic data types and data structures in R. Everything you do will be a manipulation of those tools. But a whole lot of the time, the star of the show is going to be the data.frame - that table that we started with that information from a CSV gets dumped into when we load it. In this lesson, we'll learn a few more things about working with data.frame.
 
-We learned last time that the columns in a data frame were vectors, so that our data are consistent in type throughout the column. As such, if we want to add a new column, we need to start by making a new vector:
+We learned last time that the columns in a data.frame were vectors, so that our data are consistent in type throughout the column. As such, if we want to add a new column, we need to start by making a new vector:
 
 ```{r, echo = FALSE}
 cats <- read.csv("data/feline-data.csv")
@@ -49,7 +49,7 @@ Our new column has appeared, but it's got that ugly name at the top; let's give 
 names(cats)[4] <- 'age'
 ```
 
-Now how about adding rows - in this case, we saw last time that the rows of a data frame are made of lists:
+Now how about adding rows - in this case, we saw last time that the rows of a data.frame are made of lists:
 
 ```{r}
 newRow <- list("tortoiseshell", 3.3, TRUE, 9)
@@ -72,13 +72,13 @@ cats$coat <- as.character(cats$coat)
 str(cats)
 ```
 
-We now know how to add rows and columns to our data frame in R - but in our work we've accidentally added a garbage row:
+We now know how to add rows and columns to our data.frame in R - but in our work we've accidentally added a garbage row:
 
 ```{r}
 cats
 ```
 
-We can ask for a data frame minus this offending row:
+We can ask for a data.frame minus this offending row:
 
 ```{r}
 cats[-4,]
@@ -108,7 +108,7 @@ cats <- na.omit(cats)
 > will print at this point?
 >
 
-The key to remember when adding data to a data frame is that *columns are vectors or factors, and rows are lists.*
+The key to remember when adding data to a data.frame is that *columns are vectors or factors, and rows are lists.*
 We can also glue two dataframes together with `rbind`:
 
 ```{r}
@@ -124,11 +124,11 @@ cats
 
 > ## Challenge 1 {.challenge}
 >
-> You can create a new data frame right from within R with the following syntax:
+> You can create a new data.frame right from within R with the following syntax:
 > ```{r}
 > df <- data.frame(id = c('a', 'b', 'c'), x = 1:3, y = c(TRUE, TRUE, FALSE), stringsAsFactors = FALSE)
 > ```
-> Make a data frame that holds the following information for yourself:
+> Make a data.frame that holds the following information for yourself:
 >
 > - first name
 > - last name
@@ -138,7 +138,7 @@ cats
 > Finally, use `cbind` to add a column with each person's answer to the question, "Is it time for coffee break?"
 >
 
-So far, you've seen the basics of manipulating data frames with our cat data; now, let's use those skills to digest a more realistic dataset. Lets read in the gapminder dataset that we downloaded previously:
+So far, you've seen the basics of manipulating data.frames with our cat data; now, let's use those skills to digest a more realistic dataset. Lets read in the gapminder dataset that we downloaded previously:
 
 ```{r}
 gapminder <- read.csv("data/gapminder-FiveYearData.csv")
@@ -162,7 +162,7 @@ Let's investigate gapminder a bit; the first thing we should always do is check 
 str(gapminder)
 ```
 
-We can also examine individual columns of the data frame with our `typeof` function:
+We can also examine individual columns of the data.frame with our `typeof` function:
 
 ```{r}
 typeof(gapminder$year)
@@ -171,13 +171,13 @@ typeof(gapminder$country)
 str(gapminder$country)
 ```
 
-We can also interrogate the data frame for information about its dimensions; remembering that `str(gapminder)` said there were 1704 observations of 6 variables in gapminder, what do you think the following will produce, and why?
+We can also interrogate the data.frame for information about its dimensions; remembering that `str(gapminder)` said there were 1704 observations of 6 variables in gapminder, what do you think the following will produce, and why?
 
 ```{r}
 length(gapminder)
 ```
 
-A fair guess would have been to say that the length of a data frame would be the number of rows it has (1704), but this is not the case; remember, a data frame is a *list of vectors and factors*:
+A fair guess would have been to say that the length of a data.frame would be the number of rows it has (1704), but this is not the case; remember, a data.frame is a *list of vectors and factors*:
 
 ```{r}
 typeof(gapminder)

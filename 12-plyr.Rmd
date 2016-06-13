@@ -83,7 +83,7 @@ We installed this package in an earlier challenge. Let's load it now:
 library(plyr)
 ```
 
-Plyr has functions for operating on lists,  data frames, and arrays
+Plyr has functions for operating on `lists`, `data.frames` and `arrays`
 (matrices, or n-dimensional vectors). Each function performs:
 
 1. A **split**ting operation
@@ -133,7 +133,7 @@ Let's walk through what just happened:
 
 - The `ddply` function feeds in a `data.frame` (function starts with **d**) and
 returns another `data.frame` (2nd letter is a **d**) i
-- the first argument we gave was the data frame we wanted to operate on: in this
+- the first argument we gave was the data.frame we wanted to operate on: in this
   case the gapminder data. We called `calcGDP` on it first so that it would have
   the additional `gdp` column added to it.
 - The second argument indicated our split criteria: in this case the "continent"
