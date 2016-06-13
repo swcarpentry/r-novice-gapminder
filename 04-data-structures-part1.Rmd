@@ -155,7 +155,7 @@ cats <- cats_orig
 
 ## Vectors & Type Coercion
 
-To better understand the behavior we just saw, let's meet another of the data structures: the *vector*.
+To better understand this behavior, let's meet another of the data structures: the *vector*.
 
 ```{r}
 my_vector <- vector(length = 3)
@@ -163,6 +163,7 @@ my_vector
 ```
 
 A vector in R is essentially an ordered list of things, with the special condition that *everything in the vector must be the same basic data type*. If you don't choose the datatype, it'll default to `logical`; or, you can declare an empty vector of whatever type you like.
+
 
 ```{r}
 another_vector <- vector(mode='character', length=3)
@@ -274,7 +275,7 @@ names(names_example)
 > Start by making a vector with the numbers 1 through 26. 
 > Multiply the vector by 2, and give the resulting vector 
 > names A through Z (hint: there is a built in vector called `LETTERS`)
->
+
 
 ## Data Frames
 
@@ -466,7 +467,7 @@ ncol(matrix_example)
 > length(matrix_example)
 > ```
 >
-> Because a matrix is really just a vector with added dimension attributes, `length`
+> Because a matrix is a vector with added dimension attributes, `length`
 > gives you the total number of elements in the matrix.
 >
 
