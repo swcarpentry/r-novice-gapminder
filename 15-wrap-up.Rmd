@@ -1,7 +1,7 @@
 ---
 layout: page
 title: R for reproducible scientific analysis
-subtitle: Wrapping up
+subtitle: Best practices for writing good code
 minutes: 15
 ---
 
