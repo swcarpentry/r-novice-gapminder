@@ -93,7 +93,7 @@ Alternatively, we can drop all rows with `NA` values:
 na.omit(cats)
 ```
 
-Let's reassign our variable to persist the changes:
+Let's reassign the output to `cats`, so that our changes will be permanent:
 
 ```{r}
 cats <- na.omit(cats)
