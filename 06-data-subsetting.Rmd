@@ -725,6 +725,23 @@ be changed with the third argument, `drop = FALSE`).
 > The `which` command returns the index of every `TRUE` value in its input. The `names(x) == "g"` command didn't return any `TRUE` values. Because there were no `TRUE` values passed to the `which` command, it returned an empty vector. Negating this vector with the minus sign didn't change its meaning. Because we used this empty vector to retrieve values from `x`, it produced an empty numeric vector. It was a `named numeric` empty vector because the vector type of x is "named numeric" since we assigned names to the values (try `str(x)` ).
 
 
+> ## Solution to challenge 3 {.challenge}
+> Given the following code:
+>
+> ```{r}
+> x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
+> names(x) <- c('a', 'b', 'c', 'd', 'e')
+> print(x)
+> ```
+>
+> 1. Write a subsetting command to return the values in x that are greater than 4 and less than 7.
+>
+> ```{r}
+> x_subset <- x[x<7 & x>4]
+> print(x_subset)
+>```
+
+
 
 > ## Solution to challenge 4 {.challenge}
 >
