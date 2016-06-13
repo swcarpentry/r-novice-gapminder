@@ -272,3 +272,67 @@ output_vector2
 > tests whether the country starts with a 'B', and graphs life expectancy
 > against time as a line graph if the mean life expectancy is under 50 years.
 >
+
+
+## Challenge solutions
+
+> ## Solution to Challenge 1 {.challenge}
+> We will first see a solution to Challenge 1 which does not use the `any` function.
+> We first obtain a logical vector describing which element of `gapminder$year` is equal to `2002`:
+> ```{r ch10pt1-sol, eval=FALSE}
+> gapminder[(gapminder$year == 2002),]
+> ```
+> Then, we count the number of rows of the data.frame `gapminder` that correspond to the 2002:
+> ```{r ch10pt2-sol, eval=FALSE}
+> rows2002_number <- nrow(gapminder[(gapminder$year == 2002),])
+> ```
+> The presence of any record for the year 2002 is equivalent to the request that `rows2002_number` is one or more:
+> ```{r ch10pt3-sol, eval=FALSE}
+> rows2002_number >= 1
+> ```
+> Putting all together, we obtain:
+> ```{r ch10pt4-sol, eval=FALSE}
+> if(nrow(gapminder[(gapminder$year == 2002),]) >= 1){
+>    print("Record found.")
+> }
+> ```
+
+> All this can be done more quickly with `any`. The logical condition can be expressed as:
+> ```{r ch10pt5-sol, eval=FALSE}
+> any(gapminder$year == 2002)
+> ```
+
+> ## Solution to Challenge 2 {.challenge}
+> We can check whether the two vectors are identical using the `all` function:
+> ```{r ch10pt6-sol, eval=FALSE}
+> all(output_vector == output_vector2)
+> ```
+>However, all the elements of `output_vector` can be found in `output_vector2`:
+> ```{r ch10pt7-sol, eval=FALSE}
+> all(output_vector %in% output_vector2)
+> ```
+> and vice versa:
+> ```{r ch10pt8-sol, eval=FALSE}
+> all(output_vector2 %in% output_vector)
+> ```
+> therefore, the element in `output_vector` and `output_vector2` are just sorted in a different order.
+> This is because `as.vector` outputs the elements of an input matrix going over its column.
+> Taking a look at `output_matrix`, we can notice that we want its elements by rows.
+> The solution is to transpose the `output_matrix`. We can do it either by calling the transpose function
+> `t` or by inputing the elements in the right order.
+> The first solution requires to change the original
+> ```{r ch10pt9-sol, eval=FALSE}
+> output_vector2 <- as.vector(output_matrix)
+> ```
+> into
+> ```{r ch10pt10-sol, eval=FALSE}
+> output_vector2 <- as.vector(t(output_matrix))
+> ```
+> The second solution requires to change
+> ```{r ch10pt11-sol, eval=FALSE}
+> output_matrix[i, j] <- temp_output
+> ```
+> into
+> ```{r ch10pt12-sol, eval=FALSE}
+> output_matrix[j, i] <- temp_output
+> ```
