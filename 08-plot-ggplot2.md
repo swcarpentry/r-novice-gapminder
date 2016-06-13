@@ -47,7 +47,7 @@ Let's start off with an example:
 
 
 ~~~{.r}
-library("ggplot2")
+library(ggplot2)
 ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
   geom_point()
 ~~~
@@ -76,7 +76,12 @@ By itself, the call to `ggplot` isn't enough to draw a figure:
 ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap))
 ~~~
 
-<img src="fig/08-plot-ggplot2-unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" />
+
+
+~~~{.error}
+Error: No layers in plot
+
+~~~
 
 We need to tell `ggplot` how we want to visually represent the data, which we
 do by adding a new **geom** layer. In our example, we used `geom_point`, which
@@ -267,7 +272,7 @@ for changing the axis labels. To change the legend title, we need to use the
 ggplot(data = gapminder, aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country) +
   xlab("Year") + ylab("Life expectancy") + ggtitle("Figure 1") +
-  scale_colour_discrete(name="Continent") +
+  scale_fill_discrete(name="Continent") +
   theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
 ~~~
 
@@ -292,7 +297,6 @@ code to modify!
 > Advanced:
 >  - Transform the x axis to better visualise the data spread.
 >  - Add a facet layer to panel the density plots by year.
->  - Use the alpha parameter to set the transparency of layers in the plot.
 >
 
 ## Challenge solutions
@@ -368,7 +372,6 @@ code to modify!
 > Advanced:
 >  - Transform the x axis to better visualise the data spread.
 >  - Add a facet layer to panel the density plots by year.
->  - Use the alpha parameter to set the transparency of layers in the plot.
 >
 > 
 > ~~~{.r}

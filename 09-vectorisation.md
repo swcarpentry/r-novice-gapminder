@@ -272,17 +272,15 @@ m * -1
 >
 > 
 > ~~~{.r}
-> ggplot(gapminder, aes(x = year, y = pop_millions)) + 
->  geom_point()
+> plot(gapminder$year, gapminder$pop_millions)
 > ~~~
 > 
 > <img src="fig/09-vectorisation-ch2-sol-1.png" title="plot of chunk ch2-sol" alt="plot of chunk ch2-sol" style="display: block; margin: auto;" />
 > 
 > ~~~{.r}
-> countryset <- c("China","India","Indonesia")
-> ggplot(gapminder[gapminder$country %in% countryset,],
->        aes(x = year, y = pop_millions)) + 
->   geom_point()
+> countryset <- c('China', 'India', 'Indonesia')
+> y <- gapminder[gapminder$country %in% countryset, ]
+> plot(y$year, y$pop_millions)
 > ~~~
 > 
 > <img src="fig/09-vectorisation-ch2-sol-2.png" title="plot of chunk ch2-sol" alt="plot of chunk ch2-sol" style="display: block; margin: auto;" />
