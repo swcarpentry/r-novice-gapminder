@@ -196,7 +196,7 @@ There and back again!
 
 > ## Solution to Challenge 1 {.challenge}
 >
-> The original gapminder data.frame is in an intermediate format. It is not purely long since it had multiple observation variables (`pop`,`lifeExp`,`gdpPercap`).
+> The original gapminder data frame is in an intermediate format. It is not purely long since it had multiple observation variables (`pop`,`lifeExp`,`gdpPercap`).
 >
 >
 

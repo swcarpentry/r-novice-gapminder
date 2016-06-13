@@ -12,7 +12,7 @@ source("tools/chunk-options.R")
 > ## Learning Objectives {.objectives}
 >
 > - To be aware of the different types of data
-> - To begin exploring the data.frame, and understand how it's related to vectors, factors and lists
+> - To begin exploring the data frame, and understand how it's related to vectors, factors and lists
 > - To be able to ask questions from R about the type, class, and structure of an object.
 >
 
@@ -110,7 +110,7 @@ Oh no, our weights aren't the double type anymore! If we try to do the same math
 cats$weight[1] + cats$weight[2]
 ```
 
-What happened? When R reads a csv into one of these tables, it insists that everything in a column be the same basic type; if it can't understand *everything* in the column as a double, then *nobody* in the column gets to be a double. The table that R loaded our cats data into is something called a *data.frame*, and it is our first example of something called a *data structure* - things that R knows how to build out of the basic data types. In order to successfully use our data in R, we need to understand what these basic data structures are, and how they behave. For now, let's return to our original cats data and reload it, while we investigate this behavior further:
+What happened? When R reads a csv into one of these tables, it insists that everything in a column be the same basic type; if it can't understand *everything* in the column as a double, then *nobody* in the column gets to be a double. The table that R loaded our cats data into is something called a *data frame*, and it is our first example of something called a *data structure* - things that R knows how to build out of the basic data types. In order to successfully use our data in R, we need to understand what these basic data structures are, and how they behave. For now, let's return to our original cats data and reload it, while we investigate this behavior further:
 
 feline-data.csv:
 
@@ -155,7 +155,7 @@ The somewhat cryptic output from this command indicates the basic data type foun
 str(cats$weight)
 ```
 
-we see that that's a vector, too - *the columns of data we load into R data.frames are all vectors*, and that's the root of why R forces everything in a column to be the same basic data type.
+we see that that's a vector, too - *the columns of data we load into R data frames are all vectors*, and that's the root of why R forces everything in a column to be the same basic data type.
 
 > ## Discussion 1 {.challenge}
 >
@@ -196,7 +196,7 @@ numeric_coerced_to_logical <- as.logical(character_coerced_to_numeric)
 numeric_coerced_to_logical
 ```
 
-As you can see, some surprising things can happen when R forces one basic data type into another! Nitty-gritty of type coercion aside, the point is: if your data doesn't look like what you thought it was going to look like, type coercion may well be to blame; make sure everything is the same type in your vectors and your columns of data.frames, or you will get nasty surprises!
+As you can see, some surprising things can happen when R forces one basic data type into another! Nitty-gritty of type coercion aside, the point is: if your data doesn't look like what you thought it was going to look like, type coercion may well be to blame; make sure everything is the same type in your vectors and your columns of data frames, or you will get nasty surprises!
 
 Concatenate will also append things to an existing vector:
 
@@ -242,7 +242,7 @@ names_example['b']
 
 ## Data Frames
 
-We said that columns in data.frames were vectors:
+We said that columns in data frames were vectors:
 
 ```{r}
 str(cats$weight)
@@ -280,7 +280,7 @@ typeof(CATegories[1])
 ```
 
 > ## Challenge 2 {.challenge}
-> Is there a factor in our `cats` data.frame? what is its name?
+> Is there a factor in our `cats` data frame? what is its name?
 > Try using `?read.csv` to figure out how to keep text columns as character vectors instead of factors;
 > then write a command or two to show that the factor in `cats` is actually is a character vector when loaded in this way.
 >
@@ -310,13 +310,13 @@ another_list <- list(title = "Research Bazaar", numbers = 1:10, data = TRUE )
 another_list
 ```
 
-We can now understand something a bit surprising in our data.frame; what happens if we run:
+We can now understand something a bit surprising in our data frame; what happens if we run:
 
 ```{r}
 typeof(cats)
 ```
 
-We see that data.frames look like lists 'under the hood' - this is because a data.frame is really a list of vectors and factors, as they have to be - in order to hold those columns that are a mix of vectors and factors, the data.frame needs something a bit more flexible than a vector to put all the columns together into a familiar table.
+We see that data frames look like lists 'under the hood' - this is because a data frame is really a list of vectors and factors, as they have to be - in order to hold those columns that are a mix of vectors and factors, the data frame needs something a bit more flexible than a vector to put all the columns together into a familiar table.
 In other words, a data frame is a special list in which all the vectors must have the same length.
 
 ## Matrices
