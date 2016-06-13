@@ -6,9 +6,9 @@ subtitle: Instructor's Guide
 
 ## Timing
 
-Leave about 30 minutes at the start of each workshop and another 15 mins 
-at the start of each sesson for technical difficulties like WiFi and 
-installing things (even if you asked students to install in advance, longer if 
+Leave about 30 minutes at the start of each workshop and another 15 mins
+at the start of each sesson for technical difficulties like WiFi and
+installing things (even if you asked students to install in advance, longer if
 not).
 
 ## Pulling in data
@@ -20,6 +20,12 @@ to have attendees run the following:
 git remote add data https://github.com/resbaz/r-novice-gapminder-files
 git pull data master
 ~~~
+
+If Git is not being taught as part of the workshop the raw data can be downloaded from the folloing urls:
+[gapminder-FiveYearData](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/data/gapminder-FiveYearData.csv)
+[gapminder-FiveYearData-Wide](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/data/gapminder_wide.csv)
+
+attendees will need to use the `File - Save As` dialog in their browser to save the file.
 
 ## Overall
 
