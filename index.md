@@ -14,12 +14,12 @@ attendees a strong foundation in the fundamentals of R, and to teach best
 practices for scientific computing: breaking down analyses into modular units,
 task automation, and encapsulation.
 
-Note that this workshop will focus on teaching the fundamentals of the 
+Note that this workshop will focus on teaching the fundamentals of the
 programming language R, and will not teach statistical analysis.
 
 A variety of third party packages are used throughout this workshop. These
-are not necessarily the best, nor are they comprehensive, but they are 
-packages we find useful, and have been chosen primarily for their 
+are not necessarily the best, nor are they comprehensive, but they are
+packages we find useful, and have been chosen primarily for their
 usability.
 
 > ## Prerequisites {.prereq}
@@ -33,7 +33,7 @@ usability.
 2.  [Project management with RStudio](02-project-intro.html)
 3.  [Seeking help](03-seeking-help.html)
 4.  [Data structures](04-data-structures-part1.html)
-5.  [Data frames and reading in data](05-data-structures-part2.html)
+5.  [Exploring Data Frames](05-data-structures-part2.html)
 6.  [Subsetting data](06-data-subsetting.html)
 7.  [Creating functions](07-functions.html)
 8.  [Creating publication quality graphics](08-plot-ggplot2.html)
