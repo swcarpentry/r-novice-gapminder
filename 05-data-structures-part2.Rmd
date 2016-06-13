@@ -137,14 +137,17 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv")
 
 > ## Miscellaneous Tips {.callout}
 >
-> 1. Another type of file you might encounter are tab-separated
-> format. To specify a tab as a separator, use `"\t"`.
+> 1. Another type of file you might encounter are tab-separated value files (.tsv). To specify a tab as a separator, use `"\\t"` or `read.delim()`.
 >
 > 2. You can also read in files from the Internet by replacing
-> the file paths with a web address.
+> the file paths with a web address. For example,
+> 
+> ```{r eval=FALSE, echo=TRUE}
+> gapminder <- read.csv("https://raw.githubusercontent.com/jrnold/r-novice-gapminder/gh-pages/data/gapminder-FiveYearData.csv")
+> ```
 >
 > 3. You can read directly from excel spreadsheets without
-> converting them to plain text first by using the `xlsx` package.
+> converting them to plain text first by using the [readxl](https://cran.r-project.org/web/packages/readxl/index.html) package.
 >
 
 Let's investigate gapminder a bit; the first thing we should always do is check out what the data looks like with `str`:
@@ -242,3 +245,12 @@ into a script file so we can come back to it later.
 > source(file = "scripts/load-gapminder.R")
 > ```
 >
+
+> ## Solution to Challenge 3 {.challenge}
+> 
+> The object `gapminder` is a data frame with columns
+> - `country` and `continent` are factors.
+> - `year` is an integer vector.
+> - `pop`, `lifeExp`, and `gdpPercap` are numeric vectors.
+> 
+
