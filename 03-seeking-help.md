@@ -110,9 +110,9 @@ sessionInfo()
 
 
 ~~~{.output}
-R version 3.2.2 (2015-08-14)
-Platform: x86_64-apple-darwin13.4.0 (64-bit)
-Running under: OS X 10.11.1 (El Capitan)
+R version 3.2.5 (2016-04-14)
+Platform: x86_64-apple-darwin15.4.0 (64-bit)
+Running under: OS X 10.11.4 (El Capitan)
 
 locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -121,11 +121,11 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
 
 other attached packages:
-[1] knitr_1.11
+[1] knitr_1.12.3
 
 loaded via a namespace (and not attached):
-[1] magrittr_1.5  formatR_1.2.1 tools_3.2.2   stringi_1.0-1 methods_3.2.2
-[6] stringr_1.0.0 evaluate_0.8 
+[1] magrittr_1.5  formatR_1.3   tools_3.2.5   stringi_1.0-1 methods_3.2.5
+[6] stringr_1.0.0 evaluate_0.9 
 
 ~~~
 
@@ -149,6 +149,15 @@ your issue.
 > Look at the help for the `paste` function. You'll need to use this later. 
 > What is the difference between the `sep` and `collapse` arguments?
 > 
+
+> ## Challenge 3 {.challenge}
+> Use help to find a function (and its associated parameters) that you could
+> use to load data from a csv file in which columns are delimited with "\t"
+> (tab) and the decimal point is a "." (period). This check for decimal
+> separator is important, especially if you are working with international
+> colleagues, because different countries have different conventions for the
+> decimal point (i.e. comma vs period).
+> hint: use `??csv` to lookup csv related functions.
 
 ## Other ports of call
 

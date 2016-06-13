@@ -20,6 +20,18 @@ source("tools/chunk-options.R")
 > * Introduction to package management
 > 
 
+## Motivation
+
+Science is a multi-step process: once you've designed an experiment and collected 
+data, the real fun begins! This lesson will teach you how to start this process using 
+R and RStudio. We will begin with raw data, perform exploratory analyses, and learn 
+how to plot results graphically. This example starts with the 
+`data/gapminder-FiveYearData.csv` dataset containing population information for many 
+countries through time. Can you read the data into R? Can you plot the population for 
+Senegal? Can you calculate the average income for countries on continent of Asia? 
+By the end of these lessons you will be able to do things like plot the populations 
+for all of these countries in under a minute!
+
 ## Introduction to RStudio
 
 Welcome to the R portion of the Software Carpentry workshop.
@@ -465,3 +477,80 @@ network). R and RStudio have functionality for managing packages:
 > 
 > Install the following packages: `ggplot2`, `plyr`, `gapminder`
 > 
+
+
+## Challenge Solutions
+
+> ## Solution to challenge 1 {.challenge}
+>
+> The following can be used as R variables:
+> ```{r ch1pt1-sol, eval=FALSE}
+> min_height
+> max.height
+> MaxLength
+> celsius2kelvin
+> ```
+>
+> The following creates a hidden variable:
+> ```{r ch1pt2-sol, eval=FALSE}
+> .mass
+> ```
+>
+> The following will not be able to be used to create a variable
+> ```{r ch1pt3-sol, eval=FALSE}
+> _age
+> min-length
+> 2widths
+> ```
+>
+
+> ## Solution to challenge 2 {.challenge}
+>
+> ```{r ch2pt1-sol}
+> mass <- 47.5
+> ```
+> This will give a value of `r mass` for the variable mass
+> 
+> ```{r ch2pt2-sol}
+> age <- 122
+> ```
+> This will give a value of `r age` for the variable age
+>
+> ```{r ch2pt3-sol}
+> mass <- mass * 2.3
+> ```
+> This will multiply the existing value of `r mass/2.3` by 2.3 to give a new value of 
+> `r mass` to the variable mass.
+>
+> ```{r ch2pt4-sol}
+> age <- age - 20
+> ```
+> This will subtract 20 from the existing value of `r age + 20 ` to give a new value 
+> of `r age` to the variable age.
+
+> ## Solution to challenge 3 {.challenge}
+>
+> One way of answering this question in R is to use the `>` to set up the following:
+> ```{r ch3-sol}
+> mass > age
+>```
+> This should yield a boolean value of TRUE since `r mass` is greater than `r age`.
+
+> ## Solution to challenge 4 {.challenge}
+>
+> We can use the `rm` command to accomplish this task
+> ```{r ch4-sol}
+> rm(age, mass)
+> ```
+>
+
+> ## Solution to challenge 4 {.challenge}
+>
+> We can use the `install.packages()` command to install the required packages.
+> We can also install them in one go like so:
+> ```{r ch5-sol, eval=FALSE}
+> install.packages(c("ggplot2", "plyr", "gapminder"))
+>```
+>
+
+

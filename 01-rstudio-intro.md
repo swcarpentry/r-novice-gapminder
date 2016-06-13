@@ -36,8 +36,8 @@ control and project management.
 When you first open RStudio, you will be greeted by three panels:
 
   * The interactive R console (entire left)
-  * Workspace/History (tabbed in upper right)
-  * Files/Plots/Packages/Help (tabbed in lower right)
+  * Environment/History (tabbed in upper right)
+  * Files/Plots/Packages/Help/Viewer (tabbed in lower right)
 
 Once you open files, such as R scripts, an editor panel will also open
 in the top left.
@@ -583,7 +583,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7f851b927f40>
+<bytecode: 0x7f9dc4e56720>
 <environment: namespace:base>
 
 ~~~
@@ -652,8 +652,21 @@ network). R and RStudio have functionality for managing packages:
 * You can remove a package with `remove.packages("packagename")`
 * You can make a package available for use with `library(packagename)`
 
-
 > ## Challenge 1 {.challenge}
+> Which of the following are valid R variable names?
+> 
+> ~~~{.r}
+> min_height
+> max.height
+> _age
+> .mass
+> MaxLength
+> min-length
+> 2widths
+> celsius2kelvin
+> ~~~
+
+> ## Challenge 2 {.challenge}
 >
 > What will be the value of each  variable  after each
 > statement in the following program?
@@ -667,19 +680,19 @@ network). R and RStudio have functionality for managing packages:
 > ~~~
 >
 
-> ## Challenge 2 {.challenge}
+> ## Challenge 3 {.challenge}
 >
 > Run the code from the previous challenge, and write a command to
 > compare mass to age. Is mass larger than age?
 >
 
-> ## Challenge 3 {.challenge}
+> ## Challenge 4 {.challenge}
 >
 > Clean up your working environment by deleting the mass and age
 > variables.
 >
 
-> ## Challenge 4 {.challenge}
+> ## Challenge 5 {.challenge}
 > 
 > Install the following packages: `ggplot2`, `plyr`, `gapminder`
 > 

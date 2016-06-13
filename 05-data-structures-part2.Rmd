@@ -24,6 +24,10 @@ At this point, you've see it all - in the last lesson, we toured all the basic d
 
 We learned last time that the columns in a data.frame were vectors, so that our data are consistent in type throughout the column. As such, if we want to add a new column, we need to start by making a new vector:
 
+```{r, echo = FALSE}
+cats <- read.csv("data/feline-data.csv")
+```
+
 ```{r}
 age <- c(2,3,5,12)
 cats
@@ -67,7 +71,27 @@ cats$coat <- as.character(cats$coat)
 str(cats)
 ```
 
+<<<<<<< HEAD
 We now know how to add rows and columns to our data.frame in R - but in our work we've accidentally added a garbage row. We can drop all rows with `NA` values:
+=======
+We now know how to add rows and columns to our data.frame in R - but in our work we've accidentally added a garbage row:
+
+```{r}
+cats
+```
+
+We can ask for a data.frame minus this offending row:
+
+```{r}
+cats[-4,]
+```
+
+Notice the comma with nothing after it to indicate we want to drop the entire fourth row. 
+
+Note: We could also remove both new rows at once by putting the row numbers inside of a vector: `cats[c(4,5),]`
+
+Alternatively, we can drop all rows with `NA` values:
+>>>>>>> gh-pages
 
 ```{r}
 na.omit(cats)
@@ -93,7 +117,7 @@ rownames(cats) <- NULL
 cats
 ```
 
-> ### Challenge 1 {.challenge}
+> ## Challenge 1 {.challenge}
 >
 > You can create a new data.frame right from within R with the following syntax:
 > ```{r}
@@ -209,5 +233,16 @@ into a script file so we can come back to it later.
 > df <- data.frame(first = c('Grace'), last = c('Hopper'), lucky_number = c(0), stringsAsFactors = FALSE)
 > df <- rbind(df, list('Marie', 'Curie', 238) )
 > df <- cbind(df, coffeetime = c(TRUE,TRUE))
+> ```
+>
+
+> ## Solution to Challenge 2 {.challenge}
+> The contents of `script/load-gapminder.R`:
+> ```{r eval = FALSE}
+> gapminder <- read.csv(file = "data/gapminder-FiveYearData.csv")
+> ```
+> To run the script and load the data into the `gapminder` variable:
+> ```{r eval = FALSE}
+> source(file = "scripts/load-gapminder.R")
 > ```
 >

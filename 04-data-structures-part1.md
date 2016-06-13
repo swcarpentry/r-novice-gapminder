@@ -2,167 +2,403 @@
 layout: page
 title: R for reproducible scientific analysis
 subtitle: Data structures
-minutes: 45
+minutes: 90
 ---
-
 
 
 
 > ## Learning Objectives {.objectives}
 >
 > - To be aware of the different types of data
-> - To be aware of the different basic data structures commonly encountered in R
+> - To begin exploring the data.frame, and understand how it's related to vectors, factors and lists
 > - To be able to ask questions from R about the type, class, and structure of an object.
 >
 
+One of R's most powerful features is its ability to deal with tabular data - like what you might already have in a spreadsheet or a CSV. Let's start by making a toy dataset in your `data/` directory, called `feline-data.csv`:
+
+
+~~~{.r}
+coat,weight,likes_string
+calico,2.1,TRUE
+black,5.0,FALSE
+tabby,3.2,TRUE
+~~~
+
+
+
+We can load this into R via the following:
+
+
+~~~{.r}
+cats <- read.csv(file = "data/feline-data.csv")
+cats
+~~~
+
+
+
+~~~{.output}
+    coat weight likes_string
+1 calico    2.1         TRUE
+2  black    5.0        FALSE
+3  tabby    3.2         TRUE
+
+~~~
+
+We can begin exploring our dataset right away, pulling out columns and rows via the following:
+
+
+~~~{.r}
+cats$weight
+~~~
+
+
+
+~~~{.output}
+[1] 2.1 5.0 3.2
+
+~~~
+
+
+
+~~~{.r}
+cats$weight[1]
+~~~
+
+
+
+~~~{.output}
+[1] 2.1
+
+~~~
+
+
+
+~~~{.r}
+cats$weight[2]
+~~~
+
+
+
+~~~{.output}
+[1] 5
+
+~~~
+
+
+
+~~~{.r}
+cats$weight[1] + cats$weight[2]
+~~~
+
+
+
+~~~{.output}
+[1] 7.1
+
+~~~
+
+But what about
+
+
+~~~{.r}
+cats$weight[1] + cats$coat[2]
+~~~
+
+
+
+~~~{.error}
+Warning in Ops.factor(cats$weight[1], cats$coat[2]): '+' not meaningful for
+factors
+
+~~~
+
+
+
+~~~{.output}
+[1] NA
+
+~~~
+
+Understanding what happened here is key to successfully analyzing data in R.
+
 ## Data Types
 
-Before we can analyse any data, we'll need to have a strong
-understanding of the basic data types and data structures. It is **Very
-Important** to understand because these are the things you will
-manipulate on a day-to-day basis in R, and are the source of most
-frustration encountered by beginners.
-
-R has 5 basic atomic types (meaning they can't be broken down into anything smaller):
-
-* logical (e.g., `TRUE`, `FALSE`)
-* numeric
-    * integer (e.g, `2L`, `as.integer(3)`)
-    * double (i.e. decimal) (e.g, `-24.57`, `2.0`, `pi`)
-* complex (i.e. complex numbers) (e.g, `1 + 0i`, `1 + 4i`)
-* text (called "character" in R) (e.g, `"a"`, `"swc"`, `'This is a cat'`)
-
-There are a few functions we can use to interrogate data in R to determine its type:
+If you guessed that the last command will return an error because 2.1 plus black is nonsense, you're right - and you already have some intuition for an important concept in programming called *data types*. We can ask what type of data something is:
 
 
 ~~~{.r}
-typeof() # what is its atomic type?
-is.logical() # is it TRUE/FALSE data?
-is.numeric() # is it numeric?
-is.integer() # is it an integer?
-is.complex() # is it complex number data?
-is.character() # is it character data?
-str()  # what is it?
-~~~
-
-> ## Challenge 1: Data types {.challenge}
->
-> Use your knowledge of how to assign a value to
-> a variable, to create examples of data with the
-> following characteristics:
->
-> 1) Variable name: 'answer', Type: logical
-> 2) Variable name: 'height', Type: numeric
-> 3) Variable name: 'dog_name', Type: character
->
-> For each variable you've created, test that it
-> has the data type you intended. Do you find
-> anything unexpected?
->
-
-## Data Structures
-
-There are five data structures you will commonly encounter in R. These are:
-
-* vector
-* factor
-* list
-* matrix
-* data.frame
-
-For now, let's focus on vectors in more detail, to discover more about data types.
-
-## Vectors
-
-A vector is the most common and basic data structure in `R` and is pretty much
-the workhorse of R. They are sometimes referred to as atomic vectors, because
-importantly, they can **only contain one data type**. They are the building blocks of
-every other data structure.
-
-A vector can contain any of the five types we introduced before:
-
-* logical (e.g., `TRUE`, `FALSE`)
-* integer (e.g., `2L`, `as.integer(3)`)
-* numeric (real or decimal) (e.g, `2`, `2.0`, `pi`)
-* complex (e.g, `1 + 0i`, `1 + 4i`)
-* character (e.g, `"a"`, `"swc"`)
-
-> ## Tip: "Character Vectors" {.callout}
->
-> You will sometimes hear the term "character vector", especially in
-> warning or error messages. This is a somewhat confusing and unfortunate
-> name. Remember that the type "character" really means some text
-> wrapped in quotation symbols.
->
-
-Create an empty vector with `vector()` or by using the concatenate
-function, `c()`.
-
-
-~~~{.r}
-x <- vector()
-x
+typeof(cats$weight[1])
 ~~~
 
 
 
 ~~~{.output}
-logical(0)
+[1] "double"
 
 ~~~
 
-So by default, it creates an empty vector (i.e. a length of 0) of type "logical".
+There are 5 main types: doubles, integers, complex, logical and character.
+
+```
+typeof(3.14)
+typeof(1L)
+typeof(1+1i)
+typeof(TRUE)
+typeof('banana')
+```
+
+Note the `L` suffix to insist that a number is an integer. No matter how complicated our analyses become, all data in R is interpreted as one of these basic data types. This strictness has some really important consequences. Go back to your text editor and add add this line to feline-data.csv:
 
 
 ~~~{.r}
-x <- vector(length = 10) # with a predefined length
-x
+tabby,2.3 or 2.4,TRUE
+~~~
+
+Reload your cats data like before, and check what type of data we find in the `weight` column:
+
+
+~~~{.r}
+cats <- read.csv(file="data/feline-data.csv")
+typeof(cats$weight[1])
 ~~~
 
 
 
 ~~~{.output}
- [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[1] "double"
 
 ~~~
 
-If we count the number of FALSEs there should be 10.
+Oh no, our weights aren't the double type anymore! If we try to do the same math we did on them before, we run into trouble:
 
 
 ~~~{.r}
-x <- vector("character", length = 10)  # with a predefined length and type
-x
+cats$weight[1] + cats$weight[2]
 ~~~
 
 
 
 ~~~{.output}
- [1] "" "" "" "" "" "" "" "" "" ""
+[1] 7.1
 
 ~~~
 
-Or we can use the concatenate function to combine any values we like into
-a vector (so long as they're the same atomic type!).
+What happened? When R reads a csv into one of these tables, it insists that everything in a column be the same basic type; if it can't understand *everything* in the column as a double, then *nobody* in the column gets to be a double. The table that R loaded our cats data into is something called a *data.frame*, and it is our first example of something called a *data structure* - things that R knows how to build out of the basic data types. In order to successfully use our data in R, we need to understand what these basic data structures are, and how they behave. For now, let's remove that extra line from our cats data and reload it, while we investigate this behavior further:
+
+feline-data.csv:
+
+```
+coat,weight,likes_string
+calico,2.1,TRUE
+black,5.0,FALSE
+tabby,3.2,TRUE
+```
+
+And back in RStudio:
+
+```
+cats <- read.csv(file="data/feline-data.csv")
+```
+
+## Vectors & Type Coercion
+
+To better understand the behavior we just saw, let's meet another of the data structures: the *vector*.
 
 
 ~~~{.r}
-x <- c(10, 12, 45, 33)
-x
+my_vector <- vector(length=3)
+my_vector
 ~~~
 
 
 
 ~~~{.output}
-[1] 10 12 45 33
+[1] FALSE FALSE FALSE
 
 ~~~
 
-You can also create vectors as sequence of numbers
+Just like you might be familiar with from vectors elsewhere, a vector in R is essentially an ordered list of things, with the special condition that *everything in the vector must be the same basic data type*. If you don't choose the datatype, it'll default to `logical`; or, you can declare an empty vector of whatever type you like.
 
 
 ~~~{.r}
-series <- 1:10
-series
+another_vector <- vector(mode='character', length=3)
+another_vector
+~~~
+
+
+
+~~~{.output}
+[1] "" "" ""
+
+~~~
+
+You can check if something is a vector:
+
+
+~~~{.r}
+str(another_vector)
+~~~
+
+
+
+~~~{.output}
+ chr [1:3] "" "" ""
+
+~~~
+
+The somewhat cryptic output from this command indicates the basic data type found in this vector; the number of things in the vector; and a few examples of what's actually in the vector. If we similarly do
+
+
+~~~{.r}
+str(cats$weight)
+~~~
+
+
+
+~~~{.output}
+ num [1:3] 2.1 5 3.2
+
+~~~
+
+we see that that's a vector, too - *the columns of data we load into R data.frames are all vectors*, and that's the root of why R forces everything in a column to be the same basic data type.
+
+> ## Discussion 1 {.challenge}
+>
+> Why is R so opinionated about what we put in our columns of data?
+> How does this help us?
+>
+
+You can also make vectors with explicit contents with the concatenate function:
+
+
+~~~{.r}
+concat_vector <- c(2,6,3)
+concat_vector
+~~~
+
+
+
+~~~{.output}
+[1] 2 6 3
+
+~~~
+
+Given what we've learned so far, what do you think the following will produce?
+
+
+~~~{.r}
+quiz_vector <- c(2,6,'3')
+~~~
+
+This is something called *type coercion*, and it is the source of many surprises and the reason why we need to be aware of the basic data types and how R will interpret them. Consider:
+
+
+~~~{.r}
+coercion_vector <- c('a', TRUE)
+coercion_vector
+~~~
+
+
+
+~~~{.output}
+[1] "a"    "TRUE"
+
+~~~
+
+
+
+~~~{.r}
+another_coercion_vector <- c(0, TRUE)
+another_coercion_vector
+~~~
+
+
+
+~~~{.output}
+[1] 0 1
+
+~~~
+
+The coercion rules go: `logical` -> `integer` -> `numeric` -> `complex` -> `character`. You can try to force coercion against this flow using the `as.` functions:
+
+
+~~~{.r}
+character_vector_example <- c('0','2','4')
+character_vector_example
+~~~
+
+
+
+~~~{.output}
+[1] "0" "2" "4"
+
+~~~
+
+
+
+~~~{.r}
+character_coerced_to_numeric <- as.numeric(character_vector_example)
+character_coerced_to_numeric
+~~~
+
+
+
+~~~{.output}
+[1] 0 2 4
+
+~~~
+
+
+
+~~~{.r}
+numeric_coerced_to_logical <- as.logical(character_coerced_to_numeric)
+numeric_coerced_to_logical
+~~~
+
+
+
+~~~{.output}
+[1] FALSE  TRUE  TRUE
+
+~~~
+
+As you can see, some surprising things can happen when R forces one basic data type into another! Nitty-gritty of type coercion aside, the point is: if your data doesn't look like what you thought it was going to look like, type coercion may well be to blame; make sure everything is the same type in your vectors and your columns of data.frames, or you will get nasty surprises!
+
+Concatenate will also append things to an existing vector:
+
+
+~~~{.r}
+ab_vector <- c('a', 'b')
+ab_vector
+~~~
+
+
+
+~~~{.output}
+[1] "a" "b"
+
+~~~
+
+
+
+~~~{.r}
+concat_example <- c(ab_vector, 'SWC')
+concat_example
+~~~
+
+
+
+~~~{.output}
+[1] "a"   "b"   "SWC"
+
+~~~
+
+You can also make series of numbers:
+
+
+~~~{.r}
+mySeries <- 1:10
+mySeries
 ~~~
 
 
@@ -171,6 +407,7 @@ series
  [1]  1  2  3  4  5  6  7  8  9 10
 
 ~~~
+
 
 
 ~~~{.r}
@@ -185,8 +422,9 @@ seq(10)
 ~~~
 
 
+
 ~~~{.r}
-seq(1, 10, by = 0.1)
+seq(1,10, by=0.1)
 ~~~
 
 
@@ -202,356 +440,214 @@ seq(1, 10, by = 0.1)
 
 ~~~
 
-> ## Tip: Creating integers {.callout}
->
-> When you combine numbers using the concatenate function, `c()` the type
-> will automatically become "numeric", that is real/decimal numbers. If you
-> specifically want to create a vector of integers (whole numbers only),
-> you need to append each number with an L, i.e. `c(10L, 12L, 45L, 33L)`.
->
-
-You can also use the concatenate function to add elements to a vector:
+In addition to asking for elements of a vector with the square bracket notation, we can ask a few other questions about vectors:
 
 
 ~~~{.r}
-x <- c(x, 57)
-x
+sequence_example <- seq(10)
+head(sequence_example, n=2)
 ~~~
 
 
 
 ~~~{.output}
-[1] 10 12 45 33 57
+[1] 1 2
 
 ~~~
 
-> ## Challenge 2 {.challenge}
->
-> Vectors can only contain one atomic type. If you try to combine different
-> types, R will create a vector that is the least common denominator: the
-> type that is easiest to coerce to.
->
-> **Guess what the following do without running them first:**
->
-> 
-> ~~~{.r}
-> xx <- c(1.7, "a")
-> xx <- c(TRUE, 2)
-> xx <- c("a", TRUE)
-> ~~~
->
-
-This is called implicit coercion.
-
-The coercion rule goes `logical` -> `integer` -> `numeric` -> `complex` ->
-`character`.
-
-You can also coerce vectors explicitly using the `as.<class_name>`. Example
 
 
 ~~~{.r}
-as.numeric()
+tail(sequence_example, n=4)
 ~~~
 
 
 
 ~~~{.output}
-numeric(0)
+[1]  7  8  9 10
 
 ~~~
 
 
 
 ~~~{.r}
-as.character()
+length(sequence_example)
 ~~~
 
 
 
 ~~~{.output}
-character(0)
+[1] 10
 
 ~~~
 
-R will try to do whatever makes the most sense for that value:
+Finally, you can give names to elements in your vector, and ask for them that way:
 
 
 ~~~{.r}
-as.character(x)
-~~~
-
-
-
-~~~{.output}
-[1] "10" "12" "45" "33" "57"
-
-~~~
-
-
-~~~{.r}
-as.complex(x)
-~~~
-
-
-
-~~~{.output}
-[1] 10+0i 12+0i 45+0i 33+0i 57+0i
-
-~~~
-
-
-~~~{.r}
-x <- 0:6
-as.logical(x)
-~~~
-
-
-
-~~~{.output}
-[1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-
-~~~
-
-This is behaviour you will find in many programming languages. 0 is
-FALSE, while every other number is treated as TRUE.
-Sometimes coercions, especially nonsensical ones won't work.
-
-In some cases, R won't be able to do anything sensible:
-
-
-~~~{.r}
-x <- c("a", "b", "c")
-as.numeric(x)
-~~~
-
-
-
-~~~{.error}
-Warning: NAs introduced by coercion
-
-~~~
-
-
-
-~~~{.output}
-[1] NA NA NA
-
-~~~
-
-
-
-~~~{.r}
-as.logical(x)
-~~~
-
-
-
-~~~{.output}
-[1] NA NA NA
-
-~~~
-
-In both cases, a vector of "NAs" was returned, and in the first case
-so was a warning.
-
-> ## Tip: Special Objects {.callout}
->
-> "NA" is a special object in R which denotes a missing value. NA can
-> occur in any type of vector. There are a few other types of
-> special objects: `Inf` denotes infinity (can be positive or negative),
-> while `NaN` means Not a number, an undefined value (i.e. `0/0`).
-> `NULL` denotes that the data structure doesn't exist (but can occur
-> in list elements).
->
-
-You can ask questions about the structure of vectors:
-
-
-~~~{.r}
-x <- 0:10
-tail(x, n=2) # get the last 'n' elements
-~~~
-
-
-
-~~~{.output}
-[1]  9 10
-
-~~~
-
-
-~~~{.r}
-head(x, n=1) # get the first 'n' elements
-~~~
-
-
-
-~~~{.output}
-[1] 0
-
-~~~
-
-
-~~~{.r}
-length(x)
-~~~
-
-
-
-~~~{.output}
-[1] 11
-
-~~~
-
-
-~~~{.r}
-str(x)
-~~~
-
-
-
-~~~{.output}
- int [1:11] 0 1 2 3 4 5 6 7 8 9 ...
-
-~~~
-
-Vectors can be named:
-
-
-~~~{.r}
-x <- 1:4
-names(x) <- c("a", "b", "c", "d")
-x
+names_example <- 5:8
+names(names_example) <- c("a", "b", "c", "d")
+names_example
 ~~~
 
 
 
 ~~~{.output}
 a b c d 
-1 2 3 4 
+5 6 7 8 
 
 ~~~
 
-> ## Advanced Tip for Programmers {.callout}
->
-> If you're coming from other programming languages you might
-> recognise this as a useful tool akin to dictionaries and hash
-> tables. This is true for small vectors, but for true hash table
-> functionality, you should use the environment object. See
-> `?new.env`.
->
-
-## Matrices
-
-Another data structure you'll likely encounter are matrices. Underneath the
-hood, they are really just atomic vectors, with added dimension attributes.
-
-We can create one with the `matrix` function. Let's generate some random data:
 
 
 ~~~{.r}
-set.seed(1) # make sure the random numbers are the same for each run
-x <- matrix(rnorm(18), ncol=6, nrow=3)
-x
+names_example['b']
 ~~~
 
 
 
 ~~~{.output}
-           [,1]       [,2]      [,3]       [,4]       [,5]        [,6]
-[1,] -0.6264538  1.5952808 0.4874291 -0.3053884 -0.6212406 -0.04493361
-[2,]  0.1836433  0.3295078 0.7383247  1.5117812 -2.2146999 -0.01619026
-[3,] -0.8356286 -0.8204684 0.5757814  0.3898432  1.1249309  0.94383621
+b 
+6 
 
 ~~~
 
-
-~~~{.r}
-str(x)
-~~~
-
-
-
-~~~{.output}
- num [1:3, 1:6] -0.626 0.184 -0.836 1.595 0.33 ...
-
-~~~
-
-You can use `rownames`, `colnames`, and `dimnames` to set or
-retrieve the column and rownames of a matrix. The functions `nrow` and `ncol`
-will tell you the number of rows and columns (this also applies to data frames!),
-while `length` will tell you the number of elements.
-
->
-> ## Challenge 3 {.challenge}
->
-> What do you think will be the result of
-> `length(x)`?
-> Try it.
-> Were you right? Why / why not?
->
-
->
-> ## Challenge 4 {.challenge}
->
-> Make another matrix, this time containing the numbers 1:50,
-> with 5 columns and 10 rows.
-> Did the `matrix` function fill your matrix by column, or by
-> row, as its default behaviour?
-> See if you can figure out how to change this.
-> (hint: read the documentation for `matrix`!)
+> ## Challenge 1 {.challenge}
+> Start by making a vector with the numbers 11 to 20.
+> Then use the functions we just learned to extract the 3rd through 5th element in that vector into a new vector;
+> name the elements in that new vector 'S', 'W', 'C'.
 >
 
 ## Factors
 
-Factors are special vectors that represent categorical data. Factors can be
-ordered or unordered and are important when for modeling functions such as
-`aov()`, `lm()` and `glm()` and also in plot methods.
-
-Factors can only contain predefined values, and we can create one with the
-`factor` function:
+We said that columns in data.frames were vectors:
 
 
 ~~~{.r}
-x <- factor(c("yes", "no", "no", "yes", "yes"))
-x
+str(cats$weight)
 ~~~
 
 
 
 ~~~{.output}
-[1] yes no  no  yes yes
-Levels: no yes
+ num [1:3] 2.1 5 3.2
 
 ~~~
 
-So we can see that the output is very similar to a character vector, but with an
-attached levels component. This becomes clearer when we look at its structure:
 
 
 ~~~{.r}
-str(x)
+str(cats$likes_string)
 ~~~
 
 
 
 ~~~{.output}
- Factor w/ 2 levels "no","yes": 2 1 1 2 2
+ logi [1:3] TRUE FALSE TRUE
 
 ~~~
 
-This reveals something important: while factors look (and often behave) like
-character vectors, they are actually integers under the hood, and here, we can
-see that "no" is represented by a 1, and "yes" a 2.
-
-In modeling functions, important to know what baseline levels is.  This is the
-first factor but by default the ordering is determined by alphabetical order of
-words entered. You can change this by specifying the levels:
+But what about
 
 
 ~~~{.r}
-x <- factor(c("case", "control", "control", "case"), levels = c("control", "case"))
-str(x)
+str(cats$coat)
+~~~
+
+
+
+~~~{.output}
+ Factor w/ 3 levels "black","calico",..: 2 1 3
+
+~~~
+
+## Factors
+
+Another important data structure is called a *factor*. Factors usually look like character data, but are typically used to represent categorical information. For example, let's make a vector of strings labeling cat colorations for all the cats in our study:
+
+
+~~~{.r}
+coats <- c('tabby', 'tortoiseshell', 'tortoiseshell', 'black', 'tabby')
+coats
+~~~
+
+
+
+~~~{.output}
+[1] "tabby"         "tortoiseshell" "tortoiseshell" "black"        
+[5] "tabby"        
+
+~~~
+
+
+
+~~~{.r}
+str(coats)
+~~~
+
+
+
+~~~{.output}
+ chr [1:5] "tabby" "tortoiseshell" "tortoiseshell" "black" ...
+
+~~~
+
+We can turn a vector into a factor like so:
+
+
+~~~{.r}
+CATegories <- factor(coats)
+str(CATegories)
+~~~
+
+
+
+~~~{.output}
+ Factor w/ 3 levels "black","tabby",..: 2 3 3 1 2
+
+~~~
+
+Now R has noticed that there are three possible categories in our data - but it also did something surprising; instead of printing out the strings we gave it, we got a bunch of numbers instead. R has replaced our human-readable categories with numbered indices under the hood:
+
+
+~~~{.r}
+typeof(coats[1])
+~~~
+
+
+
+~~~{.output}
+[1] "character"
+
+~~~
+
+
+
+~~~{.r}
+typeof(CATegories[1])
+~~~
+
+
+
+~~~{.output}
+[1] "integer"
+
+~~~
+
+> ## Challenge 2 {.challenge}
+> Is there a factor in our `cats` data.frame? what is its name?
+> Try using `?read.csv` to figure out how to keep text columns as character vectors instead of factors;
+> then write a command or two to show that the factor in `cats` is actually is a character vector when loaded in this way.
+>
+
+In modeling functions, it's important to know what the baseline levels are. This is assumed to be the
+first factor, but by default factors are labeled in alphabetical order. You can change this by specifying the levels:
+
+
+~~~{.r}
+mydata <- c("case", "control", "control", "case")
+factor_ordering_example <- factor(mydata, levels = c("control", "case"))
+str(factor_ordering_example)
 ~~~
 
 
@@ -567,16 +663,12 @@ results of statistical models!
 
 ## Lists
 
-If you want to combine different types of data, you will need to use lists.
-Lists act as containers, and can contain any type of data structure, even
-themselves!
-
-Lists can be created using `list` or coerced from other objects using `as.list()`:
+Another data structure you'll want in your bag of tricks is the `list`. A list is simpler in some ways than the other types, because you can put anything you want in it:
 
 
 ~~~{.r}
-x <- list(1, "a", TRUE, 1+4i)
-x
+list_example <- list(1, "a", TRUE, 1+4i)
+list_example
 ~~~
 
 
@@ -596,215 +688,231 @@ x
 
 ~~~
 
-Each element of the list is denoted by a `[[` in the output. Inside
-each list element is an atomic vector of length one containing
-
-Lists can contain more complex objects:
 
 
 ~~~{.r}
-xlist <- list(a = "Research Bazaar", b = 1:10, data = head(iris))
-xlist
-~~~
-
-
-
-~~~{.output}
-$a
-[1] "Research Bazaar"
-
-$b
- [1]  1  2  3  4  5  6  7  8  9 10
-
-$data
-  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-1          5.1         3.5          1.4         0.2  setosa
-2          4.9         3.0          1.4         0.2  setosa
-3          4.7         3.2          1.3         0.2  setosa
-4          4.6         3.1          1.5         0.2  setosa
-5          5.0         3.6          1.4         0.2  setosa
-6          5.4         3.9          1.7         0.4  setosa
-
-~~~
-
-In this case our list contains a character vector of length one,
-a numeric vector with 10 entries, and a small data frame from
-one of R's many preloaded datasets (see `?data`). We've also given
-each list element a name, which is why you see `$a` instead of `[[1]]`.
-
-Lists can also contain themselves:
-
-
-~~~{.r}
-list(list(list(list())))
+list_example[2]
 ~~~
 
 
 
 ~~~{.output}
 [[1]]
-[[1]][[1]]
-[[1]][[1]][[1]]
-list()
+[1] "a"
 
 ~~~
 
-> ## Challenge 5 {.challenge}
+
+
+~~~{.r}
+another_list <- list(title = "Research Bazaar", numbers = 1:10, data = TRUE )
+another_list
+~~~
+
+
+
+~~~{.output}
+$title
+[1] "Research Bazaar"
+
+$numbers
+ [1]  1  2  3  4  5  6  7  8  9 10
+
+$data
+[1] TRUE
+
+~~~
+
+We can now understand something a bit surprising in our data.frame; what happens if we run:
+
+
+~~~{.r}
+typeof(cats)
+~~~
+
+
+
+~~~{.output}
+[1] "list"
+
+~~~
+
+We see that data.frames look like lists 'under the hood' - this is because a data.frame is really a list of vectors and factors, as they have to be - in order to hold those columns that are a mix of vectors and factors, the data.frame needs something a bit more flexible than a vector to put all the columns together into a familiar table.
+
+## Matrices
+
+Last but not least is the matrix. We can declare a matrix full of zeros:
+
+
+~~~{.r}
+matrix_example <- matrix(0, ncol=6, nrow=3)
+matrix_example
+~~~
+
+
+
+~~~{.output}
+     [,1] [,2] [,3] [,4] [,5] [,6]
+[1,]    0    0    0    0    0    0
+[2,]    0    0    0    0    0    0
+[3,]    0    0    0    0    0    0
+
+~~~
+
+and we can ask for and put values in the elements of our matrix with a couple of different notations:
+
+
+~~~{.r}
+matrix_example[1,1] <- 1
+matrix_example
+~~~
+
+
+
+~~~{.output}
+     [,1] [,2] [,3] [,4] [,5] [,6]
+[1,]    1    0    0    0    0    0
+[2,]    0    0    0    0    0    0
+[3,]    0    0    0    0    0    0
+
+~~~
+
+
+
+~~~{.r}
+matrix_example[1][1]
+~~~
+
+
+
+~~~{.output}
+[1] 1
+
+~~~
+
+
+
+~~~{.r}
+matrix_example[1][1] <- 2
+matrix_example[1,1]
+~~~
+
+
+
+~~~{.output}
+[1] 2
+
+~~~
+
+
+
+~~~{.r}
+matrix_example
+~~~
+
+
+
+~~~{.output}
+     [,1] [,2] [,3] [,4] [,5] [,6]
+[1,]    2    0    0    0    0    0
+[2,]    0    0    0    0    0    0
+[3,]    0    0    0    0    0    0
+
+~~~
+
 >
-> Create a list of length two containing a character vector for each of the 
-> sections in this part of the workshop:
+> ## Challenge 3 {.challenge}
 >
-> * Data types
-> * Data structures
->
-> Populate each character vector with the names of the data types and data
-> structures we've seen so far.
+> What do you think will be the result of
+> `length(matrix_example)`?
+> Try it.
+> Were you right? Why / why not?
 >
 
-Lists are extremely useful inside functions. You can "staple" together lots of
-different kinds of results into a single object that a function can return. In
-fact many R functions which return complex output store their results in a list.
+>
+> ## Challenge 4 {.challenge}
+>
+> Make another matrix, this time containing the numbers 1:50,
+> with 5 columns and 10 rows.
+> Did the `matrix` function fill your matrix by column, or by
+> row, as its default behaviour?
+> See if you can figure out how to change this.
+> (hint: read the documentation for `matrix`!)
+>
+
+> ## Challenge 5 {.challenge}
+> Create a list of length two containing a character vector for each of the sections in this part of the workshop:
+>
+> - Data types
+> - Data structures
+>
+> Populate each character vector with the names of the data types and data structures we've seen so far.
+>
+
+>
+> ## Challenge 6 {.challenge}
+>
+> Consider the R output of the matrix below:
+> 
+> ~~~{.output}
+>      [,1] [,2]
+> [1,]    4    1
+> [2,]    9    5
+> [3,]   10    7
+> 
+> ~~~
+> What was the correct command used to write this matrix? Examine
+> each command and try to figure out the correct one before typing them.
+> Think about what matrices the other commands will produce.
+>
+> 1. `matrix(c(4, 1, 9, 5, 10, 7), nrow = 3)`
+> 2. `matrix(c(4, 9, 10, 1, 5, 7), ncol = 2, byrow = TRUE)`
+> 3. `matrix(c(4, 9, 10, 1, 5, 7), nrow = 2)`
+> 4. `matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)`
+>
+
+
+
+
+
+
+
 
 ## Challenge solutions
 
-> ## Solution to challenge 1: Data types {.challenge}
+> ## Discussion 1 {.challenge}
+> By keeping everything in a column the same, we allow ourselves to make simple assumptions about our data;
+> if you can interpret one entry in the column as a number, then you can interpret *all* of them as numbers,
+> so we don't have to check every time. This consistency, like consistently using the same separator in our
+> data files, is what people mean when they talk about *clean data*; in the long run, strict consistency goes
+> a long way to making our lives easier in R.
 >
-> Use your knowledge of how to assign a value to
-> a variable, to create examples of data with the
-> following characteristics:
->
-> 1) Variable name: 'answer', Type: logical
-> 2) Variable name: 'height', Type: numeric
-> 3) Variable name: 'dog_name', Type: character
->
-> For each variable you've created, test that it
-> has the data type you intended. Do you find
-> anything unexpected?
->
+
+> ## Solution to Challenge 1 {.challenge}
 > 
 > ~~~{.r}
-> answer <- TRUE
-> height <- 150
-> dog_name <- "Snoopy"
-> is.logical(answer)
-> ~~~
-> 
-> 
-> 
-> ~~~{.output}
-> [1] TRUE
-> 
-> ~~~
->
-> 
-> ~~~{.r}
-> is.numeric(height)
-> ~~~
-> 
-> 
-> 
-> ~~~{.output}
-> [1] TRUE
-> 
-> ~~~
->
-> 
-> ~~~{.r}
-> is.character(dog_name)
-> ~~~
-> 
-> 
-> 
-> ~~~{.output}
-> [1] TRUE
-> 
+> x <- c(11:20)
+> subset <- x[3:5]
+> names(subset) <- c('S', 'W', 'C')
 > ~~~
 >
 
-> ## Solution to challenge 2 {.challenge}
->
-> Vectors can only contain one atomic type. If you try to combine different
-> types, R will create a vector that is the least common denominator: the
-> type that is easiest to coerce to.
->
+> ## Solution to Challenge 2 {.challenge}
 > 
 > ~~~{.r}
-> xx <- c(1.7, "a")
-> xx
+> cats <- read.csv(file="data/feline-data.csv", stringsAsFactors=FALSE)
+> str(cats$coat)
 > ~~~
 > 
 > 
 > 
 > ~~~{.output}
-> [1] "1.7" "a"  
+>  chr [1:3] "calico" "black" "tabby"
 > 
 > ~~~
-> 
-> 
-> 
-> ~~~{.r}
-> typeof(xx)
-> ~~~
-> 
-> 
-> 
-> ~~~{.output}
-> [1] "character"
-> 
-> ~~~
->
-> 
-> ~~~{.r}
-> xx <- c(TRUE, 2)
-> xx
-> ~~~
-> 
-> 
-> 
-> ~~~{.output}
-> [1] 1 2
-> 
-> ~~~
-> 
-> 
-> 
-> ~~~{.r}
-> typeof(xx)
-> ~~~
-> 
-> 
-> 
-> ~~~{.output}
-> [1] "double"
-> 
-> ~~~
->
-> 
-> ~~~{.r}
-> xx <- c("a", TRUE)
-> xx
-> ~~~
-> 
-> 
-> 
-> ~~~{.output}
-> [1] "a"    "TRUE"
-> 
-> ~~~
-> 
-> 
-> 
-> ~~~{.r}
-> typeof(xx)
-> ~~~
-> 
-> 
-> 
-> ~~~{.output}
-> [1] "character"
-> 
-> ~~~
->
+> Note: new students find the help files difficult to understand; make sure to let them know
+> that this is typical, and encourage them to take their best guess based on semantic meaning,
+> even if they aren't sure.
 
 >
 > ## Solution to challenge 3 {.challenge}
@@ -814,8 +922,7 @@ fact many R functions which return complex output store their results in a list.
 >
 > 
 > ~~~{.r}
-> x <- matrix(rnorm(18), ncol=6, nrow=3)
-> length(x)
+> length(matrix_example)
 > ~~~
 > 
 > 
@@ -824,7 +931,7 @@ fact many R functions which return complex output store their results in a list.
 > [1] 18
 > 
 > ~~~
-> 
+>
 > Because a matrix is really just a vector with added dimension attributes, `length`
 > gives you the total number of elements in the matrix.
 >
@@ -846,23 +953,35 @@ fact many R functions which return complex output store their results in a list.
 > ~~~
 >
 
-
-> ## Solution to challenge 5 {.challenge}
->
-> Create a list of length two containing a character vector for each of the 
-> sections in this part of the workshop:
->
-> * Data types
-> * Data structures
->
-> Populate each character vector with the names of the data types and data
-> structures we've seen so far.
->
+> ## Solution to Challenge 5 {.challenge}
 > 
 > ~~~{.r}
-> my_list <- list(
->   data_types = c("logical", "integer", "double", "complex", "character"),
->   data_structures = c("vector", "matrix", "factor", "list")
-> )
+> dataTypes <- c('double', 'complex', 'integer', 'character', 'logical')
+> dataStructures <- c('data.frame', 'vector', 'factor', 'list', 'matrix')
+> answer <- list(dataTypes, dataStructures)
+> ~~~
+> Note: it's nice to make a list in big writing on the board or taped to the wall
+> listing all of these types and structures - leave it up for the rest of the workshop
+> to remind people of the importance of these basics.
+>
+
+>
+> ## Solution to challenge 6 {.challenge}
+>
+> Consider the R output of the matrix below:
+> 
+> ~~~{.output}
+>      [,1] [,2]
+> [1,]    4    1
+> [2,]    9    5
+> [3,]   10    7
+> 
+> ~~~
+> What was the correct command used to write this matrix? Examine
+> each command and try to figure out the correct one before typing them.
+> Think about what matrices the other commands will produce.
+> 
+> ~~~{.r}
+> matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)
 > ~~~
 >
