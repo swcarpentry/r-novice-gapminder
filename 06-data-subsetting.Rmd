@@ -116,11 +116,15 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 > slices of a vector. Most people first try to negate a
 > sequence like so:
 >
-> ```{r, error=TRUE}
+> ```{r, error=TRUE, eval=FALSE}
 > x[-1:3]
 > ```
 >
 > This gives a somewhat cryptic error:
+>
+> ```{r, error=TRUE, echo=FALSE}
+> x[-1:3]
+> ```
 >
 > But remember the order of operations. `:` is really a function, so
 > what happens is it takes its first argument as -1, and second as 3,
@@ -443,7 +447,7 @@ m[3, , drop=FALSE]
 Unlike vectors, if we try to access a row or column outside of the matrix,
 R will throw an error:
 
-```{r}
+```{r, error=TRUE}
 m[, c(3,6)]
 ```
 
