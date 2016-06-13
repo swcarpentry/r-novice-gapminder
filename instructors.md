@@ -25,7 +25,7 @@ If Git is not being taught as part of the workshop the raw data can be downloade
 [gapminder-FiveYearData](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/data/gapminder-FiveYearData.csv)
 [gapminder-FiveYearData-Wide](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/data/gapminder_wide.csv)
 
-attendees will need to use the `File - Save As` dialog in their browser to save the file.
+attendees can use the `File - Save As` dialog in their browser to save the file.
 
 ## Overall
 
