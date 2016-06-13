@@ -124,7 +124,7 @@ behaviour of R).
  - `?nrow`, `?ncol`, `?dim` get the dimensions of a n-dimensional object
    (Won't work on atomic vectors or lists).
 
-## [Reading data](05-data-structures-part2.html)
+## [Exploring Data Frames](05-data-structures-part2.html)
 
  - `read.csv` to read in data in a regular structure
    - `sep` argument to specify the separator
