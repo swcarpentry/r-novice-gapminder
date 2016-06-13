@@ -230,7 +230,7 @@ behaviour of R).
 - '?seprarate' split a single value into multiple values.
 - '?unite' merge multipe values into a single value.
 
-## [Defensive Programming](15-wrap-up.html)
+## [Best practices for writing good code](15-wrap-up.html)
 
  * Program defensively, i.e., assume that errors are going to arise, and write code to detect them when they do.
  * Write tests before writing code in order to help determine exactly what that code is supposed to do.
