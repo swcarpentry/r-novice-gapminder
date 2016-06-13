@@ -310,7 +310,34 @@ We can now understand something a bit surprising in our data.frame; what happens
 typeof(cats)
 ```
 
-We see that data.frames look like lists 'under the hood' - this is because a data.frame is really a list of vectors and factors, as they have to be - in order to hold those columns that are a mix of vectors and factors, the data.frame needs something a bit more flexible than a vector to put all the columns together into a familiar table.
+Under the hood, a data.frame is a list of variables, which can be of different kind. In our `cats` example, we have an integer, a double and a logical variable. As we habe seen already, ach column of data.frame is a vector.
+
+```{r}
+cats$coat
+cats[,1]
+typeof(cats[,1])
+str(cats[,1])
+```
+
+Each row is an *observation* of different variables, itself a data.frame, and thus can be composed of element of different types.
+
+```{r}
+cats[1,]
+typeof(cats[1,])
+str(cats[1,])
+```
+
+Notice the subtle differences between different ways of calling variables, observations and elements from data.frames:
+
+```{r}
+cats[1]
+cats[[1]]
+cats$coat
+cats["coat"]
+cats[,1]
+cats[1,]
+cats[1,1]
+```
 
 ## Matrices
 
