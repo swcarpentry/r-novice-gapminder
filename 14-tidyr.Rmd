@@ -125,7 +125,8 @@ gap_long$year <- as.integer(gap_long$year)
 >
 
 ## From long to intermediate format with spread()
-Now just to double-check our work, let's use the opposite of `gather()` to spread our observation variables back out with the aptly named `spread()`. We can then spread our `gap_long()` to the original intermediate format or the widest format. Let's start with the intermediate format.
+
+It is always good to check work. So, let's use the opposite of `gather()` to spread our observation variables back out with the aptly named `spread()`. We can then spread our `gap_long()` to the original intermediate format or the widest format. Let's start with the intermediate format.
 
 ```{r}
 gap_normal <- gap_long %>% spread(obs_type,obs_values)

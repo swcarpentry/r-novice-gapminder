@@ -129,7 +129,7 @@ ddply(
 )
 ```
 
-Let's walk through what just happened:
+Let's walk through the previous code:
 
 - The `ddply` function feeds in a `data.frame` (function starts with **d**) and
 returns another `data.frame` (2nd letter is a **d**) i
@@ -137,8 +137,7 @@ returns another `data.frame` (2nd letter is a **d**) i
   case the gapminder data. We called `calcGDP` on it first so that it would have
   the additional `gdp` column added to it.
 - The second argument indicated our split criteria: in this case the "continent"
-  column. Note that we just gave the name of the column, not the actual column
-  itself like we've done previously with subsetting. Plyr takes care of these
+  column. Note that we gave the name of the column, not the values of the column like we had done previously with subsetting. Plyr takes care of these
   implementation details for you.
 - The third argument is the function we want to apply to each grouping of the
   data. We had to define our own short function here: each subset of the data
@@ -178,7 +177,8 @@ daply(
 ```
 
 You can use these functions in place of `for` loops (and its usually faster to
-do so): just write the body of the for loop in the anonymous function:
+do so).
+To replace a for loop, put the code that was in the body of the `for` loop inside an anonymous function.
 
 ```{r}
 d_ply(
