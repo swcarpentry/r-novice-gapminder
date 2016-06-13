@@ -743,6 +743,23 @@ be changed with the third argument, `drop = FALSE`).
 
 
 
+> ## Solution to challenge 3 {.challenge}
+> Given the following code:
+>
+> ```{r}
+> x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
+> names(x) <- c('a', 'b', 'c', 'd', 'e')
+> print(x)
+> ```
+>
+> 1. Write a subsetting command to return the values in x that are greater than 4 and less than 7.
+>
+> ```{r}
+> x_subset <- x[x<7 & x>4]
+> print(x_subset)
+>```
+
+
 > ## Solution to challenge 4 {.challenge}
 >
 > Given the following code:
