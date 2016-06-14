@@ -156,14 +156,16 @@ behaviour of R).
  - `$` to access columns or list elements by name
  - negative indices skip elements
 
-## [Functions explained](07-functions.html)
+## [Control flow](07-control-flow.html)
 
-  - `?"function"`
-  - Put code whose parameters change frequently in a function, then call it with
-    different parameter values to customize its behavior.
-  - The last line of a function is returned, or you can use `return` explictly
-  - Any code written in the body of the function will preferably look for variables defined inside the function.
-  - Document Why, then What, then lastly How (if the code isn't self explanatory)
+ - Use `if` condition to start a conditional statement, `else if` condition to provide
+   additional tests, and `else` to provide a default
+ - The bodies of the branches of conditional statements must be indented.
+ - Use `==` to test for equality.
+ - `X && Y` is only true if both X and Y are `TRUE`.
+ - `X || Y` is true if either X or Y, or both, are `TRUE`.
+ - Zero is considered `FALSE`; all other numbers are considered `TRUE`
+ - Nest loops to operate on multi-dimensional data.
 
 ## [Creating publication quality graphics](08-plot-ggplot2.html)
 
@@ -189,16 +191,14 @@ behaviour of R).
 - `any()` will return `TRUE` if any element of a vector is `TRUE`
 - `all()` will return `TRUE` if *all* elements of a vector are `TRUE`
 
-## [Control flow](10-control-flow.html)
+## [Functions explained](10-functions.html)
 
-- Use `if` condition to start a conditional statement, `else if` condition to provide
-  additional tests, and `else` to provide a default
-- The bodies of the branches of conditional statements must be indented.
-- Use `==` to test for equality.
-- `X && Y` is only true if both X and Y are `TRUE`.
-- `X || Y` is true if either X or Y, or both, are `TRUE`.
-- Zero is considered `FALSE`; all other numbers are considered `TRUE`
-- Nest loops to operate on multi-dimensional data.
+  - `?"function"`
+  - Put code whose parameters change frequently in a function, then call it with
+    different parameter values to customize its behavior.
+  - The last line of a function is returned, or you can use `return` explictly
+  - Any code written in the body of the function will preferably look for variables defined inside the function.
+  - Document Why, then What, then lastly How (if the code isn't self explanatory)
 
 ## [Writing data](11-writing-data.html)
 
