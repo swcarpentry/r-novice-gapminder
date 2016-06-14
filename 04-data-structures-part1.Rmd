@@ -310,7 +310,7 @@ We can now understand something a bit surprising in our data.frame; what happens
 typeof(cats)
 ```
 
-Under the hood, a data.frame is a list of variables, which can be of different kind. In our `cats` example, we have an integer, a double and a logical variable. As we habe seen already, ach column of data.frame is a vector.
+Under the hood, a data.frame is a list of variables, which can be of different kind. In our `cats` example, we have an integer, a double and a logical variable. As we have seen already, each column of data.frame is a vector.
 
 ```{r}
 cats$coat
