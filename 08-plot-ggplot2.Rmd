@@ -163,8 +163,8 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color=continent)) +
 Currently it's hard to see the relationship between the points due to some strong
 outliers in GDP per capita. We can change the scale of units on the x axis using
 the *scale* functions. These control the mapping between the data values and
-visual values of an aesthetic. We can also modify the transparency  of the 
-points, using the *alpha* funtion, which is especially helpful when you have 
+visual values of an aesthetic. We can also modify the transparency  of the
+points, using the *alpha* funtion, which is especially helpful when you have
 a large amount of data which is very clustered.
 
 ```{r axis-scale}
@@ -200,7 +200,7 @@ aesthetic by passing it as an argument to `geom_smooth`. Previously in the
 lesson we've used the `aes` function to define a *mapping* between data
 variables and their visual representation.
 
-> ## Challenge 4 {.challenge}
+> ## Challenge 4a {.challenge}
 >
 > Modify the color and size of the points on the point layer in the previous
 > example.
@@ -208,29 +208,28 @@ variables and their visual representation.
 > Hint: do not use the `aes` function.
 >
 
-> ## Advanced Challenge {.challenge}
+> ## Challenge 4b {.challenge}
 >
-> Modify Challenge 4 so that the points are now a different shape and are 
-> colored by continent with new trendlines.
+> Modify your solution to Challenge 4a so that the points are now a different shape and are colored by continent with new trendlines.
 >
-> Hint: This code will differ from Challenge 4.
+> Hint: This code will differ from Challenge 4a.
 >
 
 ## Multi-panel figures
 
 Earlier we visualised the change in life expectancy over time across all
 countries in one plot. Alternatively, we can split this out over multiple panels
-by adding a layer of **facet** panels. Focusing only on those countries with 
+by adding a layer of **facet** panels. Focusing only on those countries with
 names that start with the letter "A" or "Z".
 
 > ## Tip {.callout}
-> 
-> We start by subsetting the data.  We use the `substr` function to 
-> pull out a part of a character string; in this case, the letters that occur 
-> in positions `start` through `stop`, inclusive, of the `gapminder$country` 
-> vector. The operator `%in%` allows us to make multiple comparisons rather 
-> than write out long subsetting conditions (in this case, 
-> `starts.with %in% c("A", "Z")` is equivalent to 
+>
+> We start by subsetting the data.  We use the `substr` function to
+> pull out a part of a character string; in this case, the letters that occur
+> in positions `start` through `stop`, inclusive, of the `gapminder$country`
+> vector. The operator `%in%` allows us to make multiple comparisons rather
+> than write out long subsetting conditions (in this case,
+> `starts.with %in% c("A", "Z")` is equivalent to
 > `starts.with == "A" | starts.with == "Z"`)
 
 ```{r facet}
@@ -319,36 +318,38 @@ code to modify!
 > ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
 >  geom_point() + geom_line(aes(color=continent))
 > ```
-> 
+>
 > The lines now get drawn over the points!
 >
 
 
-> ## Solution to challenge 4 {.challenge}
+> ## Solution to challenge 4a {.challenge}
 >
 > Modify the color and size of the points on the point layer in the previous
 > example.
 >
 > Hint: do not use the `aes` function.
 >
-> ```{r ch4-sol}
+> ```{r ch4a-sol}
 > ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 >  geom_point(size=3, color="orange") + scale_x_log10() +
 >  geom_smooth(method="lm", size=1.5)
 > ```
 >
-> ## Solution to advanced challenge {.challenge}
+
+> ## Solution to challenge 4b {.challenge}
 >
-> Modify Challenge 4 so that the points are now a different shape and are 
+> Modify Challenge 4 so that the points are now a different shape and are
 > colored by continent with new trendlines.
 >
-> Hint: This code will differ from Challenge 4.
+> Hint: The color argument can be used inside the aesthetic.
 >
->```{r advanced-sol}
-> ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) + 
-> geom_point(size=3, pch=17) + scale_x_log10() + 
+>```{r ch4b-sol}
+> ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
+> geom_point(size=3, pch=17) + scale_x_log10() +
 > geom_smooth(method="lm", size=1.5)
 > ```
+
 > ## Solution to challenge 5 {.challenge}
 >
 > Create a density plot of GDP per capita, filled by continent.
