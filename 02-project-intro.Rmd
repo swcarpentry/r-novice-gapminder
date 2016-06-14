@@ -102,6 +102,17 @@ analysis. This makes it easier later, as many of my analyses are exploratory
 and don't end up being used in the final project, and some of the analyses
 get shared between projects.
 
+> ## Tip: Good Enough Practices for Scientific Computing {.callout}
+>
+> [Good Enough Practices for Scientific Computing](https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/good-enough-practices-for-scientific-computing.pdf) gives the following recommendations for project organization:
+> 
+> 1. Put each project in its own directory, which is named after the project.
+> 2. Put text documents associated with the project in the `doc` directory.
+> 3. Put raw data and metadata in the `data` directory, and files generated during cleanup and analysis in a `results` directory.
+> 4. Put source for the project's scripts and programs in the `src` directory, and programs brought in from elsewhere or compiled locally in the `bin` directory.
+> 5. Name all files to reflect their content or function.
+>
+
 > ## Tip: ProjectTemplate - a possible solution {.callout}
 >
 > One way to automate the management of projects is to install the third-party package, `ProjectTemplate`.
