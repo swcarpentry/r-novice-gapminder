@@ -156,7 +156,7 @@ behaviour of R).
  - `$` to access columns or list elements by name
  - negative indices skip elements
 
- ## [Control flow](07-control-flow.html)
+## [Control flow](07-control-flow.html)
 
  - Use `if` condition to start a conditional statement, `else if` condition to provide
    additional tests, and `else` to provide a default
