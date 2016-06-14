@@ -212,7 +212,7 @@ variables and their visual representation.
 >
 > Modify your solution to Challenge 4a so that the points are now a different shape and are colored by continent with new trendlines.
 >
-> Hint: This code will differ from Challenge 4a.
+>  Hint: The color argument can be used inside the aesthetic.
 >
 
 ## Multi-panel figures
