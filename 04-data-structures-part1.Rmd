@@ -34,6 +34,12 @@ black,5.0,0
 tabby,3.2,1
 ```
 
+> ## Tip :Editing Text files in R {.callout}
+>
+> Alternatively, you can create `data/feline-data.csv` using a text editor (Nano),
+> or within RStudio with the **File -> New File -> Text File** menu item.
+>
+
 ```{r, echo = FALSE}
 cats.df <- data.frame(coat = c("calico", "black", "tabby"),
                       weight = c(2.1, 5.0, 3.2),
@@ -50,6 +56,7 @@ cats
 
 
 The `read.csv` function is used for reading in tabular data stored in a text file where the columns of data are delimited by commas (csv = comma separated values). Tabs are also commonly used to separated colums - if your data are in this format you can use the function `read.delim`. If the columns in your data are delimited by a character other than commas or tabs, you can use the more general and flexible `read.table` function.
+
 
 We can begin exploring our dataset right away, pulling out columns by specifying them using the `$` operator:
 
@@ -353,6 +360,7 @@ typeof(cats)
 ```
 
 We see that data.frames look like lists 'under the hood' - this is because a data.frame is really a list of vectors and factors, as they have to be - in order to hold those columns that are a mix of vectors and factors, the data.frame needs something a bit more flexible than a vector to put all the columns together into a familiar table.
+In other words, a `data.frame` is a special list in which all the vectors must have the same length.
 
 ## Matrices
 
