@@ -28,6 +28,15 @@ usability.
 > Know how to access files not in the working directory by specifying the path.
 >
 
+> ## Getting ready {.getready}
+>
+> This lesson assumes you have the R, RStudio software installed on your computer.
+>
+> R can be downloaded [here](https://cran.r-project.org/mirrors.html).
+>
+> RStudio is an environment for developing using R. It can be downloaded [here](https://www.rstudio.com/products/rstudio/download/). You will need the Desktop version for your computer.
+>
+
 ## Topics
 
 1.  [Introduction to R and RStudio](01-rstudio-intro.html)
