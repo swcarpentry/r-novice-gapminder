@@ -53,7 +53,8 @@ usability.
 12. [Split-apply-combine](12-plyr.html)
 13. [Dataframe manipulation with dplyr](13-dplyr.html)
 14. [Dataframe manipulation with tidyr](14-tidyr.html)
-15. [Best practices for writing good code](15-wrap-up.html)
+15. [Producing reports with knitr](15-knitr-markdown.html)
+16. [Best practices for writing good code](16-wrap-up.html)
 
 
 ## Other Resources
