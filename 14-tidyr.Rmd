@@ -79,9 +79,13 @@ While using many of the functions in R, which are often vector based, you usuall
 ## From wide to long format with gather()
 Until now, we've been using the nicely formatted original gapminder dataset, but 'real' data (i.e. our own research data) will never be so well organized. Here let's start with the wide format version of the gapminder dataset.
 
+
+We'll load the data file and look at it.  Note: we don't want our continent and country columns to be factors, so we use the stringsAsFactors argument for `read.csv()` to disable that.  
 ```{r}
+gap_wide <- read.csv("data/gapminder_wide.csv", stringsAsFactors = FALSE)
 str(gap_wide)
 ```
+
 
 ![](fig/14-tidyr-fig2.png)
 
