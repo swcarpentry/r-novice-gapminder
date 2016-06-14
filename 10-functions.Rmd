@@ -286,6 +286,11 @@ which is much better than in our first attempt where we just got a vector of num
 
 > ## Challenge 3 {.challenge}
 >
+> Test out your GDP function by calculating the GDP for New Zealand in 1987. How does this differ from New Zealand's GDP in 1952?
+>
+
+> ## Challenge 4 {.challenge}
+>
 > The `paste` function can be used to combine text together, e.g:
 >
 > ```{r}
@@ -381,8 +386,15 @@ which is much better than in our first attempt where we just got a vector of num
 > ```
 >
 
-
 > ## Solution to challenge 3 {.challenge}
+>
+> GDP for New Zealand in 1987: 65050008703
+>
+> GDP for New Zealand in 1952: 21058193787
+>
+
+
+> ## Solution to challenge 4 {.challenge}
 >
 >  Write a function called `fence` that takes two vectors as arguments, called
 > `text` and `wrapper`, and prints out the text wrapped with the `wrapper`:

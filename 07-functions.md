@@ -356,7 +356,12 @@ data frame with that column added. This means when we call the function
 later we can see the context for the returned GDP values,
 which is much better than in our first attempt where we just got a vector of numbers.
 
-> ## Challenge 3 {.challenge}
+> ## Challenge 4 {.challenge}
+
+Test out your GDP function by calculating the GDP for New Zealand in 1987.  How does this differ from New Zealand's GDP in 1952?
+
+
+> ## Challenge 5 {.challenge}
 >
 > The `paste` function can be used to combine text together, e.g:
 >
@@ -487,3 +492,7 @@ which is much better than in our first attempt where we just got a vector of num
 > [1] "*** Write programs for people not computers ***"
 > 
 > ~~~
+## Solution to challenge 4 {.challenge}
+
+GDP for New Zealand in 1987: 63050008703
+GDP for New Zealand in 1952: 21058193787
