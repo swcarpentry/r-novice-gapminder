@@ -51,7 +51,7 @@ x[1]
 x[4]
 ```
 
-The square brackets operator is just like any other function. For atomic vectors
+It may look different, but the square brackets operator is a function. For atomic vectors
 (and matrices), it means "get me the nth element".
 
 We can ask for multiple elements at once:
@@ -66,8 +66,12 @@ Or slices of the vector:
 x[1:4]
 ```
 
-the `:` operator just creates a sequence of numbers from the left element to the right.
-I.e. `x[1:4]` is equivalent to `x[c(1,2,3,4)]`.
+the `:` operator reates a sequence of numbers from the left element to the right.
+```{r}
+1:4
+c(1, 2, 3, 4)
+```
+
 
 We can ask for the same element multiple times:
 
@@ -235,7 +239,7 @@ names of `x`, and asks, "Does this element occur in the second argument?".
 >```
 >
 > Try out this command and see what you get. Did this match your expectation?
-> Why did we get this result? (Tip: test out each part of the command on it's own like we just did above - this is a useful debugging strategy)
+> Why did we get this result? (Tip: test out each part of the command on it's own - this is a useful debugging strategy)
 >
 > Which of the following are true:
 >
@@ -272,7 +276,7 @@ names of `x`, and asks, "Does this element occur in the second argument?".
 
 So why can't we use `==` like before? That's an excellent question.
 
-Let's take a look at just the comparison component:
+Let's take a look at the comparison component of this code:
 
 ```{r}
 names(x) == c('a', 'c')
@@ -458,7 +462,7 @@ m[, c(3,6)]
 > arguments correspond to the rows, columns, and depth dimension.
 >
 
-Because matrices are really just vectors underneath the hood, we can
+Because matrices are vectors, we can
 also subset using only one argument:
 
 ```{r}
@@ -466,7 +470,7 @@ m[5]
 ```
 
 
-This usually isn't useful. However it is useful to note that matrices
+This usually isn't useful, and often confusing to read. However it is useful to note that matrices
 are laid out in *column-major format* by default. That is the elements of the
 vector are arranged column-wise:
 
@@ -714,7 +718,7 @@ be changed with the third argument, `drop = FALSE`).
 >
 > Try out this command and see what you get. Did this match your expectation?
 >
-> Why did we get this result? (Tip: test out each part of the command on it's own like we just did above - this is a useful debugging strategy)
+> Why did we get this result? (Tip: test out each part of the command on it's own - this is a useful debugging strategy)
 >
 > Which of the following are true:
 >

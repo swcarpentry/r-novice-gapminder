@@ -44,8 +44,8 @@ expressed from the same set of components: a **data** set, a
 **coordinate system**, and a set of **geoms**--the visual representation of data
 points.
 
-The key to understanding ggplot2 is thinking about a figure in layers: just like
-you might do in an image editing program like Photoshop, Illustrator, or
+The key to understanding ggplot2 is thinking about a figure in layers.
+This idea may be familiar to you if you have used image editing programs like Photoshop, Illustrator, or
 Inkscape.
 
 Let's start off with an example:
@@ -263,7 +263,7 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
 ```
 
 
-This is just a taste of what you can do with `ggplot2`. RStudio provides a
+This is a taste of what you can do with `ggplot2`. RStudio provides a
 really useful [cheat sheet][cheat] of the different layers available, and more
 extensive documentation is available on the [ggplot2 website][ggplot-doc].
 Finally, if you have no idea how to change something, a quick google search will
