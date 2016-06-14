@@ -34,6 +34,12 @@ black,5.0,0
 tabby,3.2,1
 ```
 
+> ## Tip: versioning disposable output {.callout}
+>
+> You can create `data/feline-data.csv` using a text editor (Nano),
+> or within RStudio with the **File -> New File -> Text File** menu item.
+>
+
 ```{r, echo = FALSE}
 cats.df <- data.frame(coat = c("calico", "black", "tabby"),
                       weight = c(2.1, 5.0, 3.2),
@@ -353,6 +359,7 @@ typeof(cats)
 ```
 
 We see that data.frames look like lists 'under the hood' - this is because a data.frame is really a list of vectors and factors, as they have to be - in order to hold those columns that are a mix of vectors and factors, the data.frame needs something a bit more flexible than a vector to put all the columns together into a familiar table.
+In other words, a data frame is a special list in which all the vectors must have the same length.
 
 ## Matrices
 
