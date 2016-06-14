@@ -143,7 +143,7 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv")
 > the file paths with a web address. For example,
 > 
 > ```{r eval=FALSE, echo=TRUE}
-> gapminder <- read.csv("https://raw.githubusercontent.com/jrnold/r-novice-gapminder/gh-pages/data/gapminder-FiveYearData.csv")
+> gapminder <- read.csv("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/data/gapminder-FiveYearData.csv")
 > ```
 >
 > 3. You can read directly from excel spreadsheets without
