@@ -208,6 +208,14 @@ variables and their visual representation.
 > Hint: do not use the `aes` function.
 >
 
+> ## Advanced Challenge {.challenge}
+>
+> Modify Challenge 4 so that the points are now a different shape and are 
+> colored by continent with new trendlines.
+>
+> Hint: This code will differ from Challenge 4.
+>
+
 ## Multi-panel figures
 
 Earlier we visualised the change in life expectancy over time across all
@@ -329,7 +337,18 @@ code to modify!
 >  geom_smooth(method="lm", size=1.5)
 > ```
 >
-
+> ## Solution to advanced challenge {.challenge}
+>
+> Modify Challenge 4 so that the points are now a different shape and are 
+> colored by continent with new trendlines.
+>
+> Hint: This code will differ from Challenge 4.
+>
+>```{r advanced-sol}
+> ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) + 
+> geom_point(size=3, pch=17) + scale_x_log10() + 
+> geom_smooth(method="lm", size=1.5)
+> ```
 > ## Solution to challenge 5 {.challenge}
 >
 > Create a density plot of GDP per capita, filled by continent.
