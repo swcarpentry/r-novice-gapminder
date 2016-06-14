@@ -230,7 +230,15 @@ behaviour of R).
 - '?seprarate' split a single value into multiple values.
 - '?unite' merge multipe values into a single value.
 
-## [Best practices for writing good code](15-wrap-up.html)
+## [Producing reports with knitr](15-knitr-markdown.html)
+- Value of reproducible reports
+- Basics of Markdown
+- R code chunks
+- Chunk options
+- Inline R code
+- Other output formats
+
+## [Best practices for writing good code](16-wrap-up.html)
 
  * Program defensively, i.e., assume that errors are going to arise, and write code to detect them when they do.
  * Write tests before writing code in order to help determine exactly what that code is supposed to do.
