@@ -1,11 +1,12 @@
 ---
-layout: lesson
-root: ../..
-title: R Markdown
+layout: page
+title: R for reproducible scientific analysis
+subtitle: Producing reports with knitr
+minutes: 60
 ---
 
 ```{r chunk_options, include=FALSE}
-source("chunk_options.R")
+source("tools/chunk_options.R")
 opts_chunk$set(fig.path="fig/Rmd-")
 ```
 
@@ -363,8 +364,15 @@ little triangle next to the "Knit HTML" button to get a drop-down
 menu. Or you could put `pdf_document` or `word_document` in the header
 of the file.
 
-Actually, that drop-down menu seems to just change what's
-shown in the header at the top of the file!
+> ## Tip: Creating PDF documents {.callout}
+>
+> Creating .pdf documents may require installation of some extra software. If required this is detailed in an error message.
+>
+> Tex for windows is available [here](http://miktex.org/2.9/setup).
+>
+> Tex for mac is available [here](http://tug.org/mactex).
+>
+
 
 
 ### Resources
