@@ -30,7 +30,7 @@
           <h2 class="subtitle">Data structures</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -41,145 +41,188 @@
 </div>
 </section>
 <p>One of R’s most powerful features is its ability to deal with tabular data - like what you might already have in a spreadsheet or a CSV. Let’s start by making a toy dataset in your <code>data/</code> directory, called <code>feline-data.csv</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r">coat,weight,likes_string
-calico,<span class="fl">2.1</span>,<span class="ot">TRUE</span>
-black,<span class="fl">5.0</span>,<span class="ot">FALSE</span>
-tabby,<span class="fl">3.2</span>,<span class="ot">TRUE</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">coat,weight,likes_string
+calico,<span class="fl">2.1</span>,<span class="dv">1</span>
+black,<span class="fl">5.0</span>,<span class="dv">0</span>
+tabby,<span class="fl">3.2</span>,<span class="dv">1</span></code></pre></div>
+<aside class="callout panel panel-info">
+<div class="panel-heading">
+<h2 id="tip-editing-text-files-in-r"><span class="glyphicon glyphicon-pushpin"></span>Tip :Editing Text files in R</h2>
+</div>
+<div class="panel-body">
+<p>Alternatively, you can create <code>data/feline-data.csv</code> using a text editor (Nano), or within RStudio with the <strong>File -&gt; New File -&gt; Text File</strong> menu item.</p>
+</div>
+</aside>
 <p>We can load this into R via the following:</p>
-<pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/feline-data.csv&quot;</span>)
-cats</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/feline-data.csv&quot;</span>)
+cats</code></pre></div>
 <pre class="output"><code>    coat weight likes_string
 1 calico    2.1         TRUE
 2  black    5.0        FALSE
 3  tabby    3.2         TRUE
 </code></pre>
-<p>We can begin exploring our dataset right away, pulling out columns and rows via the following:</p>
-<pre class="sourceCode r"><code class="sourceCode r">cats$weight</code></pre>
+<p>The <code>read.csv</code> function is used for reading in tabular data stored in a text file where the columns of data are delimited by commas (csv = comma separated values). Tabs are also commonly used to separated colums - if your data are in this format you can use the function <code>read.delim</code>. If the columns in your data are delimited by a character other than commas or tabs, you can use the more general and flexible <code>read.table</code> function.</p>
+<p>We can begin exploring our dataset right away, pulling out columns by specifying them using the <code>$</code> operator:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$weight</code></pre></div>
 <pre class="output"><code>[1] 2.1 5.0 3.2
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">cats$weight[<span class="dv">1</span>]</code></pre>
-<pre class="output"><code>[1] 2.1
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$coat</code></pre></div>
+<pre class="output"><code>[1] calico black  tabby 
+Levels: black calico tabby
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">cats$weight[<span class="dv">2</span>]</code></pre>
-<pre class="output"><code>[1] 5
+<p>We can do other operations on the columns:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Say we discovered that the scale weighs one Kg light:
+cats$weight +<span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre class="output"><code>[1] 4.1 7.0 5.2
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">cats$weight[<span class="dv">1</span>] +<span class="st"> </span>cats$weight[<span class="dv">2</span>]</code></pre>
-<pre class="output"><code>[1] 7.1
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">paste</span>(<span class="st">&quot;My cat is&quot;</span>, cats$coat)</code></pre></div>
+<pre class="output"><code>[1] &quot;My cat is calico&quot; &quot;My cat is black&quot;  &quot;My cat is tabby&quot; 
 </code></pre>
 <p>But what about</p>
-<pre class="sourceCode r"><code class="sourceCode r">cats$weight[<span class="dv">1</span>] +<span class="st"> </span>cats$coat[<span class="dv">2</span>]</code></pre>
-<pre class="error"><code>Warning in Ops.factor(cats$weight[1], cats$coat[2]): &#39;+&#39; not meaningful for
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$weight +<span class="st"> </span>cats$coat</code></pre></div>
+<pre class="error"><code>Warning in Ops.factor(cats$weight, cats$coat): &#39;+&#39; not meaningful for
 factors
 </code></pre>
-<pre class="output"><code>[1] NA
+<pre class="output"><code>[1] NA NA NA
 </code></pre>
 <p>Understanding what happened here is key to successfully analyzing data in R.</p>
 <h2 id="data-types">Data Types</h2>
-<p>If you guessed that the last command will return an error because 2.1 plus black is nonsense, you’re right - and you already have some intuition for an important concept in programming called <em>data types</em>. We can ask what type of data something is:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(cats$weight[<span class="dv">1</span>])</code></pre>
+<p>If you guessed that the last command will return an error because <code>2.1</code> plus <code>&quot;black&quot;</code> is nonsense, you’re right - and you already have some intuition for an important concept in programming called <em>data types</em>. We can ask what type of data something is:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(cats$weight)</code></pre></div>
 <pre class="output"><code>[1] &quot;double&quot;
 </code></pre>
-<p>There are 5 main types: doubles, integers, complex, logical and character.</p>
-<pre><code>typeof(3.14)
-typeof(1L)
-typeof(1+1i)
-typeof(TRUE)
-typeof(&#39;banana&#39;)</code></pre>
-<p>Note the <code>L</code> suffix to insist that a number is an integer. No matter how complicated our analyses become, all data in R is interpreted as one of these basic data types. This strictness has some really important consequences. Go back to your text editor and add add this line to feline-data.csv:</p>
-<pre class="sourceCode r"><code class="sourceCode r">tabby,<span class="fl">2.3</span> or <span class="fl">2.4</span>,<span class="ot">TRUE</span></code></pre>
-<p>Reload your cats data like before, and check what type of data we find in the <code>weight</code> column:</p>
-<pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/feline-data.csv&quot;</span>)
-<span class="kw">typeof</span>(cats$weight[<span class="dv">1</span>])</code></pre>
+<p>There are 5 main types: <code>double</code>, <code>integer</code>, <code>complex</code>, <code>logical</code> and <code>character</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="fl">3.14</span>)</code></pre></div>
 <pre class="output"><code>[1] &quot;double&quot;
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(1L)</code></pre></div>
+<pre class="output"><code>[1] &quot;integer&quot;
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="dv">1</span>+1i)</code></pre></div>
+<pre class="output"><code>[1] &quot;complex&quot;
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="ot">TRUE</span>)</code></pre></div>
+<pre class="output"><code>[1] &quot;logical&quot;
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="st">&#39;banana&#39;</span>)</code></pre></div>
+<pre class="output"><code>[1] &quot;character&quot;
+</code></pre>
+<p>Note the <code>L</code> suffix to insist that a number is an integer. No matter how complicated our analyses become, all data in R is interpreted as one of these basic data types. This strictness has some really important consequences.</p>
+<p>A user has added details of another cat. This information is in the file <code>data/feline-data_v2.csv</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">file.show</span>(<span class="st">&quot;data/feline-data_v2.csv&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">coat,weight,likes_string
+calico,<span class="fl">2.1</span>,<span class="ot">TRUE</span>
+black,<span class="fl">5.0</span>,<span class="ot">FALSE</span>
+tabby,<span class="fl">3.2</span>,<span class="ot">TRUE</span>
+tabby,<span class="fl">2.3</span> or <span class="fl">2.4</span>,<span class="ot">TRUE</span></code></pre></div>
+<p>Load the new cats data like before, and check what type of data we find in the <code>weight</code> column:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/feline-data_v2.csv&quot;</span>)
+<span class="kw">typeof</span>(cats$weight)</code></pre></div>
+<pre class="output"><code>[1] &quot;integer&quot;
 </code></pre>
 <p>Oh no, our weights aren’t the double type anymore! If we try to do the same math we did on them before, we run into trouble:</p>
-<pre class="sourceCode r"><code class="sourceCode r">cats$weight[<span class="dv">1</span>] +<span class="st"> </span>cats$weight[<span class="dv">2</span>]</code></pre>
-<pre class="output"><code>[1] 7.1
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$weight +<span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre class="error"><code>Warning in Ops.factor(cats$weight, 2): &#39;+&#39; not meaningful for factors
 </code></pre>
-<p>What happened? When R reads a csv into one of these tables, it insists that everything in a column be the same basic type; if it can’t understand <em>everything</em> in the column as a double, then <em>nobody</em> in the column gets to be a double. The table that R loaded our cats data into is something called a <em>data.frame</em>, and it is our first example of something called a <em>data structure</em> - things that R knows how to build out of the basic data types. In order to successfully use our data in R, we need to understand what these basic data structures are, and how they behave. For now, let’s remove that extra line from our cats data and reload it, while we investigate this behavior further:</p>
+<pre class="output"><code>[1] NA NA NA NA
+</code></pre>
+<p>What happened? When R reads a csv into one of these tables, it insists that everything in a column be the same basic type; if it can’t understand <em>everything</em> in the column as a double, then <em>nobody</em> in the column gets to be a double. The table that R loaded our cats data into is something called a <em>data.frame</em>, and it is our first example of something called a <em>data structure</em> - that is, a structure which R knows how to build out of the basic data types.</p>
+<p>We can see that it is a <em>data.frame</em> by calling the <code>class</code> function on it:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(cats)</code></pre></div>
+<pre class="output"><code>[1] &quot;data.frame&quot;
+</code></pre>
+<p>In order to successfully use our data in R, we need to understand what the basic data structures are, and how they behave. For now, let’s remove that extra line from our cats data and reload it, while we investigate this behavior further:</p>
 <p>feline-data.csv:</p>
 <pre><code>coat,weight,likes_string
 calico,2.1,TRUE
 black,5.0,FALSE
 tabby,3.2,TRUE</code></pre>
 <p>And back in RStudio:</p>
-<pre><code>cats &lt;- read.csv(file=&quot;data/feline-data.csv&quot;)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/feline-data.csv&quot;</span>)</code></pre></div>
 <h2 id="vectors-type-coercion">Vectors &amp; Type Coercion</h2>
-<p>To better understand the behavior we just saw, let’s meet another of the data structures: the <em>vector</em>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">my_vector &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">length=</span><span class="dv">3</span>)
-my_vector</code></pre>
+<p>To better understand this behavior, let’s meet another of the data structures: the <em>vector</em>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_vector &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">length =</span> <span class="dv">3</span>)
+my_vector</code></pre></div>
 <pre class="output"><code>[1] FALSE FALSE FALSE
 </code></pre>
-<p>Just like you might be familiar with from vectors elsewhere, a vector in R is essentially an ordered list of things, with the special condition that <em>everything in the vector must be the same basic data type</em>. If you don’t choose the datatype, it’ll default to <code>logical</code>; or, you can declare an empty vector of whatever type you like.</p>
-<pre class="sourceCode r"><code class="sourceCode r">another_vector &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode=</span><span class="st">&#39;character&#39;</span>, <span class="dt">length=</span><span class="dv">3</span>)
-another_vector</code></pre>
+<p>A vector in R is essentially an ordered list of things, with the special condition that <em>everything in the vector must be the same basic data type</em>. If you don’t choose the datatype, it’ll default to <code>logical</code>; or, you can declare an empty vector of whatever type you like.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">another_vector &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode=</span><span class="st">&#39;character&#39;</span>, <span class="dt">length=</span><span class="dv">3</span>)
+another_vector</code></pre></div>
 <pre class="output"><code>[1] &quot;&quot; &quot;&quot; &quot;&quot;
 </code></pre>
 <p>You can check if something is a vector:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(another_vector)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(another_vector)</code></pre></div>
 <pre class="output"><code> chr [1:3] &quot;&quot; &quot;&quot; &quot;&quot;
 </code></pre>
-<p>The somewhat cryptic output from this command indicates the basic data type found in this vector; the number of things in the vector; and a few examples of what’s actually in the vector. If we similarly do</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cats$weight)</code></pre>
+<p>The somewhat cryptic output from this command indicates the basic data type found in this vector - in this case <code>chr</code>, character; an indication of the number of things in the vector - actually, the indexes of the vector, in this case <code>[1:3]</code>; and a few examples of what’s actually in the vector - in this case empty character strings. If we similarly do</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cats$weight)</code></pre></div>
 <pre class="output"><code> num [1:3] 2.1 5 3.2
 </code></pre>
 <p>we see that that’s a vector, too - <em>the columns of data we load into R data.frames are all vectors</em>, and that’s the root of why R forces everything in a column to be the same basic data type.</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Discussion 1</h2>
+<h2 id="discussion-1"><span class="glyphicon glyphicon-pencil"></span>Discussion 1</h2>
 </div>
 <div class="panel-body">
 <p>Why is R so opinionated about what we put in our columns of data? How does this help us?</p>
 </div>
 </section>
 <p>You can also make vectors with explicit contents with the concatenate function:</p>
-<pre class="sourceCode r"><code class="sourceCode r">concat_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">3</span>)
-concat_vector</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">concat_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">3</span>)
+concat_vector</code></pre></div>
 <pre class="output"><code>[1] 2 6 3
 </code></pre>
 <p>Given what we’ve learned so far, what do you think the following will produce?</p>
-<pre class="sourceCode r"><code class="sourceCode r">quiz_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">6</span>,<span class="st">&#39;3&#39;</span>)</code></pre>
-<p>This is something called <em>type coercion</em>, and it is the source of many surprises and the reason why we need to be aware of the basic data types and how R will interpret them. Consider:</p>
-<pre class="sourceCode r"><code class="sourceCode r">coercion_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="ot">TRUE</span>)
-coercion_vector</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">quiz_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">6</span>,<span class="st">&#39;3&#39;</span>)</code></pre></div>
+<p>This is something called <em>type coercion</em>, and it is the source of many surprises and the reason why we need to be aware of the basic data types and how R will interpret them. When R encounters a mix of types (here numeric and character) to be combined into a single vector, it will force them all to be the same type. Consider:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">coercion_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="ot">TRUE</span>)
+coercion_vector</code></pre></div>
 <pre class="output"><code>[1] &quot;a&quot;    &quot;TRUE&quot;
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">another_coercion_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="ot">TRUE</span>)
-another_coercion_vector</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">another_coercion_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="ot">TRUE</span>)
+another_coercion_vector</code></pre></div>
 <pre class="output"><code>[1] 0 1
 </code></pre>
-<p>The coercion rules go: <code>logical</code> -&gt; <code>integer</code> -&gt; <code>numeric</code> -&gt; <code>complex</code> -&gt; <code>character</code>. You can try to force coercion against this flow using the <code>as.</code> functions:</p>
-<pre class="sourceCode r"><code class="sourceCode r">character_vector_example &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;0&#39;</span>,<span class="st">&#39;2&#39;</span>,<span class="st">&#39;4&#39;</span>)
-character_vector_example</code></pre>
+<p>The coercion rules go: <code>logical</code> -&gt; <code>integer</code> -&gt; <code>numeric</code> -&gt; <code>complex</code> -&gt; <code>character</code>, where -&gt; can be read as <em>are transformed into</em>. You can try to force coercion against this flow using the <code>as.</code> functions:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">character_vector_example &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;0&#39;</span>,<span class="st">&#39;2&#39;</span>,<span class="st">&#39;4&#39;</span>)
+character_vector_example</code></pre></div>
 <pre class="output"><code>[1] &quot;0&quot; &quot;2&quot; &quot;4&quot;
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">character_coerced_to_numeric &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(character_vector_example)
-character_coerced_to_numeric</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">character_coerced_to_numeric &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(character_vector_example)
+character_coerced_to_numeric</code></pre></div>
 <pre class="output"><code>[1] 0 2 4
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">numeric_coerced_to_logical &lt;-<span class="st"> </span><span class="kw">as.logical</span>(character_coerced_to_numeric)
-numeric_coerced_to_logical</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">numeric_coerced_to_logical &lt;-<span class="st"> </span><span class="kw">as.logical</span>(character_coerced_to_numeric)
+numeric_coerced_to_logical</code></pre></div>
 <pre class="output"><code>[1] FALSE  TRUE  TRUE
 </code></pre>
 <p>As you can see, some surprising things can happen when R forces one basic data type into another! Nitty-gritty of type coercion aside, the point is: if your data doesn’t look like what you thought it was going to look like, type coercion may well be to blame; make sure everything is the same type in your vectors and your columns of data.frames, or you will get nasty surprises!</p>
+<p>But coercion can also be very useful! For example, in our <code>cats</code> data <code>likes_string</code> is numeric, but we know that the 1s and 0s actually represent <code>TRUE</code> and <code>FALSE</code> (a common way of representing them). We should use the <code>logical</code> datatype here, which has two states: <code>TRUE</code> or <code>FALSE</code>, which is exactly what our data represents. We can ‘coerce’ this column to be <code>logical</code> by using the <code>as.logical</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$likes_string</code></pre></div>
+<pre class="output"><code>[1] 1 0 1
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$likes_string &lt;-<span class="st"> </span><span class="kw">as.logical</span>(cats$likes_string)
+cats$likes_string</code></pre></div>
+<pre class="output"><code>[1]  TRUE FALSE  TRUE
+</code></pre>
 <p>Concatenate will also append things to an existing vector:</p>
-<pre class="sourceCode r"><code class="sourceCode r">ab_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>)
-ab_vector</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ab_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>)
+ab_vector</code></pre></div>
 <pre class="output"><code>[1] &quot;a&quot; &quot;b&quot;
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">concat_example &lt;-<span class="st"> </span><span class="kw">c</span>(ab_vector, <span class="st">&#39;SWC&#39;</span>)
-concat_example</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">concat_example &lt;-<span class="st"> </span><span class="kw">c</span>(ab_vector, <span class="st">&#39;SWC&#39;</span>)
+concat_example</code></pre></div>
 <pre class="output"><code>[1] &quot;a&quot;   &quot;b&quot;   &quot;SWC&quot;
 </code></pre>
 <p>You can also make series of numbers:</p>
-<pre class="sourceCode r"><code class="sourceCode r">mySeries &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
-mySeries</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mySeries &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+mySeries</code></pre></div>
 <pre class="output"><code> [1]  1  2  3  4  5  6  7  8  9 10
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dv">10</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dv">10</span>)</code></pre></div>
 <pre class="output"><code> [1]  1  2  3  4  5  6  7  8  9 10
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">10</span>, <span class="dt">by=</span><span class="fl">0.1</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">10</span>, <span class="dt">by=</span><span class="fl">0.1</span>)</code></pre></div>
 <pre class="output"><code> [1]  1.0  1.1  1.2  1.3  1.4  1.5  1.6  1.7  1.8  1.9  2.0  2.1  2.2  2.3
 [15]  2.4  2.5  2.6  2.7  2.8  2.9  3.0  3.1  3.2  3.3  3.4  3.5  3.6  3.7
 [29]  3.8  3.9  4.0  4.1  4.2  4.3  4.4  4.5  4.6  4.7  4.8  4.9  5.0  5.1
@@ -188,89 +231,97 @@ mySeries</code></pre>
 [71]  8.0  8.1  8.2  8.3  8.4  8.5  8.6  8.7  8.8  8.9  9.0  9.1  9.2  9.3
 [85]  9.4  9.5  9.6  9.7  9.8  9.9 10.0
 </code></pre>
-<p>In addition to asking for elements of a vector with the square bracket notation, we can ask a few other questions about vectors:</p>
-<pre class="sourceCode r"><code class="sourceCode r">sequence_example &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">10</span>)
-<span class="kw">head</span>(sequence_example, <span class="dt">n=</span><span class="dv">2</span>)</code></pre>
+<p>We can ask a few questions about vectors:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sequence_example &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">10</span>)
+<span class="kw">head</span>(sequence_example, <span class="dt">n=</span><span class="dv">2</span>)</code></pre></div>
 <pre class="output"><code>[1] 1 2
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(sequence_example, <span class="dt">n=</span><span class="dv">4</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(sequence_example, <span class="dt">n=</span><span class="dv">4</span>)</code></pre></div>
 <pre class="output"><code>[1]  7  8  9 10
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(sequence_example)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(sequence_example)</code></pre></div>
 <pre class="output"><code>[1] 10
 </code></pre>
-<p>Finally, you can give names to elements in your vector, and ask for them that way:</p>
-<pre class="sourceCode r"><code class="sourceCode r">names_example &lt;-<span class="st"> </span><span class="dv">5</span>:<span class="dv">8</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(sequence_example)</code></pre></div>
+<pre class="output"><code>[1] &quot;integer&quot;
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(sequence_example)</code></pre></div>
+<pre class="output"><code>[1] &quot;integer&quot;
+</code></pre>
+<p>Finally, you can give names to elements in your vector:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">names_example &lt;-<span class="st"> </span><span class="dv">5</span>:<span class="dv">8</span>
 <span class="kw">names</span>(names_example) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>)
-names_example</code></pre>
+names_example</code></pre></div>
 <pre class="output"><code>a b c d 
 5 6 7 8 
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">names_example[<span class="st">&#39;b&#39;</span>]</code></pre>
-<pre class="output"><code>b 
-6 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(names_example)</code></pre></div>
+<pre class="output"><code>[1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot;
 </code></pre>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h2>
+<h2 id="challenge-1"><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h2>
 </div>
 <div class="panel-body">
-<p>Start by making a vector with the numbers 11 to 20. Then use the functions we just learned to extract the 3rd through 5th element in that vector into a new vector; name the elements in that new vector ‘S’, ‘W’, ‘C’.</p>
+<p>Start by making a vector with the numbers 1 through 26. Multiply the vector by 2, and give the resulting vector names A through Z (hint: there is a built in vector called <code>LETTERS</code>)</p>
 </div>
 </section>
-<h2 id="factors">Factors</h2>
+<h2 id="data-frames">Data Frames</h2>
 <p>We said that columns in data.frames were vectors:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cats$weight)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cats$weight)</code></pre></div>
 <pre class="output"><code> num [1:3] 2.1 5 3.2
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cats$likes_string)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cats$likes_string)</code></pre></div>
 <pre class="output"><code> logi [1:3] TRUE FALSE TRUE
 </code></pre>
-<p>But what about</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cats$coat)</code></pre>
+<p>These make sense. But what about</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cats$coat)</code></pre></div>
 <pre class="output"><code> Factor w/ 3 levels &quot;black&quot;,&quot;calico&quot;,..: 2 1 3
 </code></pre>
-<h2 id="factors-1">Factors</h2>
+<h2 id="factors">Factors</h2>
 <p>Another important data structure is called a <em>factor</em>. Factors usually look like character data, but are typically used to represent categorical information. For example, let’s make a vector of strings labeling cat colorations for all the cats in our study:</p>
-<pre class="sourceCode r"><code class="sourceCode r">coats &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;tabby&#39;</span>, <span class="st">&#39;tortoiseshell&#39;</span>, <span class="st">&#39;tortoiseshell&#39;</span>, <span class="st">&#39;black&#39;</span>, <span class="st">&#39;tabby&#39;</span>)
-coats</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">coats &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;tabby&#39;</span>, <span class="st">&#39;tortoiseshell&#39;</span>, <span class="st">&#39;tortoiseshell&#39;</span>, <span class="st">&#39;black&#39;</span>, <span class="st">&#39;tabby&#39;</span>)
+coats</code></pre></div>
 <pre class="output"><code>[1] &quot;tabby&quot;         &quot;tortoiseshell&quot; &quot;tortoiseshell&quot; &quot;black&quot;        
 [5] &quot;tabby&quot;        
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(coats)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(coats)</code></pre></div>
 <pre class="output"><code> chr [1:5] &quot;tabby&quot; &quot;tortoiseshell&quot; &quot;tortoiseshell&quot; &quot;black&quot; ...
 </code></pre>
 <p>We can turn a vector into a factor like so:</p>
-<pre class="sourceCode r"><code class="sourceCode r">CATegories &lt;-<span class="st"> </span><span class="kw">factor</span>(coats)
-<span class="kw">str</span>(CATegories)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">CATegories &lt;-<span class="st"> </span><span class="kw">factor</span>(coats)
+<span class="kw">class</span>(CATegories)</code></pre></div>
+<pre class="output"><code>[1] &quot;factor&quot;
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(CATegories)</code></pre></div>
 <pre class="output"><code> Factor w/ 3 levels &quot;black&quot;,&quot;tabby&quot;,..: 2 3 3 1 2
 </code></pre>
 <p>Now R has noticed that there are three possible categories in our data - but it also did something surprising; instead of printing out the strings we gave it, we got a bunch of numbers instead. R has replaced our human-readable categories with numbered indices under the hood:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(coats[<span class="dv">1</span>])</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(coats)</code></pre></div>
 <pre class="output"><code>[1] &quot;character&quot;
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(CATegories[<span class="dv">1</span>])</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(CATegories)</code></pre></div>
 <pre class="output"><code>[1] &quot;integer&quot;
 </code></pre>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h2>
+<h2 id="challenge-2"><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h2>
 </div>
 <div class="panel-body">
-<p>Is there a factor in our <code>cats</code> data.frame? what is its name? Try using <code>?read.csv</code> to figure out how to keep text columns as character vectors instead of factors; then write a command or two to show that the factor in <code>cats</code> is actually is a character vector when loaded in this way.</p>
+<p>Is there a factor in our <code>cats</code> data.frame? what is its name? Try using <code>?read.csv</code> to figure out how to keep text columns as character vectors instead of factors; then write a command or two to show that the factor in <code>cats</code> is actually a character vector when loaded in this way.</p>
 </div>
 </section>
 <p>In modeling functions, it’s important to know what the baseline levels are. This is assumed to be the first factor, but by default factors are labeled in alphabetical order. You can change this by specifying the levels:</p>
-<pre class="sourceCode r"><code class="sourceCode r">mydata &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;case&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;case&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mydata &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;case&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;case&quot;</span>)
 factor_ordering_example &lt;-<span class="st"> </span><span class="kw">factor</span>(mydata, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;control&quot;</span>, <span class="st">&quot;case&quot;</span>))
-<span class="kw">str</span>(factor_ordering_example)</code></pre>
+<span class="kw">str</span>(factor_ordering_example)</code></pre></div>
 <pre class="output"><code> Factor w/ 2 levels &quot;control&quot;,&quot;case&quot;: 2 1 1 2
 </code></pre>
 <p>In this case, we’ve explicitly told R that “control” should represented by 1, and “case” by 2. This designation can be very important for interpreting the results of statistical models!</p>
 <h2 id="lists">Lists</h2>
 <p>Another data structure you’ll want in your bag of tricks is the <code>list</code>. A list is simpler in some ways than the other types, because you can put anything you want in it:</p>
-<pre class="sourceCode r"><code class="sourceCode r">list_example &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span>, <span class="st">&quot;a&quot;</span>, <span class="ot">TRUE</span>, <span class="dv">1</span>+4i)
-list_example</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">list_example &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span>, <span class="st">&quot;a&quot;</span>, <span class="ot">TRUE</span>, <span class="dv">1</span>+4i)
+list_example</code></pre></div>
 <pre class="output"><code>[[1]]
 [1] 1
 
@@ -283,12 +334,8 @@ list_example</code></pre>
 [[4]]
 [1] 1+4i
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">list_example[<span class="dv">2</span>]</code></pre>
-<pre class="output"><code>[[1]]
-[1] &quot;a&quot;
-</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">another_list &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">title =</span> <span class="st">&quot;Research Bazaar&quot;</span>, <span class="dt">numbers =</span> <span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">data =</span> <span class="ot">TRUE</span> )
-another_list</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">another_list &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">title =</span> <span class="st">&quot;Research Bazaar&quot;</span>, <span class="dt">numbers =</span> <span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">data =</span> <span class="ot">TRUE</span> )
+another_list</code></pre></div>
 <pre class="output"><code>$title
 [1] &quot;Research Bazaar&quot;
 
@@ -299,43 +346,103 @@ $data
 [1] TRUE
 </code></pre>
 <p>We can now understand something a bit surprising in our data.frame; what happens if we run:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(cats)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(cats)</code></pre></div>
 <pre class="output"><code>[1] &quot;list&quot;
 </code></pre>
-<p>We see that data.frames look like lists ‘under the hood’ - this is because a data.frame is really a list of vectors and factors, as they have to be - in order to hold those columns that are a mix of vectors and factors, the data.frame needs something a bit more flexible than a vector to put all the columns together into a familiar table.</p>
+<p>We see that data.frames look like lists ‘under the hood’ - this is because a data.frame is really a list of vectors and factors, as they have to be - in order to hold those columns that are a mix of vectors and factors, the data.frame needs something a bit more flexible than a vector to put all the columns together into a familiar table. In other words, a <code>data.frame</code> is a special list in which all the vectors must have the same length.</p>
+<p>In our <code>cats</code> example, we have an integer, a double and a logical variable. As we have seen already, each column of data.frame is a vector.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$coat</code></pre></div>
+<pre class="output"><code>[1] calico black  tabby 
+Levels: black calico tabby
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats[,<span class="dv">1</span>]</code></pre></div>
+<pre class="output"><code>[1] calico black  tabby 
+Levels: black calico tabby
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(cats[,<span class="dv">1</span>])</code></pre></div>
+<pre class="output"><code>[1] &quot;integer&quot;
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cats[,<span class="dv">1</span>])</code></pre></div>
+<pre class="output"><code> Factor w/ 3 levels &quot;black&quot;,&quot;calico&quot;,..: 2 1 3
+</code></pre>
+<p>Each row is an <em>observation</em> of different variables, itself a data.frame, and thus can be composed of element of different types.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats[<span class="dv">1</span>,]</code></pre></div>
+<pre class="output"><code>    coat weight likes_string
+1 calico    2.1         TRUE
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(cats[<span class="dv">1</span>,])</code></pre></div>
+<pre class="output"><code>[1] &quot;list&quot;
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(cats[<span class="dv">1</span>,])</code></pre></div>
+<pre class="output"><code>&#39;data.frame&#39;:   1 obs. of  3 variables:
+ $ coat        : Factor w/ 3 levels &quot;black&quot;,&quot;calico&quot;,..: 2
+ $ weight      : num 2.1
+ $ likes_string: logi TRUE
+</code></pre>
+<p>Notice the subtle differences between different ways of calling variables, observations and elements from data.frames:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats[<span class="dv">1</span>]</code></pre></div>
+<pre class="output"><code>    coat
+1 calico
+2  black
+3  tabby
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats[[<span class="dv">1</span>]]</code></pre></div>
+<pre class="output"><code>[1] calico black  tabby 
+Levels: black calico tabby
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats$coat</code></pre></div>
+<pre class="output"><code>[1] calico black  tabby 
+Levels: black calico tabby
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats[<span class="st">&quot;coat&quot;</span>]</code></pre></div>
+<pre class="output"><code>    coat
+1 calico
+2  black
+3  tabby
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats[,<span class="dv">1</span>]</code></pre></div>
+<pre class="output"><code>[1] calico black  tabby 
+Levels: black calico tabby
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats[<span class="dv">1</span>,]</code></pre></div>
+<pre class="output"><code>    coat weight likes_string
+1 calico    2.1         TRUE
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats[<span class="dv">1</span>,<span class="dv">1</span>]</code></pre></div>
+<pre class="output"><code>[1] calico
+Levels: black calico tabby
+</code></pre>
 <h2 id="matrices">Matrices</h2>
 <p>Last but not least is the matrix. We can declare a matrix full of zeros:</p>
-<pre class="sourceCode r"><code class="sourceCode r">matrix_example &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">ncol=</span><span class="dv">6</span>, <span class="dt">nrow=</span><span class="dv">3</span>)
-matrix_example</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">matrix_example &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">ncol=</span><span class="dv">6</span>, <span class="dt">nrow=</span><span class="dv">3</span>)
+matrix_example</code></pre></div>
 <pre class="output"><code>     [,1] [,2] [,3] [,4] [,5] [,6]
 [1,]    0    0    0    0    0    0
 [2,]    0    0    0    0    0    0
 [3,]    0    0    0    0    0    0
 </code></pre>
-<p>and we can ask for and put values in the elements of our matrix with a couple of different notations:</p>
-<pre class="sourceCode r"><code class="sourceCode r">matrix_example[<span class="dv">1</span>,<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
-matrix_example</code></pre>
-<pre class="output"><code>     [,1] [,2] [,3] [,4] [,5] [,6]
-[1,]    1    0    0    0    0    0
-[2,]    0    0    0    0    0    0
-[3,]    0    0    0    0    0    0
+<p>And similar to other data structures, we can ask things about our matrix:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(matrix_example)</code></pre></div>
+<pre class="output"><code>[1] &quot;matrix&quot;
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">matrix_example[<span class="dv">1</span>][<span class="dv">1</span>]</code></pre>
-<pre class="output"><code>[1] 1
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(matrix_example)</code></pre></div>
+<pre class="output"><code>[1] &quot;double&quot;
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">matrix_example[<span class="dv">1</span>][<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">2</span>
-matrix_example[<span class="dv">1</span>,<span class="dv">1</span>]</code></pre>
-<pre class="output"><code>[1] 2
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(matrix_example)</code></pre></div>
+<pre class="output"><code> num [1:3, 1:6] 0 0 0 0 0 0 0 0 0 0 ...
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">matrix_example</code></pre>
-<pre class="output"><code>     [,1] [,2] [,3] [,4] [,5] [,6]
-[1,]    2    0    0    0    0    0
-[2,]    0    0    0    0    0    0
-[3,]    0    0    0    0    0    0
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(matrix_example)</code></pre></div>
+<pre class="output"><code>[1] 3 6
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(matrix_example)</code></pre></div>
+<pre class="output"><code>[1] 3
+</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ncol</span>(matrix_example)</code></pre></div>
+<pre class="output"><code>[1] 6
 </code></pre>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h2>
+<h2 id="challenge-3"><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h2>
 </div>
 <div class="panel-body">
 <p>What do you think will be the result of <code>length(matrix_example)</code>? Try it. Were you right? Why / why not?</p>
@@ -343,7 +450,7 @@ matrix_example[<span class="dv">1</span>,<span class="dv">1</span>]</code></pre>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Challenge 4</h2>
+<h2 id="challenge-4"><span class="glyphicon glyphicon-pencil"></span>Challenge 4</h2>
 </div>
 <div class="panel-body">
 <p>Make another matrix, this time containing the numbers 1:50, with 5 columns and 10 rows. Did the <code>matrix</code> function fill your matrix by column, or by row, as its default behaviour? See if you can figure out how to change this. (hint: read the documentation for <code>matrix</code>!)</p>
@@ -351,7 +458,7 @@ matrix_example[<span class="dv">1</span>,<span class="dv">1</span>]</code></pre>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Challenge 5</h2>
+<h2 id="challenge-5"><span class="glyphicon glyphicon-pencil"></span>Challenge 5</h2>
 </div>
 <div class="panel-body">
 <p>Create a list of length two containing a character vector for each of the sections in this part of the workshop:</p>
@@ -364,7 +471,7 @@ matrix_example[<span class="dv">1</span>,<span class="dv">1</span>]</code></pre>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Challenge 6</h2>
+<h2 id="challenge-6"><span class="glyphicon glyphicon-pencil"></span>Challenge 6</h2>
 </div>
 <div class="panel-body">
 <p>Consider the R output of the matrix below:</p>
@@ -385,7 +492,7 @@ matrix_example[<span class="dv">1</span>,<span class="dv">1</span>]</code></pre>
 <h2 id="challenge-solutions">Challenge solutions</h2>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Discussion 1</h2>
+<h2 id="discussion-1-1"><span class="glyphicon glyphicon-pencil"></span>Discussion 1</h2>
 </div>
 <div class="panel-body">
 <p>By keeping everything in a column the same, we allow ourselves to make simple assumptions about our data; if you can interpret one entry in the column as a number, then you can interpret <em>all</em> of them as numbers, so we don’t have to check every time. This consistency, like consistently using the same separator in our data files, is what people mean when they talk about <em>clean data</em>; in the long run, strict consistency goes a long way to making our lives easier in R.</p>
@@ -393,62 +500,61 @@ matrix_example[<span class="dv">1</span>,<span class="dv">1</span>]</code></pre>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 1</h2>
+<h2 id="solution-to-challenge-1"><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 1</h2>
 </div>
 <div class="panel-body">
-<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">11</span>:<span class="dv">20</span>)
-subset &lt;-<span class="st"> </span>x[<span class="dv">3</span>:<span class="dv">5</span>]
-<span class="kw">names</span>(subset) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;S&#39;</span>, <span class="st">&#39;W&#39;</span>, <span class="st">&#39;C&#39;</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">26</span>
+x &lt;-<span class="st"> </span>x *<span class="st"> </span><span class="dv">2</span>
+<span class="kw">names</span>(x) &lt;-<span class="st"> </span>LETTERS</code></pre></div>
 </div>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 2</h2>
+<h2 id="solution-to-challenge-2"><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 2</h2>
 </div>
 <div class="panel-body">
-<pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/feline-data.csv&quot;</span>, <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)
-<span class="kw">str</span>(cats$coat)</code></pre>
-<pre class="output"><code> chr [1:3] &quot;calico&quot; &quot;black&quot; &quot;tabby&quot;
-</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/feline-data.csv&quot;</span>, <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)
+<span class="kw">str</span>(cats$coat)</code></pre></div>
 <p>Note: new students find the help files difficult to understand; make sure to let them know that this is typical, and encourage them to take their best guess based on semantic meaning, even if they aren’t sure.</p>
 </div>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 3</h2>
+<h2 id="solution-to-challenge-3"><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 3</h2>
 </div>
 <div class="panel-body">
-<p>What do you think will be the result of <code>length(x)</code>?</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(matrix_example)</code></pre>
+<p>What do you think will be the result of <code>length(matrtix_example)</code>?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">matrix_example &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">ncol=</span><span class="dv">6</span>, <span class="dt">nrow=</span><span class="dv">3</span>)
+<span class="kw">length</span>(matrix_example)</code></pre></div>
 <pre class="output"><code>[1] 18
 </code></pre>
-<p>Because a matrix is really just a vector with added dimension attributes, <code>length</code> gives you the total number of elements in the matrix.</p>
+<p>Because a matrix is a vector with added dimension attributes, <code>length</code> gives you the total number of elements in the matrix.</p>
 </div>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 4</h2>
+<h2 id="solution-to-challenge-4"><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 4</h2>
 </div>
 <div class="panel-body">
 <p>Make another matrix, this time containing the numbers 1:50, with 5 columns and 10 rows. Did the <code>matrix</code> function fill your matrix by column, or by row, as its default behaviour? See if you can figure out how to change this. (hint: read the documentation for <code>matrix</code>!)</p>
-<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">50</span>, <span class="dt">ncol=</span><span class="dv">5</span>, <span class="dt">nrow=</span><span class="dv">10</span>)
-x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">50</span>, <span class="dt">ncol=</span><span class="dv">5</span>, <span class="dt">nrow=</span><span class="dv">10</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>) <span class="co"># to fill by row</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">50</span>, <span class="dt">ncol=</span><span class="dv">5</span>, <span class="dt">nrow=</span><span class="dv">10</span>)
+x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">50</span>, <span class="dt">ncol=</span><span class="dv">5</span>, <span class="dt">nrow=</span><span class="dv">10</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>) <span class="co"># to fill by row</span></code></pre></div>
 </div>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 5</h2>
+<h2 id="solution-to-challenge-5"><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 5</h2>
 </div>
 <div class="panel-body">
-<pre class="sourceCode r"><code class="sourceCode r">dataTypes &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;double&#39;</span>, <span class="st">&#39;complex&#39;</span>, <span class="st">&#39;integer&#39;</span>, <span class="st">&#39;character&#39;</span>, <span class="st">&#39;logical&#39;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataTypes &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;double&#39;</span>, <span class="st">&#39;complex&#39;</span>, <span class="st">&#39;integer&#39;</span>, <span class="st">&#39;character&#39;</span>, <span class="st">&#39;logical&#39;</span>)
 dataStructures &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;data.frame&#39;</span>, <span class="st">&#39;vector&#39;</span>, <span class="st">&#39;factor&#39;</span>, <span class="st">&#39;list&#39;</span>, <span class="st">&#39;matrix&#39;</span>)
-answer &lt;-<span class="st"> </span><span class="kw">list</span>(dataTypes, dataStructures)</code></pre>
+answer &lt;-<span class="st"> </span><span class="kw">list</span>(dataTypes, dataStructures)</code></pre></div>
 <p>Note: it’s nice to make a list in big writing on the board or taped to the wall listing all of these types and structures - leave it up for the rest of the workshop to remind people of the importance of these basics.</p>
 </div>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 6</h2>
+<h2 id="solution-to-challenge-6"><span class="glyphicon glyphicon-pencil"></span>Solution to challenge 6</h2>
 </div>
 <div class="panel-body">
 <p>Consider the R output of the matrix below:</p>
@@ -458,7 +564,7 @@ answer &lt;-<span class="st"> </span><span class="kw">list</span>(dataTypes, dat
 [3,]   10    7
 </code></pre>
 <p>What was the correct command used to write this matrix? Examine each command and try to figure out the correct one before typing them. Think about what matrices the other commands will produce.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">7</span>), <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">7</span>), <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</code></pre></div>
 </div>
 </section>
         </div>

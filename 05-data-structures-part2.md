@@ -21,7 +21,7 @@ We learned last time that the columns in a data.frame were vectors, so that our 
 
 
 ~~~{.r}
-newCol <- c(2,3,5,12)
+age <- c(2,3,5,12)
 cats
 ~~~
 
@@ -39,7 +39,7 @@ We can then add this as a column via:
 
 
 ~~~{.r}
-cats <- cbind(cats,  newCol)
+cats <- cbind(cats, age)
 ~~~
 
 
@@ -69,26 +69,19 @@ cats
 
 
 ~~~{.r}
-newCol <- c(4,5,8)
-cats <- cbind(cats, newCol)
+age <- c(4,5,8)
+cats <- cbind(cats, age)
 cats
 ~~~
 
 
 
 ~~~{.output}
-    coat weight likes_string newCol
-1 calico    2.1         TRUE      4
-2  black    5.0        FALSE      5
-3  tabby    3.2         TRUE      8
+    coat weight likes_string age
+1 calico    2.1         TRUE   4
+2  black    5.0        FALSE   5
+3  tabby    3.2         TRUE   8
 
-~~~
-
-Our new column has appeared, but it's got that ugly name at the top; let's give it something a little easier to understand:
-
-
-~~~{.r}
-names(cats)[4] <- 'age'
 ~~~
 
 Now how about adding rows - in this case, we saw last time that the rows of a data.frame are made of lists:
@@ -164,7 +157,26 @@ str(cats)
 
 ~~~
 
-We now know how to add rows and columns to our data.frame in R - but in our work we've accidentally added a garbage row. We can ask for a data.frame minus this offender:
+We now know how to add rows and columns to our data.frame in R - but in our work we've accidentally added a garbage row:
+
+
+~~~{.r}
+cats
+~~~
+
+
+
+~~~{.output}
+           coat weight likes_string age
+1        calico    2.1         TRUE   4
+2         black    5.0        FALSE   5
+3         tabby    3.2         TRUE   8
+4          <NA>    3.3         TRUE   9
+5 tortoiseshell    3.3         TRUE   9
+
+~~~
+
+We can ask for a data.frame minus this offending row:
 
 
 ~~~{.r}
@@ -183,6 +195,9 @@ cats[-4,]
 ~~~
 
 Notice the comma with nothing after it to indicate we want to drop the entire fourth row. 
+
+Note: We could also remove both new rows at once by putting the row numbers inside of a vector: `cats[c(4,5),]`
+
 Alternatively, we can drop all rows with `NA` values:
 
 
@@ -201,20 +216,12 @@ na.omit(cats)
 
 ~~~
 
-In either case, we need to reassign our variable to persist the changes:
+Let's reassign the output to `cats`, so that our changes will be permanent:
 
 
 ~~~{.r}
 cats <- na.omit(cats)
 ~~~
-
-> ## Discussion 1 {.challenge} 
-> What do you think
-> ```
-> cats$weight[4]
-> ```
-> will print at this point?
->
 
 The key to remember when adding data to a data.frame is that *columns are vectors or factors, and rows are lists.*
 We can also glue two dataframes together with `rbind`:
@@ -239,7 +246,7 @@ cats
 51 tortoiseshell    3.3         TRUE   9
 
 ~~~
-But now the row names are unnecessarily complicated. We can ask R to re-name everything sequentially:
+But now the row names are unnecessarily complicated. We can remove the rownames, and R will automatically re-name them sequentially:
 
 
 ~~~{.r}
@@ -288,14 +295,18 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv")
 
 > ## Miscellaneous Tips {.callout}
 >
-> 1. Another type of file you might encounter are tab-separated
-> format. To specify a tab as a separator, use `"\t"`.
+> 1. Another type of file you might encounter are tab-separated value files (.tsv). To specify a tab as a separator, use `"\\t"` or `read.delim()`.
 >
 > 2. You can also read in files from the Internet by replacing
-> the file paths with a web address.
+> the file paths with a web address. For example,
+> 
+> 
+> ~~~{.r}
+> gapminder <- read.csv("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/data/gapminder-FiveYearData.csv")
+> ~~~
 >
 > 3. You can read directly from excel spreadsheets without
-> converting them to plain text first by using the `xlsx` package.
+> converting them to plain text first by using the [readxl](https://cran.r-project.org/web/packages/readxl/index.html) package.
 >
 
 Let's investigate gapminder a bit; the first thing we should always do is check out what the data looks like with `str`:
@@ -499,19 +510,12 @@ into a script file so we can come back to it later.
 
 ## Challenge solutions
 
-> ## Discussion 1 {.challenge}
-> Note the difference between row indices, and default row names;
-> even though there's no more row named '4',
-> cats[4,] is still well-defined (and pointing at the row named '5').
->
-
 > ## Solution to Challenge 1 {.challenge}
 > 
 > ~~~{.r}
 > df <- data.frame(first = c('Grace'), last = c('Hopper'), lucky_number = c(0), stringsAsFactors = FALSE)
 > df <- rbind(df, list('Marie', 'Curie', 238) )
-> df <- cbind(df, c(TRUE,TRUE))
-> names(df)[4] <- 'coffeetime'
+> df <- cbind(df, coffeetime = c(TRUE,TRUE))
 > ~~~
 >
 
@@ -527,3 +531,12 @@ into a script file so we can come back to it later.
 > source(file = "scripts/load-gapminder.R")
 > ~~~
 >
+
+> ## Solution to Challenge 3 {.challenge}
+> 
+> The object `gapminder` is a data frame with columns
+> - `country` and `continent` are factors.
+> - `year` is an integer vector.
+> - `pop`, `lifeExp`, and `gdpPercap` are numeric vectors.
+> 
+

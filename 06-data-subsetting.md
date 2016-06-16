@@ -74,7 +74,7 @@ x[4]
 
 ~~~
 
-The square brackets operator is just like any other function. For atomic vectors
+It may look different, but the square brackets operator is a function. For atomic vectors
 (and matrices), it means "get me the nth element".
 
 We can ask for multiple elements at once:
@@ -107,8 +107,32 @@ x[1:4]
 
 ~~~
 
-the `:` operator just creates a sequence of numbers from the left element to the right.
-I.e. `x[1:4]` is equivalent to `x[c(1,2,3,4)]`.
+the `:` operator reates a sequence of numbers from the left element to the right.
+
+~~~{.r}
+1:4
+~~~
+
+
+
+~~~{.output}
+[1] 1 2 3 4
+
+~~~
+
+
+
+~~~{.r}
+c(1, 2, 3, 4)
+~~~
+
+
+
+~~~{.output}
+[1] 1 2 3 4
+
+~~~
+
 
 We can ask for the same element multiple times:
 
@@ -205,15 +229,14 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 > ~~~{.r}
 > x[-1:3]
 > ~~~
-> 
-> 
+>
+> This gives a somewhat cryptic error:
+>
 > 
 > ~~~{.error}
 > Error in x[-1:3]: only 0's may be mixed with negative subscripts
 > 
 > ~~~
->
-> This gives a somewhat cryptic error:
 >
 > But remember the order of operations. `:` is really a function, so
 > what happens is it takes its first argument as -1, and second as 3,
@@ -407,7 +430,7 @@ names of `x`, and asks, "Does this element occur in the second argument?".
 >~~~
 >
 > Try out this command and see what you get. Did this match your expectation?
-> Why did we get this result? (Tip: test out each part of the command on it's own like we just did above - this is a useful debugging strategy)
+> Why did we get this result? (Tip: test out each part of the command on it's own - this is a useful debugging strategy)
 >
 > Which of the following are true:
 >
@@ -491,7 +514,7 @@ names of `x`, and asks, "Does this element occur in the second argument?".
 
 So why can't we use `==` like before? That's an excellent question.
 
-Let's take a look at just the comparison component:
+Let's take a look at the comparison component of this code:
 
 
 ~~~{.r}
@@ -831,7 +854,7 @@ Error in m[, c(3, 6)]: subscript out of bounds
 > arguments correspond to the rows, columns, and depth dimension.
 >
 
-Because matrices are really just vectors underneath the hood, we can
+Because matrices are vectors, we can
 also subset using only one argument:
 
 
@@ -847,7 +870,7 @@ m[5]
 ~~~
 
 
-This usually isn't useful. However it is useful to note that matrices
+This usually isn't useful, and often confusing to read. However it is useful to note that matrices
 are laid out in *column-major format* by default. That is the elements of the
 vector are arranged column-wise:
 
@@ -1004,7 +1027,7 @@ xlist[[-1]]
 
 
 ~~~{.error}
-Error in xlist[[-1]]: attempt to select more than one element
+Error in xlist[[-1]]: attempt to select more than one element in get1index <real>
 
 ~~~
 
@@ -1273,7 +1296,7 @@ be changed with the third argument, `drop = FALSE`).
 >
 > Try out this command and see what you get. Did this match your expectation?
 >
-> Why did we get this result? (Tip: test out each part of the command on it's own like we just did above - this is a useful debugging strategy)
+> Why did we get this result? (Tip: test out each part of the command on it's own - this is a useful debugging strategy)
 >
 > Which of the following are true:
 >
@@ -1287,6 +1310,76 @@ be changed with the third argument, `drop = FALSE`).
 >
 > The `which` command returns the index of every `TRUE` value in its input. The `names(x) == "g"` command didn't return any `TRUE` values. Because there were no `TRUE` values passed to the `which` command, it returned an empty vector. Negating this vector with the minus sign didn't change its meaning. Because we used this empty vector to retrieve values from `x`, it produced an empty numeric vector. It was a `named numeric` empty vector because the vector type of x is "named numeric" since we assigned names to the values (try `str(x)` ).
 
+
+> ## Solution to challenge 3 {.challenge}
+> Given the following code:
+>
+> 
+> ~~~{.r}
+> x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
+> names(x) <- c('a', 'b', 'c', 'd', 'e')
+> print(x)
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+>   a   b   c   d   e 
+> 5.4 6.2 7.1 4.8 7.5 
+> 
+> ~~~
+>
+> 1. Write a subsetting command to return the values in x that are greater than 4 and less than 7.
+>
+> 
+> ~~~{.r}
+> x_subset <- x[x<7 & x>4]
+> print(x_subset)
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+>   a   b   d 
+> 5.4 6.2 4.8 
+> 
+> ~~~
+
+
+
+> ## Solution to challenge 3 {.challenge}
+> Given the following code:
+>
+> 
+> ~~~{.r}
+> x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
+> names(x) <- c('a', 'b', 'c', 'd', 'e')
+> print(x)
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+>   a   b   c   d   e 
+> 5.4 6.2 7.1 4.8 7.5 
+> 
+> ~~~
+>
+> 1. Write a subsetting command to return the values in x that are greater than 4 and less than 7.
+>
+> 
+> ~~~{.r}
+> x_subset <- x[x<7 & x>4]
+> print(x_subset)
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+>   a   b   d 
+> 5.4 6.2 4.8 
+> 
+> ~~~
 
 
 > ## Solution to challenge 4 {.challenge}

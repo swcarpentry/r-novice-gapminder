@@ -30,7 +30,7 @@
           <h2 class="subtitle">Dataframe manipulation with tidyr</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -47,17 +47,18 @@
 <p>For the ‘wide’ format each row is often a site/subject/patient and you have multiple observation variables containing the same type of data. These can be either repeated observations over time, or observation of multiple variables (or a mix of both). You may find data input may be simpler or some other applications may prefer the ‘wide’ format. However, many of <code>R</code>‘s functions have been designed assuming you have ’long’ format data. This tutorial will help you efficiently transform your data regardless of original format.</p>
 <div class="figure">
 <img src="fig/14-tidyr-fig1.png" />
+
 </div>
 <p>These data formats mainly affect readability. For humans, the wide format is often more intuitive since we can often see more of the data on the screen due to it’s shape. However, the long format is more machine readable and is closer to the formating of databases. The ID variables in our dataframes are similar to the fields in a database and observed variables are like the database values.</p>
 <h2 id="getting-started">Getting started</h2>
 <p>First install the packages if you haven’t already done so (you probably installed dplyr in the previous lesson):</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#install.packages(&quot;tidyr&quot;)</span>
-<span class="co">#install.packages(&quot;dplyr&quot;)</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#install.packages(&quot;tidyr&quot;)</span>
+<span class="co">#install.packages(&quot;dplyr&quot;)</span></code></pre></div>
 <p>Load the packages</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;tidyr&quot;</span>)
-<span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;tidyr&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)</code></pre></div>
 <p>First, lets look at the structure of our original gapminder dataframe:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gapminder)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gapminder)</code></pre></div>
 <pre class="output"><code>&#39;data.frame&#39;:   1704 obs. of  6 variables:
  $ country  : chr  &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; ...
  $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
@@ -68,7 +69,7 @@
 </code></pre>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h2>
+<h2 id="challenge-1"><span class="glyphicon glyphicon-pencil"></span>Challenge 1</h2>
 </div>
 <div class="panel-body">
 <p>Is gapminder a purely long, purely wide, or some intermediate format?</p>
@@ -78,7 +79,9 @@
 <p>While using many of the functions in R, which are often vector based, you usually do not want to do mathematical operations on values with different units. For example, using the purely long format, a single mean for all of the values of population, life expectancy, and GDP would not be meaningful since it would return the mean of values with 3 incompatible units. The solution is that we first manipulate the data either by grouping (see the lesson on <code>dplyr</code>), or we change the structure of the dataframe. <strong>Note:</strong> Some plotting functions in R actually work better in the wide format data.</p>
 <h2 id="from-wide-to-long-format-with-gather">From wide to long format with gather()</h2>
 <p>Until now, we’ve been using the nicely formatted original gapminder dataset, but ‘real’ data (i.e. our own research data) will never be so well organized. Here let’s start with the wide format version of the gapminder dataset.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(gap_wide)</code></pre>
+<p>We’ll load the data file and look at it. Note: we don’t want our continent and country columns to be factors, so we use the stringsAsFactors argument for <code>read.csv()</code> to disable that.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_wide &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/gapminder_wide.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)
+<span class="kw">str</span>(gap_wide)</code></pre></div>
 <pre class="output"><code>&#39;data.frame&#39;:   142 obs. of  38 variables:
  $ continent     : chr  &quot;Africa&quot; &quot;Africa&quot; &quot;Africa&quot; &quot;Africa&quot; ...
  $ country       : chr  &quot;Algeria&quot; &quot;Angola&quot; &quot;Benin&quot; &quot;Botswana&quot; ...
@@ -121,10 +124,11 @@
 </code></pre>
 <div class="figure">
 <img src="fig/14-tidyr-fig2.png" />
+
 </div>
 <p>The first step towards getting our nice intermediate data format is to first convert from the wide to the long format. The <code>tidyr</code> function <code>gather()</code> will ‘gather’ your observation variables into a single variable.</p>
-<pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide %&gt;%<span class="st"> </span><span class="kw">gather</span>(obstype_year,obs_values,<span class="kw">starts_with</span>(<span class="st">&#39;pop&#39;</span>),<span class="kw">starts_with</span>(<span class="st">&#39;lifeExp&#39;</span>),<span class="kw">starts_with</span>(<span class="st">&#39;gdpPercap&#39;</span>))
-<span class="kw">str</span>(gap_long)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide %&gt;%<span class="st"> </span><span class="kw">gather</span>(obstype_year,obs_values,<span class="kw">starts_with</span>(<span class="st">&#39;pop&#39;</span>),<span class="kw">starts_with</span>(<span class="st">&#39;lifeExp&#39;</span>),<span class="kw">starts_with</span>(<span class="st">&#39;gdpPercap&#39;</span>))
+<span class="kw">str</span>(gap_long)</code></pre></div>
 <pre class="output"><code>&#39;data.frame&#39;:   5112 obs. of  4 variables:
  $ continent   : chr  &quot;Africa&quot; &quot;Africa&quot; &quot;Africa&quot; &quot;Africa&quot; ...
  $ country     : chr  &quot;Algeria&quot; &quot;Angola&quot; &quot;Benin&quot; &quot;Botswana&quot; ...
@@ -135,9 +139,10 @@
 <p>Inside <code>gather()</code> we first name the new column for the new ID variable (<code>obstype_year</code>), the name for the new amalgamated observation variable (<code>obs_value</code>), then the names of the old observation variable. We could have typed out all the observation variables, but as in the <code>select()</code> function (see <code>dplyr</code> lesson), we can use the <code>starts_with()</code> argument to select all variables that starts with the desired character sring. Gather also allows the alternative syntax of using the <code>-</code> symbol to identify which variables are not to be gathered (i.e. ID variables)</p>
 <div class="figure">
 <img src="fig/14-tidyr-fig3.png" />
+
 </div>
-<pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide %&gt;%<span class="st"> </span><span class="kw">gather</span>(obstype_year,obs_values,-continent,-country)
-<span class="kw">str</span>(gap_long)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_wide %&gt;%<span class="st"> </span><span class="kw">gather</span>(obstype_year,obs_values,-continent,-country)
+<span class="kw">str</span>(gap_long)</code></pre></div>
 <pre class="output"><code>&#39;data.frame&#39;:   5112 obs. of  4 variables:
  $ continent   : chr  &quot;Africa&quot; &quot;Africa&quot; &quot;Africa&quot; &quot;Africa&quot; ...
  $ country     : chr  &quot;Algeria&quot; &quot;Angola&quot; &quot;Benin&quot; &quot;Botswana&quot; ...
@@ -146,41 +151,41 @@
 </code></pre>
 <p>That may seem trivial with this particular dataframe, but sometimes you have 1 ID variable and 40 Observation variables with irregular variables names. The flexibility is a huge time saver!</p>
 <p>Now <code>obstype_year</code> actually contains 2 pieces of information, the observation type (<code>pop</code>,<code>lifeExp</code>, or <code>gdpPercap</code>) and the <code>year</code>. We can use the <code>separate()</code> function to split the character strings into multiple variables</p>
-<pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st"> </span><span class="kw">separate</span>(obstype_year,<span class="dt">into=</span><span class="kw">c</span>(<span class="st">&#39;obs_type&#39;</span>,<span class="st">&#39;year&#39;</span>),<span class="dt">sep=</span><span class="st">&quot;_&quot;</span>)
-gap_long$year &lt;-<span class="st"> </span><span class="kw">as.integer</span>(gap_long$year)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_long &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st"> </span><span class="kw">separate</span>(obstype_year,<span class="dt">into=</span><span class="kw">c</span>(<span class="st">&#39;obs_type&#39;</span>,<span class="st">&#39;year&#39;</span>),<span class="dt">sep=</span><span class="st">&quot;_&quot;</span>)
+gap_long$year &lt;-<span class="st"> </span><span class="kw">as.integer</span>(gap_long$year)</code></pre></div>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h2>
+<h2 id="challenge-2"><span class="glyphicon glyphicon-pencil"></span>Challenge 2</h2>
 </div>
 <div class="panel-body">
 <p>Using <code>gap_long</code>, calculate the mean life expectancy, population, and gdpPercap for each continent. <strong>Hint:</strong> use the <code>group_by()</code> and <code>summarize()</code> functions we learned in the <code>dplyr</code> lesson</p>
 </div>
 </section>
 <h2 id="from-long-to-intermediate-format-with-spread">From long to intermediate format with spread()</h2>
-<p>Now just to double-check our work, let’s use the opposite of <code>gather()</code> to spread our observation variables back out with the aptly named <code>spread()</code>. We can then spread our <code>gap_long()</code> to the original intermediate format or the widest format. Let’s start with the intermediate format.</p>
-<pre class="sourceCode r"><code class="sourceCode r">gap_normal &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st"> </span><span class="kw">spread</span>(obs_type,obs_values)
-<span class="kw">dim</span>(gap_normal)</code></pre>
+<p>It is always good to check work. So, let’s use the opposite of <code>gather()</code> to spread our observation variables back out with the aptly named <code>spread()</code>. We can then spread our <code>gap_long()</code> to the original intermediate format or the widest format. Let’s start with the intermediate format.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_normal &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st"> </span><span class="kw">spread</span>(obs_type,obs_values)
+<span class="kw">dim</span>(gap_normal)</code></pre></div>
 <pre class="output"><code>[1] 1704    6
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(gapminder)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(gapminder)</code></pre></div>
 <pre class="output"><code>[1] 1704    6
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(gap_normal)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(gap_normal)</code></pre></div>
 <pre class="output"><code>[1] &quot;continent&quot; &quot;country&quot;   &quot;year&quot;      &quot;gdpPercap&quot; &quot;lifeExp&quot;   &quot;pop&quot;      
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(gapminder)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(gapminder)</code></pre></div>
 <pre class="output"><code>[1] &quot;country&quot;   &quot;year&quot;      &quot;pop&quot;       &quot;continent&quot; &quot;lifeExp&quot;   &quot;gdpPercap&quot;
 </code></pre>
 <p>Now we’ve got an intermediate dataframe <code>gap_normal</code> with the same dimensions as the original <code>gapminder</code>, but the order of the variables is different. Let’s fix that before checking if they are <code>all.equal()</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">gap_normal &lt;-<span class="st"> </span>gap_normal[,<span class="kw">names</span>(gapminder)]
-<span class="kw">all.equal</span>(gap_normal,gapminder)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_normal &lt;-<span class="st"> </span>gap_normal[,<span class="kw">names</span>(gapminder)]
+<span class="kw">all.equal</span>(gap_normal,gapminder)</code></pre></div>
 <pre class="output"><code>[1] &quot;Component \&quot;country\&quot;: 1704 string mismatches&quot;              
 [2] &quot;Component \&quot;pop\&quot;: Mean relative difference: 1.634504&quot;      
 [3] &quot;Component \&quot;continent\&quot;: 1212 string mismatches&quot;            
 [4] &quot;Component \&quot;lifeExp\&quot;: Mean relative difference: 0.203822&quot;  
 [5] &quot;Component \&quot;gdpPercap\&quot;: Mean relative difference: 1.162302&quot;
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gap_normal)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gap_normal)</code></pre></div>
 <pre class="output"><code>  country year      pop continent lifeExp gdpPercap
 1 Algeria 1952  9279525    Africa  43.077  2449.008
 2 Algeria 1957 10270856    Africa  45.685  3013.976
@@ -189,7 +194,7 @@ gap_long$year &lt;-<span class="st"> </span><span class="kw">as.integer</span>(g
 5 Algeria 1972 14760787    Africa  54.518  4182.664
 6 Algeria 1977 17152804    Africa  58.014  4910.417
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gapminder)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(gapminder)</code></pre></div>
 <pre class="output"><code>      country year      pop continent lifeExp gdpPercap
 1 Afghanistan 1952  8425333      Asia  28.801  779.4453
 2 Afghanistan 1957  9240934      Asia  30.332  820.8530
@@ -199,35 +204,35 @@ gap_long$year &lt;-<span class="st"> </span><span class="kw">as.integer</span>(g
 6 Afghanistan 1977 14880372      Asia  38.438  786.1134
 </code></pre>
 <p>We’re almost there, the original was sorted by <code>country</code>, <code>continent</code>, then <code>year</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">gap_normal &lt;-<span class="st"> </span>gap_normal %&gt;%<span class="st"> </span><span class="kw">arrange</span>(country,continent,year)
-<span class="kw">all.equal</span>(gap_normal,gapminder)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_normal &lt;-<span class="st"> </span>gap_normal %&gt;%<span class="st"> </span><span class="kw">arrange</span>(country,continent,year)
+<span class="kw">all.equal</span>(gap_normal,gapminder)</code></pre></div>
 <pre class="output"><code>[1] TRUE
 </code></pre>
 <p>That’s great! We’ve gone from the longest format back to the intermediate and we didn’t introduce any errors in our code.</p>
 <p>Now lets convert the long all the way back to the wide. In the wide format, we will keep country and continent as ID variables and spread the observations across the 3 metrics (<code>pop</code>,<code>lifeExp</code>,<code>gdpPercap</code>) and time (<code>year</code>). First we need to create appropriate labels for all our new variables (time*metric combinations) and we also need to unify our ID variables to simplify the process of defining <code>gap_wide</code></p>
-<pre class="sourceCode r"><code class="sourceCode r">gap_temp &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st"> </span><span class="kw">unite</span>(var_ID,continent,country,<span class="dt">sep=</span><span class="st">&quot;_&quot;</span>)
-<span class="kw">str</span>(gap_temp)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_temp &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st"> </span><span class="kw">unite</span>(var_ID,continent,country,<span class="dt">sep=</span><span class="st">&quot;_&quot;</span>)
+<span class="kw">str</span>(gap_temp)</code></pre></div>
 <pre class="output"><code>&#39;data.frame&#39;:   5112 obs. of  4 variables:
  $ var_ID    : chr  &quot;Africa_Algeria&quot; &quot;Africa_Angola&quot; &quot;Africa_Benin&quot; &quot;Africa_Botswana&quot; ...
  $ obs_type  : chr  &quot;gdpPercap&quot; &quot;gdpPercap&quot; &quot;gdpPercap&quot; &quot;gdpPercap&quot; ...
  $ year      : int  1952 1952 1952 1952 1952 1952 1952 1952 1952 1952 ...
  $ obs_values: num  2449 3521 1063 851 543 ...
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">gap_temp &lt;-<span class="st"> </span>gap_long %&gt;%
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_temp &lt;-<span class="st"> </span>gap_long %&gt;%
 <span class="st">    </span><span class="kw">unite</span>(ID_var,continent,country,<span class="dt">sep=</span><span class="st">&quot;_&quot;</span>) %&gt;%
 <span class="st">    </span><span class="kw">unite</span>(var_names,obs_type,year,<span class="dt">sep=</span><span class="st">&quot;_&quot;</span>)
-<span class="kw">str</span>(gap_temp)</code></pre>
+<span class="kw">str</span>(gap_temp)</code></pre></div>
 <pre class="output"><code>&#39;data.frame&#39;:   5112 obs. of  3 variables:
  $ ID_var    : chr  &quot;Africa_Algeria&quot; &quot;Africa_Angola&quot; &quot;Africa_Benin&quot; &quot;Africa_Botswana&quot; ...
  $ var_names : chr  &quot;gdpPercap_1952&quot; &quot;gdpPercap_1952&quot; &quot;gdpPercap_1952&quot; &quot;gdpPercap_1952&quot; ...
  $ obs_values: num  2449 3521 1063 851 543 ...
 </code></pre>
 <p>Using <code>unite()</code> we now have a single ID variable which is a combination of <code>continent</code>,<code>country</code>,and we have defined variable names. We’re now ready to pipe in <code>spread()</code></p>
-<pre class="sourceCode r"><code class="sourceCode r">gap_wide_new &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_wide_new &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st"> </span>
 <span class="st">    </span><span class="kw">unite</span>(ID_var,continent,country,<span class="dt">sep=</span><span class="st">&quot;_&quot;</span>) %&gt;%
 <span class="st">    </span><span class="kw">unite</span>(var_names,obs_type,year,<span class="dt">sep=</span><span class="st">&quot;_&quot;</span>) %&gt;%
 <span class="st">    </span><span class="kw">spread</span>(var_names,obs_values)
-<span class="kw">str</span>(gap_wide_new)</code></pre>
+<span class="kw">str</span>(gap_wide_new)</code></pre></div>
 <pre class="output"><code>&#39;data.frame&#39;:   142 obs. of  37 variables:
  $ ID_var        : chr  &quot;Africa_Algeria&quot; &quot;Africa_Angola&quot; &quot;Africa_Benin&quot; &quot;Africa_Botswana&quot; ...
  $ gdpPercap_1952: num  2449 3521 1063 851 543 ...
@@ -269,20 +274,20 @@ gap_long$year &lt;-<span class="st"> </span><span class="kw">as.integer</span>(g
 </code></pre>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h2>
+<h2 id="challenge-3"><span class="glyphicon glyphicon-pencil"></span>Challenge 3</h2>
 </div>
 <div class="panel-body">
 <p>Take this 1 step further and create a <code>gap_ludicrously_wide</code> format data by spreading over countries, year and the 3 metrics? <strong>Hint</strong> this new dataframe should only have 5 rows.</p>
 </div>
 </section>
 <p>Now we have a great ‘wide’ format dataframe, but the <code>ID_var</code> could be more usable, let’s separate it into 2 variables with <code>separate()</code></p>
-<pre class="sourceCode r"><code class="sourceCode r">gap_wide_betterID &lt;-<span class="st"> </span><span class="kw">separate</span>(gap_wide_new,ID_var,<span class="kw">c</span>(<span class="st">&quot;continent&quot;</span>,<span class="st">&quot;country&quot;</span>),<span class="dt">sep=</span><span class="st">&quot;_&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_wide_betterID &lt;-<span class="st"> </span><span class="kw">separate</span>(gap_wide_new,ID_var,<span class="kw">c</span>(<span class="st">&quot;continent&quot;</span>,<span class="st">&quot;country&quot;</span>),<span class="dt">sep=</span><span class="st">&quot;_&quot;</span>)
 gap_wide_betterID &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st"> </span>
 <span class="st">    </span><span class="kw">unite</span>(ID_var,continent,country,<span class="dt">sep=</span><span class="st">&quot;_&quot;</span>) %&gt;%
 <span class="st">    </span><span class="kw">unite</span>(var_names,obs_type,year,<span class="dt">sep=</span><span class="st">&quot;_&quot;</span>) %&gt;%
 <span class="st">    </span><span class="kw">spread</span>(var_names,obs_values) %&gt;%
 <span class="st">    </span><span class="kw">separate</span>(ID_var,<span class="kw">c</span>(<span class="st">&quot;continent&quot;</span>,<span class="st">&quot;country&quot;</span>),<span class="dt">sep=</span><span class="st">&quot;_&quot;</span>)
-<span class="kw">str</span>(gap_wide_betterID)</code></pre>
+<span class="kw">str</span>(gap_wide_betterID)</code></pre></div>
 <pre class="output"><code>&#39;data.frame&#39;:   142 obs. of  38 variables:
  $ continent     : chr  &quot;Africa&quot; &quot;Africa&quot; &quot;Africa&quot; &quot;Africa&quot; ...
  $ country       : chr  &quot;Algeria&quot; &quot;Angola&quot; &quot;Benin&quot; &quot;Botswana&quot; ...
@@ -323,13 +328,13 @@ gap_wide_betterID &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st">
  $ pop_2002      : num  31287142 10866106 7026113 1630347 12251209 ...
  $ pop_2007      : num  33333216 12420476 8078314 1639131 14326203 ...
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">all.equal</span>(gap_wide,gap_wide_betterID)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">all.equal</span>(gap_wide,gap_wide_betterID)</code></pre></div>
 <pre class="output"><code>[1] TRUE
 </code></pre>
 <p>There and back again!</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 1</h2>
+<h2 id="solution-to-challenge-1"><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 1</h2>
 </div>
 <div class="panel-body">
 <p>The original gapminder data.frame is in an intermediate format. It is not purely long since it had multiple observation variables (<code>pop</code>,<code>lifeExp</code>,<code>gdpPercap</code>).</p>
@@ -337,11 +342,11 @@ gap_wide_betterID &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st">
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 2</h2>
+<h2 id="solution-to-challenge-2"><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 2</h2>
 </div>
 <div class="panel-body">
-<pre class="sourceCode r"><code class="sourceCode r">gap_long %&gt;%<span class="st"> </span><span class="kw">group_by</span>(continent,obs_type) %&gt;%
-<span class="st">   </span><span class="kw">summarize</span>(<span class="dt">means=</span><span class="kw">mean</span>(obs_values))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_long %&gt;%<span class="st"> </span><span class="kw">group_by</span>(continent,obs_type) %&gt;%
+<span class="st">   </span><span class="kw">summarize</span>(<span class="dt">means=</span><span class="kw">mean</span>(obs_values))</code></pre></div>
 <pre class="output"><code>Source: local data frame [15 x 3]
 Groups: continent [?]
 
@@ -367,12 +372,12 @@ Groups: continent [?]
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 3</h2>
+<h2 id="solution-to-challenge-3"><span class="glyphicon glyphicon-pencil"></span>Solution to Challenge 3</h2>
 </div>
 <div class="panel-body">
-<pre class="sourceCode r"><code class="sourceCode r">gap_ludicrously_wide &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gap_ludicrously_wide &lt;-<span class="st"> </span>gap_long %&gt;%<span class="st"> </span>
 <span class="st">   </span><span class="kw">unite</span>(var_names,obs_type,year,country,<span class="dt">sep=</span><span class="st">&quot;_&quot;</span>) %&gt;%
-<span class="st">   </span><span class="kw">spread</span>(var_names,obs_values)</code></pre>
+<span class="st">   </span><span class="kw">spread</span>(var_names,obs_values)</code></pre></div>
 </div>
 </section>
 <h2 id="other-great-resources">Other great resources</h2>

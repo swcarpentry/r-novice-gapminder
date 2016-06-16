@@ -19,10 +19,16 @@ One of R's most powerful features is its ability to deal with tabular data - lik
 
 ~~~{.r}
 coat,weight,likes_string
-calico,2.1,TRUE
-black,5.0,FALSE
-tabby,3.2,TRUE
+calico,2.1,1
+black,5.0,0
+tabby,3.2,1
 ~~~
+
+> ## Tip :Editing Text files in R {.callout}
+>
+> Alternatively, you can create `data/feline-data.csv` using a text editor (Nano),
+> or within RStudio with the **File -> New File -> Text File** menu item.
+>
 
 
 
@@ -44,7 +50,11 @@ cats
 
 ~~~
 
-We can begin exploring our dataset right away, pulling out columns and rows via the following:
+
+The `read.csv` function is used for reading in tabular data stored in a text file where the columns of data are delimited by commas (csv = comma separated values). Tabs are also commonly used to separated colums - if your data are in this format you can use the function `read.delim`. If the columns in your data are delimited by a character other than commas or tabs, you can use the more general and flexible `read.table` function.
+
+
+We can begin exploring our dataset right away, pulling out columns by specifying them using the `$` operator:
 
 
 ~~~{.r}
@@ -61,39 +71,42 @@ cats$weight
 
 
 ~~~{.r}
-cats$weight[1]
+cats$coat
 ~~~
 
 
 
 ~~~{.output}
-[1] 2.1
+[1] calico black  tabby 
+Levels: black calico tabby
+
+~~~
+
+We can do other operations on the columns:
+
+
+~~~{.r}
+## Say we discovered that the scale weighs one Kg light:
+cats$weight + 2
+~~~
+
+
+
+~~~{.output}
+[1] 4.1 7.0 5.2
 
 ~~~
 
 
 
 ~~~{.r}
-cats$weight[2]
+paste("My cat is", cats$coat)
 ~~~
 
 
 
 ~~~{.output}
-[1] 5
-
-~~~
-
-
-
-~~~{.r}
-cats$weight[1] + cats$weight[2]
-~~~
-
-
-
-~~~{.output}
-[1] 7.1
+[1] "My cat is calico" "My cat is black"  "My cat is tabby" 
 
 ~~~
 
@@ -101,13 +114,13 @@ But what about
 
 
 ~~~{.r}
-cats$weight[1] + cats$coat[2]
+cats$weight + cats$coat
 ~~~
 
 
 
 ~~~{.error}
-Warning in Ops.factor(cats$weight[1], cats$coat[2]): '+' not meaningful for
+Warning in Ops.factor(cats$weight, cats$coat): '+' not meaningful for
 factors
 
 ~~~
@@ -115,7 +128,7 @@ factors
 
 
 ~~~{.output}
-[1] NA
+[1] NA NA NA
 
 ~~~
 
@@ -123,11 +136,11 @@ Understanding what happened here is key to successfully analyzing data in R.
 
 ## Data Types
 
-If you guessed that the last command will return an error because 2.1 plus black is nonsense, you're right - and you already have some intuition for an important concept in programming called *data types*. We can ask what type of data something is:
+If you guessed that the last command will return an error because `2.1` plus `"black"` is nonsense, you're right - and you already have some intuition for an important concept in programming called *data types*. We can ask what type of data something is:
 
 
 ~~~{.r}
-typeof(cats$weight[1])
+typeof(cats$weight)
 ~~~
 
 
@@ -137,53 +150,145 @@ typeof(cats$weight[1])
 
 ~~~
 
-There are 5 main types: doubles, integers, complex, logical and character.
-
-```
-typeof(3.14)
-typeof(1L)
-typeof(1+1i)
-typeof(TRUE)
-typeof('banana')
-```
-
-Note the `L` suffix to insist that a number is an integer. No matter how complicated our analyses become, all data in R is interpreted as one of these basic data types. This strictness has some really important consequences. Go back to your text editor and add add this line to feline-data.csv:
+There are 5 main types: `double`, `integer`, `complex`, `logical` and `character`.
 
 
 ~~~{.r}
+typeof(3.14)
+~~~
+
+
+
+~~~{.output}
+[1] "double"
+
+~~~
+
+
+
+~~~{.r}
+typeof(1L)
+~~~
+
+
+
+~~~{.output}
+[1] "integer"
+
+~~~
+
+
+
+~~~{.r}
+typeof(1+1i)
+~~~
+
+
+
+~~~{.output}
+[1] "complex"
+
+~~~
+
+
+
+~~~{.r}
+typeof(TRUE)
+~~~
+
+
+
+~~~{.output}
+[1] "logical"
+
+~~~
+
+
+
+~~~{.r}
+typeof('banana')
+~~~
+
+
+
+~~~{.output}
+[1] "character"
+
+~~~
+
+Note the `L` suffix to insist that a number is an integer. No matter how complicated our analyses become, all data in R is interpreted as one of these basic data types. This strictness has some really important consequences.
+
+A user has added details of another cat. This information is in the file `data/feline-data_v2.csv`.
+
+
+
+~~~{.r}
+file.show("data/feline-data_v2.csv")
+~~~
+
+
+~~~{.r}
+coat,weight,likes_string
+calico,2.1,TRUE
+black,5.0,FALSE
+tabby,3.2,TRUE
 tabby,2.3 or 2.4,TRUE
 ~~~
 
-Reload your cats data like before, and check what type of data we find in the `weight` column:
+Load the new cats data like before, and check what type of data we find in the `weight` column:
 
 
 ~~~{.r}
-cats <- read.csv(file="data/feline-data.csv")
-typeof(cats$weight[1])
+cats <- read.csv(file="data/feline-data_v2.csv")
+typeof(cats$weight)
 ~~~
 
 
 
 ~~~{.output}
-[1] "double"
+[1] "integer"
 
 ~~~
+
 
 Oh no, our weights aren't the double type anymore! If we try to do the same math we did on them before, we run into trouble:
 
 
 ~~~{.r}
-cats$weight[1] + cats$weight[2]
+cats$weight + 2
+~~~
+
+
+
+~~~{.error}
+Warning in Ops.factor(cats$weight, 2): '+' not meaningful for factors
+
 ~~~
 
 
 
 ~~~{.output}
-[1] 7.1
+[1] NA NA NA NA
 
 ~~~
 
-What happened? When R reads a csv into one of these tables, it insists that everything in a column be the same basic type; if it can't understand *everything* in the column as a double, then *nobody* in the column gets to be a double. The table that R loaded our cats data into is something called a *data.frame*, and it is our first example of something called a *data structure* - things that R knows how to build out of the basic data types. In order to successfully use our data in R, we need to understand what these basic data structures are, and how they behave. For now, let's remove that extra line from our cats data and reload it, while we investigate this behavior further:
+What happened? When R reads a csv into one of these tables, it insists that everything in a column be the same basic type; if it can't understand *everything* in the column as a double, then *nobody* in the column gets to be a double. The table that R loaded our cats data into is something called a *data.frame*, and it is our first example of something called a *data structure* - that is, a structure which R knows how to build out of the basic data types.
+
+We can see that it is a *data.frame* by calling the `class` function on it:
+
+
+~~~{.r}
+class(cats)
+~~~
+
+
+
+~~~{.output}
+[1] "data.frame"
+
+~~~
+
+In order to successfully use our data in R, we need to understand what the basic data structures are, and how they behave. For now, let's remove that extra line from our cats data and reload it, while we investigate this behavior further:
 
 feline-data.csv:
 
@@ -196,17 +301,21 @@ tabby,3.2,TRUE
 
 And back in RStudio:
 
-```
+
+~~~{.r}
 cats <- read.csv(file="data/feline-data.csv")
-```
+~~~
+
+
+
 
 ## Vectors & Type Coercion
 
-To better understand the behavior we just saw, let's meet another of the data structures: the *vector*.
+To better understand this behavior, let's meet another of the data structures: the *vector*.
 
 
 ~~~{.r}
-my_vector <- vector(length=3)
+my_vector <- vector(length = 3)
 my_vector
 ~~~
 
@@ -217,7 +326,8 @@ my_vector
 
 ~~~
 
-Just like you might be familiar with from vectors elsewhere, a vector in R is essentially an ordered list of things, with the special condition that *everything in the vector must be the same basic data type*. If you don't choose the datatype, it'll default to `logical`; or, you can declare an empty vector of whatever type you like.
+A vector in R is essentially an ordered list of things, with the special condition that *everything in the vector must be the same basic data type*. If you don't choose the datatype, it'll default to `logical`; or, you can declare an empty vector of whatever type you like.
+
 
 
 ~~~{.r}
@@ -246,7 +356,7 @@ str(another_vector)
 
 ~~~
 
-The somewhat cryptic output from this command indicates the basic data type found in this vector; the number of things in the vector; and a few examples of what's actually in the vector. If we similarly do
+The somewhat cryptic output from this command indicates the basic data type found in this vector - in this case `chr`, character; an indication of the number of things in the vector - actually, the indexes of the vector, in this case `[1:3]`; and a few examples of what's actually in the vector - in this case empty character strings. If we similarly do
 
 
 ~~~{.r}
@@ -290,7 +400,7 @@ Given what we've learned so far, what do you think the following will produce?
 quiz_vector <- c(2,6,'3')
 ~~~
 
-This is something called *type coercion*, and it is the source of many surprises and the reason why we need to be aware of the basic data types and how R will interpret them. Consider:
+This is something called *type coercion*, and it is the source of many surprises and the reason why we need to be aware of the basic data types and how R will interpret them. When R encounters a mix of types (here numeric and character) to be combined into a single vector, it will force them all to be the same type. Consider:
 
 
 ~~~{.r}
@@ -319,7 +429,7 @@ another_coercion_vector
 
 ~~~
 
-The coercion rules go: `logical` -> `integer` -> `numeric` -> `complex` -> `character`. You can try to force coercion against this flow using the `as.` functions:
+The coercion rules go: `logical` -> `integer` -> `numeric` -> `complex` -> `character`, where -> can be read as *are transformed into*. You can try to force coercion against this flow using the `as.` functions:
 
 
 ~~~{.r}
@@ -363,6 +473,34 @@ numeric_coerced_to_logical
 ~~~
 
 As you can see, some surprising things can happen when R forces one basic data type into another! Nitty-gritty of type coercion aside, the point is: if your data doesn't look like what you thought it was going to look like, type coercion may well be to blame; make sure everything is the same type in your vectors and your columns of data.frames, or you will get nasty surprises!
+
+But coercion can also be very useful! For example, in our `cats` data `likes_string` is numeric, but we know that the 1s and 0s actually represent `TRUE` and `FALSE` (a common way of representing them). We should use the `logical` datatype here, which has two states: `TRUE` or `FALSE`, which is exactly what our data represents. We can 'coerce' this column to be `logical` by using the `as.logical` function:
+
+
+~~~{.r}
+cats$likes_string
+~~~
+
+
+
+~~~{.output}
+[1] 1 0 1
+
+~~~
+
+
+
+~~~{.r}
+cats$likes_string <- as.logical(cats$likes_string)
+cats$likes_string
+~~~
+
+
+
+~~~{.output}
+[1]  TRUE FALSE  TRUE
+
+~~~
 
 Concatenate will also append things to an existing vector:
 
@@ -440,7 +578,7 @@ seq(1,10, by=0.1)
 
 ~~~
 
-In addition to asking for elements of a vector with the square bracket notation, we can ask a few other questions about vectors:
+We can ask a few questions about vectors:
 
 
 ~~~{.r}
@@ -481,7 +619,33 @@ length(sequence_example)
 
 ~~~
 
-Finally, you can give names to elements in your vector, and ask for them that way:
+
+
+~~~{.r}
+class(sequence_example)
+~~~
+
+
+
+~~~{.output}
+[1] "integer"
+
+~~~
+
+
+
+~~~{.r}
+typeof(sequence_example)
+~~~
+
+
+
+~~~{.output}
+[1] "integer"
+
+~~~
+
+Finally, you can give names to elements in your vector:
 
 
 ~~~{.r}
@@ -501,24 +665,23 @@ a b c d
 
 
 ~~~{.r}
-names_example['b']
+names(names_example)
 ~~~
 
 
 
 ~~~{.output}
-b 
-6 
+[1] "a" "b" "c" "d"
 
 ~~~
 
 > ## Challenge 1 {.challenge}
-> Start by making a vector with the numbers 11 to 20.
-> Then use the functions we just learned to extract the 3rd through 5th element in that vector into a new vector;
-> name the elements in that new vector 'S', 'W', 'C'.
->
+> Start by making a vector with the numbers 1 through 26.
+> Multiply the vector by 2, and give the resulting vector
+> names A through Z (hint: there is a built in vector called `LETTERS`)
 
-## Factors
+
+## Data Frames
 
 We said that columns in data.frames were vectors:
 
@@ -547,7 +710,7 @@ str(cats$likes_string)
 
 ~~~
 
-But what about
+These make sense. But what about
 
 
 ~~~{.r}
@@ -597,6 +760,19 @@ We can turn a vector into a factor like so:
 
 ~~~{.r}
 CATegories <- factor(coats)
+class(CATegories)
+~~~
+
+
+
+~~~{.output}
+[1] "factor"
+
+~~~
+
+
+
+~~~{.r}
 str(CATegories)
 ~~~
 
@@ -611,7 +787,7 @@ Now R has noticed that there are three possible categories in our data - but it 
 
 
 ~~~{.r}
-typeof(coats[1])
+typeof(coats)
 ~~~
 
 
@@ -624,7 +800,7 @@ typeof(coats[1])
 
 
 ~~~{.r}
-typeof(CATegories[1])
+typeof(CATegories)
 ~~~
 
 
@@ -637,7 +813,7 @@ typeof(CATegories[1])
 > ## Challenge 2 {.challenge}
 > Is there a factor in our `cats` data.frame? what is its name?
 > Try using `?read.csv` to figure out how to keep text columns as character vectors instead of factors;
-> then write a command or two to show that the factor in `cats` is actually is a character vector when loaded in this way.
+> then write a command or two to show that the factor in `cats` is actually a character vector when loaded in this way.
 >
 
 In modeling functions, it's important to know what the baseline levels are. This is assumed to be the
@@ -691,20 +867,6 @@ list_example
 
 
 ~~~{.r}
-list_example[2]
-~~~
-
-
-
-~~~{.output}
-[[1]]
-[1] "a"
-
-~~~
-
-
-
-~~~{.r}
 another_list <- list(title = "Research Bazaar", numbers = 1:10, data = TRUE )
 another_list
 ~~~
@@ -738,6 +900,209 @@ typeof(cats)
 ~~~
 
 We see that data.frames look like lists 'under the hood' - this is because a data.frame is really a list of vectors and factors, as they have to be - in order to hold those columns that are a mix of vectors and factors, the data.frame needs something a bit more flexible than a vector to put all the columns together into a familiar table.
+In other words, a `data.frame` is a special list in which all the vectors must have the same length.
+
+In our `cats` example, we have an integer, a double and a logical variable. As we have seen already, each column of data.frame is a vector.
+
+
+~~~{.r}
+cats$coat
+~~~
+
+
+
+~~~{.output}
+[1] calico black  tabby 
+Levels: black calico tabby
+
+~~~
+
+
+
+~~~{.r}
+cats[,1]
+~~~
+
+
+
+~~~{.output}
+[1] calico black  tabby 
+Levels: black calico tabby
+
+~~~
+
+
+
+~~~{.r}
+typeof(cats[,1])
+~~~
+
+
+
+~~~{.output}
+[1] "integer"
+
+~~~
+
+
+
+~~~{.r}
+str(cats[,1])
+~~~
+
+
+
+~~~{.output}
+ Factor w/ 3 levels "black","calico",..: 2 1 3
+
+~~~
+
+Each row is an *observation* of different variables, itself a data.frame, and thus can be composed of element of different types.
+
+
+~~~{.r}
+cats[1,]
+~~~
+
+
+
+~~~{.output}
+    coat weight likes_string
+1 calico    2.1         TRUE
+
+~~~
+
+
+
+~~~{.r}
+typeof(cats[1,])
+~~~
+
+
+
+~~~{.output}
+[1] "list"
+
+~~~
+
+
+
+~~~{.r}
+str(cats[1,])
+~~~
+
+
+
+~~~{.output}
+'data.frame':	1 obs. of  3 variables:
+ $ coat        : Factor w/ 3 levels "black","calico",..: 2
+ $ weight      : num 2.1
+ $ likes_string: logi TRUE
+
+~~~
+
+Notice the subtle differences between different ways of calling variables, observations and elements from data.frames:
+
+
+~~~{.r}
+cats[1]
+~~~
+
+
+
+~~~{.output}
+    coat
+1 calico
+2  black
+3  tabby
+
+~~~
+
+
+
+~~~{.r}
+cats[[1]]
+~~~
+
+
+
+~~~{.output}
+[1] calico black  tabby 
+Levels: black calico tabby
+
+~~~
+
+
+
+~~~{.r}
+cats$coat
+~~~
+
+
+
+~~~{.output}
+[1] calico black  tabby 
+Levels: black calico tabby
+
+~~~
+
+
+
+~~~{.r}
+cats["coat"]
+~~~
+
+
+
+~~~{.output}
+    coat
+1 calico
+2  black
+3  tabby
+
+~~~
+
+
+
+~~~{.r}
+cats[,1]
+~~~
+
+
+
+~~~{.output}
+[1] calico black  tabby 
+Levels: black calico tabby
+
+~~~
+
+
+
+~~~{.r}
+cats[1,]
+~~~
+
+
+
+~~~{.output}
+    coat weight likes_string
+1 calico    2.1         TRUE
+
+~~~
+
+
+
+~~~{.r}
+cats[1,1]
+~~~
+
+
+
+~~~{.output}
+[1] calico
+Levels: black calico tabby
+
+~~~
 
 ## Matrices
 
@@ -759,64 +1124,82 @@ matrix_example
 
 ~~~
 
-and we can ask for and put values in the elements of our matrix with a couple of different notations:
+And similar to other data structures, we can ask things about our matrix:
 
 
 ~~~{.r}
-matrix_example[1,1] <- 1
-matrix_example
+class(matrix_example)
 ~~~
 
 
 
 ~~~{.output}
-     [,1] [,2] [,3] [,4] [,5] [,6]
-[1,]    1    0    0    0    0    0
-[2,]    0    0    0    0    0    0
-[3,]    0    0    0    0    0    0
+[1] "matrix"
 
 ~~~
 
 
 
 ~~~{.r}
-matrix_example[1][1]
+typeof(matrix_example)
 ~~~
 
 
 
 ~~~{.output}
-[1] 1
+[1] "double"
 
 ~~~
 
 
 
 ~~~{.r}
-matrix_example[1][1] <- 2
-matrix_example[1,1]
+str(matrix_example)
 ~~~
 
 
 
 ~~~{.output}
-[1] 2
+ num [1:3, 1:6] 0 0 0 0 0 0 0 0 0 0 ...
 
 ~~~
 
 
 
 ~~~{.r}
-matrix_example
+dim(matrix_example)
 ~~~
 
 
 
 ~~~{.output}
-     [,1] [,2] [,3] [,4] [,5] [,6]
-[1,]    2    0    0    0    0    0
-[2,]    0    0    0    0    0    0
-[3,]    0    0    0    0    0    0
+[1] 3 6
+
+~~~
+
+
+
+~~~{.r}
+nrow(matrix_example)
+~~~
+
+
+
+~~~{.output}
+[1] 3
+
+~~~
+
+
+
+~~~{.r}
+ncol(matrix_example)
+~~~
+
+
+
+~~~{.output}
+[1] 6
 
 ~~~
 
@@ -871,13 +1254,6 @@ matrix_example
 > 4. `matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)`
 >
 
-
-
-
-
-
-
-
 ## Challenge solutions
 
 > ## Discussion 1 {.challenge}
@@ -889,11 +1265,12 @@ matrix_example
 >
 
 > ## Solution to Challenge 1 {.challenge}
+>
 > 
 > ~~~{.r}
-> x <- c(11:20)
-> subset <- x[3:5]
-> names(subset) <- c('S', 'W', 'C')
+> x <- 1:26
+> x <- x * 2
+> names(x) <- LETTERS
 > ~~~
 >
 
@@ -903,13 +1280,6 @@ matrix_example
 > cats <- read.csv(file="data/feline-data.csv", stringsAsFactors=FALSE)
 > str(cats$coat)
 > ~~~
-> 
-> 
-> 
-> ~~~{.output}
->  chr [1:3] "calico" "black" "tabby"
-> 
-> ~~~
 > Note: new students find the help files difficult to understand; make sure to let them know
 > that this is typical, and encourage them to take their best guess based on semantic meaning,
 > even if they aren't sure.
@@ -918,10 +1288,11 @@ matrix_example
 > ## Solution to challenge 3 {.challenge}
 >
 > What do you think will be the result of
-> `length(x)`?
+> `length(matrtix_example)`?
 >
 > 
 > ~~~{.r}
+> matrix_example <- matrix(0, ncol=6, nrow=3)
 > length(matrix_example)
 > ~~~
 > 
@@ -932,7 +1303,7 @@ matrix_example
 > 
 > ~~~
 >
-> Because a matrix is really just a vector with added dimension attributes, `length`
+> Because a matrix is a vector with added dimension attributes, `length`
 > gives you the total number of elements in the matrix.
 >
 
@@ -953,6 +1324,7 @@ matrix_example
 > ~~~
 >
 
+>
 > ## Solution to Challenge 5 {.challenge}
 > 
 > ~~~{.r}

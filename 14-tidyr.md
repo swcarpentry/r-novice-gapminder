@@ -74,7 +74,10 @@ While using many of the functions in R, which are often vector based, you usuall
 Until now, we've been using the nicely formatted original gapminder dataset, but 'real' data (i.e. our own research data) will never be so well organized. Here let's start with the wide format version of the gapminder dataset.
 
 
+We'll load the data file and look at it.  Note: we don't want our continent and country columns to be factors, so we use the stringsAsFactors argument for `read.csv()` to disable that.  
+
 ~~~{.r}
+gap_wide <- read.csv("data/gapminder_wide.csv", stringsAsFactors = FALSE)
 str(gap_wide)
 ~~~
 
@@ -122,6 +125,7 @@ str(gap_wide)
  $ pop_2007      : int  33333216 12420476 8078314 1639131 14326203 8390505 17696293 4369038 10238807 710960 ...
 
 ~~~
+
 
 ![](fig/14-tidyr-fig2.png)
 
@@ -186,7 +190,8 @@ gap_long$year <- as.integer(gap_long$year)
 >
 
 ## From long to intermediate format with spread()
-Now just to double-check our work, let's use the opposite of `gather()` to spread our observation variables back out with the aptly named `spread()`. We can then spread our `gap_long()` to the original intermediate format or the widest format. Let's start with the intermediate format.
+
+It is always good to check work. So, let's use the opposite of `gather()` to spread our observation variables back out with the aptly named `spread()`. We can then spread our `gap_long()` to the original intermediate format or the widest format. Let's start with the intermediate format.
 
 
 ~~~{.r}
