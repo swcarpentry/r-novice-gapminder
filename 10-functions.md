@@ -1,7 +1,7 @@
 ---
 layout: page
 title: R for reproducible scientific analysis
-subtitle: Creating functions
+subtitle: Functions explained
 minutes: 45
 ---
 
@@ -73,7 +73,7 @@ Inside the function, we use a [return statement](reference.html#return-statement
 >
 > One feature unique to R is that the return statement is not required.
 > R automatically returns whichever variable is on the last line of the body
-> of the function. Since we are just learning, we will explicitly define the
+> of the function. But for clarity, we will explicitly define the
 > return statement.
 
 Let's try running our function.
@@ -221,7 +221,7 @@ empty, then subsets the result by country if the country argument isn't empty.
 Then it calculates the GDP for whatever subset emerges from the previous two steps.
 The function then adds the GDP as a new column to the subsetted data and returns
 this as the final result.
-You can see that the output is much more informative than just getting a vector of numbers.
+You can see that the output is much more informative than a vector of numbers.
 
 Let's take a look at what happens when we specify the year:
 
@@ -354,14 +354,14 @@ to those arguments.
 Finally, we calculated the GDP on our new subset, and created a new
 data frame with that column added. This means when we call the function
 later we can see the context for the returned GDP values,
-which is much better than in our first attempt where we just got a vector of numbers.
+which is much better than in our first attempt where we got a vector of numbers.
+
+> ## Challenge 3 {.challenge}
+>
+> Test out your GDP function by calculating the GDP for New Zealand in 1987. How does this differ from New Zealand's GDP in 1952?
+>
 
 > ## Challenge 4 {.challenge}
-
-Test out your GDP function by calculating the GDP for New Zealand in 1987.  How does this differ from New Zealand's GDP in 1952?
-
-
-> ## Challenge 5 {.challenge}
 >
 > The `paste` function can be used to combine text together, e.g:
 >
@@ -469,8 +469,15 @@ Test out your GDP function by calculating the GDP for New Zealand in 1987.  How 
 > ~~~
 >
 
-
 > ## Solution to challenge 3 {.challenge}
+>
+> GDP for New Zealand in 1987: 65050008703
+>
+> GDP for New Zealand in 1952: 21058193787
+>
+
+
+> ## Solution to challenge 4 {.challenge}
 >
 >  Write a function called `fence` that takes two vectors as arguments, called
 > `text` and `wrapper`, and prints out the text wrapped with the `wrapper`:
@@ -492,7 +499,3 @@ Test out your GDP function by calculating the GDP for New Zealand in 1987.  How 
 > [1] "*** Write programs for people not computers ***"
 > 
 > ~~~
-## Solution to challenge 4 {.challenge}
-
-GDP for New Zealand in 1987: 63050008703
-GDP for New Zealand in 1952: 21058193787

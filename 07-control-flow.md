@@ -9,8 +9,8 @@ minutes: 35
 
 > ## Learning Objectives {.objectives}
 >
-> * Write conditional statements with `if` and `else`.
-> * Write and understand `for` loops.
+> * Write conditional statements with `if()` and `else()`.
+> * Write and understand `for()` loops.
 >
 
 Often when we're coding we want to control the flow of our actions. This can be done
@@ -86,15 +86,15 @@ if (x >= 10) {
 
 > ## Tip: pseudo-random numbers {.callout}
 >
-> In the above case, the function `rpois` generates a random number following a
-> Poisson distribution with a mean (i.e. lambda) of 8. The function `set.seed`
+> In the above case, the function `rpois()` generates a random number following a
+> Poisson distribution with a mean (i.e. lambda) of 8. The function `set.seed()`
 > guarantees that all machines will generate the exact same 'pseudo-random'
 > number ([more about pseudo-random numbers](http://en.wikibooks.org/wiki/R_Programming/Random_Number_Generation)).
 > So if we `set.seed(10)`, we see that `x` takes the value 8. You should get the
 > exact same number.
 >
 
-**Important:** when R evaluates the condition inside `if` statements, it is
+**Important:** when R evaluates the condition inside `if()` statements, it is
 looking for a logical element, i.e., `TRUE` or `FALSE`. This can cause some
 headaches for beginners. For example:
 
@@ -123,7 +123,7 @@ x
 
 > ## Challenge 1 {.challenge}
 >
-> Use an `if` statement to print a suitable message
+> Use an `if()` statement to print a suitable message
 > reporting whether there are any records from 2002 in
 > the `gapminder` dataset.
 > Now do the same for 2012.
@@ -139,14 +139,14 @@ only the first element will be used
 ~~~
 
 If your condition evaluates to a vector with more than one logical element,
-the function `if` will still run, but will only evaluate the condition in the first
+the function `if()` will still run, but will only evaluate the condition in the first
 element. Here you need to make sure your condition is of length 1.
 
-> ## Tip: `any` and `all` {.callout}
-> The `any` function will return TRUE if at least one
+> ## Tip: `any()` and `all()` {.callout}
+> The `any()` function will return TRUE if at least one
 > TRUE value is found within a vector, otherwise it will return `FALSE`.
 > This can be used in a similar way to the `%in%` operator.
-> The function `all`, as the name suggests, will only return `TRUE` if all values in
+> The function `all()`, as the name suggests, will only return `TRUE` if all values in
 > the vector are `TRUE`.
 >
 
@@ -156,13 +156,13 @@ element. Here you need to make sure your condition is of length 1.
 
 If you want to iterate over
 a set of values, when the order of iteration is important, and perform the
-same operation on each, a `for` loop will do the job.
-We saw `for` loops in the shell lessons earlier. This is the most
+same operation on each, a `for()` loop will do the job.
+We saw `for()` loops in the shell lessons earlier. This is the most
 flexible of looping operations, but therefore also the hardest to use
-correctly. Avoid using `for` loops unless the order of iteration is important:
+correctly. Avoid using `for()` loops unless the order of iteration is important:
 i.e. the calculation at each iteration depends on the results of previous iterations.
 
-The basic structure of a `for` loop is:
+The basic structure of a `for()` loop is:
 
 
 ~~~{.r}
@@ -199,7 +199,7 @@ for(i in 1:10){
 The `1:10` bit creates a vector on the fly; you can iterate
 over any other vector as well.
 
-We can use a `for` loop nested within another `for` loop to iterate over two things at
+We can use a `for()` loop nested within another `for()` loop to iterate over two things at
 once.
 
 
@@ -313,7 +313,7 @@ output_vector2
 >
 >
 > Sometimes you will find yourself needing to repeat an operation until a certain
-> condition is met. You can do this with a `while` loop.
+> condition is met. You can do this with a `while()` loop.
 > 
 > 
 > ~~~{.r}
@@ -323,7 +323,7 @@ output_vector2
 > ~~~
 > 
 > As an example, here's a while loop 
-> that generates random numbers from a uniform distribution (the `runif` function)
+> that generates random numbers from a uniform distribution (the `runif()` function)
 > between 0 and 1 until it gets one that's less than 0.1.
 > 
 > ~~~ {.r}
@@ -334,7 +334,7 @@ output_vector2
 > }
 > ~~~
 > 
-> `while` loops will not always be appropriate. You have to be particularly careful
+> `while()` loops will not always be appropriate. You have to be particularly careful
 > that you don't end up in an infinite loop because your condition is never met.
 >
 
@@ -366,3 +366,81 @@ output_vector2
 > tests whether the country starts with a 'B', and graphs life expectancy
 > against time as a line graph if the mean life expectancy is under 50 years.
 >
+
+
+## Challenge solutions
+
+> ## Solution to Challenge 1 {.challenge}
+> We will first see a solution to Challenge 1 which does not use the `any()` function.
+> We first obtain a logical vector describing which element of `gapminder$year` is equal to `2002`:
+> 
+> ~~~{.r}
+> gapminder[(gapminder$year == 2002),]
+> ~~~
+> Then, we count the number of rows of the data.frame `gapminder` that correspond to the 2002:
+> 
+> ~~~{.r}
+> rows2002_number <- nrow(gapminder[(gapminder$year == 2002),])
+> ~~~
+> The presence of any record for the year 2002 is equivalent to the request that `rows2002_number` is one or more:
+> 
+> ~~~{.r}
+> rows2002_number >= 1
+> ~~~
+> Putting all together, we obtain:
+> 
+> ~~~{.r}
+> if(nrow(gapminder[(gapminder$year == 2002),]) >= 1){
+>    print("Record(s) for the year 2002 found.")
+> }
+> ~~~
+
+> All this can be done more quickly with `any()`. The logical condition can be expressed as:
+> 
+> ~~~{.r}
+> if(any(gapminder$year == 2002)){
+>    print("Record(s) for the year 2002 found.")
+> }
+> ~~~
+
+> ## Solution to Challenge 2 {.challenge}
+> We can check whether the two vectors are identical using the `all()` function:
+> 
+> ~~~{.r}
+> all(output_vector == output_vector2)
+> ~~~
+>However, all the elements of `output_vector` can be found in `output_vector2`:
+> 
+> ~~~{.r}
+> all(output_vector %in% output_vector2)
+> ~~~
+> and vice versa:
+> 
+> ~~~{.r}
+> all(output_vector2 %in% output_vector)
+> ~~~
+> therefore, the element in `output_vector` and `output_vector2` are just sorted in a different order.
+> This is because `as.vector()` outputs the elements of an input matrix going over its column.
+> Taking a look at `output_matrix`, we can notice that we want its elements by rows.
+> The solution is to transpose the `output_matrix`. We can do it either by calling the transpose function
+> `t()` or by inputing the elements in the right order.
+> The first solution requires to change the original
+> 
+> ~~~{.r}
+> output_vector2 <- as.vector(output_matrix)
+> ~~~
+> into
+> 
+> ~~~{.r}
+> output_vector2 <- as.vector(t(output_matrix))
+> ~~~
+> The second solution requires to change
+> 
+> ~~~{.r}
+> output_matrix[i, j] <- temp_output
+> ~~~
+> into
+> 
+> ~~~{.r}
+> output_matrix[j, i] <- temp_output
+> ~~~
