@@ -387,9 +387,9 @@ str(cats[1,])
 > - cats[[1]]
 > - cats$coat
 > - cats["coat"]
-> - cats[1,1]
-> - cats[,1]
-> - cats[1,]
+> - cats[1, 1]
+> - cats[, 1]
+> - cats[1, ]
 >
 > Try out these examples and explain what is returned by each one.
 >
@@ -508,25 +508,25 @@ ncol(matrix_example)
 > ```
 > Here we are using a single brace `["coat"]` replacing the index number with the column name. Like example 1, the returned object is a _list_.
 > ```{r, eval=TRUE, echo=TRUE}
-> cats[1,1]
+> cats[1, 1]
 > ```
 > This example uses a single brace, but this time we provide row and column coordinates. The returned object is the value in row 1, column 1. The object is an _integer_ but because it is part of a _vector_ of type _factor_, R displays the label "calico" associated with the integer value.
 > ```{r, eval=TRUE, echo=TRUE}
-> cats[,1]
+> cats[, 1]
 > ```
 > Like the previous example we use single braces and provide row and column coordinates. The row coordinate is not specified, R interprets this missing value as all the elements in this _column_ _vector_.
 > ```{r, eval=TRUE, echo=TRUE}
-> cats[1,]
+> cats[1, ]
 > ```
 > Again we use the single brace with row and column coordinates. The column coordinate is not specified. The return value is a _list_ containing all the values in the first row.
 >
 
 
 >
-> ## Solution to challenge 4 {.challenge}
+> ## Solution to Challenge 4 {.challenge}
 >
 > What do you think will be the result of
-> `length(matrtix_example)`?
+> `length(matrix_example)`?
 >
 > ```{r}
 > matrix_example <- matrix(0, ncol=6, nrow=3)
@@ -538,7 +538,7 @@ ncol(matrix_example)
 >
 
 >
-> ## Solution to challenge 5 {.challenge}
+> ## Solution to Challenge 5 {.challenge}
 >
 > Make another matrix, this time containing the numbers 1:50,
 > with 5 columns and 10 rows.
@@ -566,7 +566,7 @@ ncol(matrix_example)
 >
 
 >
-> ## Solution to challenge 7 {.challenge}
+> ## Solution to Challenge 7 {.challenge}
 >
 > Consider the R output of the matrix below:
 > ```{r, echo=FALSE}
