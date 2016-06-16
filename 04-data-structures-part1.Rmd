@@ -380,17 +380,21 @@ typeof(cats[1,])
 str(cats[1,])
 ```
 
-Notice the subtle differences between different ways of calling variables, observations and elements from data.frames:
-
-```{r}
-cats[1]
-cats[[1]]
-cats$coat
-cats["coat"]
-cats[,1]
-cats[1,]
-cats[1,1]
-```
+> ## Challenge 3 {.challenge}
+> There are several subtly different ways to call variables, observations and elements from data.frames:
+>
+> - cats[1]
+> - cats[[1]]
+> - cats$coat
+> - cats["coat"]
+> - cats[1, 1]
+> - cats[, 1]
+> - cats[1, ]
+>
+> Try out these examples and explain what is returned by each one.
+>
+> *Hint:* Use the function `typeof()` to examine what is returned in each case.
+>
 
 ## Matrices
 
@@ -413,7 +417,7 @@ ncol(matrix_example)
 ```
 
 >
-> ## Challenge 3 {.challenge}
+> ## Challenge 4 {.challenge}
 >
 > What do you think will be the result of
 > `length(matrix_example)`?
@@ -422,7 +426,7 @@ ncol(matrix_example)
 >
 
 >
-> ## Challenge 4 {.challenge}
+> ## Challenge 5 {.challenge}
 >
 > Make another matrix, this time containing the numbers 1:50,
 > with 5 columns and 10 rows.
@@ -432,7 +436,7 @@ ncol(matrix_example)
 > (hint: read the documentation for `matrix`!)
 >
 
-> ## Challenge 5 {.challenge}
+> ## Challenge 6 {.challenge}
 > Create a list of length two containing a character vector for each of the sections in this part of the workshop:
 >
 > - Data types
@@ -442,7 +446,7 @@ ncol(matrix_example)
 >
 
 >
-> ## Challenge 6 {.challenge}
+> ## Challenge 7 {.challenge}
 >
 > Consider the R output of the matrix below:
 > ```{r, echo=FALSE}
@@ -486,11 +490,43 @@ ncol(matrix_example)
 > that this is typical, and encourage them to take their best guess based on semantic meaning,
 > even if they aren't sure.
 
+> ## Solution to Challenge 3 {.challenge}
+> ```{r, eval=TRUE, echo=TRUE}
+> cats[1]
+> ```
+> We can think of a data frame as a list of vectors. The single brace `[1]` returns the first slice of the list, as another list. In this case it is the first column of the data frame.
+> ```{r, eval=TRUE, echo=TRUE}
+> cats[[1]]
+> ```
+> The double brace `[[1]]` returns the contents of the list item. In this case it is the contents of the first column, a _vector_ of type _factor_.
+> ```{r, eval=TRUE, echo=TRUE}
+> cats$coat
+> ```
+> This example uses the `$` character to address items by name. _coat_ is the first column of the data frame, again a _vector_ of type _factor_.
+> ```{r, eval=TRUE, echo=TRUE}
+> cats["coat"]
+> ```
+> Here we are using a single brace `["coat"]` replacing the index number with the column name. Like example 1, the returned object is a _list_.
+> ```{r, eval=TRUE, echo=TRUE}
+> cats[1, 1]
+> ```
+> This example uses a single brace, but this time we provide row and column coordinates. The returned object is the value in row 1, column 1. The object is an _integer_ but because it is part of a _vector_ of type _factor_, R displays the label "calico" associated with the integer value.
+> ```{r, eval=TRUE, echo=TRUE}
+> cats[, 1]
+> ```
+> Like the previous example we use single braces and provide row and column coordinates. The row coordinate is not specified, R interprets this missing value as all the elements in this _column_ _vector_.
+> ```{r, eval=TRUE, echo=TRUE}
+> cats[1, ]
+> ```
+> Again we use the single brace with row and column coordinates. The column coordinate is not specified. The return value is a _list_ containing all the values in the first row.
 >
-> ## Solution to challenge 3 {.challenge}
+
+
+>
+> ## Solution to Challenge 4 {.challenge}
 >
 > What do you think will be the result of
-> `length(matrtix_example)`?
+> `length(matrix_example)`?
 >
 > ```{r}
 > matrix_example <- matrix(0, ncol=6, nrow=3)
@@ -502,7 +538,7 @@ ncol(matrix_example)
 >
 
 >
-> ## Solution to challenge 4 {.challenge}
+> ## Solution to Challenge 5 {.challenge}
 >
 > Make another matrix, this time containing the numbers 1:50,
 > with 5 columns and 10 rows.
@@ -518,7 +554,7 @@ ncol(matrix_example)
 >
 
 >
-> ## Solution to Challenge 5 {.challenge}
+> ## Solution to Challenge 6 {.challenge}
 > ```{r}
 > dataTypes <- c('double', 'complex', 'integer', 'character', 'logical')
 > dataStructures <- c('data.frame', 'vector', 'factor', 'list', 'matrix')
@@ -530,7 +566,7 @@ ncol(matrix_example)
 >
 
 >
-> ## Solution to challenge 6 {.challenge}
+> ## Solution to Challenge 7 {.challenge}
 >
 > Consider the R output of the matrix below:
 > ```{r, echo=FALSE}
