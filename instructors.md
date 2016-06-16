@@ -41,8 +41,8 @@ git remote add data https://github.com/resbaz/r-novice-gapminder-files
 git pull data master
 ~~~
 
-If Git is not being taught as part of the workshop the raw data can be downloaded from the folloing urls:
-[gapminder-FiveYearData](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/data/gapminder-FiveYearData.csv)
+If Git is not being taught as part of the workshop the raw data can be downloaded from the following urls:
+[gapminder-FiveYearData](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/data/gapminder-FiveYearData.csv) and
 [gapminder-FiveYearData-Wide](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/data/gapminder_wide.csv)
 
 attendees can use the `File - Save As` dialog in their browser to save the file.
