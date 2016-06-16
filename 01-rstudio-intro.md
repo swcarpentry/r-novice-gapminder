@@ -18,6 +18,18 @@ minutes: 45
 > * Introduction to package management
 > 
 
+## Motivation
+
+Science is a multi-step process: once you've designed an experiment and collected 
+data, the real fun begins! This lesson will teach you how to start this process using 
+R and RStudio. We will begin with raw data, perform exploratory analyses, and learn 
+how to plot results graphically. This example starts with the 
+`data/gapminder-FiveYearData.csv` dataset containing population information for many 
+countries through time. Can you read the data into R? Can you plot the population for 
+Senegal? Can you calculate the average income for countries on continent of Asia? 
+By the end of these lessons you will be able to do things like plot the populations 
+for all of these countries in under a minute!
+
 ## Introduction to RStudio
 
 Welcome to the R portion of the Software Carpentry workshop.
@@ -60,7 +72,7 @@ interactive R console.
 >
 > RStudio offers you great flexibility in running code from within the editor
 > window. There are buttons, menu choices, and keyboard shortcuts. To run the
-> current line, you can 1. click on the `Run` button just above the editor panel,
+> current line, you can 1. click on the `Run` button above the editor panel,
 > or 2. select "Run Lines" from the "Code" menu, or 3. hit Ctrl-Enter in Windows
 > or Linux or Command-Enter on OS X. (This shortcut can also be seen by hovering
 > the mouse over the button). To run a block of code, select it and then `Run`.
@@ -75,7 +87,7 @@ Much of your time in R will be spent in the R interactive
 console. This is where you will run all of your code, and can be a
 useful environment to try out ideas before adding them to an R script
 file. This console in RStudio is the same as the one you would get if
-you just typed in `R` in your commandline environment.
+you typed in `R` in your commandline environment.
 
 The first thing you will see in the R interactive session is a bunch
 of information, followed by a ">" and a blinking cursor. In many ways
@@ -103,7 +115,7 @@ The simplest thing you could do with R is do arithmetic:
 And R will print out the answer, with a preceding "[1]". Don't worry about this
 for now, we'll explain that later. For now think of it as indicating ouput.
 
-Just like bash, if you type in an incomplete command, R will wait for you to
+Like bash, if you type in an incomplete command, R will wait for you to
 complete it:
 
 ~~~ {.r}
@@ -125,7 +137,7 @@ prompt.
 > you need to use `Ctrl+C` instead of `Esc` to cancel the command. This
 > applies to Mac users as well!
 >
-> Cancelling a command isn't just useful for killing incomplete commands:
+> Cancelling a command isn't only useful for killing incomplete commands:
 > you can also use it to tell R to stop running code (for example if its
 > taking much longer than you expect), or to get rid of the code you're
 > currently writing.
@@ -534,7 +546,7 @@ ls()
 
 > ## Tip: hidden objects {.callout}
 >
-> Just like in the shell, `ls` will hide any variables or functions starting
+> Like in the shell, `ls` will hide any variables or functions starting
 > with a "." by default. To list all objects, type `ls(all.names=TRUE)`
 > instead
 >
@@ -583,7 +595,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7f9dc4e56720>
+<bytecode: 0x7fb223e01a78>
 <environment: namespace:base>
 
 ~~~
@@ -603,15 +615,14 @@ you can pass the results of `ls` to the `rm` function:
 rm(list = ls())
 ~~~
 
-In this case we've combined the two. Just like the order of operations, anything
+In this case we've combined the two. Like the order of operations, anything
 inside the innermost parentheses is evaluated first, and so on.
 
 In this case we've specified that the results of `ls` should be used for the
 `list` argument in `rm`. When assigning values to arguments by name, you *must*
 use the `=` operator!!
 
-If instead we use `<-`, there will be unintended side effects, or you may just
-get an error message:
+If instead we use `<-`, there will be unintended side effects, or you may get an error message:
 
 
 ~~~{.r}
@@ -696,3 +707,97 @@ network). R and RStudio have functionality for managing packages:
 > 
 > Install the following packages: `ggplot2`, `plyr`, `gapminder`
 > 
+
+
+## Challenge Solutions
+
+> ## Solution to challenge 1 {.challenge}
+>
+> The following can be used as R variables:
+> 
+> ~~~{.r}
+> min_height
+> max.height
+> MaxLength
+> celsius2kelvin
+> ~~~
+>
+> The following creates a hidden variable:
+> 
+> ~~~{.r}
+> .mass
+> ~~~
+>
+> The following will not be able to be used to create a variable
+> 
+> ~~~{.r}
+> _age
+> min-length
+> 2widths
+> ~~~
+>
+
+> ## Solution to challenge 2 {.challenge}
+>
+> 
+> ~~~{.r}
+> mass <- 47.5
+> ~~~
+> This will give a value of 47.5 for the variable mass
+> 
+> 
+> ~~~{.r}
+> age <- 122
+> ~~~
+> This will give a value of 122 for the variable age
+>
+> 
+> ~~~{.r}
+> mass <- mass * 2.3
+> ~~~
+> This will multiply the existing value of 47.5 by 2.3 to give a new value of 
+> 109.25 to the variable mass.
+>
+> 
+> ~~~{.r}
+> age <- age - 20
+> ~~~
+> This will subtract 20 from the existing value of 122 to give a new value 
+> of 102 to the variable age.
+
+> ## Solution to challenge 3 {.challenge}
+>
+> One way of answering this question in R is to use the `>` to set up the following:
+> 
+> ~~~{.r}
+> mass > age
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+> [1] TRUE
+> 
+> ~~~
+> This should yield a boolean value of TRUE since 109.25 is greater than 102.
+
+> ## Solution to challenge 4 {.challenge}
+>
+> We can use the `rm` command to accomplish this task
+> 
+> ~~~{.r}
+> rm(age, mass)
+> ~~~
+>
+
+> ## Solution to challenge 4 {.challenge}
+>
+> We can use the `install.packages()` command to install the required packages.
+> We can also install them in one go like so:
+> 
+> ~~~{.r}
+> install.packages(c("ggplot2", "plyr", "gapminder"))
+> ~~~
+>
+
+
