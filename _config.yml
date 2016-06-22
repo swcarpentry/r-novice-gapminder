@@ -9,7 +9,7 @@ carpentry: "swc"
 kind: "lesson"
 
 # Overall title for pages.
-title: "Lesson Title"
+title: "R for reproducible scientific analysis"
 
 # Account (without slashes).
 account: "swcarpentry"
