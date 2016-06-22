@@ -1,24 +1,28 @@
 ---
-layout: page
-title: R for reproducible scientific analysis
-subtitle: Introduction to R and RStudio
-minutes: 45
+title: "Introduction to R and RStudio"
+teaching: 45
+exercises: 20
+questions:
+- "How to find your way around RStudio?"
+- "How to interact with R?"
+- "How to manage your environment?"
+- "How to install packages?"
+objectives:
+- "To gain familiarity with the various panes in the RStudio IDE"
+- "To gain familiarity with the buttons, short cuts and options in the RStudio IDE"
+- "To understand variables and how to assign to them"
+- "To be able to manage your workspace in an interactive R session"
+- "To be able to use mathematical and comparison operations"
+- "To be able to call functions"
+- "Introduction to package management"
+keypoints:
+- "TBD"
 ---
 
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
 ```
 
-> ## Learning Objectives {.objectives}
->
-> * To gain familiarity with the various panes in the RStudio IDE
-> * To gain familiarity with the buttons, short cuts and options in the RStudio IDE
-> * To understand variables and how to assign to them
-> * To be able to manage your workspace in an interactive R session
-> * To be able to use mathematical and comparison operations
-> * To be able to call functions
-> * Introduction to package management
->
 
 ## Motivation
 
@@ -70,7 +74,7 @@ interactive R console.
    * You will be able to run the file you create from within RStudio
    or using R's `source()`  function.
 
-> ## Tip: Running segments of your code {.callout}
+> ## Tip: Running segments of your code
 >
 > RStudio offers you great flexibility in running code from within the editor
 > window. There are buttons, menu choices, and keyboard shortcuts. To run the
@@ -82,6 +86,7 @@ interactive R console.
 > there is no need to reselct the section and `Run`, you can use the next button
 > along, `Re-run the previous region`. This will run the previous code block
 > inculding the modifications you have made.
+{: .callout}
 
 ## Introduction to R
 
@@ -112,20 +117,22 @@ for now, we'll explain that later. For now think of it as indicating ouput.
 Like bash, if you type in an incomplete command, R will wait for you to
 complete it:
 
-~~~ {.r}
+~~~
 > 1 +
 ~~~
+{: .r}
 
-~~~ {.output}
+~~~
 +
 ~~~
+{: .output}
 
 Any time you hit return and the R session shows a "+" instead of a ">", it
 means it's waiting for you to complete the command. If you want to cancel
 a command you can simply hit "Esc" and RStudio will give you back the ">"
 prompt.
 
-> ## Tip: Cancelling commands {.callout}
+> ## Tip: Cancelling commands
 >
 > If you're using R from the commandline instead of from within RStudio,
 > you need to use `Ctrl+C` instead of `Esc` to cancel the command. This
@@ -136,6 +143,7 @@ prompt.
 > taking much longer than you expect), or to get rid of the code you're
 > currently writing.
 >
+{: .callout}
 
 When using R as a calculator, the order of operations is the same as you
 would have learnt back in school.
@@ -256,7 +264,7 @@ We can also do comparison in R:
 1 >= -9 # greater than or equal to
 ```
 
-> ## Tip: Comparing Numbers {.callout}
+> ## Tip: Comparing Numbers
 >
 > A word of warning about comparing numbers: you should
 > never use `==` to compare two numbers unless they are
@@ -274,6 +282,7 @@ We can also do comparison in R:
 >
 > Further reading: [http://floating-point-gui.de/](http://floating-point-gui.de/)
 >
+{: .callout}
 
 ## Variables and assignment
 
@@ -365,12 +374,13 @@ There are a few useful commands you can use to interact with the R session.
 ls()
 ```
 
-> ## Tip: hidden objects {.callout}
+> ## Tip: hidden objects
 >
 > Like in the shell, `ls` will hide any variables or functions starting
 > with a "." by default. To list all objects, type `ls(all.names=TRUE)`
 > instead
 >
+{: .callout}
 
 Note here that we didn't given any arguments to `ls`, but we still
 needed to give the parentheses to tell R to call the function.
@@ -407,7 +417,7 @@ If instead we use `<-`, there will be unintended side effects, or you may get an
 rm(list <- ls())
 ```
 
-> ## Tip: Warnings vs. Errors {.callout}
+> ## Tip: Warnings vs. Errors
 >
 > Pay attention when R does something unexpected! Errors, like above,
 > are thrown when R cannot proceed with a calculation. Warnings on the
@@ -417,7 +427,7 @@ rm(list <- ls())
 > In both cases, the message that R prints out usually give you clues
 > how to fix a problem.
 >
-
+{: .callout}
 
 ## R Packages
 
@@ -434,7 +444,8 @@ network). R and RStudio have functionality for managing packages:
 * You can remove a package with `remove.packages("packagename")`
 * You can make a package available for use with `library(packagename)`
 
-> ## Challenge 1 {.challenge}
+> ## Challenge 1
+>
 > Which of the following are valid R variable names?
 > ```{r, eval=FALSE}
 > min_height
@@ -446,8 +457,32 @@ network). R and RStudio have functionality for managing packages:
 > 2widths
 > celsius2kelvin
 > ```
+>
+> > ## Solution to challenge 1
+> >
+> > The following can be used as R variables:
+> > ```{r ch1pt1-sol, eval=FALSE}
+> > min_height
+> > max.height
+> > MaxLength
+> > celsius2kelvin
+> > ```
+> >
+> > The following creates a hidden variable:
+> > ```{r ch1pt2-sol, eval=FALSE}
+> > .mass
+> > ```
+> >
+> > The following will not be able to be used to create a variable
+> > ```{r ch1pt3-sol, eval=FALSE}
+> > _age
+> > min-length
+> > 2widths
+> > ```
+> {: .solution}
+{: .challenge}
 
-> ## Challenge 2 {.challenge}
+> ## Challenge 2
 >
 > What will be the value of each  variable  after each
 > statement in the following program?
@@ -459,95 +494,73 @@ network). R and RStudio have functionality for managing packages:
 > age <- age - 20
 > ```
 >
+> > ## Solution to challenge 2
+> >
+> > ```{r ch2pt1-sol}
+> > mass <- 47.5
+> > ```
+> > This will give a value of `r mass` for the variable mass
+> >
+> > ```{r ch2pt2-sol}
+> > age <- 122
+> > ```
+> > This will give a value of `r age` for the variable age
+> >
+> > ```{r ch2pt3-sol}
+> > mass <- mass * 2.3
+> > ```
+> > This will multiply the existing value of `r mass/2.3` by 2.3 to give a new value of
+> > `r mass` to the variable mass.
+> >
+> > ```{r ch2pt4-sol}
+> > age <- age - 20
+> > ```
+> > This will subtract 20 from the existing value of `r age + 20 ` to give a new value
+> > of `r age` to the variable age.
+> {: .solution}
+{: .challenge}
 
-> ## Challenge 3 {.challenge}
+
+> ## Challenge 3
 >
 > Run the code from the previous challenge, and write a command to
 > compare mass to age. Is mass larger than age?
 >
+> > ## Solution to challenge 3
+> >
+> > One way of answering this question in R is to use the `>` to set up the following:
+> > ```{r ch3-sol}
+> > mass > age
+> >```
+> > This should yield a boolean value of TRUE since `r mass` is greater than `r age`.
+> {: .solution}
+{: .challenge}
 
-> ## Challenge 4 {.challenge}
+
+> ## Challenge 4
 >
 > Clean up your working environment by deleting the mass and age
 > variables.
 >
+> > ## Solution to challenge 4
+> >
+> > We can use the `rm` command to accomplish this task
+> > ```{r ch4-sol}
+> > rm(age, mass)
+> > ```
+> {: .solution}
+{: .challenge}
 
-> ## Challenge 5 {.challenge}
+> ## Challenge 5
 >
 > Install the following packages: `ggplot2`, `plyr`, `gapminder`
 >
-
-
-## Challenge Solutions
-
-> ## Solution to challenge 1 {.challenge}
->
-> The following can be used as R variables:
-> ```{r ch1pt1-sol, eval=FALSE}
-> min_height
-> max.height
-> MaxLength
-> celsius2kelvin
-> ```
->
-> The following creates a hidden variable:
-> ```{r ch1pt2-sol, eval=FALSE}
-> .mass
-> ```
->
-> The following will not be able to be used to create a variable
-> ```{r ch1pt3-sol, eval=FALSE}
-> _age
-> min-length
-> 2widths
-> ```
->
-
-> ## Solution to challenge 2 {.challenge}
->
-> ```{r ch2pt1-sol}
-> mass <- 47.5
-> ```
-> This will give a value of `r mass` for the variable mass
->
-> ```{r ch2pt2-sol}
-> age <- 122
-> ```
-> This will give a value of `r age` for the variable age
->
-> ```{r ch2pt3-sol}
-> mass <- mass * 2.3
-> ```
-> This will multiply the existing value of `r mass/2.3` by 2.3 to give a new value of
-> `r mass` to the variable mass.
->
-> ```{r ch2pt4-sol}
-> age <- age - 20
-> ```
-> This will subtract 20 from the existing value of `r age + 20 ` to give a new value
-> of `r age` to the variable age.
-
-> ## Solution to challenge 3 {.challenge}
->
-> One way of answering this question in R is to use the `>` to set up the following:
-> ```{r ch3-sol}
-> mass > age
->```
-> This should yield a boolean value of TRUE since `r mass` is greater than `r age`.
-
-> ## Solution to challenge 4 {.challenge}
->
-> We can use the `rm` command to accomplish this task
-> ```{r ch4-sol}
-> rm(age, mass)
-> ```
->
-
-> ## Solution to challenge 4 {.challenge}
->
-> We can use the `install.packages()` command to install the required packages.
-> We can also install them in one go like so:
-> ```{r ch5-sol, eval=FALSE}
-> install.packages(c("ggplot2", "plyr", "gapminder"))
->```
->
+> > ## Solution to challenge 5
+> >
+> > We can use the `install.packages()` command to install the required packages.
+> > We can also install them in one go like so:
+> > ```{r ch5-sol, eval=FALSE}
+> > install.packages(c("ggplot2", "plyr", "gapminder"))
+> >```
+> {: .solution}
+{: .challenge}
