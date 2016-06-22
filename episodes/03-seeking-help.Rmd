@@ -6,7 +6,7 @@ minutes: 15
 ---
 
 ```{r, include=FALSE}
-source("tools/chunk-options.R")
+source("../bin/chunk-options.R")
 ```
 
 
@@ -109,9 +109,9 @@ have loaded. This can be useful for others to help reproduce and debug
 your issue.
 
 > ## Challenge 1 {.challenge}
-> 
+>
 > Look at the help for the `c` function. What kind of vector do you
-> expect you will create if you evaluate the following: 
+> expect you will create if you evaluate the following:
 > ```{r, eval=FALSE}
 > c(1, 2, 3)
 > c('d', 'e', 'f')
@@ -119,10 +119,10 @@ your issue.
 > ```
 
 > ## Challenge 2 {.challenge}
-> 
-> Look at the help for the `paste` function. You'll need to use this later. 
+>
+> Look at the help for the `paste` function. You'll need to use this later.
 > What is the difference between the `sep` and `collapse` arguments?
-> 
+>
 
 > ## Challenge 3 {.challenge}
 > Use help to find a function (and its associated parameters) that you could
@@ -150,9 +150,9 @@ your issue.
 >
 
 > ## Solution to Challenge 2 {.challenge}
-> 
-> Look at the help for the `paste` function. You'll need to use this later. 
-> 
+>
+> Look at the help for the `paste` function. You'll need to use this later.
+>
 > ```{r, eval=FALSE}
 > help("paste")
 > ?paste

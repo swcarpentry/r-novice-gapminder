@@ -6,11 +6,11 @@ minutes: 45
 ---
 
 ```{r, include=FALSE}
-source("tools/chunk-options.R")
+source("../bin/chunk-options.R")
 
 ## Save the data
 cats <- data.frame(coat = factor(c("calico", "black", "tabby")),
-                   weight = c(2.1, 5.0, 3.2), 
+                   weight = c(2.1, 5.0, 3.2),
                    likes_string = c(TRUE, FALSE, TRUE))
 ```
 
@@ -83,7 +83,7 @@ We can ask for a data.frame minus this offending row:
 cats[-4,]
 ```
 
-Notice the comma with nothing after it to indicate we want to drop the entire fourth row. 
+Notice the comma with nothing after it to indicate we want to drop the entire fourth row.
 
 Note: We could also remove both new rows at once by putting the row numbers inside of a vector: `cats[c(4,5),]`
 
@@ -125,7 +125,7 @@ cats
 > - last name
 > - lucky number
 >
-> Then use `rbind` to add an entry for the people sitting beside you. 
+> Then use `rbind` to add an entry for the people sitting beside you.
 > Finally, use `cbind` to add a column with each person's answer to the question, "Is it time for coffee break?"
 >
 
@@ -141,7 +141,7 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv")
 >
 > 2. You can also read in files from the Internet by replacing
 > the file paths with a web address. For example,
-> 
+>
 > ```{r eval=FALSE, echo=TRUE}
 > gapminder <- read.csv("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/data/gapminder-FiveYearData.csv")
 > ```
@@ -218,7 +218,7 @@ into a script file so we can come back to it later.
 
 > ## Challenge 3 {.challenge}
 >
-> Read the output of `str(gapminder)` again; 
+> Read the output of `str(gapminder)` again;
 > this time, use what you've learned about factors, lists and vectors,
 > as well as the output of functions like `colnames` and `dim`
 > to explain what everything that `str` prints out for gapminder means.
@@ -247,10 +247,9 @@ into a script file so we can come back to it later.
 >
 
 > ## Solution to Challenge 3 {.challenge}
-> 
+>
 > The object `gapminder` is a data frame with columns
 > - `country` and `continent` are factors.
 > - `year` is an integer vector.
 > - `pop`, `lifeExp`, and `gdpPercap` are numeric vectors.
-> 
-
+>

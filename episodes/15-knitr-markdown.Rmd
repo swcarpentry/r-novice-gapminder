@@ -6,7 +6,7 @@ minutes: 60
 ---
 
 ```{r chunk_options, include=FALSE}
-source("tools/chunk-options.R")
+source("../bin/chunk-options.R")
 opts_chunk$set(fig.path="fig/Rmd-")
 ```
 

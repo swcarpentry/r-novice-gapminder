@@ -6,7 +6,7 @@ minutes: 30
 ---
 
 ```{r, include=FALSE}
-source("tools/chunk-options.R")
+source("../bin/chunk-options.R")
 opts_chunk$set(fig.path = "fig/09-vectorisation-")
 # Silently load in the data so the rest of the lesson works
 gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
@@ -79,7 +79,7 @@ vectorized:
 x > 2
 ```
 
-**Logical operators** 
+**Logical operators**
 ```{r}
 a <- x > 3  # or, for clarity, a <- (x > 3)
 a
@@ -103,15 +103,15 @@ Vectorised operations work element-wise on matrices:
 
 ```{r}
 m <- matrix(1:12, nrow=3, ncol=4)
-m * -1  
+m * -1
 ```
- 
+
 
 > ## Tip: element-wise vs. matrix multiplication {.callout}
 >
 > Very important: the operator `*` gives you element-wise multiplication!
 > To do matrix multiplication, we need to use the `%*%` operator:
-> 
+>
 > ```{r}
 > m %*% matrix(1, nrow=4, ncol=1)
 > matrix(1:4, nrow=1) %*% matrix(1:4, ncol=1)
@@ -175,11 +175,11 @@ m * -1
 > Refresh your plotting skills by plotting population in millions against year.
 >
 > ```{r ch2-sol}
-> ggplot(gapminder, aes(x = year, y = pop_millions)) + 
+> ggplot(gapminder, aes(x = year, y = pop_millions)) +
 >  geom_point()
 > countryset <- c("China","India","Indonesia")
 > ggplot(gapminder[gapminder$country %in% countryset,],
->        aes(x = year, y = pop_millions)) + 
+>        aes(x = year, y = pop_millions)) +
 >   geom_point()
 > ```
 >
@@ -235,7 +235,7 @@ m * -1
 > n <- 10000
 > sum(1/(1:n)^2)
 > ```
-> 
+>
 > We can also obtain the same results using a function:
 > ```{r}
 > inverse_sum_of_squares <- function(n) {
@@ -247,4 +247,3 @@ m * -1
 > inverse_sum_of_squares(n)
 > ```
 >
-

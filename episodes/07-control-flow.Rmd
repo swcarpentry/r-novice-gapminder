@@ -6,7 +6,7 @@ minutes: 35
 ---
 
 ```{r, include=FALSE}
-source("tools/chunk-options.R")
+source("../bin/chunk-options.R")
 # Silently load in the data so the rest of the lesson works
 gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 # Silently set seed for random number generation, so we don't have to explain it
@@ -129,7 +129,7 @@ element. Here you need to make sure your condition is of length 1.
 
 ## Repeating operations
 
- 
+
 
 If you want to iterate over
 a set of values, when the order of iteration is important, and perform the
@@ -221,17 +221,17 @@ output_vector2
 >
 > Sometimes you will find yourself needing to repeat an operation until a certain
 > condition is met. You can do this with a `while()` loop.
-> 
+>
 > ```{r, eval=FALSE}
 > while(this condition is true){
 >   do a thing
 > }
 > ```
-> 
-> As an example, here's a while loop 
+>
+> As an example, here's a while loop
 > that generates random numbers from a uniform distribution (the `runif()` function)
 > between 0 and 1 until it gets one that's less than 0.1.
-> 
+>
 > ~~~ {.r}
 > z <- 1
 > while(z > 0.1){
@@ -239,7 +239,7 @@ output_vector2
 >   print(z)
 > }
 > ~~~
-> 
+>
 > `while()` loops will not always be appropriate. You have to be particularly careful
 > that you don't end up in an infinite loop because your condition is never met.
 >

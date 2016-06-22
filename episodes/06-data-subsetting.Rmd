@@ -6,7 +6,7 @@ minutes: 45
 ---
 
 ```{r, include=FALSE}
-source("tools/chunk-options.R")
+source("../bin/chunk-options.R")
 # Silently load in the data so the rest of the lesson works
 gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 ```
@@ -93,8 +93,8 @@ If we ask for the 0th element, we get an empty vector:
 x[0]
 ```
 
-> ##Vector numbering in R starts at 1 {.callout} 
-> 
+> ##Vector numbering in R starts at 1 {.callout}
+>
 > In many programming languages (C and python, for example), the first
 > element of a vector has an index of 0. In R, the first element is 1.
 
@@ -260,7 +260,7 @@ names of `x`, and asks, "Does this element occur in the second argument?".
 >```{r}
 > x <- 1:3
 > x
-> names(x) <- c('a', 'a', 'a')  
+> names(x) <- c('a', 'a', 'a')
 > x
 > x['a']  # only returns first value
 > x[which(names(x) == 'a')]  # returns all three values
@@ -574,7 +574,7 @@ xlist$data
 > xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
 > ```
 >
-> Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. 
+> Using your knowledge of both list and vector subsetting, extract the number 2 from xlist.
 > Hint: the number 2 is contained within the "b" item in the list.
 
 > ## Challenge 6 {.challenge}
@@ -692,7 +692,7 @@ be changed with the third argument, `drop = FALSE`).
 > ```
 >
 > ```{r, eval=FALSE}
-> x[2:4] 
+> x[2:4]
 > x[-c(1,5)]
 > x[c("b", "c", "d")]
 > x[c(2,3,4)]
@@ -796,7 +796,7 @@ be changed with the third argument, `drop = FALSE`).
 > xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
 > ```
 >
-> Using your knowledge of both list and vector subsetting, extract the number 2 from xlist. 
+> Using your knowledge of both list and vector subsetting, extract the number 2 from xlist.
 > Hint: the number 2 is contained within the "b" item in the list.
 >
 > ```{r, eval=FALSE}

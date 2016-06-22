@@ -6,7 +6,7 @@ minutes: 90
 ---
 
 ```{r, include=FALSE}
-source("tools/chunk-options.R")
+source("../bin/chunk-options.R")
 opts_chunk$set(fig.path = "fig/13-dplyr-")
 # Silently load in the data so the rest of the lesson works
 gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
@@ -31,7 +31,7 @@ But this isn't very *nice* because there is a fair bit of repetition. Repeating 
 
 Luckily, the [`dplyr`](https://cran.r-project.org/web/packages/dplyr/dplyr.pdf) package provides a number of very useful functions for manipulating dataframes in a way that will reduce the above repetition, reduce the probability of making errors, and probably even save you some typing. As an added bonus, you might even find the `dplyr` grammar easier to read.
 
-Here we're going to cover 6 of the most commonly used functions as well as using pipes (`%>%`) to combine them. 
+Here we're going to cover 6 of the most commonly used functions as well as using pipes (`%>%`) to combine them.
 
 1. `select()`
 2. `filter()`
@@ -81,7 +81,7 @@ year_country_gdp_euro <- gapminder %>%
 
 > ## Challenge 1 {.challenge}
 >
-> Write a single command (which can span multiple lines and includes pipes) that will produce a dataframe that has the African values for `lifeExp`, `country` and `year`, but not for other Continents. 
+> Write a single command (which can span multiple lines and includes pipes) that will produce a dataframe that has the African values for `lifeExp`, `country` and `year`, but not for other Continents.
 >How many rows does your dataframe have and why?
 >
 
@@ -181,7 +181,7 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 
 > ## Solution to Advanced Challenge {.challenge}
 >```{r}
->lifeExp_2countries_bycontinents <- gapminder %>% 
+>lifeExp_2countries_bycontinents <- gapminder %>%
 >    filter(year==2002) %>%
 >    group_by(continent) %>%
 >    sample_n(2) %>%
