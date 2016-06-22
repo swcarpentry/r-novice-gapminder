@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: lesson
 title: R for reproducible scientific analysis
 ---
 
@@ -22,24 +22,25 @@ are not necessarily the best, nor are they comprehensive, but they are
 packages we find useful, and have been chosen primarily for their
 usability.
 
-> ## Prerequisites {.prereq}
+> ## Prerequisites
 >
 > Understand that computers store data and instructions (programs, scripts etc.) in files. Files are organised in directories (folders).
 > Know how to access files not in the working directory by specifying the path.
->
+{: .prereq}
 
-> ## Getting ready {.getready}
+> ## Getting ready
 >
 > This lesson assumes you have the R, RStudio software installed on your computer.
 >
 > R can be downloaded [here](https://cran.r-project.org/mirrors.html).
 >
 > RStudio is an environment for developing using R. It can be downloaded [here](https://www.rstudio.com/products/rstudio/download/). You will need the Desktop version for your computer.
->
+{: .checklist}
+
 
 ## Topics
 
-1.  [Introduction to R and RStudio](01-rstudio-intro.html)
+1.  [Introduction to R and RStudio](/01-rstudio-intro)
 2.  [Project management with RStudio](02-project-intro.html)
 3.  [Seeking help](03-seeking-help.html)
 4.  [Data structures](04-data-structures-part1.html)
