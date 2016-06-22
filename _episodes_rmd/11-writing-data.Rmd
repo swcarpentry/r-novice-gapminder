@@ -6,7 +6,7 @@ minutes: 20
 ---
 
 ```{r, include=FALSE}
-source("tools/chunk-options.R")
+source("../bin/chunk-options.R")
 opts_chunk$set(fig.path = "fig/11-writing-data-")
 # Silently load in the data so the rest of the lesson works
 library(ggplot2)

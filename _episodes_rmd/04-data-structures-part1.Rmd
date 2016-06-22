@@ -6,7 +6,7 @@ minutes: 90
 ---
 
 ```{r, include=FALSE}
-source("tools/chunk-options.R")
+source("../bin/chunk-options.R")
 
 ## Save the data
 cats_orig <- data.frame(coat = factor(c("calico", "black", "tabby")),

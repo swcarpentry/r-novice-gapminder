@@ -6,7 +6,7 @@ minutes: 45
 ---
 
 ```{r, include=FALSE}
-source("tools/chunk-options.R")
+source("../bin/chunk-options.R")
 ```
 
 > ## Learning Objectives {.objectives}
@@ -18,18 +18,18 @@ source("tools/chunk-options.R")
 > * To be able to use mathematical and comparison operations
 > * To be able to call functions
 > * Introduction to package management
-> 
+>
 
 ## Motivation
 
-Science is a multi-step process: once you've designed an experiment and collected 
-data, the real fun begins! This lesson will teach you how to start this process using 
-R and RStudio. We will begin with raw data, perform exploratory analyses, and learn 
-how to plot results graphically. This example starts with the 
-`data/gapminder-FiveYearData.csv` dataset containing population information for many 
-countries through time. Can you read the data into R? Can you plot the population for 
-Senegal? Can you calculate the average income for countries on continent of Asia? 
-By the end of these lessons you will be able to do things like plot the populations 
+Science is a multi-step process: once you've designed an experiment and collected
+data, the real fun begins! This lesson will teach you how to start this process using
+R and RStudio. We will begin with raw data, perform exploratory analyses, and learn
+how to plot results graphically. This example starts with the
+`data/gapminder-FiveYearData.csv` dataset containing population information for many
+countries through time. Can you read the data into R? Can you plot the population for
+Senegal? Can you calculate the average income for countries on continent of Asia?
+By the end of these lessons you will be able to do things like plot the populations
 for all of these countries in under a minute!
 
 ## Introduction to RStudio
@@ -60,12 +60,12 @@ in the top left.
 There are two main ways one can work within RStudio.
 
 1. Test and play within the interactive R console then copy code into
-a .R file to run later. 
+a .R file to run later.
    *  This works well when doing small tests and initially starting off.
    *  It quickly becomes laborious
 2. Start writing in an .R file and use RStudio's command / short cut
 to push current line, selected lines or modified lines to the
-interactive R console. 
+interactive R console.
    * This is a great way to start; all your code is saved for later
    * You will be able to run the file you create from within RStudio
    or using R's `source()`  function.
@@ -154,7 +154,7 @@ From highest to lowest precedence:
 ```
 
 Use parentheses to group operations in order to force the order of
-evaluation if it differs from the default, or to make clear what you 
+evaluation if it differs from the default, or to make clear what you
 intend.
 
 ```{r}
@@ -473,9 +473,9 @@ network). R and RStudio have functionality for managing packages:
 >
 
 > ## Challenge 5 {.challenge}
-> 
+>
 > Install the following packages: `ggplot2`, `plyr`, `gapminder`
-> 
+>
 
 
 ## Challenge Solutions
@@ -509,7 +509,7 @@ network). R and RStudio have functionality for managing packages:
 > mass <- 47.5
 > ```
 > This will give a value of `r mass` for the variable mass
-> 
+>
 > ```{r ch2pt2-sol}
 > age <- 122
 > ```
@@ -518,13 +518,13 @@ network). R and RStudio have functionality for managing packages:
 > ```{r ch2pt3-sol}
 > mass <- mass * 2.3
 > ```
-> This will multiply the existing value of `r mass/2.3` by 2.3 to give a new value of 
+> This will multiply the existing value of `r mass/2.3` by 2.3 to give a new value of
 > `r mass` to the variable mass.
 >
 > ```{r ch2pt4-sol}
 > age <- age - 20
 > ```
-> This will subtract 20 from the existing value of `r age + 20 ` to give a new value 
+> This will subtract 20 from the existing value of `r age + 20 ` to give a new value
 > of `r age` to the variable age.
 
 > ## Solution to challenge 3 {.challenge}
@@ -551,5 +551,3 @@ network). R and RStudio have functionality for managing packages:
 > install.packages(c("ggplot2", "plyr", "gapminder"))
 >```
 >
-
-

@@ -6,7 +6,7 @@ minutes: 30
 ---
 
 ```{r, include=FALSE}
-source("tools/chunk-options.R")
+source("../bin/chunk-options.R")
 ```
 
 > ## Learning Objectives {.objectives}
