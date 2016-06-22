@@ -1,13 +1,5 @@
-README.html
-LAYOUT.html
-FAQ.html
-DESIGN.html
-CONTRIBUTING.html
-CONDUCT.html
-*.html
-*.md
 *~
-*.pyc
-_site
 .DS_Store
-.Rproj.user
+.sass-cache
+_site
+__pycache__
