@@ -1,21 +1,20 @@
 ---
-layout: page
-title: R for reproducible scientific analysis
-subtitle: Seeking help
-minutes: 15
+title: "Seeking help"
+teaching: 15
+exercises: 10
+questions:
+-
+objectives:
+- "To be able read R help files for functions and special operators."
+- "To be able to use CRAN task views to identify packages to solve a problem."
+- "To be able to seek help from your peers."
+keypoints:
+-
 ---
 
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
 ```
-
-
-> ## Learning Objectives {.objectives}
->
-> * To be able read R help files for functions and special operators.
-> * To be able to use CRAN task views to identify packages to solve a problem.
-> * To be able to seek help from your peers
->
 
 ## Reading Help files
 
@@ -42,13 +41,13 @@ Each help page is broken down into sections:
 
 Different functions might have different sections, but these are the main ones you should be aware of.
 
-> ## Tip: Reading help files {.callout}
+> ## Tip: Reading help files
 >
 > One of the most daunting aspects of R is the large number of functions
 > available. It would be prohibitive, if not impossible to remember the
 > correct usage for every function you use. Luckily, the help files
 > mean you don't have to!
->
+{: .callout}
 
 ## Special Operators
 
@@ -108,7 +107,7 @@ Will print out your current version of R, as well as any packages you
 have loaded. This can be useful for others to help reproduce and debug
 your issue.
 
-> ## Challenge 1 {.challenge}
+> ## Challenge 1
 >
 > Look at the help for the `c` function. What kind of vector do you
 > expect you will create if you evaluate the following:
@@ -117,14 +116,32 @@ your issue.
 > c('d', 'e', 'f')
 > c(1, 2, 'f')`
 > ```
+> > ## Solution to Challenge 1
+> >
+> > The `c()` function creates a vector, in which all elements are the
+> > same type. In the first case, the elements are numeric, in the
+> > second, they are characters, and in the third they are characters:
+> > the numeric values "coerced" to be characters.
+> {: .solution}
+{: .challenge}
 
-> ## Challenge 2 {.challenge}
+> ## Challenge 2
 >
 > Look at the help for the `paste` function. You'll need to use this later.
 > What is the difference between the `sep` and `collapse` arguments?
 >
+> > ## Solution to Challenge 2
+> >
+> > Look at the help for the `paste` function. You'll need to use this later.
+> >
+> > ```{r, eval=FALSE}
+> > help("paste")
+> > ?paste
+> > ```
+> {: .solution}
+{: .challenge}
 
-> ## Challenge 3 {.challenge}
+> ## Challenge 3
 > Use help to find a function (and its associated parameters) that you could
 > use to load data from a csv file in which columns are delimited with "\t"
 > (tab) and the decimal point is a "." (period). This check for decimal
@@ -132,29 +149,10 @@ your issue.
 > colleagues, because different countries have different conventions for the
 > decimal point (i.e. comma vs period).
 > hint: use `??csv` to lookup csv related functions.
+{: .challenge}
 
 ## Other ports of call
 
 * [Quick R](http://www.statmethods.net/)
 * [RStudio cheat sheets](http://www.rstudio.com/resources/cheatsheets/)
 * [Cookbook for R](http://www.cookbook-r.com/)
-
-## Challenge solutions
-
-> ## Solution to Challenge 1 {.challenge}
->
-> The `c()` function creates a vector, in which all elements are the
-> same type. In the first case, the elements are numeric, in the
-> second, they are characters, and in the third they are characters:
-> the numeric values "coerced" to be characters.
->
-
-> ## Solution to Challenge 2 {.challenge}
->
-> Look at the help for the `paste` function. You'll need to use this later.
->
-> ```{r, eval=FALSE}
-> help("paste")
-> ?paste
-> ```
->
