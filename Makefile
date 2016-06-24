@@ -57,7 +57,7 @@ RMD_SRC = $(wildcard _episodes_rmd/??-*.Rmd)
 RMD_DST = $(patsubst _episodes_rmd/%.Rmd,_episodes/%.md,$(RMD_SRC))
 
 # Lesson source files in the order they appear in the navigation menu.
-SRC_FILES = \
+MARKDOWN_SRC = \
   index.md \
   CONDUCT.md \
   setup.md \
@@ -67,7 +67,7 @@ SRC_FILES = \
   LICENSE.md
 
 # Generated lesson files in the order they appear in the navigation menu.
-HTML_FILES = \
+HTML_DST = \
   ${DST}/index.html \
   ${DST}/conduct/index.html \
   ${DST}/setup/index.html \
@@ -78,7 +78,7 @@ HTML_FILES = \
 
 ## lesson-rmd:    : convert Rmarkdown files to markdown
 lesson-rmd: $(RMD_SRC)
-	@bin/knit_lessons.sh
+	@bin/knit_lessons.sh $(RMD_SRC)
 
 ## lesson-check   : validate lesson Markdown.
 lesson-check :
@@ -89,13 +89,14 @@ unittest :
 
 ## lesson-files   : show expected names of generated files for debugging.
 lesson-files :
-	@echo 'RMarkdown:' ${RMD_SRC}
-	@echo 'source:' ${SRC_FILES}
-	@echo 'generated:' ${HTML_FILES}
+	@echo 'RMD_SRC:' ${RMD_SRC}
+	@echo 'RMD_DST:' ${RMD_DST}
+	@echo 'MARKDOWN_SRC:' ${MARKDOWN_SRC}
+	@echo 'HTML_DST:' ${HTML_DST}
 
 ## lesson-fixme   : show FIXME markers embedded in source files.
 lesson-fixme :
-	@fgrep -i -n FIXME ${SRC_FILES} || true
+	@fgrep -i -n FIXME ${MARKDOWN_SRC} || true
 
 #-------------------------------------------------------------------------------
 # Include extra commands if available.
