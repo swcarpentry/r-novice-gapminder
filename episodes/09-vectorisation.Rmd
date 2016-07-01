@@ -1,22 +1,22 @@
 ---
-layout: page
-title: R for reproducible scientific analysis
-subtitle: Vectorisation
-minutes: 30
+title: Vectorisation
+teaching: 30
+exercises: 20
+questions:
+- "TODO"
+objectives:
+- "To understand vectorised operations in R."
+kepoints:
+- "TODO"
 ---
 
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
-opts_chunk$set(fig.path = "fig/09-vectorisation-")
+#opts_chunk$set(fig.path = "fig/09-vectorisation-")
 # Silently load in the data so the rest of the lesson works
 gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 library(ggplot2)
 ```
-
-> ## Learning Objectives {.objectives}
->
-> * To understand vectorised operations in R.
->
 
 Most of R's functions are vectorised, meaning that the function will
 operate on all elements of a vector without needing to loop through
@@ -58,6 +58,22 @@ y:  6  7  8  9
 > Check the head or tail of the data frame to make sure
 > it worked.
 >
+> > ## Solution to challenge 1 {.challenge}
+> >
+> > Let's try this on the `pop` column of the `gapminder` dataset.
+> >
+> > Make a new column in the `gapminder` data frame that
+> > contains population in units of millions of people.
+> > Check the head or tail of the data frame to make sure
+> > it worked.
+> >
+> > ```{r}
+> > gapminder$pop_millions <- gapminder$pop / 1e6
+> > head(gapminder)
+> > ```
+> {: .solution}
+{: .challenge}
+
 
 > ## Challenge 2 {.challenge}
 >
@@ -68,6 +84,21 @@ y:  6  7  8  9
 > Repeat the exercise, graphing only for China, India, and
 >Indonesia. Again, don't worry about which is which.
 >
+> > ## Solution to challenge 2 {.challenge}
+> >
+> > Refresh your plotting skills by plotting population in millions against year.
+> >
+> > ```{r ch2-sol}
+> > ggplot(gapminder, aes(x = year, y = pop_millions)) +
+> >  geom_point()
+> > countryset <- c("China","India","Indonesia")
+> > ggplot(gapminder[gapminder$country %in% countryset,],
+> >        aes(x = year, y = pop_millions)) +
+> >   geom_point()
+> > ```
+> {: .solution}
+{: .challenge}
+
 
 Comparison operators, logical operators, and many functions are also
 vectorized:
@@ -85,11 +116,11 @@ a <- x > 3  # or, for clarity, a <- (x > 3)
 a
 ```
 
-> ## Tip: some useful functions for logical vectors {.callout}
+> ## Tip: some useful functions for logical vectors
 >
 > `any()` will return `TRUE` if *any* element of a vector is `TRUE`
 > `all()` will return `TRUE` if *all* elements of a vector are `TRUE`
->
+{: .callout}
 
 Most functions also operate element-wise on vectors:
 
@@ -138,6 +169,38 @@ m * -1
 >
 > Did you get the output you expected? If not, ask a helper!
 >
+> > ## Solution to challenge 3 {.challenge}
+> >
+> > Given the following matrix:
+> >
+> > ```{r}
+> > m <- matrix(1:12, nrow=3, ncol=4)
+> > m
+> > ```
+> >
+> >
+> > Write down what you think will happen when you run:
+> >
+> > 1. `m ^ -1`
+> >
+> > ```{r, echo=FALSE}
+> > m ^ -1
+> > ```
+> >
+> > 2. `m * c(1, 0, -1)`
+> >
+> > ```{r, echo=FALSE}
+> > m * c(1, 0, -1)
+> > ```
+> >
+> > 3. `m > c(0, 20)`
+> >
+> > ```{r, echo=FALSE}
+> > m > c(0, 20)
+> > ```
+> {: .solution}
+{: .callout}
+
 
 > ## Challenge 4 {.challenge}
 >
@@ -151,99 +214,37 @@ m * -1
 > This would be tedious to type out, and impossible for high values of
 > n.  Use vectorisation to compute x when n=100. What is the sum when
 > n=10,000?
-
-
-## Challenge solutions
-
-> ## Solution to challenge 1 {.challenge}
 >
-> Let's try this on the `pop` column of the `gapminder` dataset.
->
-> Make a new column in the `gapminder` data frame that
-> contains population in units of millions of people.
-> Check the head or tail of the data frame to make sure
-> it worked.
->
-> ```{r}
-> gapminder$pop_millions <- gapminder$pop / 1e6
-> head(gapminder)
-> ```
->
-
-> ## Solution to challenge 2 {.challenge}
->
-> Refresh your plotting skills by plotting population in millions against year.
->
-> ```{r ch2-sol}
-> ggplot(gapminder, aes(x = year, y = pop_millions)) +
->  geom_point()
-> countryset <- c("China","India","Indonesia")
-> ggplot(gapminder[gapminder$country %in% countryset,],
->        aes(x = year, y = pop_millions)) +
->   geom_point()
-> ```
->
-
-> ## Solution to challenge 3 {.challenge}
->
-> Given the following matrix:
->
-> ```{r}
-> m <- matrix(1:12, nrow=3, ncol=4)
-> m
-> ```
->
->
-> Write down what you think will happen when you run:
->
-> 1. `m ^ -1`
->
-> ```{r, echo=FALSE}
-> m ^ -1
-> ```
->
-> 2. `m * c(1, 0, -1)`
->
-> ```{r, echo=FALSE}
-> m * c(1, 0, -1)
-> ```
->
-> 3. `m > c(0, 20)`
->
-> ```{r, echo=FALSE}
-> m > c(0, 20)
-> ```
->
-
-> ##  Challenge 4 {.challenge}
->
-> We're interested in looking at the sum of the
-> following sequence of fractions:
->
-> ```{r, eval=FALSE}
->  x = 1/(1^2) + 1/(2^2) + 1/(3^2) + ... + 1/(n^2)
-> ```
->
-> This would be tedious to type out, and impossible for
-> high values of n.
-> Can you use vectorisation to compute x, when n=100?
-> How about when n=10,000?
->
-> ```{r}
-> sum(1/(1:100)^2)
-> sum(1/(1:1e04)^2)
-> n <- 10000
-> sum(1/(1:n)^2)
-> ```
->
-> We can also obtain the same results using a function:
-> ```{r}
-> inverse_sum_of_squares <- function(n) {
->   sum(1/(1:n)^2)
-> }
-> inverse_sum_of_squares(100)
-> inverse_sum_of_squares(10000)
-> n <- 10000
-> inverse_sum_of_squares(n)
-> ```
->
+> > ##  Challenge 4 {.challenge}
+> >
+> > We're interested in looking at the sum of the
+> > following sequence of fractions:
+> >
+> > ```{r, eval=FALSE}
+> >  x = 1/(1^2) + 1/(2^2) + 1/(3^2) + ... + 1/(n^2)
+> > ```
+> >
+> > This would be tedious to type out, and impossible for
+> > high values of n.
+> > Can you use vectorisation to compute x, when n=100?
+> > How about when n=10,000?
+> >
+> > ```{r}
+> > sum(1/(1:100)^2)
+> > sum(1/(1:1e04)^2)
+> > n <- 10000
+> > sum(1/(1:n)^2)
+> > ```
+> >
+> > We can also obtain the same results using a function:
+> > ```{r}
+> > inverse_sum_of_squares <- function(n) {
+> >   sum(1/(1:n)^2)
+> > }
+> > inverse_sum_of_squares(100)
+> > inverse_sum_of_squares(10000)
+> > n <- 10000
+> > inverse_sum_of_squares(n)
+> > ```
+> {: .solution}
+{: .challenge}
