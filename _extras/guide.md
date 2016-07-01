@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Lesson Title
-subtitle: Instructor's Guide
+title: "Instructor's Guide"
+permalink: /guide/
 ---
 
 ## Timing
