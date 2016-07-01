@@ -1,21 +1,21 @@
 ---
-layout: page
-title: R for reproducible scientific analysis
-subtitle: Split-apply-combine
-minutes: 45
+title: Split-apply-combine
+teaching: 45
+exercises: 10
+questions:
+- "FIXME"
+objectives:
+- "To be able to use the split-apply-combine strategy for data analysis."
+keypoints:
+- "FIXME"
 ---
 
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
-opts_chunk$set(fig.path = "fig/12-plyr-")
+##opts_chunk$set(fig.path = "fig/12-plyr-")
 # Silently load in the data so the rest of the lesson works
 gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 ```
-
-> ## Learning Objectives {.objectives}
->
-> * To be able to use the split-apply-combine strategy for data analysis
->
 
 Previously we looked at how you can use functions to simplify your code.
 We defined the `calcGDP` function, which takes the gapminder dataset,
@@ -194,32 +194,33 @@ d_ply(
 )
 ```
 
-> ## Tip: printing numbers {.callout}
+> ## Tip: printing numbers
 >
 > The `format` function can be used to make numeric
 > values "pretty" for printing out in messages.
->
+{: .callout}
 
 
-> ## Challenge 1 {.challenge}
+> ## Challenge 1
 >
 > Calculate the average life expectancy per continent. Which has the longest?
 > Which had the shortest?
->
+{: .challenge}
 
 > ## Challenge 2 {.challenge}
 >
 > Calculate the average life expectancy per continent and year. Which had the
 > longest and shortest in 2007? Which had the greatest change in between 1952
 > and 2007?
->
+{: .challenge}
+
 
 > ## Advanced Challenge {.challenge}
 >
 > Calculate the difference in mean life expectancy between
 > the years 1952 and 2007 from the output of challenge 2
 > using one of the `plyr` functions.
->
+{: .challenge}
 
 > ## Alternate Challenge if class seems lost {.challenge}
 >
@@ -268,3 +269,4 @@ d_ply(
 > )
 > ```
 >
+{: .challenge}
