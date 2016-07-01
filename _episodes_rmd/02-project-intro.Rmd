@@ -3,12 +3,12 @@ title: "Project management with RStudio"
 teaching: 30
 exercises: 20
 questions:
--
+- "FIXME"
 objectives:
 - To be able to create self-contained projects in RStudio
 - To be able to use git from within RStudio
 keypoints:
--
+- "FIXME"
 ---
 
 ```{r, include=FALSE}
@@ -238,9 +238,9 @@ between files from different commits.
 > > ## Solution to Challenge 3
 > >
 > > This can be done with the command line:
-> > ```{console}
+> > ```
 > > $ mkdir graphs
 > > $ echo "graphs/" >> .gitignore
-> > ```
+> > ```{. shell}
 > {: .solution}
 {: .challenge}

@@ -1,14 +1,14 @@
 ---
 title: "Exploring Data Frames"
 teaching: 45
-exercises:
+exercises: 10
 questions:
--
+- "FIXME"
 objectives:
 - "To learn how to manipulate a data.frame in memory"
 - "To tour some best practices of exploring and understanding a data frame when it is first loaded."
 keypoints:
--
+- "FIXME"
 ---
 
 ```{r, include=FALSE}
