@@ -3,13 +3,13 @@ title: "Data structures"
 teaching: 90
 exercises: 20
 questions:
--
+- "FIXME"
 objectives:
 - "To be aware of the different types of data."
 - "To begin exploring data frames, and understand how it's related to vectors, factors and lists."
 - "To be able to ask questions from R about the type, class, and structure of an object."
 keypoints:
--
+- "FIXME"
 ---
 
 ```{r, include=FALSE}
