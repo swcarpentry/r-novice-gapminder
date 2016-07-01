@@ -1,10 +1,10 @@
 ---
 layout: page
-title: R for reproducible scientific analysis
-subtitle: Reference
+title: "Reference"
+permalink: /reference/
 ---
 
-## [Introduction to R and RStudio](01-rstudio-intro.html)
+## [Introduction to R and RStudio](/01-rstudio-intro)
 
  - Use the escape key to cancel incomplete commands or running code
    (Ctrl+C) if you're using R from the shell.
@@ -29,7 +29,7 @@ subtitle: Reference
  - `rm` can be used to remove them
  - When assigning values to function arguments, you _must_ use `=`.
 
-## [Project management with RStudio](02-project-intro.html)
+## [Project management with RStudio](/02-project-intro)
 
  - To create a new project, go to File -> New Project
  - Install the `packrat` package to create self-contained projects
@@ -38,7 +38,7 @@ subtitle: Reference
  - `packrat::status` to check whether all packages referenced in your
    scripts have been installed.
 
-## [Seeking help](03-seeking-help.html)
+## [Seeking help](/03-seeking-help)
 
 - To access help for a function type `?function_name` or `help(function_name)`
 - Use quotes for special operators e.g. `?"+"`
@@ -48,7 +48,7 @@ subtitle: Reference
     - `?dput` will dump data you are working from so others can load it easily.
     - `sessionInfo()` will give details of your setup that others may need for debugging.
 
-## [Data structures](04-data-structures-part1.html)
+## [Data structures](/04-data-structures-part1)
 
 Individual values in R must be one of 5 **data types**, multiple values can be grouped in **data structures**.
 
@@ -124,7 +124,7 @@ behaviour of R).
  - `?nrow`, `?ncol`, `?dim` get the dimensions of a n-dimensional object
    (Won't work on atomic vectors or lists).
 
-## [Exploring Data Frames](05-data-structures-part2.html)
+## [Exploring Data Frames](/05-data-structures-part2)
 
  - `read.csv` to read in data in a regular structure
    - `sep` argument to specify the separator
@@ -133,7 +133,7 @@ behaviour of R).
    - Other arguments:
      - `header=TRUE` if there is a header row
 
-## [Subsetting data](06-data-subsetting.html)
+## [Subsetting data](/06-data-subsetting)
 
  - Elements can be accessed by:
    - Index
@@ -156,7 +156,7 @@ behaviour of R).
  - `$` to access columns or list elements by name
  - negative indices skip elements
 
-## [Control flow](07-control-flow.html)
+## [Control flow](/07-control-flow)
 
  - Use `if` condition to start a conditional statement, `else if` condition to provide
    additional tests, and `else` to provide a default
@@ -167,7 +167,7 @@ behaviour of R).
  - Zero is considered `FALSE`; all other numbers are considered `TRUE`
  - Nest loops to operate on multi-dimensional data.
 
-## [Creating publication quality graphics](08-plot-ggplot2.html)
+## [Creating publication quality graphics](/08-plot-ggplot2)
 
  - figures can be created with the grammar of graphics:
    - `library(ggplot2)`
@@ -183,7 +183,7 @@ behaviour of R).
    - order of layers matters!
    - `ggsave` to save a figure.
 
-## [Vectorisation](09-vectorisation.html)
+## [Vectorisation](/09-vectorisation)
 
 - Most functions and operations apply to each element of a vector
 - `*` applies element-wise to matrices
@@ -191,7 +191,7 @@ behaviour of R).
 - `any()` will return `TRUE` if any element of a vector is `TRUE`
 - `all()` will return `TRUE` if *all* elements of a vector are `TRUE`
 
-## [Functions explained](10-functions.html)
+## [Functions explained](/10-functions)
 
   - `?"function"`
   - Put code whose parameters change frequently in a function, then call it with
@@ -200,12 +200,12 @@ behaviour of R).
   - Any code written in the body of the function will preferably look for variables defined inside the function.
   - Document Why, then What, then lastly How (if the code isn't self explanatory)
 
-## [Writing data](11-writing-data.html)
+## [Writing data](/11-writing-data)
 
  - `write.table` to write out objects in regular format
  - set `quote=FALSE` so that text isn't wrapped in `"` marks
 
-## [Split-apply-combine](12-plyr.html)
+## [Split-apply-combine](/12-plyr)
 
  - Use the `xxply` family of functions to apply functions to groups within
    some data.
@@ -214,7 +214,7 @@ behaviour of R).
  - Anonymous functions (those not assigned a name) are used inside the `plyr` family
    of functions on groups within data.
 
-## [Dataframe manipulation with dplyr](13-dplyr.html)
+## [Dataframe manipulation with dplyr](/13-dplyr)
  - `library(dplyr)`
  - `?select` to extract variables by name.
  - `?filter` return rows with matching conditions.
@@ -223,14 +223,14 @@ behaviour of R).
  - `?mutate` add new variables to a data.frame.
  - Combine operations using the `?"%>%"` pipe operator.
 
-## [Dataframe manipulation with tidyr](14-tidyr.html)
+## [Dataframe manipulation with tidyr](/14-tidyr)
 - `library(tidyr)`
 - '?gather' convert data from *wide* to *long* format.
 - '?spread' convert data from *long* to *wide* format.
 - '?seprarate' split a single value into multiple values.
 - '?unite' merge multipe values into a single value.
 
-## [Producing reports with knitr](15-knitr-markdown.html)
+## [Producing reports with knitr](/15-knitr-markdown)
 - Value of reproducible reports
 - Basics of Markdown
 - R code chunks
@@ -238,7 +238,7 @@ behaviour of R).
 - Inline R code
 - Other output formats
 
-## [Best practices for writing good code](16-wrap-up.html)
+## [Best practices for writing good code](/16-wrap-up)
 
  * Program defensively, i.e., assume that errors are going to arise, and write code to detect them when they do.
  * Write tests before writing code in order to help determine exactly what that code is supposed to do.
