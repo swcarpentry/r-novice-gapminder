@@ -105,7 +105,7 @@ fahr_to_kelvin(212)
 >
 > Hint: To convert from Kelvin to Celsius you minus 273.15
 >
-> > ## Solution to challenge 1 {.challenge}
+> > ## Solution to challenge 1
 > >
 > > Write a function called `kelvin_to_celsius` that takes a temperature in Kelvin
 > > and returns that temperature in Celsius
@@ -139,13 +139,13 @@ kelvin_to_celsius <- function(temp) {
 }
 ```
 
-> ## Challenge 2 {.challenge}
+> ## Challenge 2
 >
 > Define the function to convert directly from Fahrenheit to Celsius,
 > by reusing the two functions above (or using your own functions if you prefer).
 >
 >
-> > ## Solution to challenge 2 {.challenge}
+> > ## Solution to challenge 2
 > >
 > > Define the function to convert directly from Fahrenheit to Celsius,
 > > by reusing these two functions above
@@ -320,12 +320,12 @@ data frame with that column added. This means when we call the function
 later we can see the context for the returned GDP values,
 which is much better than in our first attempt where we got a vector of numbers.
 
-> ## Challenge 3 {.challenge}
+> ## Challenge 3
 >
 > Test out your GDP function by calculating the GDP for New Zealand in 1987. How
 > does this differ from New Zealand's GDP in 1952?
 >
-> > ## Solution to challenge 3 {.challenge}
+> > ## Solution to challenge 3
 > >
 > > GDP for New Zealand in 1987: 65050008703
 > >
@@ -334,7 +334,7 @@ which is much better than in our first attempt where we got a vector of numbers.
 {: .challenge}
 
 
-> ## Challenge 4 {.challenge}
+> ## Challenge 4
 >
 > The `paste` function can be used to combine text together, e.g:
 >
@@ -354,7 +354,7 @@ which is much better than in our first attempt where we got a vector of numbers.
 > separator between text. The default is a space: " ". The default for `paste0`
 > is no space "".
 >
-> > ## Solution to challenge 4 {.challenge}
+> > ## Solution to challenge 4
 > >
 > >  Write a function called `fence` that takes two vectors as arguments, called
 > > `text` and `wrapper`, and prints out the text wrapped with the `wrapper`:
@@ -414,7 +414,7 @@ which is much better than in our first attempt where we got a vector of numbers.
 > when you start writing more complicated R projects.
 >
 > Formal automated tests can be written using the [testthat][] package.
-{.callout}
+{: .callout}
 
 [roxygen2]: http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
 [testthat]: http://r-pkgs.had.co.nz/tests.html

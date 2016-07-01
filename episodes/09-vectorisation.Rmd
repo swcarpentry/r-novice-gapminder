@@ -3,11 +3,11 @@ title: Vectorisation
 teaching: 30
 exercises: 20
 questions:
-- "TODO"
+- "FIXME"
 objectives:
 - "To understand vectorised operations in R."
-kepoints:
-- "TODO"
+keypoints:
+- "FIXME"
 ---
 
 ```{r, include=FALSE}
@@ -246,5 +246,6 @@ m * -1
 > > n <- 10000
 > > inverse_sum_of_squares(n)
 > > ```
+> >
 > {: .solution}
 {: .challenge}

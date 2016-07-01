@@ -52,7 +52,7 @@ applications may prefer the 'wide' format. However, many of `R`'s functions have
 been designed assuming you have 'long' format data. This tutorial will help you
 efficiently transform your data regardless of original format.
 
-![](fig/14-tidyr-fig1.png)
+![](../fig/14-tidyr-fig1.png)
 
 These data formats mainly affect readability. For humans, the wide format is
 often more intuitive since we can often see more of the data on the screen due
@@ -83,12 +83,12 @@ First, lets look at the structure of our original gapminder dataframe:
 str(gapminder)
 ```
 
-> ## Challenge 1 {.challenge}
+> ## Challenge 1
 >
 > Is gapminder a purely long, purely wide, or some intermediate format?
 >
 >
-> > ## Solution to Challenge 1 {.challenge}
+> > ## Solution to Challenge 1
 > >
 > > The original gapminder data.frame is in an intermediate format. It is not
 > > purely long since it had multiple observation variables
@@ -131,7 +131,7 @@ gap_wide <- read.csv("data/gapminder_wide.csv", stringsAsFactors = FALSE)
 str(gap_wide)
 ```
 
-![](fig/14-tidyr-fig2.png)
+![](../fig/14-tidyr-fig2.png)
 
 The first step towards getting our nice intermediate data format is to first
 convert from the wide to the long format. The `tidyr` function `gather()` will
@@ -157,7 +157,7 @@ that starts with the desired character sring. Gather also allows the alternative
 syntax of using the `-` symbol to identify which variables are not to be
 gathered (i.e. ID variables)
 
-![](fig/14-tidyr-fig3.png)
+![](../fig/14-tidyr-fig3.png)
 
 ```{r}
 gap_long <- gap_wide %>% gather(obstype_year,obs_values,-continent,-country)
@@ -179,12 +179,12 @@ gap_long$year <- as.integer(gap_long$year)
 ```
 
 
-> ## Challenge 2 {.challenge}
+> ## Challenge 2
 >
 > Using `gap_long`, calculate the mean life expectancy, population, and gdpPercap for each continent.
 >**Hint:** use the `group_by()` and `summarize()` functions we learned in the `dplyr` lesson
 >
-> > ## Solution to Challenge 2 {.challenge}
+> > ## Solution to Challenge 2
 > >```{r}
 > >gap_long %>% group_by(continent,obs_type) %>%
 > >    summarize(means=mean(obs_values))
@@ -258,12 +258,12 @@ gap_wide_new <- gap_long %>%
 str(gap_wide_new)
 ```
 
-> ## Challenge 3 {.challenge}
+> ## Challenge 3
 >
 > Take this 1 step further and create a `gap_ludicrously_wide` format data by spreading over countries, year and the 3 metrics?
 >**Hint** this new dataframe should only have 5 rows.
 >
-> > ## Solution to Challenge 3 {.challenge}
+> > ## Solution to Challenge 3
 > >```{r}
 > >gap_ludicrously_wide <- gap_long %>%
 > >    unite(var_names,obs_type,year,country,sep="_") %>%
