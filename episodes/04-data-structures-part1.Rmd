@@ -14,6 +14,7 @@ keypoints:
 
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
+knitr_fig_path("04-")
 
 ## Save the data
 cats_orig <- data.frame(coat = factor(c("calico", "black", "tabby")),
