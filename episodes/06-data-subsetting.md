@@ -1,21 +1,19 @@
 ---
-layout: page
-title: R for reproducible scientific analysis
-subtitle: Subsetting data
-minutes: 45
+title: Subsetting data
+teaching: 45
+exercises: 20
+questions:
+- "FIXME"
+objectives:
+- "To be able to subset vectors, factors, matrices, lists, and data frames"
+- "To be able to extract individual and multiple elements: by index, by name, using comparison operations"
+- "To be able to skip and remove elements from various data structures."
+keypoints:
+- "FIXME"
 ---
 
 
 
-> ## Learning Objectives {.objectives}
->
-> * To be able to subset vectors, factors, matrices, lists, and data frames
-> * To be able to extract individual and multiple elements:
->     * by index,
->     * by name,
->     * using comparison operations
-> * To be able to skip and remove elements from various data structures.
->
 
 R has many powerful subset operators and mastering them will allow you to
 easily perform complex operations on any kind of dataset.
@@ -190,10 +188,11 @@ named numeric(0)
 ~~~
 {: .output}
 
-> ##Vector numbering in R starts at 1 {.callout}
+> ##Vector numbering in R starts at 1
 >
 > In many programming languages (C and python, for example), the first
 > element of a vector has an index of 0. In R, the first element is 1.
+{: .callout}
 
 ## Skipping and removing elements
 
@@ -231,7 +230,7 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 ~~~
 {: .output}
 
-> ## Tip: Order of operations {.callout}
+> ## Tip: Order of operations
 >
 > A common trip up for novices occurs when trying to skip
 > slices of a vector. Most people first try to negate a
@@ -271,7 +270,8 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 > 4.8 7.5 
 > ~~~
 > {: .output}
->
+{: .callout}
+
 
 To remove elements from a vector, we need to assign the results back
 into the variable:
@@ -291,7 +291,7 @@ x
 ~~~
 {: .output}
 
-> ## Challenge 1 {.challenge}
+> ## Challenge 1
 >
 > Given the following code:
 >
@@ -322,6 +322,47 @@ x
 >
 > 2. Compare notes with your neighbour. Did you have different strategies?
 >
+> > ## Solution to challenge 1
+> >
+> >
+> > Given the following code:
+> >
+> > 
+> > ~~~
+> > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
+> > names(x) <- c('a', 'b', 'c', 'd', 'e')
+> > print(x)
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> >   a   b   c   d   e 
+> > 5.4 6.2 7.1 4.8 7.5 
+> > ~~~
+> > {: .output}
+> >
+> > 1. Come up with at least 3 different commands that will produce the following output:
+> >
+> > 
+> > ~~~
+> >   b   c   d 
+> > 6.2 7.1 4.8 
+> > ~~~
+> > {: .output}
+> >
+> > 
+> > ~~~
+> > x[2:4]
+> > x[-c(1,5)]
+> > x[c("b", "c", "d")]
+> > x[c(2,3,4)]
+> > ~~~
+> > {: .r}
+> >
+> {: .solution}
+{: .challenge}
 
 ## Subsetting by name
 
@@ -425,7 +466,7 @@ x[-which(names(x) %in% c("a", "c"))]
 The `%in%` goes through each element of its left argument, in this case the
 names of `x`, and asks, "Does this element occur in the second argument?".
 
-> ## Challenge 2 {.challenge}
+> ## Challenge 2
 >
 > Run the following code to define vector `x` as above:
 >
@@ -463,14 +504,65 @@ names of `x`, and asks, "Does this element occur in the second argument?".
 > * D) making an empty vector negative produces an "everything" vector
 > * E) `x[]` gives the same result as `x[integer()]`
 >
+> > ## Solution to challenge 2
+> >
+> > Run the following code to define vector `x` as above:
+> >
+> > 
+> > ~~~
+> > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
+> > names(x) <- c('a', 'b', 'c', 'd', 'e')
+> > print(x)
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> >   a   b   c   d   e 
+> > 5.4 6.2 7.1 4.8 7.5 
+> > ~~~
+> > {: .output}
+> >
+> > Given this vector `x`, what would you expect the following to do?
+> >
+> >~~~
+> > x[-which(names(x) == "g")]
+> >~~~
+> >{: .r}
+> >
+> > Try out this command and see what you get. Did this match your expectation?
+> >
+> > Why did we get this result? (Tip: test out each part of the command on it's own - this is a useful debugging strategy)
+> >
+> > Which of the following are true:
+> >
+> > * A) if there are no `TRUE` values passed to "which", an empty vector is returned
+> > * B) if there are no `TRUE` values passed to "which", an error message is shown
+> > * C) `integer()` is an empty vector
+> > * D) making an empty vector negative produces an "everything" vector
+> > * E) `x[]` gives the same result as `x[integer()]`
+> >
+> > Answer: A and C are correct.
+> >
+> > The `which` command returns the index of every `TRUE` value in its
+> input. The `names(x) == "g"` command didn't return any `TRUE` values. Because
+> there were no `TRUE` values passed to the `which` command, it returned an
+> empty vector. Negating this vector with the minus sign didn't change its
+> meaning. Because we used this empty vector to retrieve values from `x`, it
+> produced an empty numeric vector. It was a `named numeric` empty vector
+> because the vector type of x is "named numeric" since we assigned names to the
+> values (try `str(x)` ).
+> {: .solution}
+{: .challenge}
 
-> ## Tip: Non-unique names {.callout}
+> ## Tip: Non-unique names
 >
 > You should be aware that it is possible for multiple elements in a
 > vector to have the same name. (For a data frame, columns can have
 > the same name --- although R tries to avoid this --- but row names
 > must be unique.) Consider these examples:
-
+>
 >
 >~~~
 > x <- 1:3
@@ -530,14 +622,16 @@ names of `x`, and asks, "Does this element occur in the second argument?".
 >1 2 3 
 >~~~
 >{: .output}
+{: .callout}
 
 
-
-> ## Tip: Getting help for operators {.callout}
+> ## Tip: Getting help for operators
 >
 > Remember you can search for help on operators by wrapping them in quotes:
 > `help("%in%")` or `?"%in%"`.
 >
+{: .callout}
+
 
 So why can't we use `==` like before? That's an excellent question.
 
@@ -659,7 +753,7 @@ named integer(0)
 ~~~
 {: .output}
 
-> ## Tip: Combining logical conditions {.callout}
+> ## Tip: Combining logical conditions
 >
 > There are many situations in which you will wish to combine multiple logical
 > criteria. For example, we might want to find all the countries that are
@@ -689,9 +783,9 @@ named integer(0)
 > `all` function (which returns `TRUE` if every element of the vector is `TRUE`)
 > and the `any` function (which returns `TRUE` if one or more elements of the
 > vector are `TRUE`).
+{: .callout}
 
-
-> ## Challenge 3 {.challenge}
+> ## Challenge 3
 >
 > Given the following code:
 >
@@ -713,6 +807,43 @@ named integer(0)
 >
 > 1. Write a subsetting command to return the values in x that are greater than 4 and less than 7.
 >
+> > ## Solution to challenge 3
+> > Given the following code:
+> >
+> > 
+> > ~~~
+> > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
+> > names(x) <- c('a', 'b', 'c', 'd', 'e')
+> > print(x)
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> >   a   b   c   d   e 
+> > 5.4 6.2 7.1 4.8 7.5 
+> > ~~~
+> > {: .output}
+> >
+> > 1. Write a subsetting command to return the values in x that are greater than 4 and less than 7.
+> >
+> > 
+> > ~~~
+> > x_subset <- x[x<7 & x>4]
+> > print(x_subset)
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> >   a   b   d 
+> > 5.4 6.2 4.8 
+> > ~~~
+> > {: .output}
+> {: .solution}
+{: .challenge}
 
 ## Handling special values
 
@@ -891,12 +1022,13 @@ Error in m[, c(3, 6)]: subscript out of bounds
 ~~~
 {: .error}
 
-> ## Tip: Higher dimensional arrays {.callout}
+> ## Tip: Higher dimensional arrays
 >
 > when dealing with multi-dimensional arrays, each argument to `[`
 > corresponds to a dimension. For example, a 3D array, the first three
 > arguments correspond to the rows, columns, and depth dimension.
 >
+{: .callout}
 
 Because matrices are vectors, we can
 also subset using only one argument:
@@ -954,7 +1086,7 @@ matrix(1:6, nrow=2, ncol=3, byrow=TRUE)
 Matrices can also be subsetted using their rownames and column names
 instead of their row and column indices.
 
-> ## Challenge 4 {.challenge}
+> ## Challenge 4
 >
 > Given the following code:
 >
@@ -985,6 +1117,40 @@ instead of their row and column indices.
 >
 > D. `m[2,c(4,5)]`
 >
+> > ## Solution to challenge 4
+> >
+> > Given the following code:
+> >
+> > 
+> > ~~~
+> > m <- matrix(1:18, nrow=3, ncol=6)
+> > print(m)
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> >      [,1] [,2] [,3] [,4] [,5] [,6]
+> > [1,]    1    4    7   10   13   16
+> > [2,]    2    5    8   11   14   17
+> > [3,]    3    6    9   12   15   18
+> > ~~~
+> > {: .output}
+> >
+> > 1. Which of the following commands will extract the values 11 and 14?
+> >
+> > A. `m[2,4,2,5]`
+> >
+> > B. `m[2:5]`
+> >
+> > C. `m[4:5,2]`
+> >
+> > D. `m[2,c(4,5)]`
+> >
+> > Answer: D
+> {: .solution}
+{: .challenge}
 
 
 ## List subsetting
@@ -1120,7 +1286,7 @@ xlist$data
 ~~~
 {: .output}
 
-> ## Challenge 5 {.challenge}
+> ## Challenge 5
 > Given the following list:
 >
 > 
@@ -1131,8 +1297,31 @@ xlist$data
 >
 > Using your knowledge of both list and vector subsetting, extract the number 2 from xlist.
 > Hint: the number 2 is contained within the "b" item in the list.
+>
+> > ## Solution to challenge 5
+> > Given the following list:
+> >
+> > 
+> > ~~~
+> > xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
+> > ~~~
+> > {: .r}
+> >
+> > Using your knowledge of both list and vector subsetting, extract the number 2 from xlist.
+> > Hint: the number 2 is contained within the "b" item in the list.
+> >
+> > 
+> > ~~~
+> > xlist$b[2]
+> > xlist[[2]][2]
+> > xlist[["b"]][2]
+> > ~~~
+> > {: .r}
+> {: .solution}
+{: .challenge}
 
-> ## Challenge 6 {.challenge}
+
+> ## Challenge 6
 > Given a linear model:
 >
 > 
@@ -1143,6 +1332,26 @@ xlist$data
 >
 > Extract the residual degrees of freedom (hint: `attributes()` will help you)
 >
+> > ## Solution to challenge 6
+> > Given a linear model:
+> >
+> > 
+> > ~~~
+> > mod <- aov(pop ~ lifeExp, data=gapminder)
+> > ~~~
+> > {: .r}
+> >
+> > Extract the residual degrees of freedom (hint: `attributes()` will help you)
+> >
+> > 
+> > ~~~
+> > attributes(mod) ## `df.residual` is one of the names of `mod`
+> > mod$df.residual
+> > ~~~
+> > {: .r}
+> {: .solution}
+{: .challenge}
+
 
 ## Data frames
 
@@ -1239,7 +1448,7 @@ gapminder[3,]
 But for a single column the result will be a vector (this can
 be changed with the third argument, `drop = FALSE`).
 
-> ## Challenge 7 {.challenge}
+> ## Challenge 7
 >
 > Fix each of the following common data frame subsetting errors:
 >
@@ -1285,8 +1494,61 @@ be changed with the third argument, `drop = FALSE`).
 > ~~~
 > {: .r}
 >
+> > ## Solution to challenge 7
+> >
+> > Fix each of the following common data frame subsetting errors:
+> >
+> > 1. Extract observations collected for the year 1957
+> >
+> > 
+> > ~~~
+> > # gapminder[gapminder$year = 1957,]
+> > gapminder[gapminder$year == 1957,]
+> > ~~~
+> > {: .r}
+> >
+> > 2. Extract all columns except 1 through to 4
+> >
+> > 
+> > ~~~
+> > # gapminder[,-1:4]
+> > gapminder[,-c(1:4)]
+> > ~~~
+> > {: .r}
+> >
+> > 3. Extract the rows where the life expectancy is longer the 80 years
+> >
+> > 
+> > ~~~
+> > # gapminder[gapminder$lifeExp > 80]
+> > gapminder[gapminder$lifeExp > 80,]
+> > ~~~
+> > {: .r}
+> >
+> > 4. Extract the first row, and the fourth and fifth columns
+> >   (`lifeExp` and `gdpPercap`).
+> >
+> > 
+> > ~~~
+> > # gapminder[1, 4, 5]
+> > gapminder[1, c(4, 5)]
+> > ~~~
+> > {: .r}
+> >
+> > 5. Advanced: extract rows that contain information for the years 2002
+> >    and 2007
+> >
+> > 
+> > ~~~
+> > # gapminder[gapminder$year == 2002 | 2007,]
+> > gapminder[gapminder$year == 2002 | gapminder$year == 2007,]
+> > gapminder[gapminder$year %in% c(2002, 2007),]
+> > ~~~
+> > {: .r}
+> {: .solution}
+{: .challenge}
 
-> ## Challenge 8 {.challenge}
+> ## Challenge 8
 >
 > 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
 >
@@ -1294,307 +1556,19 @@ be changed with the third argument, `drop = FALSE`).
 > 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
 > and 19 through 23. You can do this in one or two steps.
 >
-
-## Challenge solutions
-
-> ## Solution to challenge 1 {.challenge}
->
-> Given the following code:
->
-> 
-> ~~~
-> x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
-> names(x) <- c('a', 'b', 'c', 'd', 'e')
-> print(x)
-> ~~~
-> {: .r}
-> 
-> 
-> 
-> ~~~
->   a   b   c   d   e 
-> 5.4 6.2 7.1 4.8 7.5 
-> ~~~
-> {: .output}
->
-> 1. Come up with at least 3 different commands that will produce the following output:
->
-> 
-> ~~~
->   b   c   d 
-> 6.2 7.1 4.8 
-> ~~~
-> {: .output}
->
-> 
-> ~~~
-> x[2:4]
-> x[-c(1,5)]
-> x[c("b", "c", "d")]
-> x[c(2,3,4)]
-> ~~~
-> {: .r}
->
->
-
-
-> ## Solution to challenge 2 {.challenge}
->
-> Run the following code to define vector `x` as above:
->
-> 
-> ~~~
-> x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
-> names(x) <- c('a', 'b', 'c', 'd', 'e')
-> print(x)
-> ~~~
-> {: .r}
-> 
-> 
-> 
-> ~~~
->   a   b   c   d   e 
-> 5.4 6.2 7.1 4.8 7.5 
-> ~~~
-> {: .output}
->
-> Given this vector `x`, what would you expect the following to do?
->
->~~~
-> x[-which(names(x) == "g")]
->~~~
->{: .r}
->
-> Try out this command and see what you get. Did this match your expectation?
->
-> Why did we get this result? (Tip: test out each part of the command on it's own - this is a useful debugging strategy)
->
-> Which of the following are true:
->
-> * A) if there are no `TRUE` values passed to "which", an empty vector is returned
-> * B) if there are no `TRUE` values passed to "which", an error message is shown
-> * C) `integer()` is an empty vector
-> * D) making an empty vector negative produces an "everything" vector
-> * E) `x[]` gives the same result as `x[integer()]`
->
-> Answer: A and C are correct.
->
-> The `which` command returns the index of every `TRUE` value in its input. The `names(x) == "g"` command didn't return any `TRUE` values. Because there were no `TRUE` values passed to the `which` command, it returned an empty vector. Negating this vector with the minus sign didn't change its meaning. Because we used this empty vector to retrieve values from `x`, it produced an empty numeric vector. It was a `named numeric` empty vector because the vector type of x is "named numeric" since we assigned names to the values (try `str(x)` ).
-
-
-> ## Solution to challenge 3 {.challenge}
-> Given the following code:
->
-> 
-> ~~~
-> x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
-> names(x) <- c('a', 'b', 'c', 'd', 'e')
-> print(x)
-> ~~~
-> {: .r}
-> 
-> 
-> 
-> ~~~
->   a   b   c   d   e 
-> 5.4 6.2 7.1 4.8 7.5 
-> ~~~
-> {: .output}
->
-> 1. Write a subsetting command to return the values in x that are greater than 4 and less than 7.
->
-> 
-> ~~~
-> x_subset <- x[x<7 & x>4]
-> print(x_subset)
-> ~~~
-> {: .r}
-> 
-> 
-> 
-> ~~~
->   a   b   d 
-> 5.4 6.2 4.8 
-> ~~~
-> {: .output}
-
-
-
-> ## Solution to challenge 3 {.challenge}
-> Given the following code:
->
-> 
-> ~~~
-> x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
-> names(x) <- c('a', 'b', 'c', 'd', 'e')
-> print(x)
-> ~~~
-> {: .r}
-> 
-> 
-> 
-> ~~~
->   a   b   c   d   e 
-> 5.4 6.2 7.1 4.8 7.5 
-> ~~~
-> {: .output}
->
-> 1. Write a subsetting command to return the values in x that are greater than 4 and less than 7.
->
-> 
-> ~~~
-> x_subset <- x[x<7 & x>4]
-> print(x_subset)
-> ~~~
-> {: .r}
-> 
-> 
-> 
-> ~~~
->   a   b   d 
-> 5.4 6.2 4.8 
-> ~~~
-> {: .output}
-
-
-> ## Solution to challenge 4 {.challenge}
->
-> Given the following code:
->
-> 
-> ~~~
-> m <- matrix(1:18, nrow=3, ncol=6)
-> print(m)
-> ~~~
-> {: .r}
-> 
-> 
-> 
-> ~~~
->      [,1] [,2] [,3] [,4] [,5] [,6]
-> [1,]    1    4    7   10   13   16
-> [2,]    2    5    8   11   14   17
-> [3,]    3    6    9   12   15   18
-> ~~~
-> {: .output}
->
-> 1. Which of the following commands will extract the values 11 and 14?
->
-> A. `m[2,4,2,5]`
->
-> B. `m[2:5]`
->
-> C. `m[4:5,2]`
->
-> D. `m[2,c(4,5)]`
->
-> Answer: D
-
-> ## Solution to challenge 5 {.challenge}
-> Given the following list:
->
-> 
-> ~~~
-> xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
-> ~~~
-> {: .r}
->
-> Using your knowledge of both list and vector subsetting, extract the number 2 from xlist.
-> Hint: the number 2 is contained within the "b" item in the list.
->
-> 
-> ~~~
-> xlist$b[2]
-> xlist[[2]][2]
-> xlist[["b"]][2]
-> ~~~
-> {: .r}
-
-
-> ## Solution to challenge 6 {.challenge}
-> Given a linear model:
->
-> 
-> ~~~
-> mod <- aov(pop ~ lifeExp, data=gapminder)
-> ~~~
-> {: .r}
->
-> Extract the residual degrees of freedom (hint: `attributes()` will help you)
->
-> 
-> ~~~
-> attributes(mod) ## `df.residual` is one of the names of `mod`
-> mod$df.residual
-> ~~~
-> {: .r}
-
-
-> ## Solution to challenge 7 {.challenge}
->
-> Fix each of the following common data frame subsetting errors:
->
-> 1. Extract observations collected for the year 1957
->
-> 
-> ~~~
-> # gapminder[gapminder$year = 1957,]
-> gapminder[gapminder$year == 1957,]
-> ~~~
-> {: .r}
->
-> 2. Extract all columns except 1 through to 4
->
-> 
-> ~~~
-> # gapminder[,-1:4]
-> gapminder[,-c(1:4)]
-> ~~~
-> {: .r}
->
-> 3. Extract the rows where the life expectancy is longer the 80 years
->
-> 
-> ~~~
-> # gapminder[gapminder$lifeExp > 80]
-> gapminder[gapminder$lifeExp > 80,]
-> ~~~
-> {: .r}
->
-> 4. Extract the first row, and the fourth and fifth columns
->   (`lifeExp` and `gdpPercap`).
->
-> 
-> ~~~
-> # gapminder[1, 4, 5]
-> gapminder[1, c(4, 5)]
-> ~~~
-> {: .r}
->
-> 5. Advanced: extract rows that contain information for the years 2002
->    and 2007
->
-> 
-> ~~~
-> # gapminder[gapminder$year == 2002 | 2007,]
-> gapminder[gapminder$year == 2002 | gapminder$year == 2007,]
-> gapminder[gapminder$year %in% c(2002, 2007),]
-> ~~~
-> {: .r}
->
-
-> ## Solution to challenge 8 {.challenge}
->
-> 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
->
-> Answer: `gapminder` is a data.frame so needs to be subsetted on two dimensions. `gapminder[1:20, ]` subsets the data to give the first 20 rows and all columns.
->
-> 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
-> and 19 through 23. You can do this in one or two steps.
->
-> 
-> ~~~
-> gapminder_small <- gapminder[c(1:9, 19:23),]
-> ~~~
-> {: .r}
->
+> > ## Solution to challenge 8
+> >
+> > 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
+> >
+> > Answer: `gapminder` is a data.frame so needs to be subsetted on two dimensions. `gapminder[1:20, ]` subsets the data to give the first 20 rows and all columns.
+> >
+> > 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
+> > and 19 through 23. You can do this in one or two steps.
+> >
+> > 
+> > ~~~
+> > gapminder_small <- gapminder[c(1:9, 19:23),]
+> > ~~~
+> > {: .r}
+> {: .solution}
+{: .challenge}

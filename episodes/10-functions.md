@@ -1,20 +1,21 @@
 ---
-layout: page
-title: R for reproducible scientific analysis
-subtitle: Functions explained
-minutes: 45
+title: Functions explained
+teaching: 45
+exercises: 20
+questions:
+- "FIXME"
+objectives:
+- "Define a function that takes arguments."
+- "Return a value from a function."
+- "Test a function."
+- "Set default values for function arguments."
+- "Explain why we should divide programs into small, single-purpose functions."
+keypoints:
+- "FIXME"
 ---
 
 
 
-> ## Learning Objectives {.objectives}
->
-> * Define a function that takes arguments.
-> * Return a value from a function.
-> * Test a function.
-> * Set default values for function arguments.
-> * Explain why we should divide programs into small, single-purpose functions.
->
 
 If we only had one data set to analyze, it would probably be faster to load the
 file into a spreadsheet and use that to plot simple statistics. However, the
@@ -25,7 +26,7 @@ from a different source in the future.
 In this lesson, we'll learn how to write a function so that we can repeat
 several operations with a single command.
 
-> ## What is a function? {.callout}
+> ## What is a function?
 >
 > Functions gather a sequence of operations into a whole, preserving it for ongoing use. Functions provide:
 >
@@ -34,9 +35,10 @@ several operations with a single command.
 > * a defined set of inputs and expected outputs
 > * rich connections to the larger programming environment
 >
-> As the basic building block of most programming languages, user-defined functions constitute "programming" as much as any single abstraction can. If you have written a function, you are a computer programmer.
->
-
+> As the basic building block of most programming languages, user-defined
+> functions constitute "programming" as much as any single abstraction can. If
+> you have written a function, you are a computer programmer.
+{: .callout}
 
 ## Defining a function
 
@@ -62,21 +64,26 @@ fahr_to_kelvin <- function(temp) {
 ~~~
 {: .r}
 
-We define `fahr_to_kelvin` by assigning it to the output of `function`.
-The list of argument names are contained within parentheses.
-Next, the [body](reference.html#function-body) of the function--the statements that are executed when it runs--is contained within curly braces (`{}`).
-The statements in the body are indented by two spaces.
-This makes the code easier to read but does not affect how the code operates.
+We define `fahr_to_kelvin` by assigning it to the output of `function`.  The
+list of argument names are contained within parentheses.  Next, the
+[body](reference.html#function-body) of the function--the statements that are
+executed when it runs--is contained within curly braces (`{}`).  The statements
+in the body are indented by two spaces.  This makes the code easier to read but
+does not affect how the code operates.
 
-When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function.
-Inside the function, we use a [return statement](reference.html#return-statement) to send a result back to whoever asked for it.
+When we call the function, the values we pass to it are assigned to those
+variables so that we can use them inside the function.  Inside the function, we
+use a [return statement](reference.html#return-statement) to send a result back
+to whoever asked for it.
 
-> ## Tip {.callout}
+> ## Tip
 >
 > One feature unique to R is that the return statement is not required.
 > R automatically returns whichever variable is on the last line of the body
 > of the function. But for clarity, we will explicitly define the
 > return statement.
+{: .callout}
+
 
 Let's try running our function.
 Calling our own function is no different from calling any other function:
@@ -109,13 +116,28 @@ fahr_to_kelvin(212)
 ~~~
 {: .output}
 
-> ## Challenge 1 {.challenge}
+> ## Challenge 1
 >
 > Write a function called `kelvin_to_celsius` that takes a temperature in Kelvin
 > and returns that temperature in Celsius
 >
 > Hint: To convert from Kelvin to Celsius you minus 273.15
 >
+> > ## Solution to challenge 1
+> >
+> > Write a function called `kelvin_to_celsius` that takes a temperature in Kelvin
+> > and returns that temperature in Celsius
+> >
+> > 
+> > ~~~
+> > kelvin_to_celsius <- function(temp) {
+> >  celsius <- temp - 273.15
+> >  return(celsius)
+> > }
+> > ~~~
+> > {: .r}
+> {: .solution}
+{: .challenge}
 
 ## Combining functions
 
@@ -139,11 +161,29 @@ kelvin_to_celsius <- function(temp) {
 ~~~
 {: .r}
 
-> ## Challenge 2 {.challenge}
+> ## Challenge 2
 >
 > Define the function to convert directly from Fahrenheit to Celsius,
 > by reusing the two functions above (or using your own functions if you prefer).
 >
+>
+> > ## Solution to challenge 2
+> >
+> > Define the function to convert directly from Fahrenheit to Celsius,
+> > by reusing these two functions above
+> >
+> >
+> > 
+> > ~~~
+> > fahr_to_celsius <- function(temp) {
+> >   temp_k <- fahr_to_kelvin(temp)
+> >   result <- kelvin_to_celsius(temp_k)
+> >   return(result)
+> > }
+> > ~~~
+> > {: .r}
+> {: .solution}
+{: .challenge}
 
 
 We're going to define
@@ -335,7 +375,7 @@ can ask it to calculate the GDP for:
 By using `%in%` instead, we can also give multiple years or countries
 to those arguments.
 
-> ## Tip: Pass by value {.callout}
+> ## Tip: Pass by value
 >
 > Functions in R almost always make copies of the data to operate on
 > inside of a function body. When we modify `dat` inside the function
@@ -345,9 +385,9 @@ to those arguments.
 > This is called "pass-by-value" and it makes writing code much safer:
 > you can always be sure that whatever changes you make within the
 > body of the function, stay inside the body of the function.
->
+{: .callout}
 
-> ## Tip: Function scope {.callout}
+> ## Tip: Function scope
 >
 > Another important concept is scoping: any variables (or functions!) you
 > create or modify inside the body of a function only exist for the lifetime
@@ -355,7 +395,7 @@ to those arguments.
 > `gdp` and `new` only exist inside the body of the function. Even if we
 > have variables of the same name in our interactive R session, they are
 > not modified in any way when executing a function.
->
+{: .callout}
 
 
 ~~~
@@ -371,12 +411,21 @@ data frame with that column added. This means when we call the function
 later we can see the context for the returned GDP values,
 which is much better than in our first attempt where we got a vector of numbers.
 
-> ## Challenge 3 {.challenge}
+> ## Challenge 3
 >
-> Test out your GDP function by calculating the GDP for New Zealand in 1987. How does this differ from New Zealand's GDP in 1952?
+> Test out your GDP function by calculating the GDP for New Zealand in 1987. How
+> does this differ from New Zealand's GDP in 1952?
 >
+> > ## Solution to challenge 3
+> >
+> > GDP for New Zealand in 1987: 65050008703
+> >
+> > GDP for New Zealand in 1952: 21058193787
+> {: .solution}
+{: .challenge}
 
-> ## Challenge 4 {.challenge}
+
+> ## Challenge 4
 >
 > The `paste` function can be used to combine text together, e.g:
 >
@@ -407,8 +456,33 @@ which is much better than in our first attempt where we got a vector of numbers.
 > separator between text. The default is a space: " ". The default for `paste0`
 > is no space "".
 >
+> > ## Solution to challenge 4
+> >
+> >  Write a function called `fence` that takes two vectors as arguments, called
+> > `text` and `wrapper`, and prints out the text wrapped with the `wrapper`:
+> >
+> > 
+> > ~~~
+> > fence <- function(text, wrapper){
+> >   text <- c(wrapper, text, wrapper)
+> >   result <- paste(text, collapse = " ")
+> >   return(result)
+> > }
+> > best_practice <- c("Write", "programs", "for", "people", "not", "computers")
+> > fence(text=best_practice, wrapper="***")
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> > [1] "*** Write programs for people not computers ***"
+> > ~~~
+> > {: .output}
+> {: .solution}
+{: .challenge}
 
-> ## Tip {.callout}
+> ## Tip
 >
 > R has some unique aspects that can be exploited when performing
 > more complicated operations. We will not be writing anything that requires
@@ -417,13 +491,14 @@ which is much better than in our first attempt where we got a vector of numbers.
 > [R Language Manual][man] or this [chapter][] from
 > [Advanced R Programming][adv-r] by Hadley Wickham. For context, R uses the
 > terminology "environments" instead of frames.
+{: .callout}
 
 [man]: http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects
 [chapter]: http://adv-r.had.co.nz/Environments.html
 [adv-r]: http://adv-r.had.co.nz/
 
 
-> ## Tip: Testing and documenting {.callout}
+> ## Tip: Testing and documenting
 >
 > It's important to both test functions and document them:
 > Documentation helps you, and others, understand what the
@@ -450,72 +525,7 @@ which is much better than in our first attempt where we got a vector of numbers.
 > when you start writing more complicated R projects.
 >
 > Formal automated tests can be written using the [testthat][] package.
+{: .callout}
 
 [roxygen2]: http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
 [testthat]: http://r-pkgs.had.co.nz/tests.html
-
-## Challenge solutions
-
-> ## Solution to challenge 1 {.challenge}
->
-> Write a function called `kelvin_to_celsius` that takes a temperature in Kelvin
-> and returns that temperature in Celsius
->
-> 
-> ~~~
-> kelvin_to_celsius <- function(temp) {
->  celsius <- temp - 273.15
->  return(celsius)
-> }
-> ~~~
-> {: .r}
-
-
-> ## Solution to challenge 2 {.challenge}
->
-> Define the function to convert directly from Fahrenheit to Celsius,
-> by reusing these two functions above
->
->
-> 
-> ~~~
-> fahr_to_celsius <- function(temp) {
->   temp_k <- fahr_to_kelvin(temp)
->   result <- kelvin_to_celsius(temp_k)
->   return(result)
-> }
-> ~~~
-> {: .r}
->
-
-> ## Solution to challenge 3 {.challenge}
->
-> GDP for New Zealand in 1987: 65050008703
->
-> GDP for New Zealand in 1952: 21058193787
->
-
-
-> ## Solution to challenge 4 {.challenge}
->
->  Write a function called `fence` that takes two vectors as arguments, called
-> `text` and `wrapper`, and prints out the text wrapped with the `wrapper`:
->
-> 
-> ~~~
-> fence <- function(text, wrapper){
->   text <- c(wrapper, text, wrapper)
->   result <- paste(text, collapse = " ")
->   return(result)
-> }
-> best_practice <- c("Write", "programs", "for", "people", "not", "computers")
-> fence(text=best_practice, wrapper="***")
-> ~~~
-> {: .r}
-> 
-> 
-> 
-> ~~~
-> [1] "*** Write programs for people not computers ***"
-> ~~~
-> {: .output}

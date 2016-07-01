@@ -3,12 +3,12 @@ title: "Project management with RStudio"
 teaching: 30
 exercises: 20
 questions:
--
+- "FIXME"
 objectives:
 - To be able to create self-contained projects in RStudio
 - To be able to use git from within RStudio
 keypoints:
--
+- "FIXME"
 ---
 
 
@@ -198,7 +198,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > > 
 > > 
 > > ~~~
-> > ls: cannot access 'data/gapminder-FiveYearData.csv': No such file or directory
+> > -rw-rw-r-- 1 francois francois 80K Jun 24 10:59 data/gapminder-FiveYearData.csv
 > > ~~~
 > > {: .output}
 > > The file size is 80K.
@@ -212,7 +212,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > > 
 > > 
 > > ~~~
-> > wc: data/gapminder-FiveYearData.csv: No such file or directory
+> > 1705 data/gapminder-FiveYearData.csv
 > > ~~~
 > > {: .output}
 > > There are 1705 lines and the data looks like:
@@ -226,7 +226,16 @@ Now we have a good directory structure we will now place/save the data file in t
 > > 
 > > 
 > > ~~~
-> > head: cannot open 'data/gapminder-FiveYearData.csv' for reading: No such file or directory
+> > country,year,pop,continent,lifeExp,gdpPercap
+> > Afghanistan,1952,8425333,Asia,28.801,779.4453145
+> > Afghanistan,1957,9240934,Asia,30.332,820.8530296
+> > Afghanistan,1962,10267083,Asia,31.997,853.10071
+> > Afghanistan,1967,11537966,Asia,34.02,836.1971382
+> > Afghanistan,1972,13079460,Asia,36.088,739.9811058
+> > Afghanistan,1977,14880372,Asia,38.438,786.11336
+> > Afghanistan,1982,12881816,Asia,39.854,978.0114388
+> > Afghanistan,1987,13867957,Asia,40.822,852.3959448
+> > Afghanistan,1992,16317921,Asia,41.674,649.3413952
 > > ~~~
 > > {: .output}
 > {: .solution}
@@ -268,11 +277,10 @@ between files from different commits.
 > > ## Solution to Challenge 3
 > >
 > > This can be done with the command line:
-> > 
-> > ~~~
+> > ```
 > > $ mkdir graphs
 > > $ echo "graphs/" >> .gitignore
-> > ~~~
-> > {: .r}
+> > ```
+> > {: . shell}
 > {: .solution}
 {: .challenge}
