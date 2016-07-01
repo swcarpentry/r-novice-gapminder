@@ -13,6 +13,7 @@ keypoints:
 
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
+knitr_fig_path("07-")
 # Silently load in the data so the rest of the lesson works
 gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 # Silently set seed for random number generation, so we don't have to explain it
@@ -128,13 +129,14 @@ x
 > >    print("Record(s) for the year 2002 found.")
 > > }
 > > ```
->
+> >
 > > All this can be done more quickly with `any()`. The logical condition can be expressed as:
 > > ```{r ch10pt5-sol, eval=FALSE}
 > > if(any(gapminder$year == 2002)){
 > >    print("Record(s) for the year 2002 found.")
 > > }
 > > ```
+> >
 > {: .solution}
 {: .challenge}
 
@@ -149,13 +151,14 @@ If your condition evaluates to a vector with more than one logical element,
 the function `if()` will still run, but will only evaluate the condition in the first
 element. Here you need to make sure your condition is of length 1.
 
-> ## Tip: `any()` and `all()` {.callout}
+> ## Tip: `any()` and `all()`
 > The `any()` function will return TRUE if at least one
 > TRUE value is found within a vector, otherwise it will return `FALSE`.
 > This can be used in a similar way to the `%in%` operator.
 > The function `all()`, as the name suggests, will only return `TRUE` if all values in
 > the vector are `TRUE`.
 >
+{: .callout}
 
 ## Repeating operations
 
@@ -262,13 +265,14 @@ output_vector2
 > that generates random numbers from a uniform distribution (the `runif()` function)
 > between 0 and 1 until it gets one that's less than 0.1.
 >
-> ~~~ {.r}
+> ~~~
 > z <- 1
 > while(z > 0.1){
 >   z <- runif(1)
 >   print(z)
 > }
 > ~~~
+> {: .r}
 >
 > `while()` loops will not always be appropriate. You have to be particularly careful
 > that you don't end up in an infinite loop because your condition is never met.
@@ -282,12 +286,12 @@ output_vector2
 > How would you change the last block of code to make output_vector2
 > the same as output_vector?
 >
-> > ## Solution to Challenge 2 {.challenge}
+> > ## Solution to Challenge 2
 > > We can check whether the two vectors are identical using the `all()` function:
 > > ```{r ch10pt6-sol, eval=FALSE}
 > > all(output_vector == output_vector2)
 > > ```
-> >However, all the elements of `output_vector` can be found in `output_vector2`:
+> > However, all the elements of `output_vector` can be found in `output_vector2`:
 > > ```{r ch10pt7-sol, eval=FALSE}
 > > all(output_vector %in% output_vector2)
 > > ```
@@ -319,23 +323,26 @@ output_vector2
 > {: .solution}
 {: .challenge}
 
-> ## Challenge 3 {.challenge}
+> ## Challenge 3
 >
 > Write a script that loops through the `gapminder` data by continent and prints out
 > whether the mean life expectancy is smaller or larger than 50
 > years.
 >
+{: .challenge}
 
-> ## Challenge 4 {.challenge}
+> ## Challenge 4
 >
 > Modify the script from Challenge 4 to also loop over each
 > country. This time print out whether the life expectancy is
 > smaller than 50, between 50 and 70, or greater than 70.
 >
+{: .challenge}
 
-> ## Challenge 5 - Advanced {.challenge}
+> ## Challenge 5 - Advanced
 >
 > Write a script that loops over each country in the `gapminder` dataset,
 > tests whether the country starts with a 'B', and graphs life expectancy
 > against time as a line graph if the mean life expectancy is under 50 years.
 >
+{: .challenge}

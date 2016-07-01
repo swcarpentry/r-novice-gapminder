@@ -18,7 +18,7 @@ keypoints:
 
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
-##opts_chunk$set(fig.path = "fig/08-plot-ggplot2-")
+knitr_fig_path("08-")
 # Silently load in the data so the rest of the lesson works
 gapminder <- read.csv("data/gapminder-FiveYearData.csv", header = TRUE)
 ```
