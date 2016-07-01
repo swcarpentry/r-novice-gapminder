@@ -1,15 +1,14 @@
 ---
-layout: page
-title: R for reproducible scientific analysis
-subtitle: Best practices for writing good code
-minutes: 15
+title: Best practices for writing good code
+teaching: 15
+exercises: 0
+questions:
+- "FIXME"
+objectives:
+- "To review the best practices for using R for scientific analysis."
+keypoints:
+- "FIXME"
 ---
-
-> ## Learning Objectives {.objectives}
->
-> * To review the best practices for using R for
->   scientific analysis.
->
 
 ## Best practices for writing nice code
 

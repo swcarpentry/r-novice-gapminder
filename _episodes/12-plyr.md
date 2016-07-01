@@ -1,16 +1,16 @@
 ---
-layout: page
-title: R for reproducible scientific analysis
-subtitle: Split-apply-combine
-minutes: 45
+title: Split-apply-combine
+teaching: 45
+exercises: 10
+questions:
+- "FIXME"
+objectives:
+- "To be able to use the split-apply-combine strategy for data analysis."
+keypoints:
+- "FIXME"
 ---
 
 
-
-> ## Learning Objectives {.objectives}
->
-> * To be able to use the split-apply-combine strategy for data analysis
->
 
 Previously we looked at how you can use functions to simplify your code.
 We defined the `calcGDP` function, which takes the gapminder dataset,
@@ -95,7 +95,7 @@ also takes a substantial amount of effort and testing to get right.
 
 The abstract problem we're encountering here is know as "split-apply-combine":
 
-![Split apply combine](fig/splitapply.png)
+![Split apply combine](../fig/splitapply.png)
 
 We want to *split* our data into groups, in this case continents, *apply*
 some calculations on that group, then optionally *combine* the results
@@ -138,7 +138,7 @@ table)
 Note here that plyr's use of "array" is different to R's,
 an array in ply can include a vector or matrix.
 
-![Full apply suite](fig/full_apply_suite.png)
+![Full apply suite](../fig/full_apply_suite.png)
 
 
 Each of the xxply functions (`daply`, `ddply`, `llply`, `laply`, ...) has the
@@ -289,33 +289,7 @@ ddply(
 31      Asia 1982 194429049919
 32      Asia 1987 241784763369
 33      Asia 1992 307100497486
-34      Asia 1997 387597655323
-35      Asia 2002 458042336179
-36      Asia 2007 627513635079
-37    Europe 1952  84971341466
-38    Europe 1957 109989505140
-39    Europe 1962 138984693095
-40    Europe 1967 173366641137
-41    Europe 1972 218691462733
-42    Europe 1977 255367522034
-43    Europe 1982 279484077072
-44    Europe 1987 316507473546
-45    Europe 1992 342703247405
-46    Europe 1997 383606933833
-47    Europe 2002 436448815097
-48    Europe 2007 493183311052
-49   Oceania 1952  54157223944
-50   Oceania 1957  66826828013
-51   Oceania 1962  82336453245
-52   Oceania 1967 105958863585
-53   Oceania 1972 134112109227
-54   Oceania 1977 154707711162
-55   Oceania 1982 176177151380
-56   Oceania 1987 209451563998
-57   Oceania 1992 236319179826
-58   Oceania 1997 289304255183
-59   Oceania 2002 345236880176
-60   Oceania 2007 403657044512
+ [ reached getOption("max.print") -- omitted 27 rows ]
 ~~~
 {: .output}
 
@@ -387,34 +361,35 @@ d_ply(
 ~~~
 {: .output}
 
-> ## Tip: printing numbers {.callout}
+> ## Tip: printing numbers
 >
 > The `format` function can be used to make numeric
 > values "pretty" for printing out in messages.
->
+{: .callout}
 
 
-> ## Challenge 1 {.challenge}
+> ## Challenge 1
 >
 > Calculate the average life expectancy per continent. Which has the longest?
 > Which had the shortest?
->
+{: .challenge}
 
-> ## Challenge 2 {.challenge}
+> ## Challenge 2
 >
 > Calculate the average life expectancy per continent and year. Which had the
 > longest and shortest in 2007? Which had the greatest change in between 1952
 > and 2007?
->
+{: .challenge}
 
-> ## Advanced Challenge {.challenge}
+
+> ## Advanced Challenge
 >
 > Calculate the difference in mean life expectancy between
 > the years 1952 and 2007 from the output of challenge 2
 > using one of the `plyr` functions.
->
+{: .challenge}
 
-> ## Alternate Challenge if class seems lost {.challenge}
+> ## Alternate Challenge if class seems lost
 >
 > Without running them, which of the following will calculate the average
 > life expectancy per continent:
@@ -469,3 +444,4 @@ d_ply(
 > ~~~
 > {: .r}
 >
+{: .challenge}

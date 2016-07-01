@@ -1,21 +1,21 @@
 ---
-layout: page
-title: R for reproducible scientific analysis
-subtitle: Producing reports with knitr
-minutes: 60
+title: Producing reports with knitr
+teaching: 60
+exercises: 20
+questions:
+- "FIXME"
+objectives:
+- Value of reproducible reports
+- Basics of Markdown
+- R code chunks
+- Chunk options
+- Inline R code
+- Other output formats
+keypoints:
+- "FIXME"
 ---
 
 
-
-
-> ## Learning Objectives {.objectives}
->
-> * Value of reproducible reports
-> * Basics of Markdown
-> * R code chunks
-> * Chunk options
-> * Inline R code
-> * Other output formats
 
 
 ## Data analysis reports
@@ -64,7 +64,7 @@ pages.
 Within R Studio, click File &rarr; New File &rarr; R Markdown and
 you'll get a dialog box like this:
 
-![](img/New_R_Markdown.png)<br/>
+![](../fig/New_R_Markdown.png)
 
 You can stick with the default (HTML output), but give it a title.
 
@@ -174,13 +174,15 @@ next to it; click the question mark and you'll get a "Markdown Quick
 Reference" (with the Markdown syntax) as well to the RStudio
 documentation on R Markdown.
 
-> ## Challenge {.challenge}
+> ## Challenge
 >
 > Create a new R Markdown document. Delete all of the R code chunks
 > and write a bit of Markdown (some sections, some italicized
 > text, and an itemized list).
 >
 > Convert the document to a webpage.
+{: .challenge}
+
 
 ## A bit more Markdown
 
@@ -224,14 +226,14 @@ a name, as they will help you to fix errors and, if any graphs are
 produced, the file names are based on the name of the code chunk that
 produced them.
 
-> ## Challenge {.challenge}
+> ## Challenge
 >
 > Add code chunks to
 >
 > - Load the ggplot2 package
 > - Read the gapminder data
 > - Create a plot
-
+{: .challenge}
 
 ## How things get compiled
 
@@ -245,7 +247,7 @@ The Markdown and figure documents are then processed by the tool
 [pandoc](http://pandoc.org/), which converts the Markdown file into an
 html file, with the figures embedded.
 
-<img src="../fig/Rmd-rmd_to_html_fig-1.png" title="plot of chunk rmd_to_html_fig" alt="plot of chunk rmd_to_html_fig" style="display: block; margin: auto auto auto 0;" />
+<img src="../fig/rmd-15-rmd_to_html_fig-1.png" title="plot of chunk rmd_to_html_fig" alt="plot of chunk rmd_to_html_fig" style="display: block; margin: auto auto auto 0;" />
 
 
 
@@ -291,10 +293,11 @@ want to use `fig.path` to define separate prefixes for the figure file
 names, like `fig.path="Figs/cleaning-"` and `fig.path="Figs/analysis-"`.
 
 
-> ## Challenge {.challenge}
+> ## Challenge
 >
 > Use chunk options to control the size of a figure and to hide the
 > code.
+{: .challenge}
 
 
 ## Inline R code
@@ -318,9 +321,10 @@ The
 function in my [R/broman](https://github.com/kbroman) package handles
 this.
 
-> ## Challenge {.challenge}
+> ## Challenge
 >
 > Try out a bit of in-line R code.
+{: .challenge}
 
 
 ## Other output options
@@ -330,15 +334,15 @@ little triangle next to the "Knit HTML" button to get a drop-down
 menu. Or you could put `pdf_document` or `word_document` in the header
 of the file.
 
-> ## Tip: Creating PDF documents {.callout}
+> ## Tip: Creating PDF documents
 >
-> Creating .pdf documents may require installation of some extra software. If required this is detailed in an error message.
+> Creating .pdf documents may require installation of some extra software. If
+> required this is detailed in an error message.
 >
 > Tex for windows is available [here](http://miktex.org/2.9/setup).
 >
 > Tex for mac is available [here](http://tug.org/mactex).
->
-
+{: .callout}
 
 
 ## Resources

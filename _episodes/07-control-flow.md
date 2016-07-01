@@ -1,17 +1,17 @@
 ---
-layout: page
-title: R for reproducible scientific analysis
-subtitle: Control flow
-minutes: 35
+title: Control flow
+teaching: 35
+exercises: 20
+questions:
+- "FIXME"
+objectives:
+- "Write conditional statements with `if()` and `else()`."
+- "Write and understand `for()` loops."
+keypoints:
+- "FIXME"
 ---
 
 
-
-> ## Learning Objectives {.objectives}
->
-> * Write conditional statements with `if()` and `else()`.
-> * Write and understand `for()` loops.
->
 
 Often when we're coding we want to control the flow of our actions. This can be done
 by setting actions to occur only if a condition or a set of conditions are met.
@@ -87,7 +87,7 @@ if (x >= 10) {
 ~~~
 {: .output}
 
-> ## Tip: pseudo-random numbers {.callout}
+> ## Tip: pseudo-random numbers
 >
 > In the above case, the function `rpois()` generates a random number following a
 > Poisson distribution with a mean (i.e. lambda) of 8. The function `set.seed()`
@@ -95,7 +95,7 @@ if (x >= 10) {
 > number ([more about pseudo-random numbers](http://en.wikibooks.org/wiki/R_Programming/Random_Number_Generation)).
 > So if we `set.seed(10)`, we see that `x` takes the value 8. You should get the
 > exact same number.
->
+{: .callout}
 
 **Important:** when R evaluates the condition inside `if()` statements, it is
 looking for a logical element, i.e., `TRUE` or `FALSE`. This can cause some
@@ -126,13 +126,54 @@ x
 ~~~
 {: .output}
 
-> ## Challenge 1 {.challenge}
+> ## Challenge 1
 >
 > Use an `if()` statement to print a suitable message
 > reporting whether there are any records from 2002 in
 > the `gapminder` dataset.
 > Now do the same for 2012.
 >
+> > ## Solution to Challenge 1
+> > We will first see a solution to Challenge 1 which does not use the `any()` function.
+> > We first obtain a logical vector describing which element of `gapminder$year` is equal to `2002`:
+> > 
+> > ~~~
+> > gapminder[(gapminder$year == 2002),]
+> > ~~~
+> > {: .r}
+> > Then, we count the number of rows of the data.frame `gapminder` that correspond to the 2002:
+> > 
+> > ~~~
+> > rows2002_number <- nrow(gapminder[(gapminder$year == 2002),])
+> > ~~~
+> > {: .r}
+> > The presence of any record for the year 2002 is equivalent to the request that `rows2002_number` is one or more:
+> > 
+> > ~~~
+> > rows2002_number >= 1
+> > ~~~
+> > {: .r}
+> > Putting all together, we obtain:
+> > 
+> > ~~~
+> > if(nrow(gapminder[(gapminder$year == 2002),]) >= 1){
+> >    print("Record(s) for the year 2002 found.")
+> > }
+> > ~~~
+> > {: .r}
+> >
+> > All this can be done more quickly with `any()`. The logical condition can be expressed as:
+> > 
+> > ~~~
+> > if(any(gapminder$year == 2002)){
+> >    print("Record(s) for the year 2002 found.")
+> > }
+> > ~~~
+> > {: .r}
+> >
+> {: .solution}
+{: .challenge}
+
 
 Did anyone get a warning message like this?
 
@@ -147,13 +188,14 @@ If your condition evaluates to a vector with more than one logical element,
 the function `if()` will still run, but will only evaluate the condition in the first
 element. Here you need to make sure your condition is of length 1.
 
-> ## Tip: `any()` and `all()` {.callout}
+> ## Tip: `any()` and `all()`
 > The `any()` function will return TRUE if at least one
 > TRUE value is found within a vector, otherwise it will return `FALSE`.
 > This can be used in a similar way to the `%in%` operator.
 > The function `all()`, as the name suggests, will only return `TRUE` if all values in
 > the vector are `TRUE`.
 >
+{: .callout}
 
 ## Repeating operations
 
@@ -278,7 +320,7 @@ This approach can be useful, but 'growing your results' (building
 the result object incrementally) is computationally inefficient, so avoid
 it when you are iterating through a lot of values.
 
-> ## Tip: don't grow your results {.callout}
+> ## Tip: don't grow your results
 >
 > One of the biggest things that trips up novices and
 > experienced R users alike, is building a results object
@@ -289,7 +331,7 @@ it when you are iterating through a lot of values.
 > So if you know the end result will be stored in a matrix like above,
 > create an empty matrix with 5 row and 5 columns, then at each iteration
 > store the results in the appropriate location.
->
+{: .callout}
 
 A better way is to define your (empty) output object before filling in the values.
 For this example, it looks more involved, but is still more efficient.
@@ -319,7 +361,7 @@ output_vector2
 ~~~
 {: .output}
 
-> ## Tip: While loops {.callout}
+> ## Tip: While loops
 >
 >
 > Sometimes you will find yourself needing to repeat an operation until a certain
@@ -337,133 +379,98 @@ output_vector2
 > that generates random numbers from a uniform distribution (the `runif()` function)
 > between 0 and 1 until it gets one that's less than 0.1.
 >
-> ~~~ {.r}
+> ~~~
 > z <- 1
 > while(z > 0.1){
 >   z <- runif(1)
 >   print(z)
 > }
 > ~~~
+> {: .r}
 >
 > `while()` loops will not always be appropriate. You have to be particularly careful
 > that you don't end up in an infinite loop because your condition is never met.
->
+{: .callout}
 
-> ## Challenge 2 {.challenge}
+
+> ## Challenge 2
 >
 > Compare the objects output_vector and
 > output_vector2. Are they the same? If not, why not?
 > How would you change the last block of code to make output_vector2
 > the same as output_vector?
 >
+> > ## Solution to Challenge 2
+> > We can check whether the two vectors are identical using the `all()` function:
+> > 
+> > ~~~
+> > all(output_vector == output_vector2)
+> > ~~~
+> > {: .r}
+> > However, all the elements of `output_vector` can be found in `output_vector2`:
+> > 
+> > ~~~
+> > all(output_vector %in% output_vector2)
+> > ~~~
+> > {: .r}
+> > and vice versa:
+> > 
+> > ~~~
+> > all(output_vector2 %in% output_vector)
+> > ~~~
+> > {: .r}
+> > therefore, the element in `output_vector` and `output_vector2` are just sorted in a different order.
+> > This is because `as.vector()` outputs the elements of an input matrix going over its column.
+> > Taking a look at `output_matrix`, we can notice that we want its elements by rows.
+> > The solution is to transpose the `output_matrix`. We can do it either by calling the transpose function
+> > `t()` or by inputing the elements in the right order.
+> > The first solution requires to change the original
+> > 
+> > ~~~
+> > output_vector2 <- as.vector(output_matrix)
+> > ~~~
+> > {: .r}
+> > into
+> > 
+> > ~~~
+> > output_vector2 <- as.vector(t(output_matrix))
+> > ~~~
+> > {: .r}
+> > The second solution requires to change
+> > 
+> > ~~~
+> > output_matrix[i, j] <- temp_output
+> > ~~~
+> > {: .r}
+> > into
+> > 
+> > ~~~
+> > output_matrix[j, i] <- temp_output
+> > ~~~
+> > {: .r}
+> {: .solution}
+{: .challenge}
 
-> ## Challenge 3 {.challenge}
+> ## Challenge 3
 >
 > Write a script that loops through the `gapminder` data by continent and prints out
 > whether the mean life expectancy is smaller or larger than 50
 > years.
 >
+{: .challenge}
 
-> ## Challenge 4 {.challenge}
+> ## Challenge 4
 >
 > Modify the script from Challenge 4 to also loop over each
 > country. This time print out whether the life expectancy is
 > smaller than 50, between 50 and 70, or greater than 70.
 >
+{: .challenge}
 
-> ## Challenge 5 - Advanced {.challenge}
+> ## Challenge 5 - Advanced
 >
 > Write a script that loops over each country in the `gapminder` dataset,
 > tests whether the country starts with a 'B', and graphs life expectancy
 > against time as a line graph if the mean life expectancy is under 50 years.
 >
-
-
-## Challenge solutions
-
-> ## Solution to Challenge 1 {.challenge}
-> We will first see a solution to Challenge 1 which does not use the `any()` function.
-> We first obtain a logical vector describing which element of `gapminder$year` is equal to `2002`:
-> 
-> ~~~
-> gapminder[(gapminder$year == 2002),]
-> ~~~
-> {: .r}
-> Then, we count the number of rows of the data.frame `gapminder` that correspond to the 2002:
-> 
-> ~~~
-> rows2002_number <- nrow(gapminder[(gapminder$year == 2002),])
-> ~~~
-> {: .r}
-> The presence of any record for the year 2002 is equivalent to the request that `rows2002_number` is one or more:
-> 
-> ~~~
-> rows2002_number >= 1
-> ~~~
-> {: .r}
-> Putting all together, we obtain:
-> 
-> ~~~
-> if(nrow(gapminder[(gapminder$year == 2002),]) >= 1){
->    print("Record(s) for the year 2002 found.")
-> }
-> ~~~
-> {: .r}
-
-> All this can be done more quickly with `any()`. The logical condition can be expressed as:
-> 
-> ~~~
-> if(any(gapminder$year == 2002)){
->    print("Record(s) for the year 2002 found.")
-> }
-> ~~~
-> {: .r}
-
-> ## Solution to Challenge 2 {.challenge}
-> We can check whether the two vectors are identical using the `all()` function:
-> 
-> ~~~
-> all(output_vector == output_vector2)
-> ~~~
-> {: .r}
->However, all the elements of `output_vector` can be found in `output_vector2`:
-> 
-> ~~~
-> all(output_vector %in% output_vector2)
-> ~~~
-> {: .r}
-> and vice versa:
-> 
-> ~~~
-> all(output_vector2 %in% output_vector)
-> ~~~
-> {: .r}
-> therefore, the element in `output_vector` and `output_vector2` are just sorted in a different order.
-> This is because `as.vector()` outputs the elements of an input matrix going over its column.
-> Taking a look at `output_matrix`, we can notice that we want its elements by rows.
-> The solution is to transpose the `output_matrix`. We can do it either by calling the transpose function
-> `t()` or by inputing the elements in the right order.
-> The first solution requires to change the original
-> 
-> ~~~
-> output_vector2 <- as.vector(output_matrix)
-> ~~~
-> {: .r}
-> into
-> 
-> ~~~
-> output_vector2 <- as.vector(t(output_matrix))
-> ~~~
-> {: .r}
-> The second solution requires to change
-> 
-> ~~~
-> output_matrix[i, j] <- temp_output
-> ~~~
-> {: .r}
-> into
-> 
-> ~~~
-> output_matrix[j, i] <- temp_output
-> ~~~
-> {: .r}
+{: .challenge}

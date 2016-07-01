@@ -1,16 +1,17 @@
 ---
-layout: page
-title: R for reproducible scientific analysis
-subtitle: Writing data
-minutes: 20
+title: Writing data
+teaching: 20
+exercises: 10
+questions:
+- "FIXME"
+objectives:
+- "To be able to write out plots and data from R."
+keypoints:
+- "FIXME"
 ---
 
 
 
-> ## Learning Objectives {.objectives}
->
-> * To be able to write out plots and data from R
->
 
 ## Saving plots
 
@@ -52,12 +53,12 @@ dev.off()
 
 Open up this document and have a look.
 
-> ## Challenge 1 {.challenge}
+> ## Challenge 1
 >
 > Rewrite your 'pdf' command to print a second
 > page in the pdf, showing a facet plot (hint: use `facet_grid`)
 > of the same data with one panel per continent.
->
+{: .challenge}
 
 
 The commands `jpeg`, `png` etc. are used similarly to produce
@@ -166,13 +167,13 @@ Australia,1992,17481977,Oceania,77.56,23424.76683
 
 That looks better!
 
-> ## Challenge 2 {.challenge}
+> ## Challenge 2
 >
 > Write a data-cleaning script file that subsets the gapminder
 > data to include only data points collected since 1990.
 >
 > Use this script to write out the new subset to a file
 > in the `cleaned-data/` directory.
->
+{: .challenge}
 
 

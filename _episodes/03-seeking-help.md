@@ -1,19 +1,18 @@
 ---
-layout: page
-title: R for reproducible scientific analysis
-subtitle: Seeking help
-minutes: 15
+title: "Seeking help"
+teaching: 15
+exercises: 10
+questions:
+- "FIXME"
+objectives:
+- "To be able read R help files for functions and special operators."
+- "To be able to use CRAN task views to identify packages to solve a problem."
+- "To be able to seek help from your peers."
+keypoints:
+- "FIXME"
 ---
 
 
-
-
-> ## Learning Objectives {.objectives}
->
-> * To be able read R help files for functions and special operators.
-> * To be able to use CRAN task views to identify packages to solve a problem.
-> * To be able to seek help from your peers
->
 
 ## Reading Help files
 
@@ -42,13 +41,13 @@ Each help page is broken down into sections:
 
 Different functions might have different sections, but these are the main ones you should be aware of.
 
-> ## Tip: Reading help files {.callout}
+> ## Tip: Reading help files
 >
 > One of the most daunting aspects of R is the large number of functions
 > available. It would be prohibitive, if not impossible to remember the
 > correct usage for every function you use. Luckily, the help files
 > mean you don't have to!
->
+{: .callout}
 
 ## Special Operators
 
@@ -115,7 +114,7 @@ sessionInfo()
 
 
 ~~~
-R version 3.3.0 (2016-05-03)
+R version 3.3.1 (2016-06-21)
 Platform: x86_64-pc-linux-gnu (64-bit)
 Running under: Ubuntu 16.04 LTS
 
@@ -131,10 +130,10 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
 
 other attached packages:
-[1] stringr_1.0.0        knitr_1.13           BiocInstaller_1.22.2
+[1] stringr_1.0.0        knitr_1.13           BiocInstaller_1.22.3
 
 loaded via a namespace (and not attached):
-[1] magrittr_1.5  formatR_1.4   tools_3.3.0   stringi_1.1.1 methods_3.3.0
+[1] magrittr_1.5  formatR_1.4   tools_3.3.1   stringi_1.1.1 methods_3.3.1
 [6] evaluate_0.9 
 ~~~
 {: .output}
@@ -143,7 +142,7 @@ Will print out your current version of R, as well as any packages you
 have loaded. This can be useful for others to help reproduce and debug
 your issue.
 
-> ## Challenge 1 {.challenge}
+> ## Challenge 1
 >
 > Look at the help for the `c` function. What kind of vector do you
 > expect you will create if you evaluate the following:
@@ -154,14 +153,34 @@ your issue.
 > c(1, 2, 'f')`
 > ~~~
 > {: .r}
+> > ## Solution to Challenge 1
+> >
+> > The `c()` function creates a vector, in which all elements are the
+> > same type. In the first case, the elements are numeric, in the
+> > second, they are characters, and in the third they are characters:
+> > the numeric values "coerced" to be characters.
+> {: .solution}
+{: .challenge}
 
-> ## Challenge 2 {.challenge}
+> ## Challenge 2
 >
 > Look at the help for the `paste` function. You'll need to use this later.
 > What is the difference between the `sep` and `collapse` arguments?
 >
+> > ## Solution to Challenge 2
+> >
+> > Look at the help for the `paste` function. You'll need to use this later.
+> >
+> > 
+> > ~~~
+> > help("paste")
+> > ?paste
+> > ~~~
+> > {: .r}
+> {: .solution}
+{: .challenge}
 
-> ## Challenge 3 {.challenge}
+> ## Challenge 3
 > Use help to find a function (and its associated parameters) that you could
 > use to load data from a csv file in which columns are delimited with "\t"
 > (tab) and the decimal point is a "." (period). This check for decimal
@@ -169,31 +188,10 @@ your issue.
 > colleagues, because different countries have different conventions for the
 > decimal point (i.e. comma vs period).
 > hint: use `??csv` to lookup csv related functions.
+{: .challenge}
 
 ## Other ports of call
 
 * [Quick R](http://www.statmethods.net/)
 * [RStudio cheat sheets](http://www.rstudio.com/resources/cheatsheets/)
 * [Cookbook for R](http://www.cookbook-r.com/)
-
-## Challenge solutions
-
-> ## Solution to Challenge 1 {.challenge}
->
-> The `c()` function creates a vector, in which all elements are the
-> same type. In the first case, the elements are numeric, in the
-> second, they are characters, and in the third they are characters:
-> the numeric values "coerced" to be characters.
->
-
-> ## Solution to Challenge 2 {.challenge}
->
-> Look at the help for the `paste` function. You'll need to use this later.
->
-> 
-> ~~~
-> help("paste")
-> ?paste
-> ~~~
-> {: .r}
->
