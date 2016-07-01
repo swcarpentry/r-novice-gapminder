@@ -191,7 +191,7 @@ lines.
 > > The lines now get drawn over the points!
 > >
 > {: .solution}
-{:. challenge}
+{: .challenge}
 
 ## Transformations and statistics
 

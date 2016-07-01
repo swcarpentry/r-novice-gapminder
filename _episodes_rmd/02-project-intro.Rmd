@@ -241,6 +241,7 @@ between files from different commits.
 > > ```
 > > $ mkdir graphs
 > > $ echo "graphs/" >> .gitignore
-> > ```{. shell}
+> > ```
+> > {: . shell}
 > {: .solution}
 {: .challenge}

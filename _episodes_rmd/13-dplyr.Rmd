@@ -71,7 +71,7 @@ variables you select.
 year_country_gdp <- select(gapminder,year,country,gdpPercap)
 ```
 
-![](fig/13-dplyr-fig1.png)
+![](../fig/13-dplyr-fig1.png)
 
 If we open up `year_country_gdp` we'll see that it only contains the year,
 country and gdpPercap. Above we used 'normal' grammar, but the strengths of
@@ -102,14 +102,14 @@ year_country_gdp_euro <- gapminder %>%
     select(year,country,gdpPercap)
 ```
 
-> ## Challenge 1 {.challenge}
+> ## Challenge 1
 >
 > Write a single command (which can span multiple lines and includes pipes) that
 > will produce a dataframe that has the African values for `lifeExp`, `country`
 > and `year`, but not for other Continents.  How many rows does your dataframe
 > have and why?
 >
-> > ## Solution to Challenge 1 {.challenge}
+> > ## Solution to Challenge 1
 > >```{r}
 > >year_country_lifeExp_Africa <- gapminder %>%
 > >                            filter(continent=="Africa") %>%
@@ -144,7 +144,7 @@ You will notice that the structure of the dataframe where we used `group_by()`
 `data.frame` which contains only the rows that correspond to the a particular
 value `continent` (at least in the example above).
 
-![](fig/13-dplyr-fig2.png)
+![](../fig/13-dplyr-fig2.png)
 
 ## Using summarize()
 
@@ -161,18 +161,18 @@ gdp_bycontinents <- gapminder %>%
     summarize(mean_gdpPercap=mean(gdpPercap))
 ```
 
-![](fig/13-dplyr-fig3.png)
+![](../fig/13-dplyr-fig3.png)
 
 That allowed us to calculate the mean gdpPercap for each continent, but it gets
 even better.
 
-> ## Challenge 2 {.challenge}
+> ## Challenge 2
 >
 >
 > Calculate the average life expectancy per country. Which had the longest life
 > expectancy and which had the shortest life expectancy?
 >
-> > ## Solution to Challenge 2 {.challenge}
+> > ## Solution to Challenge 2
 > >```{r}
 > >lifeExp_bycountry <- gapminder %>%
 > >    group_by(country) %>%
@@ -218,14 +218,14 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 
 
 
-> ## Advanced Challenge {.challenge}
+> ## Advanced Challenge
 >
 > Calculate the average life expectancy in 2002 of 2 randomly selected countries
 > for each continent. Then arrange the continent names in reverse order.
 > **Hint:** Use the `dplyr` functions `arrange()` and `sample_n()`, they have
 > similar syntax to other dplyr functions.
 >
-> > ## Solution to Advanced Challenge {.challenge}
+> > ## Solution to Advanced Challenge
 > >```{r}
 > >lifeExp_2countries_bycontinents <- gapminder %>%
 > >    filter(year==2002) %>%

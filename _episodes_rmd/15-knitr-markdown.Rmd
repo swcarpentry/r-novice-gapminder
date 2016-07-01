@@ -17,7 +17,7 @@ keypoints:
 
 ```{r chunk_options, include=FALSE}
 source("../bin/chunk-options.R")
-##opts_chunk$set(fig.path="fig/Rmd-")
+knitr_fig_path("15-")
 ```
 
 
@@ -67,7 +67,7 @@ pages.
 Within R Studio, click File &rarr; New File &rarr; R Markdown and
 you'll get a dialog box like this:
 
-![](img/New_R_Markdown.png)<br/>
+![](../fig/New_R_Markdown.png)
 
 You can stick with the default (HTML output), but give it a title.
 
@@ -327,10 +327,11 @@ want to use `fig.path` to define separate prefixes for the figure file
 names, like `fig.path="Figs/cleaning-"` and `fig.path="Figs/analysis-"`.
 
 
-> ## Challenge {.challenge}
+> ## Challenge
 >
 > Use chunk options to control the size of a figure and to hide the
 > code.
+{: .challenge}
 
 
 ## Inline R code

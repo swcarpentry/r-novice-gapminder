@@ -6,6 +6,8 @@ questions:
 - "FIXME"
 objectives:
 - "To review the best practices for using R for scientific analysis."
+keypoints:
+- "FIXME"
 ---
 
 ## Best practices for writing nice code

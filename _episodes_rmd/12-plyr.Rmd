@@ -63,7 +63,7 @@ also takes a substantial amount of effort and testing to get right.
 
 The abstract problem we're encountering here is know as "split-apply-combine":
 
-![Split apply combine](fig/splitapply.png)
+![Split apply combine](../fig/splitapply.png)
 
 We want to *split* our data into groups, in this case continents, *apply*
 some calculations on that group, then optionally *combine* the results
@@ -104,7 +104,7 @@ table)
 Note here that plyr's use of "array" is different to R's,
 an array in ply can include a vector or matrix.
 
-![Full apply suite](fig/full_apply_suite.png)
+![Full apply suite](../fig/full_apply_suite.png)
 
 
 Each of the xxply functions (`daply`, `ddply`, `llply`, `laply`, ...) has the
@@ -207,7 +207,7 @@ d_ply(
 > Which had the shortest?
 {: .challenge}
 
-> ## Challenge 2 {.challenge}
+> ## Challenge 2
 >
 > Calculate the average life expectancy per continent and year. Which had the
 > longest and shortest in 2007? Which had the greatest change in between 1952
@@ -215,14 +215,14 @@ d_ply(
 {: .challenge}
 
 
-> ## Advanced Challenge {.challenge}
+> ## Advanced Challenge
 >
 > Calculate the difference in mean life expectancy between
 > the years 1952 and 2007 from the output of challenge 2
 > using one of the `plyr` functions.
 {: .challenge}
 
-> ## Alternate Challenge if class seems lost {.challenge}
+> ## Alternate Challenge if class seems lost
 >
 > Without running them, which of the following will calculate the average
 > life expectancy per continent:
