@@ -1,13 +1,15 @@
 ---
-title: Dataframe manipulation with tidyr
+title: Dataframe Manipulation with tidyr
 teaching: 60
 exercises: 20
 questions:
-- "FIXME."
+- "How can I change the format of dataframes?"
 objectives:
 - "To be understand the concepts of 'long' and 'wide' data formats and be able to convert between them with `tidyr`."
 keypoints:
-- "FIXME"
+- "Use the `tidyr` package to change the layout of dataframes."
+- "Use `gather()` to go from wide to long format."
+- "Use `scatter()` to go from long to wide format."
 ---
 
 

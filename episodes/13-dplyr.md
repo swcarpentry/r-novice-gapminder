@@ -1,13 +1,17 @@
 ---
-title: Dataframe manipulation with dplyr
+title: Dataframe Manipulation with dplyr
 teaching: 90
 exercises: 20
 questions:
-- "FIXME"
+- "How can I manipulate dataframes without repeating myself?"
 objectives:
-- " To be able to use the 6 main dataframe manipulation 'verbs' with pipes in  `dplyr`."
+- " To be able to use the six main dataframe manipulation 'verbs' with pipes in  `dplyr`."
 keypoints:
-- "FIXME"
+- "Use the `dplyr` package to manipulate dataframes."
+- "Use `select()` to choose variables from a dataframe."
+- "Use `filter()` to choose data based on values."
+- "Use `group_by()` and `summarize()` to work with subsets of data."
+- "Use `mutate()` to create new variables."
 ---
 
 
@@ -310,6 +314,7 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 ## Using mutate()
 
 We can also create new variables prior to (or even after) summarizing information using `mutate()`.
+
 
 ~~~
 gdp_pop_bycontinents_byyear <- gapminder %>%

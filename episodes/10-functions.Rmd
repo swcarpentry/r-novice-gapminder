@@ -1,9 +1,9 @@
 ---
-title: Functions explained
+title: Functions Explained
 teaching: 45
 exercises: 20
 questions:
-- "FIXME"
+- "How can I write a new function in R?"
 objectives:
 - "Define a function that takes arguments."
 - "Return a value from a function."
@@ -11,7 +11,9 @@ objectives:
 - "Set default values for function arguments."
 - "Explain why we should divide programs into small, single-purpose functions."
 keypoints:
-- "FIXME"
+- "Use `function` to define a new function in R."
+- "Use parameters to pass values into functions."
+- "Load functions into programs using `source`."
 ---
 
 ```{r, include=FALSE}

@@ -3,12 +3,14 @@ title: "Exploring Data Frames"
 teaching: 45
 exercises: 10
 questions:
-- "FIXME"
+- "How can I manipulate a dataframe?"
 objectives:
 - "To learn how to manipulate a data.frame in memory"
 - "To tour some best practices of exploring and understanding a data frame when it is first loaded."
 keypoints:
-- "FIXME"
+- "Use `cbind()` to add a new column to a dataframe."
+- "Use `rbind()` to add a new row to a dataframe."
+- "Use `omit()` to remove rows from a dataframe."
 ---
 
 

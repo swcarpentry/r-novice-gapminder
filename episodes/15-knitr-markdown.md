@@ -1,9 +1,9 @@
 ---
-title: Producing reports with knitr
+title: Producing Reports With knitr
 teaching: 60
 exercises: 20
 questions:
-- "FIXME"
+- "How can I integrate software and reports?"
 objectives:
 - Value of reproducible reports
 - Basics of Markdown
@@ -12,7 +12,9 @@ objectives:
 - Inline R code
 - Other output formats
 keypoints:
-- "FIXME"
+- "Mix reporting written in R Markdown with software written in R."
+- "Specify chunk options to control formatting."
+- "Use `knitr` to convert these documents into PDF and other formats."
 ---
 
 
