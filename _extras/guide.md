@@ -11,41 +11,44 @@ at the start of each sesson for technical difficulties like WiFi and
 installing things (even if you asked students to install in advance, longer if
 not).
 
-
 ## Setting up git in RStudio
 
-There can be difficulties linking git to RStudio depending on the operating system and the version of the operating system. To make sure git is properly installed and configured, the learners should go to the Options window in the RStudio application.
+There can be difficulties linking git to RStudio depending on the
+operating system and the version of the operating system. To make sure
+Git is properly installed and configured, the learners should go to
+the Options window in the RStudio application.
 
 * **Mac OS X:**
   * Go RStudio -> Preferences... -> Git/SVN
   * Check and see whether there is a path to a file in the "Git executable" window. If not, the next challenge is figuring out where Git is located.
   * In the terminal enter `which git` and you will get a path to the git executable. In the "Git executable" window you may have difficulties finding the directory since OS X hides many of the operating system files. While the file selection window is open, pressing "Command-Shift-G" will pop up a text entry box where you will be able to type or paste in the full path to your git executable: e.g. /usr/bin/git or whatever else it might be.
 * **Windows:**
-	* Go Tools -> Global options... -> Git/SVN
-	* If you use the Software Carpentry Installer, then 'git.exe' should be installed at 'C:/Program Files/Git/bin/git.exe'
+  * Go Tools -> Global options... -> Git/SVN
+  * If you use the Software Carpentry Installer, then 'git.exe' should be installed at `C:/Program Files/Git/bin/git.exe`.
 
 To prevent the learners from having to re-enter their password each time they push a commit to GitHub, this command (which can be run from a bash prompt) will make it so they only have to enter their password once:
 
-    git config --global credential.helper 'cache --timeout=10000000'
+~~~
+$ git config --global credential.helper 'cache --timeout=10000000'
+~~~
+{: .bash}
 
-
-
-
-## Pulling in data
+## Pulling in Data
 
 The easiest way to get the data used in this lesson during a bootcamp is
 to have attendees run the following:
 
-~~~ {.shell}
+~~~
 git remote add data https://github.com/resbaz/r-novice-gapminder-files
 git pull data master
 ~~~
+{: .bash}
 
-If Git is not being taught as part of the workshop the raw data can be downloaded from the following urls:
-[gapminder-FiveYearData](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/data/gapminder-FiveYearData.csv) and
-[gapminder-FiveYearData-Wide](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/data/gapminder_wide.csv)
+If Git is not being taught as part of the workshop the raw data can be downloaded from
+[gapminder-FiveYearData][gapminder-data] and
+[gapminder-FiveYearData-Wide][gapminder-data-wide].
 
-attendees can use the `File - Save As` dialog in their browser to save the file.
+Attendees can use the `File - Save As` dialog in their browser to save the file.
 
 ## Overall
 
@@ -75,10 +78,13 @@ memory will trigger later when they encouter a problem or some esoteric behaviou
 
 Key lessons to take time on:
 
- * Data subsetting - conceptually difficult for novices
- * Functions - learners especially struggle with this
- * Data structures - worth being thorough, but you can go through it quickly.
+* Data subsetting - conceptually difficult for novices
+* Functions - learners especially struggle with this
+* Data structures - worth being thorough, but you can go through it quickly.
 
 Don't worry about being correct or knowing the material back-to-front. Use
 mistakes as teaching moments: the most vital skill you can impart is how to
 debug and recover from unexpected errors.
+
+[gapminder-data]: https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/data/gapminder-FiveYearData.csv
+[gapminder-data-wide]: https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/data/gapminder_wide.csv
