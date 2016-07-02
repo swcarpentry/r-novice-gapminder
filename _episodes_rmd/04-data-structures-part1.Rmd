@@ -1,15 +1,19 @@
 ---
-title: "Data structures"
+title: "Data Structures"
 teaching: 90
 exercises: 20
 questions:
-- "FIXME"
+- "How can I read data in R?"
+- "What are the basic data types in R?"
+- "How do I represent categorical information in R?"
 objectives:
 - "To be aware of the different types of data."
 - "To begin exploring data frames, and understand how it's related to vectors, factors and lists."
 - "To be able to ask questions from R about the type, class, and structure of an object."
 keypoints:
-- "FIXME"
+- "Use `read.csv` to read tabular data in R."
+- "The basic data types in R are double, integer, complex, logical, and character."
+- "Use factors to represent categories in R."
 ---
 
 ```{r, include=FALSE}
@@ -37,7 +41,7 @@ black,5.0,0
 tabby,3.2,1
 ```
 
-> ## Tip :Editing Text files in R
+> ## Tip: Editing Text files in R
 >
 > Alternatively, you can create `data/feline-data.csv` using a text editor (Nano),
 > or within RStudio with the **File -> New File -> Text File** menu item.
@@ -185,7 +189,7 @@ cats <- cats_orig
 ```
 
 
-## Vectors & Type Coercion
+## Vectors and Type Coercion
 
 To better understand this behavior, let's meet another of the data structures:
 the *vector*.

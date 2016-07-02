@@ -1,14 +1,18 @@
 ---
-title: "Project management with RStudio"
+title: "Project Management With RStudio"
 teaching: 30
 exercises: 20
 questions:
-- "FIXME"
+- "How can I manage my projects in R?"
 objectives:
 - To be able to create self-contained projects in RStudio
 - To be able to use git from within RStudio
 keypoints:
-- "FIXME"
+- "Use RStudio to create and manage projects with consistent layout."
+- "Treat raw data as read-only."
+- "Treat generated output as disposable."
+- "Separate function definition and application."
+- "Use version control."
 ---
 
 

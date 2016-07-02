@@ -1,16 +1,19 @@
 ---
-title: Best practices for writing good code
+title: Writing Good Software
 teaching: 15
 exercises: 0
 questions:
-- "FIXME"
+- "How can I write software that other people can use?"
 objectives:
-- "To review the best practices for using R for scientific analysis."
+- "Describe best practices for writing R and explain the justification for each."
 keypoints:
-- "FIXME"
+- "Document what and why, not how."
+- "Break programs into short single-purpose functions."
+- "Write re-runnable tests."
+- "Don't repeat yourself."
+- "Don't repeat yourself."
+- "Be consistent in naming, indentation, and other aspects of style."
 ---
-
-## Best practices for writing nice code
 
 ## Make code readable
 

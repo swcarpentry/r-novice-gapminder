@@ -1,13 +1,13 @@
 ---
-title: Split-apply-combine
+title: Split-Apply-Combine
 teaching: 45
 exercises: 10
 questions:
-- "FIXME"
+- "How can I do different calculations on different sets of data?"
 objectives:
 - "To be able to use the split-apply-combine strategy for data analysis."
 keypoints:
-- "FIXME"
+- "Use the `plyr` package to split data, apply functions to subsets, and combine the results."
 ---
 
 ```{r, include=FALSE}

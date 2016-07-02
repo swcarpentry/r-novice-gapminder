@@ -16,7 +16,12 @@ objectives:
 - "To be able to call functions"
 - "Introduction to package management"
 keypoints:
-- "FIXME"
+- "Use RStudio to write and run R programs."
+- "R has the usual arithmetic operators and mathematical functions."
+- "Use `<-` to assign values to variables."
+- "Use `ls()` to list the variables in a program."
+- "Use `rm()` to delete objects in a program."
+- "Use `install.packages()` to install packages (libraries)."
 ---
 
 
@@ -632,7 +637,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7fc443007518>
+<bytecode: 0x7f994b067918>
 <environment: namespace:base>
 ~~~
 {: .output}

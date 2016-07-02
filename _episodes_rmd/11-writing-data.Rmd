@@ -1,13 +1,14 @@
 ---
-title: Writing data
+title: Writing Data
 teaching: 20
 exercises: 10
 questions:
-- "FIXME"
+- "How can I save plots and data created in R?"
 objectives:
 - "To be able to write out plots and data from R."
 keypoints:
-- "FIXME"
+- "Save plots from RStudio using the 'Export' button."
+- "Use `write.table` to save tabular data."
 ---
 
 ```{r, include=FALSE}

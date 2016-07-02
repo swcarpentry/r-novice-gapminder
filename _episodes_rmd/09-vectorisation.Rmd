@@ -3,11 +3,11 @@ title: Vectorisation
 teaching: 30
 exercises: 20
 questions:
-- "FIXME"
+- "How can I operate on all the elements of a vector at once?"
 objectives:
 - "To understand vectorised operations in R."
 keypoints:
-- "FIXME"
+- "Use vectorized operations instead of loops."
 ---
 
 ```{r, include=FALSE}

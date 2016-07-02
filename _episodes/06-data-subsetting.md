@@ -1,15 +1,19 @@
 ---
-title: Subsetting data
+title: Subsetting Data
 teaching: 45
 exercises: 20
 questions:
-- "FIXME"
+- "How can I work with subsets of data in R?"
 objectives:
 - "To be able to subset vectors, factors, matrices, lists, and data frames"
 - "To be able to extract individual and multiple elements: by index, by name, using comparison operations"
 - "To be able to skip and remove elements from various data structures."
 keypoints:
-- "FIXME"
+- "Indexing in R starts at 1, not 0."
+- "Access individual values by location using `[]`."
+- "Access slices of data using `[low:high]`."
+- "Access arbitrary sets of data using `[c(...)]`."
+- "Use `which` to select subsets of data based on value."
 ---
 
 

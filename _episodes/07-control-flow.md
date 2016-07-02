@@ -1,14 +1,16 @@
 ---
-title: Control flow
+title: Control Flow
 teaching: 35
 exercises: 20
 questions:
-- "FIXME"
+- "How can I make data-dependent choices in R?"
+- "How can I repeat operations in R?"
 objectives:
 - "Write conditional statements with `if()` and `else()`."
 - "Write and understand `for()` loops."
 keypoints:
-- "FIXME"
+- "Use `if` and `else` to make choices."
+- "Use `for` to repeat operations."
 ---
 
 
@@ -251,7 +253,7 @@ once.
 
 
 ~~~
-for (i in 1:5){
+for(i in 1:5){
   for(j in c('a', 'b', 'c', 'd', 'e')){
     print(paste(i,j))
   }
@@ -295,7 +297,7 @@ Rather than printing the results, we could write the loop output to a new object
 
 ~~~
 output_vector <- c()
-for (i in 1:5){
+for(i in 1:5){
   for(j in c('a', 'b', 'c', 'd', 'e')){
     temp_output <- paste(i, j)
     output_vector <- c(output_vector, temp_output)
@@ -338,7 +340,7 @@ For this example, it looks more involved, but is still more efficient.
 ~~~
 output_matrix <- matrix(nrow=5, ncol=5)
 j_vector <- c('a', 'b', 'c', 'd', 'e')
-for (i in 1:5){
+for(i in 1:5){
   for(j in 1:5){
     temp_j_value <- j_vector[j]
     temp_output <- paste(i, temp_j_value)
