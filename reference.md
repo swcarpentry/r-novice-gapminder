@@ -1,7 +1,5 @@
 ---
-layout: page
-title: "Reference"
-permalink: /reference/
+layout: reference
 ---
 
 ## [Introduction to R and RStudio](/01-rstudio-intro)
