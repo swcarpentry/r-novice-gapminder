@@ -189,17 +189,15 @@ the function `if()` will still run, but will only evaluate the condition in the 
 element. Here you need to make sure your condition is of length 1.
 
 > ## Tip: `any()` and `all()`
+>
 > The `any()` function will return TRUE if at least one
 > TRUE value is found within a vector, otherwise it will return `FALSE`.
 > This can be used in a similar way to the `%in%` operator.
 > The function `all()`, as the name suggests, will only return `TRUE` if all values in
 > the vector are `TRUE`.
->
 {: .callout}
 
 ## Repeating operations
-
-
 
 If you want to iterate over
 a set of values, when the order of iteration is important, and perform the

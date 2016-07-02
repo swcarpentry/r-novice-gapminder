@@ -48,6 +48,19 @@ Let's start off with an example:
 
 ~~~
 library("ggplot2")
+~~~
+{: .r}
+
+
+
+~~~
+Warning: package 'ggplot2' was built under R version 3.1.3
+~~~
+{: .error}
+
+
+
+~~~
 ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ~~~

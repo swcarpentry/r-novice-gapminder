@@ -198,7 +198,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > > 
 > > 
 > > ~~~
-> > -rw-rw-r-- 1 francois francois 80K Jun 24 10:59 data/gapminder-FiveYearData.csv
+> > -rw-r--r--  1 gvwilson  staff    80K  1 Jul 15:36 data/gapminder-FiveYearData.csv
 > > ~~~
 > > {: .output}
 > > The file size is 80K.
@@ -212,7 +212,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > > 
 > > 
 > > ~~~
-> > 1705 data/gapminder-FiveYearData.csv
+> >     1705 data/gapminder-FiveYearData.csv
 > > ~~~
 > > {: .output}
 > > There are 1705 lines and the data looks like:

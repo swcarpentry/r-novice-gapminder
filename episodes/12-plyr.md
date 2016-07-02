@@ -117,6 +117,13 @@ library(plyr)
 ~~~
 {: .r}
 
+
+
+~~~
+Warning: package 'plyr' was built under R version 3.1.3
+~~~
+{: .error}
+
 Plyr has functions for operating on `lists`, `data.frames` and `arrays`
 (matrices, or n-dimensional vectors). Each function performs:
 
@@ -289,7 +296,33 @@ ddply(
 31      Asia 1982 194429049919
 32      Asia 1987 241784763369
 33      Asia 1992 307100497486
- [ reached getOption("max.print") -- omitted 27 rows ]
+34      Asia 1997 387597655323
+35      Asia 2002 458042336179
+36      Asia 2007 627513635079
+37    Europe 1952  84971341466
+38    Europe 1957 109989505140
+39    Europe 1962 138984693095
+40    Europe 1967 173366641137
+41    Europe 1972 218691462733
+42    Europe 1977 255367522034
+43    Europe 1982 279484077072
+44    Europe 1987 316507473546
+45    Europe 1992 342703247405
+46    Europe 1997 383606933833
+47    Europe 2002 436448815097
+48    Europe 2007 493183311052
+49   Oceania 1952  54157223944
+50   Oceania 1957  66826828013
+51   Oceania 1962  82336453245
+52   Oceania 1967 105958863585
+53   Oceania 1972 134112109227
+54   Oceania 1977 154707711162
+55   Oceania 1982 176177151380
+56   Oceania 1987 209451563998
+57   Oceania 1992 236319179826
+58   Oceania 1997 289304255183
+59   Oceania 2002 345236880176
+60   Oceania 2007 403657044512
 ~~~
 {: .output}
 
