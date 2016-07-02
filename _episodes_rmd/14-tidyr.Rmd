@@ -7,7 +7,7 @@ questions:
 objectives:
 - "To be understand the concepts of 'long' and 'wide' data formats and be able to convert between them with `tidyr`."
 keypoints:
-- "TBD"
+- "FIXME"
 ---
 
 ```{r, include=FALSE}

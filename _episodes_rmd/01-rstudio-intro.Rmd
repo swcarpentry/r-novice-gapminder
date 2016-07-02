@@ -16,7 +16,7 @@ objectives:
 - "To be able to call functions"
 - "Introduction to package management"
 keypoints:
-- "TBD"
+- "FIXME"
 ---
 
 ```{r, include=FALSE}
