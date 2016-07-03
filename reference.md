@@ -1,5 +1,6 @@
 ---
 layout: reference
+permalink: /reference/
 ---
 
 ## [Introduction to R and RStudio](/01-rstudio-intro)
