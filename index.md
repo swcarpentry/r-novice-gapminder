@@ -23,41 +23,7 @@ usability.
 
 > ## Prerequisites
 >
-> Understand that computers store data and instructions (programs, scripts etc.) in files. Files are organised in directories (folders).
+> Understand that computers store data and instructions (programs, scripts etc.) in files.
+> Files are organised in directories (folders).
 > Know how to access files not in the working directory by specifying the path.
 {: .prereq}
-
-> ## Getting ready
->
-> This lesson assumes you have the R, RStudio software installed on your computer.
->
-> R can be downloaded [here](https://cran.r-project.org/mirrors.html).
->
-> RStudio is an environment for developing using R. It can be downloaded [here](https://www.rstudio.com/products/rstudio/download/). You will need the Desktop version for your computer.
-{: .checklist}
-
-
-## Topics
-
-1.  [Introduction to R and RStudio](/01-rstudio-intro)
-2.  [Project management with RStudio](/02-project-intro)
-3.  [Seeking help](/03-seeking-help)
-4.  [Data structures](/04-data-structures-part1)
-5.  [Exploring Data Frames](/05-data-structures-part2)
-6.  [Subsetting data](/06-data-subsetting)
-7.  [Control flow](/07-control-flow)
-8.  [Creating publication quality graphics](/08-plot-ggplot2)
-9.  [Vectorisation](/09-vectorisation)
-10. [Functions explained](/10-functions)
-11. [Writing data](/11-writing-data)
-12. [Split-apply-combine](/12-plyr)
-13. [Dataframe manipulation with dplyr](/13-dplyr)
-14. [Dataframe manipulation with tidyr](/14-tidyr)
-15. [Producing reports with knitr](/15-knitr-markdown)
-16. [Best practices for writing good code](/16-wrap-up)
-
-
-## Other Resources
-
-*   [Reference](/reference)
-*   [Instructor's Guide](/instructors)
