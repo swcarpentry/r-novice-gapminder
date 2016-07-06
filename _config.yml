@@ -9,13 +9,14 @@ carpentry: "swc"
 kind: "lesson"
 
 # Overall title for pages.
-title: "R for reproducible scientific analysis"
+title: "R for Reproducible Scientific Analysis"
 
-# Account (without slashes).
-account: "swcarpentry"
+# Repository URL (without trailing slash).
+repo: https://github.com/swcarpentry/r-novice-gapminder
 
-# Root URL below account (without slashes).
-project: "lesson-example"
+# Root URL below username.github.io domain, with leading slash but no trailing slash.
+# For example, for 'https://swcarpentry.github.io/lesson-example', use '/lesson-example'.
+root: "/r-novice-gapminder"
 
 # Contact email address.
 email: lessons@software-carpentry.org
