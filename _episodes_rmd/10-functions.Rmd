@@ -1,7 +1,7 @@
 ---
 title: Functions Explained
-teaching: 45
-exercises: 20
+teaching: 10
+exercises: 10
 questions:
 - "How can I write a new function in R?"
 objectives:

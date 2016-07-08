@@ -1,6 +1,6 @@
 ---
 title: "Seeking Help"
-teaching: 15
+teaching: 10
 exercises: 10
 questions:
 - "How can I get help in R?"

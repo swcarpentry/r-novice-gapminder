@@ -1,7 +1,7 @@
 ---
 title: "Project Management With RStudio"
-teaching: 30
-exercises: 20
+teaching: 10
+exercises: 10
 questions:
 - "How can I manage my projects in R?"
 objectives:
@@ -202,7 +202,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > > 
 > > 
 > > ~~~
-> > -rw-r--r--  1 gvwilson  staff    80K  1 Jul 15:36 data/gapminder-FiveYearData.csv
+> > -rw-r--r--  1 gvwilson  staff    80K  2 Jul 17:11 data/gapminder-FiveYearData.csv
 > > ~~~
 > > {: .output}
 > > The file size is 80K.

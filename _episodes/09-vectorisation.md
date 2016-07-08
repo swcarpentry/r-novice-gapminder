@@ -1,7 +1,7 @@
 ---
 title: Vectorisation
-teaching: 30
-exercises: 20
+teaching: 10
+exercises: 10
 questions:
 - "How can I operate on all the elements of a vector at once?"
 objectives:

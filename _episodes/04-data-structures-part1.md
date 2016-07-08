@@ -1,7 +1,7 @@
 ---
 title: "Data Structures"
-teaching: 90
-exercises: 20
+teaching: 10
+exercises: 10
 questions:
 - "How can I read data in R?"
 - "What are the basic data types in R?"

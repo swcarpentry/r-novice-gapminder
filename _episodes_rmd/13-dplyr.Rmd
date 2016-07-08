@@ -1,7 +1,7 @@
 ---
 title: Dataframe Manipulation with dplyr
-teaching: 90
-exercises: 20
+teaching: 10
+exercises: 10
 questions:
 - "How can I manipulate dataframes without repeating myself?"
 objectives:
