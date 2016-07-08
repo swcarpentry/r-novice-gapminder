@@ -1,6 +1,6 @@
 ---
 title: Split-Apply-Combine
-teaching: 45
+teaching: 10
 exercises: 10
 questions:
 - "How can I do different calculations on different sets of data?"

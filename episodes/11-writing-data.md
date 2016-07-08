@@ -1,6 +1,6 @@
 ---
 title: Writing Data
-teaching: 20
+teaching: 10
 exercises: 10
 questions:
 - "How can I save plots and data created in R?"

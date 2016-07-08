@@ -1,7 +1,7 @@
 ---
 title: "Introduction to R and RStudio"
-teaching: 45
-exercises: 20
+teaching: 10
+exercises: 10
 questions:
 - "How to find your way around RStudio?"
 - "How to interact with R?"
@@ -637,7 +637,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7f994b067918>
+<bytecode: 0x7ff0f405f918>
 <environment: namespace:base>
 ~~~
 {: .output}

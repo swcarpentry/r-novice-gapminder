@@ -1,7 +1,7 @@
 ---
 title: Control Flow
-teaching: 35
-exercises: 20
+teaching: 10
+exercises: 10
 questions:
 - "How can I make data-dependent choices in R?"
 - "How can I repeat operations in R?"

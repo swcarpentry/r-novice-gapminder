@@ -1,7 +1,7 @@
 ---
 title: Creating Publication-Quality Graphics
-teaching: 70
-exercises: 20
+teaching: 10
+exercises: 10
 questions:
 - "How can I create publication-quality graphics in R?"
 objectives:
