@@ -75,7 +75,7 @@ project.
 Now when we start R in this project directory, or open this project with RStudio,
 all of our work on this project will be entirely self-contained in this directory.
 
-## Best practices for project organisation
+## Best practices for project organization
 
 Although there is no "best" way to lay out a project, there are some general
 principles to adhere to that will make project management easier:
