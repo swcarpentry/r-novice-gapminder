@@ -7,7 +7,7 @@ permalink: /guide/
 ## Timing
 
 Leave about 30 minutes at the start of each workshop and another 15 mins
-at the start of each sesson for technical difficulties like WiFi and
+at the start of each session for technical difficulties like WiFi and
 installing things (even if you asked students to install in advance, longer if
 not).
 
@@ -35,7 +35,7 @@ $ git config --global credential.helper 'cache --timeout=10000000'
 
 ## Pulling in Data
 
-The easiest way to get the data used in this lesson during a bootcamp is
+The easiest way to get the data used in this lesson during a workshop is
 to have attendees run the following:
 
 ~~~
@@ -52,14 +52,14 @@ Attendees can use the `File - Save As` dialog in their browser to save the file.
 
 ## Overall
 
-Make sure to emphasise good practices: put code in scripts, and make
+Make sure to emphasize good practices: put code in scripts, and make
 sure they're version controlled. Encourage students to create script
 files for challenges.
 
 If you're working in a cloud environment, get them to upload the
 gapminder data after the second lesson.
 
-Make sure to emphasise that matrices are vectors underneath the hood
+Make sure to emphasize that matrices are vectors underneath the hood
 and data frames are lists underneath the hood: this will explain a
 lot of the esoteric behaviour encountered in basic operations.
 
@@ -74,7 +74,7 @@ Be sure to show the CRAN task views, look at one of the topics.
 
 There's a lot of content: move quickly through the earlier lessons. Their
 extensiveness is mostly for purposes of learning by osmosis: so that their
-memory will trigger later when they encouter a problem or some esoteric behaviour.
+memory will trigger later when they encounter a problem or some esoteric behaviour.
 
 Key lessons to take time on:
 

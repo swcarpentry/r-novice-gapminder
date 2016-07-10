@@ -69,7 +69,7 @@ Or slices of the vector:
 x[1:4]
 ```
 
-the `:` operator reates a sequence of numbers from the left element to the right.
+the `:` operator creates a sequence of numbers from the left element to the right.
 ```{r}
 1:4
 c(1, 2, 3, 4)

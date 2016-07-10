@@ -310,7 +310,7 @@ library(ggplot2)
 &#96;&#96;&#96;
 </pre>
 
-Often there'll be particular options that you'll want to use
+Often there will be particular options that you'll want to use
 repeatedly; for this, you can set _global_ chunk options, like so:
 
 <pre>

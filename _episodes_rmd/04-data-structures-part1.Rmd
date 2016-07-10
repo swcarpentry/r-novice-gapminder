@@ -64,7 +64,7 @@ cats
 
 The `read.csv` function is used for reading in tabular data stored in a text
 file where the columns of data are delimited by commas (csv = comma separated
-values). Tabs are also commonly used to separated colums - if your data are in
+values). Tabs are also commonly used to separated columns - if your data are in
 this format you can use the function `read.delim`. If the columns in your data
 are delimited by a character other than commas or tabs, you can use the more
 general and flexible `read.table` function.
@@ -379,7 +379,7 @@ str(cats$coat)
 
 Another important data structure is called a *factor*. Factors usually look like
 character data, but are typically used to represent categorical information. For
-example, let's make a vector of strings labeling cat colorations for all the
+example, let's make a vector of strings labelling cat colorations for all the
 cats in our study:
 
 ```{r}
@@ -424,8 +424,8 @@ typeof(CATegories)
 > {: .solution}
 {: .challenge}
 
-In modeling functions, it's important to know what the baseline levels are. This
-is assumed to be the first factor, but by default factors are labeled in
+In modelling functions, it's important to know what the baseline levels are. This
+is assumed to be the first factor, but by default factors are labelled in
 alphabetical order. You can change this by specifying the levels:
 
 ```{r}
