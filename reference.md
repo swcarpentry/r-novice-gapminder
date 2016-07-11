@@ -312,7 +312,7 @@ sequence
 
 shape
 :   An array's dimensions, represented as a vector.
-    For example, a 5&times;3 array's shape is `(5,3)`.
+    For example, a 5×3 array's shape is `(5,3)`.
 
 string
 :   Short for "character string",
