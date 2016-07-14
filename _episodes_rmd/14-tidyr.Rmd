@@ -1,7 +1,7 @@
 ---
 title: Dataframe Manipulation with tidyr
-teaching: 10
-exercises: 10
+teaching: 30
+exercises: 15
 questions:
 - "How can I change the format of dataframes?"
 objectives:
