@@ -3,7 +3,7 @@ layout: reference
 permalink: /reference/
 ---
 
-## [Introduction to R and RStudio]({{ site.root }}/01-rstudio-intro/)
+## [Introduction to R and RStudio]({{ site.github.url }}/01-rstudio-intro/)
 
  - Use the escape key to cancel incomplete commands or running code
    (Ctrl+C) if you're using R from the shell.
@@ -28,7 +28,7 @@ permalink: /reference/
  - `rm` can be used to remove them
  - When assigning values to function arguments, you _must_ use `=`.
 
-## [Project management with RStudio]({{ site.root }}/02-project-intro/)
+## [Project management with RStudio]({{ site.github.url }}/02-project-intro/)
 
  - To create a new project, go to File -> New Project
  - Install the `packrat` package to create self-contained projects
@@ -37,7 +37,7 @@ permalink: /reference/
  - `packrat::status` to check whether all packages referenced in your
    scripts have been installed.
 
-## [Seeking help]({{ site.root }}/03-seeking-help/)
+## [Seeking help]({{ site.github.url }}/03-seeking-help/)
 
 - To access help for a function type `?function_name` or `help(function_name)`
 - Use quotes for special operators e.g. `?"+"`
@@ -47,7 +47,7 @@ permalink: /reference/
     - `?dput` will dump data you are working from so others can load it easily.
     - `sessionInfo()` will give details of your setup that others may need for debugging.
 
-## [Data structures]({{ site.root }}/04-data-structures-part1/)
+## [Data structures]({{ site.github.url }}/04-data-structures-part1/)
 
 Individual values in R must be one of 5 **data types**, multiple values can be grouped in **data structures**.
 
@@ -87,24 +87,24 @@ Individual values in R must be one of 5 **data types**, multiple values can be g
 data.frames are really lists underneath the hood (this explains some of the weirder
 behaviour of R).
 
- **[Vectors]({{ site.root }}/04-data-structures-part1.html)**
+ **[Vectors]({{ site.github.url }}/04-data-structures-part1.html)**
  - `?vector()` All items in a vector must be the same type.
  - Items can be converted from one type to another using *coercion*.
  - The concatenate function 'c()' will append items to a vector.
  - `seq(from=0, to=1, by=1)` will create a sequence of numbers.
  - Items in a vector can be named using the `names()` function.
 
- **[Factors]({{ site.root }}/04-data-structures-part1.html)**
+ **[Factors]({{ site.github.url }}/04-data-structures-part1.html)**
  - `?factor()` Factors are a data structure designed to store categorical data.
  - `levels()` shows the valid values that can be stored in a vector of type factor.
 
- **[Lists]({{ site.root }}/04-data-structures-part1.html)**
+ **[Lists]({{ site.github.url }}/04-data-structures-part1.html)**
  - `?list()` Lists are a data structure designed to store data of different types.
 
- **[Matrices]({{ site.root }}/04-data-structures-part1.html)**
+ **[Matrices]({{ site.github.url }}/04-data-structures-part1.html)**
  - `?matrix()` Matrices are a data structure designed to store 2-dimensional data.
 
- **[Data Frames]({{ site.root }}/05-data-structures-part2.html)**
+ **[Data Frames]({{ site.github.url }}/05-data-structures-part2.html)**
  - `?data.frame` is a key data structure. It is a `list` of `vectors`.
  - `cbind()` will add a column (vector) to a data.frame.
  - `rbind()` will add a row (list) to a data.frame.
@@ -123,7 +123,7 @@ behaviour of R).
  - `?nrow`, `?ncol`, `?dim` get the dimensions of a n-dimensional object
    (Won't work on atomic vectors or lists).
 
-## [Exploring Data Frames]({{ site.root }}/05-data-structures-part2/)
+## [Exploring Data Frames]({{ site.github.url }}/05-data-structures-part2/)
 
  - `read.csv` to read in data in a regular structure
    - `sep` argument to specify the separator
@@ -132,7 +132,7 @@ behaviour of R).
    - Other arguments:
      - `header=TRUE` if there is a header row
 
-## [Subsetting data]({{ site.root }}/06-data-subsetting/)
+## [Subsetting data]({{ site.github.url }}/06-data-subsetting/)
 
  - Elements can be accessed by:
    - Index
@@ -155,7 +155,7 @@ behaviour of R).
  - `$` to access columns or list elements by name
  - negative indices skip elements
 
-## [Control flow]({{ site.root }}/07-control-flow/)
+## [Control flow]({{ site.github.url }}/07-control-flow/)
 
  - Use `if` condition to start a conditional statement, `else if` condition to provide
    additional tests, and `else` to provide a default
@@ -166,7 +166,7 @@ behaviour of R).
  - Zero is considered `FALSE`; all other numbers are considered `TRUE`
  - Nest loops to operate on multi-dimensional data.
 
-## [Creating publication quality graphics]({{ site.root }}/08-plot-ggplot2/)
+## [Creating publication quality graphics]({{ site.github.url }}/08-plot-ggplot2/)
 
  - figures can be created with the grammar of graphics:
    - `library(ggplot2)`
@@ -182,7 +182,7 @@ behaviour of R).
    - order of layers matters!
    - `ggsave` to save a figure.
 
-## [Vectorization]({{ site.root }}/09-vectorization/)
+## [Vectorization]({{ site.github.url }}/09-vectorization/)
 
 - Most functions and operations apply to each element of a vector
 - `*` applies element-wise to matrices
@@ -190,7 +190,7 @@ behaviour of R).
 - `any()` will return `TRUE` if any element of a vector is `TRUE`
 - `all()` will return `TRUE` if *all* elements of a vector are `TRUE`
 
-## [Functions explained]({{ site.root }}/10-functions/)
+## [Functions explained]({{ site.github.url }}/10-functions/)
 
   - `?"function"`
   - Put code whose parameters change frequently in a function, then call it with
@@ -199,12 +199,12 @@ behaviour of R).
   - Any code written in the body of the function will preferably look for variables defined inside the function.
   - Document Why, then What, then lastly How (if the code isn't self explanatory)
 
-## [Writing data]({{ site.root }}/11-writing-data/)
+## [Writing data]({{ site.github.url }}/11-writing-data/)
 
  - `write.table` to write out objects in regular format
  - set `quote=FALSE` so that text isn't wrapped in `"` marks
 
-## [Split-apply-combine]({{ site.root }}/12-plyr/)
+## [Split-apply-combine]({{ site.github.url }}/12-plyr/)
 
  - Use the `xxply` family of functions to apply functions to groups within
    some data.
@@ -213,7 +213,7 @@ behaviour of R).
  - Anonymous functions (those not assigned a name) are used inside the `plyr` family
    of functions on groups within data.
 
-## [Dataframe manipulation with dplyr]({{ site.root }}/13-dplyr/)
+## [Dataframe manipulation with dplyr]({{ site.github.url }}/13-dplyr/)
  - `library(dplyr)`
  - `?select` to extract variables by name.
  - `?filter` return rows with matching conditions.
@@ -222,14 +222,14 @@ behaviour of R).
  - `?mutate` add new variables to a data.frame.
  - Combine operations using the `?"%>%"` pipe operator.
 
-## [Dataframe manipulation with tidyr]({{ site.root }}/14-tidyr/)
+## [Dataframe manipulation with tidyr]({{ site.github.url }}/14-tidyr/)
 - `library(tidyr)`
 - '?gather' convert data from *wide* to *long* format.
 - '?spread' convert data from *long* to *wide* format.
 - '?separate' split a single value into multiple values.
 - '?unite' merge multiple values into a single value.
 
-## [Producing reports with knitr]({{ site.root }}/15-knitr-markdown/)
+## [Producing reports with knitr]({{ site.github.url }}/15-knitr-markdown/)
 - Value of reproducible reports
 - Basics of Markdown
 - R code chunks
@@ -237,7 +237,7 @@ behaviour of R).
 - Inline R code
 - Other output formats
 
-## [Best practices for writing good code]({{ site.root }}/16-wrap-up/)
+## [Best practices for writing good code]({{ site.github.url }}/16-wrap-up/)
 
  * Program defensively, i.e., assume that errors are going to arise, and write code to detect them when they do.
  * Write tests before writing code in order to help determine exactly what that code is supposed to do.
