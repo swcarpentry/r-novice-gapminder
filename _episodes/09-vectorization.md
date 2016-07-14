@@ -1,18 +1,18 @@
 ---
-title: Vectorisation
+title: Vectorization
 teaching: 10
 exercises: 10
 questions:
 - "How can I operate on all the elements of a vector at once?"
 objectives:
-- "To understand vectorised operations in R."
+- "To understand vectorized operations in R."
 keypoints:
 - "Use vectorized operations instead of loops."
 ---
 
 
 
-Most of R's functions are vectorised, meaning that the function will
+Most of R's functions are vectorized, meaning that the function will
 operate on all elements of a vector without needing to loop through
 and act on each element one at a time. This makes writing code more
 concise, easy to read, and less error prone.
@@ -196,7 +196,7 @@ log(x)
 ~~~
 {: .output}
 
-Vectorised operations work element-wise on matrices:
+Vectorized operations work element-wise on matrices:
 
 
 ~~~

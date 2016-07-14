@@ -37,7 +37,7 @@ efficiently transform your data regardless of original format.
 These data formats mainly affect readability. For humans, the wide format is
 often more intuitive since we can often see more of the data on the screen due
 to it's shape. However, the long format is more machine readable and is closer
-to the formating of databases. The ID variables in our dataframes are similar to
+to the formatting of databases. The ID variables in our dataframes are similar to
 the fields in a database and observed variables are like the database values.
 
 ## Getting started
@@ -234,7 +234,7 @@ Inside `gather()` we first name the new column for the new ID variable
 (`obs_value`), then the names of the old observation variable. We could have
 typed out all the observation variables, but as in the `select()` function (see
 `dplyr` lesson), we can use the `starts_with()` argument to select all variables
-that starts with the desired character sring. Gather also allows the alternative
+that starts with the desired character string. Gather also allows the alternative
 syntax of using the `-` symbol to identify which variables are not to be
 gathered (i.e. ID variables)
 
