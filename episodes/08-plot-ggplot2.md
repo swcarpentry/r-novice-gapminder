@@ -6,7 +6,7 @@ questions:
 - "How can I create publication-quality graphics in R?"
 objectives:
 - "To be able to use ggplot2 to generate publication quality graphics."
-- "To understand the basic grammar of graphics, including the aesthetics and geometry layers, adding statistics, transforming scales, and coloring or paneling by groups."
+- "To understand the basic grammar of graphics, including the aesthetics and geometry layers, adding statistics, transforming scales, and coloring or panelling by groups."
 keypoints:
 - "Use `ggplot2` to create plots."
 - "Think about graphics in layers: aesthetics, geometry, statistics, scale transformation, and grouping."
@@ -165,8 +165,8 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 ## Layers
 
-Using a scatterplot probably isn't the best for visualising change over time.
-Instead, let's tell `ggplot` to visualise the data as a line plot:
+Using a scatterplot probably isn't the best for visualizing change over time.
+Instead, let's tell `ggplot` to visualize the data as a line plot:
 
 
 ~~~
@@ -181,7 +181,7 @@ Instead of adding a `geom_point` layer, we've added a `geom_line` layer. We've
 added the **by** *aesthetic*, which tells `ggplot` to draw a line for each
 country.
 
-But what if we want to visualise both lines and points on the plot? We can
+But what if we want to visualize both lines and points on the plot? We can
 simply add another layer to the plot:
 
 
@@ -253,7 +253,7 @@ Currently it's hard to see the relationship between the points due to some stron
 outliers in GDP per capita. We can change the scale of units on the x axis using
 the *scale* functions. These control the mapping between the data values and
 visual values of an aesthetic. We can also modify the transparency  of the
-points, using the *alpha* funtion, which is especially helpful when you have
+points, using the *alpha* function, which is especially helpful when you have
 a large amount of data which is very clustered.
 
 
@@ -269,7 +269,7 @@ The `log10` function applied a transformation to the values of the gdpPercap
 column before rendering them on the plot, so that each multiple of 10 now only
 corresponds to an increase in 1 on the transformed scale, e.g. a GDP per capita
 of 1,000 is now 3 on the y axis, a value of 10,000 corresponds to 4 on the y
-axis and so on. This makes it easier to visualise the spread of data on the
+axis and so on. This makes it easier to visualize the spread of data on the
 x-axis.
 
 We can fit a simple relationship to the data by adding another layer,
@@ -356,7 +356,7 @@ variables and their visual representation.
 
 ## Multi-panel figures
 
-Earlier we visualised the change in life expectancy over time across all
+Earlier we visualized the change in life expectancy over time across all
 countries in one plot. Alternatively, we can split this out over multiple panels
 by adding a layer of **facet** panels. Focusing only on those countries with
 names that start with the letter "A" or "Z".
@@ -415,7 +415,7 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
 This is a taste of what you can do with `ggplot2`. RStudio provides a
 really useful [cheat sheet][cheat] of the different layers available, and more
 extensive documentation is available on the [ggplot2 website][ggplot-doc].
-Finally, if you have no idea how to change something, a quick google search will
+Finally, if you have no idea how to change something, a quick Google search will
 usually send you to a relevant question and answer on Stack Overflow with reusable
 code to modify!
 

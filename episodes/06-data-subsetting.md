@@ -114,7 +114,7 @@ x[1:4]
 ~~~
 {: .output}
 
-the `:` operator reates a sequence of numbers from the left element to the right.
+the `:` operator creates a sequence of numbers from the left element to the right.
 
 ~~~
 1:4

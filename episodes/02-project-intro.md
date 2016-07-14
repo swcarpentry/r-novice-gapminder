@@ -23,7 +23,7 @@ The scientific process is naturally incremental, and many projects
 start life as random notes, some code, then a manuscript, and
 eventually everything is a bit mixed together.
 
-<blockquote class="twitter-tweet"><p>Managing your projects in a reproducible fashion doesn't just make your science reproducible, it makes your life easier.</p>&mdash; Vince Buffalo (@vsbuffalo) <a href="https://twitter.com/vsbuffalo/status/323638476153167872">April 15, 2013</a></blockquote>
+<blockquote class="twitter-tweet"><p>Managing your projects in a reproducible fashion doesn't just make your science reproducible, it makes your life easier.</p>— Vince Buffalo (@vsbuffalo) <a href="https://twitter.com/vsbuffalo/status/323638476153167872">April 15, 2013</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 Most people tend to organize their projects like this:
@@ -72,7 +72,7 @@ project.
 Now when we start R in this project directory, or open this project with RStudio,
 all of our work on this project will be entirely self-contained in this directory.
 
-## Best practices for project organisation
+## Best practices for project organization
 
 Although there is no "best" way to lay out a project, there are some general
 principles to adhere to that will make project management easier:
