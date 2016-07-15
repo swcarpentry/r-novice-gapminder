@@ -1,7 +1,7 @@
 ---
 title: Vectorization
 teaching: 10
-exercises: 10
+exercises: 15
 questions:
 - "How can I operate on all the elements of a vector at once?"
 objectives:
