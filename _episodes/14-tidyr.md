@@ -1,7 +1,7 @@
 ---
 title: Dataframe Manipulation with tidyr
-teaching: 10
-exercises: 10
+teaching: 30
+exercises: 15
 questions:
 - "How can I change the format of dataframes?"
 objectives:
@@ -73,6 +73,13 @@ Error in library("tidyr"): there is no package called 'tidyr'
 library("dplyr")
 ~~~
 {: .r}
+
+
+
+~~~
+Error in library("dplyr"): there is no package called 'dplyr'
+~~~
+{: .error}
 
 First, lets look at the structure of our original gapminder dataframe:
 

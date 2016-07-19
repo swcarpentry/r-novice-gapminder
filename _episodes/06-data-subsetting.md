@@ -1,7 +1,7 @@
 ---
 title: Subsetting Data
-teaching: 10
-exercises: 10
+teaching: 35
+exercises: 15
 questions:
 - "How can I work with subsets of data in R?"
 objectives:

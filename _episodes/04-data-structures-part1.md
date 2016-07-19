@@ -1,7 +1,7 @@
 ---
 title: "Data Structures"
-teaching: 10
-exercises: 10
+teaching: 40
+exercises: 15
 questions:
 - "How can I read data in R?"
 - "What are the basic data types in R?"
@@ -139,8 +139,7 @@ cats$weight + cats$coat
 
 
 ~~~
-Warning in Ops.factor(cats$weight, cats$coat): '+' not meaningful for
-factors
+Warning in Ops.factor(cats$weight, cats$coat): + not meaningful for factors
 ~~~
 {: .error}
 
@@ -298,7 +297,7 @@ cats$weight + 2
 
 
 ~~~
-Warning in Ops.factor(cats$weight, 2): '+' not meaningful for factors
+Warning in Ops.factor(cats$weight, 2): + not meaningful for factors
 ~~~
 {: .error}
 

@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2016-07-19 12:35:25 +0200">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="search-domain" value="/swc-releases/2016.06/r-novice-gapminder">
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/r-novice-gapminder/assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/r-novice-gapminder/assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/r-novice-gapminder/assets/css/lesson.css" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon-swc.ico" />
+    
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    <title>R for Reproducible Scientific Analysis: Producing Reports With knitr</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+      <a href="https://software-carpentry.org" class="pull-left">
+        <img class="navbar-logo" src="/swc-releases/2016.06/r-novice-gapminder/assets/img/swc-icon-blue.svg" alt="Software Carpentry logo" />
+      </a>
+      
+
+      
+      <a class="navbar-brand" href="/swc-releases/2016.06/r-novice-gapminder/">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="/swc-releases/2016.06/r-novice-gapminder/conduct/">Code of Conduct</a></li>
+
+	
+        
+        <li><a href="/swc-releases/2016.06/r-novice-gapminder/setup/">Setup</a></li>
+        <li><a href="/swc-releases/2016.06/r-novice-gapminder/reference/">Reference</a></li>
+        <li class="dropdown">
+          <a href="/swc-releases/2016.06/r-novice-gapminder/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/01-rstudio-intro/">Introduction to R and RStudio</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/02-project-intro/">Project Management With RStudio</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/03-seeking-help/">Seeking Help</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/04-data-structures-part1/">Data Structures</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/05-data-structures-part2/">Exploring Data Frames</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/06-data-subsetting/">Subsetting Data</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/07-control-flow/">Control Flow</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/08-plot-ggplot2/">Creating Publication-Quality Graphics</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/09-vectorization/">Vectorization</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/10-functions/">Functions Explained</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/11-writing-data/">Writing Data</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/12-plyr/">Split-Apply-Combine</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/13-dplyr/">Dataframe Manipulation with dplyr</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/14-tidyr/">Dataframe Manipulation with tidyr</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/15-knitr-markdown/">Producing Reports With knitr</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/16-wrap-up/">Writing Good Software</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="/swc-releases/2016.06/r-novice-gapminder/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/about/">About</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/discuss/">Discussion</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/figures/">Figures</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/guide/">Instructor's Guide</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="/swc-releases/2016.06/r-novice-gapminder/license/">License</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search...">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+<div class="row">
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="/swc-releases/2016.06/r-novice-gapminder/14-tidyr/"><span class="glyphicon glyphicon-menu-left"></span></a>
+      
+    </h3>
+  </div>
+  <div class="col-md-10">
+    <h3 class="maintitle"><a href="/swc-releases/2016.06/r-novice-gapminder/">R for Reproducible Scientific Analysis</a></h3>
+    <h1 class="maintitle">Producing Reports With knitr</h1>
+  </div>
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="/swc-releases/2016.06/r-novice-gapminder/16-wrap-up/"><span class="glyphicon glyphicon-menu-right"></span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+<blockquote class="objectives">
+  <h2>Overview</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Teaching:</strong> 60 min
+      </br>
+      <strong>Exercises:</strong> 15 min
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li><p>How can I integrate software and reports?</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li><p>Value of reproducible reports</p>
+</li>
+	
+	<li><p>Basics of Markdown</p>
+</li>
+	
+	<li><p>R code chunks</p>
+</li>
+	
+	<li><p>Chunk options</p>
+</li>
+	
+	<li><p>Inline R code</p>
+</li>
+	
+	<li><p>Other output formats</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+  
+</blockquote>
+
+<h2 id="data-analysis-reports">Data analysis reports</h2>
+
+<p>Data analysts tend to write a lot of reports, describing their
+analyses and results, for their collaborators or to document their
+work for future reference.</p>
+
+<p>When I was first starting out, I’d write an R script with all of my
+work, and would just send an email to my collaborator, describing the
+results and attaching various graphs. In discussing the results, there
+would often be confusion about which graph was which.</p>
+
+<p>I moved to writing formal reports, with Word or LaTeX, but I’d have to
+spend a lot of time getting the figures to look right. Mostly, the
+concern is about page breaks.</p>
+
+<p>Everything is easier now that I create a web page (as an html
+file). It can be one long stream, so I can use tall figures that
+wouldn’t ordinary fit on one page. Scrolling is your friend.</p>
+
+<h2 id="literate-programming">Literate programming</h2>
+
+<p>Ideally, such analysis reports are <em>reproducible</em> documents: If an
+error is discovered, or if some additional subjects are added to the
+data, you can just re-compile the report and get the new or corrected
+results (versus having to reconstruct figures, paste them into
+a Word document, and further hand-edit various detailed results).</p>
+
+<p>The key tool for R is <a href="http://yihui.name/knitr/">knitr</a>, which allows
+you to create a document that is a mixture of text and some chunks of
+code. When the document is processed by knitr, chunks of R code will
+be executed, and graphs or other results inserted.</p>
+
+<p>This sort of idea has been called “literate programming”.</p>
+
+<p>knitr allows you to mix basically any sort of text with any sort of
+code, but we recommend that you use R Markdown, which mixes Markdown
+with R. Markdown is a light-weight mark-up language for creating web
+pages.</p>
+
+<h2 id="creating-an-r-markdown-file">Creating an R Markdown file</h2>
+
+<p>Within R Studio, click File → New File → R Markdown and
+you’ll get a dialog box like this:</p>
+
+<p><img src="../fig/New_R_Markdown.png" alt="" /></p>
+
+<p>You can stick with the default (HTML output), but give it a title.</p>
+
+<h2 id="basic-components-of-r-markdown">Basic components of R Markdown</h2>
+
+<p>The initial chunk of text contains instructions for R: you give the
+thing a title, author, and date, and tell it that you’re going to want
+to produce html output (in other words, a web page).</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>---
+title: "Initial R Markdown document"
+author: "Karl Broman"
+date: "April 23, 2015"
+output: html_document
+---
+</code></pre>
+</div>
+
+<p>You can delete any of those fields if you don’t want them
+included. The double-quotes aren’t strictly <em>necessary</em> in this case.
+They’re mostly needed if you want to include a colon in the title.</p>
+
+<p>RStudio creates the document with some example text to get you
+started. Note below that there are chunks like</p>
+
+<pre>
+&#96;&#96;&#96;{r}
+summary(cars)
+&#96;&#96;&#96;
+</pre>
+
+<p>These are chunks of R code that will be executed by knitr and replaced
+by their results. More on this later.</p>
+
+<p>Also note the web address that’s put between angle brackets (<code class="highlighter-rouge">&lt; &gt;</code>) as
+well as the double-asterisks in <code class="highlighter-rouge">**Knit**</code>. This is
+<a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>.</p>
+
+<h2 id="markdown">Markdown</h2>
+
+<p>Markdown is a system for writing web pages by marking up the text much
+as you would in an email rather than writing html code. The marked-up
+text gets <em>converted</em> to html, replacing the marks with the proper
+html code.</p>
+
+<p>For now, let’s delete all of the stuff that’s there and write a bit of
+markdown.</p>
+
+<p>You make things <strong>bold</strong> using two asterisks, like this: <code class="highlighter-rouge">**bold**</code>,
+and you make things <em>italics</em> by using underscores, like this:
+<code class="highlighter-rouge">_italics_</code>.</p>
+
+<p>You can make a bulleted list by writing a list with hyphens or
+asterisks, like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>* bold with double-asterisks
+* italics with underscores
+* code-type font with backticks
+</code></pre>
+</div>
+
+<p>or like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- bold with double-asterisks
+- italics with underscores
+- code-type font with backticks
+</code></pre>
+</div>
+
+<p>Each will appear as:</p>
+
+<ul>
+  <li>bold with double-asterisks</li>
+  <li>italics with underscores</li>
+  <li>code-type font with backticks</li>
+</ul>
+
+<p>(I prefer hyphens over asterisks, myself.)</p>
+
+<p>You can make a numbered list by just using numbers. You can use the
+same number over and over if you want:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>1. bold with double-asterisks
+1. italics with underscores
+1. code-type font with backticks
+</code></pre>
+</div>
+
+<p>This will appear as:</p>
+
+<ol>
+  <li>bold with double-asterisks</li>
+  <li>italics with underscores</li>
+  <li>code-type font with backticks</li>
+</ol>
+
+<p>You can make section headers of different sizes by initiating a line
+with some number of <code class="highlighter-rouge">#</code> symbols:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># Title
+## Main section
+### Sub-section
+#### Sub-sub section
+</code></pre>
+</div>
+
+<p>You <em>compile</em> the R Markdown document to an html webpage by clicking
+the “Knit HTML” in the upper-left. And note the little question mark
+next to it; click the question mark and you’ll get a “Markdown Quick
+Reference” (with the Markdown syntax) as well to the RStudio
+documentation on R Markdown.</p>
+
+<blockquote class="challenge">
+  <h2 id="challenge">Challenge</h2>
+
+  <p>Create a new R Markdown document. Delete all of the R code chunks
+and write a bit of Markdown (some sections, some italicized
+text, and an itemized list).</p>
+
+  <p>Convert the document to a webpage.</p>
+</blockquote>
+
+<h2 id="a-bit-more-markdown">A bit more Markdown</h2>
+
+<p>You can make a hyperlink like this:
+<code class="highlighter-rouge">[text to show](http://the-web-page.com)</code>.</p>
+
+<p>You can include an image file like this: <code class="highlighter-rouge">![caption](http://url/for/file)</code></p>
+
+<p>You can do subscripts (e.g., F~2~) with <code class="highlighter-rouge">F~2</code> and superscripts (e.g.,
+F^2^) with <code class="highlighter-rouge">F^2^</code>.</p>
+
+<p>If you know how to write equations in
+<a href="http://www.latex-project.org/">LaTeX</a>, you’ll be glad to know that
+you can use <code class="highlighter-rouge">$ $</code> and <code class="highlighter-rouge">$$ $$</code> to insert math equations, like
+<code class="highlighter-rouge">$E = mc^2$</code> and</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$$y = \mu + \sum_{i=1}^p \beta_i x_i + \epsilon$$
+</code></pre>
+</div>
+
+<h2 id="r-code-chunks">R code chunks</h2>
+
+<p>Markdown is interesting and useful, but the real power comes from
+mixing markdown with chunks of R code. This is R Markdown. When
+processed, the R code will be executed; if they produce figures, the
+figures will be inserted in the final document.</p>
+
+<p>The main code chunks look like this:</p>
+
+<pre>
+&#96;&#96;&#96;{r load_data}
+gapminder &lt;- read.csv("~/Desktop/gapminder.csv")
+&#96;&#96;&#96;
+</pre>
+
+<p>That is, you place a chunk of R code between <code>&#96;&#96;&#96;{r chunk_name}</code>
+and <code>&#96;&#96;&#96;</code>. It’s a good idea to give each chunk
+a name, as they will help you to fix errors and, if any graphs are
+produced, the file names are based on the name of the code chunk that
+produced them.</p>
+
+<blockquote class="challenge">
+  <h2 id="challenge-1">Challenge</h2>
+
+  <p>Add code chunks to</p>
+
+  <ul>
+    <li>Load the ggplot2 package</li>
+    <li>Read the gapminder data</li>
+    <li>Create a plot</li>
+  </ul>
+</blockquote>
+
+<h2 id="how-things-get-compiled">How things get compiled</h2>
+
+<p>When you press the “Knit HTML” button, the R Markdown document is
+processed by <a href="http://yihui.name/knitr">knitr</a> and a plain Markdown
+document is produced (as well as, potentially, a set of figure files): the R code is executed
+and replaced by both the input and the output; if figures are
+produced, links to those figures are included.</p>
+
+<p>The Markdown and figure documents are then processed by the tool
+<a href="http://pandoc.org/">pandoc</a>, which converts the Markdown file into an
+html file, with the figures embedded.</p>
+
+<p><img src="../fig/rmd-15-rmd_to_html_fig-1.png" title="plot of chunk rmd_to_html_fig" alt="plot of chunk rmd_to_html_fig" style="display: block; margin: auto auto auto 0;" /></p>
+
+<h2 id="chunk-options">Chunk options</h2>
+
+<p>There are a variety of options to affect how the code chunks are
+treated.</p>
+
+<ul>
+  <li>Use <code class="highlighter-rouge">echo=FALSE</code> to avoid having the code itself shown.</li>
+  <li>Use <code class="highlighter-rouge">results="hide"</code> to avoid having any results printed.</li>
+  <li>Use <code class="highlighter-rouge">eval=FALSE</code> to have the code shown but not evaluated.</li>
+  <li>Use <code class="highlighter-rouge">warning=FALSE</code> and <code class="highlighter-rouge">message=FALSE</code> to hide any warnings or
+messages produced.</li>
+  <li>Use <code class="highlighter-rouge">fig.height</code> and <code class="highlighter-rouge">fig.width</code> to control the size of the figures
+produced (in inches).</li>
+</ul>
+
+<p>So you might write:</p>
+
+<pre>
+&#96;&#96;&#96;{r load_libraries, echo=FALSE, message=FALSE}
+library(dplyr)
+library(ggplot2)
+&#96;&#96;&#96;
+</pre>
+
+<p>Often there will be particular options that you’ll want to use
+repeatedly; for this, you can set <em>global</em> chunk options, like so:</p>
+
+<pre>
+&#96;&#96;&#96;{r global_options, echo=FALSE}
+knitr::opts_chunk$set(fig.path="Figs/", message=FALSE, warning=FALSE,
+                      echo=FALSE, results="hide", fig.width=11)
+&#96;&#96;&#96;
+</pre>
+
+<p>The <code class="highlighter-rouge">fig.path</code> option defines where the figures will be saved. The <code class="highlighter-rouge">/</code>
+here is really important; without it, the figures would be saved in
+the standard place but just with names that being with <code class="highlighter-rouge">Figs</code>.</p>
+
+<p>If you have multiple R Markdown files in a common directory, you might
+want to use <code class="highlighter-rouge">fig.path</code> to define separate prefixes for the figure file
+names, like <code class="highlighter-rouge">fig.path="Figs/cleaning-"</code> and <code class="highlighter-rouge">fig.path="Figs/analysis-"</code>.</p>
+
+<blockquote class="challenge">
+  <h2 id="challenge-2">Challenge</h2>
+
+  <p>Use chunk options to control the size of a figure and to hide the
+code.</p>
+</blockquote>
+
+<h2 id="inline-r-code">Inline R code</h2>
+
+<p>You can make <em>every</em> number in your report reproducible. Use
+<code>&#96;r</code> and <code>&#96;</code> for an in-line code chunk,
+like so: <code>&#96;r round(some_value, 2)&#96;</code>. The code will be
+executed and replaced with the <em>value</em> of the result.</p>
+
+<p>Don’t let these in-line chunks get split across lines.</p>
+
+<p>Perhaps precede the paragraph with a larger code chunk that does
+calculations and defines things, with <code class="highlighter-rouge">include=FALSE</code> for that larger
+chunk (which is the same as <code class="highlighter-rouge">echo=FALSE</code> and <code class="highlighter-rouge">results="hide"</code>).</p>
+
+<p>I’m very particular about rounding in such situations. I may want
+<code class="highlighter-rouge">2.0</code>, but <code class="highlighter-rouge">round(2.03, 1)</code> will give just <code class="highlighter-rouge">2</code>.</p>
+
+<p>The
+<a href="https://github.com/kbroman/broman/blob/master/R/myround.R"><code class="highlighter-rouge">myround</code></a>
+function in my <a href="https://github.com/kbroman">R/broman</a> package handles
+this.</p>
+
+<blockquote class="challenge">
+  <h2 id="challenge-3">Challenge</h2>
+
+  <p>Try out a bit of in-line R code.</p>
+</blockquote>
+
+<h2 id="other-output-options">Other output options</h2>
+
+<p>You can also convert R Markdown to a PDF or a Word document. Click the
+little triangle next to the “Knit HTML” button to get a drop-down
+menu. Or you could put <code class="highlighter-rouge">pdf_document</code> or <code class="highlighter-rouge">word_document</code> in the header
+of the file.</p>
+
+<blockquote class="callout">
+  <h2 id="tip-creating-pdf-documents">Tip: Creating PDF documents</h2>
+
+  <p>Creating .pdf documents may require installation of some extra software. If
+required this is detailed in an error message.</p>
+
+  <p>Tex for windows is available <a href="http://miktex.org/2.9/setup">here</a>.</p>
+
+  <p>Tex for mac is available <a href="http://tug.org/mactex">here</a>.</p>
+</blockquote>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+  <li><a href="http://kbroman.org/knitr_knutshell">Knitr in a knutshell tutorial</a></li>
+  <li><a href="http://www.amazon.com/exec/obidos/ASIN/1482203537/7210-20">Dynamic Documents with R and knitr</a> (book)</li>
+  <li><a href="http://rmarkdown.rstudio.com">R Markdown documentation</a></li>
+  <li><a href="http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown cheat sheet</a></li>
+</ul>
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li><p>Mix reporting written in R Markdown with software written in R.</p>
+</li>
+    
+    <li><p>Specify chunk options to control formatting.</p>
+</li>
+    
+    <li><p>Use <code class="highlighter-rouge">knitr</code> to convert these documents into PDF and other formats.</p>
+</li>
+    
+  </ul>
+</blockquote>
+
+
+      
+      <hr/>
+<footer>
+  <div class="row">
+    <div class="col-md-6" align="left">
+      <h4>
+	Copyright &copy; 2016
+	<a href="https://software-carpentry.org">Software Carpentry Foundation</a>
+	
+      </h4>
+    </div>
+    <div class="col-md-6" align="right">
+      <h4>
+	<a href="/">Source</a>
+	/
+	<a href="/blob/gh-pages/CONTRIBUTING.md">Contributing</a>
+	/
+	<a href="mailto:lessons@software-carpentry.org">Contact</a>
+      </h4>
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    <script src="/swc-releases/2016.06/r-novice-gapminder/assets/js/jquery.min.js"></script>
+<script src="/swc-releases/2016.06/r-novice-gapminder/assets/js/bootstrap.min.js"></script>
+<script src="/swc-releases/2016.06/r-novice-gapminder/assets/js/lesson.js"></script>
+
+  </body>
+</html>

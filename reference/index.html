@@ -1,0 +1,902 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2016-07-19 12:35:25 +0200">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="search-domain" value="/swc-releases/2016.06/r-novice-gapminder">
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/r-novice-gapminder/assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/r-novice-gapminder/assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/r-novice-gapminder/assets/css/lesson.css" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon-swc.ico" />
+    
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    <title>R for Reproducible Scientific Analysis</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+      <a href="https://software-carpentry.org" class="pull-left">
+        <img class="navbar-logo" src="/swc-releases/2016.06/r-novice-gapminder/assets/img/swc-icon-blue.svg" alt="Software Carpentry logo" />
+      </a>
+      
+
+      
+      <a class="navbar-brand" href="/swc-releases/2016.06/r-novice-gapminder/">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="/swc-releases/2016.06/r-novice-gapminder/conduct/">Code of Conduct</a></li>
+
+	
+        
+        <li><a href="/swc-releases/2016.06/r-novice-gapminder/setup/">Setup</a></li>
+        <li><a href="/swc-releases/2016.06/r-novice-gapminder/reference/">Reference</a></li>
+        <li class="dropdown">
+          <a href="/swc-releases/2016.06/r-novice-gapminder/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/01-rstudio-intro/">Introduction to R and RStudio</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/02-project-intro/">Project Management With RStudio</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/03-seeking-help/">Seeking Help</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/04-data-structures-part1/">Data Structures</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/05-data-structures-part2/">Exploring Data Frames</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/06-data-subsetting/">Subsetting Data</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/07-control-flow/">Control Flow</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/08-plot-ggplot2/">Creating Publication-Quality Graphics</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/09-vectorization/">Vectorization</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/10-functions/">Functions Explained</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/11-writing-data/">Writing Data</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/12-plyr/">Split-Apply-Combine</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/13-dplyr/">Dataframe Manipulation with dplyr</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/14-tidyr/">Dataframe Manipulation with tidyr</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/15-knitr-markdown/">Producing Reports With knitr</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/16-wrap-up/">Writing Good Software</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="/swc-releases/2016.06/r-novice-gapminder/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/about/">About</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/discuss/">Discussion</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/figures/">Figures</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/guide/">Instructor's Guide</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="/swc-releases/2016.06/r-novice-gapminder/license/">License</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search...">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<h1 class="maintitle"><a href="/swc-releases/2016.06/r-novice-gapminder/">R for Reproducible Scientific Analysis</a></h1>
+
+
+<h2>Key Points</h2>
+<table class="table table-striped">
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/r-novice-gapminder/01-rstudio-intro/">Introduction to R and RStudio</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Use RStudio to write and run R programs.</p>
+</li>
+        
+        <li><p>R has the usual arithmetic operators and mathematical functions.</p>
+</li>
+        
+        <li><p>Use <code class="highlighter-rouge">&lt;-</code> to assign values to variables.</p>
+</li>
+        
+        <li><p>Use <code class="highlighter-rouge">ls()</code> to list the variables in a program.</p>
+</li>
+        
+        <li><p>Use <code class="highlighter-rouge">rm()</code> to delete objects in a program.</p>
+</li>
+        
+        <li><p>Use <code class="highlighter-rouge">install.packages()</code> to install packages (libraries).</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/r-novice-gapminder/02-project-intro/">Project Management With RStudio</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Use RStudio to create and manage projects with consistent layout.</p>
+</li>
+        
+        <li><p>Treat raw data as read-only.</p>
+</li>
+        
+        <li><p>Treat generated output as disposable.</p>
+</li>
+        
+        <li><p>Separate function definition and application.</p>
+</li>
+        
+        <li><p>Use version control.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/r-novice-gapminder/03-seeking-help/">Seeking Help</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Use <code class="highlighter-rouge">help()</code> to get online help in R.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/r-novice-gapminder/04-data-structures-part1/">Data Structures</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Use <code class="highlighter-rouge">read.csv</code> to read tabular data in R.</p>
+</li>
+        
+        <li><p>The basic data types in R are double, integer, complex, logical, and character.</p>
+</li>
+        
+        <li><p>Use factors to represent categories in R.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/r-novice-gapminder/05-data-structures-part2/">Exploring Data Frames</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Use <code class="highlighter-rouge">cbind()</code> to add a new column to a dataframe.</p>
+</li>
+        
+        <li><p>Use <code class="highlighter-rouge">rbind()</code> to add a new row to a dataframe.</p>
+</li>
+        
+        <li><p>Use <code class="highlighter-rouge">omit()</code> to remove rows from a dataframe.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/r-novice-gapminder/06-data-subsetting/">Subsetting Data</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Indexing in R starts at 1, not 0.</p>
+</li>
+        
+        <li><p>Access individual values by location using <code class="highlighter-rouge">[]</code>.</p>
+</li>
+        
+        <li><p>Access slices of data using <code class="highlighter-rouge">[low:high]</code>.</p>
+</li>
+        
+        <li><p>Access arbitrary sets of data using <code class="highlighter-rouge">[c(...)]</code>.</p>
+</li>
+        
+        <li><p>Use <code class="highlighter-rouge">which</code> to select subsets of data based on value.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/r-novice-gapminder/07-control-flow/">Control Flow</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Use <code class="highlighter-rouge">if</code> and <code class="highlighter-rouge">else</code> to make choices.</p>
+</li>
+        
+        <li><p>Use <code class="highlighter-rouge">for</code> to repeat operations.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/r-novice-gapminder/08-plot-ggplot2/">Creating Publication-Quality Graphics</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Use <code class="highlighter-rouge">ggplot2</code> to create plots.</p>
+</li>
+        
+        <li><p>Think about graphics in layers: aesthetics, geometry, statistics, scale transformation, and grouping.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/r-novice-gapminder/09-vectorization/">Vectorization</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Use vectorized operations instead of loops.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/r-novice-gapminder/10-functions/">Functions Explained</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Use <code class="highlighter-rouge">function</code> to define a new function in R.</p>
+</li>
+        
+        <li><p>Use parameters to pass values into functions.</p>
+</li>
+        
+        <li><p>Load functions into programs using <code class="highlighter-rouge">source</code>.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/r-novice-gapminder/11-writing-data/">Writing Data</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Save plots from RStudio using the ‘Export’ button.</p>
+</li>
+        
+        <li><p>Use <code class="highlighter-rouge">write.table</code> to save tabular data.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/r-novice-gapminder/12-plyr/">Split-Apply-Combine</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Use the <code class="highlighter-rouge">plyr</code> package to split data, apply functions to subsets, and combine the results.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/r-novice-gapminder/13-dplyr/">Dataframe Manipulation with dplyr</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Use the <code class="highlighter-rouge">dplyr</code> package to manipulate dataframes.</p>
+</li>
+        
+        <li><p>Use <code class="highlighter-rouge">select()</code> to choose variables from a dataframe.</p>
+</li>
+        
+        <li><p>Use <code class="highlighter-rouge">filter()</code> to choose data based on values.</p>
+</li>
+        
+        <li><p>Use <code class="highlighter-rouge">group_by()</code> and <code class="highlighter-rouge">summarize()</code> to work with subsets of data.</p>
+</li>
+        
+        <li><p>Use <code class="highlighter-rouge">mutate()</code> to create new variables.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/r-novice-gapminder/14-tidyr/">Dataframe Manipulation with tidyr</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Use the <code class="highlighter-rouge">tidyr</code> package to change the layout of dataframes.</p>
+</li>
+        
+        <li><p>Use <code class="highlighter-rouge">gather()</code> to go from wide to long format.</p>
+</li>
+        
+        <li><p>Use <code class="highlighter-rouge">scatter()</code> to go from long to wide format.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/r-novice-gapminder/15-knitr-markdown/">Producing Reports With knitr</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Mix reporting written in R Markdown with software written in R.</p>
+</li>
+        
+        <li><p>Specify chunk options to control formatting.</p>
+</li>
+        
+        <li><p>Use <code class="highlighter-rouge">knitr</code> to convert these documents into PDF and other formats.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      <td class="col-md-3">
+        <a href="/swc-releases/2016.06/r-novice-gapminder/16-wrap-up/">Writing Good Software</a>
+      </td>
+      <td class="col-md-9">
+        <ul>
+        
+        <li><p>Document what and why, not how.</p>
+</li>
+        
+        <li><p>Break programs into short single-purpose functions.</p>
+</li>
+        
+        <li><p>Write re-runnable tests.</p>
+</li>
+        
+        <li><p>Don’t repeat yourself.</p>
+</li>
+        
+        <li><p>Don’t repeat yourself.</p>
+</li>
+        
+        <li><p>Be consistent in naming, indentation, and other aspects of style.</p>
+</li>
+        
+        </ul>
+      </td>
+    </tr>
+  
+
+</table>
+
+<h2 id="introduction-to-r-and-rstudioswc-releases201606r-novice-gapminder01-rstudio-intro"><a href="/swc-releases/2016.06/r-novice-gapminder/01-rstudio-intro/">Introduction to R and RStudio</a></h2>
+
+<ul>
+  <li>Use the escape key to cancel incomplete commands or running code
+(Ctrl+C) if you’re using R from the shell.</li>
+  <li>Basic arithmetic operations follow standard order of precedence:
+    <ul>
+      <li>Brackets: <code class="highlighter-rouge">(</code>, <code class="highlighter-rouge">)</code></li>
+      <li>Exponents: <code class="highlighter-rouge">^</code> or <code class="highlighter-rouge">**</code></li>
+      <li>Divide: <code class="highlighter-rouge">/</code></li>
+      <li>Multiply: <code class="highlighter-rouge">*</code></li>
+      <li>Add: <code class="highlighter-rouge">+</code></li>
+      <li>Subtract: <code class="highlighter-rouge">-</code></li>
+    </ul>
+  </li>
+  <li>Scientific notation is available, e.g: <code class="highlighter-rouge">2e-3</code></li>
+  <li>Anything to the right of a <code class="highlighter-rouge">#</code> is a comment, R will ignore this!</li>
+  <li>Functions are denoted by <code class="highlighter-rouge">function_name()</code>. Expressions inside the
+brackets are evaluated before being passed to the function, and
+functions can be nested.</li>
+  <li>Mathematical functions: <code class="highlighter-rouge">exp</code>, <code class="highlighter-rouge">sin</code>, <code class="highlighter-rouge">log</code>, <code class="highlighter-rouge">log10</code>, <code class="highlighter-rouge">log2</code> etc.</li>
+  <li>Comparison operators: <code class="highlighter-rouge">&lt;</code>, <code class="highlighter-rouge">&lt;=</code>, <code class="highlighter-rouge">&gt;</code>, <code class="highlighter-rouge">&gt;=</code>, <code class="highlighter-rouge">==</code>, <code class="highlighter-rouge">!=</code></li>
+  <li>Use <code class="highlighter-rouge">all.equal</code> to compare numbers!</li>
+  <li><code class="highlighter-rouge">&lt;-</code> is the assignment operator. Anything to the right is evaluate, then
+stored in a variable named to the left.</li>
+  <li><code class="highlighter-rouge">ls</code> lists all variables and functions you’ve created</li>
+  <li><code class="highlighter-rouge">rm</code> can be used to remove them</li>
+  <li>When assigning values to function arguments, you <em>must</em> use <code class="highlighter-rouge">=</code>.</li>
+</ul>
+
+<h2 id="project-management-with-rstudioswc-releases201606r-novice-gapminder02-project-intro"><a href="/swc-releases/2016.06/r-novice-gapminder/02-project-intro/">Project management with RStudio</a></h2>
+
+<ul>
+  <li>To create a new project, go to File -&gt; New Project</li>
+  <li>Install the <code class="highlighter-rouge">packrat</code> package to create self-contained projects</li>
+  <li><code class="highlighter-rouge">install.packages</code> to install packages from CRAN</li>
+  <li><code class="highlighter-rouge">library</code> to load a package into R</li>
+  <li><code class="highlighter-rouge">packrat::status</code> to check whether all packages referenced in your
+scripts have been installed.</li>
+</ul>
+
+<h2 id="seeking-helpswc-releases201606r-novice-gapminder03-seeking-help"><a href="/swc-releases/2016.06/r-novice-gapminder/03-seeking-help/">Seeking help</a></h2>
+
+<ul>
+  <li>To access help for a function type <code class="highlighter-rouge">?function_name</code> or <code class="highlighter-rouge">help(function_name)</code></li>
+  <li>Use quotes for special operators e.g. <code class="highlighter-rouge">?"+"</code></li>
+  <li>Use fuzzy search if you can’t remember a name ‘??search_term’</li>
+  <li><a href="http://cran.at.r-project.org/web/views">CRAN task views</a> are a good starting point.</li>
+  <li><a href="http://stackoverflow.com/">Stack Overflow</a> is a good place to get help with your code.
+    <ul>
+      <li><code class="highlighter-rouge">?dput</code> will dump data you are working from so others can load it easily.</li>
+      <li><code class="highlighter-rouge">sessionInfo()</code> will give details of your setup that others may need for debugging.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="data-structuresswc-releases201606r-novice-gapminder04-data-structures-part1"><a href="/swc-releases/2016.06/r-novice-gapminder/04-data-structures-part1/">Data structures</a></h2>
+
+<p>Individual values in R must be one of 5 <strong>data types</strong>, multiple values can be grouped in <strong>data structures</strong>.</p>
+
+<p><strong>Data types</strong></p>
+
+<ul>
+  <li><code class="highlighter-rouge">typeof(object)</code> gives information about an items data type.</li>
+  <li>There are 5 main data types:
+    <ul>
+      <li><code class="highlighter-rouge">?numeric</code> real (decimal) numbers</li>
+      <li><code class="highlighter-rouge">?integer</code> whole numbers only</li>
+      <li><code class="highlighter-rouge">?character</code> text</li>
+      <li><code class="highlighter-rouge">?complex</code> complex numbers</li>
+      <li><code class="highlighter-rouge">?logical</code> TRUE or FALSE values</li>
+    </ul>
+
+    <p><strong>Special types:</strong></p>
+
+    <ul>
+      <li><code class="highlighter-rouge">?NA</code> missing values</li>
+      <li><code class="highlighter-rouge">?NaN</code> “not a number” for undefined values (e.g. <code class="highlighter-rouge">0/0</code>).</li>
+      <li><code class="highlighter-rouge">?Inf</code>, <code class="highlighter-rouge">-Inf</code> infinity.</li>
+      <li><code class="highlighter-rouge">?NULL</code> a data structure that doesn’t exist</li>
+    </ul>
+
+    <p><code class="highlighter-rouge">NA</code> can occur in any atomic vector. <code class="highlighter-rouge">NaN</code>, and <code class="highlighter-rouge">Inf</code> can only
+ occur in complex, integer or numeric type vectors. Atomic vectors
+ are the building blocks for all other data structures. A <code class="highlighter-rouge">NULL</code> value
+ will occur in place of an entire data structure (but can occur as list
+ elements).</p>
+  </li>
+</ul>
+
+<p><strong>Basic data structures in R:</strong>
+  - atomic <code class="highlighter-rouge">?vector</code> (can only contain one type)
+  - <code class="highlighter-rouge">?list</code> (containers for other objects)
+  - <code class="highlighter-rouge">?data.frame</code> two dimensional objects whose columns can contain different types of data
+  - <code class="highlighter-rouge">?matrix</code> two dimensional objects that can contain only one type of data.
+  - <code class="highlighter-rouge">?factor</code> vectors that contain predefined categorical data.
+  - <code class="highlighter-rouge">?array</code> multi-dimensional objects that can only contain one type of data</p>
+
+<p>Remember that matrices are really atomic vectors underneath the hood, and that
+data.frames are really lists underneath the hood (this explains some of the weirder
+behaviour of R).</p>
+
+<p><strong><a href="/swc-releases/2016.06/r-novice-gapminder/04-data-structures-part1.html">Vectors</a></strong>
+ - <code class="highlighter-rouge">?vector()</code> All items in a vector must be the same type.
+ - Items can be converted from one type to another using <em>coercion</em>.
+ - The concatenate function ‘c()’ will append items to a vector.
+ - <code class="highlighter-rouge">seq(from=0, to=1, by=1)</code> will create a sequence of numbers.
+ - Items in a vector can be named using the <code class="highlighter-rouge">names()</code> function.</p>
+
+<p><strong><a href="/swc-releases/2016.06/r-novice-gapminder/04-data-structures-part1.html">Factors</a></strong>
+ - <code class="highlighter-rouge">?factor()</code> Factors are a data structure designed to store categorical data.
+ - <code class="highlighter-rouge">levels()</code> shows the valid values that can be stored in a vector of type factor.</p>
+
+<p><strong><a href="/swc-releases/2016.06/r-novice-gapminder/04-data-structures-part1.html">Lists</a></strong>
+ - <code class="highlighter-rouge">?list()</code> Lists are a data structure designed to store data of different types.</p>
+
+<p><strong><a href="/swc-releases/2016.06/r-novice-gapminder/04-data-structures-part1.html">Matrices</a></strong>
+ - <code class="highlighter-rouge">?matrix()</code> Matrices are a data structure designed to store 2-dimensional data.</p>
+
+<p><strong><a href="/swc-releases/2016.06/r-novice-gapminder/05-data-structures-part2.html">Data Frames</a></strong>
+ - <code class="highlighter-rouge">?data.frame</code> is a key data structure. It is a <code class="highlighter-rouge">list</code> of <code class="highlighter-rouge">vectors</code>.
+ - <code class="highlighter-rouge">cbind()</code> will add a column (vector) to a data.frame.
+ - <code class="highlighter-rouge">rbind()</code> will add a row (list) to a data.frame.</p>
+
+<p><strong>Useful functions for querying data structures:</strong>
+ - <code class="highlighter-rouge">?str</code> structure, prints out a summary of the whole data structure
+ - <code class="highlighter-rouge">?typeof</code> tells you the type inside an atomic vector
+ - <code class="highlighter-rouge">?class</code> what is the data structure?
+ - <code class="highlighter-rouge">?head</code> print the first <code class="highlighter-rouge">n</code> elements (rows for two-dimensional objects)
+ - <code class="highlighter-rouge">?tail</code> print the last <code class="highlighter-rouge">n</code> elements (rows for two-dimensional objects)
+ - <code class="highlighter-rouge">?rownames</code>, <code class="highlighter-rouge">?colnames</code>, <code class="highlighter-rouge">?dimnames</code> retrieve or modify the row names
+   and column names of an object.
+ - <code class="highlighter-rouge">?names</code> retrieve or modify the names of an atomic vector or list (or
+   columns of a data.frame).
+ - <code class="highlighter-rouge">?length</code> get the number of elements in an atomic vector
+ - <code class="highlighter-rouge">?nrow</code>, <code class="highlighter-rouge">?ncol</code>, <code class="highlighter-rouge">?dim</code> get the dimensions of a n-dimensional object
+   (Won’t work on atomic vectors or lists).</p>
+
+<h2 id="exploring-data-framesswc-releases201606r-novice-gapminder05-data-structures-part2"><a href="/swc-releases/2016.06/r-novice-gapminder/05-data-structures-part2/">Exploring Data Frames</a></h2>
+
+<ul>
+  <li><code class="highlighter-rouge">read.csv</code> to read in data in a regular structure
+    <ul>
+      <li><code class="highlighter-rouge">sep</code> argument to specify the separator
+        <ul>
+          <li>”,” for comma separated</li>
+          <li>“\t” for tab separated</li>
+        </ul>
+      </li>
+      <li>Other arguments:
+        <ul>
+          <li><code class="highlighter-rouge">header=TRUE</code> if there is a header row</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="subsetting-dataswc-releases201606r-novice-gapminder06-data-subsetting"><a href="/swc-releases/2016.06/r-novice-gapminder/06-data-subsetting/">Subsetting data</a></h2>
+
+<ul>
+  <li>Elements can be accessed by:
+    <ul>
+      <li>Index</li>
+      <li>Name</li>
+      <li>Logical vectors</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">[</code> single square brackets:
+    <ul>
+      <li><em>extract</em> single elements or <em>subset</em> vectors</li>
+      <li>e.g.<code class="highlighter-rouge">x[1]</code> extracts the first item from vector x.</li>
+      <li><em>extract</em> single elements of a list. The returned value will be another <code class="highlighter-rouge">list()</code>.</li>
+      <li><em>extract</em> columns from a data.frame</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">[</code> with two arguments to:
+    <ul>
+      <li><em>extract</em> rows and/or columns of
+        <ul>
+          <li>matrices</li>
+          <li>data.frames</li>
+          <li>e.g. <code class="highlighter-rouge">x[1,2]</code> will extract the value in row 1, column 2.</li>
+          <li>e.g. <code class="highlighter-rouge">x[2,:]</code> will extract the entire second column of values.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">[[</code> double square brackets to extract items from lists.</li>
+  <li><code class="highlighter-rouge">$</code> to access columns or list elements by name</li>
+  <li>negative indices skip elements</li>
+</ul>
+
+<h2 id="control-flowswc-releases201606r-novice-gapminder07-control-flow"><a href="/swc-releases/2016.06/r-novice-gapminder/07-control-flow/">Control flow</a></h2>
+
+<ul>
+  <li>Use <code class="highlighter-rouge">if</code> condition to start a conditional statement, <code class="highlighter-rouge">else if</code> condition to provide
+additional tests, and <code class="highlighter-rouge">else</code> to provide a default</li>
+  <li>The bodies of the branches of conditional statements must be indented.</li>
+  <li>Use <code class="highlighter-rouge">==</code> to test for equality.</li>
+  <li><code class="highlighter-rouge">X &amp;&amp; Y</code> is only true if both X and Y are <code class="highlighter-rouge">TRUE</code>.</li>
+  <li><code class="highlighter-rouge">X || Y</code> is true if either X or Y, or both, are <code class="highlighter-rouge">TRUE</code>.</li>
+  <li>Zero is considered <code class="highlighter-rouge">FALSE</code>; all other numbers are considered <code class="highlighter-rouge">TRUE</code></li>
+  <li>Nest loops to operate on multi-dimensional data.</li>
+</ul>
+
+<h2 id="creating-publication-quality-graphicsswc-releases201606r-novice-gapminder08-plot-ggplot2"><a href="/swc-releases/2016.06/r-novice-gapminder/08-plot-ggplot2/">Creating publication quality graphics</a></h2>
+
+<ul>
+  <li>figures can be created with the grammar of graphics:
+    <ul>
+      <li><code class="highlighter-rouge">library(ggplot2)</code></li>
+      <li><code class="highlighter-rouge">ggplot</code> to create the base figure</li>
+      <li><code class="highlighter-rouge">aes</code>thetics specify the data axes, shape, color, and data size</li>
+      <li><code class="highlighter-rouge">geom</code>etry functions specify the type of plot, e.g. <code class="highlighter-rouge">point</code>, <code class="highlighter-rouge">line</code>, <code class="highlighter-rouge">density</code>, <code class="highlighter-rouge">box</code></li>
+      <li><code class="highlighter-rouge">geom</code>etry functions also add statistical transforms, e.g. <code class="highlighter-rouge">geom_smooth</code></li>
+      <li><code class="highlighter-rouge">scale</code> functions change the mapping from data to aesthetics</li>
+      <li><code class="highlighter-rouge">facet</code> functions stratify the figure into panels</li>
+      <li><code class="highlighter-rouge">aes</code>thetics apply to individual layers, or can be set for the whole plot
+inside <code class="highlighter-rouge">ggplot</code>.</li>
+      <li><code class="highlighter-rouge">theme</code> functions change the overall look of the plot</li>
+      <li>order of layers matters!</li>
+      <li><code class="highlighter-rouge">ggsave</code> to save a figure.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="vectorizationswc-releases201606r-novice-gapminder09-vectorization"><a href="/swc-releases/2016.06/r-novice-gapminder/09-vectorization/">Vectorization</a></h2>
+
+<ul>
+  <li>Most functions and operations apply to each element of a vector</li>
+  <li><code class="highlighter-rouge">*</code> applies element-wise to matrices</li>
+  <li><code class="highlighter-rouge">%*%</code> for true matrix multiplication</li>
+  <li><code class="highlighter-rouge">any()</code> will return <code class="highlighter-rouge">TRUE</code> if any element of a vector is <code class="highlighter-rouge">TRUE</code></li>
+  <li><code class="highlighter-rouge">all()</code> will return <code class="highlighter-rouge">TRUE</code> if <em>all</em> elements of a vector are <code class="highlighter-rouge">TRUE</code></li>
+</ul>
+
+<h2 id="functions-explainedswc-releases201606r-novice-gapminder10-functions"><a href="/swc-releases/2016.06/r-novice-gapminder/10-functions/">Functions explained</a></h2>
+
+<ul>
+  <li><code class="highlighter-rouge">?"function"</code></li>
+  <li>Put code whose parameters change frequently in a function, then call it with
+different parameter values to customize its behavior.</li>
+  <li>The last line of a function is returned, or you can use <code class="highlighter-rouge">return</code> explicitly</li>
+  <li>Any code written in the body of the function will preferably look for variables defined inside the function.</li>
+  <li>Document Why, then What, then lastly How (if the code isn’t self explanatory)</li>
+</ul>
+
+<h2 id="writing-dataswc-releases201606r-novice-gapminder11-writing-data"><a href="/swc-releases/2016.06/r-novice-gapminder/11-writing-data/">Writing data</a></h2>
+
+<ul>
+  <li><code class="highlighter-rouge">write.table</code> to write out objects in regular format</li>
+  <li>set <code class="highlighter-rouge">quote=FALSE</code> so that text isn’t wrapped in <code class="highlighter-rouge">"</code> marks</li>
+</ul>
+
+<h2 id="split-apply-combineswc-releases201606r-novice-gapminder12-plyr"><a href="/swc-releases/2016.06/r-novice-gapminder/12-plyr/">Split-apply-combine</a></h2>
+
+<ul>
+  <li>Use the <code class="highlighter-rouge">xxply</code> family of functions to apply functions to groups within
+some data.</li>
+  <li>the first letter, <code class="highlighter-rouge">a</code>rray , <code class="highlighter-rouge">d</code>ata.frame or <code class="highlighter-rouge">l</code>ist corresponds to the input data</li>
+  <li>the second letter denotes the output data structure</li>
+  <li>Anonymous functions (those not assigned a name) are used inside the <code class="highlighter-rouge">plyr</code> family
+of functions on groups within data.</li>
+</ul>
+
+<h2 id="dataframe-manipulation-with-dplyrswc-releases201606r-novice-gapminder13-dplyr"><a href="/swc-releases/2016.06/r-novice-gapminder/13-dplyr/">Dataframe manipulation with dplyr</a></h2>
+<ul>
+  <li><code class="highlighter-rouge">library(dplyr)</code></li>
+  <li><code class="highlighter-rouge">?select</code> to extract variables by name.</li>
+  <li><code class="highlighter-rouge">?filter</code> return rows with matching conditions.</li>
+  <li><code class="highlighter-rouge">?group_by</code> group data by one of more variables.</li>
+  <li><code class="highlighter-rouge">?summarize</code> summarize multiple values to a single value.</li>
+  <li><code class="highlighter-rouge">?mutate</code> add new variables to a data.frame.</li>
+  <li>Combine operations using the <code class="highlighter-rouge">?"%&gt;%"</code> pipe operator.</li>
+</ul>
+
+<h2 id="dataframe-manipulation-with-tidyrswc-releases201606r-novice-gapminder14-tidyr"><a href="/swc-releases/2016.06/r-novice-gapminder/14-tidyr/">Dataframe manipulation with tidyr</a></h2>
+<ul>
+  <li><code class="highlighter-rouge">library(tidyr)</code></li>
+  <li>‘?gather’ convert data from <em>wide</em> to <em>long</em> format.</li>
+  <li>‘?spread’ convert data from <em>long</em> to <em>wide</em> format.</li>
+  <li>‘?separate’ split a single value into multiple values.</li>
+  <li>‘?unite’ merge multiple values into a single value.</li>
+</ul>
+
+<h2 id="producing-reports-with-knitrswc-releases201606r-novice-gapminder15-knitr-markdown"><a href="/swc-releases/2016.06/r-novice-gapminder/15-knitr-markdown/">Producing reports with knitr</a></h2>
+<ul>
+  <li>Value of reproducible reports</li>
+  <li>Basics of Markdown</li>
+  <li>R code chunks</li>
+  <li>Chunk options</li>
+  <li>Inline R code</li>
+  <li>Other output formats</li>
+</ul>
+
+<h2 id="best-practices-for-writing-good-codeswc-releases201606r-novice-gapminder16-wrap-up"><a href="/swc-releases/2016.06/r-novice-gapminder/16-wrap-up/">Best practices for writing good code</a></h2>
+
+<ul>
+  <li>Program defensively, i.e., assume that errors are going to arise, and write code to detect them when they do.</li>
+  <li>Write tests before writing code in order to help determine exactly what that code is supposed to do.</li>
+  <li>Know what code is supposed to do before trying to debug it.</li>
+  <li>Make it fail every time.</li>
+  <li>Make it fail fast.</li>
+  <li>Change one thing at a time, and for a reason.</li>
+  <li>Keep track of what you’ve done.</li>
+  <li>Be humble</li>
+</ul>
+
+<h2 id="glossary">Glossary</h2>
+
+<dl>
+  <dt>argument</dt>
+  <dd>A value given to a function or program when it runs.
+The term is often used interchangeably (and inconsistently) with <a href="#parameter">parameter</a>.</dd>
+  <dt>assign</dt>
+  <dd>To give a value a name by associating a variable with it.</dd>
+  <dt>body</dt>
+  <dd>(of a function): the statements that are executed when a function runs.</dd>
+  <dt>comment</dt>
+  <dd>A remark in a program that is intended to help human readers understand what is going on,
+but is ignored by the computer.
+Comments in Python, R, and the Unix shell start with a <code class="highlighter-rouge">#</code> character and run to the end of the line;
+comments in SQL start with <code class="highlighter-rouge">--</code>,
+and other languages have other conventions.</dd>
+  <dt>comma-separated values</dt>
+  <dd>(CSV) A common textual representation for tables
+in which the values in each row are separated by commas.</dd>
+  <dt>delimiter</dt>
+  <dd>A character or characters used to separate individual values,
+such as the commas between columns in a <a href="#comma-separated-values">CSV</a> file.</dd>
+  <dt>documentation</dt>
+  <dd>Human-language text written to explain what software does,
+how it works, or how to use it.</dd>
+  <dt>floating-point number</dt>
+  <dd>A number containing a fractional part and an exponent.
+See also: <a href="#integer">integer</a>.</dd>
+  <dt>for loop</dt>
+  <dd>A loop that is executed once for each value in some kind of set, list, or range.
+See also: <a href="#while-loop">while loop</a>.</dd>
+  <dt>index</dt>
+  <dd>A subscript that specifies the location of a single value in a collection,
+such as a single pixel in an image.</dd>
+  <dt>integer</dt>
+  <dd>A whole number, such as -12343. See also: <a href="#floating-point-number">floating-point number</a>.</dd>
+  <dt>library</dt>
+  <dd>In R, the directory(ies) where <a href="#package">packages</a> are stored.</dd>
+  <dt>package</dt>
+  <dd>A collection of R functions, data and compiled code in a well-defined format. Packages are stored in a <a href="#library">library</a> and loaded using the library() function.</dd>
+  <dt>parameter</dt>
+  <dd>A variable named in the function’s declaration that is used to hold a value passed into the call.
+The term is often used interchangeably (and inconsistently) with <a href="#argument">argument</a>.</dd>
+  <dt>return statement</dt>
+  <dd>A statement that causes a function to stop executing and return a value to its caller immediately.</dd>
+  <dt>sequence</dt>
+  <dd>A collection of information that is presented in a specific order.</dd>
+  <dt>shape</dt>
+  <dd>An array’s dimensions, represented as a vector.
+For example, a 5×3 array’s shape is <code class="highlighter-rouge">(5,3)</code>.</dd>
+  <dt>string</dt>
+  <dd>Short for “character string”,
+a <a href="#sequence">sequence</a> of zero or more characters.</dd>
+  <dt>syntax error</dt>
+  <dd>A programming error that occurs when statements are in an order or contain characters
+not expected by the programming language.</dd>
+  <dt>type</dt>
+  <dd>The classification of something in a program (for example, the contents of a variable)
+as a kind of number (e.g. <a href="#float">floating-point</a>, <a href="#integer">integer</a>), <a href="#string">string</a>,
+or something else. In R the command typeof() is used to query a variables type.</dd>
+  <dt>while loop</dt>
+  <dd>A loop that keeps executing as long as some condition is true.
+See also: <a href="#for-loop">for loop</a>.</dd>
+</dl>
+
+
+
+      
+      <hr/>
+<footer>
+  <div class="row">
+    <div class="col-md-6" align="left">
+      <h4>
+	Copyright &copy; 2016
+	<a href="https://software-carpentry.org">Software Carpentry Foundation</a>
+	
+      </h4>
+    </div>
+    <div class="col-md-6" align="right">
+      <h4>
+	<a href="/">Source</a>
+	/
+	<a href="/blob/gh-pages/CONTRIBUTING.md">Contributing</a>
+	/
+	<a href="mailto:lessons@software-carpentry.org">Contact</a>
+      </h4>
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    <script src="/swc-releases/2016.06/r-novice-gapminder/assets/js/jquery.min.js"></script>
+<script src="/swc-releases/2016.06/r-novice-gapminder/assets/js/bootstrap.min.js"></script>
+<script src="/swc-releases/2016.06/r-novice-gapminder/assets/js/lesson.js"></script>
+
+  </body>
+</html>

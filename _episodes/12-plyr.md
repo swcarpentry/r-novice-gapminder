@@ -1,7 +1,7 @@
 ---
 title: Split-Apply-Combine
-teaching: 10
-exercises: 10
+teaching: 30
+exercises: 30
 questions:
 - "How can I do different calculations on different sets of data?"
 objectives:
@@ -116,13 +116,6 @@ We installed this package in an earlier challenge. Let's load it now:
 library(plyr)
 ~~~
 {: .r}
-
-
-
-~~~
-Warning: package 'plyr' was built under R version 3.1.3
-~~~
-{: .error}
 
 Plyr has functions for operating on `lists`, `data.frames` and `arrays`
 (matrices, or n-dimensional vectors). Each function performs:

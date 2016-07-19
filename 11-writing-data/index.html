@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2016-07-19 12:35:25 +0200">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="search-domain" value="/swc-releases/2016.06/r-novice-gapminder">
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/r-novice-gapminder/assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/r-novice-gapminder/assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/r-novice-gapminder/assets/css/lesson.css" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon-swc.ico" />
+    
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    <title>R for Reproducible Scientific Analysis: Writing Data</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+      <a href="https://software-carpentry.org" class="pull-left">
+        <img class="navbar-logo" src="/swc-releases/2016.06/r-novice-gapminder/assets/img/swc-icon-blue.svg" alt="Software Carpentry logo" />
+      </a>
+      
+
+      
+      <a class="navbar-brand" href="/swc-releases/2016.06/r-novice-gapminder/">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="/swc-releases/2016.06/r-novice-gapminder/conduct/">Code of Conduct</a></li>
+
+	
+        
+        <li><a href="/swc-releases/2016.06/r-novice-gapminder/setup/">Setup</a></li>
+        <li><a href="/swc-releases/2016.06/r-novice-gapminder/reference/">Reference</a></li>
+        <li class="dropdown">
+          <a href="/swc-releases/2016.06/r-novice-gapminder/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/01-rstudio-intro/">Introduction to R and RStudio</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/02-project-intro/">Project Management With RStudio</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/03-seeking-help/">Seeking Help</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/04-data-structures-part1/">Data Structures</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/05-data-structures-part2/">Exploring Data Frames</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/06-data-subsetting/">Subsetting Data</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/07-control-flow/">Control Flow</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/08-plot-ggplot2/">Creating Publication-Quality Graphics</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/09-vectorization/">Vectorization</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/10-functions/">Functions Explained</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/11-writing-data/">Writing Data</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/12-plyr/">Split-Apply-Combine</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/13-dplyr/">Dataframe Manipulation with dplyr</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/14-tidyr/">Dataframe Manipulation with tidyr</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/15-knitr-markdown/">Producing Reports With knitr</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/16-wrap-up/">Writing Good Software</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="/swc-releases/2016.06/r-novice-gapminder/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/about/">About</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/discuss/">Discussion</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/figures/">Figures</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/guide/">Instructor's Guide</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="/swc-releases/2016.06/r-novice-gapminder/license/">License</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search...">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+<div class="row">
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="/swc-releases/2016.06/r-novice-gapminder/10-functions/"><span class="glyphicon glyphicon-menu-left"></span></a>
+      
+    </h3>
+  </div>
+  <div class="col-md-10">
+    <h3 class="maintitle"><a href="/swc-releases/2016.06/r-novice-gapminder/">R for Reproducible Scientific Analysis</a></h3>
+    <h1 class="maintitle">Writing Data</h1>
+  </div>
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="/swc-releases/2016.06/r-novice-gapminder/12-plyr/"><span class="glyphicon glyphicon-menu-right"></span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+<blockquote class="objectives">
+  <h2>Overview</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Teaching:</strong> 10 min
+      </br>
+      <strong>Exercises:</strong> 10 min
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li><p>How can I save plots and data created in R?</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li><p>To be able to write out plots and data from R.</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+  
+</blockquote>
+
+<h2 id="saving-plots">Saving plots</h2>
+
+<p>You have already seen how to save the most recent plot you create in <code class="highlighter-rouge">ggplot2</code>,
+using the command <code class="highlighter-rouge">ggsave</code>. As a refresher:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>ggsave("My_most_recent_plot.pdf")
+</code></pre>
+</div>
+
+<p>You can save a plot from within RStudio using the ‘Export’ button
+in the ‘Plot’ window. This will give you the option of saving as a
+.pdf or as .png, .jpg or other image formats.</p>
+
+<p>Sometimes you will want to save plots without creating them in the
+‘Plot’ window first. Perhaps you want to make a pdf document with
+multiple pages: each one a different plot, for example. Or perhaps
+you’re looping through multiple subsets of a file, plotting data from
+each subset, and you want to save each plot, but obviously can’t stop
+the loop to click ‘Export’ for each one.</p>
+
+<p>In this case you can use a more flexible approach. The function
+<code class="highlighter-rouge">pdf</code> creates a new pdf device. You can control the size and resolution
+using the arguments to this function.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>pdf("Life_Exp_vs_time.pdf", width=12, height=4)
+ggplot(data=gapminder, aes(x=year, y=lifeExp, colour=country)) +
+  geom_line()
+
+# You then have to make sure to turn off the pdf device!
+
+dev.off()
+</code></pre>
+</div>
+
+<p>Open up this document and have a look.</p>
+
+<blockquote class="challenge">
+  <h2 id="challenge-1">Challenge 1</h2>
+
+  <p>Rewrite your ‘pdf’ command to print a second
+page in the pdf, showing a facet plot (hint: use <code class="highlighter-rouge">facet_grid</code>)
+of the same data with one panel per continent.</p>
+</blockquote>
+
+<p>The commands <code class="highlighter-rouge">jpeg</code>, <code class="highlighter-rouge">png</code> etc. are used similarly to produce
+documents in different formats.</p>
+
+<h2 id="writing-data">Writing data</h2>
+
+<p>At some point, you’ll also want to write out data from R.</p>
+
+<p>We can use the <code class="highlighter-rouge">write.table</code> function for this, which is
+very similar to <code class="highlighter-rouge">read.table</code> from before.</p>
+
+<p>Let’s create a data-cleaning script, for this analysis, we
+only want to focus on the gapminder data for Australia:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>aust_subset &lt;- gapminder[gapminder$country == "Australia",]
+
+write.table(aust_subset,
+  file="cleaned-data/gapminder-aus.csv",
+  sep=","
+)
+</code></pre>
+</div>
+
+<p>Let’s switch back to the shell to take a look at the data to make sure it looks
+OK:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>head cleaned-data/gapminder-aus.csv
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>"country","year","pop","continent","lifeExp","gdpPercap"
+"61","Australia",1952,8691212,"Oceania",69.12,10039.59564
+"62","Australia",1957,9712569,"Oceania",70.33,10949.64959
+"63","Australia",1962,10794968,"Oceania",70.93,12217.22686
+"64","Australia",1967,11872264,"Oceania",71.1,14526.12465
+"65","Australia",1972,13177000,"Oceania",71.93,16788.62948
+"66","Australia",1977,14074100,"Oceania",73.49,18334.19751
+"67","Australia",1982,15184200,"Oceania",74.74,19477.00928
+"68","Australia",1987,16257249,"Oceania",76.32,21888.88903
+"69","Australia",1992,17481977,"Oceania",77.56,23424.76683
+</code></pre>
+</div>
+
+<p>Hmm, that’s not quite what we wanted. Where did all these
+quotation marks come from? Also the row numbers are
+meaningless.</p>
+
+<p>Let’s look at the help file to work out how to change this
+behaviour.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>?write.table
+</code></pre>
+</div>
+
+<p>By default R will wrap character vectors with quotation marks
+when writing out to file. It will also write out the row and
+column names.</p>
+
+<p>Let’s fix this:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>write.table(
+  gapminder[gapminder$country == "Australia",],
+  file="cleaned-data/gapminder-aus.csv",
+  sep=",", quote=FALSE, row.names=FALSE
+)
+</code></pre>
+</div>
+
+<p>Now lets look at the data again using our shell skills:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>head cleaned-data/gapminder-aus.csv
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>country,year,pop,continent,lifeExp,gdpPercap
+Australia,1952,8691212,Oceania,69.12,10039.59564
+Australia,1957,9712569,Oceania,70.33,10949.64959
+Australia,1962,10794968,Oceania,70.93,12217.22686
+Australia,1967,11872264,Oceania,71.1,14526.12465
+Australia,1972,13177000,Oceania,71.93,16788.62948
+Australia,1977,14074100,Oceania,73.49,18334.19751
+Australia,1982,15184200,Oceania,74.74,19477.00928
+Australia,1987,16257249,Oceania,76.32,21888.88903
+Australia,1992,17481977,Oceania,77.56,23424.76683
+</code></pre>
+</div>
+
+<p>That looks better!</p>
+
+<blockquote class="challenge">
+  <h2 id="challenge-2">Challenge 2</h2>
+
+  <p>Write a data-cleaning script file that subsets the gapminder
+data to include only data points collected since 1990.</p>
+
+  <p>Use this script to write out the new subset to a file
+in the <code class="highlighter-rouge">cleaned-data/</code> directory.</p>
+</blockquote>
+
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li><p>Save plots from RStudio using the ‘Export’ button.</p>
+</li>
+    
+    <li><p>Use <code class="highlighter-rouge">write.table</code> to save tabular data.</p>
+</li>
+    
+  </ul>
+</blockquote>
+
+
+      
+      <hr/>
+<footer>
+  <div class="row">
+    <div class="col-md-6" align="left">
+      <h4>
+	Copyright &copy; 2016
+	<a href="https://software-carpentry.org">Software Carpentry Foundation</a>
+	
+      </h4>
+    </div>
+    <div class="col-md-6" align="right">
+      <h4>
+	<a href="/">Source</a>
+	/
+	<a href="/blob/gh-pages/CONTRIBUTING.md">Contributing</a>
+	/
+	<a href="mailto:lessons@software-carpentry.org">Contact</a>
+      </h4>
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    <script src="/swc-releases/2016.06/r-novice-gapminder/assets/js/jquery.min.js"></script>
+<script src="/swc-releases/2016.06/r-novice-gapminder/assets/js/bootstrap.min.js"></script>
+<script src="/swc-releases/2016.06/r-novice-gapminder/assets/js/lesson.js"></script>
+
+  </body>
+</html>

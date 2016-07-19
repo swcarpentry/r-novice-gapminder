@@ -1,0 +1,980 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2016-07-19 12:35:25 +0200">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="search-domain" value="/swc-releases/2016.06/r-novice-gapminder">
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/r-novice-gapminder/assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/r-novice-gapminder/assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/r-novice-gapminder/assets/css/lesson.css" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon-swc.ico" />
+    
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    <title>R for Reproducible Scientific Analysis: Introduction to R and RStudio</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+      <a href="https://software-carpentry.org" class="pull-left">
+        <img class="navbar-logo" src="/swc-releases/2016.06/r-novice-gapminder/assets/img/swc-icon-blue.svg" alt="Software Carpentry logo" />
+      </a>
+      
+
+      
+      <a class="navbar-brand" href="/swc-releases/2016.06/r-novice-gapminder/">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="/swc-releases/2016.06/r-novice-gapminder/conduct/">Code of Conduct</a></li>
+
+	
+        
+        <li><a href="/swc-releases/2016.06/r-novice-gapminder/setup/">Setup</a></li>
+        <li><a href="/swc-releases/2016.06/r-novice-gapminder/reference/">Reference</a></li>
+        <li class="dropdown">
+          <a href="/swc-releases/2016.06/r-novice-gapminder/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/01-rstudio-intro/">Introduction to R and RStudio</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/02-project-intro/">Project Management With RStudio</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/03-seeking-help/">Seeking Help</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/04-data-structures-part1/">Data Structures</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/05-data-structures-part2/">Exploring Data Frames</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/06-data-subsetting/">Subsetting Data</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/07-control-flow/">Control Flow</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/08-plot-ggplot2/">Creating Publication-Quality Graphics</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/09-vectorization/">Vectorization</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/10-functions/">Functions Explained</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/11-writing-data/">Writing Data</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/12-plyr/">Split-Apply-Combine</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/13-dplyr/">Dataframe Manipulation with dplyr</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/14-tidyr/">Dataframe Manipulation with tidyr</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/15-knitr-markdown/">Producing Reports With knitr</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/16-wrap-up/">Writing Good Software</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="/swc-releases/2016.06/r-novice-gapminder/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/about/">About</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/discuss/">Discussion</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/figures/">Figures</a></li>
+            
+            <li><a href="/swc-releases/2016.06/r-novice-gapminder/guide/">Instructor's Guide</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="/swc-releases/2016.06/r-novice-gapminder/license/">License</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search...">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+<div class="row">
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="/swc-releases/2016.06/r-novice-gapminder"><span class="glyphicon glyphicon-menu-up"></span></a>
+      
+    </h3>
+  </div>
+  <div class="col-md-10">
+    <h3 class="maintitle"><a href="/swc-releases/2016.06/r-novice-gapminder/">R for Reproducible Scientific Analysis</a></h3>
+    <h1 class="maintitle">Introduction to R and RStudio</h1>
+  </div>
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="/swc-releases/2016.06/r-novice-gapminder/02-project-intro/"><span class="glyphicon glyphicon-menu-right"></span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+<blockquote class="objectives">
+  <h2>Overview</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Teaching:</strong> 45 min
+      </br>
+      <strong>Exercises:</strong> 10 min
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li><p>How to find your way around RStudio?</p>
+</li>
+	
+	<li><p>How to interact with R?</p>
+</li>
+	
+	<li><p>How to manage your environment?</p>
+</li>
+	
+	<li><p>How to install packages?</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li><p>To gain familiarity with the various panes in the RStudio IDE</p>
+</li>
+	
+	<li><p>To gain familiarity with the buttons, short cuts and options in the RStudio IDE</p>
+</li>
+	
+	<li><p>To understand variables and how to assign to them</p>
+</li>
+	
+	<li><p>To be able to manage your workspace in an interactive R session</p>
+</li>
+	
+	<li><p>To be able to use mathematical and comparison operations</p>
+</li>
+	
+	<li><p>To be able to call functions</p>
+</li>
+	
+	<li><p>Introduction to package management</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+  
+</blockquote>
+
+<h2 id="motivation">Motivation</h2>
+
+<p>Science is a multi-step process: once you’ve designed an experiment and collected
+data, the real fun begins! This lesson will teach you how to start this process using
+R and RStudio. We will begin with raw data, perform exploratory analyses, and learn
+how to plot results graphically. This example starts with the
+<code class="highlighter-rouge">data/gapminder-FiveYearData.csv</code> dataset containing population information for many
+countries through time. Can you read the data into R? Can you plot the population for
+Senegal? Can you calculate the average income for countries on continent of Asia?
+By the end of these lessons you will be able to do things like plot the populations
+for all of these countries in under a minute!</p>
+
+<h2 id="introduction-to-rstudio">Introduction to RStudio</h2>
+
+<p>Welcome to the R portion of the Software Carpentry workshop.</p>
+
+<p>Throughout this lesson, we’re going to teach you some of the fundamentals of
+the R language as well as some best practices for organizing code for
+scientific projects that will make your life easier.</p>
+
+<p>We’ll be using RStudio: a free, open source R integrated development
+environment. It provides a built in editor, works on all platforms (including
+on servers) and provides many advantages such as integration with version
+control and project management.</p>
+
+<p><strong>Basic layout</strong></p>
+
+<p>When you first open RStudio, you will be greeted by three panels:</p>
+
+<ul>
+  <li>The interactive R console (entire left)</li>
+  <li>Environment/History (tabbed in upper right)</li>
+  <li>Files/Plots/Packages/Help/Viewer (tabbed in lower right)</li>
+</ul>
+
+<p>Once you open files, such as R scripts, an editor panel will also open
+in the top left.</p>
+
+<h2 id="work-flow-within-rstudio">Work flow within RStudio</h2>
+<p>There are two main ways one can work within RStudio.</p>
+
+<ol>
+  <li>Test and play within the interactive R console then copy code into
+a .R file to run later.
+    <ul>
+      <li>This works well when doing small tests and initially starting off.</li>
+      <li>It quickly becomes laborious</li>
+    </ul>
+  </li>
+  <li>Start writing in an .R file and use RStudio’s command / short cut
+to push current line, selected lines or modified lines to the
+interactive R console.
+    <ul>
+      <li>This is a great way to start; all your code is saved for later</li>
+      <li>You will be able to run the file you create from within RStudio
+or using R’s <code class="highlighter-rouge">source()</code>  function.</li>
+    </ul>
+  </li>
+</ol>
+
+<blockquote class="callout">
+  <h2 id="tip-running-segments-of-your-code">Tip: Running segments of your code</h2>
+
+  <p>RStudio offers you great flexibility in running code from within the editor
+window. There are buttons, menu choices, and keyboard shortcuts. To run the
+current line, you can 1. click on the <code class="highlighter-rouge">Run</code> button above the editor panel,
+or 2. select “Run Lines” from the “Code” menu, or 3. hit Ctrl-Enter in Windows
+or Linux or Command-Enter on OS X. (This shortcut can also be seen by hovering
+the mouse over the button). To run a block of code, select it and then <code class="highlighter-rouge">Run</code>.
+If you have modified a line of code within a block of code you have just run,
+there is no need to reselct the section and <code class="highlighter-rouge">Run</code>, you can use the next button
+along, <code class="highlighter-rouge">Re-run the previous region</code>. This will run the previous code block
+inculding the modifications you have made.</p>
+</blockquote>
+
+<h2 id="introduction-to-r">Introduction to R</h2>
+
+<p>Much of your time in R will be spent in the R interactive
+console. This is where you will run all of your code, and can be a
+useful environment to try out ideas before adding them to an R script
+file. This console in RStudio is the same as the one you would get if
+you typed in <code class="highlighter-rouge">R</code> in your command-line environment.</p>
+
+<p>The first thing you will see in the R interactive session is a bunch
+of information, followed by a “&gt;” and a blinking cursor. In many ways
+this is similar to the shell environment you learned about during the
+shell lessons: it operates on the same idea of a “Read, evaluate,
+print loop”: you type in commands, R tries to execute them, and then
+returns a result.</p>
+
+<h2 id="using-r-as-a-calculator">Using R as a calculator</h2>
+
+<p>The simplest thing you could do with R is do arithmetic:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>1 + 100
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 101
+</code></pre>
+</div>
+
+<p>And R will print out the answer, with a preceding “[1]”. Don’t worry about this
+for now, we’ll explain that later. For now think of it as indicating output.</p>
+
+<p>Like bash, if you type in an incomplete command, R will wait for you to
+complete it:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>&gt; 1 +
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>+
+</code></pre>
+</div>
+
+<p>Any time you hit return and the R session shows a “+” instead of a “&gt;”, it
+means it’s waiting for you to complete the command. If you want to cancel
+a command you can simply hit “Esc” and RStudio will give you back the “&gt;”
+prompt.</p>
+
+<blockquote class="callout">
+  <h2 id="tip-cancelling-commands">Tip: Cancelling commands</h2>
+
+  <p>If you’re using R from the commandline instead of from within RStudio,
+you need to use <code class="highlighter-rouge">Ctrl+C</code> instead of <code class="highlighter-rouge">Esc</code> to cancel the command. This
+applies to Mac users as well!</p>
+
+  <p>Cancelling a command isn’t only useful for killing incomplete commands:
+you can also use it to tell R to stop running code (for example if its
+taking much longer than you expect), or to get rid of the code you’re
+currently writing.</p>
+
+</blockquote>
+
+<p>When using R as a calculator, the order of operations is the same as you
+would have learned back in school.</p>
+
+<p>From highest to lowest precedence:</p>
+
+<ul>
+  <li>Parentheses: <code class="highlighter-rouge">(</code>, <code class="highlighter-rouge">)</code></li>
+  <li>Exponents: <code class="highlighter-rouge">^</code> or <code class="highlighter-rouge">**</code></li>
+  <li>Divide: <code class="highlighter-rouge">/</code></li>
+  <li>Multiply: <code class="highlighter-rouge">*</code></li>
+  <li>Add: <code class="highlighter-rouge">+</code></li>
+  <li>Subtract: <code class="highlighter-rouge">-</code></li>
+</ul>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>3 + 5 * 2
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 13
+</code></pre>
+</div>
+
+<p>Use parentheses to group operations in order to force the order of
+evaluation if it differs from the default, or to make clear what you
+intend.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>(3 + 5) * 2
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 16
+</code></pre>
+</div>
+
+<p>This can get unwieldy when not needed, but  clarifies your intentions.
+Remember that others may later read your code.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>(3 + (5 * (2 ^ 2))) # hard to read
+3 + 5 * 2 ^ 2       # clear, if you remember the rules
+3 + 5 * (2 ^ 2)     # if you forget some rules, this might help
+</code></pre>
+</div>
+
+<p>The text after each line of code is called a
+“comment”. Anything that follows after the hash (or octothorpe) symbol
+<code class="highlighter-rouge">#</code> is ignored by R when it executes code.</p>
+
+<p>Really small or large numbers get a scientific notation:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>2/10000
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 2e-04
+</code></pre>
+</div>
+
+<p>Which is shorthand for “multiplied by <code class="highlighter-rouge">10^XX</code>”. So <code class="highlighter-rouge">2e-4</code>
+is shorthand for <code class="highlighter-rouge">2 * 10^(-4)</code>.</p>
+
+<p>You can write numbers in scientific notation too:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>5e3  # Note the lack of minus here
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 5000
+</code></pre>
+</div>
+
+<h2 id="mathematical-functions">Mathematical functions</h2>
+
+<p>R has many built in mathematical functions. To call a function,
+we simply type its name, followed by  open and closing parentheses.
+Anything we type inside the parentheses is called the function’s
+arguments:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>sin(1)  # trigonometry functions
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 0.841471
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>log(1)  # natural logarithm
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 0
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>log10(10) # base-10 logarithm
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 1
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>exp(0.5) # e^(1/2)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 1.648721
+</code></pre>
+</div>
+
+<p>Don’t worry about trying to remember every function in R. You
+can simply look them up on Google, or if you can remember the
+start of the function’s name, use the tab completion in RStudio.</p>
+
+<p>This is one advantage that RStudio has over R on its own, it
+has auto-completion abilities that allow you to more easily
+look up functions, their arguments, and the values that they
+take.</p>
+
+<p>Typing a <code class="highlighter-rouge">?</code> before the name of a command will open the help page
+for that command. As well as providing a detailed description of
+the command and how it works, scrolling to the bottom of the
+help page will usually show a collection of code examples which
+illustrate command usage. We’ll go through an example later.</p>
+
+<h2 id="comparing-things">Comparing things</h2>
+
+<p>We can also do comparison in R:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>1 == 1  # equality (note two equals signs, read as "is equal to")
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] TRUE
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>1 != 2  # inequality (read as "is not equal to")
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] TRUE
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>1 &lt;  2  # less than
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] TRUE
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>1 &lt;= 1  # less than or equal to
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] TRUE
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>1 &gt; 0  # greater than
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] TRUE
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>1 &gt;= -9 # greater than or equal to
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] TRUE
+</code></pre>
+</div>
+
+<blockquote class="callout">
+  <h2 id="tip-comparing-numbers">Tip: Comparing Numbers</h2>
+
+  <p>A word of warning about comparing numbers: you should
+never use <code class="highlighter-rouge">==</code> to compare two numbers unless they are
+integers (a data type which can specifically represent
+only whole numbers).</p>
+
+  <p>Computers may only represent decimal numbers with a
+certain degree of precision, so two numbers which look
+the same when printed out by R, may actually have
+different underlying representations and therefore be
+different by a small margin of error (called Machine
+numeric tolerance).</p>
+
+  <p>Instead you should use the <code class="highlighter-rouge">all.equal</code> function.</p>
+
+  <p>Further reading: <a href="http://floating-point-gui.de/">http://floating-point-gui.de/</a></p>
+
+</blockquote>
+
+<h2 id="variables-and-assignment">Variables and assignment</h2>
+
+<p>We can store values in variables using the assignment operator <code class="highlighter-rouge">&lt;-</code>, like this:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>x &lt;- 1/40
+</code></pre>
+</div>
+
+<p>Notice that assignment does not print a value. Instead, we stored it for later
+in something called a <strong>variable</strong>. <code class="highlighter-rouge">x</code> now contains the <strong>value</strong> <code class="highlighter-rouge">0.025</code>:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>x
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 0.025
+</code></pre>
+</div>
+
+<p>More precisely, the stored value is a <em>decimal approximation</em> of
+this fraction called a <a href="http://en.wikipedia.org/wiki/Floating_point">floating point number</a>.</p>
+
+<p>Look for the <code class="highlighter-rouge">Environment</code> tab in one of the panes of RStudio, and you will see that <code class="highlighter-rouge">x</code> and its value
+have appeared. Our variable <code class="highlighter-rouge">x</code> can be used in place of a number in any calculation that expects a number:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>log(x)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] -3.688879
+</code></pre>
+</div>
+
+<p>Notice also that variables can be reassigned:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>x &lt;- 100
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">x</code> used to contain the value 0.025 and and now it has the value 100.</p>
+
+<p>Assignment values can contain the variable being assigned to:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>x &lt;- x + 1 #notice how RStudio updates its description of x on the top right tab
+</code></pre>
+</div>
+
+<p>The right hand side of the assignment can be any valid R expression.
+The right hand side is <em>fully evaluated</em> before the assignment occurs.</p>
+
+<p>Variable names can contain letters, numbers, underscores and periods. They
+cannot start with a number nor contain spaces at all. Different people use
+different conventions for long variable names, these include</p>
+
+<ul>
+  <li>periods.between.words</li>
+  <li>underscores_between_words</li>
+  <li>camelCaseToSeparateWords</li>
+</ul>
+
+<p>What you use is up to you, but <strong>be consistent</strong>.</p>
+
+<p>It is also possible to use the <code class="highlighter-rouge">=</code> operator for assignment:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>x = 1/40
+</code></pre>
+</div>
+
+<p>But this is much less common among R users.  The most important thing is to
+<strong>be consistent</strong> with the operator you use. There are occasionally places
+where it is less confusing to use <code class="highlighter-rouge">&lt;-</code> than <code class="highlighter-rouge">=</code>, and it is the most common
+symbol used in the community. So the recommendation is to use <code class="highlighter-rouge">&lt;-</code>.</p>
+
+<h2 id="vectorization">Vectorization</h2>
+
+<p>One final thing to be aware of is that R is <em>vectorized</em>, meaning that
+variables and functions can have vectors as values. For example</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>1:5
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 1 2 3 4 5
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>2^(1:5)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1]  2  4  8 16 32
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>x &lt;- 1:5
+2^x
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1]  2  4  8 16 32
+</code></pre>
+</div>
+
+<p>This is incredibly powerful; we will discuss this further in an
+upcoming lesson.</p>
+
+<h2 id="managing-your-environment">Managing your environment</h2>
+
+<p>There are a few useful commands you can use to interact with the R session.</p>
+
+<p><code class="highlighter-rouge">ls</code> will list all of the variables and functions stored in the global environment
+(your working R session):</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>ls()
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "x" "y"
+</code></pre>
+</div>
+
+<blockquote class="callout">
+  <h2 id="tip-hidden-objects">Tip: hidden objects</h2>
+
+  <p>Like in the shell, <code class="highlighter-rouge">ls</code> will hide any variables or functions starting
+with a “.” by default. To list all objects, type <code class="highlighter-rouge">ls(all.names=TRUE)</code>
+instead</p>
+
+</blockquote>
+
+<p>Note here that we didn’t given any arguments to <code class="highlighter-rouge">ls</code>, but we still
+needed to give the parentheses to tell R to call the function.</p>
+
+<p>If we type <code class="highlighter-rouge">ls</code> by itself, R will print out the source code for that function!</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>ls
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE, 
+    pattern) 
+{
+    if (!missing(name)) {
+        nameValue &lt;- try(name, silent = TRUE)
+        if (identical(class(nameValue), "try-error")) {
+            name &lt;- substitute(name)
+            if (!is.character(name)) 
+                name &lt;- deparse(name)
+            warning(gettextf("%s converted to character string", 
+                sQuote(name)), domain = NA)
+            pos &lt;- name
+        }
+        else pos &lt;- nameValue
+    }
+    all.names &lt;- .Internal(ls(envir, all.names))
+    if (!missing(pattern)) {
+        if ((ll &lt;- length(grep("[", pattern, fixed = TRUE))) &amp;&amp; 
+            ll != length(grep("]", pattern, fixed = TRUE))) {
+            if (pattern == "[") {
+                pattern &lt;- "\\["
+                warning("replaced regular expression pattern '[' by  '\\\\['")
+            }
+            else if (length(grep("[^\\\\]\\[&lt;-", pattern))) {
+                pattern &lt;- sub("\\[&lt;-", "\\\\\\[&lt;-", pattern)
+                warning("replaced '[&lt;-' by '\\\\[&lt;-' in regular expression pattern")
+            }
+        }
+        grep(pattern, all.names, value = TRUE)
+    }
+    else all.names
+}
+&lt;bytecode: 0x2454108&gt;
+&lt;environment: namespace:base&gt;
+</code></pre>
+</div>
+
+<p>You can use <code class="highlighter-rouge">rm</code> to delete objects you no longer need:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>rm(x)
+</code></pre>
+</div>
+
+<p>If you have lots of things in your environment and want to delete all of them,
+you can pass the results of <code class="highlighter-rouge">ls</code> to the <code class="highlighter-rouge">rm</code> function:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>rm(list = ls())
+</code></pre>
+</div>
+
+<p>In this case we’ve combined the two. Like the order of operations, anything
+inside the innermost parentheses is evaluated first, and so on.</p>
+
+<p>In this case we’ve specified that the results of <code class="highlighter-rouge">ls</code> should be used for the
+<code class="highlighter-rouge">list</code> argument in <code class="highlighter-rouge">rm</code>. When assigning values to arguments by name, you <em>must</em>
+use the <code class="highlighter-rouge">=</code> operator!!</p>
+
+<p>If instead we use <code class="highlighter-rouge">&lt;-</code>, there will be unintended side effects, or you may get an error message:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>rm(list &lt;- ls())
+</code></pre>
+</div>
+
+<div class="error highlighter-rouge"><pre class="highlight"><code>Error in rm(list &lt;- ls()): ... must contain names or character strings
+</code></pre>
+</div>
+
+<blockquote class="callout">
+  <h2 id="tip-warnings-vs-errors">Tip: Warnings vs. Errors</h2>
+
+  <p>Pay attention when R does something unexpected! Errors, like above,
+are thrown when R cannot proceed with a calculation. Warnings on the
+other hand usually mean that the function has run, but it probably
+hasn’t worked as expected.</p>
+
+  <p>In both cases, the message that R prints out usually give you clues
+how to fix a problem.</p>
+
+</blockquote>
+
+<h2 id="r-packages">R Packages</h2>
+
+<p>It is possible to add functions to R by writing a package, or by
+obtaining a package written by someone else. As of this writing, there
+are over 7,000 packages available on CRAN (the comprehensive R archive
+network). R and RStudio have functionality for managing packages:</p>
+
+<ul>
+  <li>You can see what packages are installed by typing
+<code class="highlighter-rouge">installed.packages()</code></li>
+  <li>You can install packages by typing <code class="highlighter-rouge">install.packages("packagename")</code>,
+where <code class="highlighter-rouge">packagename</code> is the package name, in quotes.</li>
+  <li>You can update installed packages by typing <code class="highlighter-rouge">update.packages()</code></li>
+  <li>You can remove a package with <code class="highlighter-rouge">remove.packages("packagename")</code></li>
+  <li>You can make a package available for use with <code class="highlighter-rouge">library(packagename)</code></li>
+</ul>
+
+<blockquote class="challenge">
+  <h2 id="challenge-1">Challenge 1</h2>
+
+  <p>Which of the following are valid R variable names?</p>
+
+  <div class="r highlighter-rouge"><pre class="highlight"><code>min_height
+max.height
+_age
+.mass
+MaxLength
+min-length
+2widths
+celsius2kelvin
+</code></pre>
+  </div>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-1">Solution to challenge 1</h2>
+
+    <p>The following can be used as R variables:</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>min_height
+max.height
+MaxLength
+celsius2kelvin
+</code></pre>
+    </div>
+
+    <p>The following creates a hidden variable:</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>.mass
+</code></pre>
+    </div>
+
+    <p>The following will not be able to be used to create a variable</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>_age
+min-length
+2widths
+</code></pre>
+    </div>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-2">Challenge 2</h2>
+
+  <p>What will be the value of each  variable  after each
+statement in the following program?</p>
+
+  <div class="r highlighter-rouge"><pre class="highlight"><code>mass &lt;- 47.5
+age &lt;- 122
+mass &lt;- mass * 2.3
+age &lt;- age - 20
+</code></pre>
+  </div>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-2">Solution to challenge 2</h2>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>mass &lt;- 47.5
+</code></pre>
+    </div>
+    <p>This will give a value of 47.5 for the variable mass</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>age &lt;- 122
+</code></pre>
+    </div>
+    <p>This will give a value of 122 for the variable age</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>mass &lt;- mass * 2.3
+</code></pre>
+    </div>
+    <p>This will multiply the existing value of 47.5 by 2.3 to give a new value of
+109.25 to the variable mass.</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>age &lt;- age - 20
+</code></pre>
+    </div>
+    <p>This will subtract 20 from the existing value of 122 to give a new value
+of 102 to the variable age.</p>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-3">Challenge 3</h2>
+
+  <p>Run the code from the previous challenge, and write a command to
+compare mass to age. Is mass larger than age?</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-3">Solution to challenge 3</h2>
+
+    <p>One way of answering this question in R is to use the <code class="highlighter-rouge">&gt;</code> to set up the following:</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>mass &gt; age
+</code></pre>
+    </div>
+
+    <div class="output highlighter-rouge"><pre class="highlight"><code>[1] TRUE
+</code></pre>
+    </div>
+    <p>This should yield a boolean value of TRUE since 109.25 is greater than 102.</p>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-4">Challenge 4</h2>
+
+  <p>Clean up your working environment by deleting the mass and age
+variables.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-4">Solution to challenge 4</h2>
+
+    <p>We can use the <code class="highlighter-rouge">rm</code> command to accomplish this task</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>rm(age, mass)
+</code></pre>
+    </div>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-5">Challenge 5</h2>
+
+  <p>Install the following packages: <code class="highlighter-rouge">ggplot2</code>, <code class="highlighter-rouge">plyr</code>, <code class="highlighter-rouge">gapminder</code></p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-5">Solution to challenge 5</h2>
+
+    <p>We can use the <code class="highlighter-rouge">install.packages()</code> command to install the required packages.
+We can also install them in one go like so:</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>install.packages(c("ggplot2", "plyr", "gapminder"))
+</code></pre>
+    </div>
+  </blockquote>
+</blockquote>
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li><p>Use RStudio to write and run R programs.</p>
+</li>
+    
+    <li><p>R has the usual arithmetic operators and mathematical functions.</p>
+</li>
+    
+    <li><p>Use <code class="highlighter-rouge">&lt;-</code> to assign values to variables.</p>
+</li>
+    
+    <li><p>Use <code class="highlighter-rouge">ls()</code> to list the variables in a program.</p>
+</li>
+    
+    <li><p>Use <code class="highlighter-rouge">rm()</code> to delete objects in a program.</p>
+</li>
+    
+    <li><p>Use <code class="highlighter-rouge">install.packages()</code> to install packages (libraries).</p>
+</li>
+    
+  </ul>
+</blockquote>
+
+
+      
+      <hr/>
+<footer>
+  <div class="row">
+    <div class="col-md-6" align="left">
+      <h4>
+	Copyright &copy; 2016
+	<a href="https://software-carpentry.org">Software Carpentry Foundation</a>
+	
+      </h4>
+    </div>
+    <div class="col-md-6" align="right">
+      <h4>
+	<a href="/">Source</a>
+	/
+	<a href="/blob/gh-pages/CONTRIBUTING.md">Contributing</a>
+	/
+	<a href="mailto:lessons@software-carpentry.org">Contact</a>
+      </h4>
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    <script src="/swc-releases/2016.06/r-novice-gapminder/assets/js/jquery.min.js"></script>
+<script src="/swc-releases/2016.06/r-novice-gapminder/assets/js/bootstrap.min.js"></script>
+<script src="/swc-releases/2016.06/r-novice-gapminder/assets/js/lesson.js"></script>
+
+  </body>
+</html>
