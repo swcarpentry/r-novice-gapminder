@@ -1,7 +1,7 @@
 ---
 title: Creating Publication-Quality Graphics
-teaching: 10
-exercises: 10
+teaching: 60
+exercises: 20
 questions:
 - "How can I create publication-quality graphics in R?"
 objectives:
@@ -44,19 +44,6 @@ Let's start off with an example:
 
 ~~~
 library("ggplot2")
-~~~
-{: .r}
-
-
-
-~~~
-Warning: package 'ggplot2' was built under R version 3.1.3
-~~~
-{: .error}
-
-
-
-~~~
 ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ~~~

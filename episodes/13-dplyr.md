@@ -1,7 +1,7 @@
 ---
 title: Dataframe Manipulation with dplyr
-teaching: 10
-exercises: 10
+teaching: 40
+exercises: 15
 questions:
 - "How can I manipulate dataframes without repeating myself?"
 objectives:
@@ -98,13 +98,6 @@ Now let's load the package:
 library(dplyr)
 ~~~
 {: .r}
-
-
-
-~~~
-Warning: package 'dplyr' was built under R version 3.1.3
-~~~
-{: .error}
 
 ## Using select()
 
