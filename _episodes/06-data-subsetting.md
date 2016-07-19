@@ -1,7 +1,7 @@
 ---
 title: Subsetting Data
-teaching: 10
-exercises: 10
+teaching: 35
+exercises: 15
 questions:
 - "How can I work with subsets of data in R?"
 objectives:
@@ -1250,7 +1250,7 @@ xlist[[-1]]
 
 
 ~~~
-Error in xlist[[-1]]: attempt to select more than one element
+Error in xlist[[-1]]: attempt to select more than one element in get1index <real>
 ~~~
 {: .error}
 

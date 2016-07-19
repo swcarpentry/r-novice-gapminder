@@ -1,6 +1,6 @@
 ---
 title: "Introduction to R and RStudio"
-teaching: 10
+teaching: 45
 exercises: 10
 questions:
 - "How to find your way around RStudio?"
@@ -607,7 +607,7 @@ ls
 
 ~~~
 function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE, 
-    pattern) 
+    pattern, sorted = TRUE) 
 {
     if (!missing(name)) {
         pos <- tryCatch(name, error = function(e) e)
@@ -620,7 +620,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
             pos <- name
         }
     }
-    all.names <- .Internal(ls(envir, all.names))
+    all.names <- .Internal(ls(envir, all.names, sorted))
     if (!missing(pattern)) {
         if ((ll <- length(grep("[", pattern, fixed = TRUE))) && 
             ll != length(grep("]", pattern, fixed = TRUE))) {
@@ -637,7 +637,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7fda8b139318>
+<bytecode: 0x7feecdab3f88>
 <environment: namespace:base>
 ~~~
 {: .output}
