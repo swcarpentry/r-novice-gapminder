@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="last-modified" content="2016-07-19 12:35:25 +0200">
+    <meta http-equiv="last-modified" content="2016-07-19 23:09:09 +0200">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="search-domain" value="/swc-releases/2016.06/r-novice-gapminder">
     <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/r-novice-gapminder/assets/css/bootstrap.css" />
@@ -226,18 +226,7 @@ installed dplyr in the previous lesson):</p>
 <p>Load the packages</p>
 
 <div class="r highlighter-rouge"><pre class="highlight"><code>library("tidyr")
-</code></pre>
-</div>
-
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in library("tidyr"): there is no package called 'tidyr'
-</code></pre>
-</div>
-
-<div class="r highlighter-rouge"><pre class="highlight"><code>library("dplyr")
-</code></pre>
-</div>
-
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in library("dplyr"): there is no package called 'dplyr'
+library("dplyr")
 </code></pre>
 </div>
 
@@ -355,18 +344,15 @@ convert from the wide to the long format. The <code class="highlighter-rouge">ti
 <div class="r highlighter-rouge"><pre class="highlight"><code>gap_long &lt;- gap_wide %&gt;%
     gather(obstype_year, obs_values, starts_with('pop'),
            starts_with('lifeExp'), starts_with('gdpPercap'))
+str(gap_long)
 </code></pre>
 </div>
 
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in function_list[[k]](value): could not find function "gather"
-</code></pre>
-</div>
-
-<div class="r highlighter-rouge"><pre class="highlight"><code>str(gap_long)
-</code></pre>
-</div>
-
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in str(gap_long): object 'gap_long' not found
+<div class="output highlighter-rouge"><pre class="highlight"><code>'data.frame':	5112 obs. of  4 variables:
+ $ continent   : chr  "Africa" "Africa" "Africa" "Africa" ...
+ $ country     : chr  "Algeria" "Angola" "Benin" "Botswana" ...
+ $ obstype_year: chr  "pop_1952" "pop_1952" "pop_1952" "pop_1952" ...
+ $ obs_values  : num  9279525 4232095 1738315 442308 4469979 ...
 </code></pre>
 </div>
 
@@ -386,18 +372,15 @@ gathered (i.e. ID variables)</p>
 <p><img src="../fig/14-tidyr-fig3.png" alt="" /></p>
 
 <div class="r highlighter-rouge"><pre class="highlight"><code>gap_long &lt;- gap_wide %&gt;% gather(obstype_year,obs_values,-continent,-country)
+str(gap_long)
 </code></pre>
 </div>
 
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in function_list[[k]](value): could not find function "gather"
-</code></pre>
-</div>
-
-<div class="r highlighter-rouge"><pre class="highlight"><code>str(gap_long)
-</code></pre>
-</div>
-
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in str(gap_long): object 'gap_long' not found
+<div class="output highlighter-rouge"><pre class="highlight"><code>'data.frame':	5112 obs. of  4 variables:
+ $ continent   : chr  "Africa" "Africa" "Africa" "Africa" ...
+ $ country     : chr  "Algeria" "Angola" "Benin" "Botswana" ...
+ $ obstype_year: chr  "gdpPercap_1952" "gdpPercap_1952" "gdpPercap_1952" "gdpPercap_1952" ...
+ $ obs_values  : num  2449 3521 1063 851 543 ...
 </code></pre>
 </div>
 
@@ -410,18 +393,7 @@ type (<code class="highlighter-rouge">pop</code>,<code class="highlighter-rouge"
 <code class="highlighter-rouge">separate()</code> function to split the character strings into multiple variables</p>
 
 <div class="r highlighter-rouge"><pre class="highlight"><code>gap_long &lt;- gap_long %&gt;% separate(obstype_year,into=c('obs_type','year'),sep="_")
-</code></pre>
-</div>
-
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in eval(expr, envir, enclos): object 'gap_long' not found
-</code></pre>
-</div>
-
-<div class="r highlighter-rouge"><pre class="highlight"><code>gap_long$year &lt;- as.integer(gap_long$year)
-</code></pre>
-</div>
-
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in eval(expr, envir, enclos): object 'gap_long' not found
+gap_long$year &lt;- as.integer(gap_long$year)
 </code></pre>
 </div>
 
@@ -439,7 +411,26 @@ type (<code class="highlighter-rouge">pop</code>,<code class="highlighter-rouge"
 </code></pre>
     </div>
 
-    <div class="error highlighter-rouge"><pre class="highlight"><code>Error in eval(expr, envir, enclos): object 'gap_long' not found
+    <div class="output highlighter-rouge"><pre class="highlight"><code>Source: local data frame [15 x 3]
+Groups: continent [?]
+
+  continent  obs_type        means
+      &lt;chr&gt;     &lt;chr&gt;        &lt;dbl&gt;
+1     Africa gdpPercap 2.193755e+03
+2     Africa   lifeExp 4.886533e+01
+3     Africa       pop 9.916003e+06
+4   Americas gdpPercap 7.136110e+03
+5   Americas   lifeExp 6.465874e+01
+6   Americas       pop 2.450479e+07
+7       Asia gdpPercap 7.902150e+03
+8       Asia   lifeExp 6.006490e+01
+9       Asia       pop 7.703872e+07
+10    Europe gdpPercap 1.446948e+04
+11    Europe   lifeExp 7.190369e+01
+12    Europe       pop 1.716976e+07
+13   Oceania gdpPercap 1.862161e+04
+14   Oceania   lifeExp 7.432621e+01
+15   Oceania       pop 8.874672e+06
 </code></pre>
     </div>
   </blockquote>
@@ -453,18 +444,11 @@ can then spread our <code class="highlighter-rouge">gap_long()</code> to the ori
 widest format. Let’s start with the intermediate format.</p>
 
 <div class="r highlighter-rouge"><pre class="highlight"><code>gap_normal &lt;- gap_long %&gt;% spread(obs_type,obs_values)
+dim(gap_normal)
 </code></pre>
 </div>
 
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in eval(expr, envir, enclos): object 'gap_long' not found
-</code></pre>
-</div>
-
-<div class="r highlighter-rouge"><pre class="highlight"><code>dim(gap_normal)
-</code></pre>
-</div>
-
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in eval(expr, envir, enclos): object 'gap_normal' not found
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 1704    6
 </code></pre>
 </div>
 
@@ -480,7 +464,7 @@ widest format. Let’s start with the intermediate format.</p>
 </code></pre>
 </div>
 
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in eval(expr, envir, enclos): object 'gap_normal' not found
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "continent" "country"   "year"      "gdpPercap" "lifeExp"   "pop"      
 </code></pre>
 </div>
 
@@ -497,18 +481,15 @@ the original <code class="highlighter-rouge">gapminder</code>, but the order of 
 that before checking if they are <code class="highlighter-rouge">all.equal()</code>.</p>
 
 <div class="r highlighter-rouge"><pre class="highlight"><code>gap_normal &lt;- gap_normal[,names(gapminder)]
+all.equal(gap_normal,gapminder)
 </code></pre>
 </div>
 
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in eval(expr, envir, enclos): object 'gap_normal' not found
-</code></pre>
-</div>
-
-<div class="r highlighter-rouge"><pre class="highlight"><code>all.equal(gap_normal,gapminder)
-</code></pre>
-</div>
-
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in all.equal(gap_normal, gapminder): object 'gap_normal' not found
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "Component \"country\": 1704 string mismatches"              
+[2] "Component \"pop\": Mean relative difference: 1.634504"      
+[3] "Component \"continent\": 1212 string mismatches"            
+[4] "Component \"lifeExp\": Mean relative difference: 0.203822"  
+[5] "Component \"gdpPercap\": Mean relative difference: 1.162302"
 </code></pre>
 </div>
 
@@ -516,7 +497,13 @@ that before checking if they are <code class="highlighter-rouge">all.equal()</co
 </code></pre>
 </div>
 
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in head(gap_normal): object 'gap_normal' not found
+<div class="output highlighter-rouge"><pre class="highlight"><code>  country year      pop continent lifeExp gdpPercap
+1 Algeria 1952  9279525    Africa  43.077  2449.008
+2 Algeria 1957 10270856    Africa  45.685  3013.976
+3 Algeria 1962 11000948    Africa  48.303  2550.817
+4 Algeria 1967 12760499    Africa  51.407  3246.992
+5 Algeria 1972 14760787    Africa  54.518  4182.664
+6 Algeria 1977 17152804    Africa  58.014  4910.417
 </code></pre>
 </div>
 
@@ -538,18 +525,11 @@ that before checking if they are <code class="highlighter-rouge">all.equal()</co
 <code class="highlighter-rouge">year</code>.</p>
 
 <div class="r highlighter-rouge"><pre class="highlight"><code>gap_normal &lt;- gap_normal %&gt;% arrange(country,continent,year)
+all.equal(gap_normal,gapminder)
 </code></pre>
 </div>
 
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in eval(expr, envir, enclos): object 'gap_normal' not found
-</code></pre>
-</div>
-
-<div class="r highlighter-rouge"><pre class="highlight"><code>all.equal(gap_normal,gapminder)
-</code></pre>
-</div>
-
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in all.equal(gap_normal, gapminder): object 'gap_normal' not found
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] TRUE
 </code></pre>
 </div>
 
@@ -564,36 +544,29 @@ combinations) and we also need to unify our ID variables to simplify the process
 of defining <code class="highlighter-rouge">gap_wide</code></p>
 
 <div class="r highlighter-rouge"><pre class="highlight"><code>gap_temp &lt;- gap_long %&gt;% unite(var_ID,continent,country,sep="_")
+str(gap_temp)
 </code></pre>
 </div>
 
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in eval(expr, envir, enclos): object 'gap_long' not found
-</code></pre>
-</div>
-
-<div class="r highlighter-rouge"><pre class="highlight"><code>str(gap_temp)
-</code></pre>
-</div>
-
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in str(gap_temp): object 'gap_temp' not found
+<div class="output highlighter-rouge"><pre class="highlight"><code>'data.frame':	5112 obs. of  4 variables:
+ $ var_ID    : chr  "Africa_Algeria" "Africa_Angola" "Africa_Benin" "Africa_Botswana" ...
+ $ obs_type  : chr  "gdpPercap" "gdpPercap" "gdpPercap" "gdpPercap" ...
+ $ year      : int  1952 1952 1952 1952 1952 1952 1952 1952 1952 1952 ...
+ $ obs_values: num  2449 3521 1063 851 543 ...
 </code></pre>
 </div>
 
 <div class="r highlighter-rouge"><pre class="highlight"><code>gap_temp &lt;- gap_long %&gt;%
     unite(ID_var,continent,country,sep="_") %&gt;%
     unite(var_names,obs_type,year,sep="_")
+str(gap_temp)
 </code></pre>
 </div>
 
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in eval(expr, envir, enclos): object 'gap_long' not found
-</code></pre>
-</div>
-
-<div class="r highlighter-rouge"><pre class="highlight"><code>str(gap_temp)
-</code></pre>
-</div>
-
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in str(gap_temp): object 'gap_temp' not found
+<div class="output highlighter-rouge"><pre class="highlight"><code>'data.frame':	5112 obs. of  3 variables:
+ $ ID_var    : chr  "Africa_Algeria" "Africa_Angola" "Africa_Benin" "Africa_Botswana" ...
+ $ var_names : chr  "gdpPercap_1952" "gdpPercap_1952" "gdpPercap_1952" "gdpPercap_1952" ...
+ $ obs_values: num  2449 3521 1063 851 543 ...
 </code></pre>
 </div>
 
@@ -605,18 +578,48 @@ pipe in <code class="highlighter-rouge">spread()</code></p>
     unite(ID_var,continent,country,sep="_") %&gt;%
     unite(var_names,obs_type,year,sep="_") %&gt;%
     spread(var_names,obs_values)
+str(gap_wide_new)
 </code></pre>
 </div>
 
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in eval(expr, envir, enclos): object 'gap_long' not found
-</code></pre>
-</div>
-
-<div class="r highlighter-rouge"><pre class="highlight"><code>str(gap_wide_new)
-</code></pre>
-</div>
-
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in str(gap_wide_new): object 'gap_wide_new' not found
+<div class="output highlighter-rouge"><pre class="highlight"><code>'data.frame':	142 obs. of  37 variables:
+ $ ID_var        : chr  "Africa_Algeria" "Africa_Angola" "Africa_Benin" "Africa_Botswana" ...
+ $ gdpPercap_1952: num  2449 3521 1063 851 543 ...
+ $ gdpPercap_1957: num  3014 3828 960 918 617 ...
+ $ gdpPercap_1962: num  2551 4269 949 984 723 ...
+ $ gdpPercap_1967: num  3247 5523 1036 1215 795 ...
+ $ gdpPercap_1972: num  4183 5473 1086 2264 855 ...
+ $ gdpPercap_1977: num  4910 3009 1029 3215 743 ...
+ $ gdpPercap_1982: num  5745 2757 1278 4551 807 ...
+ $ gdpPercap_1987: num  5681 2430 1226 6206 912 ...
+ $ gdpPercap_1992: num  5023 2628 1191 7954 932 ...
+ $ gdpPercap_1997: num  4797 2277 1233 8647 946 ...
+ $ gdpPercap_2002: num  5288 2773 1373 11004 1038 ...
+ $ gdpPercap_2007: num  6223 4797 1441 12570 1217 ...
+ $ lifeExp_1952  : num  43.1 30 38.2 47.6 32 ...
+ $ lifeExp_1957  : num  45.7 32 40.4 49.6 34.9 ...
+ $ lifeExp_1962  : num  48.3 34 42.6 51.5 37.8 ...
+ $ lifeExp_1967  : num  51.4 36 44.9 53.3 40.7 ...
+ $ lifeExp_1972  : num  54.5 37.9 47 56 43.6 ...
+ $ lifeExp_1977  : num  58 39.5 49.2 59.3 46.1 ...
+ $ lifeExp_1982  : num  61.4 39.9 50.9 61.5 48.1 ...
+ $ lifeExp_1987  : num  65.8 39.9 52.3 63.6 49.6 ...
+ $ lifeExp_1992  : num  67.7 40.6 53.9 62.7 50.3 ...
+ $ lifeExp_1997  : num  69.2 41 54.8 52.6 50.3 ...
+ $ lifeExp_2002  : num  71 41 54.4 46.6 50.6 ...
+ $ lifeExp_2007  : num  72.3 42.7 56.7 50.7 52.3 ...
+ $ pop_1952      : num  9279525 4232095 1738315 442308 4469979 ...
+ $ pop_1957      : num  10270856 4561361 1925173 474639 4713416 ...
+ $ pop_1962      : num  11000948 4826015 2151895 512764 4919632 ...
+ $ pop_1967      : num  12760499 5247469 2427334 553541 5127935 ...
+ $ pop_1972      : num  14760787 5894858 2761407 619351 5433886 ...
+ $ pop_1977      : num  17152804 6162675 3168267 781472 5889574 ...
+ $ pop_1982      : num  20033753 7016384 3641603 970347 6634596 ...
+ $ pop_1987      : num  23254956 7874230 4243788 1151184 7586551 ...
+ $ pop_1992      : num  26298373 8735988 4981671 1342614 8878303 ...
+ $ pop_1997      : num  29072015 9875024 6066080 1536536 10352843 ...
+ $ pop_2002      : num  31287142 10866106 7026113 1630347 12251209 ...
+ $ pop_2007      : num  33333216 12420476 8078314 1639131 14326203 ...
 </code></pre>
 </div>
 
@@ -634,10 +637,6 @@ pipe in <code class="highlighter-rouge">spread()</code></p>
    spread(var_names,obs_values)
 </code></pre>
     </div>
-
-    <div class="error highlighter-rouge"><pre class="highlight"><code>Error in eval(expr, envir, enclos): object 'gap_long' not found
-</code></pre>
-    </div>
   </blockquote>
 </blockquote>
 
@@ -645,30 +644,54 @@ pipe in <code class="highlighter-rouge">spread()</code></p>
 usable, let’s separate it into 2 variables with <code class="highlighter-rouge">separate()</code></p>
 
 <div class="r highlighter-rouge"><pre class="highlight"><code>gap_wide_betterID &lt;- separate(gap_wide_new,ID_var,c("continent","country"),sep="_")
-</code></pre>
-</div>
-
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in eval(expr, envir, enclos): could not find function "separate"
-</code></pre>
-</div>
-
-<div class="r highlighter-rouge"><pre class="highlight"><code>gap_wide_betterID &lt;- gap_long %&gt;%
+gap_wide_betterID &lt;- gap_long %&gt;%
     unite(ID_var, continent,country,sep="_") %&gt;%
     unite(var_names, obs_type,year,sep="_") %&gt;%
     spread(var_names, obs_values) %&gt;%
     separate(ID_var, c("continent","country"),sep="_")
+str(gap_wide_betterID)
 </code></pre>
 </div>
 
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in eval(expr, envir, enclos): object 'gap_long' not found
-</code></pre>
-</div>
-
-<div class="r highlighter-rouge"><pre class="highlight"><code>str(gap_wide_betterID)
-</code></pre>
-</div>
-
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in str(gap_wide_betterID): object 'gap_wide_betterID' not found
+<div class="output highlighter-rouge"><pre class="highlight"><code>'data.frame':	142 obs. of  38 variables:
+ $ continent     : chr  "Africa" "Africa" "Africa" "Africa" ...
+ $ country       : chr  "Algeria" "Angola" "Benin" "Botswana" ...
+ $ gdpPercap_1952: num  2449 3521 1063 851 543 ...
+ $ gdpPercap_1957: num  3014 3828 960 918 617 ...
+ $ gdpPercap_1962: num  2551 4269 949 984 723 ...
+ $ gdpPercap_1967: num  3247 5523 1036 1215 795 ...
+ $ gdpPercap_1972: num  4183 5473 1086 2264 855 ...
+ $ gdpPercap_1977: num  4910 3009 1029 3215 743 ...
+ $ gdpPercap_1982: num  5745 2757 1278 4551 807 ...
+ $ gdpPercap_1987: num  5681 2430 1226 6206 912 ...
+ $ gdpPercap_1992: num  5023 2628 1191 7954 932 ...
+ $ gdpPercap_1997: num  4797 2277 1233 8647 946 ...
+ $ gdpPercap_2002: num  5288 2773 1373 11004 1038 ...
+ $ gdpPercap_2007: num  6223 4797 1441 12570 1217 ...
+ $ lifeExp_1952  : num  43.1 30 38.2 47.6 32 ...
+ $ lifeExp_1957  : num  45.7 32 40.4 49.6 34.9 ...
+ $ lifeExp_1962  : num  48.3 34 42.6 51.5 37.8 ...
+ $ lifeExp_1967  : num  51.4 36 44.9 53.3 40.7 ...
+ $ lifeExp_1972  : num  54.5 37.9 47 56 43.6 ...
+ $ lifeExp_1977  : num  58 39.5 49.2 59.3 46.1 ...
+ $ lifeExp_1982  : num  61.4 39.9 50.9 61.5 48.1 ...
+ $ lifeExp_1987  : num  65.8 39.9 52.3 63.6 49.6 ...
+ $ lifeExp_1992  : num  67.7 40.6 53.9 62.7 50.3 ...
+ $ lifeExp_1997  : num  69.2 41 54.8 52.6 50.3 ...
+ $ lifeExp_2002  : num  71 41 54.4 46.6 50.6 ...
+ $ lifeExp_2007  : num  72.3 42.7 56.7 50.7 52.3 ...
+ $ pop_1952      : num  9279525 4232095 1738315 442308 4469979 ...
+ $ pop_1957      : num  10270856 4561361 1925173 474639 4713416 ...
+ $ pop_1962      : num  11000948 4826015 2151895 512764 4919632 ...
+ $ pop_1967      : num  12760499 5247469 2427334 553541 5127935 ...
+ $ pop_1972      : num  14760787 5894858 2761407 619351 5433886 ...
+ $ pop_1977      : num  17152804 6162675 3168267 781472 5889574 ...
+ $ pop_1982      : num  20033753 7016384 3641603 970347 6634596 ...
+ $ pop_1987      : num  23254956 7874230 4243788 1151184 7586551 ...
+ $ pop_1992      : num  26298373 8735988 4981671 1342614 8878303 ...
+ $ pop_1997      : num  29072015 9875024 6066080 1536536 10352843 ...
+ $ pop_2002      : num  31287142 10866106 7026113 1630347 12251209 ...
+ $ pop_2007      : num  33333216 12420476 8078314 1639131 14326203 ...
 </code></pre>
 </div>
 
@@ -676,7 +699,7 @@ usable, let’s separate it into 2 variables with <code class="highlighter-rouge
 </code></pre>
 </div>
 
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in mode(current): object 'gap_wide_betterID' not found
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] TRUE
 </code></pre>
 </div>
 

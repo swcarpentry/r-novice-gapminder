@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="last-modified" content="2016-07-19 12:35:25 +0200">
+    <meta http-equiv="last-modified" content="2016-07-19 23:09:09 +0200">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="search-domain" value="/swc-releases/2016.06/r-novice-gapminder">
     <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/r-novice-gapminder/assets/css/bootstrap.css" />
@@ -685,11 +685,11 @@ needed to give the parentheses to tell R to call the function.</p>
 </div>
 
 <div class="output highlighter-rouge"><pre class="highlight"><code>function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE, 
-    pattern) 
+    pattern, sorted = TRUE) 
 {
     if (!missing(name)) {
-        nameValue &lt;- try(name, silent = TRUE)
-        if (identical(class(nameValue), "try-error")) {
+        pos &lt;- tryCatch(name, error = function(e) e)
+        if (inherits(pos, "error")) {
             name &lt;- substitute(name)
             if (!is.character(name)) 
                 name &lt;- deparse(name)
@@ -697,9 +697,8 @@ needed to give the parentheses to tell R to call the function.</p>
                 sQuote(name)), domain = NA)
             pos &lt;- name
         }
-        else pos &lt;- nameValue
     }
-    all.names &lt;- .Internal(ls(envir, all.names))
+    all.names &lt;- .Internal(ls(envir, all.names, sorted))
     if (!missing(pattern)) {
         if ((ll &lt;- length(grep("[", pattern, fixed = TRUE))) &amp;&amp; 
             ll != length(grep("]", pattern, fixed = TRUE))) {
@@ -716,7 +715,7 @@ needed to give the parentheses to tell R to call the function.</p>
     }
     else all.names
 }
-&lt;bytecode: 0x2454108&gt;
+&lt;bytecode: 0x25fc980&gt;
 &lt;environment: namespace:base&gt;
 </code></pre>
 </div>

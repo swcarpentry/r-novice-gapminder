@@ -114,12 +114,17 @@ sessionInfo()
 
 
 ~~~
-R version 3.3.0 (2016-05-03)
-Platform: x86_64-apple-darwin15.5.0 (64-bit)
-Running under: OS X 10.11.6 (El Capitan)
+R version 3.3.1 (2016-06-21)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 14.04.4 LTS
 
 locale:
-[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
@@ -128,7 +133,7 @@ other attached packages:
 [1] stringr_1.0.0 knitr_1.13   
 
 loaded via a namespace (and not attached):
-[1] magrittr_1.5  formatR_1.4   tools_3.3.0   stringi_1.1.1 methods_3.3.0
+[1] magrittr_1.5  formatR_1.4   tools_3.3.1   stringi_1.1.1 methods_3.3.1
 [6] evaluate_0.9 
 ~~~
 {: .output}

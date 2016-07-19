@@ -139,7 +139,8 @@ cats$weight + cats$coat
 
 
 ~~~
-Warning in Ops.factor(cats$weight, cats$coat): + not meaningful for factors
+Warning in Ops.factor(cats$weight, cats$coat): '+' not meaningful for
+factors
 ~~~
 {: .error}
 
@@ -297,7 +298,7 @@ cats$weight + 2
 
 
 ~~~
-Warning in Ops.factor(cats$weight, 2): + not meaningful for factors
+Warning in Ops.factor(cats$weight, 2): '+' not meaningful for factors
 ~~~
 {: .error}
 

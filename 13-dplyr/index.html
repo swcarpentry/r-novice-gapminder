@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="last-modified" content="2016-07-19 12:35:25 +0200">
+    <meta http-equiv="last-modified" content="2016-07-19 23:09:09 +0200">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="search-domain" value="/swc-releases/2016.06/r-novice-gapminder">
     <link rel="stylesheet" type="text/css" href="/swc-releases/2016.06/r-novice-gapminder/assets/css/bootstrap.css" />
@@ -250,10 +250,6 @@ pipes (<code class="highlighter-rouge">%&gt;%</code>) to combine them.</p>
 </code></pre>
 </div>
 
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in library(dplyr): there is no package called 'dplyr'
-</code></pre>
-</div>
-
 <h2 id="using-select">Using select()</h2>
 
 <p>If, for example, we wanted to move forward with only a few of the variables in
@@ -261,10 +257,6 @@ our dataframe we could use the <code class="highlighter-rouge">select()</code> f
 variables you select.</p>
 
 <div class="r highlighter-rouge"><pre class="highlight"><code>year_country_gdp &lt;- select(gapminder,year,country,gdpPercap)
-</code></pre>
-</div>
-
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in eval(expr, envir, enclos): could not find function "select"
 </code></pre>
 </div>
 
@@ -277,10 +269,6 @@ is unlike anything we’ve seen in R before, let’s repeat what we’ve done ab
 using pipes.</p>
 
 <div class="r highlighter-rouge"><pre class="highlight"><code>year_country_gdp &lt;- gapminder %&gt;% select(year,country,gdpPercap)
-</code></pre>
-</div>
-
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in function_list[[k]](value): could not find function "select"
 </code></pre>
 </div>
 
@@ -303,10 +291,6 @@ countries, we can combine <code class="highlighter-rouge">select</code> and <cod
 </code></pre>
 </div>
 
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in filter(., continent == "Europe"): object 'continent' not found
-</code></pre>
-</div>
-
 <blockquote class="challenge">
   <h2 id="challenge-1">Challenge 1</h2>
 
@@ -321,10 +305,6 @@ have and why?</p>
     <div class="r highlighter-rouge"><pre class="highlight"><code>year_country_lifeExp_Africa &lt;- gapminder %&gt;%
                            filter(continent=="Africa") %&gt;%
                            select(year,country,lifeExp)
-</code></pre>
-    </div>
-
-    <div class="error highlighter-rouge"><pre class="highlight"><code>Error in filter(., continent == "Africa"): object 'continent' not found
 </code></pre>
     </div>
   </blockquote>
@@ -363,7 +343,29 @@ could have used in filter.</p>
 </code></pre>
 </div>
 
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in function_list[[k]](value): could not find function "group_by"
+<div class="output highlighter-rouge"><pre class="highlight"><code>Classes 'grouped_df', 'tbl_df', 'tbl' and 'data.frame':	1704 obs. of  6 variables:
+ $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+ $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...
+ $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
+ $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
+ $ gdpPercap: num  779 821 853 836 740 ...
+ - attr(*, "vars")=List of 1
+  ..$ : symbol continent
+ - attr(*, "drop")= logi TRUE
+ - attr(*, "indices")=List of 5
+  ..$ : int  24 25 26 27 28 29 30 31 32 33 ...
+  ..$ : int  48 49 50 51 52 53 54 55 56 57 ...
+  ..$ : int  0 1 2 3 4 5 6 7 8 9 ...
+  ..$ : int  12 13 14 15 16 17 18 19 20 21 ...
+  ..$ : int  60 61 62 63 64 65 66 67 68 69 ...
+ - attr(*, "group_sizes")= int  624 300 396 360 24
+ - attr(*, "biggest_group_size")= int 624
+ - attr(*, "labels")='data.frame':	5 obs. of  1 variable:
+  ..$ continent: Factor w/ 5 levels "Africa","Americas",..: 1 2 3 4 5
+  ..- attr(*, "vars")=List of 1
+  .. ..$ : symbol continent
+  ..- attr(*, "drop")= logi TRUE
 </code></pre>
 </div>
 <p>You will notice that the structure of the dataframe where we used <code class="highlighter-rouge">group_by()</code>
@@ -389,10 +391,6 @@ original dataframe into multiple pieces, then we can run functions
 </code></pre>
 </div>
 
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in function_list[[i]](value): could not find function "group_by"
-</code></pre>
-</div>
-
 <p><img src="../fig/13-dplyr-fig3.png" alt="" /></p>
 
 <p>That allowed us to calculate the mean gdpPercap for each continent, but it gets
@@ -412,10 +410,6 @@ expectancy and which had the shortest life expectancy?</p>
    summarize(mean_lifeExp=mean(lifeExp))
 </code></pre>
     </div>
-
-    <div class="error highlighter-rouge"><pre class="highlight"><code>Error in function_list[[i]](value): could not find function "group_by"
-</code></pre>
-    </div>
   </blockquote>
 </blockquote>
 
@@ -427,10 +421,6 @@ expectancy and which had the shortest life expectancy?</p>
 </code></pre>
 </div>
 
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in function_list[[i]](value): could not find function "group_by"
-</code></pre>
-</div>
-
 <p>That is already quite powerful, but it gets even better! You’re not limited to defining 1 new variable in <code class="highlighter-rouge">summarize()</code>.</p>
 
 <div class="r highlighter-rouge"><pre class="highlight"><code>gdp_pop_bycontinents_byyear &lt;- gapminder %&gt;%
@@ -439,10 +429,6 @@ expectancy and which had the shortest life expectancy?</p>
               sd_gdpPercap=sd(gdpPercap),
               mean_pop=mean(pop),
               sd_pop=sd(pop))
-</code></pre>
-</div>
-
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in function_list[[i]](value): could not find function "group_by"
 </code></pre>
 </div>
 
@@ -459,10 +445,6 @@ expectancy and which had the shortest life expectancy?</p>
               sd_pop=sd(pop),
               mean_gdp_billion=mean(gdp_billion),
               sd_gdp_billion=sd(gdp_billion))
-</code></pre>
-</div>
-
-<div class="error highlighter-rouge"><pre class="highlight"><code>Error in function_list[[i]](value): could not find function "group_by"
 </code></pre>
 </div>
 
@@ -483,10 +465,6 @@ similar syntax to other dplyr functions.</p>
    sample_n(2) %&gt;%
    summarize(mean_lifeExp=mean(lifeExp)) %&gt;%
    arrange(desc(mean_lifeExp))
-</code></pre>
-    </div>
-
-    <div class="error highlighter-rouge"><pre class="highlight"><code>Error in filter(., year == 2002): object 'year' not found
 </code></pre>
     </div>
   </blockquote>

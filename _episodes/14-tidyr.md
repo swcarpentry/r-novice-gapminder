@@ -61,13 +61,6 @@ library("dplyr")
 ~~~
 {: .r}
 
-
-
-~~~
-Error in library("dplyr"): there is no package called 'dplyr'
-~~~
-{: .error}
-
 First, lets look at the structure of our original gapminder dataframe:
 
 
