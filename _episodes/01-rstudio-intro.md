@@ -607,11 +607,11 @@ ls
 
 ~~~
 function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE, 
-    pattern) 
+    pattern, sorted = TRUE) 
 {
     if (!missing(name)) {
-        nameValue <- try(name, silent = TRUE)
-        if (identical(class(nameValue), "try-error")) {
+        pos <- tryCatch(name, error = function(e) e)
+        if (inherits(pos, "error")) {
             name <- substitute(name)
             if (!is.character(name)) 
                 name <- deparse(name)
@@ -619,9 +619,8 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
                 sQuote(name)), domain = NA)
             pos <- name
         }
-        else pos <- nameValue
     }
-    all.names <- .Internal(ls(envir, all.names))
+    all.names <- .Internal(ls(envir, all.names, sorted))
     if (!missing(pattern)) {
         if ((ll <- length(grep("[", pattern, fixed = TRUE))) && 
             ll != length(grep("]", pattern, fixed = TRUE))) {
@@ -638,7 +637,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x2454108>
+<bytecode: 0x7feecdab3f88>
 <environment: namespace:base>
 ~~~
 {: .output}

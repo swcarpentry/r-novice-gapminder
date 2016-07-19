@@ -99,13 +99,6 @@ library(dplyr)
 ~~~
 {: .r}
 
-
-
-~~~
-Error in library(dplyr): there is no package called 'dplyr'
-~~~
-{: .error}
-
 ## Using select()
 
 If, for example, we wanted to move forward with only a few of the variables in
@@ -117,13 +110,6 @@ variables you select.
 year_country_gdp <- select(gapminder,year,country,gdpPercap)
 ~~~
 {: .r}
-
-
-
-~~~
-Error in eval(expr, envir, enclos): could not find function "select"
-~~~
-{: .error}
 
 ![](../fig/13-dplyr-fig1.png)
 
@@ -138,13 +124,6 @@ using pipes.
 year_country_gdp <- gapminder %>% select(year,country,gdpPercap)
 ~~~
 {: .r}
-
-
-
-~~~
-Error in function_list[[k]](value): could not find function "select"
-~~~
-{: .error}
 
 To help you understand why we wrote that in that way, let's walk through it step
 by step. First we summon the gapminder dataframe and pass it on, using the pipe
@@ -167,13 +146,6 @@ year_country_gdp_euro <- gapminder %>%
 ~~~
 {: .r}
 
-
-
-~~~
-Error in filter(., continent == "Europe"): object 'continent' not found
-~~~
-{: .error}
-
 > ## Challenge 1
 >
 > Write a single command (which can span multiple lines and includes pipes) that
@@ -189,13 +161,6 @@ Error in filter(., continent == "Europe"): object 'continent' not found
 > >                            select(year,country,lifeExp)
 > >~~~
 > >{: .r}
-> >
-> >
-> >
-> >~~~
-> >Error in filter(., continent == "Africa"): object 'continent' not found
-> >~~~
-> >{: .error}
 > {: .solution}
 {: .challenge}
 
@@ -243,9 +208,31 @@ str(gapminder %>% group_by(continent))
 
 
 ~~~
-Error in function_list[[k]](value): could not find function "group_by"
+Classes 'grouped_df', 'tbl_df', 'tbl' and 'data.frame':	1704 obs. of  6 variables:
+ $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+ $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...
+ $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
+ $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
+ $ gdpPercap: num  779 821 853 836 740 ...
+ - attr(*, "vars")=List of 1
+  ..$ : symbol continent
+ - attr(*, "drop")= logi TRUE
+ - attr(*, "indices")=List of 5
+  ..$ : int  24 25 26 27 28 29 30 31 32 33 ...
+  ..$ : int  48 49 50 51 52 53 54 55 56 57 ...
+  ..$ : int  0 1 2 3 4 5 6 7 8 9 ...
+  ..$ : int  12 13 14 15 16 17 18 19 20 21 ...
+  ..$ : int  60 61 62 63 64 65 66 67 68 69 ...
+ - attr(*, "group_sizes")= int  624 300 396 360 24
+ - attr(*, "biggest_group_size")= int 624
+ - attr(*, "labels")='data.frame':	5 obs. of  1 variable:
+  ..$ continent: Factor w/ 5 levels "Africa","Americas",..: 1 2 3 4 5
+  ..- attr(*, "vars")=List of 1
+  .. ..$ : symbol continent
+  ..- attr(*, "drop")= logi TRUE
 ~~~
-{: .error}
+{: .output}
 You will notice that the structure of the dataframe where we used `group_by()`
 (`grouped_df`) is not the same as the original `gapminder` (`data.frame`). A
 `grouped_df` can be thought of as a `list` where each item in the `list`is a
@@ -271,13 +258,6 @@ gdp_bycontinents <- gapminder %>%
 ~~~
 {: .r}
 
-
-
-~~~
-Error in function_list[[i]](value): could not find function "group_by"
-~~~
-{: .error}
-
 ![](../fig/13-dplyr-fig3.png)
 
 That allowed us to calculate the mean gdpPercap for each continent, but it gets
@@ -297,13 +277,6 @@ even better.
 > >    summarize(mean_lifeExp=mean(lifeExp))
 > >~~~
 > >{: .r}
-> >
-> >
-> >
-> >~~~
-> >Error in function_list[[i]](value): could not find function "group_by"
-> >~~~
-> >{: .error}
 > {: .solution}
 {: .challenge}
 
@@ -318,13 +291,6 @@ gdp_bycontinents_byyear <- gapminder %>%
 ~~~
 {: .r}
 
-
-
-~~~
-Error in function_list[[i]](value): could not find function "group_by"
-~~~
-{: .error}
-
 That is already quite powerful, but it gets even better! You're not limited to defining 1 new variable in `summarize()`.
 
 
@@ -337,13 +303,6 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
               sd_pop=sd(pop))
 ~~~
 {: .r}
-
-
-
-~~~
-Error in function_list[[i]](value): could not find function "group_by"
-~~~
-{: .error}
 
 ## Using mutate()
 
@@ -365,13 +324,6 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 
 
 
-~~~
-Error in function_list[[i]](value): could not find function "group_by"
-~~~
-{: .error}
-
-
-
 > ## Advanced Challenge
 >
 > Calculate the average life expectancy in 2002 of 2 randomly selected countries
@@ -390,13 +342,6 @@ Error in function_list[[i]](value): could not find function "group_by"
 > >    arrange(desc(mean_lifeExp))
 > >~~~
 > >{: .r}
-> >
-> >
-> >
-> >~~~
-> >Error in filter(., year == 2002): object 'year' not found
-> >~~~
-> >{: .error}
 > {: .solution}
 {: .challenge}
 
