@@ -1,7 +1,7 @@
 ---
 title: "Introduction to R and RStudio"
 teaching: 45
-exercises: 20
+exercises: 10
 questions:
 - "How to find your way around RStudio?"
 - "How to interact with R?"
@@ -16,7 +16,12 @@ objectives:
 - "To be able to call functions"
 - "Introduction to package management"
 keypoints:
-- "TBD"
+- "Use RStudio to write and run R programs."
+- "R has the usual arithmetic operators and mathematical functions."
+- "Use `<-` to assign values to variables."
+- "Use `ls()` to list the variables in a program."
+- "Use `rm()` to delete objects in a program."
+- "Use `install.packages()` to install packages (libraries)."
 ---
 
 
@@ -39,7 +44,7 @@ for all of these countries in under a minute!
 Welcome to the R portion of the Software Carpentry workshop.
 
 Throughout this lesson, we're going to teach you some of the fundamentals of
-the R language as well as some best practices for organising code for
+the R language as well as some best practices for organizing code for
 scientific projects that will make your life easier.
 
 We'll be using RStudio: a free, open source R integrated development
@@ -92,7 +97,7 @@ Much of your time in R will be spent in the R interactive
 console. This is where you will run all of your code, and can be a
 useful environment to try out ideas before adding them to an R script
 file. This console in RStudio is the same as the one you would get if
-you typed in `R` in your commandline environment.
+you typed in `R` in your command-line environment.
 
 The first thing you will see in the R interactive session is a bunch
 of information, followed by a ">" and a blinking cursor. In many ways
@@ -119,7 +124,7 @@ The simplest thing you could do with R is do arithmetic:
 {: .output}
 
 And R will print out the answer, with a preceding "[1]". Don't worry about this
-for now, we'll explain that later. For now think of it as indicating ouput.
+for now, we'll explain that later. For now think of it as indicating output.
 
 Like bash, if you type in an incomplete command, R will wait for you to
 complete it:
@@ -153,7 +158,7 @@ prompt.
 {: .callout}
 
 When using R as a calculator, the order of operations is the same as you
-would have learnt back in school.
+would have learned back in school.
 
 From highest to lowest precedence:
 
@@ -303,17 +308,17 @@ exp(0.5) # e^(1/2)
 {: .output}
 
 Don't worry about trying to remember every function in R. You
-can simply look them up on google, or if you can remember the
+can simply look them up on Google, or if you can remember the
 start of the function's name, use the tab completion in RStudio.
 
 This is one advantage that RStudio has over R on its own, it
-has autocompletion abilities that allow you to more easily
+has auto-completion abilities that allow you to more easily
 look up functions, their arguments, and the values that they
 take.
 
 Typing a `?` before the name of a command will open the help page
 for that command. As well as providing a detailed description of
-the command and how it works, scrolling ot the bottom of the
+the command and how it works, scrolling to the bottom of the
 help page will usually show a collection of code examples which
 illustrate command usage. We'll go through an example later.
 
@@ -632,7 +637,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x159df70>
+<bytecode: 0x7feecdab3f88>
 <environment: namespace:base>
 ~~~
 {: .output}

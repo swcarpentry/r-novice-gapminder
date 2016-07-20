@@ -1,18 +1,23 @@
 ---
-title: "Project management with RStudio"
-teaching: 30
-exercises: 20
+title: "Project Management With RStudio"
+teaching: 20
+exercises: 10
 questions:
--
+- "How can I manage my projects in R?"
 objectives:
 - To be able to create self-contained projects in RStudio
 - To be able to use git from within RStudio
 keypoints:
--
+- "Use RStudio to create and manage projects with consistent layout."
+- "Treat raw data as read-only."
+- "Treat generated output as disposable."
+- "Separate function definition and application."
+- "Use version control."
 ---
 
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
+knitr_fig_path("02-")
 ```
 
 ## Introduction
@@ -21,7 +26,7 @@ The scientific process is naturally incremental, and many projects
 start life as random notes, some code, then a manuscript, and
 eventually everything is a bit mixed together.
 
-<blockquote class="twitter-tweet"><p>Managing your projects in a reproducible fashion doesn't just make your science reproducible, it makes your life easier.</p>&mdash; Vince Buffalo (@vsbuffalo) <a href="https://twitter.com/vsbuffalo/status/323638476153167872">April 15, 2013</a></blockquote>
+<blockquote class="twitter-tweet"><p>Managing your projects in a reproducible fashion doesn't just make your science reproducible, it makes your life easier.</p>— Vince Buffalo (@vsbuffalo) <a href="https://twitter.com/vsbuffalo/status/323638476153167872">April 15, 2013</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 Most people tend to organize their projects like this:
@@ -70,7 +75,7 @@ project.
 Now when we start R in this project directory, or open this project with RStudio,
 all of our work on this project will be entirely self-contained in this directory.
 
-## Best practices for project organisation
+## Best practices for project organization
 
 Although there is no "best" way to lay out a project, there are some general
 principles to adhere to that will make project management easier:
@@ -238,9 +243,10 @@ between files from different commits.
 > > ## Solution to Challenge 3
 > >
 > > This can be done with the command line:
-> > ```{console}
+> > ```
 > > $ mkdir graphs
 > > $ echo "graphs/" >> .gitignore
 > > ```
+> > {: . shell}
 > {: .solution}
 {: .challenge}

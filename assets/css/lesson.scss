@@ -40,6 +40,7 @@ $color-testimonial: #fc8dc1 !default;
 
 .bash   { @include cdSetup($color-source); }
 .make   { @include cdSetup($color-source); }
+.matlab { @include cdSetup($color-source); }
 .python { @include cdSetup($color-source); }
 .r      { @include cdSetup($color-source); }
 .sql    { @include cdSetup($color-source); }
@@ -104,6 +105,10 @@ code {
   background-color: inherit;
 }
 
+img {
+  max-width: 100%;
+}
+
 //----------------------------------------
 // Miscellaneous.
 //----------------------------------------
@@ -130,7 +135,6 @@ ul,
 ol {
   padding-left: 1em;
 }
-
 
 span.fold-unfold {
   margin-left: 1em;
