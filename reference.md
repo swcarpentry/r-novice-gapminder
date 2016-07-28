@@ -87,24 +87,24 @@ Individual values in R must be one of 5 **data types**, multiple values can be g
 data.frames are really lists underneath the hood (this explains some of the weirder
 behaviour of R).
 
- **[Vectors]({{ site.github.url }}/04-data-structures-part1.html)**
+ **[Vectors]({{ site.github.url }}/04-data-structures-part1/)**
  - `?vector()` All items in a vector must be the same type.
  - Items can be converted from one type to another using *coercion*.
  - The concatenate function 'c()' will append items to a vector.
  - `seq(from=0, to=1, by=1)` will create a sequence of numbers.
  - Items in a vector can be named using the `names()` function.
 
- **[Factors]({{ site.github.url }}/04-data-structures-part1.html)**
+ **[Factors]({{ site.github.url }}/04-data-structures-part1/)**
  - `?factor()` Factors are a data structure designed to store categorical data.
  - `levels()` shows the valid values that can be stored in a vector of type factor.
 
- **[Lists]({{ site.github.url }}/04-data-structures-part1.html)**
+ **[Lists]({{ site.github.url }}/04-data-structures-part1/)**
  - `?list()` Lists are a data structure designed to store data of different types.
 
- **[Matrices]({{ site.github.url }}/04-data-structures-part1.html)**
+ **[Matrices]({{ site.github.url }}/04-data-structures-part1/)**
  - `?matrix()` Matrices are a data structure designed to store 2-dimensional data.
 
- **[Data Frames]({{ site.github.url }}/05-data-structures-part2.html)**
+ **[Data Frames]({{ site.github.url }}/05-data-structures-part2/)**
  - `?data.frame` is a key data structure. It is a `list` of `vectors`.
  - `cbind()` will add a column (vector) to a data.frame.
  - `rbind()` will add a row (list) to a data.frame.
