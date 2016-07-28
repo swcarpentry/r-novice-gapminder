@@ -30,5 +30,6 @@ Maintainers:
 * [Naupaka Zimmerman][zimmerman_naupaka]
 
 [gapminder]: http://www.gapminder.org/
+[lesson-example]: https://swcarpentry.github.io/lesson-example
 [wright_tom]: http://software-carpentry.org/team/#wright_thomas
 [zimmerman_naupaka]: http://software-carpentry.org/team/#zimmerman_naupaka
