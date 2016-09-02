@@ -220,7 +220,7 @@ do, so you will find yourself occasionally needing to use the shell. Let's go
 through and make an initial commit of our template files.
 
 The workspace/history pane has a tab for "Git". We can stage each file by checking the box:
-you will see a Green "A" next to stage files and folders, and yellow question marks next to
+you will see a green "A" next to stage files and folders, and yellow question marks next to
 files or folders git doesn't know about yet. RStudio also nicely shows you the difference
 between files from different commits.
 
