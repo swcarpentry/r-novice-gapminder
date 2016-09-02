@@ -163,7 +163,7 @@ one to store the analysis scripts.
 >
 > In this case I find it useful to make "symbolic links", which are essentially
 > shortcuts to files somewhere else on a filesystem. On Linux and OS X you can
-> use the `ln -s` command, and on windows you can either create a shortcut or
+> use the `ln -s` command, and on Windows you can either create a shortcut or
 > use the `mklink` command from the windows terminal.
 {: .callout}
 
