@@ -607,7 +607,7 @@ ls
 
 ~~~
 function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE, 
-    pattern, sorted = TRUE) 
+    pattern) 
 {
     if (!missing(name)) {
         pos <- tryCatch(name, error = function(e) e)
@@ -620,7 +620,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
             pos <- name
         }
     }
-    all.names <- .Internal(ls(envir, all.names, sorted))
+    all.names <- .Internal(ls(envir, all.names))
     if (!missing(pattern)) {
         if ((ll <- length(grep("[", pattern, fixed = TRUE))) && 
             ll != length(grep("]", pattern, fixed = TRUE))) {
@@ -637,7 +637,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7ff6051e4948>
+<bytecode: 0x7f9d33002f18>
 <environment: namespace:base>
 ~~~
 {: .output}
