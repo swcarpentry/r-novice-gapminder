@@ -1494,7 +1494,7 @@ be changed with the third argument, `drop = FALSE`).
 >
 > 
 > ~~~
-> gapminder[gapminder$year == 2002 | 2007,]
+> gapminder[gapminder$continent == "Americas" | "Asia",]
 > ~~~
 > {: .r}
 >
