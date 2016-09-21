@@ -50,7 +50,7 @@ tabby,3.2,1
 ```{r, echo = FALSE}
 cats.df <- data.frame(coat = c("calico", "black", "tabby"),
                       weight = c(2.1, 5.0, 3.2),
-                      likes_string = c(TRUE, FALSE, TRUE))
+                      likes_string = c(1, 0, 1))
 write.csv(cats.df, "data/feline-data.csv", row.names = FALSE)
 ```
 
@@ -129,10 +129,10 @@ file.show("data/feline-data_v2.csv")
 
 ```{r, eval=FALSE}
 coat,weight,likes_string
-calico,2.1,TRUE
-black,5.0,FALSE
-tabby,3.2,TRUE
-tabby,2.3 or 2.4,TRUE
+calico,2.1,1
+black,5.0,0
+tabby,3.2,1
+tabby,2.3 or 2.4,1
 ```
 
 Load the new cats data like before, and check what type of data we find in the
@@ -173,9 +173,9 @@ feline-data.csv:
 
 ```
 coat,weight,likes_string
-calico,2.1,TRUE
-black,5.0,FALSE
-tabby,3.2,TRUE
+calico,2.1,1
+black,5.0,0
+tabby,3.2,1
 ```
 
 And back in RStudio:
