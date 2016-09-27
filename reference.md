@@ -250,6 +250,7 @@ behaviour of R).
 
 ## Glossary
 
+{:auto_ids}
 argument
 :   A value given to a function or program when it runs.
     The term is often used interchangeably (and inconsistently) with [parameter](#parameter).
