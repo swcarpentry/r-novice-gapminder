@@ -282,41 +282,16 @@ names of `x`, and asks, "Does this element occur in the second argument?".
 >
 > > ## Solution to challenge 2
 > >
-> > Run the following code to define vector `x` as above:
-> >
-> > ```{r}
-> > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
-> > names(x) <- c('a', 'b', 'c', 'd', 'e')
-> > print(x)
-> > ```
-> >
-> > Given this vector `x`, what would you expect the following to do?
-> >```{r, eval=FALSE}
-> > x[-which(names(x) == "g")]
-> >```
-> >
-> > Try out this command and see what you get. Did this match your expectation?
-> >
-> > Why did we get this result? (Tip: test out each part of the command on it's own - this is a useful debugging strategy)
-> >
-> > Which of the following are true:
-> >
-> > * A) if there are no `TRUE` values passed to "which", an empty vector is returned
-> > * B) if there are no `TRUE` values passed to "which", an error message is shown
-> > * C) `integer()` is an empty vector
-> > * D) making an empty vector negative produces an "everything" vector
-> > * E) `x[]` gives the same result as `x[integer()]`
-> >
-> > Answer: A and C are correct.
+> > A and C are correct.
 > >
 > > The `which` command returns the index of every `TRUE` value in its
-> input. The `names(x) == "g"` command didn't return any `TRUE` values. Because
-> there were no `TRUE` values passed to the `which` command, it returned an
-> empty vector. Negating this vector with the minus sign didn't change its
-> meaning. Because we used this empty vector to retrieve values from `x`, it
-> produced an empty numeric vector. It was a `named numeric` empty vector
-> because the vector type of x is "named numeric" since we assigned names to the
-> values (try `str(x)` ).
+> > input. The `names(x) == "g"` command didn't return any `TRUE` values. Because
+> > there were no `TRUE` values passed to the `which` command, it returned an
+> > empty vector. Negating this vector with the minus sign didn't change its
+> > meaning. Because we used this empty vector to retrieve values from `x`, it
+> > produced an empty numeric vector. It was a `named numeric` empty vector
+> > because the vector type of x is "named numeric" since we assigned names to the
+> > values (try `str(x)` ).
 > {: .solution}
 {: .challenge}
 
@@ -449,18 +424,9 @@ x[x > 7]
 > print(x)
 > ```
 >
-> 1. Write a subsetting command to return the values in x that are greater than 4 and less than 7.
+> Write a subsetting command to return the values in x that are greater than 4 and less than 7.
 >
 > > ## Solution to challenge 3
-> > Given the following code:
-> >
-> > ```{r}
-> > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
-> > names(x) <- c('a', 'b', 'c', 'd', 'e')
-> > print(x)
-> > ```
-> >
-> > 1. Write a subsetting command to return the values in x that are greater than 4 and less than 7.
 > >
 > > ```{r}
 > > x_subset <- x[x<7 & x>4]
@@ -598,24 +564,7 @@ instead of their row and column indices.
 >
 > > ## Solution to challenge 4
 > >
-> > Given the following code:
-> >
-> > ```{r}
-> > m <- matrix(1:18, nrow=3, ncol=6)
-> > print(m)
-> > ```
-> >
-> > 1. Which of the following commands will extract the values 11 and 14?
-> >
-> > A. `m[2,4,2,5]`
-> >
-> > B. `m[2:5]`
-> >
-> > C. `m[4:5,2]`
-> >
-> > D. `m[2,c(4,5)]`
-> >
-> > Answer: D
+> > D
 > {: .solution}
 {: .challenge}
 
@@ -690,18 +639,14 @@ xlist$data
 > Hint: the number 2 is contained within the "b" item in the list.
 >
 > > ## Solution to challenge 5
-> > Given the following list:
 > >
 > > ```{r}
-> > xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
-> > ```
-> >
-> > Using your knowledge of both list and vector subsetting, extract the number 2 from xlist.
-> > Hint: the number 2 is contained within the "b" item in the list.
-> >
-> > ```{r, eval=FALSE}
 > > xlist$b[2]
+> > ```
+> > ```{r}
 > > xlist[[2]][2]
+> > ```
+> > ```{r}
 > > xlist[["b"]][2]
 > > ```
 > {: .solution}
@@ -718,16 +663,11 @@ xlist$data
 > Extract the residual degrees of freedom (hint: `attributes()` will help you)
 >
 > > ## Solution to challenge 6
-> > Given a linear model:
-> >
-> > ```{r}
-> > mod <- aov(pop ~ lifeExp, data=gapminder)
-> > ```
-> >
-> > Extract the residual degrees of freedom (hint: `attributes()` will help you)
 > >
 > > ```{r, eval=FALSE}
 > > attributes(mod) ## `df.residual` is one of the names of `mod`
+> > ```
+> > ```{r, eval=FALSE}
 > > mod$df.residual
 > > ```
 > {: .solution}
@@ -864,12 +804,9 @@ be changed with the third argument, `drop = FALSE`).
 >
 > > ## Solution to challenge 8
 > >
-> > 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
+> > 1.  `gapminder` is a data.frame so needs to be subsetted on two dimensions. `gapminder[1:20, ]` subsets the data to give the first 20 rows and all columns.
 > >
-> > Answer: `gapminder` is a data.frame so needs to be subsetted on two dimensions. `gapminder[1:20, ]` subsets the data to give the first 20 rows and all columns.
-> >
-> > 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
-> > and 19 through 23. You can do this in one or two steps.
+> > 2. 
 > >
 > > ```{r}
 > > gapminder_small <- gapminder[c(1:9, 19:23),]
