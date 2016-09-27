@@ -96,7 +96,7 @@ If we ask for the 0th element, we get an empty vector:
 x[0]
 ```
 
-> ##Vector numbering in R starts at 1
+> ## Vector numbering in R starts at 1
 >
 > In many programming languages (C and python, for example), the first
 > element of a vector has an index of 0. In R, the first element is 1.
