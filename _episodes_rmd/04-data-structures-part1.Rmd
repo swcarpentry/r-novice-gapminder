@@ -491,7 +491,7 @@ str(cats[1,])
 > - `cats[1]`
 > - `cats[[1]]`
 > - `cats$coat`
-> - `cats`["coat"]
+> - `cats["coat"]`
 > - `cats[1, 1]`
 > - `cats[, 1]`
 > - `cats[1, ]`
