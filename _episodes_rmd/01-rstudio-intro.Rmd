@@ -35,8 +35,8 @@ knitr_fig_path("01-")
 Science is a multi-step process: once you've designed an experiment and collected
 data, the real fun begins! This lesson will teach you how to start this process using
 R and RStudio. We will begin with raw data, perform exploratory analyses, and learn
-how to plot results graphically. This example starts with the
-`data/gapminder-FiveYearData.csv` dataset containing population information for many
+how to plot results graphically. This example starts with a dataset from
+[gapminder.org](https://www.gapminder.org) containing population information for many
 countries through time. Can you read the data into R? Can you plot the population for
 Senegal? Can you calculate the average income for countries on continent of Asia?
 By the end of these lessons you will be able to do things like plot the populations
