@@ -588,6 +588,7 @@ into a script file so we can come back to it later.
 > > The contents of `script/load-gapminder.R`:
 > > 
 > > ~~~
+> > download.file("https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv", destfile = "data/gapminder-FiveYearData.csv")
 > > gapminder <- read.csv(file = "data/gapminder-FiveYearData.csv")
 > > ~~~
 > > {: .r}
