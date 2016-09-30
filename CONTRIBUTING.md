@@ -64,12 +64,17 @@ and to meet some of our community members.
     or HTML boilerplate for lessons or workshops stored in `_includes` or `_layouts`,
     please work in <https://github.com/swcarpentry/styles>.
 
+### Which files to modify
+
+Please **only modify the files ending in** `.Rmd`, which are
+[rmarkdown](http://rmarkdown.rstudio.com/), and not the `.md` files.
+
 ## What to Contribute
 
 There are many ways to contribute,
 from writing new exercises and improving existing ones
 to updating or filling in the documentation
-and and submitting [bug reports][issues]
+and submitting [bug reports][issues]
 about things that don't work, aren't clear, or are missing.
 If you are looking for ideas,
 please see [the list of issues for this repository][issues],
