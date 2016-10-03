@@ -414,10 +414,22 @@ typeof(CATegories)
 > in `cats` is actually a character vector when loaded in this way.
 >
 > > ## Solution to Challenge 2
+> >
+> > One solution is use the argument `stringAsFactors`:
+> >
 > > ```{r, eval = FALSE}
 > > cats <- read.csv(file="data/feline-data.csv", stringsAsFactors=FALSE)
 > > str(cats$coat)
 > > ```
+> >
+> > Another solution is use the argument `colClasses`
+> > that allow finer control.
+> >
+> > ```{r, eval = FALSE}
+> > cats <- read.csv(file="data/feline-data.csv", colClasses=c(NA, NA, "character"))
+> > str(cats$coat)
+> > ```
+> >
 > > Note: new students find the help files difficult to understand; make sure to let them know
 > > that this is typical, and encourage them to take their best guess based on semantic meaning,
 > > even if they aren't sure.
