@@ -10,7 +10,8 @@ objectives:
 keypoints:
 - "Use `cbind()` to add a new column to a dataframe."
 - "Use `rbind()` to add a new row to a dataframe."
-- "Use `omit()` to remove rows from a dataframe."
+- "Remove rows from a dataframe."
+- "Use `na.omit()` to remove rows from a dataframe with `NA` values."
 ---
 
 ```{r, include=FALSE}
