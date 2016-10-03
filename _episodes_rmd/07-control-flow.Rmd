@@ -413,4 +413,44 @@ output_vector2
 > tests whether the country starts with a 'B', and graphs life expectancy
 > against time as a line graph if the mean life expectancy is under 50 years.
 >
+> > Solution for Challenge 5
+> >
+> > We will use the `grep` command that was introduced in the Unix Shell lesson to find countries that start with "B."
+> > Lets understand how to do this first.
+> > Following from the Unix shell section we may be tempted to try the following
+> > ```{r 07-chall-05-sol-a, eval=FALSE}
+> > grep("^B", unique(gapminder$country))
+> > ```
+> >
+> > But when we evaluate this command it returns the indices of the factor variable `country` that start with "B."
+> > To get the values, we must add the `value=TRUE` option to the `grep` command:
+> >
+> > ```{r 07-chall-05-sol-b, eval=FALSE}
+> > grep("^B", unique(gapminder$country), value=TRUE)
+> > ```
+> >
+> > We will now store these countries in a variable called candidateCountries, and then loop over each entry in the variable.
+> > Inside the loop, we evaluate the average life expectancy for each country, and if the average life expectancy is less than 50 we use base-plot to plot the evolution of average life expectancy:
+> >
+> > ```{r 07-chall-05-sol-c, eval=FALSE}
+> > candidateCountries <- grep("^B", unique(gapminder$country), value=TRUE)
+> >
+> > for( iCountry in candidateCountries){
+> >     tmp_lifeExp <- mean(subset(gapminder, country==iCountry)$lifeExp)
+> >     
+> >     if(tmp_lifeExp < thresholdValue){
+> >         cat("Average Life Expectancy in", iCountry, "is less than", thresholdValue, "plotting life expectancy graph... \n")
+> >         
+> >         with(subset(gapminder, country==iCountry),
+> >                 plot(year,lifeExp,
+> >                      type="o",
+> >                      main = paste("Life Expectancy in", iCountry, "over time", sep= " "),
+> >                      ylab = "Life Expectancy",
+> >                      xlab = "Year"
+> >                    ) # end plot
+> >               ) # end with
+> >     } # end for loop
+> >     rm(tmp_lifeExp)
+> >  }```
+> {: .solution}
 {: .challenge}
