@@ -329,6 +329,51 @@ output_vector2
 > whether the mean life expectancy is smaller or larger than 50
 > years.
 >
+> > ## Solution to Challenge 3
+> >
+> > **Step 1**:  We want to make sure we can extract all the unique values of the continent vector
+> > ```{r 07-chall-03-sol-a, eval=FALSE}
+> > gapminder <- read.csv("data/gapminder-FiveYearData.csv")
+> > unique(gapminder$continent)
+> > ```
+> >
+> > **Step 2**: We also need to loop over each of these continents and calculate the average life expectancy for each `subset` of data.
+> > We can do that as follows:
+> >
+> > 1. Loop over each of the unique values of 'continent'
+> > 2. For each value of continent, create a temporary variable storing the life exepectancy for that subset,
+> > 3. Return the calculated life expectancy to the user by printing the output:
+> >
+> > ```{r 07-chall-03-sol-b, eval=FALSE}
+> > for( iContinent in unique(gapminder$continent) ){
+> >    tmp_ <- mean(subset(gapminder, continent==iContinent)$lifeExp)
+> >    cat("Average Life Expectancy in", iContinent, "is", tmp, "\n")
+}
+> > ```
+> >
+> > **Step 3**: The exercise only wants the output printed if the average life expectancy is less than 50 or greater than 50. So we need to add an `if` condition before printing.
+> > So we need to add an `if` condition before printing, which evaluates whether the calculated average life expectancy is above or below a threshold, and print an output conditional on the result.
+> > We need to amend (3) from above:
+> >
+> > 3a. If the calculated life expectancy is less than some threshold (50 years), return the continent and a statement that life expectancy is less than threshold, otherwise return the continent and   a statement that life expectancy is greater than threshold,:
+> >
+> > ```{r 07-chall-03-sol-c, eval=FALSE}
+> > thresholdValue <- 50
+> >
+> > for( iContinent in unique(gapminder$continent) ){
+> >    tmp_lifeExp <- mean(subset(gapminder, continent==iContinent)$lifeExp)
+> >    
+> >    if(tmp_lifeExp < thresholdValue){
+> >        cat("Average Life Expectancy in", iContinent, "is less than", thresholdValue, "\n")
+> >    }
+> >    else{
+> >        cat("Average Life Expectancy in", iContinent, "is greater than", thresholdValue, "\n")
+> >         } # end if else condition
+> >    rm(tmp_lifeExp)
+> >    } # end for loop
+> >
+> > ```
+> {: .solution}
 {: .challenge}
 
 > ## Challenge 4
