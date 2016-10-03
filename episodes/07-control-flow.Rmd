@@ -378,10 +378,33 @@ output_vector2
 
 > ## Challenge 4
 >
-> Modify the script from Challenge 4 to also loop over each
+> Modify the script from Challenge 4 to loop over each
 > country. This time print out whether the life expectancy is
 > smaller than 50, between 50 and 70, or greater than 70.
 >
+> > ## Solution to Challenge 4
+> >  We modify our solution to Challenge 3 by now adding two thresholds, `lowerThreshold` and `upperThreshold` and extending our if-else statements:
+> >
+> > ```{r 07-chall-04-sol, eval=FALSE}
+> >  lowerThreshold <- 50
+> >  upperThreshold <- 70
+> >  
+> > for( iCountry in unique(gapminder$country) ){
+> >     tmp_lifeExp <- mean(subset(gapminder, country==iCountry)$lifeExp)
+> >     
+> >     if(tmp_lifeExp < lowerThreshold){
+> >         cat("Average Life Expectancy in", iCountry, "is less than", lowerThreshold, "\n")
+> >     }
+> >     else if(tmp_lifeExp > lowerThreshold && tmp_lifeExp < upperThreshold){
+> >         cat("Average Life Expectancy in", iCountry, "is between", lowerThreshold, "and", upperThreshold, "\n")
+> >     }
+> >     else{
+> >         cat("Average Life Expectancy in", iCountry, "is greater than", upperThreshold, "\n")
+> >     }
+> >     rm(tmp_lifeExp)
+> > }
+> >  ```
+> {: .solution}
 {: .challenge}
 
 > ## Challenge 5 - Advanced
