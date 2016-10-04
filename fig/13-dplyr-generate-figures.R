@@ -63,8 +63,8 @@ grViz('digraph html {
       rank = same; table1; table2;
       }
       
-      
       labelloc="t";
+      fontname="Courier";
       label="select(data.frame,a,c)";
       }
       ')
@@ -209,6 +209,7 @@ grViz('digraph html {
       }
       
       labelloc="t";
+      fontname="Courier";
       label="gapminder %>% group_by(a)";
       }
       ')
@@ -381,6 +382,7 @@ grViz('digraph html {
       }
       
       labelloc="t";
-      label="gapminder %>% group_by(a) %>% summarize(mean_b=mean(b))";
+      fontname="Courier";
+      label="gapminder %>%\\l\tgroup_by(a) %>%\\l\tsummarize(mean_b=mean(b))\\l";
       }
       ')
