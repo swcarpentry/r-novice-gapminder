@@ -346,8 +346,9 @@ output_vector2
 > >
 > > ```{r 07-chall-03-sol-b, eval=FALSE}
 > > for( iContinent in unique(gapminder$continent) ){
-> >    tmp_ <- mean(subset(gapminder, continent==iContinent)$lifeExp)
+> >    tmp <- mean(subset(gapminder, continent==iContinent)$lifeExp)
 > >    cat("Average Life Expectancy in", iContinent, "is", tmp, "\n")
+> >    rm(tmp)
 }
 > > ```
 > >
@@ -361,15 +362,15 @@ output_vector2
 > > thresholdValue <- 50
 > >
 > > for( iContinent in unique(gapminder$continent) ){
-> >    tmp_lifeExp <- mean(subset(gapminder, continent==iContinent)$lifeExp)
+> >    tmp <- mean(subset(gapminder, continent==iContinent)$lifeExp)
 > >    
-> >    if(tmp_lifeExp < thresholdValue){
+> >    if(tmp < thresholdValue){
 > >        cat("Average Life Expectancy in", iContinent, "is less than", thresholdValue, "\n")
 > >    }
 > >    else{
 > >        cat("Average Life Expectancy in", iContinent, "is greater than", thresholdValue, "\n")
 > >         } # end if else condition
-> >    rm(tmp_lifeExp)
+> >    rm(tmp)
 > >    } # end for loop
 > >
 > > ```
@@ -390,18 +391,18 @@ output_vector2
 > >  upperThreshold <- 70
 > >  
 > > for( iCountry in unique(gapminder$country) ){
-> >     tmp_lifeExp <- mean(subset(gapminder, country==iCountry)$lifeExp)
+> >     tmp <- mean(subset(gapminder, country==iCountry)$lifeExp)
 > >     
-> >     if(tmp_lifeExp < lowerThreshold){
+> >     if(tmp < lowerThreshold){
 > >         cat("Average Life Expectancy in", iCountry, "is less than", lowerThreshold, "\n")
 > >     }
-> >     else if(tmp_lifeExp > lowerThreshold && tmp_lifeExp < upperThreshold){
+> >     else if(tmp > lowerThreshold && tmp < upperThreshold){
 > >         cat("Average Life Expectancy in", iCountry, "is between", lowerThreshold, "and", upperThreshold, "\n")
 > >     }
 > >     else{
 > >         cat("Average Life Expectancy in", iCountry, "is greater than", upperThreshold, "\n")
 > >     }
-> >     rm(tmp_lifeExp)
+> >     rm(tmp)
 > > }
 > >  ```
 > {: .solution}
@@ -436,21 +437,21 @@ output_vector2
 > > candidateCountries <- grep("^B", unique(gapminder$country), value=TRUE)
 > >
 > > for( iCountry in candidateCountries){
-> >     tmp_lifeExp <- mean(subset(gapminder, country==iCountry)$lifeExp)
+> >     tmp <- mean(subset(gapminder, country==iCountry)$lifeExp)
 > >     
-> >     if(tmp_lifeExp < thresholdValue){
+> >     if(tmp < thresholdValue){
 > >         cat("Average Life Expectancy in", iCountry, "is less than", thresholdValue, "plotting life expectancy graph... \n")
 > >         
 > >         with(subset(gapminder, country==iCountry),
 > >                 plot(year,lifeExp,
 > >                      type="o",
-> >                      main = paste("Life Expectancy in", iCountry, "over time", sep= " "),
+> >                      main = paste("Life Expectancy in", iCountry, "over time"),
 > >                      ylab = "Life Expectancy",
 > >                      xlab = "Year"
 > >                    ) # end plot
 > >               ) # end with
 > >     } # end for loop
-> >     rm(tmp_lifeExp)
+> >     rm(tmp)
 > >  }```
 > {: .solution}
 {: .challenge}
