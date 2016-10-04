@@ -103,6 +103,7 @@ grViz('digraph html {
       
       
       labelloc="t";
+      fontname="Courier";
       label="wide      vs      long";
       }
       ')
@@ -169,6 +170,7 @@ grViz('digraph html {
       </TABLE>>];
       
       labelloc="t";
+      fontname="Courier";
       label="wide format";
       }
       ')
@@ -377,6 +379,7 @@ grViz('digraph html {
       </TABLE>>];
       
       labelloc="t";
+      fontname="Courier";
       label="long format";
       }
       ')
