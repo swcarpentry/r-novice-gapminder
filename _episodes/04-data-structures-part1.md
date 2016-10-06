@@ -25,9 +25,9 @@ making a toy dataset in your `data/` directory, called `feline-data.csv`:
 
 ~~~
 coat,weight,likes_string
-calico,2.1,1
-black,5.0,0
-tabby,3.2,1
+calico,2.1,TRUE
+black,5.0,FALSE
+tabby,3.2,TRUE
 ~~~
 {: .r}
 
@@ -61,7 +61,7 @@ cats
 
 The `read.csv` function is used for reading in tabular data stored in a text
 file where the columns of data are delimited by commas (csv = comma separated
-values). Tabs are also commonly used to separated columns - if your data are in
+values). Tabs are also commonly used to separate columns - if your data are in
 this format you can use the function `read.delim`. If the columns in your data
 are delimited by a character other than commas or tabs, you can use the more
 general and flexible `read.table` function.
@@ -102,7 +102,7 @@ We can do other operations on the columns:
 
 
 ~~~
-## Say we discovered that the scale weighs one Kg light:
+## Say we discovered that the scale weighs two Kgs light:
 cats$weight + 2
 ~~~
 {: .r}
@@ -281,7 +281,8 @@ typeof(cats$weight)
 
 
 ~~~
-[1] "integer"
+[1] 2.1        5          3.2        2.3 or 2.4
+Levels: 2.1 2.3 or 2.4 3.2 5
 ~~~
 {: .output}
 
@@ -563,8 +564,8 @@ data doesn't look like what you thought it was going to look like, type coercion
 may well be to blame; make sure everything is the same type in your vectors and
 your columns of data.frames, or you will get nasty surprises!
 
-But coercion can also be very useful! For example, in our `cats` data
-`likes_string` is numeric, but we know that the 1s and 0s actually represent
+But coercion can also be very useful! For example, in our `cats` data *change*
+`likes_string` to numeric, we know that the 1s and 0s actually represent
 `TRUE` and `FALSE` (a common way of representing them). We should use the
 `logical` datatype here, which has two states: `TRUE` or `FALSE`, which is
 exactly what our data represents. We can 'coerce' this column to be `logical` by
