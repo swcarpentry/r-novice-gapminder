@@ -102,7 +102,7 @@ cats[-4,]
 Notice the comma with nothing after it to indicate we want to drop the entire fourth row.
 
 Note: We could also remove both new rows at once by putting the row numbers
-inside of a vector: `cats[c(4,5),]`
+inside of a vector: `cats[c(-4,-5),]`
 
 Alternatively, we can drop all rows with `NA` values:
 
