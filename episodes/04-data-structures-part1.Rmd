@@ -81,7 +81,7 @@ cats$coat
 We can do other operations on the columns:
 
 ```{r}
-## Say we discovered that the scale weighs one Kg light:
+## Say we discovered that the scale weighs two Kg light:
 cats$weight + 2
 paste("My cat is", cats$coat)
 ```
