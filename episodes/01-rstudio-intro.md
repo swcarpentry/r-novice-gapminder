@@ -32,8 +32,8 @@ keypoints:
 Science is a multi-step process: once you've designed an experiment and collected
 data, the real fun begins! This lesson will teach you how to start this process using
 R and RStudio. We will begin with raw data, perform exploratory analyses, and learn
-how to plot results graphically. This example starts with the
-`data/gapminder-FiveYearData.csv` dataset containing population information for many
+how to plot results graphically. This example starts with a dataset from
+[gapminder.org](https://www.gapminder.org) containing population information for many
 countries through time. Can you read the data into R? Can you plot the population for
 Senegal? Can you calculate the average income for countries on continent of Asia?
 By the end of these lessons you will be able to do things like plot the populations
@@ -88,7 +88,7 @@ interactive R console.
 > If you have modified a line of code within a block of code you have just run,
 > there is no need to reselct the section and `Run`, you can use the next button
 > along, `Re-run the previous region`. This will run the previous code block
-> inculding the modifications you have made.
+> including the modifications you have made.
 {: .callout}
 
 ## Introduction to R
@@ -607,7 +607,7 @@ ls
 
 ~~~
 function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE, 
-    pattern) 
+    pattern, sorted = TRUE) 
 {
     if (!missing(name)) {
         pos <- tryCatch(name, error = function(e) e)
@@ -620,7 +620,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
             pos <- name
         }
     }
-    all.names <- .Internal(ls(envir, all.names))
+    all.names <- .Internal(ls(envir, all.names, sorted))
     if (!missing(pattern)) {
         if ((ll <- length(grep("[", pattern, fixed = TRUE))) && 
             ll != length(grep("]", pattern, fixed = TRUE))) {
@@ -637,7 +637,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7f9d33002f18>
+<bytecode: 0x7ff75d814348>
 <environment: namespace:base>
 ~~~
 {: .output}
