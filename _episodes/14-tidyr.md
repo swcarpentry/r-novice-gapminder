@@ -57,19 +57,6 @@ Load the packages
 
 ~~~
 library("tidyr")
-~~~
-{: .r}
-
-
-
-~~~
-Warning: package 'tidyr' was built under R version 3.1.3
-~~~
-{: .error}
-
-
-
-~~~
 library("dplyr")
 ~~~
 {: .r}
@@ -286,7 +273,7 @@ gap_long$year <- as.integer(gap_long$year)
 > >Groups: continent [?]
 > >
 > >   continent  obs_type        means
-> >       (chr)     (chr)        (dbl)
+> >       <chr>     <chr>        <dbl>
 > >1     Africa gdpPercap 2.193755e+03
 > >2     Africa   lifeExp 4.886533e+01
 > >3     Africa       pop 9.916003e+06

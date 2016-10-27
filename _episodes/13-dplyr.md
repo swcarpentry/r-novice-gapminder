@@ -99,13 +99,6 @@ library(dplyr)
 ~~~
 {: .r}
 
-
-
-~~~
-Warning: package 'dplyr' was built under R version 3.1.3
-~~~
-{: .error}
-
 ## Using select()
 
 If, for example, we wanted to move forward with only a few of the variables in

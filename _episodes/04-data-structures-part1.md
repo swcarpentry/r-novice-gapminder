@@ -52,9 +52,9 @@ cats
 
 ~~~
     coat weight likes_string
-1 calico    2.1         TRUE
-2  black    5.0        FALSE
-3  tabby    3.2         TRUE
+1 calico    2.1            1
+2  black    5.0            0
+3  tabby    3.2            1
 ~~~
 {: .output}
 
@@ -102,7 +102,7 @@ We can do other operations on the columns:
 
 
 ~~~
-## Say we discovered that the scale weighs one Kg light:
+## Say we discovered that the scale weighs two Kg light:
 cats$weight + 2
 ~~~
 {: .r}
@@ -261,10 +261,10 @@ file.show("data/feline-data_v2.csv")
 
 ~~~
 coat,weight,likes_string
-calico,2.1,TRUE
-black,5.0,FALSE
-tabby,3.2,TRUE
-tabby,2.3 or 2.4,TRUE
+calico,2.1,1
+black,5.0,0
+tabby,3.2,1
+tabby,2.3 or 2.4,1
 ~~~
 {: .r}
 
@@ -340,9 +340,9 @@ feline-data.csv:
 
 ```
 coat,weight,likes_string
-calico,2.1,TRUE
-black,5.0,FALSE
-tabby,3.2,TRUE
+calico,2.1,1
+black,5.0,0
+tabby,3.2,1
 ```
 
 And back in RStudio:
@@ -954,12 +954,26 @@ typeof(CATegories)
 > in `cats` is actually a character vector when loaded in this way.
 >
 > > ## Solution to Challenge 2
+> >
+> > One solution is use the argument `stringAsFactors`:
+> >
 > > 
 > > ~~~
 > > cats <- read.csv(file="data/feline-data.csv", stringsAsFactors=FALSE)
 > > str(cats$coat)
 > > ~~~
 > > {: .r}
+> >
+> > Another solution is use the argument `colClasses`
+> > that allow finer control.
+> >
+> > 
+> > ~~~
+> > cats <- read.csv(file="data/feline-data.csv", colClasses=c(NA, NA, "character"))
+> > str(cats$coat)
+> > ~~~
+> > {: .r}
+> >
 > > Note: new students find the help files difficult to understand; make sure to let them know
 > > that this is typical, and encourage them to take their best guess based on semantic meaning,
 > > even if they aren't sure.
@@ -1179,7 +1193,7 @@ str(cats[1,])
 > - `cats[1]`
 > - `cats[[1]]`
 > - `cats$coat`
-> - `cats`["coat"]
+> - `cats["coat"]`
 > - `cats[1, 1]`
 > - `cats[, 1]`
 > - `cats[1, ]`

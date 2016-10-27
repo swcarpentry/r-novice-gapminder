@@ -10,7 +10,8 @@ objectives:
 keypoints:
 - "Use `cbind()` to add a new column to a dataframe."
 - "Use `rbind()` to add a new row to a dataframe."
-- "Use `omit()` to remove rows from a dataframe."
+- "Remove rows from a dataframe."
+- "Use `na.omit()` to remove rows from a dataframe with `NA` values."
 ---
 
 
@@ -40,9 +41,9 @@ cats
 
 ~~~
     coat weight likes_string
-1 calico    2.1         TRUE
-2  black    5.0        FALSE
-3  tabby    3.2         TRUE
+1 calico    2.1            1
+2  black    5.0            0
+3  tabby    3.2            1
 ~~~
 {: .output}
 
@@ -74,9 +75,9 @@ cats
 
 ~~~
     coat weight likes_string
-1 calico    2.1         TRUE
-2  black    5.0        FALSE
-3  tabby    3.2         TRUE
+1 calico    2.1            1
+2  black    5.0            0
+3  tabby    3.2            1
 ~~~
 {: .output}
 
@@ -93,9 +94,9 @@ cats
 
 ~~~
     coat weight likes_string age
-1 calico    2.1         TRUE   4
-2  black    5.0        FALSE   5
-3  tabby    3.2         TRUE   8
+1 calico    2.1            1   4
+2  black    5.0            0   5
+3  tabby    3.2            1   8
 ~~~
 {: .output}
 
@@ -160,7 +161,7 @@ str(cats)
 'data.frame':	5 obs. of  4 variables:
  $ coat        : Factor w/ 4 levels "black","calico",..: 2 1 3 NA 4
  $ weight      : num  2.1 5 3.2 3.3 3.3
- $ likes_string: logi  TRUE FALSE TRUE TRUE TRUE
+ $ likes_string: int  1 0 1 1 1
  $ age         : num  4 5 8 9 9
 ~~~
 {: .output}
@@ -179,7 +180,7 @@ str(cats)
 'data.frame':	5 obs. of  4 variables:
  $ coat        : chr  "calico" "black" "tabby" NA ...
  $ weight      : num  2.1 5 3.2 3.3 3.3
- $ likes_string: logi  TRUE FALSE TRUE TRUE TRUE
+ $ likes_string: int  1 0 1 1 1
  $ age         : num  4 5 8 9 9
 ~~~
 {: .output}
@@ -197,11 +198,11 @@ cats
 
 ~~~
            coat weight likes_string age
-1        calico    2.1         TRUE   4
-2         black    5.0        FALSE   5
-3         tabby    3.2         TRUE   8
-4          <NA>    3.3         TRUE   9
-5 tortoiseshell    3.3         TRUE   9
+1        calico    2.1            1   4
+2         black    5.0            0   5
+3         tabby    3.2            1   8
+4          <NA>    3.3            1   9
+5 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
 
@@ -217,17 +218,17 @@ cats[-4,]
 
 ~~~
            coat weight likes_string age
-1        calico    2.1         TRUE   4
-2         black    5.0        FALSE   5
-3         tabby    3.2         TRUE   8
-5 tortoiseshell    3.3         TRUE   9
+1        calico    2.1            1   4
+2         black    5.0            0   5
+3         tabby    3.2            1   8
+5 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
 
 Notice the comma with nothing after it to indicate we want to drop the entire fourth row.
 
 Note: We could also remove both new rows at once by putting the row numbers
-inside of a vector: `cats[c(4,5),]`
+inside of a vector: `cats[c(-4,-5),]`
 
 Alternatively, we can drop all rows with `NA` values:
 
@@ -241,10 +242,10 @@ na.omit(cats)
 
 ~~~
            coat weight likes_string age
-1        calico    2.1         TRUE   4
-2         black    5.0        FALSE   5
-3         tabby    3.2         TRUE   8
-5 tortoiseshell    3.3         TRUE   9
+1        calico    2.1            1   4
+2         black    5.0            0   5
+3         tabby    3.2            1   8
+5 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
 
@@ -271,14 +272,14 @@ cats
 
 ~~~
             coat weight likes_string age
-1         calico    2.1         TRUE   4
-2          black    5.0        FALSE   5
-3          tabby    3.2         TRUE   8
-5  tortoiseshell    3.3         TRUE   9
-11        calico    2.1         TRUE   4
-21         black    5.0        FALSE   5
-31         tabby    3.2         TRUE   8
-51 tortoiseshell    3.3         TRUE   9
+1         calico    2.1            1   4
+2          black    5.0            0   5
+3          tabby    3.2            1   8
+5  tortoiseshell    3.3            1   9
+11        calico    2.1            1   4
+21         black    5.0            0   5
+31         tabby    3.2            1   8
+51 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
 But now the row names are unnecessarily complicated. We can remove the rownames,
@@ -295,14 +296,14 @@ cats
 
 ~~~
            coat weight likes_string age
-1        calico    2.1         TRUE   4
-2         black    5.0        FALSE   5
-3         tabby    3.2         TRUE   8
-4 tortoiseshell    3.3         TRUE   9
-5        calico    2.1         TRUE   4
-6         black    5.0        FALSE   5
-7         tabby    3.2         TRUE   8
-8 tortoiseshell    3.3         TRUE   9
+1        calico    2.1            1   4
+2         black    5.0            0   5
+3         tabby    3.2            1   8
+4 tortoiseshell    3.3            1   9
+5        calico    2.1            1   4
+6         black    5.0            0   5
+7         tabby    3.2            1   8
+8 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
 
