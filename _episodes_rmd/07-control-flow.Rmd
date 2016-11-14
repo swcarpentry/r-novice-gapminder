@@ -65,6 +65,7 @@ Let's set a seed so that we all generate the same 'pseudo-random'
 number, and then print more information:
 
 ```{r}
+set.seed(10)
 x <- rpois(1, lambda=8)
 
 if (x >= 10) {
