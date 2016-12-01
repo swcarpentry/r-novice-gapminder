@@ -1434,12 +1434,12 @@ be changed with the third argument, `drop = FALSE`).
 > ~~~
 > {: .r}
 >
-> 5. Advanced: extract rows that contain information for the years 2002
->    and 2007
+> 5. Advanced: extract rows that contain information for the continents Americas
+>    and Asia
 >
 > 
 > ~~~
-> gapminder[gapminder$year == 2002 | 2007,]
+> gapminder[gapminder$continent == "Americas" | "Asia",]
 > ~~~
 > {: .r}
 >
@@ -1484,14 +1484,14 @@ be changed with the third argument, `drop = FALSE`).
 > > ~~~
 > > {: .r}
 > >
-> > 5. Advanced: extract rows that contain information for the years 2002
-> >    and 2007
+> > 5. Advanced: extract rows that contain information for the continents Americas 
+> >    and Asia
 > >
 > > 
 > > ~~~
-> > # gapminder[gapminder$year == 2002 | 2007,]
-> > gapminder[gapminder$year == 2002 | gapminder$year == 2007,]
-> > gapminder[gapminder$year %in% c(2002, 2007),]
+> > # gapminder[gapminder$continent == "Americas" | "Asia",]
+> > gapminder[gapminder$continent == "Americas" | gapminder$continent == "Asia",]
+> > gapminder[gapminder$continent %in% c("Americas", "Asia"),]
 > > ~~~
 > > {: .r}
 > {: .solution}
