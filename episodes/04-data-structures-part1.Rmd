@@ -247,11 +247,11 @@ a column to be the same basic data type.
 > {: .solution}
 {: .discussion}
 
-You can also make vectors with explicit contents with the concatenate function:
+You can also make vectors with explicit contents with the combine function:
 
 ```{r}
-concat_vector <- c(2,6,3)
-concat_vector
+combine_vector <- c(2,6,3)
+combine_vector
 ```
 
 Given what we've learned so far, what do you think the following will produce?
@@ -305,13 +305,13 @@ cats$likes_string <- as.logical(cats$likes_string)
 cats$likes_string
 ```
 
-Concatenate will also append things to an existing vector:
+Combine `c()` will also append things to an existing vector:
 
 ```{r}
 ab_vector <- c('a', 'b')
 ab_vector
-concat_example <- c(ab_vector, 'SWC')
-concat_example
+combine_example <- c(ab_vector, 'SWC')
+combine_example
 ```
 
 You can also make series of numbers:
