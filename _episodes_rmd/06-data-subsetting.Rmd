@@ -711,35 +711,35 @@ be changed with the third argument, `drop = FALSE`).
 >
 > 1. Extract observations collected for the year 1957
 >
-> ```{r, eval=FALSE}
-> gapminder[gapminder$year = 1957,]
-> ```
+>    ```{r, eval=FALSE}
+>    gapminder[gapminder$year = 1957,]
+>    ```
 >
 > 2. Extract all columns except 1 through to 4
 >
-> ```{r, eval=FALSE}
-> gapminder[,-1:4]
-> ```
+>    ```{r, eval=FALSE}
+>    gapminder[,-1:4]
+>    ```
 >
 > 3. Extract the rows where the life expectancy is longer the 80 years
 >
-> ```{r, eval=FALSE}
-> gapminder[gapminder$lifeExp > 80]
-> ```
+>    ```{r, eval=FALSE}
+>    gapminder[gapminder$lifeExp > 80]
+>    ```
 >
 > 4. Extract the first row, and the fourth and fifth columns
 >   (`lifeExp` and `gdpPercap`).
 >
-> ```{r, eval=FALSE}
-> gapminder[1, 4, 5]
-> ```
+>    ```{r, eval=FALSE}
+>    gapminder[1, 4, 5]
+>    ```
 >
 > 5. Advanced: extract rows that contain information for the years 2002
 >    and 2007
 >
-> ```{r, eval=FALSE}
-> gapminder[gapminder$year == 2002 | 2007,]
-> ```
+>    ```{r, eval=FALSE}
+>    gapminder[gapminder$year == 2002 | 2007,]
+>    ```
 >
 > > ## Solution to challenge 7
 > >
@@ -747,41 +747,41 @@ be changed with the third argument, `drop = FALSE`).
 > >
 > > 1. Extract observations collected for the year 1957
 > >
-> > ```{r, eval=FALSE}
-> > # gapminder[gapminder$year = 1957,]
-> > gapminder[gapminder$year == 1957,]
-> > ```
+> >    ```{r, eval=FALSE}
+> >    # gapminder[gapminder$year = 1957,]
+> >    gapminder[gapminder$year == 1957,]
+> >    ```
 > >
 > > 2. Extract all columns except 1 through to 4
 > >
-> > ```{r, eval=FALSE}
-> > # gapminder[,-1:4]
-> > gapminder[,-c(1:4)]
-> > ```
+> >    ```{r, eval=FALSE}
+> >    # gapminder[,-1:4]
+> >    gapminder[,-c(1:4)]
+> >    ```
 > >
 > > 3. Extract the rows where the life expectancy is longer the 80 years
 > >
-> > ```{r, eval=FALSE}
-> > # gapminder[gapminder$lifeExp > 80]
-> > gapminder[gapminder$lifeExp > 80,]
-> > ```
+> >    ```{r, eval=FALSE}
+> >    # gapminder[gapminder$lifeExp > 80]
+> >    gapminder[gapminder$lifeExp > 80,]
+> >    ```
 > >
 > > 4. Extract the first row, and the fourth and fifth columns
 > >   (`lifeExp` and `gdpPercap`).
 > >
-> > ```{r, eval=FALSE}
-> > # gapminder[1, 4, 5]
-> > gapminder[1, c(4, 5)]
-> > ```
+> >    ```{r, eval=FALSE}
+> >    # gapminder[1, 4, 5]
+> >    gapminder[1, c(4, 5)]
+> >    ```
 > >
 > > 5. Advanced: extract rows that contain information for the years 2002
 > >    and 2007
 > >
-> > ```{r, eval=FALSE}
-> > # gapminder[gapminder$year == 2002 | 2007,]
-> > gapminder[gapminder$year == 2002 | gapminder$year == 2007,]
-> > gapminder[gapminder$year %in% c(2002, 2007),]
-> > ```
+> >     ```{r, eval=FALSE}
+> >     # gapminder[gapminder$year == 2002 | 2007,]
+> >     gapminder[gapminder$year == 2002 | gapminder$year == 2007,]
+> >     gapminder[gapminder$year %in% c(2002, 2007),]
+> >     ```
 > {: .solution}
 {: .challenge}
 
