@@ -198,6 +198,11 @@ global plot options in `ggplot` to the `geom_line` layer so it no longer applies
 to the points. Now we can clearly see that the points are drawn on top of the
 lines.
 
+> ## Tip: Setting an aesthetic to a value instead of a mapping
+>
+> So far, we've seen how to use an aesthetic (such as **color**) as a *mapping* to a variable in the data. For example, when we use `geom_line(aes(color=continent))`, ggplot will give a different color to each continent. But what if we want to change the colour of all lines to blue? You may think that `geom_line(aes(color="blue"))` should work, but it doesn't. Since we don't want to create a mapping to a specific variable, we simply move the color specification outside of the `aes()` function, like this: `geom_line(color="blue")`.
+{: .callout}
+
 > ## Challenge 3
 >
 > Switch the order of the point and line layers from the previous example. What
@@ -239,7 +244,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color=continent)) +
 Currently it's hard to see the relationship between the points due to some strong
 outliers in GDP per capita. We can change the scale of units on the x axis using
 the *scale* functions. These control the mapping between the data values and
-visual values of an aesthetic. We can also modify the transparency  of the
+visual values of an aesthetic. We can also modify the transparency of the
 points, using the *alpha* function, which is especially helpful when you have
 a large amount of data which is very clustered.
 
@@ -258,6 +263,11 @@ corresponds to an increase in 1 on the transformed scale, e.g. a GDP per capita
 of 1,000 is now 3 on the y axis, a value of 10,000 corresponds to 4 on the y
 axis and so on. This makes it easier to visualize the spread of data on the
 x-axis.
+
+> ## Tip Reminder: Setting an aesthetic to a value instead of a mapping
+>
+> Notice that we used `geom_point(alpha = 0.5)`. As the previous tip mentioned, using a setting outside of the `aes()` function will cause this value to be used for all points, which is what we want in this case. But just like any other aesthetic setting, *alpha* can also be mapped to a variable in the data. For example, we can give a different transparency to each continent with `geom_point(aes(alpha = continent))`.
+{: .callout}
 
 We can fit a simple relationship to the data by adding another layer,
 `geom_smooth`:

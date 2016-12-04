@@ -312,7 +312,10 @@ cats
 > You can create a new data.frame right from within R with the following syntax:
 > 
 > ~~~
-> df <- data.frame(id = c('a', 'b', 'c'), x = 1:3, y = c(TRUE, TRUE, FALSE), stringsAsFactors = FALSE)
+> df <- data.frame(id = c('a', 'b', 'c'),
+>                  x = 1:3,
+>                  y = c(TRUE, TRUE, FALSE),
+>                  stringsAsFactors = FALSE)
 > ~~~
 > {: .r}
 > Make a data.frame that holds the following information for yourself:
@@ -327,7 +330,10 @@ cats
 > > ## Solution to Challenge 1
 > > 
 > > ~~~
-> > df <- data.frame(first = c('Grace'), last = c('Hopper'), lucky_number = c(0), stringsAsFactors = FALSE)
+> > df <- data.frame(first = c('Grace'),
+> >                  last = c('Hopper'),
+> >                  lucky_number = c(0),
+> >                  stringsAsFactors = FALSE)
 > > df <- rbind(df, list('Marie', 'Curie', 238) )
 > > df <- cbind(df, coffeetime = c(TRUE,TRUE))
 > > ~~~

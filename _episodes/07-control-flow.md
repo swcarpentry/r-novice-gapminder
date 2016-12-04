@@ -70,6 +70,7 @@ number, and then print more information:
 
 
 ~~~
+set.seed(10)
 x <- rpois(1, lambda=8)
 
 if (x >= 10) {
