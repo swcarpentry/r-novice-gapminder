@@ -450,12 +450,12 @@ a column to be the same basic data type.
 > {: .solution}
 {: .discussion}
 
-You can also make vectors with explicit contents with the concatenate function:
+You can also make vectors with explicit contents with the combine function:
 
 
 ~~~
-concat_vector <- c(2,6,3)
-concat_vector
+combine_vector <- c(2,6,3)
+combine_vector
 ~~~
 {: .r}
 
@@ -598,7 +598,7 @@ cats$likes_string
 ~~~
 {: .output}
 
-Concatenate will also append things to an existing vector:
+Combine `c()` will also append things to an existing vector:
 
 
 ~~~
@@ -617,8 +617,8 @@ ab_vector
 
 
 ~~~
-concat_example <- c(ab_vector, 'SWC')
-concat_example
+combine_example <- c(ab_vector, 'SWC')
+combine_example
 ~~~
 {: .r}
 

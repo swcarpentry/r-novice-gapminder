@@ -39,6 +39,13 @@ Senegal? Can you calculate the average income for countries on continent of Asia
 By the end of these lessons you will be able to do things like plot the populations
 for all of these countries in under a minute!
 
+## Before Starting The Workshop
+
+Please ensure you have the latest version of R and RStudio installed on your machine. This is important, as some packages used in the workshop may not install correctly (or at all) if R is not up to date.
+
+[Download and install the latest version of R here](https://www.r-project.org/)
+[Download and install RStudio here](https://www.rstudio.com/)
+
 ## Introduction to RStudio
 
 Welcome to the R portion of the Software Carpentry workshop.
@@ -51,6 +58,8 @@ We'll be using RStudio: a free, open source R integrated development
 environment. It provides a built in editor, works on all platforms (including
 on servers) and provides many advantages such as integration with version
 control and project management.
+
+
 
 **Basic layout**
 
@@ -637,7 +646,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7ff75d814348>
+<bytecode: 0x7fd81a1044e8>
 <environment: namespace:base>
 ~~~
 {: .output}
@@ -851,10 +860,11 @@ network). R and RStudio have functionality for managing packages:
 > > ## Solution to challenge 5
 > >
 > > We can use the `install.packages()` command to install the required packages.
-> > We can also install them in one go like so:
 > > 
 > > ~~~
-> > install.packages(c("ggplot2", "plyr", "gapminder"))
+> > install.packages("ggplot2")
+> > install.packages("plyr")
+> > install.packages("gapminder")
 > > ~~~
 > > {: .r}
 > {: .solution}
