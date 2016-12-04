@@ -573,9 +573,10 @@ network). R and RStudio have functionality for managing packages:
 > > ## Solution to challenge 5
 > >
 > > We can use the `install.packages()` command to install the required packages.
-> > We can also install them in one go like so:
 > > ```{r ch5-sol, eval=FALSE}
-> > install.packages(c("ggplot2", "plyr", "gapminder"))
+> > install.packages("ggplot2")
+> > install.packages("plyr")
+> > install.packages("gapminder")
 > >```
 > {: .solution}
 {: .challenge}
