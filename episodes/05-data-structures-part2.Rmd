@@ -66,10 +66,14 @@ cats <- rbind(cats, newRow)
 
 Another thing to look out for has emerged - when R creates a factor, it only
 allows whatever is originally there when our data was first loaded, which was
-'black', 'calico' and 'tabby' in our case. The warning is telling us that we
-unsuccessfully added 'tortoiseshell' to our original factor. Anything new that
-doesn't fit into one of its categories is rejected as nonsense (becomes NA),
-until we explicitly add that as a *level* in the factor:
+'black', 'calico' and 'tabby' in our case. Anything new that doesn't fit into
+one of these categories is rejected as nonsense (becomes NA).
+
+The warning is telling us that we unsuccessfully added 'tortoiseshell' to our
+*coat* factor, but 3.3 (a numeric), TRUE (a logical), and 9 (a numeric) were
+successfully added to *weight*, *likes_string*, and *age*, respectfully, since
+those values are not factors. To successfully add a cat with a
+'tortoiseshell' *coat*, explicitly add 'tortoiseshell' as a *level* in the factor:
 
 ```{r}
 levels(cats$coat)
