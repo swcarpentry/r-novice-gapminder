@@ -181,6 +181,17 @@ even better.
 > >lifeExp_bycountry <- gapminder %>%
 > >    group_by(country) %>%
 > >    summarize(mean_lifeExp=mean(lifeExp))
+> >
+> >lifeExp_bycountry$country[which.max(lifeExp_bycountry$mean_lifeExp)]
+> >lifeExp_bycountry$country[which.min(lifeExp_bycountry$mean_lifeExp)]
+> >```
+> Another way to do this is to use the `dplyr` function `arrange()`, which has 
+> similar syntax to other functions from the `dplyr` package.
+> >```{r}
+> >lifeExp_bycountry %>%
+> >    arrange(mean_lifeExp)
+> >lifeExp_bycountry %>%
+> >    arrange(desc(mean_lifeExp))
 > >```
 > {: .solution}
 {: .challenge}
