@@ -67,8 +67,13 @@ cats <- rbind(cats, newRow)
 Another thing to look out for has emerged - when R creates a factor, it only
 allows whatever is originally there when our data was first loaded, which was
 'black', 'calico' and 'tabby' in our case. Anything new that doesn't fit into
-one of its categories is rejected as nonsense, until we explicitly add that as a
-*level* in the factor:
+one of these categories is rejected as nonsense (becomes NA).
+
+The warning is telling us that we unsuccessfully added 'tortoiseshell' to our
+*coat* factor, but 3.3 (a numeric), TRUE (a logical), and 9 (a numeric) were
+successfully added to *weight*, *likes_string*, and *age*, respectfully, since
+those values are not factors. To successfully add a cat with a
+'tortoiseshell' *coat*, explicitly add 'tortoiseshell' as a *level* in the factor:
 
 ```{r}
 levels(cats$coat)
@@ -86,8 +91,9 @@ cats$coat <- as.character(cats$coat)
 str(cats)
 ```
 
-We now know how to add rows and columns to our data.frame in R - but in our work
-we've accidentally added a garbage row:
+We now know how to add rows and columns to our data.frame in R - but in our
+first attempt to add a 'tortoiseshell' cat to the data.frame we've accidentally
+added a garbage row:
 
 ```{r}
 cats
@@ -175,7 +181,7 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv")
 > * Another type of file you might encounter are tab-separated value files (.tsv). To specify a tab as a separator, use `"\\t"` or `read.delim()`.
 >
 > * Files can also be downloaded directly from the Internet into a local
-> folder of your choice onto your computer using the `download.file` function. 
+> folder of your choice onto your computer using the `download.file` function.
 > The `read.csv` function can then be executed to read the downloaded file from the download location, for example,
 > ```{r eval=FALSE, echo=TRUE}
 > download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv", destfile = "data/gapminder-FiveYearData.csv")
