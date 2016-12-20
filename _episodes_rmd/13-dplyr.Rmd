@@ -173,14 +173,29 @@ even better.
 > ## Challenge 2
 >
 >
-> Calculate the average life expectancy per country. Which had the longest life
-> expectancy and which had the shortest life expectancy?
+> Calculate the average life expectancy per country. Which has the longest average life
+> expectancy and which has the shortest average life expectancy?
 >
 > > ## Solution to Challenge 2
 > >```{r}
 > >lifeExp_bycountry <- gapminder %>%
 > >    group_by(country) %>%
 > >    summarize(mean_lifeExp=mean(lifeExp))
+> >lifeExp_bycountry %>% 
+> >    filter(mean_lifeExp == min(mean_lifeExp) | mean_lifeExp == max(mean_lifeExp))
+> >```
+> Another way to do this is to use the `dplyr` function `arrange()`, which 
+> arranges the rows in a data frame according to the order of one or more 
+> variables from the data frame.  It has similar syntax to other functions from 
+> the `dplyr` package. You can use `desc()` inside `arrange()` to sort in 
+> descending order.
+> >```{r}
+> >lifeExp_bycountry %>%
+> >    arrange(mean_lifeExp) %>%
+> >    head(1)
+> >lifeExp_bycountry %>%
+> >    arrange(desc(mean_lifeExp)) %>%
+> >    head(1)
 > >```
 > {: .solution}
 {: .challenge}
