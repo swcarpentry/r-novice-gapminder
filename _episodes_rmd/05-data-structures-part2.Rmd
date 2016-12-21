@@ -5,13 +5,20 @@ exercises: 10
 questions:
 - "How can I manipulate a dataframe?"
 objectives:
-- "To learn how to manipulate a data.frame in memory"
-- "To tour some best practices of exploring and understanding a data frame when it is first loaded."
+- "Be able to add and remove rows and columns."
+- "Be able to remove rows with `na` values."
+- "Be able to append two data.frame"
+- "Be able to articulate what a `factor` is and how to convert between `factor` and `character`."
+- "Be able to find basic properties of a data.frame including size, class or type of the columns, names, and first few rows."
 keypoints:
-- "Use `cbind()` to add a new column to a dataframe."
-- "Use `rbind()` to add a new row to a dataframe."
+- "Use `cbind()` to add a new column to a data.frame."
+- "Use `rbind()` to add a new row to a data.frame."
 - "Remove rows from a dataframe."
-- "Use `na.omit()` to remove rows from a dataframe with `NA` values."
+- "Use `na.omit()` to remove rows from a data.frame with `NA` values."
+- "Use `levels()` and `as.character()` to explore and manipulate factors"
+- "Use `str()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()` and `typeof()` to understand structure of the data.frame"
+- "Read in a csv file using `read.csv()`"
+- "Understand `length()` of a data.frame"
 ---
 
 ```{r, include=FALSE}
@@ -26,6 +33,8 @@ those tools. But a whole lot of the time, the star of the show is going to be
 the data.frame - that table that we started with that information from a CSV
 gets dumped into when we load it. In this lesson, we'll learn a few more things
 about working with data.frame.
+
+##Adding columns and rows in data.frame
 
 We learned last time that the columns in a data.frame were vectors, so that our
 data are consistent in type throughout the column. As such, if we want to add a
@@ -64,6 +73,8 @@ newRow <- list("tortoiseshell", 3.3, TRUE, 9)
 cats <- rbind(cats, newRow)
 ```
 
+##Factors
+
 Another thing to look out for has emerged - when R creates a factor, it only
 allows whatever is originally there when our data was first loaded, which was
 'black', 'calico' and 'tabby' in our case. Anything new that doesn't fit into
@@ -90,6 +101,8 @@ str(cats)
 cats$coat <- as.character(cats$coat)
 str(cats)
 ```
+
+##Removing rows
 
 We now know how to add rows and columns to our data.frame in R - but in our
 first attempt to add a 'tortoiseshell' cat to the data.frame we've accidentally
@@ -121,6 +134,8 @@ Let's reassign the output to `cats`, so that our changes will be permanent:
 ```{r}
 cats <- na.omit(cats)
 ```
+
+##Appending data.frame
 
 The key to remember when adding data to a data.frame is that *columns are
 vectors or factors, and rows are lists.* We can also glue two dataframes
@@ -168,6 +183,7 @@ cats
 > {: .solution}
 {: .challenge}
 
+#Realistic example
 So far, you've seen the basics of manipulating data.frames with our cat data;
 now, let's use those skills to digest a more realistic dataset. Lets read in the
 gapminder dataset that we downloaded previously:
@@ -208,8 +224,7 @@ We can also examine individual columns of the data.frame with our `typeof` funct
 
 ```{r}
 typeof(gapminder$year)
-typeof(gapminder$lifeExp)
-typeof(gapminder$country)
+
 str(gapminder$country)
 ```
 
