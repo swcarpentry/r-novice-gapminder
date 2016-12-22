@@ -3,22 +3,22 @@ title: "Exploring Data Frames"
 teaching: 20
 exercises: 10
 questions:
-- "How can I manipulate a dataframe?"
+- "How can I manipulate a data frame?"
 objectives:
 - "Be able to add and remove rows and columns."
 - "Be able to remove rows with `na` values."
-- "Be able to append two data.frame"
+- "Be able to append two data frames"
 - "Be able to articulate what a `factor` is and how to convert between `factor` and `character`."
-- "Be able to find basic properties of a data.frame including size, class or type of the columns, names, and first few rows."
+- "Be able to find basic properties of a data frames including size, class or type of the columns, names, and first few rows."
 keypoints:
-- "Use `cbind()` to add a new column to a data.frame."
-- "Use `rbind()` to add a new row to a data.frame."
-- "Remove rows from a dataframe."
-- "Use `na.omit()` to remove rows from a data.frame with `NA` values."
+- "Use `cbind()` to add a new column to a data frame."
+- "Use `rbind()` to add a new row to a data frame."
+- "Remove rows from a data frame."
+- "Use `na.omit()` to remove rows from a data frame with `NA` values."
 - "Use `levels()` and `as.character()` to explore and manipulate factors"
-- "Use `str()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()` and `typeof()` to understand structure of the data.frame"
+- "Use `str()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()` and `typeof()` to understand structure of the data frame"
 - "Read in a csv file using `read.csv()`"
-- "Understand `length()` of a data.frame"
+- "Understand `length()` of a data frame"
 ---
 
 ```{r, include=FALSE}
@@ -30,13 +30,13 @@ knitr_fig_path("05-")
 At this point, you've see it all - in the last lesson, we toured all the basic
 data types and data structures in R. Everything you do will be a manipulation of
 those tools. But a whole lot of the time, the star of the show is going to be
-the data.frame - that table that we started with that information from a CSV
+the data frame - that table that we started with that information from a CSV
 gets dumped into when we load it. In this lesson, we'll learn a few more things
-about working with data.frame.
+about working with data frame.
 
-##Adding columns and rows in data.frame
+##Adding columns and rows in data frame
 
-We learned last time that the columns in a data.frame were vectors, so that our
+We learned last time that the columns in a data frame were vectors, so that our
 data are consistent in type throughout the column. As such, if we want to add a
 new column, we need to start by making a new vector:
 
@@ -66,7 +66,7 @@ cats
 ```
 
 Now how about adding rows - in this case, we saw last time that the rows of a
-data.frame are made of lists:
+data frame are made of lists:
 
 ```{r}
 newRow <- list("tortoiseshell", 3.3, TRUE, 9)
@@ -104,15 +104,15 @@ str(cats)
 
 ##Removing rows
 
-We now know how to add rows and columns to our data.frame in R - but in our
-first attempt to add a 'tortoiseshell' cat to the data.frame we've accidentally
+We now know how to add rows and columns to our data frame in R - but in our
+first attempt to add a 'tortoiseshell' cat to the data frame we've accidentally
 added a garbage row:
 
 ```{r}
 cats
 ```
 
-We can ask for a data.frame minus this offending row:
+We can ask for a data frame minus this offending row:
 
 ```{r}
 cats[-4,]
@@ -135,10 +135,10 @@ Let's reassign the output to `cats`, so that our changes will be permanent:
 cats <- na.omit(cats)
 ```
 
-##Appending data.frame
+##Appending data frame
 
-The key to remember when adding data to a data.frame is that *columns are
-vectors or factors, and rows are lists.* We can also glue two dataframes
+The key to remember when adding data to a data frame is that *columns are
+vectors or factors, and rows are lists.* We can also glue two data frames
 together with `rbind`:
 
 ```{r}
@@ -155,14 +155,14 @@ cats
 
 > ## Challenge 1
 >
-> You can create a new data.frame right from within R with the following syntax:
+> You can create a new data frame right from within R with the following syntax:
 > ```{r}
 > df <- data.frame(id = c('a', 'b', 'c'),
 >                  x = 1:3,
 >                  y = c(TRUE, TRUE, FALSE),
 >                  stringsAsFactors = FALSE)
 > ```
-> Make a data.frame that holds the following information for yourself:
+> Make a data frame that holds the following information for yourself:
 >
 > - first name
 > - last name
@@ -184,7 +184,7 @@ cats
 {: .challenge}
 
 #Realistic example
-So far, you've seen the basics of manipulating data.frames with our cat data;
+So far, you've seen the basics of manipulating data frames with our cat data;
 now, let's use those skills to digest a more realistic dataset. Lets read in the
 gapminder dataset that we downloaded previously:
 
@@ -220,7 +220,7 @@ out what the data looks like with `str`:
 str(gapminder)
 ```
 
-We can also examine individual columns of the data.frame with our `typeof` function:
+We can also examine individual columns of the data frame with our `typeof` function:
 
 ```{r}
 typeof(gapminder$year)
@@ -228,7 +228,7 @@ typeof(gapminder$year)
 str(gapminder$country)
 ```
 
-We can also interrogate the data.frame for information about its dimensions;
+We can also interrogate the data frame for information about its dimensions;
 remembering that `str(gapminder)` said there were 1704 observations of 6
 variables in gapminder, what do you think the following will produce, and why?
 
@@ -236,8 +236,8 @@ variables in gapminder, what do you think the following will produce, and why?
 length(gapminder)
 ```
 
-A fair guess would have been to say that the length of a data.frame would be the
-number of rows it has (1704), but this is not the case; remember, a data.frame
+A fair guess would have been to say that the length of a data frame would be the
+number of rows it has (1704), but this is not the case; remember, a data frame
 is a *list of vectors and factors*:
 
 ```{r}
