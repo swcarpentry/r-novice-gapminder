@@ -224,7 +224,7 @@ We can also examine individual columns of the data frame with our `typeof` funct
 
 ```{r}
 typeof(gapminder$year)
-
+typeof(gapminder$country)
 str(gapminder$country)
 ```
 
