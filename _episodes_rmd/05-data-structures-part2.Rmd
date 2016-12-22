@@ -183,7 +183,7 @@ cats
 > {: .solution}
 {: .challenge}
 
-# Realistic example
+## Realistic example
 So far, you've seen the basics of manipulating data frames with our cat data;
 now, let's use those skills to digest a more realistic dataset. Lets read in the
 gapminder dataset that we downloaded previously:
