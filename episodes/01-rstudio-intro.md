@@ -69,8 +69,13 @@ When you first open RStudio, you will be greeted by three panels:
   * Environment/History (tabbed in upper right)
   * Files/Plots/Packages/Help/Viewer (tabbed in lower right)
 
+![RStudio layout](../fig/01-rstudio.png)
+
 Once you open files, such as R scripts, an editor panel will also open
 in the top left.
+
+![RStudio layout with .R file open](../fig/01-rstudio-script.png)
+
 
 ## Work flow within RStudio
 There are two main ways one can work within RStudio.
@@ -646,7 +651,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7fd81a1044e8>
+<bytecode: 0x7ffc861a00e8>
 <environment: namespace:base>
 ~~~
 {: .output}

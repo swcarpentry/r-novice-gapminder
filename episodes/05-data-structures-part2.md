@@ -3,15 +3,22 @@ title: "Exploring Data Frames"
 teaching: 20
 exercises: 10
 questions:
-- "How can I manipulate a dataframe?"
+- "How can I manipulate a data frame?"
 objectives:
-- "To learn how to manipulate a data.frame in memory"
-- "To tour some best practices of exploring and understanding a data frame when it is first loaded."
+- "Be able to add and remove rows and columns."
+- "Be able to remove rows with `NA` values."
+- "Be able to append two data frames"
+- "Be able to articulate what a `factor` is and how to convert between `factor` and `character`."
+- "Be able to find basic properties of a data frames including size, class or type of the columns, names, and first few rows."
 keypoints:
-- "Use `cbind()` to add a new column to a dataframe."
-- "Use `rbind()` to add a new row to a dataframe."
-- "Remove rows from a dataframe."
-- "Use `na.omit()` to remove rows from a dataframe with `NA` values."
+- "Use `cbind()` to add a new column to a data frame."
+- "Use `rbind()` to add a new row to a data frame."
+- "Remove rows from a data frame."
+- "Use `na.omit()` to remove rows from a data frame with `NA` values."
+- "Use `levels()` and `as.character()` to explore and manipulate factors"
+- "Use `str()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()` and `typeof()` to understand structure of the data frame"
+- "Read in a csv file using `read.csv()`"
+- "Understand `length()` of a data frame"
 ---
 
 
@@ -20,11 +27,13 @@ keypoints:
 At this point, you've see it all - in the last lesson, we toured all the basic
 data types and data structures in R. Everything you do will be a manipulation of
 those tools. But a whole lot of the time, the star of the show is going to be
-the data.frame - that table that we started with that information from a CSV
+the data frame - that table that we started with that information from a CSV
 gets dumped into when we load it. In this lesson, we'll learn a few more things
-about working with data.frame.
+about working with data frame.
 
-We learned last time that the columns in a data.frame were vectors, so that our
+## Adding columns and rows in data frame
+
+We learned last time that the columns in a data frame were vectors, so that our
 data are consistent in type throughout the column. As such, if we want to add a
 new column, we need to start by making a new vector:
 
@@ -101,7 +110,7 @@ cats
 {: .output}
 
 Now how about adding rows - in this case, we saw last time that the rows of a
-data.frame are made of lists:
+data frame are made of lists:
 
 
 ~~~
@@ -118,11 +127,18 @@ factor level, NA generated
 ~~~
 {: .error}
 
+## Factors
+
 Another thing to look out for has emerged - when R creates a factor, it only
 allows whatever is originally there when our data was first loaded, which was
 'black', 'calico' and 'tabby' in our case. Anything new that doesn't fit into
-one of its categories is rejected as nonsense, until we explicitly add that as a
-*level* in the factor:
+one of these categories is rejected as nonsense (becomes NA).
+
+The warning is telling us that we unsuccessfully added 'tortoiseshell' to our
+*coat* factor, but 3.3 (a numeric), TRUE (a logical), and 9 (a numeric) were
+successfully added to *weight*, *likes_string*, and *age*, respectfully, since
+those values are not factors. To successfully add a cat with a
+'tortoiseshell' *coat*, explicitly add 'tortoiseshell' as a *level* in the factor:
 
 
 ~~~
@@ -185,8 +201,11 @@ str(cats)
 ~~~
 {: .output}
 
-We now know how to add rows and columns to our data.frame in R - but in our work
-we've accidentally added a garbage row:
+## Removing rows
+
+We now know how to add rows and columns to our data frame in R - but in our
+first attempt to add a 'tortoiseshell' cat to the data frame we've accidentally
+added a garbage row:
 
 
 ~~~
@@ -206,7 +225,7 @@ cats
 ~~~
 {: .output}
 
-We can ask for a data.frame minus this offending row:
+We can ask for a data frame minus this offending row:
 
 
 ~~~
@@ -257,8 +276,10 @@ cats <- na.omit(cats)
 ~~~
 {: .r}
 
-The key to remember when adding data to a data.frame is that *columns are
-vectors or factors, and rows are lists.* We can also glue two dataframes
+## Appending data frame
+
+The key to remember when adding data to a data frame is that *columns are
+vectors or factors, and rows are lists.* We can also glue two data frames
 together with `rbind`:
 
 
@@ -309,7 +330,7 @@ cats
 
 > ## Challenge 1
 >
-> You can create a new data.frame right from within R with the following syntax:
+> You can create a new data frame right from within R with the following syntax:
 > 
 > ~~~
 > df <- data.frame(id = c('a', 'b', 'c'),
@@ -318,7 +339,7 @@ cats
 >                  stringsAsFactors = FALSE)
 > ~~~
 > {: .r}
-> Make a data.frame that holds the following information for yourself:
+> Make a data frame that holds the following information for yourself:
 >
 > - first name
 > - last name
@@ -341,7 +362,8 @@ cats
 > {: .solution}
 {: .challenge}
 
-So far, you've seen the basics of manipulating data.frames with our cat data;
+## Realistic example
+So far, you've seen the basics of manipulating data frames with our cat data;
 now, let's use those skills to digest a more realistic dataset. Lets read in the
 gapminder dataset that we downloaded previously:
 
@@ -356,7 +378,7 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv")
 > * Another type of file you might encounter are tab-separated value files (.tsv). To specify a tab as a separator, use `"\\t"` or `read.delim()`.
 >
 > * Files can also be downloaded directly from the Internet into a local
-> folder of your choice onto your computer using the `download.file` function. 
+> folder of your choice onto your computer using the `download.file` function.
 > The `read.csv` function can then be executed to read the downloaded file from the download location, for example,
 > 
 > ~~~
@@ -398,7 +420,7 @@ str(gapminder)
 ~~~
 {: .output}
 
-We can also examine individual columns of the data.frame with our `typeof` function:
+We can also examine individual columns of the data frame with our `typeof` function:
 
 
 ~~~
@@ -410,20 +432,6 @@ typeof(gapminder$year)
 
 ~~~
 [1] "integer"
-~~~
-{: .output}
-
-
-
-~~~
-typeof(gapminder$lifeExp)
-~~~
-{: .r}
-
-
-
-~~~
-[1] "double"
 ~~~
 {: .output}
 
@@ -455,7 +463,7 @@ str(gapminder$country)
 ~~~
 {: .output}
 
-We can also interrogate the data.frame for information about its dimensions;
+We can also interrogate the data frame for information about its dimensions;
 remembering that `str(gapminder)` said there were 1704 observations of 6
 variables in gapminder, what do you think the following will produce, and why?
 
@@ -472,8 +480,8 @@ length(gapminder)
 ~~~
 {: .output}
 
-A fair guess would have been to say that the length of a data.frame would be the
-number of rows it has (1704), but this is not the case; remember, a data.frame
+A fair guess would have been to say that the length of a data frame would be the
+number of rows it has (1704), but this is not the case; remember, a data frame
 is a *list of vectors and factors*:
 
 
