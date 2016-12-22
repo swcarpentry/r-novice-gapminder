@@ -6,7 +6,7 @@ questions:
 - "How can I manipulate a data frame?"
 objectives:
 - "Be able to add and remove rows and columns."
-- "Be able to remove rows with `na` values."
+- "Be able to remove rows with `NA` values."
 - "Be able to append two data frames"
 - "Be able to articulate what a `factor` is and how to convert between `factor` and `character`."
 - "Be able to find basic properties of a data frames including size, class or type of the columns, names, and first few rows."
