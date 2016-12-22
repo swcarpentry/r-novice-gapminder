@@ -266,8 +266,8 @@ even better.
 > ## Challenge 2
 >
 >
-> Calculate the average life expectancy per country. Which had the longest life
-> expectancy and which had the shortest life expectancy?
+> Calculate the average life expectancy per country. Which has the longest average life
+> expectancy and which has the shortest average life expectancy?
 >
 > > ## Solution to Challenge 2
 > >
@@ -275,8 +275,62 @@ even better.
 > >lifeExp_bycountry <- gapminder %>%
 > >    group_by(country) %>%
 > >    summarize(mean_lifeExp=mean(lifeExp))
+> >lifeExp_bycountry %>% 
+> >    filter(mean_lifeExp == min(mean_lifeExp) | mean_lifeExp == max(mean_lifeExp))
 > >~~~
 > >{: .r}
+> >
+> >
+> >
+> >~~~
+> ># A tibble: 2 × 2
+> >       country mean_lifeExp
+> >        <fctr>        <dbl>
+> >1      Iceland     76.51142
+> >2 Sierra Leone     36.76917
+> >~~~
+> >{: .output}
+> Another way to do this is to use the `dplyr` function `arrange()`, which 
+> arranges the rows in a data frame according to the order of one or more 
+> variables from the data frame.  It has similar syntax to other functions from 
+> the `dplyr` package. You can use `desc()` inside `arrange()` to sort in 
+> descending order.
+> >
+> >~~~
+> >lifeExp_bycountry %>%
+> >    arrange(mean_lifeExp) %>%
+> >    head(1)
+> >~~~
+> >{: .r}
+> >
+> >
+> >
+> >~~~
+> ># A tibble: 1 × 2
+> >       country mean_lifeExp
+> >        <fctr>        <dbl>
+> >1 Sierra Leone     36.76917
+> >~~~
+> >{: .output}
+> >
+> >
+> >
+> >~~~
+> >lifeExp_bycountry %>%
+> >    arrange(desc(mean_lifeExp)) %>%
+> >    head(1)
+> >~~~
+> >{: .r}
+> >
+> >
+> >
+> >~~~
+> ># A tibble: 1 × 2
+> >  country mean_lifeExp
+> >   <fctr>        <dbl>
+> >1 Iceland     76.51142
+> >~~~
+> >{: .output}
 > {: .solution}
 {: .challenge}
 
