@@ -34,7 +34,7 @@ the data frame - that table that we started with that information from a CSV
 gets dumped into when we load it. In this lesson, we'll learn a few more things
 about working with data frame.
 
-##Adding columns and rows in data frame
+## Adding columns and rows in data frame
 
 We learned last time that the columns in a data frame were vectors, so that our
 data are consistent in type throughout the column. As such, if we want to add a
@@ -73,7 +73,7 @@ newRow <- list("tortoiseshell", 3.3, TRUE, 9)
 cats <- rbind(cats, newRow)
 ```
 
-##Factors
+## Factors
 
 Another thing to look out for has emerged - when R creates a factor, it only
 allows whatever is originally there when our data was first loaded, which was
@@ -102,7 +102,7 @@ cats$coat <- as.character(cats$coat)
 str(cats)
 ```
 
-##Removing rows
+## Removing rows
 
 We now know how to add rows and columns to our data frame in R - but in our
 first attempt to add a 'tortoiseshell' cat to the data frame we've accidentally
@@ -135,7 +135,7 @@ Let's reassign the output to `cats`, so that our changes will be permanent:
 cats <- na.omit(cats)
 ```
 
-##Appending data frame
+## Appending data frame
 
 The key to remember when adding data to a data frame is that *columns are
 vectors or factors, and rows are lists.* We can also glue two data frames
@@ -183,7 +183,7 @@ cats
 > {: .solution}
 {: .challenge}
 
-#Realistic example
+# Realistic example
 So far, you've seen the basics of manipulating data frames with our cat data;
 now, let's use those skills to digest a more realistic dataset. Lets read in the
 gapminder dataset that we downloaded previously:
