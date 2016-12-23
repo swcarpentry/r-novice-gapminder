@@ -74,7 +74,7 @@ executed when it runs--is contained within curly braces (`{}`).  The statements
 in the body are indented by two spaces.  This makes the code easier to read but
 does not affect how the code operates.
 
-When we call the function, the values we pass to it are assigned to those
+When we call the function, the values we pass to it as arguments are assigned to those
 variables so that we can use them inside the function.  Inside the function, we
 use a [return statement]({{ page.root }}/reference/#return-statement) to send a result back
 to whoever asked for it.
