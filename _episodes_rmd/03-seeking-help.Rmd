@@ -115,7 +115,7 @@ your issue.
 > ```{r, eval=FALSE}
 > c(1, 2, 3)
 > c('d', 'e', 'f')
-> c(1, 2, 'f')`
+> c(1, 2, 'f')
 > ```
 > > ## Solution to Challenge 1
 > >
