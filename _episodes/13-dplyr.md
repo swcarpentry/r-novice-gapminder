@@ -376,7 +376,55 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 ~~~
 {: .r}
 
+## Combining `dplyr` and `ggplot2`
 
+In the plotting lesson we looked at how to make a multi-panel figure by adding
+a layer of facet panels using `ggplot2`. Here is the code we used (with some
+extra comments):
+
+~~~
+# Get the start letter of each country
+starts.with <- substr(gapminder$country, start = 1, stop = 1)
+# Filter countries that start with "A" or "Z"
+az.countries <- gapminder[starts.with %in% c("A", "Z"), ]
+# Make the plot
+ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
+  geom_line() + facet_wrap( ~ country)
+~~~
+{: .r}
+
+This code makes the right plot but it also creates some variable (`starts.with`
+and `az.countries`) that we might not have any other uses for. Just as we used
+`%>%` to pipe data into `dplyr` we can use it to pass data to `ggplot`. By
+combining `dplyr` and `ggplot` we can make the same figure without creating any
+new variables or modifying the data.
+
+~~~
+gapminder %>% 
+   # Get the start letter of each country 
+   mutate(startsWith = substr(country, start = 1, stop = 1)) %>% 
+   # Filter countries that start with "A" or "Z"
+   filter(startsWith %in% c("A", "Z")) %>%
+   # Make the plot
+   ggplot(aes(x = year, y = lifeExp, color=continent)) + 
+   geom_line() + 
+   facet_wrap( ~ country)
+~~~
+{: .r}
+
+Using `dplyr` also helps us simplify things, for example we could combine the
+first two steps:
+
+~~~
+gapminder %>%
+    # Filter countries that start with "A" or "Z"
+	filter(substr(country, start = 1, stop = 1) %in% c("A", "Z")) %>%
+	# Make the plot
+	ggplot(aes(x = year, y = lifeExp, color = continent)) + 
+	geom_line() + 
+	facet_wrap( ~ country)
+~~~
+{: .r}
 
 > ## Advanced Challenge
 >
