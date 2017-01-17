@@ -144,7 +144,7 @@ your issue.
 > ~~~
 > c(1, 2, 3)
 > c('d', 'e', 'f')
-> c(1, 2, 'f')`
+> c(1, 2, 'f')
 > ~~~
 > {: .r}
 > > ## Solution to Challenge 1
