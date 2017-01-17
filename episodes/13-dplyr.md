@@ -388,16 +388,18 @@ starts.with <- substr(gapminder$country, start = 1, stop = 1)
 # Filter countries that start with "A" or "Z"
 az.countries <- gapminder[starts.with %in% c("A", "Z"), ]
 # Make the plot
-ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
+ggplot(data = az.countries, aes(x = year, y = lifeExp, color = continent)) +
   geom_line() + facet_wrap( ~ country)
 ~~~
 {: .r}
 
-This code makes the right plot but it also creates some variable (`starts.with`
+This code makes the right plot but it also creates some variables (`starts.with`
 and `az.countries`) that we might not have any other uses for. Just as we used
-`%>%` to pipe data into `dplyr` we can use it to pass data to `ggplot`. By
-combining `dplyr` and `ggplot` we can make the same figure without creating any
-new variables or modifying the data.
+`%>%` to pipe data along a chain of `dplyr` functions we can use it to pass data
+to `ggplot`. Because `%>%` replaces the first argument in a function we don't
+need to specify the `data =` argument in the `ggplot` function. By combining
+`dplyr` and `ggplot2` functions we can make the same figure without creating any
+new variables or modifying the data.  
 
 ~~~
 gapminder %>% 
@@ -406,14 +408,14 @@ gapminder %>%
    # Filter countries that start with "A" or "Z"
    filter(startsWith %in% c("A", "Z")) %>%
    # Make the plot
-   ggplot(aes(x = year, y = lifeExp, color=continent)) + 
+   ggplot(aes(x = year, y = lifeExp, color = continent)) + 
    geom_line() + 
    facet_wrap( ~ country)
 ~~~
 {: .r}
 
-Using `dplyr` also helps us simplify things, for example we could combine the
-first two steps:
+Using `dplyr` functions also helps us simplify things, for example we could
+combine the first two steps:
 
 ~~~
 gapminder %>%
