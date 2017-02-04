@@ -1,85 +1,40 @@
-James Allen <jamesallen0108@gmail.com>
-Jeffrey Arnold <jeffrey.arnold@gmail.com>
-Pete Bachant <petebachant@gmail.com>
-Piotr Banaszkiewicz <piotr@banaszkiewicz.org>
-Trevor Bekolay <tbekolay@gmail.com>
-Mik Black <blackmik@gmail.com>
-John Blischak <jdblischak@gmail.com>
-Andy Boughton <abought@gmail.com>
-Andy Boughton <pchemist@gmail.com>
-Karl Broman <kbroman@gmail.com>
 Abigail Cabunoc Mayes <abigail.cabunoc@gmail.com>
-Abigail Cabunoc Mayes <abigail.cabunoc@oicr.on.ca>
-Kyriakos Chatzidimitriou <kyrcha@gmail.com>
-Remi Daigle <remi.daigle@dal.ca>
-Harriet Dashnow <h.dashnow@gmail.com>
-Jonah Duckles <jonah@duckles.org>
-Rémi Emonet <remi@heeere.com>
-Rémi Emonet <remi.emonet@univ-st-etienne.fr>
-Noel Faux <nfaux@unimelb.edu.au>
-Noel Faux <noel.faux@gmail.com>
-Pip Griffin <pip.griffin@gmail.com>
-Michael Hansen <hansen.mike@gmail.com>
-Liz Ing-Simmons <liz.ingsimmons@gmail.com>
-David J. Harris <harry491@gmail.com>
-Mike Jackson <michaelj@epcc.ed.ac.uk>
-W. Trevor King <wking@tremily.us>
-Bernhard Konrad <bernhard.konrad@gmail.com>
-Mateusz Kuzak <mateusz.kuzak@gmail.com>
-Andrew MacDonald <a.a.m.macdonald@gmail.com>
-Fernando Mayer <fernandomayer@gmail.com>
-François Michonneau <francois.michonneau@gmail.com>
-James Mickley <mickley@gmail.com>
-Bill Mills <mills.wj@gmail.com>
-Nora Mitchell <nora.c.mitchell@gmail.com>
-Tim Moore <timothy.e.moore@uconn.edu>
-Elise Morrison <elisesmorrison@gmail.com>
-Lex Nederbragt <lex.nederbragt@bio.uio.no>
-Aaron O'Leary <aaron.oleary@gmail.com>
-Jeffrey Oliver <jcoliver@email.arizona.edu>
-Braden Owsley <braden.owsley@ou.edu>
-Sam Penrose <spenrose@mozilla.com>
-Jon Pipitone <jon.pipitone@utoronto.ca>
-Timothée Poisot <tim@poisotlab.io>
-Diego Rabatone Oliveira <diraol@diraol.eng.br>
-Timothy Rice <t.rice@ms.unimelb.edu.au>
-Scott Ritchie <sritchie73@gmail.com>
-Pat Schloss <pschloss@umich.edu>
-Henry Senyondo <henrykironde@gmail.com>
-Raniere Silva <ra092767@ime.unicamp.br>
-Raniere Silva <raniere@ime.unicamp.br>
-Raniere Silva <raniere@rgaiacs.com>
-Clare Sloggett <claresloggett@gmail.com>
-Ashwin Srinath <atrikut@clemson.edu>
-Marc Sze <marcasze@gmail.com>
-Andy Teucher <andy.teucher@gmail.com>
-Drew Tyre <atyre2@unl.edu>
-Giulio Valentino Dalla Riva <gvdr@zoology.ubc.ca>
-Thea Van Rossum <thea.van.rossum@gmail.com>
-Greg Wilson <gvwilson@software-carpentry.org>
-Greg Wilson <gvwilson@third-bit.com>
-Kara Woo <woo.kara@gmail.com>
-Tom Wright <tom@maladmin.com>
-Naupaka Zimmerman <naupaka@gmail.com>
-Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl>
-Adam H. Sparks <adamhsparks@gmail.com>
+Abigail Cabunoc Mayes <abigail.cabunoc@gmail.com> <abigail.cabunoc@oicr.on.ca>
+Andy Boughton <abought@gmail.com> <pchemist@gmail.com>
+Ashwin Srinath <ashwinsrnth@gmail.com> <atrikut@clemson.edu>
 Benjamin D. Best <bbest@nceas.ucsb.edu>
-Dean Attali <daattali@gmail.com>
+Bernhard Konrad <bernhard.konrad@gmail.com>
+Bill Mills <mills.wj@gmail.com>
+Clare Sloggett <claresloggett@gmail.com>
+David J. Harris <harry491@gmail.com> <davharris@users.noreply.github.com>
 Evan P. Williamson <evanpeterw@gmail.com>
-Gabriel A. Devenyi <gdevenyi@gmail.com>
+François Michonneau <francois.michonneau@gmail.com>
+François Michonneau <francois.michonneau@gmail.com> <francois.michonneau@gmail.Com>
+Greg Wilson <gvwilson@software-carpentry.org> <gvwilson@third-bit.com>
 Helen Lindsay <helen.lindsay@uzh.ch>
-Jaime Ashander <jashander@ucdavis.edu>
+Henry Senyondo <henrykironde@gmail.com>
+James Allen <james@sharelatex.com> <jamesallen0108@gmail.com>
+Jeffrey Arnold <jeffrey.arnold@gmail.com>
+Jeffrey Oliver <jcoliver@email.arizona.edu>
 Kate Hertweck <k8hertweck@gmail.com>
-Kieran Samuk <ksamuk@gmail.com>
 Kathe Todd-Brown <ktoddbrown@gmail.com>
+Kieran Samuk <ksamuk@gmail.com>
+Kyriakos Chatzidimitriou <kyrcha@gmail.com>
 Lachlan Deer <lachlan.deer@uzh.ch>
 Lisa Breckels <lisa.m.simp@gmail.com>
-Luke Zappia <lazappi@users.noreply.github.com>
-Philipp Boersch-Supan <pboesu@gmail.com>
+Mateusz Kuzak <mateusz.kuzak@gmail.com>
+Mik Black <blackmik@gmail.com>
+Mike Jackson <m.jackson@software.ac.uk> <michaelj@epcc.ed.ac.uk>
+Noel Faux <nfaux@unimelb.edu.au> <noel.faux@gmail.com>
+Nora Mitchell <nora.c.mitchell@gmail.com>
+Pip Griffin <pip.griffin@gmail.com>
+Raniere Silva <raniere@rgaiacs.com> <ra092767@ime.unicamp.br>
+Raniere Silva <raniere@rgaiacs.com> <raniere@ime.unicamp.br>
 Rebecca Lange <becca.lange84@gmail.com>
-Research Bazaar <research.bazaar@gmail.com>
-Robert McDonald <rmcd1024@gmail.com>
+Rémi Emonet <remi@heeere.com> <remi.emonet@reverse--com.heeere>
+Rémi Emonet <remi@heeere.com> <twitwi@users.noreply.github.com>
 Robert Bagchi <robert.bagchi@uconn.edu>
-Scott Funkhouser <sfunkhouser@gmail.com>
-Simon Thelwall <simon.thelwall@gmail.com>
+Robert McDonald <rmcd1024@gmail.com>
+Timothée Poisot <t.poisot@gmail.com> <tim@poisotlab.io>
+Tom Wright <tom@maladmin.com> <Tom Wright>
 Willem Ligtenberg <willem@wligtenberg.nl>
