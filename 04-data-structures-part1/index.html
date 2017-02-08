@@ -1,0 +1,1402 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2017-02-08 23:52:23 +0100">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- meta "search-domain" used for google site search function google_search() -->
+    <meta name="search-domain" value="/swc-releases/2017.02/r-novice-gapminder">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/lesson.css" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon-swc.ico" />
+    
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    <title>R for Reproducible Scientific Analysis: Data Structures</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+      <a href="https://software-carpentry.org" class="pull-left">
+        <img class="navbar-logo" src="../assets/img/swc-icon-blue.svg" alt="Software Carpentry logo" />
+      </a>
+      
+
+      
+      <a class="navbar-brand" href="../">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="../conduct/">Code of Conduct</a></li>
+
+	
+        
+        <li><a href="../setup/">Setup</a></li>
+        <li><a href="../reference/">Reference</a></li>
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="../01-rstudio-intro/">Introduction to R and RStudio</a></li>
+            
+            <li><a href="../02-project-intro/">Project Management With RStudio</a></li>
+            
+            <li><a href="../03-seeking-help/">Seeking Help</a></li>
+            
+            <li><a href="../04-data-structures-part1/">Data Structures</a></li>
+            
+            <li><a href="../05-data-structures-part2/">Exploring Data Frames</a></li>
+            
+            <li><a href="../06-data-subsetting/">Subsetting Data</a></li>
+            
+            <li><a href="../07-control-flow/">Control Flow</a></li>
+            
+            <li><a href="../08-plot-ggplot2/">Creating Publication-Quality Graphics</a></li>
+            
+            <li><a href="../09-vectorization/">Vectorization</a></li>
+            
+            <li><a href="../10-functions/">Functions Explained</a></li>
+            
+            <li><a href="../11-writing-data/">Writing Data</a></li>
+            
+            <li><a href="../12-plyr/">Split-Apply-Combine</a></li>
+            
+            <li><a href="../13-dplyr/">Dataframe Manipulation with dplyr</a></li>
+            
+            <li><a href="../14-tidyr/">Dataframe Manipulation with tidyr</a></li>
+            
+            <li><a href="../15-knitr-markdown/">Producing Reports With knitr</a></li>
+            
+            <li><a href="../16-wrap-up/">Writing Good Software</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="../about/">About</a></li>
+            
+            <li><a href="../discuss/">Discussion</a></li>
+            
+            <li><a href="../figures/">Figures</a></li>
+            
+            <li><a href="../guide/">Instructor Notes</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="../license/">License</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search..." aria-label="Google site search">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+<div class="row">
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../03-seeking-help/"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-md-10">
+    
+    <h3 class="maintitle"><a href="../">R for Reproducible Scientific Analysis</a></h3>
+    <h1 class="maintitle">Data Structures</h1>
+    
+  </div>
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../05-data-structures-part2/"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+<blockquote class="objectives">
+  <h2>Overview</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Teaching:</strong> 40 min
+      <br/>
+      <strong>Exercises:</strong> 15 min
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li><p>How can I read data in R?</p>
+</li>
+	
+	<li><p>What are the basic data types in R?</p>
+</li>
+	
+	<li><p>How do I represent categorical information in R?</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li><p>To be aware of the different types of data.</p>
+</li>
+	
+	<li><p>To begin exploring data frames, and understand how it’s related to vectors, factors and lists.</p>
+</li>
+	
+	<li><p>To be able to ask questions from R about the type, class, and structure of an object.</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+</blockquote>
+
+<p>One of R’s most powerful features is its ability to deal with tabular data -
+like what you might already have in a spreadsheet or a CSV. Let’s start by
+making a toy dataset in your <code class="highlighter-rouge">data/</code> directory, called <code class="highlighter-rouge">feline-data.csv</code>:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>coat,weight,likes_string
+calico,2.1,1
+black,5.0,0
+tabby,3.2,1
+</code></pre>
+</div>
+
+<blockquote class="callout">
+  <h2 id="tip-editing-text-files-in-r">Tip: Editing Text files in R</h2>
+
+  <p>Alternatively, you can create <code class="highlighter-rouge">data/feline-data.csv</code> using a text editor (Nano),
+or within RStudio with the <strong>File -&gt; New File -&gt; Text File</strong> menu item.</p>
+</blockquote>
+
+<p>We can load this into R via the following:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>cats &lt;- read.csv(file = "data/feline-data.csv")
+cats
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>    coat weight likes_string
+1 calico    2.1            1
+2  black    5.0            0
+3  tabby    3.2            1
+</code></pre>
+</div>
+
+<p>The <code class="highlighter-rouge">read.csv</code> function is used for reading in tabular data stored in a text
+file where the columns of data are delimited by commas (csv = comma separated
+values). Tabs are also commonly used to separated columns - if your data are in
+this format you can use the function <code class="highlighter-rouge">read.delim</code>. If the columns in your data
+are delimited by a character other than commas or tabs, you can use the more
+general and flexible <code class="highlighter-rouge">read.table</code> function.</p>
+
+<p>We can begin exploring our dataset right away, pulling out columns by specifying
+them using the <code class="highlighter-rouge">$</code> operator:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>cats$weight
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 2.1 5.0 3.2
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>cats$coat
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] calico black  tabby 
+Levels: black calico tabby
+</code></pre>
+</div>
+
+<p>We can do other operations on the columns:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>## Say we discovered that the scale weighs two Kg light:
+cats$weight + 2
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 4.1 7.0 5.2
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>paste("My cat is", cats$coat)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "My cat is calico" "My cat is black"  "My cat is tabby" 
+</code></pre>
+</div>
+
+<p>But what about</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>cats$weight + cats$coat
+</code></pre>
+</div>
+
+<div class="error highlighter-rouge"><pre class="highlight"><code>Warning in Ops.factor(cats$weight, cats$coat): '+' not meaningful for
+factors
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] NA NA NA
+</code></pre>
+</div>
+
+<p>Understanding what happened here is key to successfully analyzing data in R.</p>
+
+<h2 id="data-types">Data Types</h2>
+
+<p>If you guessed that the last command will return an error because <code class="highlighter-rouge">2.1</code> plus
+<code class="highlighter-rouge">"black"</code> is nonsense, you’re right - and you already have some intuition for an
+important concept in programming called <em>data types</em>. We can ask what type of
+data something is:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>typeof(cats$weight)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "double"
+</code></pre>
+</div>
+
+<p>There are 5 main types: <code class="highlighter-rouge">double</code>, <code class="highlighter-rouge">integer</code>, <code class="highlighter-rouge">complex</code>, <code class="highlighter-rouge">logical</code> and <code class="highlighter-rouge">character</code>.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>typeof(3.14)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "double"
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>typeof(1L)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "integer"
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>typeof(1+1i)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "complex"
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>typeof(TRUE)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "logical"
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>typeof('banana')
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "character"
+</code></pre>
+</div>
+
+<p>Note the <code class="highlighter-rouge">L</code> suffix to insist that a number is an integer. No matter how
+complicated our analyses become, all data in R is interpreted as one of these
+basic data types. This strictness has some really important consequences.</p>
+
+<p>A user has added details of another cat. This information is in the file
+<code class="highlighter-rouge">data/feline-data_v2.csv</code>.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>file.show("data/feline-data_v2.csv")
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>coat,weight,likes_string
+calico,2.1,1
+black,5.0,0
+tabby,3.2,1
+tabby,2.3 or 2.4,1
+</code></pre>
+</div>
+
+<p>Load the new cats data like before, and check what type of data we find in the
+<code class="highlighter-rouge">weight</code> column:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>cats &lt;- read.csv(file="data/feline-data_v2.csv")
+typeof(cats$weight)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "integer"
+</code></pre>
+</div>
+
+<p>Oh no, our weights aren’t the double type anymore! If we try to do the same math
+we did on them before, we run into trouble:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>cats$weight + 2
+</code></pre>
+</div>
+
+<div class="error highlighter-rouge"><pre class="highlight"><code>Warning in Ops.factor(cats$weight, 2): '+' not meaningful for factors
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] NA NA NA NA
+</code></pre>
+</div>
+
+<p>What happened? When R reads a csv into one of these tables, it insists that
+everything in a column be the same basic type; if it can’t understand
+<em>everything</em> in the column as a double, then <em>nobody</em> in the column gets to be a
+double. The table that R loaded our cats data into is something called a
+<em>data.frame</em>, and it is our first example of something called a <em>data
+structure</em> - that is, a structure which R knows how to build out of the basic
+data types.</p>
+
+<p>We can see that it is a <em>data.frame</em> by calling the <code class="highlighter-rouge">class</code> function on it:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>class(cats)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "data.frame"
+</code></pre>
+</div>
+
+<p>In order to successfully use our data in R, we need to understand what the basic
+data structures are, and how they behave. For now, let’s remove that extra line
+from our cats data and reload it, while we investigate this behavior further:</p>
+
+<p>feline-data.csv:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>coat,weight,likes_string
+calico,2.1,1
+black,5.0,0
+tabby,3.2,1
+</code></pre>
+</div>
+
+<p>And back in RStudio:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>cats &lt;- read.csv(file="data/feline-data.csv")
+</code></pre>
+</div>
+
+<h2 id="vectors-and-type-coercion">Vectors and Type Coercion</h2>
+
+<p>To better understand this behavior, let’s meet another of the data structures:
+the <em>vector</em>.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>my_vector &lt;- vector(length = 3)
+my_vector
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] FALSE FALSE FALSE
+</code></pre>
+</div>
+
+<p>A vector in R is essentially an ordered list of things, with the special
+condition that <em>everything in the vector must be the same basic data type</em>. If
+you don’t choose the datatype, it’ll default to <code class="highlighter-rouge">logical</code>; or, you can declare
+an empty vector of whatever type you like.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>another_vector &lt;- vector(mode='character', length=3)
+another_vector
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "" "" ""
+</code></pre>
+</div>
+
+<p>You can check if something is a vector:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>str(another_vector)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code> chr [1:3] "" "" ""
+</code></pre>
+</div>
+
+<p>The somewhat cryptic output from this command indicates the basic data type
+found in this vector - in this case <code class="highlighter-rouge">chr</code>, character; an indication of the
+number of things in the vector - actually, the indexes of the vector, in this
+case <code class="highlighter-rouge">[1:3]</code>; and a few examples of what’s actually in the vector - in this case
+empty character strings. If we similarly do</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>str(cats$weight)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code> num [1:3] 2.1 5 3.2
+</code></pre>
+</div>
+
+<p>we see that that’s a vector, too - <em>the columns of data we load into R
+data.frames are all vectors</em>, and that’s the root of why R forces everything in
+a column to be the same basic data type.</p>
+
+<blockquote class="discussion">
+  <h2 id="discussion-1">Discussion 1</h2>
+
+  <p>Why is R so opinionated about what we put in our columns of data?
+How does this help us?</p>
+
+  <blockquote class="solution">
+    <h2 id="discussion-1-1">Discussion 1</h2>
+
+    <p>By keeping everything in a column the same, we allow ourselves to make simple
+assumptions about our data; if you can interpret one entry in the column as a
+number, then you can interpret <em>all</em> of them as numbers, so we don’t have to
+check every time. This consistency, like consistently using the same separator
+in our data files, is what people mean when they talk about <em>clean data</em>; in
+the long run, strict consistency goes a long way to making our lives easier in
+R.</p>
+  </blockquote>
+</blockquote>
+
+<p>You can also make vectors with explicit contents with the combine function:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>combine_vector &lt;- c(2,6,3)
+combine_vector
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 2 6 3
+</code></pre>
+</div>
+
+<p>Given what we’ve learned so far, what do you think the following will produce?</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>quiz_vector &lt;- c(2,6,'3')
+</code></pre>
+</div>
+
+<p>This is something called <em>type coercion</em>, and it is the source of many surprises
+and the reason why we need to be aware of the basic data types and how R will
+interpret them. When R encounters a mix of types (here numeric and character) to
+be combined into a single vector, it will force them all to be the same
+type. Consider:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>coercion_vector &lt;- c('a', TRUE)
+coercion_vector
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "a"    "TRUE"
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>another_coercion_vector &lt;- c(0, TRUE)
+another_coercion_vector
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 0 1
+</code></pre>
+</div>
+
+<p>The coercion rules go: <code class="highlighter-rouge">logical</code> -&gt; <code class="highlighter-rouge">integer</code> -&gt; <code class="highlighter-rouge">numeric</code> -&gt; <code class="highlighter-rouge">complex</code> -&gt;
+<code class="highlighter-rouge">character</code>, where -&gt; can be read as <em>are transformed into</em>. You can try to
+force coercion against this flow using the <code class="highlighter-rouge">as.</code> functions:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>character_vector_example &lt;- c('0','2','4')
+character_vector_example
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "0" "2" "4"
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>character_coerced_to_numeric &lt;- as.numeric(character_vector_example)
+character_coerced_to_numeric
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 0 2 4
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>numeric_coerced_to_logical &lt;- as.logical(character_coerced_to_numeric)
+numeric_coerced_to_logical
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] FALSE  TRUE  TRUE
+</code></pre>
+</div>
+
+<p>As you can see, some surprising things can happen when R forces one basic data
+type into another! Nitty-gritty of type coercion aside, the point is: if your
+data doesn’t look like what you thought it was going to look like, type coercion
+may well be to blame; make sure everything is the same type in your vectors and
+your columns of data.frames, or you will get nasty surprises!</p>
+
+<p>But coercion can also be very useful! For example, in our <code class="highlighter-rouge">cats</code> data
+<code class="highlighter-rouge">likes_string</code> is numeric, but we know that the 1s and 0s actually represent
+<code class="highlighter-rouge">TRUE</code> and <code class="highlighter-rouge">FALSE</code> (a common way of representing them). We should use the
+<code class="highlighter-rouge">logical</code> datatype here, which has two states: <code class="highlighter-rouge">TRUE</code> or <code class="highlighter-rouge">FALSE</code>, which is
+exactly what our data represents. We can ‘coerce’ this column to be <code class="highlighter-rouge">logical</code> by
+using the <code class="highlighter-rouge">as.logical</code> function:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>cats$likes_string
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 1 0 1
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>cats$likes_string &lt;- as.logical(cats$likes_string)
+cats$likes_string
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1]  TRUE FALSE  TRUE
+</code></pre>
+</div>
+
+<p>Combine <code class="highlighter-rouge">c()</code> will also append things to an existing vector:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>ab_vector &lt;- c('a', 'b')
+ab_vector
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "a" "b"
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>combine_example &lt;- c(ab_vector, 'SWC')
+combine_example
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "a"   "b"   "SWC"
+</code></pre>
+</div>
+
+<p>You can also make series of numbers:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>mySeries &lt;- 1:10
+mySeries
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code> [1]  1  2  3  4  5  6  7  8  9 10
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>seq(10)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code> [1]  1  2  3  4  5  6  7  8  9 10
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>seq(1,10, by=0.1)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code> [1]  1.0  1.1  1.2  1.3  1.4  1.5  1.6  1.7  1.8  1.9  2.0  2.1  2.2  2.3
+[15]  2.4  2.5  2.6  2.7  2.8  2.9  3.0  3.1  3.2  3.3  3.4  3.5  3.6  3.7
+[29]  3.8  3.9  4.0  4.1  4.2  4.3  4.4  4.5  4.6  4.7  4.8  4.9  5.0  5.1
+[43]  5.2  5.3  5.4  5.5  5.6  5.7  5.8  5.9  6.0  6.1  6.2  6.3  6.4  6.5
+[57]  6.6  6.7  6.8  6.9  7.0  7.1  7.2  7.3  7.4  7.5  7.6  7.7  7.8  7.9
+[71]  8.0  8.1  8.2  8.3  8.4  8.5  8.6  8.7  8.8  8.9  9.0  9.1  9.2  9.3
+[85]  9.4  9.5  9.6  9.7  9.8  9.9 10.0
+</code></pre>
+</div>
+
+<p>We can ask a few questions about vectors:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>sequence_example &lt;- seq(10)
+head(sequence_example, n=2)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 1 2
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>tail(sequence_example, n=4)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1]  7  8  9 10
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>length(sequence_example)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 10
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>class(sequence_example)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "integer"
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>typeof(sequence_example)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "integer"
+</code></pre>
+</div>
+
+<p>Finally, you can give names to elements in your vector:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>names_example &lt;- 5:8
+names(names_example) &lt;- c("a", "b", "c", "d")
+names_example
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>a b c d 
+5 6 7 8 
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>names(names_example)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "a" "b" "c" "d"
+</code></pre>
+</div>
+
+<blockquote class="challenge">
+  <h2 id="challenge-1">Challenge 1</h2>
+
+  <p>Start by making a vector with the numbers 1 through 26.
+Multiply the vector by 2, and give the resulting vector
+names A through Z (hint: there is a built in vector called <code class="highlighter-rouge">LETTERS</code>)</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-1">Solution to Challenge 1</h2>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>x &lt;- 1:26
+x &lt;- x * 2
+names(x) &lt;- LETTERS
+</code></pre>
+    </div>
+  </blockquote>
+</blockquote>
+
+<h2 id="data-frames">Data Frames</h2>
+
+<p>We said that columns in data.frames were vectors:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>str(cats$weight)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code> num [1:3] 2.1 5 3.2
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>str(cats$likes_string)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code> logi [1:3] TRUE FALSE TRUE
+</code></pre>
+</div>
+
+<p>These make sense. But what about</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>str(cats$coat)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code> Factor w/ 3 levels "black","calico",..: 2 1 3
+</code></pre>
+</div>
+
+<h2 id="factors">Factors</h2>
+
+<p>Another important data structure is called a <em>factor</em>. Factors usually look like
+character data, but are typically used to represent categorical information. For
+example, let’s make a vector of strings labelling cat colorations for all the
+cats in our study:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>coats &lt;- c('tabby', 'tortoiseshell', 'tortoiseshell', 'black', 'tabby')
+coats
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "tabby"         "tortoiseshell" "tortoiseshell" "black"        
+[5] "tabby"        
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>str(coats)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code> chr [1:5] "tabby" "tortoiseshell" "tortoiseshell" "black" ...
+</code></pre>
+</div>
+
+<p>We can turn a vector into a factor like so:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>CATegories &lt;- factor(coats)
+class(CATegories)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "factor"
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>str(CATegories)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code> Factor w/ 3 levels "black","tabby",..: 2 3 3 1 2
+</code></pre>
+</div>
+
+<p>Now R has noticed that there are three possible categories in our data - but it
+also did something surprising; instead of printing out the strings we gave it,
+we got a bunch of numbers instead. R has replaced our human-readable categories
+with numbered indices under the hood:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>typeof(coats)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "character"
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>typeof(CATegories)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "integer"
+</code></pre>
+</div>
+
+<blockquote class="challenge">
+  <h2 id="challenge-2">Challenge 2</h2>
+
+  <p>Is there a factor in our <code class="highlighter-rouge">cats</code> data.frame? what is its name?
+Try using <code class="highlighter-rouge">?read.csv</code> to figure out how to keep text columns as character
+vectors instead of factors; then write a command or two to show that the factor
+in <code class="highlighter-rouge">cats</code> is actually a character vector when loaded in this way.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-2">Solution to Challenge 2</h2>
+
+    <p>One solution is use the argument <code class="highlighter-rouge">stringAsFactors</code>:</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>cats &lt;- read.csv(file="data/feline-data.csv", stringsAsFactors=FALSE)
+str(cats$coat)
+</code></pre>
+    </div>
+
+    <p>Another solution is use the argument <code class="highlighter-rouge">colClasses</code>
+that allow finer control.</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>cats &lt;- read.csv(file="data/feline-data.csv", colClasses=c(NA, NA, "character"))
+str(cats$coat)
+</code></pre>
+    </div>
+
+    <p>Note: new students find the help files difficult to understand; make sure to let them know
+that this is typical, and encourage them to take their best guess based on semantic meaning,
+even if they aren’t sure.</p>
+  </blockquote>
+</blockquote>
+
+<p>In modelling functions, it’s important to know what the baseline levels are. This
+is assumed to be the first factor, but by default factors are labelled in
+alphabetical order. You can change this by specifying the levels:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>mydata &lt;- c("case", "control", "control", "case")
+factor_ordering_example &lt;- factor(mydata, levels = c("control", "case"))
+str(factor_ordering_example)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code> Factor w/ 2 levels "control","case": 2 1 1 2
+</code></pre>
+</div>
+
+<p>In this case, we’ve explicitly told R that “control” should represented by 1, and
+“case” by 2. This designation can be very important for interpreting the
+results of statistical models!</p>
+
+<h2 id="lists">Lists</h2>
+
+<p>Another data structure you’ll want in your bag of tricks is the <code class="highlighter-rouge">list</code>. A list
+is simpler in some ways than the other types, because you can put anything you
+want in it:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>list_example &lt;- list(1, "a", TRUE, 1+4i)
+list_example
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[[1]]
+[1] 1
+
+[[2]]
+[1] "a"
+
+[[3]]
+[1] TRUE
+
+[[4]]
+[1] 1+4i
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>another_list &lt;- list(title = "Research Bazaar", numbers = 1:10, data = TRUE )
+another_list
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>$title
+[1] "Research Bazaar"
+
+$numbers
+ [1]  1  2  3  4  5  6  7  8  9 10
+
+$data
+[1] TRUE
+</code></pre>
+</div>
+
+<p>We can now understand something a bit surprising in our data.frame; what happens if we run:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>typeof(cats)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "list"
+</code></pre>
+</div>
+
+<p>We see that data.frames look like lists ‘under the hood’ - this is because a
+data.frame is really a list of vectors and factors, as they have to be - in
+order to hold those columns that are a mix of vectors and factors, the
+data.frame needs something a bit more flexible than a vector to put all the
+columns together into a familiar table.  In other words, a <code class="highlighter-rouge">data.frame</code> is a
+special list in which all the vectors must have the same length.</p>
+
+<p>In our <code class="highlighter-rouge">cats</code> example, we have an integer, a double and a logical variable. As
+we have seen already, each column of data.frame is a vector.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>cats$coat
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] calico black  tabby 
+Levels: black calico tabby
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>cats[,1]
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] calico black  tabby 
+Levels: black calico tabby
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>typeof(cats[,1])
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "integer"
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>str(cats[,1])
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code> Factor w/ 3 levels "black","calico",..: 2 1 3
+</code></pre>
+</div>
+
+<p>Each row is an <em>observation</em> of different variables, itself a data.frame, and
+thus can be composed of element of different types.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>cats[1,]
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>    coat weight likes_string
+1 calico    2.1         TRUE
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>typeof(cats[1,])
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "list"
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>str(cats[1,])
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>'data.frame':	1 obs. of  3 variables:
+ $ coat        : Factor w/ 3 levels "black","calico",..: 2
+ $ weight      : num 2.1
+ $ likes_string: logi TRUE
+</code></pre>
+</div>
+
+<blockquote class="challenge">
+  <h2 id="challenge-3">Challenge 3</h2>
+
+  <p>There are several subtly different ways to call variables, observations and
+elements from data.frames:</p>
+
+  <ul>
+    <li><code class="highlighter-rouge">cats[1]</code></li>
+    <li><code class="highlighter-rouge">cats[[1]]</code></li>
+    <li><code class="highlighter-rouge">cats$coat</code></li>
+    <li><code class="highlighter-rouge">cats["coat"]</code></li>
+    <li><code class="highlighter-rouge">cats[1, 1]</code></li>
+    <li><code class="highlighter-rouge">cats[, 1]</code></li>
+    <li><code class="highlighter-rouge">cats[1, ]</code></li>
+  </ul>
+
+  <p>Try out these examples and explain what is returned by each one.</p>
+
+  <p><em>Hint:</em> Use the function <code class="highlighter-rouge">typeof()</code> to examine what is returned in each case.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-3">Solution to Challenge 3</h2>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>cats[1]
+</code></pre>
+    </div>
+
+    <div class="output highlighter-rouge"><pre class="highlight"><code>    coat
+1 calico
+2  black
+3  tabby
+</code></pre>
+    </div>
+    <p>We can think of a data frame as a list of vectors. The single brace <code class="highlighter-rouge">[1]</code>
+returns the first slice of the list, as another list. In this case it is the
+first column of the data frame.</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>cats[[1]]
+</code></pre>
+    </div>
+
+    <div class="output highlighter-rouge"><pre class="highlight"><code>[1] calico black  tabby 
+Levels: black calico tabby
+</code></pre>
+    </div>
+    <p>The double brace <code class="highlighter-rouge">[[1]]</code> returns the contents of the list item. In this case
+it is the contents of the first column, a <em>vector</em> of type <em>factor</em>.</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>cats$coat
+</code></pre>
+    </div>
+
+    <div class="output highlighter-rouge"><pre class="highlight"><code>[1] calico black  tabby 
+Levels: black calico tabby
+</code></pre>
+    </div>
+    <p>This example uses the <code class="highlighter-rouge">$</code> character to address items by name. <em>coat</em> is the
+first column of the data frame, again a <em>vector</em> of type <em>factor</em>.</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>cats["coat"]
+</code></pre>
+    </div>
+
+    <div class="output highlighter-rouge"><pre class="highlight"><code>    coat
+1 calico
+2  black
+3  tabby
+</code></pre>
+    </div>
+    <p>Here we are using a single brace <code class="highlighter-rouge">["coat"]</code> replacing the index number with
+the column name. Like example 1, the returned object is a <em>list</em>.</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>cats[1, 1]
+</code></pre>
+    </div>
+
+    <div class="output highlighter-rouge"><pre class="highlight"><code>[1] calico
+Levels: black calico tabby
+</code></pre>
+    </div>
+    <p>This example uses a single brace, but this time we provide row and column
+coordinates. The returned object is the value in row 1, column 1. The object
+is an <em>integer</em> but because it is part of a <em>vector</em> of type <em>factor</em>, R
+displays the label “calico” associated with the integer value.</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>cats[, 1]
+</code></pre>
+    </div>
+
+    <div class="output highlighter-rouge"><pre class="highlight"><code>[1] calico black  tabby 
+Levels: black calico tabby
+</code></pre>
+    </div>
+    <p>Like the previous example we use single braces and provide row and column
+coordinates. The row coordinate is not specified, R interprets this missing
+value as all the elements in this <em>column</em> <em>vector</em>.</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>cats[1, ]
+</code></pre>
+    </div>
+
+    <div class="output highlighter-rouge"><pre class="highlight"><code>    coat weight likes_string
+1 calico    2.1         TRUE
+</code></pre>
+    </div>
+    <p>Again we use the single brace with row and column coordinates. The column
+coordinate is not specified. The return value is a <em>list</em> containing all the
+values in the first row.</p>
+  </blockquote>
+</blockquote>
+
+<h2 id="matrices">Matrices</h2>
+
+<p>Last but not least is the matrix. We can declare a matrix full of zeros:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>matrix_example &lt;- matrix(0, ncol=6, nrow=3)
+matrix_example
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>     [,1] [,2] [,3] [,4] [,5] [,6]
+[1,]    0    0    0    0    0    0
+[2,]    0    0    0    0    0    0
+[3,]    0    0    0    0    0    0
+</code></pre>
+</div>
+
+<p>And similar to other data structures, we can ask things about our matrix:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>class(matrix_example)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "matrix"
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>typeof(matrix_example)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "double"
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>str(matrix_example)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code> num [1:3, 1:6] 0 0 0 0 0 0 0 0 0 0 ...
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>dim(matrix_example)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 3 6
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>nrow(matrix_example)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 3
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>ncol(matrix_example)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 6
+</code></pre>
+</div>
+
+<blockquote class="challenge">
+  <h2 id="challenge-4">Challenge 4</h2>
+
+  <p>What do you think will be the result of
+<code class="highlighter-rouge">length(matrix_example)</code>?
+Try it.
+Were you right? Why / why not?</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-4">Solution to Challenge 4</h2>
+
+    <p>What do you think will be the result of
+<code class="highlighter-rouge">length(matrix_example)</code>?</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>matrix_example &lt;- matrix(0, ncol=6, nrow=3)
+length(matrix_example)
+</code></pre>
+    </div>
+
+    <div class="output highlighter-rouge"><pre class="highlight"><code>[1] 18
+</code></pre>
+    </div>
+
+    <p>Because a matrix is a vector with added dimension attributes, <code class="highlighter-rouge">length</code>
+gives you the total number of elements in the matrix.</p>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-5">Challenge 5</h2>
+
+  <p>Make another matrix, this time containing the numbers 1:50,
+with 5 columns and 10 rows.
+Did the <code class="highlighter-rouge">matrix</code> function fill your matrix by column, or by
+row, as its default behaviour?
+See if you can figure out how to change this.
+(hint: read the documentation for <code class="highlighter-rouge">matrix</code>!)</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-5">Solution to Challenge 5</h2>
+
+    <p>Make another matrix, this time containing the numbers 1:50,
+with 5 columns and 10 rows.
+Did the <code class="highlighter-rouge">matrix</code> function fill your matrix by column, or by
+row, as its default behaviour?
+See if you can figure out how to change this.
+(hint: read the documentation for <code class="highlighter-rouge">matrix</code>!)</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>x &lt;- matrix(1:50, ncol=5, nrow=10)
+x &lt;- matrix(1:50, ncol=5, nrow=10, byrow = TRUE) # to fill by row
+</code></pre>
+    </div>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-6">Challenge 6</h2>
+  <p>Create a list of length two containing a character vector for each of the sections in this part of the workshop:</p>
+
+  <ul>
+    <li>Data types</li>
+    <li>Data structures</li>
+  </ul>
+
+  <p>Populate each character vector with the names of the data types and data
+ structures we’ve seen so far.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-6">Solution to Challenge 6</h2>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>dataTypes &lt;- c('double', 'complex', 'integer', 'character', 'logical')
+dataStructures &lt;- c('data.frame', 'vector', 'factor', 'list', 'matrix')
+answer &lt;- list(dataTypes, dataStructures)
+</code></pre>
+    </div>
+    <p>Note: it’s nice to make a list in big writing on the board or taped to the wall
+listing all of these types and structures - leave it up for the rest of the workshop
+to remind people of the importance of these basics.</p>
+
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-7">Challenge 7</h2>
+
+  <p>Consider the R output of the matrix below:</p>
+
+  <div class="output highlighter-rouge"><pre class="highlight"><code>     [,1] [,2]
+[1,]    4    1
+[2,]    9    5
+[3,]   10    7
+</code></pre>
+  </div>
+  <p>What was the correct command used to write this matrix? Examine
+each command and try to figure out the correct one before typing them.
+Think about what matrices the other commands will produce.</p>
+
+  <ol>
+    <li><code class="highlighter-rouge">matrix(c(4, 1, 9, 5, 10, 7), nrow = 3)</code></li>
+    <li><code class="highlighter-rouge">matrix(c(4, 9, 10, 1, 5, 7), ncol = 2, byrow = TRUE)</code></li>
+    <li><code class="highlighter-rouge">matrix(c(4, 9, 10, 1, 5, 7), nrow = 2)</code></li>
+    <li><code class="highlighter-rouge">matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)</code></li>
+  </ol>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-7">Solution to Challenge 7</h2>
+
+    <p>Consider the R output of the matrix below:</p>
+
+    <div class="output highlighter-rouge"><pre class="highlight"><code>     [,1] [,2]
+[1,]    4    1
+[2,]    9    5
+[3,]   10    7
+</code></pre>
+    </div>
+    <p>What was the correct command used to write this matrix? Examine
+each command and try to figure out the correct one before typing them.
+Think about what matrices the other commands will produce.</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)
+</code></pre>
+    </div>
+  </blockquote>
+</blockquote>
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li><p>Use <code class="highlighter-rouge">read.csv</code> to read tabular data in R.</p>
+</li>
+    
+    <li><p>The basic data types in R are double, integer, complex, logical, and character.</p>
+</li>
+    
+    <li><p>Use factors to represent categories in R.</p>
+</li>
+    
+  </ul>
+</blockquote>
+
+
+
+
+
+<div class="row">
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../03-seeking-help/"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-md-10">
+    
+  </div>
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../05-data-structures-part2/"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+      
+      <footer>
+  <div class="row">
+    <div class="col-md-6" align="left">
+      <h4>
+	Copyright &copy; 2016
+	<a href="https://software-carpentry.org">Software Carpentry Foundation</a>
+	
+      </h4>
+    </div>
+    <div class="col-md-6" align="right">
+      <h4>
+	<a href="/">Source</a>
+	/
+	<a href="/blob/gh-pages/CONTRIBUTING.md">Contributing</a>
+	/
+	<a href="mailto:lessons@software-carpentry.org">Contact</a>
+      </h4>
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    <script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/lesson.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37305346-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

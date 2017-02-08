@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2017-02-08 23:52:23 +0100">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- meta "search-domain" used for google site search function google_search() -->
+    <meta name="search-domain" value="/swc-releases/2017.02/r-novice-gapminder">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/lesson.css" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon-swc.ico" />
+    
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    <title>R for Reproducible Scientific Analysis: Creating Publication-Quality Graphics</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+      <a href="https://software-carpentry.org" class="pull-left">
+        <img class="navbar-logo" src="../assets/img/swc-icon-blue.svg" alt="Software Carpentry logo" />
+      </a>
+      
+
+      
+      <a class="navbar-brand" href="../">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="../conduct/">Code of Conduct</a></li>
+
+	
+        
+        <li><a href="../setup/">Setup</a></li>
+        <li><a href="../reference/">Reference</a></li>
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="../01-rstudio-intro/">Introduction to R and RStudio</a></li>
+            
+            <li><a href="../02-project-intro/">Project Management With RStudio</a></li>
+            
+            <li><a href="../03-seeking-help/">Seeking Help</a></li>
+            
+            <li><a href="../04-data-structures-part1/">Data Structures</a></li>
+            
+            <li><a href="../05-data-structures-part2/">Exploring Data Frames</a></li>
+            
+            <li><a href="../06-data-subsetting/">Subsetting Data</a></li>
+            
+            <li><a href="../07-control-flow/">Control Flow</a></li>
+            
+            <li><a href="../08-plot-ggplot2/">Creating Publication-Quality Graphics</a></li>
+            
+            <li><a href="../09-vectorization/">Vectorization</a></li>
+            
+            <li><a href="../10-functions/">Functions Explained</a></li>
+            
+            <li><a href="../11-writing-data/">Writing Data</a></li>
+            
+            <li><a href="../12-plyr/">Split-Apply-Combine</a></li>
+            
+            <li><a href="../13-dplyr/">Dataframe Manipulation with dplyr</a></li>
+            
+            <li><a href="../14-tidyr/">Dataframe Manipulation with tidyr</a></li>
+            
+            <li><a href="../15-knitr-markdown/">Producing Reports With knitr</a></li>
+            
+            <li><a href="../16-wrap-up/">Writing Good Software</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="../about/">About</a></li>
+            
+            <li><a href="../discuss/">Discussion</a></li>
+            
+            <li><a href="../figures/">Figures</a></li>
+            
+            <li><a href="../guide/">Instructor Notes</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="../license/">License</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search..." aria-label="Google site search">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+<div class="row">
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../07-control-flow/"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-md-10">
+    
+    <h3 class="maintitle"><a href="../">R for Reproducible Scientific Analysis</a></h3>
+    <h1 class="maintitle">Creating Publication-Quality Graphics</h1>
+    
+  </div>
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../09-vectorization/"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+<blockquote class="objectives">
+  <h2>Overview</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Teaching:</strong> 60 min
+      <br/>
+      <strong>Exercises:</strong> 20 min
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li><p>How can I create publication-quality graphics in R?</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li><p>To be able to use ggplot2 to generate publication quality graphics.</p>
+</li>
+	
+	<li><p>To understand the basic grammar of graphics, including the aesthetics and geometry layers, adding statistics, transforming scales, and coloring or panelling by groups.</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+</blockquote>
+
+<p>Plotting our data is one of the best ways to
+quickly explore it and the various relationships
+between variables.</p>
+
+<p>There are three main plotting systems in R,
+the <a href="http://www.statmethods.net/graphs/">base plotting system</a>, the <a href="http://www.statmethods.net/advgraphs/trellis.html">lattice</a>
+package, and the <a href="http://www.statmethods.net/advgraphs/ggplot2.html">ggplot2</a> package.</p>
+
+<p>Today we’ll be learning about the ggplot2 package, because
+it is the most effective for creating publication quality
+graphics.</p>
+
+<p>ggplot2 is built on the grammar of graphics, the idea that any plot can be
+expressed from the same set of components: a <strong>data</strong> set, a
+<strong>coordinate system</strong>, and a set of <strong>geoms</strong>–the visual representation of data
+points.</p>
+
+<p>The key to understanding ggplot2 is thinking about a figure in layers.
+This idea may be familiar to you if you have used image editing programs like Photoshop, Illustrator, or
+Inkscape.</p>
+
+<p>Let’s start off with an example:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>library("ggplot2")
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point()
+</code></pre>
+</div>
+
+<p><img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter" alt="plot of chunk lifeExp-vs-gdpPercap-scatter" style="display: block; margin: auto;" /></p>
+
+<p>So the first thing we do is call the <code class="highlighter-rouge">ggplot</code> function. This function lets R
+know that we’re creating a new plot, and any of the arguments we give the
+<code class="highlighter-rouge">ggplot</code> function are the <em>global</em> options for the plot: they apply to all
+layers on the plot.</p>
+
+<p>We’ve passed in two arguments to <code class="highlighter-rouge">ggplot</code>. First, we tell <code class="highlighter-rouge">ggplot</code> what data we
+want to show on our figure, in this example the gapminder data we read in
+earlier. For the second argument we passed in the <code class="highlighter-rouge">aes</code> function, which
+tells <code class="highlighter-rouge">ggplot</code> how variables in the <strong>data</strong> map to <em>aesthetic</em> properties of
+the figure, in this case the <strong>x</strong> and <strong>y</strong> locations. Here we told <code class="highlighter-rouge">ggplot</code> we
+want to plot the “gdpPercap” column of the gapminder data frame on the x-axis, and
+the “lifeExp” column on the y-axis. Notice that we didn’t need to explicitly
+pass <code class="highlighter-rouge">aes</code> these columns (e.g. <code class="highlighter-rouge">x = gapminder[, "gdpPercap"]</code>), this is because
+<code class="highlighter-rouge">ggplot</code> is smart enough to know to look in the <strong>data</strong> for that column!</p>
+
+<p>By itself, the call to <code class="highlighter-rouge">ggplot</code> isn’t enough to draw a figure:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp))
+</code></pre>
+</div>
+
+<p><img src="../fig/rmd-08-unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" /></p>
+
+<p>We need to tell <code class="highlighter-rouge">ggplot</code> how we want to visually represent the data, which we
+do by adding a new <strong>geom</strong> layer. In our example, we used <code class="highlighter-rouge">geom_point</code>, which
+tells <code class="highlighter-rouge">ggplot</code> we want to visually represent the relationship between <strong>x</strong> and
+<strong>y</strong> as a scatterplot of points:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point()
+</code></pre>
+</div>
+
+<p><img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter2-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter2" alt="plot of chunk lifeExp-vs-gdpPercap-scatter2" style="display: block; margin: auto;" /></p>
+
+<blockquote class="challenge">
+  <h2 id="challenge-1">Challenge 1</h2>
+
+  <p>Modify the example so that the figure visualise how life expectancy has
+changed over time:</p>
+
+  <div class="r highlighter-rouge"><pre class="highlight"><code>ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) + geom_point()
+</code></pre>
+  </div>
+
+  <p>Hint: the gapminder dataset has a column called “year”, which should appear
+on the x-axis.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-1">Solution to challenge 1</h2>
+
+    <p>Modify the example so that the figure visualise how life expectancy has
+changed over time:</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>ggplot(data = gapminder, aes(x = year, y = lifeExp)) + geom_point()
+</code></pre>
+    </div>
+
+    <p><img src="../fig/rmd-08-ch1-sol-1.png" title="plot of chunk ch1-sol" alt="plot of chunk ch1-sol" style="display: block; margin: auto;" /></p>
+
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+
+  <h2 id="challenge-2">Challenge 2</h2>
+
+  <p>In the previous examples and challenge we’ve used the <code class="highlighter-rouge">aes</code> function to tell
+the scatterplot <strong>geom</strong> about the <strong>x</strong> and <strong>y</strong> locations of each point.
+Another <em>aesthetic</em> property we can modify is the point <em>color</em>. Modify the
+code from the previous challenge to <strong>color</strong> the points by the “continent”
+column. What trends do you see in the data? Are they what you expected?</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-2">Solution to challenge 2</h2>
+
+    <p>In the previous examples and challenge we’ve used the <code class="highlighter-rouge">aes</code> function to tell
+the scatterplot <strong>geom</strong> about the <strong>x</strong> and <strong>y</strong> locations of each point.
+Another <em>aesthetic</em> property we can modify is the point <em>color</em>. Modify the
+code from the previous challenge to <strong>color</strong> the points by the “continent”
+column. What trends do you see in the data? Are they what you expected?</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>ggplot(data = gapminder, aes(x = year, y = lifeExp, color=continent)) +
+  geom_point()
+</code></pre>
+    </div>
+
+    <p><img src="../fig/rmd-08-ch2-sol-1.png" title="plot of chunk ch2-sol" alt="plot of chunk ch2-sol" style="display: block; margin: auto;" /></p>
+
+  </blockquote>
+</blockquote>
+
+<h2 id="layers">Layers</h2>
+
+<p>Using a scatterplot probably isn’t the best for visualizing change over time.
+Instead, let’s tell <code class="highlighter-rouge">ggplot</code> to visualize the data as a line plot:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent)) +
+  geom_line()
+</code></pre>
+</div>
+
+<p><img src="../fig/rmd-08-lifeExp-line-1.png" title="plot of chunk lifeExp-line" alt="plot of chunk lifeExp-line" style="display: block; margin: auto;" /></p>
+
+<p>Instead of adding a <code class="highlighter-rouge">geom_point</code> layer, we’ve added a <code class="highlighter-rouge">geom_line</code> layer. We’ve
+added the <strong>by</strong> <em>aesthetic</em>, which tells <code class="highlighter-rouge">ggplot</code> to draw a line for each
+country.</p>
+
+<p>But what if we want to visualize both lines and points on the plot? We can
+simply add another layer to the plot:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent)) +
+  geom_line() + geom_point()
+</code></pre>
+</div>
+
+<p><img src="../fig/rmd-08-lifeExp-line-point-1.png" title="plot of chunk lifeExp-line-point" alt="plot of chunk lifeExp-line-point" style="display: block; margin: auto;" /></p>
+
+<p>It’s important to note that each layer is drawn on top of the previous layer. In
+this example, the points have been drawn <em>on top of</em> the lines. Here’s a
+demonstration:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
+  geom_line(aes(color=continent)) + geom_point()
+</code></pre>
+</div>
+
+<p><img src="../fig/rmd-08-lifeExp-layer-example-1-1.png" title="plot of chunk lifeExp-layer-example-1" alt="plot of chunk lifeExp-layer-example-1" style="display: block; margin: auto;" /></p>
+
+<p>In this example, the <em>aesthetic</em> mapping of <strong>color</strong> has been moved from the
+global plot options in <code class="highlighter-rouge">ggplot</code> to the <code class="highlighter-rouge">geom_line</code> layer so it no longer applies
+to the points. Now we can clearly see that the points are drawn on top of the
+lines.</p>
+
+<blockquote class="callout">
+  <h2 id="tip-setting-an-aesthetic-to-a-value-instead-of-a-mapping">Tip: Setting an aesthetic to a value instead of a mapping</h2>
+
+  <p>So far, we’ve seen how to use an aesthetic (such as <strong>color</strong>) as a <em>mapping</em> to a variable in the data. For example, when we use <code class="highlighter-rouge">geom_line(aes(color=continent))</code>, ggplot will give a different color to each continent. But what if we want to change the colour of all lines to blue? You may think that <code class="highlighter-rouge">geom_line(aes(color="blue"))</code> should work, but it doesn’t. Since we don’t want to create a mapping to a specific variable, we simply move the color specification outside of the <code class="highlighter-rouge">aes()</code> function, like this: <code class="highlighter-rouge">geom_line(color="blue")</code>.</p>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-3">Challenge 3</h2>
+
+  <p>Switch the order of the point and line layers from the previous example. What
+happened?</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-3">Solution to challenge 3</h2>
+
+    <p>Switch the order of the point and line layers from the previous example. What
+happened?</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
+ geom_point() + geom_line(aes(color=continent))
+</code></pre>
+    </div>
+
+    <p><img src="../fig/rmd-08-ch3-sol-1.png" title="plot of chunk ch3-sol" alt="plot of chunk ch3-sol" style="display: block; margin: auto;" /></p>
+
+    <p>The lines now get drawn over the points!</p>
+
+  </blockquote>
+</blockquote>
+
+<h2 id="transformations-and-statistics">Transformations and statistics</h2>
+
+<p>Ggplot also makes it easy to overlay statistical models over the data. To
+demonstrate we’ll go back to our first example:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color=continent)) +
+  geom_point()
+</code></pre>
+</div>
+
+<p><img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter3-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter3" alt="plot of chunk lifeExp-vs-gdpPercap-scatter3" style="display: block; margin: auto;" /></p>
+
+<p>Currently it’s hard to see the relationship between the points due to some strong
+outliers in GDP per capita. We can change the scale of units on the x axis using
+the <em>scale</em> functions. These control the mapping between the data values and
+visual values of an aesthetic. We can also modify the transparency of the
+points, using the <em>alpha</em> function, which is especially helpful when you have
+a large amount of data which is very clustered.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point(alpha = 0.5) + scale_x_log10()
+</code></pre>
+</div>
+
+<p><img src="../fig/rmd-08-axis-scale-1.png" title="plot of chunk axis-scale" alt="plot of chunk axis-scale" style="display: block; margin: auto;" /></p>
+
+<p>The <code class="highlighter-rouge">log10</code> function applied a transformation to the values of the gdpPercap
+column before rendering them on the plot, so that each multiple of 10 now only
+corresponds to an increase in 1 on the transformed scale, e.g. a GDP per capita
+of 1,000 is now 3 on the y axis, a value of 10,000 corresponds to 4 on the y
+axis and so on. This makes it easier to visualize the spread of data on the
+x-axis.</p>
+
+<blockquote class="callout">
+  <h2 id="tip-reminder-setting-an-aesthetic-to-a-value-instead-of-a-mapping">Tip Reminder: Setting an aesthetic to a value instead of a mapping</h2>
+
+  <p>Notice that we used <code class="highlighter-rouge">geom_point(alpha = 0.5)</code>. As the previous tip mentioned, using a setting outside of the <code class="highlighter-rouge">aes()</code> function will cause this value to be used for all points, which is what we want in this case. But just like any other aesthetic setting, <em>alpha</em> can also be mapped to a variable in the data. For example, we can give a different transparency to each continent with <code class="highlighter-rouge">geom_point(aes(alpha = continent))</code>.</p>
+</blockquote>
+
+<p>We can fit a simple relationship to the data by adding another layer,
+<code class="highlighter-rouge">geom_smooth</code>:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point() + scale_x_log10() + geom_smooth(method="lm")
+</code></pre>
+</div>
+
+<p><img src="../fig/rmd-08-lm-fit-1.png" title="plot of chunk lm-fit" alt="plot of chunk lm-fit" style="display: block; margin: auto;" /></p>
+
+<p>We can make the line thicker by <em>setting</em> the <strong>size</strong> aesthetic in the
+<code class="highlighter-rouge">geom_smooth</code> layer:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point() + scale_x_log10() + geom_smooth(method="lm", size=1.5)
+</code></pre>
+</div>
+
+<p><img src="../fig/rmd-08-lm-fit2-1.png" title="plot of chunk lm-fit2" alt="plot of chunk lm-fit2" style="display: block; margin: auto;" /></p>
+
+<p>There are two ways an <em>aesthetic</em> can be specified. Here we <em>set</em> the <strong>size</strong>
+aesthetic by passing it as an argument to <code class="highlighter-rouge">geom_smooth</code>. Previously in the
+lesson we’ve used the <code class="highlighter-rouge">aes</code> function to define a <em>mapping</em> between data
+variables and their visual representation.</p>
+
+<blockquote class="challenge">
+  <h2 id="challenge-4a">Challenge 4a</h2>
+
+  <p>Modify the color and size of the points on the point layer in the previous
+example.</p>
+
+  <p>Hint: do not use the <code class="highlighter-rouge">aes</code> function.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-4a">Solution to challenge 4a</h2>
+
+    <p>Modify the color and size of the points on the point layer in the previous
+example.</p>
+
+    <p>Hint: do not use the <code class="highlighter-rouge">aes</code> function.</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+ geom_point(size=3, color="orange") + scale_x_log10() +
+ geom_smooth(method="lm", size=1.5)
+</code></pre>
+    </div>
+
+    <p><img src="../fig/rmd-08-ch4a-sol-1.png" title="plot of chunk ch4a-sol" alt="plot of chunk ch4a-sol" style="display: block; margin: auto;" /></p>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-4b">Challenge 4b</h2>
+
+  <p>Modify your solution to Challenge 4a so that the
+points are now a different shape and are colored by continent with new
+trendlines.  Hint: The color argument can be used inside the aesthetic.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-4b">Solution to challenge 4b</h2>
+
+    <p>Modify Challenge 4 so that the points are now a different shape and are
+colored by continent with new trendlines.</p>
+
+    <p>Hint: The color argument can be used inside the aesthetic.</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
+geom_point(size=3, pch=17) + scale_x_log10() +
+geom_smooth(method="lm", size=1.5)
+</code></pre>
+    </div>
+
+    <p><img src="../fig/rmd-08-ch4b-sol-1.png" title="plot of chunk ch4b-sol" alt="plot of chunk ch4b-sol" style="display: block; margin: auto;" /></p>
+  </blockquote>
+</blockquote>
+
+<h2 id="multi-panel-figures">Multi-panel figures</h2>
+
+<p>Earlier we visualized the change in life expectancy over time across all
+countries in one plot. Alternatively, we can split this out over multiple panels
+by adding a layer of <strong>facet</strong> panels. Focusing only on those countries with
+names that start with the letter “A” or “Z”.</p>
+
+<blockquote class="callout">
+  <h2 id="tip">Tip</h2>
+
+  <p>We start by subsetting the data.  We use the <code class="highlighter-rouge">substr</code> function to
+pull out a part of a character string; in this case, the letters that occur
+in positions <code class="highlighter-rouge">start</code> through <code class="highlighter-rouge">stop</code>, inclusive, of the <code class="highlighter-rouge">gapminder$country</code>
+vector. The operator <code class="highlighter-rouge">%in%</code> allows us to make multiple comparisons rather
+than write out long subsetting conditions (in this case,
+<code class="highlighter-rouge">starts.with %in% c("A", "Z")</code> is equivalent to
+<code class="highlighter-rouge">starts.with == "A" | starts.with == "Z"</code>)</p>
+</blockquote>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>starts.with &lt;- substr(gapminder$country, start = 1, stop = 1)
+az.countries &lt;- gapminder[starts.with %in% c("A", "Z"), ]
+ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
+  geom_line() + facet_wrap( ~ country)
+</code></pre>
+</div>
+
+<p><img src="../fig/rmd-08-facet-1.png" title="plot of chunk facet" alt="plot of chunk facet" style="display: block; margin: auto;" /></p>
+
+<p>The <code class="highlighter-rouge">facet_wrap</code> layer took a “formula” as its argument, denoted by the tilde
+(~). This tells R to draw a panel for each unique value in the country column
+of the gapminder dataset.</p>
+
+<h2 id="modifying-text">Modifying text</h2>
+
+<p>To clean this figure up for a publication we need to change some of the text
+elements. The x-axis is too cluttered, and the y axis should read
+“Life expectancy”, rather than the column name in the data frame.</p>
+
+<p>We can do this by adding a couple of different layers. The <strong>theme</strong> layer
+controls the axis text, and overall text size, and there are special layers
+for changing the axis labels. To change the legend title, we need to use the
+<strong>scales</strong> layer.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
+  geom_line() + facet_wrap( ~ country) +
+  xlab("Year") + ylab("Life expectancy") + ggtitle("Figure 1") +
+  scale_colour_discrete(name="Continent") +
+  theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
+</code></pre>
+</div>
+
+<p><img src="../fig/rmd-08-theme-1.png" title="plot of chunk theme" alt="plot of chunk theme" style="display: block; margin: auto;" /></p>
+
+<p>This is a taste of what you can do with <code class="highlighter-rouge">ggplot2</code>. RStudio provides a
+really useful <a href="http://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf">cheat sheet</a> of the different layers available, and more
+extensive documentation is available on the <a href="http://docs.ggplot2.org/current/">ggplot2 website</a>.
+Finally, if you have no idea how to change something, a quick Google search will
+usually send you to a relevant question and answer on Stack Overflow with reusable
+code to modify!</p>
+
+<blockquote class="challenge">
+  <h2 id="challenge-5">Challenge 5</h2>
+
+  <p>Create a density plot of GDP per capita, filled by continent.</p>
+
+  <p>Advanced:</p>
+  <ul>
+    <li>Transform the x axis to better visualise the data spread.</li>
+    <li>Add a facet layer to panel the density plots by year.</li>
+  </ul>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-5">Solution to challenge 5</h2>
+
+    <p>Create a density plot of GDP per capita, filled by continent.</p>
+
+    <p>Advanced:</p>
+    <ul>
+      <li>Transform the x axis to better visualise the data spread.</li>
+      <li>Add a facet layer to panel the density plots by year.</li>
+    </ul>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>ggplot(data = gapminder, aes(x = gdpPercap, fill=continent)) +
+ geom_density(alpha=0.6) + facet_wrap( ~ year) + scale_x_log10()
+</code></pre>
+    </div>
+
+    <p><img src="../fig/rmd-08-ch5-sol-1.png" title="plot of chunk ch5-sol" alt="plot of chunk ch5-sol" style="display: block; margin: auto;" /></p>
+  </blockquote>
+</blockquote>
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li><p>Use <code class="highlighter-rouge">ggplot2</code> to create plots.</p>
+</li>
+    
+    <li><p>Think about graphics in layers: aesthetics, geometry, statistics, scale transformation, and grouping.</p>
+</li>
+    
+  </ul>
+</blockquote>
+
+
+
+
+
+<div class="row">
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../07-control-flow/"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-md-10">
+    
+  </div>
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../09-vectorization/"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+      
+      <footer>
+  <div class="row">
+    <div class="col-md-6" align="left">
+      <h4>
+	Copyright &copy; 2016
+	<a href="https://software-carpentry.org">Software Carpentry Foundation</a>
+	
+      </h4>
+    </div>
+    <div class="col-md-6" align="right">
+      <h4>
+	<a href="/">Source</a>
+	/
+	<a href="/blob/gh-pages/CONTRIBUTING.md">Contributing</a>
+	/
+	<a href="mailto:lessons@software-carpentry.org">Contact</a>
+      </h4>
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    <script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/lesson.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37305346-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

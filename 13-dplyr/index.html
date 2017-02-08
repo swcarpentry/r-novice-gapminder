@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2017-02-08 23:52:23 +0100">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- meta "search-domain" used for google site search function google_search() -->
+    <meta name="search-domain" value="/swc-releases/2017.02/r-novice-gapminder">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/lesson.css" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon-swc.ico" />
+    
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    <title>R for Reproducible Scientific Analysis: Dataframe Manipulation with dplyr</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+      <a href="https://software-carpentry.org" class="pull-left">
+        <img class="navbar-logo" src="../assets/img/swc-icon-blue.svg" alt="Software Carpentry logo" />
+      </a>
+      
+
+      
+      <a class="navbar-brand" href="../">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="../conduct/">Code of Conduct</a></li>
+
+	
+        
+        <li><a href="../setup/">Setup</a></li>
+        <li><a href="../reference/">Reference</a></li>
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="../01-rstudio-intro/">Introduction to R and RStudio</a></li>
+            
+            <li><a href="../02-project-intro/">Project Management With RStudio</a></li>
+            
+            <li><a href="../03-seeking-help/">Seeking Help</a></li>
+            
+            <li><a href="../04-data-structures-part1/">Data Structures</a></li>
+            
+            <li><a href="../05-data-structures-part2/">Exploring Data Frames</a></li>
+            
+            <li><a href="../06-data-subsetting/">Subsetting Data</a></li>
+            
+            <li><a href="../07-control-flow/">Control Flow</a></li>
+            
+            <li><a href="../08-plot-ggplot2/">Creating Publication-Quality Graphics</a></li>
+            
+            <li><a href="../09-vectorization/">Vectorization</a></li>
+            
+            <li><a href="../10-functions/">Functions Explained</a></li>
+            
+            <li><a href="../11-writing-data/">Writing Data</a></li>
+            
+            <li><a href="../12-plyr/">Split-Apply-Combine</a></li>
+            
+            <li><a href="../13-dplyr/">Dataframe Manipulation with dplyr</a></li>
+            
+            <li><a href="../14-tidyr/">Dataframe Manipulation with tidyr</a></li>
+            
+            <li><a href="../15-knitr-markdown/">Producing Reports With knitr</a></li>
+            
+            <li><a href="../16-wrap-up/">Writing Good Software</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="../about/">About</a></li>
+            
+            <li><a href="../discuss/">Discussion</a></li>
+            
+            <li><a href="../figures/">Figures</a></li>
+            
+            <li><a href="../guide/">Instructor Notes</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="../license/">License</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search..." aria-label="Google site search">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+<div class="row">
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../12-plyr/"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-md-10">
+    
+    <h3 class="maintitle"><a href="../">R for Reproducible Scientific Analysis</a></h3>
+    <h1 class="maintitle">Dataframe Manipulation with dplyr</h1>
+    
+  </div>
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../14-tidyr/"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+<blockquote class="objectives">
+  <h2>Overview</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Teaching:</strong> 40 min
+      <br/>
+      <strong>Exercises:</strong> 15 min
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li><p>How can I manipulate dataframes without repeating myself?</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li><p>To be able to use the six main dataframe manipulation ‘verbs’ with pipes in  <code class="highlighter-rouge">dplyr</code>.</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+</blockquote>
+
+<p>Manipulation of dataframes means many things to many researchers, we often
+select certain observations (rows) or variables (columns), we often group the
+data by a certain variable(s), or we even calculate summary statistics. We can
+do these operations using the normal base R operations:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>mean(gapminder[gapminder$continent == "Africa", "gdpPercap"])
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 2193.755
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>mean(gapminder[gapminder$continent == "Americas", "gdpPercap"])
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 7136.11
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>mean(gapminder[gapminder$continent == "Asia", "gdpPercap"])
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 7902.15
+</code></pre>
+</div>
+
+<p>But this isn’t very <em>nice</em> because there is a fair bit of repetition. Repeating
+yourself will cost you time, both now and later, and potentially introduce some
+nasty bugs.</p>
+
+<h2 id="the-dplyr-package">The <code class="highlighter-rouge">dplyr</code> package</h2>
+
+<p>Luckily, the <a href="https://cran.r-project.org/web/packages/dplyr/dplyr.pdf"><code class="highlighter-rouge">dplyr</code></a>
+package provides a number of very useful functions for manipulating dataframes
+in a way that will reduce the above repetition, reduce the probability of making
+errors, and probably even save you some typing. As an added bonus, you might
+even find the <code class="highlighter-rouge">dplyr</code> grammar easier to read.</p>
+
+<p>Here we’re going to cover 6 of the most commonly used functions as well as using
+pipes (<code class="highlighter-rouge">%&gt;%</code>) to combine them.</p>
+
+<ol>
+  <li><code class="highlighter-rouge">select()</code></li>
+  <li><code class="highlighter-rouge">filter()</code></li>
+  <li><code class="highlighter-rouge">group_by()</code></li>
+  <li><code class="highlighter-rouge">summarize()</code></li>
+  <li><code class="highlighter-rouge">mutate()</code></li>
+</ol>
+
+<p>If you have have not installed this package earlier, please do so:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>install.packages('dplyr')
+</code></pre>
+</div>
+
+<p>Now let’s load the package:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>library(dplyr)
+</code></pre>
+</div>
+
+<h2 id="using-select">Using select()</h2>
+
+<p>If, for example, we wanted to move forward with only a few of the variables in
+our dataframe we could use the <code class="highlighter-rouge">select()</code> function. This will keep only the
+variables you select.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>year_country_gdp &lt;- select(gapminder,year,country,gdpPercap)
+</code></pre>
+</div>
+
+<p><img src="../fig/13-dplyr-fig1.png" alt="" /></p>
+
+<p>If we open up <code class="highlighter-rouge">year_country_gdp</code> we’ll see that it only contains the year,
+country and gdpPercap. Above we used ‘normal’ grammar, but the strengths of
+<code class="highlighter-rouge">dplyr</code> lie in combining several functions using pipes. Since the pipes grammar
+is unlike anything we’ve seen in R before, let’s repeat what we’ve done above
+using pipes.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>year_country_gdp &lt;- gapminder %&gt;% select(year,country,gdpPercap)
+</code></pre>
+</div>
+
+<p>To help you understand why we wrote that in that way, let’s walk through it step
+by step. First we summon the gapminder dataframe and pass it on, using the pipe
+symbol <code class="highlighter-rouge">%&gt;%</code>, to the next step, which is the <code class="highlighter-rouge">select()</code> function. In this case
+we don’t specify which data object we use in the <code class="highlighter-rouge">select()</code> function since in
+gets that from the previous pipe. <strong>Fun Fact</strong>: There is a good chance you have
+encountered pipes before in the shell. In R, a pipe symbol is <code class="highlighter-rouge">%&gt;%</code> while in the
+shell it is <code class="highlighter-rouge">|</code> but the concept is the same!</p>
+
+<h2 id="using-filter">Using filter()</h2>
+
+<p>If we now wanted to move forward with the above, but only with European
+countries, we can combine <code class="highlighter-rouge">select</code> and <code class="highlighter-rouge">filter</code></p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>year_country_gdp_euro &lt;- gapminder %&gt;%
+    filter(continent=="Europe") %&gt;%
+    select(year,country,gdpPercap)
+</code></pre>
+</div>
+
+<blockquote class="challenge">
+  <h2 id="challenge-1">Challenge 1</h2>
+
+  <p>Write a single command (which can span multiple lines and includes pipes) that
+will produce a dataframe that has the African values for <code class="highlighter-rouge">lifeExp</code>, <code class="highlighter-rouge">country</code>
+and <code class="highlighter-rouge">year</code>, but not for other Continents.  How many rows does your dataframe
+have and why?</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-1">Solution to Challenge 1</h2>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>year_country_lifeExp_Africa &lt;- gapminder %&gt;%
+                           filter(continent=="Africa") %&gt;%
+                           select(year,country,lifeExp)
+</code></pre>
+    </div>
+  </blockquote>
+</blockquote>
+
+<p>As with last time, first we pass the gapminder dataframe to the <code class="highlighter-rouge">filter()</code>
+function, then we pass the filtered version of the gapminder dataframe to the
+<code class="highlighter-rouge">select()</code> function. <strong>Note:</strong> The order of operations is very important in this
+case. If we used ‘select’ first, filter would not be able to find the variable
+continent since we would have removed it in the previous step.</p>
+
+<h2 id="using-groupby-and-summarize">Using group_by() and summarize()</h2>
+
+<p>Now, we were supposed to be reducing the error prone repetitiveness of what can
+be done with base R, but up to now we haven’t done that since we would have to
+repeat the above for each continent. Instead of <code class="highlighter-rouge">filter()</code>, which will only pass
+observations that meet your criteria (in the above: <code class="highlighter-rouge">continent=="Europe"</code>), we
+can use <code class="highlighter-rouge">group_by()</code>, which will essentially use every unique criteria that you
+could have used in filter.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>str(gapminder)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>'data.frame':	1704 obs. of  6 variables:
+ $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+ $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...
+ $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
+ $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
+ $ gdpPercap: num  779 821 853 836 740 ...
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>str(gapminder %&gt;% group_by(continent))
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>Classes 'grouped_df', 'tbl_df', 'tbl' and 'data.frame':	1704 obs. of  6 variables:
+ $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+ $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...
+ $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
+ $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
+ $ gdpPercap: num  779 821 853 836 740 ...
+ - attr(*, "vars")=List of 1
+  ..$ : symbol continent
+ - attr(*, "drop")= logi TRUE
+ - attr(*, "indices")=List of 5
+  ..$ : int  24 25 26 27 28 29 30 31 32 33 ...
+  ..$ : int  48 49 50 51 52 53 54 55 56 57 ...
+  ..$ : int  0 1 2 3 4 5 6 7 8 9 ...
+  ..$ : int  12 13 14 15 16 17 18 19 20 21 ...
+  ..$ : int  60 61 62 63 64 65 66 67 68 69 ...
+ - attr(*, "group_sizes")= int  624 300 396 360 24
+ - attr(*, "biggest_group_size")= int 624
+ - attr(*, "labels")='data.frame':	5 obs. of  1 variable:
+  ..$ continent: Factor w/ 5 levels "Africa","Americas",..: 1 2 3 4 5
+  ..- attr(*, "vars")=List of 1
+  .. ..$ : symbol continent
+  ..- attr(*, "drop")= logi TRUE
+</code></pre>
+</div>
+<p>You will notice that the structure of the dataframe where we used <code class="highlighter-rouge">group_by()</code>
+(<code class="highlighter-rouge">grouped_df</code>) is not the same as the original <code class="highlighter-rouge">gapminder</code> (<code class="highlighter-rouge">data.frame</code>). A
+<code class="highlighter-rouge">grouped_df</code> can be thought of as a <code class="highlighter-rouge">list</code> where each item in the <code class="highlighter-rouge">list</code>is a
+<code class="highlighter-rouge">data.frame</code> which contains only the rows that correspond to the a particular
+value <code class="highlighter-rouge">continent</code> (at least in the example above).</p>
+
+<p><img src="../fig/13-dplyr-fig2.png" alt="" /></p>
+
+<h2 id="using-summarize">Using summarize()</h2>
+
+<p>The above was a bit on the uneventful side because <code class="highlighter-rouge">group_by()</code> much more
+exciting in conjunction with <code class="highlighter-rouge">summarize()</code>. This will allow use to create new
+variable(s) by using functions that repeat for each of the continent-specific
+data frames. That is to say, using the <code class="highlighter-rouge">group_by()</code> function, we split our
+original dataframe into multiple pieces, then we can run functions
+(e.g. <code class="highlighter-rouge">mean()</code> or <code class="highlighter-rouge">sd()</code>) within <code class="highlighter-rouge">summarize()</code>.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>gdp_bycontinents &lt;- gapminder %&gt;%
+    group_by(continent) %&gt;%
+    summarize(mean_gdpPercap=mean(gdpPercap))
+</code></pre>
+</div>
+
+<p><img src="../fig/13-dplyr-fig3.png" alt="" /></p>
+
+<p>That allowed us to calculate the mean gdpPercap for each continent, but it gets
+even better.</p>
+
+<blockquote class="challenge">
+  <h2 id="challenge-2">Challenge 2</h2>
+
+  <p>Calculate the average life expectancy per country. Which has the longest average life
+expectancy and which has the shortest average life expectancy?</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-2">Solution to Challenge 2</h2>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>lifeExp_bycountry &lt;- gapminder %&gt;%
+   group_by(country) %&gt;%
+   summarize(mean_lifeExp=mean(lifeExp))
+lifeExp_bycountry %&gt;% 
+   filter(mean_lifeExp == min(mean_lifeExp) | mean_lifeExp == max(mean_lifeExp))
+</code></pre>
+    </div>
+
+    <div class="output highlighter-rouge"><pre class="highlight"><code># A tibble: 2 × 2
+      country mean_lifeExp
+       &lt;fctr&gt;        &lt;dbl&gt;
+1      Iceland     76.51142
+2 Sierra Leone     36.76917
+</code></pre>
+    </div>
+    <p>Another way to do this is to use the <code class="highlighter-rouge">dplyr</code> function <code class="highlighter-rouge">arrange()</code>, which 
+arranges the rows in a data frame according to the order of one or more 
+variables from the data frame.  It has similar syntax to other functions from 
+the <code class="highlighter-rouge">dplyr</code> package. You can use <code class="highlighter-rouge">desc()</code> inside <code class="highlighter-rouge">arrange()</code> to sort in 
+descending order.</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>lifeExp_bycountry %&gt;%
+   arrange(mean_lifeExp) %&gt;%
+   head(1)
+</code></pre>
+    </div>
+
+    <div class="output highlighter-rouge"><pre class="highlight"><code># A tibble: 1 × 2
+      country mean_lifeExp
+       &lt;fctr&gt;        &lt;dbl&gt;
+1 Sierra Leone     36.76917
+</code></pre>
+    </div>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>lifeExp_bycountry %&gt;%
+   arrange(desc(mean_lifeExp)) %&gt;%
+   head(1)
+</code></pre>
+    </div>
+
+    <div class="output highlighter-rouge"><pre class="highlight"><code># A tibble: 1 × 2
+ country mean_lifeExp
+  &lt;fctr&gt;        &lt;dbl&gt;
+1 Iceland     76.51142
+</code></pre>
+    </div>
+  </blockquote>
+</blockquote>
+
+<p>The function <code class="highlighter-rouge">group_by()</code> allows us to group by multiple variables. Let’s group by <code class="highlighter-rouge">year</code> and <code class="highlighter-rouge">continent</code>.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>gdp_bycontinents_byyear &lt;- gapminder %&gt;%
+    group_by(continent,year) %&gt;%
+    summarize(mean_gdpPercap=mean(gdpPercap))
+</code></pre>
+</div>
+
+<p>That is already quite powerful, but it gets even better! You’re not limited to defining 1 new variable in <code class="highlighter-rouge">summarize()</code>.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>gdp_pop_bycontinents_byyear &lt;- gapminder %&gt;%
+    group_by(continent,year) %&gt;%
+    summarize(mean_gdpPercap=mean(gdpPercap),
+              sd_gdpPercap=sd(gdpPercap),
+              mean_pop=mean(pop),
+              sd_pop=sd(pop))
+</code></pre>
+</div>
+
+<h2 id="using-mutate">Using mutate()</h2>
+
+<p>We can also create new variables prior to (or even after) summarizing information using <code class="highlighter-rouge">mutate()</code>.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>gdp_pop_bycontinents_byyear &lt;- gapminder %&gt;%
+    mutate(gdp_billion=gdpPercap*pop/10^9) %&gt;%
+    group_by(continent,year) %&gt;%
+    summarize(mean_gdpPercap=mean(gdpPercap),
+              sd_gdpPercap=sd(gdpPercap),
+              mean_pop=mean(pop),
+              sd_pop=sd(pop),
+              mean_gdp_billion=mean(gdp_billion),
+              sd_gdp_billion=sd(gdp_billion))
+</code></pre>
+</div>
+
+<h2 id="combining-dplyr-and-ggplot2">Combining <code class="highlighter-rouge">dplyr</code> and <code class="highlighter-rouge">ggplot2</code></h2>
+
+<p>In the plotting lesson we looked at how to make a multi-panel figure by adding
+a layer of facet panels using <code class="highlighter-rouge">ggplot2</code>. Here is the code we used (with some
+extra comments):</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code># Get the start letter of each country
+starts.with &lt;- substr(gapminder$country, start = 1, stop = 1)
+# Filter countries that start with "A" or "Z"
+az.countries &lt;- gapminder[starts.with %in% c("A", "Z"), ]
+# Make the plot
+ggplot(data = az.countries, aes(x = year, y = lifeExp, color = continent)) +
+  geom_line() + facet_wrap( ~ country)
+</code></pre>
+</div>
+
+<p><img src="../fig/rmd-13-unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" style="display: block; margin: auto;" /></p>
+
+<p>This code makes the right plot but it also creates some variables (<code class="highlighter-rouge">starts.with</code>
+and <code class="highlighter-rouge">az.countries</code>) that we might not have any other uses for. Just as we used
+<code class="highlighter-rouge">%&gt;%</code> to pipe data along a chain of <code class="highlighter-rouge">dplyr</code> functions we can use it to pass data
+to <code class="highlighter-rouge">ggplot()</code>. Because <code class="highlighter-rouge">%&gt;%</code> replaces the first argument in a function we don’t
+need to specify the <code class="highlighter-rouge">data =</code> argument in the <code class="highlighter-rouge">ggplot()</code> function. By combining
+<code class="highlighter-rouge">dplyr</code> and <code class="highlighter-rouge">ggplot2</code> functions we can make the same figure without creating any
+new variables or modifying the data.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>gapminder %&gt;% 
+   # Get the start letter of each country 
+   mutate(startsWith = substr(country, start = 1, stop = 1)) %&gt;% 
+   # Filter countries that start with "A" or "Z"
+   filter(startsWith %in% c("A", "Z")) %&gt;%
+   # Make the plot
+   ggplot(aes(x = year, y = lifeExp, color = continent)) + 
+   geom_line() + 
+   facet_wrap( ~ country)
+</code></pre>
+</div>
+
+<p><img src="../fig/rmd-13-unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" style="display: block; margin: auto;" /></p>
+
+<p>Using <code class="highlighter-rouge">dplyr</code> functions also helps us simplify things, for example we could
+combine the first two steps:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>gapminder %&gt;%
+    # Filter countries that start with "A" or "Z"
+	filter(substr(country, start = 1, stop = 1) %in% c("A", "Z")) %&gt;%
+	# Make the plot
+	ggplot(aes(x = year, y = lifeExp, color = continent)) + 
+	geom_line() + 
+	facet_wrap( ~ country)
+</code></pre>
+</div>
+
+<p><img src="../fig/rmd-13-unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" style="display: block; margin: auto;" /></p>
+
+<blockquote class="challenge">
+  <h2 id="advanced-challenge">Advanced Challenge</h2>
+
+  <p>Calculate the average life expectancy in 2002 of 2 randomly selected countries
+for each continent. Then arrange the continent names in reverse order.
+<strong>Hint:</strong> Use the <code class="highlighter-rouge">dplyr</code> functions <code class="highlighter-rouge">arrange()</code> and <code class="highlighter-rouge">sample_n()</code>, they have
+similar syntax to other dplyr functions.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-advanced-challenge">Solution to Advanced Challenge</h2>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>lifeExp_2countries_bycontinents &lt;- gapminder %&gt;%
+   filter(year==2002) %&gt;%
+   group_by(continent) %&gt;%
+   sample_n(2) %&gt;%
+   summarize(mean_lifeExp=mean(lifeExp)) %&gt;%
+   arrange(desc(mean_lifeExp))
+</code></pre>
+    </div>
+  </blockquote>
+</blockquote>
+
+<h2 id="other-great-resources">Other great resources</h2>
+
+<ul>
+  <li><a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">Data Wrangling Cheat sheet</a></li>
+  <li><a href="https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">Introduction to dplyr</a></li>
+  <li><a href="https://www.rstudio.com/resources/webinars/data-wrangling-with-r-and-rstudio/">Data wrangling with R and RStudio</a></li>
+</ul>
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li><p>Use the <code class="highlighter-rouge">dplyr</code> package to manipulate dataframes.</p>
+</li>
+    
+    <li><p>Use <code class="highlighter-rouge">select()</code> to choose variables from a dataframe.</p>
+</li>
+    
+    <li><p>Use <code class="highlighter-rouge">filter()</code> to choose data based on values.</p>
+</li>
+    
+    <li><p>Use <code class="highlighter-rouge">group_by()</code> and <code class="highlighter-rouge">summarize()</code> to work with subsets of data.</p>
+</li>
+    
+    <li><p>Use <code class="highlighter-rouge">mutate()</code> to create new variables.</p>
+</li>
+    
+  </ul>
+</blockquote>
+
+
+
+
+
+<div class="row">
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../12-plyr/"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-md-10">
+    
+  </div>
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../14-tidyr/"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+      
+      <footer>
+  <div class="row">
+    <div class="col-md-6" align="left">
+      <h4>
+	Copyright &copy; 2016
+	<a href="https://software-carpentry.org">Software Carpentry Foundation</a>
+	
+      </h4>
+    </div>
+    <div class="col-md-6" align="right">
+      <h4>
+	<a href="/">Source</a>
+	/
+	<a href="/blob/gh-pages/CONTRIBUTING.md">Contributing</a>
+	/
+	<a href="mailto:lessons@software-carpentry.org">Contact</a>
+      </h4>
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    <script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/lesson.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37305346-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>
