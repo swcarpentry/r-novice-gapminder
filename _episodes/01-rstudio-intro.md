@@ -764,7 +764,7 @@ network). R and RStudio have functionality for managing packages:
 > > _age 
 > >     * We can only start variable names with letters or dots not followed by a number.
 > > min-length
-> >     * We can only use letters, numbers, dots, and underline "_" characters to assign our variable.
+> >     * We can only use letters, numbers, dots, and underline characters. 
 > > 2widths 
 > >     * We can't start our assignment with a number.
 > > if 
