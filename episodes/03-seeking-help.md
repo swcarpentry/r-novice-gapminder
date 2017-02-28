@@ -116,7 +116,7 @@ sessionInfo()
 ~~~
 R version 3.3.2 (2016-10-31)
 Platform: x86_64-apple-darwin16.1.0 (64-bit)
-Running under: macOS Sierra 10.12.2
+Running under: macOS Sierra 10.12.3
 
 locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -125,7 +125,7 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
 
 other attached packages:
-[1] checkpoint_0.3.18 stringr_1.1.0     knitr_1.15.1     
+[1] checkpoint_0.3.18 stringr_1.2.0     knitr_1.15.1     
 
 loaded via a namespace (and not attached):
 [1] magrittr_1.5  tools_3.3.2   stringi_1.1.2 methods_3.3.2 evaluate_0.10
