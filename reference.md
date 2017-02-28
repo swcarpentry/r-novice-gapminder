@@ -3,6 +3,8 @@ layout: reference
 permalink: /reference/
 ---
 
+## Reference
+
 ## [Introduction to R and RStudio]({{ page.root }}/01-rstudio-intro/)
 
  - Use the escape key to cancel incomplete commands or running code
