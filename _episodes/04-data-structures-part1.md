@@ -191,7 +191,7 @@ typeof(3.14)
 
 
 ~~~
-typeof(1L)
+typeof(1L) # The L suffix forces the number to be an integer, since by default R uses float numbers
 ~~~
 {: .r}
 
@@ -244,7 +244,7 @@ typeof('banana')
 ~~~
 {: .output}
 
-Note the `L` suffix to insist that a number is an integer. No matter how
+No matter how
 complicated our analyses become, all data in R is interpreted as one of these
 basic data types. This strictness has some really important consequences.
 
