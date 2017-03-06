@@ -159,7 +159,7 @@ prompt.
 > applies to Mac users as well!
 >
 > Cancelling a command isn't only useful for killing incomplete commands:
-> you can also use it to tell R to stop running code (for example if its
+> you can also use it to tell R to stop running code (for example if it's
 > taking much longer than you expect), or to get rid of the code you're
 > currently writing.
 >
@@ -453,7 +453,7 @@ rm(list <- ls())
 
 It is possible to add functions to R by writing a package, or by
 obtaining a package written by someone else. As of this writing, there
-are over 7,000 packages available on CRAN (the comprehensive R archive
+are over 10,000 packages available on CRAN (the comprehensive R archive
 network). R and RStudio have functionality for managing packages:
 
 * You can see what packages are installed by typing
