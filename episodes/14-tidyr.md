@@ -10,6 +10,7 @@ keypoints:
 - "Use the `tidyr` package to change the layout of dataframes."
 - "Use `gather()` to go from wide to long format."
 - "Use `scatter()` to go from long to wide format."
+source: Rmd
 ---
 
 

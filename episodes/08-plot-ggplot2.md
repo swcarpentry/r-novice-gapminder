@@ -10,6 +10,7 @@ objectives:
 keypoints:
 - "Use `ggplot2` to create plots."
 - "Think about graphics in layers: aesthetics, geometry, statistics, scale transformation, and grouping."
+source: Rmd
 ---
 
 

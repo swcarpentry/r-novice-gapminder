@@ -10,6 +10,7 @@ objectives:
 - "To be able to seek help from your peers."
 keypoints:
 - "Use `help()` to get online help in R."
+source: Rmd
 ---
 
 

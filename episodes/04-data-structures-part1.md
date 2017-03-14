@@ -14,6 +14,7 @@ keypoints:
 - "Use `read.csv` to read tabular data in R."
 - "The basic data types in R are double, integer, complex, logical, and character."
 - "Use factors to represent categories in R."
+source: Rmd
 ---
 
 

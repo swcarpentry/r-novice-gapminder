@@ -22,6 +22,7 @@ keypoints:
 - "Use `ls()` to list the variables in a program."
 - "Use `rm()` to delete objects in a program."
 - "Use `install.packages()` to install packages (libraries)."
+source: Rmd
 ---
 
 
@@ -651,7 +652,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7fd7ce5a00d8>
+<bytecode: 0x7fc9b6fd2cd8>
 <environment: namespace:base>
 ~~~
 {: .output}

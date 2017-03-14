@@ -14,6 +14,7 @@ keypoints:
 - "Use `function` to define a new function in R."
 - "Use parameters to pass values into functions."
 - "Load functions into programs using `source`."
+source: Rmd
 ---
 
 

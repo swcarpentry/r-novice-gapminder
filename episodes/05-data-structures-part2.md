@@ -19,6 +19,7 @@ keypoints:
 - "Use `str()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()` and `typeof()` to understand structure of the data frame"
 - "Read in a csv file using `read.csv()`"
 - "Understand `length()` of a data frame"
+source: Rmd
 ---
 
 

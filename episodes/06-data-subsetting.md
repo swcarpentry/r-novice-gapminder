@@ -14,6 +14,7 @@ keypoints:
 - "Access slices of data using `[low:high]`."
 - "Access arbitrary sets of data using `[c(...)]`."
 - "Use `which` to select subsets of data based on value."
+source: Rmd
 ---
 
 
