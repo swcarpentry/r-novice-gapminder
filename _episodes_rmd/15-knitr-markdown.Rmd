@@ -15,6 +15,7 @@ keypoints:
 - "Mix reporting written in R Markdown with software written in R."
 - "Specify chunk options to control formatting."
 - "Use `knitr` to convert these documents into PDF and other formats."
+source: Rmd
 ---
 
 ```{r chunk_options, include=FALSE}

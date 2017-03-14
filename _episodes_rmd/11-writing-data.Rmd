@@ -9,6 +9,7 @@ objectives:
 keypoints:
 - "Save plots from RStudio using the 'Export' button."
 - "Use `write.table` to save tabular data."
+source: Rmd
 ---
 
 ```{r, include=FALSE}

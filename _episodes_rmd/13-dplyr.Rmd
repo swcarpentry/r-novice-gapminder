@@ -12,6 +12,7 @@ keypoints:
 - "Use `filter()` to choose data based on values."
 - "Use `group_by()` and `summarize()` to work with subsets of data."
 - "Use `mutate()` to create new variables."
+source: Rmd
 ---
 
 ```{r, include=FALSE}
