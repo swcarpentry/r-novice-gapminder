@@ -114,8 +114,8 @@ sessionInfo()
 
 
 ~~~
-R version 3.3.2 (2016-10-31)
-Platform: x86_64-apple-darwin16.1.0 (64-bit)
+R version 3.3.3 (2017-03-06)
+Platform: x86_64-apple-darwin16.4.0 (64-bit)
 Running under: macOS Sierra 10.12.3
 
 locale:
@@ -128,7 +128,7 @@ other attached packages:
 [1] checkpoint_0.3.18 stringr_1.2.0     knitr_1.15.1     
 
 loaded via a namespace (and not attached):
-[1] magrittr_1.5  tools_3.3.2   stringi_1.1.2 methods_3.3.2 evaluate_0.10
+[1] magrittr_1.5  tools_3.3.3   stringi_1.1.2 methods_3.3.3 evaluate_0.10
 ~~~
 {: .output}
 
@@ -152,7 +152,7 @@ your issue.
 > > The `c()` function creates a vector, in which all elements are the
 > > same type. In the first case, the elements are numeric, in the
 > > second, they are characters, and in the third they are characters:
-> > the numeric values "coerced" to be characters.
+> > the numeric values are "coerced" to be characters.
 > {: .solution}
 {: .challenge}
 
@@ -163,14 +163,22 @@ your issue.
 >
 > > ## Solution to Challenge 2
 > >
-> > Look at the help for the `paste` function. You'll need to use this later.
-> >
+> > To look at the help for the `paste()` function, use:
 > > 
 > > ~~~
 > > help("paste")
 > > ?paste
 > > ~~~
 > > {: .r}
+> > The difference between `sep` and `collapse` is a little
+> > tricky. The `sep` argument specifies what separator character to use
+> > when you specify several different *arguments* to `paste()`,
+> > e.g. `paste('a', 'b', sep=',')`. In contrast, `collapse` specifies
+> > what separator character to use when combining a set of strings that
+> > are all specified as part of the same *vector*,
+> > e.g. `paste(c('a','b'), collapse=',')`. (For more information,
+> > scroll to the bottom of the `?paste` help page and look at the
+> > examples, or try `example('paste')`.)
 > {: .solution}
 {: .challenge}
 
@@ -182,6 +190,15 @@ your issue.
 > colleagues, because different countries have different conventions for the
 > decimal point (i.e. comma vs period).
 > hint: use `??csv` to lookup csv related functions.
+> > ## Solution to Challenge 3
+> >
+> > The standard R function for reading tab-delimited files with a period
+> > decimal separator is read.delim(). You can also do this with
+> > `read.table(file, sep="\t")` (the period is the *default* decimal
+> > separator for `read.table()`, although you may have to change
+> > the `comment.char` argument as well if your data file contains
+> > hash (#) characters
+> {: solution}
 {: .challenge}
 
 ## Other ports of call

@@ -92,7 +92,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 > ## Challenge 1
 >
-> Modify the example so that the figure visualise how life expectancy has
+> Modify the example so that the figure shows how life expectancy has
 > changed over time:
 >
 > 
@@ -106,8 +106,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 >
 > > ## Solution to challenge 1
 > >
-> > Modify the example so that the figure visualise how life expectancy has
-> > changed over time:
+> > Here is one possible solution:
 > >
 > > 
 > > ~~~
@@ -341,7 +340,7 @@ variables and their visual representation.
 > >
 > >~~~
 > > ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
-> > geom_point(size=3, pch=17) + scale_x_log10() +
+> > geom_point(size=3, shape=17) + scale_x_log10() +
 > > geom_smooth(method="lm", size=1.5)
 > >~~~
 > >{: .r}

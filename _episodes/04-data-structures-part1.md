@@ -8,7 +8,7 @@ questions:
 - "How do I represent categorical information in R?"
 objectives:
 - "To be aware of the different types of data."
-- "To begin exploring data frames, and understand how it's related to vectors, factors and lists."
+- "To begin exploring data frames, and understand how they are related to vectors, factors and lists."
 - "To be able to ask questions from R about the type, class, and structure of an object."
 keypoints:
 - "Use `read.csv` to read tabular data in R."
@@ -60,7 +60,7 @@ cats
 
 
 The `read.csv` function is used for reading in tabular data stored in a text
-file where the columns of data are delimited by commas (csv = comma separated
+file where the columns of data are delimited by commas (csv = comma-separated
 values). Tabs are also commonly used to separated columns - if your data are in
 this format you can use the function `read.delim`. If the columns in your data
 are delimited by a character other than commas or tabs, you can use the more
@@ -755,9 +755,9 @@ Finally, you can give names to elements in your vector:
 
 
 ~~~
-names_example <- 5:8
-names(names_example) <- c("a", "b", "c", "d")
-names_example
+my_example <- 5:8
+names(my_example) <- c("a", "b", "c", "d")
+my_example
 ~~~
 {: .r}
 
@@ -772,7 +772,7 @@ a b c d
 
 
 ~~~
-names(names_example)
+names(my_example)
 ~~~
 {: .r}
 
@@ -1138,7 +1138,7 @@ str(cats[,1])
 {: .output}
 
 Each row is an *observation* of different variables, itself a data.frame, and
-thus can be composed of element of different types.
+thus can be composed of elements of different types.
 
 
 ~~~

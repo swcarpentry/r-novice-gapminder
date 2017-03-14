@@ -123,7 +123,7 @@ fahr_to_kelvin(212)
 > Write a function called `kelvin_to_celsius` that takes a temperature in Kelvin
 > and returns that temperature in Celsius
 >
-> Hint: To convert from Kelvin to Celsius you minus 273.15
+> Hint: To convert from Kelvin to Celsius you subtract 273.15
 >
 > > ## Solution to challenge 1
 > >
@@ -144,7 +144,7 @@ fahr_to_kelvin(212)
 ## Combining functions
 
 The real power of functions comes from mixing, matching and combining them
-into ever large chunks to get the effect we want.
+into ever-larger chunks to get the effect we want.
 
 Let's define two functions that will convert temperature from Fahrenheit to
 Kelvin, and Kelvin to Celsius:
