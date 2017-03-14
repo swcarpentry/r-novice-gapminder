@@ -19,8 +19,8 @@ knitr_fig_path("14-")
 gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE, stringsAsFactors = FALSE)
 
 # To create gapminder_wide.csv:
-# library(dplyr)
-# library(tidyr)
+# library("dplyr")
+# library("tidyr")
 #
 # #transform the data to the wide format
 # gap_wide <- gapminder %>% gather(obs_type,obs_values,-continent,-country,-year) %>%
