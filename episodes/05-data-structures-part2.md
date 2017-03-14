@@ -27,9 +27,8 @@ keypoints:
 At this point, you've see it all - in the last lesson, we toured all the basic
 data types and data structures in R. Everything you do will be a manipulation of
 those tools. But a whole lot of the time, the star of the show is going to be
-the data frame - that table that we started with that information from a CSV
-gets dumped into when we load it. In this lesson, we'll learn a few more things
-about working with data frame.
+the data frame - the table that we created by loading information from a csv file. In this lesson, we'll learn a few more things
+about working with data frames.
 
 ## Adding columns and rows in data frame
 
@@ -276,7 +275,7 @@ cats <- na.omit(cats)
 ~~~
 {: .r}
 
-## Appending data frame
+## Appending to a data frame
 
 The key to remember when adding data to a data frame is that *columns are
 vectors or factors, and rows are lists.* We can also glue two data frames

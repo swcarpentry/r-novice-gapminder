@@ -183,11 +183,11 @@ Now we have a good directory structure we will now place/save the data file in t
 > ## Challenge 2
 > It is useful to get some general idea about the dataset, directly from the
 > command line, before loading it into R. Understanding the dataset better
-> will come handy when making decisions on how to load it in R. Use command-line
+> will come in handy when making decisions on how to load it in R. Use the command-line
 > shell to answer the following questions:
 > 1. What is the size of the file?
 > 2. How many rows of data does it contain?
-> 3. What are the data types of values stored in this file
+> 3. What kinds of values are stored in this file?
 >
 > > ## Solution to Challenge 2
 > >
@@ -219,7 +219,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > >     1705 data/gapminder-FiveYearData.csv
 > > ~~~
 > > {: .output}
-> > There are 1705 lines and the data looks like:
+> > There are 1705 lines. The data looks like:
 > > 
 > > ~~~
 > > head data/gapminder-FiveYearData.csv

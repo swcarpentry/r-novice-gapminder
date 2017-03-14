@@ -165,7 +165,7 @@ prompt.
 > applies to Mac users as well!
 >
 > Cancelling a command isn't only useful for killing incomplete commands:
-> you can also use it to tell R to stop running code (for example if its
+> you can also use it to tell R to stop running code (for example if it's
 > taking much longer than you expect), or to get rid of the code you're
 > currently writing.
 >
@@ -651,7 +651,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7f99280faa38>
+<bytecode: 0x7fd7ce5a00d8>
 <environment: namespace:base>
 ~~~
 {: .output}
@@ -711,7 +711,7 @@ Error in rm(list <- ls()): ... must contain names or character strings
 
 It is possible to add functions to R by writing a package, or by
 obtaining a package written by someone else. As of this writing, there
-are over 7,000 packages available on CRAN (the comprehensive R archive
+are over 10,000 packages available on CRAN (the comprehensive R archive
 network). R and RStudio have functionality for managing packages:
 
 * You can see what packages are installed by typing
