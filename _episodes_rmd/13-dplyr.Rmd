@@ -62,7 +62,7 @@ install.packages('dplyr')
 Now let's load the package:
 
 ```{r,message=FALSE}
-library(dplyr)
+library("dplyr")
 ```
 
 ## Using select()

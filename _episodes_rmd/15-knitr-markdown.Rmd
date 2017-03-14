@@ -305,8 +305,8 @@ So you might write:
 
 <pre>
 &#96;&#96;&#96;{r load_libraries, echo=FALSE, message=FALSE}
-library(dplyr)
-library(ggplot2)
+library("dplyr")
+library("ggplot2")
 &#96;&#96;&#96;
 </pre>
 
