@@ -13,6 +13,7 @@ keypoints:
 - "Treat generated output as disposable."
 - "Separate function definition and application."
 - "Use version control."
+source: Rmd
 ---
 
 ```{r, include=FALSE}

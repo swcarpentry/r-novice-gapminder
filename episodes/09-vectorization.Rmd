@@ -8,6 +8,7 @@ objectives:
 - "To understand vectorized operations in R."
 keypoints:
 - "Use vectorized operations instead of loops."
+source: Rmd
 ---
 
 ```{r, include=FALSE}

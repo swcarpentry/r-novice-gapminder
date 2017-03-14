@@ -13,6 +13,7 @@ keypoints:
 - "Don't repeat yourself."
 - "Don't repeat yourself."
 - "Be consistent in naming, indentation, and other aspects of style."
+source: Rmd
 ---
 
 ## Make code readable
