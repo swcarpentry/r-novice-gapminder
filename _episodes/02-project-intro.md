@@ -132,7 +132,7 @@ get shared between projects.
 > 
 > ~~~
 > install.packages("ProjectTemplate")
-> library(ProjectTemplate)
+> library("ProjectTemplate")
 > create.project("../my_project", merge.strategy = "allow.non.conflict")
 > ~~~
 > {: .r}

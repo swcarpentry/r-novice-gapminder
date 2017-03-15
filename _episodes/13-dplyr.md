@@ -96,7 +96,7 @@ Now let's load the package:
 
 
 ~~~
-library(dplyr)
+library("dplyr")
 ~~~
 {: .r}
 
@@ -461,6 +461,7 @@ gapminder %>%
 
 ## Other great resources
 
+* [R for Data Science](r4ds.had.co.nz)
 * [Data Wrangling Cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 * [Introduction to dplyr](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
 * [Data wrangling with R and RStudio](https://www.rstudio.com/resources/webinars/data-wrangling-with-r-and-rstudio/)

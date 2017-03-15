@@ -114,7 +114,7 @@ We installed this package in an earlier challenge. Let's load it now:
 
 
 ~~~
-library(plyr)
+library("plyr")
 ~~~
 {: .r}
 
