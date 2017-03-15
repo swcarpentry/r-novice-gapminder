@@ -44,7 +44,8 @@ Let's start off with an example:
 
 
 ~~~
-library("ggplot2")
+library(ggplot2)
+library(gapminder)
 ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ~~~
