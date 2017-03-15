@@ -57,8 +57,8 @@ Load the packages
 
 
 ~~~
-library(tidyr)
-library(dplyr)
+library("tidyr")
+library("dplyr")
 ~~~
 {: .r}
 
@@ -66,7 +66,6 @@ First, lets look at the structure of our original gapminder dataframe:
 
 
 ~~~
-library(gapminder)
 str(gapminder)
 ~~~
 {: .r}
@@ -640,8 +639,6 @@ There and back again!
 
 ## Other great resources
 
-* [R for Data Science](r4ds.had.co.nz)
 * [Data Wrangling Cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 * [Introduction to tidyr](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html)
 * [Data wrangling with R and RStudio](https://www.rstudio.com/resources/webinars/data-wrangling-with-r-and-rstudio/)
-
