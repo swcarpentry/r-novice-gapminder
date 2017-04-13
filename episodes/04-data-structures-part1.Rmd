@@ -62,15 +62,15 @@ cats <- read.csv(file = "data/feline-data.csv")
 cats
 ```
 
-
 The `read.table` function is used for reading in tabular data stored in a text
-file where the columns of data are delimited by punctuation characters such as
+file where the columns of data are separated by punctuation characters such as
 CSV files (csv = comma-separated values). Tabs and commas are the most common
-punctuation characters used to delimit data points in csv files. For
-convenience R provides 2 other versions of `read.table`. These are `read.csv`
-for files where the data is separated with commas and `read.delim` for files
-where the data is separated with tabs. If needed it is possible to override the
-default punctuation marks for both `read.csv` and `read.delim`.
+punctuation characters used to separate or delimit data points in csv files. 
+For convenience R provides 2 other versions of `read.table`. These are: `read.csv`
+for files where the data are separated with commas and `read.delim` for files
+where the data are separated with tabs. Of these three functions `read.csv` is
+the most commonly used.  If needed it is possible to override the default 
+delimiting punctuation marks for both `read.csv` and `read.delim`.
 
 
 We can begin exploring our dataset right away, pulling out columns by specifying
@@ -228,7 +228,7 @@ empty character strings. If we similarly do
 str(cats$weight)
 ```
 
-we see that is a vector, too - *the columns of data we load into R
+we see that `cats$weight` is a vector, too - *the columns of data we load into R
 data.frames are all vectors*, and that's the root of why R forces everything in
 a column to be the same basic data type.
 
@@ -242,10 +242,9 @@ a column to be the same basic data type.
 > > By keeping everything in a column the same, we allow ourselves to make simple
 > > assumptions about our data; if you can interpret one entry in the column as a
 > > number, then you can interpret *all* of them as numbers, so we don't have to
-> > check every time. This consistency, such as consistently using the same separator
-> > in our data files, is what people mean when they talk about *clean data*; in
-> > the long run, strict consistency goes a long way to making our lives easier in
-> > R.
+> > check every time. This consistency is what people mean when they talk about 
+> > *clean data*; in the long run, strict consistency goes a long way to making 
+> > our lives easier in R.
 > {: .solution}
 {: .discussion}
 
