@@ -171,13 +171,25 @@ your issue.
 > > ?paste
 > > ~~~
 > > {: .r}
-> > The difference between `sep` and `collapse` is a little
-> > tricky. The `sep` argument specifies what separator character to use
-> > when you specify several different *arguments* to `paste()`,
-> > e.g. `paste('a', 'b', sep=',')`. In contrast, `collapse` specifies
-> > what separator character to use when combining a set of strings that
-> > are all specified as part of the same *vector*,
-> > e.g. `paste(c('a','b'), collapse=',')`. (For more information,
+> > The difference between `sep` and `collapse` is a little tricky.
+> > The `paste` function accepts any number of arguments, each of which can
+> > be a vector of any length. The `sep` argument specifies the string
+> > used between concatenated terms — by default, a space. The result is a
+> > vector as long as the longest argument supplied to `paste`. In contrast,
+> > `collapse` specifies that after concatenation the elements are *collapsed*
+> > together using the given separator, the result being a single string.
+> > e.g. 
+> > ~~~
+> > paste(c("a","b"), "c")
+> > [1] "a c" "b c"
+> > paste(c("a","b"), "c", sep = ",")
+> > [1] "a,c" "b,c"
+> > paste(c("a","b"), "c", collapse = "|")
+> > [1] "a c|b c"
+> > paste(c("a","b"), "c", sep = ",", collapse = "|")
+> > [1] "a,c|b,c"
+> > ~~~
+> > (For more information,
 > > scroll to the bottom of the `?paste` help page and look at the
 > > examples, or try `example('paste')`.)
 > {: .solution}
