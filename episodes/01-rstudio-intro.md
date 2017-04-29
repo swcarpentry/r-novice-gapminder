@@ -369,7 +369,7 @@ We can also do comparison in R:
 
 
 ~~~
-1 <  2  # less than
+1 < 2  # less than
 ~~~
 {: .r}
 
@@ -652,7 +652,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7f940690e8d8>
+<bytecode: 0x7f82290287c0>
 <environment: namespace:base>
 ~~~
 {: .output}
