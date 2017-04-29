@@ -270,7 +270,7 @@ We can also do comparison in R:
 ```
 
 ```{r}
-1 <  2  # less than
+1 < 2  # less than
 ```
 
 ```{r}
