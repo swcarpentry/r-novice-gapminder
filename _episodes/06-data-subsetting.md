@@ -650,8 +650,8 @@ Here's a mock illustration:
 
 
 ~~~
-c("a", "b", "c", "e")  # names of x
-   |    |    |    |    # The elements == is comparing
+c("a", "a", "a")  # names of x
+   |    |    |    # The elements == is comparing
 c("a", "c")
 ~~~
 {: .r}
@@ -660,15 +660,17 @@ When one vector is shorter than the other, it gets *recycled*:
 
 
 ~~~
-c("a", "b", "c", "e")  # names of x
-   |    |    |    |    # The elements == is comparing
-c("a", "c", "a", "c")
+c("a", "a", "a")  # names of x
+   |    |    |    # The elements == is comparing
+c("a", "c", "a")
 ~~~
 {: .r}
 
-In this case R simply repeats `c("a", "c")` twice. If the longer
-vector length isn't a multiple of the shorter vector length, then
-R will also print out a warning message:
+In this case R simply repeats `c("a", "c")` twice. Since the recycled "a"
+matches x again we got the output: TRUE FALSE TRUE
+
+If the longer vector length isn't a multiple of the shorter vector 
+length, then R will also print out a warning message.
 
 
 ~~~

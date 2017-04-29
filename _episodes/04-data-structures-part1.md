@@ -20,7 +20,7 @@ source: Rmd
 
 
 One of R's most powerful features is its ability to deal with tabular data -
-like what you might already have in a spreadsheet or a CSV. Let's start by
+such as you may already have in a spreadsheet or a CSV file. Let's start by
 making a toy dataset in your `data/` directory, called `feline-data.csv`:
 
 
@@ -59,13 +59,15 @@ cats
 ~~~
 {: .output}
 
-
-The `read.csv` function is used for reading in tabular data stored in a text
-file where the columns of data are delimited by commas (csv = comma-separated
-values). Tabs are also commonly used to separated columns - if your data are in
-this format you can use the function `read.delim`. If the columns in your data
-are delimited by a character other than commas or tabs, you can use the more
-general and flexible `read.table` function.
+The `read.table` function is used for reading in tabular data stored in a text
+file where the columns of data are separated by punctuation characters such as
+CSV files (csv = comma-separated values). Tabs and commas are the most common
+punctuation characters used to separate or delimit data points in csv files. 
+For convenience R provides 2 other versions of `read.table`. These are: `read.csv`
+for files where the data are separated with commas and `read.delim` for files
+where the data are separated with tabs. Of these three functions `read.csv` is
+the most commonly used.  If needed it is possible to override the default 
+delimiting punctuation marks for both `read.csv` and `read.delim`.
 
 
 We can begin exploring our dataset right away, pulling out columns by specifying
@@ -286,7 +288,6 @@ typeof(cats$weight)
 ~~~
 {: .output}
 
-
 Oh no, our weights aren't the double type anymore! If we try to do the same math
 we did on them before, we run into trouble:
 
@@ -310,7 +311,7 @@ Warning in Ops.factor(cats$weight, 2): '+' not meaningful for factors
 ~~~
 {: .output}
 
-What happened? When R reads a csv into one of these tables, it insists that
+What happened? When R reads a csv file into one of these tables, it insists that
 everything in a column be the same basic type; if it can't understand
 *everything* in the column as a double, then *nobody* in the column gets to be a
 double. The table that R loaded our cats data into is something called a
@@ -430,7 +431,7 @@ str(cats$weight)
 ~~~
 {: .output}
 
-we see that that's a vector, too - *the columns of data we load into R
+we see that `cats$weight` is a vector, too - *the columns of data we load into R
 data.frames are all vectors*, and that's the root of why R forces everything in
 a column to be the same basic data type.
 
@@ -444,10 +445,9 @@ a column to be the same basic data type.
 > > By keeping everything in a column the same, we allow ourselves to make simple
 > > assumptions about our data; if you can interpret one entry in the column as a
 > > number, then you can interpret *all* of them as numbers, so we don't have to
-> > check every time. This consistency, like consistently using the same separator
-> > in our data files, is what people mean when they talk about *clean data*; in
-> > the long run, strict consistency goes a long way to making our lives easier in
-> > R.
+> > check every time. This consistency is what people mean when they talk about 
+> > *clean data*; in the long run, strict consistency goes a long way to making 
+> > our lives easier in R.
 > {: .solution}
 {: .discussion}
 
@@ -599,7 +599,7 @@ cats$likes_string
 ~~~
 {: .output}
 
-Combine `c()` will also append things to an existing vector:
+The combine function, `c()`, will also append things to an existing vector:
 
 
 ~~~
@@ -881,7 +881,7 @@ str(coats)
 
 
 ~~~
- chr [1:5] "tabby" "tortoiseshell" "tortoiseshell" "black" ...
+ chr [1:5] "tabby" "tortoiseshell" "tortoiseshell" "black" "tabby"
 ~~~
 {: .output}
 
@@ -918,7 +918,8 @@ str(CATegories)
 Now R has noticed that there are three possible categories in our data - but it
 also did something surprising; instead of printing out the strings we gave it,
 we got a bunch of numbers instead. R has replaced our human-readable categories
-with numbered indices under the hood:
+with numbered indices under the hood, this is necessary as many statistical
+calculations utilise such numerical representations for categorical data:
 
 
 ~~~
@@ -1037,7 +1038,7 @@ list_example
 
 
 ~~~
-another_list <- list(title = "Research Bazaar", numbers = 1:10, data = TRUE )
+another_list <- list(title = "Numbers", numbers = 1:10, data = TRUE )
 another_list
 ~~~
 {: .r}
@@ -1046,7 +1047,7 @@ another_list
 
 ~~~
 $title
-[1] "Research Bazaar"
+[1] "Numbers"
 
 $numbers
  [1]  1  2  3  4  5  6  7  8  9 10
