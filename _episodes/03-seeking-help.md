@@ -10,6 +10,7 @@ objectives:
 - "To be able to seek help from your peers."
 keypoints:
 - "Use `help()` to get online help in R."
+source: Rmd
 ---
 
 
@@ -114,9 +115,13 @@ sessionInfo()
 
 
 ~~~
-R version 3.3.0 (2016-05-03)
-Platform: x86_64-apple-darwin15.5.0 (64-bit)
-Running under: OS X 10.11.6 (El Capitan)
+R version 3.4.0 (2017-04-21)
+Platform: x86_64-apple-darwin16.5.0 (64-bit)
+Running under: macOS Sierra 10.12.4
+
+Matrix products: default
+BLAS: /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib
+LAPACK: /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libLAPACK.dylib
 
 locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -125,11 +130,11 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
 
 other attached packages:
-[1] stringr_1.0.0 knitr_1.13   
+[1] checkpoint_0.4.0 stringr_1.2.0    knitr_1.15.1    
 
 loaded via a namespace (and not attached):
-[1] magrittr_1.5  formatR_1.4   tools_3.3.0   stringi_1.1.1 methods_3.3.0
-[6] evaluate_0.9 
+[1] compiler_3.4.0 magrittr_1.5   tools_3.4.0    stringi_1.1.5 
+[5] methods_3.4.0  evaluate_0.10 
 ~~~
 {: .output}
 
@@ -145,7 +150,7 @@ your issue.
 > ~~~
 > c(1, 2, 3)
 > c('d', 'e', 'f')
-> c(1, 2, 'f')`
+> c(1, 2, 'f')
 > ~~~
 > {: .r}
 > > ## Solution to Challenge 1
@@ -153,7 +158,7 @@ your issue.
 > > The `c()` function creates a vector, in which all elements are the
 > > same type. In the first case, the elements are numeric, in the
 > > second, they are characters, and in the third they are characters:
-> > the numeric values "coerced" to be characters.
+> > the numeric values are "coerced" to be characters.
 > {: .solution}
 {: .challenge}
 
@@ -164,14 +169,78 @@ your issue.
 >
 > > ## Solution to Challenge 2
 > >
-> > Look at the help for the `paste` function. You'll need to use this later.
-> >
+> > To look at the help for the `paste()` function, use:
 > > 
 > > ~~~
 > > help("paste")
 > > ?paste
 > > ~~~
 > > {: .r}
+> > The difference between `sep` and `collapse` is a little
+> > tricky. The `paste` function accepts any number of arguments, each of which
+> > can be a vector of any length. The `sep` argument specifies the string
+> > used between concatenated terms — by default, a space. The result is a
+> > vector as long as the longest argument supplied to `paste`. In contrast,
+> > `collapse` specifies that after concatenation the elements are *collapsed*
+> > together using the given separator, the result being a single string.
+> > e.g. 
+> > 
+> > ~~~
+> > paste(c("a","b"), "c")
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> > [1] "a c" "b c"
+> > ~~~
+> > {: .output}
+> > 
+> > 
+> > 
+> > ~~~
+> > paste(c("a","b"), "c", sep = ",")
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> > [1] "a,c" "b,c"
+> > ~~~
+> > {: .output}
+> > 
+> > 
+> > 
+> > ~~~
+> > paste(c("a","b"), "c", collapse = "|")
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> > [1] "a c|b c"
+> > ~~~
+> > {: .output}
+> > 
+> > 
+> > 
+> > ~~~
+> > paste(c("a","b"), "c", sep = ",", collapse = "|")
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> > [1] "a,c|b,c"
+> > ~~~
+> > {: .output}
+> > (For more information,
+> > scroll to the bottom of the `?paste` help page and look at the
+> > examples, or try `example('paste')`.)
 > {: .solution}
 {: .challenge}
 
@@ -183,6 +252,15 @@ your issue.
 > colleagues, because different countries have different conventions for the
 > decimal point (i.e. comma vs period).
 > hint: use `??csv` to lookup csv related functions.
+> > ## Solution to Challenge 3
+> >
+> > The standard R function for reading tab-delimited files with a period
+> > decimal separator is read.delim(). You can also do this with
+> > `read.table(file, sep="\t")` (the period is the *default* decimal
+> > separator for `read.table()`, although you may have to change
+> > the `comment.char` argument as well if your data file contains
+> > hash (#) characters
+> {: solution}
 {: .challenge}
 
 ## Other ports of call

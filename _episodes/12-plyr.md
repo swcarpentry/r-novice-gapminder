@@ -8,6 +8,7 @@ objectives:
 - "To be able to use the split-apply-combine strategy for data analysis."
 keypoints:
 - "Use the `plyr` package to split data, apply functions to subsets, and combine the results."
+source: Rmd
 ---
 
 
@@ -113,7 +114,7 @@ We installed this package in an earlier challenge. Let's load it now:
 
 
 ~~~
-library(plyr)
+library("plyr")
 ~~~
 {: .r}
 

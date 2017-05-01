@@ -12,6 +12,7 @@ keypoints:
 - "Use `filter()` to choose data based on values."
 - "Use `group_by()` and `summarize()` to work with subsets of data."
 - "Use `mutate()` to create new variables."
+source: Rmd
 ---
 
 
@@ -95,7 +96,7 @@ Now let's load the package:
 
 
 ~~~
-library(dplyr)
+library("dplyr")
 ~~~
 {: .r}
 
@@ -266,8 +267,8 @@ even better.
 > ## Challenge 2
 >
 >
-> Calculate the average life expectancy per country. Which had the longest life
-> expectancy and which had the shortest life expectancy?
+> Calculate the average life expectancy per country. Which has the longest average life
+> expectancy and which has the shortest average life expectancy?
 >
 > > ## Solution to Challenge 2
 > >
@@ -275,8 +276,62 @@ even better.
 > >lifeExp_bycountry <- gapminder %>%
 > >    group_by(country) %>%
 > >    summarize(mean_lifeExp=mean(lifeExp))
+> >lifeExp_bycountry %>% 
+> >    filter(mean_lifeExp == min(mean_lifeExp) | mean_lifeExp == max(mean_lifeExp))
 > >~~~
 > >{: .r}
+> >
+> >
+> >
+> >~~~
+> ># A tibble: 2 × 2
+> >       country mean_lifeExp
+> >        <fctr>        <dbl>
+> >1      Iceland     76.51142
+> >2 Sierra Leone     36.76917
+> >~~~
+> >{: .output}
+> Another way to do this is to use the `dplyr` function `arrange()`, which 
+> arranges the rows in a data frame according to the order of one or more 
+> variables from the data frame.  It has similar syntax to other functions from 
+> the `dplyr` package. You can use `desc()` inside `arrange()` to sort in 
+> descending order.
+> >
+> >~~~
+> >lifeExp_bycountry %>%
+> >    arrange(mean_lifeExp) %>%
+> >    head(1)
+> >~~~
+> >{: .r}
+> >
+> >
+> >
+> >~~~
+> ># A tibble: 1 × 2
+> >       country mean_lifeExp
+> >        <fctr>        <dbl>
+> >1 Sierra Leone     36.76917
+> >~~~
+> >{: .output}
+> >
+> >
+> >
+> >~~~
+> >lifeExp_bycountry %>%
+> >    arrange(desc(mean_lifeExp)) %>%
+> >    head(1)
+> >~~~
+> >{: .r}
+> >
+> >
+> >
+> >~~~
+> ># A tibble: 1 × 2
+> >  country mean_lifeExp
+> >   <fctr>        <dbl>
+> >1 Iceland     76.51142
+> >~~~
+> >{: .output}
 > {: .solution}
 {: .challenge}
 
@@ -322,7 +377,66 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 ~~~
 {: .r}
 
+## Combining `dplyr` and `ggplot2`
 
+In the plotting lesson we looked at how to make a multi-panel figure by adding
+a layer of facet panels using `ggplot2`. Here is the code we used (with some
+extra comments):
+
+
+~~~
+# Get the start letter of each country
+starts.with <- substr(gapminder$country, start = 1, stop = 1)
+# Filter countries that start with "A" or "Z"
+az.countries <- gapminder[starts.with %in% c("A", "Z"), ]
+# Make the plot
+ggplot(data = az.countries, aes(x = year, y = lifeExp, color = continent)) +
+  geom_line() + facet_wrap( ~ country)
+~~~
+{: .r}
+
+<img src="../fig/rmd-13-unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" style="display: block; margin: auto;" />
+
+This code makes the right plot but it also creates some variables (`starts.with`
+and `az.countries`) that we might not have any other uses for. Just as we used
+`%>%` to pipe data along a chain of `dplyr` functions we can use it to pass data
+to `ggplot()`. Because `%>%` replaces the first argument in a function we don't
+need to specify the `data =` argument in the `ggplot()` function. By combining
+`dplyr` and `ggplot2` functions we can make the same figure without creating any
+new variables or modifying the data.  
+
+
+~~~
+gapminder %>% 
+   # Get the start letter of each country 
+   mutate(startsWith = substr(country, start = 1, stop = 1)) %>% 
+   # Filter countries that start with "A" or "Z"
+   filter(startsWith %in% c("A", "Z")) %>%
+   # Make the plot
+   ggplot(aes(x = year, y = lifeExp, color = continent)) + 
+   geom_line() + 
+   facet_wrap( ~ country)
+~~~
+{: .r}
+
+<img src="../fig/rmd-13-unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" style="display: block; margin: auto;" />
+
+Using `dplyr` functions also helps us simplify things, for example we could
+combine the first two steps:
+
+
+~~~
+gapminder %>%
+    # Filter countries that start with "A" or "Z"
+	filter(substr(country, start = 1, stop = 1) %in% c("A", "Z")) %>%
+	# Make the plot
+	ggplot(aes(x = year, y = lifeExp, color = continent)) + 
+	geom_line() + 
+	facet_wrap( ~ country)
+~~~
+{: .r}
+
+<img src="../fig/rmd-13-unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" style="display: block; margin: auto;" />
 
 > ## Advanced Challenge
 >
@@ -347,5 +461,7 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 
 ## Other great resources
 
+* [R for Data Science](r4ds.had.co.nz)
 * [Data Wrangling Cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 * [Introduction to dplyr](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
+* [Data wrangling with R and RStudio](https://www.rstudio.com/resources/webinars/data-wrangling-with-r-and-rstudio/)

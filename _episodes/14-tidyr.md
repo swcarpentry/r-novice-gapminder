@@ -10,6 +10,7 @@ keypoints:
 - "Use the `tidyr` package to change the layout of dataframes."
 - "Use `gather()` to go from wide to long format."
 - "Use `scatter()` to go from long to wide format."
+source: Rmd
 ---
 
 
@@ -638,5 +639,7 @@ There and back again!
 
 ## Other great resources
 
+* [R for Data Science](r4ds.had.co.nz)
 * [Data Wrangling Cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 * [Introduction to tidyr](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html)
+* [Data wrangling with R and RStudio](https://www.rstudio.com/resources/webinars/data-wrangling-with-r-and-rstudio/)

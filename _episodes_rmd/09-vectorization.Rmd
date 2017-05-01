@@ -8,6 +8,7 @@ objectives:
 - "To understand vectorized operations in R."
 keypoints:
 - "Use vectorized operations instead of loops."
+source: Rmd
 ---
 
 ```{r, include=FALSE}
@@ -15,7 +16,7 @@ source("../bin/chunk-options.R")
 knitr_fig_path("09-")
 # Silently load in the data so the rest of the lesson works
 gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
-library(ggplot2)
+library("ggplot2")
 ```
 
 Most of R's functions are vectorized, meaning that the function will

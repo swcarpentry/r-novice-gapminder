@@ -14,6 +14,7 @@ keypoints:
 - "Access slices of data using `[low:high]`."
 - "Access arbitrary sets of data using `[c(...)]`."
 - "Use `which` to select subsets of data based on value."
+source: Rmd
 ---
 
 
@@ -192,7 +193,7 @@ named numeric(0)
 ~~~
 {: .output}
 
-> ##Vector numbering in R starts at 1
+> ## Vector numbering in R starts at 1
 >
 > In many programming languages (C and python, for example), the first
 > element of a vector has an index of 0. In R, the first element is 1.
@@ -315,7 +316,7 @@ x
 > ~~~
 > {: .output}
 >
-> 1. Come up with at least 3 different commands that will produce the following output:
+> Come up with at least 3 different commands that will produce the following output:
 >
 > 
 > ~~~
@@ -324,46 +325,62 @@ x
 > ~~~
 > {: .output}
 >
-> 2. Compare notes with your neighbour. Did you have different strategies?
+> After you find 3 different commands, compare notes with your neighbour. Did you have different strategies?
 >
 > > ## Solution to challenge 1
 > >
-> >
-> > Given the following code:
-> >
 > > 
 > > ~~~
-> > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
-> > names(x) <- c('a', 'b', 'c', 'd', 'e')
-> > print(x)
+> > x[2:4]
 > > ~~~
 > > {: .r}
 > > 
 > > 
-> > 
-> > ~~~
-> >   a   b   c   d   e 
-> > 5.4 6.2 7.1 4.8 7.5 
-> > ~~~
-> > {: .output}
-> >
-> > 1. Come up with at least 3 different commands that will produce the following output:
-> >
 > > 
 > > ~~~
 > >   b   c   d 
 > > 6.2 7.1 4.8 
 > > ~~~
 > > {: .output}
-> >
 > > 
 > > ~~~
-> > x[2:4]
 > > x[-c(1,5)]
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> >   b   c   d 
+> > 6.2 7.1 4.8 
+> > ~~~
+> > {: .output}
+> > 
+> > ~~~
 > > x[c("b", "c", "d")]
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> >   b   c   d 
+> > 6.2 7.1 4.8 
+> > ~~~
+> > {: .output}
+> > 
+> > ~~~
 > > x[c(2,3,4)]
 > > ~~~
 > > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> >   b   c   d 
+> > 6.2 7.1 4.8 
+> > ~~~
+> > {: .output}
 > >
 > {: .solution}
 {: .challenge}
@@ -510,53 +527,16 @@ names of `x`, and asks, "Does this element occur in the second argument?".
 >
 > > ## Solution to challenge 2
 > >
-> > Run the following code to define vector `x` as above:
-> >
-> > 
-> > ~~~
-> > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
-> > names(x) <- c('a', 'b', 'c', 'd', 'e')
-> > print(x)
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> >   a   b   c   d   e 
-> > 5.4 6.2 7.1 4.8 7.5 
-> > ~~~
-> > {: .output}
-> >
-> > Given this vector `x`, what would you expect the following to do?
-> >
-> >~~~
-> > x[-which(names(x) == "g")]
-> >~~~
-> >{: .r}
-> >
-> > Try out this command and see what you get. Did this match your expectation?
-> >
-> > Why did we get this result? (Tip: test out each part of the command on it's own - this is a useful debugging strategy)
-> >
-> > Which of the following are true:
-> >
-> > * A) if there are no `TRUE` values passed to "which", an empty vector is returned
-> > * B) if there are no `TRUE` values passed to "which", an error message is shown
-> > * C) `integer()` is an empty vector
-> > * D) making an empty vector negative produces an "everything" vector
-> > * E) `x[]` gives the same result as `x[integer()]`
-> >
-> > Answer: A and C are correct.
+> > A and C are correct.
 > >
 > > The `which` command returns the index of every `TRUE` value in its
-> input. The `names(x) == "g"` command didn't return any `TRUE` values. Because
-> there were no `TRUE` values passed to the `which` command, it returned an
-> empty vector. Negating this vector with the minus sign didn't change its
-> meaning. Because we used this empty vector to retrieve values from `x`, it
-> produced an empty numeric vector. It was a `named numeric` empty vector
-> because the vector type of x is "named numeric" since we assigned names to the
-> values (try `str(x)` ).
+> > input. The `names(x) == "g"` command didn't return any `TRUE` values. Because
+> > there were no `TRUE` values passed to the `which` command, it returned an
+> > empty vector. Negating this vector with the minus sign didn't change its
+> > meaning. Because we used this empty vector to retrieve values from `x`, it
+> > produced an empty numeric vector. It was a `named numeric` empty vector
+> > because the vector type of x is "named numeric" since we assigned names to the
+> > values (try `str(x)` ).
 > {: .solution}
 {: .challenge}
 
@@ -670,8 +650,8 @@ Here's a mock illustration:
 
 
 ~~~
-c("a", "b", "c", "e")  # names of x
-   |    |    |    |    # The elements == is comparing
+c("a", "a", "a")  # names of x
+   |    |    |    # The elements == is comparing
 c("a", "c")
 ~~~
 {: .r}
@@ -680,15 +660,17 @@ When one vector is shorter than the other, it gets *recycled*:
 
 
 ~~~
-c("a", "b", "c", "e")  # names of x
-   |    |    |    |    # The elements == is comparing
-c("a", "c", "a", "c")
+c("a", "a", "a")  # names of x
+   |    |    |    # The elements == is comparing
+c("a", "c", "a")
 ~~~
 {: .r}
 
-In this case R simply repeats `c("a", "c")` twice. If the longer
-vector length isn't a multiple of the shorter vector length, then
-R will also print out a warning message:
+In this case R simply repeats `c("a", "c")` twice. Since the recycled "a"
+matches x again we got the output: TRUE FALSE TRUE
+
+If the longer vector length isn't a multiple of the shorter vector 
+length, then R will also print out a warning message.
 
 
 ~~~
@@ -809,28 +791,9 @@ named integer(0)
 > ~~~
 > {: .output}
 >
-> 1. Write a subsetting command to return the values in x that are greater than 4 and less than 7.
+> Write a subsetting command to return the values in x that are greater than 4 and less than 7.
 >
 > > ## Solution to challenge 3
-> > Given the following code:
-> >
-> > 
-> > ~~~
-> > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
-> > names(x) <- c('a', 'b', 'c', 'd', 'e')
-> > print(x)
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> >   a   b   c   d   e 
-> > 5.4 6.2 7.1 4.8 7.5 
-> > ~~~
-> > {: .output}
-> >
-> > 1. Write a subsetting command to return the values in x that are greater than 4 and less than 7.
 > >
 > > 
 > > ~~~
@@ -1123,36 +1086,7 @@ instead of their row and column indices.
 >
 > > ## Solution to challenge 4
 > >
-> > Given the following code:
-> >
-> > 
-> > ~~~
-> > m <- matrix(1:18, nrow=3, ncol=6)
-> > print(m)
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> >      [,1] [,2] [,3] [,4] [,5] [,6]
-> > [1,]    1    4    7   10   13   16
-> > [2,]    2    5    8   11   14   17
-> > [3,]    3    6    9   12   15   18
-> > ~~~
-> > {: .output}
-> >
-> > 1. Which of the following commands will extract the values 11 and 14?
-> >
-> > A. `m[2,4,2,5]`
-> >
-> > B. `m[2:5]`
-> >
-> > C. `m[4:5,2]`
-> >
-> > D. `m[2,c(4,5)]`
-> >
-> > Answer: D
+> > D
 > {: .solution}
 {: .challenge}
 
@@ -1303,24 +1237,43 @@ xlist$data
 > Hint: the number 2 is contained within the "b" item in the list.
 >
 > > ## Solution to challenge 5
-> > Given the following list:
-> >
-> > 
-> > ~~~
-> > xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
-> > ~~~
-> > {: .r}
-> >
-> > Using your knowledge of both list and vector subsetting, extract the number 2 from xlist.
-> > Hint: the number 2 is contained within the "b" item in the list.
 > >
 > > 
 > > ~~~
 > > xlist$b[2]
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> > [1] 2
+> > ~~~
+> > {: .output}
+> > 
+> > ~~~
 > > xlist[[2]][2]
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> > [1] 2
+> > ~~~
+> > {: .output}
+> > 
+> > ~~~
 > > xlist[["b"]][2]
 > > ~~~
 > > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> > [1] 2
+> > ~~~
+> > {: .output}
 > {: .solution}
 {: .challenge}
 
@@ -1337,19 +1290,14 @@ xlist$data
 > Extract the residual degrees of freedom (hint: `attributes()` will help you)
 >
 > > ## Solution to challenge 6
-> > Given a linear model:
-> >
-> > 
-> > ~~~
-> > mod <- aov(pop ~ lifeExp, data=gapminder)
-> > ~~~
-> > {: .r}
-> >
-> > Extract the residual degrees of freedom (hint: `attributes()` will help you)
 > >
 > > 
 > > ~~~
 > > attributes(mod) ## `df.residual` is one of the names of `mod`
+> > ~~~
+> > {: .r}
+> > 
+> > ~~~
 > > mod$df.residual
 > > ~~~
 > > {: .r}
@@ -1458,45 +1406,45 @@ be changed with the third argument, `drop = FALSE`).
 >
 > 1. Extract observations collected for the year 1957
 >
-> 
-> ~~~
-> gapminder[gapminder$year = 1957,]
-> ~~~
-> {: .r}
+>    
+>    ~~~
+>    gapminder[gapminder$year = 1957,]
+>    ~~~
+>    {: .r}
 >
 > 2. Extract all columns except 1 through to 4
 >
-> 
-> ~~~
-> gapminder[,-1:4]
-> ~~~
-> {: .r}
+>    
+>    ~~~
+>    gapminder[,-1:4]
+>    ~~~
+>    {: .r}
 >
 > 3. Extract the rows where the life expectancy is longer the 80 years
 >
-> 
-> ~~~
-> gapminder[gapminder$lifeExp > 80]
-> ~~~
-> {: .r}
+>    
+>    ~~~
+>    gapminder[gapminder$lifeExp > 80]
+>    ~~~
+>    {: .r}
 >
 > 4. Extract the first row, and the fourth and fifth columns
 >   (`lifeExp` and `gdpPercap`).
 >
-> 
-> ~~~
-> gapminder[1, 4, 5]
-> ~~~
-> {: .r}
+>    
+>    ~~~
+>    gapminder[1, 4, 5]
+>    ~~~
+>    {: .r}
 >
 > 5. Advanced: extract rows that contain information for the years 2002
 >    and 2007
 >
-> 
-> ~~~
-> gapminder[gapminder$year == 2002 | 2007,]
-> ~~~
-> {: .r}
+>    
+>    ~~~
+>    gapminder[gapminder$year == 2002 | 2007,]
+>    ~~~
+>    {: .r}
 >
 > > ## Solution to challenge 7
 > >
@@ -1504,51 +1452,51 @@ be changed with the third argument, `drop = FALSE`).
 > >
 > > 1. Extract observations collected for the year 1957
 > >
-> > 
-> > ~~~
-> > # gapminder[gapminder$year = 1957,]
-> > gapminder[gapminder$year == 1957,]
-> > ~~~
-> > {: .r}
+> >    
+> >    ~~~
+> >    # gapminder[gapminder$year = 1957,]
+> >    gapminder[gapminder$year == 1957,]
+> >    ~~~
+> >    {: .r}
 > >
 > > 2. Extract all columns except 1 through to 4
 > >
-> > 
-> > ~~~
-> > # gapminder[,-1:4]
-> > gapminder[,-c(1:4)]
-> > ~~~
-> > {: .r}
+> >    
+> >    ~~~
+> >    # gapminder[,-1:4]
+> >    gapminder[,-c(1:4)]
+> >    ~~~
+> >    {: .r}
 > >
 > > 3. Extract the rows where the life expectancy is longer the 80 years
 > >
-> > 
-> > ~~~
-> > # gapminder[gapminder$lifeExp > 80]
-> > gapminder[gapminder$lifeExp > 80,]
-> > ~~~
-> > {: .r}
+> >    
+> >    ~~~
+> >    # gapminder[gapminder$lifeExp > 80]
+> >    gapminder[gapminder$lifeExp > 80,]
+> >    ~~~
+> >    {: .r}
 > >
 > > 4. Extract the first row, and the fourth and fifth columns
 > >   (`lifeExp` and `gdpPercap`).
 > >
-> > 
-> > ~~~
-> > # gapminder[1, 4, 5]
-> > gapminder[1, c(4, 5)]
-> > ~~~
-> > {: .r}
+> >    
+> >    ~~~
+> >    # gapminder[1, 4, 5]
+> >    gapminder[1, c(4, 5)]
+> >    ~~~
+> >    {: .r}
 > >
 > > 5. Advanced: extract rows that contain information for the years 2002
 > >    and 2007
 > >
-> > 
-> > ~~~
-> > # gapminder[gapminder$year == 2002 | 2007,]
-> > gapminder[gapminder$year == 2002 | gapminder$year == 2007,]
-> > gapminder[gapminder$year %in% c(2002, 2007),]
-> > ~~~
-> > {: .r}
+> >     
+> >     ~~~
+> >     # gapminder[gapminder$year == 2002 | 2007,]
+> >     gapminder[gapminder$year == 2002 | gapminder$year == 2007,]
+> >     gapminder[gapminder$year %in% c(2002, 2007),]
+> >     ~~~
+> >     {: .r}
 > {: .solution}
 {: .challenge}
 
@@ -1562,12 +1510,9 @@ be changed with the third argument, `drop = FALSE`).
 >
 > > ## Solution to challenge 8
 > >
-> > 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
+> > 1.  `gapminder` is a data.frame so needs to be subsetted on two dimensions. `gapminder[1:20, ]` subsets the data to give the first 20 rows and all columns.
 > >
-> > Answer: `gapminder` is a data.frame so needs to be subsetted on two dimensions. `gapminder[1:20, ]` subsets the data to give the first 20 rows and all columns.
-> >
-> > 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
-> > and 19 through 23. You can do this in one or two steps.
+> > 2. 
 > >
 > > 
 > > ~~~

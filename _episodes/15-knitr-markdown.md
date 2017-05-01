@@ -15,6 +15,7 @@ keypoints:
 - "Mix reporting written in R Markdown with software written in R."
 - "Specify chunk options to control formatting."
 - "Use `knitr` to convert these documents into PDF and other formats."
+source: Rmd
 ---
 
 
@@ -271,8 +272,8 @@ So you might write:
 
 <pre>
 &#96;&#96;&#96;{r load_libraries, echo=FALSE, message=FALSE}
-library(dplyr)
-library(ggplot2)
+library("dplyr")
+library("ggplot2")
 &#96;&#96;&#96;
 </pre>
 
@@ -353,3 +354,7 @@ of the file.
 - [Dynamic Documents with R and knitr](http://www.amazon.com/exec/obidos/ASIN/1482203537/7210-20) (book)
 - [R Markdown documentation](http://rmarkdown.rstudio.com)
 - [R Markdown cheat sheet](http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+* [Getting started with R Markdown](https://www.rstudio.com/resources/webinars/getting-started-with-r-markdown/)
+* [Reproducible Reporting](https://www.rstudio.com/resources/webinars/reproducible-reporting/)
+* [The Ecosystem of R Markdown](https://www.rstudio.com/resources/webinars/the-ecosystem-of-r-markdown/)
+* [Introducing Bookdown](https://www.rstudio.com/resources/webinars/introducing-bookdown/)

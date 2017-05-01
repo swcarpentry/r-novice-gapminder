@@ -14,6 +14,7 @@ keypoints:
 - "Use `function` to define a new function in R."
 - "Use parameters to pass values into functions."
 - "Load functions into programs using `source`."
+source: Rmd
 ---
 
 
@@ -68,14 +69,14 @@ fahr_to_kelvin <- function(temp) {
 
 We define `fahr_to_kelvin` by assigning it to the output of `function`.  The
 list of argument names are contained within parentheses.  Next, the
-[body](reference.html#function-body) of the function--the statements that are
+[body]({{ page.root }}/reference/#function-body) of the function--the statements that are
 executed when it runs--is contained within curly braces (`{}`).  The statements
 in the body are indented by two spaces.  This makes the code easier to read but
 does not affect how the code operates.
 
-When we call the function, the values we pass to it are assigned to those
+When we call the function, the values we pass to it as arguments are assigned to those
 variables so that we can use them inside the function.  Inside the function, we
-use a [return statement](reference.html#return-statement) to send a result back
+use a [return statement]({{ page.root }}/reference/#return-statement) to send a result back
 to whoever asked for it.
 
 > ## Tip
@@ -123,7 +124,7 @@ fahr_to_kelvin(212)
 > Write a function called `kelvin_to_celsius` that takes a temperature in Kelvin
 > and returns that temperature in Celsius
 >
-> Hint: To convert from Kelvin to Celsius you minus 273.15
+> Hint: To convert from Kelvin to Celsius you subtract 273.15
 >
 > > ## Solution to challenge 1
 > >
@@ -144,7 +145,7 @@ fahr_to_kelvin(212)
 ## Combining functions
 
 The real power of functions comes from mixing, matching and combining them
-into ever large chunks to get the effect we want.
+into ever-larger chunks to get the effect we want.
 
 Let's define two functions that will convert temperature from Fahrenheit to
 Kelvin, and Kelvin to Celsius:

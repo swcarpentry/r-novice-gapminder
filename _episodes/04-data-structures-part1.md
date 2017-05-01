@@ -8,18 +8,19 @@ questions:
 - "How do I represent categorical information in R?"
 objectives:
 - "To be aware of the different types of data."
-- "To begin exploring data frames, and understand how it's related to vectors, factors and lists."
+- "To begin exploring data frames, and understand how they are related to vectors, factors and lists."
 - "To be able to ask questions from R about the type, class, and structure of an object."
 keypoints:
 - "Use `read.csv` to read tabular data in R."
 - "The basic data types in R are double, integer, complex, logical, and character."
 - "Use factors to represent categories in R."
+source: Rmd
 ---
 
 
 
 One of R's most powerful features is its ability to deal with tabular data -
-like what you might already have in a spreadsheet or a CSV. Let's start by
+such as you may already have in a spreadsheet or a CSV file. Let's start by
 making a toy dataset in your `data/` directory, called `feline-data.csv`:
 
 
@@ -52,19 +53,21 @@ cats
 
 ~~~
     coat weight likes_string
-1 calico    2.1         TRUE
-2  black    5.0        FALSE
-3  tabby    3.2         TRUE
+1 calico    2.1            1
+2  black    5.0            0
+3  tabby    3.2            1
 ~~~
 {: .output}
 
-
-The `read.csv` function is used for reading in tabular data stored in a text
-file where the columns of data are delimited by commas (csv = comma separated
-values). Tabs are also commonly used to separated columns - if your data are in
-this format you can use the function `read.delim`. If the columns in your data
-are delimited by a character other than commas or tabs, you can use the more
-general and flexible `read.table` function.
+The `read.table` function is used for reading in tabular data stored in a text
+file where the columns of data are separated by punctuation characters such as
+CSV files (csv = comma-separated values). Tabs and commas are the most common
+punctuation characters used to separate or delimit data points in csv files. 
+For convenience R provides 2 other versions of `read.table`. These are: `read.csv`
+for files where the data are separated with commas and `read.delim` for files
+where the data are separated with tabs. Of these three functions `read.csv` is
+the most commonly used.  If needed it is possible to override the default 
+delimiting punctuation marks for both `read.csv` and `read.delim`.
 
 
 We can begin exploring our dataset right away, pulling out columns by specifying
@@ -102,7 +105,7 @@ We can do other operations on the columns:
 
 
 ~~~
-## Say we discovered that the scale weighs one Kg light:
+## Say we discovered that the scale weighs two Kg light:
 cats$weight + 2
 ~~~
 {: .r}
@@ -191,7 +194,7 @@ typeof(3.14)
 
 
 ~~~
-typeof(1L)
+typeof(1L) # The L suffix forces the number to be an integer, since by default R uses float numbers
 ~~~
 {: .r}
 
@@ -244,7 +247,7 @@ typeof('banana')
 ~~~
 {: .output}
 
-Note the `L` suffix to insist that a number is an integer. No matter how
+No matter how
 complicated our analyses become, all data in R is interpreted as one of these
 basic data types. This strictness has some really important consequences.
 
@@ -261,10 +264,10 @@ file.show("data/feline-data_v2.csv")
 
 ~~~
 coat,weight,likes_string
-calico,2.1,TRUE
-black,5.0,FALSE
-tabby,3.2,TRUE
-tabby,2.3 or 2.4,TRUE
+calico,2.1,1
+black,5.0,0
+tabby,3.2,1
+tabby,2.3 or 2.4,1
 ~~~
 {: .r}
 
@@ -284,7 +287,6 @@ typeof(cats$weight)
 [1] "integer"
 ~~~
 {: .output}
-
 
 Oh no, our weights aren't the double type anymore! If we try to do the same math
 we did on them before, we run into trouble:
@@ -309,7 +311,7 @@ Warning in Ops.factor(cats$weight, 2): '+' not meaningful for factors
 ~~~
 {: .output}
 
-What happened? When R reads a csv into one of these tables, it insists that
+What happened? When R reads a csv file into one of these tables, it insists that
 everything in a column be the same basic type; if it can't understand
 *everything* in the column as a double, then *nobody* in the column gets to be a
 double. The table that R loaded our cats data into is something called a
@@ -340,9 +342,9 @@ feline-data.csv:
 
 ```
 coat,weight,likes_string
-calico,2.1,TRUE
-black,5.0,FALSE
-tabby,3.2,TRUE
+calico,2.1,1
+black,5.0,0
+tabby,3.2,1
 ```
 
 And back in RStudio:
@@ -429,7 +431,7 @@ str(cats$weight)
 ~~~
 {: .output}
 
-we see that that's a vector, too - *the columns of data we load into R
+we see that `cats$weight` is a vector, too - *the columns of data we load into R
 data.frames are all vectors*, and that's the root of why R forces everything in
 a column to be the same basic data type.
 
@@ -443,19 +445,18 @@ a column to be the same basic data type.
 > > By keeping everything in a column the same, we allow ourselves to make simple
 > > assumptions about our data; if you can interpret one entry in the column as a
 > > number, then you can interpret *all* of them as numbers, so we don't have to
-> > check every time. This consistency, like consistently using the same separator
-> > in our data files, is what people mean when they talk about *clean data*; in
-> > the long run, strict consistency goes a long way to making our lives easier in
-> > R.
+> > check every time. This consistency is what people mean when they talk about 
+> > *clean data*; in the long run, strict consistency goes a long way to making 
+> > our lives easier in R.
 > {: .solution}
 {: .discussion}
 
-You can also make vectors with explicit contents with the concatenate function:
+You can also make vectors with explicit contents with the combine function:
 
 
 ~~~
-concat_vector <- c(2,6,3)
-concat_vector
+combine_vector <- c(2,6,3)
+combine_vector
 ~~~
 {: .r}
 
@@ -598,7 +599,7 @@ cats$likes_string
 ~~~
 {: .output}
 
-Concatenate will also append things to an existing vector:
+The combine function, `c()`, will also append things to an existing vector:
 
 
 ~~~
@@ -617,8 +618,8 @@ ab_vector
 
 
 ~~~
-concat_example <- c(ab_vector, 'SWC')
-concat_example
+combine_example <- c(ab_vector, 'SWC')
+combine_example
 ~~~
 {: .r}
 
@@ -755,9 +756,9 @@ Finally, you can give names to elements in your vector:
 
 
 ~~~
-names_example <- 5:8
-names(names_example) <- c("a", "b", "c", "d")
-names_example
+my_example <- 5:8
+names(my_example) <- c("a", "b", "c", "d")
+my_example
 ~~~
 {: .r}
 
@@ -772,7 +773,7 @@ a b c d
 
 
 ~~~
-names(names_example)
+names(my_example)
 ~~~
 {: .r}
 
@@ -880,7 +881,7 @@ str(coats)
 
 
 ~~~
- chr [1:5] "tabby" "tortoiseshell" "tortoiseshell" "black" ...
+ chr [1:5] "tabby" "tortoiseshell" "tortoiseshell" "black" "tabby"
 ~~~
 {: .output}
 
@@ -917,7 +918,8 @@ str(CATegories)
 Now R has noticed that there are three possible categories in our data - but it
 also did something surprising; instead of printing out the strings we gave it,
 we got a bunch of numbers instead. R has replaced our human-readable categories
-with numbered indices under the hood:
+with numbered indices under the hood, this is necessary as many statistical
+calculations utilise such numerical representations for categorical data:
 
 
 ~~~
@@ -954,12 +956,26 @@ typeof(CATegories)
 > in `cats` is actually a character vector when loaded in this way.
 >
 > > ## Solution to Challenge 2
+> >
+> > One solution is use the argument `stringAsFactors`:
+> >
 > > 
 > > ~~~
 > > cats <- read.csv(file="data/feline-data.csv", stringsAsFactors=FALSE)
 > > str(cats$coat)
 > > ~~~
 > > {: .r}
+> >
+> > Another solution is use the argument `colClasses`
+> > that allow finer control.
+> >
+> > 
+> > ~~~
+> > cats <- read.csv(file="data/feline-data.csv", colClasses=c(NA, NA, "character"))
+> > str(cats$coat)
+> > ~~~
+> > {: .r}
+> >
 > > Note: new students find the help files difficult to understand; make sure to let them know
 > > that this is typical, and encourage them to take their best guess based on semantic meaning,
 > > even if they aren't sure.
@@ -1022,7 +1038,7 @@ list_example
 
 
 ~~~
-another_list <- list(title = "Research Bazaar", numbers = 1:10, data = TRUE )
+another_list <- list(title = "Numbers", numbers = 1:10, data = TRUE )
 another_list
 ~~~
 {: .r}
@@ -1031,7 +1047,7 @@ another_list
 
 ~~~
 $title
-[1] "Research Bazaar"
+[1] "Numbers"
 
 $numbers
  [1]  1  2  3  4  5  6  7  8  9 10
@@ -1124,7 +1140,7 @@ str(cats[,1])
 {: .output}
 
 Each row is an *observation* of different variables, itself a data.frame, and
-thus can be composed of element of different types.
+thus can be composed of elements of different types.
 
 
 ~~~
@@ -1179,7 +1195,7 @@ str(cats[1,])
 > - `cats[1]`
 > - `cats[[1]]`
 > - `cats$coat`
-> - `cats`["coat"]
+> - `cats["coat"]`
 > - `cats[1, 1]`
 > - `cats[, 1]`
 > - `cats[1, ]`

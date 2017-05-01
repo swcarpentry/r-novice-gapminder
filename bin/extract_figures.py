@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
 import sys
 import os
 import glob
 from optparse import OptionParser
 
 from util import Reporter, read_markdown, IMAGE_FILE_SUFFIX
-
 
 def main():
     """Main driver."""

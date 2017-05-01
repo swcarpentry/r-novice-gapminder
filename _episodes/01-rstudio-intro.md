@@ -22,6 +22,7 @@ keypoints:
 - "Use `ls()` to list the variables in a program."
 - "Use `rm()` to delete objects in a program."
 - "Use `install.packages()` to install packages (libraries)."
+source: Rmd
 ---
 
 
@@ -32,12 +33,19 @@ keypoints:
 Science is a multi-step process: once you've designed an experiment and collected
 data, the real fun begins! This lesson will teach you how to start this process using
 R and RStudio. We will begin with raw data, perform exploratory analyses, and learn
-how to plot results graphically. This example starts with the
-`data/gapminder-FiveYearData.csv` dataset containing population information for many
+how to plot results graphically. This example starts with a dataset from
+[gapminder.org](https://www.gapminder.org) containing population information for many
 countries through time. Can you read the data into R? Can you plot the population for
 Senegal? Can you calculate the average income for countries on continent of Asia?
 By the end of these lessons you will be able to do things like plot the populations
 for all of these countries in under a minute!
+
+## Before Starting The Workshop
+
+Please ensure you have the latest version of R and RStudio installed on your machine. This is important, as some packages used in the workshop may not install correctly (or at all) if R is not up to date.
+
+[Download and install the latest version of R here](https://www.r-project.org/)
+[Download and install RStudio here](https://www.rstudio.com/)
 
 ## Introduction to RStudio
 
@@ -52,6 +60,8 @@ environment. It provides a built in editor, works on all platforms (including
 on servers) and provides many advantages such as integration with version
 control and project management.
 
+
+
 **Basic layout**
 
 When you first open RStudio, you will be greeted by three panels:
@@ -60,8 +70,13 @@ When you first open RStudio, you will be greeted by three panels:
   * Environment/History (tabbed in upper right)
   * Files/Plots/Packages/Help/Viewer (tabbed in lower right)
 
+![RStudio layout](../fig/01-rstudio.png)
+
 Once you open files, such as R scripts, an editor panel will also open
 in the top left.
+
+![RStudio layout with .R file open](../fig/01-rstudio-script.png)
+
 
 ## Work flow within RStudio
 There are two main ways one can work within RStudio.
@@ -88,7 +103,7 @@ interactive R console.
 > If you have modified a line of code within a block of code you have just run,
 > there is no need to reselct the section and `Run`, you can use the next button
 > along, `Re-run the previous region`. This will run the previous code block
-> inculding the modifications you have made.
+> including the modifications you have made.
 {: .callout}
 
 ## Introduction to R
@@ -151,7 +166,7 @@ prompt.
 > applies to Mac users as well!
 >
 > Cancelling a command isn't only useful for killing incomplete commands:
-> you can also use it to tell R to stop running code (for example if its
+> you can also use it to tell R to stop running code (for example if it's
 > taking much longer than you expect), or to get rid of the code you're
 > currently writing.
 >
@@ -354,7 +369,7 @@ We can also do comparison in R:
 
 
 ~~~
-1 <  2  # less than
+1 < 2  # less than
 ~~~
 {: .r}
 
@@ -637,7 +652,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7feecdab3f88>
+<bytecode: 0x7f82290287c0>
 <environment: namespace:base>
 ~~~
 {: .output}
@@ -697,7 +712,7 @@ Error in rm(list <- ls()): ... must contain names or character strings
 
 It is possible to add functions to R by writing a package, or by
 obtaining a package written by someone else. As of this writing, there
-are over 7,000 packages available on CRAN (the comprehensive R archive
+are over 10,000 packages available on CRAN (the comprehensive R archive
 network). R and RStudio have functionality for managing packages:
 
 * You can see what packages are installed by typing
@@ -851,10 +866,11 @@ network). R and RStudio have functionality for managing packages:
 > > ## Solution to challenge 5
 > >
 > > We can use the `install.packages()` command to install the required packages.
-> > We can also install them in one go like so:
 > > 
 > > ~~~
-> > install.packages(c("ggplot2", "plyr", "gapminder"))
+> > install.packages("ggplot2")
+> > install.packages("plyr")
+> > install.packages("gapminder")
 > > ~~~
 > > {: .r}
 > {: .solution}

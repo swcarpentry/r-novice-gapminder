@@ -3,14 +3,23 @@ title: "Exploring Data Frames"
 teaching: 20
 exercises: 10
 questions:
-- "How can I manipulate a dataframe?"
+- "How can I manipulate a data frame?"
 objectives:
-- "To learn how to manipulate a data.frame in memory"
-- "To tour some best practices of exploring and understanding a data frame when it is first loaded."
+- "Be able to add and remove rows and columns."
+- "Be able to remove rows with `NA` values."
+- "Be able to append two data frames"
+- "Be able to articulate what a `factor` is and how to convert between `factor` and `character`."
+- "Be able to find basic properties of a data frames including size, class or type of the columns, names, and first few rows."
 keypoints:
-- "Use `cbind()` to add a new column to a dataframe."
-- "Use `rbind()` to add a new row to a dataframe."
-- "Use `omit()` to remove rows from a dataframe."
+- "Use `cbind()` to add a new column to a data frame."
+- "Use `rbind()` to add a new row to a data frame."
+- "Remove rows from a data frame."
+- "Use `na.omit()` to remove rows from a data frame with `NA` values."
+- "Use `levels()` and `as.character()` to explore and manipulate factors"
+- "Use `str()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()` and `typeof()` to understand structure of the data frame"
+- "Read in a csv file using `read.csv()`"
+- "Understand `length()` of a data frame"
+source: Rmd
 ---
 
 
@@ -19,11 +28,12 @@ keypoints:
 At this point, you've see it all - in the last lesson, we toured all the basic
 data types and data structures in R. Everything you do will be a manipulation of
 those tools. But a whole lot of the time, the star of the show is going to be
-the data.frame - that table that we started with that information from a CSV
-gets dumped into when we load it. In this lesson, we'll learn a few more things
-about working with data.frame.
+the data frame - the table that we created by loading information from a csv file. In this lesson, we'll learn a few more things
+about working with data frames.
 
-We learned last time that the columns in a data.frame were vectors, so that our
+## Adding columns and rows in data frame
+
+We learned last time that the columns in a data frame were vectors, so that our
 data are consistent in type throughout the column. As such, if we want to add a
 new column, we need to start by making a new vector:
 
@@ -40,9 +50,9 @@ cats
 
 ~~~
     coat weight likes_string
-1 calico    2.1         TRUE
-2  black    5.0        FALSE
-3  tabby    3.2         TRUE
+1 calico    2.1            1
+2  black    5.0            0
+3  tabby    3.2            1
 ~~~
 {: .output}
 
@@ -74,9 +84,9 @@ cats
 
 ~~~
     coat weight likes_string
-1 calico    2.1         TRUE
-2  black    5.0        FALSE
-3  tabby    3.2         TRUE
+1 calico    2.1            1
+2  black    5.0            0
+3  tabby    3.2            1
 ~~~
 {: .output}
 
@@ -93,14 +103,14 @@ cats
 
 ~~~
     coat weight likes_string age
-1 calico    2.1         TRUE   4
-2  black    5.0        FALSE   5
-3  tabby    3.2         TRUE   8
+1 calico    2.1            1   4
+2  black    5.0            0   5
+3  tabby    3.2            1   8
 ~~~
 {: .output}
 
 Now how about adding rows - in this case, we saw last time that the rows of a
-data.frame are made of lists:
+data frame are made of lists:
 
 
 ~~~
@@ -117,11 +127,18 @@ factor level, NA generated
 ~~~
 {: .error}
 
+## Factors
+
 Another thing to look out for has emerged - when R creates a factor, it only
 allows whatever is originally there when our data was first loaded, which was
 'black', 'calico' and 'tabby' in our case. Anything new that doesn't fit into
-one of its categories is rejected as nonsense, until we explicitly add that as a
-*level* in the factor:
+one of these categories is rejected as nonsense (becomes NA).
+
+The warning is telling us that we unsuccessfully added 'tortoiseshell' to our
+*coat* factor, but 3.3 (a numeric), TRUE (a logical), and 9 (a numeric) were
+successfully added to *weight*, *likes_string*, and *age*, respectfully, since
+those values are not factors. To successfully add a cat with a
+'tortoiseshell' *coat*, explicitly add 'tortoiseshell' as a *level* in the factor:
 
 
 ~~~
@@ -160,7 +177,7 @@ str(cats)
 'data.frame':	5 obs. of  4 variables:
  $ coat        : Factor w/ 4 levels "black","calico",..: 2 1 3 NA 4
  $ weight      : num  2.1 5 3.2 3.3 3.3
- $ likes_string: logi  TRUE FALSE TRUE TRUE TRUE
+ $ likes_string: int  1 0 1 1 1
  $ age         : num  4 5 8 9 9
 ~~~
 {: .output}
@@ -179,13 +196,16 @@ str(cats)
 'data.frame':	5 obs. of  4 variables:
  $ coat        : chr  "calico" "black" "tabby" NA ...
  $ weight      : num  2.1 5 3.2 3.3 3.3
- $ likes_string: logi  TRUE FALSE TRUE TRUE TRUE
+ $ likes_string: int  1 0 1 1 1
  $ age         : num  4 5 8 9 9
 ~~~
 {: .output}
 
-We now know how to add rows and columns to our data.frame in R - but in our work
-we've accidentally added a garbage row:
+## Removing rows
+
+We now know how to add rows and columns to our data frame in R - but in our
+first attempt to add a 'tortoiseshell' cat to the data frame we've accidentally
+added a garbage row:
 
 
 ~~~
@@ -197,15 +217,15 @@ cats
 
 ~~~
            coat weight likes_string age
-1        calico    2.1         TRUE   4
-2         black    5.0        FALSE   5
-3         tabby    3.2         TRUE   8
-4          <NA>    3.3         TRUE   9
-5 tortoiseshell    3.3         TRUE   9
+1        calico    2.1            1   4
+2         black    5.0            0   5
+3         tabby    3.2            1   8
+4          <NA>    3.3            1   9
+5 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
 
-We can ask for a data.frame minus this offending row:
+We can ask for a data frame minus this offending row:
 
 
 ~~~
@@ -217,17 +237,17 @@ cats[-4,]
 
 ~~~
            coat weight likes_string age
-1        calico    2.1         TRUE   4
-2         black    5.0        FALSE   5
-3         tabby    3.2         TRUE   8
-5 tortoiseshell    3.3         TRUE   9
+1        calico    2.1            1   4
+2         black    5.0            0   5
+3         tabby    3.2            1   8
+5 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
 
 Notice the comma with nothing after it to indicate we want to drop the entire fourth row.
 
 Note: We could also remove both new rows at once by putting the row numbers
-inside of a vector: `cats[c(4,5),]`
+inside of a vector: `cats[c(-4,-5),]`
 
 Alternatively, we can drop all rows with `NA` values:
 
@@ -241,10 +261,10 @@ na.omit(cats)
 
 ~~~
            coat weight likes_string age
-1        calico    2.1         TRUE   4
-2         black    5.0        FALSE   5
-3         tabby    3.2         TRUE   8
-5 tortoiseshell    3.3         TRUE   9
+1        calico    2.1            1   4
+2         black    5.0            0   5
+3         tabby    3.2            1   8
+5 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
 
@@ -256,8 +276,10 @@ cats <- na.omit(cats)
 ~~~
 {: .r}
 
-The key to remember when adding data to a data.frame is that *columns are
-vectors or factors, and rows are lists.* We can also glue two dataframes
+## Appending to a data frame
+
+The key to remember when adding data to a data frame is that *columns are
+vectors or factors, and rows are lists.* We can also glue two data frames
 together with `rbind`:
 
 
@@ -271,14 +293,14 @@ cats
 
 ~~~
             coat weight likes_string age
-1         calico    2.1         TRUE   4
-2          black    5.0        FALSE   5
-3          tabby    3.2         TRUE   8
-5  tortoiseshell    3.3         TRUE   9
-11        calico    2.1         TRUE   4
-21         black    5.0        FALSE   5
-31         tabby    3.2         TRUE   8
-51 tortoiseshell    3.3         TRUE   9
+1         calico    2.1            1   4
+2          black    5.0            0   5
+3          tabby    3.2            1   8
+5  tortoiseshell    3.3            1   9
+11        calico    2.1            1   4
+21         black    5.0            0   5
+31         tabby    3.2            1   8
+51 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
 But now the row names are unnecessarily complicated. We can remove the rownames,
@@ -295,26 +317,29 @@ cats
 
 ~~~
            coat weight likes_string age
-1        calico    2.1         TRUE   4
-2         black    5.0        FALSE   5
-3         tabby    3.2         TRUE   8
-4 tortoiseshell    3.3         TRUE   9
-5        calico    2.1         TRUE   4
-6         black    5.0        FALSE   5
-7         tabby    3.2         TRUE   8
-8 tortoiseshell    3.3         TRUE   9
+1        calico    2.1            1   4
+2         black    5.0            0   5
+3         tabby    3.2            1   8
+4 tortoiseshell    3.3            1   9
+5        calico    2.1            1   4
+6         black    5.0            0   5
+7         tabby    3.2            1   8
+8 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
 
 > ## Challenge 1
 >
-> You can create a new data.frame right from within R with the following syntax:
+> You can create a new data frame right from within R with the following syntax:
 > 
 > ~~~
-> df <- data.frame(id = c('a', 'b', 'c'), x = 1:3, y = c(TRUE, TRUE, FALSE), stringsAsFactors = FALSE)
+> df <- data.frame(id = c('a', 'b', 'c'),
+>                  x = 1:3,
+>                  y = c(TRUE, TRUE, FALSE),
+>                  stringsAsFactors = FALSE)
 > ~~~
 > {: .r}
-> Make a data.frame that holds the following information for yourself:
+> Make a data frame that holds the following information for yourself:
 >
 > - first name
 > - last name
@@ -326,7 +351,10 @@ cats
 > > ## Solution to Challenge 1
 > > 
 > > ~~~
-> > df <- data.frame(first = c('Grace'), last = c('Hopper'), lucky_number = c(0), stringsAsFactors = FALSE)
+> > df <- data.frame(first = c('Grace'),
+> >                  last = c('Hopper'),
+> >                  lucky_number = c(0),
+> >                  stringsAsFactors = FALSE)
 > > df <- rbind(df, list('Marie', 'Curie', 238) )
 > > df <- cbind(df, coffeetime = c(TRUE,TRUE))
 > > ~~~
@@ -334,7 +362,8 @@ cats
 > {: .solution}
 {: .challenge}
 
-So far, you've seen the basics of manipulating data.frames with our cat data;
+## Realistic example
+So far, you've seen the basics of manipulating data frames with our cat data;
 now, let's use those skills to digest a more realistic dataset. Lets read in the
 gapminder dataset that we downloaded previously:
 
@@ -347,12 +376,21 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv")
 > ## Miscellaneous Tips
 >
 > * Another type of file you might encounter are tab-separated value files (.tsv). To specify a tab as a separator, use `"\\t"` or `read.delim()`.
-> * You can also read in files from the Internet by replacing
-> the file paths with a web address. For example,
 >
+> * Files can also be downloaded directly from the Internet into a local
+> folder of your choice onto your computer using the `download.file` function.
+> The `read.csv` function can then be executed to read the downloaded file from the download location, for example,
 > 
 > ~~~
-> gapminder <- read.csv("https://swcarpentry.github.io/r-novice-gapminder/data/gapminder-FiveYearData.csv")
+> download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv", destfile = "data/gapminder-FiveYearData.csv")
+> gapminder <- read.csv("data/gapminder-FiveYearData.csv")
+> ~~~
+> {: .r}
+>
+> * Alternatively, you can also read in files directly into R from the Internet by replacing the file paths with a web address in `read.csv`. One should note that in doing this no local copy of the csv file is first saved onto your computer. For example,
+> 
+> ~~~
+> gapminder <- read.csv("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv")
 > ~~~
 > {: .r}
 >
@@ -382,7 +420,7 @@ str(gapminder)
 ~~~
 {: .output}
 
-We can also examine individual columns of the data.frame with our `typeof` function:
+We can also examine individual columns of the data frame with our `typeof` function:
 
 
 ~~~
@@ -394,20 +432,6 @@ typeof(gapminder$year)
 
 ~~~
 [1] "integer"
-~~~
-{: .output}
-
-
-
-~~~
-typeof(gapminder$lifeExp)
-~~~
-{: .r}
-
-
-
-~~~
-[1] "double"
 ~~~
 {: .output}
 
@@ -439,7 +463,7 @@ str(gapminder$country)
 ~~~
 {: .output}
 
-We can also interrogate the data.frame for information about its dimensions;
+We can also interrogate the data frame for information about its dimensions;
 remembering that `str(gapminder)` said there were 1704 observations of 6
 variables in gapminder, what do you think the following will produce, and why?
 
@@ -456,8 +480,8 @@ length(gapminder)
 ~~~
 {: .output}
 
-A fair guess would have been to say that the length of a data.frame would be the
-number of rows it has (1704), but this is not the case; remember, a data.frame
+A fair guess would have been to say that the length of a data frame would be the
+number of rows it has (1704), but this is not the case; remember, a data frame
 is a *list of vectors and factors*:
 
 
@@ -579,6 +603,7 @@ into a script file so we can come back to it later.
 > > The contents of `script/load-gapminder.R`:
 > > 
 > > ~~~
+> > download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv", destfile = "data/gapminder-FiveYearData.csv")
 > > gapminder <- read.csv(file = "data/gapminder-FiveYearData.csv")
 > > ~~~
 > > {: .r}

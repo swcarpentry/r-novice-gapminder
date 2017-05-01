@@ -10,6 +10,7 @@ objectives:
 - "To be able to seek help from your peers."
 keypoints:
 - "Use `help()` to get online help in R."
+source: Rmd
 ---
 
 ```{r, include=FALSE}
@@ -115,14 +116,14 @@ your issue.
 > ```{r, eval=FALSE}
 > c(1, 2, 3)
 > c('d', 'e', 'f')
-> c(1, 2, 'f')`
+> c(1, 2, 'f')
 > ```
 > > ## Solution to Challenge 1
 > >
 > > The `c()` function creates a vector, in which all elements are the
 > > same type. In the first case, the elements are numeric, in the
 > > second, they are characters, and in the third they are characters:
-> > the numeric values "coerced" to be characters.
+> > the numeric values are "coerced" to be characters.
 > {: .solution}
 {: .challenge}
 
@@ -133,12 +134,28 @@ your issue.
 >
 > > ## Solution to Challenge 2
 > >
-> > Look at the help for the `paste` function. You'll need to use this later.
-> >
+> > To look at the help for the `paste()` function, use:
 > > ```{r, eval=FALSE}
 > > help("paste")
 > > ?paste
 > > ```
+> > The difference between `sep` and `collapse` is a little
+> > tricky. The `paste` function accepts any number of arguments, each of which
+> > can be a vector of any length. The `sep` argument specifies the string
+> > used between concatenated terms — by default, a space. The result is a
+> > vector as long as the longest argument supplied to `paste`. In contrast,
+> > `collapse` specifies that after concatenation the elements are *collapsed*
+> > together using the given separator, the result being a single string.
+> > e.g. 
+> > ```{r} 
+> > paste(c("a","b"), "c")
+> > paste(c("a","b"), "c", sep = ",")
+> > paste(c("a","b"), "c", collapse = "|")
+> > paste(c("a","b"), "c", sep = ",", collapse = "|")
+> > ```
+> > (For more information,
+> > scroll to the bottom of the `?paste` help page and look at the
+> > examples, or try `example('paste')`.)
 > {: .solution}
 {: .challenge}
 
@@ -150,6 +167,15 @@ your issue.
 > colleagues, because different countries have different conventions for the
 > decimal point (i.e. comma vs period).
 > hint: use `??csv` to lookup csv related functions.
+> > ## Solution to Challenge 3
+> >
+> > The standard R function for reading tab-delimited files with a period
+> > decimal separator is read.delim(). You can also do this with
+> > `read.table(file, sep="\t")` (the period is the *default* decimal
+> > separator for `read.table()`, although you may have to change
+> > the `comment.char` argument as well if your data file contains
+> > hash (#) characters
+> {: solution}
 {: .challenge}
 
 ## Other ports of call

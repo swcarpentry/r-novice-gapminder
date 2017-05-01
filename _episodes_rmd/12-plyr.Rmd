@@ -8,6 +8,7 @@ objectives:
 - "To be able to use the split-apply-combine strategy for data analysis."
 keypoints:
 - "Use the `plyr` package to split data, apply functions to subsets, and combine the results."
+source: Rmd
 ---
 
 ```{r, include=FALSE}
@@ -80,7 +81,7 @@ functions that we find more user friendly for solving this problem.
 We installed this package in an earlier challenge. Let's load it now:
 
 ```{r}
-library(plyr)
+library("plyr")
 ```
 
 Plyr has functions for operating on `lists`, `data.frames` and `arrays`
