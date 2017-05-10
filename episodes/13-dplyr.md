@@ -359,6 +359,64 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 ~~~
 {: .r}
 
+## count() and n()
+
+A very common operation is to count the number of observations for each
+group. The `dplyr` package comes with two related functions that help with this.
+
+For instance, if we wanted to check the number of countries included in the
+dataset for the year 2002, we can use the `count()` function. It takes the name
+of one or more columns that contain the groups we are interested in, and we can
+optionally sort the results in descending order by adding `sort=TRUE`:
+
+
+~~~
+gapminder %>%
+    filter(year == 2002) %>%
+    count(continent, sort = TRUE)
+~~~
+{: .r}
+
+
+
+~~~
+# A tibble: 5 × 2
+  continent     n
+     <fctr> <int>
+1    Africa    52
+2      Asia    33
+3    Europe    30
+4  Americas    25
+5   Oceania     2
+~~~
+{: .output}
+
+If we need to use the number of observations in calculations, the `n()` function
+is useful. For instance, if we wanted to get the standard error of the life
+expectency per continent:
+
+
+~~~
+gapminder %>%
+    group_by(continent) %>%
+    summarize(se_pop = sd(lifeExp)/sqrt(n()))
+~~~
+{: .r}
+
+
+
+~~~
+# A tibble: 5 × 2
+  continent    se_pop
+     <fctr>     <dbl>
+1    Africa 0.3663016
+2  Americas 0.5395389
+3      Asia 0.5962151
+4    Europe 0.2863536
+5   Oceania 0.7747759
+~~~
+{: .output}
+
 ## Using mutate()
 
 We can also create new variables prior to (or even after) summarizing information using `mutate()`.
@@ -395,7 +453,7 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color = continent)) +
 ~~~
 {: .r}
 
-<img src="../fig/rmd-13-unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" style="display: block; margin: auto;" />
+<img src="../fig/rmd-13-unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" style="display: block; margin: auto;" />
 
 This code makes the right plot but it also creates some variables (`starts.with`
 and `az.countries`) that we might not have any other uses for. Just as we used
@@ -419,7 +477,7 @@ gapminder %>%
 ~~~
 {: .r}
 
-<img src="../fig/rmd-13-unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" style="display: block; margin: auto;" />
+<img src="../fig/rmd-13-unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" style="display: block; margin: auto;" />
 
 Using `dplyr` functions also helps us simplify things, for example we could
 combine the first two steps:
@@ -436,7 +494,7 @@ gapminder %>%
 ~~~
 {: .r}
 
-<img src="../fig/rmd-13-unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" style="display: block; margin: auto;" />
+<img src="../fig/rmd-13-unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" style="display: block; margin: auto;" />
 
 > ## Advanced Challenge
 >
