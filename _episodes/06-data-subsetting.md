@@ -642,29 +642,16 @@ of shorter object length
 ~~~
 {: .output}
 
-Obviously "c" is in the names of `x`, so why didn't this work? `==` works
-slightly differently than `%in%`. It will compare each element of its left argument
-to the corresponding element of its right argument.
+Obviously "c" is in the names of `x`, so why didn't this work? `==`
+works slightly differently than `%in%`. It will compare each element
+of its left argument to the corresponding element of its right
+argument. What happens when you compare vectors of different lengths?
 
-Here's a mock illustration:
-
-
-~~~
-c("a", "a", "a")  # names of x
-   |    |    |    # The elements == is comparing
-c("a", "c")
-~~~
-{: .r}
+![Equality testing](../fig/rmd-06-equality.1.png)
 
 When one vector is shorter than the other, it gets *recycled*:
 
-
-~~~
-c("a", "a", "a")  # names of x
-   |    |    |    # The elements == is comparing
-c("a", "c", "a")
-~~~
-{: .r}
+![Equality testing](../fig/rmd-06-equality.2.png)
 
 In this case R simply repeats `c("a", "c")` twice. Since the recycled "a"
 matches x again we got the output: TRUE FALSE TRUE
