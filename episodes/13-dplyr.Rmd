@@ -263,6 +263,35 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
               sd_gdp_billion=sd(gdp_billion))
 ```
 
+## Connect mutate with logical filtering: ifelse
+
+When creating new variables, we can hook this with a logical condition. A simple combination of 
+`mutate()` and `ifelse()` facilitates filtering right where it is needed: in the moment of creating something new.
+This easy-to-read statement is a fast and powerful way of discarding certain data (even though the overall dimension
+of the data frame will not change) or for updating values depending on this given condition.
+
+```{r}
+## keeping all data but "filtering" after a certain condition
+# calculate GDP only for people with a life expectation above 25
+gdp_pop_bycontinents_byyear_above25 <- gapminder %>%
+    mutate(gdp_billion = ifelse(lifeExp > 25, gdpPercap * pop / 10^9, NA)) %>%
+    group_by(continent, year) %>%
+    summarize(mean_gdpPercap = mean(gdpPercap),
+              sd_gdpPercap = sd(gdpPercap),
+              mean_pop = mean(pop),
+              sd_pop = sd(pop),
+              mean_gdp_billion = mean(gdp_billion),
+              sd_gdp_billion = sd(gdp_billion))
+
+## updating only if certain condition is fullfilled
+# for life expectations above 40 years, the gpd to be expected in the future is scaled
+gdp_future_bycontinents_byyear_high_lifeExp <- gapminder %>%
+    mutate(gdp_futureExpectation = ifelse(lifeExp > 40, gdpPercap * 1.5, gdpPercap)) %>%
+    group_by(continent, year) %>%
+    summarize(mean_gdpPercap = mean(gdpPercap),
+              mean_gdpPercap_expected = mean(gdp_futureExpectation))
+```
+
 ## Combining `dplyr` and `ggplot2`
 
 In the plotting lesson we looked at how to make a multi-panel figure by adding
