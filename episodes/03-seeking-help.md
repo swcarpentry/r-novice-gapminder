@@ -115,9 +115,13 @@ sessionInfo()
 
 
 ~~~
-R version 3.3.3 (2017-03-06)
-Platform: x86_64-apple-darwin16.4.0 (64-bit)
-Running under: macOS Sierra 10.12.3
+R version 3.4.0 (2017-04-21)
+Platform: x86_64-apple-darwin16.5.0 (64-bit)
+Running under: macOS Sierra 10.12.4
+
+Matrix products: default
+BLAS: /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib
+LAPACK: /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libLAPACK.dylib
 
 locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -126,10 +130,11 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
 
 other attached packages:
-[1] checkpoint_0.3.18 stringr_1.2.0     knitr_1.15.1     
+[1] checkpoint_0.4.0 stringr_1.2.0    knitr_1.15.1    
 
 loaded via a namespace (and not attached):
-[1] magrittr_1.5  tools_3.3.3   stringi_1.1.2 methods_3.3.3 evaluate_0.10
+[1] compiler_3.4.0 magrittr_1.5   tools_3.4.0    stringi_1.1.5 
+[5] methods_3.4.0  evaluate_0.10 
 ~~~
 {: .output}
 
@@ -172,12 +177,68 @@ your issue.
 > > ~~~
 > > {: .r}
 > > The difference between `sep` and `collapse` is a little
-> > tricky. The `sep` argument specifies what separator character to use
-> > when you specify several different *arguments* to `paste()`,
-> > e.g. `paste('a', 'b', sep=',')`. In contrast, `collapse` specifies
-> > what separator character to use when combining a set of strings that
-> > are all specified as part of the same *vector*,
-> > e.g. `paste(c('a','b'), collapse=',')`. (For more information,
+> > tricky. The `paste` function accepts any number of arguments, each of which
+> > can be a vector of any length. The `sep` argument specifies the string
+> > used between concatenated terms — by default, a space. The result is a
+> > vector as long as the longest argument supplied to `paste`. In contrast,
+> > `collapse` specifies that after concatenation the elements are *collapsed*
+> > together using the given separator, the result being a single string.
+> > e.g. 
+> > 
+> > ~~~
+> > paste(c("a","b"), "c")
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> > [1] "a c" "b c"
+> > ~~~
+> > {: .output}
+> > 
+> > 
+> > 
+> > ~~~
+> > paste(c("a","b"), "c", sep = ",")
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> > [1] "a,c" "b,c"
+> > ~~~
+> > {: .output}
+> > 
+> > 
+> > 
+> > ~~~
+> > paste(c("a","b"), "c", collapse = "|")
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> > [1] "a c|b c"
+> > ~~~
+> > {: .output}
+> > 
+> > 
+> > 
+> > ~~~
+> > paste(c("a","b"), "c", sep = ",", collapse = "|")
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> > [1] "a,c|b,c"
+> > ~~~
+> > {: .output}
+> > (For more information,
 > > scroll to the bottom of the `?paste` help page and look at the
 > > examples, or try `example('paste')`.)
 > {: .solution}
