@@ -736,6 +736,7 @@ network). R and RStudio have functionality for managing packages:
 > min-length
 > 2widths
 > celsius2kelvin
+> if
 > ~~~
 > {: .r}
 >
@@ -761,9 +762,17 @@ network). R and RStudio have functionality for managing packages:
 > > The following will not be able to be used to create a variable
 > > 
 > > ~~~
-> > _age
+> > _age 
+> >     * We can only start variable names with letters or dots not followed by a number.
 > > min-length
-> > 2widths
+> >     * We can only use letters, numbers, dots, and underline characters. 
+> > 2widths 
+> >     * We can't start our assignment with a number.
+> > if 
+> >     * 'if' is considered a reserved word. 
+> >     * Reserved words are required by the R language to operate correctly. 
+> >     * These words are considered fixed and can't be assigned to a variable.
+> >     * There are about 20 of these reserved words which we will explore in later lessons. 
 > > ~~~
 > > {: .r}
 > {: .solution}
