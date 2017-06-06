@@ -56,7 +56,7 @@ Different functions might have different sections, but these are the main ones y
 To seek help on special operators, use quotes:
 
 ```{r, eval=FALSE}
-?"+"
+?"<-"
 ```
 
 ## Getting help on packages
