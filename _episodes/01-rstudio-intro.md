@@ -285,7 +285,7 @@ sin(1)  # trigonometry functions
 
 
 ~~~
-log(1)  # natural logarithm
+exp(1)  # natural logarithm
 ~~~
 {: .r}
 
