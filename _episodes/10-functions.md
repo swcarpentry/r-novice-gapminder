@@ -495,8 +495,7 @@ which is much better than in our first attempt where we got a vector of numbers.
 > knowledge of these more advanced concepts. In the future when you are
 > comfortable writing functions in R, you can learn more by reading the
 > [R Language Manual][man] or this [chapter][] from
-> [Advanced R Programming][adv-r] by Hadley Wickham. For context, R uses the
-> terminology "environments" instead of frames.
+> [Advanced R Programming][adv-r] by Hadley Wickham. 
 {: .callout}
 
 [man]: http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects
