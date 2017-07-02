@@ -642,8 +642,7 @@ of shorter object length
 ~~~
 {: .output}
 
-Obviously "c" is in the names of `x`, so why didn't this work? `==`
-works slightly differently than `%in%`. It will compare each element
+Why did we get this result? `==` works slightly differently than `%in%`. It will compare each element
 of its left argument to the corresponding element of its right
 argument. What happens when you compare vectors of different lengths?
 
