@@ -577,8 +577,9 @@ output_vector2
 > >
 > > 
 > > ~~~
+> > thresholdValue<-50
 > > candidateCountries <- grep("^B", unique(gapminder$country), value=TRUE)
-> > > >
+> > 
 > > for( iCountry in candidateCountries){
 > >     tmp <- mean(subset(gapminder, country==iCountry)$lifeExp)
 > >     
@@ -595,8 +596,11 @@ output_vector2
 > >               ) # end with
 > >     } # end for loop
 > >     rm(tmp)
-> >  }```
-> > > {: .solution}
-> > {: .challenge}
+> >  }
+> {: .solution}
+{: .challenge}
+> > ~~~
+> > {: .r}
+
 > > ~~~
 > > {: .r}
