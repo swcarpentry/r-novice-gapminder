@@ -1296,7 +1296,7 @@ xlist$data
 Remember the data frames are lists underneath the hood, so similar rules
 apply. However they are also two dimensional objects:
 
-`[` with one argument will act the same was as for lists, where each list
+`[` with one argument will act the same way as for lists, where each list
 element corresponds to a column. The resulting object will be a data frame:
 
 
