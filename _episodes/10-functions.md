@@ -421,6 +421,9 @@ which is much better than in our first attempt where we got a vector of numbers.
 >
 > > ## Solution to challenge 3
 > >
+> > ~~~
+> >   calcGDP(gapminder, year=c(1952,1987), country="New Zealand")
+> > ~~~
 > > GDP for New Zealand in 1987: 65050008703
 > >
 > > GDP for New Zealand in 1952: 21058193787
