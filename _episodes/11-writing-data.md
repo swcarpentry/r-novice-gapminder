@@ -193,6 +193,17 @@ That looks better!
 >
 > Use this script to write out the new subset to a file
 > in the `cleaned-data/` directory.
+> > ## Solution to challenge 2
+> >
+> > ~~~
+> > write.table(
+> >   gapminder[gapminder$year > 1990,],
+> >   file="cleaned-data/gapminder-after1990.csv",
+> >   sep=",", quote=FALSE, row.names=FALSE
+> > )
+> > ~~~
+> > {: .r}
+> {: .solution}
 {: .challenge}
 
 
