@@ -642,8 +642,7 @@ of shorter object length
 ~~~
 {: .output}
 
-Obviously "c" is in the names of `x`, so why didn't this work? `==`
-works slightly differently than `%in%`. It will compare each element
+Why did we get this result? `==` works slightly differently than `%in%`. It will compare each element
 of its left argument to the corresponding element of its right
 argument. What happens when you compare vectors of different lengths?
 
@@ -1081,8 +1080,7 @@ instead of their row and column indices.
 ## List subsetting
 
 Now we'll introduce some new subsetting operators. There are three functions
-used to subset lists. `[`, as we've seen for atomic vectors and matrices,
-as well as `[[` and `$`.
+used to subset lists. We've already seen these when learning about atomic vectors and matrices:  `[`, `[[` and `$`.
 
 Using `[` will always return a list. If you want to *subset* a list, but not
 *extract* an element, then you will likely use `[`.
@@ -1297,7 +1295,7 @@ xlist$data
 Remember the data frames are lists underneath the hood, so similar rules
 apply. However they are also two dimensional objects:
 
-`[` with one argument will act the same was as for lists, where each list
+`[` with one argument will act the same way as for lists, where each list
 element corresponds to a column. The resulting object will be a data frame:
 
 

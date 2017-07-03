@@ -244,7 +244,7 @@ value `continent` (at least in the example above).
 
 ## Using summarize()
 
-The above was a bit on the uneventful side because `group_by()` much more
+The above was a bit on the uneventful side but `group_by()` is much more
 exciting in conjunction with `summarize()`. This will allow use to create new
 variable(s) by using functions that repeat for each of the continent-specific
 data frames. That is to say, using the `group_by()` function, we split our
@@ -260,6 +260,17 @@ gdp_bycontinents <- gapminder %>%
 {: .r}
 
 ![](../fig/13-dplyr-fig3.png)
+
+~~~
+continent mean_gdpPercap
+     <fctr>          <dbl>
+1    Africa       2193.755
+2  Americas       7136.110
+3      Asia       7902.150
+4    Europe      14469.476
+5   Oceania      18621.609
+~~~
+{: .output}
 
 That allowed us to calculate the mean gdpPercap for each continent, but it gets
 even better.
