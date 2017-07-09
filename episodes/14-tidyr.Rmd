@@ -129,6 +129,8 @@ We'll load the data file and look at it.  Note: we don't want our continent and
 country columns to be factors, so we use the stringsAsFactors argument for
 `read.csv()` to disable that.
 
+**** PROVIDE LINK TO gapminder_wide.csv HERE ****
+
 ```{r}
 gap_wide <- read.csv("data/gapminder_wide.csv", stringsAsFactors = FALSE)
 str(gap_wide)
