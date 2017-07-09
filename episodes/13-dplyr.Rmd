@@ -153,7 +153,7 @@ value `continent` (at least in the example above).
 
 ## Using summarize()
 
-The above was a bit on the uneventful side because `group_by()` much more
+The above was a bit on the uneventful side but `group_by()` is much more
 exciting in conjunction with `summarize()`. This will allow use to create new
 variable(s) by using functions that repeat for each of the continent-specific
 data frames. That is to say, using the `group_by()` function, we split our
