@@ -436,6 +436,7 @@ output_vector2
 > > Inside the loop, we evaluate the average life expectancy for each country, and if the average life expectancy is less than 50 we use base-plot to plot the evolution of average life expectancy:
 > >
 > > ```{r 07-chall-05-sol-c, eval=FALSE}
+> > thresholdValue<-50
 > > candidateCountries <- grep("^B", unique(gapminder$country), value=TRUE)
 > >
 > > for( iCountry in candidateCountries){
