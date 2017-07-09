@@ -168,6 +168,16 @@ gdp_bycontinents <- gapminder %>%
 
 ![](../fig/13-dplyr-fig3.png)
 
+```{r,eval=FALSE}
+continent mean_gdpPercap
+     <fctr>          <dbl>
+1    Africa       2193.755
+2  Americas       7136.110
+3      Asia       7902.150
+4    Europe      14469.476
+5   Oceania      18621.609
+```
+
 That allowed us to calculate the mean gdpPercap for each continent, but it gets
 even better.
 
