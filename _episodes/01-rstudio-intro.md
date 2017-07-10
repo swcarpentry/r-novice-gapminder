@@ -8,13 +8,14 @@ questions:
 - "How to manage your environment?"
 - "How to install packages?"
 objectives:
-- "To gain familiarity with the various panes in the RStudio IDE"
-- "To gain familiarity with the buttons, short cuts and options in the RStudio IDE"
-- "To understand variables and how to assign to them"
-- "To be able to manage your workspace in an interactive R session"
-- "To be able to use mathematical and comparison operations"
-- "To be able to call functions"
-- "Introduction to package management"
+- "Describe the purpose and use of each pane in the RStudio IDE"
+- "Locate buttons and options in the RStudio IDE"
+- "Define a variable"
+- "Assign data to a variable"
+- "Manage a workspace in an interactive R session"
+- "Use mathematical and comparison operators"
+- "Call functions"
+- "Manage packages"
 keypoints:
 - "Use RStudio to write and run R programs."
 - "R has the usual arithmetic operators and mathematical functions."
@@ -499,6 +500,7 @@ Assignment values can contain the variable being assigned to:
 
 ~~~
 x <- x + 1 #notice how RStudio updates its description of x on the top right tab
+y <- x * 2
 ~~~
 {: .r}
 
@@ -652,7 +654,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7fc1f7492e28>
+<bytecode: 0x1f19e00>
 <environment: namespace:base>
 ~~~
 {: .output}
