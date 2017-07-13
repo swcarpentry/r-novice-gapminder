@@ -17,8 +17,8 @@ source: Rmd
 
 ## Reading Help files
 
-R, and every package, provide help files for functions. To search for help on a
-function from a specific function that is in a package loaded into your
+R, and every package, provide help files for functions. The general syntax to search for help on any
+function, "function_name", from a specific function that is in a package loaded into your
 namespace (your interactive R session):
 
 
@@ -56,7 +56,7 @@ To seek help on special operators, use quotes:
 
 
 ~~~
-?"+"
+?"<-"
 ~~~
 {: .r}
 
@@ -116,21 +116,26 @@ sessionInfo()
 
 ~~~
 R version 3.4.0 (2017-04-21)
-Platform: x86_64-apple-darwin16.5.0 (64-bit)
-Running under: macOS Sierra 10.12.4
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 16.04.2 LTS
 
 Matrix products: default
-BLAS: /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib
-LAPACK: /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libLAPACK.dylib
+BLAS: /usr/lib/openblas-base/libblas.so.3
+LAPACK: /usr/lib/libopenblasp-r0.2.18.so
 
 locale:
-[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
 
 other attached packages:
-[1] checkpoint_0.4.0 stringr_1.2.0    knitr_1.15.1    
+[1] checkpoint_0.4.1 stringr_1.2.0    knitr_1.16      
 
 loaded via a namespace (and not attached):
 [1] compiler_3.4.0 magrittr_1.5   tools_3.4.0    stringi_1.1.5 
