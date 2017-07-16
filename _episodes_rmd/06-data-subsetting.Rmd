@@ -556,7 +556,7 @@ instead of their row and column indices.
 ## List subsetting
 
 Now we'll introduce some new subsetting operators. There are three functions
-used to subset lists. We've already seen these when learning about atomic vectors and matrices:  `[`, `[[` and `$`.
+used to subset lists. We've already seen these when learning about atomic vectors and matrices:  `[`, `[[`, and `$`.
 
 Using `[` will always return a list. If you want to *subset* a list, but not
 *extract* an element, then you will likely use `[`.
