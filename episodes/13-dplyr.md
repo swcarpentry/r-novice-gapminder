@@ -100,6 +100,14 @@ library("dplyr")
 ~~~
 {: .r}
 
+
+
+~~~
+Warning: Installed Rcpp (0.12.12) different from Rcpp used to build dplyr (0.12.11).
+Please reinstall dplyr to avoid random crashes or undefined behavior.
+~~~
+{: .error}
+
 ## Using select()
 
 If, for example, we wanted to move forward with only a few of the variables in
@@ -216,8 +224,7 @@ Classes 'grouped_df', 'tbl_df', 'tbl' and 'data.frame':	1704 obs. of  6 variable
  $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
  $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
  $ gdpPercap: num  779 821 853 836 740 ...
- - attr(*, "vars")=List of 1
-  ..$ : symbol continent
+ - attr(*, "vars")= chr "continent"
  - attr(*, "drop")= logi TRUE
  - attr(*, "indices")=List of 5
   ..$ : int  24 25 26 27 28 29 30 31 32 33 ...
@@ -229,8 +236,7 @@ Classes 'grouped_df', 'tbl_df', 'tbl' and 'data.frame':	1704 obs. of  6 variable
  - attr(*, "biggest_group_size")= int 624
  - attr(*, "labels")='data.frame':	5 obs. of  1 variable:
   ..$ continent: Factor w/ 5 levels "Africa","Americas",..: 1 2 3 4 5
-  ..- attr(*, "vars")=List of 1
-  .. ..$ : symbol continent
+  ..- attr(*, "vars")= chr "continent"
   ..- attr(*, "drop")= logi TRUE
 ~~~
 {: .output}
@@ -284,7 +290,7 @@ even better.
 > >
 > >
 > >~~~
-> ># A tibble: 2 × 2
+> ># A tibble: 2 x 2
 > >       country mean_lifeExp
 > >        <fctr>        <dbl>
 > >1      Iceland     76.51142
@@ -307,7 +313,7 @@ even better.
 > >
 > >
 > >~~~
-> ># A tibble: 1 × 2
+> ># A tibble: 1 x 2
 > >       country mean_lifeExp
 > >        <fctr>        <dbl>
 > >1 Sierra Leone     36.76917
@@ -326,7 +332,7 @@ even better.
 > >
 > >
 > >~~~
-> ># A tibble: 1 × 2
+> ># A tibble: 1 x 2
 > >  country mean_lifeExp
 > >   <fctr>        <dbl>
 > >1 Iceland     76.51142
@@ -380,7 +386,7 @@ gapminder %>%
 
 
 ~~~
-# A tibble: 5 × 2
+# A tibble: 5 x 2
   continent     n
      <fctr> <int>
 1    Africa    52
@@ -406,7 +412,7 @@ gapminder %>%
 
 
 ~~~
-# A tibble: 5 × 2
+# A tibble: 5 x 2
   continent    se_pop
      <fctr>     <dbl>
 1    Africa 0.3663016
