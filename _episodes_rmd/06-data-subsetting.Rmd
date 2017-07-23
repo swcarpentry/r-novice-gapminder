@@ -393,7 +393,7 @@ x[! names(x) %in% c("a","c") ]
 > > `FALSE` values), because none of the recycled values of `seAsia` happen
 > > to line up correctly with matching values in `country`.
 > > - The **clunky** (but technically correct) way to do this problem is
-> > ```{r}
+> > ```{r results="hide"}
 > >  (countries=="Myanmar" | countries=="Thailand" |
 > >  countries=="Cambodia" | countries == "Vietnam" | countries=="Laos")
 > > ```
