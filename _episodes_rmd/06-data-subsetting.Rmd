@@ -297,7 +297,7 @@ x[names(x) == "a"]
 > names(x) <- c('a', 'a', 'a')
 > x
 > x['a']  # only returns first value
-> x[which(names(x) == 'a')]  # returns all three values
+> x[names(x) == 'a']  # returns all three values
 > ```
 {: .callout}
 
@@ -328,7 +328,7 @@ Skipping multiple named indices is a little bit harder still. Suppose we want to
 x[names(x)!=c("a","c")]
 ```
 
-R did *something*, but it gave us a warning which we ought to pay attention to - and it apparently *gave us the wrong answer* (the `"c"` element is still included in the vector)!
+R did *something*, but it gave us a warning that we ought to pay attention to - and it apparently *gave us the wrong answer* (the `"c"` element is still included in the vector)!
 
 So what does `!=` actually do in this case? That's an excellent question.
 
@@ -407,7 +407,7 @@ x[! names(x) %in% c("a","c") ]
 
 ## Handling special values
 
-At some point you will encounter functions in R which cannot handle missing, infinite,
+At some point you will encounter functions in R that cannot handle missing, infinite,
 or undefined data.
 
 There are a number of special functions you can use to filter out this data:
