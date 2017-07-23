@@ -13,7 +13,7 @@ keypoints:
 - "Access individual values by location using `[]`."
 - "Access slices of data using `[low:high]`."
 - "Access arbitrary sets of data using `[c(...)]`."
-- "Use `which` to select subsets of data based on value."
+- "Use logical operations and logical vectors to access subsets of data."
 source: Rmd
 ---
 
@@ -373,6 +373,8 @@ x[! names(x) %in% c("a","c") ]
 > Suppose you have these data:
 > ```{r}
 > seAsia <- c("Myanmar","Thailand","Cambodia","Vietnam","Laos")
+> ## read in the gapminder data that we downloaded in episode 2
+> gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
 > ## extract the `country` column from a data frame (we'll see this later);
 > ## convert from a factor to a character;
 > ## and get just the non-repeated elements
