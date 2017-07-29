@@ -82,7 +82,7 @@ one of these categories is rejected as nonsense (becomes NA).
 
 The warning is telling us that we unsuccessfully added 'tortoiseshell' to our
 *coat* factor, but 3.3 (a numeric), TRUE (a logical), and 9 (a numeric) were
-successfully added to *weight*, *likes_string*, and *age*, respectfully, since
+successfully added to *weight*, *likes_string*, and *age*, respectively, since
 those values are not factors. To successfully add a cat with a
 'tortoiseshell' *coat*, explicitly add 'tortoiseshell' as a *level* in the factor:
 
@@ -185,7 +185,7 @@ cats
 
 ## Realistic example
 So far, you've seen the basics of manipulating data frames with our cat data;
-now, let's use those skills to digest a more realistic dataset. Lets read in the
+now, let's use those skills to digest a more realistic dataset. Let's read in the
 gapminder dataset that we downloaded previously:
 
 ```{r}
