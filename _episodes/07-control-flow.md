@@ -577,6 +577,7 @@ output_vector2
 > >
 > > 
 > > ~~~
+> > thresholdValue <- 50
 > > candidateCountries <- grep("^B", unique(gapminder$country), value=TRUE)
 > > > >
 > > for( iCountry in candidateCountries){
