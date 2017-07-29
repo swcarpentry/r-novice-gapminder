@@ -117,7 +117,7 @@ sessionInfo()
 ~~~
 R version 3.4.1 (2017-06-30)
 Platform: x86_64-apple-darwin16.6.0 (64-bit)
-Running under: macOS Sierra 10.12.5
+Running under: macOS Sierra 10.12.6
 
 Matrix products: default
 BLAS: /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib

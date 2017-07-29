@@ -121,6 +121,8 @@ Until now, we've been using the nicely formatted original gapminder dataset, but
 'real' data (i.e. our own research data) will never be so well organized. Here
 let's start with the wide format version of the gapminder dataset.
 
+> Download the wide version of the gapminder data from [here](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_wide.csv) 
+and save it in your data folder.
 
 We'll load the data file and look at it.  Note: we don't want our continent and
 country columns to be factors, so we use the stringsAsFactors argument for
