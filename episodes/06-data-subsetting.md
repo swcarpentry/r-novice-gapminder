@@ -393,6 +393,7 @@ We can extract elements by using their name, instead of extracting by index:
 
 
 ~~~
+x <- c(a=5.4, b=6.2, c=7.1, d=4.8, e=7.5) # we can name a vector 'on the fly'
 x[c("a", "c")]
 ~~~
 {: .r}

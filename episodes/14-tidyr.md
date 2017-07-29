@@ -37,7 +37,7 @@ efficiently transform your data regardless of original format.
 
 These data formats mainly affect readability. For humans, the wide format is
 often more intuitive since we can often see more of the data on the screen due
-to it's shape. However, the long format is more machine readable and is closer
+to its shape. However, the long format is more machine readable and is closer
 to the formatting of databases. The ID variables in our dataframes are similar to
 the fields in a database and observed variables are like the database values.
 
