@@ -262,7 +262,7 @@ names of `x`, and asks, "Does this element occur in the second argument?".
 >```
 >
 > Try out this command and see what you get. Did this match your expectation?
-> Why did we get this result? (Tip: test out each part of the command on it's own - this is a useful debugging strategy)
+> Why did we get this result? (Tip: test out each part of the command on its own - this is a useful debugging strategy)
 >
 > Which of the following are true:
 >
