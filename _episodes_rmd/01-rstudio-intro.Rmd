@@ -343,6 +343,7 @@ Assignment values can contain the variable being assigned to:
 
 ```{r}
 x <- x + 1 #notice how RStudio updates its description of x on the top right tab
+y <- x * 2
 ```
 
 The right hand side of the assignment can be any valid R expression.
