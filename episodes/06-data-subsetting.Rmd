@@ -314,6 +314,7 @@ x[names(x) == "a"]
 Skipping or removing named elements is a little harder. If we try to skip one named element by negating the string, R complains (slightly obscurely) that it doesn't know how to take the negative of a string:
 
 ```{r}
+x <- c(a=5.4, b=6.2, c=7.1, d=4.8, e=7.5) # we start again by naming a vector 'on the fly'
 x[-"a"]
 ```
 
