@@ -619,6 +619,7 @@ Skipping or removing named elements is a little harder. If we try to skip one na
 
 
 ~~~
+x <- c(a=5.4, b=6.2, c=7.1, d=4.8, e=7.5) # we start again by naming a vector 'on the fly'
 x[-"a"]
 ~~~
 {: .r}
@@ -641,7 +642,8 @@ x[names(x) != "a"]
 
 
 ~~~
-named integer(0)
+  b   c   d   e 
+6.2 7.1 4.8 7.5 
 ~~~
 {: .output}
 
@@ -664,8 +666,8 @@ of shorter object length
 
 
 ~~~
-a 
-2 
+  b   c   d   e 
+6.2 7.1 4.8 7.5 
 ~~~
 {: .output}
 
@@ -694,7 +696,7 @@ of shorter object length
 
 
 ~~~
-[1] FALSE  TRUE FALSE
+[1] FALSE  TRUE  TRUE  TRUE  TRUE
 ~~~
 {: .output}
 
@@ -724,7 +726,8 @@ x[! names(x) %in% c("a","c") ]
 
 
 ~~~
-named integer(0)
+  b   d   e 
+6.2 4.8 7.5 
 ~~~
 {: .output}
 
