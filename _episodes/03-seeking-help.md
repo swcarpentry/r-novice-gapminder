@@ -260,7 +260,7 @@ your issue.
 > > separator for `read.table()`, although you may have to change
 > > the `comment.char` argument as well if your data file contains
 > > hash (#) characters
-> {: solution}
+> {: .solution}
 {: .challenge}
 
 ## Other ports of call
