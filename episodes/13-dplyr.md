@@ -100,6 +100,14 @@ library("dplyr")
 ~~~
 {: .r}
 
+
+
+~~~
+Warning: Installed Rcpp (0.12.12) different from Rcpp used to build dplyr (0.12.11).
+Please reinstall dplyr to avoid random crashes or undefined behavior.
+~~~
+{: .error}
+
 ## Using select()
 
 If, for example, we wanted to move forward with only a few of the variables in
