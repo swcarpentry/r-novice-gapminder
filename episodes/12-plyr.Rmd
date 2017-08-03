@@ -45,7 +45,7 @@ run calculations on different groups within the data. In the above, we were
 simply calculating the GDP by multiplying two columns together. But what if
 we wanted to calculated the mean GDP per continent?
 
-We could run `calcGPD` and then take the mean of each continent:
+We could run `calcGDP` and then take the mean of each continent:
 
 ```{r}
 withGDP <- calcGDP(gapminder)
