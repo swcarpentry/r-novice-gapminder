@@ -100,14 +100,6 @@ library("dplyr")
 ~~~
 {: .r}
 
-
-
-~~~
-Warning: Installed Rcpp (0.12.12) different from Rcpp used to build dplyr (0.12.11).
-Please reinstall dplyr to avoid random crashes or undefined behavior.
-~~~
-{: .error}
-
 ## Using select()
 
 If, for example, we wanted to move forward with only a few of the variables in
@@ -224,7 +216,8 @@ Classes 'grouped_df', 'tbl_df', 'tbl' and 'data.frame':	1704 obs. of  6 variable
  $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
  $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
  $ gdpPercap: num  779 821 853 836 740 ...
- - attr(*, "vars")= chr "continent"
+ - attr(*, "vars")=List of 1
+  ..$ : symbol continent
  - attr(*, "drop")= logi TRUE
  - attr(*, "indices")=List of 5
   ..$ : int  24 25 26 27 28 29 30 31 32 33 ...
@@ -236,7 +229,8 @@ Classes 'grouped_df', 'tbl_df', 'tbl' and 'data.frame':	1704 obs. of  6 variable
  - attr(*, "biggest_group_size")= int 624
  - attr(*, "labels")='data.frame':	5 obs. of  1 variable:
   ..$ continent: Factor w/ 5 levels "Africa","Americas",..: 1 2 3 4 5
-  ..- attr(*, "vars")= chr "continent"
+  ..- attr(*, "vars")=List of 1
+  .. ..$ : symbol continent
   ..- attr(*, "drop")= logi TRUE
 ~~~
 {: .output}
@@ -251,7 +245,7 @@ value `continent` (at least in the example above).
 ## Using summarize()
 
 The above was a bit on the uneventful side but `group_by()` is much more
-exciting in conjunction with `summarize()`. This will allow use to create new
+exciting in conjunction with `summarize()`. This will allow us to create new
 variable(s) by using functions that repeat for each of the continent-specific
 data frames. That is to say, using the `group_by()` function, we split our
 original dataframe into multiple pieces, then we can run functions

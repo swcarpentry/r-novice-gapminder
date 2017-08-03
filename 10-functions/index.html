@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2017-08-04 01:17:41 +0200">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- meta "search-domain" used for google site search function google_search() -->
+    <meta name="search-domain" value="/swc-releases/2017.08/r-novice-gapminder">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/lesson.css" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon-swc.ico" />
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    <title>R for Reproducible Scientific Analysis: Functions Explained</title>
+  </head>
+  <body>
+    <div class="container">
+      
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+
+      
+      <a class="navbar-brand" href="../">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="../conduct/">Code of Conduct</a></li>
+
+	
+        
+        <li><a href="../setup/">Setup</a></li>
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="../01-rstudio-intro/">Introduction to R and RStudio</a></li>
+            
+            <li><a href="../02-project-intro/">Project Management With RStudio</a></li>
+            
+            <li><a href="../03-seeking-help/">Seeking Help</a></li>
+            
+            <li><a href="../04-data-structures-part1/">Data Structures</a></li>
+            
+            <li><a href="../05-data-structures-part2/">Exploring Data Frames</a></li>
+            
+            <li><a href="../06-data-subsetting/">Subsetting Data</a></li>
+            
+            <li><a href="../07-control-flow/">Control Flow</a></li>
+            
+            <li><a href="../08-plot-ggplot2/">Creating Publication-Quality Graphics</a></li>
+            
+            <li><a href="../09-vectorization/">Vectorization</a></li>
+            
+            <li><a href="../10-functions/">Functions Explained</a></li>
+            
+            <li><a href="../11-writing-data/">Writing Data</a></li>
+            
+            <li><a href="../12-plyr/">Split-Apply-Combine</a></li>
+            
+            <li><a href="../13-dplyr/">Dataframe Manipulation with dplyr</a></li>
+            
+            <li><a href="../14-tidyr/">Dataframe Manipulation with tidyr</a></li>
+            
+            <li><a href="../15-knitr-markdown/">Producing Reports With knitr</a></li>
+            
+            <li><a href="../16-wrap-up/">Writing Good Software</a></li>
+            
+	    <li role="separator" class="divider"></li>
+            <li><a href="../aio/">All in one page (Beta)</a></li>
+          </ul>
+        </li>
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../reference/">Reference</a></li>
+            
+            <li><a href="../about/">About</a></li>
+            
+            <li><a href="../discuss/">Discussion</a></li>
+            
+            <li><a href="../figures/">Figures</a></li>
+            
+            <li><a href="../guide/">Instructor Notes</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="../license/">License</a></li>
+	
+	
+	<li><a href="/edit/gh-pages/_episodes_rmd/10-functions.Rmd">Improve this page <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
+	
+	
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search..." aria-label="Google site search">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+<div class="row">
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../09-vectorization/"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-md-10">
+    
+    <h3 class="maintitle"><a href="../">R for Reproducible Scientific Analysis</a></h3>
+    
+  </div>
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../11-writing-data/"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+<article>
+<div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-10">
+    <h1 class="maintitle">Functions Explained</h1>
+  </div>
+  <div class="col-md-1">
+  </div>
+</div>
+
+
+<blockquote class="objectives">
+  <h2>Overview</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Teaching:</strong> 45 min
+      <br/>
+      <strong>Exercises:</strong> 15 min
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li><p>How can I write a new function in R?</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li><p>Define a function that takes arguments.</p>
+</li>
+	
+	<li><p>Return a value from a function.</p>
+</li>
+	
+	<li><p>Test a function.</p>
+</li>
+	
+	<li><p>Set default values for function arguments.</p>
+</li>
+	
+	<li><p>Explain why we should divide programs into small, single-purpose functions.</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+</blockquote>
+
+<p>If we only had one data set to analyze, it would probably be faster to load the
+file into a spreadsheet and use that to plot simple statistics. However, the
+gapminder data is updated periodically, and we may want to pull in that new
+information later and re-run our analysis again. We may also obtain similar data
+from a different source in the future.</p>
+
+<p>In this lesson, we’ll learn how to write a function so that we can repeat
+several operations with a single command.</p>
+
+<blockquote class="callout">
+  <h2 id="what-is-a-function">What is a function?</h2>
+
+  <p>Functions gather a sequence of operations into a whole, preserving it for ongoing use. Functions provide:</p>
+
+  <ul>
+    <li>a name we can remember and invoke it by</li>
+    <li>relief from the need to remember the individual operations</li>
+    <li>a defined set of inputs and expected outputs</li>
+    <li>rich connections to the larger programming environment</li>
+  </ul>
+
+  <p>As the basic building block of most programming languages, user-defined
+functions constitute “programming” as much as any single abstraction can. If
+you have written a function, you are a computer programmer.</p>
+</blockquote>
+
+<h2 id="defining-a-function">Defining a function</h2>
+
+<p>Let’s open a new R script file in the <code class="highlighter-rouge">functions/</code> directory and call it functions-lesson.R.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>my_sum &lt;- function(a, b) {
+  the_sum &lt;- a + b
+  return(the_sum)
+}
+</code></pre>
+</div>
+
+<p>Let’s define a function fahr_to_kelvin that converts temperatures from Fahrenheit to Kelvin:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>fahr_to_kelvin &lt;- function(temp) {
+  kelvin &lt;- ((temp - 32) * (5 / 9)) + 273.15
+  return(kelvin)
+}
+</code></pre>
+</div>
+
+<p>We define <code class="highlighter-rouge">fahr_to_kelvin</code> by assigning it to the output of <code class="highlighter-rouge">function</code>.  The
+list of argument names are contained within parentheses.  Next, the
+<a href="../reference/#function-body">body</a> of the function–the statements that are
+executed when it runs–is contained within curly braces (<code class="highlighter-rouge"><span class="p">{}</span></code>).  The statements
+in the body are indented by two spaces.  This makes the code easier to read but
+does not affect how the code operates.</p>
+
+<p>When we call the function, the values we pass to it as arguments are assigned to those
+variables so that we can use them inside the function.  Inside the function, we
+use a <a href="../reference/#return-statement">return statement</a> to send a result back
+to whoever asked for it.</p>
+
+<blockquote class="callout">
+  <h2 id="tip">Tip</h2>
+
+  <p>One feature unique to R is that the return statement is not required.
+R automatically returns whichever variable is on the last line of the body
+of the function. But for clarity, we will explicitly define the
+return statement.</p>
+</blockquote>
+
+<p>Let’s try running our function.
+Calling our own function is no different from calling any other function:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code># freezing point of water
+fahr_to_kelvin(32)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 273.15
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code># boiling point of water
+fahr_to_kelvin(212)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 373.15
+</code></pre>
+</div>
+
+<blockquote class="challenge">
+  <h2 id="challenge-1">Challenge 1</h2>
+
+  <p>Write a function called <code class="highlighter-rouge">kelvin_to_celsius</code> that takes a temperature in Kelvin
+and returns that temperature in Celsius</p>
+
+  <p>Hint: To convert from Kelvin to Celsius you subtract 273.15</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-1">Solution to challenge 1</h2>
+
+    <p>Write a function called <code class="highlighter-rouge">kelvin_to_celsius</code> that takes a temperature in Kelvin
+and returns that temperature in Celsius</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>kelvin_to_celsius &lt;- function(temp) {
+ celsius &lt;- temp - 273.15
+ return(celsius)
+}
+</code></pre>
+    </div>
+  </blockquote>
+</blockquote>
+
+<h2 id="combining-functions">Combining functions</h2>
+
+<p>The real power of functions comes from mixing, matching and combining them
+into ever-larger chunks to get the effect we want.</p>
+
+<p>Let’s define two functions that will convert temperature from Fahrenheit to
+Kelvin, and Kelvin to Celsius:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>fahr_to_kelvin &lt;- function(temp) {
+  kelvin &lt;- ((temp - 32) * (5 / 9)) + 273.15
+  return(kelvin)
+}
+
+kelvin_to_celsius &lt;- function(temp) {
+  celsius &lt;- temp - 273.15
+  return(celsius)
+}
+</code></pre>
+</div>
+
+<blockquote class="challenge">
+  <h2 id="challenge-2">Challenge 2</h2>
+
+  <p>Define the function to convert directly from Fahrenheit to Celsius,
+by reusing the two functions above (or using your own functions if you prefer).</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-2">Solution to challenge 2</h2>
+
+    <p>Define the function to convert directly from Fahrenheit to Celsius,
+by reusing these two functions above</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>fahr_to_celsius &lt;- function(temp) {
+  temp_k &lt;- fahr_to_kelvin(temp)
+  result &lt;- kelvin_to_celsius(temp_k)
+  return(result)
+}
+</code></pre>
+    </div>
+  </blockquote>
+</blockquote>
+
+<p>We’re going to define
+a function that calculates the Gross Domestic Product of a nation from the data
+available in our dataset:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code># Takes a dataset and multiplies the population column
+# with the GDP per capita column.
+calcGDP &lt;- function(dat) {
+  gdp &lt;- dat$pop * dat$gdpPercap
+  return(gdp)
+}
+</code></pre>
+</div>
+
+<p>We define <code class="highlighter-rouge">calcGDP</code> by assigning it to the output of <code class="highlighter-rouge">function</code>.
+The list of argument names are contained within parentheses.
+Next, the body of the function – the statements executed when you
+call the function – is contained within curly braces (<code class="highlighter-rouge"><span class="p">{}</span></code>).</p>
+
+<p>We’ve indented the statements in the body by two spaces. This makes
+the code easier to read but does not affect how it operates.</p>
+
+<p>When we call the function, the values we pass to it are assigned
+to the arguments, which become variables inside the body of the
+function.</p>
+
+<p>Inside the function, we use the <code class="highlighter-rouge">return</code> function to send back the
+result. This return function is optional: R will automatically
+return the results of whatever command is executed on the last line
+of the function.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>calcGDP(head(gapminder))
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1]  6567086330  7585448670  8758855797  9648014150  9678553274 11697659231
+</code></pre>
+</div>
+
+<p>That’s not very informative. Let’s add some more arguments so we can extract
+that per year and country.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code># Takes a dataset and multiplies the population column
+# with the GDP per capita column.
+calcGDP &lt;- function(dat, year=NULL, country=NULL) {
+  if(!is.null(year)) {
+    dat &lt;- dat[dat$year %in% year, ]
+  }
+  if (!is.null(country)) {
+    dat &lt;- dat[dat$country %in% country,]
+  }
+  gdp &lt;- dat$pop * dat$gdpPercap
+
+  new &lt;- cbind(dat, gdp=gdp)
+  return(new)
+}
+</code></pre>
+</div>
+
+<p>If you’ve been writing these functions down into a separate R script
+(a good idea!), you can load in the functions into our R session by using the
+<code class="highlighter-rouge">source</code> function:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>source("functions/functions-lesson.R")
+</code></pre>
+</div>
+
+<p>Ok, so there’s a lot going on in this function now. In plain English,
+the function now subsets the provided data by year if the year argument isn’t
+empty, then subsets the result by country if the country argument isn’t empty.
+Then it calculates the GDP for whatever subset emerges from the previous two steps.
+The function then adds the GDP as a new column to the subsetted data and returns
+this as the final result.
+You can see that the output is much more informative than a vector of numbers.</p>
+
+<p>Let’s take a look at what happens when we specify the year:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>head(calcGDP(gapminder, year=2007))
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>       country year      pop continent lifeExp  gdpPercap          gdp
+12 Afghanistan 2007 31889923      Asia  43.828   974.5803  31079291949
+24     Albania 2007  3600523    Europe  76.423  5937.0295  21376411360
+36     Algeria 2007 33333216    Africa  72.301  6223.3675 207444851958
+48      Angola 2007 12420476    Africa  42.731  4797.2313  59583895818
+60   Argentina 2007 40301927  Americas  75.320 12779.3796 515033625357
+72   Australia 2007 20434176   Oceania  81.235 34435.3674 703658358894
+</code></pre>
+</div>
+
+<p>Or for a specific country:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>calcGDP(gapminder, country="Australia")
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>     country year      pop continent lifeExp gdpPercap          gdp
+61 Australia 1952  8691212   Oceania  69.120  10039.60  87256254102
+62 Australia 1957  9712569   Oceania  70.330  10949.65 106349227169
+63 Australia 1962 10794968   Oceania  70.930  12217.23 131884573002
+64 Australia 1967 11872264   Oceania  71.100  14526.12 172457986742
+65 Australia 1972 13177000   Oceania  71.930  16788.63 221223770658
+66 Australia 1977 14074100   Oceania  73.490  18334.20 258037329175
+67 Australia 1982 15184200   Oceania  74.740  19477.01 295742804309
+68 Australia 1987 16257249   Oceania  76.320  21888.89 355853119294
+69 Australia 1992 17481977   Oceania  77.560  23424.77 409511234952
+70 Australia 1997 18565243   Oceania  78.830  26997.94 501223252921
+71 Australia 2002 19546792   Oceania  80.370  30687.75 599847158654
+72 Australia 2007 20434176   Oceania  81.235  34435.37 703658358894
+</code></pre>
+</div>
+
+<p>Or both:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>calcGDP(gapminder, year=2007, country="Australia")
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>     country year      pop continent lifeExp gdpPercap          gdp
+72 Australia 2007 20434176   Oceania  81.235  34435.37 703658358894
+</code></pre>
+</div>
+
+<p>Let’s walk through the body of the function:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>calcGDP &lt;- function(dat, year=NULL, country=NULL) {
+</code></pre>
+</div>
+
+<p>Here we’ve added two arguments, <code class="highlighter-rouge">year</code>, and <code class="highlighter-rouge">country</code>. We’ve set
+<em>default arguments</em> for both as <code class="highlighter-rouge">NULL</code> using the <code class="highlighter-rouge">=</code> operator
+in the function definition. This means that those arguments will
+take on those values unless the user specifies otherwise.</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>  if(!is.null(year)) {
+    dat &lt;- dat[dat$year %in% year, ]
+  }
+  if (!is.null(country)) {
+    dat &lt;- dat[dat$country %in% country,]
+  }
+</code></pre>
+</div>
+
+<p>Here, we check whether each additional argument is set to <code class="highlighter-rouge">null</code>,
+and whenever they’re not <code class="highlighter-rouge">null</code> overwrite the dataset stored in <code class="highlighter-rouge">dat</code> with
+a subset given by the non-<code class="highlighter-rouge">null</code> argument.</p>
+
+<p>I did this so that our function is more flexible for later. We
+can ask it to calculate the GDP for:</p>
+
+<ul>
+  <li>The whole dataset;</li>
+  <li>A single year;</li>
+  <li>A single country;</li>
+  <li>A single combination of year and country.</li>
+</ul>
+
+<p>By using <code class="highlighter-rouge">%in%</code> instead, we can also give multiple years or countries
+to those arguments.</p>
+
+<blockquote class="callout">
+  <h2 id="tip-pass-by-value">Tip: Pass by value</h2>
+
+  <p>Functions in R almost always make copies of the data to operate on
+inside of a function body. When we modify <code class="highlighter-rouge">dat</code> inside the function
+we are modifying the copy of the gapminder dataset stored in <code class="highlighter-rouge">dat</code>,
+not the original variable we gave as the first argument.</p>
+
+  <p>This is called “pass-by-value” and it makes writing code much safer:
+you can always be sure that whatever changes you make within the
+body of the function, stay inside the body of the function.</p>
+</blockquote>
+
+<blockquote class="callout">
+  <h2 id="tip-function-scope">Tip: Function scope</h2>
+
+  <p>Another important concept is scoping: any variables (or functions!) you
+create or modify inside the body of a function only exist for the lifetime
+of the function’s execution. When we call <code class="highlighter-rouge">calcGDP</code>, the variables <code class="highlighter-rouge">dat</code>,
+<code class="highlighter-rouge">gdp</code> and <code class="highlighter-rouge">new</code> only exist inside the body of the function. Even if we
+have variables of the same name in our interactive R session, they are
+not modified in any way when executing a function.</p>
+</blockquote>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>  gdp &lt;- dat$pop * dat$gdpPercap
+  new &lt;- cbind(dat, gdp=gdp)
+  return(new)
+}
+</code></pre>
+</div>
+
+<p>Finally, we calculated the GDP on our new subset, and created a new
+data frame with that column added. This means when we call the function
+later we can see the context for the returned GDP values,
+which is much better than in our first attempt where we got a vector of numbers.</p>
+
+<blockquote class="challenge">
+  <h2 id="challenge-3">Challenge 3</h2>
+
+  <p>Test out your GDP function by calculating the GDP for New Zealand in 1987. How
+does this differ from New Zealand’s GDP in 1952?</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-3">Solution to challenge 3</h2>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>  calcGDP(gapminder, year = c(1952, 1987), country = "New Zealand")
+</code></pre>
+    </div>
+    <p>GDP for New Zealand in 1987: 65050008703</p>
+
+    <p>GDP for New Zealand in 1952: 21058193787</p>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-4">Challenge 4</h2>
+
+  <p>The <code class="highlighter-rouge">paste</code> function can be used to combine text together, e.g:</p>
+
+  <div class="r highlighter-rouge"><pre class="highlight"><code>best_practice &lt;- c("Write", "programs", "for", "people", "not", "computers")
+paste(best_practice, collapse=" ")
+</code></pre>
+  </div>
+
+  <div class="output highlighter-rouge"><pre class="highlight"><code>[1] "Write programs for people not computers"
+</code></pre>
+  </div>
+
+  <p>Write a function called <code class="highlighter-rouge">fence</code> that takes two vectors as arguments, called
+<code class="highlighter-rouge">text</code> and <code class="highlighter-rouge">wrapper</code>, and prints out the text wrapped with the <code class="highlighter-rouge">wrapper</code>:</p>
+
+  <div class="r highlighter-rouge"><pre class="highlight"><code>fence(text=best_practice, wrapper="***")
+</code></pre>
+  </div>
+
+  <p><em>Note:</em> the <code class="highlighter-rouge">paste</code> function has an argument called <code class="highlighter-rouge">sep</code>, which specifies the
+separator between text. The default is a space: “ “. The default for <code class="highlighter-rouge">paste0</code>
+is no space “”.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-4">Solution to challenge 4</h2>
+
+    <p>Write a function called <code class="highlighter-rouge">fence</code> that takes two vectors as arguments, called
+<code class="highlighter-rouge">text</code> and <code class="highlighter-rouge">wrapper</code>, and prints out the text wrapped with the <code class="highlighter-rouge">wrapper</code>:</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>fence &lt;- function(text, wrapper){
+  text &lt;- c(wrapper, text, wrapper)
+  result &lt;- paste(text, collapse = " ")
+  return(result)
+}
+best_practice &lt;- c("Write", "programs", "for", "people", "not", "computers")
+fence(text=best_practice, wrapper="***")
+</code></pre>
+    </div>
+
+    <div class="output highlighter-rouge"><pre class="highlight"><code>[1] "*** Write programs for people not computers ***"
+</code></pre>
+    </div>
+  </blockquote>
+</blockquote>
+
+<blockquote class="callout">
+  <h2 id="tip-1">Tip</h2>
+
+  <p>R has some unique aspects that can be exploited when performing
+more complicated operations. We will not be writing anything that requires
+knowledge of these more advanced concepts. In the future when you are
+comfortable writing functions in R, you can learn more by reading the
+<a href="http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects">R Language Manual</a> or this <a href="http://adv-r.had.co.nz/Environments.html">chapter</a> from
+<a href="http://adv-r.had.co.nz/">Advanced R Programming</a> by Hadley Wickham.</p>
+</blockquote>
+
+<blockquote class="callout">
+  <h2 id="tip-testing-and-documenting">Tip: Testing and documenting</h2>
+
+  <p>It’s important to both test functions and document them:
+Documentation helps you, and others, understand what the
+purpose of your function is, and how to use it, and its
+important to make sure that your function actually does
+what you think.</p>
+
+  <p>When you first start out, your workflow will probably look a lot
+like this:</p>
+
+  <ol>
+    <li>Write a function</li>
+    <li>Comment parts of the function to document its behaviour</li>
+    <li>Load in the source file</li>
+    <li>Experiment with it in the console to make sure it behaves
+as you expect</li>
+    <li>Make any necessary bug fixes</li>
+    <li>Rinse and repeat.</li>
+  </ol>
+
+  <p>Formal documentation for functions, written in separate <code class="highlighter-rouge">.Rd</code>
+files, gets turned into the documentation you see in help
+files. The <a href="http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html">roxygen2</a> package allows R coders to write documentation alongside
+the function code and then process it into the appropriate <code class="highlighter-rouge">.Rd</code> files.
+You will want to switch to this more formal method of writing documentation
+when you start writing more complicated R projects.</p>
+
+  <p>Formal automated tests can be written using the <a href="http://r-pkgs.had.co.nz/tests.html">testthat</a> package.</p>
+</blockquote>
+
+
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li><p>Use <code class="highlighter-rouge">function</code> to define a new function in R.</p>
+</li>
+    
+    <li><p>Use parameters to pass values into functions.</p>
+</li>
+    
+    <li><p>Load functions into programs using <code class="highlighter-rouge">source</code>.</p>
+</li>
+    
+  </ul>
+</blockquote>
+
+</article>
+
+<div class="row">
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../09-vectorization/"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-md-10">
+    
+  </div>
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../11-writing-data/"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+      
+      
+<footer>
+  <div class="row">
+    <div class="col-md-6" align="left">
+      <h4>
+	Copyright &copy; 2016–2017
+	
+	<a href="https://software-carpentry.org">Software Carpentry Foundation</a>
+	
+      </h4>
+    </div>
+    <div class="col-md-6" align="right">
+      <h4>
+	
+	
+	<a href="/edit/gh-pages/_episodes_rmd/10-functions.Rmd">Edit on GitHub</a>
+	
+	
+	/
+	<a href="/blob/gh-pages/CONTRIBUTING.md">Contributing</a>
+	/
+	<a href="/">Source</a>
+	/
+	<a href="/blob/gh-pages/CITATION">Cite</a>
+	/
+	<a href="">Contact</a>
+      </h4>
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/lesson.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37305346-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2017-08-04 01:17:41 +0200">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- meta "search-domain" used for google site search function google_search() -->
+    <meta name="search-domain" value="/swc-releases/2017.08/r-novice-gapminder">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/lesson.css" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon-swc.ico" />
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    <title>R for Reproducible Scientific Analysis: Exploring Data Frames</title>
+  </head>
+  <body>
+    <div class="container">
+      
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+
+      
+      <a class="navbar-brand" href="../">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="../conduct/">Code of Conduct</a></li>
+
+	
+        
+        <li><a href="../setup/">Setup</a></li>
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="../01-rstudio-intro/">Introduction to R and RStudio</a></li>
+            
+            <li><a href="../02-project-intro/">Project Management With RStudio</a></li>
+            
+            <li><a href="../03-seeking-help/">Seeking Help</a></li>
+            
+            <li><a href="../04-data-structures-part1/">Data Structures</a></li>
+            
+            <li><a href="../05-data-structures-part2/">Exploring Data Frames</a></li>
+            
+            <li><a href="../06-data-subsetting/">Subsetting Data</a></li>
+            
+            <li><a href="../07-control-flow/">Control Flow</a></li>
+            
+            <li><a href="../08-plot-ggplot2/">Creating Publication-Quality Graphics</a></li>
+            
+            <li><a href="../09-vectorization/">Vectorization</a></li>
+            
+            <li><a href="../10-functions/">Functions Explained</a></li>
+            
+            <li><a href="../11-writing-data/">Writing Data</a></li>
+            
+            <li><a href="../12-plyr/">Split-Apply-Combine</a></li>
+            
+            <li><a href="../13-dplyr/">Dataframe Manipulation with dplyr</a></li>
+            
+            <li><a href="../14-tidyr/">Dataframe Manipulation with tidyr</a></li>
+            
+            <li><a href="../15-knitr-markdown/">Producing Reports With knitr</a></li>
+            
+            <li><a href="../16-wrap-up/">Writing Good Software</a></li>
+            
+	    <li role="separator" class="divider"></li>
+            <li><a href="../aio/">All in one page (Beta)</a></li>
+          </ul>
+        </li>
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../reference/">Reference</a></li>
+            
+            <li><a href="../about/">About</a></li>
+            
+            <li><a href="../discuss/">Discussion</a></li>
+            
+            <li><a href="../figures/">Figures</a></li>
+            
+            <li><a href="../guide/">Instructor Notes</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="../license/">License</a></li>
+	
+	
+	<li><a href="/edit/gh-pages/_episodes_rmd/05-data-structures-part2.Rmd">Improve this page <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
+	
+	
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search..." aria-label="Google site search">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+<div class="row">
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../04-data-structures-part1/"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-md-10">
+    
+    <h3 class="maintitle"><a href="../">R for Reproducible Scientific Analysis</a></h3>
+    
+  </div>
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../06-data-subsetting/"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+<article>
+<div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-10">
+    <h1 class="maintitle">Exploring Data Frames</h1>
+  </div>
+  <div class="col-md-1">
+  </div>
+</div>
+
+
+<blockquote class="objectives">
+  <h2>Overview</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Teaching:</strong> 20 min
+      <br/>
+      <strong>Exercises:</strong> 10 min
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li><p>How can I manipulate a data frame?</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li><p>Be able to add and remove rows and columns.</p>
+</li>
+	
+	<li><p>Be able to remove rows with <code class="highlighter-rouge">NA</code> values.</p>
+</li>
+	
+	<li><p>Be able to append two data frames</p>
+</li>
+	
+	<li><p>Be able to articulate what a <code class="highlighter-rouge">factor</code> is and how to convert between <code class="highlighter-rouge">factor</code> and <code class="highlighter-rouge">character</code>.</p>
+</li>
+	
+	<li><p>Be able to find basic properties of a data frames including size, class or type of the columns, names, and first few rows.</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+</blockquote>
+
+<p>At this point, you’ve see it all - in the last lesson, we toured all the basic
+data types and data structures in R. Everything you do will be a manipulation of
+those tools. But a whole lot of the time, the star of the show is going to be
+the data frame - the table that we created by loading information from a csv file. In this lesson, we’ll learn a few more things
+about working with data frames.</p>
+
+<h2 id="adding-columns-and-rows-in-data-frame">Adding columns and rows in data frame</h2>
+
+<p>We learned last time that the columns in a data frame were vectors, so that our
+data are consistent in type throughout the column. As such, if we want to add a
+new column, we need to start by making a new vector:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>age &lt;- c(2,3,5,12)
+cats
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>    coat weight likes_string
+1 calico    2.1            1
+2  black    5.0            0
+3  tabby    3.2            1
+</code></pre>
+</div>
+
+<p>We can then add this as a column via:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>cats &lt;- cbind(cats, age)
+</code></pre>
+</div>
+
+<div class="error highlighter-rouge"><pre class="highlight"><code>Error in data.frame(..., check.names = FALSE): arguments imply differing number of rows: 3, 4
+</code></pre>
+</div>
+
+<p>Why didn’t this work? Of course, R wants to see one element in our new column
+for every row in the table:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>cats
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>    coat weight likes_string
+1 calico    2.1            1
+2  black    5.0            0
+3  tabby    3.2            1
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>age &lt;- c(4,5,8)
+cats &lt;- cbind(cats, age)
+cats
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>    coat weight likes_string age
+1 calico    2.1            1   4
+2  black    5.0            0   5
+3  tabby    3.2            1   8
+</code></pre>
+</div>
+
+<p>Now how about adding rows - in this case, we saw last time that the rows of a
+data frame are made of lists:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>newRow &lt;- list("tortoiseshell", 3.3, TRUE, 9)
+cats &lt;- rbind(cats, newRow)
+</code></pre>
+</div>
+
+<div class="error highlighter-rouge"><pre class="highlight"><code>Warning in `[&lt;-.factor`(`*tmp*`, ri, value = "tortoiseshell"): invalid
+factor level, NA generated
+</code></pre>
+</div>
+
+<h2 id="factors">Factors</h2>
+
+<p>Another thing to look out for has emerged - when R creates a factor, it only
+allows whatever is originally there when our data was first loaded, which was
+‘black’, ‘calico’ and ‘tabby’ in our case. Anything new that doesn’t fit into
+one of these categories is rejected as nonsense (becomes NA).</p>
+
+<p>The warning is telling us that we unsuccessfully added ‘tortoiseshell’ to our
+<em>coat</em> factor, but 3.3 (a numeric), TRUE (a logical), and 9 (a numeric) were
+successfully added to <em>weight</em>, <em>likes_string</em>, and <em>age</em>, respectively, since
+those values are not factors. To successfully add a cat with a
+‘tortoiseshell’ <em>coat</em>, explicitly add ‘tortoiseshell’ as a <em>level</em> in the factor:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>levels(cats$coat)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "black"  "calico" "tabby" 
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>levels(cats$coat) &lt;- c(levels(cats$coat), 'tortoiseshell')
+cats &lt;- rbind(cats, list("tortoiseshell", 3.3, TRUE, 9))
+</code></pre>
+</div>
+
+<p>Alternatively, we can change a factor column to a character vector; we lose the
+handy categories of the factor, but can subsequently add any word we want to the
+column without babysitting the factor levels:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>str(cats)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>'data.frame':	5 obs. of  4 variables:
+ $ coat        : Factor w/ 4 levels "black","calico",..: 2 1 3 NA 4
+ $ weight      : num  2.1 5 3.2 3.3 3.3
+ $ likes_string: int  1 0 1 1 1
+ $ age         : num  4 5 8 9 9
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>cats$coat &lt;- as.character(cats$coat)
+str(cats)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>'data.frame':	5 obs. of  4 variables:
+ $ coat        : chr  "calico" "black" "tabby" NA ...
+ $ weight      : num  2.1 5 3.2 3.3 3.3
+ $ likes_string: int  1 0 1 1 1
+ $ age         : num  4 5 8 9 9
+</code></pre>
+</div>
+
+<h2 id="removing-rows">Removing rows</h2>
+
+<p>We now know how to add rows and columns to our data frame in R - but in our
+first attempt to add a ‘tortoiseshell’ cat to the data frame we’ve accidentally
+added a garbage row:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>cats
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>           coat weight likes_string age
+1        calico    2.1            1   4
+2         black    5.0            0   5
+3         tabby    3.2            1   8
+4          &lt;NA&gt;    3.3            1   9
+5 tortoiseshell    3.3            1   9
+</code></pre>
+</div>
+
+<p>We can ask for a data frame minus this offending row:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>cats[-4,]
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>           coat weight likes_string age
+1        calico    2.1            1   4
+2         black    5.0            0   5
+3         tabby    3.2            1   8
+5 tortoiseshell    3.3            1   9
+</code></pre>
+</div>
+
+<p>Notice the comma with nothing after it to indicate we want to drop the entire fourth row.</p>
+
+<p>Note: We could also remove both new rows at once by putting the row numbers
+inside of a vector: <code class="highlighter-rouge">cats[c(-4,-5),]</code></p>
+
+<p>Alternatively, we can drop all rows with <code class="highlighter-rouge">NA</code> values:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>na.omit(cats)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>           coat weight likes_string age
+1        calico    2.1            1   4
+2         black    5.0            0   5
+3         tabby    3.2            1   8
+5 tortoiseshell    3.3            1   9
+</code></pre>
+</div>
+
+<p>Let’s reassign the output to <code class="highlighter-rouge">cats</code>, so that our changes will be permanent:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>cats &lt;- na.omit(cats)
+</code></pre>
+</div>
+
+<h2 id="appending-to-a-data-frame">Appending to a data frame</h2>
+
+<p>The key to remember when adding data to a data frame is that <em>columns are
+vectors or factors, and rows are lists.</em> We can also glue two data frames
+together with <code class="highlighter-rouge">rbind</code>:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>cats &lt;- rbind(cats, cats)
+cats
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>            coat weight likes_string age
+1         calico    2.1            1   4
+2          black    5.0            0   5
+3          tabby    3.2            1   8
+5  tortoiseshell    3.3            1   9
+11        calico    2.1            1   4
+21         black    5.0            0   5
+31         tabby    3.2            1   8
+51 tortoiseshell    3.3            1   9
+</code></pre>
+</div>
+<p>But now the row names are unnecessarily complicated. We can remove the rownames,
+and R will automatically re-name them sequentially:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>rownames(cats) &lt;- NULL
+cats
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>           coat weight likes_string age
+1        calico    2.1            1   4
+2         black    5.0            0   5
+3         tabby    3.2            1   8
+4 tortoiseshell    3.3            1   9
+5        calico    2.1            1   4
+6         black    5.0            0   5
+7         tabby    3.2            1   8
+8 tortoiseshell    3.3            1   9
+</code></pre>
+</div>
+
+<blockquote class="challenge">
+  <h2 id="challenge-1">Challenge 1</h2>
+
+  <p>You can create a new data frame right from within R with the following syntax:</p>
+
+  <div class="r highlighter-rouge"><pre class="highlight"><code>df &lt;- data.frame(id = c('a', 'b', 'c'),
+                 x = 1:3,
+                 y = c(TRUE, TRUE, FALSE),
+                 stringsAsFactors = FALSE)
+</code></pre>
+  </div>
+  <p>Make a data frame that holds the following information for yourself:</p>
+
+  <ul>
+    <li>first name</li>
+    <li>last name</li>
+    <li>lucky number</li>
+  </ul>
+
+  <p>Then use <code class="highlighter-rouge">rbind</code> to add an entry for the people sitting beside you.
+Finally, use <code class="highlighter-rouge">cbind</code> to add a column with each person’s answer to the question, “Is it time for coffee break?”</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-1">Solution to Challenge 1</h2>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>df &lt;- data.frame(first = c('Grace'),
+                 last = c('Hopper'),
+                 lucky_number = c(0),
+                 stringsAsFactors = FALSE)
+df &lt;- rbind(df, list('Marie', 'Curie', 238) )
+df &lt;- cbind(df, coffeetime = c(TRUE,TRUE))
+</code></pre>
+    </div>
+  </blockquote>
+</blockquote>
+
+<h2 id="realistic-example">Realistic example</h2>
+<p>So far, you’ve seen the basics of manipulating data frames with our cat data;
+now, let’s use those skills to digest a more realistic dataset. Let’s read in the
+gapminder dataset that we downloaded previously:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>gapminder &lt;- read.csv("data/gapminder-FiveYearData.csv")
+</code></pre>
+</div>
+
+<blockquote class="callout">
+  <h2 id="miscellaneous-tips">Miscellaneous Tips</h2>
+
+  <ul>
+    <li>
+      <p>Another type of file you might encounter are tab-separated value files (.tsv). To specify a tab as a separator, use <code class="highlighter-rouge">"\\t"</code> or <code class="highlighter-rouge">read.delim()</code>.</p>
+    </li>
+    <li>
+      <p>Files can also be downloaded directly from the Internet into a local
+folder of your choice onto your computer using the <code class="highlighter-rouge">download.file</code> function.
+The <code class="highlighter-rouge">read.csv</code> function can then be executed to read the downloaded file from the download location, for example,</p>
+    </li>
+  </ul>
+
+  <div class="r highlighter-rouge"><pre class="highlight"><code>download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv", destfile = "data/gapminder-FiveYearData.csv")
+gapminder &lt;- read.csv("data/gapminder-FiveYearData.csv")
+</code></pre>
+  </div>
+
+  <ul>
+    <li>Alternatively, you can also read in files directly into R from the Internet by replacing the file paths with a web address in <code class="highlighter-rouge">read.csv</code>. One should note that in doing this no local copy of the csv file is first saved onto your computer. For example,</li>
+  </ul>
+
+  <div class="r highlighter-rouge"><pre class="highlight"><code>gapminder &lt;- read.csv("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv")
+</code></pre>
+  </div>
+
+  <ul>
+    <li>You can read directly from excel spreadsheets without
+converting them to plain text first by using the <a href="https://cran.r-project.org/web/packages/readxl/index.html">readxl</a> package.</li>
+  </ul>
+</blockquote>
+
+<p>Let’s investigate gapminder a bit; the first thing we should always do is check
+out what the data looks like with <code class="highlighter-rouge">str</code>:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>str(gapminder)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>'data.frame':	1704 obs. of  6 variables:
+ $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+ $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...
+ $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
+ $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
+ $ gdpPercap: num  779 821 853 836 740 ...
+</code></pre>
+</div>
+
+<p>We can also examine individual columns of the data frame with our <code class="highlighter-rouge">typeof</code> function:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>typeof(gapminder$year)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "integer"
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>typeof(gapminder$country)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "integer"
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>str(gapminder$country)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code> Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
+</code></pre>
+</div>
+
+<p>We can also interrogate the data frame for information about its dimensions;
+remembering that <code class="highlighter-rouge">str(gapminder)</code> said there were 1704 observations of 6
+variables in gapminder, what do you think the following will produce, and why?</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>length(gapminder)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 6
+</code></pre>
+</div>
+
+<p>A fair guess would have been to say that the length of a data frame would be the
+number of rows it has (1704), but this is not the case; remember, a data frame
+is a <em>list of vectors and factors</em>:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>typeof(gapminder)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "list"
+</code></pre>
+</div>
+
+<p>When <code class="highlighter-rouge">length</code> gave us 6, it’s because gapminder is built out of a list of 6
+columns. To get the number of rows and columns in our dataset, try:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>nrow(gapminder)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 1704
+</code></pre>
+</div>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>ncol(gapminder)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 6
+</code></pre>
+</div>
+
+<p>Or, both at once:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>dim(gapminder)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] 1704    6
+</code></pre>
+</div>
+
+<p>We’ll also likely want to know what the titles of all the columns are, so we can
+ask for them later:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>colnames(gapminder)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>[1] "country"   "year"      "pop"       "continent" "lifeExp"   "gdpPercap"
+</code></pre>
+</div>
+
+<p>At this stage, it’s important to ask ourselves if the structure R is reporting
+matches our intuition or expectations; do the basic data types reported for each
+column make sense? If not, we need to sort any problems out now before they turn
+into bad surprises down the road, using what we’ve learned about how R
+interprets data, and the importance of <em>strict consistency</em> in how we record our
+data.</p>
+
+<p>Once we’re happy that the data types and structures seem reasonable, it’s time
+to start digging into our data proper. Check out the first few lines:</p>
+
+<div class="r highlighter-rouge"><pre class="highlight"><code>head(gapminder)
+</code></pre>
+</div>
+
+<div class="output highlighter-rouge"><pre class="highlight"><code>      country year      pop continent lifeExp gdpPercap
+1 Afghanistan 1952  8425333      Asia  28.801  779.4453
+2 Afghanistan 1957  9240934      Asia  30.332  820.8530
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007
+4 Afghanistan 1967 11537966      Asia  34.020  836.1971
+5 Afghanistan 1972 13079460      Asia  36.088  739.9811
+6 Afghanistan 1977 14880372      Asia  38.438  786.1134
+</code></pre>
+</div>
+
+<p>To make sure our analysis is reproducible, we should put the code
+into a script file so we can come back to it later.</p>
+
+<blockquote class="challenge">
+  <h2 id="challenge-2">Challenge 2</h2>
+
+  <p>Go to file -&gt; new file -&gt; R script, and write an R script
+to load in the gapminder dataset. Put it in the <code class="highlighter-rouge">scripts/</code>
+directory and add it to version control.</p>
+
+  <p>Run the script using the <code class="highlighter-rouge">source</code> function, using the file path
+as its argument (or by pressing the “source” button in RStudio).</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-2">Solution to Challenge 2</h2>
+    <p>The contents of <code class="highlighter-rouge">script/load-gapminder.R</code>:</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv", destfile = "data/gapminder-FiveYearData.csv")
+gapminder &lt;- read.csv(file = "data/gapminder-FiveYearData.csv")
+</code></pre>
+    </div>
+    <p>To run the script and load the data into the <code class="highlighter-rouge">gapminder</code> variable:</p>
+
+    <div class="r highlighter-rouge"><pre class="highlight"><code>source(file = "scripts/load-gapminder.R")
+</code></pre>
+    </div>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-3">Challenge 3</h2>
+
+  <p>Read the output of <code class="highlighter-rouge">str(gapminder)</code> again;
+this time, use what you’ve learned about factors, lists and vectors,
+as well as the output of functions like <code class="highlighter-rouge">colnames</code> and <code class="highlighter-rouge">dim</code>
+to explain what everything that <code class="highlighter-rouge">str</code> prints out for gapminder means.
+If there are any parts you can’t interpret, discuss with your neighbors!</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-3">Solution to Challenge 3</h2>
+
+    <p>The object <code class="highlighter-rouge">gapminder</code> is a data frame with columns</p>
+    <ul>
+      <li><code class="highlighter-rouge">country</code> and <code class="highlighter-rouge">continent</code> are factors.</li>
+      <li><code class="highlighter-rouge">year</code> is an integer vector.</li>
+      <li><code class="highlighter-rouge">pop</code>, <code class="highlighter-rouge">lifeExp</code>, and <code class="highlighter-rouge">gdpPercap</code> are numeric vectors.</li>
+    </ul>
+
+  </blockquote>
+</blockquote>
+
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li><p>Use <code class="highlighter-rouge">cbind()</code> to add a new column to a data frame.</p>
+</li>
+    
+    <li><p>Use <code class="highlighter-rouge">rbind()</code> to add a new row to a data frame.</p>
+</li>
+    
+    <li><p>Remove rows from a data frame.</p>
+</li>
+    
+    <li><p>Use <code class="highlighter-rouge">na.omit()</code> to remove rows from a data frame with <code class="highlighter-rouge">NA</code> values.</p>
+</li>
+    
+    <li><p>Use <code class="highlighter-rouge">levels()</code> and <code class="highlighter-rouge">as.character()</code> to explore and manipulate factors</p>
+</li>
+    
+    <li><p>Use <code class="highlighter-rouge">str()</code>, <code class="highlighter-rouge">nrow()</code>, <code class="highlighter-rouge">ncol()</code>, <code class="highlighter-rouge">dim()</code>, <code class="highlighter-rouge">colnames()</code>, <code class="highlighter-rouge">rownames()</code>, <code class="highlighter-rouge">head()</code> and <code class="highlighter-rouge">typeof()</code> to understand structure of the data frame</p>
+</li>
+    
+    <li><p>Read in a csv file using <code class="highlighter-rouge">read.csv()</code></p>
+</li>
+    
+    <li><p>Understand <code class="highlighter-rouge">length()</code> of a data frame</p>
+</li>
+    
+  </ul>
+</blockquote>
+
+</article>
+
+<div class="row">
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../04-data-structures-part1/"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-md-10">
+    
+  </div>
+  <div class="col-md-1">
+    <h3>
+      
+      <a href="../06-data-subsetting/"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+      
+      
+<footer>
+  <div class="row">
+    <div class="col-md-6" align="left">
+      <h4>
+	Copyright &copy; 2016–2017
+	
+	<a href="https://software-carpentry.org">Software Carpentry Foundation</a>
+	
+      </h4>
+    </div>
+    <div class="col-md-6" align="right">
+      <h4>
+	
+	
+	<a href="/edit/gh-pages/_episodes_rmd/05-data-structures-part2.Rmd">Edit on GitHub</a>
+	
+	
+	/
+	<a href="/blob/gh-pages/CONTRIBUTING.md">Contributing</a>
+	/
+	<a href="/">Source</a>
+	/
+	<a href="/blob/gh-pages/CITATION">Cite</a>
+	/
+	<a href="">Contact</a>
+      </h4>
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/lesson.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37305346-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

@@ -1150,7 +1150,7 @@ xlist[[-1]]
 
 
 ~~~
-Error in xlist[[-1]]: attempt to select more than one element in get1index <real>
+Error in xlist[[-1]]: attempt to select more than one element
 ~~~
 {: .error}
 

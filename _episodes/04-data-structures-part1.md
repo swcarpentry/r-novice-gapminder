@@ -881,7 +881,7 @@ str(coats)
 
 
 ~~~
- chr [1:5] "tabby" "tortoiseshell" "tortoiseshell" "black" "tabby"
+ chr [1:5] "tabby" "tortoiseshell" "tortoiseshell" "black" ...
 ~~~
 {: .output}
 
