@@ -259,6 +259,18 @@ gapminder %>%
     summarize(se_pop = sd(lifeExp)/sqrt(n()))
 ```
 
+You can also chain together several summary operations; in this case calculating the `minimum`, `maximum`, `mean` and `se` of each continent's per-country life-expectancy:
+
+```{r}
+gapminder %>%
+    group_by(continent) %>%
+    summarize(
+      mean_le = mean(lifeExp),
+      min_le = min(lifeExp),
+      max_le = max(lifeExp),
+      se_le = sd(lifeExp)/sqrt(n()))
+```
+
 ## Using mutate()
 
 We can also create new variables prior to (or even after) summarizing information using `mutate()`.
