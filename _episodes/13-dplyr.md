@@ -269,6 +269,7 @@ gdp_bycontinents <- gapminder %>%
 
 
 ~~~
+# A tibble: 5 x 2
 continent mean_gdpPercap
      <fctr>          <dbl>
 1    Africa       2193.755
@@ -281,6 +282,8 @@ continent mean_gdpPercap
 
 That allowed us to calculate the mean gdpPercap for each continent, but it gets
 even better.
+
+You'll notice that the output includes a new term: tibble. Tibbles are the tidyverse implementation of dataframes. They work similarly, but with a few differences that make them easier to use. See the [`tibble` package vignette](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html) for details if you're interested.
 
 > ## Challenge 2
 >
