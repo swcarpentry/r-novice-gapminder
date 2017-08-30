@@ -405,7 +405,7 @@ ls()
 >
 {: .callout}
 
-Note here that we didn't given any arguments to `ls`, but we still
+Note here that we didn't give any arguments to `ls`, but we still
 needed to give the parentheses to tell R to call the function.
 
 If we type `ls` by itself, R will print out the source code for that function!
