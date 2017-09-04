@@ -6,6 +6,8 @@ questions:
 - "How can I manipulate dataframes without repeating myself?"
 objectives:
 - " To be able to use the six main dataframe manipulation 'verbs' with pipes in  `dplyr`."
+- " To understand how `group_by()` and `summarize()` can be combined to summarize datasets."
+- " Be able to analyze a subset of data using logical filtering."
 keypoints:
 - "Use the `dplyr` package to manipulate dataframes."
 - "Use `select()` to choose variables from a dataframe."
@@ -255,6 +257,18 @@ expectency per continent:
 gapminder %>%
     group_by(continent) %>%
     summarize(se_pop = sd(lifeExp)/sqrt(n()))
+```
+
+You can also chain together several summary operations; in this case calculating the `minimum`, `maximum`, `mean` and `se` of each continent's per-country life-expectancy:
+
+```{r}
+gapminder %>%
+    group_by(continent) %>%
+    summarize(
+      mean_le = mean(lifeExp),
+      min_le = min(lifeExp),
+      max_le = max(lifeExp),
+      se_le = sd(lifeExp)/sqrt(n()))
 ```
 
 ## Using mutate()
