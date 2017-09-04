@@ -6,8 +6,8 @@ questions:
 - "How can I manipulate dataframes without repeating myself?"
 objectives:
 - " To be able to use the six main dataframe manipulation 'verbs' with pipes in  `dplyr`."
-- " To understand how `group_by()` and `summarize` can be combined to summarize datasets."
-- " Be able to analyze a subset of data, using logical filtering."
+- " To understand how `group_by()` and `summarize()` can be combined to summarize datasets."
+- " Be able to analyze a subset of data using logical filtering."
 keypoints:
 - "Use the `dplyr` package to manipulate dataframes."
 - "Use `select()` to choose variables from a dataframe."
