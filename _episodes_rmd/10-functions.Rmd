@@ -244,8 +244,8 @@ fahr_to_kelvin(temp = as.factor(32))
 
 > ## Challenge 3
 >
-> Use defensive programming to ensure that our `fahr_to_celsius` function kicks
-> in to full effect only when the `temp` argument is specified appropriately.
+> Use defensive programming to ensure that our `fahr_to_celcius` function throws
+> an error immediately if the argument `temp` is specified inappropriately.
 >
 >
 > > ## Solution to challenge 3
