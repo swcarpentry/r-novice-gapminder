@@ -7,12 +7,14 @@ questions:
 objectives:
 - "Define a function that takes arguments."
 - "Return a value from a function."
+- "Check argument conditions with `stopifnot` in functions."
 - "Test a function."
 - "Set default values for function arguments."
 - "Explain why we should divide programs into small, single-purpose functions."
 keypoints:
 - "Use `function` to define a new function in R."
 - "Use parameters to pass values into functions."
+- "Use `stopifnot` to flexibly check function arguments in R."
 - "Load functions into programs using `source`."
 source: Rmd
 ---
@@ -165,10 +167,110 @@ kelvin_to_celsius <- function(temp) {
 > {: .solution}
 {: .challenge}
 
+## Interlude: Defensive Programming
 
-We're going to define
-a function that calculates the Gross Domestic Product of a nation from the data
-available in our dataset:
+Now that we've begun to appreciate how writing functions provides an efficient
+way to make R code re-usable and modular, we should note that it is important
+to ensure that functions only work in their intended use-cases. This  is a part
+of the concept of _defensive programming_. Defensive programming encourages us
+to frequently check conditions and throw an error if something is
+wrong. These checks are referred to as assertion statements because we want to
+assert some condition is `TRUE` before proceeding. This makes it easier to
+debug because we have a better idea of where the error originated.
+
+### Checking conditions with `stopifnot`
+
+Let’s start by re-examining `fahr_to_kelvin`, our function for converting
+temperatures from Fahrenheit to Kelvin. It was defined like so:
+
+```{r}
+fahr_to_kelvin <- function(temp) {
+  kelvin <- ((temp - 32) * (5 / 9)) + 273.15
+  return(kelvin)
+}
+```
+
+For this function to work as intended, the argument `temp` must be a `numeric`
+value; otherwise, the mathematical procedure for converting between the two
+temperature scales will not work. To create an error, we can use the function
+`stop`. For example, since the arugment `temp` must be a `numeric` vector, we
+could check for this condition with an `if` statement and throw an error if the
+condition was violated. We could augment our function above like so:
+
+```{r}
+fahr_to_kelvin <- function(temp) {
+  if (!is.numeric(temp)) {
+    stop("temp must be a numeric vector.")
+  }
+  kelvin <- ((temp - 32) * (5 / 9)) + 273.15
+  return(kelvin)
+}
+```
+
+If we had multiple conditions or arguments to check, it would take many lines
+of code to check all of them. Luckily R provides the convenience function
+`stopifnot`. We can list as many requirements that should evaluate to `TRUE`;
+`stopifnot` throws an error if it finds one that is `FALSE`. Listing these
+conditions also serves a secondary purpose as extra documentation for the
+function.
+
+Let's try out defensive programming with `stopifnot` by adding assertions to
+check the input to our function `fahr_to_kelvin`.
+
+We want to assert the following: `temp` is a numeric vector. We may do that like
+so:
+
+```{r}
+fahr_to_kelvin <- function(temp) {
+  stopifnot(is.numeric(temp))
+  kelvin <- ((temp - 32) * (5 / 9)) + 273.15
+  return(kelvin)
+}
+```
+
+It still works when given proper input.
+
+```{r}
+# freezing point of water
+fahr_to_kelvin(temp = 32)
+```
+
+But fails instantly if given improper input.
+
+```{r}
+# Metric is a factor instead of numeric
+fahr_to_kelvin(temp = as.factor(32))
+```
+
+> ## Challenge 3
+>
+> Use defensive programming to ensure that our `fahr_to_celsius` function kicks
+> in to full effect only when the `temp` argument is specified appropriately.
+>
+>
+> > ## Solution to challenge 3
+> >
+> > Extend our previous definition of the function by adding in an explicit call
+> > to `stopifnot`. Since `fahr_to_celsius` is a composition of two other
+> > functions, checking inside here makes adding checks to the two component
+> > functions redundant.
+> >
+> >
+> > ```{r}
+> > fahr_to_celsius <- function(temp) {
+> >   stopifnot(!is.numeric(temp))
+> >   temp_k <- fahr_to_kelvin(temp)
+> >   result <- kelvin_to_celsius(temp_k)
+> >   return(result)
+> > }
+> > ```
+> {: .solution}
+{: .challenge}```
+
+## More on combining functions
+
+Now, we're going to define a function that calculates the Gross Domestic
+Product of a nation from the data available in our dataset:
 
 ```{r}
 # Takes a dataset and multiplies the population column
@@ -232,9 +334,9 @@ source("functions/functions-lesson.R")
 Ok, so there's a lot going on in this function now. In plain English,
 the function now subsets the provided data by year if the year argument isn't
 empty, then subsets the result by country if the country argument isn't empty.
-Then it calculates the GDP for whatever subset emerges from the previous two steps.
-The function then adds the GDP as a new column to the subsetted data and returns
-this as the final result.
+Then it calculates the GDP for whatever subset emerges from the previous two
+steps. The function then adds the GDP as a new column to the subsetted data and
+returns this as the final result.
 You can see that the output is much more informative than a vector of numbers.
 
 Let's take a look at what happens when we specify the year:
@@ -385,7 +487,7 @@ which is much better than in our first attempt where we got a vector of numbers.
 > knowledge of these more advanced concepts. In the future when you are
 > comfortable writing functions in R, you can learn more by reading the
 > [R Language Manual][man] or this [chapter][] from
-> [Advanced R Programming][adv-r] by Hadley Wickham. 
+> [Advanced R Programming][adv-r] by Hadley Wickham.
 {: .callout}
 
 [man]: http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects
