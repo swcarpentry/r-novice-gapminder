@@ -194,13 +194,13 @@ even better.
 > >lifeExp_bycountry <- gapminder %>%
 > >    group_by(country) %>%
 > >    summarize(mean_lifeExp=mean(lifeExp))
-> >lifeExp_bycountry %>% 
+> >lifeExp_bycountry %>%
 > >    filter(mean_lifeExp == min(mean_lifeExp) | mean_lifeExp == max(mean_lifeExp))
 > >```
-> Another way to do this is to use the `dplyr` function `arrange()`, which 
-> arranges the rows in a data frame according to the order of one or more 
-> variables from the data frame.  It has similar syntax to other functions from 
-> the `dplyr` package. You can use `desc()` inside `arrange()` to sort in 
+> Another way to do this is to use the `dplyr` function `arrange()`, which
+> arranges the rows in a data frame according to the order of one or more
+> variables from the data frame.  It has similar syntax to other functions from
+> the `dplyr` package. You can use `desc()` inside `arrange()` to sort in
 > descending order.
 > >```{r}
 > >lifeExp_bycountry %>%
@@ -289,7 +289,7 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 
 ## Connect mutate with logical filtering: ifelse
 
-When creating new variables, we can hook this with a logical condition. A simple combination of 
+When creating new variables, we can hook this with a logical condition. A simple combination of
 `mutate()` and `ifelse()` facilitates filtering right where it is needed: in the moment of creating something new.
 This easy-to-read statement is a fast and powerful way of discarding certain data (even though the overall dimension
 of the data frame will not change) or for updating values depending on this given condition.
@@ -338,17 +338,17 @@ and `az.countries`) that we might not have any other uses for. Just as we used
 to `ggplot()`. Because `%>%` replaces the first argument in a function we don't
 need to specify the `data =` argument in the `ggplot()` function. By combining
 `dplyr` and `ggplot2` functions we can make the same figure without creating any
-new variables or modifying the data.  
+new variables or modifying the data.
 
 ```{r}
-gapminder %>% 
-   # Get the start letter of each country 
-   mutate(startsWith = substr(country, start = 1, stop = 1)) %>% 
+gapminder %>%
+   # Get the start letter of each country
+   mutate(startsWith = substr(country, start = 1, stop = 1)) %>%
    # Filter countries that start with "A" or "Z"
    filter(startsWith %in% c("A", "Z")) %>%
    # Make the plot
-   ggplot(aes(x = year, y = lifeExp, color = continent)) + 
-   geom_line() + 
+   ggplot(aes(x = year, y = lifeExp, color = continent)) +
+   geom_line() +
    facet_wrap( ~ country)
 ```
 
@@ -360,8 +360,8 @@ gapminder %>%
     # Filter countries that start with "A" or "Z"
 	filter(substr(country, start = 1, stop = 1) %in% c("A", "Z")) %>%
 	# Make the plot
-	ggplot(aes(x = year, y = lifeExp, color = continent)) + 
-	geom_line() + 
+	ggplot(aes(x = year, y = lifeExp, color = continent)) +
+	geom_line() +
 	facet_wrap( ~ country)
 ```
 
