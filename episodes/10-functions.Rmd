@@ -526,3 +526,4 @@ which is much better than in our first attempt where we got a vector of numbers.
 
 [roxygen2]: http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
 [testthat]: http://r-pkgs.had.co.nz/tests.html
+
