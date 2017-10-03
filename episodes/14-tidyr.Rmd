@@ -142,7 +142,7 @@ The first step towards getting our nice intermediate data format is to first
 convert from the wide to the long format. The `tidyr` function `gather()` will
 'gather' your observation variables into a single variable.
 
-![](../fig/14-tidyr-fig3.svg)
+![](../fig/14-tidyr-fig3.png)
 
 ```{r}
 gap_long <- gap_wide %>%
@@ -164,7 +164,7 @@ that starts with the desired character string. Gather also allows the alternativ
 syntax of using the `-` symbol to identify which variables are not to be
 gathered (i.e. ID variables)
 
-![](../fig/14-tidyr-fig3.png)
+![](../fig/14-tidyr-fig4.png)
 
 ```{r}
 gap_long <- gap_wide %>% gather(obstype_year,obs_values,-continent,-country)
