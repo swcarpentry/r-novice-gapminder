@@ -66,13 +66,13 @@ Open up this document and have a look.
 > > 
 > > ~~~
 > > pdf("Life_Exp_vs_time.pdf", width = 12, height = 4)
-> > 
-> > ggplot(data = gapminder, aes(x = year, y = lifeExp, colour = country)) + 
-> >   geom_line() + 
+> > > >
+> > p <- ggplot(data = gapminder, aes(x = year, y = lifeExp, colour = country)) +
+> >   geom_line() +
 > >   theme(legend.position = "none")
-> > 
+> > > >
 > > p + facet_grid(. ~continent)
-> > 
+> > > >
 > > dev.off()
 > > ~~~
 > > {: .r}

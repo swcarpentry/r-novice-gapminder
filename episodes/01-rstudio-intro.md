@@ -37,7 +37,7 @@ R and RStudio. We will begin with raw data, perform exploratory analyses, and le
 how to plot results graphically. This example starts with a dataset from
 [gapminder.org](https://www.gapminder.org) containing population information for many
 countries through time. Can you read the data into R? Can you plot the population for
-Senegal? Can you calculate the average income for countries on continent of Asia?
+Senegal? Can you calculate the average income for countries on the continent of Asia?
 By the end of these lessons you will be able to do things like plot the populations
 for all of these countries in under a minute!
 
@@ -86,8 +86,8 @@ There are two main ways one can work within RStudio.
 a .R file to run later.
    *  This works well when doing small tests and initially starting off.
    *  It quickly becomes laborious
-2. Start writing in an .R file and use RStudio's command / short cut
-to push current line, selected lines or modified lines to the
+2. Start writing in an .R file and use RStudio's short cut keys for the Run command
+to push the current line, selected lines or modified lines to the
 interactive R console.
    * This is a great way to start; all your code is saved for later
    * You will be able to run the file you create from within RStudio
@@ -609,7 +609,7 @@ ls()
 >
 {: .callout}
 
-Note here that we didn't given any arguments to `ls`, but we still
+Note here that we didn't give any arguments to `ls`, but we still
 needed to give the parentheses to tell R to call the function.
 
 If we type `ls` by itself, R will print out the source code for that function!
@@ -654,7 +654,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7f963bc24fb8>
+<bytecode: 0x7fa8e5254b40>
 <environment: namespace:base>
 ~~~
 {: .output}

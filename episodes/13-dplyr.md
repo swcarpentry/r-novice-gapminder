@@ -6,6 +6,8 @@ questions:
 - "How can I manipulate dataframes without repeating myself?"
 objectives:
 - " To be able to use the six main dataframe manipulation 'verbs' with pipes in  `dplyr`."
+- " To understand how `group_by()` and `summarize()` can be combined to summarize datasets."
+- " Be able to analyze a subset of data using logical filtering."
 keypoints:
 - "Use the `dplyr` package to manipulate dataframes."
 - "Use `select()` to choose variables from a dataframe."
@@ -99,14 +101,6 @@ Now let's load the package:
 library("dplyr")
 ~~~
 {: .r}
-
-
-
-~~~
-Warning: Installed Rcpp (0.12.12) different from Rcpp used to build dplyr (0.12.11).
-Please reinstall dplyr to avoid random crashes or undefined behavior.
-~~~
-{: .error}
 
 ## Using select()
 
@@ -251,7 +245,7 @@ value `continent` (at least in the example above).
 ## Using summarize()
 
 The above was a bit on the uneventful side but `group_by()` is much more
-exciting in conjunction with `summarize()`. This will allow use to create new
+exciting in conjunction with `summarize()`. This will allow us to create new
 variable(s) by using functions that repeat for each of the continent-specific
 data frames. That is to say, using the `group_by()` function, we split our
 original dataframe into multiple pieces, then we can run functions
@@ -269,7 +263,6 @@ gdp_bycontinents <- gapminder %>%
 
 
 ~~~
-# A tibble: 5 x 2
 continent mean_gdpPercap
      <fctr>          <dbl>
 1    Africa       2193.755
@@ -283,8 +276,6 @@ continent mean_gdpPercap
 That allowed us to calculate the mean gdpPercap for each continent, but it gets
 even better.
 
-You'll notice that the output includes a new term: tibble. Tibbles are the tidyverse implementation of dataframes. They work similarly, but with a few differences that make them easier to use. See the [`tibble` package vignette](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html) for details if you're interested.
-
 > ## Challenge 2
 >
 >
@@ -297,7 +288,7 @@ You'll notice that the output includes a new term: tibble. Tibbles are the tidyv
 > >lifeExp_bycountry <- gapminder %>%
 > >    group_by(country) %>%
 > >    summarize(mean_lifeExp=mean(lifeExp))
-> >lifeExp_bycountry %>% 
+> >lifeExp_bycountry %>%
 > >    filter(mean_lifeExp == min(mean_lifeExp) | mean_lifeExp == max(mean_lifeExp))
 > >~~~
 > >{: .r}
@@ -312,10 +303,10 @@ You'll notice that the output includes a new term: tibble. Tibbles are the tidyv
 > >2 Sierra Leone     36.76917
 > >~~~
 > >{: .output}
-> Another way to do this is to use the `dplyr` function `arrange()`, which 
-> arranges the rows in a data frame according to the order of one or more 
-> variables from the data frame.  It has similar syntax to other functions from 
-> the `dplyr` package. You can use `desc()` inside `arrange()` to sort in 
+> Another way to do this is to use the `dplyr` function `arrange()`, which
+> arranges the rows in a data frame according to the order of one or more
+> variables from the data frame.  It has similar syntax to other functions from
+> the `dplyr` package. You can use `desc()` inside `arrange()` to sort in
 > descending order.
 > >
 > >~~~
@@ -438,6 +429,34 @@ gapminder %>%
 ~~~
 {: .output}
 
+You can also chain together several summary operations; in this case calculating the `minimum`, `maximum`, `mean` and `se` of each continent's per-country life-expectancy:
+
+
+~~~
+gapminder %>%
+    group_by(continent) %>%
+    summarize(
+      mean_le = mean(lifeExp),
+      min_le = min(lifeExp),
+      max_le = max(lifeExp),
+      se_le = sd(lifeExp)/sqrt(n()))
+~~~
+{: .r}
+
+
+
+~~~
+# A tibble: 5 x 5
+  continent  mean_le min_le max_le     se_le
+     <fctr>    <dbl>  <dbl>  <dbl>     <dbl>
+1    Africa 48.86533 23.599 76.442 0.3663016
+2  Americas 64.65874 37.579 80.653 0.5395389
+3      Asia 60.06490 28.801 82.603 0.5962151
+4    Europe 71.90369 43.585 81.757 0.2863536
+5   Oceania 74.32621 69.120 81.235 0.7747759
+~~~
+{: .output}
+
 ## Using mutate()
 
 We can also create new variables prior to (or even after) summarizing information using `mutate()`.
@@ -458,7 +477,7 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 
 ## Connect mutate with logical filtering: ifelse
 
-When creating new variables, we can hook this with a logical condition. A simple combination of 
+When creating new variables, we can hook this with a logical condition. A simple combination of
 `mutate()` and `ifelse()` facilitates filtering right where it is needed: in the moment of creating something new.
 This easy-to-read statement is a fast and powerful way of discarding certain data (even though the overall dimension
 of the data frame will not change) or for updating values depending on this given condition.
@@ -505,7 +524,7 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color = continent)) +
 ~~~
 {: .r}
 
-<img src="../fig/rmd-13-unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" style="display: block; margin: auto;" />
+<img src="../fig/rmd-13-unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" />
 
 This code makes the right plot but it also creates some variables (`starts.with`
 and `az.countries`) that we might not have any other uses for. Just as we used
@@ -513,23 +532,23 @@ and `az.countries`) that we might not have any other uses for. Just as we used
 to `ggplot()`. Because `%>%` replaces the first argument in a function we don't
 need to specify the `data =` argument in the `ggplot()` function. By combining
 `dplyr` and `ggplot2` functions we can make the same figure without creating any
-new variables or modifying the data.  
+new variables or modifying the data.
 
 
 ~~~
-gapminder %>% 
-   # Get the start letter of each country 
-   mutate(startsWith = substr(country, start = 1, stop = 1)) %>% 
+gapminder %>%
+   # Get the start letter of each country
+   mutate(startsWith = substr(country, start = 1, stop = 1)) %>%
    # Filter countries that start with "A" or "Z"
    filter(startsWith %in% c("A", "Z")) %>%
    # Make the plot
-   ggplot(aes(x = year, y = lifeExp, color = continent)) + 
-   geom_line() + 
+   ggplot(aes(x = year, y = lifeExp, color = continent)) +
+   geom_line() +
    facet_wrap( ~ country)
 ~~~
 {: .r}
 
-<img src="../fig/rmd-13-unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" />
+<img src="../fig/rmd-13-unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" style="display: block; margin: auto;" />
 
 Using `dplyr` functions also helps us simplify things, for example we could
 combine the first two steps:
@@ -540,13 +559,13 @@ gapminder %>%
     # Filter countries that start with "A" or "Z"
 	filter(substr(country, start = 1, stop = 1) %in% c("A", "Z")) %>%
 	# Make the plot
-	ggplot(aes(x = year, y = lifeExp, color = continent)) + 
-	geom_line() + 
+	ggplot(aes(x = year, y = lifeExp, color = continent)) +
+	geom_line() +
 	facet_wrap( ~ country)
 ~~~
 {: .r}
 
-<img src="../fig/rmd-13-unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" style="display: block; margin: auto;" />
+<img src="../fig/rmd-13-unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" style="display: block; margin: auto;" />
 
 > ## Advanced Challenge
 >
