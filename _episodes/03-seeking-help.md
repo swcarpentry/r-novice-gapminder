@@ -116,8 +116,8 @@ sessionInfo()
 
 ~~~
 R version 3.4.1 (2017-06-30)
-Platform: x86_64-apple-darwin16.6.0 (64-bit)
-Running under: macOS Sierra 10.12.6
+Platform: x86_64-apple-darwin16.7.0 (64-bit)
+Running under: macOS High Sierra 10.13
 
 Matrix products: default
 BLAS: /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib
@@ -130,7 +130,7 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
 
 other attached packages:
-[1] checkpoint_0.4.1 stringr_1.2.0    knitr_1.16      
+[1] checkpoint_0.4.1 stringr_1.2.0    knitr_1.17      
 
 loaded via a namespace (and not attached):
 [1] compiler_3.4.1  magrittr_1.5    tools_3.4.1     stringi_1.1.5  

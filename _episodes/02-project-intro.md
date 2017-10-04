@@ -141,15 +141,11 @@ get shared between projects.
 
 ### Separate function definition and application
 
-The most effective way I find to work in R, is to play around in the interactive
-session, then copy commands across to a script file when I'm sure they work and
-do what I want. You can also save all the commands you've entered using the
-`history` command, but I don't find it useful because when I'm typing its 90%
-trial and error.
+One of the more effective ways to work with R is to start by writing the code you want to run directly in an .R script, and then running the selected lines (either using the keyboard shortcuts in RStudio or clicking the "Run" button) in the interactive R console.
 
-When your project is new and shiny, the script file usually contains many lines
+When your project is in its early stages, the initial .R script file usually contains many lines
 of directly executed code. As it matures, reusable chunks get pulled into their
-own functions. It's a good idea to separate these into separate folders; one
+own functions. It's a good idea to separate these functions into two separate folders; one
 to store useful functions that you'll reuse across analyses and projects, and
 one to store the analysis scripts.
 
@@ -201,7 +197,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > > 
 > > 
 > > ~~~
-> > -rw-r--r--  1 naupaka  staff    80K Aug  1 15:29 data/gapminder-FiveYearData.csv
+> > -rw-r--r--  1 naupaka  staff    80K Jul 19  2016 data/gapminder-FiveYearData.csv
 > > ~~~
 > > {: .output}
 > > The file size is 80K.
