@@ -100,9 +100,13 @@ interactive R console.
 >
 > RStudio offers you great flexibility in running code from within the editor
 > window. There are buttons, menu choices, and keyboard shortcuts. To run the
-> current line, you can 1. click on the `Run` button above the editor panel,
-> or 2. select "Run Lines" from the "Code" menu, or 3. hit Ctrl-Enter in Windows
-> or Linux or Command-Enter on OS X. (This shortcut can also be seen by hovering
+> current line, you can 
+
+> 1. click on the `Run` button above the editor panel, or 
+> 2. select "Run Lines" from the "Code" menu, or 
+> 3. hit Ctrl-Enter in Windows or Linux or Command-Enter on OS X.
+
+> (This shortcut can also be seen by hovering
 > the mouse over the button). To run a block of code, select it and then `Run`.
 > If you have modified a line of code within a block of code you have just run,
 > there is no need to reselct the section and `Run`, you can use the next button
