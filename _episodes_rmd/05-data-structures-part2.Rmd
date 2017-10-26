@@ -103,7 +103,7 @@ str(cats)
 ```
 
 > ## Challenge 1
-> Let's imagine that, like dogs, 1 human year is equivalent to 7 cat years. (The Purina company uses a [more sophisticated alogrithm](https://www.proplan.com/cats/cat-age-calculator)). 
+> Let's imagine that, like dogs, 1 human year is equivalent to 7 cat years. (The Purina company uses a [more sophisticated alogrithm](https://www.purina.co.uk/cats/key-life-stages/ageing/cats-age-in-human-years)). 
 > 1. Create a vector called `human.age` by multiplying `cats$age` by 7.
 > 2. Convert `human.age` to a factor.
 > 3. Convert `human.age` back to a numeric vector using the `as.numeric()` function. Now divide it by 7 to get back the original ages. Explain what happened.
