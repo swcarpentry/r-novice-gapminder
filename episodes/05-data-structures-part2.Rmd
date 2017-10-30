@@ -45,24 +45,37 @@ cats <- read.csv("data/feline-data.csv")
 ```
 
 ```{r}
-age <- c(2,3,5,12)
+age <- c(2,3,5)
 cats
 ```
 
 We can then add this as a column via:
 
+```{r}
+cbind(cats, age)
+```
+Note that if we tried to add a vector of ages with a different number of entries than the number of rows in the dataframe, it would fail:
 ```{r, error=TRUE}
-cats <- cbind(cats, age)
+age <- c(2,3,5,12)
+cbind(cats, age)
+
+age <- c(2,3)
+cbind(cats, age)
 ```
 
 Why didn't this work? Of course, R wants to see one element in our new column
 for every row in the table:
 
 ```{r}
-cats
-age <- c(4,5,8)
+nrow(cats)
+length(age)
+```
+
+So for it to work we have to have `nrow(cats)` = `length(age)`. Let's store it into cats and overwite the contents of that data frame.
+
+```{r}
+age <- c(2,3,5)
 cats <- cbind(cats, age)
-cats
 ```
 
 Now how about adding rows - in this case, we saw last time that the rows of a
