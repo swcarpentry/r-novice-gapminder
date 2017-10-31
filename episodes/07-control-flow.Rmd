@@ -79,7 +79,7 @@ x <- 8
 if (x >= 10) {
   print("x is greater than or equal to 10")
 } else if (x > 5) {
-  print("x is greater than 5")
+  print("x is greater than 5, but less than 10")
 } else {
   print("x is less than 5")
 }
