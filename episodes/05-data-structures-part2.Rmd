@@ -1,25 +1,27 @@
 ---
 title: "Exploring Data Frames"
+keypoints:
+- Use `cbind()` to add a new column to a data frame.
+- Use `rbind()` to add a new row to a data frame.
+- Remove rows from a data frame.
+- Use `na.omit()` to remove rows from a data frame with `NA` values.
+- Use `levels()` and `as.character()` to explore and manipulate factors
+- Use `str()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()` and
+  `typeof()` to understand structure of the data frame
+- Read in a csv file using `read.csv()`
+- Understand `length()` of a data frame
+objectives:
+- Be able to add and remove rows and columns.
+- Be able to remove rows with `NA` values.
+- Be able to append two data frames
+- Be able to articulate what a `factor` is and how to convert between `factor` and
+  `character`.
+- Be able to find basic properties of a data frames including size, class or type
+  of the columns, names, and first few rows.
+questions: How can I manipulate a data frame?
+source: Rmd
 teaching: 20
 exercises: 10
-questions:
-- "How can I manipulate a data frame?"
-objectives:
-- "Be able to add and remove rows and columns."
-- "Be able to remove rows with `NA` values."
-- "Be able to append two data frames"
-- "Be able to articulate what a `factor` is and how to convert between `factor` and `character`."
-- "Be able to find basic properties of a data frames including size, class or type of the columns, names, and first few rows."
-keypoints:
-- "Use `cbind()` to add a new column to a data frame."
-- "Use `rbind()` to add a new row to a data frame."
-- "Remove rows from a data frame."
-- "Use `na.omit()` to remove rows from a data frame with `NA` values."
-- "Use `levels()` and `as.character()` to explore and manipulate factors"
-- "Use `str()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()` and `typeof()` to understand structure of the data frame"
-- "Read in a csv file using `read.csv()`"
-- "Understand `length()` of a data frame"
-source: Rmd
 ---
 
 ```{r, include=FALSE}
@@ -292,10 +294,35 @@ to start digging into our data proper. Check out the first few lines:
 head(gapminder)
 ```
 
+> ## Challenge 3
+>
+> It's good practice to also check the last few lines of your data and some in the middle. How would you do this?
+>
+> Searching for ones specifically in the middle isn't too hard but we could simply ask for a few lines at random. How would you code this?
+>
+> > ## Solution to Challenge 3
+> > To check the last few lines it's relatively simple as R already has a function for this:
+> > 
+> > ~~~
+> > tail(gapminder)
+> > tail(gapminder, n = 15)
+> > ~~~
+> > {: .r}
+> > 
+> > What about a few arbitrary rows just for sanity (or insanity depending on your view)?
+> > 
+> > ~~~
+> > gapminder[sample(nrow(gapminder), 5), ]
+> > ~~~
+> > {: .r}
+> {: .solution}
+{: .challenge}
+
+
 To make sure our analysis is reproducible, we should put the code
 into a script file so we can come back to it later.
 
-> ## Challenge 3
+> ## Challenge 4
 >
 > Go to file -> new file -> R script, and write an R script
 > to load in the gapminder dataset. Put it in the `scripts/`
@@ -304,7 +331,7 @@ into a script file so we can come back to it later.
 > Run the script using the `source` function, using the file path
 > as its argument (or by pressing the "source" button in RStudio).
 >
-> > ## Solution to Challenge 3
+> > ## Solution to Challenge 4
 > > The contents of `script/load-gapminder.R`:
 > > ```{r eval = FALSE}
 > > download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv", destfile = "data/gapminder-FiveYearData.csv")
@@ -317,7 +344,7 @@ into a script file so we can come back to it later.
 > {: .solution}
 {: .challenge}
 
-> ## Challenge 4
+> ## Challenge 5
 >
 > Read the output of `str(gapminder)` again;
 > this time, use what you've learned about factors, lists and vectors,
@@ -325,7 +352,7 @@ into a script file so we can come back to it later.
 > to explain what everything that `str` prints out for gapminder means.
 > If there are any parts you can't interpret, discuss with your neighbors!
 >
-> > ## Solution to Challenge 4
+> > ## Solution to Challenge 5
 > >
 > > The object `gapminder` is a data frame with columns
 > > - `country` and `continent` are factors.
