@@ -31,15 +31,14 @@ tabby,3.2,1
 ~~~
 {: .r}
 
-> ## Tip: Editing Text files in R
+> ## Consejo: Edición de archivos de texto en R
 >
-> Alternatively, you can create `data/feline-data.csv` using a text editor (Nano),
-> or within RStudio with the **File -> New File -> Text File** menu item.
+> Alternativamente, puedes crear el archivo `data/feline-data.csv` usando un editor de texto (Nano),
+> o en RStudio usando el ítem del Menú  **File -> New File -> Text File**.
 {: .callout}
 
 
-
-We can load this into R via the following:
+Podemos leer el archivo en R con el siguiente comando:
 
 
 ~~~
@@ -58,10 +57,11 @@ cats
 ~~~
 {: .output}
 
-The `read.table` function is used for reading in tabular data stored in a text
-file where the columns of data are separated by punctuation characters such as
-CSV files (csv = comma-separated values). Tabs and commas are the most common
-punctuation characters used to separate or delimit data points in csv files. 
+La función `read.table` se usa para leer datos tabulares que están guardados en un archivo de texto,
+donde las columnas de datos están separadas por un signo de puntuación como en los archivos
+CSV (donde **csv** es **comma-separated values** en inglés, es decir, valores separados por comas).
+
+Los signos de puntuación más comunes usados para separar o delimitar datos en archivos de texto son tabuladores y comas.
 For convenience R provides 2 other versions of `read.table`. These are: `read.csv`
 for files where the data are separated with commas and `read.delim` for files
 where the data are separated with tabs. Of these three functions `read.csv` is
