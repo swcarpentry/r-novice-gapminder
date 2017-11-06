@@ -1,27 +1,26 @@
 ---
-title: "Data Structures"
+title: "Estructuras de datos"
 teaching: 40
 exercises: 15
 questions:
-- "How can I read data in R?"
-- "What are the basic data types in R?"
-- "How do I represent categorical information in R?"
+- "¿Cómo puedo leer datos en R?"
+- "¿Cuáles son los tipos de datos básicos en R?"
+- "¿Cómo represento la información categórica en R?"
 objectives:
-- "To be aware of the different types of data."
-- "To begin exploring data frames, and understand how they are related to vectors, factors and lists."
-- "To be able to ask questions from R about the type, class, and structure of an object."
+- "Conocer los distintos tipos de datos."
+- "Comenzar a explorar los *data frames* y entender cómo se relacionan con **vectors**, **factors** y **lists**."
+- "Ser capaz de preguntar sobre el tipo, clase y estructura de un objeto en R."
 keypoints:
-- "Use `read.csv` to read tabular data in R."
-- "The basic data types in R are double, integer, complex, logical, and character."
-- "Use factors to represent categories in R."
+- "Usar `read.csv` para leer los datos tabulares en R."
+- "Los tipos de datos básicos en R son **double**, **integer**, **complex**, **logical**, y **character**."
+- "Usa **factors** para representar categorías en R."
 source: Rmd
 ---
 
 
-
-One of R's most powerful features is its ability to deal with tabular data -
-such as you may already have in a spreadsheet or a CSV file. Let's start by
-making a toy dataset in your `data/` directory, called `feline-data.csv`:
+Una de las características más poderosas de R es su habilidad de manejar datos tabulares -
+como los que puedes tener en una planilla de cálculo o un archivo CSV. Comencemos creando un **dataset** de ejemplo
+en tu directorio `data/`, en el archivo llamado `feline-data.csv`:
 
 
 ~~~
