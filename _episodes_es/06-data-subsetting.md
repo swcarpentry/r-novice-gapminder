@@ -53,12 +53,12 @@ x
 > llamados vectores *atómicos* ya que no se pueden simplificar más.
 {: .callout}
 
-Ya que creamos un vector ejemplo jugemos con el, ¿cómo podemos acceder a sus
+Ya que creamos un vector ejemplo juguemos con el, ¿cómo podemos acceder a sus
 entradas?
 
 ## Accesando a las entradas usando sus índices
 
-Para extraer entradas de un vector podeos usar su índice correspondiente, empezando
+Para extraer entradas de un vector podemos usar su índice correspondiente, empezando
 por uno:
 
 
@@ -154,7 +154,7 @@ c(1, 2, 3, 4)
 {: .output}
 
 
-Tabién podemos pedir la misma entrada varias veces:
+También podemos pedir la misma entrada varias veces:
 
 
 ~~~
@@ -204,10 +204,10 @@ named numeric(0)
 ~~~
 {: .output}
 
-> ## La numeracion de R comienza en 1
+> ## La numeración de R comienza en 1
 >
 > En varios lenguajes de programación (C y Python por ejemplo), la primer
-> entrada de un vector tiene ìndice 0. En R, la primer entrada es 1.
+> entrada de un vector tiene índice 0. En R, la primer entrada es 1.
 {: .callout}
 
 ## Saltando y quitando entradas
@@ -233,7 +233,7 @@ También podemos saltar varios elementos:
 
 
 ~~~
-x[c(-1, -5)]  # or x[-c(1,5)]
+x[c(-1, -5)]  # o x[-c(1,5)]
 ~~~
 {: .r}
 
@@ -247,7 +247,7 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 
 > ## Tip: Orden de las operaciones
 >
-> Un pequeño obstaculo para los novatos ocurre cuando tratan de saltar rangos 
+> Un pequeño obstáculo para los novatos ocurre cuando tratan de saltar rangos 
 > elementos de un vector. Es natural tratar de filtrar una sucesión de la
 > siguiente manera:
 >
@@ -257,7 +257,7 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 > ~~~
 > {: .r}
 >
-> Esto nos devuelve un error de alguna manera criptico:
+> Esto nos devuelve un error de alguna manera críptico:
 >
 > 
 > ~~~
@@ -337,7 +337,7 @@ x
 >
 > Después de que encuentres estos 3 comandos distintos, comparalos con los de tu vecino. ¿Tienen distintas estrategias?.
 >
-> > ## Solution to challenge 1
+> > ## Solución al reto 1
 > >
 > > 
 > > ~~~
@@ -486,9 +486,9 @@ x[names(x) == "a"]
 >  * `|`, el operado "lógico OR": regresa `TRUE`, si la derecha o la izquierda
 >    (o ambos) son `TRUE`.
 >
-> A veces encontraras `&&` y `̣||` en vez de `&` y `|`. Los opreadores de dos caracteres
+> A veces encontraras `&&` y `̣||` en vez de `&` y `|`. Los operadores de dos caracteres
 > solo comparan las primeras entradas de cada vector e ignoran las demás entradas. En 
-> general no debes usar los operadores de dos caracteres en el análisis de datos; guardalos
+> general no debes usar los operadores de dos caracteres en el análisis de datos; guárdalos
 > para la programación, i.e. para decir cuando se ejecutara una instrucción.
 >
 >  * `!`, el operador "lógico NOT": convierte `TRUE` a `FALSE` y `FALSE` a
@@ -551,7 +551,6 @@ x[names(x) == "a"]
 > con el mismo nombre. (Para un **data frame**, la columnas pueden tener el 
 > mismo nombre --- aunque R trata de evitar esto --- pero los nombres de los
 > renglones deben ser únicos) Considera estos ejemplos:
-> must be unique.) Considera these examples:
 >
 >
 >~~~
@@ -616,7 +615,7 @@ x[names(x) == "a"]
 
 > ## Tip: Obteniendo ayuda para los operadores
 >
-> Recuerda que puedes obtener ayuda para los operadores empaquetandolos en 
+> Recuerda que puedes obtener ayuda para los operadores empaquetándolos en 
 > comillas: 
 > `help("%in%")` o `?"%in%"`.
 >
@@ -643,7 +642,7 @@ Error in -"a": invalid argument to unary operator
 {: .error}
 
 Sin embargo, podemos usar el operador `!=` (no igual) para construir un vector 
-booleano que es lo que nosotro queremos:
+booleano que es lo que nosotros queremos:
 
 
 ~~~
@@ -685,7 +684,7 @@ of shorter object length
 {: .output}
 
 R hizo *algo*, pero también nos lanzó una advertencia de algo que debemos 
-ponerle atención -y aprentemente *nos dió la respuesta incorrecta* 
+ponerle atención -y aparentemente *nos dió la respuesta incorrecta* 
 (¡el elemento `"c"` se encuentra todavía en el vector!).
 
 ¿Entonces qué hizo el operador `!=` en este caso? Esa es una excelente 
@@ -733,16 +732,16 @@ para emparejar `names(x)`, i.e. tenemos `c("a","c","a","c","a")`. Ya que
 el valor reciclado `"a"`no es igual a `names(x)`, el valor de `!=` es 
 `TRUE`. Es por esto que como el vector de longitud (5) no es múltiplo 
 de la longitud del vector más pequeño (2), R lanza esta advertencia. Si
-hubieramos sido lo suficientemente desafortunados y `names(x)` hubiera seis
+hubiéramos sido lo suficientemente desafortunados y `names(x)` hubiera seis
 entradas, R *silenciosamente* hubiera hecho las cosas incorrectas (i.e.,
-no lo que deseabamos hacer). Esta regla de recliclaje puede introducir 
+no lo que deseábamos hacer). Esta regla de reciclaje puede introducir 
 **bugs** difíciles de encontrar.
 
 La manera de hacer que R haga lo que en verdad queremos (emparejar *cada uno*
 de las entradas del argumento de la izquierda con *todas* las entradas del 
 argumento de la derecha es usando el operador `%in%`. El operador `%in%` que 
 toma cada uno de las entradas del argumento de la izquierda, en este caso 
-los nombres de `x`, y pegunta, "¿esta entradad ocurre en el segundo argumento?". 
+los nombres de `x`, y pegunta, "¿esta entrada ocurre en el segundo argumento?". 
 Aquí, como queremos *excluir* los valores, nosotros también necesitamos el
 operador `!` para cambiar el "in" en un "not in":
 
@@ -762,12 +761,12 @@ x[! names(x) %in% c("a","c") ]
 
 > ## Reto 2
 >
-> Seleccionar entradas de un vetor que empareje con cualquier valor de 
+> Seleccionar entradas de un vector que empareje con cualquier valor de 
 > una lista es una tarea muy común en el análisis de datos. Por ejemplo,
 > el **data set** de *gapminder* contiene las variables `country` y  
 > `continent`. Por ejemplo podemos querer extraer la información de el 
 > sureste de Asia: ¿cómo podemos escribir una operación de lugar a un
-> vector booleano que sea `TRUE`para todos los paises en el sureste de 
+> vector booleano que sea `TRUE`para todos los países en el sureste de 
 > Asia y `FALSE`en otro caso?
 >
 > Supongamos que tienen los siguientes datos:
@@ -783,7 +782,7 @@ x[! names(x) %in% c("a","c") ]
 > ~~~
 > {: .r}
 >
-> Esciste una manera incorrecta (usando solamente `==`), la cual te
+> Existe una manera incorrecta (usando solamente `==`), la cual te
 > dará una advertencia (*warning*); una manera enrollada de hacerlo
 > (usando los operadores lógicos `==` y `|`) y una manera elegante
 > (usando `%in%`). Veamos cual usas tú de las tres y explica cómo
@@ -794,7 +793,7 @@ x[! names(x) %in% c("a","c") ]
 > > - La manera **incorrecta** de hacer este problema es `countries==seAsia`.
 > > Esta lanza una advertencia (`"In countries == seAsia : longer object length is not a multiple of shorter object length"`)
 > > y la respuesta incorrecta (un vector con todos los valores `FALSE`), ya 
-> > que ninguno de los valores reclicados de `seAsia` se emparejaron correctamente
+> > que ninguno de los valores reciclados de `seAsia` se emparejaron correctamente
 > > para coincidir con los valores de `country`.
 > > - La manera **enrollada** (pero técnicamente correcta) de resolver
 > > este problema es
@@ -806,7 +805,7 @@ x[! names(x) %in% c("a","c") ]
 > > {: .r}
 > > (o `countries==seAsia[1] | countries==seAsia[2] | ...`). Esto
 > > da los valores correctos, pero esperamos que veas lo raro que se ve
-> > (¿qué hubiera pasado si hubieramos querido seleccionar paises de una
+> > (¿qué hubiera pasado si hubiéramos querido seleccionar países de una
 > > lista mucho más larga?). 
 > > - La mejor manera de resolver este problema es `countries %in% seAsia`,
 > > la cual es la correcta y la más sencilla de escribir (y leer).
@@ -818,9 +817,9 @@ x[! names(x) %in% c("a","c") ]
 En algún momento encontraremos funciones en R que no pueden manejar valores 
 faltantes, infinito o datos indefinidos.
 
-Existen algunas funciones especiales que puedes usar para filtar estos datos:
+Existen algunas funciones especiales que puedes usar para filtrar estos datos:
 
- * `is.na` regresa todas las posciciones de un **vector**, **matrix** o **data.frame** 
+ * `is.na` regresa todas las posiciones de un **vector**, **matrix** o **data.frame** 
    que contengan `NA` (o `NaN`)
  * de la misma manera, `is.nan` y `is.infinite` hacen lo mismo para `NaN` e `Inf`.
  * `is.finite` regresa todas las posiciones de un **vector**, **matrix** o **data.frame**
@@ -829,8 +828,8 @@ Existen algunas funciones especiales que puedes usar para filtar estos datos:
 
 ## Haciendo subconjuntos de factores
 
-Habiendo explorado las distintas manera de hacer subconjutnos de vectores, ¿cómo
-podemos hacer subconjuntos de otras estrcuturas de datos?.
+Habiendo explorado las distintas manera de hacer subconjuntos de vectores, ¿cómo
+podemos hacer subconjuntos de otras estructuras de datos?.
 
 Podemos hacer subconjuntos de factores de la misma manera que con los vectores.
 
@@ -1017,7 +1016,7 @@ m[5]
 
 
 Esto usualmente no es tan útil y muchas veces difícil de leer. Sin embargo 
-es útil notar que las matrices están acomodadas en *fomato de principal de
+es útil notar que las matrices están acomodadas en *formato de principal de
 columnas* por *default*. Esto es que los elementos del vector están acomodados
 por columnas:
 
