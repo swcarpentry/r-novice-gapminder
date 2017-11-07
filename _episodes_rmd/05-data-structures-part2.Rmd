@@ -292,10 +292,37 @@ to start digging into our data proper. Check out the first few lines:
 head(gapminder)
 ```
 
+> ## Challenge 3
+>
+> It's good practice to also check the last few lines of your data and some in the middle. How would you do this?
+>
+> Searching for ones specifically in the middle isn't too hard but we could simply ask for a few lines at random. How would you code this?
+>
+> > ## Solution to Challenge 3
+> > To check the last few lines it's relatively simple as R already has a function for this:
+> > 
+> > ~~~
+> > tail(gapminder)
+> > tail(gapminder, n = 15)
+> > ~~~
+> > {: .r}
+> > 
+> > What about a few arbitrary rows just for sanity (or insanity depending on your view)?
+> > ## Tip: There are several ways to achieve this.
+> > The solution here presents one form using nested functions. i.e. a function passed as an argument to another function. This might sound like a new concept but you are already using it in fact.
+> > Remember my_dataframe[rows, cols] will print to screen your data frame with the number of rows and columns you asked for (although you might have asked for a range or named columns for example). How would you get the last row if you don't know how many rows your data frame has? R has a function for this. What about getting a (pseudorandom) sample? R also has a function for this.
+> > ~~~
+> > gapminder[sample(nrow(gapminder), 5), ]
+> > ~~~
+> > {: .r}
+> {: .solution}
+{: .challenge}
+
+
 To make sure our analysis is reproducible, we should put the code
 into a script file so we can come back to it later.
 
-> ## Challenge 3
+> ## Challenge 4
 >
 > Go to file -> new file -> R script, and write an R script
 > to load in the gapminder dataset. Put it in the `scripts/`
@@ -304,7 +331,7 @@ into a script file so we can come back to it later.
 > Run the script using the `source` function, using the file path
 > as its argument (or by pressing the "source" button in RStudio).
 >
-> > ## Solution to Challenge 3
+> > ## Solution to Challenge 4
 > > The contents of `script/load-gapminder.R`:
 > > ```{r eval = FALSE}
 > > download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv", destfile = "data/gapminder-FiveYearData.csv")
@@ -317,7 +344,7 @@ into a script file so we can come back to it later.
 > {: .solution}
 {: .challenge}
 
-> ## Challenge 4
+> ## Challenge 5
 >
 > Read the output of `str(gapminder)` again;
 > this time, use what you've learned about factors, lists and vectors,
@@ -325,7 +352,7 @@ into a script file so we can come back to it later.
 > to explain what everything that `str` prints out for gapminder means.
 > If there are any parts you can't interpret, discuss with your neighbors!
 >
-> > ## Solution to Challenge 4
+> > ## Solution to Challenge 5
 > >
 > > The object `gapminder` is a data frame with columns
 > > - `country` and `continent` are factors.
