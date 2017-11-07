@@ -1,27 +1,25 @@
 ---
 title: "Exploring Data Frames"
-keypoints:
-- Use `cbind()` to add a new column to a data frame.
-- Use `rbind()` to add a new row to a data frame.
-- Remove rows from a data frame.
-- Use `na.omit()` to remove rows from a data frame with `NA` values.
-- Use `levels()` and `as.character()` to explore and manipulate factors
-- Use `str()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()` and
-  `typeof()` to understand structure of the data frame
-- Read in a csv file using `read.csv()`
-- Understand `length()` of a data frame
-objectives:
-- Be able to add and remove rows and columns.
-- Be able to remove rows with `NA` values.
-- Be able to append two data frames
-- Be able to articulate what a `factor` is and how to convert between `factor` and
-  `character`.
-- Be able to find basic properties of a data frames including size, class or type
-  of the columns, names, and first few rows.
-questions: How can I manipulate a data frame?
-source: Rmd
 teaching: 20
 exercises: 10
+questions:
+- "How can I manipulate a data frame?"
+objectives:
+- "Be able to add and remove rows and columns."
+- "Be able to remove rows with `NA` values."
+- "Be able to append two data frames"
+- "Be able to articulate what a `factor` is and how to convert between `factor` and `character`."
+- "Be able to find basic properties of a data frames including size, class or type of the columns, names, and first few rows."
+keypoints:
+- "Use `cbind()` to add a new column to a data frame."
+- "Use `rbind()` to add a new row to a data frame."
+- "Remove rows from a data frame."
+- "Use `na.omit()` to remove rows from a data frame with `NA` values."
+- "Use `levels()` and `as.character()` to explore and manipulate factors"
+- "Use `str()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()` and `typeof()` to understand structure of the data frame"
+- "Read in a csv file using `read.csv()`"
+- "Understand `length()` of a data frame"
+source: Rmd
 ---
 
 ```{r, include=FALSE}
@@ -310,7 +308,9 @@ head(gapminder)
 > > {: .r}
 > > 
 > > What about a few arbitrary rows just for sanity (or insanity depending on your view)?
-> > 
+> > ## Tip: There are several ways to achieve this.
+> > The solution here presents one form using nested functions. i.e. a function passed as an argument to another function. This might sound like a new concept but you are already using it in fact.
+> > Remember my_dataframe[rows, cols] will print to screen your data frame with the number of rows and columns you asked for (although you might have asked for a range or named columns for example). How would you get the last row if you don't know how many rows your data frame has? R has a function for this. What about getting a (pseudorandom) sample? R also has a function for this.
 > > ~~~
 > > gapminder[sample(nrow(gapminder), 5), ]
 > > ~~~
