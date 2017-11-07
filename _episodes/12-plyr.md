@@ -1,5 +1,5 @@
 ---
-title: Split-Apply-Combine
+Titulo: Split-Apply-Combine
 teaching: 30
 exercises: 30
 questions:
