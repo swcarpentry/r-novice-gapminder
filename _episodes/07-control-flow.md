@@ -46,7 +46,7 @@ Say, for example, that we want R to print a message if a variable `x` has a part
 # sample a random number from a Poisson distribution
 # with a mean (lambda) of 8
 
-x <- rpois(1, lambda=8)
+x <- 8
 
 if (x >= 10) {
   print("x is greater than or equal to 10")
@@ -63,21 +63,37 @@ x
 ~~~
 {: .output}
 
-Note you may not get the same output as your neighbour because
-you may be sampling different random numbers from the same distribution.
-
-Let's set a seed so that we all generate the same 'pseudo-random'
-number, and then print more information:
+The print statement does not appear in the console because x is not greater than 10. To print a different message for numbers less than 10, we can add an `else` statement.
 
 
 ~~~
-set.seed(10)
-x <- rpois(1, lambda=8)
+x <- 8
+
+if (x >= 10) {
+  print("x is greater than or equal to 10")
+} else {
+  print("x is less than 10")
+}
+~~~
+{: .r}
+
+
+
+~~~
+[1] "x is less than 10"
+~~~
+{: .output}
+
+You can also test multiple conditions by using `else if`.
+
+
+~~~
+x <- 8
 
 if (x >= 10) {
   print("x is greater than or equal to 10")
 } else if (x > 5) {
-  print("x is greater than 5")
+  print("x is greater than 5, but less than 10")
 } else {
   print("x is less than 5")
 }
@@ -87,19 +103,9 @@ if (x >= 10) {
 
 
 ~~~
-[1] "x is greater than 5"
+[1] "x is greater than 5, but less than 10"
 ~~~
 {: .output}
-
-> ## Tip: pseudo-random numbers
->
-> In the above case, the function `rpois()` generates a random number following a
-> Poisson distribution with a mean (i.e. lambda) of 8. The function `set.seed()`
-> guarantees that all machines will generate the exact same 'pseudo-random'
-> number ([more about pseudo-random numbers](http://en.wikibooks.org/wiki/R_Programming/Random_Number_Generation)).
-> So if we `set.seed(10)`, we see that `x` takes the value 8. You should get the
-> exact same number.
-{: .callout}
 
 **Important:** when R evaluates the condition inside `if()` statements, it is
 looking for a logical element, i.e., `TRUE` or `FALSE`. This can cause some
@@ -110,11 +116,20 @@ headaches for beginners. For example:
 x  <-  4 == 3
 if (x) {
   "4 equals 3"
+} else {
+  "4 does not equal 3"          
 }
 ~~~
 {: .r}
 
-As we can see, the message was not printed because the vector x is `FALSE`
+
+
+~~~
+[1] "4 does not equal 3"
+~~~
+{: .output}
+
+As we can see, the not equal message was printed because the vector x is `FALSE`
 
 
 ~~~
