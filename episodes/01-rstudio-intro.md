@@ -642,19 +642,19 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
         if ((ll <- length(grep("[", pattern, fixed = TRUE))) && 
             ll != length(grep("]", pattern, fixed = TRUE))) {
             if (pattern == "[") {
-                pattern <- "\\\\["
-                warning("replaced regular expression pattern '[' by  '\\\\\\\\['")
+                pattern <- "\\["
+                warning("replaced regular expression pattern '[' by  '\\\\['")
             }
-            else if (length(grep("[^\\\\\\\\]\\\\[<-", pattern))) {
-                pattern <- sub("\\\\[<-", "\\\\\\\\\\\\[<-", pattern)
-                warning("replaced '[<-' by '\\\\\\\\[<-' in regular expression pattern")
+            else if (length(grep("[^\\\\]\\[<-", pattern))) {
+                pattern <- sub("\\[<-", "\\\\\\[<-", pattern)
+                warning("replaced '[<-' by '\\\\[<-' in regular expression pattern")
             }
         }
         grep(pattern, all.names, value = TRUE)
     }
     else all.names
 }
-<bytecode: 0x7fa8e5254b40>
+<bytecode: 0x7ffdf9e17638>
 <environment: namespace:base>
 ~~~
 {: .output}

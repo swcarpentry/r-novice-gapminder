@@ -41,7 +41,7 @@ new column, we need to start by making a new vector:
 
 
 ~~~
-age <- c(2,3,5,12)
+age <- c(2, 3, 5)
 cats
 ~~~
 {: .r}
@@ -60,7 +60,24 @@ We can then add this as a column via:
 
 
 ~~~
-cats <- cbind(cats, age)
+cbind(cats, age)
+~~~
+{: .r}
+
+
+
+~~~
+    coat weight likes_string age
+1 calico    2.1            1   2
+2  black    5.0            0   3
+3  tabby    3.2            1   5
+~~~
+{: .output}
+Note that if we tried to add a vector of ages with a different number of entries than the number of rows in the dataframe, it would fail:
+
+~~~
+age <- c(2, 3, 5, 12)
+cbind(cats, age)
 ~~~
 {: .r}
 
@@ -71,43 +88,59 @@ Error in data.frame(..., check.names = FALSE): arguments imply differing number 
 ~~~
 {: .error}
 
+
+
+~~~
+age <- c(2, 3)
+cbind(cats, age)
+~~~
+{: .r}
+
+
+
+~~~
+Error in data.frame(..., check.names = FALSE): arguments imply differing number of rows: 3, 2
+~~~
+{: .error}
+
 Why didn't this work? Of course, R wants to see one element in our new column
 for every row in the table:
 
 
 ~~~
-cats
+nrow(cats)
 ~~~
 {: .r}
 
 
 
 ~~~
-    coat weight likes_string
-1 calico    2.1            1
-2  black    5.0            0
-3  tabby    3.2            1
+[1] 3
 ~~~
 {: .output}
 
 
 
 ~~~
-age <- c(4,5,8)
+length(age)
+~~~
+{: .r}
+
+
+
+~~~
+[1] 2
+~~~
+{: .output}
+
+So for it to work we have to have `nrow(cats)` = `length(age)`. Let's store it into cats and overwite the contents of that data frame.
+
+
+~~~
+age <- c(2, 3, 5)
 cats <- cbind(cats, age)
-cats
 ~~~
 {: .r}
-
-
-
-~~~
-    coat weight likes_string age
-1 calico    2.1            1   4
-2  black    5.0            0   5
-3  tabby    3.2            1   8
-~~~
-{: .output}
 
 Now how about adding rows - in this case, we saw last time that the rows of a
 data frame are made of lists:
@@ -178,7 +211,7 @@ str(cats)
  $ coat        : Factor w/ 4 levels "black","calico",..: 2 1 3 NA 4
  $ weight      : num  2.1 5 3.2 3.3 3.3
  $ likes_string: int  1 0 1 1 1
- $ age         : num  4 5 8 9 9
+ $ age         : num  2 3 5 9 9
 ~~~
 {: .output}
 
@@ -197,12 +230,12 @@ str(cats)
  $ coat        : chr  "calico" "black" "tabby" NA ...
  $ weight      : num  2.1 5 3.2 3.3 3.3
  $ likes_string: int  1 0 1 1 1
- $ age         : num  4 5 8 9 9
+ $ age         : num  2 3 5 9 9
 ~~~
 {: .output}
 
 > ## Challenge 1
-> Let's imagine that, like dogs, 1 human year is equivalent to 7 cat years. (The Purina company uses a [more sophisticated alogrithm](https://www.proplan.com/cats/cat-age-calculator)). 
+> Let's imagine that, like dogs, 1 human year is equivalent to 7 cat years. (The Purina company uses a [more sophisticated alogrithm](https://www.purina.co.uk/cats/key-life-stages/ageing/cats-age-in-human-years)). 
 > 1. Create a vector called `human.age` by multiplying `cats$age` by 7.
 > 2. Convert `human.age` to a factor.
 > 3. Convert `human.age` back to a numeric vector using the `as.numeric()` function. Now divide it by 7 to get back the original ages. Explain what happened.
@@ -230,9 +263,9 @@ cats
 
 ~~~
            coat weight likes_string age
-1        calico    2.1            1   4
-2         black    5.0            0   5
-3         tabby    3.2            1   8
+1        calico    2.1            1   2
+2         black    5.0            0   3
+3         tabby    3.2            1   5
 4          <NA>    3.3            1   9
 5 tortoiseshell    3.3            1   9
 ~~~
@@ -250,9 +283,9 @@ cats[-4,]
 
 ~~~
            coat weight likes_string age
-1        calico    2.1            1   4
-2         black    5.0            0   5
-3         tabby    3.2            1   8
+1        calico    2.1            1   2
+2         black    5.0            0   3
+3         tabby    3.2            1   5
 5 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
@@ -274,9 +307,9 @@ na.omit(cats)
 
 ~~~
            coat weight likes_string age
-1        calico    2.1            1   4
-2         black    5.0            0   5
-3         tabby    3.2            1   8
+1        calico    2.1            1   2
+2         black    5.0            0   3
+3         tabby    3.2            1   5
 5 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
@@ -306,13 +339,13 @@ cats
 
 ~~~
             coat weight likes_string age
-1         calico    2.1            1   4
-2          black    5.0            0   5
-3          tabby    3.2            1   8
+1         calico    2.1            1   2
+2          black    5.0            0   3
+3          tabby    3.2            1   5
 5  tortoiseshell    3.3            1   9
-11        calico    2.1            1   4
-21         black    5.0            0   5
-31         tabby    3.2            1   8
+11        calico    2.1            1   2
+21         black    5.0            0   3
+31         tabby    3.2            1   5
 51 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
@@ -330,13 +363,13 @@ cats
 
 ~~~
            coat weight likes_string age
-1        calico    2.1            1   4
-2         black    5.0            0   5
-3         tabby    3.2            1   8
+1        calico    2.1            1   2
+2         black    5.0            0   3
+3         tabby    3.2            1   5
 4 tortoiseshell    3.3            1   9
-5        calico    2.1            1   4
-6         black    5.0            0   5
-7         tabby    3.2            1   8
+5        calico    2.1            1   2
+6         black    5.0            0   3
+7         tabby    3.2            1   5
 8 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
@@ -616,7 +649,9 @@ head(gapminder)
 > > {: .r}
 > > 
 > > What about a few arbitrary rows just for sanity (or insanity depending on your view)?
-> > 
+> > ## Tip: There are several ways to achieve this.
+> > The solution here presents one form using nested functions. i.e. a function passed as an argument to another function. This might sound like a new concept but you are already using it in fact.
+> > Remember my_dataframe[rows, cols] will print to screen your data frame with the number of rows and columns you asked for (although you might have asked for a range or named columns for example). How would you get the last row if you don't know how many rows your data frame has? R has a function for this. What about getting a (pseudorandom) sample? R also has a function for this.
 > > ~~~
 > > gapminder[sample(nrow(gapminder), 5), ]
 > > ~~~
