@@ -45,7 +45,7 @@ cats <- read.csv("data/feline-data.csv")
 ```
 
 ```{r}
-age <- c(2,3,5)
+age <- c(2, 3, 5)
 cats
 ```
 
@@ -56,10 +56,10 @@ cbind(cats, age)
 ```
 Note that if we tried to add a vector of ages with a different number of entries than the number of rows in the dataframe, it would fail:
 ```{r, error=TRUE}
-age <- c(2,3,5,12)
+age <- c(2, 3, 5, 12)
 cbind(cats, age)
 
-age <- c(2,3)
+age <- c(2, 3)
 cbind(cats, age)
 ```
 
@@ -74,7 +74,7 @@ length(age)
 So for it to work we have to have `nrow(cats)` = `length(age)`. Let's store it into cats and overwite the contents of that data frame.
 
 ```{r}
-age <- c(2,3,5)
+age <- c(2, 3, 5)
 cats <- cbind(cats, age)
 ```
 
