@@ -86,7 +86,7 @@ tarea es algunas veces llamada **"data munging"**. Es útil almacenar estos **sc
 
 ### Tratar la salida generada como disponible
 
-Todo lo generado por tus #scripts# debe tratarse como disponible: todo debería 
+Todo lo generado por tus **scripts** debe tratarse como disponible: todo debería 
 poder regenerarse a partir de tus **scripts**.
 
 Hay muchas diferentes maneras de gestionar esta salida. Me parece útil 
@@ -141,7 +141,7 @@ uno para guardar los **scripts** de análisis.
 
 > ## Tip: evitando la duplicación
 >
-> Puedes encontrarte utilizando datos o #scripts# de análisis a través de varios proyectos.
+> Puedes encontrarte utilizando datos o **scripts** de análisis a través de varios proyectos.
 > Normalmente, deseas evitar la duplicación para ahorrar espacio y evitar
 > actualizar el código en múltiples lugares.
 >
@@ -172,7 +172,7 @@ Ahora que tenemos una buena estructura de directorios colocaremos/guardaremos lo
 > línea de comandos para contestar las siguientes preguntas:
 > 1. ¿Cuál es el tamaño del archivo?
 > 2. ¿Cuántas líneas de datos contiene?
-> 3. Cuáles tipos de valores están almacenados en este archivo?
+> 3. ¿Cuáles tipos de valores están almacenados en este archivo?
 >
 > > ## Solución al desafío 2
 > >
