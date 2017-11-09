@@ -15,7 +15,7 @@ keypoints:
 - "Acceso a un elemento por posición usando `[]`."
 - "Acceso a un rango de datos usando `[min:max]`."
 - "Acceso a subconjuntos arbitrarios usando `[c(...)]`."
-- "Usar comparaciones lógicas o vectores booleanos para acceder subconjuntos 
+- "Usar comparaciones lógicas o vectores con entradas **logical** para acceder subconjuntos 
    de datos."
 source: Rmd
 ---
@@ -49,7 +49,7 @@ x
 
 > ## Vectores atómicos
 >
-> En R, un vector puede contener palabras, números o valores booleanos estos son 
+> En R, un vector puede contener palabras, números o **logical** estos son 
 > llamados vectores *atómicos* ya que no se pueden simplificar más.
 {: .callout}
 
@@ -420,7 +420,7 @@ de subconjuntos, ¡pero los nombres siempre permanecen iguales!.
 
 ## Creado subconjuntos usando operaciones lógicas
 
-También podemos usar un vector booleano para hacer subconjuntos:
+También podemos usar un vector con entradas **logical** para hacer subconjuntos:
 
 
 ~~~
@@ -436,8 +436,8 @@ x[c(FALSE, FALSE, TRUE, FALSE, TRUE)]
 ~~~
 {: .output}
 
-Dado que los operadores (e.g. `>`, `<`, `==`) dan como resultado vectores 
-booleanos, podemos usarlos para crear subconjuntos: la siguiente instrucción
+Dado que los operadores (e.g. `>`, `<`, `==`) dan como resultado valores **logical**, 
+podemos usarlos para crear subconjuntos: la siguiente instrucción
 tiene el mismo resultado que el anterior.
 
 
@@ -455,7 +455,7 @@ x[x > 7]
 {: .output}
 
 Explicando un poco lo que sucedió, la instrucción `x>7`, genera un vector 
-booleano `c(FALSE, FALSE, TRUE, FALSE, TRUE)` y después este selecciona
+**logical** `c(FALSE, FALSE, TRUE, FALSE, TRUE)` y después este selecciona
 las entradas de `x` correspondientes a los valores `TRUE`.
 
 Podemos usar `==` para imitar el método anterior de indexar con nombre
@@ -479,7 +479,7 @@ x[names(x) == "a"]
 > Muchas veces queremos combinar varios criterios lógicos. Por ejemplo, tal vez
 > queramos encontrar todos los paise en Asia o (en inglés **or**) Europe y (en 
 > inglés **and**) con esperanza de vida en cierto rango. Existen muchas operaciones 
-> para combinar vectores booleanos en R:
+> para combinar vectores con entradas **logical** en R:
 >
 >  * `&`, el operador "lógico AND": regresa `TRUE` si la derecha y la izquierda 
 >    son `TRUE`.
@@ -493,7 +493,7 @@ x[names(x) == "a"]
 >
 >  * `!`, el operador "lógico NOT": convierte `TRUE` a `FALSE` y `FALSE` a
 >    `TRUE`. Puede negar una sola condición lógica (e.g. `!TRUE` se vuelve
->    `FALSE`), o un vector booleano(e.g. `!c(TRUE, FALSE)` se vuelve
+>    `FALSE`), o un vector **logical** (e.g. `!c(TRUE, FALSE)` se vuelve
 >    `c(FALSE, TRUE)`).
 >
 > Más aún, tú puedes comparar todas las entradas de un vector entre ellas usando
@@ -642,7 +642,7 @@ Error in -"a": invalid argument to unary operator
 {: .error}
 
 Sin embargo, podemos usar el operador `!=` (no igual) para construir un vector 
-booleano que es lo que nosotros queremos:
+con entradas **logical** que es lo que nosotros queremos:
 
 
 ~~~
@@ -766,7 +766,7 @@ x[! names(x) %in% c("a","c") ]
 > el **data set** de *gapminder* contiene las variables `country` y  
 > `continent`. Por ejemplo podemos querer extraer la información de el 
 > sureste de Asia: ¿cómo podemos escribir una operación de lugar a un
-> vector booleano que sea `TRUE`para todos los países en el sureste de 
+> vector **logical** que sea `TRUE`para todos los países en el sureste de 
 > Asia y `FALSE`en otro caso?
 >
 > Supongamos que tienen los siguientes datos:
