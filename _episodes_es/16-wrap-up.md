@@ -33,9 +33,9 @@ idealmente no deberías preocuparte.
 
 ## Manten tu código modular
 
-Nuestra recomendación es que debes separar tus funciones de los ##scripts## y 
+Nuestra recomendación es que debes separar tus funciones de los **scripts** y 
 almacenarlas en un archivo separado 'fuente' cuando abras la sesión R en tu proyecto. Este enfoque es bueno 
-porque te deja un ##script## ordenado y un repositorio de funciones útiles que se pueden cargar en 
+porque te deja un **script** ordenado y un repositorio de funciones útiles que se pueden cargar en 
 cualquier script en tu proyecto. También le permite agrupar funciones relacionadas 
 fácilmente.
 
