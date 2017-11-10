@@ -3,7 +3,7 @@ title: Funciones
 teaching: 45
 exercises: 15
 questions:
-- "Cómo puedo escribir una nueva función en R?"
+- "¿Cómo puedo escribir una nueva función en R?"
 objectives:
 - "Definir una función que usa argumentos."
 - "Obtener un valor a partir de una función."
@@ -26,7 +26,7 @@ Si tuviéramos un único conjunto de datos para analizar, probablemente sería m
 
 En esta lección, aprenderemos cómo escribir una función de forma que seamos capaces de repetir varias operaciones con un comando único. 
 
-> ## Qué es una función?
+> ## ¿Qué es una función?
 >
 > Las funciones reunen una secuencia de operaciones en un todo, almacenándola para
 > su uso. Las funciones proveen:
