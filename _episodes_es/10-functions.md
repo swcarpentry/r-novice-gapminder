@@ -619,12 +619,12 @@ nuestro primer intento cuando habíamos obtenido un vector de números.
 > operaciones más complicadas. No escribiremos nada que requiera conocimiento de estos 
 > conceptos más avanzados. En el futuro, cuando te sientas cómodo escribiendo funciones
 > en R, puedes aprender más leyendo el
-> [Manual de lenguaje de R][man] o este capítulo [chapter][] de
+> [Manual de lenguaje de R][man] o este [capítulo][] de
 > [Advanced R Programming][adv-r] por Hadley Wickham.
 {: .callout}
 
 [man]: http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects
-[chapter]: http://adv-r.had.co.nz/Environments.html
+[capítulo]: http://adv-r.had.co.nz/Environments.html
 [adv-r]: http://adv-r.had.co.nz/
 
 
