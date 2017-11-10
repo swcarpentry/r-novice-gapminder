@@ -180,7 +180,7 @@ a
 > `all()` will return `TRUE` if *all* elements of a vector are `TRUE`
 {: .callout}
 
-La mayoría de las funciones también operan con los elementos de los vectores:
+La mayoría de las funciones también operan elemento por elemento en los vectores:
 
 **Funciones**
 
@@ -197,7 +197,7 @@ log(x)
 ~~~
 {: .output}
 
-Operaciones vectorizadas funcionan a nivel de elemento en matrices:
+Operaciones vectorizadas trabajan elemento por elemento en matrices:
 
 
 ~~~
@@ -217,9 +217,9 @@ m * -1
 {: .output}
 
 
-> ## Tip: multiplicación elemento vs. matriz
+> ## Tip: multiplicación elemento por elemento vs. multiplicación de matriz
 >
-> Muy importante: el operador`*` te da una multiplicación de elemento
+> Muy importante: el operador`*` te da una multiplicación de elemento por elemento
 > Para haccer multiplicación de matriz, necesitamos usar el operador `%*%`:
 >
 > 
