@@ -62,15 +62,13 @@ donde las columnas de datos están separadas por un signo de puntuación como en
 CSV (donde **csv** es **comma-separated values** en inglés, es decir, valores separados por comas).
 
 Los signos de puntuación más comunes usados para separar o delimitar datos en archivos de texto son tabuladores y comas.
-For convenience R provides 2 other versions of `read.table`. These are: `read.csv`
-for files where the data are separated with commas and `read.delim` for files
-where the data are separated with tabs. Of these three functions `read.csv` is
-the most commonly used.  If needed it is possible to override the default 
-delimiting punctuation marks for both `read.csv` and `read.delim`.
+Por conveniencia, R provee dos versiones de la función `read.table`. Estas versiones son: `read.csv`
+para archivos donde los datos están separados por comas y `read.delim` para archivos donde los datos están separados
+por tabuladores. De las tres variantes, `read.csv` es la usada más comúnmente. De ser necesario, es posible sobrescribir
+ el signo de puntuación usado por defecto para ambas funciones: `read.csv` y `read.delim`.
 
 
-We can begin exploring our dataset right away, pulling out columns by specifying
-them using the `$` operator:
+Podemos empezar a explorar el **dataset** inmediatamente, proyectando las columnas usando el operador `$`:
 
 
 ~~~
@@ -100,7 +98,7 @@ Levels: black calico tabby
 ~~~
 {: .output}
 
-We can do other operations on the columns:
+Podemos efectuar otras operaciones a las columnas:
 
 
 ~~~
@@ -130,7 +128,7 @@ paste("My cat is", cats$coat)
 ~~~
 {: .output}
 
-But what about
+Pero qué pasa con:
 
 
 ~~~
@@ -153,14 +151,13 @@ factors
 ~~~
 {: .output}
 
-Understanding what happened here is key to successfully analyzing data in R.
+Entender qué es lo que pasa en este case es clave para analizar datos en R exitosamente.
 
-## Data Types
+## Tipos de datos
 
-If you guessed that the last command will return an error because `2.1` plus
-`"black"` is nonsense, you're right - and you already have some intuition for an
-important concept in programming called *data types*. We can ask what type of
-data something is:
+Si adivinaste que el último comando iba a resultar en un error porque `2.1` más
+`"black"` no tiene sentido, estás en lo cierto - y ya tienes alguna intuición sobre un concepto
+importante en programación que se llama *tipos de datos*. Podemos preguntar cuál es el tipo de datos de algo:
 
 
 ~~~
@@ -175,7 +172,7 @@ typeof(cats$weight)
 ~~~
 {: .output}
 
-There are 5 main types: `double`, `integer`, `complex`, `logical` and `character`.
+Hay 5 tipos de datos principales: `double`, `integer`, `complex`, `logical` and `character`.
 
 
 ~~~
@@ -246,11 +243,10 @@ typeof('banana')
 ~~~
 {: .output}
 
-No matter how
-complicated our analyses become, all data in R is interpreted as one of these
-basic data types. This strictness has some really important consequences.
+No importa cuan complicado sea nuestro análisis, todos los datos en R se interpretan con uno de estos
+tipos de datos básicos. Este rigor tiene algunas consecuencias importantes.
 
-A user has added details of another cat. This information is in the file
+Un usuario ha agregado detalles de otro gato. Esta información está en el archivo
 `data/feline-data_v2.csv`.
 
 
@@ -270,8 +266,8 @@ tabby,2.3 or 2.4,1
 ~~~
 {: .r}
 
-Load the new cats data like before, and check what type of data we find in the
-`weight` column:
+Carga los datos de los nuevos gatos de la misma forma anterior, y comprueba qué tipos de datos encuentras en la columna
+`weight`:
 
 
 ~~~
@@ -287,9 +283,7 @@ typeof(cats$weight)
 ~~~
 {: .output}
 
-Oh no, our weights aren't the double type anymore! If we try to do the same math
-we did on them before, we run into trouble:
-
+Oh no, nuestros pesos ya no son de tipo **double**! Si intentamos hacer los mismos cálculos anteriores, tenemos problemas:
 
 ~~~
 cats$weight + 2
@@ -310,15 +304,17 @@ Warning in Ops.factor(cats$weight, 2): '+' not meaningful for factors
 ~~~
 {: .output}
 
-What happened? When R reads a csv file into one of these tables, it insists that
-everything in a column be the same basic type; if it can't understand
-*everything* in the column as a double, then *nobody* in the column gets to be a
-double. The table that R loaded our cats data into is something called a
-*data.frame*, and it is our first example of something called a *data
-structure* - that is, a structure which R knows how to build out of the basic
-data types.
 
-We can see that it is a *data.frame* by calling the `class` function on it:
+¿Qué ocurrió? Cuando R lee un archivo CSV en una de estas tablas, insiste que todas
+las columnas sean del mismo tipo de datos básico; si no puede entender todos los
+elementos en la columna como **double**, entonces ningún elemento de la columna
+se interpreta como **double**.
+
+La tabla que R cargó con los datos de los gatos se denomina un
+**data.frame**, y es nuestro primer ejemplo de algo que se llama una *estructura de datos* -
+ es decir, una estructura que R sabe cómo construir basada en tipos de datos básicos.
+
+Podemos ver que es un **data.frame** si usamos la función **`class`**:
 
 
 ~~~
