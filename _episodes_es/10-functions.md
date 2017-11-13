@@ -502,14 +502,14 @@ calcule el GDP para:
 Al utilizar el operador `%in%`, también podemos asignarle múltiples años o países a estos
 argumentos.
 
-> ## Tip: Pass by value
+> ## Sugerencia: Pasar por valor
 >
 > Las funciones en R casi siempre hacen copias de los datos para operar dentro 
 > del cuerpo de una función. Cuando modificamos `dat` dentro de la función
 > estamos modificando la copia del __dataset__ gapminder almacenado en `dat`,
 > y no la variable original que asignamos como el primer argumento.
 >
-> Eso se llama __pass-by-value__ y hace la escritura del código mucho más segura:
+> Eso se llama **__pass-by-value__** pasar por valor y hace la escritura del código mucho más segura:
 > puedes estar seguro que cualquier cambio que hagas dentro del 
 > cuerpo de la función, se mantendrá dentro de la función.
 {: .callout}
