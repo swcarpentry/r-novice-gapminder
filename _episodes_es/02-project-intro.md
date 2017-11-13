@@ -27,27 +27,27 @@ La mayoría de la gente tiende a organizar sus proyectos de esta manera:
 
 ![](../fig/bad_layout.png)
 
-Hay muchas razones de por qué debemos *siempre* evitar esto:
+Hay muchas razones de porqué debemos *siempre* evitar esto:
 
 1. Es realmente difícil saber cuál versión de tus datos es 
 la original y cuál es la modificada;
 2. Es realmente complicado porque se mezclan archivos con varias
 extensiones juntas;
-3. Probablemente te lleve mucho tiempo encontrar 
-cosas, y relacionar las figuras con el código exacto
+3. Probablemente te lleve mucho tiempo encontrar realmente
+cosas, y relacionar las figuras correctas con el código exacto
 que ha sido utilizado para generarlas;
 
 Un buen diseño del proyecto finalmente hará tu vida más fácil:
 
 * Ayudará a garantizar la integridad de tus datos;
-* Hace que sea más simple compartir tu código con alguien  
+* Hace que sea más simple compartir tu código con alguien más 
 (un compañero de laboratorio, colaborador, o supervisor);
 * Permite cargar fácilmente tu código con el envío de tu manuscrito;
 * Hace que sea más fácil volver a seleccionar el proyecto después de un descanso.
 
 ## Una posible solución
 
-Afortunadamente hay herramientas y paquetes que pueden ayudarte a gestionar efectivamente tu trabajo.
+Afortunadamente hay herramientas y paquetes que pueden ayudarte a gestionar tu trabajo con efectividad.
 
 Uno de los aspectos más poderosos y útiles de RStudio es su funcionalidad de gestión de proyectos. Lo utilizaremos hoy para crear un proyecto autocontenido y reproducible.
 
