@@ -5,7 +5,7 @@ exercises: 15
 questions:
 - "¿Cómo puedo cambiar el formato de los dataframes?"
 objectives:
-- "Entender los conceptos de formatos de datos 'largo' y 'ancho' y poder convertirlos al otro formato usando `tidyr`."
+- "Entender los conceptos de formatos de datos "largo" y "ancho" y poder convertirlos al otro formato usando `tidyr`."
 keypoints:
 - "Usar el paquete `tidyr` para cambiar el diseño de los dataframes."
 - "Usar `gather()` para invertir del formato ancho al formato largo."
@@ -15,29 +15,29 @@ source: Rmd
 
 
 
-Los investigadores a menudo quieren manipular sus datos del formato "ancho" al "largo", o viceversa. El formato 'largo' es donde:
+Las investigadoras a menudo quieren manipular sus datos del formato "ancho" al "largo", o viceversa. El formato "largo" es donde:
 
   - cada columna es una variable
   - cada fila es una observación
 
-En el formato 'largo', generalmente tienes 1 columna para la variable observada y las otras columnas son variables de ID.
+En el formato "largo", generalmente tienes una columna para la variable observada y las otras columnas son variables de ID.
 
 
-Para el formato 'ancho', cada fila es un tema, por ejemplo un lugar o un paciente. Tendras múltiples variables de observación, que contienen el mismo tipo de datos, para cada tema. Estas observaciones pueden ser
+Para el formato "ancho", cada fila es un tema, por ejemplo un lugar o un paciente. Tendrás múltiples variables de observación, que contienen el mismo tipo de datos, para cada tema. Estas observaciones pueden ser
 repetidas a lo largo del tiempo, o puede ser la observación de múltiples variables (o
-una mezcla de ambos). Para algunas aplicaciones, es preferible el formato 'ancho'. Sin embargo, muchas de las funciones de `R` han
-sido diseñadas para datos de formato 'largo'. Este tutorial te ayudará a transformar tus datos de manera eficiente, independientemente del formato original.
+una mezcla de ambos). Para algunas aplicaciones, es preferible el formato "ancho". Sin embargo, muchas de las funciones de `R` han
+sido diseñadas para datos de formato "largo". Este tutorial te ayudará a transformar tus datos de manera eficiente, independientemente del formato original.
 
 ![](../fig/14-tidyr-fig1.png)
 
-Estos formatos de datos afectan principalmente a la legibilidad. Para los humanos, el formato ancho es
-a menudo más intuitivo ya que podemos ver más de los datos en la pantalla debido a su forma. Sin embargo, el formato largo es más legible para las máquinas y está más cerca
+Estos formatos de datos afectan principalmente a la legibilidad. Para los humanos, el formato "ancho" es
+a menudo más intuitivo ya que podemos ver más de los datos en la pantalla debido a su forma. Sin embargo, el formato "largo" es más legible para las máquinas y está más cerca
 al formateo de las bases de datos. Las variables de ID en nuestros marcos de datos son similares a
 los campos en una base de datos y las variables observadas son como los valores de la base de datos.
 
 ## Empecemos
 
-Primero instala los paquetes necesarios, `tidyr` y `dplyr`, si aún no lo haz hecho, puedes tambien instalar el paragua de paquetes `tidyverse` para instalar todos los paquetes de ésta collección.
+Primero instala los paquetes necesarios, `tidyr` y `dplyr`. Si aún no lo has hecho, puedes también instalar el grupo de paquetes `tidyverse` que contiene varios paquetes incluyendo `tidyr` y `dplyr`.
 
 
 ~~~
@@ -54,7 +54,7 @@ library("dplyr")
 ~~~
 {: .r}
 
-Primero, veámos la estructura **structure** de el **dataframe** gapminder:
+Primero, veamos la estructura **structure** del **dataframe** gapminder:
 
 
 ~~~
@@ -83,13 +83,13 @@ str(gapminder)
 > > ## Solución del Desafío 1
 > >
 > > El data.frame gapminder tiene un formato intermedio. No es completamente
-> > largo por que tiene multiples observaciones por cada variable
+> > largo porque tiene múltiples observaciones por cada variable
 > > (`pop`,`lifeExp`,`gdpPercap`).
 > {: .solution}
 {: .challenge}
 
 
-A veces tenemos múltiples tipos de observaciones, cómo con el **data.frame** gapminder. Entonces tendremos formatos de datos mixtos entre 'largo' y 'ancho'. Nosotros tenemos 3 "variables de identificación" (`continente`,` país`, `año`) y 3 "variables de observación" (` pop`, `lifeExp`,`gdpPercap`). Generalmente es preferible que los datos esten en éste formato intermedio en la mayoría de los casos a pesar de no tener TODAS las observaciones en una sóla
+A veces tenemos múltiples tipos de observaciones, como con el **data.frame** gapminder. Entonces tendremos formatos de datos mixtos entre "largo" y "ancho". Nosotros tenemos 3 "variables de identificación" (`continente`,` país`, `año`) y 3 "variables de observación" (` pop`, `lifeExp`,`gdpPercap`). Generalmente es preferible que los datos estén en este formato intermedio en la mayoría de los casos a pesar de no tener TODAS las observaciones en una sola
 columna. Esto es por que las 3 variables de observación tienen unidades diferentes (y cada una corresponde a una columna con su propio tipo de datos).
 
 Generalmente queremos hacer operaciones matemáticas con valores que usen las mismas
@@ -162,7 +162,7 @@ str(gap_wide)
 
 ![](../fig/14-tidyr-fig2.png)
 
-El primer paso es formatear los datos de ancho a largo. Usando el paquete `tidyr` y la función `gather()` podemos juntar las variables de observación en una sóla variable.
+El primer paso es formatear los datos de ancho a largo. Usando el paquete `tidyr` y la función `gather()` podemos juntar las variables de observación en una sola variable.
 
 ![](../fig/14-tidyr-fig3.png)
 
@@ -213,10 +213,10 @@ str(gap_long)
 ~~~
 {: .output}
 
-Eso puede parecer trivial con este **data.frame** en particular, pero a veces tienes una variable de identificación **ID** y 40 variables de observación, con varios nombres de variables irregulares. La flexibilidad que nos dá `tidyr` ¡es un gran ahorro de tiempo!
+Eso puede parecer trivial con este **data.frame** en particular, pero a veces tienes una variable de identificación **ID** y 40 variables de observación, con varios nombres de variables irregulares. La flexibilidad que nos da `tidyr` ¡es un gran ahorro de tiempo!
 
 
-Ahora, `obstype_year` en realidad contiene información en 2 partes, la observación
+Ahora, `obstype_year` en realidad contiene información en dos partes, la observación
 tipo (`pop`,` lifeExp`, o `gdpPercap`) y el año `year`. Podemos usar la función  `separate()` para dividir las cadenas de caracteres en múltiples variables.
 
 
@@ -269,7 +269,7 @@ gap_long$year <- as.integer(gap_long$year)
 
 ## Del formato largo a intermedio usando spread()
 
-Siempre es bueno detenerse y verificar el trabajo. Entonces, usemos el opuesto de `gather()` para separar nuestras variables de observación con la función `spread()`. Para expandir nuestro objeto `gap_long()` al formato intermedio original o al formato ancho usaremos ésta nueva función. Comencemos con el formato intermedio.
+Siempre es bueno detenerse y verificar el trabajo. Entonces, usemos el opuesto de `gather()` para separar nuestras variables de observación con la función `spread()`. Para expandir nuestro objeto `gap_long()` al formato intermedio original o al formato ancho usaremos esta nueva función. Comencemos con el formato intermedio.
 
 
 ~~~
@@ -409,8 +409,8 @@ all.equal(gap_normal, gapminder)
 tenido ningún error en nuestro código.
 
 Ahora pasemos a convertir del formato largo al ancho. En el formato ancho, nosotros
-mantendremos el país y el continente como variables de ID y ésto va expandir las observaciones
-en las 3 métricas (`pop`,` lifeExp`, `gdpPercap`) y año (` year`). Primero nosotros
+mantendremos el país y el continente como variables de ID y esto va expandir las observaciones
+en las tres métricas (`pop`,` lifeExp`, `gdpPercap`) y año (` year`). Primero nosotros
 Necesitamos crear etiquetas apropiadas para todas nuestras nuevas variables (tiempo*las combinaciones) y también necesitamos unificar nuestras variables de **ID** para simplificar el proceso de definir el nuevo objeto `gap_wide`.
 
 
@@ -510,8 +510,8 @@ str(gap_wide_new)
 
 > ## Desafío 3
 >
-> Crea un formato de datos `gap_super_wide` mediante la distribución por países, año y las 3 métricas.
-> ** Ayuda ** este nuevo **dataframe** sólo debe tener 5 filas.
+> Crea un formato de datos `gap_super_wide` mediante la distribución por países, año y las tres métricas.
+> ** Ayuda ** este nuevo **dataframe** sólo debe tener cinco filas.
 >
 >> ## Solución para el desafío 3
 > >
@@ -524,7 +524,7 @@ str(gap_wide_new)
 > {: .solution}
 {: .challenge}
 
-Ahora tenemos un gran **dataframe** con formato 'ancho', pero el `ID_var` podría ser más mejor, sepáremolos en 2 variables con `separate()`
+Ahora tenemos un gran **dataframe** con formato 'ancho', pero el `ID_var` podría ser más mejor, sepáremolos en dos variables con `separate()`
 
 
 
