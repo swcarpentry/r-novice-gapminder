@@ -42,17 +42,17 @@ Cada página de ayuda se divide en secciones:
 
 Las diferentes funciones pueden tener diferentes secciones, pero estas son las principales que debes tener en cuenta.
 
-> ## Tip: : Lectura de archivos de ayuda
+> ## Sugerencia: Lectura de archivos de ayuda
 >
 > Uno de los aspectos más desalentadores de R es la gran cantidad de funciones
-> disponibles. Sería prohibitivo, si no imposible, recordar el
+> disponibles. Es muy difícil, si no imposible, recordar el
 > uso correcto para cada función que usa. Afortunadamente, están los archivos de ayuda
-> ¡lo que significa que no tienes que hacerlo!
+> ¡lo que significa, que no tienes que hacerlo!
 {: .callout}
 
 ## Operadores especiales
 
-Para buscar ayuda en operadores especiales, use comillas:
+Para buscar ayuda en operadores especiales, usa comillas:
 
 
 ~~~
@@ -62,15 +62,15 @@ Para buscar ayuda en operadores especiales, use comillas:
 
 ## Obteniendo ayuda en los paquetes
 
-Muchos paquetes vienen con "vignettes": tutoriales y documentación de ejemplo extendida.
+Muchos paquetes vienen con "viñetas": tutoriales y documentación de ejemplo extendida.
 Sin ningún argumento, `vignette()` listará todas las viñetas disponibles para todos los paquetes instalados;
 `vignette(package="package-name")` listará todas las viñetas disponibles
-`package-name`, and `vignette("vignette-name")` abrirán la viñeta especificada.
+`package-name`, y `vignette("vignette-name")` abrirán la viñeta especificada.
 
 Si un paquete no tiene viñetas, generalmente puedes encontrar ayuda escribiendo
 `help("package-name")`.
 
-##  Cuando recuerdas un poco de la función
+##  Cuando recuerdas un poco sobre la función
 
 Si no estás seguro de en qué paquete está una función, o cómo se escribe específicamente, puedes hacer una búsqueda difusa:
 
@@ -82,7 +82,7 @@ Si no estás seguro de en qué paquete está una función, o cómo se escribe es
 
 ## Cuando no tienes idea de dónde comenzar
 
-Si no sabes qué función o paquete necesita usar
+Si no sabes qué función o paquete necesitas usar, utiliza
 [CRAN Task Views](http://cran.at.r-project.org/web/views)
 es una lista especialmente mantenida de paquetes agrupados en
 campos. Este puede ser un buen punto de partida.
@@ -90,7 +90,7 @@ campos. Este puede ser un buen punto de partida.
 ## Cuando tu código no funciona: busca ayuda de tus compañeros
 
 Si tienes problemas para usar una función, 9 de cada 10 veces,
-las respuestas que está buscando ya han sido respondidas en
+las respuestas que estas buscando ya han sido respondidas en
 [Stack Overflow](http://stackoverflow.com/). Puedes buscar usando
 la etiqueta `[r]`.
 
@@ -103,8 +103,8 @@ ayudarte a hacer una pregunta a tus compañeros:
 ~~~
 {: .r}
 
-Descargará los datos con los que está trabajando en un formato para que puedas
-ser copiado y pegado por cualquier otra persona en su sesión R.
+Descargará los datos con los que estás trabajando en un formato para que puedan
+ser copiados y pegados por cualquier otra persona en su sesión de R.
 
 
 ~~~
@@ -145,7 +145,7 @@ tu problema.
 > ## Reto 1
 >
 > Buscar la ayuda para la función `c`. ¿Qué tipo de vector
->  espera que crearás si evalúa lo siguiente?:
+> crees que crearás si evalúas lo siguiente?:
 > 
 > ~~~
 > c(1, 2, 3)
