@@ -49,7 +49,7 @@ datos, puedes volver a compilar el informe y obtener los resultados, nuevo o cor
 (en lugar de tener que reconstruir figuras, pegarlas en
 un documento de **Word** y luego editar manualmente varios resultados detallados).
 
-La herramienta clave para *R* es [knitr] (http://yihui.name/knitr/), que te permite
+La herramienta clave para *R* es [knitr](http://yihui.name/knitr/), que te permite
 crear un documento que es una mezcla de texto y algunos fragmentos de
 código. Cuando el documento es procesado por **knitr**, los fragmentos del código **R**
 serán ejecutados, y los gráficos u otros resultados insertados.
@@ -109,7 +109,7 @@ como los asteriscos dobles en `**Knit**`. Esto es
 
 ## **Markdown**
 
-    **Markdown** es un sistema para escribir páginas **web** marcando el texto tanto
+**Markdown** es un sistema para escribir páginas **web** marcando el texto tanto
 como lo haría en un correo electrónico en lugar de escribir código **html**. El texto marcado 
 es _convertido_ a **html**, reemplazando las marcas con el
 código **HTML**.
@@ -124,95 +124,95 @@ y haces cosas _italicas_ usando guiones bajos, como esto:
 Puede hacer una lista con viñetas escribiendo una lista con guiones o
 asteriscos, como este:
 
-`` `
+```
 * negrita con doble asterisco
-* itálico con guiones bajos
-* letra de tipo de código con retrocesos
-`` `
+* itálica con guiones bajos
+* fuente de bloque de código con retrocesos
+```
 
 o así:
 
-`` `
+```
 - negrita con doble asterisco
-- itálico con guiones bajos
-- letra de tipo de código con retrocesos
-`` `
+- itálica con guiones bajos
+- fuente de bloque de código con retrocesos
+```
 
 Cada uno aparecerá como:
 
 - negrita con doble asterisco
-- itálico con guiones bajos
-- letra de tipo de código con retrocesos
+- itálica con guiones bajos
+- fuente de bloque de código con retrocesos
 
 (Prefiero guiones en lugar de asteriscos, yo mismo)
 
 Puedes hacer una lista numerada simplemente usando números. Puedes usar el
 mismo número una y otra vez si lo desea:
 
-`` `
+```
 1. negrita con doble asterisco
-1. cursiva con guiones bajos
-1. tipo de letra de código con retrocesos
-`` `
+1. itálica con guiones bajos
+1. fuente de bloque de código con retrocesos
+```
 
 Esto aparecerá como:
 
 1. negrita con doble asterisco
-1. cursiva con guiones bajos
-1. tipo de letra de código con retrocesos
+1. itálica con guiones bajos
+1. fuente de bloque de código con retrocesos
 
-Puede crear encabezados de sección de diferentes tamaños iniciando una línea
+Puedes crear encabezados de sección de diferentes tamaños iniciando una línea
 con un cierto número de símbolos `#`:
 
-`` `
+```
 # Título
 ## Sección principal
 ### Subsección
-#### Sección sub-sub
-`` `
+#### Sub-subsección
+```
 
-Usted _compila_ el documento R Markdown a una página web html haciendo clic
-el "HTML de punto" en la esquina superior izquierda. Y tenga en cuenta el pequeño signo de interrogación
-junto a él; haga clic en el signo de interrogación y obtendrá un "Markdown Quick"
-Referencia "(con la sintaxis Markdown) al RStudio
-documentación sobre el descuento de R
+Tú _compilas_ el documento **R Markdown** a una página **web** **html** haciendo clic
+en el **"Knit HTML"** en la esquina superior izquierda. Y ten en cuenta el pequeño signo de interrogación
+junto a él; haz clic en el signo de interrogación y obtendrá un **"Markdown Quick
+Reference"** (con la sintaxis **Markdown**) así como para la 
+documentación de **RStudio** en **R Markdown**.
 
 > ## Desafío
 >
-> Cree un nuevo documento de R Markdown. Eliminar todos los fragmentos de código R
-> y escriba un poco de Markdown (algunas secciones, algunas en cursiva)
-> texto y una lista detallada).
+> Crea un nuevo documento **R Markdown**. Elimina todos los fragmentos de código **R**
+> y escribe un poco de **Markdown** (algunas secciones, algunos
+> textos en itálica, y una lista de ítemes).
 >
-> Convierte el documento a una página web.
+> Convierta el documento a una página **web**.
 {: .challenge}
 
 
-## Un poco más de Markdown
+## Un poco más de **Markdown**
 
-Puede hacer un hipervínculo como este:
+Puedes hacer un hipervínculo como este:
 `[text to show](http://the-web-page.com)`.
 
-Puede incluir un archivo de imagen como este: `![caption](http://url/for/file)`
+Puedes incluir un archivo de imagen como este: `![caption](http://url/for/file)`
 
-Puede hacer subíndices (por ejemplo, F ~ 2 ~) con `F ~ 2` y superíndices (p.
-F ^ 2 ^) con `F ^ 2 ^`.
+Puedes hacer subíndices (por ejemplo, F~2~) con `F~2` y superíndices (p.
+F^2^) con `F^2^`.
 
 Si sabes cómo escribir ecuaciones en
-[LaTeX] (http://www.latex-project.org/), le alegrará saber que
+[LaTeX] (http://www.latex-project.org/), te alegrará saber que
 puedes usar `$ $` y `$$ $$` para insertar ecuaciones matemáticas, como
-`$ E = mc ^ 2 $` y
+`$E = mc^2$` y
 
 ```
-$$ y = \ mu + \ sum_ {i = 1} ^ p \ beta_i x_i + \ epsilon $$
+$$y = \mu + \sum_{i=1}^p \beta_i x_i + \epsilon$$
 ```
 
 
 
-## Trozos de código R
+## Fragmentos de código **R**
 
-Markdown es interesante y útil, pero el poder real proviene de
-mezcla de descuento con fragmentos de código R. Esto es R Markdown. Cuando
-procesado, se ejecutará el código R; si producen figuras, el
+**Markdown** es interesante y útil, pero el poder real proviene de
+la mezcla entre **markdown** y fragmentos de código **R**. Esto es **R Markdown**. Cuando
+procesado, el código **R** se ejecutará; si producen figuras, 
 las figuras se insertarán en el documento final.
 
 Los fragmentos del código principal se ven así:
@@ -223,32 +223,32 @@ gapminder <- read.csv("~/Desktop/gapminder.csv")
 &#96;&#96;&#96;
 </pre>
 
-Es decir, coloca un fragmento de código R entre <code>&#96;&#96;&#96;{r chunk_name}</code>
-and <code>&#96;&#96;&#96;</code>. Es una buena idea darle a cada pedazo
-un nombre, ya que te ayudarán a corregir los errores y, si hay gráficos,
-producido, los nombres de archivo se basan en el nombre del fragmento de código que
+Es decir, coloca un fragmento de código **R** entre <code>&#96;&#96;&#96;{r chunk_name}</code>
+y <code>&#96;&#96;&#96;</code>. Es una buena idea darle a cada fragmento
+un nombre, ya que te ayudarán a corregir los errores y, si alugnos gráficos son
+producidos, los nombres de archivo estarán basados en el nombre del fragmento de código que
 los produjo.
 
 > ## Desafío
 >
-> Agregue fragmentos de código a
+> Agrega fragmentos de código para
 >
-> - Cargar el paquete ggplot2
-> - Leer los datos del gapminder
-> - Crear una trama
+> - Cargar el paquete **ggplot2**
+> - Leer los datos del **gapminder**
+> - Crear un gráfico
 {: .challenge}
 
 ## Cómo se compilan las cosas
 
-Cuando presiona el botón "Knit HTML", el documento de R Markdown es
-procesado por [knitr] (http://yihui.name/knitr) y un Markdown simple
-se produce el documento (así como, potencialmente, un conjunto de archivos de figuras): se ejecuta el código R
-y reemplazado por la entrada y la salida; si las figuras son
-producido, se incluyen enlaces a esas figuras.
+Cuando presionas el botón **"Knit HTML"**, el documento **R Markdown** es
+procesado por [knitr](http://yihui.name/knitr) y un documento **Markdown** simple
+es producido (así como, potencialmente, un conjunto de archivos de figuras): el código **R** es ejecutado
+y reemplazado por ambas la entrada y la salida; si las figuras son
+producidas, se incluyen enlaces a esas figuras.
 
-Los documentos Markdown y figura son procesados por la herramienta
-[pandoc] (http://pandoc.org/), que convierte el archivo Markdown en un
-archivo html, con las figuras incrustadas.
+Los documentos **Markdown** y figura son entones procesados por la herramienta
+[pandoc](http://pandoc.org/), que convierte el archivo **Markdown** en un
+archivo **html**, con las figuras embebidas.
 
 <img src="../fig/rmd-15-rmd_to_html_fig-1.png" title="plot of chunk rmd_to_html_fig" alt="plot of chunk rmd_to_html_fig" style="display: block; margin: auto auto auto 0;" />
 
@@ -257,16 +257,16 @@ archivo html, con las figuras incrustadas.
 
 ## Opciones de fragmento
 
-Hay una variedad de opciones para afectar la forma en que los fragmentos de código son
+Hay una variedad de opciones quen afectan la forma en que los fragmentos de código son
 tratado
 
-- Use `echo = FALSE` para evitar que se muestre el código en sí.
-- Use `results =" hide "` para evitar que se impriman los resultados.
-- Use `eval = FALSE` para tener el código mostrado pero no evaluado.
-- Use `warning = FALSE` y` message = FALSE` para ocultar cualquier advertencia o
+- Usa `echo=FALSE` para evitar que se muestre el código en sí.
+- Usa `results="hide"` para evitar que se impriman los resultados.
+- Usa `eval=FALSE` para tener el código mostrado pero no evaluado.
+- Usa `warning=FALSE` y `message=FALSE` para ocultar cualquier advertencia o
    mensajes producidos
-- Use `fig.height` y` fig.width` para controlar el tamaño de las figuras
-   producido (en pulgadas).
+- Usa `fig.height` y `fig.width` para controlar el tamaño de las figuras
+   producidas (en pulgadas).
 
 Entonces podrías escribir:
 
@@ -277,8 +277,8 @@ library("ggplot2")
 &#96;&#96;&#96;
 </pre>
 
-A menudo habrá opciones particulares que querrá usar
-repetidamente; para esto, puede establecer las opciones _global_ chunk, de esta forma:
+A menudo habrá opciones particulares que querrás usar
+repetidamente; para esto, puede establecer las opciones de fragnento _global_, de esta forma:
 
 <pre>
 &#96;&#96;&#96;{r global_options, echo=FALSE}
@@ -291,60 +291,60 @@ La opción `fig.path` define dónde se guardarán las figuras. El `/`
 aquí es realmente importante; sin él, las figuras se guardarían en
 el lugar estándar, pero solo con los nombres que están con `Figs`.
 
-Si tiene varios archivos R Markdown en un directorio común, es posible que
-quiere usar `fig.path` para definir prefijos separados para el archivo de figuras
-nombres, como `fig.path =" Figs / cleaning- "` y `fig.path =" Figs / analysis- "`.
+Si tienes varios archivos **R Markdown** en un directorio común, es posible que
+quieras usar `fig.path` para definir prefijos separados para los nombres de archivo de figura
+, como `fig.path="Figs/cleaning-"` y `fig.path="Figs/analysis-"`.
 
 
 > ## Desafío
 >
-> Use las opciones de fragmentos para controlar el tamaño de una figura y ocultar el
+> Usa las opciones de fragmentos para controlar el tamaño de una figura y ocultar el
 > código.
 {: .challenge}
 
 
-## Código R en línea
+## Código **R** en línea
 
-Puede hacer que se reproduzcan todos los números de su informe. Utilizar
-<code> `r </ code> y <code>` </ code> para un fragmento de código en línea,
+Puedes hacer cada número de tu informe reproducible. Usa
+<code>&#96;r</code> y <code>&#96;</code> para un fragmento de código en línea,
 al igual que: <code>&#96;r round(some_value, 2)&#96;</code>. El código será
 ejecutado y reemplazado con el _valor_ del resultado.
 
-No permita que estos fragmentos en línea se dividan en líneas.
+No dejes que estos fragmentos en línea se dividan en líneas.
 
-Tal vez anteceda el párrafo con un fragmento de código más grande que lo hace
-calcula y define cosas, con `include = FALSE` para ese tamaño
-fragmento (que es lo mismo que `echo = FALSE` y` results = "hide" `).
+Tal vez anteceda el párrafo con un fragmento de código más grande que hace
+cálculos y define cosas, con `include=FALSE` para ese largo
+fragmento (que es lo mismo que `echo=FALSE` y `results="hide"`).
 
 Soy muy particular sobre el redondeo en tales situaciones. Es posible que desee
-`2.0`, pero` round (2.03, 1) `dará solo` 2`.
+`2.0`, pero` round (2.03, 1) `resultará solo` 2`.
 
-Los
+La función
 [`myround`](https://github.com/kbroman/broman/blob/master/R/myround.R)
-function in my [R/broman](https://github.com/kbroman) manijas del paquete
-esta.
+en mi paquete [R/broman](https://github.com/kbroman) maneja
+esi.
 
 > ## Desafío
 >
-> Pruebe un poco de código R en línea.
+> Prueba un poco de código **R** en línea.
 {: .challenge}
 
 
 ## Otras opciones de salida
 
-También puede convertir R Markdown en un documento PDF o Word. Haga clic en el
-pequeño triángulo junto al botón "Knit HTML" para obtener un menú desplegable
-menú. O podría poner `pdf_document` o` word_document` en el encabezado
+También puedes convertir **R Markdown** en un documento **PDF** o **Word**. Haga clic en el
+pequeño triángulo junto al botón **"Knit HTML"** para obtener un menú desplegable. 
+O podría poner **`pdf_document`** o **` word_document`** en el encabezado
 del archivo.
 
-> ## Sugerencia: crear documentos PDF
+> ## Sugerencia: Creación de documentos **PDF**
 >
-> La creación de documentos .pdf puede requerir la instalación de algún programa adicional. Si
-> obligatorio esto se detalla en un mensaje de error.
+> La creación de documentos **.pdf** puede requerir la instalación de algún programa adicional. Si
+> eso es requerido, se detalla en un mensaje de error.
 >
-> Tex para Windows está disponible [aquí](http://miktex.org/2.9/setup).
+> **Tex** para **Windows** está disponible [aquí](http://miktex.org/2.9/setup).
 >
-> Tex for mac está disponible [aquí] (http://tug.org/mactex).
+> **Tex** for **mac** está disponible [aquí](http://tug.org/mactex).
 {: .callout}
 
 
