@@ -27,7 +27,7 @@ La mayoría de la gente tiende a organizar sus proyectos de esta manera:
 
 ![](../fig/bad_layout.png)
 
-Hay muchas razones de porqué debemos *siempre* evitar esto:
+Hay muchas razones de por qué debemos *siempre* evitar esto:
 
 1. Es realmente difícil saber cuál versión de tus datos es 
 la original y cuál es la modificada;
