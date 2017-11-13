@@ -325,18 +325,18 @@ cuando estes iterando sobre varios valores.
 > ## Tip: no crezcas tus resultados
 >
 > Una de las grandes cosas que ocaciona tropiezo en usuarios novatos y 
-> experimentados de R, es la construcción de building a results object
-> (vector, list, matrix, data frame) as your for loop progresses.
-> Computers are very bad at handling this, so your calculations
-> can very quickly slow to a crawl. It's much better to define
-> an empty results object before hand of the appropriate dimensions.
-> So if you know the end result will be stored in a matrix likoe above,
-> create an empty matrix with 5 row and 5 columns, then at each iteration
-> store the results in the appropriate location.
+> experimentados de R, es la construcción de un objeto de resultados
+> (vector, lista, matriz, data frame) a medida que avanza el bucle.
+> Las computadoras son muy malas para manejar esto, entonces tus calculos
+> pueden relentizarse muy rapidamente a paso de tortuga. Es mucho mejor definir
+> un objeto de resultados vacio de primera mano con las dimensiones apropiadas
+> Entonces, si sabes que el resultado final sera almacenado en una matriz como la anterior,
+> crea una matriz vacia con 5 filas y 5 columnas y luego de cada iteración
+> almacena los resultados en la ubucación adecuada.
 {: .callout}
 
-A better way is to define your (empty) output object before filling in the values.
-For this example, it looks more involved, but is still more efficient.
+Una mejor manera es definir el objeto de salida (vacio) antes de completar los valores.
+Para este ejemplo, parece más complicado, pero es aún más eficiente.
 
 
 ~~~
@@ -363,23 +363,23 @@ output_vector2
 ~~~
 {: .output}
 
-> ## Tip: While loops
+> ## Tip: Bucles While
 >
 >
-> Sometimes you will find yourself needing to repeat an operation until a certain
-> condition is met. You can do this with a `while()` loop.
+> Algunas veces tendras la necesidad de repetir una operación hasta que
+> cierta condición se cumpla. Puedes hacer esto con un bucle `while()`.
 >
 > 
 > ~~~
-> while(this condition is true){
->   do a thing
+> while(mientras esta condición es verdad){
+>   haz algo
 > }
 > ~~~
 > {: .r}
 >
-> As an example, here's a while loop
-> that generates random numbers from a uniform distribution (the `runif()` function)
-> between 0 and 1 until it gets one that's less than 0.1.
+> Como ejemplo, aquí hay un bucle while
+> que genera números aleatorios a partir de una distribución uniforme (la función `runif()` )
+> entre 0 y 1  hasta que obtiene uno que es menor a 0.1.
 >
 > ~~~
 > z <- 1
@@ -390,39 +390,39 @@ output_vector2
 > ~~~
 > {: .r}
 >
-> `while()` loops will not always be appropriate. You have to be particularly careful
-> that you don't end up in an infinite loop because your condition is never met.
+> Los bucle `while()` no siempre seran apropiados. Tienes que ser particularmente cuidadoso
+> de no terminar en un bucle infinito porque tu condición nunca se cumplira.
 {: .callout}
 
 
-> ## Challenge 2
+> ## Reto 2
 >
-> Compare the objects output_vector and
-> output_vector2. Are they the same? If not, why not?
-> How would you change the last block of code to make output_vector2
-> the same as output_vector?
+> Compara los objetos output_vector y
+> output_vector2. ¿Son lo mismo? Si no, ¿por qué no?
+> ¿Cómo cambiarías el último bloque de código para hacer output_vector2
+> igual a output_vector?
 >
-> > ## Solution to Challenge 2
-> > We can check whether the two vectors are identical using the `all()` function:
+> > ## Solución al Reto 2
+> > Podemos verificar si dos vectores son idénticos usando la función `all()` :
 > > 
 > > ~~~
 > > all(output_vector == output_vector2)
 > > ~~~
 > > {: .r}
-> > However, all the elements of `output_vector` can be found in `output_vector2`:
+> > Sin embargo, todos los elementos de `output_vector` se pueden encontrar en `output_vector2`:
 > > 
 > > ~~~
 > > all(output_vector %in% output_vector2)
 > > ~~~
 > > {: .r}
-> > and vice versa:
+> > y vice versa:
 > > 
 > > ~~~
 > > all(output_vector2 %in% output_vector)
 > > ~~~
 > > {: .r}
-> > therefore, the element in `output_vector` and `output_vector2` are just sorted in a different order.
-> > This is because `as.vector()` outputs the elements of an input matrix going over its column.
+> > Por lo tanto, el elemento en `output_vector` y `output_vector2` estan ordenados en diferente orden.
+> > Esto es porque `as.vector()` muestra los elementos de una matriz que pasa por su columna.
 > > Taking a look at `output_matrix`, we can notice that we want its elements by rows.
 > > The solution is to transpose the `output_matrix`. We can do it either by calling the transpose function
 > > `t()` or by inputing the elements in the right order.
