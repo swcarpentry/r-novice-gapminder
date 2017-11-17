@@ -329,9 +329,11 @@ class(cats)
 ~~~
 {: .output}
 
-In order to successfully use our data in R, we need to understand what the basic
-data structures are, and how they behave. For now, let's remove that extra line
-from our cats data and reload it, while we investigate this behavior further:
+
+Para usar nuestros datos en R exitosamente, necesitamos entender cuáles son las estructuras de datos
+básicas, y cómo se comportan. Por ahora, eliminemos la línea extra de los datos sobre gatos y volvamos
+a leer el archivo para investigar el comportamiento más en detalle:
+
 
 feline-data.csv:
 
@@ -342,7 +344,7 @@ black,5.0,0
 tabby,3.2,1
 ```
 
-And back in RStudio:
+Y en RStudio:
 
 
 ~~~
@@ -351,13 +353,9 @@ cats <- read.csv(file="data/feline-data.csv")
 {: .r}
 
 
+## Vectores y Coerción de Tipos
 
-
-## Vectors and Type Coercion
-
-To better understand this behavior, let's meet another of the data structures:
-the *vector*.
-
+Para entender mejor este comportamiento, veamos otra de las estructuras de datos en R: el **vector**.
 
 ~~~
 my_vector <- vector(length = 3)
@@ -372,11 +370,9 @@ my_vector
 ~~~
 {: .output}
 
-A vector in R is essentially an ordered list of things, with the special
-condition that *everything in the vector must be the same basic data type*. If
-you don't choose the datatype, it'll default to `logical`; or, you can declare
-an empty vector of whatever type you like.
-
+Un vector en R es esencialmente una lista ordenada de cosas, con la condición especial de que *todos los elementos en un vector
+tienen que ser del mismo tipo de datos básico*. Si no eliges un tipo de datos, por defecto R elige el tipo de datos **logical**.
+También puedes declarar un vector vacío de cualquier tipo que quieras.
 
 
 ~~~
@@ -407,11 +403,11 @@ str(another_vector)
 ~~~
 {: .output}
 
-The somewhat cryptic output from this command indicates the basic data type
-found in this vector - in this case `chr`, character; an indication of the
-number of things in the vector - actually, the indexes of the vector, in this
-case `[1:3]`; and a few examples of what's actually in the vector - in this case
-empty character strings. If we similarly do
+La salida algo críptica de este comando indica el tipo de datos básico encontrado en este vector, en este caso `chr` o **character**;
+una indicación del número de elementos en el vector - específicamente los índices del vector, en este caso `[1:3]`; y unos pocos ejemplos
+de los elementos del vector - en este caso **strings** vacías.
+
+Si, en forma similar, hacemos:
 
 
 ~~~
@@ -426,28 +422,26 @@ str(cats$weight)
 ~~~
 {: .output}
 
-we see that `cats$weight` is a vector, too - *the columns of data we load into R
-data.frames are all vectors*, and that's the root of why R forces everything in
-a column to be the same basic data type.
+podemos ver que `cats$weight` también es un vector - *las columnas de datos que cargamos en **data.frames** de R son todas vectores*
+y este es el motivo por el cuál R requiere que todas las columnas sean del mismo tipo de datos básico.
 
-> ## Discussion 1
+
+> ## Discusión 1
 >
 > Why is R so opinionated about what we put in our columns of data?
 > How does this help us?
 >
-> > ## Discussion 1
+> > ## Discusión 1
 > >
-> > By keeping everything in a column the same, we allow ourselves to make simple
-> > assumptions about our data; if you can interpret one entry in the column as a
-> > number, then you can interpret *all* of them as numbers, so we don't have to
-> > check every time. This consistency is what people mean when they talk about 
-> > *clean data*; in the long run, strict consistency goes a long way to making 
-> > our lives easier in R.
+> > Al mantener todos los elementos de una columna del mismo tipo, podemos hacer suposiciones simples sobre nuestros datos;
+> > si puedes interpretar un elemento en una columna como un número, entonces puedes interpretar *todos* los elementos como números,
+> > y por tanto no hace falta comprobarlo cada vez.
+> > Esta consistencia es lo que se suele mencionar como *datos limpios*;
+> > a la large, la consistencia estricta hace nuestras vidas más fáciles cuando usamos R.
 > {: .solution}
 {: .discussion}
 
-You can also make vectors with explicit contents with the combine function:
-
+También puedes crear vectores con contenido explícito con la función **combine**:
 
 ~~~
 combine_vector <- c(2,6,3)
@@ -462,7 +456,7 @@ combine_vector
 ~~~
 {: .output}
 
-Given what we've learned so far, what do you think the following will produce?
+Dado lo que aprendidmos hasta ahora, ¿qué te parece que el siguiente código va a producir?
 
 
 ~~~
@@ -470,11 +464,11 @@ quiz_vector <- c(2,6,'3')
 ~~~
 {: .r}
 
-This is something called *type coercion*, and it is the source of many surprises
-and the reason why we need to be aware of the basic data types and how R will
-interpret them. When R encounters a mix of types (here numeric and character) to
-be combined into a single vector, it will force them all to be the same
-type. Consider:
+Esto se denomina *coerción de tipos de datos* y es motivo de muchas sorpresas y la razón por la cual es necesario conocer
+los tipos de datos básicos y cómo R los interpreta. Cuando R encuentra una mezcla de tipos de datos (en este caso númerico y caracteres)
+para combinarlos en un vector, va a forzarlos a ser del mismo tipo.
+
+Considera:
 
 
 ~~~
@@ -505,9 +499,9 @@ another_coercion_vector
 ~~~
 {: .output}
 
-The coercion rules go: `logical` -> `integer` -> `numeric` -> `complex` ->
-`character`, where -> can be read as *are transformed into*. You can try to
-force coercion against this flow using the `as.` functions:
+Las reglas de coerción son: `logical` -> `integer` -> `numeric` -> `complex` ->
+`character`, donde -> se puede leer como *se transforma en*.
+Puedes intentar forzar la coerción de acuerdo a esta cadena usando las funciones `as.`:
 
 
 ~~~
@@ -553,18 +547,18 @@ numeric_coerced_to_logical
 ~~~
 {: .output}
 
-As you can see, some surprising things can happen when R forces one basic data
-type into another! Nitty-gritty of type coercion aside, the point is: if your
-data doesn't look like what you thought it was going to look like, type coercion
-may well be to blame; make sure everything is the same type in your vectors and
-your columns of data.frames, or you will get nasty surprises!
+Como puedes ver, algunas cosas sorprendentes ocurren cuando R fuerza un tipo de datos en otro tipo!
+Dejando de lado los detalles de la coerción, la cuestión es: si tus datos no lucen como pensabas que
+deberían lucir, puede ser culpa de la coerción de tipos;  asegúrate que todos los elementos de tus vectores
+son y las columnas de tus **data.frames** son del mismo tipo o te encontrarás con sorpresas desagradables!
 
-But coercion can also be very useful! For example, in our `cats` data
-`likes_string` is numeric, but we know that the 1s and 0s actually represent
-`TRUE` and `FALSE` (a common way of representing them). We should use the
-`logical` datatype here, which has two states: `TRUE` or `FALSE`, which is
-exactly what our data represents. We can 'coerce' this column to be `logical` by
-using the `as.logical` function:
+Pero la coerción de tipos también puede ser muy útil. Por ejemplo, en los datos de `cats`,
+`likes_string` es numérica, pero sabemos que los 1s y 0s en realidad representan **`TRUE`** y **`FALSE`**
+(una forma habitual de representarlos). Deberíamos usar el tipo de datos
+**`logical`** en este caso, que tiene dos estados: **`TRUE`** o **`FALSE`**, que es exactamente
+lo que nuestros datos representan. Podemos
+
+Podemos convertir esta columna al tipo de datos **`logical`** usando la función `as.logical`:
 
 
 ~~~
@@ -594,7 +588,7 @@ cats$likes_string
 ~~~
 {: .output}
 
-The combine function, `c()`, will also append things to an existing vector:
+La función **combine**, `c()`, también agregará elementos al final de un vector existente:
 
 
 ~~~
@@ -625,7 +619,8 @@ combine_example
 ~~~
 {: .output}
 
-You can also make series of numbers:
+
+También puedes hacer una serie de números:
 
 
 ~~~
@@ -675,7 +670,7 @@ seq(1,10, by=0.1)
 ~~~
 {: .output}
 
-We can ask a few questions about vectors:
+Podemos preguntar algunas cosas sobre los vectores:
 
 
 ~~~
@@ -747,7 +742,7 @@ typeof(sequence_example)
 ~~~
 {: .output}
 
-Finally, you can give names to elements in your vector:
+Finalmente,puedes darle nombres a los elementos de tu vector:
 
 
 ~~~
@@ -779,13 +774,13 @@ names(my_example)
 ~~~
 {: .output}
 
-> ## Challenge 1
+> ## Desafío 1
 >
-> Start by making a vector with the numbers 1 through 26.
-> Multiply the vector by 2, and give the resulting vector
-> names A through Z (hint: there is a built in vector called `LETTERS`)
+> Comienza construyendo un vector con los números del 1 al 26.
+> Multiplica el vector por 2 y asigna al vector resultante los nombres A hasta Z
+> (Pista: hay un vector pre-definido llamado **`LETTERS`**)
 >
-> > ## Solution to Challenge 1
+> > ## Solución del desafío 1
 > >
 > > 
 > > ~~~
@@ -800,7 +795,7 @@ names(my_example)
 
 ## Data Frames
 
-We said that columns in data.frames were vectors:
+Ya mencionamos que las columnas en los **data.frames** son vectores:
 
 
 ~~~
@@ -829,7 +824,7 @@ str(cats$likes_string)
 ~~~
 {: .output}
 
-These make sense. But what about
+Esto tiene sentido, pero qué pasa con:
 
 
 ~~~
@@ -943,14 +938,14 @@ typeof(CATegories)
 ~~~
 {: .output}
 
-> ## Challenge 2
+> ## Desafío 2
 >
 > Is there a factor in our `cats` data.frame? what is its name?
 > Try using `?read.csv` to figure out how to keep text columns as character
 > vectors instead of factors; then write a command or two to show that the factor
 > in `cats` is actually a character vector when loaded in this way.
 >
-> > ## Solution to Challenge 2
+> > ## Solución al desafío 2
 > >
 > > One solution is use the argument `stringAsFactors`:
 > >
@@ -1423,14 +1418,14 @@ ncol(matrix_example)
 ~~~
 {: .output}
 
-> ## Challenge 4
+> ## Desafío 4
 >
 > What do you think will be the result of
 > `length(matrix_example)`?
 > Try it.
 > Were you right? Why / why not?
 >
-> > ## Solution to Challenge 4
+> > ## Solución al desafío 4
 > >
 > > What do you think will be the result of
 > > `length(matrix_example)`?
@@ -1455,7 +1450,7 @@ ncol(matrix_example)
 {: .challenge}
 
 
-> ## Challenge 5
+> ## Desafío 5
 >
 > Make another matrix, this time containing the numbers 1:50,
 > with 5 columns and 10 rows.
@@ -1464,7 +1459,7 @@ ncol(matrix_example)
 > See if you can figure out how to change this.
 > (hint: read the documentation for `matrix`!)
 >
-> > ## Solution to Challenge 5
+> > ## Solución al desafío 5
 > >
 > > Make another matrix, this time containing the numbers 1:50,
 > > with 5 columns and 10 rows.
