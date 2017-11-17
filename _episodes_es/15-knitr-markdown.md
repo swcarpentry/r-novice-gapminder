@@ -152,14 +152,14 @@ mismo número una y otra vez si lo desea:
 ```
 1. negrita con doble asterisco
 1. itálica con guiones bajos
-1. tipografía estilo código fuente con acento grave
+1. tipografía estilo código fuente con acento inverso/grave
 ```
 
 Esto aparecerá como:
 
 1. negrita con doble asterisco
 1. itálica con guiones bajos
-1. tipografía estilo código fuente con acento grave
+1. tipografía estilo código fuente con acento inverso/grave
 
 Puedes crear encabezados de sección de diferentes tamaños iniciando una línea
 con un cierto número de símbolos `#`:
