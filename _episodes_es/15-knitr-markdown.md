@@ -127,7 +127,7 @@ asteriscos, como este:
 ```
 * negrita con doble asterisco
 * itálica con guiones bajos
-* fuente de bloque de código con retrocesos
+* tipografía estilo código fuente con acento inverso/grave
 ```
 
 o así:
@@ -135,14 +135,14 @@ o así:
 ```
 - negrita con doble asterisco
 - itálica con guiones bajos
-- fuente de bloque de código con retrocesos
+- tipografía estilo código fuente con acento inverso/grave
 ```
 
 Cada uno aparecerá como:
 
 - negrita con doble asterisco
 - itálica con guiones bajos
-- fuente de bloque de código con retrocesos
+- tipografía estilo código fuente con acento inverso/grave
 
 (Prefiero guiones en lugar de asteriscos, yo mismo)
 
@@ -152,14 +152,14 @@ mismo número una y otra vez si lo desea:
 ```
 1. negrita con doble asterisco
 1. itálica con guiones bajos
-1. fuente de bloque de código con retrocesos
+1. tipografía estilo código fuente con acento inverso/grave
 ```
 
 Esto aparecerá como:
 
 1. negrita con doble asterisco
 1. itálica con guiones bajos
-1. fuente de bloque de código con retrocesos
+1. tipografía estilo código fuente con acento inverso/grave
 
 Puedes crear encabezados de sección de diferentes tamaños iniciando una línea
 con un cierto número de símbolos `#`:
