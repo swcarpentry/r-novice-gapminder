@@ -839,12 +839,12 @@ str(cats$coat)
 ~~~
 {: .output}
 
-## Factors
+## Factores
 
-Another important data structure is called a *factor*. Factors usually look like
-character data, but are typically used to represent categorical information. For
-example, let's make a vector of strings labelling cat colorations for all the
-cats in our study:
+Otra estructura de datos importante se llama un **factor**. Factores usualmente
+parecen caracteres, pero se usan para representar información categórica. Por ejemplo,
+construyamos un vector de **strings** con etiquetas para las coloraciones para todos los
+gatos en nuestro estudio:
 
 
 ~~~
@@ -875,7 +875,7 @@ str(coats)
 ~~~
 {: .output}
 
-We can turn a vector into a factor like so:
+Podemos convertir un vector en un **factor** de la siguiente manera:
 
 
 ~~~
@@ -905,11 +905,10 @@ str(CATegories)
 ~~~
 {: .output}
 
-Now R has noticed that there are three possible categories in our data - but it
-also did something surprising; instead of printing out the strings we gave it,
-we got a bunch of numbers instead. R has replaced our human-readable categories
-with numbered indices under the hood, this is necessary as many statistical
-calculations utilise such numerical representations for categorical data:
+Ahora R puede interpretar que hay tres posibles categorías en nuestros datos - pero también
+hizo algo sorprendente; en lugar de imprimir las **strings** como se las dimos, imprimió una
+serie de números. R ha reemplazado las categorías con índices numéricos, lo cuál es necesario porque
+muchos cálculos estadísticos usan esa representación para datos categóricos:
 
 
 ~~~
@@ -940,10 +939,10 @@ typeof(CATegories)
 
 > ## Desafío 2
 >
-> Is there a factor in our `cats` data.frame? what is its name?
-> Try using `?read.csv` to figure out how to keep text columns as character
-> vectors instead of factors; then write a command or two to show that the factor
-> in `cats` is actually a character vector when loaded in this way.
+> ¿Hay algún un **factor** en nuestro **data.frame** `cats`? ¿Cuál es el nombre?
+> Intenta usar `?read.csv` para darte cuenta cómo mantener las columnas de texto como vectores de caracteres
+> en lugar de factores; luego escribe uno o más comandos para mostrar que el **factor** en
+> `cats` es en realidad un vector de caracteres cuando se carga de esta manera.
 >
 > > ## Solución al desafío 2
 > >
@@ -995,7 +994,7 @@ In this case, we've explicitly told R that "control" should represented by 1, an
 "case" by 2. This designation can be very important for interpreting the
 results of statistical models!
 
-## Lists
+## Listas
 
 Another data structure you'll want in your bag of tricks is the `list`. A list
 is simpler in some ways than the other types, because you can put anything you
@@ -1177,10 +1176,9 @@ str(cats[1,])
 ~~~
 {: .output}
 
-> ## Challenge 3
+> ## Desafío 3
 >
-> There are several subtly different ways to call variables, observations and
-> elements from data.frames:
+> Hay varias maneras sutílmente diferentes de indicar variables, observaciones y elementos de **data.frames**:
 >
 > - `cats[1]`
 > - `cats[[1]]`
@@ -1190,11 +1188,11 @@ str(cats[1,])
 > - `cats[, 1]`
 > - `cats[1, ]`
 >
-> Try out these examples and explain what is returned by each one.
+> Investiga cada uno de los ejemplos anteriores y explica el resultado de cada uno.
 >
-> *Hint:* Use the function `typeof()` to examine what is returned in each case.
+> *Sugerencia:* Usa la función **`typeof()`** para examinar el resultado en cada caso.
 >
-> > ## Solution to Challenge 3
+> > ## Solución al desafío 3
 > > 
 > > ~~~
 > > cats[1]
@@ -1210,9 +1208,9 @@ str(cats[1,])
 > > 3  tabby
 > > ~~~
 > > {: .output}
-> > We can think of a data frame as a list of vectors. The single brace `[1]`
-> returns the first slice of the list, as another list. In this case it is the
-> first column of the data frame.
+> > Podemos interpretar un **data frame** como una lista de vectores. Un único par de corchetes `[1]`
+> resulta en la primer proyección de la lista, como otra lista. En este caso es la primer columna del
+> **data frame**.
 > > 
 > > ~~~
 > > cats[[1]]
@@ -1314,7 +1312,7 @@ str(cats[1,])
 
 ## Matrices
 
-Last but not least is the matrix. We can declare a matrix full of zeros:
+Finalmente está la matriz. Podemos declarar una matriz llena de ceros:
 
 
 ~~~
@@ -1333,7 +1331,7 @@ matrix_example
 ~~~
 {: .output}
 
-And similar to other data structures, we can ask things about our matrix:
+Y de manera similar a otras estructuras de datos, podemos preguntar cosas sobre la matriz:
 
 
 ~~~
@@ -1420,14 +1418,14 @@ ncol(matrix_example)
 
 > ## Desafío 4
 >
-> What do you think will be the result of
+> ¿Cuál crees que es el resultado del comando
 > `length(matrix_example)`?
-> Try it.
-> Were you right? Why / why not?
+> Inténtalo.
+> ¿Estabas en lo correcto? ¿Por qué / por qué no?
 >
 > > ## Solución al desafío 4
 > >
-> > What do you think will be the result of
+> > ¿Cuál crees que es el resultado del comando
 > > `length(matrix_example)`?
 > >
 > > 
@@ -1452,21 +1450,19 @@ ncol(matrix_example)
 
 > ## Desafío 5
 >
-> Make another matrix, this time containing the numbers 1:50,
-> with 5 columns and 10 rows.
-> Did the `matrix` function fill your matrix by column, or by
-> row, as its default behaviour?
-> See if you can figure out how to change this.
-> (hint: read the documentation for `matrix`!)
+> Construye otra matriz, esta vez conteniendo los números 1:50,
+> con 5 columnas y 10 renglones.
+> ¿Cómo va completando la matriz la función **`matrix`**? ¿Cuál es el comportamiento por defector: por columna or por renglón?
+> Investiga como cambiar este comportamento.
+> (Sugerencia: lee la documentación de la función **`matrix`**.)
 >
 > > ## Solución al desafío 5
 > >
-> > Make another matrix, this time containing the numbers 1:50,
-> > with 5 columns and 10 rows.
-> > Did the `matrix` function fill your matrix by column, or by
-> > row, as its default behaviour?
-> > See if you can figure out how to change this.
-> > (hint: read the documentation for `matrix`!)
+> > Construye otra matriz, esta vez conteniendo los números 1:50,
+> > con 5 columnas y 10 renglones.
+> > ¿Cómo va completando la matriz la función **`matrix`**? ¿Cuál es el comportamiento por defector: por columna or por renglón?
+> > Investiga como cambiar este comportamento.
+> > (Sugerencia: lee la documentación de la función **`matrix`**.)
 > >
 > > 
 > > ~~~
@@ -1478,16 +1474,16 @@ ncol(matrix_example)
 {: .challenge}
 
 
-> ## Challenge 6
->  Create a list of length two containing a character vector for each of the sections in this part of the workshop:
+> ## Desafío 6
+>  Crea una lista de longitud dos que contenga un vector de caracteres para cada una de las secciones en esta parte del curso:
 >
->  - Data types
->  - Data structures
+>  - tipos de datos
+>  - estructura de datos
 >
->  Populate each character vector with the names of the data types and data
->  structures we've seen so far.
+>  Inicializa cada vector de caracteres con los nombres de los tipos de datos y estructuras de datos
+>  que hemos visto hasta ahora.
 >
-> > ## Solution to Challenge 6
+> > ## Solución al desafío 6
 > > 
 > > ~~~
 > > dataTypes <- c('double', 'complex', 'integer', 'character', 'logical')
@@ -1495,17 +1491,17 @@ ncol(matrix_example)
 > > answer <- list(dataTypes, dataStructures)
 > > ~~~
 > > {: .r}
-> > Note: it's nice to make a list in big writing on the board or taped to the wall
-> > listing all of these types and structures - leave it up for the rest of the workshop
-> > to remind people of the importance of these basics.
+> > Nota: es útil hacer una lista en el pizarrón o en papel colgado en la pared listando
+> > todos los tipos y estructuras de datos y mantener la lista durante el resto del curso
+> > para recordar la importancia de estos elementos básicos.
 > >
 > {: .solution}
 {: .challenge}
 
 
-> ## Challenge 7
+> ## Desafío 7
 >
-> Consider the R output of the matrix below:
+> Considera la salida de R para la siguiente matriz:
 > 
 > ~~~
 >      [,1] [,2]
@@ -1514,18 +1510,18 @@ ncol(matrix_example)
 > [3,]   10    7
 > ~~~
 > {: .output}
-> What was the correct command used to write this matrix? Examine
-> each command and try to figure out the correct one before typing them.
-> Think about what matrices the other commands will produce.
+> ¿Cuál era el comando correcto para escribir esta matriz? Examina
+> cada comando e intenta determinar el correcto antes de escribirlos.
+> Piensa sobre las matrices que cada comando produce.
 >
 > 1. `matrix(c(4, 1, 9, 5, 10, 7), nrow = 3)`
 > 2. `matrix(c(4, 9, 10, 1, 5, 7), ncol = 2, byrow = TRUE)`
 > 3. `matrix(c(4, 9, 10, 1, 5, 7), nrow = 2)`
 > 4. `matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)`
 >
-> > ## Solution to Challenge 7
+> > ## Solución al desafío 7
 > >
-> > Consider the R output of the matrix below:
+> > Considera la salida de R para la siguiente matriz:
 > > 
 > > ~~~
 > >      [,1] [,2]
@@ -1534,9 +1530,9 @@ ncol(matrix_example)
 > > [3,]   10    7
 > > ~~~
 > > {: .output}
-> > What was the correct command used to write this matrix? Examine
-> > each command and try to figure out the correct one before typing them.
-> > Think about what matrices the other commands will produce.
+> > ¿Cuál era el comando correcto para escribir esta matriz? Examina
+> > cada comando e intenta determinar el correcto antes de escribirlos.
+> > Piensa sobre las matrices que cada comando produce.
 > > 
 > > ~~~
 > > matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)
