@@ -20,20 +20,20 @@ source: Rmd
 
 Una de las características más poderosas de R es su habilidad de manejar datos tabulares -
 como los que puedes tener en una planilla de cálculo o un archivo CSV. Comencemos creando un **dataset** de ejemplo
-en tu directorio `data/`, en el archivo llamado `feline-data.csv`:
+en tu directorio `datos/`, en el archivo llamado `feline-data.csv`:
 
 
 ~~~
-coat,weight,likes_string
-calico,2.1,1
-black,5.0,0
-tabby,3.2,1
+pelaje,peso,likes_string
+cálico,2.1,1
+negro,5.0,0
+atigrado,3.2,1
 ~~~
 {: .r}
 
 > ## Consejo: Edición de archivos de texto en R
 >
-> Alternativamente, puedes crear el archivo `data/feline-data.csv` usando un editor de texto (Nano),
+> Alternativamente, puedes crear el archivo `datos/datos-felinos.csv` usando un editor de texto (Nano),
 > o en RStudio usando el ítem del Menú  **File -> New File -> Text File**.
 {: .callout}
 
@@ -42,18 +42,18 @@ Podemos leer el archivo en R con el siguiente comando:
 
 
 ~~~
-cats <- read.csv(file = "data/feline-data.csv")
-cats
+gatos <- read.csv(file = "datos/datos-felinos.csv")
+gatos
 ~~~
 {: .r}
 
 
 
 ~~~
-    coat weight likes_string
-1 calico    2.1            1
-2  black    5.0            0
-3  tabby    3.2            1
+    pelaje peso likes_string
+1 cálico    2.1            1
+2  negro    5.0            0
+3  atigrado    3.2            1
 ~~~
 {: .output}
 
@@ -72,7 +72,7 @@ Podemos empezar a explorar el **dataset** inmediatamente, proyectando las column
 
 
 ~~~
-cats$weight
+gatos$peso
 ~~~
 {: .r}
 
@@ -86,15 +86,15 @@ cats$weight
 
 
 ~~~
-cats$coat
+gatos$pelaje
 ~~~
 {: .r}
 
 
 
 ~~~
-[1] calico black  tabby 
-Levels: black calico tabby
+[1] cálico negro  atigrado
+Levels: negro cálico atigrado
 ~~~
 {: .output}
 
@@ -102,8 +102,8 @@ Podemos efectuar otras operaciones a las columnas:
 
 
 ~~~
-## Say we discovered that the scale weighs two Kg light:
-cats$weight + 2
+## Considera que descubrimos que la balanza pesa dos kilos menos:
+gatos$peso + 2
 ~~~
 {: .r}
 
@@ -117,14 +117,14 @@ cats$weight + 2
 
 
 ~~~
-paste("My cat is", cats$coat)
+paste("Mi gato es", gatos$pelaje)
 ~~~
 {: .r}
 
 
 
 ~~~
-[1] "My cat is calico" "My cat is black"  "My cat is tabby" 
+[1] "Mi gato es cálico" "Mi gato es negro"  "Mi gato es atigrado"
 ~~~
 {: .output}
 
@@ -161,7 +161,7 @@ importante en programación que se llama *tipos de datos*. Podemos preguntar cu�
 
 
 ~~~
-typeof(cats$weight)
+typeof(gatos$peso)
 ~~~
 {: .r}
 
@@ -247,12 +247,12 @@ No importa cuan complicado sea nuestro análisis, todos los datos en R se interp
 tipos de datos básicos. Este rigor tiene algunas consecuencias importantes.
 
 Un usuario ha agregado detalles de otro gato. Esta información está en el archivo
-`data/feline-data_v2.csv`.
+`datos/datos-felinos_v2.csv`.
 
 
 
 ~~~
-file.show("data/feline-data_v2.csv")
+file.show("datos/datos-felinos_v2.csv")
 ~~~
 {: .r}
 
@@ -271,7 +271,7 @@ Carga los datos de los nuevos gatos de la misma forma anterior, y comprueba qué
 
 
 ~~~
-cats <- read.csv(file="data/feline-data_v2.csv")
+cats <- read.csv(file="datos/datos-felinos_v2.csv")
 typeof(cats$weight)
 ~~~
 {: .r}
@@ -335,7 +335,7 @@ básicas, y cómo se comportan. Por ahora, eliminemos la línea extra de los dat
 a leer el archivo para investigar el comportamiento más en detalle:
 
 
-feline-data.csv:
+datos-felinos.csv:
 
 ```
 coat,weight,likes_string
@@ -348,7 +348,7 @@ Y en RStudio:
 
 
 ~~~
-cats <- read.csv(file="data/feline-data.csv")
+cats <- read.csv(file="datos/datos-felinos.csv")
 ~~~
 {: .r}
 
@@ -950,7 +950,7 @@ typeof(CATegories)
 > >
 > > 
 > > ~~~
-> > cats <- read.csv(file="data/feline-data.csv", stringsAsFactors=FALSE)
+> > cats <- read.csv(file="datos/datos-felinos.csv", stringsAsFactors=FALSE)
 > > str(cats$coat)
 > > ~~~
 > > {: .r}
@@ -960,7 +960,7 @@ typeof(CATegories)
 > >
 > > 
 > > ~~~
-> > cats <- read.csv(file="data/feline-data.csv", colClasses=c(NA, NA, "character"))
+> > cats <- read.csv(file="datos/datos-felinos.csv", colClasses=c(NA, NA, "character"))
 > > str(cats$coat)
 > > ~~~
 > > {: .r}
