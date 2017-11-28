@@ -9,7 +9,7 @@ objectives:
 keypoints:
 - "Use the `tidyr` package to change the layout of dataframes."
 - "Use `gather()` to go from wide to long format."
-- "Use `scatter()` to go from long to wide format."
+- "Use `spread()` to go from long to wide format."
 source: Rmd
 ---
 
@@ -37,7 +37,7 @@ efficiently transform your data regardless of original format.
 
 These data formats mainly affect readability. For humans, the wide format is
 often more intuitive since we can often see more of the data on the screen due
-to it's shape. However, the long format is more machine readable and is closer
+to its shape. However, the long format is more machine readable and is closer
 to the formatting of databases. The ID variables in our dataframes are similar to
 the fields in a database and observed variables are like the database values.
 
@@ -121,6 +121,8 @@ Until now, we've been using the nicely formatted original gapminder dataset, but
 'real' data (i.e. our own research data) will never be so well organized. Here
 let's start with the wide format version of the gapminder dataset.
 
+> Download the wide version of the gapminder data from [here](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_wide.csv)
+and save it in your data folder.
 
 We'll load the data file and look at it.  Note: we don't want our continent and
 country columns to be factors, so we use the stringsAsFactors argument for
@@ -184,6 +186,8 @@ The first step towards getting our nice intermediate data format is to first
 convert from the wide to the long format. The `tidyr` function `gather()` will
 'gather' your observation variables into a single variable.
 
+![](../fig/14-tidyr-fig3.png)
+
 
 ~~~
 gap_long <- gap_wide %>%
@@ -217,7 +221,7 @@ that starts with the desired character string. Gather also allows the alternativ
 syntax of using the `-` symbol to identify which variables are not to be
 gathered (i.e. ID variables)
 
-![](../fig/14-tidyr-fig3.png)
+![](../fig/14-tidyr-fig4.png)
 
 
 ~~~
@@ -270,20 +274,19 @@ gap_long$year <- as.integer(gap_long$year)
 > >
 > >
 > >~~~
-> >Source: local data frame [15 x 3]
-> >Groups: continent [?]
-> >
+> ># A tibble: 15 x 3
+> ># Groups:   continent [?]
 > >   continent  obs_type        means
 > >       <chr>     <chr>        <dbl>
-> >1     Africa gdpPercap 2.193755e+03
-> >2     Africa   lifeExp 4.886533e+01
-> >3     Africa       pop 9.916003e+06
-> >4   Americas gdpPercap 7.136110e+03
-> >5   Americas   lifeExp 6.465874e+01
-> >6   Americas       pop 2.450479e+07
-> >7       Asia gdpPercap 7.902150e+03
-> >8       Asia   lifeExp 6.006490e+01
-> >9       Asia       pop 7.703872e+07
+> > 1    Africa gdpPercap 2.193755e+03
+> > 2    Africa   lifeExp 4.886533e+01
+> > 3    Africa       pop 9.916003e+06
+> > 4  Americas gdpPercap 7.136110e+03
+> > 5  Americas   lifeExp 6.465874e+01
+> > 6  Americas       pop 2.450479e+07
+> > 7      Asia gdpPercap 7.902150e+03
+> > 8      Asia   lifeExp 6.006490e+01
+> > 9      Asia       pop 7.703872e+07
 > >10    Europe gdpPercap 1.446948e+04
 > >11    Europe   lifeExp 7.190369e+01
 > >12    Europe       pop 1.716976e+07

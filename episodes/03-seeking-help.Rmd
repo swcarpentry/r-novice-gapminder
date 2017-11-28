@@ -20,8 +20,8 @@ knitr_fig_path("03-")
 
 ## Reading Help files
 
-R, and every package, provide help files for functions. To search for help on a
-function from a specific function that is in a package loaded into your
+R, and every package, provide help files for functions. The general syntax to search for help on any
+function, "function_name", from a specific function that is in a package loaded into your
 namespace (your interactive R session):
 
 ```{r, eval=FALSE}
@@ -56,7 +56,7 @@ Different functions might have different sections, but these are the main ones y
 To seek help on special operators, use quotes:
 
 ```{r, eval=FALSE}
-?"+"
+?"<-"
 ```
 
 ## Getting help on packages
@@ -140,12 +140,20 @@ your issue.
 > > ?paste
 > > ```
 > > The difference between `sep` and `collapse` is a little
-> > tricky. The `sep` argument specifies what separator character to use
-> > when you specify several different *arguments* to `paste()`,
-> > e.g. `paste('a', 'b', sep=',')`. In contrast, `collapse` specifies
-> > what separator character to use when combining a set of strings that
-> > are all specified as part of the same *vector*,
-> > e.g. `paste(c('a','b'), collapse=',')`. (For more information,
+> > tricky. The `paste` function accepts any number of arguments, each of which
+> > can be a vector of any length. The `sep` argument specifies the string
+> > used between concatenated terms — by default, a space. The result is a
+> > vector as long as the longest argument supplied to `paste`. In contrast,
+> > `collapse` specifies that after concatenation the elements are *collapsed*
+> > together using the given separator, the result being a single string.
+> > e.g. 
+> > ```{r} 
+> > paste(c("a","b"), "c")
+> > paste(c("a","b"), "c", sep = ",")
+> > paste(c("a","b"), "c", collapse = "|")
+> > paste(c("a","b"), "c", sep = ",", collapse = "|")
+> > ```
+> > (For more information,
 > > scroll to the bottom of the `?paste` help page and look at the
 > > examples, or try `example('paste')`.)
 > {: .solution}
@@ -167,7 +175,7 @@ your issue.
 > > separator for `read.table()`, although you may have to change
 > > the `comment.char` argument as well if your data file contains
 > > hash (#) characters
-> {: solution}
+> {: .solution}
 {: .challenge}
 
 ## Other ports of call

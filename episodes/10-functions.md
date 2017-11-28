@@ -7,13 +7,15 @@ questions:
 objectives:
 - "Define a function that takes arguments."
 - "Return a value from a function."
+- "Check argument conditions with `stopifnot()` in functions."
 - "Test a function."
 - "Set default values for function arguments."
 - "Explain why we should divide programs into small, single-purpose functions."
 keypoints:
 - "Use `function` to define a new function in R."
 - "Use parameters to pass values into functions."
-- "Load functions into programs using `source`."
+- "Use `stopifnot()` to flexibly check function arguments in R."
+- "Load functions into programs using `source()`."
 source: Rmd
 ---
 
@@ -31,7 +33,8 @@ several operations with a single command.
 
 > ## What is a function?
 >
-> Functions gather a sequence of operations into a whole, preserving it for ongoing use. Functions provide:
+> Functions gather a sequence of operations into a whole, preserving it for
+> ongoing use. Functions provide:
 >
 > * a name we can remember and invoke it by
 > * relief from the need to remember the individual operations
@@ -45,7 +48,8 @@ several operations with a single command.
 
 ## Defining a function
 
-Let's open a new R script file in the `functions/` directory and call it functions-lesson.R.
+Let's open a new R script file in the `functions/` directory and call it
+functions-lesson.R.
 
 
 ~~~
@@ -56,7 +60,8 @@ my_sum <- function(a, b) {
 ~~~
 {: .r}
 
-Let’s define a function fahr_to_kelvin that converts temperatures from Fahrenheit to Kelvin:
+Let's define a function `fahr_to_kelvin()` that converts temperatures from
+Fahrenheit to Kelvin:
 
 
 ~~~
@@ -67,17 +72,18 @@ fahr_to_kelvin <- function(temp) {
 ~~~
 {: .r}
 
-We define `fahr_to_kelvin` by assigning it to the output of `function`.  The
+We define `fahr_to_kelvin()` by assigning it to the output of `function`. The
 list of argument names are contained within parentheses.  Next, the
-[body]({{ page.root }}/reference/#function-body) of the function--the statements that are
-executed when it runs--is contained within curly braces (`{}`).  The statements
-in the body are indented by two spaces.  This makes the code easier to read but
-does not affect how the code operates.
+[body]({{ page.root }}/reference/#function-body) of the function--the
+statements that are executed when it runs--is contained within curly braces
+(`{}`). The statements in the body are indented by two spaces. This makes the
+code easier to read but does not affect how the code operates.
 
-When we call the function, the values we pass to it as arguments are assigned to those
-variables so that we can use them inside the function.  Inside the function, we
-use a [return statement]({{ page.root }}/reference/#return-statement) to send a result back
-to whoever asked for it.
+When we call the function, the values we pass to it as arguments are assigned to
+those variables so that we can use them inside the function. Inside the
+function, we use a [return
+statement]({{ page.root }}/reference/#return-statement) to send a result back to
+whoever asked for it.
 
 > ## Tip
 >
@@ -121,8 +127,8 @@ fahr_to_kelvin(212)
 
 > ## Challenge 1
 >
-> Write a function called `kelvin_to_celsius` that takes a temperature in Kelvin
-> and returns that temperature in Celsius
+> Write a function called `kelvin_to_celsius()` that takes a temperature in
+> Kelvin and returns that temperature in Celsius.
 >
 > Hint: To convert from Kelvin to Celsius you subtract 273.15
 >
@@ -167,7 +173,8 @@ kelvin_to_celsius <- function(temp) {
 > ## Challenge 2
 >
 > Define the function to convert directly from Fahrenheit to Celsius,
-> by reusing the two functions above (or using your own functions if you prefer).
+> by reusing the two functions above (or using your own functions if you
+> prefer).
 >
 >
 > > ## Solution to challenge 2
@@ -188,10 +195,138 @@ kelvin_to_celsius <- function(temp) {
 > {: .solution}
 {: .challenge}
 
+## Interlude: Defensive Programming
 
-We're going to define
-a function that calculates the Gross Domestic Product of a nation from the data
-available in our dataset:
+Now that we've begun to appreciate how writing functions provides an efficient
+way to make R code re-usable and modular, we should note that it is important
+to ensure that functions only work in their intended use-cases. Checking
+function parameters is related to the concept of _defensive programming_.
+Defensive programming encourages us to frequently check conditions and throw an
+error if something is wrong. These checks are referred to as assertion
+statements because we want to assert some condition is `TRUE` before proceeding.
+They make it easier to debug because they give us a better idea of where the
+errors originate.
+
+### Checking conditions with `stopifnot()`
+
+Let's start by re-examining `fahr_to_kelvin()`, our function for converting
+temperatures from Fahrenheit to Kelvin. It was defined like so:
+
+
+~~~
+fahr_to_kelvin <- function(temp) {
+  kelvin <- ((temp - 32) * (5 / 9)) + 273.15
+  return(kelvin)
+}
+~~~
+{: .r}
+
+For this function to work as intended, the argument `temp` must be a `numeric`
+value; otherwise, the mathematical procedure for converting between the two
+temperature scales will not work. To create an error, we can use the function
+`stop()`. For example, since the argument `temp` must be a `numeric` vector, we
+could check for this condition with an `if` statement and throw an error if the
+condition was violated. We could augment our function above like so:
+
+
+~~~
+fahr_to_kelvin <- function(temp) {
+  if (!is.numeric(temp)) {
+    stop("temp must be a numeric vector.")
+  }
+  kelvin <- ((temp - 32) * (5 / 9)) + 273.15
+  return(kelvin)
+}
+~~~
+{: .r}
+
+If we had multiple conditions or arguments to check, it would take many lines
+of code to check all of them. Luckily R provides the convenience function
+`stopifnot()`. We can list as many requirements that should evaluate to `TRUE`;
+`stopifnot()` throws an error if it finds one that is `FALSE`. Listing these
+conditions also serves a secondary purpose as extra documentation for the
+function.
+
+Let's try out defensive programming with `stopifnot()` by adding assertions to
+check the input to our function `fahr_to_kelvin()`.
+
+We want to assert the following: `temp` is a numeric vector. We may do that like
+so:
+
+
+~~~
+fahr_to_kelvin <- function(temp) {
+  stopifnot(is.numeric(temp))
+  kelvin <- ((temp - 32) * (5 / 9)) + 273.15
+  return(kelvin)
+}
+~~~
+{: .r}
+
+It still works when given proper input.
+
+
+~~~
+# freezing point of water
+fahr_to_kelvin(temp = 32)
+~~~
+{: .r}
+
+
+
+~~~
+[1] 273.15
+~~~
+{: .output}
+
+But fails instantly if given improper input.
+
+
+~~~
+# Metric is a factor instead of numeric
+fahr_to_kelvin(temp = as.factor(32))
+~~~
+{: .r}
+
+
+
+~~~
+Error: is.numeric(temp) is not TRUE
+~~~
+{: .error}
+
+> ## Challenge 3
+>
+> Use defensive programming to ensure that our `fahr_to_celsius()` function
+> throws an error immediately if the argument `temp` is specified
+> inappropriately.
+>
+>
+> > ## Solution to challenge 3
+> >
+> > Extend our previous definition of the function by adding in an explicit call
+> > to `stopifnot()`. Since `fahr_to_celsius()` is a composition of two other
+> > functions, checking inside here makes adding checks to the two component
+> > functions redundant.
+> >
+> >
+> > 
+> > ~~~
+> > fahr_to_celsius <- function(temp) {
+> >   stopifnot(!is.numeric(temp))
+> >   temp_k <- fahr_to_kelvin(temp)
+> >   result <- kelvin_to_celsius(temp_k)
+> >   return(result)
+> > }
+> > ~~~
+> > {: .r}
+> {: .solution}
+{: .challenge}```
+
+## More on combining functions
+
+Now, we're going to define a function that calculates the Gross Domestic Product
+of a nation from the data available in our dataset:
 
 
 ~~~
@@ -204,22 +339,20 @@ calcGDP <- function(dat) {
 ~~~
 {: .r}
 
-We define `calcGDP` by assigning it to the output of `function`.
-The list of argument names are contained within parentheses.
-Next, the body of the function -- the statements executed when you
-call the function -- is contained within curly braces (`{}`).
+We define `calcGDP()` by assigning it to the output of `function`. The list of
+argument names are contained within parentheses. Next, the body of the function 
+-- the statements executed when you call the function -- is contained within
+curly braces (`{}`).
 
-We've indented the statements in the body by two spaces. This makes
-the code easier to read but does not affect how it operates.
+We've indented the statements in the body by two spaces. This makes the code
+easier to read but does not affect how it operates.
 
-When we call the function, the values we pass to it are assigned
-to the arguments, which become variables inside the body of the
-function.
+When we call the function, the values we pass to it are assigned to the
+arguments, which become variables inside the body of the function.
 
-Inside the function, we use the `return` function to send back the
-result. This return function is optional: R will automatically
-return the results of whatever command is executed on the last line
-of the function.
+Inside the function, we use the `return()` function to send back the result.
+This `return()` function is optional: R will automatically return the results of
+whatever command is executed on the last line of the function.
 
 
 
@@ -259,7 +392,7 @@ calcGDP <- function(dat, year=NULL, country=NULL) {
 
 If you've been writing these functions down into a separate R script
 (a good idea!), you can load in the functions into our R session by using the
-`source` function:
+`source()` function:
 
 
 ~~~
@@ -267,13 +400,13 @@ source("functions/functions-lesson.R")
 ~~~
 {: .r}
 
-Ok, so there's a lot going on in this function now. In plain English,
-the function now subsets the provided data by year if the year argument isn't
-empty, then subsets the result by country if the country argument isn't empty.
-Then it calculates the GDP for whatever subset emerges from the previous two steps.
-The function then adds the GDP as a new column to the subsetted data and returns
-this as the final result.
-You can see that the output is much more informative than a vector of numbers.
+Ok, so there's a lot going on in this function now. In plain English, the
+function now subsets the provided data by year if the year argument isn't empty,
+then subsets the result by country if the country argument isn't empty. Then it 
+calculates the GDP for whatever subset emerges from the previous two steps. The 
+function then adds the GDP as a new column to the subsetted data and returns
+this as the final result. You can see that the output is much more informative
+than a vector of numbers.
 
 Let's take a look at what happens when we specify the year:
 
@@ -363,20 +496,20 @@ take on those values unless the user specifies otherwise.
 ~~~
 {: .r}
 
-Here, we check whether each additional argument is set to `null`,
-and whenever they're not `null` overwrite the dataset stored in `dat` with
-a subset given by the non-`null` argument.
+Here, we check whether each additional argument is set to `null`, and whenever
+they're not `null` overwrite the dataset stored in `dat` with a subset given by 
+the non-`null` argument.
 
-I did this so that our function is more flexible for later. We
-can ask it to calculate the GDP for:
+I did this so that our function is more flexible for later. We can ask it to
+calculate the GDP for:
 
  * The whole dataset;
  * A single year;
  * A single country;
  * A single combination of year and country.
 
-By using `%in%` instead, we can also give multiple years or countries
-to those arguments.
+By using `%in%` instead, we can also give multiple years or countries to those
+arguments.
 
 > ## Tip: Pass by value
 >
@@ -394,7 +527,7 @@ to those arguments.
 >
 > Another important concept is scoping: any variables (or functions!) you
 > create or modify inside the body of a function only exist for the lifetime
-> of the function's execution. When we call `calcGDP`, the variables `dat`,
+> of the function's execution. When we call `calcGDP()`, the variables `dat`,
 > `gdp` and `new` only exist inside the body of the function. Even if we
 > have variables of the same name in our interactive R session, they are
 > not modified in any way when executing a function.
@@ -409,10 +542,10 @@ to those arguments.
 ~~~
 {: .r}
 
-Finally, we calculated the GDP on our new subset, and created a new
-data frame with that column added. This means when we call the function
-later we can see the context for the returned GDP values,
-which is much better than in our first attempt where we got a vector of numbers.
+Finally, we calculated the GDP on our new subset, and created a new data frame
+with that column added. This means when we call the function later we can see
+the context for the returned GDP values, which is much better than in our first 
+attempt where we got a vector of numbers.
 
 > ## Challenge 3
 >
@@ -421,6 +554,11 @@ which is much better than in our first attempt where we got a vector of numbers.
 >
 > > ## Solution to challenge 3
 > >
+> > 
+> > ~~~
+> >   calcGDP(gapminder, year = c(1952, 1987), country = "New Zealand")
+> > ~~~
+> > {: .r}
 > > GDP for New Zealand in 1987: 65050008703
 > >
 > > GDP for New Zealand in 1952: 21058193787
@@ -430,7 +568,7 @@ which is much better than in our first attempt where we got a vector of numbers.
 
 > ## Challenge 4
 >
-> The `paste` function can be used to combine text together, e.g:
+> The `paste()` function can be used to combine text together, e.g:
 >
 > 
 > ~~~
@@ -446,7 +584,7 @@ which is much better than in our first attempt where we got a vector of numbers.
 > ~~~
 > {: .output}
 >
->  Write a function called `fence` that takes two vectors as arguments, called
+>  Write a function called `fence()` that takes two vectors as arguments, called
 > `text` and `wrapper`, and prints out the text wrapped with the `wrapper`:
 >
 > 
@@ -455,14 +593,15 @@ which is much better than in our first attempt where we got a vector of numbers.
 > ~~~
 > {: .r}
 >
-> *Note:* the `paste` function has an argument called `sep`, which specifies the
-> separator between text. The default is a space: " ". The default for `paste0`
-> is no space "".
+> *Note:* the `paste()` function has an argument called `sep`, which specifies
+> the separator between text. The default is a space: " ". The default for
+> `paste0()` is no space "".
 >
 > > ## Solution to challenge 4
 > >
-> >  Write a function called `fence` that takes two vectors as arguments, called
-> > `text` and `wrapper`, and prints out the text wrapped with the `wrapper`:
+> >  Write a function called `fence()` that takes two vectors as arguments,
+> > called `text` and `wrapper`, and prints out the text wrapped with the
+> > `wrapper`:
 > >
 > > 
 > > ~~~
@@ -487,13 +626,12 @@ which is much better than in our first attempt where we got a vector of numbers.
 
 > ## Tip
 >
-> R has some unique aspects that can be exploited when performing
-> more complicated operations. We will not be writing anything that requires
+> R has some unique aspects that can be exploited when performing more
+> complicated operations. We will not be writing anything that requires
 > knowledge of these more advanced concepts. In the future when you are
 > comfortable writing functions in R, you can learn more by reading the
 > [R Language Manual][man] or this [chapter][] from
-> [Advanced R Programming][adv-r] by Hadley Wickham. For context, R uses the
-> terminology "environments" instead of frames.
+> [Advanced R Programming][adv-r] by Hadley Wickham.
 {: .callout}
 
 [man]: http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects
@@ -522,13 +660,14 @@ which is much better than in our first attempt where we got a vector of numbers.
 >
 > Formal documentation for functions, written in separate `.Rd`
 > files, gets turned into the documentation you see in help
-> files. The [roxygen2][] package allows R coders to write documentation alongside
-> the function code and then process it into the appropriate `.Rd` files.
-> You will want to switch to this more formal method of writing documentation
-> when you start writing more complicated R projects.
+> files. The [roxygen2][] package allows R coders to write documentation
+> alongside the function code and then process it into the appropriate `.Rd`
+> files. You will want to switch to this more formal method of writing
+> documentation when you start writing more complicated R projects.
 >
 > Formal automated tests can be written using the [testthat][] package.
 {: .callout}
 
 [roxygen2]: http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
 [testthat]: http://r-pkgs.had.co.nz/tests.html
+
