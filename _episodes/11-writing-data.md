@@ -45,7 +45,8 @@ using the arguments to this function.
 ~~~
 pdf("Life_Exp_vs_time.pdf", width=12, height=4)
 ggplot(data=gapminder, aes(x=year, y=lifeExp, colour=country)) +
-  geom_line()
+  geom_line() +
+  theme(legend.position = "none")
 
 # You then have to make sure to turn off the pdf device!
 
@@ -60,6 +61,20 @@ Open up this document and have a look.
 > Rewrite your 'pdf' command to print a second
 > page in the pdf, showing a facet plot (hint: use `facet_grid`)
 > of the same data with one panel per continent.
+> > ## Solution to challenge 1
+> >
+> > 
+> > ~~~
+> > pdf("Life_Exp_vs_time.pdf", width = 12, height = 4)
+> > p <- ggplot(data = gapminder, aes(x = year, y = lifeExp, colour = country)) +
+> >   geom_line() +
+> >   theme(legend.position = "none")
+> > p
+> > p + facet_grid(. ~continent)
+> > dev.off()
+> > ~~~
+> > {: .r}
+> {: .solution}
 {: .challenge}
 
 
@@ -176,6 +191,18 @@ That looks better!
 >
 > Use this script to write out the new subset to a file
 > in the `cleaned-data/` directory.
+> > ## Solution to challenge 2
+> >
+> > 
+> > ~~~
+> > write.table(
+> >   gapminder[gapminder$year > 1990, ],
+> >   file = "cleaned-data/gapminder-after1990.csv",
+> >   sep = ",", quote = FALSE, row.names = FALSE
+> > )
+> > ~~~
+> > {: .r}
+> {: .solution}
 {: .challenge}
 
 

@@ -461,7 +461,7 @@ want in it:
 ```{r}
 list_example <- list(1, "a", TRUE, 1+4i)
 list_example
-another_list <- list(title = "Research Bazaar", numbers = 1:10, data = TRUE )
+another_list <- list(title = "Numbers", numbers = 1:10, data = TRUE )
 another_list
 ```
 

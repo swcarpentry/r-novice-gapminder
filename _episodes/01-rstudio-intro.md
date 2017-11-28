@@ -8,13 +8,14 @@ questions:
 - "How to manage your environment?"
 - "How to install packages?"
 objectives:
-- "To gain familiarity with the various panes in the RStudio IDE"
-- "To gain familiarity with the buttons, short cuts and options in the RStudio IDE"
-- "To understand variables and how to assign to them"
-- "To be able to manage your workspace in an interactive R session"
-- "To be able to use mathematical and comparison operations"
-- "To be able to call functions"
-- "Introduction to package management"
+- "Describe the purpose and use of each pane in the RStudio IDE"
+- "Locate buttons and options in the RStudio IDE"
+- "Define a variable"
+- "Assign data to a variable"
+- "Manage a workspace in an interactive R session"
+- "Use mathematical and comparison operators"
+- "Call functions"
+- "Manage packages"
 keypoints:
 - "Use RStudio to write and run R programs."
 - "R has the usual arithmetic operators and mathematical functions."
@@ -36,7 +37,7 @@ R and RStudio. We will begin with raw data, perform exploratory analyses, and le
 how to plot results graphically. This example starts with a dataset from
 [gapminder.org](https://www.gapminder.org) containing population information for many
 countries through time. Can you read the data into R? Can you plot the population for
-Senegal? Can you calculate the average income for countries on continent of Asia?
+Senegal? Can you calculate the average income for countries on the continent of Asia?
 By the end of these lessons you will be able to do things like plot the populations
 for all of these countries in under a minute!
 
@@ -85,8 +86,8 @@ There are two main ways one can work within RStudio.
 a .R file to run later.
    *  This works well when doing small tests and initially starting off.
    *  It quickly becomes laborious
-2. Start writing in an .R file and use RStudio's command / short cut
-to push current line, selected lines or modified lines to the
+2. Start writing in an .R file and use RStudio's short cut keys for the Run command
+to push the current line, selected lines or modified lines to the
 interactive R console.
    * This is a great way to start; all your code is saved for later
    * You will be able to run the file you create from within RStudio
@@ -369,7 +370,7 @@ We can also do comparison in R:
 
 
 ~~~
-1 <  2  # less than
+1 < 2  # less than
 ~~~
 {: .r}
 
@@ -499,6 +500,7 @@ Assignment values can contain the variable being assigned to:
 
 ~~~
 x <- x + 1 #notice how RStudio updates its description of x on the top right tab
+y <- x * 2
 ~~~
 {: .r}
 
@@ -607,7 +609,7 @@ ls()
 >
 {: .callout}
 
-Note here that we didn't given any arguments to `ls`, but we still
+Note here that we didn't give any arguments to `ls`, but we still
 needed to give the parentheses to tell R to call the function.
 
 If we type `ls` by itself, R will print out the source code for that function!
@@ -652,7 +654,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7f940690e8d8>
+<bytecode: 0x7ffdf9e17638>
 <environment: namespace:base>
 ~~~
 {: .output}
