@@ -25,12 +25,12 @@ el sistema [base plotting system][base], el paqute [lattice][lattice]
 [lattice]: http://www.statmethods.net/advgraphs/trellis.html
 [ggplot2]: http://www.statmethods.net/advgraphs/ggplot2.html
 
-Hoy aprenderemos lo básico acerca del paquete ggplot2, debido a que es el sistema
+Hoy aprenderemos un poco acerca del paquete ggplot2, este sistema es el
 más efectivo para crear gráficas con calidad para publicación.
 
-ggplot2 se contruyó basado en la gramática de gráficos,
+ggplot2 se contruyó basado en la gramática de gráficos, es decir,
 en la idea de que cualquier gráfico puede expresarse a partir del mismo set de componentes:
-un set de **datos**, un **sistema coordinado**, y un set de **geoms** --la representación visual de cada dato
+un set de **datos**, un **sistema coordinado**, y un set de **geoms** -- que corresponden a la representación visual de cada dato
 
 La clave para entender ggplot2 es pensar en una figura como un conjunto de capas.
 Esta idea podría resultarte familiar si has usado un programa de edición de imágenes como 
@@ -50,15 +50,15 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 <img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter" alt="plot of chunk lifeExp-vs-gdpPercap-scatter" style="display: block; margin: auto;" />
 
 La primer cosa que hacemos es llamar a la función `ggplot`. Esta función
-le dice a R que estamos creando una nueva gráfica, cualquiera de los argumentos
-que le pasemos a la función `ggplot` serán consideradas como opciones *globales* en nuestra gráfica:
-estas opciones aplican para todas las capas de la gráfica.
+le dice a R que estamos creando una nueva gráfica, todos los argumentos
+que le pasemos a la función `ggplot` serán considerado como opciones *globales* en nuestra gráfica:
+lo cual significa que estas opciones son válidas para todas las capas de la gráfica.
 
 En este ejemplo, le hemos pasado dos argumentos a `ggplot`. Primero, le decimos a `ggplot`
 cuáles son los datos que queremos mostrar en nuestra figura, en este ejemplo usaremos los datos
 de gapminder que cargamos anteriormente. Como segundo argumento, le pasamos la función `aes`,
-la cual le dice a `ggplot` como es que las variables de los **datos** mapean con las propiedades
-**aesthetic** (estéticas) de la figura, en este caso los valores para **x** y **y**. En este ejemplo, le dijimos a 
+la cual le dice a `ggplot` como es que cada una de las variables en los **datos** se relacionan con las propiedades
+**aesthetic** (estéticas) de la figura, en este caso los valores que tomarán **x** y **y**. En este ejemplo, le dijimos a 
 `ggplot` que queremos graficar la columna "gdpPercap" del dataframe gapminder en el eje X, y la columna
 "lifeExp" en el eje Y. Nota que no necesitamos indicar explícitamente estas columnas en la función `aes` 
 (e.g. `x = gapminder[, "gdpPercap"]`), ¡esto es debido a que `ggplot` es suficientemente listo para 
@@ -76,7 +76,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp))
 Necesitamos decirle a `ggplot` como queremos representar visualmente los datos, 
 esto lo hacemos al agregar una nueva capa **geom**. En nuestro ejemplo, usamos `geom_point`,
 la cual le indica a `ggplot` que queremos representar visualmente la relación entre **x** y **y**
-como un gráfico de dispersión (scatterplot) de los puntos.
+como un gráfico de dispersión de los puntos (scatterplot) .
 
 
 ~~~
