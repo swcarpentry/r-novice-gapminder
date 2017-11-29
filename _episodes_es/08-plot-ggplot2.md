@@ -15,7 +15,7 @@ source: Rmd
 
 
 Graficar nuestros datos es una de las mejores maneras
-de explorarlos y de observar las relaciones que existen entre las variables.
+para explorarlos y para observar las relaciones que existen entre las variables.
 
 En R existen tres sistemas principales encargados de hacer gráficos,
 el sistema [base plotting system][base], el paqute [lattice][lattice]
