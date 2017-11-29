@@ -142,7 +142,7 @@ Imprimirá su versión actual de R, así como cualquier paquete que tú hayas
 cargado. Esto puede ser útil para otros para ayudar a reproducir y depurar
 tu problema.
 
-> ## Reto 1
+> ## Desafio 1
 >
 > Buscar la ayuda para la función `c`. ¿Qué tipo de vector
 > crees que crearás si evalúas lo siguiente?:
@@ -153,7 +153,7 @@ tu problema.
 > c(1, 2, 'f')
 > ~~~
 > {: .r}
-> > ## Solución al Reto 1
+> > ## Solución al desafio 1
 > >
 > > La función `c()` crea un vector, en el cual todos los elementos son
 > > del mismo tipo. En el primer caso, los elementos son numéricos, en el
@@ -162,12 +162,12 @@ tu problema.
 > {: .solution}
 {: .challenge}
 
-> ## Reto 2
+> ## Desafio 2
 >
 > Buscar la ayuda para la función `paste`. Tendrás que usar esto más tarde.
 > ¿Cuál es la diferencia entre los argumentos `sep` y `collapse`?
 >
-> > ## Solución para el Reto 2
+> > ## Solución para el desafio 2
 > >
 > > Buscar la ayuda de la función `paste()`, usa:
 > > 
@@ -244,7 +244,7 @@ tu problema.
 > {: .solution}
 {: .challenge}
 
-> ## Reto 3
+> ## Desafio 3
 > Usa la ayuda para encontrar una función (y sus parámetros asociados) que tu puedas
 > usar para cargar datos de un archivo csv en los cuales las columnas están delimitadas con "\ t"
 > (tab) y el punto decimal es un "." (punto). Esta comprobación para el separador decimal
@@ -252,7 +252,7 @@ tu problema.
 > porque diferentes países tienen diferentes convenciones para el
 > punto decimal (i.e. coma vs punto).
 > sugerencia: usa `??csv` para buscar funciones relacionadas con csv.
-> > ## Solución a el Reto 3
+> > ## Solución a el desafio 3
 > >
 > > La función R estándar para leer archivos delimitados por tabuladores con un separador
 > > de punto decimal es read.delim(). Tu puedes hacer esto también con
