@@ -5,9 +5,9 @@ exercises: 15
 questions:
 - "¿Cómo puedo trabajar con subconjuntos de datos en R?"
 objectives:
-- "Ser capaz de hacer subconjuntos de vectores, factores, matrices, listas y 
+- "Ser capaz de hacer subconjuntos de vectores, factores, matrices, listas y
    _data frames_."
-- "Ser capaz de extraer uno o multiples elementos: por posición, por nombre, 
+- "Ser capaz de extraer uno o multiples elementos: por posición, por nombre,
    o usando operaciones de comparación."
 - "Ser capaz de saltar y quitar elementos de diferentes estructuras de datos."
 keypoints:
@@ -15,14 +15,14 @@ keypoints:
 - "Acceso a un elemento por posición usando `[]`."
 - "Acceso a un rango de datos usando `[min:max]`."
 - "Acceso a subconjuntos arbitrarios usando `[c(...)]`."
-- "Usar comparaciones lógicas o vectores con entradas **logical** para acceder subconjuntos 
+- "Usar comparaciones lógicas o vectores con entradas **logical** para acceder subconjuntos
    de datos."
 source: Rmd
 ---
 
 
 
-R dispone de muchas operaciones para generar subconjuntos. Dominarlas 
+R dispone de muchas operaciones para generar subconjuntos. Dominarlas
 te permitirá hacer fácilmente operaciones muy complejas en cualquier *dataset*.
 
 Existen seis maneras distintas en las cuales se puede hacer un subconjunto
@@ -42,14 +42,14 @@ x
 
 
 ~~~
-  a   b   c   d   e 
-5.4 6.2 7.1 4.8 7.5 
+  a   b   c   d   e
+5.4 6.2 7.1 4.8 7.5
 ~~~
 {: .output}
 
 > ## Vectores atómicos
 >
-> En R, un vector puede contener palabras, números o **logical** estos son 
+> En R, un vector puede contener palabras, números o **logical** estos son
 > llamados vectores *atómicos* ya que no se pueden simplificar más.
 {: .callout}
 
@@ -70,8 +70,8 @@ x[1]
 
 
 ~~~
-  a 
-5.4 
+  a
+5.4
 ~~~
 {: .output}
 
@@ -84,8 +84,8 @@ x[4]
 
 
 ~~~
-  d 
-4.8 
+  d
+4.8
 ~~~
 {: .output}
 
@@ -103,8 +103,8 @@ x[c(1, 3)]
 
 
 ~~~
-  a   c 
-5.4 7.1 
+  a   c
+5.4 7.1
 ~~~
 {: .output}
 
@@ -119,8 +119,8 @@ x[1:4]
 
 
 ~~~
-  a   b   c   d 
-5.4 6.2 7.1 4.8 
+  a   b   c   d
+5.4 6.2 7.1 4.8
 ~~~
 {: .output}
 
@@ -165,12 +165,12 @@ x[c(1,1,3)]
 
 
 ~~~
-  a   a   c 
-5.4 5.4 7.1 
+  a   a   c
+5.4 5.4 7.1
 ~~~
 {: .output}
 
-Si pedimos por índices mayores a la longitud del vector, R regresará 
+Si pedimos por índices mayores a la longitud del vector, R regresará
 un valor faltante.
 
 ~~~
@@ -181,8 +181,8 @@ x[6]
 
 
 ~~~
-<NA> 
-  NA 
+<NA>
+  NA
 ~~~
 {: .output}
 
@@ -212,7 +212,7 @@ named numeric(0)
 
 ## Saltando y quitando entradas
 
-Si usamos un valor negativo como índice para un vector, R regresará cada una 
+Si usamos un valor negativo como índice para un vector, R regresará cada una
 de las entradas *excepto* la que se ha especificado:
 
 
@@ -224,8 +224,8 @@ x[-2]
 
 
 ~~~
-  a   c   d   e 
-5.4 7.1 4.8 7.5 
+  a   c   d   e
+5.4 7.1 4.8 7.5
 ~~~
 {: .output}
 
@@ -240,18 +240,18 @@ x[c(-1, -5)]  # o x[-c(1,5)]
 
 
 ~~~
-  b   c   d 
-6.2 7.1 4.8 
+  b   c   d
+6.2 7.1 4.8
 ~~~
 {: .output}
 
 > ## Sugerencia: Orden de las operaciones
 >
-> Un pequeño obstáculo para los novatos ocurre cuando tratan de saltar rangos 
+> Un pequeño obstáculo para los novatos ocurre cuando tratan de saltar rangos
 > de elementos de un vector. Es natural tratar de filtrar una sucesión de la
 > siguiente manera:
 >
-> 
+>
 > ~~~
 > x[-1:3]
 > ~~~
@@ -259,7 +259,7 @@ x[c(-1, -5)]  # o x[-c(1,5)]
 >
 > Esto nos devuelve un error de alguna manera críptico:
 >
-> 
+>
 > ~~~
 > Error in x[-1:3]: only 0's may be mixed with negative subscripts
 > ~~~
@@ -272,17 +272,17 @@ x[c(-1, -5)]  # o x[-c(1,5)]
 > La solución correcta sería empaquetar la llamada de la función dentro de
 > paréntesis, de está manera el operador `-` se aplica al resultado:
 >
-> 
+>
 > ~~~
 > x[-(1:3)]
 > ~~~
 > {: .r}
-> 
-> 
-> 
+>
+>
+>
 > ~~~
->   d   e 
-> 4.8 7.5 
+>   d   e
+> 4.8 7.5
 > ~~~
 > {: .output}
 {: .callout}
@@ -301,94 +301,94 @@ x
 
 
 ~~~
-  a   b   c   e 
-5.4 6.2 7.1 7.5 
+  a   b   c   e
+5.4 6.2 7.1 7.5
 ~~~
 {: .output}
 
-> ## Reto 1
+> ## Desafío 1
 >
 > Dado el siguiente código:
 >
-> 
+>
 > ~~~
 > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > print(x)
 > ~~~
 > {: .r}
-> 
-> 
-> 
+>
+>
+>
 > ~~~
->   a   b   c   d   e 
-> 5.4 6.2 7.1 4.8 7.5 
+>   a   b   c   d   e
+> 5.4 6.2 7.1 4.8 7.5
 > ~~~
 > {: .output}
 >
 > Encuentra al menos 3 comandos distintos que produzcan la siguiente salida:
 >
-> 
+>
 > ~~~
->   b   c   d 
-> 6.2 7.1 4.8 
+>   b   c   d
+> 6.2 7.1 4.8
 > ~~~
 > {: .output}
 >
 > Después de encontrar los tres comandos distintos, compáralos con los de tu vecino. ¿Tuvieron distintas estrategias?.
 >
-> > ## Solución al reto 1
+> > ## Solución al desafío 1
 > >
-> > 
+> >
 > > ~~~
 > > x[2:4]
 > > ~~~
 > > {: .r}
-> > 
-> > 
-> > 
+> >
+> >
+> >
 > > ~~~
-> >   b   c   d 
-> > 6.2 7.1 4.8 
+> >   b   c   d
+> > 6.2 7.1 4.8
 > > ~~~
 > > {: .output}
-> > 
+> >
 > > ~~~
 > > x[-c(1,5)]
 > > ~~~
 > > {: .r}
-> > 
-> > 
-> > 
+> >
+> >
+> >
 > > ~~~
-> >   b   c   d 
-> > 6.2 7.1 4.8 
+> >   b   c   d
+> > 6.2 7.1 4.8
 > > ~~~
 > > {: .output}
-> > 
+> >
 > > ~~~
 > > x[c("b", "c", "d")]
 > > ~~~
 > > {: .r}
-> > 
-> > 
-> > 
+> >
+> >
+> >
 > > ~~~
-> >   b   c   d 
-> > 6.2 7.1 4.8 
+> >   b   c   d
+> > 6.2 7.1 4.8
 > > ~~~
 > > {: .output}
-> > 
+> >
 > > ~~~
 > > x[c(2,3,4)]
 > > ~~~
 > > {: .r}
-> > 
-> > 
-> > 
+> >
+> >
+> >
 > > ~~~
-> >   b   c   d 
-> > 6.2 7.1 4.8 
+> >   b   c   d
+> > 6.2 7.1 4.8
 > > ~~~
 > > {: .output}
 > >
@@ -409,13 +409,13 @@ x[c("a", "c")]
 
 
 ~~~
-  a   c 
-5.4 7.1 
+  a   c
+5.4 7.1
 ~~~
 {: .output}
 
-Esta forma es mucho más segura para hacer subconjuntos: las posiciones 
-de muchas entradas pueden cambiar a menudo cuando estamos creando una cadena 
+Esta forma es mucho más segura para hacer subconjuntos: las posiciones
+de muchas entradas pueden cambiar a menudo cuando estamos creando una cadena
 de subconjuntos, ¡pero los nombres siempre permanecen iguales!.
 
 ## Creado subconjuntos usando operaciones lógicas
@@ -431,12 +431,12 @@ x[c(FALSE, FALSE, TRUE, FALSE, TRUE)]
 
 
 ~~~
-  c   e 
-7.1 7.5 
+  c   e
+7.1 7.5
 ~~~
 {: .output}
 
-Dado que los operadores de comparación (e.g. `>`, `<`, `==`) dan como resultado valores **logical**, 
+Dado que los operadores de comparación (e.g. `>`, `<`, `==`) dan como resultado valores **logical**,
 podemos usarlos para crear subconjuntos: la siguiente instrucción
 tiene el mismo resultado que el anterior.
 
@@ -449,12 +449,12 @@ x[x > 7]
 
 
 ~~~
-  c   e 
-7.1 7.5 
+  c   e
+7.1 7.5
 ~~~
 {: .output}
 
-Explicando un poco lo que sucedió, la instrucción `x>7`, genera un vector 
+Explicando un poco lo que sucedió, la instrucción `x>7`, genera un vector
 **logical** `c(FALSE, FALSE, TRUE, FALSE, TRUE)` y después este selecciona
 las entradas de `x` correspondientes a los valores `TRUE`.
 
@@ -469,25 +469,25 @@ x[names(x) == "a"]
 
 
 ~~~
-  a 
-5.4 
+  a
+5.4
 ~~~
 {: .output}
 
 > ## Sugerencia: Combinando condiciones lógicas
 >
 > Muchas veces queremos combinar varios criterios lógicos. Por ejemplo, tal vez
-> queramos encontrar todos los paise en Asia o (en inglés **or**) Europe y (en 
-> inglés **and**) con esperanza de vida en cierto rango. Existen muchas operaciones 
+> queramos encontrar todos los paise en Asia o (en inglés **or**) Europe y (en
+> inglés **and**) con esperanza de vida en cierto rango. Existen muchas operaciones
 > para combinar vectores con entradas **logical** en R:
 >
->  * `&`, el operador "lógico AND": regresa `TRUE` si la derecha y la izquierda 
+>  * `&`, el operador "lógico AND": regresa `TRUE` si la derecha y la izquierda
 >    son `TRUE`.
 >  * `|`, el operado "lógico OR": regresa `TRUE`, si la derecha o la izquierda
 >    (o ambos) son `TRUE`.
 >
 > A veces encontrarás `&&` y `̣||` en vez de `&` y `|`. Los operadores de dos caracteres
-> solo comparan las primeras entradas de cada vector e ignoran las demás entradas. En 
+> solo comparan las primeras entradas de cada vector e ignoran las demás entradas. En
 > general no debes usar los operadores de dos caracteres en el análisis de datos; déjalos
 > para la programación, i.e. para decir cuando se ejecutara una instrucción.
 >
@@ -497,48 +497,48 @@ x[names(x) == "a"]
 >    `c(FALSE, TRUE)`).
 >
 > Más aún, puedes comparar todas las entradas de un vector entre ellas usando
-> la función `all` (que regresa `TRUE` si todos los elementos del vector son 
+> la función `all` (que regresa `TRUE` si todos los elementos del vector son
 > `TRUE`) y la función `any` (que regresa `TRUE`si uno o más elementos del vector
 > son `TRUE`).
 {: .callout}
 
-> ## Reto 3
+> ## Desafío 3
 >
 > Dado el siguiente código:
 >
-> 
+>
 > ~~~
 > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > print(x)
 > ~~~
 > {: .r}
-> 
-> 
-> 
+>
+>
+>
 > ~~~
->   a   b   c   d   e 
-> 5.4 6.2 7.1 4.8 7.5 
+>   a   b   c   d   e
+> 5.4 6.2 7.1 4.8 7.5
 > ~~~
 > {: .output}
 >
-> Escribe un comando para crear el subconjunto de valores de `x` que son mayores 
+> Escribe un comando para crear el subconjunto de valores de `x` que son mayores
 > a 4 pero menores que 7.
 >
-> > ## Solución al reto 3
+> > ## Solución al desafío 3
 > >
-> > 
+> >
 > > ~~~
 > > x_subset <- x[x<7 & x>4]
 > > print(x_subset)
 > > ~~~
 > > {: .r}
-> > 
-> > 
-> > 
+> >
+> >
+> >
 > > ~~~
-> >   a   b   d 
-> > 5.4 6.2 4.8 
+> >   a   b   d
+> > 5.4 6.2 4.8
 > > ~~~
 > > {: .output}
 > {: .solution}
@@ -548,7 +548,7 @@ x[names(x) == "a"]
 > ## Sugerencia: Nombres no únicos
 >
 > Debes estar precavido de que es posible que haya varias entradas de un vector
-> con el mismo nombre. (Para un **data frame**, la columnas pueden tener el 
+> con el mismo nombre. (Para un **data frame**, la columnas pueden tener el
 > mismo nombre --- aunque R trata de evitar esto --- pero los nombres de los
 > renglones deben ser únicos) Considera estos ejemplos:
 >
@@ -577,8 +577,8 @@ x[names(x) == "a"]
 >
 >
 >~~~
->a a a 
->1 2 3 
+>a a a
+>1 2 3
 >~~~
 >{: .output}
 >
@@ -592,8 +592,8 @@ x[names(x) == "a"]
 >
 >
 >~~~
->a 
->1 
+>a
+>1
 >~~~
 >{: .output}
 >
@@ -607,16 +607,16 @@ x[names(x) == "a"]
 >
 >
 >~~~
->a a a 
->1 2 3 
+>a a a
+>1 2 3
 >~~~
 >{: .output}
 {: .callout}
 
 > ## Sugerencia: Obteniendo ayuda para los operadores
 >
-> Recuerda que puedes obtener ayuda para los operadores empaquetándolos en 
-> comillas: 
+> Recuerda que puedes obtener ayuda para los operadores empaquetándolos en
+> comillas:
 > `help("%in%")` o `?"%in%"`.
 >
 {: .callout}
@@ -624,7 +624,7 @@ x[names(x) == "a"]
 ## Escapando las entradas nombradas
 
 Saltar o quitar entradas con nombre es un poco difícil. Si nosotros tratamos de
-escapar un elemento con nombre negando la palabra, R se quejará (de una manera un 
+escapar un elemento con nombre negando la palabra, R se quejará (de una manera un
 tanto oscura) que no sabe como tomar la negación de una palabra:
 
 
@@ -641,7 +641,7 @@ Error in -"a": invalid argument to unary operator
 ~~~
 {: .error}
 
-Sin embargo, podemos usar el operador `!=` (no igual) para construir un vector 
+Sin embargo, podemos usar el operador `!=` (no igual) para construir un vector
 con entradas **logical** que es lo que nosotros queremos:
 
 
@@ -653,8 +653,8 @@ x[names(x) != "a"]
 
 
 ~~~
-  b   c   d   e 
-6.2 7.1 4.8 7.5 
+  b   c   d   e
+6.2 7.1 4.8 7.5
 ~~~
 {: .output}
 
@@ -678,16 +678,16 @@ of shorter object length
 
 
 ~~~
-  b   c   d   e 
-6.2 7.1 4.8 7.5 
+  b   c   d   e
+6.2 7.1 4.8 7.5
 ~~~
 {: .output}
 
-R hizo *algo*, pero también nos lanzó una advertencia de algo que debemos 
-ponerle atención -¡y aparentemente *nos dió la respuesta incorrecta*! 
+R hizo *algo*, pero también nos lanzó una advertencia de algo que debemos
+ponerle atención -¡y aparentemente *nos dió la respuesta incorrecta*!
 (el elemento `"c"` se encuentra todavía en el vector).
 
-¿Entonces qué hizo el operador `!=` en este caso? Esa es una excelente 
+¿Entonces qué hizo el operador `!=` en este caso? Esa es una excelente
 pregunta.
 
 ### Reciclando
@@ -715,8 +715,8 @@ of shorter object length
 ~~~
 {: .output}
 
-¿Por qué R devuelve `TRUE` como el tercer elemento de este vector, cuando 
-`names(x)[3] != "c"` es obviamente falso?. Cuando tú usas `!=`, R trata 
+¿Por qué R devuelve `TRUE` como el tercer elemento de este vector, cuando
+`names(x)[3] != "c"` es obviamente falso?. Cuando tú usas `!=`, R trata
 de comparar cada elemento de la izquierda con el correspondiente elemento
 de la derecha. ¿Qué pasa cuando tu comparas dos elementos de diferentes
 longitudes?.
@@ -729,19 +729,19 @@ Cuando uno de los vectores es más corto que el otro, este se *recicla*:
 
 En este caso R **repite** `c("a", "c")` tantas veces como sea necesario
 para emparejar `names(x)`, i.e. tenemos `c("a","c","a","c","a")`. Ya que
-el valor reciclado `"a"`no es igual a `names(x)`, el valor de `!=` es 
+el valor reciclado `"a"`no es igual a `names(x)`, el valor de `!=` es
 `TRUE`. En este caso, donde el vector de mayor longitud (5) no es múltiplo
 del más pequeño (2), R lanza esta advertencia. Si
 hubiéramos sido lo suficientemente desafortunados y `names(x)` tuviese seis
 entradas, R *silenciosamente* hubiera hecho las cosas incorrectas (i.e.,
-no lo que deseábamos hacer). Esta regla de reciclaje puede introducir 
+no lo que deseábamos hacer). Esta regla de reciclaje puede introducir
 **bugs** difíciles de encontrar.
 
 La manera de hacer que R haga lo que en verdad queremos (emparejar *cada uno*
-de las entradas del argumento de la izquierda con *todas* las entradas del 
-argumento de la derecha) es usando el operador `%in%`. El operador `%in%` 
-toma cada uno de las entradas del argumento de la izquierda, en este caso 
-los nombres de `x`, y pegunta, "¿esta entrada ocurre en el segundo argumento?". 
+de las entradas del argumento de la izquierda con *todas* las entradas del
+argumento de la derecha) es usando el operador `%in%`. El operador `%in%`
+toma cada uno de las entradas del argumento de la izquierda, en este caso
+los nombres de `x`, y pegunta, "¿esta entrada ocurre en el segundo argumento?".
 Aquí, como queremos *excluir* los valores, nosotros también necesitamos el
 operador `!` para cambiar el "in" en un "not in":
 
@@ -754,24 +754,24 @@ x[! names(x) %in% c("a","c") ]
 
 
 ~~~
-  b   d   e 
-6.2 4.8 7.5 
+  b   d   e
+6.2 4.8 7.5
 ~~~
 {: .output}
 
-> ## Reto 2
+> ## Desafío 2
 >
-> Seleccionar entradas de un vector que empareje con cualquier valor de 
+> Seleccionar entradas de un vector que empareje con cualquier valor de
 > una lista es una tarea muy común en el análisis de datos. Por ejemplo,
 > el **data set** de *gapminder* contiene las variables `country` y
 > `continent`, pero no incluye información de la escala.
-> Supongamos que queremos extraer la información de el 
+> Supongamos que queremos extraer la información de el
 > sureste de Asia: ¿cómo podemos escribir una operación que result en un
-> vector **logical** que sea `TRUE`para todos los países en el sureste de 
+> vector **logical** que sea `TRUE`para todos los países en el sureste de
 > Asia y `FALSE` en otros casos?
 >
 > Supongamos que se tienen los siguientes datos:
-> 
+>
 > ~~~
 > seAsia <- c("Myanmar", "Thailand", "Cambodia", "Vietnam", "Laos")
 > ## se leen los datos de gapminder que descargamos en el episodio 2
@@ -788,17 +788,17 @@ x[! names(x) %in% c("a","c") ]
 > (usando los operadores lógicos `==` y `|`) y una manera elegante
 > (usando `%in%`). Prueba encontrar esas maneras y explica cómo
 > funcionan (o no).
-> 
-> > ## Solución al reto 2
+>
+> > ## Solución al desafío 2
 > >
 > > - La manera **incorrecta** de hacer este problema es `countries==seAsia`.
 > > Esta lanza una advertencia (`"In countries == seAsia : longer object length is not a multiple of shorter object length"`)
-> > y la respuesta incorrecta (un vector con todos los valores `FALSE`), ya 
+> > y la respuesta incorrecta (un vector con todos los valores `FALSE`), ya
 > > que ninguno de los valores reciclados de `seAsia` se emparejaron correctamente
 > > para coincidir con los valores de `country`.
 > > - La manera **enrollada** (pero técnicamente correcta) de resolver
 > > este problema es
-> > 
+> >
 > > ~~~
 > >  (countries=="Myanmar" | countries=="Thailand" |
 > >  countries=="Cambodia" | countries == "Vietnam" | countries=="Laos")
@@ -807,7 +807,7 @@ x[! names(x) %in% c("a","c") ]
 > > (o `countries==seAsia[1] | countries==seAsia[2] | ...`). Esto
 > > da los valores correctos, pero esperamos que veas lo raro que se ve
 > > (¿qué hubiera pasado si hubiéramos querido seleccionar países de una
-> > lista mucho más larga?). 
+> > lista mucho más larga?).
 > > - La mejor manera de resolver este problema es `countries %in% seAsia`,
 > > la cual es la correcta y la más sencilla de escribir (y leer).
 > {: .solution}
@@ -815,12 +815,12 @@ x[! names(x) %in% c("a","c") ]
 
 ## Manejando valores especiales
 
-En algún momento encontraremos funciones en R que no pueden manejar valores 
+En algún momento encontraremos funciones en R que no pueden manejar valores
 faltantes, infinito o datos indefinidos.
 
 Existen algunas funciones especiales que puedes usar para filtrar estos datos:
 
- * `is.na` regresa todas las posiciones de un **vector**, **matrix** o **data.frame** 
+ * `is.na` regresa todas las posiciones de un **vector**, **matrix** o **data.frame**
    que contengan `NA` (o `NaN`)
  * de la misma manera, `is.nan` y `is.infinite` hacen lo mismo para `NaN` e `Inf`.
  * `is.finite` regresa todas las posiciones de un **vector**, **matrix** o **data.frame**
@@ -898,7 +898,7 @@ Levels: a b c d
 
 ## Haciendo subconjuntos de matrices
 
-También podemos hacer subconjuntos de matrices usando la función `[`. En este 
+También podemos hacer subconjuntos de matrices usando la función `[`. En este
 caso toma dos argumentos: el primero se aplica a los renglones y el segundo
 a las columnas:
 
@@ -957,7 +957,7 @@ m[3,]
 ~~~
 {: .output}
 
-Si quieres mantener la salida como una matriz, necesitas especificar un *tercer* 
+Si quieres mantener la salida como una matriz, necesitas especificar un *tercer*
 argumento; `drop = FALSE`:
 
 
@@ -974,7 +974,7 @@ m[3, , drop=FALSE]
 ~~~
 {: .output}
 
-A diferencia de los vectores, si tratamos de acceder a un renglón o 
+A diferencia de los vectores, si tratamos de acceder a un renglón o
 columna fuera de la matriz, R arrojará un error:
 
 
@@ -999,7 +999,7 @@ Error in m[, c(3, 6)]: subscript out of bounds
 >
 {: .callout}
 
-Como las matrices son vectores, podemos también hacer subconjuntos usando 
+Como las matrices son vectores, podemos también hacer subconjuntos usando
 solo un argumento:
 
 
@@ -1016,7 +1016,7 @@ m[5]
 {: .output}
 
 
-Normalmente esto no es tan útil y muchas veces difícil de leer. Sin embargo 
+Normalmente esto no es tan útil y muchas veces difícil de leer. Sin embargo
 es útil notar que las matrices están acomodadas en *formato de principal de
 columnas* por defecto. Esto es que los elementos del vector están acomodados
 por columnas:
@@ -1053,22 +1053,22 @@ matrix(1:6, nrow=2, ncol=3, byrow=TRUE)
 ~~~
 {: .output}
 
-Podemos también hacer subconjuntos de las matrices usando los nombres de 
+Podemos también hacer subconjuntos de las matrices usando los nombres de
 sus renglones y de sus columnas en vez de usar los índice de estos.
 
-> ## Reto 4
+> ## Desafío 4
 >
 > Dado el siguiente código:
 >
-> 
+>
 > ~~~
 > m <- matrix(1:18, nrow=3, ncol=6)
 > print(m)
 > ~~~
 > {: .r}
-> 
-> 
-> 
+>
+>
+>
 > ~~~
 >      [,1] [,2] [,3] [,4] [,5] [,6]
 > [1,]    1    4    7   10   13   16
@@ -1087,7 +1087,7 @@ sus renglones y de sus columnas en vez de usar los índice de estos.
 >
 > D. `m[2,c(4,5)]`
 >
-> > ## Solución al reto 4
+> > ## Solución al desafío 4
 > >
 > > D
 > {: .solution}
@@ -1096,8 +1096,8 @@ sus renglones y de sus columnas en vez de usar los índice de estos.
 
 ## Haciendo subconjuntos de listas
 
-Ahora introduciremos un nuevo operador para hacer subconjuntos. Existen tres 
-funciones para hacer subconjuntos de listas. Ya las hemos visto cuando 
+Ahora introduciremos un nuevo operador para hacer subconjuntos. Existen tres
+funciones para hacer subconjuntos de listas. Ya las hemos visto cuando
 aprendiamos los vectores atómicos y las matrices: `[`, `[[` y `$`.
 
 Usando `[` siempre se obtiene una lista. Si quieres un *subconjunto* de una
@@ -1123,7 +1123,7 @@ Esto regresa una *lista de un elemento*.
 
 Podemos hacer subconjuntos de entradas de la lista de la misma manera que
 con los vectores atómicos usando `[`. Las operaciones de comparación sin
-embargo no funcionan, ya que no son recursivas, estas probaran la 
+embargo no funcionan, ya que no son recursivas, estas probaran la
 condición en la estructura de datos de las entradas de la lista,
 y no en las entradas individuales de dichas estructuras de datos.
 
@@ -1228,10 +1228,10 @@ xlist$data
 ~~~
 {: .output}
 
-> ## Reto 5
+> ## Desafío 5
 > Dada la siguiente lista:
 >
-> 
+>
 > ~~~
 > xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
 > ~~~
@@ -1241,40 +1241,40 @@ xlist$data
 > el número 2 de `xlist`.
 > Pista: el número 2 esta contenido en la entrada "b" de la lista.
 >
-> > ## Solución al reto 5
+> > ## Solución al desafío 5
 > >
-> > 
+> >
 > > ~~~
 > > xlist$b[2]
 > > ~~~
 > > {: .r}
-> > 
-> > 
-> > 
+> >
+> >
+> >
 > > ~~~
 > > [1] 2
 > > ~~~
 > > {: .output}
-> > 
+> >
 > > ~~~
 > > xlist[[2]][2]
 > > ~~~
 > > {: .r}
-> > 
-> > 
-> > 
+> >
+> >
+> >
 > > ~~~
 > > [1] 2
 > > ~~~
 > > {: .output}
-> > 
+> >
 > > ~~~
 > > xlist[["b"]][2]
 > > ~~~
 > > {: .r}
-> > 
-> > 
-> > 
+> >
+> >
+> >
 > > ~~~
 > > [1] 2
 > > ~~~
@@ -1283,10 +1283,10 @@ xlist$data
 {: .challenge}
 
 
-> ## Reto 6
+> ## Desafío 6
 > Dado un modelo lineal:
 >
-> 
+>
 > ~~~
 > mod <- aov(pop ~ lifeExp, data=gapminder)
 > ~~~
@@ -1294,14 +1294,14 @@ xlist$data
 > Extrae los grados de libertad residuales (pista: `attributes()` te puede
 > ayudar)
 >
-> > ## Solución del reto 8
+> > ## Solución del desafío 8
 > >
-> > 
+> >
 > > ~~~
 > > attributes(mod) ## `df.residual` es uno de los nombres de `mod`
 > > ~~~
 > > {: .r}
-> > 
+> >
 > > ~~~
 > > mod$df.residual
 > > ~~~
@@ -1312,10 +1312,10 @@ xlist$data
 
 ## Data frames
 
-Recordemos que los **data frames** son listas, por lo que reglas similares 
+Recordemos que los **data frames** son listas, por lo que reglas similares
 se aplican. Sin embargo estos también son objetos de dos dimensiones:
 
-`[` con un argumento funcionará de la misma manera que para las listas, 
+`[` con un argumento funcionará de la misma manera que para las listas,
 donde cada entrada de la lista corresponde a una columna. El objeto devuelto
 será un **data frame**:
 
@@ -1386,7 +1386,7 @@ gapminder[1:3,]
 ~~~
 {: .output}
 
-Si nuestro subconjunto es un solo renglón, el resultado será un **data frame** 
+Si nuestro subconjunto es un solo renglón, el resultado será un **data frame**
 (porque las entradas son de distintos tipos):
 
 
@@ -1406,14 +1406,14 @@ gapminder[3,]
 Pero para una sola columna el resultado será un vector (esto puede cambiarse
 con el tercer argumento, `drop = FALSE`).
 
-> ## Reto 7
+> ## Desafío 7
 >
-> Corrige cada uno de los siguientes errores para hacer subconjuntos de 
+> Corrige cada uno de los siguientes errores para hacer subconjuntos de
 > **data frames**:
 >
 > 1. Extraer observaciones colectadas en el año 1957
 >
->    
+>
 >    ~~~
 >    gapminder[gapminder$year = 1957,]
 >    ~~~
@@ -1421,7 +1421,7 @@ con el tercer argumento, `drop = FALSE`).
 >
 > 2. Extraer todas las columnas excepto de la 1 a la 4
 >
->    
+>
 >    ~~~
 >    gapminder[,-1:4]
 >    ~~~
@@ -1429,7 +1429,7 @@ con el tercer argumento, `drop = FALSE`).
 >
 > 3. Extraer los renglones donde la esperanza de vida es mayor a 80 años
 >
->    
+>
 >    ~~~
 >    gapminder[gapminder$lifeExp > 80]
 >    ~~~
@@ -1438,7 +1438,7 @@ con el tercer argumento, `drop = FALSE`).
 > 4. Extraer el primer renglón, y la cuarta y quinta columna
 >   (`lifeExp` and `gdpPercap`).
 >
->    
+>
 >    ~~~
 >    gapminder[1, 4, 5]
 >    ~~~
@@ -1447,20 +1447,20 @@ con el tercer argumento, `drop = FALSE`).
 > 5. Avanzado: extraer los renglones que contienen información para los años 2002
 >    y 2007
 >
->    
+>
 >    ~~~
 >    gapminder[gapminder$year == 2002 | 2007,]
 >    ~~~
 >    {: .r}
 >
-> > ## Solución del reto 7
+> > ## Solución del desafío 7
 > >
-> > Corrige cada uno de los siguientes errores para hacer subconjuntos de 
+> > Corrige cada uno de los siguientes errores para hacer subconjuntos de
 > > **data frames**:
 > >
 > > 1. Extraer observaciones colectadas en el año 1957
 > >
-> >    
+> >
 > >    ~~~
 > >    # gapminder[gapminder$year = 1957,]
 > >    gapminder[gapminder$year == 1957,]
@@ -1469,7 +1469,7 @@ con el tercer argumento, `drop = FALSE`).
 > >
 > > 2. Extraer todas las columnas excepto de la 1 a la 4
 > >
-> >    
+> >
 > >    ~~~
 > >    # gapminder[,-1:4]
 > >    gapminder[,-c(1:4)]
@@ -1478,7 +1478,7 @@ con el tercer argumento, `drop = FALSE`).
 > >
 > > 3. Extraer los renglones donde la esperanza de vida es mayor a 80 años
 > >
-> >    
+> >
 > >    ~~~
 > >    # gapminder[gapminder$lifeExp > 80]
 > >    gapminder[gapminder$lifeExp > 80,]
@@ -1488,7 +1488,7 @@ con el tercer argumento, `drop = FALSE`).
 > > 4. Extraer el primer renglón, y la cuarta y quinta columna
 > >   (`lifeExp` and `gdpPercap`).
 > >
-> >    
+> >
 > >    ~~~
 > >    # gapminder[1, 4, 5]
 > >    gapminder[1, c(4, 5)]
@@ -1498,7 +1498,7 @@ con el tercer argumento, `drop = FALSE`).
 > > 5. Avanzado: extraer los renglones que contienen información para los años 2002
 > >    y 2007
 > >
-> >     
+> >
 > >     ~~~
 > >     # gapminder[gapminder$year == 2002 | 2007,]
 > >     gapminder[gapminder$year == 2002 | gapminder$year == 2007,]
@@ -1508,7 +1508,7 @@ con el tercer argumento, `drop = FALSE`).
 > {: .solution}
 {: .challenge}
 
-> ## Reto 8
+> ## Desafío 8
 >
 > 1. ¿Por qué `gapminder[1:20]` regresa un error? ¿en qué difiere de `gapminder[1:20, ]`?
 >
@@ -1516,15 +1516,15 @@ con el tercer argumento, `drop = FALSE`).
 > 2. Crea un `data.frame` llamado `gapminder_small` que solo contenga los renglones del 1
 >    al 9 y del 19 al 23. Puedes hacerlo en uno o dos pasos.
 >
-> > ## Solución al reto 8
+> > ## Solución al desafío 8
 > >
 > > 1. `gapminder` es un `data.frame` por lo que para hacer un subconjunto necesita dos
 > >    dimensiones. `gapminder[1:20, ]` genera un subconjunto de los datos de los primeros
 > >    20 renglones y todas las columnas.
 > >
-> > 2. 
+> > 2.
 > >
-> > 
+> >
 > > ~~~
 > > gapminder_small <- gapminder[c(1:9, 19:23),]
 > > ~~~
