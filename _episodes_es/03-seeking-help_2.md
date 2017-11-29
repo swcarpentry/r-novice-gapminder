@@ -252,7 +252,7 @@ tu problema.
 > porque diferentes países tienen diferentes convenciones para el
 > punto decimal (i.e. coma vs punto).
 > sugerencia: usa `??csv` para buscar funciones relacionadas con csv.
-> > ## Solución a el desafio 3
+> > ## Solución para el desafio 3
 > >
 > > La función R estándar para leer archivos delimitados por tabuladores con un separador
 > > de punto decimal es read.delim(). Tu puedes hacer esto también con
