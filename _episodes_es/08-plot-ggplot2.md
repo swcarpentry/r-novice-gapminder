@@ -147,8 +147,8 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 ## Capas
 
-Una gráfica de dispersión probablemente no es la mejor manera de visualizar el cambio a través del tiempo.
-En vez de eso, vamos a decirle a `ggplot` que visualize los datos como un diagrama de línea (line plot):
+Un gráfico de dispersión probablemente no es la mejor manera de visualizar el cambio a través del tiempo.
+En vez de eso, vamos a decirle a `ggplot` que queremos visualizar los datos como un diagrama de línea (line plot):
 
 ~~~
 ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent)) +
