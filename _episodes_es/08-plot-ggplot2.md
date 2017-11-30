@@ -121,13 +121,13 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 >
 > ## Desafío 2
 >
-> En los ejemplos y desafíos anteriores hemos usado la función `aes` para decirle al **geom** scatterplot
-> cuáles serán las posiciones **x** y **y** para cada punto. Otra propiedad *estética* que podemos modoficar
+> En los ejemplos y desafíos anteriores hemos usado la función `aes` para decirle al `geom_point`
+> cuáles serán las posiciones **x** y **y** para cada punto. Otra propiedad **aesthetic** que podemos modificar
 > es el *color*. Modifica el código del desafío anterior para **colorear** los puntos de acuerdo a la columna
 > "continent". ¿Qué tendencias observas en los datos? ¿Son lo que esperabas?
 >
 > > ## Solución al desafío 2
-> > En los ejemplos y desafios anteriores hemos usado la función `aes` para decirle al **geom** scatterplot
+> > En los ejemplos y desafios anteriores hemos usado la función `aes` para decirle al `geom_point`
 > > cuáles serán las posiciones **x** y **y** para cada punto. Otra propiedad **aesthetic** que podemos modificar
 > > es el *color*. Modifica el código del desafío anterior para **colorear** los puntos de acuerdo a la columna
 > > "continent". ¿Qué tendencias observas en los datos? ¿Son lo que esperabas?
