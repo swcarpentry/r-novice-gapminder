@@ -375,8 +375,8 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
 
 <img src="../fig/rmd-08-facet-1.png" title="plot of chunk facet" alt="plot of chunk facet" style="display: block; margin: auto;" />
 
-La capa `facet_wrap` tomó una "fórmula" como argumento, indicado por la tilde (~).
-Esto le indica a R que debe dibujar un panel para cada valor único en la columna "country" 
+La capa `facet_wrap` tomó una "fórmula" como argumento, lo cual se indica por la tilde (~).
+Esto le dice a R que debe dibujar un panel para cada valor único de la columna "country" 
 del dataset gapminder.
 
 ## Modificando texto 
