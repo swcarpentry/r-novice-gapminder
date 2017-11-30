@@ -397,10 +397,10 @@ de la legenda del color del relleno se definiría utilizando `fill = "MyTitle"`.
 ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country) +
   labs(
-    x = "Year",              # x axis title
-    y = "Life expectancy",   # y axis title
-    title = "Figure 1",      # main title of figure
-    color = "Continent"      # title of legend
+    x = "Year",              # título del eje X
+    y = "Life expectancy",   # título del eje Y
+    title = "Figure 1",      # título principal de la figra
+    color = "Continent"      # título de la legenda
   ) +
   theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
 ~~~
