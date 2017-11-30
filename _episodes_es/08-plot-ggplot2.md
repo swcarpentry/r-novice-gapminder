@@ -254,7 +254,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 La función `log10` aplica una transformación sobre los valores de la columna gdpPercap
 antes de presentarlos en la gráfica, de manera que cada múltiplo de 10 ahora
 corresponde a un incremento de 1 en la escala transformada, e.g. un GDP per capita de 1,000
-es ahora 3 en el eje Y, un valor de 10,000 corresponde a un valor de 4 en el eje Y, y así suciesivamente.
+se convierte en un 3 en el eje Y, un valor de 10,000 corresponde a un valor de 4 en el eje Y, y así suciesivamente.
 Esto facilita visualizar la dispersión de los datos sobre el eje X
 
 > ## Sugerencia Recordatorio: Asignando un **aesthetic** a un valor en vez de a un mapeo 
