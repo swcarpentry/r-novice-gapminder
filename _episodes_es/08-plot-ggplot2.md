@@ -223,7 +223,7 @@ Ahora podemos ver claramente que los puntos se dibujan sobre las líneas.
 
 ## Transformaciones y estadísticas
 
-Ggplot también facilita sobreponer modelos estadísticos sobre los datos. 
+Ggplot también facilita sobreponer modelos estadísticos a los datos. 
 Para demostrarlo regresaremos a nuestro primer ejemplo:
 
 
