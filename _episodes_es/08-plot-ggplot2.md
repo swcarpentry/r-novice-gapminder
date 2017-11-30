@@ -89,7 +89,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 > ## Desafío 1
 >
-> Modifica el ejemplo de manera que la figura muestre
+> Modifica el ejemplo anterior de manera que en la figura se muestre
 > como la esperanza de vida ha cambiado a través del tiempo:
 >
 > ~~~
@@ -102,7 +102,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 > debe aparecer en el eje X.
 >
 > > ## Solución al desafío 1
-> > Modifica el ejemplo de manera que la figura muestre
+> > Modifica el ejemplo de manera que en la figura se muestre
 > > como la esperanza de vida ha cambiado a través del tiempo:
 > >
 > > Esta es una posible solución:
