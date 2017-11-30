@@ -64,7 +64,7 @@ la cual le dice a `ggplot` como es que cada una de las variables en los **datos*
 (e.g. `x = gapminder[, "gdpPercap"]`), ¡esto es debido a que `ggplot` es suficientemente listo para 
 buscar esa columna en los **datos***!
 
-Por sí mismo, llamar la función `ggplot` no es suficiente para dibujar una figura:
+Por sí mismo, llamar a la función `ggplot` no es suficiente para dibujar una figura:
 
 ~~~
 ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp))
