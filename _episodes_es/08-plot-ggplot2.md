@@ -236,8 +236,8 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color=continent)) +
 <img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter3-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter3" alt="plot of chunk lifeExp-vs-gdpPercap-scatter3" style="display: block; margin: auto;" />
 
 En este momento es difícil ver las relaciones entre los puntos debido a algunos 
-valores altamente atípicos en GDP per capita. Podemos cambiar la escala de unidades del eje X
-usando las funciones de **escala**. Estas funcionaes controlan el mapeo entre los valores 
+valores altamente atípicos de la variable GDP per capita. Podemos cambiar la escala de unidades del eje X
+usando las funciones de **escala**. Estas funcionaes controlan la relación entre los valores 
 de los datos y los valores visuales de un **aesthetic**. También podemos modificar la transparencia
 de los puntos, usando la función *alpha*, la cual es especialmente útil cuando tienes una
 gran cantidad de datos fuertemente conglomerados.
