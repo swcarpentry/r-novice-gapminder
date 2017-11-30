@@ -62,7 +62,7 @@ la cual le dice a `ggplot` como es que cada una de las variables en los **datos*
 `ggplot` que queremos graficar la columna "gdpPercap" del dataframe gapminder en el eje X, y la columna
 "lifeExp" en el eje Y. Nota que no necesitamos indicar explícitamente estas columnas en la función `aes` 
 (e.g. `x = gapminder[, "gdpPercap"]`), ¡esto es debido a que `ggplot` es suficientemente listo para 
-buscar esa columna en los **datos***!
+buscar esa columna en los **datos**!
 
 Por sí mismo, llamar a la función `ggplot` no es suficiente para dibujar una figura:
 
