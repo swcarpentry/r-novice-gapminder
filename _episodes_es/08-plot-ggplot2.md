@@ -356,8 +356,8 @@ Enfocándonos únicamente en aquéllos países con nombres que empiezan con la l
 
 > ## Pista
 >
-> Empezamos por subdividir los datos. Usamos la función `substr` para extraer una parte de una cadena de caracteres; 
-> Exytrayendo las letras que ocurran de la posición `start` hasta `stop`, inclusivo, del vector `gapminder$country`.
+> Empezamos por subdividir los datos. Usamos la función `substr` para extraer una parte de una secuencia de caracteres; 
+> extrayendo las letras que ocurran de la posición `start` hasta `stop`, inclusivo, del vector `gapminder$country`.
 > El operador `%in%` nos permite hacer múltiples comparaciones y evita que tengamos que escribir
 > una condición muy larga para subdividir los datos (en este caso, `starts.with %in% c("A", "Z")`
 > es equivalente a `starts.with == "A" | starts.with == "Z"`)
