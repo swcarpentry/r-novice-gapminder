@@ -192,8 +192,9 @@ Ahora podemos ver claramente que los puntos se dibujan sobre las líneas.
 
 > ## Sugerencia: Asignando un **aesthetic** a un valor en vez de a un mapeo 
 >
-> Hasta ahora,hemos visto como usar un **aesthetic** (como **color**) como un *mapeo* sobre una variable de los datos. 
-> Por ejemplo, cuando usamos `geom_line(aes(color=continent))`, ggplot le asignará un color diferente a cada continente.
+> Hasta ahora,hemos visto como usar un **aesthetic** (como **color**) como un *mapeo* entre una variable de los datos
+> y su representación visual. Por ejemplo, cuando usamos `geom_line(aes(color=continent))`, ggplot le asignará
+> un color diferente a cada continente.
 > Pero, ¿qué tal si queremos cambiar el color de todas las líneas a azul? Podrías pensar que
 > `geom_line(aes(color="blue"))` debería funcionar, pero no es así. Dado que no queremos crear un mapeo hacia una variable
 > específica, simplemente debemos cambiar la especificacion de color afuera de la función `aes()`, de esta manera:
