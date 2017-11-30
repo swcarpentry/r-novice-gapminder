@@ -187,8 +187,8 @@ ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
 <img src="../fig/rmd-08-lifeExp-layer-example-1-1.png" title="plot of chunk lifeExp-layer-example-1" alt="plot of chunk lifeExp-layer-example-1" style="display: block; margin: auto;" />
 
 En este ejemplo, el mapeo **aesthetic** de **color** se ha movido de las opciones globales de la gráfica en 
-`ggplot` a la capa `geom_line`, y por lo tanto, ya no es válido para los puntos. 
-Ahora, podemos ver claramente que los puntos se dibujan sobre las líneas.
+`ggplot` a la capa `geom_line` y, por lo tanto, ya no es válido para los puntos. 
+Ahora podemos ver claramente que los puntos se dibujan sobre las líneas.
 
 > ## Sugerencia: Asignando un valor a un **aesthetic** en vez de un mapeo 
 >
