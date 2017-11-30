@@ -381,16 +381,16 @@ del dataset gapminder.
 
 ## Modificando texto 
 
-Para limpiar esta figura y alistarla para publicación necesitamos cambiar algunos de los elementos de texto.
+Para limpiar esta figura y que quede lista para publicación necesitamos cambiar algunos elementos de texto.
 El eje X está demasiado saturado, y el nombre del eje Y debería ser "Esperanza de vida", 
-en vez del nombre de esa columna en el dataframe.
+en vez del nombre que aparece para esa columna en el dataframe.
 
-Podemos hacer todo lo anterios agregando un par de capas. La capa **theme** controla el texto de los ejes, 
-y el tamaño del texto. Las etiquetas de los ejes, el título de la gráfica y cualquier
-legenda pueden ser configurados utilizando la función `labs`. Los títulos de las leyendas son configurados
-utilizando los mismos nombres que utilizamos en la especificación `aes`. Entonces, en el siguiente ejemplo
-el título de la legenda de los colores se define utilizando `color = "Continent"`, mientras que el título
-de la legenda del relleno se definiría utilizando `fill = "MyTitle"`.
+Podemos hacer todo lo anterior agregando un par de capas. La capa **theme** controla el texto de los ejes, 
+y el tamaño del texto. Las etiquetas de los ejes, el título de la gráfica y el título para todas las
+legendas pueden ser configurados utilizando la función `labs`. Los títulos de las leyendas son configurados
+haciendo referencia a los mismos nombres que utilizamos en la especificación `aes`. Entonces, en el siguiente ejemplo
+el título de la legenda de los colores de las líneas se define utilizando `color = "Continent"`, mientras que el título
+de la legenda del color del relleno se definiría utilizando `fill = "MyTitle"`.
 
 
 ~~~
@@ -409,9 +409,9 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
 <img src="../fig/rmd-08-theme-1.png" title="plot of chunk theme" alt="plot of chunk theme" style="display: block; margin: auto;" />
 
 
-Esta es una prueba de loq ue puedes hacer utilizando `ggplot2`. RStudio proporciona
-una [cheat sheet][cheat] realmente útil de las diferentes capas disponibles,
-una documentación más extensiva se encuentra dispoinible en el [ggplot2 website][ggplot-doc].
+Esta lección es una prueba de lo que puedes hacer utilizando `ggplot2`. RStudio proporciona
+un [cheat sheet][cheat] realmente útil de las diferentes capas disponibles,
+una documentación más extensa se encuentra disponible en el [ggplot2 website][ggplot-doc].
 Finalmente, si no tienen idea de cómo cambiar algún detalle, una búsqueda rápida en Google 
 usualmente te guiará a un pregunta y respuesta relevantes en Stack Overflow con ¡código reusable que puedes modificar!
 
@@ -421,19 +421,19 @@ usualmente te guiará a un pregunta y respuesta relevantes en Stack Overflow con
 
 > ## Desafío 5
 >
-> Crea una gráfica de densidad de GDP per capita, rellenado por continente
+> Crea una gráfica de densidad de GDP per capita, en la que el color del relleno cambie por continente
 >
 > Avanzado:
-> - Transforma el eje X para visulaizar mejor la dispersión de los datos
-> - Agrega una capa **facet** para generar gráficas de densidad divididas para cada año 
+> - Transforma el eje X para visualizar mejor la dispersión de los datos
+> - Agrega una capa **facet** para generar gráficos de densidad con un panel para cada año
 >
 > > ## Solución al desafío 5
 > >
-> > Crea una gráfica de densidad de GDP per capita, rellenado por continente
+> > Crea una gráfica de densidad de GDP per capita, en la que el color del relleno cambie por continente
 > >
 > > Avanzado:
 > > - Transforma el eje X para visulaizar mejor la dispersión de los datos
-> > - Agrega una capa **facet** para generar gráficas de densidad divididas para cada año 
+> > - Agrega una capa **facet** para generar gráficos de densidad con un panel para cada año 
 > >
 > > 
 > > ~~~
