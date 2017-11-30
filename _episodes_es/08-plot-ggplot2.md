@@ -190,7 +190,7 @@ En este ejemplo, el mapeo **aesthetic** de **color** se ha movido de las opcione
 `ggplot` a la capa `geom_line` y, por lo tanto, ya no es válido para los puntos. 
 Ahora podemos ver claramente que los puntos se dibujan sobre las líneas.
 
-> ## Sugerencia: Asignando un valor a un **aesthetic** en vez de un mapeo 
+> ## Sugerencia: Asignando un **aesthetic** a un valor en vez de a un mapeo 
 >
 > Hasta ahora,hemos visto como usar un **aesthetic** (como **color**) como un *mapeo* hacia una variable en los datos. 
 > Por ejemplo, cuando usamos `geom_line(aes(color=continent))`, ggplot le asignará un color diferente a cada continente.
@@ -257,7 +257,7 @@ corresponde a un incremento de 1 en la escala transformada, e.g. un GDP per capi
 es ahora 3 en el eje Y, un valor de 10,000 corresponde a un valor de 4 en el eje Y, y así suciesivamente.
 Esto facilita visualizar la dispersión de los datos sobre el eje X
 
-> ## Sugerencia Recordatorio: Asignando un valor a un **aesthetic** en vez de un mapeo 
+> ## Sugerencia Recordatorio: Asignando un **aesthetic** a un valor en vez de a un mapeo 
 >
 > Nota que usamos `geom_point(alpha = 0.5)`. Como la sugerencia anterior mencionaba, 
 > cambiar una especificación afuera de la función  `aes()` causará que este valor sea usado
