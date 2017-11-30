@@ -174,7 +174,7 @@ ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent)) +
 
 <img src="../fig/rmd-08-lifeExp-line-point-1.png" title="plot of chunk lifeExp-line-point" alt="plot of chunk lifeExp-line-point" style="display: block; margin: auto;" />
 
-Es importante notar que cada capa se dibuja sobre la capa anterior. En este ejemplo, 
+Es importante notar que cada capa se dibuja encima de la capa anterior. En este ejemplo, 
 los puntos se han dibujado *sobre* las líneas. A continuación observamos una demostración:
 
 
