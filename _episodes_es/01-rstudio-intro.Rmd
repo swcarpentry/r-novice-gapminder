@@ -1,7 +1,7 @@
-﻿---
+---
 title: "Introduction to R and RStudio"
 teaching: 45
-exercices: 10
+exercises: 10
 questions:
 - "¿Cómo orientarse en RStudio?"
 - "¿Cómo interactuar con R?"
@@ -16,7 +16,7 @@ objectives:
 - "Usar operadores matemáticos y de comparación"
 - "Llamar funciones"
 - "Gestionar paquetes"
-keypoint:
+keypoints:
 - "Usar RStudio para escribir y correr programas en R."
 - "R tiene operadores aritméticos y funciones matemáticas usuales."
 - "Utilizar `<-` para asignar valores a variables."
@@ -27,25 +27,15 @@ source: Rmd
 ---
 
 
-
-
-
-
-
-
 ## Motivación
 
 
 La Ciencia es un proceso de varios pasos: una vez que hayas diseñado un experimento y recopilado datos, ¡comienza la verdadera diversión! Esta lección te enseñará cómo comenzar este proceso usando R y RStudio. Comenzaremos con datos brutos, realizaremos análisis exploratorios y aprenderemos a trazar gráficamente los resultados. Este ejemplo comienza con un conjunto de datos de [gapminder.org] (https://www.gapminder.org) que contiene información sobre la población de muchos países a lo largo del tiempo. ¿Puedes leer estos datos en R? ¿Puedes hacer un gráfico de la población de Senegal? ¿Puedes calcular el ingreso promedio de los países del continente asiático? Al final de estas lecciones, ¡podrás hacer cosas como graficar datos de poblaciones de estos países en menos de un minuto!
 
 
-
-
 ## Antes de empezar el taller 
 
-
 Asegúrate de tener instalada la última versión de R y RStudio en tu máquina. Esto es importante, ya que algunos paquetes utilizados en el taller pueden no instalarse correctamente (o no funcionar) si R no está actualizado.
-
 
 [Download and install the latest version of R here](https://www.r-project.org/)
 [Download and install RStudio here](https://www.rstudio.com/)
@@ -63,8 +53,6 @@ A lo largo de esta lección, vamos a enseñarte algunos de los fundamentos del l
 We'll be using RStudio: a free, open source R integrated development environment. It provides a built in editor, works on all platforms (including on servers) and provides many advantages such as integration with version
 control and project management.
 Usaremos RStudio: un entorno de desarrollo integrado y gratuito de código abierto. Proporciona un editor incorporado, funciona en todas las plataformas (incluso en servidores) y ofrece muchas ventajas, como la integración con la versión control y gestión de proyectos.
-
-
 
 
 **Diseño básico**
@@ -99,7 +87,7 @@ Hay dos formas principales en que uno puede trabajar dentro de RStudio.
    * Podrás ejecutar el archivo que crees desde RStudio o mediante la función `source ()` de R.
 
 
-> ## Tip: Running segments of your code
+> ## Sugerencia: Running segments of your code
 >
 > RStudio ofrece gran flexibilidad para ejecutar código desde dentro de la ventana del editor
 > Hay botones, opciones de menú y atajos de teclado. Para ejecutar la línea actual, puedes 
@@ -165,7 +153,7 @@ Cada vez que presionas return y R muestra un "+" en lugar de ">", significa que 
 
 
 
-> ## Tip: Cancelando comandos
+> ## Sugerencia: Cancelando comandos
 >
 > Si usas R desde la línea de comando en lugar de estar dentro de RStudio, 
 > debe usar `Ctrl + C` en lugar de` Esc` para cancelar el comando. 
@@ -488,7 +476,7 @@ Podemos realizar comparaciones en R:
 {: .output}
 
 
-> ## Tip: Comparando números
+> ## Sugerencia: Comparando números
 >
 > Una advertencia sobre la comparación de números: 
 > nunca debes usar `==` para comparar dos números a menos que 
@@ -724,7 +712,7 @@ ls()
 {: .output}
 
 
-> ## Tip: ocultando objetos
+> ## Sugerencia: ocultando objetos
 >
 > Al igual que en el shell, `ls` oculta por defecto cualquier variable o función que comience
 > con un ".". Para listar todos los objetos, escribe `ls (all.names = TRUE)` 
@@ -840,7 +828,7 @@ Error in rm(list <- ls()): ... must contain names or character strings
 {: .error}
 
 
-> ## Tip: Advertencias vs. Errores
+> ## Sugerencia: Advertencias vs. Errores
 >
 > ¡Presta atención cuando R hace algo inesperado! Los errores, como el anterior, 
 > se lanzan cuando R no puede proceder a un cálculo. Por otro lado, las advertencias 
@@ -853,7 +841,7 @@ Error in rm(list <- ls()): ... must contain names or character strings
 {: .callout}
 
 
-## Paquetes R
+## Paquetes en R
 
 
 Es posible agregar funciones a R escribiendo un paquete u obteniendo un paquete escrito 
