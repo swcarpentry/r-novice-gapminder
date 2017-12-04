@@ -399,8 +399,8 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
   labs(
     x = "Year",              # título del eje X
     y = "Life expectancy",   # título del eje Y
-    title = "Figure 1",      # título principal de la figra
-    color = "Continent"      # título de la legenda
+    title = "Figure 1",      # título principal de la figura
+    color = "Continent"      # título de la leyenda
   ) +
   theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
 ~~~
@@ -413,7 +413,7 @@ Esta lección es una prueba de lo que puedes hacer utilizando `ggplot2`. RStudio
 un [cheat sheet][cheat] realmente útil de las diferentes capas disponibles,
 una documentación más extensa se encuentra disponible en el [ggplot2 website][ggplot-doc].
 Finalmente, si no tienen idea de cómo cambiar algún detalle, una búsqueda rápida en Google 
-usualmente te guiará a un pregunta y respuesta relevantes en Stack Overflow con ¡código reusable que puedes modificar!
+te llevarán a Stack Overflow donde encuentras preguntas y respuestas con ¡código reusable que puedes modificar!
 
 [cheat]: http://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf
 [ggplot-doc]: http://docs.ggplot2.org/current/
