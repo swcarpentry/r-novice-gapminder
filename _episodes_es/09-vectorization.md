@@ -13,9 +13,9 @@ source: Rmd
 
 
 
-La mayoría de funciones en R están vectorizadas, lo que significa que la función
+La mayoría de las funciones en R están vectorizadas, lo que significa que la función
 operará sobre todos los elementos de un vector sin necesidad de hacer un bucle a través
-de cada elemento y actuar sobre cada uno a la vez. Esto hace la escritura de código más
+de cada elemento y actuar sobre cada uno de ellos. Esto hace la escritura de código más
 concisa, fácil de leer y menos propenso a errores.
 
 
@@ -69,8 +69,8 @@ y:  6  7  8  9
 > Probemos esto en la columna `pop` del **dataset** `gapminder`.
 >
 > Haz una nueva columna en el **data frame** `gapminder` que
-> contiene población en unidades de millones de personas.
-> Comprueba la cabeza y la cola del **data frame** para asegurar
+> contiene la población en unidades de millones de personas.
+> Comprueba el principio o el final del **data frame** para asegurar
 > que funcionó.
 >
 > > ## Solución al desafío 1
@@ -79,7 +79,7 @@ y:  6  7  8  9
 > >
 > > Haz una nueva columna en el **data frame** `gapminder` que
 > > contiene población en unidades de millones de personas.
-> > Comprueba la cabeza y la cola del **data frame** para asegurar
+> > Comprueba el principio o el final del **data frame** para asegurar
 > > que funcionó.
 > >
 > > 
@@ -107,16 +107,16 @@ y:  6  7  8  9
 
 > ## Desafío 2
 >
-> En una sola gráfica, trazar la población, en 
-> millones, contra año, para todos los países. No te preocupes en
->identificar cuál país es cuál.
+> En una sola gráfica, traza la población, en 
+> millones, en comparación con el año, para todos los países. No te preocupes en
+> identificar qué país es cuál.
 >
 > Repite el ejercicio, graficando sólo para China, India, e
->Indonesia. Nuevamente,  no te preocupes acerca de cuál es cuál.
+> Indonesia. Nuevamente, no te preocupes acerca de cuál es cuál.
 >
 > > ## Solución al desafío 2
 > >
-> > Refresca tus habilidades de trazado trazando la población en millones contra año.
+> > Refresca tus habilidades de trazado trazando la población en millones en comparación con el año.
 > >
 > > 
 > > ~~~
@@ -140,8 +140,8 @@ y:  6  7  8  9
 {: .challenge}
 
 
-Operadores de Comparación, operadores lógicos y muchas funciones también son
-vectorizados:
+Operadores de comparación, operadores lógicos y muchas funciones también están
+vectorizadas:
 
 
 **Operadores de Comparación**
@@ -174,10 +174,10 @@ a
 ~~~
 {: .output}
 
-> ## Tip: algunas funciones útiles para vectores lógicos
+> ## Sugerencia: algunas funciones útiles para vectores lógicos
 >
-> `any()` will return `TRUE` if *any* element of a vector is `TRUE`
-> `all()` will return `TRUE` if *all* elements of a vector are `TRUE`
+> `any()` devuelve `TRUE` si *algún* elemento del vector es `TRUE`
+> `all()` devuelve `TRUE` si *todos* los elementos del vector son `TRUE`
 {: .callout}
 
 La mayoría de las funciones también operan elemento por elemento en los vectores:
@@ -197,7 +197,7 @@ log(x)
 ~~~
 {: .output}
 
-Operaciones vectorizadas trabajan elemento por elemento en matrices:
+Operaciones vectorizadas en matrices:
 
 
 ~~~
@@ -217,10 +217,10 @@ m * -1
 {: .output}
 
 
-> ## Tip: multiplicación elemento por elemento vs. multiplicación de matriz
+> ## Sugerencia: multiplicación elemento por elemento vs. multiplicación de matriz
 >
-> Muy importante: el operador`*` te da una multiplicación de elemento por elemento
-> Para haccer multiplicación de matriz, necesitamos usar el operador `%*%`:
+> Muy importante: el operador`*` te da una multiplicación de elemento por elemento!
+> Para hacer multiplicación de matrices, necesitás usar el operador `%*%`:
 >
 > 
 > ~~~
@@ -253,8 +253,7 @@ m * -1
 > ~~~
 > {: .output}
 >
-> Para más sobre álgebra de matrices, ver [Quick-R reference
-> guide](http://www.statmethods.net/advstats/matrix.html)
+> Para saber ms sobre Álgebra de matrices, ver [Quick-R reference guide](http://www.statmethods.net/advstats/matrix.html)
 {: .callout}
 
 
@@ -279,7 +278,7 @@ m * -1
 > ~~~
 > {: .output}
 >
-> Escribe lo que crees que sucederá cuando ejecutes:
+> Escribe lo que crees que sucederá cuando se ejecute:
 >
 > 1. `m ^ -1`
 > 2. `m * c(1, 0, -1)`
@@ -288,7 +287,7 @@ m * -1
 >
 > ¿Obtuviste la salida que esperabas? Si no, pregunta a un ayudante!
 >
-> > ## Solución a desafío 3
+> > ## Solución al desafío 3
 > >
 > > Dada la siguiente matriz:
 > >
@@ -361,10 +360,10 @@ m * -1
 > {: .r}
 >
 > Esto sería tedioso de escribir, e imposible para valores altos de 
-> n.  Usa vectorización para calcular x cuando n=100. ¿Cuál es la suma cuando
-> n=10,000?
+> n. Usa vectorización para calcular x cuando n=100. ¿Cuál es la suma cuando
+> n=10.000?
 >
-> > ##  Desafío 4
+> > ##  Solución al desafío 4
 > >
 > > Estamos interesados en encontrar la suma de la
 > > siguiente secuencia de fracciones:
