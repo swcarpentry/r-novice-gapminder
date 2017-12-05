@@ -21,7 +21,7 @@ estableciendo acciones para que ocurran solo si se cumple una condición o un co
 Alternativamente, también podemos establecer que una acción ocurra un número determinado de veces.
 
 Hay varias maneras de controlar el flujo en R.
-Para declaraciones condicionales, los enfoques más comúnmente utilizados son los constructos:
+Para declaraciones condicionales, los enfoques más comúnmente utilizados son los **constructs**:
 
 
 ~~~
@@ -130,15 +130,15 @@ x
 ~~~
 {: .output}
 
-> ## Reto 1
+> ## Desafío 1
 >
 > Usa una declaración `if()` para mostrar un mensaje adecuado
 > reportando si hay algún registro de 2002 en
-> el dataset de `gapminder`.
+> el **dataset** de **`gapminder`**.
 > Ahora haz lo mismo para el año 2012.
 >
-> > ## Solución al Reto 1
-> > Primero veremos una solución al Reto 1 que no usa la funcion `any()`.
+> > ## Solución al Desafío 1
+> > Primero veremos una solución al Desafío 1 que no usa la funcion `any()`.
 > > Primero obtenemos un vector lógico que desscribe que el elemento `gapminder$year` es igual a `2002`:
 > > 
 > > ~~~
@@ -151,13 +151,13 @@ x
 > > rows2002_number <- nrow(gapminder[(gapminder$year == 2002),])
 > > ~~~
 > > {: .r}
-> > La presencia de cualquier registro para el año 2002 es equivalente a que el valos de `rows2002_number` sea uno o más:
+> > La presencia de cualquier registro para el año 2002 es equivalente a la petición de que `rows2002_number` sea uno o más:
 > > 
 > > ~~~
 > > rows2002_number >= 1
 > > ~~~
 > > {: .r}
-> > Putting all together, we obtain:
+> > Poniendo esto junto, nosotros obtenemos:
 > > 
 > > ~~~
 > > if(nrow(gapminder[(gapminder$year == 2002),]) >= 1){
@@ -166,7 +166,7 @@ x
 > > ~~~
 > > {: .r}
 > >
-> > Todo esto se puede hacer más rapido con `any()`. La condición lógica se puede expresar como:
+> > Todo esto se puede hacer más rápido con `any()`. La condición lógica se puede expresar como:
 > > 
 > > ~~~
 > > if(any(gapminder$year == 2002)){
@@ -209,7 +209,7 @@ la misma operación en cada uno, un bucle `for()` hará el trabajo.
 Vimos los bucles `for()` en las lecciones anteriores de terminal. Esta es la
 operación de bucle más flexible, pero también la más dificil de usar
 correctamente. Evita usar bucles `for()` a menos que el orden de la iteración sea importante:
-ej. Cuando el calculo de cada interación dependa del resultado de la interación previa.
+i.e. Cuando el cálculo de cada interación dependa del resultado de la interación previa.
 
 La estructura básica de un bucle `for()` es:
 
@@ -318,21 +318,19 @@ output_vector
 ~~~
 {: .output}
 
-Este enfoque puede ser útil, pero 'aumentar tus resultados' (construcción de
-un objeto de manera incremental) es computacionalmente ineficiente, así que evitaló
-cuando estes iterando sobre varios valores.
+Este enfoque puede ser útil, pero "aumentará o crecerá tus resultados" (construir el objeto resultante de forma incremental) es computacionalmente ineficiente, así que evítalo cuando estés iterando a través de muchos valores.
 
 > ## Tip: no crezcas tus resultados
 >
-> Una de las grandes cosas que ocaciona tropiezo en usuarios novatos y 
-> experimentados de R, es la construcción de un objeto de resultados
-> (vector, lista, matriz, data frame) a medida que avanza el bucle.
-> Las computadoras son muy malas para manejar esto, entonces tus calculos
-> pueden relentizarse muy rapidamente a paso de tortuga. Es mucho mejor definir
-> un objeto de resultados vacio de primera mano con las dimensiones apropiadas
-> Entonces, si sabes que el resultado final sera almacenado en una matriz como la anterior,
-> crea una matriz vacia con 5 filas y 5 columnas y luego de cada iteración
-> almacena los resultados en la ubucación adecuada.
+> Una de las cosas más importantes que hace tropezar tanto a los principiantes como 
+> a los usuarios experimentados de R es la construcción de un objeto de resultados
+> (vector, lista, matriz, data frame) a medida que progresas en el bucle for.
+> Las computadoras son muy malas para manejar esto, por lo que tus cálculos 
+> pueden alentarse muy rápidamente. Es mucho mejor definir un objeto de 
+> resultados vacío de primera mano con las dimensiones apropiadas.
+> Entonces, si sabe que el resultado final se almacenará en una matriz como la 
+> anterior, cree una matriz vacía con 5 filas y 5 columnas, luego en cada iteración
+> almacene los resultados en la ubicación adecuada.
 {: .callout}
 
 Una mejor manera es definir el objeto de salida (vacio) antes de completar los valores.
@@ -391,18 +389,18 @@ output_vector2
 > {: .r}
 >
 > Los bucle `while()` no siempre seran apropiados. Tienes que ser particularmente cuidadoso
-> de no terminar en un bucle infinito porque tu condición nunca se cumplira.
+> de no terminar en un bucle infinito porque tu condición nunca se cumple.
 {: .callout}
 
 
-> ## Reto 2
+> ## Desafío 2
 >
 > Compara los objetos output_vector y
 > output_vector2. ¿Son lo mismo? Si no, ¿por qué no?
 > ¿Cómo cambiarías el último bloque de código para hacer output_vector2
 > igual a output_vector?
 >
-> > ## Solución al Reto 2
+> > ## Solución al Desafío 2
 > > Podemos verificar si dos vectores son idénticos usando la función `all()` :
 > > 
 > > ~~~
@@ -421,12 +419,12 @@ output_vector2
 > > all(output_vector2 %in% output_vector)
 > > ~~~
 > > {: .r}
-> > Por lo tanto, el elemento en `output_vector` y `output_vector2` estan ordenados en diferente orden.
-> > Esto es porque `as.vector()` muestra los elementos de una matriz que pasa por su columna.
-> > Taking a look at `output_matrix`, we can notice that we want its elements by rows.
-> > The solution is to transpose the `output_matrix`. We can do it either by calling the transpose function
-> > `t()` or by inputing the elements in the right order.
-> > The first solution requires to change the original
+> > Por lo tanto, el elemento en `output_vector` y `output_vector2` estan en orden distinto.
+> > Esto es porque `as.vector ()` genera los elementos de una matriz de entrada que pasa por su columna.
+> > Echando un vistazo a `output_matrix`, podemos notar que queremos sus elementos por filas.
+> > La solución es transponer la `output_matrix`. Podemos hacerlo llamando a la función de transposición
+> > `t ()` o ingresando los elementos en el orden correcto.
+> > La primera solución requiere cambiar el original
 > > 
 > > ~~~
 > > output_vector2 <- as.vector(output_matrix)
@@ -438,7 +436,7 @@ output_vector2
 > > output_vector2 <- as.vector(t(output_matrix))
 > > ~~~
 > > {: .r}
-> > The second solution requires to change
+> > La segunda solución requiere cambiar
 > > 
 > > ~~~
 > > output_matrix[i, j] <- temp_output
@@ -453,15 +451,15 @@ output_vector2
 > {: .solution}
 {: .challenge}
 
-> ## Challenge 3
+> ## Desafío 3
 >
-> Write a script that loops through the `gapminder` data by continent and prints out
-> whether the mean life expectancy is smaller or larger than 50
-> years.
+> Escribe un **script** que a través de bucles recorra los datos `gapminder` por continente e imprima
+> si la esperanza de vida media es menor o mayor que 50
+> años.
 >
-> > ## Solution to Challenge 3
+> > ## Solución al Desafío 3
 > >
-> > **Step 1**:  We want to make sure we can extract all the unique values of the continent vector
+> > ** Paso 1 **: Queremos asegurarnos de que podamos extraer todos los valores únicos del vector continente
 > > 
 > > ~~~
 > > gapminder <- read.csv("data/gapminder-FiveYearData.csv")
@@ -469,12 +467,12 @@ output_vector2
 > > ~~~
 > > {: .r}
 > >
-> > **Step 2**: We also need to loop over each of these continents and calculate the average life expectancy for each `subset` of data.
-> > We can do that as follows:
+> > ** Paso 2 **: También tenemos que recorrer cada uno de estos continentes y calcular la esperanza de vida promedio para cada "subconjunto" de datos.
+> > Podemos hacer eso de la siguiente manera:
 > >
-> > 1. Loop over each of the unique values of 'continent'
-> > 2. For each value of continent, create a temporary variable storing the life exepectancy for that subset,
-> > 3. Return the calculated life expectancy to the user by printing the output:
+> > 1. Pasa por encima de cada uno de los valores únicos de 'continente'
+> > 2. Para cada valor de continente, crea una variable temporal que almacene la vida útil para ese subconjunto,
+> > 3. Regresar la expectativa de vida calculada al usuario imprimiendo el resultado:
 > >
 > > 
 > > ~~~
@@ -486,11 +484,10 @@ output_vector2
 > > ~~~
 > > {: .r}
 > >
-> > **Step 3**: The exercise only wants the output printed if the average life expectancy is less than 50 or greater than 50. So we need to add an `if` condition before printing.
-> > So we need to add an `if` condition before printing, which evaluates whether the calculated average life expectancy is above or below a threshold, and print an output conditional on the result.
-> > We need to amend (3) from above:
+> > ** Paso 3 **: El ejercicio solo requiere que se imprima el resultado si la expectativa de vida promedio es menor a 50 o superior a 50. Por lo tanto, debemos agregar una condición 'if' antes de imprimir, lo cual evalúa si la expectativa de vida promedio calculada es superior o inferior a un umbral, e imprime una salida condicional en el resultado.
+> > Necesitamos corregir (3) desde arriba:
 > >
-> > 3a. If the calculated life expectancy is less than some threshold (50 years), return the continent and a statement that life expectancy is less than threshold, otherwise return the continent and   a statement that life expectancy is greater than threshold,:
+> > 3a. Si la esperanza de vida calculada es menor que algún umbral (50 años), devuelva el continente y una declaración de que la esperanza de vida es menor que el umbral, de lo contrario devuelva el continente y una declaración de que la esperanza de vida es mayor que el umbral ,:
 > >
 > > 
 > > ~~~
@@ -513,14 +510,14 @@ output_vector2
 > {: .solution}
 {: .challenge}
 
-> ## Challenge 4
+> ## Desafío 4
 >
-> Modify the script from Challenge 4 to loop over each
-> country. This time print out whether the life expectancy is
-> smaller than 50, between 50 and 70, or greater than 70.
+> Modifica el **script** del Desafío 4 por un bucle sobre cada uno de los
+> paises. Qué esta vez, imprima si la esperanza de vida es
+> menor que 50, entre 50 y 70, o mayor que 70.
 >
-> > ## Solution to Challenge 4
-> >  We modify our solution to Challenge 3 by now adding two thresholds, `lowerThreshold` and `upperThreshold` and extending our if-else statements:
+> > ## Solución al Desafío 4
+> >  Modificamos nuestra solución al Reto 3 agregando ahora dos umbrales, `lowerThreshold` y` upperThreshold` y extendiendo nuestras declaraciones if-else:
 > >
 > > 
 > > ~~~
@@ -546,25 +543,25 @@ output_vector2
 > {: .solution}
 {: .challenge}
 
-> ## Challenge 5 - Advanced
+> ## Desafío 5 - Avanzado
 >
-> Write a script that loops over each country in the `gapminder` dataset,
-> tests whether the country starts with a 'B', and graphs life expectancy
-> against time as a line graph if the mean life expectancy is under 50 years.
+> Escribir un script que con un bucle recorra cada país en el **dataset** **`gapminder`**,
+> prueba si el país comienza con una 'B' y grafica la esperanza de vida
+> contra el tiempo como un gráfico de líneas si la esperanza de vida media es menor de 50 años.
 >
-> > Solution for Challenge 5
+> > Solución para el Desafío 5
 > >
-> > We will use the `grep` command that was introduced in the Unix Shell lesson to find countries that start with "B."
-> > Lets understand how to do this first.
-> > Following from the Unix shell section we may be tempted to try the following
+> > Usaremos el comando `grep` que se introdujo en la lección Shell de Unix para encontrar países que comiencen con" B "."
+> > Vamos a entender cómo hacer esto primero.
+> > Siguiendo la sección de shell de Unix, podemos tener la tentación de probar lo siguiente
 > > 
 > > ~~~
 > > grep("^B", unique(gapminder$country))
 > > ~~~
 > > {: .r}
 > >
-> > But when we evaluate this command it returns the indices of the factor variable `country` that start with "B."
-> > To get the values, we must add the `value=TRUE` option to the `grep` command:
+> > Pero cuando evaluamos este comando, regresa los índices de la variable del factor `country` que comienza con" B ".
+> > Para obtener los valores, debemos agregar la opción `value = TRUE` al comando` grep`:
 > >
 > > 
 > > ~~~
@@ -572,8 +569,8 @@ output_vector2
 > > ~~~
 > > {: .r}
 > >
-> > We will now store these countries in a variable called candidateCountries, and then loop over each entry in the variable.
-> > Inside the loop, we evaluate the average life expectancy for each country, and if the average life expectancy is less than 50 we use base-plot to plot the evolution of average life expectancy:
+> > Ahora almacenaremos estos países en una variable llamada candidateCountries, y luego con un bucle recorremos cada entrada en la variable.
+> > Dentro del bucle, evaluamos la expectativa de vida promedio para cada país, y si la expectativa de vida promedio es menor a 50, usamos un gráfico base para trazar la evolución de la expectativa de vida promedio:
 > >
 > > 
 > > ~~~
