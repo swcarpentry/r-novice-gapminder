@@ -29,7 +29,7 @@ ventana de 'Plot'. Esto te dará la opción de salvarla como .pdf, .png, .jpg
 u otros formatos de imágenes.
 
 Algunas veces podrías querer guardar las gráficas sin primero desplegarlas
-en la ventana de 'Plot'. Quizá quieras hace un documento pdf con varias
+en la ventana de 'Plot'. Quizá quieras hacer un documento pdf con varias
 páginas: por ejemplo, cada una con una gráfica distinta. O quizá tu estás
 iterando sobre distintos subconjuntos de un archivo, graficando los datos
 de cada subconjunto y quieres salvar cada una de las gráficas, obviamente no
@@ -87,7 +87,7 @@ documentos en los correspondientes formatos.
 
 En algún momento, también querrás guardar datos desde R.
 
-Podemos usar la función `write.table` para esto, esta es muy similar a la
+Podemos usar la función `write.table` para esto, ésta es muy similar a la
 función `read.table` que se presentó anteriormente.
 
 Vamos a crear un **script** para limpiar datos, para este análisis, vamos a
