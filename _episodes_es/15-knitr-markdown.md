@@ -7,14 +7,14 @@ questions:
 objectives:
 - Valor de informes reproducibles
 - Conceptos básicos de **Markdown**
-- Fragmentos de código **R**
+- Fragmentos de código en **R**
 - Opciones de fragmentos
 - Código **R** en línea
 - Otros formatos de salida
 keypoints:
-- "Informes mixtos escritos en **R Markdown** con programa escrito en **R**."
+- "Informes mixtos escritos en **R Markdown** usando un programa escrito en **R**."
 - "Especificar opciones de fragmento para controlar el formateo".
-- "Usar `knitr` para convertir estos documentos en PDF y en otros formatos ".
+- "Usar `knitr` para convertir estos documentos en PDF y en otros formatos".
 source: Rmd
 ---
 
@@ -28,17 +28,17 @@ análisis y resultados, para sus colaboradores o para documentar su
 trabajo para referencia futura.
 
 Cuando comencé por primera vez, escribía una rutina **R** con todos mis
-trabajos, y simplemente enviaría un correo electrónico a mi colaborador, describiendo el
-resultados y adjuntanso varios gráficos. Al discutir los resultados,
+trabajos, y simplemente enviaba un correo electrónico a mi colaborador, describiendo el
+resultados y adjuntando varios gráficos. Al discutir los resultados,
 a menudo había confusión sobre qué gráfico era cuál.
 
 Pasé a escribir informes formales, con **Word** o **LaTeX**, pero tenía que
-pasar mucho tiempo haciendo que las figuras se vieran bien. En su mayoría, 
-la preocupación es sobre los saltos de página.
+pasar mucho tiempo haciendo que las figuras se vieran bien. El mayor 
+obstáculo era con los saltos de página.
 
-Todo es más fácil ahora que creo una página **web** (como un
-archivo **html**). Puede ser un largo flujo, así que puedo usar figuras largas que
-no cabrían ordinariamente en una página. El desplazamiento de página es tu amigo.
+Ahora todo es más fácil, creo una página **web** (como un
+archivo **html**) usando **R markdown**. esta página puede ser muy larga, así que puedo usar figuras largas que
+no cabrían normalmente en una página. Recuerda que ell desplazamiento de página es muy bueno.
 
 
 ## Programación literaria
@@ -52,20 +52,20 @@ un documento de **Word** y luego editar manualmente varios resultados detallados
 La herramienta clave para *R* es [knitr](http://yihui.name/knitr/), que te permite
 crear un documento que es una mezcla de texto y algunos fragmentos de
 código. Cuando el documento es procesado por **knitr**, los fragmentos del código **R**
-serán ejecutados, y los gráficos u otros resultados insertados.
+serán ejecutados, y los gráficos u otros resultados serán insertados.
 
 Este tipo de idea ha sido llamado "programación literaria".
 
 **knitr** te permite mezclar básicamente cualquier tipo de texto con cualquier tipo de
-código, pero te recomendamos que use **R Markdown**, que mezcla **Markdown**
+código, pero te recomendamos que uses **R Markdown**, que mezcla **Markdown**
 con **R**. **Markdown** es un ligero lenguaje de marcado para crear
-páginas **web**.
+páginas **web** y también otros formatos.
 
 
 ## Creando un archivo **R Markdown**
 
-Dentro de **R Studio**, haz clic en Archivo y rarr; Nuevo archivo y rarr; **R Markdown** y
-obtendrás un cuadro de diálogo como este:
+Dentro de **R Studio**, haz clic en Archivo; Nuevo archivo; **R Markdown** y
+obtendrás un cuadro de diálogo parecido a éste:
 
 ![](../fig/New_R_Markdown.png)
 
@@ -89,7 +89,7 @@ output: html_document
 
 Puedes eliminar cualquiera de esos campos si no los quieres
 incluido. Las comillas dobles no son estrictamente _necesarias_ en este caso.
-En su mayoría son necesarios si deseas incluir dos puntos en el título.
+Pero en su mayoría son necesarias si deseas incluir dos puntos en el título.
 
 **RStudio** crea el documento con un texto de ejemplo para ayudarte
 a empezar. Observa a continuación que hay fragmentos como
@@ -147,7 +147,7 @@ Cada uno aparecerá como:
 (Prefiero guiones en lugar de asteriscos, yo mismo)
 
 Puedes hacer una lista numerada simplemente usando números. Puedes usar el
-mismo número una y otra vez si lo desea:
+mismo número una y otra vez si lo deseas:
 
 ```
 1. negrita con doble asterisco
@@ -183,16 +183,16 @@ documentación de **RStudio** en **R Markdown**.
 > y escribe un poco de **Markdown** (algunas secciones, algunos
 > textos en itálica, y una lista de ítemes).
 >
-> Convierta el documento a una página **web**.
+> Convierte el documento a una página **web**.
 {: .challenge}
 
 
 ## Un poco más de **Markdown**
 
-Puedes hacer un hipervínculo como este:
+Puedes hacer un hipervínculo como éste:
 `[text to show](http://the-web-page.com)`.
 
-Puedes incluir un archivo de imagen como este: `![caption](http://url/for/file)`
+Puedes incluir un archivo de imagen como éste: `![caption](http://url/for/file)`
 
 Puedes hacer subíndices (por ejemplo, F~2~) con `F~2` y superíndices (p.
 F^2^) con `F^2^`.
@@ -332,9 +332,9 @@ esi.
 
 ## Otras opciones de salida
 
-También puedes convertir **R Markdown** en un documento **PDF** o **Word**. Haga clic en el
+También puedes convertir **R Markdown** en un documento **PDF** o **Word**. Haz clic en el
 pequeño triángulo junto al botón **"Knit HTML"** para obtener un menú desplegable. 
-O podría poner **`pdf_document`** o **` word_document`** en el encabezado
+O podrías poner **`pdf_document`** o **` word_document`** en el encabezado
 del archivo.
 
 > ## Sugerencia: Creación de documentos **PDF**
