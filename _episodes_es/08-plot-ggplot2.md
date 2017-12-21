@@ -28,9 +28,9 @@ el sistema [base plotting system][base], el paqute [lattice][lattice]
 Hoy aprenderemos un poco acerca del paquete ggplot2, este sistema es el
 más efectivo para crear gráficas con calidad para publicación.
 
-ggplot2 se contruyó basado en la gramática de gráficos, es decir,
+ggplot2 se construyó basándose en la gramática de gráficos, es decir,
 en la idea de que cualquier gráfico puede expresarse a partir del mismo set de componentes:
-un set de **datos**, un **sistema coordinado**, y un set de **geoms** -- que corresponden a la representación visual de cada dato
+un set de **datos**, un **sistema coordinado**, y un set de **geoms** -- que corresponden a la representación visual de cada dato.
 
 La clave para entender ggplot2 es pensar en una figura como un conjunto de capas.
 Esta idea podría resultarte familiar si has usado un programa de edición de imágenes como 
@@ -49,9 +49,9 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 <img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter" alt="plot of chunk lifeExp-vs-gdpPercap-scatter" style="display: block; margin: auto;" />
 
-La primer cosa que hacemos es llamar a la función `ggplot`. Esta función
+La primera cosa que hacemos es llamar a la función `ggplot`. Esta función
 le dice a R que estamos creando una nueva gráfica, todos los argumentos
-que le pasemos a la función `ggplot` serán considerado como opciones *globales* en nuestra gráfica:
+que le pasemos a la función `ggplot` serán considerados como opciones *globales* en nuestra gráfica:
 lo cual significa que estas opciones son válidas para todas las capas de la gráfica.
 
 En este ejemplo, le hemos pasado dos argumentos a `ggplot`. Primero, le decimos a `ggplot`
@@ -61,7 +61,7 @@ la cual le dice a `ggplot` como es que cada una de las variables en los **datos*
 **aesthetic** (estéticas) de la figura, en este caso los valores que tomarán **x** y **y**. En este ejemplo, le dijimos a 
 `ggplot` que queremos graficar la columna "gdpPercap" del dataframe gapminder en el eje X, y la columna
 "lifeExp" en el eje Y. Nota que no necesitamos indicar explícitamente estas columnas en la función `aes` 
-(e.g. `x = gapminder[, "gdpPercap"]`), ¡esto es debido a que `ggplot` es suficientemente listo para 
+(e.g. `x = gapminder[, "gdpPercap"]`), esto es debido a que `ggplot` es suficientemente listo para 
 buscar esa columna en los **datos**!
 
 Por sí mismo, llamar a la función `ggplot` no es suficiente para dibujar una figura:
@@ -73,7 +73,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp))
 
 <img src="../fig/rmd-08-unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" />
 
-Necesitamos decirle a `ggplot` como queremos representar visualmente los datos, 
+Necesitamos decirle a `ggplot` cómo queremos representar visualmente los datos, 
 esto lo hacemos al agregar una nueva capa **geom**. En nuestro ejemplo, usamos `geom_point`,
 la cual le indica a `ggplot` que queremos representar visualmente la relación entre **x** y **y**
 como un gráfico de dispersión de los puntos (scatterplot) .
@@ -163,7 +163,7 @@ Además, hemos agregado el **aesthetic** **by**, el cual le dice a `ggplot` que
 debe dibujar una línea para cada país.
 
 Pero, ¿qué pasa si queremos visualizar ambos, puntos y líneas en la misma gráfica?
-Simplemente podemos agregar otra capa a la gráfica:
+Simplemente tenemos que agregar otra capa a la gráfica:
 
 
 ~~~
@@ -197,7 +197,7 @@ Ahora podemos ver claramente que los puntos se dibujan sobre las líneas.
 > un color diferente a cada continente.
 > Pero, ¿qué tal si queremos cambiar el color de todas las líneas a azul? Podrías pensar que
 > `geom_line(aes(color="blue"))` debería funcionar, pero no es así. Dado que no queremos crear un mapeo hacia una variable
-> específica, simplemente debemos cambiar la especificacion de color afuera de la función `aes()`, de esta manera:
+> específica, simplemente debemos cambiar la especificación de color afuera de la función `aes()`, de esta manera:
 > `geom_line(color="blue")`.
 {: .callout}
 
@@ -217,14 +217,14 @@ Ahora podemos ver claramente que los puntos se dibujan sobre las líneas.
 > > 
 > > <img src="../fig/rmd-08-ch3-sol-1.png" title="plot of chunk ch3-sol" alt="plot of chunk ch3-sol" style="display: block; margin: auto;" />
 > >
-> > ¡Las líneas ahora son dibujadas sobre los puntos!
+> > ¡Las líneas ahora están dibujadas sobre los puntos!
 > >
 > {: .solution}
 {: .challenge}
 
 ## Transformaciones y estadísticas
 
-Ggplot también facilita sobreponer modelos estadísticos a los datos. 
+`ggplot` también facilita sobreponer modelos estadísticos a los datos. 
 Para demostrarlo regresaremos a nuestro primer ejemplo:
 
 
@@ -256,11 +256,11 @@ La función `log10` aplica una transformación sobre los valores de la columna g
 antes de presentarlos en la gráfica, de manera que cada múltiplo de 10 ahora
 corresponde a un incremento de 1 en la escala transformada, e.g. un GDP per capita de 1,000
 se convierte en un 3 en el eje Y, un valor de 10,000 corresponde a un valor de 4 en el eje Y, y así suciesivamente.
-Esto facilita visualizar la dispersión de los datos sobre el eje X
+Esto facilita visualizar la dispersión de los datos sobre el eje X.
 
 > ## Sugerencia Recordatorio: Asignando un **aesthetic** a un valor en vez de a un mapeo 
 >
-> Nota que usamos `geom_point(alpha = 0.5)`. Como la sugerencia anterior mencionaba, 
+> Nota que usamos `geom_point(alpha = 0.5)`. Como la sugerencia anterior menciona, 
 > cambiar una especificación afuera de la función  `aes()` causará que este valor sea usado
 > para todos los puntos, que es exactamente lo que queremos en este caso.  Sin embargo, como cualquier otra
 > especificación **aesthetic**, *alpha* puede ser mapeado hacia una variable de los datos. Por ejemplo, 
@@ -352,12 +352,12 @@ habíamos usado la función `aes` para definir un *mapeo* entre alguna variable 
 
 Anteriormente visualizamos el cambio en la esperanza de vida a lo largo del tiempo para cada uno de los países 
 en una sola gráfica. Como una alternativa, podemos dividir esta gráfica en múltiples paneles al agregar una capa **facet**.
-Enfocándonos únicamente en aquéllos países con nombres que empiezan con la letra "A" o "Z".
+Enfocándonos únicamente en aquellos países con nombres que empiezan con la letra "A" o "Z".
 
 > ## Pista
 >
 > Empezamos por subdividir los datos. Usamos la función `substr` para extraer una parte de una secuencia de caracteres; 
-> extrayendo las letras que ocurran de la posición `start` hasta `stop`, inclusivo, del vector `gapminder$country`.
+> extrayendo las letras que ocurran de la posición `start` hasta `stop`, inclusive, del vector `gapminder$country`.
 > El operador `%in%` nos permite hacer múltiples comparaciones y evita que tengamos que escribir
 > una condición muy larga para subdividir los datos (en este caso, `starts.with %in% c("A", "Z")`
 > es equivalente a `starts.with == "A" | starts.with == "Z"`)
@@ -375,7 +375,7 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
 
 <img src="../fig/rmd-08-facet-1.png" title="plot of chunk facet" alt="plot of chunk facet" style="display: block; margin: auto;" />
 
-La capa `facet_wrap` tomó una "fórmula" como argumento, lo cual se indica por la tilde (~).
+La capa `facet_wrap` toma una "fórmula" como argumento, lo cual se indica por la tilde (~).
 Esto le dice a R que debe dibujar un panel para cada valor único de la columna "country" 
 del dataset gapminder.
 
@@ -387,9 +387,9 @@ en vez del nombre que aparece para esa columna en el dataframe.
 
 Podemos hacer todo lo anterior agregando un par de capas. La capa **theme** controla el texto de los ejes, 
 y el tamaño del texto. Las etiquetas de los ejes, el título de la gráfica y el título para todas las
-legendas pueden ser configurados utilizando la función `labs`. Los títulos de las leyendas son configurados
+leyendas pueden ser configurados utilizando la función `labs`. Los títulos de las leyendas son configurados
 haciendo referencia a los mismos nombres que utilizamos en la especificación `aes`. Entonces, en el siguiente ejemplo
-el título de la legenda de los colores de las líneas se define utilizando `color = "Continent"`, mientras que el título
+el título de la leyenda de los colores de las líneas se define utilizando `color = "Continent"`, mientras que el título
 de la legenda del color del relleno se definiría utilizando `fill = "MyTitle"`.
 
 
@@ -424,16 +424,16 @@ te llevarán a Stack Overflow donde encuentras preguntas y respuestas con ¡cód
 > Crea una gráfica de densidad de GDP per capita, en la que el color del relleno cambie por continente
 >
 > Avanzado:
-> - Transforma el eje X para visualizar mejor la dispersión de los datos
-> - Agrega una capa **facet** para generar gráficos de densidad con un panel para cada año
+> - Transforma el eje X para visualizar mejor la dispersión de los datos.
+> - Agrega una capa **facet** para generar gráficos de densidad con un panel para cada año.
 >
 > > ## Solución al desafío 5
 > >
 > > Crea una gráfica de densidad de GDP per capita, en la que el color del relleno cambie por continente
 > >
 > > Avanzado:
-> > - Transforma el eje X para visulaizar mejor la dispersión de los datos
-> > - Agrega una capa **facet** para generar gráficos de densidad con un panel para cada año 
+> > - Transforma el eje X para visulaizar mejor la dispersión de los datos.
+> > - Agrega una capa **facet** para generar gráficos de densidad con un panel para cada año.
 > >
 > > 
 > > ~~~
