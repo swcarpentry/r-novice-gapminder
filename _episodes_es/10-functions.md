@@ -80,7 +80,7 @@ statement]({{ page.root }}/reference/#return-statement) para devolver un resulta
 quien lo solicitó. 
 
 
-> ## Tip
+> ## Sugerencia
 >
 > Una característica única de R es que el __return statement__ no es requerido.
 > R automáticamente devuelve cualquier variable que esté en la última linea del cuerpo
@@ -108,7 +108,7 @@ fahr_a_kelvin(32)
 
 
 ~~~
-# Punto de hervor del agua
+# Punto de ebullición del agua
 fahr_a_kelvin(212)
 ~~~
 {: .r}
@@ -192,14 +192,13 @@ kelvin_a_celsius <- function(temp) {
 
 ## Interludio: Programación defensiva
 
-Ahora que has empezado a comprender cómo escribir funciones provee una forma eficiente 
-de hacer código de R que sea reutilizable y modular, debemos notar que es importante 
-asegurarse que las funciones solo funcionan en situaciones para su uso previsto. Revisar 
-los parámetros de las funciones está relacionado con el concepto de _programación defensiva_.
+Ahora que hemos empezado a apreciar cómo las funciones proporcionan una manera eficiente de hacer que el código R sea reutilizable
+y modular, debemos tener en cuenta que es importante garantizar que las funciones solo funcionen en los casos de uso previstos.
+Revisar los parámetros de las funciones está relacionado con el concepto de _programación defensiva_.
 La programación defensiva nos alienta a chequear las condiciones frecuentemente y arrojar un
 error si algo está mal. Estos chequeos se conocen como __assertion statements__ porque queremos 
 asegurarnos de que una determinada condición es `TRUE` antes de proceder. 
-Los mismos hacen más sencilla la búsqueda de errores (__debug__) porque nos dan una mejor idea de dónde se originan. 
+Esto facilita la depuración porque nos dan una mejor idea de dónde se originan los errores. 
 
 ### Chequear condiciones con `stopifnot()`
 
@@ -215,8 +214,8 @@ fahr_a_kelvin <- function(temp) {
 ~~~
 {: .r}
 
-Para que esta función trabaje como se desea, el argumento `temp` debe ser un valor `numeric`; de lo contrario, el procedimiento matemático para convertir entre las dos 
-escalas de temperatura no funcionará. Para crear un error, podemos usar la función
+Para que esta función trabaje como se desea, el argumento `temp` debe ser un valor `numeric`; de lo contrario, el procedimiento
+matemático para convertir entre las dos escalas de temperatura no funcionará. Para crear un error, podemos usar la función
 `stop()`. Por ejemplo, dado que el argumento `temp` debe ser un vector `numeric`, podríamos
 chequearlo con un condicional `if` y devolver un error si la 
 condición no se cumple. Podríamos agregar esto a nuestra función de la siguiente manera:
@@ -234,9 +233,10 @@ fahr_a_kelvin <- function(temp) {
 {: .r}
 
 Si tuviéramos muchas condiciones o argumentos para revisar, podría llevar muchas líneas
-de código chequearlas todas. Afortunadamente R provee la función de conveniencia
+de código chequearlas a todas. Afortunadamente R provee la función de conveniencia
 `stopifnot()`. Podemos listar todos los requerimientos que deben ser evaluados como `TRUE`;
-`stopifnot()` arroja un error si encuentra uno que sea `FALSE`. Listar estas condiciones tiene como objetivo secundario el generar documentación extra para la función.
+`stopifnot()` arroja un error si encuentra uno que sea `FALSE`. 
+Listar estas condiciones tiene como objetivo secundario el generar documentación extra para la función.
 
 Probemos la programación defensiva con `stopifnot()` agregando aseveraciones para
 chequear el __input__ a nuestra función `fahr_a_kelvin()`.
@@ -315,8 +315,8 @@ Error: is.numeric(temp) is not TRUE
 
 ## Más sobre combinar funciones
 
-Ahora vamos a definir una función que calcula el Producto Bruto Interno ("GDP" en la base de datos, por sus siglas en inglés) de un país
-a partir de los datos disponibles en nuestro set de datos:
+Ahora vamos a definir una función que calcula el Producto Bruto Interno ("GDP" en la base de datos, por sus siglas en inglés 
+Gross Domestic Product) de un país a partir de los datos disponibles en nuestro set de datos:
 
 
 ~~~
@@ -331,14 +331,14 @@ calcGDP <- function(dat) {
 
 Definimos `calcGDP()` asignándola al __output__ de `function`. La lista de
 los nombres de los argumentos se encuentran entre paréntesis. Luego, el 
-cuerpo de la función--los
-comandos que son ejecutados cuando se corre--se encuentran entre paréntesis curvos
+cuerpo de la función--los 
+comandos que son ejecutados cuando se corre-- se encuentran entre paréntesis curvos
 (`{}`). 
 
-Hemos indentado los comandos en el cuerpo con dos espacios. Esto hace el código 
-mas legible sin afectar cómo opera. 
+Hemos indentado los comandos en el cuerpo con dos espacios. Esto hace que el código 
+sea mas fácil de leer sin afectar su funcionamiento. 
 
-Cuando utilizamos la función, los valores que le ingresamos se asignan como argumentos,
+Cuando utilizamos la función, los valores que le pasamos se asignan como argumentos,
 que se convierten en variables dentro del cuerpo de la función.
 
 Dentro de la función, usamos la función `return()` para obtener el resultado.
@@ -360,7 +360,7 @@ calcGDP(head(gapminder))
 {: .output}
 
 Eso no es muy informativo. Agreguemos algunos argumentos más para poder extraer
-esto por año y país. 
+ por año y país. 
 
 
 ~~~
@@ -391,7 +391,7 @@ source("functions/functions-lesson.R")
 ~~~
 {: .r}
 
-Ok, entonces ahora hay muchas cosas sucediendo en esta función. En pocas palabras, ahora
+Ok, entonces están pasando muchas cosas en esta función ahora. En pocas palabras, ahora
 la función filtra un subconjunto de datos por año si el argumento año no está vacío,
 luego filtra un subconjunto de los resultados por país si el argumento país no está vacío.
 Luego calcula el GDP de los datos filtrados resultado de los dos 
@@ -509,19 +509,19 @@ argumentos.
 > estamos modificando la copia del __dataset__ gapminder almacenado en `dat`,
 > y no la variable original que asignamos como el primer argumento.
 >
-> Eso se llama **__pass-by-value__** pasar por valor y hace la escritura del código mucho más segura:
+> Eso se llama **__pasar por valor__**  y hace la escritura del código mucho más segura:
 > puedes estar seguro que cualquier cambio que hagas dentro del 
 > cuerpo de la función, se mantendrá dentro de la función.
 {: .callout}
 
-> ## Tip: Alcance de la función
+> ## Sugerencia: Alcance de la función
 >
 > Otro concepto importante es el alcance: las variables (¡o funciones!) que 
 > creas o modificas dentro del cuerpo de una función sólo existen durante 
-> del tiempo de ejecución de la función. Cuando llamamos `calcGDP()`, las variables `dat`,
-> `gdp` y `new` solo existen dentro del cuerpo de la función. Incluso si 
+> el tiempo de ejecución de la función. Cuando llamamos `calcGDP()`, las variables `dat`,
+> `gdp` y `new` sólo existen dentro del cuerpo de la función. Incluso si 
 > tenemos variables con el mismo nombre en nuestra sesión interactiva de R, éstas no 
-> son modificadas en ninguna manera cuando se ejecuta una función.
+> son modificadas en ninguna manera cuando se ejecuta la función.
 {: .callout}
 
 
@@ -534,13 +534,14 @@ argumentos.
 {: .r}
 
 Finalmente, calculamos GDP en nuestro nuevo subconjunto de datos, y creamos una nueva __dataframe__
-con esta columna agregada. Esto significa que cuando usamos la función, en el resultado 
+con esta columna agregada. Esto significa que cuando llamamos a la función, en el resultado 
 podemos ver el contexto de los valores GDP obtenidos, lo que es mucho mejor que 
 nuestro primer intento cuando habíamos obtenido un vector de números. 
 
+
 > ## Desafío 3
 >
-> Probar tu función GDP calculando el GDP para Nueva Zelandia ("New Zealand") en 1987. Cómo
+> Probar tu función GDP calculando el GDP para Nueva Zelandia ("New Zealand") en 1987. ¿Cómo
 > difiere del GDP de Nueva Zelandia en 1952?
 >
 > > ## Solución al desafío 3
@@ -559,11 +560,11 @@ nuestro primer intento cuando habíamos obtenido un vector de números.
 
 > ## Desafío 4
 >
-> La función `paste()` puede ser usada para combinar texto, e.g:
+> La función `paste()` puede ser usada para combinar texto, ej.:
 >
 > 
 > ~~~
-> buenas_practicas <- c("Escribir", "programas", "para", "personas", "no", "computadores")
+> buenas_practicas <- c("Escribir", "programas", "para", "personas", "no", "computadoras")
 > paste(buenas_practicas, collapse=" ")
 > ~~~
 > {: .r}
@@ -571,12 +572,12 @@ nuestro primer intento cuando habíamos obtenido un vector de números.
 > 
 > 
 > ~~~
-> [1] "Escribir programas para personas no computadores"
+> [1] "Escribir programas para personas no computadoras"
 > ~~~
 > {: .output}
 >
 >  Escribir una función `fence()` que toma dos vectores como argumentos, llamados
-> `text` y `wrapper`, e imprime el texto flanqueado del `wrapper`:
+> `text` y `wrapper`, e muestra el texto flanqueado del `wrapper`:
 >
 > 
 > ~~~
@@ -585,7 +586,7 @@ nuestro primer intento cuando habíamos obtenido un vector de números.
 > {: .r}
 >
 > *Nota:* la función `paste()` tiene un argumento llamado `sep`, que especifica
-> el separador entre el texto. Por defecto es un espacio: " ". El valor por defecto de la función
+> el separador de texto. Por defecto es un espacio: " ". El valor por defecto de la función
 > `paste0()` es sin espacio "".
 >
 > > ## Solución al desafío 4
@@ -613,14 +614,14 @@ nuestro primer intento cuando habíamos obtenido un vector de números.
 > {: .solution}
 {: .challenge}
 
-> ## Tip
+> ## Sugerencia
 >
 > R tiene algunos aspectos únicos que pueden ser explotados cuando se realizan 
-> operaciones más complicadas. No escribiremos nada que requiera conocimiento de estos 
+> operaciones más complicadas. No escribiremos nada que requiera el conocimiento de estos 
 > conceptos más avanzados. En el futuro, cuando te sientas cómodo escribiendo funciones
 > en R, puedes aprender más leyendo el
 > [Manual de lenguaje de R][man] o este [capítulo][] de
-> [Advanced R Programming][adv-r] por Hadley Wickham.
+> [Advanced R Programming][adv-r] de Hadley Wickham.
 {: .callout}
 
 [man]: http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects
@@ -628,9 +629,9 @@ nuestro primer intento cuando habíamos obtenido un vector de números.
 [adv-r]: http://adv-r.had.co.nz/
 
 
-> ## Tip: Probar y documentar
+> ## Sugerencia: Probar y documentar
 >
-> Es importante testear las funciones así como documentarlas:
+> Es importante probar las funciones así como documentarlas:
 > la documentación ayuda, a tí y a otros, a entender cuál es el propósito
 > de la función, y cómo usarla, además de ser importante 
 > para asegurarse que la función realmente hace
@@ -649,11 +650,11 @@ nuestro primer intento cuando habíamos obtenido un vector de números.
 > La documentación formal para las funciones, escritas en archivos `.Rd`
 > aparte, se transforman en la documentación que ves en los archivos de ayuda.
 > El paquete [roxygen2][] le permite a los programadores de R escribir la
-> documentación paralelamento a su código, y luego procesarlo para generar los archivos `.Rd`
+> documentación junto con el código, y luego procesarlo para generar los archivos `.Rd`
 > apropiados. Quizas quieras cambiarte a este método más formal de escribir 
-> la documentación cuando empieces a escirbir projecto de R más complicados.
+> la documentación cuando empieces a escribir projectos de R más complicados.
 >
-> Pruebas automatizadas formales pueden ser escritas usando el paquete [testthat][].
+> Pruebas automatizadas formales se pueden escribir usando el paquete [testthat][].
 {: .callout}
 
 [roxygen2]: http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
