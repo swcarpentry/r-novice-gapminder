@@ -89,10 +89,10 @@ str(gapminder)
 {: .challenge}
 
 
-A veces tenemos múltiples tipos de observaciones, como con el **data.frame** gapminder. Entonces tendremos formatos de datos mixtos entre "largo" y "ancho". Nosotros tenemos 3 "variables de identificación" (`continente`,` país`, `año`) y 3 "variables de observación" (` pop`, `lifeExp`,`gdpPercap`). Generalmente es preferible que los datos estén en este formato intermedio en la mayoría de los casos a pesar de no tener TODAS las observaciones en una sola
+A veces tenemos múltiples tipos de observaciones, como con el **data.frame** gapminder. Entonces tendremos formatos de datos mixtos entre "largo" y "ancho". Nosotros tenemos 3 "variables de identificación" (`continente`,` país`, `año`) y 3 "variables de observación" (` pop`, `lifeExp`,`gdpPercap`). Generalmente, es preferible que los datos estén en este formato intermedio en la mayoría de los casos, a pesar de no tener TODAS las observaciones en una sola
 columna. Esto es por que las 3 variables de observación tienen unidades diferentes (y cada una corresponde a una columna con su propio tipo de datos).
 
-Generalmente queremos hacer operaciones matemáticas con valores que usen las mismas
+A menudo queremos hacer operaciones matemáticas con valores que usen las mismas
 unidades, esto facilita el uso de funciones en R, que a menudo se basan en vectores. Por ejemplo, si utilizamos el formato largo y calculamos un promedio de todos los
 los valores de población ` pop`, esperanza de vida `lifeExp` y el PIB ` gdpPercap` este resultado no tendría sentido, ya que
 devolvería una incongruencia de valores con 3 unidades incompatibles. La solución es que primero manipulamos los datos agrupando (ver la lección sobre `dplyr`), o
@@ -103,7 +103,7 @@ cambiamos la estructura del marco de datos. ** Nota: ** Algunas funciones de gr�
 Hasta ahora, hemos estado utilizando el conjunto de datos gapminder original muy bien formateado, pero
 los datos "reales" (es decir, nuestros propios datos de investigación) nunca estarán tan bien organizados. Veamos un ejemplo con la versión de formato ancho del conjunto de datos gapminder.
 
-> Descargue la versión ancha de los datos de gapminder desde [aquí] (https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_wide.csv)
+> Descarga la versión ancha de los datos de gapminder desde [aquí] (https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_wide.csv)
 y guarda el archivo csv en tu carpeta de datos.
 
 Cargaremos el archivo de datos para verlo. Nota: no queremos que las columnas de caracteres sean convertidas a factores, por lo que usamos el argumento `stringsAsFactors = FALSE` para para deshabilitar eso, más información en la ayuda `?read.csv ()`.
@@ -405,13 +405,13 @@ all.equal(gap_normal, gapminder)
 ~~~
 {: .output}
 
-¡Muy bien! Pasamos del formato largo al intermedio y hemos
+¡Muy bien! Pasamos del formato largo al intermedio y no hemos
 tenido ningún error en nuestro código.
 
 Ahora pasemos a convertir del formato largo al ancho. En el formato ancho, nosotros
 mantendremos el país y el continente como variables de ID y esto va expandir las observaciones
 en las tres métricas (`pop`,` lifeExp`, `gdpPercap`) y año (` year`). Primero nosotros
-Necesitamos crear etiquetas apropiadas para todas nuestras nuevas variables (tiempo*las combinaciones) y también necesitamos unificar nuestras variables de **ID** para simplificar el proceso de definir el nuevo objeto `gap_wide`.
+necesitamos crear etiquetas apropiadas para todas nuestras nuevas variables (tiempo*las combinaciones) y también necesitamos unificar nuestras variables de **ID** para simplificar el proceso de definir el nuevo objeto `gap_wide`.
 
 
 ~~~
@@ -524,7 +524,7 @@ str(gap_wide_new)
 > {: .solution}
 {: .challenge}
 
-Ahora tenemos un gran **dataframe** con formato 'ancho', pero el `ID_var` podría ser más mejor, sepáremolos en dos variables con `separate()`
+Ahora tenemos un gran **dataframe** con formato 'ancho', pero el `ID_var` podría ser más mejor, hay que separarlos en dos variables con `separate()`
 
 
 
