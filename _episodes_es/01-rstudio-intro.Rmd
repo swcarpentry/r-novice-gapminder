@@ -1,5 +1,5 @@
 ---
-title: "Introduction to R and RStudio"
+title: "Introducción a R y RStudio"
 teaching: 45
 exercises: 10
 questions:
@@ -17,7 +17,7 @@ objectives:
 - "Llamar funciones"
 - "Gestionar paquetes"
 keypoints:
-- "Usar RStudio para escribir y correr programas en R."
+- "Usa RStudio para escribir y correr programas en R."
 - "R tiene operadores aritméticos y funciones matemáticas usuales."
 - "Utilizar `<-` para asignar valores a variables."
 - "Utilizar `ls()` para listar las variables en el programa."
@@ -50,9 +50,7 @@ Bienvenido a la parte R del taller de Software Carpentry.
 A lo largo de esta lección, vamos a enseñarte algunos de los fundamentos del lenguaje R, así como algunas buenas prácticas para organizar el código de proyectos científicos que harán tu vida más fácil.
 
 
-We'll be using RStudio: a free, open source R integrated development environment. It provides a built in editor, works on all platforms (including on servers) and provides many advantages such as integration with version
-control and project management.
-Usaremos RStudio: un entorno de desarrollo integrado y gratuito de código abierto. Proporciona un editor incorporado, funciona en todas las plataformas (incluso en servidores) y ofrece muchas ventajas, como la integración con la versión control y gestión de proyectos.
+Usaremos RStudio: un entorno de desarrollo integrado y gratuito de código abierto. Proporciona un editor incorporado, funciona en todas las plataformas (incluso en servidores) y ofrece muchas ventajas, como la integración de control de versiones y gestión de proyectos.
 
 
 **Diseño básico**
@@ -87,11 +85,11 @@ Hay dos formas principales en que uno puede trabajar dentro de RStudio.
    * Podrás ejecutar el archivo que crees desde RStudio o mediante la función `source ()` de R.
 
 
-> ## Sugerencia: Running segments of your code
+> ## Sugerencia: Ejecutando segmentos/secciones de tu código 
 >
 > RStudio ofrece gran flexibilidad para ejecutar código desde dentro de la ventana del editor
 > Hay botones, opciones de menú y atajos de teclado. Para ejecutar la línea actual, puedes 
-> 1. hacer clic en el botón `Run` arriba en el panel del Editor, o  2. Seleccioná "Run Lines" desde el menú 
+> 1. hacer clic en el botón `Run` arriba en el panel del Editor, o  2. Seleccionar "Run Lines" desde el menú 
 > "Code", o  3. Presionar Ctrl-Enter en Windows o Linux o Command-Enter en OS X. (Este atajo también se 
 > puede hacer colocando el mouse sobre el botón). Para ejecutar un bloque de código, selecciónalo y luego 
 > pulsa `Run`. Si has modificado una línea de código dentro de un bloque que acabas de ejecutar,
@@ -130,7 +128,7 @@ Lo más simple que podrías hacer con R es hacer aritmética:
 {: .output}
 
 
-Y R mostrará la respuesta, precedido de un "[1]". No te preocupes por esto por ahora, lo explicaremos más adelante. Por ahora piensa en eso como la salida.
+Y R mostrará la respuesta, precedido de un "[1]". No te preocupes por esto por ahora, lo explicaremos más adelante. Por ahora piensa en eso, como parte de la salida.
 
 
 Al igual que bash, si escribes un comando incompleto, R esperará a que lo completes:
@@ -157,11 +155,11 @@ Cada vez que presionas return y R muestra un "+" en lugar de ">", significa que 
 >
 > Si usas R desde la línea de comando en lugar de estar dentro de RStudio, 
 > debe usar `Ctrl + C` en lugar de` Esc` para cancelar el comando. 
-> ¡Esto también se aplica bien a los usuarios de Mac!
+> ¡Esto se aplica también a los usuarios de Mac!
 >
 > La cancelación de un comando no solo es útil para matar comandos incompletos: 
 > también puedes usarlo para decirle a R que deje de ejecutar el código (por ejemplo, si tarda 
-> mucho más de lo que esperaba), o para deshacerte del código que estás escribiendo actualmente.
+> mucho más de lo que esperabas), o para deshacerte del código que estás escribiendo actualmente.
 >
 {: .callout}
 
@@ -187,16 +185,13 @@ De mayor a menor precedencia:
 
 
 
-
-
-
 ~~~
 [1] 13
 ~~~
 {: .output}
 
 
-Usa paréntesis para agrupar las operaciones, para forzar el orden de la evaluación si difiere de la predeterminada, o para aclarar lo que deseas hacer.
+Usa paréntesis para agrupar las operaciones a fin de forzar el orden de la evaluación o para aclarar lo que deseas hacer.
 
 
 
@@ -233,7 +228,7 @@ Recuerde que otros pueden leer su código.
 
 
 
-El texto después de cada línea de código se llama "comentario". Todo lo que sigue después de que el símbolo hash (o numeral) `#` es ignorado por R cuando ejecuta el código.
+El texto después de cada línea de código se llama "comentario". Todo lo que sigue después del símbolo hash (o numeral) `#` es ignorado por R cuando ejecuta el código.
 
 
 Los números pequeños o grandes tienen una notación científica:
@@ -353,13 +348,13 @@ exp(0.5) # e^(1/2)
 {: .output}
 
 
-No te preocupes si trata de recordar todas las funciones en R. Simplemente puede buscarlas en Google, o si puedes recordar el comienzo del nombre de la función, usa el tabulador para completar su nombre en RStudio.
+No te preocupes si no recuerdas todas las funciones en R. Simplemente puede buscarlas en Google, o si puedes recordar el comienzo del nombre de la función, usa el tabulador para completar su nombre en RStudio.
 
 
 Esta es una de las ventajas que RStudio tiene sobre R, tiene capacidades de autocompletado que le permiten buscar funciones más fácilmente, sus argumentos y los valores que toman.
 
 
-Escribir un `?` antes del nombre de un comando abrirá la página de ayuda para ese comando. Además de proporcionar una descripción detallada del comando y cómo funciona, al desplazarse hacia la parte inferior de la página de ayuda generalmente se mostrarán ejemplos que ilustran el uso del comando. Veremos un ejemplo más adelante.
+Escribir un `?` antes del nombre de un comando y abrirá la página de ayuda para ese comando. Además de proporcionar una descripción detallada del comando y cómo funciona, al desplazarse hacia la parte inferior de la página de ayuda generalmente se mostrarán ejemplos que ilustran el uso del comando. Veremos un ejemplo más adelante.
 
 
 ## Comparando
@@ -511,7 +506,7 @@ x <- 1/40
 {: .r}
 
 
-Observa que la asignación no muestra el valor. En cambio, lo almacena para más adelante en algo llamado ** variable **. `x` ahora contiene el ** valor **` 0.025`:
+Observa que la asignación no muestra el valor. En cambio, lo almacena para más adelante en algo llamado **variable**. `x` ahora contiene el ** valor **` 0.025`:
 
 
 
@@ -532,7 +527,7 @@ x
 {: .output}
 
 
-Más precisamente, el valor almacenado es una * aproximación decimal * de esta fracción llamada un [número en coma flotante] (http://en.wikipedia.org/wiki/Floating_point).
+Más precisamente, el valor almacenado es una *aproximación decimal* de esta fracción llamada un [número en coma flotante] (http://en.wikipedia.org/wiki/Floating_point).
 
 
 Busca la pestaña `Environment` en uno de los paneles de RStudio, y verás que` x` y su valor han aparecido. Nuestra variable `x` se puede usar en lugar de un número en cualquier cálculo que espere un número:
@@ -592,7 +587,7 @@ Los nombres de las variables pueden contener letras, números, guiones bajos y p
   * MayúsculasMinúsculasParaSepararPalabras
 
 
-Lo que usa depende de vos, pero ** sé consistente **.
+Lo que uses depende de tí, pero ** sé consistente **.
 
 
 También es posible utilizar el operador `=` para la asignación:
@@ -607,7 +602,7 @@ x = 1/40
 
 
 Esta forma es menos común entre los usuarios R. Lo más importante es
-** sea consistente ** con el operador que usa. Ocasionalmente hay lugares
+** ser consistente ** con el operador que usa. Ocasionalmente hay lugares
 donde es menos confuso usar `<-` que` = `, y es el símbolo más común usado en la comunidad. 
 Entonces la recomendación es usar `<-`.
 
@@ -615,7 +610,7 @@ Entonces la recomendación es usar `<-`.
 ## Vectorización
 
 
-Una última cosa a tener en cuenta es que R está * vectorizado *, lo que significa que las variables y funciones pueden tener vectores como valores. Por ejemplo
+Una última cosa a tomar en cuenta es que R está * vectorizado *, lo que significa que las variables y funciones pueden tener vectores como valores. Por ejemplo
 
 
 
@@ -998,7 +993,7 @@ R y RStudio tienen funcionalidad para administrar paquetes:
 
 > ## Desafío 5
 >
-> Instala las siguientes paquetess: `ggplot2`, `plyr`, `gapminder`
+> Instala los siguientes paquetes: `ggplot2`, `plyr`, `gapminder`
 >
 > > ## Solución al desafío 5
 > >
