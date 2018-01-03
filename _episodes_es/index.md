@@ -15,5 +15,5 @@ Una variedad de paquetes creados por terceras partes se utilizan a lo largo de e
 >
 > Comprender que las computadoras almacenan datos e instrucciones (programas, secuencias de comandos, etc.) en archivos.
 > Los archivos están organizados en directorios (carpetas).
-> Saber cómo acceder a los archivos que no están en el directorio de trabajo especificando la ruta.
+> Aprender a cómo acceder a los archivos que no están en el directorio de trabajo, especificando la ruta.
 {: .prereq}
