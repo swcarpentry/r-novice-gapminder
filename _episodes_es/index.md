@@ -3,28 +3,17 @@ layout: lesson
 root: .
 ---
 
-Introduction to R for non-programmers using gapminder data.
+Introducción a R para no programadoras usando el conjunto de datos de *gapminder*.
 
-The goal of this lesson is to teach novice programmers to write modular code
-and best practices for using R for data analysis. R is commonly used in many
-scientific disciplines for statistical analysis and its array of third-party
-packages. We find that many scientists who come to Software Carpentry workshops
-use R and want to learn more. The emphasis of these materials is to give
-attendees a strong foundation in the fundamentals of R, and to teach best
-practices for scientific computing: breaking down analyses into modular units,
-task automation, and encapsulation.
+El objetivo de esta lección es enseñar a las programadoras principiantes a escribir códigos modulares y mejores prácticas para usar R para el análisis de datos. R se usa comúnmente en muchas disciplinas científicas para el análisis estadístico y para usar su conjunto de paquetes creados por terceras partes. Encontramos que muchos científicos que acuden a los talleres de Software Carpentry usan R y quieren aprender más. El énfasis de estos materiales es proporcionar a los asistentes una base sólida en los fundamentos de R y enseñar las mejores prácticas para la computación científica: desgloce de los análisis en unidades modulares, automatización de tareas y encapsulación.
 
-Note that this workshop will focus on teaching the fundamentals of the
-programming language R, and will not teach statistical analysis.
+Ten en cuenta que este taller se centrará en la enseñanza de los fundamentos del lenguaje de programación R, y no enseñará el análisis estadístico.
 
-A variety of third party packages are used throughout this workshop. These
-are not necessarily the best, nor are they comprehensive, but they are
-packages we find useful, and have been chosen primarily for their
-usability.
+Una variedad de paquetes creados por terceras partes se utilizan a lo largo de este taller. Estos no son necesariamente los mejores, ni son completos, pero son paquetes que consideramos útiles y han sido elegidos principalmente por su facilidad de uso.
 
-> ## Prerequisites
+> ## Prerequisitos
 >
-> Understand that computers store data and instructions (programs, scripts etc.) in files.
-> Files are organised in directories (folders).
-> Know how to access files not in the working directory by specifying the path.
+> Comprender que las computadoras almacenan datos e instrucciones (programas, secuencias de comandos, etc.) en archivos.
+> Los archivos están organizados en directorios (carpetas).
+> Saber cómo acceder a los archivos que no están en el directorio de trabajo especificando la ruta.
 {: .prereq}
