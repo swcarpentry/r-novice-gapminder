@@ -15,18 +15,17 @@ keypoints:
 - "Acceso a un elemento por posición usando `[]`."
 - "Acceso a un rango de datos usando `[min:max]`."
 - "Acceso a subconjuntos arbitrarios usando `[c(...)]`."
-- "Usar comparaciones lógicas o vectores con entradas **logical** para acceder subconjuntos
-   de datos."
+- "Usar operaciones lógicas y vectores lógicos para acceder a subconjuntos de datos"
 source: Rmd
 ---
 
 
 
 R dispone de muchas operaciones para generar subconjuntos. Dominarlas
-te permitirá hacer fácilmente operaciones muy complejas en cualquier *dataset*.
+te permitirá fácilmente hacer operaciones muy complejas en cualquier *dataset*.
 
 Existen seis maneras distintas en las cuales se puede hacer un subconjunto
-de datos de cualquier objeto y tres operadores distintos para hacer subconjuntos
+de datos de cualquier objeto, y existen tres operadores distintos para hacer subconjuntos
 para las diferentes estructuras de datos.
 
 Empecemos con el caballito de batalla de R: un vector numérico.
@@ -53,12 +52,11 @@ x
 > llamados vectores *atómicos* ya que no se pueden simplificar más.
 {: .callout}
 
-Ya que creamos un vector ejemplo juguemos con él, ¿cómo podemos acceder a sus
-entradas?
+Ya que creamos un vector ejemplo juguemos con él, ¿cómo podemos acceder a su contenido?
 
-## Accesando a las entradas usando sus índices
+## Accesando a los elementos del vector usando sus índices
 
-Para extraer entradas de un vector podemos usar su índice correspondiente, empezando
+Para extraer elementos o datos de un vector podemos usar su índice correspondiente, empezando
 por uno:
 
 
@@ -154,7 +152,7 @@ c(1, 2, 3, 4)
 {: .output}
 
 
-También podemos pedir la misma entrada varias veces:
+También podemos pedir el mismo elemento varias veces:
 
 
 ~~~
@@ -189,7 +187,7 @@ x[6]
 Esto es un vector de longitud uno que contiene un `NA`, cuyo nombre también es
 `NA`.
 
-Si pedimos la entrada 0, obtendremos un vector vacío.
+Si pedimos el elemento en el índice 0, obtendremos un vector vacío.
 
 
 ~~~
@@ -204,16 +202,16 @@ named numeric(0)
 ~~~
 {: .output}
 
+
 > ## La numeración de R comienza en 1
 >
-> En varios lenguajes de programación (C y Python por ejemplo), la primera
-> entrada de un vector tiene índice 0. En R, la primera entrada es 1.
+> En varios lenguajes de programación (C y Python por ejemplo), el primer
+> elemento de un vector tiene índice 0. En R, el primer elemento tiene el índice 1.
 {: .callout}
 
-## Saltando y quitando entradas
+## Saltando y quitando elementos
 
-Si usamos un valor negativo como índice para un vector, R regresará cada una
-de las entradas *excepto* la que se ha especificado:
+Si usamos un valor negativo como índice para un vector, R regresará cada elemento *excepto* lo que se ha especificado:
 
 
 ~~~
@@ -229,7 +227,7 @@ x[-2]
 ~~~
 {: .output}
 
-También podemos saltar varios elementos:
+También podemos saltar o no mostrar varios elementos:
 
 
 ~~~
@@ -397,7 +395,7 @@ x
 
 ## Haciendo subconjuntos por nombre
 
-Podemos extraer entradas usando sus nombres, en lugar de extraerlas por índice:
+Podemos extraer elementos usando sus nombres, en lugar de extraerlas por índice:
 
 
 ~~~
@@ -415,12 +413,12 @@ x[c("a", "c")]
 {: .output}
 
 Esta forma es mucho más segura para hacer subconjuntos: las posiciones
-de muchas entradas pueden cambiar a menudo cuando estamos creando una cadena
+de muchos elementos pueden cambiar a menudo cuando estamos creando una cadena
 de subconjuntos, ¡pero los nombres siempre permanecen iguales!.
 
 ## Creado subconjuntos usando operaciones lógicas
 
-También podemos usar un vector con entradas **logical** para hacer subconjuntos:
+También podemos usar un vector con elementos **logical** para hacer subconjuntos:
 
 
 ~~~
@@ -456,7 +454,7 @@ x[x > 7]
 
 Explicando un poco lo que sucedió, la instrucción `x>7`, genera un vector
 **logical** `c(FALSE, FALSE, TRUE, FALSE, TRUE)` y después este selecciona
-las entradas de `x` correspondientes a los valores `TRUE`.
+los elementos de `x` correspondientes a los valores `TRUE`.
 
 Podemos usar `==` para imitar el método anterior de indexar con nombre
 (recordemos que se usa `==` en vez de `=` para comparar):
@@ -477,9 +475,9 @@ x[names(x) == "a"]
 > ## Sugerencia: Combinando condiciones lógicas
 >
 > Muchas veces queremos combinar varios criterios lógicos. Por ejemplo, tal vez
-> queramos encontrar todos los paise en Asia o (en inglés **or**) Europe y (en
+> queramos encontrar todos los países en Asia o (en inglés **or**) Europe y (en
 > inglés **and**) con esperanza de vida en cierto rango. Existen muchas operaciones
-> para combinar vectores con entradas **logical** en R:
+> para combinar vectores con elemento **logical** en R:
 >
 >  * `&`, el operador "lógico AND": regresa `TRUE` si la derecha y la izquierda
 >    son `TRUE`.
@@ -487,7 +485,7 @@ x[names(x) == "a"]
 >    (o ambos) son `TRUE`.
 >
 > A veces encontrarás `&&` y `̣||` en vez de `&` y `|`. Los operadores de dos caracteres
-> solo comparan las primeras entradas de cada vector e ignoran las demás entradas. En
+> solo comparan los primeros elementos de cada vector e ignoran las demás elementos. En
 > general no debes usar los operadores de dos caracteres en el análisis de datos; déjalos
 > para la programación, i.e. para decir cuando se ejecutara una instrucción.
 >
@@ -496,7 +494,7 @@ x[names(x) == "a"]
 >    `FALSE`), o un vector **logical** (e.g. `!c(TRUE, FALSE)` se vuelve
 >    `c(FALSE, TRUE)`).
 >
-> Más aún, puedes comparar todas las entradas de un vector entre ellas usando
+> Más aún, puedes comparar todas los elementos de un vector entre ellos usando
 > la función `all` (que regresa `TRUE` si todos los elementos del vector son
 > `TRUE`) y la función `any` (que regresa `TRUE`si uno o más elementos del vector
 > son `TRUE`).
@@ -547,10 +545,10 @@ x[names(x) == "a"]
 
 > ## Sugerencia: Nombres no únicos
 >
-> Debes estar precavido de que es posible que haya varias entradas de un vector
-> con el mismo nombre. (Para un **data frame**, la columnas pueden tener el
-> mismo nombre --- aunque R trata de evitar esto --- pero los nombres de los
-> renglones deben ser únicos) Considera estos ejemplos:
+> Debe tener en cuenta que es posible que múltiples elementos en un vector tengan el mismo nombre. (Para un
+> **data frame**, las columnas pueden tener el mismo nombre ---aunque R intenta evitarlo--- pero los nombres 
+> de las filas deben ser únicos).
+> Considera estos ejemplos:
 >
 >
 >~~~
@@ -621,11 +619,9 @@ x[names(x) == "a"]
 >
 {: .callout}
 
-## Escapando las entradas nombradas
+## Saltarse los elementos nombrados
 
-Saltar o quitar entradas con nombre es un poco difícil. Si nosotros tratamos de
-escapar un elemento con nombre negando la palabra, R se quejará (de una manera un
-tanto oscura) que no sabe como tomar la negación de una palabra:
+Saltarse o eliminar elementos con nombre es un poco más difícil. Si tratamos de omitir un elemento con nombre al negar la cadena, R se queja (de una manera un poco oscura) de que no sabe cómo tomar el valor negativo de una cadena:
 
 
 ~~~
@@ -642,7 +638,7 @@ Error in -"a": invalid argument to unary operator
 {: .error}
 
 Sin embargo, podemos usar el operador `!=` (no igual) para construir un vector
-con entradas **logical** que es lo que nosotros queremos:
+con elementos **logical** que es lo que nosotros queremos:
 
 
 ~~~
@@ -733,15 +729,15 @@ el valor reciclado `"a"`no es igual a `names(x)`, el valor de `!=` es
 `TRUE`. En este caso, donde el vector de mayor longitud (5) no es múltiplo
 del más pequeño (2), R lanza esta advertencia. Si
 hubiéramos sido lo suficientemente desafortunados y `names(x)` tuviese seis
-entradas, R *silenciosamente* hubiera hecho las cosas incorrectas (i.e.,
+elementos, R *silenciosamente* hubiera hecho las cosas incorrectas (i.e.,
 no lo que deseábamos hacer). Esta regla de reciclaje puede introducir
 **bugs** difíciles de encontrar.
 
 La manera de hacer que R haga lo que en verdad queremos (emparejar *cada uno*
-de las entradas del argumento de la izquierda con *todas* las entradas del
+de los elementos del argumento de la izquierda con *todos* los elementos del
 argumento de la derecha) es usando el operador `%in%`. El operador `%in%`
-toma cada uno de las entradas del argumento de la izquierda, en este caso
-los nombres de `x`, y pegunta, "¿esta entrada ocurre en el segundo argumento?".
+toma cada uno de los elementos del argumento de la izquierda, en este caso
+los nombres de `x`, y pegunta, "¿este elemento ocurre en el segundo argumento?".
 Aquí, como queremos *excluir* los valores, nosotros también necesitamos el
 operador `!` para cambiar el "in" en un "not in":
 
@@ -761,12 +757,12 @@ x[! names(x) %in% c("a","c") ]
 
 > ## Desafío 2
 >
-> Seleccionar entradas de un vector que empareje con cualquier valor de
+> Seleccionar elementos de un vector que empareje con cualquier valor de
 > una lista es una tarea muy común en el análisis de datos. Por ejemplo,
 > el **data set** de *gapminder* contiene las variables `country` y
 > `continent`, pero no incluye información de la escala.
 > Supongamos que queremos extraer la información de el
-> sureste de Asia: ¿cómo podemos escribir una operación que result en un
+> sureste de Asia: ¿cómo podemos escribir una operación que resulte en un
 > vector **logical** que sea `TRUE`para todos los países en el sureste de
 > Asia y `FALSE` en otros casos?
 >
@@ -776,15 +772,16 @@ x[! names(x) %in% c("a","c") ]
 > seAsia <- c("Myanmar", "Thailand", "Cambodia", "Vietnam", "Laos")
 > ## se leen los datos de gapminder que descargamos en el episodio 2
 > gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
+>
 > ## extraer la columna `country` del *dataframe* (veremos esto después);
-> ## convertimos de un fator a un cáracter;
-> ## y filtramos los que no tengan entradas repetidas,
+> ## convertimos de un factor a un cáracter;
+> ## y filtramos los que no tengan elementos repetidas,
 > countries <- unique(as.character(gapminder$country))
 > ~~~
 > {: .r}
 >
 > Existe una manera incorrecta (usando solamente `==`), la cual te
-> dará una advertencia (*warning*); una manera enrollada de hacerlo
+> dará una advertencia (*warning*); una manera enredada de hacerlo
 > (usando los operadores lógicos `==` y `|`) y una manera elegante
 > (usando `%in%`). Prueba encontrar esas maneras y explica cómo
 > funcionan (o no).
@@ -796,7 +793,7 @@ x[! names(x) %in% c("a","c") ]
 > > y la respuesta incorrecta (un vector con todos los valores `FALSE`), ya
 > > que ninguno de los valores reciclados de `seAsia` se emparejaron correctamente
 > > para coincidir con los valores de `country`.
-> > - La manera **enrollada** (pero técnicamente correcta) de resolver
+> > - La manera **enredada** (pero técnicamente correcta) de resolver
 > > este problema es
 > >
 > > ~~~
@@ -919,7 +916,7 @@ m[3:4, c(3,1)]
 ~~~
 {: .output}
 
-Siempre puedes dejar el primer o segundo argumento vacio para obtener todas los renglones
+Siempre puedes dejar el primer o segundo argumento vacío para obtener todas los renglones
 o columnas respectivamente:
 
 
@@ -942,7 +939,7 @@ m[, c(3,4)]
 {: .output}
 
 Si quisieramos acceder a solo un renglón o una columna, R automáticamente
-convertira el resultado a un vector:
+convertirá el resultado a un vector:
 
 
 ~~~
@@ -990,10 +987,10 @@ Error in m[, c(3, 6)]: subscript out of bounds
 ~~~
 {: .error}
 
-> ## Sugerencia: Arrays de más dimensiones
+> ## Sugerencia: **Arrays** de más dimensiones
 >
-> Cuando estamos lidiando con arrays multi-dimensionales, cada uno de los
-> argumentos de `[` corresponden a una dimensión. Por ejemplo, un array
+> Cuando estamos lidiando con **arrays** multi-dimensionales, cada uno de los
+> argumentos de `[` corresponden a una dimensión. Por ejemplo, un **array**
 > 3D, los primeros tres argumentos corresponden a los renglones, columnas y
 > profundidad.
 >
@@ -1017,9 +1014,7 @@ m[5]
 
 
 Normalmente esto no es tan útil y muchas veces difícil de leer. Sin embargo
-es útil notar que las matrices están acomodadas en *formato de principal de
-columnas* por defecto. Esto es que los elementos del vector están acomodados
-por columnas:
+es útil notar que las matrices están acomodadas en *column-major format* por defecto. Esto es que los elementos del vector están acomodados por columnas:
 
 
 ~~~
@@ -1121,11 +1116,11 @@ $a
 
 Esto regresa una *lista de un elemento*.
 
-Podemos hacer subconjuntos de entradas de la lista de la misma manera que
+Podemos hacer subconjuntos de elementos de la lista de la misma manera que
 con los vectores atómicos usando `[`. Las operaciones de comparación sin
 embargo no funcionan, ya que no son recursivas, estas probaran la
-condición en la estructura de datos de las entradas de la lista,
-y no en las entradas individuales de dichas estructuras de datos.
+condición en la estructura de datos de los elementos de la lista,
+y no en los elementos individuales de dichas estructuras de datos.
 
 
 ~~~
@@ -1192,7 +1187,7 @@ Error in xlist[[-1]]: attempt to select more than one element in get1index <real
 ~~~
 {: .error}
 
-Pero tú puedes usar los nombres para hacer subconjuntos y extraer entradas:
+Pero tú puedes usar los nombres para hacer subconjuntos y extraer elementos:
 
 
 ~~~
@@ -1207,7 +1202,7 @@ xlist[["a"]]
 ~~~
 {: .output}
 
-La función `$` es una manera abreviada para extraer entradas por nombre:
+La función `$` es una manera abreviada para extraer elementos por nombre:
 
 
 ~~~
@@ -1239,7 +1234,7 @@ xlist$data
 >
 > Usando tu conocimiento para hacer subconjuntos de lista y vectores, extrae
 > el número 2 de `xlist`.
-> Pista: el número 2 esta contenido en la entrada "b" de la lista.
+> Pista: el número 2 esta contenido en el elemento "b" de la lista.
 >
 > > ## Solución al desafío 5
 > >
@@ -1316,7 +1311,7 @@ Recordemos que los **data frames** son listas, por lo que reglas similares
 se aplican. Sin embargo estos también son objetos de dos dimensiones:
 
 `[` con un argumento funcionará de la misma manera que para las listas,
-donde cada entrada de la lista corresponde a una columna. El objeto devuelto
+donde cada elemento de la lista corresponde a una columna. El objeto devuelto
 será un **data frame**:
 
 
@@ -1387,7 +1382,7 @@ gapminder[1:3,]
 {: .output}
 
 Si nuestro subconjunto es un solo renglón, el resultado será un **data frame**
-(porque las entradas son de distintos tipos):
+(porque los elementos son de distintos tipos):
 
 
 ~~~
