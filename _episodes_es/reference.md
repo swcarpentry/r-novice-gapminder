@@ -30,10 +30,10 @@ permalink: /reference/
 
 ## [Gestión de proyectos con RStudio]({{ page.root }}/02-project-intro/)
 
-- Para crear un nuevo proyecto, vaya a Archivo -> Nuevo proyecto
-- Instalar el paquete `packrat` para crear proyectos autocontenidos
-- `install.packages` para instalar paquetes de CRAN
-- `library` para cargar un paquete en R
+- Para crear un nuevo proyecto, vaya a Archivo -> Nuevo proyecto.
+- Instalar el paquete `packrat` para crear proyectos autocontenidos.
+- `install.packages` para instalar paquetes de CRAN.
+- `library` para cargar un paquete en R.
 - `packrat :: status` para verificar si todos los paquetes referenciados en su
  los scripts han sido instalados.
 
@@ -55,15 +55,15 @@ Los valores individuales en R deben pertenecer a uno de los 5 **tipos de datos**
 
 - `typeof(object)` proporciona información sobre el tipo de datos de un elemento.
 - Hay 5 tipos de datos principales:
-    - `?numeric` números reales (decimales)
-    - `?integer` números enteros `enteros` solamente
-    - `?character` texto
-    - `?complex` números complejos
-    - `?logical` valores TRUE/FALSE
+    - `?numeric` números reales (decimales).
+    - `?integer` números enteros `enteros` solamente.
+    - `?character` texto.
+    - `?complex` números complejos.
+    - `?logical` valores TRUE/FALSE.
 
 **Tipos especiales:**
 
-- `?NA` valores perdidos
+- `?NA` datos no disponibles.
 - `?NaN` "no es un número" (del ingles "Not a Number") para valores indefinidos (por ejemplo,` 0/0`).
 - `?Inf`, `-Inf` infinito.
 - `NULL` una estructura de datos que no existe
@@ -74,9 +74,9 @@ son los bloques base para todas las demás estructuras de datos. Un valor `NULL`
 elementos).
 
 **Estructuras básicas de datos en R:**
-- `?vector` atómico (solo puede contener un tipo)
-- `?list` (contenedor para otros objetos)
-- ``data.frame` objetos bidimensionales cuyas columnas pueden contener diferentes tipos de datos
+- `?vector` atómico (solo puede contener un tipo).
+- `?list` (contenedor para otros objetos).
+- ``data.frame` objetos bidimensionales cuyas columnas pueden contener diferentes tipos de datos.
 - ``matrix` objetos bidimensionales que pueden contener solo un tipo de datos.
 - ``factor` vectores que contienen datos categóricos predefinidos.
 - `?array` objetos multidimensionales que solo pueden contener un tipo de datos.
@@ -108,15 +108,15 @@ comportamiento de R).
 - `rbind()` agregará una fila (lista) a un data.frame.
 
 **Funciones útiles para consultar estructuras de datos: **
-- estructura `?str`, imprime un resumen de toda la estructura de datos
-- `?typeof` te dice el tipo dentro de un vector atómico
+- estructura `?str`, imprime un resumen de toda la estructura de datos.
+- `?typeof` te dice el tipo dentro de un vector atómico.
 - `?class` ¿cuál es la estructura de datos?
-- `?head` imprime los primeros elementos `n` (filas para objetos bidimensionales)
-- `?tail` imprime los últimos elementos `n` (filas para objetos bidimensionales)
+- `?head` imprime los primeros elementos `n` (filas para objetos bidimensionales).
+- `?tail` imprime los últimos elementos `n` (filas para objetos bidimensionales).
 - `?rownames`,`?colnames`, `?dimnames` recupera o modifica los nombres de la fila o de la columna de un objeto.
 - `?names` recupera o modifica los nombres de un vector o lista atómica (o
 columnas de un data.frame).
-- `?length` obtiene la cantidad de elementos en un vector atómico
+- `?length` obtiene la cantidad de elementos en un vector atómico.
 - `?nrow`,`?ncol`, `?dim` obtiene las dimensiones de un objeto n-dimensional
 (No funcionará en vectores o listas atómicas).
 
@@ -149,12 +149,12 @@ columnas de un data.frame).
   - p.ej. `x[2,:]` extraerá toda la segunda columna de valores.
 
 - `[[` dobles corchetes para extraer elementos de las listas.
-- `$` para acceder a columnas o elementos de lista por nombre
-- Índices negativos omiten elementos
+- `$` para acceder a columnas o elementos de lista por nombre.
+- Índices negativos omiten elementos.
 
 ## [Condicional]({{ page.root }}/07-control-flow/)
 
-- Use la condición `if` para iniciar una instrucción condicional, la condición `else if` para proporcionar pruebas adicionales, y `else` para proporcionar un valor predeterminado
+- Use la condición `if` para iniciar una instrucción condicional, la condición `else if` para proporcionar pruebas adicionales, y `else` para proporcionar un valor predeterminado.
 - El cuerpo de los enunciados condicionales deben estar indentados.
 - Usa `==` para probar la igualdad.
 - `X && Y` solo es verdadero si tanto X como Y son` TRUE`.
@@ -166,51 +166,51 @@ columnas de un data.frame).
 ## [Creación de gráficos de calidad de publicación]({{ page.root }}/08-plot-ggplot2/)
 
 - las figuras se pueden crear con la misma semantica de los gráficos:
-  - `library(ggplot2)`
-  - `ggplot` para crear la figura base
-  - `aes` especifica los ejes de datos, la forma, el color y el tamaño de los datos
-  - La función `geom` especifica el tipo de gráfico, p. `punto`,` línea`, `densidad`,` caja`
-  - La función `geom` también agrega transformaciones estadísticas, p.ej. `geom_smooth`
-  - Las funciones `scale` cambian la asignación de datos a la estética * change the mapping from data to aesthetics
-  - la función `facet` estratifican la figura en paneles
-  - `aes`thetics se aplica a capas individuales, o se puede configurar para toda la trama 
+  - `library(ggplot2)`.
+  - `ggplot` para crear la figura base.
+  - `aes` especifica los ejes de datos, la forma, el color y el tamaño de los datos.
+  - La función `geom` especifica el tipo de gráfico, p. `punto`,` línea`, `densidad`,` caja`.
+  - La función `geom` también agrega transformaciones estadísticas, p.ej. `geom_smooth`.
+  - Las funciones `scale` cambian la asignación de datos a la estética * change the mapping from data to aesthetics.
+  - la función `facet` estratifica la figura en paneles.
+  - `aes`thetics se aplica a capas individuales, o se puede configurar para toda la trama
   dentro de `ggplot`.
-  - las funciones `theme` cambian el aspecto general de la trama
+  - las funciones `theme` cambian el aspecto general de la trama.
   - ¡El orden de las capas importa!
   - `ggsave` para guardar una figura.
 
 ## [Vectorización]({{ page.root }}/09-vectorization/)
 
-- La mayoría de las funciones y operaciones se aplican a cada elemento de un vector
-- `*` aplica elemento a las matrices
-- `% *%` para la verdadera multiplicación de matrices
-- `any()` devolverá `TRUE` si cualquier elemento de un vector es` TRUE`
-- `all()` devolverá `TRUE` si *todos* los elementos de un vector son` TRUE`
+- La mayoría de las funciones y operaciones se aplican a cada elemento de un vector.
+- `*` aplica elemento a las matrices.
+- `% *%` para la verdadera multiplicación de matrices.
+- `any()` devolverá `TRUE` si cualquier elemento de un vector es` TRUE`.
+- `all()` devolverá `TRUE` si *todos* los elementos de un vector son` TRUE`.
 
 ## [Funciones explicadas]({{ page.root }}/10-functions/)
 
-- `?"función"`
+- `?"función"`.
 - Coloqua el código cuyos parámetros cambian frecuentemente en una función, luego llámalo con
   diferentes valores de parámetros para personalizar el comportamiento.
-- Devuelve la última línea de una función, o puede usar `return` explícitamente
+- Devuelve la última línea de una función, o puede usar `return` explícitamente.
 - Cualquier código escrito en el cuerpo de la función buscará preferiblemente variables definidas dentro de la función.
-- Documentar por qué, luego qué, y finalmente cómo (si el código no se explica por sí mismo)
+- Documentar por qué, luego qué, y finalmente cómo (si el código no se explica por sí mismo).
 
 ## [Escribir datos]({{ page.root }}/11-writing-data/)
 
-- `write.table` para escribir objetos en formato regular
-- establecer `quote = FALSE` para que el texto no esté envuelto en` "` marks
+- `write.table` para escribir objetos en formato regular.
+- establecer `quote = FALSE` para que el texto no esté envuelto en` "` marks.
 
 ## [Split-apply-combine]({{ page.root }}/12-plyr/)
 
 - Usar la familia de funciones `xxply` para aplicar funciones a grupos dentro de
   algunos datos.
-- la primera letra, `a`rray,` d`ata.frame o `l`ist corresponde a los datos de entrada
-- la segunda letra denota la estructura de datos de salida
+- la primera letra, `a`rray,` d`ata.frame o `l`ist corresponde a los datos de entrada.
+- la segunda letra denota la estructura de datos de salida.
 - Las funciones anónimas (aquellas que no tienen asignado un nombre) se usan dentro de la familia `plyr` de funciones en grupos dentro de datos.
 
 ## [Manipulación de dataframe con dplyr]({{ page.root }}/13-dplyr/)
-- `library(dplyr)`
+- `library(dplyr)`.
 - `?select` para extraer variables por nombre.
 - `?filter` devuelve filas con condiciones coincidentes.
 - `?group_by` group data por una o más variables.
@@ -219,30 +219,30 @@ columnas de un data.frame).
 - Combina operaciones usando el operador pipe `?"%>% "`.
 
 ## [Manipulación de dataframe con tidyr]({{ page.root }}/14-tidyr/)
-- `biblioteca(tidyr)`
+- `biblioteca(tidyr)`.
 - '?gather' convierte datos del formato *ancho* al *largo*.
 - '?spread' convierte datos del formato *largo* al *ancho*.
 - '?separate' divide un solo valor en múltiples valores.
 - '?unite' fusiona múltiples valores en un solo valor.
 
 ## [Producir informes con knitr]({{ page.root }}/15-knitr-markdown/)
-- Valor de informes reproducibles
-- Conceptos básicos de Markdown
-- Trozos de código R
-- Opciones de fragmentos
-- Código R en línea
-- Otros formatos de salida
+- Tiene valor de informes reproducibles.
+- Conceptos básicos de Markdown.
+- Trozos de código R.
+- Opciones de fragmentos.
+- Código R en línea.
+- Otros formatos de salida.
 
 ## [Mejores prácticas para escribir un buen código]({{ page.root }}/16-wrap-up/)
 
-* Programe a la defensiva, es decir, suponga que van a surgir errores, y escriba el código para detectarlos cuando lo hagan.
-* Escribir pruebas antes de escribir el código para ayudar a determinar exactamente qué se supone que debe hacer ese código.
-* Saber qué código se supone que debe hacer antes de intentar depurarlo.
-* Haz que falle cada vez.
+* Programa a la defensiva, es decir, supon que surgirán errores, y escribe el código para poder detectarlos cuando surgan.
+* Escribe pruebas antes de escribir el código para ayudarte a determinar exactamente qué se supone que debe hacer ese código.
+* Es importante saber qué esperas que haga el código antes de intentar depurarlo.
+* Haz que falle.
 * Haz que falle rápido.
-* Cambiar una cosa a la vez, y por una razón.
-* Mantenga un registro de lo que ha hecho.
-* Se humilde
+* Cambiar una cosa a la vez, y por una razón en específico.
+* Manten un registro de lo que has hecho.
+* Se humilde.
 
 ## Glosario
 
