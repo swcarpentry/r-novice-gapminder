@@ -5,7 +5,7 @@ root: .
 
 Introducción a R para no programadoras usando el conjunto de datos de *gapminder*.
 
-El objetivo de esta lección es enseñar a las programadoras principiantes a escribir códigos modulares y mejores prácticas para usar R para el análisis de datos. R se usa comúnmente en muchas disciplinas científicas para el análisis estadístico y para usar su conjunto de paquetes creados por terceras partes. Encontramos que muchos científicos que acuden a los talleres de Software Carpentry usan R y quieren aprender más. El énfasis de estos materiales es proporcionar a los asistentes una base sólida en los fundamentos de R y enseñar las mejores prácticas para la computación científica: desgloce de los análisis en unidades modulares, automatización de tareas y encapsulación.
+El objetivo de esta lección es enseñar a las programadoras principiantes a escribir códigos modulares y mejores prácticas para usar R para el análisis de datos. R se usa comúnmente en muchas disciplinas científicas para el análisis estadístico y para usar su conjunto de paquetes creados por terceras partes. Encontramos que muchos científicas que acuden a los talleres de Software Carpentry usan R y quieren aprender más. El énfasis de estos materiales es proporcionar a los asistentes una base sólida en los fundamentos de R y enseñar las mejores prácticas para la computación científica: desgloce de los análisis en unidades modulares, automatización de tareas y encapsulación.
 
 Ten en cuenta que este taller se centrará en la enseñanza de los fundamentos del lenguaje de programación R, y no enseñará el análisis estadístico.
 
