@@ -4,10 +4,10 @@ title: Setup
 permalink: /setup/
 ---
 
-This lesson assumes you have the R, RStudio software installed on your computer.
+Esta lección supone que tienes el software R,RStudio instalado en tu computadora.
 
-R can be downloaded [here](https://cran.r-project.org/mirrors.html).
+R se puede descargar [aquí](https://cran.r-project.org/mirrors.html).
 
-RStudio is an environment for developing using R.
-It can be downloaded [here](https://www.rstudio.com/products/rstudio/download/).
-You will need the Desktop version for your computer.
+RStudio es un entorno de desarrollo integrado para R.
+Se puede descargar [aquí](https://www.rstudio.com/products/rstudio/download/).
+Necesitaras la versión de escritorio para tu computadora.
