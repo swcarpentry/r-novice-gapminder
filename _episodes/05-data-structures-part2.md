@@ -673,7 +673,7 @@ into a script file so we can come back to it later.
 > as its argument (or by pressing the "source" button in RStudio).
 >
 > > ## Solution to Challenge 4
-> > The contents of `script/load-gapminder.R`:
+> > The contents of `scripts/load-gapminder.R`:
 > > 
 > > ~~~
 > > download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv", destfile = "data/gapminder-FiveYearData.csv")
