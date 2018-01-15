@@ -23,6 +23,13 @@ One of R's most powerful features is its ability to deal with tabular data -
 such as you may already have in a spreadsheet or a CSV file. Let's start by
 making a toy dataset in your `data/` directory, called `feline-data.csv`:
 
+~~~
+cats <- data.frame(coat = c("calico", "black", "tabby"), 
+                    weight = c(2.1, 5.0,3.2), 
+                    likes_string = c(1, 0, 1))
+write.csv(x = cats, file = "data/feline-data.csv")
+~~~
+{: .r}
 
 ~~~
 coat,weight,likes_string
@@ -30,7 +37,7 @@ calico,2.1,1
 black,5.0,0
 tabby,3.2,1
 ~~~
-{: .r}
+{: .output}
 
 > ## Tip: Editing Text files in R
 >
