@@ -530,52 +530,6 @@ But this is much less common among R users.  The most important thing is to
 where it is less confusing to use `<-` than `=`, and it is the most common
 symbol used in the community. So the recommendation is to use `<-`.
 
-> ## Challenge 1
->
-> Which of the following are valid R variable names?
-> 
-> ~~~
-> min_height
-> max.height
-> _age
-> .mass
-> MaxLength
-> min-length
-> 2widths
-> celsius2kelvin
-> ~~~
-> {: .r}
->
-> > ## Solution to challenge 1
-> >
-> > The following can be used as R variables:
-> > 
-> > ~~~
-> > min_height
-> > max.height
-> > MaxLength
-> > celsius2kelvin
-> > ~~~
-> > {: .r}
-> >
-> > The following creates a hidden variable:
-> > 
-> > ~~~
-> > .mass
-> > ~~~
-> > {: .r}
-> >
-> > The following will not be able to be used to create a variable
-> > 
-> > ~~~
-> > _age
-> > min-length
-> > 2widths
-> > ~~~
-> > {: .r}
-> {: .solution}
-{: .challenge}
-
 ## Vectorization
 
 One final thing to be aware of is that R is *vectorized*, meaning that
@@ -700,7 +654,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7ffdf9e17638>
+<bytecode: 0x7fc2188dbca0>
 <environment: namespace:base>
 ~~~
 {: .output}
@@ -770,6 +724,52 @@ network). R and RStudio have functionality for managing packages:
 * You can update installed packages by typing `update.packages()`
 * You can remove a package with `remove.packages("packagename")`
 * You can make a package available for use with `library(packagename)`
+
+> ## Challenge 1
+>
+> Which of the following are valid R variable names?
+> 
+> ~~~
+> min_height
+> max.height
+> _age
+> .mass
+> MaxLength
+> min-length
+> 2widths
+> celsius2kelvin
+> ~~~
+> {: .r}
+>
+> > ## Solution to challenge 1
+> >
+> > The following can be used as R variables:
+> > 
+> > ~~~
+> > min_height
+> > max.height
+> > MaxLength
+> > celsius2kelvin
+> > ~~~
+> > {: .r}
+> >
+> > The following creates a hidden variable:
+> > 
+> > ~~~
+> > .mass
+> > ~~~
+> > {: .r}
+> >
+> > The following will not be able to be used to create a variable
+> > 
+> > ~~~
+> > _age
+> > min-length
+> > 2widths
+> > ~~~
+> > {: .r}
+> {: .solution}
+{: .challenge}
 
 > ## Challenge 2
 >
