@@ -321,7 +321,7 @@ Error: is.numeric(temp) is not TRUE
 > > ~~~
 > > {: .r}
 > {: .solution}
-{: .challenge}
+{: .challenge}```
 
 ## More on combining functions
 

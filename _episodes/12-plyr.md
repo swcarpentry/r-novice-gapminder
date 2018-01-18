@@ -196,12 +196,6 @@ returns another `data.frame` (2nd letter is a **d**) i
   function: we haven't defined it elsewhere, and it has no name. It only exists
   in the scope of our call to `ddply`.
 
-> ## Challenge 1
->
-> Calculate the average life expectancy per continent. Which has the longest?
-> Which had the shortest?
-{: .challenge}
-
 What if we want a different type of output data structure?:
 
 
@@ -399,6 +393,13 @@ d_ply(
 > The `format` function can be used to make numeric
 > values "pretty" for printing out in messages.
 {: .callout}
+
+
+> ## Challenge 1
+>
+> Calculate the average life expectancy per continent. Which has the longest?
+> Which had the shortest?
+{: .challenge}
 
 > ## Challenge 2
 >

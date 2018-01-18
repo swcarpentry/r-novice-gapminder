@@ -297,10 +297,10 @@ even better.
 > >
 > >~~~
 > ># A tibble: 2 x 2
-> >       country mean_lifeExp
-> >        <fctr>        <dbl>
-> >1      Iceland     76.51142
-> >2 Sierra Leone     36.76917
+> >  country      mean_lifeExp
+> >  <fct>               <dbl>
+> >1 Iceland              76.5
+> >2 Sierra Leone         36.8
 > >~~~
 > >{: .output}
 > Another way to do this is to use the `dplyr` function `arrange()`, which
@@ -320,9 +320,9 @@ even better.
 > >
 > >~~~
 > ># A tibble: 1 x 2
-> >       country mean_lifeExp
-> >        <fctr>        <dbl>
-> >1 Sierra Leone     36.76917
+> >  country      mean_lifeExp
+> >  <fct>               <dbl>
+> >1 Sierra Leone         36.8
 > >~~~
 > >{: .output}
 > >
@@ -340,8 +340,8 @@ even better.
 > >~~~
 > ># A tibble: 1 x 2
 > >  country mean_lifeExp
-> >   <fctr>        <dbl>
-> >1 Iceland     76.51142
+> >  <fct>          <dbl>
+> >1 Iceland         76.5
 > >~~~
 > >{: .output}
 > {: .solution}
@@ -394,12 +394,12 @@ gapminder %>%
 ~~~
 # A tibble: 5 x 2
   continent     n
-     <fctr> <int>
-1    Africa    52
-2      Asia    33
-3    Europe    30
-4  Americas    25
-5   Oceania     2
+  <fct>     <int>
+1 Africa       52
+2 Asia         33
+3 Europe       30
+4 Americas     25
+5 Oceania       2
 ~~~
 {: .output}
 
@@ -419,13 +419,13 @@ gapminder %>%
 
 ~~~
 # A tibble: 5 x 2
-  continent    se_pop
-     <fctr>     <dbl>
-1    Africa 0.3663016
-2  Americas 0.5395389
-3      Asia 0.5962151
-4    Europe 0.2863536
-5   Oceania 0.7747759
+  continent se_pop
+  <fct>      <dbl>
+1 Africa     0.366
+2 Americas   0.540
+3 Asia       0.596
+4 Europe     0.286
+5 Oceania    0.775
 ~~~
 {: .output}
 
@@ -447,13 +447,13 @@ gapminder %>%
 
 ~~~
 # A tibble: 5 x 5
-  continent  mean_le min_le max_le     se_le
-     <fctr>    <dbl>  <dbl>  <dbl>     <dbl>
-1    Africa 48.86533 23.599 76.442 0.3663016
-2  Americas 64.65874 37.579 80.653 0.5395389
-3      Asia 60.06490 28.801 82.603 0.5962151
-4    Europe 71.90369 43.585 81.757 0.2863536
-5   Oceania 74.32621 69.120 81.235 0.7747759
+  continent mean_le min_le max_le se_le
+  <fct>       <dbl>  <dbl>  <dbl> <dbl>
+1 Africa       48.9   23.6   76.4 0.366
+2 Americas     64.7   37.6   80.7 0.540
+3 Asia         60.1   28.8   82.6 0.596
+4 Europe       71.9   43.6   81.8 0.286
+5 Oceania      74.3   69.1   81.2 0.775
 ~~~
 {: .output}
 

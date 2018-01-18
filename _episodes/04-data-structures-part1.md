@@ -25,6 +25,15 @@ making a toy dataset in your `data/` directory, called `feline-data.csv`:
 
 
 ~~~
+cats <- data.frame(coat = c("calico", "black", "tabby"), 
+                    weight = c(2.1, 5.0,3.2), 
+                    likes_string = c(1, 0, 1))
+write.csv(x = cats, file = "data/feline-data.csv", row.names = FALSE)
+~~~
+{: .r}
+
+
+~~~
 coat,weight,likes_string
 calico,2.1,1
 black,5.0,0
@@ -37,8 +46,6 @@ tabby,3.2,1
 > Alternatively, you can create `data/feline-data.csv` using a text editor (Nano),
 > or within RStudio with the **File -> New File -> Text File** menu item.
 {: .callout}
-
-
 
 We can load this into R via the following:
 
