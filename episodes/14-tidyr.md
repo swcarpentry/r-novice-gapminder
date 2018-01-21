@@ -51,7 +51,7 @@ installed dplyr in the previous lesson):
 #install.packages("tidyr")
 #install.packages("dplyr")
 ~~~
-{: .r}
+{: .language-r}
 
 Load the packages
 
@@ -60,7 +60,7 @@ Load the packages
 library("tidyr")
 library("dplyr")
 ~~~
-{: .r}
+{: .language-r}
 
 First, lets look at the structure of our original gapminder dataframe:
 
@@ -68,7 +68,7 @@ First, lets look at the structure of our original gapminder dataframe:
 ~~~
 str(gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -133,7 +133,7 @@ country columns to be factors, so we use the stringsAsFactors argument for
 gap_wide <- read.csv("data/gapminder_wide.csv", stringsAsFactors = FALSE)
 str(gap_wide)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -195,7 +195,7 @@ gap_long <- gap_wide %>%
            starts_with('lifeExp'), starts_with('gdpPercap'))
 str(gap_long)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -228,7 +228,7 @@ gathered (i.e. ID variables)
 gap_long <- gap_wide %>% gather(obstype_year,obs_values,-continent,-country)
 str(gap_long)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -255,7 +255,7 @@ type (`pop`,`lifeExp`, or `gdpPercap`) and the `year`. We can use the
 gap_long <- gap_long %>% separate(obstype_year,into=c('obs_type','year'),sep="_")
 gap_long$year <- as.integer(gap_long$year)
 ~~~
-{: .r}
+{: .language-r}
 
 
 > ## Challenge 2
@@ -269,7 +269,7 @@ gap_long$year <- as.integer(gap_long$year)
 > >gap_long %>% group_by(continent,obs_type) %>%
 > >    summarize(means=mean(obs_values))
 > >~~~
-> >{: .r}
+> >{: .language-r}
 > >
 > >
 > >
@@ -310,7 +310,7 @@ widest format. Let's start with the intermediate format.
 gap_normal <- gap_long %>% spread(obs_type,obs_values)
 dim(gap_normal)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -324,7 +324,7 @@ dim(gap_normal)
 ~~~
 dim(gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -338,7 +338,7 @@ dim(gapminder)
 ~~~
 names(gap_normal)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -352,7 +352,7 @@ names(gap_normal)
 ~~~
 names(gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -370,7 +370,7 @@ that before checking if they are `all.equal()`.
 gap_normal <- gap_normal[,names(gapminder)]
 all.equal(gap_normal,gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -388,7 +388,7 @@ all.equal(gap_normal,gapminder)
 ~~~
 head(gap_normal)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -408,7 +408,7 @@ head(gap_normal)
 ~~~
 head(gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -431,7 +431,7 @@ We're almost there, the original was sorted by `country`, `continent`, then
 gap_normal <- gap_normal %>% arrange(country,continent,year)
 all.equal(gap_normal,gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -455,7 +455,7 @@ of defining `gap_wide`
 gap_temp <- gap_long %>% unite(var_ID,continent,country,sep="_")
 str(gap_temp)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -476,7 +476,7 @@ gap_temp <- gap_long %>%
     unite(var_names,obs_type,year,sep="_")
 str(gap_temp)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -500,7 +500,7 @@ gap_wide_new <- gap_long %>%
     spread(var_names,obs_values)
 str(gap_wide_new)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -558,7 +558,7 @@ str(gap_wide_new)
 > >    unite(var_names,obs_type,year,country,sep="_") %>%
 > >    spread(var_names,obs_values)
 > >~~~
-> >{: .r}
+> >{: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -576,7 +576,7 @@ gap_wide_betterID <- gap_long %>%
     separate(ID_var, c("continent","country"),sep="_")
 str(gap_wide_betterID)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -628,7 +628,7 @@ str(gap_wide_betterID)
 ~~~
 all.equal(gap_wide, gap_wide_betterID)
 ~~~
-{: .r}
+{: .language-r}
 
 
 

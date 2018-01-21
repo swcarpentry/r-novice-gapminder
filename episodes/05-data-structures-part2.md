@@ -44,7 +44,7 @@ new column, we need to start by making a new vector:
 age <- c(2, 3, 5)
 cats
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -62,7 +62,7 @@ We can then add this as a column via:
 ~~~
 cbind(cats, age)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -79,7 +79,7 @@ Note that if we tried to add a vector of ages with a different number of entries
 age <- c(2, 3, 5, 12)
 cbind(cats, age)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -94,7 +94,7 @@ Error in data.frame(..., check.names = FALSE): arguments imply differing number 
 age <- c(2, 3)
 cbind(cats, age)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -110,7 +110,7 @@ for every row in the table:
 ~~~
 nrow(cats)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -124,7 +124,7 @@ nrow(cats)
 ~~~
 length(age)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -140,7 +140,7 @@ So for it to work we have to have `nrow(cats)` = `length(age)`. Let's store it i
 age <- c(2, 3, 5)
 cats <- cbind(cats, age)
 ~~~
-{: .r}
+{: .language-r}
 
 Now how about adding rows - in this case, we saw last time that the rows of a
 data frame are made of lists:
@@ -150,7 +150,7 @@ data frame are made of lists:
 newRow <- list("tortoiseshell", 3.3, TRUE, 9)
 cats <- rbind(cats, newRow)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -177,7 +177,7 @@ those values are not factors. To successfully add a cat with a
 ~~~
 levels(cats$coat)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -192,7 +192,7 @@ levels(cats$coat)
 levels(cats$coat) <- c(levels(cats$coat), 'tortoiseshell')
 cats <- rbind(cats, list("tortoiseshell", 3.3, TRUE, 9))
 ~~~
-{: .r}
+{: .language-r}
 
 Alternatively, we can change a factor column to a character vector; we lose the
 handy categories of the factor, but can subsequently add any word we want to the
@@ -202,7 +202,7 @@ column without babysitting the factor levels:
 ~~~
 str(cats)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -221,7 +221,7 @@ str(cats)
 cats$coat <- as.character(cats$coat)
 str(cats)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -257,7 +257,7 @@ added a garbage row:
 ~~~
 cats
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -277,7 +277,7 @@ We can ask for a data frame minus this offending row:
 ~~~
 cats[-4,]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -301,7 +301,7 @@ Alternatively, we can drop all rows with `NA` values:
 ~~~
 na.omit(cats)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -320,7 +320,7 @@ Let's reassign the output to `cats`, so that our changes will be permanent:
 ~~~
 cats <- na.omit(cats)
 ~~~
-{: .r}
+{: .language-r}
 
 ## Appending to a data frame
 
@@ -333,7 +333,7 @@ together with `rbind`:
 cats <- rbind(cats, cats)
 cats
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -357,7 +357,7 @@ and R will automatically re-name them sequentially:
 rownames(cats) <- NULL
 cats
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -384,7 +384,7 @@ cats
 >                  y = c(TRUE, TRUE, FALSE),
 >                  stringsAsFactors = FALSE)
 > ~~~
-> {: .r}
+> {: .language-r}
 > Make a data frame that holds the following information for yourself:
 >
 > - first name
@@ -404,7 +404,7 @@ cats
 > > df <- rbind(df, list('Marie', 'Curie', 238) )
 > > df <- cbind(df, coffeetime = c(TRUE,TRUE))
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -417,7 +417,7 @@ gapminder dataset that we downloaded previously:
 ~~~
 gapminder <- read.csv("data/gapminder-FiveYearData.csv")
 ~~~
-{: .r}
+{: .language-r}
 
 > ## Miscellaneous Tips
 >
@@ -431,14 +431,14 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv")
 > download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv", destfile = "data/gapminder-FiveYearData.csv")
 > gapminder <- read.csv("data/gapminder-FiveYearData.csv")
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 > * Alternatively, you can also read in files directly into R from the Internet by replacing the file paths with a web address in `read.csv`. One should note that in doing this no local copy of the csv file is first saved onto your computer. For example,
 > 
 > ~~~
 > gapminder <- read.csv("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv")
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 > * You can read directly from excel spreadsheets without
 > converting them to plain text first by using the [readxl](https://cran.r-project.org/web/packages/readxl/index.html) package.
@@ -451,7 +451,7 @@ out what the data looks like with `str`:
 ~~~
 str(gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -472,7 +472,7 @@ We can also examine individual columns of the data frame with our `typeof` funct
 ~~~
 typeof(gapminder$year)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -486,7 +486,7 @@ typeof(gapminder$year)
 ~~~
 typeof(gapminder$country)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -500,7 +500,7 @@ typeof(gapminder$country)
 ~~~
 str(gapminder$country)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -517,7 +517,7 @@ variables in gapminder, what do you think the following will produce, and why?
 ~~~
 length(gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -534,7 +534,7 @@ is a *list of vectors and factors*:
 ~~~
 typeof(gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -550,7 +550,7 @@ columns. To get the number of rows and columns in our dataset, try:
 ~~~
 nrow(gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -564,7 +564,7 @@ nrow(gapminder)
 ~~~
 ncol(gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -579,7 +579,7 @@ Or, both at once:
 ~~~
 dim(gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -595,7 +595,7 @@ ask for them later:
 ~~~
 colnames(gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -618,7 +618,7 @@ to start digging into our data proper. Check out the first few lines:
 ~~~
 head(gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -679,13 +679,13 @@ into a script file so we can come back to it later.
 > > download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv", destfile = "data/gapminder-FiveYearData.csv")
 > > gapminder <- read.csv(file = "data/gapminder-FiveYearData.csv")
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > To run the script and load the data into the `gapminder` variable:
 > > 
 > > ~~~
 > > source(file = "scripts/load-gapminder.R")
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 

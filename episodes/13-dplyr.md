@@ -28,7 +28,7 @@ do these operations using the normal base R operations:
 ~~~
 mean(gapminder[gapminder$continent == "Africa", "gdpPercap"])
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -42,7 +42,7 @@ mean(gapminder[gapminder$continent == "Africa", "gdpPercap"])
 ~~~
 mean(gapminder[gapminder$continent == "Americas", "gdpPercap"])
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -56,7 +56,7 @@ mean(gapminder[gapminder$continent == "Americas", "gdpPercap"])
 ~~~
 mean(gapminder[gapminder$continent == "Asia", "gdpPercap"])
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -92,7 +92,7 @@ If you have have not installed this package earlier, please do so:
 ~~~
 install.packages('dplyr')
 ~~~
-{: .r}
+{: .language-r}
 
 Now let's load the package:
 
@@ -100,7 +100,7 @@ Now let's load the package:
 ~~~
 library("dplyr")
 ~~~
-{: .r}
+{: .language-r}
 
 ## Using select()
 
@@ -112,7 +112,7 @@ variables you select.
 ~~~
 year_country_gdp <- select(gapminder,year,country,gdpPercap)
 ~~~
-{: .r}
+{: .language-r}
 
 ![](../fig/13-dplyr-fig1.png)
 
@@ -126,7 +126,7 @@ using pipes.
 ~~~
 year_country_gdp <- gapminder %>% select(year,country,gdpPercap)
 ~~~
-{: .r}
+{: .language-r}
 
 To help you understand why we wrote that in that way, let's walk through it step
 by step. First we summon the gapminder dataframe and pass it on, using the pipe
@@ -147,7 +147,7 @@ year_country_gdp_euro <- gapminder %>%
     filter(continent=="Europe") %>%
     select(year,country,gdpPercap)
 ~~~
-{: .r}
+{: .language-r}
 
 > ## Challenge 1
 >
@@ -163,7 +163,7 @@ year_country_gdp_euro <- gapminder %>%
 > >                            filter(continent=="Africa") %>%
 > >                            select(year,country,lifeExp)
 > >~~~
-> >{: .r}
+> >{: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -186,7 +186,7 @@ could have used in filter.
 ~~~
 str(gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -206,7 +206,7 @@ str(gapminder)
 ~~~
 str(gapminder %>% group_by(continent))
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -257,7 +257,7 @@ gdp_bycontinents <- gapminder %>%
     group_by(continent) %>%
     summarize(mean_gdpPercap=mean(gdpPercap))
 ~~~
-{: .r}
+{: .language-r}
 
 ![](../fig/13-dplyr-fig3.png)
 
@@ -271,7 +271,7 @@ continent mean_gdpPercap
 4    Europe      14469.476
 5   Oceania      18621.609
 ~~~
-{: .r}
+{: .language-r}
 
 That allowed us to calculate the mean gdpPercap for each continent, but it gets
 even better.
@@ -291,7 +291,7 @@ even better.
 > >lifeExp_bycountry %>%
 > >    filter(mean_lifeExp == min(mean_lifeExp) | mean_lifeExp == max(mean_lifeExp))
 > >~~~
-> >{: .r}
+> >{: .language-r}
 > >
 > >
 > >
@@ -314,7 +314,7 @@ even better.
 > >    arrange(mean_lifeExp) %>%
 > >    head(1)
 > >~~~
-> >{: .r}
+> >{: .language-r}
 > >
 > >
 > >
@@ -333,7 +333,7 @@ even better.
 > >    arrange(desc(mean_lifeExp)) %>%
 > >    head(1)
 > >~~~
-> >{: .r}
+> >{: .language-r}
 > >
 > >
 > >
@@ -356,7 +356,7 @@ gdp_bycontinents_byyear <- gapminder %>%
     group_by(continent,year) %>%
     summarize(mean_gdpPercap=mean(gdpPercap))
 ~~~
-{: .r}
+{: .language-r}
 
 That is already quite powerful, but it gets even better! You're not limited to defining 1 new variable in `summarize()`.
 
@@ -369,7 +369,7 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
               mean_pop=mean(pop),
               sd_pop=sd(pop))
 ~~~
-{: .r}
+{: .language-r}
 
 ## count() and n()
 
@@ -387,7 +387,7 @@ gapminder %>%
     filter(year == 2002) %>%
     count(continent, sort = TRUE)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -413,7 +413,7 @@ gapminder %>%
     group_by(continent) %>%
     summarize(se_pop = sd(lifeExp)/sqrt(n()))
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -441,7 +441,7 @@ gapminder %>%
       max_le = max(lifeExp),
       se_le = sd(lifeExp)/sqrt(n()))
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -473,7 +473,7 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
               mean_gdp_billion=mean(gdp_billion),
               sd_gdp_billion=sd(gdp_billion))
 ~~~
-{: .r}
+{: .language-r}
 
 ## Connect mutate with logical filtering: ifelse
 
@@ -504,7 +504,7 @@ gdp_future_bycontinents_byyear_high_lifeExp <- gapminder %>%
     summarize(mean_gdpPercap = mean(gdpPercap),
               mean_gdpPercap_expected = mean(gdp_futureExpectation))
 ~~~
-{: .r}
+{: .language-r}
 
 ## Combining `dplyr` and `ggplot2`
 
@@ -522,7 +522,7 @@ az.countries <- gapminder[starts.with %in% c("A", "Z"), ]
 ggplot(data = az.countries, aes(x = year, y = lifeExp, color = continent)) +
   geom_line() + facet_wrap( ~ country)
 ~~~
-{: .r}
+{: .language-r}
 
 <img src="../fig/rmd-13-unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" />
 
@@ -546,7 +546,7 @@ gapminder %>%
    geom_line() +
    facet_wrap( ~ country)
 ~~~
-{: .r}
+{: .language-r}
 
 <img src="../fig/rmd-13-unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" style="display: block; margin: auto;" />
 
@@ -563,7 +563,7 @@ gapminder %>%
 	geom_line() +
 	facet_wrap( ~ country)
 ~~~
-{: .r}
+{: .language-r}
 
 <img src="../fig/rmd-13-unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" style="display: block; margin: auto;" />
 
@@ -584,7 +584,7 @@ gapminder %>%
 > >    summarize(mean_lifeExp=mean(lifeExp)) %>%
 > >    arrange(desc(mean_lifeExp))
 > >~~~
-> >{: .r}
+> >{: .language-r}
 > {: .solution}
 {: .challenge}
 
