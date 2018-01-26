@@ -85,8 +85,8 @@ interactive R console.
 > RStudio offers you great flexibility in running code from within the editor
 > window. There are buttons, menu choices, and keyboard shortcuts. To run the
 > current line, you can 1. click on the `Run` button above the editor panel,
-> or 2. select "Run Lines" from the "Code" menu, or 3. hit Ctrl-Enter in Windows
-> or Linux or Command-Enter on OS X. (This shortcut can also be seen by hovering
+> or 2. select "Run Lines" from the "Code" menu, or 3. hit <kbd>Ctrl</kbd>+<kbd>Return</kbd> in Windows
+> or Linux or <kbd>Command</kbd>+<kbd>Return</kbd> on OS X. (This shortcut can also be seen by hovering
 > the mouse over the button). To run a block of code, select it and then `Run`.
 > If you have modified a line of code within a block of code you have just run,
 > there is no need to reselct the section and `Run`, you can use the next button
@@ -135,13 +135,13 @@ complete it:
 
 Any time you hit return and the R session shows a "+" instead of a ">", it
 means it's waiting for you to complete the command. If you want to cancel
-a command you can simply hit "Esc" and RStudio will give you back the ">"
+a command you can simply hit <kbd>Esc</kbd> and RStudio will give you back the ">"
 prompt.
 
 > ## Tip: Cancelling commands
 >
 > If you're using R from the commandline instead of from within RStudio,
-> you need to use `Ctrl+C` instead of `Esc` to cancel the command. This
+> you need to use <kbd>Ctrl</kbd>+<kbd>C</kbd> instead of <kbd>Esc</kbd> to cancel the command. This
 > applies to Mac users as well!
 >
 > Cancelling a command isn't only useful for killing incomplete commands:
@@ -229,7 +229,7 @@ exp(0.5) # e^(1/2)
 
 Don't worry about trying to remember every function in R. You
 can simply look them up on Google, or if you can remember the
-start of the function's name, use the tab completion in RStudio.
+start of the function's name, use the <kbd>Tab</kbd> completion in RStudio.
 
 This is one advantage that RStudio has over R on its own, it
 has auto-completion abilities that allow you to more easily
