@@ -35,21 +35,21 @@ calcGDP <- function(dat, year=NULL, country=NULL) {
   return(new)
 }
 ~~~
-{: .r}
+{: .language-r}
 
 A common task you'll encounter when working with data, is that you'll want to
 run calculations on different groups within the data. In the above, we were
 simply calculating the GDP by multiplying two columns together. But what if
 we wanted to calculated the mean GDP per continent?
 
-We could run `calcGPD` and then take the mean of each continent:
+We could run `calcGDP` and then take the mean of each continent:
 
 
 ~~~
 withGDP <- calcGDP(gapminder)
 mean(withGDP[withGDP$continent == "Africa", "gdp"])
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -63,7 +63,7 @@ mean(withGDP[withGDP$continent == "Africa", "gdp"])
 ~~~
 mean(withGDP[withGDP$continent == "Americas", "gdp"])
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -77,7 +77,7 @@ mean(withGDP[withGDP$continent == "Americas", "gdp"])
 ~~~
 mean(withGDP[withGDP$continent == "Asia", "gdp"])
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -96,7 +96,7 @@ also takes a substantial amount of effort and testing to get right.
 
 The abstract problem we're encountering here is know as "split-apply-combine":
 
-![Split apply combine](../fig/splitapply.png)
+![Split apply combine](../fig/12-plyr-fig1.png)
 
 We want to *split* our data into groups, in this case continents, *apply*
 some calculations on that group, then optionally *combine* the results
@@ -116,7 +116,7 @@ We installed this package in an earlier challenge. Let's load it now:
 ~~~
 library("plyr")
 ~~~
-{: .r}
+{: .language-r}
 
 Plyr has functions for operating on `lists`, `data.frames` and `arrays`
 (matrices, or n-dimensional vectors). Each function performs:
@@ -139,7 +139,7 @@ table)
 Note here that plyr's use of "array" is different to R's,
 an array in ply can include a vector or matrix.
 
-![Full apply suite](../fig/full_apply_suite.png)
+![Full apply suite](../fig/12-plyr-fig2.png)
 
 
 Each of the xxply functions (`daply`, `ddply`, `llply`, `laply`, ...) has the
@@ -149,7 +149,7 @@ same structure and has 4 key features and structure:
 ~~~
 xxply(.data, .variables, .fun)
 ~~~
-{: .r}
+{: .language-r}
 
 * The first letter of the function name gives the input type and the second gives the output type.
 * .data - gives the data object to be processed
@@ -166,7 +166,7 @@ ddply(
  .fun = function(x) mean(x$gdp)
 )
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -206,7 +206,7 @@ dlply(
  .fun = function(x) mean(x$gdp)
 )
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -251,7 +251,7 @@ ddply(
  .fun = function(x) mean(x$gdp)
 )
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -328,7 +328,7 @@ daply(
  .fun = function(x) mean(x$gdp)
 )
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -375,7 +375,7 @@ d_ply(
   }
 )
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -432,7 +432,7 @@ d_ply(
 >   }
 > )
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 > 2.
 > 
@@ -443,7 +443,7 @@ d_ply(
 >   .fun = mean(dataGroup$lifeExp)
 > )
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 > 3.
 > 
@@ -456,7 +456,7 @@ d_ply(
 >   }
 > )
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 > 4.
 > 
@@ -469,6 +469,6 @@ d_ply(
 >   }
 > )
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 {: .challenge}

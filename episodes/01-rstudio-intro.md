@@ -8,13 +8,14 @@ questions:
 - "How to manage your environment?"
 - "How to install packages?"
 objectives:
-- "To gain familiarity with the various panes in the RStudio IDE"
-- "To gain familiarity with the buttons, short cuts and options in the RStudio IDE"
-- "To understand variables and how to assign to them"
-- "To be able to manage your workspace in an interactive R session"
-- "To be able to use mathematical and comparison operations"
-- "To be able to call functions"
-- "Introduction to package management"
+- "Describe the purpose and use of each pane in the RStudio IDE"
+- "Locate buttons and options in the RStudio IDE"
+- "Define a variable"
+- "Assign data to a variable"
+- "Manage a workspace in an interactive R session"
+- "Use mathematical and comparison operators"
+- "Call functions"
+- "Manage packages"
 keypoints:
 - "Use RStudio to write and run R programs."
 - "R has the usual arithmetic operators and mathematical functions."
@@ -36,7 +37,7 @@ R and RStudio. We will begin with raw data, perform exploratory analyses, and le
 how to plot results graphically. This example starts with a dataset from
 [gapminder.org](https://www.gapminder.org) containing population information for many
 countries through time. Can you read the data into R? Can you plot the population for
-Senegal? Can you calculate the average income for countries on continent of Asia?
+Senegal? Can you calculate the average income for countries on the continent of Asia?
 By the end of these lessons you will be able to do things like plot the populations
 for all of these countries in under a minute!
 
@@ -85,8 +86,8 @@ There are two main ways one can work within RStudio.
 a .R file to run later.
    *  This works well when doing small tests and initially starting off.
    *  It quickly becomes laborious
-2. Start writing in an .R file and use RStudio's command / short cut
-to push current line, selected lines or modified lines to the
+2. Start writing in an .R file and use RStudio's short cut keys for the Run command
+to push the current line, selected lines or modified lines to the
 interactive R console.
    * This is a great way to start; all your code is saved for later
    * You will be able to run the file you create from within RStudio
@@ -129,7 +130,7 @@ The simplest thing you could do with R is do arithmetic:
 ~~~
 1 + 100
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -188,7 +189,7 @@ From highest to lowest precedence:
 ~~~
 3 + 5 * 2
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -205,7 +206,7 @@ intend.
 ~~~
 (3 + 5) * 2
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -223,7 +224,7 @@ Remember that others may later read your code.
 3 + 5 * 2 ^ 2       # clear, if you remember the rules
 3 + 5 * (2 ^ 2)     # if you forget some rules, this might help
 ~~~
-{: .r}
+{: .language-r}
 
 
 The text after each line of code is called a
@@ -236,7 +237,7 @@ Really small or large numbers get a scientific notation:
 ~~~
 2/10000
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -254,7 +255,7 @@ You can write numbers in scientific notation too:
 ~~~
 5e3  # Note the lack of minus here
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -274,7 +275,7 @@ arguments:
 ~~~
 sin(1)  # trigonometry functions
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -287,7 +288,7 @@ sin(1)  # trigonometry functions
 ~~~
 log(1)  # natural logarithm
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -300,7 +301,7 @@ log(1)  # natural logarithm
 ~~~
 log10(10) # base-10 logarithm
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -313,7 +314,7 @@ log10(10) # base-10 logarithm
 ~~~
 exp(0.5) # e^(1/2)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -345,7 +346,7 @@ We can also do comparison in R:
 ~~~
 1 == 1  # equality (note two equals signs, read as "is equal to")
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -358,7 +359,7 @@ We can also do comparison in R:
 ~~~
 1 != 2  # inequality (read as "is not equal to")
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -371,7 +372,7 @@ We can also do comparison in R:
 ~~~
 1 < 2  # less than
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -384,7 +385,7 @@ We can also do comparison in R:
 ~~~
 1 <= 1  # less than or equal to
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -397,7 +398,7 @@ We can also do comparison in R:
 ~~~
 1 > 0  # greater than
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -410,7 +411,7 @@ We can also do comparison in R:
 ~~~
 1 >= -9 # greater than or equal to
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -447,7 +448,7 @@ We can store values in variables using the assignment operator `<-`, like this:
 ~~~
 x <- 1/40
 ~~~
-{: .r}
+{: .language-r}
 
 Notice that assignment does not print a value. Instead, we stored it for later
 in something called a **variable**. `x` now contains the **value** `0.025`:
@@ -456,7 +457,7 @@ in something called a **variable**. `x` now contains the **value** `0.025`:
 ~~~
 x
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -475,7 +476,7 @@ have appeared. Our variable `x` can be used in place of a number in any calculat
 ~~~
 log(x)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -490,7 +491,7 @@ Notice also that variables can be reassigned:
 ~~~
 x <- 100
 ~~~
-{: .r}
+{: .language-r}
 
 `x` used to contain the value 0.025 and and now it has the value 100.
 
@@ -499,8 +500,9 @@ Assignment values can contain the variable being assigned to:
 
 ~~~
 x <- x + 1 #notice how RStudio updates its description of x on the top right tab
+y <- x * 2
 ~~~
-{: .r}
+{: .language-r}
 
 The right hand side of the assignment can be any valid R expression.
 The right hand side is *fully evaluated* before the assignment occurs.
@@ -521,7 +523,7 @@ It is also possible to use the `=` operator for assignment:
 ~~~
 x = 1/40
 ~~~
-{: .r}
+{: .language-r}
 
 But this is much less common among R users.  The most important thing is to
 **be consistent** with the operator you use. There are occasionally places
@@ -537,7 +539,7 @@ variables and functions can have vectors as values. For example
 ~~~
 1:5
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -551,7 +553,7 @@ variables and functions can have vectors as values. For example
 ~~~
 2^(1:5)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -566,7 +568,7 @@ variables and functions can have vectors as values. For example
 x <- 1:5
 2^x
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -590,7 +592,7 @@ There are a few useful commands you can use to interact with the R session.
 ~~~
 ls()
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -607,7 +609,7 @@ ls()
 >
 {: .callout}
 
-Note here that we didn't given any arguments to `ls`, but we still
+Note here that we didn't give any arguments to `ls`, but we still
 needed to give the parentheses to tell R to call the function.
 
 If we type `ls` by itself, R will print out the source code for that function!
@@ -616,7 +618,7 @@ If we type `ls` by itself, R will print out the source code for that function!
 ~~~
 ls
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -652,7 +654,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7f82290287c0>
+<bytecode: 0x7fc239302c78>
 <environment: namespace:base>
 ~~~
 {: .output}
@@ -663,7 +665,7 @@ You can use `rm` to delete objects you no longer need:
 ~~~
 rm(x)
 ~~~
-{: .r}
+{: .language-r}
 
 If you have lots of things in your environment and want to delete all of them,
 you can pass the results of `ls` to the `rm` function:
@@ -672,7 +674,7 @@ you can pass the results of `ls` to the `rm` function:
 ~~~
 rm(list = ls())
 ~~~
-{: .r}
+{: .language-r}
 
 In this case we've combined the two. Like the order of operations, anything
 inside the innermost parentheses is evaluated first, and so on.
@@ -687,7 +689,7 @@ If instead we use `<-`, there will be unintended side effects, or you may get an
 ~~~
 rm(list <- ls())
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -737,7 +739,7 @@ network). R and RStudio have functionality for managing packages:
 > 2widths
 > celsius2kelvin
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 > > ## Solution to challenge 1
 > >
@@ -749,14 +751,14 @@ network). R and RStudio have functionality for managing packages:
 > > MaxLength
 > > celsius2kelvin
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > >
 > > The following creates a hidden variable:
 > > 
 > > ~~~
 > > .mass
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > >
 > > The following will not be able to be used to create a variable
 > > 
@@ -765,7 +767,7 @@ network). R and RStudio have functionality for managing packages:
 > > min-length
 > > 2widths
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -781,7 +783,7 @@ network). R and RStudio have functionality for managing packages:
 > mass <- mass * 2.3
 > age <- age - 20
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 > > ## Solution to challenge 2
 > >
@@ -789,21 +791,21 @@ network). R and RStudio have functionality for managing packages:
 > > ~~~
 > > mass <- 47.5
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > This will give a value of 47.5 for the variable mass
 > >
 > > 
 > > ~~~
 > > age <- 122
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > This will give a value of 122 for the variable age
 > >
 > > 
 > > ~~~
 > > mass <- mass * 2.3
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > This will multiply the existing value of 47.5 by 2.3 to give a new value of
 > > 109.25 to the variable mass.
 > >
@@ -811,7 +813,7 @@ network). R and RStudio have functionality for managing packages:
 > > ~~~
 > > age <- age - 20
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > This will subtract 20 from the existing value of 122 to give a new value
 > > of 102 to the variable age.
 > {: .solution}
@@ -830,7 +832,7 @@ network). R and RStudio have functionality for managing packages:
 > > ~~~
 > > mass > age
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > 
 > > 
@@ -855,7 +857,7 @@ network). R and RStudio have functionality for managing packages:
 > > ~~~
 > > rm(age, mass)
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -872,6 +874,6 @@ network). R and RStudio have functionality for managing packages:
 > > install.packages("plyr")
 > > install.packages("gapminder")
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}

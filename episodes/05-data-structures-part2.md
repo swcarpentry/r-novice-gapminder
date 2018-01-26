@@ -41,10 +41,10 @@ new column, we need to start by making a new vector:
 
 
 ~~~
-age <- c(2,3,5,12)
+age <- c(2, 3, 5)
 cats
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -60,9 +60,26 @@ We can then add this as a column via:
 
 
 ~~~
-cats <- cbind(cats, age)
+cbind(cats, age)
 ~~~
-{: .r}
+{: .language-r}
+
+
+
+~~~
+    coat weight likes_string age
+1 calico    2.1            1   2
+2  black    5.0            0   3
+3  tabby    3.2            1   5
+~~~
+{: .output}
+Note that if we tried to add a vector of ages with a different number of entries than the number of rows in the dataframe, it would fail:
+
+~~~
+age <- c(2, 3, 5, 12)
+cbind(cats, age)
+~~~
+{: .language-r}
 
 
 
@@ -71,43 +88,59 @@ Error in data.frame(..., check.names = FALSE): arguments imply differing number 
 ~~~
 {: .error}
 
+
+
+~~~
+age <- c(2, 3)
+cbind(cats, age)
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in data.frame(..., check.names = FALSE): arguments imply differing number of rows: 3, 2
+~~~
+{: .error}
+
 Why didn't this work? Of course, R wants to see one element in our new column
 for every row in the table:
 
 
 ~~~
-cats
+nrow(cats)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
 ~~~
-    coat weight likes_string
-1 calico    2.1            1
-2  black    5.0            0
-3  tabby    3.2            1
+[1] 3
 ~~~
 {: .output}
 
 
 
 ~~~
-age <- c(4,5,8)
+length(age)
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] 2
+~~~
+{: .output}
+
+So for it to work we have to have `nrow(cats)` = `length(age)`. Let's store it into cats and overwite the contents of that data frame.
+
+
+~~~
+age <- c(2, 3, 5)
 cats <- cbind(cats, age)
-cats
 ~~~
-{: .r}
-
-
-
-~~~
-    coat weight likes_string age
-1 calico    2.1            1   4
-2  black    5.0            0   5
-3  tabby    3.2            1   8
-~~~
-{: .output}
+{: .language-r}
 
 Now how about adding rows - in this case, we saw last time that the rows of a
 data frame are made of lists:
@@ -117,7 +150,7 @@ data frame are made of lists:
 newRow <- list("tortoiseshell", 3.3, TRUE, 9)
 cats <- rbind(cats, newRow)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -136,7 +169,7 @@ one of these categories is rejected as nonsense (becomes NA).
 
 The warning is telling us that we unsuccessfully added 'tortoiseshell' to our
 *coat* factor, but 3.3 (a numeric), TRUE (a logical), and 9 (a numeric) were
-successfully added to *weight*, *likes_string*, and *age*, respectfully, since
+successfully added to *weight*, *likes_string*, and *age*, respectively, since
 those values are not factors. To successfully add a cat with a
 'tortoiseshell' *coat*, explicitly add 'tortoiseshell' as a *level* in the factor:
 
@@ -144,7 +177,7 @@ those values are not factors. To successfully add a cat with a
 ~~~
 levels(cats$coat)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -159,7 +192,7 @@ levels(cats$coat)
 levels(cats$coat) <- c(levels(cats$coat), 'tortoiseshell')
 cats <- rbind(cats, list("tortoiseshell", 3.3, TRUE, 9))
 ~~~
-{: .r}
+{: .language-r}
 
 Alternatively, we can change a factor column to a character vector; we lose the
 handy categories of the factor, but can subsequently add any word we want to the
@@ -169,7 +202,7 @@ column without babysitting the factor levels:
 ~~~
 str(cats)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -178,7 +211,7 @@ str(cats)
  $ coat        : Factor w/ 4 levels "black","calico",..: 2 1 3 NA 4
  $ weight      : num  2.1 5 3.2 3.3 3.3
  $ likes_string: int  1 0 1 1 1
- $ age         : num  4 5 8 9 9
+ $ age         : num  2 3 5 9 9
 ~~~
 {: .output}
 
@@ -188,7 +221,7 @@ str(cats)
 cats$coat <- as.character(cats$coat)
 str(cats)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -197,9 +230,22 @@ str(cats)
  $ coat        : chr  "calico" "black" "tabby" NA ...
  $ weight      : num  2.1 5 3.2 3.3 3.3
  $ likes_string: int  1 0 1 1 1
- $ age         : num  4 5 8 9 9
+ $ age         : num  2 3 5 9 9
 ~~~
 {: .output}
+
+> ## Challenge 1
+> Let's imagine that, like dogs, 1 human year is equivalent to 7 cat years. (The Purina company uses a [more sophisticated alogrithm](https://www.purina.co.uk/cats/key-life-stages/ageing/cats-age-in-human-years)). 
+> 1. Create a vector called `human.age` by multiplying `cats$age` by 7.
+> 2. Convert `human.age` to a factor.
+> 3. Convert `human.age` back to a numeric vector using the `as.numeric()` function. Now divide it by 7 to get back the original ages. Explain what happened.
+>
+> > ## Solution to Challenge 1
+> > 1. `human.age <- cats$age * 7`
+> > 2. `human.age <- factor(human.age)`. `as.factor(human.age)` works just as well.
+> > 3. `as.numeric(human.age)` yields `1 2 3 4 4` because factors are stored as integers (here, 1:4), each of which is associated with a label (here, 28, 35, 56, and 63). Converting the factor to a numeric vector gives us the underlying integers, not the labels. If we want the original numbers, we need to convert `human.age` to a character vector and then to a numeric vector (why does this work?). This comes up in real life when we accidentally include a character somewhere in a column of a .csv file that is supposed to only contain numbers, and forget to set `stringsAsFactors=FALSE` when we read in the data.
+> {: .solution}
+{: .challenge}
 
 ## Removing rows
 
@@ -211,15 +257,15 @@ added a garbage row:
 ~~~
 cats
 ~~~
-{: .r}
+{: .language-r}
 
 
 
 ~~~
            coat weight likes_string age
-1        calico    2.1            1   4
-2         black    5.0            0   5
-3         tabby    3.2            1   8
+1        calico    2.1            1   2
+2         black    5.0            0   3
+3         tabby    3.2            1   5
 4          <NA>    3.3            1   9
 5 tortoiseshell    3.3            1   9
 ~~~
@@ -231,15 +277,15 @@ We can ask for a data frame minus this offending row:
 ~~~
 cats[-4,]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
 ~~~
            coat weight likes_string age
-1        calico    2.1            1   4
-2         black    5.0            0   5
-3         tabby    3.2            1   8
+1        calico    2.1            1   2
+2         black    5.0            0   3
+3         tabby    3.2            1   5
 5 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
@@ -255,15 +301,15 @@ Alternatively, we can drop all rows with `NA` values:
 ~~~
 na.omit(cats)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
 ~~~
            coat weight likes_string age
-1        calico    2.1            1   4
-2         black    5.0            0   5
-3         tabby    3.2            1   8
+1        calico    2.1            1   2
+2         black    5.0            0   3
+3         tabby    3.2            1   5
 5 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
@@ -274,7 +320,7 @@ Let's reassign the output to `cats`, so that our changes will be permanent:
 ~~~
 cats <- na.omit(cats)
 ~~~
-{: .r}
+{: .language-r}
 
 ## Appending to a data frame
 
@@ -287,19 +333,19 @@ together with `rbind`:
 cats <- rbind(cats, cats)
 cats
 ~~~
-{: .r}
+{: .language-r}
 
 
 
 ~~~
             coat weight likes_string age
-1         calico    2.1            1   4
-2          black    5.0            0   5
-3          tabby    3.2            1   8
+1         calico    2.1            1   2
+2          black    5.0            0   3
+3          tabby    3.2            1   5
 5  tortoiseshell    3.3            1   9
-11        calico    2.1            1   4
-21         black    5.0            0   5
-31         tabby    3.2            1   8
+11        calico    2.1            1   2
+21         black    5.0            0   3
+31         tabby    3.2            1   5
 51 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
@@ -311,24 +357,24 @@ and R will automatically re-name them sequentially:
 rownames(cats) <- NULL
 cats
 ~~~
-{: .r}
+{: .language-r}
 
 
 
 ~~~
            coat weight likes_string age
-1        calico    2.1            1   4
-2         black    5.0            0   5
-3         tabby    3.2            1   8
+1        calico    2.1            1   2
+2         black    5.0            0   3
+3         tabby    3.2            1   5
 4 tortoiseshell    3.3            1   9
-5        calico    2.1            1   4
-6         black    5.0            0   5
-7         tabby    3.2            1   8
+5        calico    2.1            1   2
+6         black    5.0            0   3
+7         tabby    3.2            1   5
 8 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
 
-> ## Challenge 1
+> ## Challenge 2
 >
 > You can create a new data frame right from within R with the following syntax:
 > 
@@ -338,7 +384,7 @@ cats
 >                  y = c(TRUE, TRUE, FALSE),
 >                  stringsAsFactors = FALSE)
 > ~~~
-> {: .r}
+> {: .language-r}
 > Make a data frame that holds the following information for yourself:
 >
 > - first name
@@ -348,7 +394,7 @@ cats
 > Then use `rbind` to add an entry for the people sitting beside you.
 > Finally, use `cbind` to add a column with each person's answer to the question, "Is it time for coffee break?"
 >
-> > ## Solution to Challenge 1
+> > ## Solution to Challenge 2
 > > 
 > > ~~~
 > > df <- data.frame(first = c('Grace'),
@@ -358,20 +404,20 @@ cats
 > > df <- rbind(df, list('Marie', 'Curie', 238) )
 > > df <- cbind(df, coffeetime = c(TRUE,TRUE))
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
 ## Realistic example
 So far, you've seen the basics of manipulating data frames with our cat data;
-now, let's use those skills to digest a more realistic dataset. Lets read in the
+now, let's use those skills to digest a more realistic dataset. Let's read in the
 gapminder dataset that we downloaded previously:
 
 
 ~~~
 gapminder <- read.csv("data/gapminder-FiveYearData.csv")
 ~~~
-{: .r}
+{: .language-r}
 
 > ## Miscellaneous Tips
 >
@@ -385,14 +431,14 @@ gapminder <- read.csv("data/gapminder-FiveYearData.csv")
 > download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv", destfile = "data/gapminder-FiveYearData.csv")
 > gapminder <- read.csv("data/gapminder-FiveYearData.csv")
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 > * Alternatively, you can also read in files directly into R from the Internet by replacing the file paths with a web address in `read.csv`. One should note that in doing this no local copy of the csv file is first saved onto your computer. For example,
 > 
 > ~~~
 > gapminder <- read.csv("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv")
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 > * You can read directly from excel spreadsheets without
 > converting them to plain text first by using the [readxl](https://cran.r-project.org/web/packages/readxl/index.html) package.
@@ -405,7 +451,7 @@ out what the data looks like with `str`:
 ~~~
 str(gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -426,7 +472,7 @@ We can also examine individual columns of the data frame with our `typeof` funct
 ~~~
 typeof(gapminder$year)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -440,7 +486,7 @@ typeof(gapminder$year)
 ~~~
 typeof(gapminder$country)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -454,7 +500,7 @@ typeof(gapminder$country)
 ~~~
 str(gapminder$country)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -471,7 +517,7 @@ variables in gapminder, what do you think the following will produce, and why?
 ~~~
 length(gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -488,7 +534,7 @@ is a *list of vectors and factors*:
 ~~~
 typeof(gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -504,7 +550,7 @@ columns. To get the number of rows and columns in our dataset, try:
 ~~~
 nrow(gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -518,7 +564,7 @@ nrow(gapminder)
 ~~~
 ncol(gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -533,7 +579,7 @@ Or, both at once:
 ~~~
 dim(gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -549,7 +595,7 @@ ask for them later:
 ~~~
 colnames(gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -572,7 +618,7 @@ to start digging into our data proper. Check out the first few lines:
 ~~~
 head(gapminder)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -587,10 +633,37 @@ head(gapminder)
 ~~~
 {: .output}
 
+> ## Challenge 3
+>
+> It's good practice to also check the last few lines of your data and some in the middle. How would you do this?
+>
+> Searching for ones specifically in the middle isn't too hard but we could simply ask for a few lines at random. How would you code this?
+>
+> > ## Solution to Challenge 3
+> > To check the last few lines it's relatively simple as R already has a function for this:
+> > 
+> > ~~~
+> > tail(gapminder)
+> > tail(gapminder, n = 15)
+> > ~~~
+> > {: .r}
+> > 
+> > What about a few arbitrary rows just for sanity (or insanity depending on your view)?
+> > ## Tip: There are several ways to achieve this.
+> > The solution here presents one form using nested functions. i.e. a function passed as an argument to another function. This might sound like a new concept but you are already using it in fact.
+> > Remember my_dataframe[rows, cols] will print to screen your data frame with the number of rows and columns you asked for (although you might have asked for a range or named columns for example). How would you get the last row if you don't know how many rows your data frame has? R has a function for this. What about getting a (pseudorandom) sample? R also has a function for this.
+> > ~~~
+> > gapminder[sample(nrow(gapminder), 5), ]
+> > ~~~
+> > {: .r}
+> {: .solution}
+{: .challenge}
+
+
 To make sure our analysis is reproducible, we should put the code
 into a script file so we can come back to it later.
 
-> ## Challenge 2
+> ## Challenge 4
 >
 > Go to file -> new file -> R script, and write an R script
 > to load in the gapminder dataset. Put it in the `scripts/`
@@ -599,24 +672,24 @@ into a script file so we can come back to it later.
 > Run the script using the `source` function, using the file path
 > as its argument (or by pressing the "source" button in RStudio).
 >
-> > ## Solution to Challenge 2
-> > The contents of `script/load-gapminder.R`:
+> > ## Solution to Challenge 4
+> > The contents of `scripts/load-gapminder.R`:
 > > 
 > > ~~~
 > > download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv", destfile = "data/gapminder-FiveYearData.csv")
 > > gapminder <- read.csv(file = "data/gapminder-FiveYearData.csv")
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > To run the script and load the data into the `gapminder` variable:
 > > 
 > > ~~~
 > > source(file = "scripts/load-gapminder.R")
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
-> ## Challenge 3
+> ## Challenge 5
 >
 > Read the output of `str(gapminder)` again;
 > this time, use what you've learned about factors, lists and vectors,
@@ -624,7 +697,7 @@ into a script file so we can come back to it later.
 > to explain what everything that `str` prints out for gapminder means.
 > If there are any parts you can't interpret, discuss with your neighbors!
 >
-> > ## Solution to Challenge 3
+> > ## Solution to Challenge 5
 > >
 > > The object `gapminder` is a data frame with columns
 > > - `country` and `continent` are factors.
