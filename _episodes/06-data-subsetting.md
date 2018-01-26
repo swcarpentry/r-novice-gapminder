@@ -13,20 +13,19 @@ keypoints:
 - "Access individual values by location using `[]`."
 - "Access slices of data using `[low:high]`."
 - "Access arbitrary sets of data using `[c(...)]`."
-- "Use `which` to select subsets of data based on value."
+- "Use logical operations and logical vectors to access subsets of data."
 source: Rmd
 ---
 
 
 
-
-R has many powerful subset operators and mastering them will allow you to
+R has many powerful subset operators. Mastering them will allow you to
 easily perform complex operations on any kind of dataset.
 
 There are six different ways we can subset any kind of object, and three
 different subsetting operators for the different data structures.
 
-Let's start with the workhorse of R: atomic vectors.
+Let's start with the workhorse of R: a simple numeric vector.
 
 
 ~~~
@@ -34,7 +33,7 @@ x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 names(x) <- c('a', 'b', 'c', 'd', 'e')
 x
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -43,6 +42,11 @@ x
 5.4 6.2 7.1 4.8 7.5 
 ~~~
 {: .output}
+
+> ## Atomic vectors
+>
+> In R, simple vectors containing character strings, numbers, or logical values are called *atomic* vectors because they can't be further simplified.
+{: .callout}
 
 So now that we've created a dummy vector to play with, how do we get at its
 contents?
@@ -56,7 +60,7 @@ from one:
 ~~~
 x[1]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -70,7 +74,7 @@ x[1]
 ~~~
 x[4]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -80,7 +84,7 @@ x[4]
 ~~~
 {: .output}
 
-It may look different, but the square brackets operator is a function. For atomic vectors
+It may look different, but the square brackets operator is a function. For vectors
 (and matrices), it means "get me the nth element".
 
 We can ask for multiple elements at once:
@@ -89,7 +93,7 @@ We can ask for multiple elements at once:
 ~~~
 x[c(1, 3)]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -105,7 +109,7 @@ Or slices of the vector:
 ~~~
 x[1:4]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -120,7 +124,7 @@ the `:` operator creates a sequence of numbers from the left element to the righ
 ~~~
 1:4
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -134,7 +138,7 @@ the `:` operator creates a sequence of numbers from the left element to the righ
 ~~~
 c(1, 2, 3, 4)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -150,7 +154,7 @@ We can ask for the same element multiple times:
 ~~~
 x[c(1,1,3)]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -160,13 +164,12 @@ x[c(1,1,3)]
 ~~~
 {: .output}
 
-If we ask for a number outside of the vector, R will return missing values:
-
+If we ask for an index beyond the length of the vector, R will return a missing value:
 
 ~~~
 x[6]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -184,7 +187,7 @@ If we ask for the 0th element, we get an empty vector:
 ~~~
 x[0]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -195,7 +198,7 @@ named numeric(0)
 
 > ## Vector numbering in R starts at 1
 >
-> In many programming languages (C and python, for example), the first
+> In many programming languages (C and Python, for example), the first
 > element of a vector has an index of 0. In R, the first element is 1.
 {: .callout}
 
@@ -208,7 +211,7 @@ every element *except* for the one specified:
 ~~~
 x[-2]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -218,14 +221,13 @@ x[-2]
 ~~~
 {: .output}
 
-
 We can skip multiple elements:
 
 
 ~~~
 x[c(-1, -5)]  # or x[-c(1,5)]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -238,14 +240,14 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 > ## Tip: Order of operations
 >
 > A common trip up for novices occurs when trying to skip
-> slices of a vector. Most people first try to negate a
+> slices of a vector. It's natural to to try to negate a
 > sequence like so:
 >
 > 
 > ~~~
 > x[-1:3]
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 > This gives a somewhat cryptic error:
 >
@@ -255,18 +257,18 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 > ~~~
 > {: .error}
 >
-> But remember the order of operations. `:` is really a function, so
-> what happens is it takes its first argument as -1, and second as 3,
+> But remember the order of operations. `:` is really a function.
+> It takes its first argument as -1, and its second as 3,
 > so generates the sequence of numbers: `c(-1, 0, 1, 2, 3)`.
 >
 > The correct solution is to wrap that function call in brackets, so
-> that the `-` operator applies to the results:
+> that the `-` operator applies to the result:
 >
 > 
 > ~~~
 > x[-(1:3)]
 > ~~~
-> {: .r}
+> {: .language-r}
 > 
 > 
 > 
@@ -278,7 +280,7 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 {: .callout}
 
 
-To remove elements from a vector, we need to assign the results back
+To remove elements from a vector, we need to assign the result back
 into the variable:
 
 
@@ -286,7 +288,7 @@ into the variable:
 x <- x[-4]
 x
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -306,7 +308,7 @@ x
 > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > print(x)
 > ~~~
-> {: .r}
+> {: .language-r}
 > 
 > 
 > 
@@ -333,7 +335,7 @@ x
 > > ~~~
 > > x[2:4]
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > 
 > > 
@@ -346,7 +348,7 @@ x
 > > ~~~
 > > x[-c(1,5)]
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > 
 > > 
@@ -359,7 +361,7 @@ x
 > > ~~~
 > > x[c("b", "c", "d")]
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > 
 > > 
@@ -372,7 +374,7 @@ x
 > > ~~~
 > > x[c(2,3,4)]
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > 
 > > 
@@ -387,13 +389,14 @@ x
 
 ## Subsetting by name
 
-We can extract elements by using their name, instead of index:
+We can extract elements by using their name, instead of extracting by index:
 
 
 ~~~
+x <- c(a=5.4, b=6.2, c=7.1, d=4.8, e=7.5) # we can name a vector 'on the fly'
 x[c("a", "c")]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -407,341 +410,66 @@ This is usually a much more reliable way to subset objects: the
 position of various elements can often change when chaining together
 subsetting operations, but the names will always remain the same!
 
-Unfortunately we can't skip or remove elements so easily.
-
-To skip (or remove) a single named element:
-
-
-~~~
-x[-which(names(x) == "a")]
-~~~
-{: .r}
-
-
-
-~~~
-  b   c   d   e 
-6.2 7.1 4.8 7.5 
-~~~
-{: .output}
-
-The `which` function returns the indices of all `TRUE` elements of its argument.
-Remember that expressions evaluate before being passed to functions. Let's break
-this down so that its clearer what's happening.
-
-First this happens:
-
-
-~~~
-names(x) == "a"
-~~~
-{: .r}
-
-
-
-~~~
-[1]  TRUE FALSE FALSE FALSE FALSE
-~~~
-{: .output}
-
-The condition operator is applied to every name of the vector `x`. Only the
-first name is "a" so that element is TRUE.
-
-`which` then converts this to an index:
-
-
-~~~
-which(names(x) == "a")
-~~~
-{: .r}
-
-
-
-~~~
-[1] 1
-~~~
-{: .output}
-
-
-
-Only the first element is `TRUE`, so `which` returns 1. Now that we have indices
-the skipping works because we have a negative index!
-
-Skipping multiple named indices is similar, but uses a different comparison
-operator:
-
-
-~~~
-x[-which(names(x) %in% c("a", "c"))]
-~~~
-{: .r}
-
-
-
-~~~
-  b   d   e 
-6.2 4.8 7.5 
-~~~
-{: .output}
-
-The `%in%` goes through each element of its left argument, in this case the
-names of `x`, and asks, "Does this element occur in the second argument?".
-
-> ## Challenge 2
->
-> Run the following code to define vector `x` as above:
->
-> 
-> ~~~
-> x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
-> names(x) <- c('a', 'b', 'c', 'd', 'e')
-> print(x)
-> ~~~
-> {: .r}
-> 
-> 
-> 
-> ~~~
->   a   b   c   d   e 
-> 5.4 6.2 7.1 4.8 7.5 
-> ~~~
-> {: .output}
->
-> Given this vector `x`, what would you expect the following to do?
->
->~~~
-> x[-which(names(x) == "g")]
->~~~
->{: .r}
->
-> Try out this command and see what you get. Did this match your expectation?
-> Why did we get this result? (Tip: test out each part of the command on it's own - this is a useful debugging strategy)
->
-> Which of the following are true:
->
-> * A) if there are no `TRUE` values passed to `which`, an empty vector is returned
-> * B) if there are no `TRUE` values passed to `which`, an error message is shown
-> * C) `integer()` is an empty vector
-> * D) making an empty vector negative produces an "everything" vector
-> * E) `x[]` gives the same result as `x[integer()]`
->
-> > ## Solution to challenge 2
-> >
-> > A and C are correct.
-> >
-> > The `which` command returns the index of every `TRUE` value in its
-> > input. The `names(x) == "g"` command didn't return any `TRUE` values. Because
-> > there were no `TRUE` values passed to the `which` command, it returned an
-> > empty vector. Negating this vector with the minus sign didn't change its
-> > meaning. Because we used this empty vector to retrieve values from `x`, it
-> > produced an empty numeric vector. It was a `named numeric` empty vector
-> > because the vector type of x is "named numeric" since we assigned names to the
-> > values (try `str(x)` ).
-> {: .solution}
-{: .challenge}
-
-> ## Tip: Non-unique names
->
-> You should be aware that it is possible for multiple elements in a
-> vector to have the same name. (For a data frame, columns can have
-> the same name --- although R tries to avoid this --- but row names
-> must be unique.) Consider these examples:
->
->
->~~~
-> x <- 1:3
-> x
->~~~
->{: .r}
->
->
->
->~~~
->[1] 1 2 3
->~~~
->{: .output}
->
->
->
->~~~
-> names(x) <- c('a', 'a', 'a')
-> x
->~~~
->{: .r}
->
->
->
->~~~
->a a a 
->1 2 3 
->~~~
->{: .output}
->
->
->
->~~~
-> x['a']  # only returns first value
->~~~
->{: .r}
->
->
->
->~~~
->a 
->1 
->~~~
->{: .output}
->
->
->
->~~~
-> x[which(names(x) == 'a')]  # returns all three values
->~~~
->{: .r}
->
->
->
->~~~
->a a a 
->1 2 3 
->~~~
->{: .output}
-{: .callout}
-
-
-> ## Tip: Getting help for operators
->
-> Remember you can search for help on operators by wrapping them in quotes:
-> `help("%in%")` or `?"%in%"`.
->
-{: .callout}
-
-
-So why can't we use `==` like before? That's an excellent question.
-
-Let's take a look at the comparison component of this code:
-
-
-~~~
-names(x) == c('a', 'c')
-~~~
-{: .r}
-
-
-
-~~~
-Warning in names(x) == c("a", "c"): longer object length is not a multiple
-of shorter object length
-~~~
-{: .error}
-
-
-
-~~~
-[1]  TRUE FALSE  TRUE
-~~~
-{: .output}
-
-Obviously "c" is in the names of `x`, so why didn't this work? `==` works
-slightly differently than `%in%`. It will compare each element of its left argument
-to the corresponding element of its right argument.
-
-Here's a mock illustration:
-
-
-~~~
-c("a", "a", "a")  # names of x
-   |    |    |    # The elements == is comparing
-c("a", "c")
-~~~
-{: .r}
-
-When one vector is shorter than the other, it gets *recycled*:
-
-
-~~~
-c("a", "a", "a")  # names of x
-   |    |    |    # The elements == is comparing
-c("a", "c", "a")
-~~~
-{: .r}
-
-In this case R simply repeats `c("a", "c")` twice. Since the recycled "a"
-matches x again we got the output: TRUE FALSE TRUE
-
-If the longer vector length isn't a multiple of the shorter vector 
-length, then R will also print out a warning message.
-
-
-~~~
-names(x) == c('a', 'c', 'e')
-~~~
-{: .r}
-
-
-
-~~~
-[1]  TRUE FALSE FALSE
-~~~
-{: .output}
-
-This difference between `==` and `%in%` is important to remember,
-because it can introduce hard to find and subtle bugs!
-
 ## Subsetting through other logical operations
 
-We can also more simply subset through logical operations:
+We can also use any logical vector to subset:
 
 
 ~~~
-x[c(TRUE, TRUE, FALSE, FALSE)]
+x[c(FALSE, FALSE, TRUE, FALSE, TRUE)]
 ~~~
-{: .r}
-
-
-
-~~~
-a a 
-1 2 
-~~~
-{: .output}
-
-Note that in this case, the logical vector is also recycled to the
-length of the vector we're subsetting!
-
-
-~~~
-x[c(TRUE, FALSE)]
-~~~
-{: .r}
+{: .language-r}
 
 
 
 ~~~
-a a 
-1 3 
+  c   e 
+7.1 7.5 
 ~~~
 {: .output}
 
-Since comparison operators evaluate to logical vectors, we can also
-use them to succinctly subset vectors:
+Since comparison operators (e.g. `>`, `<`, `==`) evaluate to logical vectors, we can also
+use them to succinctly subset vectors: the following statement gives
+the same result as the previous one.
 
 
 ~~~
 x[x > 7]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
 ~~~
-named integer(0)
+  c   e 
+7.1 7.5 
+~~~
+{: .output}
+
+Breaking it down, this statement first evaluates `x>7`, generating
+a logical vector `c(FALSE, FALSE, TRUE, FALSE, TRUE)`, and then
+selects the elements of `x` corresponding to the `TRUE` values.
+
+We can use `==` to mimic the previous method of indexing by name
+(remember you have to use `==` rather than `=` for comparisons):
+
+
+~~~
+x[names(x) == "a"]
+~~~
+{: .language-r}
+
+
+
+~~~
+  a 
+5.4 
 ~~~
 {: .output}
 
 > ## Tip: Combining logical conditions
 >
-> There are many situations in which you will wish to combine multiple logical
+> We often want to combine multiple logical
 > criteria. For example, we might want to find all the countries that are
 > located in Asia **or** Europe **and** have life expectancies within a certain
 > range. Several operations for combining logical vectors exist in R:
@@ -751,14 +479,11 @@ named integer(0)
 >  * `|`, the "logical OR" operator: returns `TRUE`, if either the left or right
 >    (or both) are `TRUE`.
 >
-> The recycling rule applies with both of these, so `TRUE & c(TRUE, FALSE, TRUE)`
-> will compare the first `TRUE` on the left of the `&` sign with each of the
-> three conditions on the right.
->
-> You may sometimes see `&&` and `||` instead of `&` and `|`. These operators
-> do not use the recycling rule: they only look at the first element of each
-> vector and ignore the remaining elements. The longer operators are mainly used
-> in programming, rather than data analysis.
+> You may sometimes see `&&` and `||` instead of `&` and `|`. These two-character operators
+> only look at the first element of each vector and ignore the
+> remaining elements. In general you should not use the two-character
+> operators in data analysis; save them
+> for programming, i.e. deciding whether to execute a statement.
 >
 >  * `!`, the "logical NOT" operator: converts `TRUE` to `FALSE` and `FALSE` to
 >    `TRUE`. It can negate a single logical condition (eg `!TRUE` becomes
@@ -781,7 +506,7 @@ named integer(0)
 > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > print(x)
 > ~~~
-> {: .r}
+> {: .language-r}
 > 
 > 
 > 
@@ -800,7 +525,7 @@ named integer(0)
 > > x_subset <- x[x<7 & x>4]
 > > print(x_subset)
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > 
 > > 
@@ -812,15 +537,257 @@ named integer(0)
 > {: .solution}
 {: .challenge}
 
+
+> ## Tip: Non-unique names
+>
+> You should be aware that it is possible for multiple elements in a
+> vector to have the same name. (For a data frame, columns can have
+> the same name --- although R tries to avoid this --- but row names
+> must be unique.) Consider these examples:
+>
+>
+>~~~
+> x <- 1:3
+> x
+>~~~
+>{: .language-r}
+>
+>
+>
+>~~~
+>[1] 1 2 3
+>~~~
+>{: .output}
+>
+>
+>
+>~~~
+> names(x) <- c('a', 'a', 'a')
+> x
+>~~~
+>{: .language-r}
+>
+>
+>
+>~~~
+>a a a 
+>1 2 3 
+>~~~
+>{: .output}
+>
+>
+>
+>~~~
+> x['a']  # only returns first value
+>~~~
+>{: .language-r}
+>
+>
+>
+>~~~
+>a 
+>1 
+>~~~
+>{: .output}
+>
+>
+>
+>~~~
+> x[names(x) == 'a']  # returns all three values
+>~~~
+>{: .language-r}
+>
+>
+>
+>~~~
+>a a a 
+>1 2 3 
+>~~~
+>{: .output}
+{: .callout}
+
+> ## Tip: Getting help for operators
+>
+> Remember you can search for help on operators by wrapping them in quotes:
+> `help("%in%")` or `?"%in%"`.
+>
+{: .callout}
+
+## Skipping named elements
+
+Skipping or removing named elements is a little harder. If we try to skip one named element by negating the string, R complains (slightly obscurely) that it doesn't know how to take the negative of a string:
+
+
+~~~
+x <- c(a=5.4, b=6.2, c=7.1, d=4.8, e=7.5) # we start again by naming a vector 'on the fly'
+x[-"a"]
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in -"a": invalid argument to unary operator
+~~~
+{: .error}
+
+However, we can use the `!=` (not-equals) operator to construct a logical vector that will do what we want:
+
+
+~~~
+x[names(x) != "a"]
+~~~
+{: .language-r}
+
+
+
+~~~
+  b   c   d   e 
+6.2 7.1 4.8 7.5 
+~~~
+{: .output}
+
+Skipping multiple named indices is a little bit harder still. Suppose we want to drop the `"a"` and `"c"` elements, so we try this:
+
+
+~~~
+x[names(x)!=c("a","c")]
+~~~
+{: .language-r}
+
+
+
+~~~
+Warning in names(x) != c("a", "c"): longer object length is not a multiple
+of shorter object length
+~~~
+{: .error}
+
+
+
+~~~
+  b   c   d   e 
+6.2 7.1 4.8 7.5 
+~~~
+{: .output}
+
+R did *something*, but it gave us a warning that we ought to pay attention to - and it apparently *gave us the wrong answer* (the `"c"` element is still included in the vector)!
+
+So what does `!=` actually do in this case? That's an excellent question.
+
+### Recycling
+
+Let's take a look at the comparison component of this code:
+
+
+~~~
+names(x) != c("a", "c")
+~~~
+{: .language-r}
+
+
+
+~~~
+Warning in names(x) != c("a", "c"): longer object length is not a multiple
+of shorter object length
+~~~
+{: .error}
+
+
+
+~~~
+[1] FALSE  TRUE  TRUE  TRUE  TRUE
+~~~
+{: .output}
+
+Why does R give `FALSE` as the third element of this vector, when `names(x)[3] != "c"` is obviously false?
+When you use `!=`, R tries to compare each element
+of the left argument with the corresponding element of its right
+argument. What happens when you compare vectors of different lengths?
+
+![Inequality testing](../fig/06-rmd-inequality.1.png)
+
+When one vector is shorter than the other, it gets *recycled*:
+
+![Inequality testing: results of recycling](../fig/06-rmd-inequality.2.png)
+
+In this case R **repeats** `c("a", "c")` as many times as necessary to match `names(x)`, i.e. we get `c("a","c","a","c","a")`. Since the recycled `"a"`
+doesn't match the third element of `names(x)`, the value of `!=` is `FALSE`.
+Because in this case the longer vector length (5) isn't a multiple of the shorter vector length (2), R printed a warning message. If we had been unlucky and `names(x)` had contained six elements, R would *silently* have done the wrong thing (i.e., not what we intended it to do). This recycling rule can can introduce hard-to-find and subtle bugs!
+
+The way to get R to do what we really want (match *each* element of the left argument with *all* of the elements of the right argument) it to use the `%in%` operator. The `%in%` operator goes through each element of its left argument, in this case the names of `x`, and asks, "Does this element occur in the second argument?". Here, since we want to *exclude* values, we also need a `!` operator to change "in" to "not in":
+
+
+~~~
+x[! names(x) %in% c("a","c") ]
+~~~
+{: .language-r}
+
+
+
+~~~
+  b   d   e 
+6.2 4.8 7.5 
+~~~
+{: .output}
+
+> ## Challenge 2
+>
+> Selecting elements of a vector that match any of a list of components
+> is a very common data analysis task. For example, the gapminder data set
+> contains `country` and `continent` variables, but no information between
+> these two scales. Suppose we want to pull out information from southeast
+> Asia: how do we set up an operation to produce a logical vector that
+> is `TRUE` for all of the countries in southeast Asia and `FALSE` otherwise?
+>
+> Suppose you have these data:
+> 
+> ~~~
+> seAsia <- c("Myanmar","Thailand","Cambodia","Vietnam","Laos")
+> ## read in the gapminder data that we downloaded in episode 2
+> gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
+> ## extract the `country` column from a data frame (we'll see this later);
+> ## convert from a factor to a character;
+> ## and get just the non-repeated elements
+> countries <- unique(as.character(gapminder$country))
+> ~~~
+> {: .language-r}
+>
+> There's a wrong way (using only `==`), which will give you a warning;
+> a clunky way (using the logical operators `==` and `|`); and
+> an elegant way (using `%in%`). See whether you can come up with all three
+> and explain how they (don't) work.
+> 
+> > ## Solution to challenge 2
+> >
+> > - The **wrong** way to do this problem is `countries==seAsia`. This
+> > gives a warning (`"In countries == seAsia : longer object length is not a multiple of shorter object length"`) and the wrong answer (a vector of all
+> > `FALSE` values), because none of the recycled values of `seAsia` happen
+> > to line up correctly with matching values in `country`.
+> > - The **clunky** (but technically correct) way to do this problem is
+> > 
+> > ~~~
+> >  (countries=="Myanmar" | countries=="Thailand" |
+> >  countries=="Cambodia" | countries == "Vietnam" | countries=="Laos")
+> > ~~~
+> > {: .language-r}
+> > (or `countries==seAsia[1] | countries==seAsia[2] | ...`). This
+> > gives the correct values, but hopefully you can see how awkward it
+> > is (what if we wanted to select countries from a much longer list?).
+> > - The best way to do this problem is `countries %in% seAsia`, which
+> > is both correct and easy to type (and read).
+> {: .solution}
+{: .challenge}
+
 ## Handling special values
 
-At some point you will encounter functions in R which cannot handle missing, infinite,
+At some point you will encounter functions in R that cannot handle missing, infinite,
 or undefined data.
 
 There are a number of special functions you can use to filter out this data:
 
  * `is.na` will return all positions in a vector, matrix, or data.frame
-   containing `NA`.
+   containing `NA` (or `NaN`)
  * likewise, `is.nan`, and `is.infinite` will do the same for `NaN` and `Inf`.
  * `is.finite` will return all positions in a vector, matrix, or data.frame
    that do not contain `NA`, `NaN` or `Inf`.
@@ -838,7 +805,7 @@ Factor subsetting works the same way as vector subsetting.
 f <- factor(c("a", "a", "b", "c", "c", "d"))
 f[f == "a"]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -853,7 +820,7 @@ Levels: a b c d
 ~~~
 f[f %in% c("b", "c")]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -868,7 +835,7 @@ Levels: a b c d
 ~~~
 f[1:3]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -878,14 +845,14 @@ Levels: a b c d
 ~~~
 {: .output}
 
-An important note is that skipping elements will not remove the level
+Skipping elements will not remove the level
 even if no more of that category exists in the factor:
 
 
 ~~~
 f[-3]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -907,7 +874,7 @@ set.seed(1)
 m <- matrix(rnorm(6*4), ncol=4, nrow=6)
 m[3:4, c(3,1)]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -925,7 +892,7 @@ rows or columns respectively:
 ~~~
 m[, c(3,4)]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -947,7 +914,7 @@ to a vector:
 ~~~
 m[3,]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -963,7 +930,7 @@ If you want to keep the output as a matrix, you need to specify a *third* argume
 ~~~
 m[3, , drop=FALSE]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -980,7 +947,7 @@ R will throw an error:
 ~~~
 m[, c(3,6)]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1004,7 +971,7 @@ also subset using only one argument:
 ~~~
 m[5]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1022,7 +989,7 @@ vector are arranged column-wise:
 ~~~
 matrix(1:6, nrow=2, ncol=3)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1039,7 +1006,7 @@ If you wish to populate the matrix by row, use `byrow=TRUE`:
 ~~~
 matrix(1:6, nrow=2, ncol=3, byrow=TRUE)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1062,7 +1029,7 @@ instead of their row and column indices.
 > m <- matrix(1:18, nrow=3, ncol=6)
 > print(m)
 > ~~~
-> {: .r}
+> {: .language-r}
 > 
 > 
 > 
@@ -1094,8 +1061,7 @@ instead of their row and column indices.
 ## List subsetting
 
 Now we'll introduce some new subsetting operators. There are three functions
-used to subset lists. `[`, as we've seen for atomic vectors and matrices,
-as well as `[[` and `$`.
+used to subset lists. We've already seen these when learning about atomic vectors and matrices:  `[`, `[[`, and `$`.
 
 Using `[` will always return a list. If you want to *subset* a list, but not
 *extract* an element, then you will likely use `[`.
@@ -1105,7 +1071,7 @@ Using `[` will always return a list. If you want to *subset* a list, but not
 xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
 xlist[1]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1117,7 +1083,7 @@ $a
 
 This returns a *list with one element*.
 
-We can subset elements of a list exactly the same was as atomic
+We can subset elements of a list exactly the same way as atomic
 vectors using `[`. Comparison operations however won't work as
 they're not recursive, they will try to condition on the data structures
 in each element of the list, not the individual elements within those
@@ -1127,7 +1093,7 @@ data structures.
 ~~~
 xlist[1:2]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1147,7 +1113,7 @@ bracket function: `[[`.
 ~~~
 xlist[[1]]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1164,7 +1130,7 @@ You can't extract more than one element at once:
 ~~~
 xlist[[1:2]]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1179,7 +1145,7 @@ Nor use it to skip elements:
 ~~~
 xlist[[-1]]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1194,7 +1160,7 @@ But you can use names to both subset and extract elements:
 ~~~
 xlist[["a"]]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1209,7 +1175,7 @@ The `$` function is a shorthand way for extracting elements by name:
 ~~~
 xlist$data
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1231,7 +1197,7 @@ xlist$data
 > ~~~
 > xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 > Using your knowledge of both list and vector subsetting, extract the number 2 from xlist.
 > Hint: the number 2 is contained within the "b" item in the list.
@@ -1242,7 +1208,7 @@ xlist$data
 > > ~~~
 > > xlist$b[2]
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > 
 > > 
@@ -1254,7 +1220,7 @@ xlist$data
 > > ~~~
 > > xlist[[2]][2]
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > 
 > > 
@@ -1266,7 +1232,7 @@ xlist$data
 > > ~~~
 > > xlist[["b"]][2]
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > 
 > > 
@@ -1285,7 +1251,7 @@ xlist$data
 > ~~~
 > mod <- aov(pop ~ lifeExp, data=gapminder)
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 > Extract the residual degrees of freedom (hint: `attributes()` will help you)
 >
@@ -1295,12 +1261,12 @@ xlist$data
 > > ~~~
 > > attributes(mod) ## `df.residual` is one of the names of `mod`
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > ~~~
 > > mod$df.residual
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -1310,14 +1276,14 @@ xlist$data
 Remember the data frames are lists underneath the hood, so similar rules
 apply. However they are also two dimensional objects:
 
-`[` with one argument will act the same was as for lists, where each list
+`[` with one argument will act the same way as for lists, where each list
 element corresponds to a column. The resulting object will be a data frame:
 
 
 ~~~
 head(gapminder[3])
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1338,7 +1304,7 @@ Similarly, `[[` will act to extract *a single column*:
 ~~~
 head(gapminder[["lifeExp"]])
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1353,7 +1319,7 @@ And `$` provides a convenient shorthand to extract columns by name:
 ~~~
 head(gapminder$year)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1368,7 +1334,7 @@ With two arguments, `[` behaves the same way as for matrices:
 ~~~
 gapminder[1:3,]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1387,7 +1353,7 @@ the elements are mixed types):
 ~~~
 gapminder[3,]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1410,7 +1376,7 @@ be changed with the third argument, `drop = FALSE`).
 >    ~~~
 >    gapminder[gapminder$year = 1957,]
 >    ~~~
->    {: .r}
+>    {: .language-r}
 >
 > 2. Extract all columns except 1 through to 4
 >
@@ -1418,7 +1384,7 @@ be changed with the third argument, `drop = FALSE`).
 >    ~~~
 >    gapminder[,-1:4]
 >    ~~~
->    {: .r}
+>    {: .language-r}
 >
 > 3. Extract the rows where the life expectancy is longer the 80 years
 >
@@ -1426,7 +1392,7 @@ be changed with the third argument, `drop = FALSE`).
 >    ~~~
 >    gapminder[gapminder$lifeExp > 80]
 >    ~~~
->    {: .r}
+>    {: .language-r}
 >
 > 4. Extract the first row, and the fourth and fifth columns
 >   (`lifeExp` and `gdpPercap`).
@@ -1435,7 +1401,7 @@ be changed with the third argument, `drop = FALSE`).
 >    ~~~
 >    gapminder[1, 4, 5]
 >    ~~~
->    {: .r}
+>    {: .language-r}
 >
 > 5. Advanced: extract rows that contain information for the years 2002
 >    and 2007
@@ -1444,7 +1410,7 @@ be changed with the third argument, `drop = FALSE`).
 >    ~~~
 >    gapminder[gapminder$year == 2002 | 2007,]
 >    ~~~
->    {: .r}
+>    {: .language-r}
 >
 > > ## Solution to challenge 7
 > >
@@ -1457,7 +1423,7 @@ be changed with the third argument, `drop = FALSE`).
 > >    # gapminder[gapminder$year = 1957,]
 > >    gapminder[gapminder$year == 1957,]
 > >    ~~~
-> >    {: .r}
+> >    {: .language-r}
 > >
 > > 2. Extract all columns except 1 through to 4
 > >
@@ -1466,7 +1432,7 @@ be changed with the third argument, `drop = FALSE`).
 > >    # gapminder[,-1:4]
 > >    gapminder[,-c(1:4)]
 > >    ~~~
-> >    {: .r}
+> >    {: .language-r}
 > >
 > > 3. Extract the rows where the life expectancy is longer the 80 years
 > >
@@ -1475,7 +1441,7 @@ be changed with the third argument, `drop = FALSE`).
 > >    # gapminder[gapminder$lifeExp > 80]
 > >    gapminder[gapminder$lifeExp > 80,]
 > >    ~~~
-> >    {: .r}
+> >    {: .language-r}
 > >
 > > 4. Extract the first row, and the fourth and fifth columns
 > >   (`lifeExp` and `gdpPercap`).
@@ -1485,7 +1451,7 @@ be changed with the third argument, `drop = FALSE`).
 > >    # gapminder[1, 4, 5]
 > >    gapminder[1, c(4, 5)]
 > >    ~~~
-> >    {: .r}
+> >    {: .language-r}
 > >
 > > 5. Advanced: extract rows that contain information for the years 2002
 > >    and 2007
@@ -1496,7 +1462,7 @@ be changed with the third argument, `drop = FALSE`).
 > >     gapminder[gapminder$year == 2002 | gapminder$year == 2007,]
 > >     gapminder[gapminder$year %in% c(2002, 2007),]
 > >     ~~~
-> >     {: .r}
+> >     {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -1518,6 +1484,6 @@ be changed with the third argument, `drop = FALSE`).
 > > ~~~
 > > gapminder_small <- gapminder[c(1:9, 19:23),]
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}

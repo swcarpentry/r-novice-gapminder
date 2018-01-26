@@ -5,14 +5,12 @@ exercises: 10
 questions:
 - "How can I manage my projects in R?"
 objectives:
-- To be able to create self-contained projects in RStudio
-- To be able to use git from within RStudio
+- Create self-contained projects in RStudio
 keypoints:
 - "Use RStudio to create and manage projects with consistent layout."
 - "Treat raw data as read-only."
 - "Treat generated output as disposable."
 - "Separate function definition and application."
-- "Use version control."
 source: Rmd
 ---
 
@@ -69,7 +67,7 @@ project.
 > 2. Click "New Directory".
 > 3. Click "Empty Project".
 > 4. Type in the name of the directory to store your project, e.g. "my_project".
-> 5. Make sure that the checkbox for "Create a git repository" is selected.
+> 5. If available, select the checkbox for "Create a git repository."
 > 6. Click the "Create Project" button.
 {: .challenge}
 
@@ -144,15 +142,11 @@ get shared between projects.
 
 ### Separate function definition and application
 
-The most effective way I find to work in R, is to play around in the interactive
-session, then copy commands across to a script file when I'm sure they work and
-do what I want. You can also save all the commands you've entered using the
-`history` command, but I don't find it useful because when I'm typing its 90%
-trial and error.
+One of the more effective ways to work with R is to start by writing the code you want to run directly in an .R script, and then running the selected lines (either using the keyboard shortcuts in RStudio or clicking the "Run" button) in the interactive R console.
 
-When your project is new and shiny, the script file usually contains many lines
+When your project is in its early stages, the initial .R script file usually contains many lines
 of directly executed code. As it matures, reusable chunks get pulled into their
-own functions. It's a good idea to separate these into separate folders; one
+own functions. It's a good idea to separate these functions into two separate folders; one
 to store useful functions that you'll reuse across analyses and projects, and
 one to store the analysis scripts.
 
@@ -215,39 +209,6 @@ Now we have a good directory structure we will now place/save the data file in t
 
 ### Version Control
 
-We also set up our project to integrate with git, putting it under version control.
-RStudio has a nicer interface to git than shell, but is very limited in what it can
-do, so you will find yourself occasionally needing to use the shell. Let's go
-through and make an initial commit of our template files.
+It is important to use version control with projects.  Go [here](http://swcarpentry.github.io/git-novice/14-supplemental-rstudio/) for a good lesson which describes using Git with R Studio.
 
-The workspace/history pane has a tab for "Git". We can stage each file by checking the box:
-you will see a green "A" next to stage files and folders, and yellow question marks next to
-files or folders git doesn't know about yet. RStudio also nicely shows you the difference
-between files from different commits.
 
-> ## Tip: versioning disposable output
->
-> Generally you do not want to version disposable output (or read-only data).
-> You should modify the `.gitignore` file to tell git to ignore these files
-> and directories.
-{: .callout}
-
-> ## Challenge 3
->
-> 1. Create a directory within your project called `graphs`.
-> 2. Modify the `.gitignore` file to contain `graphs/`
-> so that this disposable output isn't versioned.
->
-> Add the newly created folders to version control using
-> the git interface.
->
-> > ## Solution to Challenge 3
-> >
-> > This can be done with the command line:
-> > ```
-> > $ mkdir graphs
-> > $ echo "graphs/" >> .gitignore
-> > ```
-> > {: . shell}
-> {: .solution}
-{: .challenge}

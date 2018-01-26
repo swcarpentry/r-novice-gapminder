@@ -331,15 +331,21 @@ elements. The x-axis is too cluttered, and the y axis should read
 "Life expectancy", rather than the column name in the data frame.
 
 We can do this by adding a couple of different layers. The **theme** layer
-controls the axis text, and overall text size, and there are special layers
-for changing the axis labels. To change the legend title, we need to use the
-**scales** layer.
+controls the axis text, and overall text size. Labels for the axes, plot 
+title and any legend can be set using the `labs` function. Legend titles
+are set using the same names we used in the `aes` specification. Thus below
+the color legend title is set using `color = "Continent"`, while the title 
+of a fill legend would be set using `fill = "MyTitle"`. 
 
 ```{r theme}
 ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country) +
-  xlab("Year") + ylab("Life expectancy") + ggtitle("Figure 1") +
-  scale_colour_discrete(name="Continent") +
+  labs(
+    x = "Year",              # x axis title
+    y = "Life expectancy",   # y axis title
+    title = "Figure 1",      # main title of figure
+    color = "Continent"      # title of legend
+  ) +
   theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
 ```
 

@@ -24,7 +24,7 @@ using the command `ggsave`. As a refresher:
 ~~~
 ggsave("My_most_recent_plot.pdf")
 ~~~
-{: .r}
+{: .language-r}
 
 You can save a plot from within RStudio using the 'Export' button
 in the 'Plot' window. This will give you the option of saving as a
@@ -45,13 +45,14 @@ using the arguments to this function.
 ~~~
 pdf("Life_Exp_vs_time.pdf", width=12, height=4)
 ggplot(data=gapminder, aes(x=year, y=lifeExp, colour=country)) +
-  geom_line()
+  geom_line() +
+  theme(legend.position = "none")
 
 # You then have to make sure to turn off the pdf device!
 
 dev.off()
 ~~~
-{: .r}
+{: .language-r}
 
 Open up this document and have a look.
 
@@ -60,6 +61,20 @@ Open up this document and have a look.
 > Rewrite your 'pdf' command to print a second
 > page in the pdf, showing a facet plot (hint: use `facet_grid`)
 > of the same data with one panel per continent.
+> > ## Solution to challenge 1
+> >
+> > 
+> > ~~~
+> > pdf("Life_Exp_vs_time.pdf", width = 12, height = 4)
+> > p <- ggplot(data = gapminder, aes(x = year, y = lifeExp, colour = country)) +
+> >   geom_line() +
+> >   theme(legend.position = "none")
+> > p
+> > p + facet_grid(. ~continent)
+> > dev.off()
+> > ~~~
+> > {: .language-r}
+> {: .solution}
 {: .challenge}
 
 
@@ -85,7 +100,7 @@ write.table(aust_subset,
   sep=","
 )
 ~~~
-{: .r}
+{: .language-r}
 
 Let's switch back to the shell to take a look at the data to make sure it looks
 OK:
@@ -94,7 +109,7 @@ OK:
 ~~~
 head cleaned-data/gapminder-aus.csv
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -124,7 +139,7 @@ behaviour.
 ~~~
 ?write.table
 ~~~
-{: .r}
+{: .language-r}
 
 By default R will wrap character vectors with quotation marks
 when writing out to file. It will also write out the row and
@@ -140,7 +155,7 @@ write.table(
   sep=",", quote=FALSE, row.names=FALSE
 )
 ~~~
-{: .r}
+{: .language-r}
 
 Now lets look at the data again using our shell skills:
 
@@ -148,7 +163,7 @@ Now lets look at the data again using our shell skills:
 ~~~
 head cleaned-data/gapminder-aus.csv
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -176,6 +191,18 @@ That looks better!
 >
 > Use this script to write out the new subset to a file
 > in the `cleaned-data/` directory.
+> > ## Solution to challenge 2
+> >
+> > 
+> > ~~~
+> > write.table(
+> >   gapminder[gapminder$year > 1990, ],
+> >   file = "cleaned-data/gapminder-after1990.csv",
+> >   sep = ",", quote = FALSE, row.names = FALSE
+> > )
+> > ~~~
+> > {: .language-r}
+> {: .solution}
 {: .challenge}
 
 
