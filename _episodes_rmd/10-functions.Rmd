@@ -272,7 +272,7 @@ fahr_to_kelvin(temp = as.factor(32))
 > > }
 > > ```
 > {: .solution}
-{: .challenge}```
+{: .challenge}
 
 ## More on combining functions
 
