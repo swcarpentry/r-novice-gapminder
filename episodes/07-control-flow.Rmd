@@ -380,7 +380,7 @@ output_vector2
 
 > ## Challenge 4
 >
-> Modify the script from Challenge 4 to loop over each
+> Modify the script from Challenge 3 to loop over each
 > country. This time print out whether the life expectancy is
 > smaller than 50, between 50 and 70, or greater than 70.
 >
@@ -415,7 +415,7 @@ output_vector2
 > tests whether the country starts with a 'B', and graphs life expectancy
 > against time as a line graph if the mean life expectancy is under 50 years.
 >
-> > Solution for Challenge 5
+> > ## Solution for Challenge 5
 > >
 > > We will use the `grep` command that was introduced in the Unix Shell lesson to find countries that start with "B."
 > > Lets understand how to do this first.
