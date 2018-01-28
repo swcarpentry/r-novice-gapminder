@@ -98,8 +98,10 @@ interactive R console.
 > RStudio offers you great flexibility in running code from within the editor
 > window. There are buttons, menu choices, and keyboard shortcuts. To run the
 > current line, you can 1. click on the `Run` button above the editor panel,
-> or 2. select "Run Lines" from the "Code" menu, or 3. hit Ctrl-Enter in Windows
-> or Linux or Command-Enter on OS X. (This shortcut can also be seen by hovering
+> or 2. select "Run Lines" from the "Code" menu, or 3. hit
+> <kbd>Ctrl</kbd>+<kbd>Return</kbd> in Windows or Linux or
+> <kbd>&#8984;</kbd>+<kbd>Return</kbd> on OS X. (This shortcut can also 
+> be seen by hovering
 > the mouse over the button). To run a block of code, select it and then `Run`.
 > If you have modified a line of code within a block of code you have just run,
 > there is no need to reselct the section and `Run`, you can use the next button
@@ -163,8 +165,8 @@ prompt.
 > ## Tip: Cancelling commands
 >
 > If you're using R from the commandline instead of from within RStudio,
-> you need to use `Ctrl+C` instead of `Esc` to cancel the command. This
-> applies to Mac users as well!
+> you need to use <kbd>Ctrl</kbd>+<kbd>C</kbd> instead of <kbd>Esc</kbd>
+> to cancel the command. This applies to Mac users as well!
 >
 > Cancelling a command isn't only useful for killing incomplete commands:
 > you can also use it to tell R to stop running code (for example if it's
@@ -530,6 +532,52 @@ But this is much less common among R users.  The most important thing is to
 where it is less confusing to use `<-` than `=`, and it is the most common
 symbol used in the community. So the recommendation is to use `<-`.
 
+> ## Challenge 1
+>
+> Which of the following are valid R variable names?
+> 
+> ~~~
+> min_height
+> max.height
+> _age
+> .mass
+> MaxLength
+> min-length
+> 2widths
+> celsius2kelvin
+> ~~~
+> {: .language-r}
+>
+> > ## Solution to challenge 1
+> >
+> > The following can be used as R variables:
+> > 
+> > ~~~
+> > min_height
+> > max.height
+> > MaxLength
+> > celsius2kelvin
+> > ~~~
+> > {: .language-r}
+> >
+> > The following creates a hidden variable:
+> > 
+> > ~~~
+> > .mass
+> > ~~~
+> > {: .language-r}
+> >
+> > The following will not be able to be used to create a variable
+> > 
+> > ~~~
+> > _age
+> > min-length
+> > 2widths
+> > ~~~
+> > {: .language-r}
+> {: .solution}
+{: .challenge}
+
 ## Vectorization
 
 One final thing to be aware of is that R is *vectorized*, meaning that
@@ -654,7 +702,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7fc239302c78>
+<bytecode: 0x7fa4eb461878>
 <environment: namespace:base>
 ~~~
 {: .output}
@@ -724,52 +772,6 @@ network). R and RStudio have functionality for managing packages:
 * You can update installed packages by typing `update.packages()`
 * You can remove a package with `remove.packages("packagename")`
 * You can make a package available for use with `library(packagename)`
-
-> ## Challenge 1
->
-> Which of the following are valid R variable names?
-> 
-> ~~~
-> min_height
-> max.height
-> _age
-> .mass
-> MaxLength
-> min-length
-> 2widths
-> celsius2kelvin
-> ~~~
-> {: .language-r}
->
-> > ## Solution to challenge 1
-> >
-> > The following can be used as R variables:
-> > 
-> > ~~~
-> > min_height
-> > max.height
-> > MaxLength
-> > celsius2kelvin
-> > ~~~
-> > {: .language-r}
-> >
-> > The following creates a hidden variable:
-> > 
-> > ~~~
-> > .mass
-> > ~~~
-> > {: .language-r}
-> >
-> > The following will not be able to be used to create a variable
-> > 
-> > ~~~
-> > _age
-> > min-length
-> > 2widths
-> > ~~~
-> > {: .language-r}
-> {: .solution}
-{: .challenge}
 
 > ## Challenge 2
 >
