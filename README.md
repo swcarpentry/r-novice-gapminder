@@ -28,10 +28,14 @@ usability.
 
 Maintainers:
 
+* [David Mawdsley][mawdsley_david]
+* [Jeff Oliver][oliver_jeffrey]
 * [Tom Wright][wright_tom]
 * [Naupaka Zimmerman][zimmerman_naupaka]
 
 [gapminder]: http://www.gapminder.org/
 [lesson-example]: https://swcarpentry.github.io/lesson-example
-[wright_tom]: http://software-carpentry.org/team/#wright_thomas
-[zimmerman_naupaka]: http://software-carpentry.org/team/#zimmerman_naupaka
+[mawdsley_david]: https://software-carpentry.org/team/#mawdsley_david
+[oliver_jeffrey]: https://software-carpentry.org/team/#oliver_jeffrey
+[wright_tom]: https://software-carpentry.org/team/#wright_thomas
+[zimmerman_naupaka]: https://software-carpentry.org/team/#zimmerman_naupaka
