@@ -164,7 +164,7 @@ cats <- na.omit(cats)
 ## Appending to a data frame
 
 The key to remember when adding data to a data frame is that *columns are
-vectors or factors, and rows are lists.* We can also glue two data frames
+vectors and rows are lists.* We can also glue two data frames
 together with `rbind`:
 
 ```{r}
