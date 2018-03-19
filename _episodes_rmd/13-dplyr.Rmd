@@ -256,7 +256,7 @@ expectency per continent:
 ```{r}
 gapminder %>%
     group_by(continent) %>%
-    summarize(se_pop = sd(lifeExp)/sqrt(n()))
+    summarize(se_le = sd(lifeExp)/sqrt(n()))
 ```
 
 You can also chain together several summary operations; in this case calculating the `minimum`, `maximum`, `mean` and `se` of each continent's per-country life-expectancy:
