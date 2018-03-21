@@ -58,7 +58,7 @@ my_sum <- function(a, b) {
   return(the_sum)
 }
 ~~~
-{: .r}
+{: .language-r}
 
 Let's define a function `fahr_to_kelvin()` that converts temperatures from
 Fahrenheit to Kelvin:
@@ -70,7 +70,7 @@ fahr_to_kelvin <- function(temp) {
   return(kelvin)
 }
 ~~~
-{: .r}
+{: .language-r}
 
 We define `fahr_to_kelvin()` by assigning it to the output of `function`. The
 list of argument names are contained within parentheses.  Next, the
@@ -102,7 +102,7 @@ Calling our own function is no different from calling any other function:
 # freezing point of water
 fahr_to_kelvin(32)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -116,7 +116,7 @@ fahr_to_kelvin(32)
 # boiling point of water
 fahr_to_kelvin(212)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -144,7 +144,7 @@ fahr_to_kelvin(212)
 > >  return(celsius)
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -168,7 +168,7 @@ kelvin_to_celsius <- function(temp) {
   return(celsius)
 }
 ~~~
-{: .r}
+{: .language-r}
 
 > ## Challenge 2
 >
@@ -191,7 +191,7 @@ kelvin_to_celsius <- function(temp) {
 > >   return(result)
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -219,7 +219,7 @@ fahr_to_kelvin <- function(temp) {
   return(kelvin)
 }
 ~~~
-{: .r}
+{: .language-r}
 
 For this function to work as intended, the argument `temp` must be a `numeric`
 value; otherwise, the mathematical procedure for converting between the two
@@ -238,7 +238,7 @@ fahr_to_kelvin <- function(temp) {
   return(kelvin)
 }
 ~~~
-{: .r}
+{: .language-r}
 
 If we had multiple conditions or arguments to check, it would take many lines
 of code to check all of them. Luckily R provides the convenience function
@@ -261,7 +261,7 @@ fahr_to_kelvin <- function(temp) {
   return(kelvin)
 }
 ~~~
-{: .r}
+{: .language-r}
 
 It still works when given proper input.
 
@@ -270,7 +270,7 @@ It still works when given proper input.
 # freezing point of water
 fahr_to_kelvin(temp = 32)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -286,7 +286,7 @@ But fails instantly if given improper input.
 # Metric is a factor instead of numeric
 fahr_to_kelvin(temp = as.factor(32))
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -319,9 +319,9 @@ Error: is.numeric(temp) is not TRUE
 > >   return(result)
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
-{: .challenge}```
+{: .challenge}
 
 ## More on combining functions
 
@@ -337,7 +337,7 @@ calcGDP <- function(dat) {
   return(gdp)
 }
 ~~~
-{: .r}
+{: .language-r}
 
 We define `calcGDP()` by assigning it to the output of `function`. The list of
 argument names are contained within parentheses. Next, the body of the function 
@@ -359,7 +359,7 @@ whatever command is executed on the last line of the function.
 ~~~
 calcGDP(head(gapminder))
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -388,7 +388,7 @@ calcGDP <- function(dat, year=NULL, country=NULL) {
   return(new)
 }
 ~~~
-{: .r}
+{: .language-r}
 
 If you've been writing these functions down into a separate R script
 (a good idea!), you can load in the functions into our R session by using the
@@ -398,7 +398,7 @@ If you've been writing these functions down into a separate R script
 ~~~
 source("functions/functions-lesson.R")
 ~~~
-{: .r}
+{: .language-r}
 
 Ok, so there's a lot going on in this function now. In plain English, the
 function now subsets the provided data by year if the year argument isn't empty,
@@ -414,7 +414,7 @@ Let's take a look at what happens when we specify the year:
 ~~~
 head(calcGDP(gapminder, year=2007))
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -435,7 +435,7 @@ Or for a specific country:
 ~~~
 calcGDP(gapminder, country="Australia")
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -462,7 +462,7 @@ Or both:
 ~~~
 calcGDP(gapminder, year=2007, country="Australia")
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -478,7 +478,7 @@ Let's walk through the body of the function:
 ~~~
 calcGDP <- function(dat, year=NULL, country=NULL) {
 ~~~
-{: .r}
+{: .language-r}
 
 Here we've added two arguments, `year`, and `country`. We've set
 *default arguments* for both as `NULL` using the `=` operator
@@ -494,7 +494,7 @@ take on those values unless the user specifies otherwise.
     dat <- dat[dat$country %in% country,]
   }
 ~~~
-{: .r}
+{: .language-r}
 
 Here, we check whether each additional argument is set to `null`, and whenever
 they're not `null` overwrite the dataset stored in `dat` with a subset given by 
@@ -540,7 +540,7 @@ arguments.
   return(new)
 }
 ~~~
-{: .r}
+{: .language-r}
 
 Finally, we calculated the GDP on our new subset, and created a new data frame
 with that column added. This means when we call the function later we can see
@@ -558,7 +558,7 @@ attempt where we got a vector of numbers.
 > > ~~~
 > >   calcGDP(gapminder, year = c(1952, 1987), country = "New Zealand")
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > GDP for New Zealand in 1987: 65050008703
 > >
 > > GDP for New Zealand in 1952: 21058193787
@@ -575,7 +575,7 @@ attempt where we got a vector of numbers.
 > best_practice <- c("Write", "programs", "for", "people", "not", "computers")
 > paste(best_practice, collapse=" ")
 > ~~~
-> {: .r}
+> {: .language-r}
 > 
 > 
 > 
@@ -591,7 +591,7 @@ attempt where we got a vector of numbers.
 > ~~~
 > fence(text=best_practice, wrapper="***")
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 > *Note:* the `paste()` function has an argument called `sep`, which specifies
 > the separator between text. The default is a space: " ". The default for
@@ -613,7 +613,7 @@ attempt where we got a vector of numbers.
 > > best_practice <- c("Write", "programs", "for", "people", "not", "computers")
 > > fence(text=best_practice, wrapper="***")
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > 
 > > 

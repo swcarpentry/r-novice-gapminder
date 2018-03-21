@@ -35,7 +35,7 @@ calcGDP <- function(dat, year=NULL, country=NULL) {
   return(new)
 }
 ~~~
-{: .r}
+{: .language-r}
 
 A common task you'll encounter when working with data, is that you'll want to
 run calculations on different groups within the data. In the above, we were
@@ -49,7 +49,7 @@ We could run `calcGDP` and then take the mean of each continent:
 withGDP <- calcGDP(gapminder)
 mean(withGDP[withGDP$continent == "Africa", "gdp"])
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -63,7 +63,7 @@ mean(withGDP[withGDP$continent == "Africa", "gdp"])
 ~~~
 mean(withGDP[withGDP$continent == "Americas", "gdp"])
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -77,7 +77,7 @@ mean(withGDP[withGDP$continent == "Americas", "gdp"])
 ~~~
 mean(withGDP[withGDP$continent == "Asia", "gdp"])
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -116,7 +116,7 @@ We installed this package in an earlier challenge. Let's load it now:
 ~~~
 library("plyr")
 ~~~
-{: .r}
+{: .language-r}
 
 Plyr has functions for operating on `lists`, `data.frames` and `arrays`
 (matrices, or n-dimensional vectors). Each function performs:
@@ -149,7 +149,7 @@ same structure and has 4 key features and structure:
 ~~~
 xxply(.data, .variables, .fun)
 ~~~
-{: .r}
+{: .language-r}
 
 * The first letter of the function name gives the input type and the second gives the output type.
 * .data - gives the data object to be processed
@@ -166,7 +166,7 @@ ddply(
  .fun = function(x) mean(x$gdp)
 )
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -196,6 +196,12 @@ returns another `data.frame` (2nd letter is a **d**) i
   function: we haven't defined it elsewhere, and it has no name. It only exists
   in the scope of our call to `ddply`.
 
+> ## Challenge 1
+>
+> Calculate the average life expectancy per continent. Which has the longest?
+> Which had the shortest?
+{: .challenge}
+
 What if we want a different type of output data structure?:
 
 
@@ -206,7 +212,7 @@ dlply(
  .fun = function(x) mean(x$gdp)
 )
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -251,7 +257,7 @@ ddply(
  .fun = function(x) mean(x$gdp)
 )
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -328,7 +334,7 @@ daply(
  .fun = function(x) mean(x$gdp)
 )
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -375,7 +381,7 @@ d_ply(
   }
 )
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -394,12 +400,6 @@ d_ply(
 > values "pretty" for printing out in messages.
 {: .callout}
 
-
-> ## Challenge 1
->
-> Calculate the average life expectancy per continent. Which has the longest?
-> Which had the shortest?
-{: .challenge}
 
 > ## Challenge 2
 >
@@ -432,7 +432,7 @@ d_ply(
 >   }
 > )
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 > 2.
 > 
@@ -443,7 +443,7 @@ d_ply(
 >   .fun = mean(dataGroup$lifeExp)
 > )
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 > 3.
 > 
@@ -456,7 +456,7 @@ d_ply(
 >   }
 > )
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 > 4.
 > 
@@ -469,6 +469,6 @@ d_ply(
 >   }
 > )
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 {: .challenge}

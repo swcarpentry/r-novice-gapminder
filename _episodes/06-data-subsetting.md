@@ -33,7 +33,7 @@ x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 names(x) <- c('a', 'b', 'c', 'd', 'e')
 x
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -60,7 +60,7 @@ from one:
 ~~~
 x[1]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -74,7 +74,7 @@ x[1]
 ~~~
 x[4]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -93,7 +93,7 @@ We can ask for multiple elements at once:
 ~~~
 x[c(1, 3)]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -109,7 +109,7 @@ Or slices of the vector:
 ~~~
 x[1:4]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -124,7 +124,7 @@ the `:` operator creates a sequence of numbers from the left element to the righ
 ~~~
 1:4
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -138,7 +138,7 @@ the `:` operator creates a sequence of numbers from the left element to the righ
 ~~~
 c(1, 2, 3, 4)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -154,7 +154,7 @@ We can ask for the same element multiple times:
 ~~~
 x[c(1,1,3)]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -169,7 +169,7 @@ If we ask for an index beyond the length of the vector, R will return a missing 
 ~~~
 x[6]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -187,7 +187,7 @@ If we ask for the 0th element, we get an empty vector:
 ~~~
 x[0]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -211,7 +211,7 @@ every element *except* for the one specified:
 ~~~
 x[-2]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -227,7 +227,7 @@ We can skip multiple elements:
 ~~~
 x[c(-1, -5)]  # or x[-c(1,5)]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -247,7 +247,7 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 > ~~~
 > x[-1:3]
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 > This gives a somewhat cryptic error:
 >
@@ -268,7 +268,7 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 > ~~~
 > x[-(1:3)]
 > ~~~
-> {: .r}
+> {: .language-r}
 > 
 > 
 > 
@@ -288,7 +288,7 @@ into the variable:
 x <- x[-4]
 x
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -308,7 +308,7 @@ x
 > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > print(x)
 > ~~~
-> {: .r}
+> {: .language-r}
 > 
 > 
 > 
@@ -335,7 +335,7 @@ x
 > > ~~~
 > > x[2:4]
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > 
 > > 
@@ -348,7 +348,7 @@ x
 > > ~~~
 > > x[-c(1,5)]
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > 
 > > 
@@ -361,7 +361,7 @@ x
 > > ~~~
 > > x[c("b", "c", "d")]
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > 
 > > 
@@ -374,7 +374,7 @@ x
 > > ~~~
 > > x[c(2,3,4)]
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > 
 > > 
@@ -396,7 +396,7 @@ We can extract elements by using their name, instead of extracting by index:
 x <- c(a=5.4, b=6.2, c=7.1, d=4.8, e=7.5) # we can name a vector 'on the fly'
 x[c("a", "c")]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -418,7 +418,7 @@ We can also use any logical vector to subset:
 ~~~
 x[c(FALSE, FALSE, TRUE, FALSE, TRUE)]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -436,7 +436,7 @@ the same result as the previous one.
 ~~~
 x[x > 7]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -457,7 +457,7 @@ We can use `==` to mimic the previous method of indexing by name
 ~~~
 x[names(x) == "a"]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -506,7 +506,7 @@ x[names(x) == "a"]
 > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > print(x)
 > ~~~
-> {: .r}
+> {: .language-r}
 > 
 > 
 > 
@@ -525,7 +525,7 @@ x[names(x) == "a"]
 > > x_subset <- x[x<7 & x>4]
 > > print(x_subset)
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > 
 > > 
@@ -550,7 +550,7 @@ x[names(x) == "a"]
 > x <- 1:3
 > x
 >~~~
->{: .r}
+>{: .language-r}
 >
 >
 >
@@ -565,7 +565,7 @@ x[names(x) == "a"]
 > names(x) <- c('a', 'a', 'a')
 > x
 >~~~
->{: .r}
+>{: .language-r}
 >
 >
 >
@@ -580,7 +580,7 @@ x[names(x) == "a"]
 >~~~
 > x['a']  # only returns first value
 >~~~
->{: .r}
+>{: .language-r}
 >
 >
 >
@@ -595,7 +595,7 @@ x[names(x) == "a"]
 >~~~
 > x[names(x) == 'a']  # returns all three values
 >~~~
->{: .r}
+>{: .language-r}
 >
 >
 >
@@ -622,7 +622,7 @@ Skipping or removing named elements is a little harder. If we try to skip one na
 x <- c(a=5.4, b=6.2, c=7.1, d=4.8, e=7.5) # we start again by naming a vector 'on the fly'
 x[-"a"]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -637,7 +637,7 @@ However, we can use the `!=` (not-equals) operator to construct a logical vector
 ~~~
 x[names(x) != "a"]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -653,7 +653,7 @@ Skipping multiple named indices is a little bit harder still. Suppose we want to
 ~~~
 x[names(x)!=c("a","c")]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -683,7 +683,7 @@ Let's take a look at the comparison component of this code:
 ~~~
 names(x) != c("a", "c")
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -721,7 +721,7 @@ The way to get R to do what we really want (match *each* element of the left arg
 ~~~
 x[! names(x) %in% c("a","c") ]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -751,7 +751,7 @@ x[! names(x) %in% c("a","c") ]
 > ## and get just the non-repeated elements
 > countries <- unique(as.character(gapminder$country))
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 > There's a wrong way (using only `==`), which will give you a warning;
 > a clunky way (using the logical operators `==` and `|`); and
@@ -770,7 +770,7 @@ x[! names(x) %in% c("a","c") ]
 > >  (countries=="Myanmar" | countries=="Thailand" |
 > >  countries=="Cambodia" | countries == "Vietnam" | countries=="Laos")
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > (or `countries==seAsia[1] | countries==seAsia[2] | ...`). This
 > > gives the correct values, but hopefully you can see how awkward it
 > > is (what if we wanted to select countries from a much longer list?).
@@ -805,7 +805,7 @@ Factor subsetting works the same way as vector subsetting.
 f <- factor(c("a", "a", "b", "c", "c", "d"))
 f[f == "a"]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -820,7 +820,7 @@ Levels: a b c d
 ~~~
 f[f %in% c("b", "c")]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -835,7 +835,7 @@ Levels: a b c d
 ~~~
 f[1:3]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -852,7 +852,7 @@ even if no more of that category exists in the factor:
 ~~~
 f[-3]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -874,7 +874,7 @@ set.seed(1)
 m <- matrix(rnorm(6*4), ncol=4, nrow=6)
 m[3:4, c(3,1)]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -892,7 +892,7 @@ rows or columns respectively:
 ~~~
 m[, c(3,4)]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -914,7 +914,7 @@ to a vector:
 ~~~
 m[3,]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -930,7 +930,7 @@ If you want to keep the output as a matrix, you need to specify a *third* argume
 ~~~
 m[3, , drop=FALSE]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -947,7 +947,7 @@ R will throw an error:
 ~~~
 m[, c(3,6)]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -971,7 +971,7 @@ also subset using only one argument:
 ~~~
 m[5]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -989,7 +989,7 @@ vector are arranged column-wise:
 ~~~
 matrix(1:6, nrow=2, ncol=3)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1006,7 +1006,7 @@ If you wish to populate the matrix by row, use `byrow=TRUE`:
 ~~~
 matrix(1:6, nrow=2, ncol=3, byrow=TRUE)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1029,7 +1029,7 @@ instead of their row and column indices.
 > m <- matrix(1:18, nrow=3, ncol=6)
 > print(m)
 > ~~~
-> {: .r}
+> {: .language-r}
 > 
 > 
 > 
@@ -1071,7 +1071,7 @@ Using `[` will always return a list. If you want to *subset* a list, but not
 xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
 xlist[1]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1093,7 +1093,7 @@ data structures.
 ~~~
 xlist[1:2]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1113,7 +1113,7 @@ bracket function: `[[`.
 ~~~
 xlist[[1]]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1130,7 +1130,7 @@ You can't extract more than one element at once:
 ~~~
 xlist[[1:2]]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1145,7 +1145,7 @@ Nor use it to skip elements:
 ~~~
 xlist[[-1]]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1160,7 +1160,7 @@ But you can use names to both subset and extract elements:
 ~~~
 xlist[["a"]]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1175,7 +1175,7 @@ The `$` function is a shorthand way for extracting elements by name:
 ~~~
 xlist$data
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1197,7 +1197,7 @@ xlist$data
 > ~~~
 > xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 > Using your knowledge of both list and vector subsetting, extract the number 2 from xlist.
 > Hint: the number 2 is contained within the "b" item in the list.
@@ -1208,7 +1208,7 @@ xlist$data
 > > ~~~
 > > xlist$b[2]
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > 
 > > 
@@ -1220,7 +1220,7 @@ xlist$data
 > > ~~~
 > > xlist[[2]][2]
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > 
 > > 
@@ -1232,7 +1232,7 @@ xlist$data
 > > ~~~
 > > xlist[["b"]][2]
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > 
 > > 
@@ -1251,7 +1251,7 @@ xlist$data
 > ~~~
 > mod <- aov(pop ~ lifeExp, data=gapminder)
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 > Extract the residual degrees of freedom (hint: `attributes()` will help you)
 >
@@ -1261,12 +1261,12 @@ xlist$data
 > > ~~~
 > > attributes(mod) ## `df.residual` is one of the names of `mod`
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > ~~~
 > > mod$df.residual
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -1283,7 +1283,7 @@ element corresponds to a column. The resulting object will be a data frame:
 ~~~
 head(gapminder[3])
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1304,7 +1304,7 @@ Similarly, `[[` will act to extract *a single column*:
 ~~~
 head(gapminder[["lifeExp"]])
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1319,7 +1319,7 @@ And `$` provides a convenient shorthand to extract columns by name:
 ~~~
 head(gapminder$year)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1334,7 +1334,7 @@ With two arguments, `[` behaves the same way as for matrices:
 ~~~
 gapminder[1:3,]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1353,7 +1353,7 @@ the elements are mixed types):
 ~~~
 gapminder[3,]
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -1376,7 +1376,7 @@ be changed with the third argument, `drop = FALSE`).
 >    ~~~
 >    gapminder[gapminder$year = 1957,]
 >    ~~~
->    {: .r}
+>    {: .language-r}
 >
 > 2. Extract all columns except 1 through to 4
 >
@@ -1384,7 +1384,7 @@ be changed with the third argument, `drop = FALSE`).
 >    ~~~
 >    gapminder[,-1:4]
 >    ~~~
->    {: .r}
+>    {: .language-r}
 >
 > 3. Extract the rows where the life expectancy is longer the 80 years
 >
@@ -1392,7 +1392,7 @@ be changed with the third argument, `drop = FALSE`).
 >    ~~~
 >    gapminder[gapminder$lifeExp > 80]
 >    ~~~
->    {: .r}
+>    {: .language-r}
 >
 > 4. Extract the first row, and the fourth and fifth columns
 >   (`lifeExp` and `gdpPercap`).
@@ -1401,7 +1401,7 @@ be changed with the third argument, `drop = FALSE`).
 >    ~~~
 >    gapminder[1, 4, 5]
 >    ~~~
->    {: .r}
+>    {: .language-r}
 >
 > 5. Advanced: extract rows that contain information for the years 2002
 >    and 2007
@@ -1410,7 +1410,7 @@ be changed with the third argument, `drop = FALSE`).
 >    ~~~
 >    gapminder[gapminder$year == 2002 | 2007,]
 >    ~~~
->    {: .r}
+>    {: .language-r}
 >
 > > ## Solution to challenge 7
 > >
@@ -1423,7 +1423,7 @@ be changed with the third argument, `drop = FALSE`).
 > >    # gapminder[gapminder$year = 1957,]
 > >    gapminder[gapminder$year == 1957,]
 > >    ~~~
-> >    {: .r}
+> >    {: .language-r}
 > >
 > > 2. Extract all columns except 1 through to 4
 > >
@@ -1432,7 +1432,7 @@ be changed with the third argument, `drop = FALSE`).
 > >    # gapminder[,-1:4]
 > >    gapminder[,-c(1:4)]
 > >    ~~~
-> >    {: .r}
+> >    {: .language-r}
 > >
 > > 3. Extract the rows where the life expectancy is longer the 80 years
 > >
@@ -1441,7 +1441,7 @@ be changed with the third argument, `drop = FALSE`).
 > >    # gapminder[gapminder$lifeExp > 80]
 > >    gapminder[gapminder$lifeExp > 80,]
 > >    ~~~
-> >    {: .r}
+> >    {: .language-r}
 > >
 > > 4. Extract the first row, and the fourth and fifth columns
 > >   (`lifeExp` and `gdpPercap`).
@@ -1451,7 +1451,7 @@ be changed with the third argument, `drop = FALSE`).
 > >    # gapminder[1, 4, 5]
 > >    gapminder[1, c(4, 5)]
 > >    ~~~
-> >    {: .r}
+> >    {: .language-r}
 > >
 > > 5. Advanced: extract rows that contain information for the years 2002
 > >    and 2007
@@ -1462,7 +1462,7 @@ be changed with the third argument, `drop = FALSE`).
 > >     gapminder[gapminder$year == 2002 | gapminder$year == 2007,]
 > >     gapminder[gapminder$year %in% c(2002, 2007),]
 > >     ~~~
-> >     {: .r}
+> >     {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -1484,6 +1484,6 @@ be changed with the third argument, `drop = FALSE`).
 > > ~~~
 > > gapminder_small <- gapminder[c(1:9, 19:23),]
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}

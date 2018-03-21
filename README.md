@@ -19,6 +19,8 @@ task automation, and encapsulation.
 Note that this workshop focuses on the fundamentals of the programming
 language R, and not on statistical analysis.
 
+The lesson contains more material than can be taught in a day.  The [instructor notes page]({{ page.root }}/guide) has some suggested lesson plans suitable for a one or half day workshop.
+
 A variety of third party packages are used throughout this workshop. These
 are not necessarily the best, nor are they comprehensive, but they are 
 packages we find useful, and have been chosen primarily for their 
@@ -26,10 +28,14 @@ usability.
 
 Maintainers:
 
+* [David Mawdsley][mawdsley_david]
+* [Jeff Oliver][oliver_jeffrey]
 * [Tom Wright][wright_tom]
 * [Naupaka Zimmerman][zimmerman_naupaka]
 
 [gapminder]: http://www.gapminder.org/
 [lesson-example]: https://swcarpentry.github.io/lesson-example
-[wright_tom]: http://software-carpentry.org/team/#wright_thomas
-[zimmerman_naupaka]: http://software-carpentry.org/team/#zimmerman_naupaka
+[mawdsley_david]: https://software-carpentry.org/team/#mawdsley_david
+[oliver_jeffrey]: https://software-carpentry.org/team/#oliver_jeffrey
+[wright_tom]: https://software-carpentry.org/team/#wright_thomas
+[zimmerman_naupaka]: https://software-carpentry.org/team/#zimmerman_naupaka
