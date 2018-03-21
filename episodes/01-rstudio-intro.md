@@ -98,8 +98,10 @@ interactive R console.
 > RStudio offers you great flexibility in running code from within the editor
 > window. There are buttons, menu choices, and keyboard shortcuts. To run the
 > current line, you can 1. click on the `Run` button above the editor panel,
-> or 2. select "Run Lines" from the "Code" menu, or 3. hit Ctrl-Enter in Windows
-> or Linux or Command-Enter on OS X. (This shortcut can also be seen by hovering
+> or 2. select "Run Lines" from the "Code" menu, or 3. hit
+> <kbd>Ctrl</kbd>+<kbd>Return</kbd> in Windows or Linux or
+> <kbd>&#8984;</kbd>+<kbd>Return</kbd> on OS X. (This shortcut can also 
+> be seen by hovering
 > the mouse over the button). To run a block of code, select it and then `Run`.
 > If you have modified a line of code within a block of code you have just run,
 > there is no need to reselct the section and `Run`, you can use the next button
@@ -130,7 +132,7 @@ The simplest thing you could do with R is do arithmetic:
 ~~~
 1 + 100
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -163,8 +165,8 @@ prompt.
 > ## Tip: Cancelling commands
 >
 > If you're using R from the commandline instead of from within RStudio,
-> you need to use `Ctrl+C` instead of `Esc` to cancel the command. This
-> applies to Mac users as well!
+> you need to use <kbd>Ctrl</kbd>+<kbd>C</kbd> instead of <kbd>Esc</kbd>
+> to cancel the command. This applies to Mac users as well!
 >
 > Cancelling a command isn't only useful for killing incomplete commands:
 > you can also use it to tell R to stop running code (for example if it's
@@ -189,7 +191,7 @@ From highest to lowest precedence:
 ~~~
 3 + 5 * 2
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -206,7 +208,7 @@ intend.
 ~~~
 (3 + 5) * 2
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -224,7 +226,7 @@ Remember that others may later read your code.
 3 + 5 * 2 ^ 2       # clear, if you remember the rules
 3 + 5 * (2 ^ 2)     # if you forget some rules, this might help
 ~~~
-{: .r}
+{: .language-r}
 
 
 The text after each line of code is called a
@@ -237,7 +239,7 @@ Really small or large numbers get a scientific notation:
 ~~~
 2/10000
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -255,7 +257,7 @@ You can write numbers in scientific notation too:
 ~~~
 5e3  # Note the lack of minus here
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -275,7 +277,7 @@ arguments:
 ~~~
 sin(1)  # trigonometry functions
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -288,7 +290,7 @@ sin(1)  # trigonometry functions
 ~~~
 log(1)  # natural logarithm
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -301,7 +303,7 @@ log(1)  # natural logarithm
 ~~~
 log10(10) # base-10 logarithm
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -314,7 +316,7 @@ log10(10) # base-10 logarithm
 ~~~
 exp(0.5) # e^(1/2)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -346,7 +348,7 @@ We can also do comparison in R:
 ~~~
 1 == 1  # equality (note two equals signs, read as "is equal to")
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -359,7 +361,7 @@ We can also do comparison in R:
 ~~~
 1 != 2  # inequality (read as "is not equal to")
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -372,7 +374,7 @@ We can also do comparison in R:
 ~~~
 1 < 2  # less than
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -385,7 +387,7 @@ We can also do comparison in R:
 ~~~
 1 <= 1  # less than or equal to
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -398,7 +400,7 @@ We can also do comparison in R:
 ~~~
 1 > 0  # greater than
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -411,7 +413,7 @@ We can also do comparison in R:
 ~~~
 1 >= -9 # greater than or equal to
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -448,7 +450,7 @@ We can store values in variables using the assignment operator `<-`, like this:
 ~~~
 x <- 1/40
 ~~~
-{: .r}
+{: .language-r}
 
 Notice that assignment does not print a value. Instead, we stored it for later
 in something called a **variable**. `x` now contains the **value** `0.025`:
@@ -457,7 +459,7 @@ in something called a **variable**. `x` now contains the **value** `0.025`:
 ~~~
 x
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -476,7 +478,7 @@ have appeared. Our variable `x` can be used in place of a number in any calculat
 ~~~
 log(x)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -491,7 +493,7 @@ Notice also that variables can be reassigned:
 ~~~
 x <- 100
 ~~~
-{: .r}
+{: .language-r}
 
 `x` used to contain the value 0.025 and and now it has the value 100.
 
@@ -502,7 +504,7 @@ Assignment values can contain the variable being assigned to:
 x <- x + 1 #notice how RStudio updates its description of x on the top right tab
 y <- x * 2
 ~~~
-{: .r}
+{: .language-r}
 
 The right hand side of the assignment can be any valid R expression.
 The right hand side is *fully evaluated* before the assignment occurs.
@@ -523,12 +525,58 @@ It is also possible to use the `=` operator for assignment:
 ~~~
 x = 1/40
 ~~~
-{: .r}
+{: .language-r}
 
 But this is much less common among R users.  The most important thing is to
 **be consistent** with the operator you use. There are occasionally places
 where it is less confusing to use `<-` than `=`, and it is the most common
 symbol used in the community. So the recommendation is to use `<-`.
+
+> ## Challenge 1
+>
+> Which of the following are valid R variable names?
+> 
+> ~~~
+> min_height
+> max.height
+> _age
+> .mass
+> MaxLength
+> min-length
+> 2widths
+> celsius2kelvin
+> ~~~
+> {: .language-r}
+>
+> > ## Solution to challenge 1
+> >
+> > The following can be used as R variables:
+> > 
+> > ~~~
+> > min_height
+> > max.height
+> > MaxLength
+> > celsius2kelvin
+> > ~~~
+> > {: .language-r}
+> >
+> > The following creates a hidden variable:
+> > 
+> > ~~~
+> > .mass
+> > ~~~
+> > {: .language-r}
+> >
+> > The following will not be able to be used to create a variable
+> > 
+> > ~~~
+> > _age
+> > min-length
+> > 2widths
+> > ~~~
+> > {: .language-r}
+> {: .solution}
+{: .challenge}
 
 ## Vectorization
 
@@ -539,7 +587,7 @@ variables and functions can have vectors as values. For example
 ~~~
 1:5
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -553,7 +601,7 @@ variables and functions can have vectors as values. For example
 ~~~
 2^(1:5)
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -568,7 +616,7 @@ variables and functions can have vectors as values. For example
 x <- 1:5
 2^x
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -592,7 +640,7 @@ There are a few useful commands you can use to interact with the R session.
 ~~~
 ls()
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -618,7 +666,7 @@ If we type `ls` by itself, R will print out the source code for that function!
 ~~~
 ls
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -642,19 +690,19 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
         if ((ll <- length(grep("[", pattern, fixed = TRUE))) && 
             ll != length(grep("]", pattern, fixed = TRUE))) {
             if (pattern == "[") {
-                pattern <- "\\\\["
-                warning("replaced regular expression pattern '[' by  '\\\\\\\\['")
+                pattern <- "\\["
+                warning("replaced regular expression pattern '[' by  '\\\\['")
             }
-            else if (length(grep("[^\\\\\\\\]\\\\[<-", pattern))) {
-                pattern <- sub("\\\\[<-", "\\\\\\\\\\\\[<-", pattern)
-                warning("replaced '[<-' by '\\\\\\\\[<-' in regular expression pattern")
+            else if (length(grep("[^\\\\]\\[<-", pattern))) {
+                pattern <- sub("\\[<-", "\\\\\\[<-", pattern)
+                warning("replaced '[<-' by '\\\\[<-' in regular expression pattern")
             }
         }
         grep(pattern, all.names, value = TRUE)
     }
     else all.names
 }
-<bytecode: 0x7fa8e5254b40>
+<bytecode: 0x7fa4eb461878>
 <environment: namespace:base>
 ~~~
 {: .output}
@@ -665,7 +713,7 @@ You can use `rm` to delete objects you no longer need:
 ~~~
 rm(x)
 ~~~
-{: .r}
+{: .language-r}
 
 If you have lots of things in your environment and want to delete all of them,
 you can pass the results of `ls` to the `rm` function:
@@ -674,7 +722,7 @@ you can pass the results of `ls` to the `rm` function:
 ~~~
 rm(list = ls())
 ~~~
-{: .r}
+{: .language-r}
 
 In this case we've combined the two. Like the order of operations, anything
 inside the innermost parentheses is evaluated first, and so on.
@@ -689,7 +737,7 @@ If instead we use `<-`, there will be unintended side effects, or you may get an
 ~~~
 rm(list <- ls())
 ~~~
-{: .r}
+{: .language-r}
 
 
 
@@ -725,52 +773,6 @@ network). R and RStudio have functionality for managing packages:
 * You can remove a package with `remove.packages("packagename")`
 * You can make a package available for use with `library(packagename)`
 
-> ## Challenge 1
->
-> Which of the following are valid R variable names?
-> 
-> ~~~
-> min_height
-> max.height
-> _age
-> .mass
-> MaxLength
-> min-length
-> 2widths
-> celsius2kelvin
-> ~~~
-> {: .r}
->
-> > ## Solution to challenge 1
-> >
-> > The following can be used as R variables:
-> > 
-> > ~~~
-> > min_height
-> > max.height
-> > MaxLength
-> > celsius2kelvin
-> > ~~~
-> > {: .r}
-> >
-> > The following creates a hidden variable:
-> > 
-> > ~~~
-> > .mass
-> > ~~~
-> > {: .r}
-> >
-> > The following will not be able to be used to create a variable
-> > 
-> > ~~~
-> > _age
-> > min-length
-> > 2widths
-> > ~~~
-> > {: .r}
-> {: .solution}
-{: .challenge}
-
 > ## Challenge 2
 >
 > What will be the value of each  variable  after each
@@ -783,7 +785,7 @@ network). R and RStudio have functionality for managing packages:
 > mass <- mass * 2.3
 > age <- age - 20
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 > > ## Solution to challenge 2
 > >
@@ -791,21 +793,21 @@ network). R and RStudio have functionality for managing packages:
 > > ~~~
 > > mass <- 47.5
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > This will give a value of 47.5 for the variable mass
 > >
 > > 
 > > ~~~
 > > age <- 122
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > This will give a value of 122 for the variable age
 > >
 > > 
 > > ~~~
 > > mass <- mass * 2.3
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > This will multiply the existing value of 47.5 by 2.3 to give a new value of
 > > 109.25 to the variable mass.
 > >
@@ -813,7 +815,7 @@ network). R and RStudio have functionality for managing packages:
 > > ~~~
 > > age <- age - 20
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > This will subtract 20 from the existing value of 122 to give a new value
 > > of 102 to the variable age.
 > {: .solution}
@@ -832,7 +834,7 @@ network). R and RStudio have functionality for managing packages:
 > > ~~~
 > > mass > age
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > 
 > > 
@@ -857,7 +859,7 @@ network). R and RStudio have functionality for managing packages:
 > > ~~~
 > > rm(age, mass)
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -874,6 +876,6 @@ network). R and RStudio have functionality for managing packages:
 > > install.packages("plyr")
 > > install.packages("gapminder")
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}

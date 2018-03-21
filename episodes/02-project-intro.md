@@ -133,7 +133,7 @@ get shared between projects.
 > library("ProjectTemplate")
 > create.project("../my_project", merge.strategy = "allow.non.conflict")
 > ~~~
-> {: .r}
+> {: .language-r}
 >
 > For more information on ProjectTemplate and its functionality visit the
 > home page [ProjectTemplate](http://projecttemplate.net/index.html)
@@ -191,7 +191,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > > ~~~
 > > ls -lh data/gapminder-FiveYearData.csv
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > 
 > > 
@@ -205,7 +205,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > > ~~~
 > > wc -l data/gapminder-FiveYearData.csv
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > 
 > > 
@@ -219,7 +219,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > > ~~~
 > > head data/gapminder-FiveYearData.csv
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > 
 > > 
 > > 
