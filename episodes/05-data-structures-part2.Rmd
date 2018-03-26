@@ -159,6 +159,23 @@ Let's reassign the output to `cats`, so that our changes will be permanent:
 cats <- na.omit(cats)
 ```
 
+## Removing columns  
+
+We can also remove columns in our data frame. What if we want to remove the column "age". We can remove it in two ways, by variable number or by index.  
+
+```{r}
+cats[,-4]
+```
+
+Notice the comma with nothing before it, indicating we want to keep all of the rows.  
+
+Alternatively, we can drop the column by using the index name.  
+
+```{r}
+drop <- names(cats) %in% c("age")
+cats[!drop]
+```
+
 ## Appending to a data frame
 
 The key to remember when adding data to a data frame is that *columns are
