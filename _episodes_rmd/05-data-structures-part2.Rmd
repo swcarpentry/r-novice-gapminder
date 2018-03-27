@@ -173,7 +173,7 @@ Alternatively, we can drop the column by using the index name.
 
 ```{r}
 drop <- names(cats) %in% c("age")
-cats[!drop]
+cats[,!drop]
 ```
 
 ## Appending to a data frame
