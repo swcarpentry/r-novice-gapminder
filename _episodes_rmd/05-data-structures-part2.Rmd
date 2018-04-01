@@ -12,10 +12,11 @@ objectives:
 - "Convert a `factor` to a `character` vector and vice versa."
 - "Display basic properties of data frames including size and class of the columns, names, and first few rows."
 keypoints:
-- "Use `cbind()` to add a new column to a data frame."
-- "Use `rbind()` to add a new row to a data frame."
+- "Use the tidyverse."
+- "Use `add_column()` and `mutate()` to add a new column to a data frame."
+- "Use `add_row()` to add a new row to a data frame."
 - "Remove rows from a data frame."
-- "Use `na.omit()` to remove rows from a data frame with `NA` values."
+- "Use `drop_na()` and `filter(data, !is.na(column))` to remove rows from a data frame with `NA` values."
 - "Use `levels()` and `as.character()` to explore and manipulate factors."
 - "Use `str()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()`, and `typeof()` to understand the structure of a data frame."
 - "Read in a csv file using `read.csv()`."
@@ -23,20 +24,20 @@ keypoints:
 source: Rmd
 ---
 
-```{r setup}
+```{r setup, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("05-")
+```
+
+```{r}
+# Commenting because this should run only once per project, not per session
 # Start with fresh environment; encourage a reproducible and defensive workflow
 # install.packages("usethis")
 # usethis::use_blank_slate("project")
 
-```
-
-
-
-
-
-```{r, include=FALSE}
-source("../bin/chunk-options.R")
-knitr_fig_path("05-")
+# https://www.tidyverse.org
+# install.packages("tidyverse")
+library(tidyverse)
 ```
 
 At this point, you've seen it all: in the last lesson, we toured all the basic
@@ -115,7 +116,7 @@ cats <- cats %>%
 
 ## Factors
 
-Notice that `what different `cats` has no factors. This is because we read its data with the defensive (as in defensive driving) `read_csv()` fucntion instead of the ackward `read.csv()` function.
+Notice that `cats` has no factors. This is because we read its data with the defensive (as in defensive driving) `read_csv()` fucntion instead of the ackward `read.csv()` function.
 
 Compare:
 
@@ -268,10 +269,14 @@ cats
 >
 > You can create a new data frame right from within R with the following syntax:
 > ```{r}
-> df <- data.frame(id = c("a", "b", "c"),
->                  x = 1:3,
->                  y = c(TRUE, TRUE, FALSE),
->                  stringsAsFactors = FALSE)
+> library(tidyverse)
+> 
+> df <- tibble(
+>   first ="Grace",
+>   last = "Hopper",
+>   lucky_number = 0
+> )
+> df
 > ```
 > Make a data frame that holds the following information for yourself:
 >
@@ -279,17 +284,28 @@ cats
 > - last name
 > - lucky number
 >
-> Then use `rbind` to add an entry for the people sitting beside you.
-> Finally, use `cbind` to add a column with each person's answer to the question, "Is it time for coffee break?"
+> Then use `add_row()` to add an entry for the people sitting beside you.
+> Finally, use `add_column()` to add a column with each person's answer to the question, "Is it time for coffee break?" (Note the alternative with `tribble()`).
 >
 > > ## Solution to Challenge 2
 > > ```{r}
-> > df <- data.frame(first = c("Grace"),
-> >                  last = c("Hopper"),
-> >                  lucky_number = c(0),
-> >                  stringsAsFactors = FALSE)
-> > df <- rbind(df, list("Marie", "Curie", 238) )
-> > df <- cbind(df, coffeetime = c(TRUE,TRUE))
+> > df <- tibble(
+> >   first ="Grace",
+> >   last = "Hopper",
+> >   lucky_number = 0
+> > )
+> > 
+> > df <- df %>% 
+> >   add_row(first ="Marie", last = "Curie", lucky_number = 238) %>% 
+> >   add_column( coffeetime = c(TRUE,TRUE)
+> > )
+> > 
+> > # Alternatively
+> > tribble(
+> >    ~first,    ~last, ~lucky_number, ~coffeetime,
+> >   "Grace", "Hopper",             0,        TRUE,
+> >   "Marie",  "Curie",           238,        TRUE
+> > )
 > > ```
 > {: .solution}
 {: .challenge}
@@ -301,24 +317,24 @@ now let's use those skills to digest a more realistic dataset. Let's read in the
 `gapminder` dataset that we downloaded previously:
 
 ```{r}
-gapminder <- read.csv("data/gapminder-FiveYearData.csv")
+gapminder <- read_csv("data/gapminder-FiveYearData.csv")
 ```
 
 > ## Miscellaneous Tips
 >
-> * Another type of file you might encounter are tab-separated value files (.tsv). To specify a tab as a separator, use `"\\t"` or `read.delim()`.
+> * Another type of file you might encounter are tab-separated value files (.tsv). See `?read_delim()` and `?read_tsv()`.
 >
 > * Files can also be downloaded directly from the Internet into a local
 > folder of your choice onto your computer using the `download.file` function.
 > The `read.csv` function can then be executed to read the downloaded file from the download location, for example,
 > ```{r eval=FALSE, echo=TRUE}
 > download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv", destfile = "data/gapminder-FiveYearData.csv")
-> gapminder <- read.csv("data/gapminder-FiveYearData.csv")
+> gapminder <- read_csv("data/gapminder-FiveYearData.csv")
 > ```
 >
-> * Alternatively, you can also read in files directly into R from the Internet by replacing the file paths with a web address in `read.csv`. One should note that in doing this no local copy of the csv file is first saved onto your computer. For example,
+> * Alternatively, you can also read in files directly into R from the Internet by replacing the file paths with a web address in `read_csv`. One should note that in doing this no local copy of the csv file is first saved onto your computer. For example,
 > ```{r eval=FALSE, echo=TRUE}
-> gapminder <- read.csv("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv")
+> gapminder <- read_csv("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv")
 > ```
 >
 > * You can read directly from excel spreadsheets without
@@ -411,7 +427,7 @@ head(gapminder)
 > > The solution here presents one form using nested functions. i.e. a function passed as an argument to another function. This might sound like a new concept but you are already using it in fact.
 > > Remember my_dataframe[rows, cols] will print to screen your data frame with the number of rows and columns you asked for (although you might have asked for a range or named columns for example). How would you get the last row if you don't know how many rows your data frame has? R has a function for this. What about getting a (pseudorandom) sample? R also has a function for this.
 > > ~~~
-> > gapminder[sample(nrow(gapminder), 5), ]
+> > sample_n(gapminder, 5)
 > > ~~~
 > > {: .r}
 > {: .solution}
@@ -434,7 +450,7 @@ into a script file so we can come back to it later.
 > > The contents of `scripts/load-gapminder.R`:
 > > ```{r eval = FALSE}
 > > download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv", destfile = "data/gapminder-FiveYearData.csv")
-> > gapminder <- read.csv(file = "data/gapminder-FiveYearData.csv")
+> > gapminder <- read_csv(file = "data/gapminder-FiveYearData.csv")
 > > ```
 > > To run the script and load the data into the `gapminder` variable:
 > > ```{r eval = FALSE}
