@@ -23,94 +23,149 @@ keypoints:
 source: Rmd
 ---
 
+```{r setup}
+# Start with fresh environment; encourage a reproducible and defensive workflow
+# install.packages("usethis")
+# usethis::use_blank_slate("project")
+
+```
+
+
+
+
+
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
 knitr_fig_path("05-")
 ```
 
 At this point, you've seen it all: in the last lesson, we toured all the basic
-data types and data structures in R. Everything you do will be a manipulation of
+data types (i.e. their underlying `class()`) and data structures in R. Everything you do will be a manipulation of
 those tools. But most of the time, the star of the show is the data frame—the table that we created by loading information from a csv file. In this lesson, we'll learn a few more things
 about working with data frames.
+
+To work with data frame, the packages from the [tidyverse](https://www.tidyverse.org) are particularly well suited.
+
+```{r}
+# install.packages("tidyverse")
+library(tidyverse)
+```
 
 ## Adding columns and rows in data frames
 
 We already learned that the columns of a data frame are vectors, so that our
-data are consistent in type throughout the columns. As such, if we want to add a
-new column, we can start by making a new vector:
+data are consistent in class throughout the columns.
 
 ```{r, echo = FALSE}
-cats <- read.csv("data/feline-data.csv")
-```
+cats <- read_csv("data/feline-data.csv")
 
-```{r}
-age <- c(2, 3, 5)
+# Note the class of each column
 cats
 ```
 
-We can then add this as a column via:
+Let's add a new column.
 
 ```{r}
-cbind(cats, age)
+age <- c(2, 3, 5)
+add_column(cats, age)
+
+# Same with the pipe (http://style.tidyverse.org/pipes.html#introduction)
+cats %>% add_column(age)
 ```
 
 Note that if we tried to add a vector of ages with a different number of entries than the number of rows in the dataframe, it would fail:
 
 ```{r, error=TRUE}
-age <- c(2, 3, 5, 12)
-cbind(cats, age)
+too_long <- c(2, 3, 5, 12)
+add_column(cats, age = too_long)
 
-age <- c(2, 3)
-cbind(cats, age)
+too_short <- c(2, 3)
+add_column(cats, too_short)
 ```
 
 Why didn't this work? Of course, R wants to see one element in our new column
-for every row in the table:
-
-```{r}
-nrow(cats)
-length(age)
-```
+for every row in the `cats` table. 
 
 So for it to work we need to have `nrow(cats)` = `length(age)`. Let's overwite the content of cats with our new data frame.
 
 ```{r}
 age <- c(2, 3, 5)
-cats <- cbind(cats, age)
+# Now using `mutate()` which is more general.
+cats <- mutate(cats, age)
+
+# Same with the pipe (to unserstand what is comming next)
+cats <- cats %>% 
+  mutate(age)
+
+cats
 ```
 
-Now how about adding rows? We already know that the rows of a
-data frame are lists:
+Now how about adding rows?
 
 ```{r}
-newRow <- list("tortoiseshell", 3.3, TRUE, 9)
-cats <- rbind(cats, newRow)
+# Using the pipe to more clearly show interesting arguments of `add_row()`
+cats <- cats %>% 
+  add_row(
+    coat = "tortoiseshell", 
+    weight = 3.3, 
+    likes_string = TRUE, 
+    age = 9
+  )
 ```
 
 ## Factors
 
-Here is another thing to look out for: in a `factor`, each different value represents what is called a `level`. In our case, the `factor` "coat" has 3 levels: "black", "calico", and "tabby". R will only accept values that match one of the levels. If you add a new value, it will become `NA`.
+Notice that `what different `cats` has no factors. This is because we read its data with the defensive (as in defensive driving) `read_csv()` fucntion instead of the ackward `read.csv()` function.
 
-The warning is telling us that we unsuccessfully added "tortoiseshell" to our
-*coat* factor, but 3.3 (a numeric), TRUE (a logical), and 9 (a numeric) were
-successfully added to *weight*, *likes_string*, and *age*, respectively, since
-those variables are not factors. To successfully add a cat with a
-"tortoiseshell" *coat*, add "tortoiseshell" as a *level* of the factor:
+Compare:
 
 ```{r}
-levels(cats$coat)
-levels(cats$coat) <- c(levels(cats$coat), "tortoiseshell")
-cats <- rbind(cats, list("tortoiseshell", 3.3, TRUE, 9))
+cats1 <- read_csv("data/feline-data.csv")
+str(cats1)
+class(cats1$coat)
+
+# Same
+cats1.1 <- read.csv("data/feline-data.csv", stringsAsFactors = FALSE)
+all.equal(cats1, cats1.1)
+
+# Not the same
+cats2 <- read.csv("data/feline-data.csv")
+str(cats2)
+all.equal(cats1, cats2)
+class(cats2$coat)
 ```
 
-Alternatively, we can change a factor into a character vector; we lose the
-handy categories of the factor, but we can subsequently add any word we want to the
-column without babysitting the factor levels:
+Factors are something important to look out for: in a `factor`, each different value represents what is called a `level`. In our case, the `factor` "coat" has 3 levels: "black", "calico", and "tabby". R will only accept values that match one of the levels. If you add a new value, it will become `NA`.
 
 ```{r}
-str(cats)
-cats$coat <- as.character(cats$coat)
-str(cats)
+levels(cats2$coat)
+
+# Reproduce what we did before with `cats`, now with `cats2`
+cats3 <- cats2 %>%
+  add_column(age = c(2, 3, 5)) %>% 
+  add_row(
+    coat = "tortoiseshell", 
+    weight = 3.3, 
+    # Note that `TRUE` is interpreted as `1`, and `FALSE` as `0`
+    likes_string = TRUE, 
+    age = 9
+  )
+
+levels(cats3$coat)
+```
+
+As soon as you note an unwanted factor in your data you should coerce it to the desired class.
+
+```{r}
+class(cats3$coat)
+
+cats4 <- mutate(cats3, coat = as.character(coat))
+class(cats4$coat)
+
+# Same
+cats3$coat <- as.character(cats3$coat)
+cats4 <- cats3
+class(cats4$coat)
 ```
 
 > ## Challenge 1
@@ -126,71 +181,86 @@ str(cats)
 > {: .solution}
 {: .challenge}
 
-## Removing rows
+## Removing rows and dealing with missing values
 
-We now know how to add rows and columns to our data frame in R—but in our
-first attempt to add a "tortoiseshell" cat to the data frame we have accidentally
-added a garbage row:
+We now know how to add rows and columns to our data frame in R. Now let's see how you may remove rows. The most common case is to drop missing values.
 
 ```{r}
-cats
+# Introducing missing values
+cats_na <- cats %>% 
+  add_row(
+    coat = c("tortoiseshell", NA), 
+    weight = c(NA, 3.3), 
+    likes_string = c(TRUE, FALSE), 
+    age = 9:10
+  )
+cats_na
+```
+```{r}
+# Drop missing values
+drop_na(cats_na)
+
+# Filter by column
+filter(cats_na, is.na(coat))
+# The opposite
+filter(cats_na, !is.na(coat))
 ```
 
-We can ask for a data frame minus this offending row:
+Although its best to filtering data using expresisons (such as `is.na(cats_na$coat)`, you may want to filter by specific row numbers. This is a little ackward but important and common:
 
 ```{r}
+# Remove 4th row
 cats[-4, ]
 ```
 
-Notice the comma with nothing after it to indicate that we want to drop the entire fourth row.
-
-Note: we could also remove both new rows at once by putting the row numbers
-inside of a vector: `cats[c(-4,-5), ]`
-
-Alternatively, we can drop all rows with `NA` values:
-
 ```{r}
-na.omit(cats)
-```
+# Remove 4th and 5th rows
+small1 <- cats[c(-4,-5), ]
+small1
 
-Let's reassign the output to `cats`, so that our changes will be permanent:
-
-```{r}
-cats <- na.omit(cats)
+# Same
+to_discard <- -c(4, 5)
+small2 <- cats[to_discard, ]
+identical(small1, small2)
 ```
 
 ## Removing columns  
 
-We can also remove columns in our data frame. What if we want to remove the column "age". We can remove it in two ways, by variable number or by index.  
+We can also remove columns in our data frame. What if we want to remove the column `age`. 
 
 ```{r}
-cats[,-4]
+# With index
+select(cats, -4)
+
+# With name
+select(cats, -age)
 ```
 
-Notice the comma with nothing before it, indicating we want to keep all of the rows.  
-
-Alternatively, we can drop the column by using the index name.  
+You can also use the `[]` syntax you learned above.
 
 ```{r}
-drop <- names(cats) %in% c("age")
-cats[,!drop]
+# With index
+cats[ , -4]
+
+# With name
+not_age <- setdiff(names(cats), "age")
+not_age
+cats[ , not_age]
+
+# Same
+not_age <- ! names(cats) %in% "age"
+not_age
+cats[ , not_age]
 ```
+
+Notice the comma with nothing before it, indicating we want to keep all of the rows.
 
 ## Appending to a data frame
 
-The key to remember when adding data to a data frame is that *columns are
-vectors and rows are lists.* We can also glue two data frames
-together with `rbind`:
+We can also glue two data frames together with `bind_rows()`:
 
 ```{r}
-cats <- rbind(cats, cats)
-cats
-```
-But now the row names are unnecessarily complicated. We can remove the rownames,
-and R will automatically re-name them sequentially:
-
-```{r}
-rownames(cats) <- NULL
+cats <- bind_rows(cats, cats)
 cats
 ```
 
@@ -225,6 +295,7 @@ cats
 {: .challenge}
 
 ## Realistic example
+
 So far, you have seen the basics of manipulating data frames with our cat data;
 now let's use those skills to digest a more realistic dataset. Let's read in the
 `gapminder` dataset that we downloaded previously:
