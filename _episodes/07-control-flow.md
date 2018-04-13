@@ -43,9 +43,6 @@ Say, for example, that we want R to print a message if a variable `x` has a part
 
 
 ~~~
-# sample a random number from a Poisson distribution
-# with a mean (lambda) of 8
-
 x <- 8
 
 if (x >= 10) {
