@@ -124,7 +124,7 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 > ## Tip: Order of operations
 >
 > A common trip up for novices occurs when trying to skip
-> slices of a vector. It's natural to to try to negate a
+> slices of a vector. It's natural to try to negate a
 > sequence like so:
 >
 > ```{r, error=TRUE, eval=FALSE}
