@@ -1,5 +1,5 @@
 ---
-title: Split-Apply-Combine
+title: Splitting and Combining Data Frames with plyr
 teaching: 30
 exercises: 30
 questions:
