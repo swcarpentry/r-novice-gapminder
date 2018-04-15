@@ -24,7 +24,7 @@ Some suggested paths through the material are:
 * 01 Introduction to R and RStudio
 * 04 Data Structures
 * 05 Exploring Data Frames ("Realistic example" section onwards)
-* 08 Creating Publication-Quality Graphics
+* 08 Creating Publication-Quality Graphics with ggplot2
 * 10 Functions Explained
 * 13 Dataframe Manipulation with dplyr
 * 15 Producing Reports With knitr
@@ -37,7 +37,7 @@ Some suggested paths through the material are:
 * 05 Exploring Data Frames
 * 06 Subsetting Data
 * 09 Vectorization
-* 08 Creating Publication-Quality Graphics *OR*
+* 08 Creating Publication-Quality Graphics with ggplot2 *OR*
   13 Dataframe Manipulation with dplyr
 * 15 Producing Reports With knitr
 
@@ -46,8 +46,8 @@ A half day course could consist of (suggested by [@karawoo](https://github.com/s
 * 01 Introduction to R and RStudio
 * 04 Data Structures (only creating vectors with `c()`)
 * 05 Exploring Data Frames ("Realistic example" section onwards)
-* 06 Subsetting Datai (excluding factor, matrix and list subsetting)
-* 08 Creating Publication-Quality Graphics 
+* 06 Subsetting Data (excluding factor, matrix and list subsetting)
+* 08 Creating Publication-Quality Graphics with ggplot2
 
 ## Setting up git in RStudio
 
