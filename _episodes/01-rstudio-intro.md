@@ -97,11 +97,13 @@ interactive R console.
 >
 > RStudio offers you great flexibility in running code from within the editor
 > window. There are buttons, menu choices, and keyboard shortcuts. To run the
-> current line, you can 1. click on the `Run` button above the editor panel,
-> or 2. select "Run Lines" from the "Code" menu, or 3. hit
-> <kbd>Ctrl</kbd>+<kbd>Return</kbd> in Windows or Linux or
-> <kbd>&#8984;</kbd>+<kbd>Return</kbd> on OS X. (This shortcut can also 
-> be seen by hovering
+> current line, you can 
+
+> 1. click on the `Run` button above the editor panel, or 
+> 2. select "Run Lines" from the "Code" menu, or 
+> 3. hit <kbd>Ctrl</kbd>+<kbd>Return</kbd> in Windows or Linux 
+> or <kbd>&#8984;</kbd>+<kbd>Return</kbd> on OS X.
+> (This shortcut can also be seen by hovering
 > the mouse over the button). To run a block of code, select it and then `Run`.
 > If you have modified a line of code within a block of code you have just run,
 > there is no need to reselct the section and `Run`, you can use the next button
@@ -581,7 +583,9 @@ symbol used in the community. So the recommendation is to use `<-`.
 ## Vectorization
 
 One final thing to be aware of is that R is *vectorized*, meaning that
-variables and functions can have vectors as values. For example
+variables and functions can have vectors as values. In contrast to physics and
+mathematics, a vector in R describes a set of values in a certain order of the 
+same data type. For example
 
 
 ~~~
@@ -702,7 +706,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7fa4eb461878>
+<bytecode: 0x7ff7b325f878>
 <environment: namespace:base>
 ~~~
 {: .output}
