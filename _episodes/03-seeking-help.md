@@ -115,7 +115,7 @@ sessionInfo()
 
 
 ~~~
-R version 3.4.3 (2017-11-30)
+R version 3.4.4 (2018-03-15)
 Platform: x86_64-apple-darwin17.3.0 (64-bit)
 Running under: macOS High Sierra 10.13.3
 
@@ -130,10 +130,10 @@ attached base packages:
 [1] methods   stats     graphics  grDevices utils     datasets  base     
 
 other attached packages:
-[1] checkpoint_0.4.3 stringr_1.2.0    knitr_1.18      
+[1] checkpoint_0.4.3 stringr_1.3.0    knitr_1.20      
 
 loaded via a namespace (and not attached):
-[1] compiler_3.4.3  magrittr_1.5    tools_3.4.3     stringi_1.1.6  
+[1] compiler_3.4.4  magrittr_1.5    tools_3.4.4     stringi_1.1.7  
 [5] evaluate_0.10.1
 ~~~
 {: .output}
