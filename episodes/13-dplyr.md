@@ -411,7 +411,7 @@ expectency per continent:
 ~~~
 gapminder %>%
     group_by(continent) %>%
-    summarize(se_pop = sd(lifeExp)/sqrt(n()))
+    summarize(se_le = sd(lifeExp)/sqrt(n()))
 ~~~
 {: .language-r}
 
@@ -419,13 +419,13 @@ gapminder %>%
 
 ~~~
 # A tibble: 5 x 2
-  continent se_pop
-  <fct>      <dbl>
-1 Africa     0.366
-2 Americas   0.540
-3 Asia       0.596
-4 Europe     0.286
-5 Oceania    0.775
+  continent se_le
+  <fct>     <dbl>
+1 Africa    0.366
+2 Americas  0.540
+3 Asia      0.596
+4 Europe    0.286
+5 Oceania   0.775
 ~~~
 {: .output}
 

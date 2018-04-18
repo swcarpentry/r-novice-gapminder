@@ -5,37 +5,36 @@ exercises: 10
 questions:
 - "How can I manipulate a data frame?"
 objectives:
-- "Be able to add and remove rows and columns."
-- "Be able to remove rows with `NA` values."
-- "Be able to append two data frames"
-- "Be able to articulate what a `factor` is and how to convert between `factor` and `character`."
-- "Be able to find basic properties of a data frames including size, class or type of the columns, names, and first few rows."
+- "Add and remove rows or columns."
+- "Remove rows with `NA` values."
+- "Append two data frames."
+- "Understand what a `factor` is."
+- "Convert a `factor` to a `character` vector and vice versa."
+- "Display basic properties of data frames including size and class of the columns, names, and first few rows."
 keypoints:
 - "Use `cbind()` to add a new column to a data frame."
 - "Use `rbind()` to add a new row to a data frame."
 - "Remove rows from a data frame."
 - "Use `na.omit()` to remove rows from a data frame with `NA` values."
-- "Use `levels()` and `as.character()` to explore and manipulate factors"
-- "Use `str()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()` and `typeof()` to understand structure of the data frame"
-- "Read in a csv file using `read.csv()`"
-- "Understand `length()` of a data frame"
+- "Use `levels()` and `as.character()` to explore and manipulate factors."
+- "Use `str()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()`, and `typeof()` to understand the structure of a data frame."
+- "Read in a csv file using `read.csv()`."
+- "Understand what `length()` of a data frame represents."
 source: Rmd
 ---
 
 
 
-
-At this point, you've see it all - in the last lesson, we toured all the basic
+At this point, you've seen it all: in the last lesson, we toured all the basic
 data types and data structures in R. Everything you do will be a manipulation of
-those tools. But a whole lot of the time, the star of the show is going to be
-the data frame - the table that we created by loading information from a csv file. In this lesson, we'll learn a few more things
+those tools. But most of the time, the star of the show is the data frame—the table that we created by loading information from a csv file. In this lesson, we'll learn a few more things
 about working with data frames.
 
-## Adding columns and rows in data frame
+## Adding columns and rows in data frames
 
-We learned last time that the columns in a data frame were vectors, so that our
-data are consistent in type throughout the column. As such, if we want to add a
-new column, we need to start by making a new vector:
+We already learned that the columns of a data frame are vectors, so that our
+data are consistent in type throughout the columns. As such, if we want to add a
+new column, we can start by making a new vector:
 
 
 
@@ -73,7 +72,9 @@ cbind(cats, age)
 3  tabby    3.2            1   5
 ~~~
 {: .output}
+
 Note that if we tried to add a vector of ages with a different number of entries than the number of rows in the dataframe, it would fail:
+
 
 ~~~
 age <- c(2, 3, 5, 12)
@@ -133,7 +134,7 @@ length(age)
 ~~~
 {: .output}
 
-So for it to work we have to have `nrow(cats)` = `length(age)`. Let's store it into cats and overwite the contents of that data frame.
+So for it to work we need to have `nrow(cats)` = `length(age)`. Let's overwite the content of cats with our new data frame.
 
 
 ~~~
@@ -142,8 +143,8 @@ cats <- cbind(cats, age)
 ~~~
 {: .language-r}
 
-Now how about adding rows - in this case, we saw last time that the rows of a
-data frame are made of lists:
+Now how about adding rows? We already know that the rows of a
+data frame are lists:
 
 
 ~~~
@@ -162,16 +163,13 @@ factor level, NA generated
 
 ## Factors
 
-Another thing to look out for has emerged - when R creates a factor, it only
-allows whatever is originally there when our data was first loaded, which was
-'black', 'calico' and 'tabby' in our case. Anything new that doesn't fit into
-one of these categories is rejected as nonsense (becomes NA).
+Here is another thing to look out for: in a `factor`, each different value represents what is called a `level`. In our case, the `factor` "coat" has 3 levels: "black", "calico", and "tabby". R will only accept values that match one of the levels. If you add a new value, it will become `NA`.
 
-The warning is telling us that we unsuccessfully added 'tortoiseshell' to our
+The warning is telling us that we unsuccessfully added "tortoiseshell" to our
 *coat* factor, but 3.3 (a numeric), TRUE (a logical), and 9 (a numeric) were
 successfully added to *weight*, *likes_string*, and *age*, respectively, since
-those values are not factors. To successfully add a cat with a
-'tortoiseshell' *coat*, explicitly add 'tortoiseshell' as a *level* in the factor:
+those variables are not factors. To successfully add a cat with a
+"tortoiseshell" *coat*, add "tortoiseshell" as a *level* of the factor:
 
 
 ~~~
@@ -189,13 +187,13 @@ levels(cats$coat)
 
 
 ~~~
-levels(cats$coat) <- c(levels(cats$coat), 'tortoiseshell')
+levels(cats$coat) <- c(levels(cats$coat), "tortoiseshell")
 cats <- rbind(cats, list("tortoiseshell", 3.3, TRUE, 9))
 ~~~
 {: .language-r}
 
-Alternatively, we can change a factor column to a character vector; we lose the
-handy categories of the factor, but can subsequently add any word we want to the
+Alternatively, we can change a factor into a character vector; we lose the
+handy categories of the factor, but we can subsequently add any word we want to the
 column without babysitting the factor levels:
 
 
@@ -235,22 +233,22 @@ str(cats)
 {: .output}
 
 > ## Challenge 1
-> Let's imagine that, like dogs, 1 human year is equivalent to 7 cat years. (The Purina company uses a [more sophisticated alogrithm](https://www.purina.co.uk/cats/key-life-stages/ageing/cats-age-in-human-years)). 
+> Let's imagine that 1 human year is equivalent to 7 cat years. 
 > 1. Create a vector called `human.age` by multiplying `cats$age` by 7.
 > 2. Convert `human.age` to a factor.
-> 3. Convert `human.age` back to a numeric vector using the `as.numeric()` function. Now divide it by 7 to get back the original ages. Explain what happened.
+> 3. Convert `human.age` back to a numeric vector using the `as.numeric()` function. Now divide it by 7 to get the original ages back. Explain what happened.
 >
 > > ## Solution to Challenge 1
 > > 1. `human.age <- cats$age * 7`
 > > 2. `human.age <- factor(human.age)`. `as.factor(human.age)` works just as well.
-> > 3. `as.numeric(human.age)` yields `1 2 3 4 4` because factors are stored as integers (here, 1:4), each of which is associated with a label (here, 28, 35, 56, and 63). Converting the factor to a numeric vector gives us the underlying integers, not the labels. If we want the original numbers, we need to convert `human.age` to a character vector and then to a numeric vector (why does this work?). This comes up in real life when we accidentally include a character somewhere in a column of a .csv file that is supposed to only contain numbers, and forget to set `stringsAsFactors=FALSE` when we read in the data.
+> > 3. `as.numeric(human.age)` yields `1 2 3 4 4` because factors are stored as integers (here, 1:4), each of which is associated with a label (here, 28, 35, 56, and 63). Converting the factor to a numeric vector gives us the underlying integers, not the labels. If we want the original numbers, we need to convert `human.age` to a character vector and then to a numeric vector (why does this work?). This comes up in real life when we accidentally include a character somewhere in a column of a .csv file supposed to only contain numbers, and forget to set `stringsAsFactors=FALSE` when we read in the data.
 > {: .solution}
 {: .challenge}
 
 ## Removing rows
 
-We now know how to add rows and columns to our data frame in R - but in our
-first attempt to add a 'tortoiseshell' cat to the data frame we've accidentally
+We now know how to add rows and columns to our data frame in R—but in our
+first attempt to add a "tortoiseshell" cat to the data frame we have accidentally
 added a garbage row:
 
 
@@ -275,7 +273,7 @@ We can ask for a data frame minus this offending row:
 
 
 ~~~
-cats[-4,]
+cats[-4, ]
 ~~~
 {: .language-r}
 
@@ -290,10 +288,10 @@ cats[-4,]
 ~~~
 {: .output}
 
-Notice the comma with nothing after it to indicate we want to drop the entire fourth row.
+Notice the comma with nothing after it to indicate that we want to drop the entire fourth row.
 
-Note: We could also remove both new rows at once by putting the row numbers
-inside of a vector: `cats[c(-4,-5),]`
+Note: we could also remove both new rows at once by putting the row numbers
+inside of a vector: `cats[c(-4,-5), ]`
 
 Alternatively, we can drop all rows with `NA` values:
 
@@ -322,10 +320,53 @@ cats <- na.omit(cats)
 ~~~
 {: .language-r}
 
+## Removing columns  
+
+We can also remove columns in our data frame. What if we want to remove the column "age". We can remove it in two ways, by variable number or by index.  
+
+
+~~~
+cats[,-4]
+~~~
+{: .language-r}
+
+
+
+~~~
+           coat weight likes_string
+1        calico    2.1            1
+2         black    5.0            0
+3         tabby    3.2            1
+5 tortoiseshell    3.3            1
+~~~
+{: .output}
+
+Notice the comma with nothing before it, indicating we want to keep all of the rows.  
+
+Alternatively, we can drop the column by using the index name.  
+
+
+~~~
+drop <- names(cats) %in% c("age")
+cats[,!drop]
+~~~
+{: .language-r}
+
+
+
+~~~
+           coat weight likes_string
+1        calico    2.1            1
+2         black    5.0            0
+3         tabby    3.2            1
+5 tortoiseshell    3.3            1
+~~~
+{: .output}
+
 ## Appending to a data frame
 
 The key to remember when adding data to a data frame is that *columns are
-vectors or factors, and rows are lists.* We can also glue two data frames
+vectors and rows are lists.* We can also glue two data frames
 together with `rbind`:
 
 
@@ -379,7 +420,7 @@ cats
 > You can create a new data frame right from within R with the following syntax:
 > 
 > ~~~
-> df <- data.frame(id = c('a', 'b', 'c'),
+> df <- data.frame(id = c("a", "b", "c"),
 >                  x = 1:3,
 >                  y = c(TRUE, TRUE, FALSE),
 >                  stringsAsFactors = FALSE)
@@ -397,11 +438,11 @@ cats
 > > ## Solution to Challenge 2
 > > 
 > > ~~~
-> > df <- data.frame(first = c('Grace'),
-> >                  last = c('Hopper'),
+> > df <- data.frame(first = c("Grace"),
+> >                  last = c("Hopper"),
 > >                  lucky_number = c(0),
 > >                  stringsAsFactors = FALSE)
-> > df <- rbind(df, list('Marie', 'Curie', 238) )
+> > df <- rbind(df, list("Marie", "Curie", 238) )
 > > df <- cbind(df, coffeetime = c(TRUE,TRUE))
 > > ~~~
 > > {: .language-r}
@@ -409,9 +450,9 @@ cats
 {: .challenge}
 
 ## Realistic example
-So far, you've seen the basics of manipulating data frames with our cat data;
-now, let's use those skills to digest a more realistic dataset. Let's read in the
-gapminder dataset that we downloaded previously:
+So far, you have seen the basics of manipulating data frames with our cat data;
+now let's use those skills to digest a more realistic dataset. Let's read in the
+`gapminder` dataset that we downloaded previously:
 
 
 ~~~
