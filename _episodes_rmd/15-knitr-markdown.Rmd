@@ -376,9 +376,8 @@ of the file.
 > Creating .pdf documents may require installation of some extra software. If
 > required this is detailed in an error message.
 >
-> Tex for windows is available [here](http://miktex.org/2.9/setup).
->
-> Tex for mac is available [here](http://tug.org/mactex).
+> - [TeX installers for Windows](https://miktex.org/2.9/setup).
+> - [TeX installers for macOS](https://tug.org/mactex).
 {: .callout}
 
 
