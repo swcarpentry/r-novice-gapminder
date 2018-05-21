@@ -431,12 +431,12 @@ with that column added. This means when we call the function later we can see
 the context for the returned GDP values, which is much better than in our first 
 attempt where we got a vector of numbers.
 
-> ## Challenge 3
+> ## Challenge 4
 >
 > Test out your GDP function by calculating the GDP for New Zealand in 1987. How
 > does this differ from New Zealand's GDP in 1952?
 >
-> > ## Solution to challenge 3
+> > ## Solution to challenge 4
 > >
 > > ```{r, eval=FALSE}
 > >   calcGDP(gapminder, year = c(1952, 1987), country = "New Zealand")
@@ -448,7 +448,7 @@ attempt where we got a vector of numbers.
 {: .challenge}
 
 
-> ## Challenge 4
+> ## Challenge 5
 >
 > The `paste()` function can be used to combine text together, e.g:
 >
@@ -468,7 +468,7 @@ attempt where we got a vector of numbers.
 > the separator between text. The default is a space: " ". The default for
 > `paste0()` is no space "".
 >
-> > ## Solution to challenge 4
+> > ## Solution to challenge 5
 > >
 > >  Write a function called `fence()` that takes two vectors as arguments,
 > > called `text` and `wrapper`, and prints out the text wrapped with the
