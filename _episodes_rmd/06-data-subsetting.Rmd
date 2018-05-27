@@ -59,10 +59,8 @@ x[1]
 x[4]
 ```
 
-It may look different, but the square brackets operator is a function. For vectors
-(and matrices), it means "get me the nth element".
-
-We can ask for multiple elements at once:
+For vectors
+(and matrices), the square brackets operator means "get me these elements". We can ask for multiple elements at once:
 
 ```{r}
 x[c(1, 3)]
