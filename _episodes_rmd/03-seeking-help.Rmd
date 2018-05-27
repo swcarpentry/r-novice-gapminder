@@ -62,9 +62,9 @@ To seek help on special operators, use quotes:
 ## Getting help on packages
 
 Many packages come with "vignettes": tutorials and extended example documentation.
-Without any arguments, `vignette()` will list all vignettes for all installed packages;
-`vignette(package="package-name")` will list all available vignettes for
-`package-name`, and `vignette("vignette-name")` will open the specified vignette.
+Without any arguments, `vignette()` and `vignette("vignette-name")` will open the 
+specified vignette. To see a list of vignettes for a given package as a webpage with 
+browsable links use `browswVignettes(package = "package-name")`.
 
 If a package doesn't have any vignettes, you can usually find help by typing
 `help("package-name")`.
