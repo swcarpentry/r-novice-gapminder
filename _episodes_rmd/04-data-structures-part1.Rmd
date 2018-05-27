@@ -62,16 +62,9 @@ cats <- read.csv(file = "data/feline-data.csv")
 cats
 ```
 
-The `read.table` function is used for reading in tabular data stored in a text
-file where the columns of data are separated by punctuation characters such as
-CSV files (csv = comma-separated values). Tabs and commas are the most common
-punctuation characters used to separate or delimit data points in csv files. 
-For convenience R provides 2 other versions of `read.table`. These are: `read.csv`
-for files where the data are separated with commas and `read.delim` for files
-where the data are separated with tabs. Of these three functions `read.csv` is
-the most commonly used.  If needed it is possible to override the default 
-delimiting punctuation marks for both `read.csv` and `read.delim`.
-
+R provides other functions for reading tablular data in different formats.
+`read.delim` is useful for reading tab delimited data and `read.table` is a
+more general function for dealing all kinds of tabular data.
 
 We can begin exploring our dataset right away, pulling out columns by specifying
 them using the `$` operator:
