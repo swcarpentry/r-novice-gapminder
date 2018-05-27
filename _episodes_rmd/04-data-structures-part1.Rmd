@@ -64,7 +64,7 @@ cats
 
 R provides other functions for reading tablular data in different formats.
 `read.delim` is useful for reading tab delimited data and `read.table` is a
-more general function for dealing all kinds of tabular data.
+more general function for dealing eith all kinds of tabular data.
 
 We can begin exploring our dataset right away, pulling out columns by specifying
 them using the `$` operator:
