@@ -57,11 +57,7 @@ efficiently transform your data regardless of original format.
 
 ![](../fig/14-tidyr-fig1.png)
 
-These data formats mainly affect readability. For humans, the wide format is
-often more intuitive since we can often see more of the data on the screen due
-to its shape. However, the long format is more machine readable and is closer
-to the formatting of databases. The ID variables in our dataframes are similar to
-the fields in a database and observed variables are like the database values.
+These formats tend to be favoured in different situatuations. When modelling data, the standard is wide format, with a row representing a single observational unit and the columns representing different measurements. When plotting data, especially with ggplot2, the longer format is often useful since it allows the comparison of different measures or 'series' on the same plot by binding an ID variable to the colour or group aesthetic.
 
 ## Getting started
 
