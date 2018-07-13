@@ -168,13 +168,13 @@ x
 > print(x)
 > ```
 >
-> Come up with at least 3 different commands that will produce the following output:
+> Come up with at least 2 different commands that will produce the following output:
 >
 > ```{r, echo=FALSE}
 > x[2:4]
 > ```
 >
-> After you find 3 different commands, compare notes with your neighbour. Did you have different strategies?
+> After you find 2 different commands, compare notes with your neighbour. Did you have different strategies?
 >
 > > ## Solution to challenge 1
 > >
@@ -183,9 +183,6 @@ x
 > > ```
 > > ```{r}
 > > x[-c(1,5)]
-> > ```
-> > ```{r}
-> > x[c("b", "c", "d")]
 > > ```
 > > ```{r}
 > > x[c(2,3,4)]
