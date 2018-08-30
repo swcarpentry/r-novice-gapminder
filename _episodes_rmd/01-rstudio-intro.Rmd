@@ -459,14 +459,14 @@ ls
 
 You can use `rm` to delete objects you no longer need:
 
-```{r}
+```{r, eval=FALSE}
 rm(x)
 ```
 
 If you have lots of things in your environment and want to delete all of them,
 you can pass the results of `ls` to the `rm` function:
 
-```{r}
+```{r, eval=FALSE}
 rm(list = ls())
 ```
 
