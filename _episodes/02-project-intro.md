@@ -144,10 +144,10 @@ one to store the analysis scripts.
 Now we have a good directory structure we will now place/save the data file in the `data/` directory.
 
 > ## Challenge 1
-> Download the gapminder data from [here](https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv).
+> Download the gapminder data from [here](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_wide.csv).
 >
 > 1. Download the file (CTRL + S, right mouse click -> "Save as", or File -> "Save page as")
-> 2. Make sure it's saved under the name `gapminder-FiveYearData.csv`
+> 2. Make sure it's saved under the name `gapminder_data.csv`
 > 3. Save the file in the `data/` folder within your project.
 >
 > We will load and inspect these data later.
@@ -167,7 +167,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > > By running these commands in the shell:
 > > 
 > > ~~~
-> > ls -lh data/gapminder-FiveYearData.csv
+> > ls -lh data/gapminder_data.csv
 > > ~~~
 > > {: .language-r}
 > > 
@@ -175,13 +175,13 @@ Now we have a good directory structure we will now place/save the data file in t
 > > 
 > > 
 > > ~~~
-> > -rw-r--r--  1 naupaka  staff    80K Aug  1  2017 data/gapminder-FiveYearData.csv
+> > -rw-r--r--  1 naupaka  staff    80K Sep  2 15:54 data/gapminder_data.csv
 > > ~~~
 > > {: .output}
 > > The file size is 80K.
 > > 
 > > ~~~
-> > wc -l data/gapminder-FiveYearData.csv
+> > wc -l data/gapminder_data.csv
 > > ~~~
 > > {: .language-r}
 > > 
@@ -189,13 +189,13 @@ Now we have a good directory structure we will now place/save the data file in t
 > > 
 > > 
 > > ~~~
-> >     1705 data/gapminder-FiveYearData.csv
+> >     1705 data/gapminder_data.csv
 > > ~~~
 > > {: .output}
 > > There are 1705 lines. The data looks like:
 > > 
 > > ~~~
-> > head data/gapminder-FiveYearData.csv
+> > head data/gapminder_data.csv
 > > ~~~
 > > {: .language-r}
 > > 
