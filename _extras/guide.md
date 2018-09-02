@@ -73,18 +73,9 @@ $ git config --global credential.helper 'cache --timeout=10000000'
 
 ## Pulling in Data
 
-The easiest way to get the data used in this lesson during a workshop is
-to have attendees run the following:
-
-~~~
-git remote add data https://github.com/resbaz/r-novice-gapminder-files
-git pull data master
-~~~
-{: .bash}
-
-If Git is not being taught as part of the workshop the raw data can be downloaded from
-[gapminder-FiveYearData][gapminder-data] and
-[gapminder-FiveYearData-Wide][gapminder-data-wide].
+The easiest way to get the data used in this lesson during a workshop is to have
+attendees download the raw data from [gapminder-data][gapminder-data] and
+[gapminder-data-wide][gapminder-data-wide].
 
 Attendees can use the `File - Save As` dialog in their browser to save the file.
 
