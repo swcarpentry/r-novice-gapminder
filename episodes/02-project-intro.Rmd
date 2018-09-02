@@ -145,10 +145,10 @@ one to store the analysis scripts.
 Now we have a good directory structure we will now place/save the data file in the `data/` directory.
 
 > ## Challenge 1
-> Download the gapminder data from [here](https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv).
+> Download the gapminder data from [here](https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder_data.csv).
 >
 > 1. Download the file (CTRL + S, right mouse click -> "Save as", or File -> "Save page as")
-> 2. Make sure it's saved under the name `gapminder-FiveYearData.csv`
+> 2. Make sure it's saved under the name `gapminder_data.csv`
 > 3. Save the file in the `data/` folder within your project.
 >
 > We will load and inspect these data later.
@@ -167,15 +167,15 @@ Now we have a good directory structure we will now place/save the data file in t
 > >
 > > By running these commands in the shell:
 > > ```{r ch2a-sol, engine='sh'}
-> > ls -lh data/gapminder-FiveYearData.csv
+> > ls -lh data/gapminder_data.csv
 > > ```
 > > The file size is 80K.
 > > ```{r ch2b-sol, engine='sh'}
-> > wc -l data/gapminder-FiveYearData.csv
+> > wc -l data/gapminder_data.csv
 > > ```
 > > There are 1705 lines. The data looks like:
 > > ```{r ch2c-sol, engine='sh'}
-> > head data/gapminder-FiveYearData.csv
+> > head data/gapminder_data.csv
 > > ```
 > {: .solution}
 {: .challenge}
