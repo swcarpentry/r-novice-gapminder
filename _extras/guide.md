@@ -83,7 +83,7 @@ git pull data master
 {: .bash}
 
 If Git is not being taught as part of the workshop the raw data can be downloaded from
-[gapminder-FiveYearData][gapminder-data] and
+[gapminder_data][gapminder-data] and
 [gapminder-FiveYearData-Wide][gapminder-data-wide].
 
 Attendees can use the `File - Save As` dialog in their browser to save the file.
@@ -124,6 +124,6 @@ Don't worry about being correct or knowing the material back-to-front. Use
 mistakes as teaching moments: the most vital skill you can impart is how to
 debug and recover from unexpected errors.
 
-[gapminder-data]: https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv
+[gapminder-data]: https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/data/gapminder_data.csv
 
 [gapminder-data-wide]: https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_wide.csv
