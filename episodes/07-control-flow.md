@@ -478,7 +478,7 @@ output_vector2
 > > **Step 1**:  We want to make sure we can extract all the unique values of the continent vector
 > > 
 > > ~~~
-> > gapminder <- read.csv("data/gapminder-FiveYearData.csv")
+> > gapminder <- read.csv("data/gapminder_data.csv")
 > > unique(gapminder$continent)
 > > ~~~
 > > {: .language-r}

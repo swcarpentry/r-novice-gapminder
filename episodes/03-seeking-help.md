@@ -117,9 +117,9 @@ sessionInfo()
 
 
 ~~~
-R version 3.5.0 (2018-04-23)
-Platform: x86_64-apple-darwin17.5.0 (64-bit)
-Running under: macOS High Sierra 10.13.5
+R version 3.5.1 (2018-07-02)
+Platform: x86_64-apple-darwin17.6.0 (64-bit)
+Running under: macOS High Sierra 10.13.6
 
 Matrix products: default
 BLAS: /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib
@@ -135,8 +135,8 @@ other attached packages:
 [1] checkpoint_0.4.3 stringr_1.3.1    knitr_1.20      
 
 loaded via a namespace (and not attached):
-[1] compiler_3.5.0  magrittr_1.5    tools_3.5.0     stringi_1.2.3  
-[5] evaluate_0.10.1
+[1] compiler_3.5.1 magrittr_1.5   tools_3.5.1    stringi_1.2.4 
+[5] evaluate_0.11 
 ~~~
 {: .output}
 
