@@ -323,7 +323,7 @@ knitr::opts_chunk$set(fig.path="Figs/", message=FALSE, warning=FALSE,
 
 The `fig.path` option defines where the figures will be saved. The `/`
 here is really important; without it, the figures would be saved in
-the standard place but just with names that being with `Figs`.
+the standard place but just with names that begin with `Figs`.
 
 If you have multiple R Markdown files in a common directory, you might
 want to use `fig.path` to define separate prefixes for the figure file
@@ -376,9 +376,8 @@ of the file.
 > Creating .pdf documents may require installation of some extra software. If
 > required this is detailed in an error message.
 >
-> Tex for windows is available [here](http://miktex.org/2.9/setup).
->
-> Tex for mac is available [here](http://tug.org/mactex).
+> - [TeX installers for Windows](https://miktex.org/2.9/setup).
+> - [TeX installers for macOS](https://tug.org/mactex).
 {: .callout}
 
 

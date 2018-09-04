@@ -11,6 +11,44 @@ at the start of each session for technical difficulties like WiFi and
 installing things (even if you asked students to install in advance, longer if
 not).
 
+## Lesson Plans
+
+The lesson contains much more material than can be taught in a day.
+Instructors will need to pick an appropriate subset of episodes to use
+in a standard one day course. 
+
+Some suggested paths through the material are:
+
+(suggested by [@liz-is](https://github.com/swcarpentry/r-novice-gapminder/issues/104#issuecomment-276529213))
+
+* 01 Introduction to R and RStudio
+* 04 Data Structures
+* 05 Exploring Data Frames ("Realistic example" section onwards)
+* 08 Creating Publication-Quality Graphics with ggplot2
+* 10 Functions Explained
+* 13 Dataframe Manipulation with dplyr
+* 15 Producing Reports With knitr
+
+(suggested by [@naupaka](https://github.com/swcarpentry/r-novice-gapminder/issues/104#issuecomment-312547509))
+* 01 Introduction to R and RStudio
+* 02 Project Management With RStudio
+* 03 Seeking Help
+* 04 Data Structures
+* 05 Exploring Data Frames
+* 06 Subsetting Data
+* 09 Vectorization
+* 08 Creating Publication-Quality Graphics with ggplot2 *OR*
+  13 Dataframe Manipulation with dplyr
+* 15 Producing Reports With knitr
+
+A half day course could consist of (suggested by [@karawoo](https://github.com/swcarpentry/r-novice-gapminder/issues/104#issuecomment-277599864)):
+
+* 01 Introduction to R and RStudio
+* 04 Data Structures (only creating vectors with `c()`)
+* 05 Exploring Data Frames ("Realistic example" section onwards)
+* 06 Subsetting Data (excluding factor, matrix and list subsetting)
+* 08 Creating Publication-Quality Graphics with ggplot2
+
 ## Setting up git in RStudio
 
 There can be difficulties linking git to RStudio depending on the
@@ -35,18 +73,9 @@ $ git config --global credential.helper 'cache --timeout=10000000'
 
 ## Pulling in Data
 
-The easiest way to get the data used in this lesson during a workshop is
-to have attendees run the following:
-
-~~~
-git remote add data https://github.com/resbaz/r-novice-gapminder-files
-git pull data master
-~~~
-{: .bash}
-
-If Git is not being taught as part of the workshop the raw data can be downloaded from
-[gapminder-FiveYearData][gapminder-data] and
-[gapminder-FiveYearData-Wide][gapminder-data-wide].
+The easiest way to get the data used in this lesson during a workshop is to have
+attendees download the raw data from [gapminder-data][gapminder-data] and
+[gapminder-data-wide][gapminder-data-wide].
 
 Attendees can use the `File - Save As` dialog in their browser to save the file.
 
@@ -86,5 +115,6 @@ Don't worry about being correct or knowing the material back-to-front. Use
 mistakes as teaching moments: the most vital skill you can impart is how to
 debug and recover from unexpected errors.
 
-[gapminder-data]: https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv
+[gapminder-data]: https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv
+
 [gapminder-data-wide]: https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_wide.csv

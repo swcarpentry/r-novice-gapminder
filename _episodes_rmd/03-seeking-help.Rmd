@@ -20,8 +20,8 @@ knitr_fig_path("03-")
 
 ## Reading Help files
 
-R, and every package, provide help files for functions. To search for help on a
-function from a specific function that is in a package loaded into your
+R, and every package, provide help files for functions. The general syntax to search for help on any
+function, "function_name", from a specific function that is in a package loaded into your
 namespace (your interactive R session):
 
 ```{r, eval=FALSE}
@@ -56,7 +56,7 @@ Different functions might have different sections, but these are the main ones y
 To seek help on special operators, use quotes:
 
 ```{r, eval=FALSE}
-?"+"
+?"<-"
 ```
 
 ## Getting help on packages
@@ -175,7 +175,7 @@ your issue.
 > > separator for `read.table()`, although you may have to change
 > > the `comment.char` argument as well if your data file contains
 > > hash (#) characters
-> {: solution}
+> {: .solution}
 {: .challenge}
 
 ## Other ports of call
