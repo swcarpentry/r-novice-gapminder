@@ -17,7 +17,7 @@ source("../bin/chunk-options.R")
 knitr_fig_path("11-")
 # Silently load in the data so the rest of the lesson works
 library("ggplot2")
-gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
+gapminder <- read.csv("data/gapminder_data.csv", header=TRUE)
 # Temporarily create a cleaned-data directory so that the writing examples work
 # The students should have created this in topic 2.
 dir.create("cleaned-data")

@@ -23,7 +23,7 @@ source: Rmd
 source("../bin/chunk-options.R")
 knitr_fig_path("10-")
 # Silently load in the data so the rest of the lesson works
-gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
+gapminder <- read.csv("data/gapminder_data.csv", header=TRUE)
 ```
 
 
@@ -74,11 +74,13 @@ fahr_to_kelvin <- function(temp) {
 ```
 
 We define `fahr_to_kelvin()` by assigning it to the output of `function`. The
-list of argument names are contained within parentheses.  Next, the
+list of argument names are contained within parentheses.   Next, the
 [body]({{ page.root }}/reference/#function-body) of the function--the
 statements that are executed when it runs--is contained within curly braces
 (`{}`). The statements in the body are indented by two spaces. This makes the
 code easier to read but does not affect how the code operates.
+
+It is useful to think of creating functions like writing a cookbook. First you define the "ingredients" that your function needs. In this case, we only need one ingredient to use our function: "temp". After we list our ingredients, we then say what we will do with them, in this case, we are taking our ingredient and applying a set of mathmatical operators to it. 
 
 When we call the function, the values we pass to it as arguments are assigned to
 those variables so that we can use them inside the function. Inside the
@@ -431,12 +433,12 @@ with that column added. This means when we call the function later we can see
 the context for the returned GDP values, which is much better than in our first 
 attempt where we got a vector of numbers.
 
-> ## Challenge 3
+> ## Challenge 4
 >
 > Test out your GDP function by calculating the GDP for New Zealand in 1987. How
 > does this differ from New Zealand's GDP in 1952?
 >
-> > ## Solution to challenge 3
+> > ## Solution to challenge 4
 > >
 > > ```{r, eval=FALSE}
 > >   calcGDP(gapminder, year = c(1952, 1987), country = "New Zealand")
@@ -448,7 +450,7 @@ attempt where we got a vector of numbers.
 {: .challenge}
 
 
-> ## Challenge 4
+> ## Challenge 5
 >
 > The `paste()` function can be used to combine text together, e.g:
 >
@@ -468,7 +470,7 @@ attempt where we got a vector of numbers.
 > the separator between text. The default is a space: " ". The default for
 > `paste0()` is no space "".
 >
-> > ## Solution to challenge 4
+> > ## Solution to challenge 5
 > >
 > >  Write a function called `fence()` that takes two vectors as arguments,
 > > called `text` and `wrapper`, and prints out the text wrapped with the

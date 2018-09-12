@@ -18,7 +18,7 @@ source: Rmd
 source("../bin/chunk-options.R")
 knitr_fig_path("07-")
 # Silently load in the data so the rest of the lesson works
-gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
+gapminder <- read.csv("data/gapminder_data.csv", header=TRUE)
 # Silently set seed for random number generation, so we don't have to explain it
 set.seed(10)
 ```
@@ -331,7 +331,7 @@ output_vector2
 > >
 > > **Step 1**:  We want to make sure we can extract all the unique values of the continent vector
 > > ```{r 07-chall-03-sol-a, eval=FALSE}
-> > gapminder <- read.csv("data/gapminder-FiveYearData.csv")
+> > gapminder <- read.csv("data/gapminder_data.csv")
 > > unique(gapminder$continent)
 > > ```
 > >
@@ -451,6 +451,7 @@ output_vector2
 > >               ) # end with
 > >     } # end for loop
 > >     rm(tmp)
-> >  }```
+> >  }
+> >  ```
 > {: .solution}
 {: .challenge}
