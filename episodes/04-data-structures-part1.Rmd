@@ -41,7 +41,7 @@ cats <- data.frame(coat = c("calico", "black", "tabby"),
                     likes_string = c(1, 0, 1))
 write.csv(x = cats, file = "data/feline-data.csv", row.names = FALSE)
 ```
-
+The contents of the new file, `feline-data.csv`:
 ```{r, eval=FALSE}
 coat,weight,likes_string
 calico,2.1,1

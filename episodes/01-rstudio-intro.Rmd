@@ -101,7 +101,6 @@ interactive R console.
 > RStudio offers you great flexibility in running code from within the editor
 > window. There are buttons, menu choices, and keyboard shortcuts. To run the
 > current line, you can 
-
 > 1. click on the `Run` button above the editor panel, or 
 > 2. select "Run Lines" from the "Code" menu, or 
 > 3. hit <kbd>Ctrl</kbd>+<kbd>Return</kbd> in Windows or Linux 
@@ -460,14 +459,14 @@ ls
 
 You can use `rm` to delete objects you no longer need:
 
-```{r}
+```{r, eval=FALSE}
 rm(x)
 ```
 
 If you have lots of things in your environment and want to delete all of them,
 you can pass the results of `ls` to the `rm` function:
 
-```{r}
+```{r, eval=FALSE}
 rm(list = ls())
 ```
 

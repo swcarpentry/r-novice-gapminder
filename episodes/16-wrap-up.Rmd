@@ -7,6 +7,7 @@ questions:
 objectives:
 - "Describe best practices for writing R and explain the justification for each."
 keypoints:
+- "Keep your project folder structured, organized and tidy."
 - "Document what and why, not how."
 - "Break programs into short single-purpose functions."
 - "Write re-runnable tests."
@@ -15,6 +16,33 @@ keypoints:
 - "Be consistent in naming, indentation, and other aspects of style."
 source: Rmd
 ---
+
+## Structure your project folder
+
+Keep your project folder structured, organized and tidy, by creating subfolders for your code files, manuals, data, binaries, output plots, etc. It can be done completely manually, or with the help of RStudio's `New Project` functionality, or a desginated package, such as `ProjectTemplate`.
+
+> ## Tip: ProjectTemplate - a possible solution
+>
+> One way to automate the management of projects is to install the third-party package, `ProjectTemplate`.
+> This package will set up an ideal directory structure for project management.
+> This is very useful as it enables you to have your analysis pipeline/workflow organised and structured.
+> Together with the default RStudio project functionality and Git you will be able to keep track of your
+> work as well as be able to share your work with collaborators.
+>
+> 1. Install `ProjectTemplate`.
+> 2. Load the library
+> 3. Initialise the project:
+>
+> ```{r, eval=FALSE}
+> install.packages("ProjectTemplate")
+> library("ProjectTemplate")
+> create.project("../my_project", merge.strategy = "allow.non.conflict")
+> ```
+>
+> For more information on ProjectTemplate and its functionality visit the
+> home page [ProjectTemplate](http://projecttemplate.net/index.html)
+{: .callout}
+
 
 ## Make code readable
 
@@ -67,3 +95,4 @@ for which a particular input always gives a particular output.
 ## Remember to be stylish
 
 Apply consistent style to your code.
+

@@ -9,6 +9,7 @@ objectives:
 - "To apply geometry, aesthetic, and statisics layers to a ggplot plot."
 - "To manipulate the aesthetics of a plot usng different colors, shapes, and lines."
 - "To improve data visualization through transforming scales and paneling by group."
+- "To save a plot created with ggplot to disk."
 keypoints:
 - "Use `ggplot2` to create plots."
 - "Think about graphics in layers: aesthetics, geometry, statistics, scale transformation, and grouping."
@@ -19,7 +20,7 @@ source: Rmd
 source("../bin/chunk-options.R")
 knitr_fig_path("08-")
 # Silently load in the data so the rest of the lesson works
-gapminder <- read.csv("data/gapminder-FiveYearData.csv", header = TRUE)
+gapminder <- read.csv("data/gapminder_data.csv", header = TRUE)
 ```
 
 Plotting our data is one of the best ways to
@@ -30,7 +31,7 @@ There are three main plotting systems in R,
 the [base plotting system][base], the [lattice][lattice]
 package, and the [ggplot2][ggplot2] package.
 
-[base]: http://www.statmethods.net/graphs/
+[base]: http://www.statmethods.net/graphs/index.html
 [lattice]: http://www.statmethods.net/advgraphs/trellis.html
 [ggplot2]: http://www.statmethods.net/advgraphs/ggplot2.html
 
@@ -351,6 +352,26 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
   theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
 ```
 
+
+## Exporting the plot
+
+The `ggsave()` function allows you to export a plot created with ggplot. You can specify the dimension and resolution of your plot by adjusting the appropriate arguments (`width`, `height` and `dpi`) to create high quality graphics for publication. In order to save the plot from above, we first assign it to a variable `lifeExp_plot`, then tell `ggsave` to save that plot in `png` format to a directory called `results`. (Make sure you have a `results/` folder in your working directory.)
+
+```{r save}
+lifeExp_plot <- ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
+  geom_line() + facet_wrap( ~ country) +
+  labs(
+    x = "Year",              # x axis title
+    y = "Life expectancy",   # y axis title
+    title = "Figure 1",      # main title of figure
+    color = "Continent"      # title of legend
+  ) +
+  theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
+
+ggsave(filename = "results/lifeExp.png", plot = lifeExp_plot, width = 12, height = 10, dpi = 300, units = "cm")
+```
+
+There are two nice things about `ggsave`. First, it defaults to the last plot, so if you omit the `plot` argument it will automatically save the last plot you created with `ggplot`. Secondly, it tries to determine the format you want to save your plot in from the file extension you provide for the filename (for example `.png` or `.pdf`). If you need to, you can specify the format explicitly in the `device` argument.
 
 This is a taste of what you can do with `ggplot2`. RStudio provides a
 really useful [cheat sheet][cheat] of the different layers available, and more
