@@ -114,7 +114,7 @@ str(cats)
 ```
 
 > ## Challenge 1
-> Let's imagine that 1 human year is equivalent to 7 cat years. 
+> Let's imagine that 1 cat year is equivalent to 7 human years. 
 > 1. Create a vector called `human_age` by multiplying `cats$age` by 7.
 > 2. Convert `human_age` to a factor.
 > 3. Convert `human_age` back to a numeric vector using the `as.numeric()` function. Now divide it by 7 to get the original ages back. Explain what happened.
