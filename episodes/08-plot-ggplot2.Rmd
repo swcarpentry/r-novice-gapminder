@@ -199,7 +199,7 @@ lines.
 
 ## Transformations and statistics
 
-Ggplot also makes it easy to overlay statistical models over the data. To
+ggplot2 also makes it easy to overlay statistical models over the data. To
 demonstrate we'll go back to our first example:
 
 ```{r lifeExp-vs-gdpPercap-scatter3, message=FALSE}
@@ -373,7 +373,7 @@ ggsave(filename = "results/lifeExp.png", plot = lifeExp_plot, width = 12, height
 
 There are two nice things about `ggsave`. First, it defaults to the last plot, so if you omit the `plot` argument it will automatically save the last plot you created with `ggplot`. Secondly, it tries to determine the format you want to save your plot in from the file extension you provide for the filename (for example `.png` or `.pdf`). If you need to, you can specify the format explicitly in the `device` argument.
 
-This is a taste of what you can do with `ggplot2`. RStudio provides a
+This is a taste of what you can do with ggplot2. RStudio provides a
 really useful [cheat sheet][cheat] of the different layers available, and more
 extensive documentation is available on the [ggplot2 website][ggplot-doc].
 Finally, if you have no idea how to change something, a quick Google search will
