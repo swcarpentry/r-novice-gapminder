@@ -609,8 +609,8 @@ output_vector2
 > >               ) # end with
 > >     } # end for loop
 > >     rm(tmp)
-> >  }```
-> > > {: .solution}
-> > {: .challenge}
+> >  }
 > > ~~~
 > > {: .language-r}
+> {: .solution}
+{: .challenge}

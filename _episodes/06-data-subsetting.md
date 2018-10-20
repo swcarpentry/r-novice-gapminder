@@ -689,7 +689,7 @@ of shorter object length
 ~~~
 {: .output}
 
-Why does R give `FALSE` as the third element of this vector, when `names(x)[3] != "c"` is obviously false?
+Why does R give `TRUE` as the third element of this vector, when `names(x)[3] != "c"` is obviously false?
 When you use `!=`, R tries to compare each element
 of the left argument with the corresponding element of its right
 argument. What happens when you compare vectors of different lengths?
@@ -1384,7 +1384,7 @@ be changed with the third argument, `drop = FALSE`).
 >    {: .language-r}
 >
 > 4. Extract the first row, and the fourth and fifth columns
->   (`lifeExp` and `gdpPercap`).
+>   (`continent` and `lifeExp`).
 >
 >    
 >    ~~~
@@ -1433,7 +1433,8 @@ be changed with the third argument, `drop = FALSE`).
 > >    {: .language-r}
 > >
 > > 4. Extract the first row, and the fourth and fifth columns
-> >   (`lifeExp` and `gdpPercap`).
+> >   (`continent` and `lifeExp`).
+
 > >
 > >    
 > >    ~~~
