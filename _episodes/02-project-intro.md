@@ -64,7 +64,7 @@ project.
 >
 > 1. Click the "File" menu button, then "New Project".
 > 2. Click "New Directory".
-> 3. Click "Empty Project".
+> 3. Click "New Project".
 > 4. Type in the name of the directory to store your project, e.g. "my_project".
 > 5. If available, select the checkbox for "Create a git repository."
 > 6. Click the "Create Project" button.
@@ -144,7 +144,7 @@ one to store the analysis scripts.
 Now we have a good directory structure we will now place/save the data file in the `data/` directory.
 
 > ## Challenge 1
-> Download the gapminder data from [here](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_wide.csv).
+> Download the gapminder data from [here](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv).
 >
 > 1. Download the file (CTRL + S, right mouse click -> "Save as", or File -> "Save page as")
 > 2. Make sure it's saved under the name `gapminder_data.csv`
