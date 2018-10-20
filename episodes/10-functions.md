@@ -317,7 +317,7 @@ Error in fahr_to_kelvin(temp = as.factor(32)): is.numeric(temp) is not TRUE
 > > 
 > > ~~~
 > > fahr_to_celsius <- function(temp) {
-> >   stopifnot(!is.numeric(temp))
+> >   stopifnot(is.numeric(temp))
 > >   temp_k <- fahr_to_kelvin(temp)
 > >   result <- kelvin_to_celsius(temp_k)
 > >   return(result)
