@@ -119,8 +119,8 @@ a
 
 > ## Tip: some useful functions for logical vectors
 >
-> `any()` will return `TRUE` if *any* element of a vector is `TRUE`
-> `all()` will return `TRUE` if *all* elements of a vector are `TRUE`
+> `any()` will return `TRUE` if *any* element of a vector is `TRUE`.  
+> `all()` will return `TRUE` if *all* elements of a vector are `TRUE`.
 {: .callout}
 
 Most functions also operate element-wise on vectors:
