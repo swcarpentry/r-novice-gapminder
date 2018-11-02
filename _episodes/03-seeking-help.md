@@ -119,7 +119,7 @@ sessionInfo()
 ~~~
 R version 3.5.1 (2018-07-02)
 Platform: x86_64-apple-darwin15.6.0 (64-bit)
-Running under: macOS  10.14
+Running under: macOS  10.14.1
 
 Matrix products: default
 BLAS: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRblas.0.dylib

@@ -1010,7 +1010,7 @@ str(factor_ordering_example)
 ~~~
 {: .output}
 
-In this case, we've explicitly told R that "control" should represented by 1, and
+In this case, we've explicitly told R that "control" should be represented by 1, and
 "case" by 2. This designation can be very important for interpreting the
 results of statistical models!
 

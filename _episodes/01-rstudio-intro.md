@@ -107,7 +107,7 @@ interactive R console.
 > (This shortcut can also be seen by hovering
 > the mouse over the button). To run a block of code, select it and then `Run`.
 > If you have modified a line of code within a block of code you have just run,
-> there is no need to reselct the section and `Run`, you can use the next button
+> there is no need to reselect the section and `Run`, you can use the next button
 > along, `Re-run the previous region`. This will run the previous code block
 > including the modifications you have made.
 {: .callout}
@@ -707,7 +707,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7fc7dd972a78>
+<bytecode: 0x7fd45e675888>
 <environment: namespace:base>
 ~~~
 {: .output}
