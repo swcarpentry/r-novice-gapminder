@@ -53,15 +53,6 @@ several operations with a single command.
 Let's open a new R script file in the `functions/` directory and call it
 functions-lesson.R.
 
-
-~~~
-my_sum <- function(a, b) {
-  the_sum <- a + b
-  return(the_sum)
-}
-~~~
-{: .language-r}
-
 Let's define a function `fahr_to_kelvin()` that converts temperatures from
 Fahrenheit to Kelvin:
 
