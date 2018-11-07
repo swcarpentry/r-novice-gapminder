@@ -172,8 +172,8 @@ Notice the comma with nothing before it, indicating we want to keep all of the r
 Alternatively, we can drop the column by using the index name.  
 
 ```{r}
-drop <- names(cats) %in% c("age")
-cats[,!drop]
+drop <- names(cats)  == "age"
+cats[,-drop]
 ```
 
 ## Appending to a data frame
