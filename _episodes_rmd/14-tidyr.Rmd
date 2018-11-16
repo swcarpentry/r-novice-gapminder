@@ -138,7 +138,7 @@ str(gap_wide)
 
 ![](../fig/14-tidyr-fig2.png)
 
-The first step towards getting our nice intermediate data format is to first
+The first step towards getting our nice intermediate data format is to
 convert from the wide to the long format. The `tidyr` function `gather()` will
 'gather' your observation variables into a single variable.
 
