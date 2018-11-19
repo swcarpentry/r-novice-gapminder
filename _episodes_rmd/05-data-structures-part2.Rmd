@@ -17,7 +17,7 @@ keypoints:
 - "Remove rows from a data frame."
 - "Use `na.omit()` to remove rows from a data frame with `NA` values."
 - "Use `levels()` and `as.character()` to explore and manipulate factors."
-- "Use `str()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()`, and `typeof()` to understand the structure of a data frame."
+- "Use `str()`, `summary()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()`, and `typeof()` to understand the structure of a data frame."
 - "Read in a csv file using `read.csv()`."
 - "Understand what `length()` of a data frame represents."
 source: Rmd
@@ -269,7 +269,13 @@ out what the data looks like with `str`:
 str(gapminder)
 ```
 
-We can also examine individual columns of the data frame with our `typeof` function:
+An additional method for examining the structure of gapminder is to use the `summary` function. This function can be used on various objects in R. For data frames, `summary` yields a numeric, tabular, or descriptive summary of each column. Factor columns are summarized by the number of items in each level, numeric or integer columns by the descriptive statistics (quartiles and mean), and character columns by its length, class, and mode.  
+
+```{r}
+summary(gapminder$country)
+```
+
+Along with the `str` and `summary` functions, we can examine individual columns of the data frame with our `typeof` function:
 
 ```{r}
 typeof(gapminder$year)
