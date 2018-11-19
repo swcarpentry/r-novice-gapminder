@@ -163,15 +163,36 @@ factor level, NA generated
 ~~~
 {: .error}
 
+Looks like our attempt to use the `rbind()` function returns a warning.  Recall that, unlike errors, warnings do not necessarily stop a function from performing its intended action.  You can confirm this by taking a look at the `cats` data frame.
+
+
+~~~
+cats
+~~~
+{: .language-r}
+
+
+
+~~~
+    coat weight likes_string age
+1 calico    2.1            1   2
+2  black    5.0            0   3
+3  tabby    3.2            1   5
+4   <NA>    3.3            1   9
+~~~
+{: .output}
+
+Notice that not only did we successfully add a new row, but there is `NA` in the column *coats* where we expected "tortoiseshell" to be.  Why did this happen?
+
 ## Factors
 
-Here is another thing to look out for: in a `factor`, each different value represents what is called a `level`. In our case, the `factor` "coat" has 3 levels: "black", "calico", and "tabby". R will only accept values that match one of the levels. If you add a new value, it will become `NA`.
+For an object containing the data type `factor`, each different value represents what is called a `level`. In our case, the `factor` "coat" has 3 levels: "black", "calico", and "tabby". R will only accept values that match one of the levels. If you add a new value, it will become `NA`.
 
 The warning is telling us that we unsuccessfully added "tortoiseshell" to our
 *coat* factor, but 3.3 (a numeric), TRUE (a logical), and 9 (a numeric) were
 successfully added to *weight*, *likes_string*, and *age*, respectively, since
 those variables are not factors. To successfully add a cat with a
-"tortoiseshell" *coat*, add "tortoiseshell" as a *level* of the factor:
+"tortoiseshell" *coat*, add "tortoiseshell" as a possible *level* of the factor:
 
 
 ~~~
