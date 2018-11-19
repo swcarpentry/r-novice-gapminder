@@ -87,7 +87,7 @@ newRow <- list("tortoiseshell", 3.3, TRUE, 9)
 cats <- rbind(cats, newRow)
 ```
 
-Looks like our attempt to `rbind` returns a warning.  Recall that, unlike errors, warnings do not necessarily stop a function from performing its intended action.  You can confirm this by taking a look at the `cats` data frame.
+Looks like our attempt to use the `rbind()` function returns a warning.  Recall that, unlike errors, warnings do not necessarily stop a function from performing its intended action.  You can confirm this by taking a look at the `cats` data frame.
 
 ```{r}
 cats
