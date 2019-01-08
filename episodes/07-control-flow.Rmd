@@ -250,14 +250,15 @@ output_vector2
 > ## Tip: While loops
 >
 >
-> Sometimes you will find yourself needing to repeat an operation until a certain
+> Sometimes you will find yourself needing to repeat an operation as long as a certain
 > condition is met. You can do this with a `while()` loop.
 >
 > ```{r, eval=FALSE}
 > while(this condition is true){
->   do a thing
+>   expression to do a thing
 > }
 > ```
+> R will interpret a condition being met as "TRUE". 
 >
 > As an example, here's a while loop
 > that generates random numbers from a uniform distribution (the `runif()` function)
@@ -272,8 +273,8 @@ output_vector2
 > ~~~
 > {: .r}
 >
-> `while()` loops will not always be appropriate. You have to be particularly careful
-> that you don't end up in an infinite loop because your condition is never met.
+>`while()` loops will not always be appropriate. You have to be particularly careful
+> that you don't end up in an infinite loop because your condition is always met and hence the while statement never terminates.
 {: .callout}
 
 
