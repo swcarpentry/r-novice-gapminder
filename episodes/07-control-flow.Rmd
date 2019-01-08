@@ -274,7 +274,7 @@ output_vector2
 > {: .r}
 >
 >`while()` loops will not always be appropriate. You have to be particularly careful
-> that you don't end up in an infinite loop because your condition is always met and hence the while statement never terminates.
+> that you don't end up stuck in an infinite loop because your condition is always met and hence the while statement never terminates.
 {: .callout}
 
 
