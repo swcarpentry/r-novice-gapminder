@@ -255,7 +255,7 @@ output_vector2
 >
 > ```{r, eval=FALSE}
 > while(this condition is true){
->   expression to do a thing
+>   do a thing
 > }
 > ```
 > R will interpret a condition being met as "TRUE". 
