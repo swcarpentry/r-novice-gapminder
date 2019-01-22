@@ -383,11 +383,13 @@ of the file.
 
 ## Resources
 
-- [Knitr in a knutshell tutorial](http://kbroman.org/knitr_knutshell)
-- [Dynamic Documents with R and knitr](http://www.amazon.com/exec/obidos/ASIN/1482203537/7210-20) (book)
-- [R Markdown documentation](http://rmarkdown.rstudio.com)
-- [R Markdown cheat sheet](http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+* [Knitr in a knutshell tutorial](http://kbroman.org/knitr_knutshell)
+* [Dynamic Documents with R and knitr](http://www.amazon.com/exec/obidos/ASIN/1482203537/7210-20) (book)
+* [R Markdown documentation](http://rmarkdown.rstudio.com)
+* [R Markdown cheat sheet](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)
 * [Getting started with R Markdown](https://www.rstudio.com/resources/webinars/getting-started-with-r-markdown/)
+* [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) (book by Rstudio team)
 * [Reproducible Reporting](https://www.rstudio.com/resources/webinars/reproducible-reporting/)
 * [The Ecosystem of R Markdown](https://www.rstudio.com/resources/webinars/the-ecosystem-of-r-markdown/)
 * [Introducing Bookdown](https://www.rstudio.com/resources/webinars/introducing-bookdown/)
+
