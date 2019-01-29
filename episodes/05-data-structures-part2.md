@@ -19,7 +19,7 @@ keypoints:
 - "Remove rows from a data frame."
 - "Use `na.omit()` to remove rows from a data frame with `NA` values."
 - "Use `levels()` and `as.character()` to explore and manipulate factors."
-- "Use `str()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()`, and `typeof()` to understand the structure of a data frame."
+- "Use `str()`, `summary()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()`, and `typeof()` to understand the structure of a data frame."
 - "Read in a csv file using `read.csv()`."
 - "Understand what `length()` of a data frame represents."
 source: Rmd
@@ -530,7 +530,89 @@ str(gapminder)
 ~~~
 {: .output}
 
-We can also examine individual columns of the data frame with our `typeof` function:
+An additional method for examining the structure of gapminder is to use the `summary` function. This function can be used on various objects in R. For data frames, `summary` yields a numeric, tabular, or descriptive summary of each column. Factor columns are summarized by the number of items in each level, numeric or integer columns by the descriptive statistics (quartiles and mean), and character columns by its length, class, and mode.  
+
+
+~~~
+summary(gapminder$country)
+~~~
+{: .language-r}
+
+
+
+~~~
+             Afghanistan                  Albania                  Algeria 
+                      12                       12                       12 
+                  Angola                Argentina                Australia 
+                      12                       12                       12 
+                 Austria                  Bahrain               Bangladesh 
+                      12                       12                       12 
+                 Belgium                    Benin                  Bolivia 
+                      12                       12                       12 
+  Bosnia and Herzegovina                 Botswana                   Brazil 
+                      12                       12                       12 
+                Bulgaria             Burkina Faso                  Burundi 
+                      12                       12                       12 
+                Cambodia                 Cameroon                   Canada 
+                      12                       12                       12 
+Central African Republic                     Chad                    Chile 
+                      12                       12                       12 
+                   China                 Colombia                  Comoros 
+                      12                       12                       12 
+         Congo Dem. Rep.               Congo Rep.               Costa Rica 
+                      12                       12                       12 
+           Cote d'Ivoire                  Croatia                     Cuba 
+                      12                       12                       12 
+          Czech Republic                  Denmark                 Djibouti 
+                      12                       12                       12 
+      Dominican Republic                  Ecuador                    Egypt 
+                      12                       12                       12 
+             El Salvador        Equatorial Guinea                  Eritrea 
+                      12                       12                       12 
+                Ethiopia                  Finland                   France 
+                      12                       12                       12 
+                   Gabon                   Gambia                  Germany 
+                      12                       12                       12 
+                   Ghana                   Greece                Guatemala 
+                      12                       12                       12 
+                  Guinea            Guinea-Bissau                    Haiti 
+                      12                       12                       12 
+                Honduras          Hong Kong China                  Hungary 
+                      12                       12                       12 
+                 Iceland                    India                Indonesia 
+                      12                       12                       12 
+                    Iran                     Iraq                  Ireland 
+                      12                       12                       12 
+                  Israel                    Italy                  Jamaica 
+                      12                       12                       12 
+                   Japan                   Jordan                    Kenya 
+                      12                       12                       12 
+         Korea Dem. Rep.               Korea Rep.                   Kuwait 
+                      12                       12                       12 
+                 Lebanon                  Lesotho                  Liberia 
+                      12                       12                       12 
+                   Libya               Madagascar                   Malawi 
+                      12                       12                       12 
+                Malaysia                     Mali               Mauritania 
+                      12                       12                       12 
+               Mauritius                   Mexico                 Mongolia 
+                      12                       12                       12 
+              Montenegro                  Morocco               Mozambique 
+                      12                       12                       12 
+                 Myanmar                  Namibia                    Nepal 
+                      12                       12                       12 
+             Netherlands              New Zealand                Nicaragua 
+                      12                       12                       12 
+                   Niger                  Nigeria                   Norway 
+                      12                       12                       12 
+                    Oman                 Pakistan                   Panama 
+                      12                       12                       12 
+                 (Other) 
+                     516 
+~~~
+{: .output}
+
+Along with the `str` and `summary` functions, we can examine individual columns of the data frame with our `typeof` function:
 
 
 ~~~
