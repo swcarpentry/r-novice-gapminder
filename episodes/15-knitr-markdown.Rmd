@@ -52,15 +52,15 @@ data, you can just re-compile the report and get the new or corrected
 results (versus having to reconstruct figures, paste them into
 a Word document, and further hand-edit various detailed results).
 
-The key R package is `[knitr](http://yihui.name/knitr/)`. It allows
+The key R package is `[knitr](http://yihui.name/knitr/)`. It allows you
 to create a document that is a mixture of text and chunks of
 code. When the document is processed by `knitr`, chunks of code will
 be executed, and graphs or other results inserted into the final document.
 
 This sort of idea has been called "literate programming".
 
-`knitr` allows you to mix basically any sort of text with code from different programming language, but we recommend that you use `R Markdown`, which mixes Markdown
-with R. Markdown is a light-weight mark-up language for creating web
+`knitr` allows you to mix basically any sort of text with code from different programming languages, but we recommend that you use `R Markdown`, which mixes Markdown
+with R. [Markdown](https://www.markdownguide.org/) is a light-weight mark-up language for creating web
 pages.
 
 
@@ -76,7 +76,7 @@ You can stick with the default (HTML output), but give it a title.
 
 ## Basic components of R Markdown
 
-The initial chunk of text (header) contains instructions for R to specify what kind of document will be created, and the options chosen. You can give the header a title, author, and date, and tell it that you're going to want
+The initial chunk of text (header) contains instructions for R to specify what kind of document will be created, and the options chosen. You can use the header to give your document a title, author, date, and tell it that you're going to want
 to produce html output (in other words, a web page).
 
 ```
