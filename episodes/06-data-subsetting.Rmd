@@ -745,6 +745,7 @@ be changed with the third argument, `drop = FALSE`).
 > >
 > > 4. Extract the first row, and the fourth and fifth columns
 > >   (`continent` and `lifeExp`).
+
 > >
 > >    ```{r, eval=FALSE}
 > >    # gapminder[1, 4, 5]

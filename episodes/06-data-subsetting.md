@@ -1434,6 +1434,7 @@ be changed with the third argument, `drop = FALSE`).
 > >
 > > 4. Extract the first row, and the fourth and fifth columns
 > >   (`continent` and `lifeExp`).
+
 > >
 > >    
 > >    ~~~
