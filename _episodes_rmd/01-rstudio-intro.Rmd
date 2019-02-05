@@ -236,7 +236,7 @@ sin(pi / 2)  # ... work in radians: 90° = π/2 rad
 ```
 
 ```{r}
-log(1)  # natural logarithm
+log(10)  # natural logarithm
 ```
 
 ```{r}
