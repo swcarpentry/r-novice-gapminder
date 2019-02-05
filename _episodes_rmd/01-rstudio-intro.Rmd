@@ -231,7 +231,8 @@ Anything we type inside the parentheses is called the function's
 arguments:
 
 ```{r}
-sin(1)  # trigonometry functions
+sin(90)  # trigonometry functions
+sin(pi / 2)  # ... work in radians: 90° = π/2 rad
 ```
 
 ```{r}
