@@ -260,8 +260,8 @@ No matter how
 complicated our analyses become, all data in R is interpreted as one of these
 basic data types. This strictness has some really important consequences.
 
-A user has added details of another cat. This information is in the file
-`data/feline-data_v2.csv`.
+Download a file with new feline data [here](https://raw.githubusercontent.com/sharonwsolis/r-novice-gapminder/gh-pages/data/feline-data_v2.csv). Save this new file in your data folder, where your gapminder files are.
+
 
 
 
