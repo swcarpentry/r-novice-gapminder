@@ -122,7 +122,7 @@ No matter how
 complicated our analyses become, all data in R is interpreted as one of these
 basic data types. This strictness has some really important consequences.
 
-Let's look at the file called "feline-data_vs2.csv", in our data folder
+Let's look at the file called "feline-data_vs2.csv", in our data folder.
 
 
 
