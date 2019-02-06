@@ -175,7 +175,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > > 
 > > 
 > > ~~~
-> > -rw-r--r--  1 naupaka  staff    80K Jan 29 08:04 data/gapminder_data.csv
+> > -rw-r--r--  1 swsolis  staff    80K Feb  5 16:08 data/gapminder_data.csv
 > > ~~~
 > > {: .output}
 > > The file size is 80K.
