@@ -250,8 +250,7 @@ gapminder %>%
 ```
 
 If we need to use the number of observations in calculations, the `n()` function
-is useful. For instance, if we wanted to get the standard error of the life
-expectency per continent:
+is useful. It will return the total number of observations in the current group rather than counting the number of observations in each group within a specific column. For instance, if we wanted to get the standard error of the life expectency per continent:
 
 ```{r}
 gapminder %>%
