@@ -390,7 +390,7 @@ output_vector2
 > }
 > ~~~
 > {: .language-r}
-> R will interpret a condition being met as "TRUE". 
+> R will interpret a condition being met as "TRUE".
 >
 > As an example, here's a while loop
 > that generates random numbers from a uniform distribution (the `runif()` function)
@@ -400,7 +400,7 @@ output_vector2
 > z <- 1
 > while(z > 0.1){
 >   z <- runif(1)
->   print(z)
+>   cat(z, "\n")
 > }
 > ~~~
 > {: .r}
@@ -488,21 +488,21 @@ output_vector2
 > > We can do that as follows:
 > >
 > > 1. Loop over each of the unique values of 'continent'
-> > 2. For each value of continent, create a temporary variable storing the life exepectancy for that subset,
+> > 2. For each value of continent, create a temporary variable storing that subset
 > > 3. Return the calculated life expectancy to the user by printing the output:
 > >
 > > 
 > > ~~~
 > > for( iContinent in unique(gapminder$continent) ){
-> >    tmp <- mean(subset(gapminder, continent==iContinent)$lifeExp)
-> >    cat("Average Life Expectancy in", iContinent, "is", tmp, "\n")
-> >    rm(tmp)
+> >   tmp <- gapminder[gapminder$continent == iContinent, ]   
+> >   cat(iContinent, mean(tmp$lifeExp, na.rm = TRUE), "\n")  
+> >   rm(tmp)
 > > }
 > > ~~~
 > > {: .language-r}
 > >
-> > **Step 3**: The exercise only wants the output printed if the average life expectancy is less than 50 or greater than 50. So we need to add an `if` condition before printing.
-> > So we need to add an `if` condition before printing, which evaluates whether the calculated average life expectancy is above or below a threshold, and print an output conditional on the result.
+> > **Step 3**: The exercise only wants the output printed if the average life expectancy is less than 50 or greater than 50. So we need to add an `if()` condition before printing.
+> > So we need to add an `if()` condition before printing, which evaluates whether the calculated average life expectancy is above or below a threshold, and print an output conditional on the result.
 > > We need to amend (3) from above:
 > >
 > > 3a. If the calculated life expectancy is less than some threshold (50 years), return the continent and a statement that life expectancy is less than threshold, otherwise return the continent and   a statement that life expectancy is greater than threshold,:
@@ -512,7 +512,7 @@ output_vector2
 > > thresholdValue <- 50
 > > 
 > > for( iContinent in unique(gapminder$continent) ){
-> >    tmp <- mean(subset(gapminder, continent==iContinent)$lifeExp)
+> >    tmp <- mean(gapminder[gapminder$continent == iContinent, "lifeExp"])
 > >    
 > >    if(tmp < thresholdValue){
 > >        cat("Average Life Expectancy in", iContinent, "is less than", thresholdValue, "\n")
@@ -542,7 +542,7 @@ output_vector2
 > >  upperThreshold <- 70
 > >  
 > > for( iCountry in unique(gapminder$country) ){
-> >     tmp <- mean(subset(gapminder, country==iCountry)$lifeExp)
+> >     tmp <- mean(gapminder[gapminder$country == iCountry, "lifeExp"])
 > >     
 > >     if(tmp < lowerThreshold){
 > >         cat("Average Life Expectancy in", iCountry, "is less than", lowerThreshold, "\n")
@@ -568,7 +568,7 @@ output_vector2
 >
 > > ## Solution for Challenge 5
 > >
-> > We will use the `grep` command that was introduced in the Unix Shell lesson to find countries that start with "B."
+> > We will use the `grep()` command that was introduced in the Unix Shell lesson to find countries that start with "B."
 > > Lets understand how to do this first.
 > > Following from the Unix shell section we may be tempted to try the following
 > > 
@@ -578,7 +578,7 @@ output_vector2
 > > {: .language-r}
 > >
 > > But when we evaluate this command it returns the indices of the factor variable `country` that start with "B."
-> > To get the values, we must add the `value=TRUE` option to the `grep` command:
+> > To get the values, we must add the `value=TRUE` option to the `grep()` command:
 > >
 > > 
 > > ~~~
@@ -587,7 +587,7 @@ output_vector2
 > > {: .language-r}
 > >
 > > We will now store these countries in a variable called candidateCountries, and then loop over each entry in the variable.
-> > Inside the loop, we evaluate the average life expectancy for each country, and if the average life expectancy is less than 50 we use base-plot to plot the evolution of average life expectancy:
+> > Inside the loop, we evaluate the average life expectancy for each country, and if the average life expectancy is less than 50 we use base-plot to plot the evolution of average life expectancy using `with()` and `subset()`:
 > >
 > > 
 > > ~~~
@@ -595,13 +595,13 @@ output_vector2
 > > candidateCountries <- grep("^B", unique(gapminder$country), value=TRUE)
 > > 
 > > for( iCountry in candidateCountries){
-> >     tmp <- mean(subset(gapminder, country==iCountry)$lifeExp)
+> >     tmp <- mean(gapminder[gapminder$country == iCountry, "lifeExp"])
 > >     
 > >     if(tmp < thresholdValue){
 > >         cat("Average Life Expectancy in", iCountry, "is less than", thresholdValue, "plotting life expectancy graph... \n")
 > >         
 > >         with(subset(gapminder, country==iCountry),
-> >                 plot(year,lifeExp,
+> >                 plot(year, lifeExp,
 > >                      type="o",
 > >                      main = paste("Life Expectancy in", iCountry, "over time"),
 > >                      ylab = "Life Expectancy",
