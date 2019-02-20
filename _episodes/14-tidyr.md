@@ -277,7 +277,7 @@ gap_long$year <- as.integer(gap_long$year)
 > >
 > >~~~
 > ># A tibble: 15 x 3
-> ># Groups:   continent [?]
+> ># Groups:   continent [5]
 > >   continent obs_type       means
 > >   <chr>     <chr>          <dbl>
 > > 1 Africa    gdpPercap     2194. 
