@@ -30,18 +30,22 @@ Data analysts tend to write a lot of reports, describing their
 analyses and results, for their collaborators or to document their
 work for future reference.
 
-When I was first starting out, I'd write an R script with all of my
-work, and would just send an email to my collaborator, describing the
-results and attaching various graphs. In discussing the results, there
-would often be confusion about which graph was which.
+Many new users begin by first writing a single R script containing all of the
+work. Then simply share the analysis by emailing the script and various graphs
+as attachments. But this can be cumbersome, requiring a lengthy discussion to
+explain which attachment was which result.
 
-I moved to writing formal reports, with Word or [LaTeX](http://www.latex-project.org/), but I'd have to
-spend a lot of time getting the figures to look right. Mostly, the
-concern is about page breaks and generating reproducible results.
+Writing formal reports with Word or [LaTeX](http://www.latex-project.org/)
+can simplify this by incorporating both the analysis report and output graphs 
+into a single document. But tweaking formatting to make figures look correct
+and fix obnoxious page breaks can be tedious and lead to a lengthly "whack
+a mole" game of fixing new mistakes resulting from a single formatting change.
 
-Everything is easier now that I create a web page (as an html
-file). It can be one long stream, so I can use tall figures that
-wouldn't ordinary fit on one page. Scrolling is your friend.
+Creating a web page (as an html file) by using R Markdown makes things easier.
+The report can be one long stream, so tall figures that wouldn't ordinary fit on
+one page can be kept full size and easier to read, since the reader can simply
+keep scrolling. Formatting is simple and easy to modify, allowing you to spend
+more time on your analyses instead of writing reports.
 
 
 ## Literate programming
@@ -145,9 +149,10 @@ Each will appear as:
 - italics with underscores
 - code-type font with backticks
 
-(I prefer hyphens over asterisks, myself.)
+You can use whatever method you prefer, but *be consistant*. This maintains the
+readability of your code.
 
-You can make a numbered list by just using numbers. You can use the
+You can make a numbered list by just using numbers. You can even use the
 same number over and over if you want:
 
 ```
@@ -347,12 +352,12 @@ Perhaps precede the paragraph with a larger code chunk that does
 calculations and defines variables, with `include=FALSE` for that larger
 chunk (which is the same as `echo=FALSE` and `results="hide"`).
 
-I'm very particular about rounding in such situations. I may want
+Rounding can produce differences in output in such situations. You may want
 `2.0`, but `round(2.03, 1)` will give just `2`.
 
 The
 [`myround`](https://github.com/kbroman/broman/blob/master/R/myround.R)
-function in my [R/broman](https://github.com/kbroman) package handles
+function in the [R/broman](https://github.com/kbroman) package handles
 this.
 
 > ## Challenge
