@@ -381,8 +381,8 @@ Here, we check whether each additional argument is set to `null`, and whenever
 they're not `null` overwrite the dataset stored in `dat` with a subset given by 
 the non-`null` argument.
 
-I did this so that our function is more flexible for later. We can ask it to
-calculate the GDP for:
+Building these conditionals into the function makes it more flexible for later.
+Now, we can use it to calculate the GDP for:
 
  * The whole dataset;
  * A single year;

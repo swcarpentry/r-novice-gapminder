@@ -5,7 +5,8 @@ exercises: 15
 questions:
 - "How can I change the format of dataframes?"
 objectives:
-- "To be understand the concepts of 'long' and 'wide' data formats and be able to convert between them with `tidyr`."
+- "To be understand the concepts of 'long' and 'wide' data formats and be able
+to convert between them with `tidyr`."
 keypoints:
 - "Use the `tidyr` package to change the layout of dataframes."
 - "Use `gather()` to go from wide to long format."
@@ -103,11 +104,11 @@ str(gapminder)
 Sometimes, as with the gapminder dataset, we have multiple types of observed
 data. It is somewhere in between the purely 'long' and 'wide' data formats. We
 have 3 "ID variables" (`continent`, `country`, `year`) and 3 "Observation
-variables" (`pop`,`lifeExp`,`gdpPercap`). I usually prefer my data in this
-intermediate format in most cases despite not having ALL observations in 1
-column given that all 3 observation variables have different units. There are
-few operations that would need us to stretch out this dataframe any longer
-(i.e. 4 ID variables and 1 Observation variable).
+variables" (`pop`,`lifeExp`,`gdpPercap`). This intermediate format can be
+preferred despite not having ALL observations in 1 column given that all 3
+observation variables have different units. There are few operations that would
+need us to stretch out this dataframe any longer (i.e. 4 ID variables and 1
+Observation variable).
 
 While using many of the functions in R, which are often vector based, you
 usually do not want to do mathematical operations on values with different
