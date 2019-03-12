@@ -33,12 +33,12 @@ Maintainers:
 
 * [David Mawdsley][mawdsley_david]
 * [Jeff Oliver][oliver_jeffrey]
-* [Tom Wright][wright_tom]
+* Tom Wright
 * [Naupaka Zimmerman][zimmerman_naupaka]
 
 [gapminder]: http://www.gapminder.org/
 [lesson-example]: https://carpentries.github.io/lesson-example
-[mawdsley_david]: https://software-carpentry.org/team/#mawdsley_david
-[oliver_jeffrey]: https://software-carpentry.org/team/#oliver_jeffrey
+[mawdsley_david]: https://carpentries.org/maintainers/#mawds
+[oliver_jeffrey]: https://carpentries.org/maintainers/#jcoliver
 [wright_tom]: https://software-carpentry.org/team/#wright_thomas
-[zimmerman_naupaka]: https://software-carpentry.org/team/#zimmerman_naupaka
+[zimmerman_naupaka]: https://carpentries.org/maintainers/#naupaka
