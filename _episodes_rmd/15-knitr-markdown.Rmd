@@ -178,10 +178,7 @@ with some number of `#` symbols:
 ```
 
 You _compile_ the R Markdown document to an html webpage by clicking
-the "Knit" in the upper-left. And note the little question mark
-next to it; click the question mark and you'll get a "Markdown Quick
-Reference" (with the Markdown syntax) as well to the RStudio
-documentation on R Markdown.
+the "Knit" button in the upper-left. 
 
 > ## Challenge
 >
