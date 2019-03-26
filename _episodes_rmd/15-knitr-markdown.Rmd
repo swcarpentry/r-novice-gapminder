@@ -208,6 +208,9 @@ If you know how to write equations in
 $$y = \mu + \sum_{i=1}^p \beta_i x_i + \epsilon$$
 ```
 
+You can review Markdown syntax by navigating to the
+"Markdown Quick Reference" under the "Help" field in the 
+toolbar at the top of RStudio.
 
 ## R code chunks
 
@@ -334,6 +337,10 @@ names, like `fig.path="Figs/cleaning-"` and `fig.path="Figs/analysis-"`.
 > code.
 {: .challenge}
 
+You can review all of the `R` chunk options by navigating to
+the "R Markdown Cheat Sheet" under the "Cheatsheets" section 
+of the "Help" field in the toolbar at the top of RStudio.
+
 
 ## Inline R code
 
@@ -377,6 +384,7 @@ of the file.
 > - [TeX installers for Windows](https://miktex.org/2.9/setup).
 > - [TeX installers for macOS](https://tug.org/mactex).
 {: .callout}
+
 
 
 ## Resources
