@@ -178,10 +178,7 @@ with some number of `#` symbols:
 ```
 
 You _compile_ the R Markdown document to an html webpage by clicking
-the "Knit HTML" in the upper-left. And note the little question mark
-next to it; click the question mark and you'll get a "Markdown Quick
-Reference" (with the Markdown syntax) as well to the RStudio
-documentation on R Markdown.
+the "Knit" button in the upper-left.
 
 > ## Challenge
 >
@@ -210,7 +207,6 @@ If you know how to write equations in
 ```
 $$y = \mu + \sum_{i=1}^p \beta_i x_i + \epsilon$$
 ```
-
 
 
 ## R code chunks
@@ -245,7 +241,7 @@ produced them.
 
 ## How things get compiled
 
-When you press the "Knit HTML" button, the R Markdown document is
+When you press the "Knit" button, the R Markdown document is
 processed by `[knitr](http://yihui.name/knitr)` and a plain Markdown
 document is produced (as well as, potentially, a set of figure files): the R code is executed
 and replaced by both the input and the output; if figures are
@@ -369,7 +365,7 @@ this.
 ## Other output options
 
 You can also convert R Markdown to a PDF or a Word document. Click the
-little triangle next to the "Knit HTML" button to get a drop-down
+little triangle next to the "Knit" button to get a drop-down
 menu. Or you could put `pdf_document` or `word_document` in the initial header
 of the file.
 
