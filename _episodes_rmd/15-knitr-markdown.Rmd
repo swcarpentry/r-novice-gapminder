@@ -56,7 +56,7 @@ data, you can just re-compile the report and get the new or corrected
 results (versus having to reconstruct figures, paste them into
 a Word document, and further hand-edit various detailed results).
 
-The key R package is `[knitr](http://yihui.name/knitr/)`. It allows you
+The key R package is [`knitr`](http://yihui.name/knitr/). It allows you
 to create a document that is a mixture of text and chunks of
 code. When the document is processed by `knitr`, chunks of code will
 be executed, and graphs or other results inserted into the final document.
@@ -246,13 +246,13 @@ produced them.
 ## How things get compiled
 
 When you press the "Knit HTML" button, the R Markdown document is
-processed by `[knitr](http://yihui.name/knitr)` and a plain Markdown
+processed by [`knitr`](http://yihui.name/knitr) and a plain Markdown
 document is produced (as well as, potentially, a set of figure files): the R code is executed
 and replaced by both the input and the output; if figures are
 produced, links to those figures are included.
 
 The Markdown and figure documents are then processed by the tool
-`[pandoc](http://pandoc.org/)`, which converts the Markdown file into an
+[`pandoc`](http://pandoc.org/), which converts the Markdown file into an
 html file, with the figures embedded.
 
 ```{r rmd_to_html_fig, fig.width=8, fig.height=3, fig.align="left", echo=FALSE}
@@ -357,7 +357,7 @@ Rounding can produce differences in output in such situations. You may want
 
 The
 [`myround`](https://github.com/kbroman/broman/blob/master/R/myround.R)
-function in the [R/broman](https://github.com/kbroman) package handles
+function in the [R/broman](https://github.com/kbroman/broman) package handles
 this.
 
 > ## Challenge
