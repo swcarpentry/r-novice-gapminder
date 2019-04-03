@@ -189,7 +189,7 @@ lines.
 > >
 > > ```{r ch3-sol}
 > > ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country)) +
-> >  geom_point() + geom_line(mappin = aes(color=continent))
+> >  geom_point() + geom_line(mapping = aes(color=continent))
 > > ```
 > >
 > > The lines now get drawn over the points!
