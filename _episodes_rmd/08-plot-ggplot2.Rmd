@@ -52,7 +52,7 @@ Let's start off with an example:
 
 ```{r lifeExp-vs-gdpPercap-scatter, message=FALSE}
 library("ggplot2")
-ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ```
 
@@ -63,7 +63,7 @@ layers on the plot.
 
 We've passed in two arguments to `ggplot`. First, we tell `ggplot` what data we
 want to show on our figure, in this example the gapminder data we read in
-earlier. For the second argument we passed in the `aes` function, which
+earlier. For the second argument,  we passed in the `aes` function, which
 tells `ggplot` how variables in the **data** map to *aesthetic* properties of
 the figure, in this case the **x** and **y** locations. Here we told `ggplot` we
 want to plot the "gdpPercap" column of the gapminder data frame on the x-axis, and
@@ -74,7 +74,7 @@ pass `aes` these columns (e.g. `x = gapminder[, "gdpPercap"]`), this is because
 By itself, the call to `ggplot` isn't enough to draw a figure:
 
 ```{r}
-ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp))
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp))
 ```
 
 We need to tell `ggplot` how we want to visually represent the data, which we
@@ -83,7 +83,7 @@ tells `ggplot` we want to visually represent the relationship between **x** and
 **y** as a scatterplot of points:
 
 ```{r lifeExp-vs-gdpPercap-scatter2}
-ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ```
 
@@ -93,7 +93,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 > changed over time:
 >
 > ```{r, eval=FALSE}
-> ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) + geom_point()
+> ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) + geom_point()
 > ```
 >
 > Hint: the gapminder dataset has a column called "year", which should appear
@@ -104,7 +104,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 > > Here is one possible solution:
 > >
 > > ```{r ch1-sol}
-> > ggplot(data = gapminder, aes(x = year, y = lifeExp)) + geom_point()
+> > ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp)) + geom_point()
 > > ```
 > >
 > {: .solution}
@@ -128,7 +128,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 > > column. What trends do you see in the data? Are they what you expected?
 > >
 > > ```{r ch2-sol}
-> > ggplot(data = gapminder, aes(x = year, y = lifeExp, color=continent)) +
+> > ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp, color=continent)) +
 > >   geom_point()
 > > ```
 > >
@@ -142,7 +142,7 @@ Using a scatterplot probably isn't the best for visualizing change over time.
 Instead, let's tell `ggplot` to visualize the data as a line plot:
 
 ```{r lifeExp-line}
-ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent)) +
+ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country, color=continent)) +
   geom_line()
 ```
 
@@ -154,7 +154,7 @@ But what if we want to visualize both lines and points on the plot? We can
 simply add another layer to the plot:
 
 ```{r lifeExp-line-point}
-ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent)) +
+ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country, color=continent)) +
   geom_line() + geom_point()
 ```
 
@@ -163,8 +163,8 @@ this example, the points have been drawn *on top of* the lines. Here's a
 demonstration:
 
 ```{r lifeExp-layer-example-1}
-ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
-  geom_line(aes(color=continent)) + geom_point()
+ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country)) +
+  geom_line(mapping = aes(color=continent)) + geom_point()
 ```
 
 In this example, the *aesthetic* mapping of **color** has been moved from the
@@ -174,7 +174,7 @@ lines.
 
 > ## Tip: Setting an aesthetic to a value instead of a mapping
 >
-> So far, we've seen how to use an aesthetic (such as **color**) as a *mapping* to a variable in the data. For example, when we use `geom_line(aes(color=continent))`, ggplot will give a different color to each continent. But what if we want to change the colour of all lines to blue? You may think that `geom_line(aes(color="blue"))` should work, but it doesn't. Since we don't want to create a mapping to a specific variable, we simply move the color specification outside of the `aes()` function, like this: `geom_line(color="blue")`.
+> So far, we've seen how to use an aesthetic (such as **color**) as a *mapping* to a variable in the data. For example, when we use `geom_line(mapping = aes(color=continent))`, ggplot will give a different color to each continent. But what if we want to change the colour of all lines to blue? You may think that `geom_line(mapping = aes(color="blue"))` should work, but it doesn't. Since we don't want to create a mapping to a specific variable, we simply move the color specification outside of the `aes()` function, like this: `geom_line(color="blue")`.
 {: .callout}
 
 > ## Challenge 3
@@ -188,8 +188,8 @@ lines.
 > > happened?
 > >
 > > ```{r ch3-sol}
-> > ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
-> >  geom_point() + geom_line(aes(color=continent))
+> > ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country)) +
+> >  geom_point() + geom_line(mappin = aes(color=continent))
 > > ```
 > >
 > > The lines now get drawn over the points!
@@ -203,7 +203,7 @@ ggplot2 also makes it easy to overlay statistical models over the data. To
 demonstrate we'll go back to our first example:
 
 ```{r lifeExp-vs-gdpPercap-scatter3, message=FALSE}
-ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color=continent)) +
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp, color=continent)) +
   geom_point()
 ```
 
@@ -215,7 +215,7 @@ points, using the *alpha* function, which is especially helpful when you have
 a large amount of data which is very clustered.
 
 ```{r axis-scale}
-ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
   geom_point(alpha = 0.5) + scale_x_log10()
 ```
 
@@ -228,14 +228,14 @@ x-axis.
 
 > ## Tip Reminder: Setting an aesthetic to a value instead of a mapping
 >
-> Notice that we used `geom_point(alpha = 0.5)`. As the previous tip mentioned, using a setting outside of the `aes()` function will cause this value to be used for all points, which is what we want in this case. But just like any other aesthetic setting, *alpha* can also be mapped to a variable in the data. For example, we can give a different transparency to each continent with `geom_point(aes(alpha = continent))`.
+> Notice that we used `geom_point(alpha = 0.5)`. As the previous tip mentioned, using a setting outside of the `aes()` function will cause this value to be used for all points, which is what we want in this case. But just like any other aesthetic setting, *alpha* can also be mapped to a variable in the data. For example, we can give a different transparency to each continent with `geom_point(mapping = aes(alpha = continent))`.
 {: .callout}
 
 We can fit a simple relationship to the data by adding another layer,
 `geom_smooth`:
 
 ```{r lm-fit}
-ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
   geom_point() + scale_x_log10() + geom_smooth(method="lm")
 ```
 
@@ -243,7 +243,7 @@ We can make the line thicker by *setting* the **size** aesthetic in the
 `geom_smooth` layer:
 
 ```{r lm-fit2}
-ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
   geom_point() + scale_x_log10() + geom_smooth(method="lm", size=1.5)
 ```
 
@@ -267,7 +267,7 @@ variables and their visual representation.
 > > Hint: do not use the `aes` function.
 > >
 > > ```{r ch4a-sol}
-> > ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+> > ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 > >  geom_point(size=3, color="orange") + scale_x_log10() +
 > >  geom_smooth(method="lm", size=1.5)
 > > ```
@@ -289,7 +289,7 @@ variables and their visual representation.
 > > Hint: The color argument can be used inside the aesthetic.
 > >
 > >```{r ch4b-sol}
-> > ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
+> > ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp, color = continent)) +
 > > geom_point(size=3, shape=17) + scale_x_log10() +
 > > geom_smooth(method="lm", size=1.5)
 > > ```
@@ -319,7 +319,7 @@ names that start with the letter "A" or "Z".
 ```{r facet}
 starts.with <- substr(gapminder$country, start = 1, stop = 1)
 az.countries <- gapminder[starts.with %in% c("A", "Z"), ]
-ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
+ggplot(data = az.countries, mapping = aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country)
 ```
 
@@ -341,7 +341,7 @@ the color legend title is set using `color = "Continent"`, while the title
 of a fill legend would be set using `fill = "MyTitle"`. 
 
 ```{r theme}
-ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
+ggplot(data = az.countries, mapping = aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country) +
   labs(
     x = "Year",              # x axis title
@@ -358,7 +358,7 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
 The `ggsave()` function allows you to export a plot created with ggplot. You can specify the dimension and resolution of your plot by adjusting the appropriate arguments (`width`, `height` and `dpi`) to create high quality graphics for publication. In order to save the plot from above, we first assign it to a variable `lifeExp_plot`, then tell `ggsave` to save that plot in `png` format to a directory called `results`. (Make sure you have a `results/` folder in your working directory.)
 
 ```{r save}
-lifeExp_plot <- ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
+lifeExp_plot <- ggplot(data = az.countries, mapping = aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country) +
   labs(
     x = "Year",              # x axis title
@@ -401,7 +401,7 @@ code to modify!
 > >  - Add a facet layer to panel the density plots by year.
 > >
 > > ```{r ch5-sol}
-> > ggplot(data = gapminder, aes(x = gdpPercap, fill=continent)) +
+> > ggplot(data = gapminder, mapping = aes(x = gdpPercap, fill=continent)) +
 > >  geom_density(alpha=0.6) + facet_wrap( ~ year) + scale_x_log10()
 > > ```
 > {: .solution}
