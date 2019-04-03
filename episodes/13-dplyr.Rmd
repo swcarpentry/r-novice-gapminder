@@ -320,14 +320,12 @@ gdp_future_bycontinents_byyear_high_lifeExp <- gapminder %>%
 First install and load ggplot2:
 
 ```{r,eval=FALSE}
-install.packages('dplyr')
 install.packages('ggplot2')
 ```
 
 ```{r,message=FALSE}
 library("ggplot2")
 ```
-
 
 In the plotting lesson we looked at how to make a multi-panel figure by adding
 a layer of facet panels using `ggplot2`. Here is the code we used (with some
