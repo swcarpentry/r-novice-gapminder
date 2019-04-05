@@ -349,7 +349,7 @@ ggplot(data = az.countries, mapping = aes(x = year, y = lifeExp, color=continent
     title = "Figure 1",      # main title of figure
     color = "Continent"      # title of legend
   ) +
-  theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
 
@@ -366,7 +366,7 @@ lifeExp_plot <- ggplot(data = az.countries, mapping = aes(x = year, y = lifeExp,
     title = "Figure 1",      # main title of figure
     color = "Continent"      # title of legend
   ) +
-  theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
 ggsave(filename = "results/lifeExp.png", plot = lifeExp_plot, width = 12, height = 10, dpi = 300, units = "cm")
 ```
