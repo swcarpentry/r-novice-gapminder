@@ -590,6 +590,7 @@ network). R and RStudio have functionality for managing packages:
 > > install.packages("ggplot2")
 > > install.packages("plyr")
 > > install.packages("gapminder")
+> > install.packages("assertthat")
 > >```
 > {: .solution}
 {: .challenge}
