@@ -41,7 +41,7 @@ nasty bugs.
 
 ## The `dplyr` package
 
-Luckily, the [`dplyr`](https://cran.r-project.org/web/packages/dplyr/dplyr.pdf)
+Luckily, the [`dplyr`](https://cran.r-project.org/package=dplyr)
 package provides a number of very useful functions for manipulating dataframes
 in a way that will reduce the above repetition, reduce the probability of making
 errors, and probably even save you some typing. As an added bonus, you might
