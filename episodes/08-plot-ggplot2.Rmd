@@ -203,7 +203,7 @@ ggplot2 also makes it easy to overlay statistical models over the data. To
 demonstrate we'll go back to our first example:
 
 ```{r lifeExp-vs-gdpPercap-scatter3, message=FALSE}
-ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp, color=continent)) +
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ```
 
