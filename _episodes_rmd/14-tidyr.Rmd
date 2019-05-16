@@ -5,7 +5,7 @@ exercises: 15
 questions:
 - "How can I change the format of dataframes?"
 objectives:
-- "To be understand the concepts of 'long' and 'wide' data formats and be able
+- "To understand the concepts of 'long' and 'wide' data formats and be able
 to convert between them with `tidyr`."
 keypoints:
 - "Use the `tidyr` package to change the layout of dataframes."
