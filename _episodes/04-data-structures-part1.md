@@ -33,6 +33,17 @@ cats <- data.frame(coat = c("calico", "black", "tabby"),
 write.csv(x = cats, file = "data/feline-data.csv", row.names = FALSE)
 ~~~
 {: .language-r}
+
+> ## Tip: Create a `data/` directory 
+>
+> If the `data/` directory doesn't already exist the last command will return an error 
+> ending with 
+> ````
+> cannot open file 'data/feline-data.csv': No such file or directory
+> ```
+> You can create the `data/` directory by clicking *New folder* in the Files pane or by using the `dir.create("data")` command. 
+{: .callout}
+
 The contents of the new file, `feline-data.csv`:
 
 ~~~
