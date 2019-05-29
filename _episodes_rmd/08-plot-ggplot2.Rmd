@@ -357,6 +357,12 @@ ggplot(data = az.countries, mapping = aes(x = year, y = lifeExp, color=continent
 
 The `ggsave()` function allows you to export a plot created with ggplot. You can specify the dimension and resolution of your plot by adjusting the appropriate arguments (`width`, `height` and `dpi`) to create high quality graphics for publication. In order to save the plot from above, we first assign it to a variable `lifeExp_plot`, then tell `ggsave` to save that plot in `png` format to a directory called `results`. (Make sure you have a `results/` folder in your working directory.)
 
+```{r directory-check, echo = FALSE}
+if (!dir.exists("results")) {
+  dir.create("results")
+}
+```
+
 ```{r save}
 lifeExp_plot <- ggplot(data = az.countries, mapping = aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country) +
