@@ -259,7 +259,7 @@ gapminder <- read.csv("data/gapminder_data.csv")
 > ```
 >
 > * You can read directly from excel spreadsheets without
-> converting them to plain text first by using the [readxl](https://cran.r-project.org/web/packages/readxl/index.html) package.
+> converting them to plain text first by using the [readxl](https://cran.r-project.org/package=readxl) package.
 {: .callout}
 
 Let's investigate gapminder a bit; the first thing we should always do is check
