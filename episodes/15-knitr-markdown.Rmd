@@ -189,6 +189,7 @@ the "Knit" button in the upper-left.
 > > ## Solution to Challenge 1
 > >
 > > In RStudio, select File > New file > R Markdown... 
+> > 
 > > Delete the placeholder text and add the following:
 > > 
 > > ```
@@ -259,11 +260,12 @@ produced them.
 
 > ## Challenge 2
 >
-> Add code chunks to
+> Add code chunks to:
 >
-> - Load the ggplot2 package
-> - Read the gapminder data
-> - Create a plot
+> * Load the ggplot2 package
+> * Read the gapminder data
+> * Create a plot
+> 
 > > ## Solution to Challenge 2
 > > 
 > > ```{r load-ggplot2}` r ''`
@@ -374,6 +376,7 @@ names, like `fig.path="Figs/cleaning-"` and `fig.path="Figs/analysis-"`.
 >
 > Use chunk options to control the size of a figure and to hide the
 > code.
+> 
 > > ## Solution to Challenge 3
 > > 
 > > ```{r, echo = FALSE, fig.width=3}` r ''`
@@ -412,10 +415,12 @@ this.
 > ## Challenge 4
 >
 > Try out a bit of in-line R code.
+> 
 > > ## Solution to Challenge 4
-> > ```
-> > Here's some inline code to determine that 2 + 2 = \`r 2+2\`.
-> > ```
+> > 
+> > Here's some inline code to determine that 2 + 2 = `` `r
+> > 2+2` ``.
+> > 
 > {: .solution}
 {: .challenge}
 
