@@ -265,20 +265,19 @@ produced them.
 > - Read the gapminder data
 > - Create a plot
 > > ## Solution to Challenge 2
-> > ````
-> > ```{r load-ggplot2}
+> > 
+> > ```{r load-ggplot2}` r ''`
 > > library("ggplot2")
 > > ```
 > > 
-> > ```{r read-gapminder-data}
+> > ```{r read-gapminder-data}` r ''`
 > > gapminder <- read.csv("gapminder.csv")
 > > ```
 > > 
-> > ```{r make-plot}
+> > ```{r make-plot}` r ''`
 > > plot(lifeExp ~ year, data = gapminder)
 > > ```
 > > 
-> > ````
 > {: .solution}
 {: .challenge}
 
@@ -376,11 +375,11 @@ names, like `fig.path="Figs/cleaning-"` and `fig.path="Figs/analysis-"`.
 > Use chunk options to control the size of a figure and to hide the
 > code.
 > > ## Solution to Challenge 3
-> > ````
-> > ```{r, echo = FALSE, fig.width=3}
+> > 
+> > ```{r, echo = FALSE, fig.width=3}` r ''`
 > > plot(faithful)
 > > ```
-> > ````
+> > 
 > {: .solution}
 {: .challenge}
 
@@ -415,7 +414,7 @@ this.
 > Try out a bit of in-line R code.
 > > ## Solution to Challenge 4
 > > ```
-> > Here's some inline code to determine that 2 + 2 = `r 2+2`.
+> > Here's some inline code to determine that 2 + 2 = \`r 2+2\`.
 > > ```
 > {: .solution}
 {: .challenge}
