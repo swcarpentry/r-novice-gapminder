@@ -158,9 +158,9 @@ returns another `data.frame` (2nd letter is a **d**) i
 > >  .variables = "continent",
 > >  .fun = function(x) mean(x$lifeExp)
 > > )
-> > Oceania has the longest and Africa the shortest.
 > > 
 > > ```
+> > Oceania has the longest and Africa the shortest.
 > {: .solution}
 {: .challenge}
 
