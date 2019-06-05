@@ -150,6 +150,18 @@ returns another `data.frame` (2nd letter is a **d**) i
 >
 > Calculate the average life expectancy per continent. Which has the longest?
 > Which had the shortest?
+> > ## Solution to Challenge 1
+> >
+> > ```{r, eval = FALSE}
+> > ddply(
+> >  .data = gapminder,
+> >  .variables = "continent",
+> >  .fun = function(x) mean(x$lifeExp)
+> > )
+> > Oceania has the longest and Africa the shortest.
+> > 
+> > ```
+> {: .solution}
 {: .challenge}
 
 What if we want a different type of output data structure?:
@@ -183,7 +195,7 @@ daply(
 )
 ```
 
-You can use these functions in place of `for` loops (and its usually faster to
+You can use these functions in place of `for` loops (and it is usually faster to
 do so).
 To replace a for loop, put the code that was in the body of the `for` loop inside an anonymous function.
 
@@ -213,17 +225,33 @@ d_ply(
 > Calculate the average life expectancy per continent and year. Which had the
 > longest and shortest in 2007? Which had the greatest change in between 1952
 > and 2007?
+> > ## Solution to Challenge 2
+> >
+> > ```{r, eval = FALSE}
+> > solution <- ddply(
+> >  .data = gapminder,
+> >  .variables = c("continent", "year"),
+> >  .fun = function(x) mean(x$lifeExp)
+> > )
+> > solution_2007 <- solution[solution$year == 2007, ]
+> > solution_2007
+> > ```
+> >
+> > Oceania had the longest average life expectancy in 2007 and Africa the lowest.
+> >
+> > ```{r, eval = FALSE}
+> > solution_1952_2007 <- cbind(solution[solution$year == 1952, ], solution_2007)
+> > difference_1952_2007 <- data.frame(continent = solution_1952_2007$continent,
+> >                                    year_1957 = solution_1952_2007[[3]],
+> >                                    year_2007 = solution_1952_2007[[6]],
+> >                                    difference = solution_1952_2007[[6]] - solution_1952_2007[[3]])
+> > difference_1952_2007
+> > ```
+> > Asia had the greatest difference, and Oceania the least.
+> {: .solution}
 {: .challenge}
 
-
-> ## Advanced Challenge
->
-> Calculate the difference in mean life expectancy between
-> the years 1952 and 2007 from the output of challenge 2
-> using one of the `plyr` functions.
-{: .challenge}
-
-> ## Alternate Challenge if class seems lost
+> ## Alternate Challenge
 >
 > Without running them, which of the following will calculate the average
 > life expectancy per continent:
@@ -269,5 +297,8 @@ d_ply(
 >   }
 > )
 > ```
->
+> > ## Solution to Alternative Challenge
+> >
+> > Answer 3 will calculate the average life expectancy per continent.
+> {: .solution}
 {: .challenge}
