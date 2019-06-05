@@ -179,13 +179,38 @@ with some number of `#` symbols:
 You _compile_ the R Markdown document to an html webpage by clicking
 the "Knit" button in the upper-left.
 
-> ## Challenge
+> ## Challenge 1
 >
 > Create a new R Markdown document. Delete all of the R code chunks
 > and write a bit of Markdown (some sections, some italicized
 > text, and an itemized list).
 >
 > Convert the document to a webpage.
+> > ## Solution to Challenge 1
+> >
+> > In RStudio, select File > New file > R Markdown... 
+> > Delete the placeholder text and add the following:
+> > 
+> > ```
+> > # Introduction
+> > 
+> > ## Background on Data
+> > 
+> > This report uses the *gapminder* dataset, which has columns that include:
+> > 
+> > * country
+> > * continent
+> > * year
+> > * lifeExp
+> > * pop
+> > * gdpPercap
+> > 
+> > ## Background on Methods
+> > 
+> > ```
+> > 
+> > Then click the 'Knit' button on the toolbar to generate an html document (webpage).
+> {: .solution}
 {: .challenge}
 
 
@@ -222,7 +247,7 @@ The main code chunks look like this:
 
 <pre>
 &#96;&#96;&#96;{r load_data}
-gapminder <- read.csv("~/Desktop/gapminder.csv")
+gapminder <- read.csv("gapminder.csv")
 &#96;&#96;&#96;
 </pre>
 
@@ -232,13 +257,29 @@ a unique name, as they will help you to fix errors and, if any graphs are
 produced, the file names are based on the name of the code chunk that
 produced them.
 
-> ## Challenge
+> ## Challenge 2
 >
 > Add code chunks to
 >
 > - Load the ggplot2 package
 > - Read the gapminder data
 > - Create a plot
+> > ## Solution to Challenge 2
+> > ````
+> > ```{r load-ggplot2}
+> > library("ggplot2")
+> > ```
+> > 
+> > ```{r read-gapminder-data}
+> > gapminder <- read.csv("gapminder.csv")
+> > ```
+> > 
+> > ```{r make-plot}
+> > plot(lifeExp ~ year, data = gapminder)
+> > ```
+> > 
+> > ````
+> {: .solution}
 {: .challenge}
 
 ## How things get compiled
@@ -330,10 +371,17 @@ want to use `fig.path` to define separate prefixes for the figure file
 names, like `fig.path="Figs/cleaning-"` and `fig.path="Figs/analysis-"`.
 
 
-> ## Challenge
+> ## Challenge 3
 >
 > Use chunk options to control the size of a figure and to hide the
 > code.
+> > ## Solution to Challenge 3
+> > ````
+> > ```{r, echo = FALSE, fig.width=3}
+> > plot(faithful)
+> > ```
+> > ````
+> {: .solution}
 {: .challenge}
 
 You can review all of the `R` chunk options by navigating to
@@ -362,9 +410,14 @@ The
 function in the [R/broman](https://github.com/kbroman/broman) package handles
 this.
 
-> ## Challenge
+> ## Challenge 4
 >
 > Try out a bit of in-line R code.
+> > ## Solution to Challenge 4
+> > ```
+> > Here's some inline code to determine that 2 + 2 = `r 2+2`.
+> > ```
+> {: .solution}
 {: .challenge}
 
 
