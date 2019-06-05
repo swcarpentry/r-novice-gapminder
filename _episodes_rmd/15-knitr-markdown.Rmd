@@ -268,17 +268,23 @@ produced them.
 > 
 > > ## Solution to Challenge 2
 > > 
-> > ```{r load-ggplot2}` r ''`
+> > <pre>
+> > &#96;&#96;&#96;{r load-ggplot2}
 > > library("ggplot2")
-> > ```
+> > &#96;&#96;&#96;
+> > </pre>
 > > 
-> > ```{r read-gapminder-data}` r ''`
+> > <pre>
+> > &#96;&#96;&#96;{r read-gapminder-data}
 > > gapminder <- read.csv("gapminder.csv")
-> > ```
+> > &#96;&#96;&#96;
+> > </pre>
 > > 
-> > ```{r make-plot}` r ''`
+> > <pre>
+> > &#96;&#96;&#96;{r make-plot}
 > > plot(lifeExp ~ year, data = gapminder)
-> > ```
+> > &#96;&#96;&#96;
+> > </pre>
 > > 
 > {: .solution}
 {: .challenge}
@@ -379,9 +385,11 @@ names, like `fig.path="Figs/cleaning-"` and `fig.path="Figs/analysis-"`.
 > 
 > > ## Solution to Challenge 3
 > > 
-> > ```{r, echo = FALSE, fig.width=3}` r ''`
+> > <pre>
+> > &#96;&#96;&#96;{r echo = FALSE, fig.width = 3}
 > > plot(faithful)
-> > ```
+> > &#96;&#96;&#96;
+> > </pre>
 > > 
 > {: .solution}
 {: .challenge}
