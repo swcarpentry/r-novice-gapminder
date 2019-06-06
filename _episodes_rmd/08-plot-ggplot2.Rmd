@@ -216,7 +216,7 @@ a large amount of data which is very clustered.
 
 ```{r axis-scale}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
-  geom_point(alpha = 0.5) + scale_x_log10()
+  geom_point(alpha = 0.5) + scale_x_continuous(trans = "log10")
 ```
 
 The `log10` function applied a transformation to the values of the gdpPercap
@@ -236,7 +236,7 @@ We can fit a simple relationship to the data by adding another layer,
 
 ```{r lm-fit}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
-  geom_point() + scale_x_log10() + geom_smooth(method="lm")
+  geom_point() + scale_x_continuous(trans = "log10") + geom_smooth(method="lm")
 ```
 
 We can make the line thicker by *setting* the **size** aesthetic in the
@@ -244,7 +244,7 @@ We can make the line thicker by *setting* the **size** aesthetic in the
 
 ```{r lm-fit2}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
-  geom_point() + scale_x_log10() + geom_smooth(method="lm", size=1.5)
+  geom_point() + scale_x_continuous(trans = "log10") + geom_smooth(method="lm", size=1.5)
 ```
 
 There are two ways an *aesthetic* can be specified. Here we *set* the **size**
@@ -268,7 +268,7 @@ variables and their visual representation.
 > >
 > > ```{r ch4a-sol}
 > > ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
-> >  geom_point(size=3, color="orange") + scale_x_log10() +
+> >  geom_point(size=3, color="orange") + scale_x_continuous(trans = "log10") +
 > >  geom_smooth(method="lm", size=1.5)
 > > ```
 > {: .solution}
@@ -290,7 +290,7 @@ variables and their visual representation.
 > >
 > >```{r ch4b-sol}
 > > ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp, color = continent)) +
-> > geom_point(size=3, shape=17) + scale_x_log10() +
+> > geom_point(size=3, shape=17) + scale_x_continuous(trans = "log10") +
 > > geom_smooth(method="lm", size=1.5)
 > > ```
 > {: .solution}
@@ -408,7 +408,7 @@ code to modify!
 > >
 > > ```{r ch5-sol}
 > > ggplot(data = gapminder, mapping = aes(x = gdpPercap, fill=continent)) +
-> >  geom_density(alpha=0.6) + facet_wrap( ~ year) + scale_x_log10()
+> >  geom_density(alpha=0.6) + facet_wrap( ~ year) + scale_x_continuous(trans = "log10")
 > > ```
 > {: .solution}
 {: .challenge}
