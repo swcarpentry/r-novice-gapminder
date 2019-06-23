@@ -148,7 +148,7 @@ Each will appear as:
 - italics with underscores
 - code-type font with backticks
 
-You can use whatever method you prefer, but *be consistant*. This maintains the
+You can use whatever method you prefer, but *be consistent*. This maintains the
 readability of your code.
 
 You can make a numbered list by just using numbers. You can even use the
