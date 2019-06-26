@@ -122,8 +122,8 @@ No matter how
 complicated our analyses become, all data in R is interpreted as one of these
 basic data types. This strictness has some really important consequences.
 
-A user has added details of another cat. This information is in the file
-`data/feline-data_v2.csv`.
+Let's say you want to add details for another cat. You want to call this file
+`data/feline-data_v2.csv` and have it look as follows.
 
 
 ```{r, eval=FALSE}
@@ -136,6 +136,14 @@ calico,2.1,1
 black,5.0,0
 tabby,3.2,1
 tabby,2.3 or 2.4,1
+```
+We can make this data file similarly to how we did before:  
+
+```
+cats2 <- data.frame(coat = c("calico", "black", "tabby", "tabby"), 
+                    weight = c(2.1, 5.0,3.2, "2.3 or 2.4"), 
+                    likes_string = c(1, 0, 1, 1))
+write.csv(x = cats2, file = "data/feline-data_v2.csv", row.names = FALSE)                    
 ```
 
 Load the new cats data like before, and check what type of data we find in the
