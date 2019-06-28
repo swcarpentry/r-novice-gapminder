@@ -36,7 +36,7 @@ Maintainers:
 * Tom Wright
 * [Naupaka Zimmerman][zimmerman_naupaka]
 
-[gapminder]: http://www.gapminder.org/
+[gapminder]: https://en.wikipedia.org/wiki/Gapminder_Foundation 
 [lesson-example]: https://carpentries.github.io/lesson-example
 [mawdsley_david]: https://carpentries.org/maintainers/#mawds
 [oliver_jeffrey]: https://carpentries.org/maintainers/#jcoliver
