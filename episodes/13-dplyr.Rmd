@@ -87,7 +87,7 @@ is unlike anything we've seen in R before, let's repeat what we've done above
 using pipes.
 
 ```{r}
-year_country_gdp <- gapminder %>% select(year,country,gdpPercap)
+year_country_gdp <- gapminder %>% select(year, country, gdpPercap)
 ```
 
 To help you understand why we wrote that in that way, let's walk through it step
@@ -105,8 +105,8 @@ countries, we can combine `select` and `filter`
 
 ```{r}
 year_country_gdp_euro <- gapminder %>%
-    filter(continent=="Europe") %>%
-    select(year,country,gdpPercap)
+    filter(continent == "Europe") %>%
+    select(year, country, gdpPercap)
 ```
 
 > ## Challenge 1
@@ -119,8 +119,8 @@ year_country_gdp_euro <- gapminder %>%
 > > ## Solution to Challenge 1
 > >```{r}
 > >year_country_lifeExp_Africa <- gapminder %>%
-> >                            filter(continent=="Africa") %>%
-> >                            select(year,country,lifeExp)
+> >                            filter(continent == "Africa") %>%
+> >                            select(year, country, lifeExp)
 > > ```
 > {: .solution}
 {: .challenge}
@@ -165,7 +165,7 @@ original dataframe into multiple pieces, then we can run functions
 ```{r}
 gdp_bycontinents <- gapminder %>%
     group_by(continent) %>%
-    summarize(mean_gdpPercap=mean(gdpPercap))
+    summarize(mean_gdpPercap = mean(gdpPercap))
 ```
 
 ![](../fig/13-dplyr-fig3.png)
@@ -193,7 +193,7 @@ even better.
 > >```{r}
 > >lifeExp_bycountry <- gapminder %>%
 > >    group_by(country) %>%
-> >    summarize(mean_lifeExp=mean(lifeExp))
+> >    summarize(mean_lifeExp = mean(lifeExp))
 > >lifeExp_bycountry %>%
 > >    filter(mean_lifeExp == min(mean_lifeExp) | mean_lifeExp == max(mean_lifeExp))
 > >```
@@ -218,19 +218,19 @@ The function `group_by()` allows us to group by multiple variables. Let's group 
 
 ```{r}
 gdp_bycontinents_byyear <- gapminder %>%
-    group_by(continent,year) %>%
-    summarize(mean_gdpPercap=mean(gdpPercap))
+    group_by(continent, year) %>%
+    summarize(mean_gdpPercap = mean(gdpPercap))
 ```
 
 That is already quite powerful, but it gets even better! You're not limited to defining 1 new variable in `summarize()`.
 
 ```{r}
 gdp_pop_bycontinents_byyear <- gapminder %>%
-    group_by(continent,year) %>%
-    summarize(mean_gdpPercap=mean(gdpPercap),
-              sd_gdpPercap=sd(gdpPercap),
-              mean_pop=mean(pop),
-              sd_pop=sd(pop))
+    group_by(continent, year) %>%
+    summarize(mean_gdpPercap = mean(gdpPercap),
+              sd_gdpPercap = sd(gdpPercap),
+              mean_pop = mean(pop),
+              sd_pop = sd(pop))
 ```
 
 ## count() and n()
@@ -276,14 +276,14 @@ We can also create new variables prior to (or even after) summarizing informatio
 
 ```{r}
 gdp_pop_bycontinents_byyear <- gapminder %>%
-    mutate(gdp_billion=gdpPercap*pop/10^9) %>%
+    mutate(gdp_billion = gdpPercap*pop/10^9) %>%
     group_by(continent,year) %>%
-    summarize(mean_gdpPercap=mean(gdpPercap),
-              sd_gdpPercap=sd(gdpPercap),
-              mean_pop=mean(pop),
-              sd_pop=sd(pop),
-              mean_gdp_billion=mean(gdp_billion),
-              sd_gdp_billion=sd(gdp_billion))
+    summarize(mean_gdpPercap = mean(gdpPercap),
+              sd_gdpPercap = sd(gdpPercap),
+              mean_pop = mean(pop),
+              sd_pop = sd(pop),
+              mean_gdp_billion = mean(gdp_billion),
+              sd_gdp_billion = sd(gdp_billion))
 ```
 
 ## Connect mutate with logical filtering: ifelse
