@@ -139,7 +139,7 @@ tabby,2.3 or 2.4,1
 ```
 We can make this data file similarly to how we did before:  
 
-```
+```{r}
 cats2 <- data.frame(coat = c("calico", "black", "tabby", "tabby"), 
                     weight = c(2.1, 5.0,3.2, "2.3 or 2.4"), 
                     likes_string = c(1, 0, 1, 1))
