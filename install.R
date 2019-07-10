@@ -1,0 +1,6 @@
+install.packages("plyr")
+install.packages("dplyr")
+install.packages("tidyr")
+install.packages("ggplot2")
+install.packages("knitr")
+install.packages("gapminder")
