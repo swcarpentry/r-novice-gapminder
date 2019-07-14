@@ -49,6 +49,15 @@ y:  6  7  8  9
     7  9 11 13
 ```
 
+Here is how we would add two vectors together using a for loop:
+
+```{r}
+output_vector <- c()
+for(i in 1:4) {
+  output_vector[i] <- x[i] + y[i]
+}
+output_vector
+```
 
 > ## Challenge 1
 >
