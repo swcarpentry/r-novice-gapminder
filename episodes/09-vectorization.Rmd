@@ -57,6 +57,9 @@ for(i in 1:4) {
   output_vector[i] <- x[i] + y[i]
 }
 output_vector
+
+sum_xy <- x + y
+sum_xy
 ```
 
 > ## Challenge 1
