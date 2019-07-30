@@ -72,7 +72,7 @@ nrow(cats)
 length(age)
 ```
 
-So for it to work we need to have `nrow(cats)` = `length(age)`. Let's overwite the content of cats with our new data frame.
+So for it to work we need to have `nrow(cats)` = `length(age)`. Let's overwrite the content of cats with our new data frame.
 
 ```{r}
 age <- c(2, 3, 5)
