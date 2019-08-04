@@ -560,7 +560,9 @@ str(cats[1,])
 
 ## Matrices
 
-Last but not least is the matrix. We can declare a matrix full of zeros:
+Last but not least is the matrix. Similar to data frames, matrices are two dimensional with rows and columns. A data frame can combine columns of different data types such as integers, factors, logical etc. while matrices are homogenous only containing a single data type for the whole matrix.
+
+We can declare a matrix full of zeros:
 
 ```{r}
 matrix_example <- matrix(0, ncol=6, nrow=3)
