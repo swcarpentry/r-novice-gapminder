@@ -61,9 +61,10 @@ be executed, and graphs or other results inserted into the final document.
 
 This sort of idea has been called "literate programming".
 
-`knitr` allows you to mix basically any sort of text with code from different programming languages, but we recommend that you use `R Markdown`, which mixes Markdown
-with R. [Markdown](https://www.markdownguide.org/) is a light-weight mark-up language for creating web
-pages.
+`knitr` allows you to mix basically any sort of text with code from different
+programming languages, but we recommend that you use `R Markdown`, which mixes
+Markdown with R. [Markdown](https://www.markdownguide.org/) is a light-weight
+mark-up language for creating web pages.
 
 
 ## Creating an R Markdown file
@@ -79,7 +80,7 @@ You can stick with the default (HTML output), but give it a title.
 ## Basic components of R Markdown
 
 The initial chunk of text (header) contains instructions for R to specify what kind of document will be created, and the options chosen. You can use the header to give your document a title, author, date, and tell it that you're going to want
-to produce html output (in other words, a web page).
+to produce HTML output (in other words, a web page).
 
 ```
 ---
@@ -113,9 +114,9 @@ well as the double-asterisks in `**Knit**`. This is
 ## Markdown
 
 Markdown is a system for writing web pages by marking up the text much
-as you would in an email rather than writing html code. The marked-up
-text gets _converted_ to html, replacing the marks with the proper
-html code.
+as you would in an email rather than writing HTML code. The marked-up
+text gets _converted_ to HTML, replacing the marks with the proper
+HTML code.
 
 For now, let's delete all of the stuff that's there and write a bit of
 markdown.
@@ -175,7 +176,7 @@ with some number of `#` symbols:
 #### Sub-sub section
 ```
 
-You _compile_ the R Markdown document to an html webpage by clicking
+You _compile_ the R Markdown document to an HTML webpage by clicking
 the "Knit" button in the upper-left.
 
 > ## Challenge 1
@@ -209,7 +210,7 @@ the "Knit" button in the upper-left.
 > > 
 > > ```
 > > 
-> > Then click the 'Knit' button on the tool bar to generate an html document (webpage).
+> > Then click the 'Knit' button on the tool bar to generate an HTML document (webpage).
 > {: .solution}
 {: .challenge}
 
@@ -298,7 +299,7 @@ produced, links to those figures are included.
 
 The Markdown and figure documents are then processed by the tool
 [`pandoc`](http://pandoc.org/), which converts the Markdown file into an
-html file, with the figures embedded.
+HTML file, with the figures embedded.
 
 <img src="../fig/rmd-15-rmd_to_html_fig-1.png" title="plot of chunk rmd_to_html_fig" alt="plot of chunk rmd_to_html_fig" width="576" style="display: block; margin: auto auto auto 0;" />
 
