@@ -45,8 +45,8 @@ using the arguments to this function.
 
 
 ~~~
-pdf("Life_Exp_vs_time.pdf", width=12, height=4)
-ggplot(data=gapminder, aes(x=year, y=lifeExp, colour=country)) +
+pdf("Life_Exp_vs_time.pdf", width = 12, height = 4)
+ggplot(data = gapminder, aes(x = year, y = lifeExp, colour = country)) +
   geom_line() +
   theme(legend.position = "none")
 
@@ -95,12 +95,11 @@ only want to focus on the gapminder data for Australia:
 
 
 ~~~
-aust_subset <- gapminder[gapminder$country == "Australia",]
+aust_subset <- gapminder[gapminder$country == "Australia", ]
 
 write.table(aust_subset,
-  file="cleaned-data/gapminder-aus.csv",
-  sep=","
-)
+            file = "cleaned-data/gapminder-aus.csv",
+            sep = ",")
 ~~~
 {: .language-r}
 
@@ -152,9 +151,11 @@ Let's fix this:
 
 ~~~
 write.table(
-  gapminder[gapminder$country == "Australia",],
-  file="cleaned-data/gapminder-aus.csv",
-  sep=",", quote=FALSE, row.names=FALSE
+  gapminder[gapminder$country == "Australia", ],
+  file = "cleaned-data/gapminder-aus.csv",
+  sep = ",",
+  quote = FALSE,
+  row.names = FALSE
 )
 ~~~
 {: .language-r}

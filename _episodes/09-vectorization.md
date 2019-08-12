@@ -65,6 +65,39 @@ y:  6  7  8  9
 ~~~
 {: .language-r}
 
+Here is how we would add two vectors together using a for loop:
+
+
+~~~
+output_vector <- c()
+for(i in 1:4) {
+  output_vector[i] <- x[i] + y[i]
+}
+output_vector
+~~~
+{: .language-r}
+
+
+
+~~~
+[1]  7  9 11 13
+~~~
+{: .output}
+
+
+
+~~~
+sum_xy <- x + y
+sum_xy
+~~~
+{: .language-r}
+
+
+
+~~~
+[1]  7  9 11 13
+~~~
+{: .output}
 
 > ## Challenge 1
 >
@@ -127,7 +160,7 @@ y:  6  7  8  9
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-09-ch2-sol-1.png" title="plot of chunk ch2-sol" alt="plot of chunk ch2-sol" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-09-ch2-sol-1.png" title="plot of chunk ch2-sol" alt="plot of chunk ch2-sol" width="612" style="display: block; margin: auto;" />
 > > 
 > > ~~~
 > > countryset <- c("China","India","Indonesia")
@@ -137,7 +170,7 @@ y:  6  7  8  9
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-09-ch2-sol-2.png" title="plot of chunk ch2-sol" alt="plot of chunk ch2-sol" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-09-ch2-sol-2.png" title="plot of chunk ch2-sol" alt="plot of chunk ch2-sol" width="612" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 
@@ -203,7 +236,7 @@ Vectorized operations work element-wise on matrices:
 
 
 ~~~
-m <- matrix(1:12, nrow=3, ncol=4)
+m <- matrix(1:12, nrow = 3, ncol = 4)
 m * -1
 ~~~
 {: .language-r}
@@ -363,7 +396,7 @@ m * -1
 > {: .language-r}
 >
 > This would be tedious to type out, and impossible for high values of
-> n.  Use vectorisation to compute x when n=100. What is the sum when
+> n.  Use vectorization to compute x when n=100. What is the sum when
 > n=10,000?
 >
 > > ##  Challenge 4
@@ -379,7 +412,7 @@ m * -1
 > >
 > > This would be tedious to type out, and impossible for
 > > high values of n.
-> > Can you use vectorisation to compute x, when n=100?
+> > Can you use vectorization to compute x, when n=100?
 > > How about when n=10,000?
 > >
 > > 

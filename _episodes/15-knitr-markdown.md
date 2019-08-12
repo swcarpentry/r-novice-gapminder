@@ -7,12 +7,11 @@ exercises: 15
 questions:
 - "How can I integrate software and reports?"
 objectives:
-- Value of reproducible reports
-- Basics of Markdown
-- R code chunks
-- Chunk options
-- Inline R code
-- Other output formats
+- Understand the value of writing reproducible reports
+- Learn how to recognise and compile the basic components of an R Markdown file
+- Become familiar with R code chunks, and understand their purpose, structure and options 
+- Demonstrate the use of inline chunks for weaving R outputs into text blocks, for example when discussing the results of some calculations
+- Be aware of alternative output formats to which an R Markdown file can be exported
 keypoints:
 - "Mix reporting written in R Markdown with software written in R."
 - "Specify chunk options to control formatting."
@@ -29,18 +28,22 @@ Data analysts tend to write a lot of reports, describing their
 analyses and results, for their collaborators or to document their
 work for future reference.
 
-When I was first starting out, I'd write an R script with all of my
-work, and would just send an email to my collaborator, describing the
-results and attaching various graphs. In discussing the results, there
-would often be confusion about which graph was which.
+Many new users begin by first writing a single R script containing all of the
+work. Then simply share the analysis by emailing the script and various graphs
+as attachments. But this can be cumbersome, requiring a lengthy discussion to
+explain which attachment was which result.
 
-I moved to writing formal reports, with Word or [LaTeX](http://www.latex-project.org/), but I'd have to
-spend a lot of time getting the figures to look right. Mostly, the
-concern is about page breaks and generating reproducible results.
+Writing formal reports with Word or [LaTeX](http://www.latex-project.org/)
+can simplify this by incorporating both the analysis report and output graphs 
+into a single document. But tweaking formatting to make figures look correct
+and fix obnoxious page breaks can be tedious and lead to a lengthy "whack
+a mole" game of fixing new mistakes resulting from a single formatting change.
 
-Everything is easier now that I create a web page (as an html
-file). It can be one long stream, so I can use tall figures that
-wouldn't ordinary fit on one page. Scrolling is your friend.
+Creating a web page (as an html file) by using R Markdown makes things easier.
+The report can be one long stream, so tall figures that wouldn't ordinary fit on
+one page can be kept full size and easier to read, since the reader can simply
+keep scrolling. Formatting is simple and easy to modify, allowing you to spend
+more time on your analyses instead of writing reports.
 
 
 ## Literate programming
@@ -51,7 +54,7 @@ data, you can just re-compile the report and get the new or corrected
 results (versus having to reconstruct figures, paste them into
 a Word document, and further hand-edit various detailed results).
 
-The key R package is `[knitr](http://yihui.name/knitr/)`. It allows you
+The key R package is [`knitr`](http://yihui.name/knitr/). It allows you
 to create a document that is a mixture of text and chunks of
 code. When the document is processed by `knitr`, chunks of code will
 be executed, and graphs or other results inserted into the final document.
@@ -142,11 +145,12 @@ Each will appear as:
 
 - bold with double-asterisks
 - italics with underscores
-- code-type font with backticks
+- code-type font with back ticks
 
-(I prefer hyphens over asterisks, myself.)
+You can use whatever method you prefer, but *be consistent*. This maintains the
+readability of your code.
 
-You can make a numbered list by just using numbers. You can use the
+You can make a numbered list by just using numbers. You can even use the
 same number over and over if you want:
 
 ```
@@ -159,7 +163,7 @@ This will appear as:
 
 1. bold with double-asterisks
 1. italics with underscores
-1. code-type font with backticks
+1. code-type font with back ticks
 
 You can make section headers of different sizes by initiating a line
 with some number of `#` symbols:
@@ -172,24 +176,47 @@ with some number of `#` symbols:
 ```
 
 You _compile_ the R Markdown document to an html webpage by clicking
-the "Knit HTML" in the upper-left. And note the little question mark
-next to it; click the question mark and you'll get a "Markdown Quick
-Reference" (with the Markdown syntax) as well to the RStudio
-documentation on R Markdown.
+the "Knit" button in the upper-left.
 
-> ## Challenge
+> ## Challenge 1
 >
 > Create a new R Markdown document. Delete all of the R code chunks
 > and write a bit of Markdown (some sections, some italicized
 > text, and an itemized list).
 >
 > Convert the document to a webpage.
+> > ## Solution to Challenge 1
+> >
+> > In RStudio, select File > New file > R Markdown... 
+> > 
+> > Delete the place holder text and add the following:
+> > 
+> > ```
+> > # Introduction
+> > 
+> > ## Background on Data
+> > 
+> > This report uses the *gapminder* dataset, which has columns that include:
+> > 
+> > * country
+> > * continent
+> > * year
+> > * lifeExp
+> > * pop
+> > * gdpPercap
+> > 
+> > ## Background on Methods
+> > 
+> > ```
+> > 
+> > Then click the 'Knit' button on the tool bar to generate an html document (webpage).
+> {: .solution}
 {: .challenge}
 
 
 ## A bit more Markdown
 
-You can make a hyperlink like this:
+You can make a hyper link like this:
 `[text to show](http://the-web-page.com)`.
 
 You can include an image file like this: `![caption](http://url/for/file)`
@@ -205,7 +232,9 @@ If you know how to write equations in
 $$y = \mu + \sum_{i=1}^p \beta_i x_i + \epsilon$$
 ```
 
-
+You can review Markdown syntax by navigating to the
+"Markdown Quick Reference" under the "Help" field in the 
+tool bar at the top of RStudio.
 
 ## R code chunks
 
@@ -218,7 +247,7 @@ The main code chunks look like this:
 
 <pre>
 &#96;&#96;&#96;{r load_data}
-gapminder <- read.csv("~/Desktop/gapminder.csv")
+gapminder <- read.csv("gapminder.csv")
 &#96;&#96;&#96;
 </pre>
 
@@ -228,28 +257,50 @@ a unique name, as they will help you to fix errors and, if any graphs are
 produced, the file names are based on the name of the code chunk that
 produced them.
 
-> ## Challenge
+> ## Challenge 2
 >
-> Add code chunks to
+> Add code chunks to:
 >
-> - Load the ggplot2 package
-> - Read the gapminder data
-> - Create a plot
+> * Load the ggplot2 package
+> * Read the gapminder data
+> * Create a plot
+> 
+> > ## Solution to Challenge 2
+> > 
+> > <pre>
+> > &#96;&#96;&#96;{r load-ggplot2}
+> > library("ggplot2")
+> > &#96;&#96;&#96;
+> > </pre>
+> > 
+> > <pre>
+> > &#96;&#96;&#96;{r read-gapminder-data}
+> > gapminder <- read.csv("gapminder.csv")
+> > &#96;&#96;&#96;
+> > </pre>
+> > 
+> > <pre>
+> > &#96;&#96;&#96;{r make-plot}
+> > plot(lifeExp ~ year, data = gapminder)
+> > &#96;&#96;&#96;
+> > </pre>
+> > 
+> {: .solution}
 {: .challenge}
 
 ## How things get compiled
 
-When you press the "Knit HTML" button, the R Markdown document is
+When you press the "Knit" button, the R Markdown document is
 processed by `[knitr](http://yihui.name/knitr)` and a plain Markdown
 document is produced (as well as, potentially, a set of figure files): the R code is executed
 and replaced by both the input and the output; if figures are
 produced, links to those figures are included.
 
 The Markdown and figure documents are then processed by the tool
-`[pandoc](http://pandoc.org/)`, which converts the Markdown file into an
+[`pandoc`](http://pandoc.org/), which converts the Markdown file into an
 html file, with the figures embedded.
 
-<img src="../fig/rmd-15-rmd_to_html_fig-1.png" title="plot of chunk rmd_to_html_fig" alt="plot of chunk rmd_to_html_fig" style="display: block; margin: auto auto auto 0;" />
+<img src="../fig/rmd-15-rmd_to_html_fig-1.png" title="plot of chunk rmd_to_html_fig" alt="plot of chunk rmd_to_html_fig" width="576" style="display: block; margin: auto auto auto 0;" />
 
 
 
@@ -295,11 +346,25 @@ want to use `fig.path` to define separate prefixes for the figure file
 names, like `fig.path="Figs/cleaning-"` and `fig.path="Figs/analysis-"`.
 
 
-> ## Challenge
+> ## Challenge 3
 >
 > Use chunk options to control the size of a figure and to hide the
 > code.
+> 
+> > ## Solution to Challenge 3
+> > 
+> > <pre>
+> > &#96;&#96;&#96;{r echo = FALSE, fig.width = 3}
+> > plot(faithful)
+> > &#96;&#96;&#96;
+> > </pre>
+> > 
+> {: .solution}
 {: .challenge}
+
+You can review all of the `R` chunk options by navigating to
+the "R Markdown Cheat Sheet" under the "Cheatsheets" section 
+of the "Help" field in the tool bar at the top of RStudio.
 
 
 ## Inline R code
@@ -315,24 +380,31 @@ Perhaps precede the paragraph with a larger code chunk that does
 calculations and defines variables, with `include=FALSE` for that larger
 chunk (which is the same as `echo=FALSE` and `results="hide"`).
 
-I'm very particular about rounding in such situations. I may want
+Rounding can produce differences in output in such situations. You may want
 `2.0`, but `round(2.03, 1)` will give just `2`.
 
 The
 [`myround`](https://github.com/kbroman/broman/blob/master/R/myround.R)
-function in my [R/broman](https://github.com/kbroman) package handles
+function in the [R/broman](https://github.com/kbroman/broman) package handles
 this.
 
-> ## Challenge
+> ## Challenge 4
 >
 > Try out a bit of in-line R code.
+> 
+> > ## Solution to Challenge 4
+> > 
+> > Here's some inline code to determine that 2 + 2 = `` `r
+> > 2+2` ``.
+> > 
+> {: .solution}
 {: .challenge}
 
 
 ## Other output options
 
 You can also convert R Markdown to a PDF or a Word document. Click the
-little triangle next to the "Knit HTML" button to get a drop-down
+little triangle next to the "Knit" button to get a drop-down
 menu. Or you could put `pdf_document` or `word_document` in the initial header
 of the file.
 
@@ -346,6 +418,7 @@ of the file.
 {: .callout}
 
 
+
 ## Resources
 
 * [Knitr in a knutshell tutorial](http://kbroman.org/knitr_knutshell)
@@ -357,4 +430,3 @@ of the file.
 * [Reproducible Reporting](https://www.rstudio.com/resources/webinars/reproducible-reporting/)
 * [The Ecosystem of R Markdown](https://www.rstudio.com/resources/webinars/the-ecosystem-of-r-markdown/)
 * [Introducing Bookdown](https://www.rstudio.com/resources/webinars/introducing-bookdown/)
-

@@ -24,16 +24,16 @@ additional arguments so we could filter by `year` and `country`:
 ~~~
 # Takes a dataset and multiplies the population column
 # with the GDP per capita column.
-calcGDP <- function(dat, year=NULL, country=NULL) {
-  if(!is.null(year)) {
-    dat <- dat[dat$year %in% year, ]
+calcGDP <- function(dat, year = NULL, country = NULL) {
+  if (!is.null(year)) {
+    dat <- dat[dat$year %in% year,]
   }
   if (!is.null(country)) {
-    dat <- dat[dat$country %in% country,]
+    dat <- dat[dat$country %in% country, ]
   }
   gdp <- dat$pop * dat$gdpPercap
-
-  new <- cbind(dat, gdp=gdp)
+  
+  new <- cbind(dat, gdp = gdp)
   return(new)
 }
 ~~~
@@ -202,6 +202,19 @@ returns another `data.frame` (2nd letter is a **d**) i
 >
 > Calculate the average life expectancy per continent. Which has the longest?
 > Which had the shortest?
+> > ## Solution to Challenge 1
+> >
+> > 
+> > ~~~
+> > ddply(
+> >  .data = gapminder,
+> >  .variables = "continent",
+> >  .fun = function(x) mean(x$lifeExp)
+> > )
+> > ~~~
+> > {: .language-r}
+> > Oceania has the longest and Africa the shortest.
+> {: .solution}
 {: .challenge}
 
 What if we want a different type of output data structure?:
@@ -365,21 +378,23 @@ continent          1992         1997         2002         2007
 ~~~
 {: .output}
 
-You can use these functions in place of `for` loops (and its usually faster to
+You can use these functions in place of `for` loops (and it is usually faster to
 do so).
 To replace a for loop, put the code that was in the body of the `for` loop inside an anonymous function.
 
 
 ~~~
 d_ply(
-  .data=gapminder,
+  .data = gapminder,
   .variables = "continent",
   .fun = function(x) {
     meanGDPperCap <- mean(x$gdpPercap)
     print(paste(
-      "The mean GDP per capita for", unique(x$continent),
-      "is", format(meanGDPperCap, big.mark=",")
-   ))
+      "The mean GDP per capita for",
+      unique(x$continent),
+      "is",
+      format(meanGDPperCap, big.mark = ",")
+    ))
   }
 )
 ~~~
@@ -408,17 +423,37 @@ d_ply(
 > Calculate the average life expectancy per continent and year. Which had the
 > longest and shortest in 2007? Which had the greatest change in between 1952
 > and 2007?
+> > ## Solution to Challenge 2
+> >
+> > 
+> > ~~~
+> > solution <- ddply(
+> >  .data = gapminder,
+> >  .variables = c("continent", "year"),
+> >  .fun = function(x) mean(x$lifeExp)
+> > )
+> > solution_2007 <- solution[solution$year == 2007, ]
+> > solution_2007
+> > ~~~
+> > {: .language-r}
+> >
+> > Oceania had the longest average life expectancy in 2007 and Africa the lowest.
+> >
+> > 
+> > ~~~
+> > solution_1952_2007 <- cbind(solution[solution$year == 1952, ], solution_2007)
+> > difference_1952_2007 <- data.frame(continent = solution_1952_2007$continent,
+> >                                    year_1957 = solution_1952_2007[[3]],
+> >                                    year_2007 = solution_1952_2007[[6]],
+> >                                    difference = solution_1952_2007[[6]] - solution_1952_2007[[3]])
+> > difference_1952_2007
+> > ~~~
+> > {: .language-r}
+> > Asia had the greatest difference, and Oceania the least.
+> {: .solution}
 {: .challenge}
 
-
-> ## Advanced Challenge
->
-> Calculate the difference in mean life expectancy between
-> the years 1952 and 2007 from the output of challenge 2
-> using one of the `plyr` functions.
-{: .challenge}
-
-> ## Alternate Challenge if class seems lost
+> ## Alternate Challenge
 >
 > Without running them, which of the following will calculate the average
 > life expectancy per continent:
@@ -472,5 +507,8 @@ d_ply(
 > )
 > ~~~
 > {: .language-r}
->
+> > ## Solution to Alternative Challenge
+> >
+> > Answer 3 will calculate the average life expectancy per continent.
+> {: .solution}
 {: .challenge}

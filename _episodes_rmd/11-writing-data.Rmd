@@ -49,8 +49,8 @@ In this case you can use a more flexible approach. The function
 using the arguments to this function.
 
 ```{r, eval=FALSE}
-pdf("Life_Exp_vs_time.pdf", width=12, height=4)
-ggplot(data=gapminder, aes(x=year, y=lifeExp, colour=country)) +
+pdf("Life_Exp_vs_time.pdf", width = 12, height = 4)
+ggplot(data = gapminder, aes(x = year, y = lifeExp, colour = country)) +
   geom_line() +
   theme(legend.position = "none")
 
@@ -95,12 +95,11 @@ Let's create a data-cleaning script, for this analysis, we
 only want to focus on the gapminder data for Australia:
 
 ```{r}
-aust_subset <- gapminder[gapminder$country == "Australia",]
+aust_subset <- gapminder[gapminder$country == "Australia", ]
 
 write.table(aust_subset,
-  file="cleaned-data/gapminder-aus.csv",
-  sep=","
-)
+            file = "cleaned-data/gapminder-aus.csv",
+            sep = ",")
 ```
 
 Let's switch back to the shell to take a look at the data to make sure it looks
@@ -129,9 +128,11 @@ Let's fix this:
 
 ```{r}
 write.table(
-  gapminder[gapminder$country == "Australia",],
-  file="cleaned-data/gapminder-aus.csv",
-  sep=",", quote=FALSE, row.names=FALSE
+  gapminder[gapminder$country == "Australia", ],
+  file = "cleaned-data/gapminder-aus.csv",
+  sep = ",",
+  quote = FALSE,
+  row.names = FALSE
 )
 ```
 
@@ -165,5 +166,5 @@ That looks better!
 ```{r, echo=FALSE}
 # We remove after rendering the lesson, because we don't want this in the lesson
 # repository
-unlink("cleaned-data", recursive=TRUE)
+unlink("cleaned-data", recursive = TRUE)
 ```

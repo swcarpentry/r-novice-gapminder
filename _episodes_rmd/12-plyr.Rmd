@@ -15,7 +15,7 @@ source: Rmd
 source("../bin/chunk-options.R")
 knitr_fig_path("12-")
 # Silently load in the data so the rest of the lesson works
-gapminder <- read.csv("data/gapminder_data.csv", header=TRUE)
+gapminder <- read.csv("data/gapminder_data.csv", header = TRUE)
 ```
 
 Previously we looked at how you can use functions to simplify your code.
@@ -26,16 +26,16 @@ additional arguments so we could filter by `year` and `country`:
 ```{r}
 # Takes a dataset and multiplies the population column
 # with the GDP per capita column.
-calcGDP <- function(dat, year=NULL, country=NULL) {
-  if(!is.null(year)) {
-    dat <- dat[dat$year %in% year, ]
+calcGDP <- function(dat, year = NULL, country = NULL) {
+  if (!is.null(year)) {
+    dat <- dat[dat$year %in% year,]
   }
   if (!is.null(country)) {
-    dat <- dat[dat$country %in% country,]
+    dat <- dat[dat$country %in% country, ]
   }
   gdp <- dat$pop * dat$gdpPercap
-
-  new <- cbind(dat, gdp=gdp)
+  
+  new <- cbind(dat, gdp = gdp)
   return(new)
 }
 ```
@@ -201,14 +201,16 @@ To replace a for loop, put the code that was in the body of the `for` loop insid
 
 ```{r}
 d_ply(
-  .data=gapminder,
+  .data = gapminder,
   .variables = "continent",
   .fun = function(x) {
     meanGDPperCap <- mean(x$gdpPercap)
     print(paste(
-      "The mean GDP per capita for", unique(x$continent),
-      "is", format(meanGDPperCap, big.mark=",")
-   ))
+      "The mean GDP per capita for",
+      unique(x$continent),
+      "is",
+      format(meanGDPperCap, big.mark = ",")
+    ))
   }
 )
 ```

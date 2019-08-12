@@ -72,7 +72,7 @@ statements that are executed when it runs--is contained within curly braces
 (`{}`). The statements in the body are indented by two spaces. This makes the
 code easier to read but does not affect how the code operates.
 
-It is useful to think of creating functions like writing a cookbook. First you define the "ingredients" that your function needs. In this case, we only need one ingredient to use our function: "temp". After we list our ingredients, we then say what we will do with them, in this case, we are taking our ingredient and applying a set of mathmatical operators to it. 
+It is useful to think of creating functions like writing a cookbook. First you define the "ingredients" that your function needs. In this case, we only need one ingredient to use our function: "temp". After we list our ingredients, we then say what we will do with them, in this case, we are taking our ingredient and applying a set of mathematical operators to it. 
 
 When we call the function, the values we pass to it as arguments are assigned to
 those variables so that we can use them inside the function. Inside the
@@ -370,16 +370,16 @@ that per year and country.
 ~~~
 # Takes a dataset and multiplies the population column
 # with the GDP per capita column.
-calcGDP <- function(dat, year=NULL, country=NULL) {
-  if(!is.null(year)) {
-    dat <- dat[dat$year %in% year, ]
+calcGDP <- function(dat, year = NULL, country = NULL) {
+  if (!is.null(year)) {
+    dat <- dat[dat$year %in% year,]
   }
   if (!is.null(country)) {
-    dat <- dat[dat$country %in% country,]
+    dat <- dat[dat$country %in% country, ]
   }
   gdp <- dat$pop * dat$gdpPercap
-
-  new <- cbind(dat, gdp=gdp)
+  
+  new <- cbind(dat, gdp = gdp)
   return(new)
 }
 ~~~
@@ -407,7 +407,7 @@ Let's take a look at what happens when we specify the year:
 
 
 ~~~
-head(calcGDP(gapminder, year=2007))
+head(calcGDP(gapminder, year = 2007))
 ~~~
 {: .language-r}
 
@@ -428,7 +428,7 @@ Or for a specific country:
 
 
 ~~~
-calcGDP(gapminder, country="Australia")
+calcGDP(gapminder, country = "Australia")
 ~~~
 {: .language-r}
 
@@ -455,7 +455,7 @@ Or both:
 
 
 ~~~
-calcGDP(gapminder, year=2007, country="Australia")
+calcGDP(gapminder, year = 2007, country = "Australia")
 ~~~
 {: .language-r}
 
@@ -471,7 +471,7 @@ Let's walk through the body of the function:
 
 
 ~~~
-calcGDP <- function(dat, year=NULL, country=NULL) {
+calcGDP <- function(dat, year = NULL, country = NULL) {
 ~~~
 {: .language-r}
 
@@ -495,8 +495,8 @@ Here, we check whether each additional argument is set to `null`, and whenever
 they're not `null` overwrite the dataset stored in `dat` with a subset given by 
 the non-`null` argument.
 
-I did this so that our function is more flexible for later. We can ask it to
-calculate the GDP for:
+Building these conditionals into the function makes it more flexible for later.
+Now, we can use it to calculate the GDP for:
 
  * The whole dataset;
  * A single year;
@@ -531,7 +531,7 @@ arguments.
 
 ~~~
   gdp <- dat$pop * dat$gdpPercap
-  new <- cbind(dat, gdp=gdp)
+  new <- cbind(dat, gdp = gdp)
   return(new)
 }
 ~~~
@@ -665,4 +665,3 @@ attempt where we got a vector of numbers.
 
 [roxygen2]: http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
 [testthat]: http://r-pkgs.had.co.nz/tests.html
-

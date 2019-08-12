@@ -34,13 +34,9 @@ Most people tend to organize their projects like this:
 
 There are many reasons why we should *ALWAYS* avoid this:
 
-1. It is really hard to tell which version of your data is
-the original and which is the modified;
-2. It gets really messy because it mixes files with various
-extensions together;
-3. It probably takes you a lot of time to actually find
-things, and relate the correct figures to the exact code
-that has been used to generate it;
+1. It is really hard to tell which version of your data is the original and which is the modified;
+2. It gets really messy because it mixes files with various extensions together;
+3. It probably takes you a lot of time to actually find things, and relate the correct figures to the exact code that has been used to generate it;
 
 A good project layout will ultimately make your life easier:
 
@@ -89,7 +85,7 @@ It is therefore a good idea to treat your data as "read-only".
 
 ### Data Cleaning
 
-In many cases your data will be "dirty": it will need significant preprocessing
+In many cases your data will be "dirty": it will need significant pre-processing
 to get into a format R (or any other programming language) will find useful.
 This task is sometimes called "data munging". Storing these scripts in a
 separate folder, and creating a second "read-only" data folder to hold the
@@ -111,7 +107,7 @@ project, and some of the analyses get shared between projects.
 >
 > 1. Put each project in its own directory, which is named after the project.
 > 2. Put text documents associated with the project in the `doc` directory.
-> 3. Put raw data and metadata in the `data` directory, and files generated during cleanup and analysis in a `results` directory.
+> 3. Put raw data and metadata in the `data` directory, and files generated during clean-up and analysis in a `results` directory.
 > 4. Put source for the project's scripts and programs in the `src` directory, and programs brought in from elsewhere or compiled locally in the `bin` directory.
 > 5. Name all files to reflect their content or function.
 >
@@ -134,7 +130,7 @@ one to store the analysis scripts.
 > make updates to code in multiple places.
 >
 > In this case, making "symbolic links", which are essentially shortcuts to
-> files somewhere else on a filesystem, can let you use existing code without
+> files somewhere else on a file system, can let you use existing code without
 > having to move or copy it. Plus, any changes made to that code will only have
 > to be made once.
 >
@@ -190,5 +186,3 @@ Now we have a good directory structure we will now place/save the data file in t
 ### Version Control
 
 It is important to use version control with projects.  Go [here for a good lesson which describes using Git with RStudio](https://swcarpentry.github.io/git-novice/14-supplemental-rstudio/).
-
-

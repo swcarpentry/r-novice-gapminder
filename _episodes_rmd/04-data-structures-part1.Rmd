@@ -22,12 +22,18 @@ source("../bin/chunk-options.R")
 knitr_fig_path("04-")
 
 ## Save the data
-cats_orig <- data.frame(coat = factor(c("calico", "black", "tabby")),
-                   weight = c(2.1, 5.0, 3.2),
-                   likes_string = c(1, 0, 1))
-cats_bad <- data.frame(coat = factor(c("calico", "black", "tabby", "tabby")),
-                   weight = factor(c(2.1, 5.0, 3.2, '2.3 or 2.4')),
-                   likes_string = c(1, 0, 1, 1))
+cats_orig <-
+  data.frame(
+    coat = factor(c("calico", "black", "tabby")),
+    weight = c(2.1, 5.0, 3.2),
+    likes_string = c(1, 0, 1)
+  )
+cats_bad <-
+  data.frame(
+    coat = factor(c("calico", "black", "tabby", "tabby")),
+    weight = factor(c(2.1, 5.0, 3.2, '2.3 or 2.4')),
+    likes_string = c(1, 0, 1, 1)
+  )
 cats <- cats_orig
 ```
 
@@ -36,17 +42,21 @@ such as you may already have in a spreadsheet or a CSV file. Let's start by
 making a toy dataset in your `data/` directory, called `feline-data.csv`:
 
 ```{r}
-cats <- data.frame(coat = c("calico", "black", "tabby"), 
-                    weight = c(2.1, 5.0,3.2), 
-                    likes_string = c(1, 0, 1))
-write.csv(x = cats, file = "data/feline-data.csv", row.names = FALSE)
+cats <- data.frame(
+  coat = c("calico", "black", "tabby"),
+  weight = c(2.1, 5.0, 3.2),
+  likes_string = c(1, 0, 1)
+)
+write.csv(x = cats,
+          file = "data/feline-data.csv",
+          row.names = FALSE)
 ```
 The contents of the new file, `feline-data.csv`:
 ```{r, eval=FALSE}
-coat,weight,likes_string
-calico,2.1,1
-black,5.0,0
-tabby,3.2,1
+coat, weight, likes_string
+calico, 2.1, 1
+black, 5.0, 0
+tabby, 3.2, 1
 ```
 
 > ## Tip: Editing Text files in R
@@ -113,18 +123,15 @@ There are 5 main types: `double`, `integer`, `complex`, `logical` and `character
 ```{r}
 typeof(3.14)
 typeof(1L) # The L suffix forces the number to be an integer, since by default R uses float numbers
-typeof(1+1i)
+typeof(1 + 1i)
 typeof(TRUE)
 typeof('banana')
 ```
 
-No matter how
-complicated our analyses become, all data in R is interpreted as one of these
-basic data types. This strictness has some really important consequences.
+No matter how complicated our analyses become, all data in R is interpreted as one of these basic data types. This strictness has some really important consequences.
 
 A user has added details of another cat. This information is in the file
 `data/feline-data_v2.csv`.
-
 
 ```{r, eval=FALSE}
 file.show("data/feline-data_v2.csv")
@@ -142,11 +149,11 @@ Load the new cats data like before, and check what type of data we find in the
 `weight` column:
 
 ```{r}
-cats <- read.csv(file="data/feline-data_v2.csv")
+cats <- read.csv(file = "data/feline-data_v2.csv")
 typeof(cats$weight)
 ```
 
-Oh no, our weights aren't the double type anymore! If we try to do the same math
+Oh no, our weights aren't the double type any more! If we try to do the same math
 we did on them before, we run into trouble:
 
 ```{r}
@@ -171,9 +178,11 @@ In order to successfully use our data in R, we need to understand what the basic
 data structures are, and how they behave. For now, let's remove that extra line
 from our cats data and reload it, while we investigate this behavior further:
 
-feline-data.csv:
-
+```{r, eval=FALSE}
+file.show("data/feline-data.csv")
 ```
+
+```{r, eval=FALSE}
 coat,weight,likes_string
 calico,2.1,1
 black,5.0,0
@@ -183,7 +192,7 @@ tabby,3.2,1
 And back in RStudio:
 
 ```{r, eval=FALSE}
-cats <- read.csv(file="data/feline-data.csv")
+cats <- read.csv(file = "data/feline-data.csv")
 ```
 
 ```{r, include=FALSE}
@@ -208,7 +217,7 @@ an empty vector of whatever type you like.
 
 
 ```{r}
-another_vector <- vector(mode='character', length=3)
+another_vector <- vector(mode = "character", length = 3)
 another_vector
 ```
 
@@ -251,14 +260,14 @@ a column to be the same basic data type.
 You can also make vectors with explicit contents with the combine function:
 
 ```{r}
-combine_vector <- c(2,6,3)
+combine_vector <- c(2, 6, 3)
 combine_vector
 ```
 
 Given what we've learned so far, what do you think the following will produce?
 
 ```{r}
-quiz_vector <- c(2,6,'3')
+quiz_vector <- c(2, 6, '3')
 ```
 
 This is something called *type coercion*, and it is the source of many surprises
@@ -268,7 +277,7 @@ be combined into a single vector, it will force them all to be the same
 type. Consider:
 
 ```{r}
-coercion_vector <- c('a', TRUE)
+coercion_vector <- c("a", TRUE)
 coercion_vector
 another_coercion_vector <- c(0, TRUE)
 another_coercion_vector
@@ -279,7 +288,7 @@ The coercion rules go: `logical` -> `integer` -> `numeric` -> `complex` ->
 force coercion against this flow using the `as.` functions:
 
 ```{r}
-character_vector_example <- c('0','2','4')
+character_vector_example <- c("0", "2", "4")
 character_vector_example
 character_coerced_to_numeric <- as.numeric(character_vector_example)
 character_coerced_to_numeric
@@ -309,9 +318,9 @@ cats$likes_string
 The combine function, `c()`, will also append things to an existing vector:
 
 ```{r}
-ab_vector <- c('a', 'b')
+ab_vector <- c("a", "b")
 ab_vector
-combine_example <- c(ab_vector, 'SWC')
+combine_example <- c(ab_vector, "SWC")
 combine_example
 ```
 
@@ -321,15 +330,15 @@ You can also make series of numbers:
 mySeries <- 1:10
 mySeries
 seq(10)
-seq(1,10, by=0.1)
+seq(1, 10, by = 0.1)
 ```
 
 We can ask a few questions about vectors:
 
 ```{r}
 sequence_example <- seq(10)
-head(sequence_example, n=2)
-tail(sequence_example, n=4)
+head(sequence_example, n = 2)
+tail(sequence_example, n = 4)
 length(sequence_example)
 class(sequence_example)
 typeof(sequence_example)
@@ -459,9 +468,9 @@ is simpler in some ways than the other types, because you can put anything you
 want in it:
 
 ```{r}
-list_example <- list(1, "a", TRUE, 1+4i)
+list_example <- list(1, "a", TRUE, 1 + 4i)
 list_example
-another_list <- list(title = "Numbers", numbers = 1:10, data = TRUE )
+another_list <- list(title = "Numbers", numbers = 1:10, data = TRUE)
 another_list
 ```
 
@@ -483,18 +492,18 @@ we have seen already, each column of data.frame is a vector.
 
 ```{r}
 cats$coat
-cats[,1]
-typeof(cats[,1])
-str(cats[,1])
+cats[, 1]
+typeof(cats[, 1])
+str(cats[, 1])
 ```
 
 Each row is an *observation* of different variables, itself a data.frame, and
 thus can be composed of elements of different types.
 
 ```{r}
-cats[1,]
-typeof(cats[1,])
-str(cats[1,])
+cats[1, ]
+typeof(cats[1, ])
+str(cats[1, ])
 ```
 
 > ## Challenge 3
@@ -563,7 +572,7 @@ str(cats[1,])
 Last but not least is the matrix. We can declare a matrix full of zeros:
 
 ```{r}
-matrix_example <- matrix(0, ncol=6, nrow=3)
+matrix_example <- matrix(0, ncol = 6, nrow = 3)
 matrix_example
 ```
 

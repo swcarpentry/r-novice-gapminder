@@ -21,7 +21,7 @@ source: Rmd
 source("../bin/chunk-options.R")
 knitr_fig_path("06-")
 # Silently load in the data so the rest of the lesson works
-gapminder <- read.csv("data/gapminder_data.csv", header=TRUE)
+gapminder <- read.csv("data/gapminder_data.csv", header = TRUE)
 ```
 
 R has many powerful subset operators. Mastering them will allow you to
@@ -34,7 +34,7 @@ Let's start with the workhorse of R: a simple numeric vector.
 
 ```{r}
 x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
-names(x) <- c('a', 'b', 'c', 'd', 'e')
+names(x) <- c("a", "b", "c", "d", "e")
 x
 ```
 
@@ -84,7 +84,7 @@ c(1, 2, 3, 4)
 We can ask for the same element multiple times:
 
 ```{r}
-x[c(1,1,3)]
+x[c(1, 1, 3)]
 ```
 
 If we ask for an index beyond the length of the vector, R will return a missing value:
@@ -118,7 +118,7 @@ x[-2]
 We can skip multiple elements:
 
 ```{r}
-x[c(-1, -5)]  # or x[-c(1,5)]
+x[c(-1, -5)]  # or x[-c(1, 5)]
 ```
 
 > ## Tip: Order of operations
@@ -196,7 +196,7 @@ x
 We can extract elements by using their name, instead of extracting by index:
 
 ```{r}
-x <- c(a=5.4, b=6.2, c=7.1, d=4.8, e=7.5) # we can name a vector 'on the fly'
+x <- c(a = 5.4, b = 6.2, c = 7.1, d = 4.8, e = 7.5) # we can name a vector 'on the fly'
 x[c("a", "c")]
 ```
 
@@ -311,7 +311,7 @@ x[names(x) == "a"]
 Skipping or removing named elements is a little harder. If we try to skip one named element by negating the string, R complains (slightly obscurely) that it doesn't know how to take the negative of a string:
 
 ```{r}
-x <- c(a=5.4, b=6.2, c=7.1, d=4.8, e=7.5) # we start again by naming a vector 'on the fly'
+x <- c(a = 5.4, b = 6.2, c = 7.1, d = 4.8, e = 7.5) # we start again by naming a vector 'on the fly'
 x[-"a"]
 ```
 
@@ -324,7 +324,7 @@ x[names(x) != "a"]
 Skipping multiple named indices is a little bit harder still. Suppose we want to drop the `"a"` and `"c"` elements, so we try this:
 
 ```{r}
-x[names(x)!=c("a","c")]
+x[names(x) != c("a", "c")]
 ```
 
 R did *something*, but it gave us a warning that we ought to pay attention to - and it apparently *gave us the wrong answer* (the `"c"` element is still included in the vector)!
@@ -357,7 +357,7 @@ Because in this case the longer vector length (5) isn't a multiple of the shorte
 The way to get R to do what we really want (match *each* element of the left argument with *all* of the elements of the right argument) it to use the `%in%` operator. The `%in%` operator goes through each element of its left argument, in this case the names of `x`, and asks, "Does this element occur in the second argument?". Here, since we want to *exclude* values, we also need a `!` operator to change "in" to "not in":
 
 ```{r}
-x[! names(x) %in% c("a","c") ]
+x[!names(x) %in% c("a", "c")]
 ```
 
 > ## Challenge 3
@@ -447,36 +447,36 @@ to its columns:
 
 ```{r}
 set.seed(1)
-m <- matrix(rnorm(6*4), ncol=4, nrow=6)
-m[3:4, c(3,1)]
+m <- matrix(rnorm(6 * 4), ncol = 4, nrow = 6)
+m[3:4, c(3, 1)]
 ```
 
 You can leave the first or second arguments blank to retrieve all the
 rows or columns respectively:
 
 ```{r}
-m[, c(3,4)]
+m[, c(3, 4)]
 ```
 
 If we only access one row or column, R will automatically convert the result
 to a vector:
 
 ```{r}
-m[3,]
+m[3, ]
 ```
 
 If you want to keep the output as a matrix, you need to specify a *third* argument;
 `drop = FALSE`:
 
 ```{r}
-m[3, , drop=FALSE]
+m[3, , drop = FALSE]
 ```
 
 Unlike vectors, if we try to access a row or column outside of the matrix,
 R will throw an error:
 
 ```{r, error=TRUE}
-m[, c(3,6)]
+m[, c(3, 6)]
 ```
 
 > ## Tip: Higher dimensional arrays
@@ -500,13 +500,13 @@ are laid out in *column-major format* by default. That is the elements of the
 vector are arranged column-wise:
 
 ```{r}
-matrix(1:6, nrow=2, ncol=3)
+matrix(1:6, nrow = 2, ncol = 3)
 ```
 
 If you wish to populate the matrix by row, use `byrow=TRUE`:
 
 ```{r}
-matrix(1:6, nrow=2, ncol=3, byrow=TRUE)
+matrix(1:6, nrow = 2, ncol = 3, byrow = TRUE)
 ```
 
 Matrices can also be subsetted using their rownames and column names

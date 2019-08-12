@@ -93,7 +93,7 @@ to push the current line, selected lines or modified lines to the
 interactive R console.
    * This is a great way to start; all your code is saved for later
    * You will be able to run the file you create from within RStudio
-   or using R's `source()`  function.
+   or using R's `source()`function.
 
 > ## Tip: Running segments of your code
 >
@@ -167,7 +167,7 @@ prompt.
 
 > ## Tip: Cancelling commands
 >
-> If you're using R from the commandline instead of from within RStudio,
+> If you're using R from the command line instead of from within RStudio,
 > you need to use <kbd>Ctrl</kbd>+<kbd>C</kbd> instead of <kbd>Esc</kbd>
 > to cancel the command. This applies to Mac users as well!
 >
@@ -240,7 +240,7 @@ Really small or large numbers get a scientific notation:
 
 
 ~~~
-2/10000
+2 / 10000
 ~~~
 {: .language-r}
 
@@ -451,7 +451,7 @@ We can store values in variables using the assignment operator `<-`, like this:
 
 
 ~~~
-x <- 1/40
+x <- 1 / 40
 ~~~
 {: .language-r}
 
@@ -526,7 +526,7 @@ It is also possible to use the `=` operator for assignment:
 
 
 ~~~
-x = 1/40
+x = 1 / 40
 ~~~
 {: .language-r}
 
@@ -604,7 +604,7 @@ same data type. For example
 
 
 ~~~
-2^(1:5)
+2 ^ (1:5)
 ~~~
 {: .language-r}
 
@@ -619,7 +619,7 @@ same data type. For example
 
 ~~~
 x <- 1:5
-2^x
+2 ^ x
 ~~~
 {: .language-r}
 
@@ -650,7 +650,8 @@ ls()
 
 
 ~~~
-[1] "x" "y"
+[1] "args"          "dest_md"       "missing_pkgs"  "required_pkgs"
+[5] "src_rmd"       "x"             "y"            
 ~~~
 {: .output}
 
@@ -707,7 +708,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7fe307290e00>
+<bytecode: 0x7ff29e6be570>
 <environment: namespace:base>
 ~~~
 {: .output}
@@ -847,7 +848,7 @@ network). R and RStudio have functionality for managing packages:
 > > [1] TRUE
 > > ~~~
 > > {: .output}
-> > This should yield a boolean value of TRUE since 109.25 is greater than 102.
+> > This should yield a Boolean value of TRUE since 109.25 is greater than 102.
 > {: .solution}
 {: .challenge}
 

@@ -37,7 +37,7 @@ explain which attachment was which result.
 Writing formal reports with Word or [LaTeX](http://www.latex-project.org/)
 can simplify this by incorporating both the analysis report and output graphs 
 into a single document. But tweaking formatting to make figures look correct
-and fix obnoxious page breaks can be tedious and lead to a lengthly "whack
+and fix obnoxious page breaks can be tedious and lead to a lengthy "whack
 a mole" game of fixing new mistakes resulting from a single formatting change.
 
 Creating a web page (as an html file) by using R Markdown makes things easier.
@@ -146,7 +146,7 @@ Each will appear as:
 
 - bold with double-asterisks
 - italics with underscores
-- code-type font with backticks
+- code-type font with back ticks
 
 You can use whatever method you prefer, but *be consistent*. This maintains the
 readability of your code.
@@ -164,7 +164,7 @@ This will appear as:
 
 1. bold with double-asterisks
 1. italics with underscores
-1. code-type font with backticks
+1. code-type font with back ticks
 
 You can make section headers of different sizes by initiating a line
 with some number of `#` symbols:
@@ -190,7 +190,7 @@ the "Knit" button in the upper-left.
 > >
 > > In RStudio, select File > New file > R Markdown... 
 > > 
-> > Delete the placeholder text and add the following:
+> > Delete the place holder text and add the following:
 > > 
 > > ```
 > > # Introduction
@@ -210,14 +210,14 @@ the "Knit" button in the upper-left.
 > > 
 > > ```
 > > 
-> > Then click the 'Knit' button on the toolbar to generate an html document (webpage).
+> > Then click the 'Knit' button on the tool bar to generate an html document (webpage).
 > {: .solution}
 {: .challenge}
 
 
 ## A bit more Markdown
 
-You can make a hyperlink like this:
+You can make a hyper link like this:
 `[text to show](http://the-web-page.com)`.
 
 You can include an image file like this: `![caption](http://url/for/file)`
@@ -235,7 +235,7 @@ $$y = \mu + \sum_{i=1}^p \beta_i x_i + \epsilon$$
 
 You can review Markdown syntax by navigating to the
 "Markdown Quick Reference" under the "Help" field in the 
-toolbar at the top of RStudio.
+tool bar at the top of RStudio.
 
 ## R code chunks
 
@@ -302,36 +302,41 @@ The Markdown and figure documents are then processed by the tool
 html file, with the figures embedded.
 
 ```{r rmd_to_html_fig, fig.width=8, fig.height=3, fig.align="left", echo=FALSE}
-par(mar=rep(0, 4), bty="n", cex=1.5)
-plot(0, 0, type="n", xlab="", ylab="", xaxt="n", yaxt="n",
-     xlim=c(0, 100), ylim=c(0, 100))
+par(mar = rep(0, 4), bty = "n", cex = 1.5)
+plot(0, 0, type = "n", xlab = "", ylab = "", xaxt = "n", yaxt = "n",
+     xlim = c(0, 100), ylim = c(0, 100))
 xw <- 10
 yh <- 35
 xm <- 12
 ym <- 50
-rect(xm-xw/2, ym-yh/2, xm+xw/2, ym+yh/2, lwd=2)
+rect(xm - xw / 2, ym - yh / 2, xm + xw / 2, ym + yh / 2, lwd = 2)
 text(xm, ym, ".Rmd")
 
 xm <- 50
 ym <- 80
-rect(xm-xw/2, ym-yh/2, xm+xw/2, ym+yh/2, lwd=2)
+rect(xm - xw / 2, ym - yh / 2, xm + xw / 2, ym + yh / 2, lwd = 2)
 text(xm, ym, ".md")
 xm <- 50; ym <- 25
-for(i in c(2, 0, -2))
-    rect(xm-xw/2+i, ym-yh/2+i, xm+xw/2+i, ym+yh/2+i, lwd=2,
-         border="black", col="white")
-text(xm-2, ym-2, "figs/")
+for (i in c(2, 0, -2))
+    rect(xm - xw / 2 + i,
+         ym - yh / 2 + i,
+         xm + xw / 2 + i,
+         ym + yh / 2 + i,
+         lwd = 2,
+         border = "black", col = "white")
+text(xm - 2, ym - 2, "figs/")
 
-xm <- 100-12
+xm <- 100 - 12
 ym <- 50
-rect(xm-xw/2, ym-yh/2, xm+xw/2, ym+yh/2, lwd=2)
+rect(xm - xw / 2, ym - yh / 2, xm + xw / 2, ym + yh / 2, lwd = 2)
 text(xm, ym, ".html")
 
-arrows(22, 50, 38, 50, lwd=2, col="slateblue", len=0.1)
-text((22+38)/2, 60, "knitr", col="darkslateblue", cex=1.3)
+arrows(22, 50, 38, 50, lwd = 2, col = "slateblue", len = 0.1)
+text((22 + 38) / 2, 60, "knitr", col = "darkslateblue", cex = 1.3)
 
-arrows(62, 50, 78, 50, lwd=2, col="slateblue", len=0.1)
-text((62+78)/2, 60, "pandoc", col="darkslateblue", cex=1.3)
+
+arrows(62, 50, 78, 50, lwd = 2, col = "slateblue", len = 0.1)
+text((62 + 78) / 2, 60, "pandoc", col = "darkslateblue", cex = 1.3)
 ```
 
 
@@ -396,7 +401,7 @@ names, like `fig.path="Figs/cleaning-"` and `fig.path="Figs/analysis-"`.
 
 You can review all of the `R` chunk options by navigating to
 the "R Markdown Cheat Sheet" under the "Cheatsheets" section 
-of the "Help" field in the toolbar at the top of RStudio.
+of the "Help" field in the tool bar at the top of RStudio.
 
 
 ## Inline R code
@@ -462,4 +467,3 @@ of the file.
 * [Reproducible Reporting](https://www.rstudio.com/resources/webinars/reproducible-reporting/)
 * [The Ecosystem of R Markdown](https://www.rstudio.com/resources/webinars/the-ecosystem-of-r-markdown/)
 * [Introducing Bookdown](https://www.rstudio.com/resources/webinars/introducing-bookdown/)
-

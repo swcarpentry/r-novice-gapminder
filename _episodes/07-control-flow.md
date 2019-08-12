@@ -35,7 +35,8 @@ if (condition is true) {
 # if ... else
 if (condition is true) {
   perform action
-} else {  # that is, if the condition is false,
+} else {
+  # that is, if the condition is false,
   perform alternative action
 }
 ~~~
@@ -116,7 +117,7 @@ x  <-  4 == 3
 if (x) {
   "4 equals 3"
 } else {
-  "4 does not equal 3"          
+  "4 does not equal 3"
 }
 ~~~
 {: .language-r}
@@ -229,7 +230,7 @@ The basic structure of a `for()` loop is:
 
 
 ~~~
-for(iterator in set of values){
+for(iterator in set of values) {
   do a thing
 }
 ~~~
@@ -239,7 +240,7 @@ For example:
 
 
 ~~~
-for(i in 1:10){
+for (i in 1:10) {
   print(i)
 }
 ~~~
@@ -269,9 +270,9 @@ once.
 
 
 ~~~
-for(i in 1:5){
-  for(j in c('a', 'b', 'c', 'd', 'e')){
-    print(paste(i,j))
+for (i in 1:5) {
+  for (j in c("a", "b", "c", "d", "e")) {
+    print(paste(i, j))
   }
 }
 ~~~
@@ -313,8 +314,8 @@ Rather than printing the results, we could write the loop output to a new object
 
 ~~~
 output_vector <- c()
-for(i in 1:5){
-  for(j in c('a', 'b', 'c', 'd', 'e')){
+for (i in 1:5) {
+  for (j in c("a", "b", "c", "d", "e")) {
     temp_output <- paste(i, j)
     output_vector <- c(output_vector, temp_output)
   }
@@ -354,10 +355,10 @@ For this example, it looks more involved, but is still more efficient.
 
 
 ~~~
-output_matrix <- matrix(nrow=5, ncol=5)
-j_vector <- c('a', 'b', 'c', 'd', 'e')
-for(i in 1:5){
-  for(j in 1:5){
+output_matrix <- matrix(nrow = 5, ncol = 5)
+j_vector <- c("a", "b", "c", "d", "e")
+for (i in 1:5) {
+  for (j in 1:5) {
     temp_j_value <- j_vector[j]
     temp_output <- paste(i, temp_j_value)
     output_matrix[i, j] <- temp_output
@@ -440,7 +441,7 @@ output_vector2
 > > This is because `as.vector()` outputs the elements of an input matrix going over its column.
 > > Taking a look at `output_matrix`, we can notice that we want its elements by rows.
 > > The solution is to transpose the `output_matrix`. We can do it either by calling the transpose function
-> > `t()` or by inputing the elements in the right order.
+> > `t()` or by inputting the elements in the right order.
 > > The first solution requires to change the original
 > > 
 > > ~~~

@@ -32,7 +32,7 @@ Let's start with the workhorse of R: a simple numeric vector.
 
 ~~~
 x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
-names(x) <- c('a', 'b', 'c', 'd', 'e')
+names(x) <- c("a", "b", "c", "d", "e")
 x
 ~~~
 {: .language-r}
@@ -154,7 +154,7 @@ We can ask for the same element multiple times:
 
 
 ~~~
-x[c(1,1,3)]
+x[c(1, 1, 3)]
 ~~~
 {: .language-r}
 
@@ -227,7 +227,7 @@ We can skip multiple elements:
 
 
 ~~~
-x[c(-1, -5)]  # or x[-c(1,5)]
+x[c(-1, -5)]  # or x[-c(1, 5)]
 ~~~
 {: .language-r}
 
@@ -382,7 +382,7 @@ We can extract elements by using their name, instead of extracting by index:
 
 
 ~~~
-x <- c(a=5.4, b=6.2, c=7.1, d=4.8, e=7.5) # we can name a vector 'on the fly'
+x <- c(a = 5.4, b = 6.2, c = 7.1, d = 4.8, e = 7.5) # we can name a vector 'on the fly'
 x[c("a", "c")]
 ~~~
 {: .language-r}
@@ -608,7 +608,7 @@ Skipping or removing named elements is a little harder. If we try to skip one na
 
 
 ~~~
-x <- c(a=5.4, b=6.2, c=7.1, d=4.8, e=7.5) # we start again by naming a vector 'on the fly'
+x <- c(a = 5.4, b = 6.2, c = 7.1, d = 4.8, e = 7.5) # we start again by naming a vector 'on the fly'
 x[-"a"]
 ~~~
 {: .language-r}
@@ -640,7 +640,7 @@ Skipping multiple named indices is a little bit harder still. Suppose we want to
 
 
 ~~~
-x[names(x)!=c("a","c")]
+x[names(x) != c("a", "c")]
 ~~~
 {: .language-r}
 
@@ -708,7 +708,7 @@ The way to get R to do what we really want (match *each* element of the left arg
 
 
 ~~~
-x[! names(x) %in% c("a","c") ]
+x[!names(x) %in% c("a", "c")]
 ~~~
 {: .language-r}
 
@@ -860,8 +860,8 @@ to its columns:
 
 ~~~
 set.seed(1)
-m <- matrix(rnorm(6*4), ncol=4, nrow=6)
-m[3:4, c(3,1)]
+m <- matrix(rnorm(6 * 4), ncol = 4, nrow = 6)
+m[3:4, c(3, 1)]
 ~~~
 {: .language-r}
 
@@ -879,7 +879,7 @@ rows or columns respectively:
 
 
 ~~~
-m[, c(3,4)]
+m[, c(3, 4)]
 ~~~
 {: .language-r}
 
@@ -901,7 +901,7 @@ to a vector:
 
 
 ~~~
-m[3,]
+m[3, ]
 ~~~
 {: .language-r}
 
@@ -917,7 +917,7 @@ If you want to keep the output as a matrix, you need to specify a *third* argume
 
 
 ~~~
-m[3, , drop=FALSE]
+m[3, , drop = FALSE]
 ~~~
 {: .language-r}
 
@@ -934,7 +934,7 @@ R will throw an error:
 
 
 ~~~
-m[, c(3,6)]
+m[, c(3, 6)]
 ~~~
 {: .language-r}
 
@@ -976,7 +976,7 @@ vector are arranged column-wise:
 
 
 ~~~
-matrix(1:6, nrow=2, ncol=3)
+matrix(1:6, nrow = 2, ncol = 3)
 ~~~
 {: .language-r}
 
@@ -993,7 +993,7 @@ If you wish to populate the matrix by row, use `byrow=TRUE`:
 
 
 ~~~
-matrix(1:6, nrow=2, ncol=3, byrow=TRUE)
+matrix(1:6, nrow = 2, ncol = 3, byrow = TRUE)
 ~~~
 {: .language-r}
 
