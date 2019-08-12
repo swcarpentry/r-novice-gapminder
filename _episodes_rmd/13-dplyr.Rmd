@@ -299,12 +299,12 @@ of the data frame will not change) or for updating values depending on this give
 gdp_pop_bycontinents_byyear_above25 <- gapminder %>%
     mutate(gdp_billion = ifelse(lifeExp > 25, gdpPercap * pop / 10^9, NA)) %>%
     group_by(continent, year) %>%
-    summarize(mean_gdpPercap = mean(gdpPercap),
-              sd_gdpPercap = sd(gdpPercap),
-              mean_pop = mean(pop),
-              sd_pop = sd(pop),
-              mean_gdp_billion = mean(gdp_billion),
-              sd_gdp_billion = sd(gdp_billion))
+    summarize(mean_gdpPercap = mean(gdpPercap, na.rm = TRUE),
+              sd_gdpPercap = sd(gdpPercap, na.rm = TRUE),
+              mean_pop = mean(pop, na.rm = TRUE),
+              sd_pop = sd(pop, na.rm = TRUE),
+              mean_gdp_billion = mean(gdp_billion, na.rm = TRUE),
+              sd_gdp_billion = sd(gdp_billion, na.rm = TRUE))
 
 ## updating only if certain condition is fullfilled
 # for life expectations above 40 years, the gpd to be expected in the future is scaled
