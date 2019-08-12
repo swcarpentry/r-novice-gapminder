@@ -39,7 +39,7 @@ making a toy dataset in your `data/` directory, called `feline-data.csv`:
 cats <- data.frame(coat = c("calico", "black", "tabby"), 
                     weight = c(2.1, 5.0,3.2), 
                     likes_string = c(1, 0, 1))
-write.csv(x = cats, file = "data/feline-data.csv", row.names = FALSE)
+write.csv(x = cats, file = "data/feline-data.csv", row.names = FALSE, quote = FALSE)
 ```
 The contents of the new file, `feline-data.csv`:
 ```{r, eval=FALSE}
