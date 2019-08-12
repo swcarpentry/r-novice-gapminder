@@ -39,7 +39,7 @@ into a single document. But tweaking formatting to make figures look correct
 and fix obnoxious page breaks can be tedious and lead to a lengthy "whack
 a mole" game of fixing new mistakes resulting from a single formatting change.
 
-Creating a web page (as an html file) by using R Markdown makes things easier.
+Creating a web page (as an HTML file) by using RMarkdown makes things easier.
 The report can be one long stream, so tall figures that wouldn't ordinary fit on
 one page can be kept full size and easier to read, since the reader can simply
 keep scrolling. Formatting is simple and easy to modify, allowing you to spend
