@@ -85,7 +85,7 @@ in the top left.
 There are two main ways one can work within RStudio.
 
 1. Test and play within the interactive R console then copy code into
-a .R file to run later.
+an .R file to run later.
    *  This works well when doing small tests and initially starting off.
    *  It quickly becomes laborious
 2. Start writing in an .R file and use RStudio's short cut keys for the Run command
@@ -93,7 +93,7 @@ to push the current line, selected lines or modified lines to the
 interactive R console.
    * This is a great way to start; all your code is saved for later
    * You will be able to run the file you create from within RStudio
-   or using R's `source()`function.
+   or using R's `source()` function.
 
 > ## Tip: Running segments of your code
 >
@@ -708,7 +708,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7ff29e6be570>
+<bytecode: 0x7f83204f0b70>
 <environment: namespace:base>
 ~~~
 {: .output}
