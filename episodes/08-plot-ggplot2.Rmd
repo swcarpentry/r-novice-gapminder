@@ -315,7 +315,9 @@ by adding a layer of **facet** panels.
 ```{r facet}
 americas <- gapminder[gapminder$continent == "Americas",]
 ggplot(data = americas, mapping = aes(x = year, y = lifeExp)) +
-  geom_line() + facet_wrap( ~ country) + theme(axis.text.x = element_text(angle = 45))
+  geom_line() + 
+  facet_wrap( ~ country) + 
+  theme(axis.text.x = element_text(angle = 45))
 ```
 
 The `facet_wrap` layer took a "formula" as its argument, denoted by the tilde
