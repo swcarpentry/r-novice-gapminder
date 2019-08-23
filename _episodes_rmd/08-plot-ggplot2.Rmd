@@ -301,26 +301,23 @@ variables and their visual representation.
 
 Earlier we visualized the change in life expectancy over time across all
 countries in one plot. Alternatively, we can split this out over multiple panels
-by adding a layer of **facet** panels. Focusing only on those countries with
-names that start with the letter "A" or "Z".
+by adding a layer of **facet** panels. 
 
 > ## Tip
 >
-> We start by subsetting the data.  We use the `substr` function to
-> pull out a part of a character string; in this case, the letters that occur
-> in positions `start` through `stop`, inclusive, of the `gapminder$country`
-> vector. The operator `%in%` allows us to make multiple comparisons rather
-> than write out long subsetting conditions (in this case,
-> `starts.with %in% c("A", "Z")` is equivalent to
-> `starts.with == "A" | starts.with == "Z"`)
+> We start by making a subset of data including only countries located
+> in the Americas.  This includes 25 countries, which will begin to 
+> clutter the figure.  Note that we apply a "theme" definition to rotate
+> the x-axis labels to maintain readability.  Nearly everything in
+> ggplot2 is customizable.
 {: .callout}
 
-
 ```{r facet}
-starts.with <- substr(gapminder$country, start = 1, stop = 1)
-az.countries <- gapminder[starts.with %in% c("A", "Z"), ]
-ggplot(data = az.countries, mapping = aes(x = year, y = lifeExp, color=continent)) +
-  geom_line() + facet_wrap( ~ country)
+americas <- gapminder[gapminder$continent == "Americas",]
+ggplot(data = americas, mapping = aes(x = year, y = lifeExp)) +
+  geom_line() + 
+  facet_wrap( ~ country) + 
+  theme(axis.text.x = element_text(angle = 45))
 ```
 
 The `facet_wrap` layer took a "formula" as its argument, denoted by the tilde
