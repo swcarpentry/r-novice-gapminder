@@ -338,7 +338,7 @@ the color legend title is set using `color = "Continent"`, while the title
 of a fill legend would be set using `fill = "MyTitle"`. 
 
 ```{r theme}
-ggplot(data = az.countries, mapping = aes(x = year, y = lifeExp, color=continent)) +
+ggplot(data = americas, mapping = aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country) +
   labs(
     x = "Year",              # x axis title
@@ -361,7 +361,7 @@ if (!dir.exists("results")) {
 ```
 
 ```{r save}
-lifeExp_plot <- ggplot(data = az.countries, mapping = aes(x = year, y = lifeExp, color=continent)) +
+lifeExp_plot <- ggplot(data = americas, mapping = aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country) +
   labs(
     x = "Year",              # x axis title
