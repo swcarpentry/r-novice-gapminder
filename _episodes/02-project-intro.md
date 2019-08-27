@@ -148,7 +148,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > ## Challenge 1
 > Download the gapminder data from [here](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv).
 >
-> 1. Download the file (CTRL + S, right mouse click -> "Save as", or File -> "Save page as")
+> 1. Download the file (CTRL + S for windows or command[⌘] + S for macOS, right mouse click -> "Save as", or File -> "Save page as")
 > 2. Make sure it's saved under the name `gapminder_data.csv`
 > 3. Save the file in the `data/` folder within your project.
 >
