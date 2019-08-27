@@ -226,11 +226,11 @@ head(gap_normal)
 head(gapminder)
 ```
 
-We're almost there, the original was sorted by `country`, `continent`, then
+We're almost there, the original was sorted by `country`, then
 `year`.
 
 ```{r}
-gap_normal <- gap_normal %>% arrange(country, continent, year)
+gap_normal <- gap_normal %>% arrange(country, year)
 all.equal(gap_normal, gapminder)
 ```
 
