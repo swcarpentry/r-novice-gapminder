@@ -234,7 +234,8 @@ it when you are iterating through a lot of values.
 > (vector, list, matrix, data frame) as your for loop progresses.
 > Computers are very bad at handling this, so your calculations
 > can very quickly slow to a crawl. It's much better to define
-> an empty results object before hand of the appropriate dimensions.
+> an empty results object before hand of appropriate dimensions, rather 
+> than initializing an empty object without dimensions.
 > So if you know the end result will be stored in a matrix like above,
 > create an empty matrix with 5 row and 5 columns, then at each iteration
 > store the results in the appropriate location.
