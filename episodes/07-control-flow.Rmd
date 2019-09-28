@@ -14,11 +14,11 @@ keypoints:
 source: Rmd
 ---
 
-```{r, include=FALSE}
+```{r, include = FALSE}
 source("../bin/chunk-options.R")
 knitr_fig_path("07-")
 # Silently load in the data so the rest of the lesson works
-gapminder <- read.csv("data/gapminder_data.csv", header=TRUE)
+gapminder <- read.csv("data/gapminder_data.csv", header = TRUE)
 # Silently set seed for random number generation, so we don't have to explain it
 set.seed(10)
 ```
@@ -30,7 +30,7 @@ Alternatively, we can also set an action to occur a particular number of times.
 There are several ways you can control flow in R.
 For conditional statements, the most commonly used approaches are the constructs:
 
-```{r, eval=FALSE}
+```{r, eval = FALSE}
 # if
 if (condition is true) {
   perform action
@@ -143,13 +143,15 @@ x
 
 Did anyone get a warning message like this?
 
-```{r, echo=FALSE}
+```{r, echo = FALSE}
 if (gapminder$year == 2012) {}
 ```
 
-If your condition evaluates to a vector with more than one logical element,
-the function `if()` will still run, but will only evaluate the condition in the first
-element. Here you need to make sure your condition is of length 1.
+The `if()` function only accepts singular (of length 1) inputs, and therefore 
+returns an error when you use it with a vector. The `if()` function will still 
+run, but will only evaluate the condition in the first element of the vector. 
+Therefore, to use the `if()` function, you need to make sure your input is 
+singular (of length 1).
 
 > ## Tip: `any()` and `all()`
 >
@@ -167,12 +169,15 @@ a set of values, when the order of iteration is important, and perform the
 same operation on each, a `for()` loop will do the job.
 We saw `for()` loops in the shell lessons earlier. This is the most
 flexible of looping operations, but therefore also the hardest to use
-correctly. Avoid using `for()` loops unless the order of iteration is important:
-i.e. the calculation at each iteration depends on the results of previous iterations.
+correctly. In general, the advice of many `R` users would be to learn about 
+`for()` loops, but to avoid using `for()` loops unless the order of iteration is
+important: i.e. the calculation at each iteration depends on the results of 
+previous iterations. If the your order of iteration is not important, then you 
+should learn about vectorized alternatives, such as the `purr` package, as they
+pay off in computational efficiency. 
 
-The basic structure of a `for()` loop is:
 
-```{r, eval=FALSE}
+```{r, eval = FALSE}
 for(iterator in set of values){
   do a thing
 }
