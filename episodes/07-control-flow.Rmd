@@ -176,6 +176,7 @@ previous iterations. If the your order of iteration is not important, then you
 should learn about vectorized alternatives, such as the `purr` package, as they
 pay off in computational efficiency. 
 
+The basic structure of a `for()` loop is:  
 
 ```{r, eval = FALSE}
 for(iterator in set of values){
