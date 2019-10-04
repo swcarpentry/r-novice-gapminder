@@ -177,7 +177,7 @@ cats[,-4]
 
 Notice the comma with nothing before it, indicating we want to keep all of the rows.  
 
-Alternatively, we can drop the column by using the index name.  
+Alternatively, we can drop the column by using the index name and the `%in%` operator. The `%in%` operator goes through each element of its left argument, in this case the names of `cats`, and asks, "Does this element occur in the second argument?"
 
 ```{r}
 drop <- names(cats) %in% c("age")
