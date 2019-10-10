@@ -188,17 +188,6 @@ ifelse(y < 0, "y is a negative number", "y is either positive or zero")
 > the vector are `TRUE`.
 {: .callout}
 
-
-
-> ## Tip: `any()` and `all()`
->
-> The `any()` function will return TRUE if at least one
-> TRUE value is found within a vector, otherwise it will return `FALSE`.
-> This can be used in a similar way to the `%in%` operator.
-> The function `all()`, as the name suggests, will only return `TRUE` if all values in
-> the vector are `TRUE`.
-{: .callout}
-
 ## Repeating operations
 
 If you want to iterate over
