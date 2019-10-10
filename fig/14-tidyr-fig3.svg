@@ -79,7 +79,7 @@
 <text transform="matrix(1 0 0 1 1181.4609 150.6704)" font-family="'MyriadPro-Regular'" font-size="18">value</text>
 <text transform="matrix(1 0 0 1 43.7681 319.5)" font-family="'MyriadPro-Regular'" font-size="18">wide format</text>
 <text transform="matrix(1 0 0 1 1113.5977 424.6699)" font-family="'MyriadPro-Regular'" font-size="18">long format</text>
-<text transform="matrix(1 0 0 1 352.5654 32.2778)" font-family="'MyriadPro-Regular'" font-size="21">gather(data, key = &quot;key&quot;, value = &quot;value&quot;, c(”a1”,  “a2”, ”a3”))</text>
+<text transform="matrix(1 0 0 1 252.5654 32.2778)" font-family="'MyriadPro-Regular'" font-size="21">pivot_longer(data, cols = c(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;), names_to = &quot;key&quot;, values_to = &quot;value&quot;)</text>
 <rect x="327.5" y="62.5" fill="#FF1D25" stroke="#000000" stroke-miterlimit="10" width="36" height="27"/>
 <rect x="327.5" y="89.5" fill="#FF1D25" stroke="#000000" stroke-miterlimit="10" width="36" height="27"/>
 <rect x="327.5" y="116.5" fill="#FF1D25" stroke="#000000" stroke-miterlimit="10" width="36" height="27"/>
