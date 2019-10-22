@@ -778,6 +778,22 @@ network). R and RStudio have functionality for managing packages:
 * You can remove a package with `remove.packages("packagename")`
 * You can make a package available for use with `library(packagename)`
 
+
+> ## Tip: Adjusting RStudio such as windows layout and syntax highlighting
+>
+> If you would like to see the Source (syntax) and the Console (output) side by side,
+> this is possible through the RStudio Options. 
+> How to navigate into Options:
+> You need to click on Tools and on the Tools menu select Global Options.
+> This will open an Option window and you need to click on Pane Layout on the left.
+> Here, it is possible to set the upper right window as Console.
+> In the same Option window, you can click on Appearance on the left and
+> you will be able to select a different theme. For example,
+> a theme with a dark background or other themes with different syntax
+> highlighting palettes.
+{: .callout}
+
+
 > ## Challenge 2
 >
 > What will be the value of each  variable  after each
