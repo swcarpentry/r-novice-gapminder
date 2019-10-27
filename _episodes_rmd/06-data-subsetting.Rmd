@@ -736,7 +736,7 @@ be changed with the third argument, `drop = FALSE`).
 > >    gapminder[,-c(1:4)]
 > >    ```
 > >
-> > 3. Extract the rows where the life expectancy is longer the 80 years
+> > 3. Extract the rows where the life expectancy is longer than 80 years
 > >
 > >    ```{r, eval=FALSE}
 > >    # gapminder[gapminder$lifeExp > 80]
