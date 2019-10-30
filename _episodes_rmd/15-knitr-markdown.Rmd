@@ -292,7 +292,7 @@ produced them.
 ## How things get compiled
 
 When you press the "Knit" button, the R Markdown document is
-processed by `[knitr](http://yihui.name/knitr)` and a plain Markdown
+processed by [`knitr`](http://yihui.name/knitr) and a plain Markdown
 document is produced (as well as, potentially, a set of figure files): the R code is executed
 and replaced by both the input and the output; if figures are
 produced, links to those figures are included.
