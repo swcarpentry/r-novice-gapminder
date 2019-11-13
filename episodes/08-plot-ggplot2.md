@@ -136,12 +136,10 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 >
 > > ## Solution to challenge 2
 > >
-> > In the previous examples and challenge we've used the `aes` function to tell
-> > the scatterplot **geom** about the **x** and **y** locations of each point.
-> > Another *aesthetic* property we can modify is the point *color*. Modify the
-> > code from the previous challenge to **color** the points by the "continent"
-> > column. What trends do you see in the data? Are they what you expected?
-> >
+> > The solution presented below adds `color=continent` to the call of the `aes`
+> > function. The general trend seems to indicate an increased life expectancy
+> > over the years. On continents with stronger economies we find a longer life
+> > expectancy.
 > > 
 > > ~~~
 > > ggplot(data = gapminder, aes(x = year, y = lifeExp, color=continent)) +
@@ -215,9 +213,7 @@ lines.
 >
 > > ## Solution to challenge 3
 > >
-> > Switch the order of the point and line layers from the previous example. What
-> > happened?
-> >
+> > The lines now get drawn over the points!
 > > 
 > > ~~~
 > > ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
@@ -227,7 +223,6 @@ lines.
 > > 
 > > <img src="../fig/rmd-08-ch3-sol-1.png" title="plot of chunk ch3-sol" alt="plot of chunk ch3-sol" style="display: block; margin: auto;" />
 > >
-> > The lines now get drawn over the points!
 > >
 > {: .solution}
 {: .challenge}
@@ -312,11 +307,7 @@ variables and their visual representation.
 >
 > > ## Solution to challenge 4a
 > >
-> > Modify the color and size of the points on the point layer in the previous
-> > example.
-> >
-> > Hint: do not use the `aes` function.
-> >
+> > Here a possible solution: 
 > > 
 > > ~~~
 > > ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
@@ -338,11 +329,7 @@ variables and their visual representation.
 >
 > > ## Solution to challenge 4b
 > >
-> > Modify Challenge 4 so that the points are now a different shape and are
-> > colored by continent with new trendlines.
-> >
-> > Hint: The color argument can be used inside the aesthetic.
-> >
+> > Here a possible solution: 
 > >
 > >~~~
 > > ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
@@ -470,12 +457,7 @@ code to modify!
 >
 > > ## Solution to challenge 5
 > >
-> > Create a density plot of GDP per capita, filled by continent.
-> >
-> > Advanced:
-> >  - Transform the x axis to better visualise the data spread.
-> >  - Add a facet layer to panel the density plots by year.
-> >
+> > Here a possible solution: 
 > > 
 > > ~~~
 > > ggplot(data = gapminder, aes(x = gdpPercap, fill=continent)) +
