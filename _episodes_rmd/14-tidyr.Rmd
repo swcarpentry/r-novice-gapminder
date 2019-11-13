@@ -9,8 +9,8 @@ objectives:
 to convert between them with `tidyr`."
 keypoints:
 - "Use the `tidyr` package to change the layout of dataframes."
-- "Use `gather()` to go from wide to long format."
-- "Use `spread()` to go from long to wide format."
+- "Use `pivot_longer()` to go from wide to long format."
+- "Use `pivot_wider()` to go from long to wide format."
 source: Rmd
 ---
 
@@ -25,10 +25,11 @@ gapminder <- read.csv("data/gapminder_data.csv", header = TRUE, stringsAsFactors
 # library("tidyr")
 #
 # #transform the data to the wide format
-# gap_wide <- gapminder %>% gather(obs_type,obs_values,-continent,-country,-year) %>%
+# gap_wide <- gapminder %>%
+#     pivot_longer(cols = c(-continent,-country,-year),names_to = "obs_type",values_to = "obs_values") %>%
 #     unite(ID_var,continent,country,sep = "_") %>%
 #     unite(var_names,obs_type,year,sep = "_") %>%
-#     spread(var_names,obs_values) %>%
+#     pivot_wider(names_from = var_names,values_from = obs_values) %>%
 #     separate(ID_var,into = c('continent','country'),sep = '_')
 #
 # #write our the .csv so students can use it
@@ -119,7 +120,7 @@ we first manipulate the data either by grouping (see the lesson on `dplyr`), or
 we change the structure of the dataframe.  **Note:** Some plotting functions in
 R actually work better in the wide format data.
 
-## From wide to long format with gather()
+## From wide to long format with pivot_longer()
 
 Until now, we've been using the nicely formatted original gapminder dataset, but
 'real' data (i.e. our own research data) will never be so well organized. Here
@@ -128,7 +129,7 @@ let's start with the wide format version of the gapminder dataset.
 > Download the wide version of the gapminder data from [here](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_wide.csv)
 and save it in your data folder.
 
-We'll load the data file and look at it.  Note: we don't want our continent and
+We'll load the data file and look at it. Note: we don't want our continent and
 country columns to be factors, so we use the stringsAsFactors argument for
 `read.csv()` to disable that.
 
@@ -140,40 +141,49 @@ str(gap_wide)
 ![](../fig/14-tidyr-fig2.png)
 
 The first step towards getting our nice intermediate data format is to
-convert from the wide to the long format. The `tidyr` function `gather()` will
-'gather' your observation variables into a single variable.
+convert from the wide to the long format. The `tidyr` function `pivot_longer()` will
+'lengthen' your observation variables into a single variable.
 
 ![](../fig/14-tidyr-fig3.png)
 
 ```{r}
 gap_long <- gap_wide %>%
-    gather(obstype_year, obs_values, starts_with('pop'),
-           starts_with('lifeExp'), starts_with('gdpPercap'))
+  pivot_longer(
+    cols = c(starts_with('pop'), starts_with('lifeExp'), starts_with('gdpPercap')),
+    names_to = "obstype_year", values_to = "obs_values"
+  )
 str(gap_long)
 ```
 
 Here we have used piping syntax which is similar to what we were doing in the
 previous lesson with dplyr. In fact, these are compatible and you can use a mix
-of tidyr and dplyr functions by piping them together
+of tidyr and dplyr functions by piping them together.
 
-Inside `gather()` we first name the new column for the new ID variable
-(`obstype_year`), the name for the new amalgamated observation variable
-(`obs_value`), then the names of the old observation variable. We could have
-typed out all the observation variables, but as in the `select()` function (see
-`dplyr` lesson), we can use the `starts_with()` argument to select all variables
-that starts with the desired character string. Gather also allows the alternative
-syntax of using the `-` symbol to identify which variables are not to be
-gathered (i.e. ID variables)
+We first provide to `pivot_longer()` a vector of column names that will be
+pivoted into wider format. We could type out all the observation variables, but
+as in the `select()` function (see `dplyr` lesson), we can use the `starts_with()`
+argument to select all variables that start with the desired character string.
+`pivot_longer()` also allows the alternative syntax of using the `-` symbol to
+identify which variables are not to be gathered (i.e. ID variables).
+
+The next arguments to `pivot_longer()` are `names_to` for naming the column that
+will contain the new ID variable (`obstype_year`) and `values_to` for naming the
+new amalgamated observation variable (`obs_value`). We supply these new column
+names as strings.
 
 ![](../fig/14-tidyr-fig4.png)
 
 ```{r}
-gap_long <- gap_wide %>% gather(obstype_year, obs_values, -continent, -country)
+gap_long <- gap_wide %>%
+  pivot_longer(
+    cols = c(-continent, -country),
+    names_to = "obstype_year", values_to = "obs_values"
+  )
 str(gap_long)
 ```
 
 That may seem trivial with this particular dataframe, but sometimes you have 1
-ID variable and 40 Observation variables with irregular variables names. The
+ID variable and 40 observation variables with irregular variable names. The
 flexibility is a huge time saver!
 
 
@@ -202,13 +212,20 @@ gap_long$year <- as.integer(gap_long$year)
 
 ## From long to intermediate format with spread()
 
-It is always good to check work. So, let's use the opposite of `gather()` to
-spread our observation variables back out with the aptly named `spread()`. We
+It is always good to check work. So, let's use the opposite of `pivot_longer()` to
+'widen' our observation variables back out with the aptly named `pivot_wider()`. We
 can then spread our `gap_long()` to the original intermediate format or the
 widest format. Let's start with the intermediate format.
 
+The `pivot_wider()` function takes `names_from` and `values_from` arguments.
+
+To `names_from` we supply the column name whose contents will be spread into new
+output columns in the widened dataframe. The corresponding values will be added
+from the column named in the `values_from` argument.
+
 ```{r}
-gap_normal <- gap_long %>% spread(obs_type, obs_values)
+gap_normal <- gap_long %>%
+  pivot_wider(names_from = obs_type, values_from = obs_values)
 dim(gap_normal)
 dim(gapminder)
 names(gap_normal)
@@ -237,12 +254,12 @@ all.equal(gap_normal, gapminder)
 That's great! We've gone from the longest format back to the intermediate and we
 didn't introduce any errors in our code.
 
-Now lets convert the long all the way back to the wide. In the wide format, we
+Now let's convert the long all the way back to the wide. In the wide format, we
 will keep country and continent as ID variables and spread the observations
 across the 3 metrics (`pop`,`lifeExp`,`gdpPercap`) and time (`year`). First we
 need to create appropriate labels for all our new variables (time*metric
 combinations) and we also need to unify our ID variables to simplify the process
-of defining `gap_wide`
+of defining `gap_wide`.
 
 ```{r}
 gap_temp <- gap_long %>% unite(var_ID, continent, country, sep = "_")
@@ -260,9 +277,9 @@ pipe in `spread()`
 
 ```{r}
 gap_wide_new <- gap_long %>%
-    unite(ID_var, continent, country, sep = "_") %>%
-    unite(var_names, obs_type, year, sep = "_") %>%
-    spread(var_names, obs_values)
+  unite(ID_var, continent, country, sep = "_") %>%
+  unite(var_names, obs_type, year, sep = "_") %>%
+  pivot_wider(names_from = var_names, values_from = obs_values)
 str(gap_wide_new)
 ```
 
@@ -275,7 +292,7 @@ str(gap_wide_new)
 > >```{r}
 > >gap_ludicrously_wide <- gap_long %>%
 > >    unite(var_names, obs_type, year, country, sep = "_") %>%
-> >    spread(var_names, obs_values)
+> >    pivot_wider(names_from = var_names, values_from = obs_values)
 > >```
 > {: .solution}
 {: .challenge}
@@ -289,7 +306,7 @@ gap_wide_betterID <- separate(gap_wide_new, ID_var, c("continent", "country"), s
 gap_wide_betterID <- gap_long %>%
     unite(ID_var, continent, country, sep = "_") %>%
     unite(var_names, obs_type, year, sep = "_") %>%
-    spread(var_names, obs_values) %>%
+    pivot_wider(names_from = var_names, values_from = obs_values) %>%
     separate(ID_var, c("continent","country"), sep = "_")
 str(gap_wide_betterID)
 
