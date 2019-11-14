@@ -389,23 +389,26 @@ code to modify!
 
 > ## Challenge 5
 >
-> Create a density plot of GDP per capita, filled by continent.
+> Generate box plots to comapare life expectancy between the different continents during the available years
 >
 > Advanced:
->  - Transform the x axis to better visualise the data spread.
->  - Add a facet layer to panel the density plots by year.
+>  - Rename y axis as Life Expextancy and remove x axis labels 
 >
 > > ## Solution to challenge 5
 > >
-> > Create a density plot of GDP per capita, filled by continent.
+> > In order to visulaize box plots we have to utilize the 'geom_boxplot' layer. It is important to notice that our x has to be a factor.
+> > In our case continet is already a factor so no action is required.
 > >
 > > Advanced:
-> >  - Transform the x axis to better visualise the data spread.
-> >  - Add a facet layer to panel the density plots by year.
+> >  - To remove x axis labels we have to work on the theme layer
 > >
 > > ```{r ch5-sol}
-> > ggplot(data = gapminder, mapping = aes(x = gdpPercap, fill=continent)) +
-> >  geom_density(alpha=0.6) + facet_wrap( ~ year) + scale_x_log10()
+> > ggplot(data = gapminder, mapping = aes(x = continent, y = lifeExp, fill = continent)) +
+> >  geom_boxplot() + facet_wrap(~year) +
+> >  ylab("Life Expectancy") +
+> >  theme(axis.title.x=element_blank(),
+> >        axis.text.x = element_blank(),
+> >        axis.ticks.x = element_blank())
 > > ```
 > {: .solution}
 {: .challenge}
