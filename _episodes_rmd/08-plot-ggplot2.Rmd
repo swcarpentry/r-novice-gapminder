@@ -401,6 +401,10 @@ code to modify!
 > > Advanced:
 > >  - To remove x axis labels we have to work on the theme layer.
 > >
+> > ## Solution to challenge 5
+> >
+> > Here a possible solution: 
+> >
 > > ```{r ch5-sol}
 > > ggplot(data = gapminder, mapping = aes(x = continent, y = lifeExp, fill = continent)) +
 > >  geom_boxplot() + facet_wrap(~year) +
