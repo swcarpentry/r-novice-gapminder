@@ -207,7 +207,7 @@ for(i in 1:5){
 ```
 
 We notice in the output that when the first index (`i`) is set to 1, the second 
-index (`j`) iterates through it's full set of indices. Once the indices of `j` 
+index (`j`) iterates through its full set of indices. Once the indices of `j` 
 have been iterated through, then `i` is incremented. This process continues 
 until the last index has been used for each `for()` loop.  
 
@@ -363,7 +363,7 @@ output_vector2
 }
 > > ```
 > >
-> > **Step 3**: The exercise only wants the output printed if the average life expectancy is less than 50 or greater than 50. So we need to add an `if()` condition before printing.
+> > **Step 3**: The exercise only wants the output printed if the average life expectancy is less than 50 or greater than 50.
 > > So we need to add an `if()` condition before printing, which evaluates whether the calculated average life expectancy is above or below a threshold, and print an output conditional on the result.
 > > We need to amend (3) from above:
 > >
