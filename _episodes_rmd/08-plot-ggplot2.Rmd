@@ -396,7 +396,7 @@ code to modify!
 >
 > > ## Solution to Challenge 5
 > >
-> > In order to visulaize box plots we have to utilize the 'geom_boxplot' layer. It is important to notice that our x has to be a factor. 
+> > In order to visulaize box plots we have to utilize the `geom_boxplot` layer. It is important to notice that our x has to be a factor. 
 > > In our case continet is already a factor so no action is required.
 > >
 > > Here a possible solution: 
