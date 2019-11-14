@@ -394,14 +394,10 @@ code to modify!
 > Advanced:
 >  - Rename y axis as Life Expextancy and remove x axis labels.
 >
-> > ## Solution to challenge 5
+> > ## Solution to Challenge 5
 > >
-> > In order to visulaize box plots we have to utilize the 'geom_boxplot' layer. It is important to notice that our x has to be a factor. In our case continet is already a factor so no action is required.
-> >
-> > Advanced:
-> >  - To remove x axis labels we have to work on the theme layer.
-> >
-> > ## Solution to challenge 5
+> > In order to visulaize box plots we have to utilize the 'geom_boxplot' layer. It is important to notice that our x has to be a factor. 
+> > In our case continet is already a factor so no action is required.
 > >
 > > Here a possible solution: 
 > >
