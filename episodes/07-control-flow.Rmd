@@ -207,7 +207,7 @@ for(i in 1:5){
 ```
 
 We notice in the output that when the first index (`i`) is set to 1, the second 
-index (`j`) iterates through it's full set of indices. Once the indices of `j` 
+index (`j`) iterates through its full set of indices. Once the indices of `j` 
 have been iterated through, then `i` is incremented. This process continues 
 until the last index has been used for each `for()` loop.  
 
