@@ -363,7 +363,7 @@ output_vector2
 }
 > > ```
 > >
-> > **Step 3**: The exercise only wants the output printed if the average life expectancy is less than 50 or greater than 50. So we need to add an `if()` condition before printing.
+> > **Step 3**: The exercise only wants the output printed if the average life expectancy is less than 50 or greater than 50.
 > > So we need to add an `if()` condition before printing, which evaluates whether the calculated average life expectancy is above or below a threshold, and print an output conditional on the result.
 > > We need to amend (3) from above:
 > >
