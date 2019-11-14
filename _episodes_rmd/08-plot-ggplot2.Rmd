@@ -389,18 +389,17 @@ code to modify!
 
 > ## Challenge 5
 >
-> Generate box plots to comapare life expectancy between the different continents during the available years
+> Generate box plots to comapare life expectancy between the different continents during the available years.
 >
 > Advanced:
->  - Rename y axis as Life Expextancy and remove x axis labels 
+>  - Rename y axis as Life Expextancy and remove x axis labels.
 >
 > > ## Solution to challenge 5
 > >
-> > In order to visulaize box plots we have to utilize the 'geom_boxplot' layer. It is important to notice that our x has to be a factor.
-> > In our case continet is already a factor so no action is required.
+> > In order to visulaize box plots we have to utilize the 'geom_boxplot' layer. It is important to notice that our x has to be a factor. In our case continet is already a factor so no action is required.
 > >
 > > Advanced:
-> >  - To remove x axis labels we have to work on the theme layer
+> >  - To remove x axis labels we have to work on the theme layer.
 > >
 > > ```{r ch5-sol}
 > > ggplot(data = gapminder, mapping = aes(x = continent, y = lifeExp, fill = continent)) +
