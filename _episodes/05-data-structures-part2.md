@@ -136,7 +136,7 @@ length(age)
 ~~~
 {: .output}
 
-So for it to work we need to have `nrow(cats)` = `length(age)`. Let's overwrite the content of cats with our new data frame.
+So for it to work we need to have `nrow(cats)` = `length(age)`. Let's overwite the content of cats with our new data frame.
 
 
 ~~~
@@ -505,7 +505,7 @@ gapminder <- read.csv("data/gapminder_data.csv")
 > {: .language-r}
 >
 > * You can read directly from excel spreadsheets without
-> converting them to plain text first by using the [readxl](https://cran.r-project.org/package=readxl) package.
+> converting them to plain text first by using the [readxl](https://cran.r-project.org/web/packages/readxl/index.html) package.
 {: .callout}
 
 Let's investigate gapminder a bit; the first thing we should always do is check
@@ -796,8 +796,8 @@ head(gapminder)
 > > 
 > > What about a few arbitrary rows just for sanity (or insanity depending on your view)?
 > > ## Tip: There are several ways to achieve this.
-> > The solution here presents one form of using nested functions, i.e. a function passed as an argument to another function. This might sound like a new concept, but you are already using it!
-> > Remember my_dataframe[rows, cols] will print to screen your data frame with the number of rows and columns you asked for (although you might have asked for a range or named columns for example). How would you get the last row if you don't know how many rows your data frame has? R has a function for this. What about getting a (pseudo-random) sample? R also has a function for this.
+> > The solution here presents one form using nested functions. i.e. a function passed as an argument to another function. This might sound like a new concept but you are already using it in fact.
+> > Remember my_dataframe[rows, cols] will print to screen your data frame with the number of rows and columns you asked for (although you might have asked for a range or named columns for example). How would you get the last row if you don't know how many rows your data frame has? R has a function for this. What about getting a (pseudorandom) sample? R also has a function for this.
 > > ~~~
 > > gapminder[sample(nrow(gapminder), 5), ]
 > > ~~~
@@ -819,16 +819,7 @@ into a script file so we can come back to it later.
 > as its argument (or by pressing the "source" button in RStudio).
 >
 > > ## Solution to Challenge 4
-> > 
-> > The `source` function can be used to use a script within a script.
-> > Assume you would like to load the same type of file over and over 
-> > again and therefore you need to specify the arguments to fit the 
-> > needs of your file. Instead of writing the necessary argument again
-> > and again you could just write it once and save it as a script. Then,
-> > you can use `source("Your_Script_containing_the_load_function")` in a new
-> > script to use the function of that script without writing everything again.
-> > Check out `?source` to find out more.
-> > 
+> > The contents of `scripts/load-gapminder.R`:
 > > 
 > > ~~~
 > > download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv", destfile = "data/gapminder_data.csv")

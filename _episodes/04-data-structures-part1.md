@@ -27,23 +27,19 @@ making a toy dataset in your `data/` directory, called `feline-data.csv`:
 
 
 ~~~
-cats <- data.frame(
-  coat = c("calico", "black", "tabby"),
-  weight = c(2.1, 5.0, 3.2),
-  likes_string = c(1, 0, 1)
-)
-write.csv(x = cats,
-          file = "data/feline-data.csv",
-          row.names = FALSE)
+cats <- data.frame(coat = c("calico", "black", "tabby"), 
+                    weight = c(2.1, 5.0,3.2), 
+                    likes_string = c(1, 0, 1))
+write.csv(x = cats, file = "data/feline-data.csv", row.names = FALSE)
 ~~~
 {: .language-r}
 The contents of the new file, `feline-data.csv`:
 
 ~~~
-coat, weight, likes_string
-calico, 2.1, 1
-black, 5.0, 0
-tabby, 3.2, 1
+coat,weight,likes_string
+calico,2.1,1
+black,5.0,0
+tabby,3.2,1
 ~~~
 {: .language-r}
 
@@ -221,7 +217,7 @@ typeof(1L) # The L suffix forces the number to be an integer, since by default R
 
 
 ~~~
-typeof(1 + 1i)
+typeof(1+1i)
 ~~~
 {: .language-r}
 
@@ -260,10 +256,13 @@ typeof('banana')
 ~~~
 {: .output}
 
-No matter how complicated our analyses become, all data in R is interpreted as one of these basic data types. This strictness has some really important consequences.
+No matter how
+complicated our analyses become, all data in R is interpreted as one of these
+basic data types. This strictness has some really important consequences.
 
 A user has added details of another cat. This information is in the file
 `data/feline-data_v2.csv`.
+
 
 
 ~~~
@@ -286,7 +285,7 @@ Load the new cats data like before, and check what type of data we find in the
 
 
 ~~~
-cats <- read.csv(file = "data/feline-data_v2.csv")
+cats <- read.csv(file="data/feline-data_v2.csv")
 typeof(cats$weight)
 ~~~
 {: .language-r}
@@ -298,7 +297,7 @@ typeof(cats$weight)
 ~~~
 {: .output}
 
-Oh no, our weights aren't the double type any more! If we try to do the same math
+Oh no, our weights aren't the double type anymore! If we try to do the same math
 we did on them before, we run into trouble:
 
 
@@ -348,26 +347,20 @@ In order to successfully use our data in R, we need to understand what the basic
 data structures are, and how they behave. For now, let's remove that extra line
 from our cats data and reload it, while we investigate this behavior further:
 
+feline-data.csv:
 
-~~~
-file.show("data/feline-data.csv")
-~~~
-{: .language-r}
-
-
-~~~
+```
 coat,weight,likes_string
 calico,2.1,1
 black,5.0,0
 tabby,3.2,1
-~~~
-{: .language-r}
+```
 
 And back in RStudio:
 
 
 ~~~
-cats <- read.csv(file = "data/feline-data.csv")
+cats <- read.csv(file="data/feline-data.csv")
 ~~~
 {: .language-r}
 
@@ -401,7 +394,7 @@ an empty vector of whatever type you like.
 
 
 ~~~
-another_vector <- vector(mode = "character", length = 3)
+another_vector <- vector(mode='character', length=3)
 another_vector
 ~~~
 {: .language-r}
@@ -471,7 +464,7 @@ You can also make vectors with explicit contents with the combine function:
 
 
 ~~~
-combine_vector <- c(2, 6, 3)
+combine_vector <- c(2,6,3)
 combine_vector
 ~~~
 {: .language-r}
@@ -487,7 +480,7 @@ Given what we've learned so far, what do you think the following will produce?
 
 
 ~~~
-quiz_vector <- c(2, 6, '3')
+quiz_vector <- c(2,6,'3')
 ~~~
 {: .language-r}
 
@@ -499,7 +492,7 @@ type. Consider:
 
 
 ~~~
-coercion_vector <- c("a", TRUE)
+coercion_vector <- c('a', TRUE)
 coercion_vector
 ~~~
 {: .language-r}
@@ -532,7 +525,7 @@ force coercion against this flow using the `as.` functions:
 
 
 ~~~
-character_vector_example <- c("0", "2", "4")
+character_vector_example <- c('0','2','4')
 character_vector_example
 ~~~
 {: .language-r}
@@ -619,7 +612,7 @@ The combine function, `c()`, will also append things to an existing vector:
 
 
 ~~~
-ab_vector <- c("a", "b")
+ab_vector <- c('a', 'b')
 ab_vector
 ~~~
 {: .language-r}
@@ -634,7 +627,7 @@ ab_vector
 
 
 ~~~
-combine_example <- c(ab_vector, "SWC")
+combine_example <- c(ab_vector, 'SWC')
 combine_example
 ~~~
 {: .language-r}
@@ -679,7 +672,7 @@ seq(10)
 
 
 ~~~
-seq(1, 10, by = 0.1)
+seq(1,10, by=0.1)
 ~~~
 {: .language-r}
 
@@ -701,7 +694,7 @@ We can ask a few questions about vectors:
 
 ~~~
 sequence_example <- seq(10)
-head(sequence_example, n = 2)
+head(sequence_example, n=2)
 ~~~
 {: .language-r}
 
@@ -715,7 +708,7 @@ head(sequence_example, n = 2)
 
 
 ~~~
-tail(sequence_example, n = 4)
+tail(sequence_example, n=4)
 ~~~
 {: .language-r}
 
@@ -1029,7 +1022,7 @@ want in it:
 
 
 ~~~
-list_example <- list(1, "a", TRUE, 1 + 4i)
+list_example <- list(1, "a", TRUE, 1+4i)
 list_example
 ~~~
 {: .language-r}
@@ -1054,7 +1047,7 @@ list_example
 
 
 ~~~
-another_list <- list(title = "Numbers", numbers = 1:10, data = TRUE)
+another_list <- list(title = "Numbers", numbers = 1:10, data = TRUE )
 another_list
 ~~~
 {: .language-r}
@@ -1115,7 +1108,7 @@ Levels: black calico tabby
 
 
 ~~~
-cats[, 1]
+cats[,1]
 ~~~
 {: .language-r}
 
@@ -1130,7 +1123,7 @@ Levels: black calico tabby
 
 
 ~~~
-typeof(cats[, 1])
+typeof(cats[,1])
 ~~~
 {: .language-r}
 
@@ -1144,7 +1137,7 @@ typeof(cats[, 1])
 
 
 ~~~
-str(cats[, 1])
+str(cats[,1])
 ~~~
 {: .language-r}
 
@@ -1160,7 +1153,7 @@ thus can be composed of elements of different types.
 
 
 ~~~
-cats[1, ]
+cats[1,]
 ~~~
 {: .language-r}
 
@@ -1175,7 +1168,7 @@ cats[1, ]
 
 
 ~~~
-typeof(cats[1, ])
+typeof(cats[1,])
 ~~~
 {: .language-r}
 
@@ -1189,7 +1182,7 @@ typeof(cats[1, ])
 
 
 ~~~
-str(cats[1, ])
+str(cats[1,])
 ~~~
 {: .language-r}
 
@@ -1344,7 +1337,7 @@ Last but not least is the matrix. We can declare a matrix full of zeros:
 
 
 ~~~
-matrix_example <- matrix(0, ncol = 6, nrow = 3)
+matrix_example <- matrix(0, ncol=6, nrow=3)
 matrix_example
 ~~~
 {: .language-r}

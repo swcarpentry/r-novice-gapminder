@@ -73,7 +73,7 @@ nasty bugs.
 
 ## The `dplyr` package
 
-Luckily, the [`dplyr`](https://cran.r-project.org/package=dplyr)
+Luckily, the [`dplyr`](https://cran.r-project.org/web/packages/dplyr/dplyr.pdf)
 package provides a number of very useful functions for manipulating dataframes
 in a way that will reduce the above repetition, reduce the probability of making
 errors, and probably even save you some typing. As an added bonus, you might
@@ -92,7 +92,7 @@ If you have have not installed this package earlier, please do so:
 
 
 ~~~
-install.packages("dplyr")
+install.packages('dplyr')
 ~~~
 {: .language-r}
 
@@ -112,7 +112,7 @@ variables you select.
 
 
 ~~~
-year_country_gdp <- select(gapminder, year, country, gdpPercap)
+year_country_gdp <- select(gapminder,year,country,gdpPercap)
 ~~~
 {: .language-r}
 
@@ -126,7 +126,7 @@ using pipes.
 
 
 ~~~
-year_country_gdp <- gapminder %>% select(year, country, gdpPercap)
+year_country_gdp <- gapminder %>% select(year,country,gdpPercap)
 ~~~
 {: .language-r}
 
@@ -146,8 +146,8 @@ countries, we can combine `select` and `filter`
 
 ~~~
 year_country_gdp_euro <- gapminder %>%
-    filter(continent == "Europe") %>%
-    select(year, country, gdpPercap)
+    filter(continent=="Europe") %>%
+    select(year,country,gdpPercap)
 ~~~
 {: .language-r}
 
@@ -162,8 +162,8 @@ year_country_gdp_euro <- gapminder %>%
 > >
 > >~~~
 > >year_country_lifeExp_Africa <- gapminder %>%
-> >                            filter(continent == "Africa") %>%
-> >                            select(year, country, lifeExp)
+> >                            filter(continent=="Africa") %>%
+> >                            select(year,country,lifeExp)
 > >~~~
 > >{: .language-r}
 > {: .solution}
@@ -252,7 +252,7 @@ original dataframe into multiple pieces, then we can run functions
 ~~~
 gdp_bycontinents <- gapminder %>%
     group_by(continent) %>%
-    summarize(mean_gdpPercap = mean(gdpPercap))
+    summarize(mean_gdpPercap=mean(gdpPercap))
 ~~~
 {: .language-r}
 
@@ -284,7 +284,7 @@ even better.
 > >~~~
 > >lifeExp_bycountry <- gapminder %>%
 > >    group_by(country) %>%
-> >    summarize(mean_lifeExp = mean(lifeExp))
+> >    summarize(mean_lifeExp=mean(lifeExp))
 > >lifeExp_bycountry %>%
 > >    filter(mean_lifeExp == min(mean_lifeExp) | mean_lifeExp == max(mean_lifeExp))
 > >~~~
@@ -350,8 +350,8 @@ The function `group_by()` allows us to group by multiple variables. Let's group 
 
 ~~~
 gdp_bycontinents_byyear <- gapminder %>%
-    group_by(continent, year) %>%
-    summarize(mean_gdpPercap = mean(gdpPercap))
+    group_by(continent,year) %>%
+    summarize(mean_gdpPercap=mean(gdpPercap))
 ~~~
 {: .language-r}
 
@@ -360,11 +360,11 @@ That is already quite powerful, but it gets even better! You're not limited to d
 
 ~~~
 gdp_pop_bycontinents_byyear <- gapminder %>%
-    group_by(continent, year) %>%
-    summarize(mean_gdpPercap = mean(gdpPercap),
-              sd_gdpPercap = sd(gdpPercap),
-              mean_pop = mean(pop),
-              sd_pop = sd(pop))
+    group_by(continent,year) %>%
+    summarize(mean_gdpPercap=mean(gdpPercap),
+              sd_gdpPercap=sd(gdpPercap),
+              mean_pop=mean(pop),
+              sd_pop=sd(pop))
 ~~~
 {: .language-r}
 
@@ -401,7 +401,7 @@ gapminder %>%
 {: .output}
 
 If we need to use the number of observations in calculations, the `n()` function
-is useful. It will return the total number of observations in the current group rather than counting the number of observations in each group within a specific column. For instance, if we wanted to get the standard error of the life expectancy per continent:
+is useful. It will return the total number of observations in the current group rather than counting the number of observations in each group within a specific column. For instance, if we wanted to get the standard error of the life expectency per continent:
 
 
 ~~~
@@ -460,14 +460,14 @@ We can also create new variables prior to (or even after) summarizing informatio
 
 ~~~
 gdp_pop_bycontinents_byyear <- gapminder %>%
-    mutate(gdp_billion = gdpPercap*pop/10^9) %>%
+    mutate(gdp_billion=gdpPercap*pop/10^9) %>%
     group_by(continent,year) %>%
-    summarize(mean_gdpPercap = mean(gdpPercap),
-              sd_gdpPercap = sd(gdpPercap),
-              mean_pop = mean(pop),
-              sd_pop = sd(pop),
-              mean_gdp_billion = mean(gdp_billion),
-              sd_gdp_billion = sd(gdp_billion))
+    summarize(mean_gdpPercap=mean(gdpPercap),
+              sd_gdpPercap=sd(gdpPercap),
+              mean_pop=mean(pop),
+              sd_pop=sd(pop),
+              mean_gdp_billion=mean(gdp_billion),
+              sd_gdp_billion=sd(gdp_billion))
 ~~~
 {: .language-r}
 
@@ -504,20 +504,6 @@ gdp_future_bycontinents_byyear_high_lifeExp <- gapminder %>%
 
 ## Combining `dplyr` and `ggplot2`
 
-First install and load ggplot2:
-
-
-~~~
-install.packages("ggplot2")
-~~~
-{: .language-r}
-
-
-~~~
-library("ggplot2")
-~~~
-{: .language-r}
-
 In the plotting lesson we looked at how to make a multi-panel figure by adding
 a layer of facet panels using `ggplot2`. Here is the code we used (with some
 extra comments):
@@ -534,7 +520,7 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color = continent)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-13-unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-13-unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" />
 
 This code makes the right plot but it also creates some variables (`starts.with`
 and `az.countries`) that we might not have any other uses for. Just as we used
@@ -558,7 +544,7 @@ gapminder %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-13-unnamed-chunk-24-1.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-13-unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" style="display: block; margin: auto;" />
 
 Using `dplyr` functions also helps us simplify things, for example we could
 combine the first two steps:
@@ -575,7 +561,7 @@ gapminder %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-13-unnamed-chunk-25-1.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-13-unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" style="display: block; margin: auto;" />
 
 > ## Advanced Challenge
 >
