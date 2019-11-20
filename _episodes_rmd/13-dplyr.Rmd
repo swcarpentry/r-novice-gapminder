@@ -47,7 +47,7 @@ in a way that will reduce the above repetition, reduce the probability of making
 errors, and probably even save you some typing. As an added bonus, you might
 even find the `dplyr` grammar easier to read.
 
-Here we're going to cover 6 of the most commonly used functions as well as using
+Here we're going to cover 5 of the most commonly used functions as well as using
 pipes (`%>%`) to combine them.
 
 1. `select()`
