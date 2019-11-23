@@ -160,7 +160,7 @@ previous lesson with dplyr. In fact, these are compatible and you can use a mix
 of tidyr and dplyr functions by piping them together.
 
 We first provide to `pivot_longer()` a vector of column names that will be
-pivoted into wider format. We could type out all the observation variables, but
+pivoted into longer format. We could type out all the observation variables, but
 as in the `select()` function (see `dplyr` lesson), we can use the `starts_with()`
 argument to select all variables that start with the desired character string.
 `pivot_longer()` also allows the alternative syntax of using the `-` symbol to
