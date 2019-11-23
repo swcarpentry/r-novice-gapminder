@@ -164,7 +164,7 @@ pivoted into longer format. We could type out all the observation variables, but
 as in the `select()` function (see `dplyr` lesson), we can use the `starts_with()`
 argument to select all variables that start with the desired character string.
 `pivot_longer()` also allows the alternative syntax of using the `-` symbol to
-identify which variables are not to be gathered (i.e. ID variables).
+identify which variables are not to be pivoted (i.e. ID variables).
 
 The next arguments to `pivot_longer()` are `names_to` for naming the column that
 will contain the new ID variable (`obstype_year`) and `values_to` for naming the
@@ -210,16 +210,16 @@ gap_long$year <- as.integer(gap_long$year)
 > {: .solution}
 {: .challenge}
 
-## From long to intermediate format with spread()
+## From long to intermediate format with pivot_wider()
 
 It is always good to check work. So, let's use the opposite of `pivot_longer()` to
 'widen' our observation variables back out with the aptly named `pivot_wider()`. We
-can then spread our `gap_long()` to the original intermediate format or the
+can then pivot our `gap_long()` to the original intermediate format or the
 widest format. Let's start with the intermediate format.
 
 The `pivot_wider()` function takes `names_from` and `values_from` arguments.
 
-To `names_from` we supply the column name whose contents will be spread into new
+To `names_from` we supply the column name whose contents will be pivoted into new
 output columns in the widened dataframe. The corresponding values will be added
 from the column named in the `values_from` argument.
 
@@ -255,7 +255,7 @@ That's great! We've gone from the longest format back to the intermediate and we
 didn't introduce any errors in our code.
 
 Now let's convert the long all the way back to the wide. In the wide format, we
-will keep country and continent as ID variables and spread the observations
+will keep country and continent as ID variables and pivot the observations
 across the 3 metrics (`pop`,`lifeExp`,`gdpPercap`) and time (`year`). First we
 need to create appropriate labels for all our new variables (time*metric
 combinations) and we also need to unify our ID variables to simplify the process
@@ -273,7 +273,7 @@ str(gap_temp)
 
 Using `unite()` we now have a single ID variable which is a combination of
 `continent`,`country`,and we have defined variable names. We're now ready to
-pipe in `spread()`
+pipe in `pivot_wider()`
 
 ```{r}
 gap_wide_new <- gap_long %>%
@@ -285,7 +285,7 @@ str(gap_wide_new)
 
 > ## Challenge 3
 >
-> Take this 1 step further and create a `gap_ludicrously_wide` format data by spreading over countries, year and the 3 metrics?
+> Take this 1 step further and create a `gap_ludicrously_wide` format data by pivoting over countries, year and the 3 metrics?
 >**Hint** this new dataframe should only have 5 rows.
 >
 > > ## Solution to Challenge 3
