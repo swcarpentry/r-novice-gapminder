@@ -374,8 +374,8 @@ Finally, if you have no idea how to change something, a quick Google search will
 usually send you to a relevant question and answer on Stack Overflow with reusable
 code to modify!
 
-[cheat]: http://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf
-[ggplot-doc]: http://docs.ggplot2.org/current/
+[cheat]: https://www.rstudio.org/links/data_visualization_cheat_sheet
+[ggplot-doc]: https://ggplot2.tidyverse.org/reference/
 
 
 > ## Challenge 5
