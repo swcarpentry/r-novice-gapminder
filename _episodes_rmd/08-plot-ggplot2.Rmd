@@ -219,7 +219,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 The `log10` function applied a transformation to the values of the gdpPercap
 column before rendering them on the plot, so that each multiple of 10 now only
 corresponds to an increase in 1 on the transformed scale, e.g. a GDP per capita
-of 1,000 is now 3 on the y axis, a value of 10,000 corresponds to 4 on the y
+of 1,000 is now 3 on the x axis, a value of 10,000 corresponds to 4 on the x
 axis and so on. This makes it easier to visualize the spread of data on the
 x-axis.
 
