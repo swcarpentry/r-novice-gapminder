@@ -399,6 +399,7 @@ code to modify!
 > > ggplot(data = gapminder, mapping = aes(x = continent, y = lifeExp, fill = continent)) +
 > >  geom_boxplot() +
 > >  facet_wrap( ~ year) +
+> >  labs(y = "Life Expectancy") +
 > >  theme(axis.title.x = element_blank(),
 > >        axis.text.x = element_blank(),
 > >        axis.ticks.x = element_blank())
