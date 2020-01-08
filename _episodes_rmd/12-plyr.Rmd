@@ -1,0 +1,304 @@
+---
+title: Splitting and Combining Data Frames with plyr
+teaching: 30
+exercises: 30
+questions:
+- "How can I do different calculations on different sets of data?"
+objectives:
+- "To be able to use the split-apply-combine strategy for data analysis."
+keypoints:
+- "Use the `plyr` package to split data, apply functions to subsets, and combine the results."
+source: Rmd
+---
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("12-")
+# Silently load in the data so the rest of the lesson works
+gapminder <- read.csv("data/gapminder_data.csv", header=TRUE)
+```
+
+Previously we looked at how you can use functions to simplify your code.
+We defined the `calcGDP` function, which takes the gapminder dataset,
+and multiplies the population and GDP per capita column. We also defined
+additional arguments so we could filter by `year` and `country`:
+
+```{r}
+# Takes a dataset and multiplies the population column
+# with the GDP per capita column.
+calcGDP <- function(dat, year=NULL, country=NULL) {
+  if(!is.null(year)) {
+    dat <- dat[dat$year %in% year, ]
+  }
+  if (!is.null(country)) {
+    dat <- dat[dat$country %in% country,]
+  }
+  gdp <- dat$pop * dat$gdpPercap
+
+  new <- cbind(dat, gdp=gdp)
+  return(new)
+}
+```
+
+A common task you'll encounter when working with data, is that you'll want to
+run calculations on different groups within the data. In the above, we were
+simply calculating the GDP by multiplying two columns together. But what if
+we wanted to calculated the mean GDP per continent?
+
+We could run `calcGDP` and then take the mean of each continent:
+
+```{r}
+withGDP <- calcGDP(gapminder)
+mean(withGDP[withGDP$continent == "Africa", "gdp"])
+mean(withGDP[withGDP$continent == "Americas", "gdp"])
+mean(withGDP[withGDP$continent == "Asia", "gdp"])
+```
+
+But this isn't very *nice*. Yes, by using a function, you have reduced a
+substantial amount of repetition. That **is** nice. But there is still
+repetition. Repeating yourself will cost you time, both now and later, and
+potentially introduce some nasty bugs.
+
+We could write a new function that is flexible like `calcGDP`, but this
+also takes a substantial amount of effort and testing to get right.
+
+The abstract problem we're encountering here is know as "split-apply-combine":
+
+![Split apply combine](../fig/12-plyr-fig1.png)
+
+We want to *split* our data into groups, in this case continents, *apply*
+some calculations on that group, then optionally *combine* the results
+together afterwards.
+
+## The `plyr` package
+
+For those of you who have used R before, you might be familiar with the
+`apply` family of functions. While R's built in functions do work, we're
+going to introduce you to another method for solving the "split-apply-combine"
+problem. The [plyr](http://had.co.nz/plyr/) package provides a set of
+functions that we find more user friendly for solving this problem.
+
+We installed this package in an earlier challenge. Let's load it now:
+
+```{r}
+library("plyr")
+```
+
+Plyr has functions for operating on `lists`, `data.frames` and `arrays`
+(matrices, or n-dimensional vectors). Each function performs:
+
+1. A **split**ting operation
+2. **Apply** a function on each split in turn.
+3. Re**combine** output data as a single data object.
+
+The functions are named based on the data structure they expect as input,
+and the data structure you want returned as output: [a]rray, [l]ist, or
+[d]ata.frame. The first letter corresponds to the input data structure,
+the second letter to the output data structure, and then the rest of the
+function is named "ply".
+
+This gives us 9 core functions **ply.  There are an additional three functions
+which will only perform the split and apply steps, and not any combine step.
+They're named by their input data type and represent null output by a `_` (see
+table)
+
+Note here that plyr's use of "array" is different to R's,
+an array in ply can include a vector or matrix.
+
+![Full apply suite](../fig/12-plyr-fig2.png)
+
+
+Each of the xxply functions (`daply`, `ddply`, `llply`, `laply`, ...) has the
+same structure and has 4 key features and structure:
+
+```{r, eval=FALSE}
+xxply(.data, .variables, .fun)
+```
+
+* The first letter of the function name gives the input type and the second gives the output type.
+* .data - gives the data object to be processed
+* .variables - identifies the splitting variables
+* .fun - gives the function to be called on each piece
+
+Now we can quickly calculate the mean GDP per continent:
+
+``` {r}
+ddply(
+ .data = calcGDP(gapminder),
+ .variables = "continent",
+ .fun = function(x) mean(x$gdp)
+)
+```
+
+Let's walk through the previous code:
+
+- The `ddply` function feeds in a `data.frame` (function starts with **d**) and
+returns another `data.frame` (2nd letter is a **d**) i
+- the first argument we gave was the data.frame we wanted to operate on: in this
+  case the gapminder data. We called `calcGDP` on it first so that it would have
+  the additional `gdp` column added to it.
+- The second argument indicated our split criteria: in this case the "continent"
+  column. Note that we gave the name of the column, not the values of the column like we had done previously with subsetting. Plyr takes care of these
+  implementation details for you.
+- The third argument is the function we want to apply to each grouping of the
+  data. We had to define our own short function here: each subset of the data
+  gets stored in `x`, the first argument of our function. This is an anonymous
+  function: we haven't defined it elsewhere, and it has no name. It only exists
+  in the scope of our call to `ddply`.
+
+> ## Challenge 1
+>
+> Calculate the average life expectancy per continent. Which has the longest?
+> Which had the shortest?
+> > ## Solution to Challenge 1
+> >
+> > ```{r, eval = FALSE}
+> > ddply(
+> >  .data = gapminder,
+> >  .variables = "continent",
+> >  .fun = function(x) mean(x$lifeExp)
+> > )
+> > 
+> > ```
+> > Oceania has the longest and Africa the shortest.
+> {: .solution}
+{: .challenge}
+
+What if we want a different type of output data structure?:
+
+```{r}
+dlply(
+ .data = calcGDP(gapminder),
+ .variables = "continent",
+ .fun = function(x) mean(x$gdp)
+)
+```
+
+We called the same function again, but changed the second letter to an `l`, so
+the output was returned as a list.
+
+We can specify multiple columns to group by:
+
+``` {r}
+ddply(
+ .data = calcGDP(gapminder),
+ .variables = c("continent", "year"),
+ .fun = function(x) mean(x$gdp)
+)
+```
+
+```{r}
+daply(
+ .data = calcGDP(gapminder),
+ .variables = c("continent", "year"),
+ .fun = function(x) mean(x$gdp)
+)
+```
+
+You can use these functions in place of `for` loops (and it is usually faster to
+do so).
+To replace a for loop, put the code that was in the body of the `for` loop inside an anonymous function.
+
+```{r}
+d_ply(
+  .data=gapminder,
+  .variables = "continent",
+  .fun = function(x) {
+    meanGDPperCap <- mean(x$gdpPercap)
+    print(paste(
+      "The mean GDP per capita for", unique(x$continent),
+      "is", format(meanGDPperCap, big.mark=",")
+   ))
+  }
+)
+```
+
+> ## Tip: printing numbers
+>
+> The `format` function can be used to make numeric
+> values "pretty" for printing out in messages.
+{: .callout}
+
+
+> ## Challenge 2
+>
+> Calculate the average life expectancy per continent and year. Which had the
+> longest and shortest in 2007? Which had the greatest change in between 1952
+> and 2007?
+> > ## Solution to Challenge 2
+> >
+> > ```{r, eval = FALSE}
+> > solution <- ddply(
+> >  .data = gapminder,
+> >  .variables = c("continent", "year"),
+> >  .fun = function(x) mean(x$lifeExp)
+> > )
+> > solution_2007 <- solution[solution$year == 2007, ]
+> > solution_2007
+> > ```
+> >
+> > Oceania had the longest average life expectancy in 2007 and Africa the lowest.
+> >
+> > ```{r, eval = FALSE}
+> > solution_1952_2007 <- cbind(solution[solution$year == 1952, ], solution_2007)
+> > difference_1952_2007 <- data.frame(continent = solution_1952_2007$continent,
+> >                                    year_1957 = solution_1952_2007[[3]],
+> >                                    year_2007 = solution_1952_2007[[6]],
+> >                                    difference = solution_1952_2007[[6]] - solution_1952_2007[[3]])
+> > difference_1952_2007
+> > ```
+> > Asia had the greatest difference, and Oceania the least.
+> {: .solution}
+{: .challenge}
+
+> ## Alternate Challenge
+>
+> Without running them, which of the following will calculate the average
+> life expectancy per continent:
+>
+> 1.
+> ```{r, eval=FALSE}
+> ddply(
+>   .data = gapminder,
+>   .variables = gapminder$continent,
+>   .fun = function(dataGroup) {
+>      mean(dataGroup$lifeExp)
+>   }
+> )
+> ```
+>
+> 2.
+> ```{r, eval=FALSE}
+> ddply(
+>   .data = gapminder,
+>   .variables = "continent",
+>   .fun = mean(dataGroup$lifeExp)
+> )
+> ```
+>
+> 3.
+> ```{r, eval=FALSE}
+> ddply(
+>   .data = gapminder,
+>   .variables = "continent",
+>   .fun = function(dataGroup) {
+>      mean(dataGroup$lifeExp)
+>   }
+> )
+> ```
+>
+> 4.
+> ```{r, eval=FALSE}
+> adply(
+>   .data = gapminder,
+>   .variables = "continent",
+>   .fun = function(dataGroup) {
+>      mean(dataGroup$lifeExp)
+>   }
+> )
+> ```
+> > ## Solution to Alternative Challenge
+> >
+> > Answer 3 will calculate the average life expectancy per continent.
+> {: .solution}
+{: .challenge}
