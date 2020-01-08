@@ -5,7 +5,7 @@ exercises: 15
 questions:
 - "How can I change the layout of a dataframe?"
 objectives:
-- "To understand the concepts of 'longer' and 'wider' dataframe formats  and be able
+- "To understand the concepts of 'longer' and 'wider' dataframe formats and be able
 to convert between them with `tidyr`."
 keypoints:
 - "Use the `tidyr` package to change the layout of dataframes."
@@ -210,7 +210,7 @@ gap_long$year <- as.integer(gap_long$year)
 
 ## From long to intermediate format with pivot_wider()
 
-It is always good to check work. So, let's use the second `pivot` function, `pivot_wider()`, to 'widen' our observation variables back out.  `pivot_wider()` is the opposite of `pivot_longer()`, making a dataset wider by increasing the number of columns and decreasing the number of rows. We can use `pivot_wider()` to pivot or reshape our `gap_long()` to the original intermediate format or the widest format. Let's start with the intermediate format.
+It is always good to check work. So, let's use the second `pivot` function, `pivot_wider()`, to 'widen' our observation variables back out.  `pivot_wider()` is the opposite of `pivot_longer()`, making a dataset wider by increasing the number of columns and decreasing the number of rows. We can use `pivot_wider()` to pivot or reshape our `gap_long` to the original intermediate format or the widest format. Let's start with the intermediate format.
 
 The `pivot_wider()` function takes `names_from` and `values_from` arguments.
 
