@@ -123,8 +123,7 @@ complicated our analyses become, all data in R is interpreted as one of these
 basic data types. This strictness has some really important consequences.
 
 A user has added details of another cat. This information is in the file
-`data/feline-data_v2.csv`.
-
+`data/feline-data_v2.csv`, which can be downloaded from [here](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/master/_episodes_rmd/data/feline-data_v2.csv). Download the file (CTRL + S, right mouse click -> “Save as”, or File -> “Save page as”) and save it in the `data/` folder within your project.
 
 ```{r, eval=FALSE}
 file.show("data/feline-data_v2.csv")
