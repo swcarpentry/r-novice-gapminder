@@ -258,7 +258,7 @@ variables and their visual representation.
 >
 > > ## Solution to challenge 4a
 > >
-> > Here a possible solution: 
+> > Here is a possible solution: 
 > > Notice that the `color` argument is supplied outside of the `aes()` function. 
 > > This means that it applies to all data points on the graph and is not related to 
 > > a specific variable.
@@ -280,12 +280,11 @@ variables and their visual representation.
 >
 > > ## Solution to challenge 4b
 > >
-> > Here a possible solution: 
+> > Here is a possible solution: 
 > > Notice that supplying the `color` argument inside the `aes()` functions enables you to 
 > > connect it to a certain variable. The `shape` argument, as you can see, modifies all
 > > data points the same way (it is outside the `aes()` call) while the `color` argument which
 > > is placed inside the `aes()` call modifies a point's color based on its continent value.
-
 > >```{r ch4b-sol}
 > > ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp, color = continent)) +
 > > geom_point(size=3, shape=17) + scale_x_log10() +
@@ -395,10 +394,9 @@ code to modify!
 >
 > > ## Solution to Challenge 5
 > >
-> > Here a possible solution: 
+> > Here is a possible solution: 
 > > `xlab()` and `ylab()` set labels for the x and y axes, respectively
 > > The axis title, text and ticks are attributes of the theme and must be modified within a `theme()` call.
-
 > > ```{r ch5-sol}
 > > ggplot(data = gapminder, mapping = aes(x = continent, y = lifeExp, fill = continent)) +
 > >  geom_boxplot() + facet_wrap(~year) +
