@@ -71,8 +71,14 @@ project.
 > 6. Click the "Create Project" button.
 {: .challenge}
 
-Now when we start R in this project directory, or open this project with RStudio,
-all of our work on this project will be entirely self-contained in this directory.
+The simplest way to open an RStudio project once it has been created is to click
+through your file system to get to the directory where it was saved and double
+click on the .Rproj file. This will open RStudio and start your R session in the
+same directory as the .Rproj file. All your data, plots and scripts will now be
+relative to the project directory. RStudio projects have the added benefit of
+allowing you to open multiple projects at the same time each open to its own
+project directory. This allows you to keep multiple projects open without them
+interfering with each other.
 
 ## Best practices for project organization
 
