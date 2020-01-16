@@ -196,9 +196,10 @@ Now we have a good directory structure we will now place/save the data file in t
 > {: .solution}
 {: .challenge}
 
-> ## Tip: command line in R Studio
+> ## Tip: command line in RStudio
 >
-> You can quickly open up a shell in RStudio using the **Tools -> Shell...** menu item.
+> The Terminal tab in the console pane provides a convenient place directly
+> within RStudio to interact directly with the command line.
 {: .callout}
 
 ### Version Control
