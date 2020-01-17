@@ -59,7 +59,7 @@ functionality. We'll be using this today to create a self-contained, reproducibl
 project.
 
 
-> ## Challenge: Creating a self-contained project
+> ## Challenge 1: Creating a self-contained project
 >
 > We're going to create a new project in RStudio:
 >
@@ -71,8 +71,22 @@ project.
 > 6. Click the "Create Project" button.
 {: .challenge}
 
-Now when we start R in this project directory, or open this project with RStudio,
-all of our work on this project will be entirely self-contained in this directory.
+The simplest way to open an RStudio project once it has been created is to click
+through your file system to get to the directory where it was saved and double
+click on the `.Rproj` file. This will open RStudio and start your R session in the
+same directory as the `.Rproj` file. All your data, plots and scripts will now be
+relative to the project directory. RStudio projects have the added benefit of
+allowing you to open multiple projects at the same time each open to its own
+project directory. This allows you to keep multiple projects open without them
+interfering with each other.
+
+> ## Challenge 2: Opening an RStudio project through the file system
+>
+>
+> 1. Exit RStudio.
+> 2. Navigate to the directory where you created a project in Challenge 1.
+> 3. Double click on the `.Rproj` file in that directory.
+{: .challenge}
 
 ## Best practices for project organization
 
@@ -146,7 +160,7 @@ one to store the analysis scripts.
 
 Now we have a good directory structure we will now place/save the data file in the `data/` directory.
 
-> ## Challenge 1
+> ## Challenge 3
 > Download the gapminder data from [here](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv).
 >
 > 1. Download the file (CTRL + S, right mouse click -> "Save as", or File -> "Save page as")
@@ -156,7 +170,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > We will load and inspect these data later.
 {: .challenge}
 
-> ## Challenge 2
+> ## Challenge 4
 > It is useful to get some general idea about the dataset, directly from the
 > command line, before loading it into R. Understanding the dataset better
 > will come in handy when making decisions on how to load it in R. Use the command-line
@@ -165,7 +179,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > 2. How many rows of data does it contain?
 > 3. What kinds of values are stored in this file?
 >
-> > ## Solution to Challenge 2
+> > ## Solution to Challenge 4
 > >
 > > By running these commands in the shell:
 > > ```{r ch2a-sol, engine='sh'}
@@ -182,9 +196,10 @@ Now we have a good directory structure we will now place/save the data file in t
 > {: .solution}
 {: .challenge}
 
-> ## Tip: command line in R Studio
+> ## Tip: command line in RStudio
 >
-> You can quickly open up a shell in RStudio using the **Tools -> Shell...** menu item.
+> The Terminal tab in the console pane provides a convenient place directly
+> within RStudio to interact directly with the command line.
 {: .callout}
 
 ### Version Control
