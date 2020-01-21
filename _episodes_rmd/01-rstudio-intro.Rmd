@@ -177,8 +177,8 @@ From highest to lowest precedence:
 
  * Parentheses: `(`, `)`
  * Exponents: `^` or `**`
- * Divide: `/`
  * Multiply: `*`
+ * Divide: `/`
  * Add: `+`
  * Subtract: `-`
 
