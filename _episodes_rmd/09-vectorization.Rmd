@@ -53,7 +53,7 @@ Here is how we would add two vectors together using a for loop:
 
 ```{r}
 output_vector <- c()
-for(i in 1:4) {
+for (i in 1:4) {
   output_vector[i] <- x[i] + y[i]
 }
 output_vector

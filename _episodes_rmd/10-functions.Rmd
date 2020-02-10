@@ -73,7 +73,7 @@ statements that are executed when it runs--is contained within curly braces
 (`{}`). The statements in the body are indented by two spaces. This makes the
 code easier to read but does not affect how the code operates.
 
-It is useful to think of creating functions like writing a cookbook. First you define the "ingredients" that your function needs. In this case, we only need one ingredient to use our function: "temp". After we list our ingredients, we then say what we will do with them, in this case, we are taking our ingredient and applying a set of mathmatical operators to it. 
+It is useful to think of creating functions like writing a cookbook. First you define the "ingredients" that your function needs. In this case, we only need one ingredient to use our function: "temp". After we list our ingredients, we then say what we will do with them, in this case, we are taking our ingredient and applying a set of mathematical operators to it. 
 
 When we call the function, the values we pass to it as arguments are assigned to
 those variables so that we can use them inside the function. Inside the
