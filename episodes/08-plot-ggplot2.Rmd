@@ -41,7 +41,7 @@ graphics.
 
 ggplot2 is built on the grammar of graphics, the idea that any plot can be
 expressed from the same set of components: a **data** set, a
-**coordinate system**, and a set of **geoms**--the visual representation of data
+**coordinate system**, and a set of **geoms** -- the visual representation of data
 points.
 
 The key to understanding ggplot2 is thinking about a figure in layers.
@@ -280,15 +280,16 @@ variables and their visual representation.
 >
 > > ## Solution to challenge 4b
 > >
-> > Here a possible solution: 
+> > Here is a possible solution: 
 > > Notice that supplying the `color` argument inside the `aes()` functions enables you to 
 > > connect it to a certain variable. The `shape` argument, as you can see, modifies all
 > > data points the same way (it is outside the `aes()` call) while the `color` argument which
 > > is placed inside the `aes()` call modifies a point's color based on its continent value.
-> >```{r ch4b-sol}
+> >
+> > ```{r ch4b-sol}
 > > ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp, color = continent)) +
-> > geom_point(size=3, shape=17) + scale_x_log10() +
-> > geom_smooth(method="lm", size=1.5)
+> >  geom_point(size=3, shape=17) + scale_x_log10() +
+> >  geom_smooth(method="lm", size=1.5)
 > > ```
 > {: .solution}
 {: .challenge}
@@ -397,6 +398,7 @@ code to modify!
 > > Here a possible solution: 
 > > `xlab()` and `ylab()` set labels for the x and y axes, respectively
 > > The axis title, text and ticks are attributes of the theme and must be modified within a `theme()` call.
+> > 
 > > ```{r ch5-sol}
 > > ggplot(data = gapminder, mapping = aes(x = continent, y = lifeExp, fill = continent)) +
 > >  geom_boxplot() + facet_wrap(~year) +
