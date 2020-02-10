@@ -6,7 +6,7 @@ questions:
 - "How can I create publication-quality graphics in R?"
 objectives:
 - "To be able to use ggplot2 to generate publication quality graphics."
-- "To apply geometry, aesthetic, and statisics layers to a ggplot plot."
+- "To apply geometry, aesthetic, and statistics layers to a ggplot plot."
 - "To manipulate the aesthetics of a plot usng different colors, shapes, and lines."
 - "To improve data visualization through transforming scales and paneling by group."
 - "To save a plot created with ggplot to disk."
@@ -121,11 +121,10 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 >
 > > ## Solution to challenge 2
 > >
-> > In the previous examples and challenge we've used the `aes` function to tell
-> > the scatterplot **geom** about the **x** and **y** locations of each point.
-> > Another *aesthetic* property we can modify is the point *color*. Modify the
-> > code from the previous challenge to **color** the points by the "continent"
-> > column. What trends do you see in the data? Are they what you expected?
+> > The solution presented below adds `color=continent` to the call of the `aes`
+> > function. The general trend seems to indicate an increased life expectancy
+> > over the years. On continents with stronger economies we find a longer life
+> > expectancy.
 > >
 > > ```{r ch2-sol}
 > > ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp, color=continent)) +
@@ -184,15 +183,13 @@ lines.
 >
 > > ## Solution to challenge 3
 > >
-> > Switch the order of the point and line layers from the previous example. What
-> > happened?
+> > The lines now get drawn over the points!
 > >
 > > ```{r ch3-sol}
 > > ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country)) +
 > >  geom_point() + geom_line(mapping = aes(color=continent))
 > > ```
 > >
-> > The lines now get drawn over the points!
 > >
 > {: .solution}
 {: .challenge}
@@ -222,7 +219,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 The `log10` function applied a transformation to the values of the gdpPercap
 column before rendering them on the plot, so that each multiple of 10 now only
 corresponds to an increase in 1 on the transformed scale, e.g. a GDP per capita
-of 1,000 is now 3 on the y axis, a value of 10,000 corresponds to 4 on the y
+of 1,000 is now 3 on the x axis, a value of 10,000 corresponds to 4 on the x
 axis and so on. This makes it easier to visualize the spread of data on the
 x-axis.
 
@@ -261,10 +258,10 @@ variables and their visual representation.
 >
 > > ## Solution to challenge 4a
 > >
-> > Modify the color and size of the points on the point layer in the previous
-> > example.
-> >
-> > Hint: do not use the `aes` function.
+> > Here a possible solution: 
+> > Notice that the `color` argument is supplied outside of the `aes()` function. 
+> > This means that it applies to all data points on the graph and is not related to 
+> > a specific variable.
 > >
 > > ```{r ch4a-sol}
 > > ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
@@ -283,11 +280,11 @@ variables and their visual representation.
 >
 > > ## Solution to challenge 4b
 > >
-> > Modify Challenge 4 so that the points are now a different shape and are
-> > colored by continent with new trendlines.
-> >
-> > Hint: The color argument can be used inside the aesthetic.
-> >
+> > Here a possible solution: 
+> > Notice that supplying the `color` argument inside the `aes()` functions enables you to 
+> > connect it to a certain variable. The `shape` argument, as you can see, modifies all
+> > data points the same way (it is outside the `aes()` call) while the `color` argument which
+> > is placed inside the `aes()` call modifies a point's color based on its continent value.
 > >```{r ch4b-sol}
 > > ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp, color = continent)) +
 > > geom_point(size=3, shape=17) + scale_x_log10() +
@@ -383,29 +380,30 @@ Finally, if you have no idea how to change something, a quick Google search will
 usually send you to a relevant question and answer on Stack Overflow with reusable
 code to modify!
 
-[cheat]: http://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf
-[ggplot-doc]: http://docs.ggplot2.org/current/
+[cheat]: https://www.rstudio.org/links/data_visualization_cheat_sheet
+[ggplot-doc]: https://ggplot2.tidyverse.org/reference/
 
 
 > ## Challenge 5
 >
-> Create a density plot of GDP per capita, filled by continent.
+> Generate boxplots to compare life expectancy between the different continents during the available years.
 >
 > Advanced:
->  - Transform the x axis to better visualise the data spread.
->  - Add a facet layer to panel the density plots by year.
+>  - Rename y axis as Life Expectancy.
+>  - Remove x axis labels.
 >
-> > ## Solution to challenge 5
+> > ## Solution to Challenge 5
 > >
-> > Create a density plot of GDP per capita, filled by continent.
-> >
-> > Advanced:
-> >  - Transform the x axis to better visualise the data spread.
-> >  - Add a facet layer to panel the density plots by year.
-> >
+> > Here a possible solution: 
+> > `xlab()` and `ylab()` set labels for the x and y axes, respectively
+> > The axis title, text and ticks are attributes of the theme and must be modified within a `theme()` call.
 > > ```{r ch5-sol}
-> > ggplot(data = gapminder, mapping = aes(x = gdpPercap, fill=continent)) +
-> >  geom_density(alpha=0.6) + facet_wrap( ~ year) + scale_x_log10()
+> > ggplot(data = gapminder, mapping = aes(x = continent, y = lifeExp, fill = continent)) +
+> >  geom_boxplot() + facet_wrap(~year) +
+> >  ylab("Life Expectancy") +
+> >  theme(axis.title.x=element_blank(),
+> >        axis.text.x = element_blank(),
+> >        axis.ticks.x = element_blank())
 > > ```
 > {: .solution}
 {: .challenge}

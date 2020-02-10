@@ -3,14 +3,14 @@ title: Dataframe Manipulation with tidyr
 teaching: 30
 exercises: 15
 questions:
-- "How can I change the format of dataframes?"
+- "How can I change the layout of a dataframe?"
 objectives:
-- "To understand the concepts of 'long' and 'wide' data formats and be able
+- "To understand the concepts of 'longer' and 'wider' dataframe formats and be able
 to convert between them with `tidyr`."
 keypoints:
 - "Use the `tidyr` package to change the layout of dataframes."
-- "Use `pivot_longer()` to go from wide to long format."
-- "Use `pivot_wider()` to go from long to wide format."
+- "Use `pivot_longer()` to go from wide to longer layout."
+- "Use `pivot_wider()` to go from long to wider layout."
 source: Rmd
 ---
 
@@ -39,32 +39,29 @@ gapminder <- read.csv("data/gapminder_data.csv", header = TRUE, stringsAsFactors
 gap_wide <- read.csv("data/gapminder_wide.csv", header = TRUE, stringsAsFactors = FALSE)
 ```
 
-Researchers often want to manipulate their data from the 'wide' to the 'long'
-format, or vice-versa. The 'long' format is where:
+Researchers often want to reshape their dataframes from 'wide' to 'longer'
+layouts, or vice-versa. The 'long' layout or format is where:
 
  - each column is a variable
  - each row is an observation
 
-In the 'long' format, you usually have 1 column for the observed variable and
-the other columns are ID variables.
-
+In the purely 'long' (or 'longest') format, you usually have 1 column for the observed variable and the other columns are ID variables.
 
 For the 'wide' format each row is often a site/subject/patient and you have
 multiple observation variables containing the same type of data. These can be
 either repeated observations over time, or observation of multiple variables (or
 a mix of both). You may find data input may be simpler or some other
 applications may prefer the 'wide' format. However, many of `R`'s functions have
-been designed assuming you have 'long' format data. This tutorial will help you
-efficiently transform your data regardless of original format.
+been designed assuming you have 'longer' formatted data. This tutorial will help you
+efficiently transform your data shape regardless of original format.
 
 ![](../fig/14-tidyr-fig1.png)
 
-These data formats mainly affect readability. For humans, the wide format is
-often more intuitive since we can often see more of the data on the screen due
+Long and wide dataframe layouts mainly affect readability. For humans, the wide format is often more intuitive since we can often see more of the data on the screen due
 to its shape. However, the long format is more machine readable and is closer
 to the formatting of databases. The ID variables in our dataframes are similar to
 the fields in a database and observed variables are like the database values.
-
+ 
 ## Getting started
 
 First install the packages if you haven't already done so (you probably
@@ -108,7 +105,7 @@ have 3 "ID variables" (`continent`, `country`, `year`) and 3 "Observation
 variables" (`pop`,`lifeExp`,`gdpPercap`). This intermediate format can be
 preferred despite not having ALL observations in 1 column given that all 3
 observation variables have different units. There are few operations that would
-need us to stretch out this dataframe any longer (i.e. 4 ID variables and 1
+need us to make this dataframe any longer (i.e. 4 ID variables and 1
 Observation variable).
 
 While using many of the functions in R, which are often vector based, you
@@ -124,7 +121,7 @@ R actually work better in the wide format data.
 
 Until now, we've been using the nicely formatted original gapminder dataset, but
 'real' data (i.e. our own research data) will never be so well organized. Here
-let's start with the wide format version of the gapminder dataset.
+let's start with the wide formatted version of the gapminder dataset.
 
 > Download the wide version of the gapminder data from [here](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_wide.csv)
 and save it in your data folder.
@@ -140,11 +137,12 @@ str(gap_wide)
 
 ![](../fig/14-tidyr-fig2.png)
 
-The first step towards getting our nice intermediate data format is to
-convert from the wide to the long format. The `tidyr` function `pivot_longer()` will
-'lengthen' your observation variables into a single variable.
+
+To change this very wide dataframe layout back to our nice, intermediate (or longer) layout, we will use one of the two available `pivot`  functions from the `tidyr` package. To convert from wide to a longer format, we will use the `pivot_longer()` function. `pivot_longer()` makes datasets longer by increasing the number of rows and decreasing the number of columns, or 'lengthening' your observation variables into a single variable.
+
 
 ![](../fig/14-tidyr-fig3.png)
+
 
 ```{r}
 gap_long <- gap_wide %>%
@@ -160,11 +158,11 @@ previous lesson with dplyr. In fact, these are compatible and you can use a mix
 of tidyr and dplyr functions by piping them together.
 
 We first provide to `pivot_longer()` a vector of column names that will be
-pivoted into wider format. We could type out all the observation variables, but
+pivoted into longer format. We could type out all the observation variables, but
 as in the `select()` function (see `dplyr` lesson), we can use the `starts_with()`
 argument to select all variables that start with the desired character string.
 `pivot_longer()` also allows the alternative syntax of using the `-` symbol to
-identify which variables are not to be gathered (i.e. ID variables).
+identify which variables are not to be pivoted (i.e. ID variables).
 
 The next arguments to `pivot_longer()` are `names_to` for naming the column that
 will contain the new ID variable (`obstype_year`) and `values_to` for naming the
@@ -210,16 +208,13 @@ gap_long$year <- as.integer(gap_long$year)
 > {: .solution}
 {: .challenge}
 
-## From long to intermediate format with spread()
+## From long to intermediate format with pivot_wider()
 
-It is always good to check work. So, let's use the opposite of `pivot_longer()` to
-'widen' our observation variables back out with the aptly named `pivot_wider()`. We
-can then spread our `gap_long()` to the original intermediate format or the
-widest format. Let's start with the intermediate format.
+It is always good to check work. So, let's use the second `pivot` function, `pivot_wider()`, to 'widen' our observation variables back out.  `pivot_wider()` is the opposite of `pivot_longer()`, making a dataset wider by increasing the number of columns and decreasing the number of rows. We can use `pivot_wider()` to pivot or reshape our `gap_long` to the original intermediate format or the widest format. Let's start with the intermediate format.
 
 The `pivot_wider()` function takes `names_from` and `values_from` arguments.
 
-To `names_from` we supply the column name whose contents will be spread into new
+To `names_from` we supply the column name whose contents will be pivoted into new
 output columns in the widened dataframe. The corresponding values will be added
 from the column named in the `values_from` argument.
 
@@ -255,7 +250,7 @@ That's great! We've gone from the longest format back to the intermediate and we
 didn't introduce any errors in our code.
 
 Now let's convert the long all the way back to the wide. In the wide format, we
-will keep country and continent as ID variables and spread the observations
+will keep country and continent as ID variables and pivot the observations
 across the 3 metrics (`pop`,`lifeExp`,`gdpPercap`) and time (`year`). First we
 need to create appropriate labels for all our new variables (time*metric
 combinations) and we also need to unify our ID variables to simplify the process
@@ -273,7 +268,7 @@ str(gap_temp)
 
 Using `unite()` we now have a single ID variable which is a combination of
 `continent`,`country`,and we have defined variable names. We're now ready to
-pipe in `spread()`
+pipe in `pivot_wider()`
 
 ```{r}
 gap_wide_new <- gap_long %>%
@@ -285,7 +280,7 @@ str(gap_wide_new)
 
 > ## Challenge 3
 >
-> Take this 1 step further and create a `gap_ludicrously_wide` format data by spreading over countries, year and the 3 metrics?
+> Take this 1 step further and create a `gap_ludicrously_wide` format data by pivoting over countries, year and the 3 metrics?
 >**Hint** this new dataframe should only have 5 rows.
 >
 > > ## Solution to Challenge 3
