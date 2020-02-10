@@ -151,7 +151,33 @@ The `if()` function only accepts singular (of length 1) inputs, and therefore
 returns an error when you use it with a vector. The `if()` function will still 
 run, but will only evaluate the condition in the first element of the vector. 
 Therefore, to use the `if()` function, you need to make sure your input is 
-singular (of length 1).
+singular (of length 1).  
+
+> ## Tip: Built in `ifelse()` function  
+> 
+> `R` accepts both `if()` and `ifelse()` statements structured as outlined above, 
+> but also statements using `R`'s built-in `ifelse()` function. This 
+> function accepts both singular and vector inputs and is structured as 
+> follows: 
+
+```{r, eval = FALSE}
+# ifelse function 
+ifelse(condition is true, perform action, perform alternative action) 
+
+```
+
+> where the first argument is the condition or a set of conditions tp be met, the 
+> second argument is the statement that is evaluated when the condition is `TRUE`,
+> and the third statement  is the statement that is evaluated when the condition 
+> is `FALSE`.  
+ 
+```{r}
+y <- -3
+ifelse(y < 0, "y is a negative number", "y is either positive or zero")
+
+``` 
+{: .callout}
+
 
 > ## Tip: `any()` and `all()`
 >

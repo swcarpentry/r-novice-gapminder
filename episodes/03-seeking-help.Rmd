@@ -168,12 +168,12 @@ your issue.
 
 > ## Challenge 3
 > Use help to find a function (and its associated parameters) that you could
-> use to load data from a csv file in which columns are delimited with "\t"
+> use to load data from a tabular file in which columns are delimited with "\t"
 > (tab) and the decimal point is a "." (period). This check for decimal
 > separator is important, especially if you are working with international
 > colleagues, because different countries have different conventions for the
 > decimal point (i.e. comma vs period).
-> hint: use `??csv` to lookup csv related functions.
+> hint: use `??"read table"` to look up functions related to reading in tabular data.
 > > ## Solution to Challenge 3
 > >
 > > The standard R function for reading tab-delimited files with a period
