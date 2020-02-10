@@ -166,7 +166,7 @@ ifelse(condition is true, perform action, perform alternative action)
 
 ```
 
-> where the first argument is the condition or a set of conditions tp be met, the 
+> where the first argument is the condition or a set of conditions to be met, the 
 > second argument is the statement that is evaluated when the condition is `TRUE`,
 > and the third statement  is the statement that is evaluated when the condition 
 > is `FALSE`.  
@@ -181,8 +181,8 @@ ifelse(y < 0, "y is a negative number", "y is either positive or zero")
 
 > ## Tip: `any()` and `all()`
 >
-> The `any()` function will return TRUE if at least one
-> TRUE value is found within a vector, otherwise it will return `FALSE`.
+> The `any()` function will return `TRUE` if at least one
+> `TRUE` value is found within a vector, otherwise it will return `FALSE`.
 > This can be used in a similar way to the `%in%` operator.
 > The function `all()`, as the name suggests, will only return `TRUE` if all values in
 > the vector are `TRUE`.
@@ -198,14 +198,14 @@ flexible of looping operations, but therefore also the hardest to use
 correctly. In general, the advice of many `R` users would be to learn about 
 `for()` loops, but to avoid using `for()` loops unless the order of iteration is
 important: i.e. the calculation at each iteration depends on the results of 
-previous iterations. If the your order of iteration is not important, then you 
+previous iterations. If the order of iteration is not important, then you 
 should learn about vectorized alternatives, such as the `purr` package, as they
 pay off in computational efficiency. 
 
 The basic structure of a `for()` loop is:  
 
 ```{r, eval = FALSE}
-for(iterator in set of values){
+for (iterator in set of values) {
   do a thing
 }
 ```
@@ -213,7 +213,7 @@ for(iterator in set of values){
 For example:
 
 ```{r}
-for(i in 1:10){
+for (i in 1:10) {
   print(i)
 }
 ```
@@ -225,8 +225,8 @@ We can use a `for()` loop nested within another `for()` loop to iterate over two
 once.
 
 ```{r}
-for(i in 1:5){
-  for(j in c('a', 'b', 'c', 'd', 'e')){
+for (i in 1:5) {
+  for (j in c('a', 'b', 'c', 'd', 'e')) {
     print(paste(i,j))
   }
 }
@@ -241,8 +241,8 @@ Rather than printing the results, we could write the loop output to a new object
 
 ```{r}
 output_vector <- c()
-for(i in 1:5){
-  for(j in c('a', 'b', 'c', 'd', 'e')){
+for (i in 1:5) {
+  for (j in c('a', 'b', 'c', 'd', 'e')) {
     temp_output <- paste(i, j)
     output_vector <- c(output_vector, temp_output)
   }
@@ -274,8 +274,8 @@ For this example, it looks more involved, but is still more efficient.
 ```{r}
 output_matrix <- matrix(nrow=5, ncol=5)
 j_vector <- c('a', 'b', 'c', 'd', 'e')
-for(i in 1:5){
-  for(j in 1:5){
+for (i in 1:5) {
+  for (j in 1:5) {
     temp_j_value <- j_vector[j]
     temp_output <- paste(i, temp_j_value)
     output_matrix[i, j] <- temp_output
@@ -382,7 +382,7 @@ output_vector2
 > > 3. Return the calculated life expectancy to the user by printing the output:
 > >
 > > ```{r 07-chall-03-sol-b, eval=FALSE}
-> > for( iContinent in unique(gapminder$continent) ){
+> > for (iContinent in unique(gapminder$continent)) {
 > >   tmp <- gapminder[gapminder$continent == iContinent, ]   
 > >   cat(iContinent, mean(tmp$lifeExp, na.rm = TRUE), "\n")  
 > >   rm(tmp)
@@ -398,7 +398,7 @@ output_vector2
 > > ```{r 07-chall-03-sol-c, eval=FALSE}
 > > thresholdValue <- 50
 > >
-> > for( iContinent in unique(gapminder$continent) ){
+> > for (iContinent in unique(gapminder$continent)) {
 > >    tmp <- mean(gapminder[gapminder$continent == iContinent, "lifeExp"])
 > >    
 > >    if(tmp < thresholdValue){
@@ -427,7 +427,7 @@ output_vector2
 > >  lowerThreshold <- 50
 > >  upperThreshold <- 70
 > >  
-> > for( iCountry in unique(gapminder$country) ){
+> > for (iCountry in unique(gapminder$country)) {
 > >     tmp <- mean(gapminder[gapminder$country == iCountry, "lifeExp"])
 > >     
 > >     if(tmp < lowerThreshold){
@@ -474,7 +474,7 @@ output_vector2
 > > thresholdValue <- 50
 > > candidateCountries <- grep("^B", unique(gapminder$country), value=TRUE)
 > >
-> > for( iCountry in candidateCountries){
+> > for (iCountry in candidateCountries) {
 > >     tmp <- mean(gapminder[gapminder$country == iCountry, "lifeExp"])
 > >     
 > >     if(tmp < thresholdValue){
