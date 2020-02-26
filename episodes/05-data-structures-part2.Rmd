@@ -122,7 +122,7 @@ str(cats)
 ```
 
 > ## Challenge 1
-> Let's imagine that 1 cat year is equivalent to 7 human years. 
+> Let's imagine that 1 cat year is equivalent to 7 human years.
 > 1. Create a vector called `human_age` by multiplying `cats$age` by 7.
 > 2. Convert `human_age` to a factor.
 > 3. Convert `human_age` back to a numeric vector using the `as.numeric()` function. Now divide it by 7 to get the original ages back. Explain what happened.
@@ -338,17 +338,17 @@ head(gapminder)
 >
 > It's good practice to also check the last few lines of your data and some in the middle. How would you do this?
 >
-> Searching for ones specifically in the middle isn't too hard but we could simply ask for a few lines at random. How would you code this?
+> Searching for ones specifically in the middle isn't too hard, but we could ask for a few lines at random. How would you code this?
 >
 > > ## Solution to Challenge 3
 > > To check the last few lines it's relatively simple as R already has a function for this:
-> > 
+> >
 > > ~~~
 > > tail(gapminder)
 > > tail(gapminder, n = 15)
 > > ~~~
 > > {: .r}
-> > 
+> >
 > > What about a few arbitrary rows just for sanity (or insanity depending on your view)?
 > > ## Tip: There are several ways to achieve this.
 > > The solution here presents one form of using nested functions, i.e. a function passed as an argument to another function. This might sound like a new concept, but you are already using it!
@@ -374,16 +374,16 @@ into a script file so we can come back to it later.
 > as its argument (or by pressing the "source" button in RStudio).
 >
 > > ## Solution to Challenge 4
-> > 
+> >
 > > The `source` function can be used to use a script within a script.
-> > Assume you would like to load the same type of file over and over 
-> > again and therefore you need to specify the arguments to fit the 
+> > Assume you would like to load the same type of file over and over
+> > again and therefore you need to specify the arguments to fit the
 > > needs of your file. Instead of writing the necessary argument again
 > > and again you could just write it once and save it as a script. Then,
 > > you can use `source("Your_Script_containing_the_load_function")` in a new
 > > script to use the function of that script without writing everything again.
 > > Check out `?source` to find out more.
-> > 
+> >
 > > ```{r eval = FALSE}
 > > download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv", destfile = "data/gapminder_data.csv")
 > > gapminder <- read.csv(file = "data/gapminder_data.csv")

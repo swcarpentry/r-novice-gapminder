@@ -99,10 +99,10 @@ interactive R console.
 >
 > RStudio offers you great flexibility in running code from within the editor
 > window. There are buttons, menu choices, and keyboard shortcuts. To run the
-> current line, you can 
-> 1. click on the `Run` button above the editor panel, or 
-> 2. select "Run Lines" from the "Code" menu, or 
-> 3. hit <kbd>Ctrl</kbd>+<kbd>Return</kbd> in Windows or Linux 
+> current line, you can
+> 1. click on the `Run` button above the editor panel, or
+> 2. select "Run Lines" from the "Code" menu, or
+> 3. hit <kbd>Ctrl</kbd>+<kbd>Return</kbd> in Windows or Linux
 > or <kbd>&#8984;</kbd>+<kbd>Return</kbd> on OS X.
 > (This shortcut can also be seen by hovering
 > the mouse over the button). To run a block of code, select it and then `Run`.
@@ -162,7 +162,7 @@ complete it:
 
 Any time you hit return and the R session shows a "+" instead of a ">", it
 means it's waiting for you to complete the command. If you want to cancel
-a command you can simply hit "Esc" and RStudio will give you back the ">"
+a command you can hit "Esc" and RStudio will give you back the ">"
 prompt.
 
 > ## Tip: Cancelling commands
@@ -272,7 +272,7 @@ You can write numbers in scientific notation too:
 ## Mathematical functions
 
 R has many built in mathematical functions. To call a function,
-we simply type its name, followed by  open and closing parentheses.
+we can type its name, followed by open and closing parentheses.
 Anything we type inside the parentheses is called the function's
 arguments:
 
@@ -329,7 +329,7 @@ exp(0.5) # e^(1/2)
 {: .output}
 
 Don't worry about trying to remember every function in R. You
-can simply look them up on Google, or if you can remember the
+can look them up on Google, or if you can remember the
 start of the function's name, use the tab completion in RStudio.
 
 This is one advantage that RStudio has over R on its own, it
@@ -538,7 +538,7 @@ symbol used in the community. So the recommendation is to use `<-`.
 > ## Challenge 1
 >
 > Which of the following are valid R variable names?
-> 
+>
 > ~~~
 > min_height
 > max.height
@@ -554,7 +554,7 @@ symbol used in the community. So the recommendation is to use `<-`.
 > > ## Solution to challenge 1
 > >
 > > The following can be used as R variables:
-> > 
+> >
 > > ~~~
 > > min_height
 > > max.height
@@ -564,14 +564,14 @@ symbol used in the community. So the recommendation is to use `<-`.
 > > {: .language-r}
 > >
 > > The following creates a hidden variable:
-> > 
+> >
 > > ~~~
 > > .mass
 > > ~~~
 > > {: .language-r}
 > >
 > > The following will not be able to be used to create a variable
-> > 
+> >
 > > ~~~
 > > _age
 > > min-length
@@ -585,7 +585,7 @@ symbol used in the community. So the recommendation is to use `<-`.
 
 One final thing to be aware of is that R is *vectorized*, meaning that
 variables and functions can have vectors as values. In contrast to physics and
-mathematics, a vector in R describes a set of values in a certain order of the 
+mathematics, a vector in R describes a set of values in a certain order of the
 same data type. For example
 
 
@@ -676,23 +676,23 @@ ls
 
 
 ~~~
-function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE, 
-    pattern, sorted = TRUE) 
+function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
+    pattern, sorted = TRUE)
 {
     if (!missing(name)) {
         pos <- tryCatch(name, error = function(e) e)
         if (inherits(pos, "error")) {
             name <- substitute(name)
-            if (!is.character(name)) 
+            if (!is.character(name))
                 name <- deparse(name)
-            warning(gettextf("%s converted to character string", 
+            warning(gettextf("%s converted to character string",
                 sQuote(name)), domain = NA)
             pos <- name
         }
     }
     all.names <- .Internal(ls(envir, all.names, sorted))
     if (!missing(pattern)) {
-        if ((ll <- length(grep("[", pattern, fixed = TRUE))) && 
+        if ((ll <- length(grep("[", pattern, fixed = TRUE))) &&
             ll != length(grep("]", pattern, fixed = TRUE))) {
             if (pattern == "[") {
                 pattern <- "\\["
@@ -783,7 +783,7 @@ network). R and RStudio have functionality for managing packages:
 > What will be the value of each  variable  after each
 > statement in the following program?
 >
-> 
+>
 > ~~~
 > mass <- 47.5
 > age <- 122
@@ -794,21 +794,21 @@ network). R and RStudio have functionality for managing packages:
 >
 > > ## Solution to challenge 2
 > >
-> > 
+> >
 > > ~~~
 > > mass <- 47.5
 > > ~~~
 > > {: .language-r}
 > > This will give a value of 47.5 for the variable mass
 > >
-> > 
+> >
 > > ~~~
 > > age <- 122
 > > ~~~
 > > {: .language-r}
 > > This will give a value of 122 for the variable age
 > >
-> > 
+> >
 > > ~~~
 > > mass <- mass * 2.3
 > > ~~~
@@ -816,7 +816,7 @@ network). R and RStudio have functionality for managing packages:
 > > This will multiply the existing value of 47.5 by 2.3 to give a new value of
 > > 109.25 to the variable mass.
 > >
-> > 
+> >
 > > ~~~
 > > age <- age - 20
 > > ~~~
@@ -835,14 +835,14 @@ network). R and RStudio have functionality for managing packages:
 > > ## Solution to challenge 3
 > >
 > > One way of answering this question in R is to use the `>` to set up the following:
-> > 
+> >
 > > ~~~
 > > mass > age
 > > ~~~
 > > {: .language-r}
-> > 
-> > 
-> > 
+> >
+> >
+> >
 > > ~~~
 > > [1] TRUE
 > > ~~~
@@ -860,7 +860,7 @@ network). R and RStudio have functionality for managing packages:
 > > ## Solution to challenge 4
 > >
 > > We can use the `rm` command to accomplish this task
-> > 
+> >
 > > ~~~
 > > rm(age, mass)
 > > ~~~
@@ -875,7 +875,7 @@ network). R and RStudio have functionality for managing packages:
 > > ## Solution to challenge 5
 > >
 > > We can use the `install.packages()` command to install the required packages.
-> > 
+> >
 > > ~~~
 > > install.packages("ggplot2")
 > > install.packages("plyr")

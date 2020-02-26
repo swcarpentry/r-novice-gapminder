@@ -100,10 +100,10 @@ interactive R console.
 >
 > RStudio offers you great flexibility in running code from within the editor
 > window. There are buttons, menu choices, and keyboard shortcuts. To run the
-> current line, you can 
-> 1. click on the `Run` button above the editor panel, or 
-> 2. select "Run Lines" from the "Code" menu, or 
-> 3. hit <kbd>Ctrl</kbd>+<kbd>Return</kbd> in Windows or Linux 
+> current line, you can
+> 1. click on the `Run` button above the editor panel, or
+> 2. select "Run Lines" from the "Code" menu, or
+> 3. hit <kbd>Ctrl</kbd>+<kbd>Return</kbd> in Windows or Linux
 > or <kbd>&#8984;</kbd>+<kbd>Return</kbd> on OS X.
 > (This shortcut can also be seen by hovering
 > the mouse over the button). To run a block of code, select it and then `Run`.
@@ -154,8 +154,7 @@ complete it:
 
 Any time you hit return and the R session shows a "+" instead of a ">", it
 means it's waiting for you to complete the command. If you want to cancel
-a command you can simply hit "Esc" and RStudio will give you back the ">"
-prompt.
+a command you can hit "Esc" and RStudio will give you back the ">" prompt.
 
 > ## Tip: Cancelling commands
 >
@@ -226,7 +225,7 @@ You can write numbers in scientific notation too:
 ## Mathematical functions
 
 R has many built in mathematical functions. To call a function,
-we simply type its name, followed by  open and closing parentheses.
+we can type its name, followed by  open and closing parentheses.
 Anything we type inside the parentheses is called the function's
 arguments:
 
@@ -247,7 +246,7 @@ exp(0.5) # e^(1/2)
 ```
 
 Don't worry about trying to remember every function in R. You
-can simply look them up on Google, or if you can remember the
+can look them up on Google, or if you can remember the
 start of the function's name, use the tab completion in RStudio.
 
 This is one advantage that RStudio has over R on its own, it
@@ -415,7 +414,7 @@ symbol used in the community. So the recommendation is to use `<-`.
 
 One final thing to be aware of is that R is *vectorized*, meaning that
 variables and functions can have vectors as values. In contrast to physics and
-mathematics, a vector in R describes a set of values in a certain order of the 
+mathematics, a vector in R describes a set of values in a certain order of the
 same data type. For example
 
 ```{r}
