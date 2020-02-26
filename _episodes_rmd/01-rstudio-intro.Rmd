@@ -158,7 +158,7 @@ a command you can hit "Esc" and RStudio will give you back the ">" prompt.
 
 > ## Tip: Cancelling commands
 >
-> If you're using R from the commandline instead of from within RStudio,
+> If you're using R from the command line instead of from within RStudio,
 > you need to use <kbd>Ctrl</kbd>+<kbd>C</kbd> instead of <kbd>Esc</kbd>
 > to cancel the command. This applies to Mac users as well!
 >
@@ -193,7 +193,7 @@ intend.
 (3 + 5) * 2
 ```
 
-This can get unwieldy when not needed, but  clarifies your intentions.
+This can get unwieldy when not needed, but clarifies your intentions.
 Remember that others may later read your code.
 
 ```{r, eval=FALSE}
@@ -225,7 +225,7 @@ You can write numbers in scientific notation too:
 ## Mathematical functions
 
 R has many built in mathematical functions. To call a function,
-we can type its name, followed by  open and closing parentheses.
+we can type its name, followed by open and closing parentheses.
 Anything we type inside the parentheses is called the function's
 arguments:
 
@@ -339,7 +339,7 @@ Notice also that variables can be reassigned:
 x <- 100
 ```
 
-`x` used to contain the value 0.025 and and now it has the value 100.
+`x` used to contain the value 0.025 and now it has the value 100.
 
 Assignment values can contain the variable being assigned to:
 
@@ -511,7 +511,7 @@ network). R and RStudio have functionality for managing packages:
 
 > ## Challenge 2
 >
-> What will be the value of each  variable  after each
+> What will be the value of each variable  after each
 > statement in the following program?
 >
 > ```{r, eval=FALSE}
