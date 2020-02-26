@@ -101,7 +101,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 > Modify the example so that the figure shows how life expectancy has
 > changed over time:
 >
-> 
+>
 > ~~~
 > ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) + geom_point()
 > ~~~
@@ -114,12 +114,12 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 > >
 > > Here is one possible solution:
 > >
-> > 
+> >
 > > ~~~
 > > ggplot(data = gapminder, aes(x = year, y = lifeExp)) + geom_point()
 > > ~~~
 > > {: .language-r}
-> > 
+> >
 > > <img src="../fig/rmd-08-ch1-sol-1.png" title="plot of chunk ch1-sol" alt="plot of chunk ch1-sol" style="display: block; margin: auto;" />
 > >
 > {: .solution}
@@ -142,13 +142,13 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 > > code from the previous challenge to **color** the points by the "continent"
 > > column. What trends do you see in the data? Are they what you expected?
 > >
-> > 
+> >
 > > ~~~
 > > ggplot(data = gapminder, aes(x = year, y = lifeExp, color=continent)) +
 > >   geom_point()
 > > ~~~
 > > {: .language-r}
-> > 
+> >
 > > <img src="../fig/rmd-08-ch2-sol-1.png" title="plot of chunk ch2-sol" alt="plot of chunk ch2-sol" style="display: block; margin: auto;" />
 > >
 > {: .solution}
@@ -174,7 +174,7 @@ added the **by** *aesthetic*, which tells `ggplot` to draw a line for each
 country.
 
 But what if we want to visualize both lines and points on the plot? We can
-simply add another layer to the plot:
+add another layer to the plot:
 
 
 ~~~
@@ -205,7 +205,7 @@ lines.
 
 > ## Tip: Setting an aesthetic to a value instead of a mapping
 >
-> So far, we've seen how to use an aesthetic (such as **color**) as a *mapping* to a variable in the data. For example, when we use `geom_line(aes(color=continent))`, ggplot will give a different color to each continent. But what if we want to change the colour of all lines to blue? You may think that `geom_line(aes(color="blue"))` should work, but it doesn't. Since we don't want to create a mapping to a specific variable, we simply move the color specification outside of the `aes()` function, like this: `geom_line(color="blue")`.
+> So far, we've seen how to use an aesthetic (such as **color**) as a *mapping* to a variable in the data. For example, when we use `geom_line(aes(color=continent))`, ggplot will give a different color to each continent. But what if we want to change the colour of all lines to blue? You may think that `geom_line(aes(color="blue"))` should work, but it doesn't. Since we don't want to create a mapping to a specific variable, we can move the color specification outside of the `aes()` function, like this: `geom_line(color="blue")`.
 {: .callout}
 
 > ## Challenge 3
@@ -218,13 +218,13 @@ lines.
 > > Switch the order of the point and line layers from the previous example. What
 > > happened?
 > >
-> > 
+> >
 > > ~~~
 > > ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
 > >  geom_point() + geom_line(aes(color=continent))
 > > ~~~
 > > {: .language-r}
-> > 
+> >
 > > <img src="../fig/rmd-08-ch3-sol-1.png" title="plot of chunk ch3-sol" alt="plot of chunk ch3-sol" style="display: block; margin: auto;" />
 > >
 > > The lines now get drawn over the points!
@@ -317,14 +317,14 @@ variables and their visual representation.
 > >
 > > Hint: do not use the `aes` function.
 > >
-> > 
+> >
 > > ~~~
 > > ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 > >  geom_point(size=3, color="orange") + scale_x_log10() +
 > >  geom_smooth(method="lm", size=1.5)
 > > ~~~
 > > {: .language-r}
-> > 
+> >
 > > <img src="../fig/rmd-08-ch4a-sol-1.png" title="plot of chunk ch4a-sol" alt="plot of chunk ch4a-sol" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
@@ -397,11 +397,11 @@ elements. The x-axis is too cluttered, and the y axis should read
 "Life expectancy", rather than the column name in the data frame.
 
 We can do this by adding a couple of different layers. The **theme** layer
-controls the axis text, and overall text size. Labels for the axes, plot 
+controls the axis text, and overall text size. Labels for the axes, plot
 title and any legend can be set using the `labs` function. Legend titles
 are set using the same names we used in the `aes` specification. Thus below
-the color legend title is set using `color = "Continent"`, while the title 
-of a fill legend would be set using `fill = "MyTitle"`. 
+the color legend title is set using `color = "Continent"`, while the title
+of a fill legend would be set using `fill = "MyTitle"`.
 
 
 ~~~
@@ -476,13 +476,13 @@ code to modify!
 > >  - Transform the x axis to better visualise the data spread.
 > >  - Add a facet layer to panel the density plots by year.
 > >
-> > 
+> >
 > > ~~~
 > > ggplot(data = gapminder, aes(x = gdpPercap, fill=continent)) +
 > >  geom_density(alpha=0.6) + facet_wrap( ~ year) + scale_x_log10()
 > > ~~~
 > > {: .language-r}
-> > 
+> >
 > > <img src="../fig/rmd-08-ch5-sol-1.png" title="plot of chunk ch5-sol" alt="plot of chunk ch5-sol" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
