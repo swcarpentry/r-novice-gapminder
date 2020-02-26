@@ -150,7 +150,7 @@ added the **by** *aesthetic*, which tells `ggplot` to draw a line for each
 country.
 
 But what if we want to visualize both lines and points on the plot? We can
-simply add another layer to the plot:
+add another layer to the plot:
 
 ```{r lifeExp-line-point}
 ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country, color=continent)) +
@@ -173,7 +173,7 @@ lines.
 
 > ## Tip: Setting an aesthetic to a value instead of a mapping
 >
-> So far, we've seen how to use an aesthetic (such as **color**) as a *mapping* to a variable in the data. For example, when we use `geom_line(mapping = aes(color=continent))`, ggplot will give a different color to each continent. But what if we want to change the colour of all lines to blue? You may think that `geom_line(mapping = aes(color="blue"))` should work, but it doesn't. Since we don't want to create a mapping to a specific variable, we simply move the color specification outside of the `aes()` function, like this: `geom_line(color="blue")`.
+> So far, we've seen how to use an aesthetic (such as **color**) as a *mapping* to a variable in the data. For example, when we use `geom_line(mapping = aes(color=continent))`, ggplot will give a different color to each continent. But what if we want to change the colour of all lines to blue? You may think that `geom_line(mapping = aes(color="blue"))` should work, but it doesn't. Since we don't want to create a mapping to a specific variable, we can move the color specification outside of the `aes()` function, like this: `geom_line(color="blue")`.
 {: .callout}
 
 > ## Challenge 3
@@ -258,9 +258,9 @@ variables and their visual representation.
 >
 > > ## Solution to challenge 4a
 > >
-> > Here a possible solution: 
-> > Notice that the `color` argument is supplied outside of the `aes()` function. 
-> > This means that it applies to all data points on the graph and is not related to 
+> > Here a possible solution:
+> > Notice that the `color` argument is supplied outside of the `aes()` function.
+> > This means that it applies to all data points on the graph and is not related to
 > > a specific variable.
 > >
 > > ```{r ch4a-sol}
@@ -280,8 +280,8 @@ variables and their visual representation.
 >
 > > ## Solution to challenge 4b
 > >
-> > Here is a possible solution: 
-> > Notice that supplying the `color` argument inside the `aes()` functions enables you to 
+> > Here is a possible solution:
+> > Notice that supplying the `color` argument inside the `aes()` functions enables you to
 > > connect it to a certain variable. The `shape` argument, as you can see, modifies all
 > > data points the same way (it is outside the `aes()` call) while the `color` argument which
 > > is placed inside the `aes()` call modifies a point's color based on its continent value.
@@ -299,12 +299,12 @@ variables and their visual representation.
 
 Earlier we visualized the change in life expectancy over time across all
 countries in one plot. Alternatively, we can split this out over multiple panels
-by adding a layer of **facet** panels. 
+by adding a layer of **facet** panels.
 
 > ## Tip
 >
 > We start by making a subset of data including only countries located
-> in the Americas.  This includes 25 countries, which will begin to 
+> in the Americas.  This includes 25 countries, which will begin to
 > clutter the figure.  Note that we apply a "theme" definition to rotate
 > the x-axis labels to maintain readability.  Nearly everything in
 > ggplot2 is customizable.
@@ -313,8 +313,8 @@ by adding a layer of **facet** panels.
 ```{r facet}
 americas <- gapminder[gapminder$continent == "Americas",]
 ggplot(data = americas, mapping = aes(x = year, y = lifeExp)) +
-  geom_line() + 
-  facet_wrap( ~ country) + 
+  geom_line() +
+  facet_wrap( ~ country) +
   theme(axis.text.x = element_text(angle = 45))
 ```
 
@@ -329,11 +329,11 @@ elements. The x-axis is too cluttered, and the y axis should read
 "Life expectancy", rather than the column name in the data frame.
 
 We can do this by adding a couple of different layers. The **theme** layer
-controls the axis text, and overall text size. Labels for the axes, plot 
+controls the axis text, and overall text size. Labels for the axes, plot
 title and any legend can be set using the `labs` function. Legend titles
 are set using the same names we used in the `aes` specification. Thus below
-the color legend title is set using `color = "Continent"`, while the title 
-of a fill legend would be set using `fill = "MyTitle"`. 
+the color legend title is set using `color = "Continent"`, while the title
+of a fill legend would be set using `fill = "MyTitle"`.
 
 ```{r theme}
 ggplot(data = americas, mapping = aes(x = year, y = lifeExp, color=continent)) +
@@ -395,10 +395,10 @@ code to modify!
 >
 > > ## Solution to Challenge 5
 > >
-> > Here a possible solution: 
+> > Here a possible solution:
 > > `xlab()` and `ylab()` set labels for the x and y axes, respectively
 > > The axis title, text and ticks are attributes of the theme and must be modified within a `theme()` call.
-> > 
+> >
 > > ```{r ch5-sol}
 > > ggplot(data = gapminder, mapping = aes(x = continent, y = lifeExp, fill = continent)) +
 > >  geom_boxplot() + facet_wrap(~year) +
