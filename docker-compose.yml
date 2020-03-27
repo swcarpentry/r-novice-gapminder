@@ -1,7 +1,7 @@
 version: "3"
 services:
   site:
-    build: ../Git/tests/zkamvar--carpentries-docker-test
+    image: zkamvar/carpentries-docker-test:latest
     ports:
       - "4000:4000"
     volumes:
