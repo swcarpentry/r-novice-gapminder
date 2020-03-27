@@ -21,6 +21,10 @@ commands :
 docker-serve :
 	docker run --rm -it -v ${PWD}:/srv/jekyll -p 127.0.0.1:4000:4000 jekyll/jekyll:${JEKYLL_VERSION} make serve
 
+serve-in-container : lesson-md
+	cp ../gems/* . \
+	&& ${JEKYLL} serve -d /srv/jekyll/
+
 ## serve            : run a local server.
 serve : lesson-md
 	${JEKYLL} serve
