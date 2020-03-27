@@ -1,0 +1,16 @@
+version: "3"
+services:
+  site:
+    build: ../Git/tests/zkamvar--carpentries-docker-test
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/srv/jekyll/
+    command: /bin/bash -c "cp ../gems/* . && jekyll serve"
+    depends_on:
+      - needs
+  needs:
+    image: rocker/verse:latest
+    volumes:
+      - .:/home/docker
+    command: make -C /home/docker lesson-md
