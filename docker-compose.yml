@@ -7,7 +7,6 @@ services:
     volumes:
       - .:/srv/src/
     command: make -C ../src serve-in-container
-    restart: on-failure
     depends_on:
       - needs
   needs:
