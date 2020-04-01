@@ -1,9 +1,9 @@
-Please delete this line and the text below before submitting your contribution.
+Instructor Training Checkout
 
----
+I edited two typos: one in Subsetting Data and one in Functions. 
 
-Thanks for contributing! If this contribution is for instructor training, please send an email to checkout@carpentries.org with a link to this contribution so we can record your progress. You’ve completed your contribution step for instructor checkout just by submitting this contribution.  
+Furthermore, I would like to add a general comment: 
 
-Please keep in mind that lesson maintainers are volunteers and it may be some time before they can respond to your contribution. Although not all contributions can be incorporated into the lesson materials, we appreciate your time and effort to improve the curriculum.  If you have any questions about the lesson maintenance process or would like to volunteer your time as a contribution reviewer, please contact Kate Hertweck (k8hertweck@gmail.com).  
+I personally would drop the references to previous shell lessons as R for Reproducible Scientific Analysis is a stand-alone lesson, and references to lessons not necessarily previously taught may make the learner insecure. 
 
----
+For instance (Control Flow section): “We saw for () loops in the shell lessons earlier. »
