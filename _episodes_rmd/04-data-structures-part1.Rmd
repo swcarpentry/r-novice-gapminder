@@ -122,20 +122,28 @@ No matter how
 complicated our analyses become, all data in R is interpreted as one of these
 basic data types. This strictness has some really important consequences.
 
-A user has added details of another cat. This information is in the file
-`data/feline-data_v2.csv`.
+Let's make a second toy dataset in your `data/` directory, called `feline-data_v2.csv`:
 
-
-```{r, eval=FALSE}
-file.show("data/feline-data_v2.csv")
+```{r}
+cats <- data.frame(coat = c("calico", "black", "tabby", "tabby"), 
+                    weight = c(2.1, 5.0, 3.2, 2.3 or 2.4), 
+                    likes_string = c(1, 0, 1, 1))
+write.csv(x = cats, file = "data/feline-data.csv", row.names = FALSE)
 ```
-
+The contents of the new file, `feline-data_v2.csv`:
 ```{r, eval=FALSE}
 coat,weight,likes_string
 calico,2.1,1
 black,5.0,0
 tabby,3.2,1
 tabby,2.3 or 2.4,1
+```
+
+> ## Tip: Editing Text files in R
+>
+> Alternatively, you can create `data/feline-data.csv` as you did above when you created 'data/feline-data.csv' and load that file into R.
+{: .callout}
+
 ```
 
 Load the new cats data like before, and check what type of data we find in the
