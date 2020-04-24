@@ -592,8 +592,15 @@ network). R and RStudio have functionality for managing packages:
 > >```
 > >
 > > An alternate solution, to install multiple packages with a single `install.packages()` command is:
-> > ```{r ch5-sol, eval=FALSE}
+> > ```{r ch5-sol-alt1, eval=FALSE}
 > > install.packages(c("ggplot2", "plyr", "gapminder"))
 > >```
+> > Another alternate solution, to first check if packages are installed, then install if necessary or load from library using pacman package
+> > ```{r ch5-sol-alt2, eval=FALSE}
+> > if (!require("pacman")) install packages("pacman")
+> > pacman::p_load("ggplot2", "plyr", "gapminder")
+> >```
+
+
 > {: .solution}
 {: .challenge}
