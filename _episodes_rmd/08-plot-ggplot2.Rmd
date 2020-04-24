@@ -268,6 +268,7 @@ variables and their visual representation.
 > >  geom_point(size=3, color="orange") + scale_x_log10() +
 > >  geom_smooth(method="lm", size=1.5)
 > > ```
+> > 
 > {: .solution}
 {: .challenge}
 
@@ -291,6 +292,7 @@ variables and their visual representation.
 > >  geom_point(size=3, shape=17) + scale_x_log10() +
 > >  geom_smooth(method="lm", size=1.5)
 > > ```
+> > 
 > {: .solution}
 {: .challenge}
 
@@ -407,5 +409,6 @@ code to modify!
 > >        axis.text.x = element_blank(),
 > >        axis.ticks.x = element_blank())
 > > ```
+> > 
 > {: .solution}
 {: .challenge}
