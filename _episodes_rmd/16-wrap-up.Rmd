@@ -19,7 +19,7 @@ source: Rmd
 
 ## Structure your project folder
 
-Keep your project folder structured, organized and tidy, by creating subfolders for your code files, manuals, data, binaries, output plots, etc. It can be done completely manually, or with the help of RStudio's `New Project` functionality, or a desginated package, such as `ProjectTemplate`.
+Keep your project folder structured, organized and tidy, by creating subfolders for your code files, manuals, data, binaries, output plots, etc. It can be done completely manually, or with the help of RStudio's `New Project` functionality, or a designated package, such as `ProjectTemplate`.
 
 > ## Tip: ProjectTemplate - a possible solution
 >

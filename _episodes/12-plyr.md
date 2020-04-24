@@ -41,8 +41,8 @@ calcGDP <- function(dat, year=NULL, country=NULL) {
 
 A common task you'll encounter when working with data, is that you'll want to
 run calculations on different groups within the data. In the above, we were
-simply calculating the GDP by multiplying two columns together. But what if
-we wanted to calculated the mean GDP per continent?
+calculating the GDP by multiplying two columns together. But what if we wanted
+to calculated the mean GDP per continent?
 
 We could run `calcGDP` and then take the mean of each continent:
 
@@ -424,7 +424,7 @@ d_ply(
 > life expectancy per continent:
 >
 > 1.
-> 
+>
 > ~~~
 > ddply(
 >   .data = gapminder,
@@ -437,7 +437,7 @@ d_ply(
 > {: .language-r}
 >
 > 2.
-> 
+>
 > ~~~
 > ddply(
 >   .data = gapminder,
@@ -448,7 +448,7 @@ d_ply(
 > {: .language-r}
 >
 > 3.
-> 
+>
 > ~~~
 > ddply(
 >   .data = gapminder,
@@ -461,7 +461,7 @@ d_ply(
 > {: .language-r}
 >
 > 4.
-> 
+>
 > ~~~
 > adply(
 >   .data = gapminder,
