@@ -450,11 +450,24 @@ ls()
 Note here that we didn't give any arguments to `ls`, but we still
 needed to give the parentheses to tell R to call the function.
 
-If we type `ls` by itself, R will print out the source code for that function!
+If we type `ls` by itself, R prints a bunch of code instead of a listing of objects.
 
 ```{r}
 ls
 ```
+
+What's going on here? 
+
+Like everything in R, `ls` is the name of an object, and entering the name of
+an object by itself prints the contents of the object. The object `x` that we
+created earlier contains `r x`:
+
+```{r}
+x
+```
+
+The object `ls` contains the R code that makes the ls function work! We'll talk
+more about how functions work and start writing our own later.
 
 You can use `rm` to delete objects you no longer need:
 
