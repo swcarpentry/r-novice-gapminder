@@ -466,7 +466,7 @@ created earlier contains `r x`:
 x
 ```
 
-The object `ls` contains the R code that makes the ls function work! We'll talk
+The object `ls` contains the R code that makes the `ls` function work! We'll talk
 more about how functions work and start writing our own later.
 
 You can use `rm` to delete objects you no longer need:
