@@ -136,7 +136,7 @@ length(age)
 ~~~
 {: .output}
 
-So for it to work we need to have `nrow(cats)` = `length(age)`. Let's overwite the content of cats with our new data frame.
+So for it to work we need to have `nrow(cats)` = `length(age)`. Let's overwrite the content of cats with our new data frame.
 
 
 ~~~
@@ -203,7 +203,7 @@ levels(cats$coat)
 
 
 ~~~
-[1] "black"  "calico" "tabby"
+[1] "black"  "calico" "tabby" 
 ~~~
 {: .output}
 
@@ -264,7 +264,7 @@ str(cats)
 > > ## Solution to Challenge 1
 > > 1. `human_age <- cats$age * 7`
 > > 2. `human_age <- factor(human_age)`. `as.factor(human_age)` works just as well.
-> > 3. `as.numeric(human_age)` yields `1 2 3 4 4` because factors are stored as integers (here, 1:4), each of which is associated with a label (here, 28, 35, 56, and 63). Converting the factor to a numeric vector gives us the underlying integers, not the labels. If we want the original numbers, we need to convert `human_age` to a character vector and then to a numeric vector (why does this work?). This comes up in real life when we accidentally include a character somewhere in a column of a .csv file supposed to only contain numbers, and forget to set `stringsAsFactors=FALSE` when we read in the data.
+> > 3. `as.numeric(human_age)` yields `1 2 3 4 4` because factors are stored as integers (here, 1:4), each of which is associated with a label (here, 28, 35, 56, and 63). Converting the factor to a numeric vector gives us the underlying integers, not the labels. If we want the original numbers, we need to convert `human_age` to a character vector (using `as.character(human_age)`) and then to a numeric vector (why does this work?). This comes up in real life when we accidentally include a character somewhere in a column of a .csv file supposed to only contain numbers, and forget to set `stringsAsFactors=FALSE` when we read in the data.
 > {: .solution}
 {: .challenge}
 
@@ -366,7 +366,7 @@ cats[,-4]
 
 Notice the comma with nothing before it, indicating we want to keep all of the rows.  
 
-Alternatively, we can drop the column by using the index name.  
+Alternatively, we can drop the column by using the index name and the `%in%` operator. The `%in%` operator goes through each element of its left argument, in this case the names of `cats`, and asks, "Does this element occur in the second argument?"
 
 
 ~~~
@@ -441,7 +441,7 @@ cats
 > ## Challenge 2
 >
 > You can create a new data frame right from within R with the following syntax:
->
+> 
 > ~~~
 > df <- data.frame(id = c("a", "b", "c"),
 >                  x = 1:3,
@@ -459,7 +459,7 @@ cats
 > Finally, use `cbind` to add a column with each person's answer to the question, "Is it time for coffee break?"
 >
 > > ## Solution to Challenge 2
-> >
+> > 
 > > ~~~
 > > df <- data.frame(first = c("Grace"),
 > >                  last = c("Hopper"),
@@ -490,7 +490,7 @@ gapminder <- read.csv("data/gapminder_data.csv")
 > * Files can also be downloaded directly from the Internet into a local
 > folder of your choice onto your computer using the `download.file` function.
 > The `read.csv` function can then be executed to read the downloaded file from the download location, for example,
->
+> 
 > ~~~
 > download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv", destfile = "data/gapminder_data.csv")
 > gapminder <- read.csv("data/gapminder_data.csv")
@@ -498,14 +498,14 @@ gapminder <- read.csv("data/gapminder_data.csv")
 > {: .language-r}
 >
 > * Alternatively, you can also read in files directly into R from the Internet by replacing the file paths with a web address in `read.csv`. One should note that in doing this no local copy of the csv file is first saved onto your computer. For example,
->
+> 
 > ~~~
 > gapminder <- read.csv("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv")
 > ~~~
 > {: .language-r}
 >
 > * You can read directly from excel spreadsheets without
-> converting them to plain text first by using the [readxl](https://cran.r-project.org/web/packages/readxl/index.html) package.
+> converting them to plain text first by using the [readxl](https://cran.r-project.org/package=readxl) package.
 {: .callout}
 
 Let's investigate gapminder a bit; the first thing we should always do is check
@@ -541,74 +541,74 @@ summary(gapminder$country)
 
 
 ~~~
-             Afghanistan                  Albania                  Algeria
-                      12                       12                       12
-                  Angola                Argentina                Australia
-                      12                       12                       12
-                 Austria                  Bahrain               Bangladesh
-                      12                       12                       12
-                 Belgium                    Benin                  Bolivia
-                      12                       12                       12
-  Bosnia and Herzegovina                 Botswana                   Brazil
-                      12                       12                       12
-                Bulgaria             Burkina Faso                  Burundi
-                      12                       12                       12
-                Cambodia                 Cameroon                   Canada
-                      12                       12                       12
-Central African Republic                     Chad                    Chile
-                      12                       12                       12
-                   China                 Colombia                  Comoros
-                      12                       12                       12
-         Congo Dem. Rep.               Congo Rep.               Costa Rica
-                      12                       12                       12
-           Cote d'Ivoire                  Croatia                     Cuba
-                      12                       12                       12
-          Czech Republic                  Denmark                 Djibouti
-                      12                       12                       12
-      Dominican Republic                  Ecuador                    Egypt
-                      12                       12                       12
-             El Salvador        Equatorial Guinea                  Eritrea
-                      12                       12                       12
-                Ethiopia                  Finland                   France
-                      12                       12                       12
-                   Gabon                   Gambia                  Germany
-                      12                       12                       12
-                   Ghana                   Greece                Guatemala
-                      12                       12                       12
-                  Guinea            Guinea-Bissau                    Haiti
-                      12                       12                       12
-                Honduras          Hong Kong China                  Hungary
-                      12                       12                       12
-                 Iceland                    India                Indonesia
-                      12                       12                       12
-                    Iran                     Iraq                  Ireland
-                      12                       12                       12
-                  Israel                    Italy                  Jamaica
-                      12                       12                       12
-                   Japan                   Jordan                    Kenya
-                      12                       12                       12
-         Korea Dem. Rep.               Korea Rep.                   Kuwait
-                      12                       12                       12
-                 Lebanon                  Lesotho                  Liberia
-                      12                       12                       12
-                   Libya               Madagascar                   Malawi
-                      12                       12                       12
-                Malaysia                     Mali               Mauritania
-                      12                       12                       12
-               Mauritius                   Mexico                 Mongolia
-                      12                       12                       12
-              Montenegro                  Morocco               Mozambique
-                      12                       12                       12
-                 Myanmar                  Namibia                    Nepal
-                      12                       12                       12
-             Netherlands              New Zealand                Nicaragua
-                      12                       12                       12
-                   Niger                  Nigeria                   Norway
-                      12                       12                       12
-                    Oman                 Pakistan                   Panama
-                      12                       12                       12
-                 (Other)
-                     516
+             Afghanistan                  Albania                  Algeria 
+                      12                       12                       12 
+                  Angola                Argentina                Australia 
+                      12                       12                       12 
+                 Austria                  Bahrain               Bangladesh 
+                      12                       12                       12 
+                 Belgium                    Benin                  Bolivia 
+                      12                       12                       12 
+  Bosnia and Herzegovina                 Botswana                   Brazil 
+                      12                       12                       12 
+                Bulgaria             Burkina Faso                  Burundi 
+                      12                       12                       12 
+                Cambodia                 Cameroon                   Canada 
+                      12                       12                       12 
+Central African Republic                     Chad                    Chile 
+                      12                       12                       12 
+                   China                 Colombia                  Comoros 
+                      12                       12                       12 
+         Congo Dem. Rep.               Congo Rep.               Costa Rica 
+                      12                       12                       12 
+           Cote d'Ivoire                  Croatia                     Cuba 
+                      12                       12                       12 
+          Czech Republic                  Denmark                 Djibouti 
+                      12                       12                       12 
+      Dominican Republic                  Ecuador                    Egypt 
+                      12                       12                       12 
+             El Salvador        Equatorial Guinea                  Eritrea 
+                      12                       12                       12 
+                Ethiopia                  Finland                   France 
+                      12                       12                       12 
+                   Gabon                   Gambia                  Germany 
+                      12                       12                       12 
+                   Ghana                   Greece                Guatemala 
+                      12                       12                       12 
+                  Guinea            Guinea-Bissau                    Haiti 
+                      12                       12                       12 
+                Honduras          Hong Kong China                  Hungary 
+                      12                       12                       12 
+                 Iceland                    India                Indonesia 
+                      12                       12                       12 
+                    Iran                     Iraq                  Ireland 
+                      12                       12                       12 
+                  Israel                    Italy                  Jamaica 
+                      12                       12                       12 
+                   Japan                   Jordan                    Kenya 
+                      12                       12                       12 
+         Korea Dem. Rep.               Korea Rep.                   Kuwait 
+                      12                       12                       12 
+                 Lebanon                  Lesotho                  Liberia 
+                      12                       12                       12 
+                   Libya               Madagascar                   Malawi 
+                      12                       12                       12 
+                Malaysia                     Mali               Mauritania 
+                      12                       12                       12 
+               Mauritius                   Mexico                 Mongolia 
+                      12                       12                       12 
+              Montenegro                  Morocco               Mozambique 
+                      12                       12                       12 
+                 Myanmar                  Namibia                    Nepal 
+                      12                       12                       12 
+             Netherlands              New Zealand                Nicaragua 
+                      12                       12                       12 
+                   Niger                  Nigeria                   Norway 
+                      12                       12                       12 
+                    Oman                 Pakistan                   Panama 
+                      12                       12                       12 
+                 (Other) 
+                     516 
 ~~~
 {: .output}
 
@@ -796,7 +796,7 @@ head(gapminder)
 > >
 > > What about a few arbitrary rows just for sanity (or insanity depending on your view)?
 > > ## Tip: There are several ways to achieve this.
-> > The solution here presents one form using nested functions. i.e. a function passed as an argument to another function. This might sound like a new concept but you are already using it in fact.
+> > The solution here presents one form of using nested functions, i.e. a function passed as an argument to another function. This might sound like a new concept, but you are already using it!
 > > Remember my_dataframe[rows, cols] will print to screen your data frame with the number of rows and columns you asked for (although you might have asked for a range or named columns for example). How would you get the last row if you don't know how many rows your data frame has? R has a function for this. What about getting a (pseudorandom) sample? R also has a function for this.
 > > ~~~
 > > gapminder[sample(nrow(gapminder), 5), ]
@@ -819,15 +819,24 @@ into a script file so we can come back to it later.
 > as its argument (or by pressing the "source" button in RStudio).
 >
 > > ## Solution to Challenge 4
-> > The contents of `scripts/load-gapminder.R`:
 > >
+> > The `source` function can be used to use a script within a script.
+> > Assume you would like to load the same type of file over and over
+> > again and therefore you need to specify the arguments to fit the
+> > needs of your file. Instead of writing the necessary argument again
+> > and again you could just write it once and save it as a script. Then,
+> > you can use `source("Your_Script_containing_the_load_function")` in a new
+> > script to use the function of that script without writing everything again.
+> > Check out `?source` to find out more.
+> >
+> > 
 > > ~~~
 > > download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv", destfile = "data/gapminder_data.csv")
 > > gapminder <- read.csv(file = "data/gapminder_data.csv")
 > > ~~~
 > > {: .language-r}
 > > To run the script and load the data into the `gapminder` variable:
-> >
+> > 
 > > ~~~
 > > source(file = "scripts/load-gapminder.R")
 > > ~~~
