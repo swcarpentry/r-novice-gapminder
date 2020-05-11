@@ -56,25 +56,38 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ```
 
-So the first thing we do is call the `ggplot` function. This function lets R
-know that we're creating a new plot, and any of the arguments we give the
-`ggplot` function are the *global* options for the plot: they apply to all
-layers on the plot.
+It is instructive to break down this line of code piece by piece. *Really* 
+learning the fundamentals now will save hours of debugging later.
+First, there are 2 interesting things to notice:
 
-We've passed in two arguments to `ggplot`. First, we tell `ggplot` what data we
-want to show on our figure, in this example the gapminder data we read in
-earlier. For the second argument,  we passed in the `aes` function, which
-tells `ggplot` how variables in the **data** map to *aesthetic* properties of
-the figure, in this case the **x** and **y** locations. Here we told `ggplot` we
-want to plot the "gdpPercap" column of the gapminder data frame on the x-axis, and
-the "lifeExp" column on the y-axis. Notice that we didn't need to explicitly
-pass `aes` these columns (e.g. `x = gapminder[, "gdpPercap"]`), this is because
-`ggplot` is smart enough to know to look in the **data** for that column!
+1. The axes on the plot are **gdpPerCap** and **lifeExp**
+2. They came from `aes(x = gdpPercap, y = lifeExp)`
 
-By itself, the call to `ggplot` isn't enough to draw a figure:
+In previous lessons, we learned to interact with dataframes using this 
+syntax: `gapminder$gdpPercap`. `ggplot` and other tidyverse packages modify 
+the usual rules of R evaluation and save us some typing.
 
-```{r}
+There are 2 more interesting things to notice:
+
+3. `mapping = aes(...)` sets up aesthetics, which will be explained shortly.
+4. `ggplot() + geom_point()` syntax is an example of the grammar of graphics.
+
+The syntax in item 4. is **e1 + e2** where **e1** is a ggplot object or theme, and 
+**e2** is a plot component. Plot components are the graphical layers, so there 
+can be multiple components on any plot.
+
+
+By itself, the call to `ggplot` isn't enough to draw a figure. Only the base
+shows up, which is more like a blank canvas:
+
+```{r lifeExp-vs-gdpPercap-scatter2, message=FALSE}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp))
+```
+
+If we return to the previous example, we can see a layer being added:
+```{r lifeExp-vs-gdpPercap-scatter3, message=FALSE}
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
+  geom_point()
 ```
 
 We need to tell `ggplot` how we want to visually represent the data, which we
@@ -82,10 +95,47 @@ do by adding a new **geom** layer. In our example, we used `geom_point`, which
 tells `ggplot` we want to visually represent the relationship between **x** and
 **y** as a scatterplot of points:
 
-```{r lifeExp-vs-gdpPercap-scatter2}
-ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
+
+Now we can do something more interesting:
+```{r lifeExp-vs-gdpPercap-scatter4, message=FALSE}
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp, color = continent)) +
   geom_point()
 ```
+
+Finally, we can talk about `aes`. `aes` is short for "aesthetics," which modify how the 
+plot looks and feels. In this case we told `ggplot` we
+want to plot the "gdpPercap" column of the gapminder data frame on the x-axis, and
+the "lifeExp" column on the y-axis, and color code by continent.
+
+There are many ways to configure aesthetics, and we'll see m ore throughout the hour.
+
+The important thing to know is there are 2 ways to use aesthetics.
+
+1. First way: **Mapping**
+  * This gives us insights about our data. The example above breaks points down by continent
+  * Mapping  configurations are "inherited" by components. We gave `ggplot` aesthetics, and `geom_point` inherited them.
+  
+2. Second way: **By Component**
+  * this applies settings to ALL items, not a subset.
+  
+Let's see an example: turn all the points blue:
+```{r lifeExp-vs-gdpPercap-scatterblue, message=FALSE}
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
+  geom_point(color="blue")
+```
+
+**All** components like `geom_point` have configurable aesthetics, for **all** items.
+This is why you don't need to type `aes` inside a component. Let's see what happens if
+you use `aes`:
+
+```{r lifeExp-vs-gdpPercap-scatterblue-bug, message=FALSE}
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
+  geom_point(aes(color="blue"))
+```
+
+Sometimes this is what you want, sometime's it's a  mistake. If it is a mistake,
+now you know how to debug it! The bug here is, "blue" is not a column inside 
+gapminder.
 
 > ## Challenge 1
 >
@@ -149,6 +199,8 @@ Instead of adding a `geom_point` layer, we've added a `geom_line` layer. We've
 added the **by** *aesthetic*, which tells `ggplot` to draw a line for each
 country.
 
+To restate what we've done, each line is a country, and each color is a continent.
+
 But what if we want to visualize both lines and points on the plot? We can
 add another layer to the plot:
 
@@ -157,18 +209,20 @@ ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country, color=cont
   geom_line() + geom_point()
 ```
 
-It's important to note that each layer is drawn on top of the previous layer. In
-this example, the points have been drawn *on top of* the lines. Here's a
-demonstration:
+Does the order matter in `geom_line` and `geom_point`? Order does matter, because 
+it indicates how  layers are organised. Since `geom_point` is **after**
+`geom_line()`, the points are drawn on **on top** of the lines.
+
+Let's illustrate the point about layer order:
 
 ```{r lifeExp-layer-example-1}
 ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country)) +
   geom_line(mapping = aes(color=continent)) + geom_point()
 ```
 
-In this example, the *aesthetic* mapping of **color** has been moved from the
-global plot options in `ggplot` to the `geom_line` layer so it no longer applies
-to the points. Now we can clearly see that the points are drawn on top of the
+
+Notice that we moved `aes(color=continent)` out of the base and into the 
+`geom_line` component. Now we can clearly see that the points are drawn on top of the
 lines.
 
 > ## Tip: Setting an aesthetic to a value instead of a mapping
@@ -199,7 +253,7 @@ lines.
 ggplot2 also makes it easy to overlay statistical models over the data. To
 demonstrate we'll go back to our first example:
 
-```{r lifeExp-vs-gdpPercap-scatter3, message=FALSE}
+```{r lifeExp-vs-gdpPercap-scatter5, message=FALSE}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ```
