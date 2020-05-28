@@ -89,6 +89,7 @@ HTML_DST = \
 lesson-md : ${RMD_DST}
 
 _episodes/%.md: _episodes_rmd/%.Rmd
+	mkdir -p _episodes/
 	@bin/knit_lessons.sh $< $@
 
 ## lesson-check     : validate lesson Markdown.
