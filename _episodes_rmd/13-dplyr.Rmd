@@ -169,7 +169,7 @@ altogether).
 gdp_bycontinents <- gapminder %>%
     group_by(continent) %>%
     summarize(mean_gdpPercap = mean(gdpPercap)) %>%
-    as.data.frame
+    as.data.frame()
 ```
 
 ![](../fig/13-dplyr-fig3.png)
@@ -224,7 +224,7 @@ The function `group_by()` allows us to group by multiple variables. Let's group 
 gdp_bycontinents_byyear <- gapminder %>%
     group_by(continent, year) %>%
     summarize(mean_gdpPercap = mean(gdpPercap)) %>%
-    as.data.frame
+    as.data.frame()
 ```
 
 That is already quite powerful, but it gets even better! You're not limited to defining 1 new variable in `summarize()`.
@@ -236,7 +236,7 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
               sd_gdpPercap = sd(gdpPercap),
               mean_pop = mean(pop),
               sd_pop = sd(pop)) %>%
-    as.data.frame
+    as.data.frame()
 ```
 
 ## count() and n()
@@ -290,7 +290,7 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
               sd_pop = sd(pop),
               mean_gdp_billion = mean(gdp_billion),
               sd_gdp_billion = sd(gdp_billion)) %>%
-    as.data.frame
+    as.data.frame()
 ```
 
 ## Connect mutate with logical filtering: ifelse
