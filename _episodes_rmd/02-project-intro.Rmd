@@ -133,7 +133,7 @@ project, and some of the analyses get shared between projects.
 
 ### Separate function definition and application
 
-One of the more effective ways to work with R is to start by writing the code you want to run directly in an .R script, and then running the selected lines (either using the keyboard shortcuts in RStudio or clicking the "Run" button) in the interactive R console.
+One of the more effective ways to work with R is to start by writing the code you want to run directly in a .R script, and then running the selected lines (either using the keyboard shortcuts in RStudio or clicking the "Run" button) in the interactive R console.
 
 When your project is in its early stages, the initial .R script file usually contains many lines
 of directly executed code. As it matures, reusable chunks get pulled into their
