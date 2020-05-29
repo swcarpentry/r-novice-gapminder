@@ -161,11 +161,15 @@ variable(s) by using functions that repeat for each of the continent-specific
 data frames. That is to say, using the `group_by()` function, we split our
 original dataframe into multiple pieces, then we can run functions
 (e.g. `mean()` or `sd()`) within `summarize()`.
+We also add a data.frame conversion at the end to enable an appropriate number 
+of digits (not always required, only when the decimal places are missing 
+altogether).
 
 ```{r}
 gdp_bycontinents <- gapminder %>%
     group_by(continent) %>%
-    summarize(mean_gdpPercap = mean(gdpPercap))
+    summarize(mean_gdpPercap = mean(gdpPercap)) %>%
+    as.data.frame
 ```
 
 ![](../fig/13-dplyr-fig3.png)
@@ -219,7 +223,8 @@ The function `group_by()` allows us to group by multiple variables. Let's group 
 ```{r}
 gdp_bycontinents_byyear <- gapminder %>%
     group_by(continent, year) %>%
-    summarize(mean_gdpPercap = mean(gdpPercap))
+    summarize(mean_gdpPercap = mean(gdpPercap)) %>%
+    as.data.frame
 ```
 
 That is already quite powerful, but it gets even better! You're not limited to defining 1 new variable in `summarize()`.
@@ -230,7 +235,8 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
     summarize(mean_gdpPercap = mean(gdpPercap),
               sd_gdpPercap = sd(gdpPercap),
               mean_pop = mean(pop),
-              sd_pop = sd(pop))
+              sd_pop = sd(pop)) %>%
+    as.data.frame
 ```
 
 ## count() and n()
@@ -283,7 +289,8 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
               mean_pop = mean(pop),
               sd_pop = sd(pop),
               mean_gdp_billion = mean(gdp_billion),
-              sd_gdp_billion = sd(gdp_billion))
+              sd_gdp_billion = sd(gdp_billion)) %>%
+    as.data.frame
 ```
 
 ## Connect mutate with logical filtering: ifelse
@@ -304,7 +311,8 @@ gdp_pop_bycontinents_byyear_above25 <- gapminder %>%
               mean_pop = mean(pop),
               sd_pop = sd(pop),
               mean_gdp_billion = mean(gdp_billion),
-              sd_gdp_billion = sd(gdp_billion))
+              sd_gdp_billion = sd(gdp_billion)) %>%
+    as.data.frame()
 
 ## updating only if certain condition is fullfilled
 # for life expectations above 40 years, the gpd to be expected in the future is scaled
@@ -312,7 +320,8 @@ gdp_future_bycontinents_byyear_high_lifeExp <- gapminder %>%
     mutate(gdp_futureExpectation = ifelse(lifeExp > 40, gdpPercap * 1.5, gdpPercap)) %>%
     group_by(continent, year) %>%
     summarize(mean_gdpPercap = mean(gdpPercap),
-              mean_gdpPercap_expected = mean(gdp_futureExpectation))
+              mean_gdpPercap_expected = mean(gdp_futureExpectation)) %>%
+    as.data.frame()
 ```
 
 ## Combining `dplyr` and `ggplot2`
