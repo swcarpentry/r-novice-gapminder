@@ -36,8 +36,8 @@ about working with data frames.
 ## Adding columns and rows in data frames
 
 We already learned that the columns of a data frame are vectors, so that our
-data are consistent in type throughout the columns. As such, if we want to add a
-new column, we can start by making a new vector:
+data are consistent in type throughout each of the columns. 
+As such, if we want to add a new column, we can start by making a new vector:
 
 ```{r, echo = FALSE}
 cats <- read.csv("data/feline-data.csv")
@@ -64,7 +64,8 @@ age <- c(2, 3)
 cbind(cats, age)
 ```
 
-Why didn't this work? Of course, R wants to see one element in our new column
+Why didn't this work? To keep the rectangular format, 
+R wants to see one element in our new column
 for every row in the table:
 
 ```{r}
@@ -83,35 +84,57 @@ Now how about adding rows? We already know that the rows of a
 data frame are lists:
 
 ```{r}
-newRow <- list("tortoiseshell", 3.3, TRUE, 9)
+newRow <- list("tortoiseshell", 3.3, 1, 9)
 cats <- rbind(cats, newRow)
 ```
 
-Looks like our attempt to use the `rbind()` function returns a warning.  Recall that, unlike errors, warnings do not necessarily stop a function from performing its intended action.  You can confirm this by taking a look at the `cats` data frame.
+We see that we have successfully added a row.
 
 ```{r}
 cats
 ```
 
-Notice that not only did we successfully add a new row, but there is `NA` in the column *coats* where we expected "tortoiseshell" to be.  Why did this happen?
+Let us change the data frame slightly, and again try to add a new row. 
+The change we will make is to turn the `coat` column into a _factor_ 
+rather than a character vector.
+
+```{r}
+cats$coat <- factor(cats$coat)
+```
+
+Next, we try to add another row to the new data frame.
+
+```{r}
+newRow <- list("white", 4.3, 1, 7)
+cats <- rbind(cats, newRow)
+```
+
+Now, our attempt to use the `rbind()` function returns a warning.  Recall that, unlike errors, warnings do not necessarily stop a function from performing its intended action.  You can confirm this by taking a look at the `cats` data frame.
+
+```{r}
+cats
+```
+
+Notice that not only did we successfully add a new row, but there is `NA` in the column *coats* where we expected "white" to be.  Why did this happen?
 
 ## Factors
 
-For an object containing the data type `factor`, each different value represents what is called a `level`. In our case, the `factor` "coat" has 3 levels: "black", "calico", and "tabby". R will only accept values that match one of the levels. If you add a new value, it will become `NA`.
+For an object containing the data type `factor`, each different value represents what is called a `level`. In our case, the `factor` "coat" has 4 levels: "black", "calico", "tabby", and "tortoiseshell". R will only accept values that match one of the levels. If you add a new value, it will become `NA`.
 
-The warning is telling us that we unsuccessfully added "tortoiseshell" to our
-*coat* factor, but 3.3 (a numeric), TRUE (a logical), and 9 (a numeric) were
+The warning is telling us that we unsuccessfully added "white" to our
+*coat* factor, but 4.3 (a numeric), 1 (an integer), and 7 (a numeric) were
 successfully added to *weight*, *likes_string*, and *age*, respectively, since
 those variables are not factors. To successfully add a cat with a
-"tortoiseshell" *coat*, add "tortoiseshell" as a possible *level* of the factor:
+"white" *coat*, add "white" as a possible *level* of the factor:
 
 ```{r}
 levels(cats$coat)
-levels(cats$coat) <- c(levels(cats$coat), "tortoiseshell")
-cats <- rbind(cats, list("tortoiseshell", 3.3, TRUE, 9))
+levels(cats$coat) <- c(levels(cats$coat), "white")
+cats <- rbind(cats, list("white", 4.3, 1, 7))
 ```
 
-Alternatively, we can change a factor into a character vector; we lose the
+Alternatively, we can keep the column as a character vector instead of 
+turning it into a factor; we lose the
 handy categories of the factor, but we can subsequently add any word we want to the
 column without babysitting the factor levels:
 
@@ -130,14 +153,14 @@ str(cats)
 > > ## Solution to Challenge 1
 > > 1. `human_age <- cats$age * 7`
 > > 2. `human_age <- factor(human_age)`. `as.factor(human_age)` works just as well.
-> > 3. `as.numeric(human_age)` yields `1 2 3 4 4` because factors are stored as integers (here, 1:4), each of which is associated with a label (here, 28, 35, 56, and 63). Converting the factor to a numeric vector gives us the underlying integers, not the labels. If we want the original numbers, we need to convert `human_age` to a character vector (using `as.character(human_age)`) and then to a numeric vector (why does this work?). This comes up in real life when we accidentally include a character somewhere in a column of a .csv file supposed to only contain numbers, and forget to set `stringsAsFactors=FALSE` when we read in the data.
+> > 3. `as.numeric(human_age)` yields `1 2 3 5 4 4` because factors are stored as integers (here, 1:5), each of which is associated with a label (here, 14, 21, 35, 49, and 63). Converting the factor to a numeric vector gives us the underlying integers, not the labels. If we want the original numbers, we need to convert `human_age` to a character vector (using `as.character(human_age)`) and then to a numeric vector (why does this work?).
 > {: .solution}
 {: .challenge}
 
 ## Removing rows
 
 We now know how to add rows and columns to our data frame in R—but in our
-first attempt to add a "tortoiseshell" cat to the data frame we have accidentally
+first attempt to add a "white" cat to the data frame we have accidentally
 added a garbage row:
 
 ```{r}
@@ -147,13 +170,13 @@ cats
 We can ask for a data frame minus this offending row:
 
 ```{r}
-cats[-4, ]
+cats[-5, ]
 ```
 
-Notice the comma with nothing after it to indicate that we want to drop the entire fourth row.
+Notice the comma with nothing after it to indicate that we want to drop the entire fifth row.
 
-Note: we could also remove both new rows at once by putting the row numbers
-inside of a vector: `cats[c(-4,-5), ]`
+Note: we could also remove all new rows at once by putting the row numbers
+inside of a vector: `cats[c(-4,-5,-6), ]`
 
 Alternatively, we can drop all rows with `NA` values:
 
@@ -269,6 +292,20 @@ out what the data looks like with `str`:
 str(gapminder)
 ```
 
+Note that columns containing character values are read as characters. 
+This is the default behaviour in R version 4.0.0 and newer. In earlier versions, 
+reading text files would automatically convert character columns to 
+factors. This illustrates that it is important to verify that all data 
+is indeed read as we intend it to! If we would like character columns 
+to be converted to factors with R version 4.0.0 or newer, we need to 
+specify that explicitly when reading the csv file:
+
+```{r}
+gapminder <- read.csv("data/gapminder_data.csv", stringsAsFactors = TRUE)
+str(gapminder)
+```
+
+Now, the two character columns are indeed represented as factors. 
 An additional method for examining the structure of gapminder is to use the `summary` function. This function can be used on various objects in R. For data frames, `summary` yields a numeric, tabular, or descriptive summary of each column. Factor columns are summarized by the number of items in each level, numeric or integer columns by the descriptive statistics (quartiles and mean), and character columns by its length, class, and mode.  
 
 ```{r}
