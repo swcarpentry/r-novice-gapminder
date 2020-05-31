@@ -115,7 +115,7 @@ Now, our attempt to use the `rbind()` function returns a warning.  Recall that, 
 cats
 ```
 
-Notice that not only did we successfully add a new row, but there is `NA` in the column *coats* where we expected "white" to be.  Why did this happen?
+Notice that although we did successfully add a new row, there is `NA` in the column *coat* where we expected "white" to be.  Why did this happen?
 
 ## Factors
 
