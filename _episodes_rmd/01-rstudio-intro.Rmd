@@ -89,7 +89,7 @@ There are two main ways one can work within RStudio.
 a .R file to run later.
    *  This works well when doing small tests and initially starting off.
    *  It quickly becomes laborious
-2. Start writing in an .R file and use RStudio's short cut keys for the Run command
+2. Start writing in a .R file and use RStudio's short cut keys for the Run command
 to push the current line, selected lines or modified lines to the
 interactive R console.
    * This is a great way to start; all your code is saved for later
@@ -255,10 +255,12 @@ look up functions, their arguments, and the values that they
 take.
 
 Typing a `?` before the name of a command will open the help page
-for that command. As well as providing a detailed description of
-the command and how it works, scrolling to the bottom of the
-help page will usually show a collection of code examples which
-illustrate command usage. We'll go through an example later.
+for that command. When using RStudio, this will open the 'Help' pane;
+if using R in the terminal, the help page will open in your browser.
+The help page will include a detailed description of the command and 
+how it works. Scrolling to the bottom of the help page will usually 
+show a collection of code examples which illustrate command usage. 
+We'll go through an example later.
 
 ## Comparing things
 
