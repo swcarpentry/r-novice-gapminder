@@ -59,19 +59,18 @@ Throughout this lesson, we're going to teach you some of the fundamentals of
 the R language as well as some best practices for organizing code for
 scientific projects that will make your life easier.
 
-We'll be using RStudio: a free, open source R integrated development
-environment. It provides a built in editor, works on all platforms (including
+We'll be using RStudio: a free, open source R Integrated Development
+Environment (IDE). It provides a built in editor, works on all platforms (including
 on servers) and provides many advantages such as integration with version
 control and project management.
-
 
 
 **Basic layout**
 
 When you first open RStudio, you will be greeted by three panels:
 
-  * The interactive R console (entire left)
-  * Environment/History (tabbed in upper right)
+  * The interactive R console/Terminal (entire left)
+  * Environment/History/Connections (tabbed in upper right)
   * Files/Plots/Packages/Help/Viewer (tabbed in lower right)
 
 ![RStudio layout](../fig/01-rstudio.png)
@@ -83,7 +82,7 @@ in the top left.
 
 
 ## Work flow within RStudio
-There are two main ways one can work within RStudio.
+There are two main ways one can work within RStudio:
 
 1. Test and play within the interactive R console then copy code into
 a .R file to run later.
@@ -130,7 +129,7 @@ returns a result.
 
 ## Using R as a calculator
 
-The simplest thing you could do with R is do arithmetic:
+The simplest thing you could do with R is to do arithmetic:
 
 ```{r}
 1 + 100
@@ -156,13 +155,13 @@ Any time you hit return and the R session shows a "+" instead of a ">", it
 means it's waiting for you to complete the command. If you want to cancel
 a command you can hit "Esc" and RStudio will give you back the ">" prompt.
 
-> ## Tip: Cancelling commands
+> ## Tip: Canceling commands
 >
 > If you're using R from the command line instead of from within RStudio,
 > you need to use <kbd>Ctrl</kbd>+<kbd>C</kbd> instead of <kbd>Esc</kbd>
 > to cancel the command. This applies to Mac users as well!
 >
-> Cancelling a command isn't only useful for killing incomplete commands:
+> Canceling a command isn't only useful for killing incomplete commands:
 > you can also use it to tell R to stop running code (for example if it's
 > taking much longer than you expect), or to get rid of the code you're
 > currently writing.
@@ -262,7 +261,7 @@ illustrate command usage. We'll go through an example later.
 
 ## Comparing things
 
-We can also do comparison in R:
+We can also do comparisons in R:
 
 ```{r}
 1 == 1  # equality (note two equals signs, read as "is equal to")
@@ -326,7 +325,7 @@ x
 More precisely, the stored value is a *decimal approximation* of
 this fraction called a [floating point number](http://en.wikipedia.org/wiki/Floating_point).
 
-Look for the `Environment` tab in one of the panes of RStudio, and you will see that `x` and its value
+Look for the `Environment` tab in the top right panel of RStudio, and you will see that `x` and its value
 have appeared. Our variable `x` can be used in place of a number in any calculation that expects a number:
 
 ```{r}
@@ -351,9 +350,10 @@ y <- x * 2
 The right hand side of the assignment can be any valid R expression.
 The right hand side is *fully evaluated* before the assignment occurs.
 
-Variable names can contain letters, numbers, underscores and periods. They
-cannot start with a number nor contain spaces at all. Different people use
-different conventions for long variable names, these include
+Variable names can contain letters, numbers, underscores and periods but no spaces. They
+must start with a letter or a period followed by a letter (they cannot start with a number nor an underscore). 
+Variables begining with a period are hidden variables. 
+Different people use different conventions for long variable names, these include
 
   * periods.between.words
   * underscores\_between_words
@@ -521,6 +521,10 @@ network). R and RStudio have functionality for managing packages:
 * You can update installed packages by typing `update.packages()`
 * You can remove a package with `remove.packages("packagename")`
 * You can make a package available for use with `library(packagename)`
+
+Packages can also be viewed, loaded, and detached in the Packages tab of the lower right panel in RStudio. Clicking on this tab will displas all of installed packages with a checkbox next to them. If the box next to a package name is checked, the package is loaded and if it is empty, the package is not loaded. Click an empty box to load that package and click a checked box to detach that package. 
+
+Packages can be installed and updated from the Package tab with the Install and Update buttons at the top of the tab. 
 
 > ## Challenge 2
 >
