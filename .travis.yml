@@ -36,6 +36,10 @@ dist: trusty
 cache: packages
 latex: false
 
+# to keep using 3.6 (for now)
+r:
+  - oldrel
+
 #env
 env:
   global:
