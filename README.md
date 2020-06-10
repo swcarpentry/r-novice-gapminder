@@ -1,5 +1,6 @@
-[![Create a Slack Account with us](https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg)](https://swc-slack-invite.herokuapp.com/) 
- [![Slack Status](https://img.shields.io/badge/Slack_Channel-swc--r--gapminder-E01563.svg)](https://swcarpentry.slack.com/messages/C9Y0M3YKG) 
+[![Create a Slack Account with us](https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg)](https://swc-slack-invite.herokuapp.com/)
+[![Build Status](https://travis-ci.org/swcarpentry/r-novice-gapminder.svg?branch=master)](https://travis-ci.org/swcarpentry/r-novice-gapminder)
+ [![Slack Status](https://img.shields.io/badge/Slack_Channel-swc--r--gapminder-E01563.svg)](https://swcarpentry.slack.com/messages/C9Y0M3YKG)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/swcarpentry/r-novice-gapminder/binder?urlpath=rstudio)
 
 R for Reproducible Scientific Analysis
@@ -26,8 +27,8 @@ language R, and not on statistical analysis.
 The lesson contains more material than can be taught in a day.  The [instructor notes page]({{ page.root }}/guide) has some suggested lesson plans suitable for a one or half day workshop.
 
 A variety of third party packages are used throughout this workshop. These
-are not necessarily the best, nor are they comprehensive, but they are 
-packages we find useful, and have been chosen primarily for their 
+are not necessarily the best, nor are they comprehensive, but they are
+packages we find useful, and have been chosen primarily for their
 usability.
 
 Maintainers:
