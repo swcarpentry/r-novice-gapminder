@@ -9,3 +9,5 @@ _site
 .Rhistory
 .RData
 
+_episodes/
+/Gemfile.lock
