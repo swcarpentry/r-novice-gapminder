@@ -58,9 +58,17 @@ for (i in 1:4) {
 }
 output_vector
 
+
+```
+
+Compare this to the output using vectorised operations. 
+
+```{r}
 sum_xy <- x + y
 sum_xy
 ```
+
+
 
 > ## Challenge 1
 >
