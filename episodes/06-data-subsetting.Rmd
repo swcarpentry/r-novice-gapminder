@@ -204,7 +204,7 @@ This is usually a much more reliable way to subset objects: the
 position of various elements can often change when chaining together
 subsetting operations, but the names will always remain the same!
 
-## Subsetting through other logical operations
+## Subsetting through other logical operations <a name="logical-operations"></a>
 
 We can also use any logical vector to subset:
 

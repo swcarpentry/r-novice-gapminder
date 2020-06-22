@@ -184,6 +184,8 @@ drop <- names(cats) %in% c("age")
 cats[,!drop]
 ```
 
+We will cover subsetting with logical operators like `%in%` in more detail in the next episode. See the section [Subsetting through other logical operations](../06-data-subsetting/#logical-operations)
+
 ## Appending to a data frame
 
 The key to remember when adding data to a data frame is that *columns are
