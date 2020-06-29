@@ -351,7 +351,7 @@ head(gapminder)
 > > ~~~
 > > {: .r}
 > >
-> > What about a few arbitrary rows just for sanity (or insanity depending on your view)?
+> > What about a few arbitrary rows just in case something is odd in the middle?
 > > ## Tip: There are several ways to achieve this.
 > > The solution here presents one form of using nested functions, i.e. a function passed as an argument to another function. This might sound like a new concept, but you are already using it!
 > > Remember my_dataframe[rows, cols] will print to screen your data frame with the number of rows and columns you asked for (although you might have asked for a range or named columns for example). How would you get the last row if you don't know how many rows your data frame has? R has a function for this. What about getting a (pseudorandom) sample? R also has a function for this.
