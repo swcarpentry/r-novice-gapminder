@@ -226,10 +226,10 @@ behaviour of R).
 
 ## [Dataframe manipulation with tidyr]({{ page.root }}/14-tidyr/)
 - `library(tidyr)`
-- '?gather' convert data from *wide* to *long* format.
-- '?spread' convert data from *long* to *wide* format.
-- '?separate' split a single value into multiple values.
-- '?unite' merge multiple values into a single value.
+- `?pivot_longer` convert data from *wide* to *long* format.
+- `?pivot_wider` convert data from *long* to *wide* format.
+- `?separate` split a single value into multiple values.
+- `?unite` merge multiple values into a single value.
 
 ## [Producing reports with knitr]({{ page.root }}/15-knitr-markdown/)
 - Value of reproducible reports
