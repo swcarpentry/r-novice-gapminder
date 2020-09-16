@@ -1,13 +1,13 @@
 source("build_lesson.R")
 
 get_stage("before_install") %>%
-  add_code_step(install.packages("readr")) %>%
+  add_code_step(install.packages("readr", lib = Sys.getenv('R_LIBS_USER'))) %>%
   add_code_step(update.packages(ask = FALSE, lib.loc = Sys.getenv('R_LIBS_USER')))
 
 get_stage("install") %>%
   add_code_step(remotes::install_github("hadley/requirements")) %>%
-  add_code_step(install.packages("git2r", lib.loc = Sys.getenv('R_LIBS_USER'))) %>%
-  add_code_step(install.packages(requirements:::req_dir("_episodes_rmd")))
+  add_code_step(install.packages("git2r", lib = Sys.getenv('R_LIBS_USER'))) %>%
+  add_code_step(install.packages(requirements:::req_dir("_episodes_rmd"), lib = Sys.getenv('R_LIBS_USER')))
 
 get_stage("deploy") %>%
   add_step(build_lesson())
