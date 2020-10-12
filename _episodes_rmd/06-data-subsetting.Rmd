@@ -547,7 +547,7 @@ Using `[` will always return a list. If you want to *subset* a list, but not
 *extract* an element, then you will likely use `[`.
 
 ```{r}
-xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
+xlist <- list(a = "Software Carpentry", b = 1:10, data = head(mtcars))
 xlist[1]
 ```
 
@@ -600,7 +600,7 @@ xlist$data
 > Given the following list:
 >
 > ```{r, eval=FALSE}
-> xlist <- list(a = "Software Carpentry", b = 1:10, data = head(iris))
+> xlist <- list(a = "Software Carpentry", b = 1:10, data = head(mtcars))
 > ```
 >
 > Using your knowledge of both list and vector subsetting, extract the number 2 from xlist.
