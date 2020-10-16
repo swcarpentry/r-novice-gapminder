@@ -391,6 +391,10 @@ str(cats$coat)
 > ```
 {: .callout}
 
+```{r, include=FALSE}
+# reverting cats back to original version
+cats <- cats_orig
+```
 
 ## Factors
 
