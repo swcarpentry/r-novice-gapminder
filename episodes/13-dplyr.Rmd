@@ -98,6 +98,18 @@ gets that from the previous pipe. **Fun Fact**: There is a good chance you have
 encountered pipes before in the shell. In R, a pipe symbol is `%>%` while in the
 shell it is `|` but the concept is the same!
 
+> ## Tip: Renaming dataframe columns in dplyr
+>
+> In Chapter 4 we covered how you can rename columns with base R by assigning a value to the output of the `names` function. Just like select, this is a bit cumbersome, but thankfully dplyr has a `rename` function. 
+>
+> Within a pipeline, it's used as `rename(new_name = old_name)`. For example we may want to rename the gdpPercap column name from our select statement above. 
+> ```{r}
+> tidy_gdp <- year_country_gdp %>% rename(gdp_per_capita = gdpPercap)
+>
+> head(tidy_gdp)
+> ```
+{: .callout}
+
 ## Using filter()
 
 If we now wanted to move forward with the above, but only with European
