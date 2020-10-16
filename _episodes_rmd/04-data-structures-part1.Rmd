@@ -376,6 +376,22 @@ These make sense. But what about
 str(cats$coat)
 ```
 
+> ## Tip: Renaming dataframe columns
+>
+> Dataframes have column names we can access them like we did with vectors
+>
+> ```{r}
+> names(cats)
+> ```
+>
+> If you want to rename the second column you can assign the new name to the second element of names
+> ```{r}
+> names(cats)[2] <- "weight_kg"
+> cats
+> ```
+{: .callout}
+
+
 ## Factors
 
 Another important data structure is called a *factor*. Factors usually look like
