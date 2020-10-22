@@ -1,7 +1,5 @@
 ---
-layout: page
 title: "Instructor Notes"
-permalink: /guide/
 ---
 
 ## Timing
@@ -15,7 +13,7 @@ not).
 
 The lesson contains much more material than can be taught in a day.
 Instructors will need to pick an appropriate subset of episodes to use
-in a standard one day course. 
+in a standard one day course.
 
 Some suggested paths through the material are:
 
