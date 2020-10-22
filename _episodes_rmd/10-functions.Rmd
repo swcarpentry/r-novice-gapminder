@@ -68,17 +68,17 @@ fahr_to_kelvin <- function(temp) {
 
 We define `fahr_to_kelvin()` by assigning it to the output of `function`. The
 list of argument names are contained within parentheses.   Next, the
-[body]({{ page.root }}/reference/#function-body) of the function--the
+[body]({{ page.root }}/reference.html#function-body) of the function--the
 statements that are executed when it runs--is contained within curly braces
 (`{}`). The statements in the body are indented by two spaces. This makes the
 code easier to read but does not affect how the code operates.
 
-It is useful to think of creating functions like writing a cookbook. First you define the "ingredients" that your function needs. In this case, we only need one ingredient to use our function: "temp". After we list our ingredients, we then say what we will do with them, in this case, we are taking our ingredient and applying a set of mathematical operators to it. 
+It is useful to think of creating functions like writing a cookbook. First you define the "ingredients" that your function needs. In this case, we only need one ingredient to use our function: "temp". After we list our ingredients, we then say what we will do with them, in this case, we are taking our ingredient and applying a set of mathematical operators to it.
 
 When we call the function, the values we pass to it as arguments are assigned to
 those variables so that we can use them inside the function. Inside the
 function, we use a [return
-statement]({{ page.root }}/reference/#return-statement) to send a result back to
+statement]({{ page.root }}/reference.html#return-statement) to send a result back to
 whoever asked for it.
 
 > ## Tip
@@ -284,7 +284,7 @@ calcGDP <- function(dat) {
 ```
 
 We define `calcGDP()` by assigning it to the output of `function`. The list of
-argument names are contained within parentheses. Next, the body of the function 
+argument names are contained within parentheses. Next, the body of the function
 -- the statements executed when you call the function -- is contained within
 curly braces (`{}`).
 
@@ -333,8 +333,8 @@ source("functions/functions-lesson.R")
 
 Ok, so there's a lot going on in this function now. In plain English, the
 function now subsets the provided data by year if the year argument isn't empty,
-then subsets the result by country if the country argument isn't empty. Then it 
-calculates the GDP for whatever subset emerges from the previous two steps. The 
+then subsets the result by country if the country argument isn't empty. Then it
+calculates the GDP for whatever subset emerges from the previous two steps. The
 function then adds the GDP as a new column to the subsetted data and returns
 this as the final result. You can see that the output is much more informative
 than a vector of numbers.
@@ -378,7 +378,7 @@ take on those values unless the user specifies otherwise.
 ```
 
 Here, we check whether each additional argument is set to `null`, and whenever
-they're not `null` overwrite the dataset stored in `dat` with a subset given by 
+they're not `null` overwrite the dataset stored in `dat` with a subset given by
 the non-`null` argument.
 
 Building these conditionals into the function makes it more flexible for later.
@@ -423,7 +423,7 @@ arguments.
 
 Finally, we calculated the GDP on our new subset, and created a new data frame
 with that column added. This means when we call the function later we can see
-the context for the returned GDP values, which is much better than in our first 
+the context for the returned GDP values, which is much better than in our first
 attempt where we got a vector of numbers.
 
 > ## Challenge 4
@@ -527,4 +527,3 @@ attempt where we got a vector of numbers.
 
 [roxygen2]: http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
 [testthat]: http://r-pkgs.had.co.nz/tests.html
-
