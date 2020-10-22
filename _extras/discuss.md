@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Discussion
-permalink: /discuss/
 ---
 Please see [our other R lesson][r-gap] for a different presentation of these concepts.
 
