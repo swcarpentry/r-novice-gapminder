@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Setup
-root: .
 ---
 
 This lesson assumes you have R and RStudio installed on your computer.
