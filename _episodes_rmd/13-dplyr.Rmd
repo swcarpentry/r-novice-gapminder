@@ -100,9 +100,11 @@ shell it is `|` but the concept is the same!
 
 > ## Tip: Renaming dataframe columns in dplyr
 >
-> In Chapter 4 we covered how you can rename columns with base R by assigning a value to the output of the `names` function. Just like select, this is a bit cumbersome, but thankfully dplyr has a `rename` function. 
+> In Chapter 4 we covered how you can rename columns with base R by assigning a value to the output of the `names()` function.
+> Just like select, this is a bit cumbersome, but thankfully dplyr has a `rename` function.
 >
-> Within a pipeline, it's used as `rename(new_name = old_name)`. For example we may want to rename the gdpPercap column name from our select statement above. 
+> Within a pipeline, the syntax is `rename(new_name = old_name)`.
+> For example, we may want to rename the gdpPercap column name from our `select()` statement above.
 > ```{r}
 > tidy_gdp <- year_country_gdp %>% rename(gdp_per_capita = gdpPercap)
 >
