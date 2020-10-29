@@ -155,7 +155,7 @@ singular (of length 1).
 
 > ## Tip: Built in `ifelse()` function  
 > 
-> `R` accepts both `if()` and `ifelse()` statements structured as outlined above, 
+> `R` accepts both `if()` and `else if()` statements structured as outlined above, 
 > but also statements using `R`'s built-in `ifelse()` function. This 
 > function accepts both singular and vector inputs and is structured as 
 > follows: 
