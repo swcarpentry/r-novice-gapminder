@@ -75,7 +75,7 @@ our dataframe we could use the `select()` function. This will keep only the
 variables you select.
 
 ```{r}
-year_country_gdp <- select(gapminder,year,country,gdpPercap)
+year_country_gdp <- select(gapminder, year, country, gdpPercap)
 ```
 
 ![](../fig/13-dplyr-fig1.png)
