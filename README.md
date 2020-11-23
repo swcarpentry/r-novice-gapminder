@@ -1,5 +1,5 @@
 [![Create a Slack Account with us](https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg)](https://swc-slack-invite.herokuapp.com/)
-[![Build Status](https://travis-ci.org/swcarpentry/r-novice-gapminder.svg?branch=master)](https://travis-ci.org/swcarpentry/r-novice-gapminder)
+![Build and Deploy Website](https://github.com/swcarpentry/r-novice-gapminder/workflows/Build%20and%20Deploy%20Website/badge.svg)
  [![Slack Status](https://img.shields.io/badge/Slack_Channel-swc--r--gapminder-E01563.svg)](https://swcarpentry.slack.com/messages/C9Y0M3YKG)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/swcarpentry/r-novice-gapminder/binder?urlpath=rstudio)
 
