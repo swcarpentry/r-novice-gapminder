@@ -189,6 +189,14 @@ x
 > > ~~~
 > > {: .language-r}
 > >
+> > We can also use the `%in%` operator, which we learned about earlier, to search through each element in `gapminder$year` and print a message if any equal `2002`:
+> > 
+> > ~~~
+> > if(2002 %in% gapminder$year) {
+> >    print("Record(s) for the year 2002 found.")
+> > }
+> > ~~~
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
