@@ -1,16 +1,16 @@
 ---
-title: Dataframe Manipulation with dplyr
+title: Data frame Manipulation with dplyr
 teaching: 40
 exercises: 15
 questions:
-- "How can I manipulate dataframes without repeating myself?"
+- "How can I manipulate data frames without repeating myself?"
 objectives:
-- " To be able to use the six main dataframe manipulation 'verbs' with pipes in  `dplyr`."
+- " To be able to use the six main data frame manipulation 'verbs' with pipes in  `dplyr`."
 - " To understand how `group_by()` and `summarize()` can be combined to summarize datasets."
 - " Be able to analyze a subset of data using logical filtering."
 keypoints:
-- "Use the `dplyr` package to manipulate dataframes."
-- "Use `select()` to choose variables from a dataframe."
+- "Use the `dplyr` package to manipulate data frames."
+- "Use `select()` to choose variables from a data frame."
 - "Use `filter()` to choose data based on values."
 - "Use `group_by()` and `summarize()` to work with subsets of data."
 - "Use `mutate()` to create new variables."
@@ -24,7 +24,7 @@ knitr_fig_path("13-")
 gapminder <- read.csv("data/gapminder_data.csv", header=TRUE)
 ```
 
-Manipulation of dataframes means many things to many researchers, we often
+Manipulation of data frames means many things to many researchers, we often
 select certain observations (rows) or variables (columns), we often group the
 data by a certain variable(s), or we even calculate summary statistics. We can
 do these operations using the normal base R operations:
@@ -42,7 +42,7 @@ nasty bugs.
 ## The `dplyr` package
 
 Luckily, the [`dplyr`](https://cran.r-project.org/package=dplyr)
-package provides a number of very useful functions for manipulating dataframes
+package provides a number of very useful functions for manipulating data frames
 in a way that will reduce the above repetition, reduce the probability of making
 errors, and probably even save you some typing. As an added bonus, you might
 even find the `dplyr` grammar easier to read.
@@ -71,7 +71,7 @@ library("dplyr")
 ## Using select()
 
 If, for example, we wanted to move forward with only a few of the variables in
-our dataframe we could use the `select()` function. This will keep only the
+our data frame we could use the `select()` function. This will keep only the
 variables you select.
 
 ```{r}
@@ -91,14 +91,14 @@ year_country_gdp <- gapminder %>% select(year, country, gdpPercap)
 ```
 
 To help you understand why we wrote that in that way, let's walk through it step
-by step. First we summon the gapminder dataframe and pass it on, using the pipe
+by step. First we summon the gapminder data frame and pass it on, using the pipe
 symbol `%>%`, to the next step, which is the `select()` function. In this case
 we don't specify which data object we use in the `select()` function since in
 gets that from the previous pipe. **Fun Fact**: There is a good chance you have
 encountered pipes before in the shell. In R, a pipe symbol is `%>%` while in the
 shell it is `|` but the concept is the same!
 
-> ## Tip: Renaming dataframe columns in dplyr
+> ## Tip: Renaming data frame columns in dplyr
 >
 > In Chapter 4 we covered how you can rename columns with base R by assigning a value to the output of the `names()` function.
 > Just like select, this is a bit cumbersome, but thankfully dplyr has a `rename()` function.
@@ -126,8 +126,8 @@ year_country_gdp_euro <- gapminder %>%
 > ## Challenge 1
 >
 > Write a single command (which can span multiple lines and includes pipes) that
-> will produce a dataframe that has the African values for `lifeExp`, `country`
-> and `year`, but not for other Continents.  How many rows does your dataframe
+> will produce a data frame that has the African values for `lifeExp`, `country`
+> and `year`, but not for other Continents.  How many rows does your data frame
 > have and why?
 >
 > > ## Solution to Challenge 1
@@ -139,8 +139,8 @@ year_country_gdp_euro <- gapminder %>%
 > {: .solution}
 {: .challenge}
 
-As with last time, first we pass the gapminder dataframe to the `filter()`
-function, then we pass the filtered version of the gapminder dataframe to the
+As with last time, first we pass the gapminder data frame to the `filter()`
+function, then we pass the filtered version of the gapminder data frame to the
 `select()` function. **Note:** The order of operations is very important in this
 case. If we used 'select' first, filter would not be able to find the variable
 continent since we would have removed it in the previous step.
@@ -159,7 +159,7 @@ str(gapminder)
 
 str(gapminder %>% group_by(continent))
 ```
-You will notice that the structure of the dataframe where we used `group_by()`
+You will notice that the structure of the data frame where we used `group_by()`
 (`grouped_df`) is not the same as the original `gapminder` (`data.frame`). A
 `grouped_df` can be thought of as a `list` where each item in the `list`is a
 `data.frame` which contains only the rows that correspond to the a particular
@@ -173,7 +173,7 @@ The above was a bit on the uneventful side but `group_by()` is much more
 exciting in conjunction with `summarize()`. This will allow us to create new
 variable(s) by using functions that repeat for each of the continent-specific
 data frames. That is to say, using the `group_by()` function, we split our
-original dataframe into multiple pieces, then we can run functions
+original data frame into multiple pieces, then we can run functions
 (e.g. `mean()` or `sd()`) within `summarize()`.
 
 ```{r}

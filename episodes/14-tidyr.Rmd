@@ -1,14 +1,14 @@
 ---
-title: Dataframe Manipulation with tidyr
+title: Data frame Manipulation with tidyr
 teaching: 30
 exercises: 15
 questions:
-- "How can I change the layout of a dataframe?"
+- "How can I change the layout of a data frame?"
 objectives:
-- "To understand the concepts of 'longer' and 'wider' dataframe formats and be able
+- "To understand the concepts of 'longer' and 'wider' data frame formats and be able
 to convert between them with `tidyr`."
 keypoints:
-- "Use the `tidyr` package to change the layout of dataframes."
+- "Use the `tidyr` package to change the layout of data frames."
 - "Use `pivot_longer()` to go from wide to longer layout."
 - "Use `pivot_wider()` to go from long to wider layout."
 source: Rmd
@@ -39,7 +39,7 @@ gapminder <- read.csv("data/gapminder_data.csv", header = TRUE, stringsAsFactors
 gap_wide <- read.csv("data/gapminder_wide.csv", header = TRUE, stringsAsFactors = FALSE)
 ```
 
-Researchers often want to reshape their dataframes from 'wide' to 'longer'
+Researchers often want to reshape their data frames from 'wide' to 'longer'
 layouts, or vice-versa. The 'long' layout or format is where:
 
  - each column is a variable
@@ -57,9 +57,9 @@ efficiently transform your data shape regardless of original format.
 
 ![](../fig/14-tidyr-fig1.png)
 
-Long and wide dataframe layouts mainly affect readability. For humans, the wide format is often more intuitive since we can often see more of the data on the screen due
+Long and wide data frame layouts mainly affect readability. For humans, the wide format is often more intuitive since we can often see more of the data on the screen due
 to its shape. However, the long format is more machine readable and is closer
-to the formatting of databases. The ID variables in our dataframes are similar to
+to the formatting of databases. The ID variables in our data frames are similar to
 the fields in a database and observed variables are like the database values.
  
 ## Getting started
@@ -79,7 +79,7 @@ library("tidyr")
 library("dplyr")
 ```
 
-First, lets look at the structure of our original gapminder dataframe:
+First, lets look at the structure of our original gapminder data frame:
 
 ```{r}
 str(gapminder)
@@ -105,7 +105,7 @@ have 3 "ID variables" (`continent`, `country`, `year`) and 3 "Observation
 variables" (`pop`,`lifeExp`,`gdpPercap`). This intermediate format can be
 preferred despite not having ALL observations in 1 column given that all 3
 observation variables have different units. There are few operations that would
-need us to make this dataframe any longer (i.e. 4 ID variables and 1
+need us to make this data frame any longer (i.e. 4 ID variables and 1
 Observation variable).
 
 While using many of the functions in R, which are often vector based, you
@@ -114,7 +114,7 @@ units. For example, using the purely long format, a single mean for all of the
 values of population, life expectancy, and GDP would not be meaningful since it
 would return the mean of values with 3 incompatible units. The solution is that
 we first manipulate the data either by grouping (see the lesson on `dplyr`), or
-we change the structure of the dataframe.  **Note:** Some plotting functions in
+we change the structure of the data frame.  **Note:** Some plotting functions in
 R actually work better in the wide format data.
 
 ## From wide to long format with pivot_longer()
@@ -138,7 +138,7 @@ str(gap_wide)
 ![](../fig/14-tidyr-fig2.png)
 
 
-To change this very wide dataframe layout back to our nice, intermediate (or longer) layout, we will use one of the two available `pivot`  functions from the `tidyr` package. To convert from wide to a longer format, we will use the `pivot_longer()` function. `pivot_longer()` makes datasets longer by increasing the number of rows and decreasing the number of columns, or 'lengthening' your observation variables into a single variable.
+To change this very wide data frame layout back to our nice, intermediate (or longer) layout, we will use one of the two available `pivot`  functions from the `tidyr` package. To convert from wide to a longer format, we will use the `pivot_longer()` function. `pivot_longer()` makes datasets longer by increasing the number of rows and decreasing the number of columns, or 'lengthening' your observation variables into a single variable.
 
 
 ![](../fig/14-tidyr-fig3.png)
@@ -180,7 +180,7 @@ gap_long <- gap_wide %>%
 str(gap_long)
 ```
 
-That may seem trivial with this particular dataframe, but sometimes you have 1
+That may seem trivial with this particular data frame, but sometimes you have 1
 ID variable and 40 observation variables with irregular variable names. The
 flexibility is a huge time saver!
 
@@ -215,7 +215,7 @@ It is always good to check work. So, let's use the second `pivot` function, `piv
 The `pivot_wider()` function takes `names_from` and `values_from` arguments.
 
 To `names_from` we supply the column name whose contents will be pivoted into new
-output columns in the widened dataframe. The corresponding values will be added
+output columns in the widened data frame. The corresponding values will be added
 from the column named in the `values_from` argument.
 
 ```{r}
@@ -227,7 +227,7 @@ names(gap_normal)
 names(gapminder)
 ```
 
-Now we've got an intermediate dataframe `gap_normal` with the same dimensions as
+Now we've got an intermediate data frame `gap_normal` with the same dimensions as
 the original `gapminder`, but the order of the variables is different. Let's fix
 that before checking if they are `all.equal()`.
 
@@ -281,7 +281,7 @@ str(gap_wide_new)
 > ## Challenge 3
 >
 > Take this 1 step further and create a `gap_ludicrously_wide` format data by pivoting over countries, year and the 3 metrics?
->**Hint** this new dataframe should only have 5 rows.
+>**Hint** this new data frame should only have 5 rows.
 >
 > > ## Solution to Challenge 3
 > >```{r}
@@ -292,7 +292,7 @@ str(gap_wide_new)
 > {: .solution}
 {: .challenge}
 
-Now we have a great 'wide' format dataframe, but the `ID_var` could be more
+Now we have a great 'wide' format data frame, but the `ID_var` could be more
 usable, let's separate it into 2 variables with `separate()`
 
 
