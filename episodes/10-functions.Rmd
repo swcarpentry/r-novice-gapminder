@@ -68,7 +68,7 @@ fahr_to_kelvin <- function(temp) {
 
 We define `fahr_to_kelvin()` by assigning it to the output of `function`. The
 list of argument names are contained within parentheses.   Next, the
-[body]({{ page.root }}/reference.html#function-body) of the function--the
+[body]({{ page.root }}/reference.html#body) of the function--the
 statements that are executed when it runs--is contained within curly braces
 (`{}`). The statements in the body are indented by two spaces. This makes the
 code easier to read but does not affect how the code operates.
