@@ -54,7 +54,7 @@ We can then add this as a column via:
 cbind(cats, age)
 ```
 
-Note that if we tried to add a vector of ages with a different number of entries than the number of rows in the dataframe, it would fail:
+Note that if we tried to add a vector of ages with a different number of entries than the number of rows in the data frame, it would fail:
 
 ```{r, error=TRUE}
 age <- c(2, 3, 5, 12)
