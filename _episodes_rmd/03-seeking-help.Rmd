@@ -84,7 +84,8 @@ If you're not sure what package a function is in, or how it's specifically spell
 ??function_name
 ```
 
-A fuzzy search is when you search for an approximate string match. For example, you may remember that the function to set your working directory includes "set" in its name. You can do a fuzzy search to help you identify the function:
+A fuzzy search is when you search for an approximate string match. For example, you may remember that the function 
+to set your working directory includes "set" in its name. You can do a fuzzy search to help you identify the function:
 
 ```{r, eval=FALSE}
 ??set
