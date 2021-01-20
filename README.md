@@ -2,6 +2,7 @@
 ![Build and Deploy Website](https://github.com/swcarpentry/r-novice-gapminder/workflows/Build%20and%20Deploy%20Website/badge.svg)
  [![Slack Status](https://img.shields.io/badge/Slack_Channel-swc--r--gapminder-E01563.svg)](https://swcarpentry.slack.com/messages/C9Y0M3YKG)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/swcarpentry/r-novice-gapminder/binder?urlpath=rstudio)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3265164.svg)](https://doi.org/10.5281/zenodo.3265164)
 
 R for Reproducible Scientific Analysis
 ======================================
