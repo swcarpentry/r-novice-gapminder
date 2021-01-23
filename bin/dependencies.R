@@ -1,13 +1,26 @@
 install_required_packages <- function(lib = NULL, repos = getOption("repos", default = c(CRAN = "https://cran.rstudio.com/"))) {
-
-  if (is.null(lib)) {
-    lib <- .libPaths()
+  
+  # The option 'repos' might be set to a special value which confuses
+  # install.packages if it is forwarded explicitly. See ?options for docs of 
+  # the repos option.
+  if(identical(repos, "@CRAN@") && !interactive()){
+    options(repos = c(CRAN = "https://cran.rstudio.com/"))
+    repos <- getOption("repos")
   }
 
-  message("lib paths: ", paste(lib, collapse = ", "))
+  if (is.null(lib)) {
+    lib2 <- .libPaths()
+  }else{
+    # If the lib= argument is provided to install.packages(), all of the
+    # specified folders must be readable. Thus, forward NULL to install.packages
+    # when it is provided to this function.
+    lib2 <- lib
+  }
+
+  message("lib paths: ", paste(lib2, collapse = ", "))
   missing_pkgs <- setdiff(
     c("rprojroot", "desc", "remotes", "renv"),
-    rownames(installed.packages(lib.loc = lib))
+    rownames(installed.packages(lib.loc = lib2))
   )
 
   install.packages(missing_pkgs, lib = lib, repos = repos)
