@@ -58,7 +58,7 @@ tabby,3.2,1
 We can load this into R via the following:
 
 ```{r}
-cats <- read.csv(file = "data/feline-data.csv")
+cats <- read.csv(file = "data/feline-data.csv", stringsAsFactors = TRUE)
 cats
 ```
 
@@ -142,7 +142,7 @@ Load the new cats data like before, and check what type of data we find in the
 `weight` column:
 
 ```{r}
-cats <- read.csv(file="data/feline-data_v2.csv")
+cats <- read.csv(file="data/feline-data_v2.csv", stringsAsFactors = TRUE)
 typeof(cats$weight)
 ```
 
@@ -183,7 +183,7 @@ tabby,3.2,1
 And back in RStudio:
 
 ```{r, eval=FALSE}
-cats <- read.csv(file="data/feline-data.csv")
+cats <- read.csv(file="data/feline-data.csv", stringsAsFactors = TRUE)
 ```
 
 ```{r, include=FALSE}
