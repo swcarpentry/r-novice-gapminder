@@ -61,10 +61,11 @@ Different functions might have different sections, but these are the main ones y
 
 ## Special Operators
 
-To seek help on special operators, use quotes:
+To seek help on special operators, use quotes or backticks:
 
 ```{r, eval=FALSE}
 ?"<-"
+?`<-`
 ```
 
 ## Getting help on packages
