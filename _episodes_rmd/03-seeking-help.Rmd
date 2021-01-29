@@ -49,6 +49,7 @@ Different functions might have different sections, but these are the main ones y
 > Examples and hit <kbd>Ctrl</kbd>+<kbd>Return</kbd> to run it in 
 > RStudio console. This is gives you a quick way to get a feel for
 > how a function works.
+{: .callout}
 
 > ## Tip: Reading help files
 >
@@ -60,10 +61,11 @@ Different functions might have different sections, but these are the main ones y
 
 ## Special Operators
 
-To seek help on special operators, use quotes:
+To seek help on special operators, use quotes or backticks:
 
 ```{r, eval=FALSE}
 ?"<-"
+?`<-`
 ```
 
 ## Getting help on packages
@@ -75,6 +77,10 @@ Without any arguments, `vignette()` will list all vignettes for all installed pa
 
 If a package doesn't have any vignettes, you can usually find help by typing
 `help("package-name")`.
+
+RStudio also has a set of excellent
+[cheatsheets](https://rstudio.com/resources/cheatsheets/) for many packages.
+
 
 ## When you kind of remember the function
 
@@ -103,7 +109,8 @@ fields. This can be a good starting point.
 If you're having trouble using a function, 9 times out of 10,
 the answers you are seeking have already been answered on
 [Stack Overflow](http://stackoverflow.com/). You can search using
-the `[r]` tag.
+the `[r]` tag. Please make sure to see their page on 
+[how to ask a good question.](https://stackoverflow.com/help/how-to-ask)
 
 If you can't find the answer, there are a few useful functions to
 help you ask a question from your peers:
