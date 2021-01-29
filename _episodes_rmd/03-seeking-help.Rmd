@@ -104,7 +104,8 @@ fields. This can be a good starting point.
 If you're having trouble using a function, 9 times out of 10,
 the answers you are seeking have already been answered on
 [Stack Overflow](http://stackoverflow.com/). You can search using
-the `[r]` tag.
+the `[r]` tag. Please make sure to see their page on 
+[how to ask a good question.](https://stackoverflow.com/help/how-to-ask)
 
 If you can't find the answer, there are a few useful functions to
 help you ask a question from your peers:
