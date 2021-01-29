@@ -78,6 +78,10 @@ Without any arguments, `vignette()` will list all vignettes for all installed pa
 If a package doesn't have any vignettes, you can usually find help by typing
 `help("package-name")`.
 
+RStudio also has a set of excellent
+[cheatsheets](https://rstudio.com/resources/cheatsheets/) for many packages.
+
+
 ## When you kind of remember the function
 
 If you're not sure what package a function is in, or how it's specifically spelled you can do a fuzzy search:
