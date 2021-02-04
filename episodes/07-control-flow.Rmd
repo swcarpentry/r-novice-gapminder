@@ -6,7 +6,7 @@ questions:
 - "How can I make data-dependent choices in R?"
 - "How can I repeat operations in R?"
 objectives:
-- "Write conditional statements with `if` and `ifelse`."
+- "Write conditional statements with `if...else` statements and `ifelse()`."
 - "Write and understand `for()` loops."
 keypoints:
 - "Use `if` and `else` to make choices."
