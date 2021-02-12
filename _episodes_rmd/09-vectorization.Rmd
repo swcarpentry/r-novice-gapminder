@@ -99,11 +99,11 @@ sum_xy
 > ## Challenge 2
 >
 > On a single graph, plot population, in
-> millions, against year, for all countries. Don't worry about
+> millions, against year, for all countries. Do not worry about
 >identifying which country is which.
 >
 > Repeat the exercise, graphing only for China, India, and
->Indonesia. Again, don't worry about which is which.
+>Indonesia. Again, do not worry about which is which.
 >
 > > ## Solution to challenge 2
 > >
