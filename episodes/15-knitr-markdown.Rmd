@@ -29,21 +29,21 @@ Data analysts tend to write a lot of reports, describing their
 analyses and results, for their collaborators or to document their
 work for future reference.
 
-Many new users begin by first writing a single R script containing all of the
-work. Then simply share the analysis by emailing the script and various graphs
+Many new users begin by first writing a single R script containing all of their
+work, and then share the analysis by emailing the script and various graphs
 as attachments. But this can be cumbersome, requiring a lengthy discussion to
 explain which attachment was which result.
 
 Writing formal reports with Word or [LaTeX](http://www.latex-project.org/)
-can simplify this by incorporating both the analysis report and output graphs 
+can simplify this process by incorporating both the analysis report and output graphs 
 into a single document. But tweaking formatting to make figures look correct
-and fix obnoxious page breaks can be tedious and lead to a lengthly "whack
-a mole" game of fixing new mistakes resulting from a single formatting change.
+and fixing obnoxious page breaks can be tedious and lead to a lengthly "whack-a-mole"
+game of fixing new mistakes resulting from a single formatting change.
 
-Creating a web page (as an html file) by using R Markdown makes things easier.
-The report can be one long stream, so tall figures that wouldn't ordinary fit on
-one page can be kept full size and easier to read, since the reader can simply
-keep scrolling. Formatting is simple and easy to modify, allowing you to spend
+Creating a web page (as an html file) using R Markdown makes things easier.
+The report can be one long stream, so tall figures that wouldn't ordinarily fit on
+one page can be kept at full size and easier to read, since the reader can simply
+keep scrolling. Additionally, the formatting of and R Markdown document is simple and easy to modify, allowing you to spend
 more time on your analyses instead of writing reports.
 
 
@@ -52,17 +52,17 @@ more time on your analyses instead of writing reports.
 Ideally, such analysis reports are _reproducible_ documents: If an
 error is discovered, or if some additional subjects are added to the
 data, you can just re-compile the report and get the new or corrected
-results (versus having to reconstruct figures, paste them into
-a Word document, and further hand-edit various detailed results).
+results rather than having to reconstruct figures, paste them into
+a Word document, and hand-edit various detailed results.
 
-The key R package is [`knitr`](http://yihui.name/knitr/). It allows you
+The key R package here is [`knitr`](http://yihui.name/knitr/). It allows you
 to create a document that is a mixture of text and chunks of
 code. When the document is processed by `knitr`, chunks of code will
-be executed, and graphs or other results inserted into the final document.
+be executed, and graphs or other results will be inserted into the final document.
 
 This sort of idea has been called "literate programming".
 
-`knitr` allows you to mix basically any sort of text with code from different programming languages, but we recommend that you use `R Markdown`, which mixes Markdown
+`knitr` allows you to mix basically any type of text with code from different programming languages, but we recommend that you use `R Markdown`, which mixes Markdown
 with R. [Markdown](https://www.markdownguide.org/) is a light-weight mark-up language for creating web
 pages.
 
@@ -79,8 +79,8 @@ You can stick with the default (HTML output), but give it a title.
 
 ## Basic components of R Markdown
 
-The initial chunk of text (header) contains instructions for R to specify what kind of document will be created, and the options chosen. You can use the header to give your document a title, author, date, and tell it that you're going to want
-to produce html output (in other words, a web page).
+The initial chunk of text (header) contains instructions for R to specify what kind of document will be created, and the options chosen. You can use the header to give your document a title, author, date, and tell it what type of output you want
+to produce. In this case, we're creating an html document.
 
 ```
 ---
@@ -106,10 +106,6 @@ summary(cars)
 
 These are chunks of R code that will be executed by `knitr` and replaced
 by their results. More on this later.
-
-Also note the web address that's put between angle brackets (`< >`) as
-well as the double-asterisks in `**Knit**`. This is
-[Markdown](http://daringfireball.net/projects/markdown/syntax).
 
 ## Markdown
 
@@ -256,7 +252,8 @@ That is, you place a chunk of R code between <code>&#96;&#96;&#96;{r chunk_name}
 and <code>&#96;&#96;&#96;</code>. You should give each chunk
 a unique name, as they will help you to fix errors and, if any graphs are
 produced, the file names are based on the name of the code chunk that
-produced them.
+produced them. You can create code chunks quickly in RStudio using the shortcuts
+Ctrl+Alt+I on Windows and Linux, or Cmd+Option+I on Mac.
 
 > ## Challenge 2
 >
