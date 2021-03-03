@@ -199,7 +199,7 @@ correctly. In general, the advice of many `R` users would be to learn about
 `for()` loops, but to avoid using `for()` loops unless the order of iteration is
 important: i.e. the calculation at each iteration depends on the results of 
 previous iterations. If the order of iteration is not important, then you 
-should learn about vectorized alternatives, such as the `purr` package, as they
+should learn about vectorized alternatives, such as the `purrr` package, as they
 pay off in computational efficiency. 
 
 The basic structure of a `for()` loop is:  
@@ -272,7 +272,7 @@ A better way is to define your (empty) output object before filling in the value
 For this example, it looks more involved, but is still more efficient.
 
 ```{r}
-output_matrix <- matrix(nrow=5, ncol=5)
+output_matrix <- matrix(nrow = 5, ncol = 5)
 j_vector <- c('a', 'b', 'c', 'd', 'e')
 for (i in 1:5) {
   for (j in 1:5) {
@@ -318,10 +318,10 @@ output_vector2
 
 > ## Challenge 2
 >
-> Compare the objects output_vector and
-> output_vector2. Are they the same? If not, why not?
-> How would you change the last block of code to make output_vector2
-> the same as output_vector?
+> Compare the objects `output_vector` and
+> `output_vector2`. Are they the same? If not, why not?
+> How would you change the last block of code to make `output_vector2`
+> the same as `output_vector`?
 >
 > > ## Solution to Challenge 2
 > > We can check whether the two vectors are identical using the `all()` function:
@@ -390,10 +390,10 @@ output_vector2
 > > ```
 > >
 > > **Step 3**: The exercise only wants the output printed if the average life expectancy is less than 50 or greater than 50.
-> > So we need to add an `if()` condition before printing, which evaluates whether the calculated average life expectancy is above or below a threshold, and print an output conditional on the result.
+> > So we need to add an `if()` condition before printing, which evaluates whether the calculated average life expectancy is above or below a threshold, and prints an output conditional on the result.
 > > We need to amend (3) from above:
 > >
-> > 3a. If the calculated life expectancy is less than some threshold (50 years), return the continent and a statement that life expectancy is less than threshold, otherwise return the continent and   a statement that life expectancy is greater than threshold,:
+> > 3a. If the calculated life expectancy is less than some threshold (50 years), return the continent and a statement that life expectancy is less than threshold, otherwise return the continent and a statement that life expectancy is greater than threshold:
 > >
 > > ```{r 07-chall-03-sol-c, eval=FALSE}
 > > thresholdValue <- 50
@@ -401,14 +401,13 @@ output_vector2
 > > for (iContinent in unique(gapminder$continent)) {
 > >    tmp <- mean(gapminder[gapminder$continent == iContinent, "lifeExp"])
 > >    
-> >    if(tmp < thresholdValue){
+> >    if (tmp < thresholdValue){
 > >        cat("Average Life Expectancy in", iContinent, "is less than", thresholdValue, "\n")
-> >    }
-> >    else{
+> >    } else {
 > >        cat("Average Life Expectancy in", iContinent, "is greater than", thresholdValue, "\n")
-> >         } # end if else condition
+> >    } # end if else condition
 > >    rm(tmp)
-> >    } # end for loop
+> > } # end for loop
 > >
 > > ```
 > {: .solution}
@@ -430,13 +429,11 @@ output_vector2
 > > for (iCountry in unique(gapminder$country)) {
 > >     tmp <- mean(gapminder[gapminder$country == iCountry, "lifeExp"])
 > >     
-> >     if(tmp < lowerThreshold){
+> >     if(tmp < lowerThreshold) {
 > >         cat("Average Life Expectancy in", iCountry, "is less than", lowerThreshold, "\n")
-> >     }
-> >     else if(tmp > lowerThreshold && tmp < upperThreshold){
+> >     } else if(tmp > lowerThreshold && tmp < upperThreshold) {
 > >         cat("Average Life Expectancy in", iCountry, "is between", lowerThreshold, "and", upperThreshold, "\n")
-> >     }
-> >     else{
+> >     } else {
 > >         cat("Average Life Expectancy in", iCountry, "is greater than", upperThreshold, "\n")
 > >     }
 > >     rm(tmp)
@@ -464,7 +461,7 @@ output_vector2
 > > To get the values, we must add the `value=TRUE` option to the `grep()` command:
 > >
 > > ```{r 07-chall-05-sol-b, eval=FALSE}
-> > grep("^B", unique(gapminder$country), value=TRUE)
+> > grep("^B", unique(gapminder$country), value = TRUE)
 > > ```
 > >
 > > We will now store these countries in a variable called candidateCountries, and then loop over each entry in the variable.
@@ -472,25 +469,25 @@ output_vector2
 > >
 > > ```{r 07-chall-05-sol-c, eval=FALSE}
 > > thresholdValue <- 50
-> > candidateCountries <- grep("^B", unique(gapminder$country), value=TRUE)
+> > candidateCountries <- grep("^B", unique(gapminder$country), value = TRUE)
 > >
 > > for (iCountry in candidateCountries) {
 > >     tmp <- mean(gapminder[gapminder$country == iCountry, "lifeExp"])
 > >     
-> >     if(tmp < thresholdValue){
+> >     if (tmp < thresholdValue) {
 > >         cat("Average Life Expectancy in", iCountry, "is less than", thresholdValue, "plotting life expectancy graph... \n")
 > >         
-> >         with(subset(gapminder, country==iCountry),
+> >         with(subset(gapminder, country == iCountry),
 > >                 plot(year, lifeExp,
-> >                      type="o",
+> >                      type = "o",
 > >                      main = paste("Life Expectancy in", iCountry, "over time"),
 > >                      ylab = "Life Expectancy",
 > >                      xlab = "Year"
-> >                    ) # end plot
-> >               ) # end with
-> >     } # end for loop
+> >                      ) # end plot
+> >              ) # end with
+> >     } # end if
 > >     rm(tmp)
-> >  }
+> > } # end for loop
 > >  ```
 > {: .solution}
 {: .challenge}
