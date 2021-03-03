@@ -253,7 +253,7 @@ and <code>&#96;&#96;&#96;</code>. You should give each chunk
 a unique name, as they will help you to fix errors and, if any graphs are
 produced, the file names are based on the name of the code chunk that
 produced them. You can create code chunks quickly in RStudio using the shortcuts
-Ctrl+Alt+I on Windows and Linux, or Cmd+Option+I on Mac.
+<kbd>Ctrl</kbd>+<kbd>Return</kbd>+<kbd>I</kbd> on Windows and Linux, or <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> on Mac.
 
 > ## Challenge 2
 >
