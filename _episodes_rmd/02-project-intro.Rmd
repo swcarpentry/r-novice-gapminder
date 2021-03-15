@@ -30,7 +30,7 @@ eventually everything is a bit mixed together.
 
 Most people tend to organize their projects like this:
 
-![](../fig/bad_layout.png)
+![Screenshot of file manager demonstrating bad project organisation](../fig/bad_layout.png)
 
 There are many reasons why we should *ALWAYS* avoid this:
 
