@@ -126,7 +126,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 > > over the years. On continents with stronger economies we find a longer life
 > > expectancy.
 > >
-> > ```{r ch2-sol}
+> > ```{r ch2-sol fig.cap = "Binned scatterplot of life expectancy vs year with color-coded continents showing value of 'aes' function"}
 > > ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp, color=continent)) +
 > >   geom_point()
 > > ```
