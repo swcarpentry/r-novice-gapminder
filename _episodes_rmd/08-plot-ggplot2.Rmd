@@ -211,7 +211,7 @@ visual values of an aesthetic. We can also modify the transparency of the
 points, using the *alpha* function, which is especially helpful when you have
 a large amount of data which is very clustered.
 
-```{r axis-scale}
+```{r axis-scale fig.cap = "Scatterplot of GDP vs life expectancy showing logarithmic x-axis data spread"}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
   geom_point(alpha = 0.5) + scale_x_log10()
 ```
