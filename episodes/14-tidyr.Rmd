@@ -55,7 +55,7 @@ applications may prefer the 'wide' format. However, many of `R`'s functions have
 been designed assuming you have 'longer' formatted data. This tutorial will help you
 efficiently transform your data shape regardless of original format.
 
-![](../fig/14-tidyr-fig1.png)
+![Diagram illustrating the difference between a wide versus long layout of a data frame](../fig/14-tidyr-fig1.png)
 
 Long and wide data frame layouts mainly affect readability. For humans, the wide format is often more intuitive since we can often see more of the data on the screen due
 to its shape. However, the long format is more machine readable and is closer
@@ -135,13 +135,13 @@ gap_wide <- read.csv("data/gapminder_wide.csv", stringsAsFactors = FALSE)
 str(gap_wide)
 ```
 
-![](../fig/14-tidyr-fig2.png)
+![Diagram illustrating the wide format of the gapminder data frame](../fig/14-tidyr-fig2.png)
 
 
 To change this very wide data frame layout back to our nice, intermediate (or longer) layout, we will use one of the two available `pivot`  functions from the `tidyr` package. To convert from wide to a longer format, we will use the `pivot_longer()` function. `pivot_longer()` makes datasets longer by increasing the number of rows and decreasing the number of columns, or 'lengthening' your observation variables into a single variable.
 
 
-![](../fig/14-tidyr-fig3.png)
+![Diagram illustrating how pivot longer reorganizes a data frame from a wide to long format](../fig/14-tidyr-fig3.png)
 
 
 ```{r}
@@ -169,7 +169,7 @@ will contain the new ID variable (`obstype_year`) and `values_to` for naming the
 new amalgamated observation variable (`obs_value`). We supply these new column
 names as strings.
 
-![](../fig/14-tidyr-fig4.png)
+![Diagram illustrating the long format of the gapminder data](../fig/14-tidyr-fig4.png)
 
 ```{r}
 gap_long <- gap_wide %>%
