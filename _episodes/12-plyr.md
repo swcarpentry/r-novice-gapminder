@@ -112,7 +112,7 @@ going to introduce you to another method for solving the "split-apply-combine"
 problem. The [plyr](http://had.co.nz/plyr/) package provides a set of
 functions that we find more user friendly for solving this problem.
 
-We installed this package in an earlier challenge. Let's load it now:
+We installed this package in an earlier challenge. Let us load it now:
 
 
 ~~~
@@ -182,10 +182,10 @@ ddply(
 ~~~
 {: .output}
 
-Let's walk through the previous code:
+Let us walk through the previous code:
 
 - The `ddply` function feeds in a `data.frame` (function starts with **d**) and
-returns another `data.frame` (2nd letter is a **d**) i
+returns another `data.frame` (2nd letter is a **d**)
 - the first argument we gave was the data.frame we wanted to operate on: in this
   case the gapminder data. We called `calcGDP` on it first so that it would have
   the additional `gdp` column added to it.

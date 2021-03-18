@@ -120,7 +120,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-08-ch1-sol-1.png" title="plot of chunk ch1-sol" alt="plot of chunk ch1-sol" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-08-ch1-sol-1.png" title="Binned scatterplot of life expectancy versus year showing how life expectancy has increased over time" alt="Binned scatterplot of life expectancy versus year showing how life expectancy has increased over time" width="612" style="display: block; margin: auto;" />
 > >
 > {: .solution}
 {: .challenge}
@@ -148,7 +148,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-08-ch2-sol-1.png" title="plot of chunk ch2-sol" alt="plot of chunk ch2-sol" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-08-ch2-sol-1.png" title="Binned scatterplot of life expectancy vs year with color-coded continents showing value of 'aes' function" alt="Binned scatterplot of life expectancy vs year with color-coded continents showing value of 'aes' function" width="612" style="display: block; margin: auto;" />
 > >
 > {: .solution}
 {: .challenge}
@@ -257,7 +257,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-08-axis-scale-1.png" title="plot of chunk axis-scale" alt="plot of chunk axis-scale" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-08-axis-scale-1.png" title="Scatterplot of GDP vs life expectancy showing logarithmic x-axis data spread" alt="Scatterplot of GDP vs life expectancy showing logarithmic x-axis data spread" width="612" style="display: block; margin: auto;" />
 
 The `scale_x_log10` function applied a transformation to the coordinate system of the plot, so that each multiple of 10 is evenly spaced from left to right. For example, a GDP per capita of 1,000 is the same horizontal distance away from a value of 10,000 as the 10,000 value is from 100,000. This helps to visualize the spread of the data along the x-axis.
 

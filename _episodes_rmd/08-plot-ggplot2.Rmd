@@ -103,7 +103,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 > >
 > > Here is one possible solution:
 > >
-> > ```{r ch1-sol}
+> > ```{r ch1-sol, fig.cap = "Binned scatterplot of life expectancy versus year showing how life expectancy has increased over time"}
 > > ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp)) + geom_point()
 > > ```
 > >
@@ -126,7 +126,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 > > over the years. On continents with stronger economies we find a longer life
 > > expectancy.
 > >
-> > ```{r ch2-sol}
+> > ```{r ch2-sol, fig.cap = "Binned scatterplot of life expectancy vs year with color-coded continents showing value of 'aes' function"}
 > > ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp, color=continent)) +
 > >   geom_point()
 > > ```
@@ -211,7 +211,7 @@ visual values of an aesthetic. We can also modify the transparency of the
 points, using the *alpha* function, which is especially helpful when you have
 a large amount of data which is very clustered.
 
-```{r axis-scale}
+```{r axis-scale, fig.cap = "Scatterplot of GDP vs life expectancy showing logarithmic x-axis data spread"}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
   geom_point(alpha = 0.5) + scale_x_log10()
 ```

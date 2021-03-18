@@ -29,7 +29,7 @@ eventually everything is a bit mixed together.
 
 Most people tend to organize their projects like this:
 
-![](../fig/bad_layout.png)
+![Screenshot of file manager demonstrating bad project organisation](../fig/bad_layout.png)
 
 There are many reasons why we should *ALWAYS* avoid this:
 
@@ -191,7 +191,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > > 
 > > 
 > > ~~~
-> > -rw-r--r-- 1 runner docker 80K Mar  5 16:06 data/gapminder_data.csv
+> > -rw-r--r-- 1 runner docker 80K Mar 18 00:08 data/gapminder_data.csv
 > > ~~~
 > > {: .output}
 > > The file size is 80K.

@@ -142,11 +142,11 @@ sessionInfo()
 ~~~
 R version 4.0.4 (2021-02-15)
 Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 18.04.5 LTS
+Running under: Ubuntu 20.04.2 LTS
 
 Matrix products: default
-BLAS:   /usr/lib/x86_64-linux-gnu/openblas/libblas.so.3
-LAPACK: /usr/lib/x86_64-linux-gnu/libopenblasp-r0.2.20.so
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
 
 locale:
  [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       
@@ -162,7 +162,7 @@ other attached packages:
 
 loaded via a namespace (and not attached):
 [1] compiler_4.0.4 magrittr_2.0.1 tools_4.0.4    stringi_1.5.3  stringr_1.4.0 
-[6] xfun_0.21      evaluate_0.14 
+[6] xfun_0.22      evaluate_0.14 
 ~~~
 {: .output}
 

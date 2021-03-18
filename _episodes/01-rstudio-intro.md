@@ -651,7 +651,7 @@ ls()
 
 
 ~~~
-[1] "args"    "dest_md" "src_rmd" "x"       "y"      
+[1] "args"    "dest_md" "op"      "src_rmd" "x"       "y"      
 ~~~
 {: .output}
 
@@ -708,7 +708,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x56464bdbda88>
+<bytecode: 0x555bbcddd608>
 <environment: namespace:base>
 ~~~
 {: .output}
