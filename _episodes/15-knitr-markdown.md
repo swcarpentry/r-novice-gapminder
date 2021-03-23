@@ -407,11 +407,14 @@ of the file.
 
 > ## Tip: Creating PDF documents
 >
-> Creating .pdf documents may require installation of some extra software. If
-> required this is detailed in an error message.
+> Creating .pdf documents may require installation of some extra software. The R 
+> package `tinytex` provides some tools to help make this process easier for R users.
+> With `tinytex` installed, run `tinytex::install_tinytex()` to install the required
+> software (you'll only need to do this once) and then when you knit to pdf `tinytex`
+> will automatically detect and install any additional LaTeX packages that are needed to 
+> produce the pdf document. Visit the [tinytex website](https://yihui.org/tinytex/) 
+> for more information.
 >
-> - [TeX installers for Windows](https://miktex.org/2.9/setup).
-> - [TeX installers for macOS](https://tug.org/mactex).
 {: .callout}
 
 
