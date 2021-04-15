@@ -59,7 +59,7 @@ the R language as well as some best practices for organizing code for
 scientific projects that will make your life easier.
 
 We'll be using RStudio: a free, open source R Integrated Development
-Environment (IDE). It provides a built in editor, works on all platforms (including
+Environment (IDE). It provides a built-in editor, works on all platforms (including
 on servers) and provides many advantages such as integration with version
 control and project management.
 
@@ -708,7 +708,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x5596bc0907f8>
+<bytecode: 0x55be17f177f8>
 <environment: namespace:base>
 ~~~
 {: .output}
