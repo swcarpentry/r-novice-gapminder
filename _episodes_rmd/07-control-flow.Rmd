@@ -107,15 +107,14 @@ x
 > Use an `if()` statement to print a suitable message
 > reporting whether there are any records from 2002 in
 > the `gapminder` dataset.
-> Now do the same for 2012.
+> Do the same for 2012.
 >
 > > ## Solution to Challenge 1
-> > We will first see a solution to Challenge 1 which does not use the `any()` function.
-> > We first obtain a logical vector describing which element of `gapminder$year` is equal to `2002`:
+> > **Step 1**: We first obtain a logical vector describing which element of `gapminder$year` is equal to `2002`:
 > > ```{r ch10pt1-sol, eval=FALSE}
 > > gapminder[(gapminder$year == 2002),]
 > > ```
-> > Then, we count the number of rows of the data.frame `gapminder` that correspond to the 2002:
+> > **Step 2**: Then, we count the number of rows of the data.frame `gapminder` that correspond to the 2002:
 > > ```{r ch10pt2-sol, eval=FALSE}
 > > rows2002_number <- nrow(gapminder[(gapminder$year == 2002),])
 > > ```
@@ -123,14 +122,20 @@ x
 > > ```{r ch10pt3-sol, eval=FALSE}
 > > rows2002_number >= 1
 > > ```
-> > Putting all together, we obtain:
+> > **Step 3**: Finally, putting all together, we obtain:
 > > ```{r ch10pt4-sol, eval=FALSE}
 > > if(nrow(gapminder[(gapminder$year == 2002),]) >= 1){
 > >    print("Record(s) for the year 2002 found.")
 > > }
 > > ```
-> >
-> > All this can be done more quickly with `any()`. The logical condition can be expressed as:
+> > **Alternative Solutions**: All this can be done more quickly with either the `%in%` operator or the `any()` function.
+> > Using the `%in%` operator, the logical condition can be expressed as:
+> > ```{r ch10pt5-sol, eval=FALSE}
+> > if(2002 %in% gapminder$year){
+> >    print("Record(s) for the year 2002 found.")
+> > }
+> > ```
+> > Using the `any()` function, the logical condition can be expressed as:
 > > ```{r ch10pt5-sol, eval=FALSE}
 > > if(any(gapminder$year == 2002)){
 > >    print("Record(s) for the year 2002 found.")
