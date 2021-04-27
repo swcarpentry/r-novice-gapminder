@@ -162,6 +162,7 @@ behaviour of R).
    additional tests, and `else` to provide a default
  - The bodies of the branches of conditional statements must be indented.
  - Use `==` to test for equality.
+ - `%in%` will return a `TRUE`/`FALSE` indicating if there is a match between an element and a vector.
  - `X && Y` is only true if both X and Y are `TRUE`.
  - `X || Y` is true if either X or Y, or both, are `TRUE`.
  - Zero is considered `FALSE`; all other numbers are considered `TRUE`
