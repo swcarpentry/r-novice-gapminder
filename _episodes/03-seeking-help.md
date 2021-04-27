@@ -158,7 +158,7 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] knitr_1.32
+[1] knitr_1.33
 
 loaded via a namespace (and not attached):
 [1] compiler_4.0.5 magrittr_2.0.1 tools_4.0.5    stringi_1.5.3  stringr_1.4.0 
