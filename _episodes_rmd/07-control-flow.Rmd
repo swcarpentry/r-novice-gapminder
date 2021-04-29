@@ -130,13 +130,125 @@ x
 > > ```
 > > **Alternative Solutions**: All this can be done more quickly with either the `%in%` operator or the `any()` function.
 > > Using the `%in%` operator, the logical condition can be expressed as:
-> > ```{r ch10pt5-sol, eval=FALSE}
+> > ```{r for (i in 1:10) {
+
+222
+
+  print(i)
+
+223
+
+}
+
+224
+
+```
+
+225
+
+​
+
+226
+
+The `1:10` bit creates a vector on the fly; you can iterate
+
+227
+
+over any other vector as well.
+
+228
+
+​
+
+229
+
+We can use a `for()` loop nested within another `for()` loop to iterate over two things at
+
+230
+
+oncech10pt5.
+
+231
+
+​
+
+232
+
+```{r}
+
+233
+
+for (i in 1:5) {
+
+234
+
+  for (j in c('a', 'b', 'c', 'd', 'e')) {
+
+235
+
+    print(paste(i,j))
+
+236
+
+  }
+
+237
+
+}
+
+238
+
+```
+
+239
+
+​
+
+240
+
+We notice in the output that when the first index (`i`) is set to 1, the second 
+
+241
+
+index (`j`) iterates through its full set of indices. Once the indices of `j` 
+
+242
+
+have been iterated through, then `i` is incremented. This process continues 
+
+243
+
+until the last index has been used for each `for()` loop.  
+
+244
+
+​
+
+245
+
+Rather than printing the results, we could write the loop output to a new object.
+
+246
+
+​
+
+247
+
+```{r}
+
+248
+
+output_vector <- c()
+
+249
+
+for (i in 1:5) {-sol, eval=FALSE}
 > > if(2002 %in% gapminder$year){
 > >    print("Record(s) for the year 2002 found.")
 > > }
 > > ```
 > > Using the `any()` function, the logical condition can be expressed as:
-> > ```{r ch10pt6-sol, eval=FALSE}
+> > ```{r ch10pt5a-sol, eval=FALSE}
 > > if(any(gapminder$year == 2002)){
 > >    print("Record(s) for the year 2002 found.")
 > > }
