@@ -166,7 +166,7 @@ We can use a `for()` loop nested within another `for()` loop to iterate over two
 
 230
 
-oncech10pt5.
+once.
 
 231
 
