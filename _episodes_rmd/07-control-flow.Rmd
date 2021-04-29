@@ -136,7 +136,7 @@ x
 > > }
 > > ```
 > > Using the `any()` function, the logical condition can be expressed as:
-> > ```{r ch10pt5-sol, eval=FALSE}
+> > ```{r ch10pt6-sol, eval=FALSE}
 > > if(any(gapminder$year == 2002)){
 > >    print("Record(s) for the year 2002 found.")
 > > }
@@ -227,7 +227,7 @@ The `1:10` bit creates a vector on the fly; you can iterate
 over any other vector as well.
 
 We can use a `for()` loop nested within another `for()` loop to iterate over two things at
-once.
+oncech10pt5.
 
 ```{r}
 for (i in 1:5) {
