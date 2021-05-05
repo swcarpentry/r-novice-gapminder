@@ -145,7 +145,7 @@ function, then we pass the filtered version of the gapminder data frame to the
 case. If we used 'select' first, filter would not be able to find the variable
 continent since we would have removed it in the previous step.
 
-## Using group_by() and summarize()
+## Using group_by()
 
 Now, we were supposed to be reducing the error prone repetitiveness of what can
 be done with base R, but up to now we haven't done that since we would have to
