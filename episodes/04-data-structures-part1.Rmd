@@ -153,23 +153,27 @@ we did on them before, we run into trouble:
 cats$weight + 2
 ```
 
-What happened? When R reads a csv file into one of these tables, it insists that
-everything in a column be the same basic type; if it can't understand
-*everything* in the column as a double, then *nobody* in the column gets to be a
-double. The table that R loaded our cats data into is something called a
-*data.frame*, and it is our first example of something called a *data
-structure* - that is, a structure which R knows how to build out of the basic
-data types.
+What happened? 
+The `cats` data we are working with is something called a *data frame*. Data frames
+are one of the most common and versatile types of *data structures* we will work with in R.
+In this example, the columns that make up the data frame cannot be composed of different data types.
+In this case, R does not read everything in the data frame as a *double*, therefore the entire 
+column data type changes to something that is suitable for everything in the column.
 
-We can see that it is a *data.frame* by calling the `class` function on it:
+When R reads a csv file, it reads it in as a *data frame*. Thus, when we loaded the `cats`
+csv file, it is stored as a data frame. We can check this by using the function `class()`.
 
 ```{r}
 class(cats)
 ```
+*Data frames* are composed of rows and columns, where each column has the 
+same number of rows. Different columsn in a data frame can be made up of different 
+data types (this is what makes them so versatile), but everything in a given
+column needs to be the same type (e.g., vector, factor, or list).
 
-In order to successfully use our data in R, we need to understand what the basic
-data structures are, and how they behave. For now, let's remove that extra line
-from our cats data and reload it, while we investigate this behavior further:
+Let's explore more about different data structures and how they behave. 
+For now, let's remove that extra line from our cats data and reload it, 
+while we investigate this behavior further:
 
 feline-data.csv:
 
