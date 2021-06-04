@@ -167,7 +167,7 @@ csv file, it is stored as a data frame. We can check this by using the function 
 class(cats)
 ```
 *Data frames* are composed of rows and columns, where each column has the 
-same number of rows. Different columsn in a data frame can be made up of different 
+same number of rows. Different columns in a data frame can be made up of different 
 data types (this is what makes them so versatile), but everything in a given
 column needs to be the same type (e.g., vector, factor, or list).
 
