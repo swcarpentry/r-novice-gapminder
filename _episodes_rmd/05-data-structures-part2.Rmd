@@ -187,6 +187,22 @@ cats[,!drop]
 We will cover subsetting with logical operators like `%in%` in more detail in the next episode. See the section [Subsetting through other logical operations](../06-data-subsetting/#logical-operations)
 
 ## Appending to a data frame
+We can append data to our dataframes using info from other dataframes. We can do this with cbind, however this can create duplicate columns if they share identical columns. The proper method is to use merge instead.
+
+```{r}
+cats$names=c("Abby","Andrew","Kitty")
+cats_data2 <- data.frame(names=c("Abby","Andrew","Kitty"),
+                   jump = c(4.5, 10.2, 8.4),
+                   speed = c(4.7, 12.4, 7.8),
+                   weight = c(2.1, 5.0, 3.2))
+badCats = cbind(cats, cats_data2)
+badCats
+```
+We can see that when we use cbind in this scenario we get duplicate columns in our dataframe. Now lets use merge.
+```{r}
+goodCats = merge(cats, cats_data2)
+goodCats
+```
 
 The key to remember when adding data to a data frame is that *columns are
 vectors and rows are lists.* We can also glue two data frames
