@@ -72,7 +72,7 @@ Open up this document and have a look.
 > >   geom_line() +
 > >   theme(legend.position = "none")
 > > p
-> > p + facet_grid(. ~continent)
+> > p + facet_grid(~continent)
 > > dev.off()
 > > ~~~
 > > {: .language-r}
