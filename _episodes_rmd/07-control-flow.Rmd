@@ -159,23 +159,23 @@ singular (of length 1).
 > but also statements using `R`'s built-in `ifelse()` function. This 
 > function accepts both singular and vector inputs and is structured as 
 > follows: 
-
-```{r, eval = FALSE}
-# ifelse function 
-ifelse(condition is true, perform action, perform alternative action) 
-
-```
-
+> 
+> ```{r, eval = FALSE}
+> # ifelse function 
+> ifelse(condition is true, perform action, perform alternative action) 
+> 
+> ```
+>
 > where the first argument is the condition or a set of conditions to be met, the 
 > second argument is the statement that is evaluated when the condition is `TRUE`,
 > and the third statement  is the statement that is evaluated when the condition 
 > is `FALSE`.  
- 
-```{r}
-y <- -3
-ifelse(y < 0, "y is a negative number", "y is either positive or zero")
-
-``` 
+>  
+> ```{r}
+> y <- -3
+> ifelse(y < 0, "y is a negative number", "y is either positive or zero")
+>
+> ``` 
 {: .callout}
 
 

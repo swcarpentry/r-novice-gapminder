@@ -214,32 +214,32 @@ singular (of length 1).
 > but also statements using `R`'s built-in `ifelse()` function. This 
 > function accepts both singular and vector inputs and is structured as 
 > follows: 
-
-
-~~~
-# ifelse function 
-ifelse(condition is true, perform action, perform alternative action) 
-~~~
-{: .language-r}
-
+> 
+> 
+> ~~~
+> # ifelse function 
+> ifelse(condition is true, perform action, perform alternative action) 
+> ~~~
+> {: .language-r}
+>
 > where the first argument is the condition or a set of conditions to be met, the 
 > second argument is the statement that is evaluated when the condition is `TRUE`,
 > and the third statement  is the statement that is evaluated when the condition 
 > is `FALSE`.  
- 
-
-~~~
-y <- -3
-ifelse(y < 0, "y is a negative number", "y is either positive or zero")
-~~~
-{: .language-r}
-
-
-
-~~~
-[1] "y is a negative number"
-~~~
-{: .output}
+>  
+> 
+> ~~~
+> y <- -3
+> ifelse(y < 0, "y is a negative number", "y is either positive or zero")
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> [1] "y is a negative number"
+> ~~~
+> {: .output}
 {: .callout}
 
 
