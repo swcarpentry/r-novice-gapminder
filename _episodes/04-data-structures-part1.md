@@ -1059,7 +1059,8 @@ results of statistical models!
 
 Another data structure you'll want in your bag of tricks is the `list`. A list
 is simpler in some ways than the other types, because you can put anything you
-want in it:
+want in it. Remember *everything in the vector must be the same basic data type*,
+but a list can have different data types: 
 
 
 ~~~
