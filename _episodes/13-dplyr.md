@@ -592,20 +592,20 @@ extra comments):
 
 
 ~~~
-# Get the start letter of each country
-starts.with <- substr(gapminder$country, start = 1, stop = 1)
-# Filter countries that start with "A" or "Z"
-az.countries <- gapminder[starts.with %in% c("A", "Z"), ]
+# Filter countries located in the Americas
+americas <- gapminder[gapminder$continent == "Americas", ]
 # Make the plot
-ggplot(data = az.countries, aes(x = year, y = lifeExp, color = continent)) +
-  geom_line() + facet_wrap( ~ country)
+ggplot(data = americas, mapping = aes(x = year, y = lifeExp)) +
+  geom_line() +
+  facet_wrap( ~ country) +
+  theme(axis.text.x = element_text(angle = 45))
 ~~~
 {: .language-r}
 
 <img src="../fig/rmd-13-unnamed-chunk-24-1.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" width="612" style="display: block; margin: auto;" />
 
-This code makes the right plot but it also creates some variables (`starts.with`
-and `az.countries`) that we might not have any other uses for. Just as we used
+This code makes the right plot but it also creates an intermediate variable 
+(`americas`) that we might not have any other uses for. Just as we used
 `%>%` to pipe data along a chain of `dplyr` functions we can use it to pass data
 to `ggplot()`. Because `%>%` replaces the first argument in a function we don't
 need to specify the `data =` argument in the `ggplot()` function. By combining
@@ -615,35 +615,17 @@ new variables or modifying the data.
 
 ~~~
 gapminder %>%
-   # Get the start letter of each country
-   mutate(startsWith = substr(country, start = 1, stop = 1)) %>%
-   # Filter countries that start with "A" or "Z"
-   filter(startsWith %in% c("A", "Z")) %>%
-   # Make the plot
-   ggplot(aes(x = year, y = lifeExp, color = continent)) +
-   geom_line() +
-   facet_wrap( ~ country)
+  # Filter countries located in the Americas
+  filter(continent == "Americas") %>%
+  # Make the plot
+  ggplot(mapping = aes(x = year, y = lifeExp)) +
+  geom_line() +
+  facet_wrap( ~ country) +
+  theme(axis.text.x = element_text(angle = 45))
 ~~~
 {: .language-r}
 
 <img src="../fig/rmd-13-unnamed-chunk-25-1.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" width="612" style="display: block; margin: auto;" />
-
-Using `dplyr` functions also helps us simplify things, for example we could
-combine the first two steps:
-
-
-~~~
-gapminder %>%
-    # Filter countries that start with "A" or "Z"
-	filter(substr(country, start = 1, stop = 1) %in% c("A", "Z")) %>%
-	# Make the plot
-	ggplot(aes(x = year, y = lifeExp, color = continent)) +
-	geom_line() +
-	facet_wrap( ~ country)
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-13-unnamed-chunk-26-1.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" width="612" style="display: block; margin: auto;" />
 
 > ## Advanced Challenge
 >
