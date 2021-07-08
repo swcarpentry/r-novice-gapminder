@@ -514,7 +514,7 @@ The right hand side is *fully evaluated* before the assignment occurs.
 
 Variable names can contain letters, numbers, underscores and periods but no spaces. They
 must start with a letter or a period followed by a letter (they cannot start with a number nor an underscore). 
-Variables begining with a period are hidden variables. 
+Variables beginning with a period are hidden variables. 
 Different people use different conventions for long variable names, these include
 
   * periods.between.words
@@ -708,7 +708,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x55d421161ef0>
+<bytecode: 0x559cb3713ef0>
 <environment: namespace:base>
 ~~~
 {: .output}
@@ -801,7 +801,7 @@ network). R and RStudio have functionality for managing packages:
 * You can remove a package with `remove.packages("packagename")`
 * You can make a package available for use with `library(packagename)`
 
-Packages can also be viewed, loaded, and detached in the Packages tab of the lower right panel in RStudio. Clicking on this tab will displas all of installed packages with a checkbox next to them. If the box next to a package name is checked, the package is loaded and if it is empty, the package is not loaded. Click an empty box to load that package and click a checked box to detach that package. 
+Packages can also be viewed, loaded, and detached in the Packages tab of the lower right panel in RStudio. Clicking on this tab will display all of the installed packages with a checkbox next to them. If the box next to a package name is checked, the package is loaded and if it is empty, the package is not loaded. Click an empty box to load that package and click a checked box to detach that package. 
 
 Packages can be installed and updated from the Package tab with the Install and Update buttons at the top of the tab. 
 
