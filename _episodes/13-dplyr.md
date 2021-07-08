@@ -117,6 +117,13 @@ year_country_gdp <- select(gapminder, year, country, gdpPercap)
 {: .language-r}
 
 ![Diagram illustrating use of select function to select two columns of a data frame](../fig/13-dplyr-fig1.png)
+If we want to remove one column only from the `gapminder` data, for example,
+removing the `continent` column.
+
+~~~
+smaller_gapminder_data <- select(gapminder, -continent)
+~~~
+{: .language-r}
 
 If we open up `year_country_gdp` we'll see that it only contains the year,
 country and gdpPercap. Above we used 'normal' grammar, but the strengths of
@@ -169,7 +176,7 @@ shell it is `|` but the concept is the same!
 
 ## Using filter()
 
-If we now wanted to move forward with the above, but only with European
+If we now want to move forward with the above, but only with European
 countries, we can combine `select` and `filter`
 
 
@@ -177,6 +184,16 @@ countries, we can combine `select` and `filter`
 year_country_gdp_euro <- gapminder %>%
     filter(continent == "Europe") %>%
     select(year, country, gdpPercap)
+~~~
+{: .language-r}
+
+If we now want to show life expectancy of European countries but only 
+for a specific year (e.g., 2007), we can do as below.
+
+~~~
+europe_lifeExp_2007 <- gapminder %>%
+  filter(continent == "Europe", year == 2007) %>%
+  select(country, lifeExp)
 ~~~
 {: .language-r}
 
@@ -369,6 +386,24 @@ even better.
 > >  country mean_lifeExp
 > >  <chr>          <dbl>
 > >1 Iceland         76.5
+> >~~~
+> >{: .output}
+> Alphabetical order works too
+> >
+> >~~~
+> >lifeExp_bycountry %>%
+> >    arrange(desc(country)) %>%
+> >    head(1)
+> >~~~
+> >{: .language-r}
+> >
+> >
+> >
+> >~~~
+> ># A tibble: 1 x 2
+> >  country  mean_lifeExp
+> >  <chr>           <dbl>
+> >1 Zimbabwe         52.7
 > >~~~
 > >{: .output}
 > {: .solution}
@@ -602,7 +637,7 @@ ggplot(data = americas, mapping = aes(x = year, y = lifeExp)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-13-unnamed-chunk-24-1.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-13-unnamed-chunk-27-1.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" width="612" style="display: block; margin: auto;" />
 
 This code makes the right plot but it also creates an intermediate variable 
 (`americas`) that we might not have any other uses for. Just as we used
@@ -625,7 +660,25 @@ gapminder %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-13-unnamed-chunk-25-1.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-13-unnamed-chunk-28-1.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" width="612" style="display: block; margin: auto;" />
+
+More examples of using the function `mutate()` and the `ggplot2` package.
+
+~~~
+gapminder %>% 
+  # extract first letter of country name into new column
+  mutate(startsWith = substr(country, 1, 1)) %>% 
+  # only keep countries starting with A or Z
+  filter(startsWith %in% c("A", "Z")) %>% 
+  # plot lifeExp into facets
+  ggplot(aes(x = year, y = lifeExp, colour = continent)) +
+  geom_line() +
+  facet_wrap(vars(country)) +
+  theme_minimal()
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-13-unnamed-chunk-29-1.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" width="612" style="display: block; margin: auto;" />
 
 > ## Advanced Challenge
 >
