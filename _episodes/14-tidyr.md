@@ -291,7 +291,7 @@ gap_long$year <- as.integer(gap_long$year)
 > >
 > >
 > >~~~
-> ># A tibble: 15 x 3
+> ># A tibble: 15 × 3
 > ># Groups:   continent [5]
 > >   continent obs_type       means
 > >   <chr>     <chr>          <dbl>
@@ -416,7 +416,7 @@ head(gap_normal)
 
 
 ~~~
-# A tibble: 6 x 6
+# A tibble: 6 × 6
   country  year      pop continent lifeExp gdpPercap
   <chr>   <int>    <dbl> <chr>       <dbl>     <dbl>
 1 Algeria  1952  9279525 Africa       43.1     2449.

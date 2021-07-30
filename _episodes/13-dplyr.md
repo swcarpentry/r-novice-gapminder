@@ -340,7 +340,7 @@ even better.
 > >
 > >
 > >~~~
-> ># A tibble: 2 x 2
+> ># A tibble: 2 × 2
 > >  country      mean_lifeExp
 > >  <chr>               <dbl>
 > >1 Iceland              76.5
@@ -363,7 +363,7 @@ even better.
 > >
 > >
 > >~~~
-> ># A tibble: 1 x 2
+> ># A tibble: 1 × 2
 > >  country      mean_lifeExp
 > >  <chr>               <dbl>
 > >1 Sierra Leone         36.8
@@ -382,7 +382,7 @@ even better.
 > >
 > >
 > >~~~
-> ># A tibble: 1 x 2
+> ># A tibble: 1 × 2
 > >  country mean_lifeExp
 > >  <chr>          <dbl>
 > >1 Iceland         76.5
@@ -400,7 +400,7 @@ even better.
 > >
 > >
 > >~~~
-> ># A tibble: 1 x 2
+> ># A tibble: 1 × 2
 > >  country  mean_lifeExp
 > >  <chr>           <dbl>
 > >1 Zimbabwe         52.7
@@ -491,7 +491,7 @@ gapminder %>%
 
 
 ~~~
-# A tibble: 5 x 2
+# A tibble: 5 × 2
   continent se_le
   <chr>     <dbl>
 1 Africa    0.366
@@ -519,7 +519,7 @@ gapminder %>%
 
 
 ~~~
-# A tibble: 5 x 5
+# A tibble: 5 × 5
   continent mean_le min_le max_le se_le
   <chr>       <dbl>  <dbl>  <dbl> <dbl>
 1 Africa       48.9   23.6   76.4 0.366

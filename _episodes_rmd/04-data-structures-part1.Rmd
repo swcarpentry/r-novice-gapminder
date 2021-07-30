@@ -33,7 +33,7 @@ cats <- cats_orig
 
 One of R's most powerful features is its ability to deal with tabular data -
 such as you may already have in a spreadsheet or a CSV file. Let's start by
-making a dataset of cat attributes in your `data/` directory, called `feline-data.csv`:
+making a toy dataset in your `data/` directory, called `feline-data.csv`:
 
 ```{r}
 cats <- data.frame(coat = c("calico", "black", "tabby"),

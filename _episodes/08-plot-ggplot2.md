@@ -272,7 +272,7 @@ We can fit a simple relationship to the data by adding another layer,
 
 ~~~
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
-  geom_point() + scale_x_log10() + geom_smooth(method="lm")
+  geom_point(alpha = 0.5) + scale_x_log10() + geom_smooth(method="lm")
 ~~~
 {: .language-r}
 
@@ -291,7 +291,7 @@ We can make the line thicker by *setting* the **size** aesthetic in the
 
 ~~~
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
-  geom_point() + scale_x_log10() + geom_smooth(method="lm", size=1.5)
+  geom_point(alpha = 0.5) + scale_x_log10() + geom_smooth(method="lm", size=1.5)
 ~~~
 {: .language-r}
 
