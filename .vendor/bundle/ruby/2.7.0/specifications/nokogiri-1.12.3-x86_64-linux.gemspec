@@ -1,16 +1,16 @@
 # -*- encoding: utf-8 -*-
-# stub: nokogiri 1.12.2 x86_64-linux lib
+# stub: nokogiri 1.12.3 x86_64-linux lib
 
 Gem::Specification.new do |s|
   s.name = "nokogiri".freeze
-  s.version = "1.12.2"
+  s.version = "1.12.3"
   s.platform = "x86_64-linux".freeze
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.metadata = { "bug_tracker_uri" => "https://github.com/sparklemotion/nokogiri/issues", "changelog_uri" => "https://nokogiri.org/CHANGELOG.html", "documentation_uri" => "https://nokogiri.org/rdoc/index.html", "homepage_uri" => "https://nokogiri.org", "source_code_uri" => "https://github.com/sparklemotion/nokogiri" } if s.respond_to? :metadata=
   s.require_paths = ["lib".freeze]
   s.authors = ["Mike Dalessio".freeze, "Aaron Patterson".freeze, "Yoko Harada".freeze, "Akinori MUSHA".freeze, "John Shahid".freeze, "Karol Bucek".freeze, "Sam Ruby".freeze, "Craig Barnes".freeze, "Stephen Checkoway".freeze, "Lars Kanis".freeze, "Sergio Arbeo".freeze, "Timothy Elliott".freeze, "Nobuyoshi Nakada".freeze]
-  s.date = "2021-08-04"
+  s.date = "2021-08-10"
   s.description = "Nokogiri (\u92F8) makes it easy and painless to work with XML and HTML from Ruby. It provides a\nsensible, easy-to-understand API for reading, writing, modifying, and querying documents. It is\nfast and standards-compliant by relying on native parsers like libxml2 (C) and xerces (Java).\n".freeze
   s.email = "nokogiri-talk@googlegroups.com".freeze
   s.executables = ["nokogiri".freeze]
