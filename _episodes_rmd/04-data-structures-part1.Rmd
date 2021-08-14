@@ -8,7 +8,7 @@ questions:
 - "How do I represent categorical information in R?"
 objectives:
 - "To be able to identify the 5 main data types."
-- "To begin exploring data frames, and understand how they are related to vectors, factors and lists."
+- "To begin exploring data frames, and understand how they are related to vectors and lists."
 - "To be able to ask questions from R about the type, class, and structure of an object."
 keypoints:
 - "Use `read.csv` to read tabular data in R."
@@ -21,13 +21,19 @@ source: Rmd
 source("../bin/chunk-options.R")
 knitr_fig_path("04-")
 
-## Save the data
-cats_orig <- data.frame(coat = factor(c("calico", "black", "tabby")),
+# We don't want factors
+options(stringsAsFactors = FALSE)
+
+## Save the data. Do not create factors from strings (explicit argument
+## only necessary for R < 4.0.0)
+cats_orig <- data.frame(coat = c("calico", "black", "tabby"),
                    weight = c(2.1, 5.0, 3.2),
-                   likes_string = c(1, 0, 1))
-cats_bad <- data.frame(coat = factor(c("calico", "black", "tabby", "tabby")),
-                   weight = factor(c(2.1, 5.0, 3.2, '2.3 or 2.4')),
-                   likes_string = c(1, 0, 1, 1))
+                   likes_string = c(1, 0, 1),
+                   stringsAsFactors = FALSE)
+cats_bad <- data.frame(coat = c("calico", "black", "tabby", "tabby"),
+                   weight = c(2.1, 5.0, 3.2, '2.3 or 2.4'),
+                   likes_string = c(1, 0, 1, 1), 
+                   stringsAsFactors = FALSE)
 cats <- cats_orig
 ```
 
@@ -58,7 +64,7 @@ tabby,3.2,1
 We can load this into R via the following:
 
 ```{r}
-cats <- read.csv(file = "data/feline-data.csv", stringsAsFactors = TRUE)
+cats <- read.csv(file = "data/feline-data.csv")
 cats
 ```
 
@@ -72,6 +78,31 @@ where the data are separated with tabs. Of these three functions `read.csv` is
 the most commonly used.  If needed it is possible to override the default
 delimiting punctuation marks for both `read.csv` and `read.delim`.
 
+> ## Check your data for factors
+> 
+> In recent times, the default way how R handles textual data has changed. Text
+> data was interpreted by R automatically into a format called "factors". But
+> there is an easier format that is called "character". We will hear about 
+> factors later, and what to use them for. For now, remenber that in most cases,
+> they are not needed and only complicate your life, which is why newer R
+> versions read in text as "character". Check now if your version of R has
+> automatically created factors and convert them to "character" format.
+> 
+> 1. Check the data types of your input by typing `str(cats)` 
+> 2. In the output, look at the three-letter codes after the colons: If you see
+     only "num" and "chr", you can continue with the lesson and skip this box.
+     If you find "fct", continue to step 3.
+> 3. Prevent R from automatically creating "factor" data. That can be done by
+>    the following code: `options(stringsAsFactors = FALSE)`. Then, re-read
+>    the cats table for the change to take effect.
+> 4. You must set this option every time you restart R. To not forget this, 
+>    include it in your analysis script before you read in any data, for example
+>    in one of the first lines. 
+> 5. For R versions greater than 4.0.0, text data is no longer converted to
+>    factors anymore. So you can install this or a newer version to avoid this
+>    problem. If you are working on an institute or company computer, ask your
+>    administrator to do it.
+{: .callout}
 
 We can begin exploring our dataset right away, pulling out columns by specifying
 them using the `$` operator:
@@ -142,7 +173,7 @@ Load the new cats data like before, and check what type of data we find in the
 `weight` column:
 
 ```{r}
-cats <- read.csv(file="data/feline-data_v2.csv", stringsAsFactors = TRUE)
+cats <- read.csv(file="data/feline-data_v2.csv")
 typeof(cats$weight)
 ```
 
@@ -187,7 +218,7 @@ tabby,3.2,1
 And back in RStudio:
 
 ```{r, eval=FALSE}
-cats <- read.csv(file="data/feline-data.csv", stringsAsFactors = TRUE)
+cats <- read.csv(file="data/feline-data.csv")
 ```
 
 ```{r, include=FALSE}
@@ -400,82 +431,6 @@ str(cats$coat)
 cats <- cats_orig
 ```
 
-## Factors
-
-Another important data structure is called a *factor*. Factors usually look like
-character data, but are typically used to represent categorical information. For
-example, let's make a vector of strings labelling cat colorations for all the
-cats in our study:
-
-```{r}
-coats <- c('tabby', 'tortoiseshell', 'tortoiseshell', 'black', 'tabby')
-coats
-str(coats)
-```
-
-We can turn a vector into a factor like so:
-
-```{r}
-CATegories <- factor(coats)
-class(CATegories)
-str(CATegories)
-```
-
-Now R has noticed that there are three possible categories in our data - but it
-also did something surprising; instead of printing out the strings we gave it,
-we got a bunch of numbers instead. R has replaced our human-readable categories
-with numbered indices under the hood, this is necessary as many statistical
-calculations utilise such numerical representations for categorical data:
-
-```{r}
-typeof(coats)
-typeof(CATegories)
-```
-
-> ## Challenge 2
->
-> Is there a factor in our `cats` data.frame? what is its name?
-> Try using `?read.csv` to figure out how to keep text columns as character
-> vectors instead of factors; then write a command or two to show that the factor
-> in `cats` is actually a character vector when loaded in this way.
->
-> > ## Solution to Challenge 2
-> >
-> > One solution is use the argument `stringAsFactors`:
-> >
-> > ```{r, eval = FALSE}
-> > cats <- read.csv(file="data/feline-data.csv", stringsAsFactors=FALSE)
-> > str(cats$coat)
-> > ```
-> >
-> > Another solution is use the argument `colClasses`
-> > that allow finer control.
-> >
-> > ```{r, eval = FALSE}
-> > cats <- read.csv(file="data/feline-data.csv", colClasses=c(NA, NA, "character"))
-> > str(cats$coat)
-> > ```
-> >
-> > Note: new students find the help files difficult to understand; make sure to let them know
-> > that this is typical, and encourage them to take their best guess based on semantic meaning,
-> > even if they aren't sure.
-> {: .solution}
-{: .challenge}
-
-In modelling functions, it's important to know what the baseline levels are. This
-is assumed to be the first factor, but by default factors are labelled in
-alphabetical order. You can change this by specifying the levels:
-
-```{r}
-mydata <- c("case", "control", "control", "case")
-factor_ordering_example <- factor(mydata, levels = c("control", "case"))
-str(factor_ordering_example)
-```
-
-In this case, we've explicitly told R that "control" should be represented by 1, and
-"case" by 2. This designation can be very important for interpreting the
-results of statistical models!
-
 ## Lists
 
 Another data structure you'll want in your bag of tricks is the `list`. A list
@@ -550,12 +505,12 @@ str(cats[1,])
 > > cats[[1]]
 > > ```
 > > The double brace `[[1]]` returns the contents of the list item. In this case
-> it is the contents of the first column, a _vector_ of type _factor_.
+> it is the contents of the first column, a _vector_ of type _character_.
 > > ```{r, eval=TRUE, echo=TRUE}
 > > cats$coat
 > > ```
 > > This example uses the `$` character to address items by name. _coat_ is the
-> first column of the data frame, again a _vector_ of type _factor_.
+> first column of the data frame, again a _vector_ of type _character_.
 > > ```{r, eval=TRUE, echo=TRUE}
 > > cats["coat"]
 > > ```
@@ -566,14 +521,13 @@ str(cats[1,])
 > > ```
 > > This example uses a single brace, but this time we provide row and column
 > coordinates. The returned object is the value in row 1, column 1. The object
-> is an _integer_ but because it is part of a _vector_ of type _factor_, R
-> displays the label "calico" associated with the integer value.
+> is a _vector_ of type _character_.
 > > ```{r, eval=TRUE, echo=TRUE}
 > > cats[, 1]
 > > ```
 > > Like the previous example we use single braces and provide row and column
 > coordinates. The row coordinate is not specified, R interprets this missing
-> value as all the elements in this _column_ _vector_.
+> value as all the elements in this _column_ and returns them as a _vector_.
 > > ```{r, eval=TRUE, echo=TRUE}
 > > cats[1, ]
 > > ```
@@ -664,7 +618,7 @@ ncol(matrix_example)
 > > ## Solution to Challenge 6
 > > ```{r}
 > > dataTypes <- c('double', 'complex', 'integer', 'character', 'logical')
-> > dataStructures <- c('data.frame', 'vector', 'factor', 'list', 'matrix')
+> > dataStructures <- c('data.frame', 'vector', 'list', 'matrix')
 > > answer <- list(dataTypes, dataStructures)
 > > ```
 > > Note: it's nice to make a list in big writing on the board or taped to the wall
