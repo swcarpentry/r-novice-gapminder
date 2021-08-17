@@ -46,6 +46,7 @@ cats <- data.frame(coat = c("calico", "black", "tabby"),
                     weight = c(2.1, 5.0, 3.2),
                     likes_string = c(1, 0, 1))
 write.csv(x = cats, file = "data/feline-data.csv", row.names = FALSE)
+write.csv(x = cats_bad, file = "data/feline-data_challenge.csv", row.names = FALSE)
 ```
 The contents of the new file, `feline-data.csv`:
 ```{r, eval=FALSE}
@@ -140,6 +141,7 @@ typeof(cats$weight)
 ```
 
 There are 5 main types: `double`, `integer`, `complex`, `logical` and `character`.
+For historic reasons, `double` is also called `numeric`.
 
 ```{r}
 typeof(3.14)
@@ -283,6 +285,8 @@ a column to be the same basic data type.
 > {: .solution}
 {: .discussion}
 
+### Coercion by combining vectors
+
 You can also make vectors with explicit contents with the combine function:
 
 ```{r}
@@ -298,7 +302,7 @@ quiz_vector <- c(2,6,'3')
 
 This is something called *type coercion*, and it is the source of many surprises
 and the reason why we need to be aware of the basic data types and how R will
-interpret them. When R encounters a mix of types (here numeric and character) to
+interpret them. When R encounters a mix of types (here double and character) to
 be combined into a single vector, it will force them all to be the same
 type. Consider:
 
@@ -309,17 +313,30 @@ another_coercion_vector <- c(0, TRUE)
 another_coercion_vector
 ```
 
-The coercion rules go: `logical` -> `integer` -> `numeric` -> `complex` ->
-`character`, where -> can be read as *are transformed into*. You can try to
-force coercion against this flow using the `as.` functions:
+### The type hierarchy
+
+The coercion rules go: `logical` -> `integer` -> `double` ("`numeric`") ->
+`complex` -> `character`, where -> can be read as *are transformed into*. For
+example, combining `logical` and `character` transforms the result to
+`character`:
+
+```{r}
+c('a', TRUE)
+```
+
+A quick way to recognize `character` vectors is by the quotes that enclose them
+when they are printed. 
+
+ You can try to force
+coercion against this flow using the `as.` functions:
 
 ```{r}
 character_vector_example <- c('0','2','4')
 character_vector_example
-character_coerced_to_numeric <- as.numeric(character_vector_example)
-character_coerced_to_numeric
-numeric_coerced_to_logical <- as.logical(character_coerced_to_numeric)
-numeric_coerced_to_logical
+character_coerced_to_double <- as.double(character_vector_example)
+character_coerced_to_double
+double_coerced_to_logical <- as.logical(character_coerced_to_double)
+double_coerced_to_logical
 ```
 
 As you can see, some surprising things can happen when R forces one basic data
@@ -340,6 +357,151 @@ cats$likes_string
 cats$likes_string <- as.logical(cats$likes_string)
 cats$likes_string
 ```
+
+> ## Challenge 1
+> 
+> An important part of every data analysis is cleaning the input data. If you 
+> know that the input data is all of the same format, (e.g. numbers), your 
+> analysis is much easier! Clean the cat data set from the chapter about 
+> type coercion.
+> 
+> ### Copy the code template 
+> 
+> Create a new script in RStudio and copy and paste the following code. Then
+> move on to the tasks below, which help you to fill in the gaps (______).
+>
+> ```
+> # Read data
+> cats <- read.csv("data/feline-data-challenge.csv")
+>
+> # 1. Print the data
+> _____
+>
+> # 2. Show an overview of the table with all data types
+> _____(cats)
+> 
+> # 3. The "weight" column has the incorrect data type __________.
+> #    The correct data type is: ____________.
+> 
+> # 4. Correct the 4th weight data point with the mean of the two given values
+> cats$weight[4] <- 2.35
+> #    print the data again to see the effect
+> cats
+>
+> # 5. Convert the weight to the right data type
+> cats$weight <- ______________(cats$weight)
+>
+> #    Calculate the mean to test yourself
+> mean(cats$weight)
+>
+> # If you see the correct mean value (and not NA), you did the exercise
+> # correctly!
+> ```
+>
+> ## Instructions for the tasks
+>
+> ### 1. Print the data
+> Execute the first statement (`read.csv(...)`). Then print the data to the
+> console
+> 
+> > ## Tip 1.1
+> > Show the content of any variable by typing its name. 
+> {: .solution}
+> > ## Solution to Challenge 1.1
+> > Two correct solutions:
+> > 
+> > ```
+> > cats
+> > print(cats)
+> > ```
+> {: .solution}
+> 
+> ### 2. Overview of the data types
+> The data type of your data is as important as the data itself. Use a 
+> function we saw earlier to print out the data types of all columns of the
+> `cats` table.
+> 
+> > ## Tip 1.2
+> > In the chapter "Data types" we saw two functions that can show data types. 
+> > One printed just a single word, the data type name. The other printed
+> > a short form of the data type, and the first few values. We need the second
+> > here. 
+> {: .solution}
+> 
+> > ## Solution to Challenge 1.2
+> > ```
+> > str(cats)
+> > ```
+> {: .solution}
+>
+> ### 3. Which data type do we need?
+> The shown data type is not the right one for this data (weight of 
+> a cat). Which data type do we need? 
+> * Why did the `read.csv()` function not choose the correct data type?
+> * Fill in the gap in the comment with the correct data type for cat weight!
+> 
+> > ## Tip 1.3
+> > Scroll up to the section about the [type hierarchy](#the-type-hierarchy)
+> > to review the available data types
+> {: .solution}
+>  
+> > ## Solution to Challenge 1.3
+> > * Weight is expressed on a continuous scale (real numbers). The R
+> >   data type for this is "double" (also known as "numeric").
+> > * The fourth row has the value "2.6 or 2.7". That is not a number
+> >   but two, and an english word. Therefore, the "character" data type
+> >   is chosen. The whole column is now text, because all values in the same
+> >   columns have to be the same data type.
+> {: .solution}
+>
+> ### 4. Correct the problematic value
+> The code to assign a new weight value to the problematic fourth row is given. 
+> Think first and then execute it: What will be the data type after assigning
+> a number like in this example?
+> You can check the data type after executing to see if you were right.
+> 
+> > ## Tip 1.4
+> > Revisit the hierarchy of data types when two different data types are 
+> > combined.
+> {: .solution}
+>
+> > ## Solution to challenge 1.4
+> > The data type of the column "weight" is "character". The assigned data
+> > type is "double". Combining two data types yields the data type that
+> > higher in the following hierarchy: 
+> > ```
+> > logical < integer < double < complex < character
+> > ```
+> > Therefore, the column is still of type character! We need to manually
+> > convert it to "double".
+> {: .solution}
+> 
+> ### 5. Convert the column "weight" to the correct data type
+> 
+> Cat weight are numbers. But the column does not have this data type yet. 
+> Coerce the column to floating point numbers. 
+>
+> > ## Tip 1.5
+> > The functions to convert data types start with `as....`. You can look
+> > for the function further up in the manuscript or use the RStudio 
+> > auto-complete function: Type "`as.`" and then press the TAB key.
+> {: .solution}
+>
+> > ## Solution to Challenge 1.5
+> > There are two functions that are synonymous for historic reasons:
+> > ```
+> > cats$weight <- as.double(cats$weight)
+> > cats$weight <- as.numeric(cats$weight)
+> > ```
+> {: .solution}
+> 
+> TODO: Where to save the challenge data  
+> TODO: Can the text be be shortened?
+>
+{: .challenge}
+
+
+## Some basic vector functions
 
 The combine function, `c()`, will also append things to an existing vector:
 
@@ -362,13 +524,27 @@ seq(1,10, by=0.1)
 We can ask a few questions about vectors:
 
 ```{r}
-sequence_example <- seq(10)
+sequence_example <- 20:25
 head(sequence_example, n=2)
 tail(sequence_example, n=4)
 length(sequence_example)
-class(sequence_example)
 typeof(sequence_example)
 ```
+
+We can get individual elements of a vector by using the bracket notation:
+
+```{r}
+first_element <- sequence_example[1]
+first_element
+```
+
+To change a single element, use the bracket on the other side of the arrow:
+
+```{r}
+sequence_example[1] <- 30
+sequence_example
+```
+
 
 Finally, you can give names to elements in your vector:
 
@@ -379,18 +555,16 @@ my_example
 names(my_example)
 ```
 
-> ## Challenge 1
+> ## Challenge 2
 >
 > Start by making a vector with the numbers 1 through 26.
-> Multiply the vector by 2, and give the resulting vector
-> names A through Z (hint: there is a built in vector called `LETTERS`)
+> Then, multiply the vector by 2.
 >
-> > ## Solution to Challenge 1
+> > ## Solution to Challenge 2
 > >
 > > ```{r}
 > > x <- 1:26
 > > x <- x * 2
-> > names(x) <- LETTERS
 > > ```
 > {: .solution}
 {: .challenge}
