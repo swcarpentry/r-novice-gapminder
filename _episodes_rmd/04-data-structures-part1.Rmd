@@ -10,6 +10,7 @@ objectives:
 - "To be able to identify the 5 main data types."
 - "To begin exploring data frames, and understand how they are related to vectors and lists."
 - "To be able to ask questions from R about the type, class, and structure of an object."
+- 'To understand the information of the attributes "names", "class", and "dim".'
 keypoints:
 - "Use `read.csv` to read tabular data in R."
 - "The basic data types in R are double, integer, complex, logical, and character."
@@ -194,11 +195,13 @@ In this case, R does not read everything in the data frame as a *double*, theref
 column data type changes to something that is suitable for everything in the column.
 
 When R reads a csv file, it reads it in as a *data frame*. Thus, when we loaded the `cats`
-csv file, it is stored as a data frame. We can check this by using the function `class()`.
+csv file, it is stored as a data frame. We can recognize data frames by the first row that 
+is written by the `str()` function:
 
 ```{r}
-class(cats)
+str(cats)
 ```
+
 *Data frames* are composed of rows and columns, where each column has the 
 same number of rows. Different columns in a data frame can be made up of different 
 data types (this is what makes them so versatile), but everything in a given
@@ -569,42 +572,6 @@ names(my_example)
 > {: .solution}
 {: .challenge}
 
-
-## Data Frames
-
-We said that columns in data.frames were vectors:
-
-```{r}
-str(cats$weight)
-str(cats$likes_string)
-```
-
-These make sense. But what about
-
-```{r}
-str(cats$coat)
-```
-
-> ## Tip: Renaming data frame columns
->
-> Data frames have column names, which can be accessed with the `names()` function.
->
-> ```{r}
-> names(cats)
-> ```
->
-> If you want to rename the second column of `cats`, you can assign a new name to the second element of `names(cats)`.
-> ```{r}
-> names(cats)[2] <- "weight_kg"
-> cats
-> ```
-{: .callout}
-
-```{r, include=FALSE}
-# reverting cats back to original version
-cats <- cats_orig
-```
-
 ## Lists
 
 Another data structure you'll want in your bag of tricks is the `list`. A list
@@ -615,22 +582,177 @@ but a list can have different data types:
 ```{r}
 list_example <- list(1, "a", TRUE, 1+4i)
 list_example
+```
+
+When printing the object structure with `str()`, we see the data types of all
+elements: 
+
+```{r}
+str(list_example)
+```
+
+
+What is the use of lists? They can **organize data of different types**. For
+example, you can organize different tables that belong together, similar to 
+spreadsheets in Excel. But there are many other uses, too.
+
+We will see another example that will maybe surprise you in the next chapter. 
+
+To retrieve one of the elements of a list, use the **double bracket**: 
+
+```{r}
+list_example[[2]]
+```
+
+The elements of lists also can have **names**, they can be given by prepending
+them to the values, separated by an equals sign:
+
+```{r}
 another_list <- list(title = "Numbers", numbers = 1:10, data = TRUE )
 another_list
 ```
 
-We can now understand something a bit surprising in our data.frame; what happens if we run:
+This results in a **named list**. Now we have a new function of our object!
+We can access single elements by an additional way!
+
+```{r}
+another_list$title
+```
+
+# Names
+
+With names, we can give meaning to elements. It is the first time that we do not
+only have the **data**, but also explaining information. It is *metadata* 
+that can be stuck to the object like a label. In R, this is called an
+**attribute**. Some attributes enable us to do more with our
+object, for example, like here, accessing an element by a self-defined name.
+
+## Accessing vectors and lists by name
+
+We have already seen how to generate a named list. The way to generate a named
+vector is very similar. You have seen this function before:
+
+```{r}
+pizza_price <- c( pizzasubito = 5.64, pizzafresh = 6.60, callapizza = 4.50 )
+```
+
+The way to retrieve elements is different, though:
+
+```{r}
+pizza_price["pizzasubito"]
+```
+
+The approach used for the list does not work:
+
+```{r}
+pizza_price$pizzafresh
+```
+
+It will pay off if you remember this error message, you will meet it in your own
+analyses. It means that you have just tried accessing an element like it was in 
+a list, but it is actually in a vector.
+
+## Accessing and changing names 
+
+If you are only interested in the names, use the `names()` function:
+
+```{r}
+names(pizza_price)
+```
+
+We have seen how to access and change single elements of a vector. The same is
+possible for names:
+
+```{r}
+names(pizza_price)[3]
+names(pizza_price)[3] <- "call-a-pizza"
+pizza_price
+```
+
+> ## Challenge 3
+> 
+> * What is the data type of the names of `pizza_price`? You can find out 
+>   using the `str()` or `typeof()` functions.
+> 
+> > ## Solution to Challenge 3
+> > You get the names of an object by wrapping the object name inside
+> > `names(...)`. Similarly, you get the data type of the names by again 
+> > wrapping the whole code in `typeof(...)`:
+> > ```
+> > typeof(names(pizza))
+> > ```
+> > alternatively, use a new variable if this is easier for you to read: 
+> > ```
+> > n <- names(pizza)
+> > typeof(n)
+> > ```
+> {: .solution}
+{: .challenge}
+
+> ## Challenge 4
+> Instead of just changing some of the names a vector/list already has, you can
+> also set all names of an object by writing code like (replace ALL CAPS text):
+> ```
+> names( OBJECT ) <-  CHARACTER_VECTOR
+> ```
+> Create a vector that gives the number for each letter in the alphabet!
+> 1. Generate a vector called `letter_no` with the sequence of numbers from 1
+>    to 26!
+> 2. R has a built-in object called `LETTERS`. It is a 26-character vector, from 
+>    A to Z. Set the names of the number sequence to this 26 letters
+> 3. Test yourself by calling `letter_no["B"]`, which should give you the number
+>    2!
+>
+> > # Solution to Challenge 4
+> > ```
+> > letter_no <- 1:26   # or seq(1,26)
+> > names(letter_no) <- LETTERS
+> > letter_no["B"]
+
+# Data frames
+
+We have data frames at the very beginning of this lession, they represent
+a table of data. We didn't go much further into detail with our example cat
+data frame:
+
+```{r}
+cats
+```
+
+We can now understand something a bit surprising in our data.frame; what happens
+if we run:
 
 ```{r}
 typeof(cats)
 ```
 
-We see that data.frames look like lists 'under the hood' - this is because a
-data.frame is really a list of vectors and factors, as they have to be - in
-order to hold those columns that are a mix of vectors and factors, the
-data.frame needs something a bit more flexible than a vector to put all the
-columns together into a familiar table.  In other words, a `data.frame` is a
-special list in which all the vectors must have the same length.
+We see that data.frames look like lists 'under the hood'. Think again what we
+heard about what lists can be used for: 
+
+> Lists organize data of different types
+
+Columns of a data frame are vectors of different types, that are organized 
+by belonging to the same table.
+
+A data.frame is really a list of vectors. It is a special list in which all the
+vectors must have the same length.
+
+How is this "special"-ness written into the object, so that R does not treat it
+like any other list, but as a table?
+
+```{r}
+class(cats)
+```
+
+A **class**, just like names, is an attribute attached to the object. It tells
+us what this object means for humans.
+
+You might wonder: Why do we need another what-type-of-object-is-this-function?
+We already have `typeof()`? That function tells us how the object is
+**constructed in the computer**. The `class` is the **meaning of the object for
+humans**. Consequently, what `typeof()` returns is *fixed* in R (mainly the
+five data types), whereas the output of `class()` is *diverse* and *extendable*
+by R packages.
 
 In our `cats` example, we have an integer, a double and a logical variable. As
 we have seen already, each column of data.frame is a vector.
@@ -711,6 +833,29 @@ str(cats[1,])
 > {: .solution}
 {: .challenge}
 
+
+> ## Tip: Renaming data frame columns
+>
+> Data frames have column names, which can be accessed with the `names()` function.
+>
+> ```{r}
+> names(cats)
+> ```
+>
+> If you want to rename the second column of `cats`, you can assign a new name to the second element of `names(cats)`.
+> ```{r}
+> names(cats)[2] <- "weight_kg"
+> cats
+> ```
+{: .callout}
+
+```{r, include=FALSE}
+# reverting cats back to original version
+cats <- cats_orig
+```
+
+
+
 ## Matrices
 
 Last but not least is the matrix. We can declare a matrix full of zeros:
@@ -720,13 +865,18 @@ matrix_example <- matrix(0, ncol=6, nrow=3)
 matrix_example
 ```
 
+What makes it special is the `dim()` attribute:
+
+```{r}
+dim(matrix_example)
+```
+
 And similar to other data structures, we can ask things about our matrix:
 
 ```{r}
-class(matrix_example)
 typeof(matrix_example)
+class(matrix_example)
 str(matrix_example)
-dim(matrix_example)
 nrow(matrix_example)
 ncol(matrix_example)
 ```
