@@ -161,15 +161,28 @@ Instead, let's tell `ggplot` to visualize the data as a line plot:
 
 
 ~~~
-ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country, color=continent)) +
+ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, color=continent)) +
   geom_line()
 ~~~
 {: .language-r}
 
 <img src="../fig/rmd-08-lifeExp-line-1.png" title="plot of chunk lifeExp-line" alt="plot of chunk lifeExp-line" width="612" style="display: block; margin: auto;" />
 
-Instead of adding a `geom_point` layer, we've added a `geom_line` layer. We've
-added the **by** *aesthetic*, which tells `ggplot` to draw a line for each
+Instead of adding a `geom_point` layer, we've added a `geom_line` layer.
+
+However, the result doesn't look quite as we might have expected: it seems to be jumping around a lot in each continent. Let's try to separate the data by country, plotting one line for each country:
+
+
+~~~
+ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country, color=continent)) +
+  geom_line()
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-08-lifeExp-line-by-1.png" title="plot of chunk lifeExp-line-by" alt="plot of chunk lifeExp-line-by" width="612" style="display: block; margin: auto;" />
+
+
+We've added the **by** *aesthetic*, which tells `ggplot` to draw a line for each
 country.
 
 But what if we want to visualize both lines and points on the plot? We can
