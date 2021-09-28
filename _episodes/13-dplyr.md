@@ -210,74 +210,39 @@ europe_lifeExp_2007 <- gapminder %>%
 > >year_country_lifeExp_Africa <- gapminder %>%
 > >                            filter(continent == "Africa") %>%
 > >                            select(year, country, lifeExp)
+> > ```
+> >> {: .solution}
+> >{: .challenge}
+> >
+> >As with last time, first we pass the gapminder data frame to the `filter()`
+> >function, then we pass the filtered version of the gapminder data frame to the
+> >`select()` function. **Note:** The order of operations is very important in this
+> >case. If we used 'select' first, filter would not be able to find the variable
+> >continent since we would have removed it in the previous step.
+> >
+> >## Using group_by()
+> >
+> >Now, we were supposed to be reducing the error prone repetitiveness of what can
+> >be done with base R, but up to now we haven't done that since we would have to
+> >repeat the above for each continent. Instead of `filter()`, which will only pass
+> >observations that meet your criteria (in the above: `continent=="Europe"`), we
+> >can use `group_by()`, which will essentially use every unique criteria that you
+> >could have used in filter.
 > >~~~
 > >{: .language-r}
-> {: .solution}
-{: .challenge}
-
-As with last time, first we pass the gapminder data frame to the `filter()`
-function, then we pass the filtered version of the gapminder data frame to the
-`select()` function. **Note:** The order of operations is very important in this
-case. If we used 'select' first, filter would not be able to find the variable
-continent since we would have removed it in the previous step.
-
-## Using group_by()
-
-Now, we were supposed to be reducing the error prone repetitiveness of what can
-be done with base R, but up to now we haven't done that since we would have to
-repeat the above for each continent. Instead of `filter()`, which will only pass
-observations that meet your criteria (in the above: `continent=="Europe"`), we
-can use `group_by()`, which will essentially use every unique criteria that you
-could have used in filter.
-
+> >
+> >
+> >
+> >~~~
+> >Error: attempt to use zero-length variable name
+> >~~~
+> >{: .error}
 
 ~~~
 str(gapminder)
-~~~
-{: .language-r}
 
-
-
-~~~
-'data.frame':	1704 obs. of  6 variables:
- $ country  : chr  "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
- $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
- $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...
- $ continent: chr  "Asia" "Asia" "Asia" "Asia" ...
- $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
- $ gdpPercap: num  779 821 853 836 740 ...
-~~~
-{: .output}
-
-
-
-~~~
 str(gapminder %>% group_by(continent))
-~~~
-{: .language-r}
-
-
-
-~~~
-grouped_df [1,704 × 6] (S3: grouped_df/tbl_df/tbl/data.frame)
- $ country  : chr [1:1704] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
- $ year     : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
- $ pop      : num [1:1704] 8425333 9240934 10267083 11537966 13079460 ...
- $ continent: chr [1:1704] "Asia" "Asia" "Asia" "Asia" ...
- $ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...
- $ gdpPercap: num [1:1704] 779 821 853 836 740 ...
- - attr(*, "groups")= tibble [5 × 2] (S3: tbl_df/tbl/data.frame)
-  ..$ continent: chr [1:5] "Africa" "Americas" "Asia" "Europe" ...
-  ..$ .rows    : list<int> [1:5] 
-  .. ..$ : int [1:624] 25 26 27 28 29 30 31 32 33 34 ...
-  .. ..$ : int [1:300] 49 50 51 52 53 54 55 56 57 58 ...
-  .. ..$ : int [1:396] 1 2 3 4 5 6 7 8 9 10 ...
-  .. ..$ : int [1:360] 13 14 15 16 17 18 19 20 21 22 ...
-  .. ..$ : int [1:24] 61 62 63 64 65 66 67 68 69 70 ...
-  .. ..@ ptype: int(0) 
-  ..- attr(*, ".drop")= logi TRUE
-~~~
-{: .output}
+```
 You will notice that the structure of the data frame where we used `group_by()`
 (`grouped_df`) is not the same as the original `gapminder` (`data.frame`). A
 `grouped_df` can be thought of as a `list` where each item in the `list`is a
@@ -294,17 +259,32 @@ variable(s) by using functions that repeat for each of the continent-specific
 data frames. That is to say, using the `group_by()` function, we split our
 original data frame into multiple pieces, then we can run functions
 (e.g. `mean()` or `sd()`) within `summarize()`.
+~~~
+{: .language-r}
 
+
+
+~~~
+Error: attempt to use zero-length variable name
+~~~
+{: .error}
 
 ~~~
 gdp_bycontinents <- gapminder %>%
     group_by(continent) %>%
     summarize(mean_gdpPercap = mean(gdpPercap))
+```
+
+![Diagram illustrating the use of group by and summarize together to create a new variable](../fig/13-dplyr-fig3.png)
 ~~~
 {: .language-r}
 
-![Diagram illustrating the use of group by and summarize together to create a new variable](../fig/13-dplyr-fig3.png)
 
+
+~~~
+Error: attempt to use zero-length variable name
+~~~
+{: .error}
 
 ~~~
 continent mean_gdpPercap
@@ -314,8 +294,7 @@ continent mean_gdpPercap
 3      Asia       7902.150
 4    Europe      14469.476
 5   Oceania      18621.609
-~~~
-{: .language-r}
+```
 
 That allowed us to calculate the mean gdpPercap for each continent, but it gets
 even better.
@@ -327,6 +306,8 @@ even better.
 > expectancy and which has the shortest average life expectancy?
 >
 > > ## Solution to Challenge 2
+~~~
+{: .language-r}
 > >
 > >~~~
 > >lifeExp_bycountry <- gapminder %>%

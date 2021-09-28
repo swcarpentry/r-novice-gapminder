@@ -599,22 +599,23 @@ output_vector2
 > >     }
 > >     rm(tmp)
 > > }
-> > ~~~
-> > {: .language-r}
-> {: .solution}
-{: .challenge}
-
-> ## Challenge 5 - Advanced
->
-> Write a script that loops over each country in the `gapminder` dataset,
-> tests whether the country starts with a 'B', and graphs life expectancy
-> against time as a line graph if the mean life expectancy is under 50 years.
->
+> >  ```
+> > > {: .solution}
+> > {: .challenge}
+> > 
+> > > ## Challenge 5 - Advanced
+> > >
+> > > Write a script that loops over each country in the `gapminder` dataset,
+> > > tests whether the country starts with a 'B', and graphs life expectancy
+> > > against time as a line graph if the mean life expectancy is under 50 years.
+> > >
 > > ## Solution for Challenge 5
-> >
+> > 
 > > We will use the `grep()` command that was introduced in the Unix Shell lesson to find countries that start with "B."
 > > Lets understand how to do this first.
 > > Following from the Unix shell section we may be tempted to try the following
+> > ~~~
+> > {: .language-r}
 > > 
 > > ~~~
 > > grep("^B", unique(gapminder$country))
@@ -655,7 +656,8 @@ output_vector2
 > >     } # end if
 > >     rm(tmp)
 > > } # end for loop
+> >  ```
+> > > {: .solution}
+> > {: .challenge}
 > > ~~~
 > > {: .language-r}
-> {: .solution}
-{: .challenge}

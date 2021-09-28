@@ -53,6 +53,17 @@ several operations with a single command.
 Let's open a new R script file in the `functions/` directory and call it
 functions-lesson.R.
 
+The general structure of a function is:
+
+
+~~~
+my_function <- function(parameters) {
+  # perform action
+  # return value
+}
+~~~
+{: .language-r}
+
 Let's define a function `fahr_to_kelvin()` that converts temperatures from
 Fahrenheit to Kelvin:
 

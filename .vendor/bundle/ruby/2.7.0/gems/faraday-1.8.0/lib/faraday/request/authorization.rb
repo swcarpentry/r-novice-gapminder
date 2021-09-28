@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'base64'
+
 module Faraday
   class Request
     # Request middleware for the Authorization HTTP header
@@ -13,7 +15,8 @@ module Faraday
       # @return [String] a header value
       def self.header(type, token)
         case token
-        when String, Symbol
+        when String, Symbol, Proc
+          token = token.call if token.is_a?(Proc)
           "#{type} #{token}"
         when Hash
           build_hash(type.to_s, token)
@@ -32,6 +35,7 @@ module Faraday
         comma = ', '
         values = []
         hash.each do |key, value|
+          value = value.call if value.is_a?(Proc)
           values << "#{key}=#{value.to_s.inspect}"
         end
         "#{type} #{values * comma}"
@@ -39,16 +43,19 @@ module Faraday
 
       # @param app [#call]
       # @param type [String, Symbol] Type of Authorization
-      # @param token [String, Symbol, Hash] Token value for the Authorization
-      def initialize(app, type, token)
-        @header_value = self.class.header(type, token)
+      # @param param [String, Symbol, Hash, Proc] parameter to build the Authorization header.
+      #   This value can be a proc, in which case it will be invoked on each request.
+      def initialize(app, type, param)
+        @type = type
+        @param = param
         super(app)
       end
 
       # @param env [Faraday::Env]
-      def call(env)
-        env.request_headers[KEY] = @header_value unless env.request_headers[KEY]
-        @app.call(env)
+      def on_request(env)
+        return if env.request_headers[KEY]
+
+        env.request_headers[KEY] = self.class.header(@type, @param)
       end
     end
   end

@@ -708,7 +708,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x55d355aa72c8>
+<bytecode: 0x55f0f6d70f08>
 <environment: namespace:base>
 ~~~
 {: .output}
@@ -865,28 +865,29 @@ Packages can be installed and updated from the Package tab with the Install and 
 > > 
 > > ~~~
 > > mass > age
+> > ```
+> > This should yield a boolean value of TRUE since `r mass` is greater than `r age`.
+> > > {: .solution}
+> > {: .challenge}
+> > 
+> > 
+> > > ## Challenge 4
+> > >
+> > > Clean up your working environment by deleting the mass and age
+> > > variables.
+> > >
+> > ## Solution to challenge 4
+> > 
+> > We can use the `rm` command to accomplish this task
 > > ~~~
 > > {: .language-r}
 > > 
 > > 
 > > 
 > > ~~~
-> > [1] TRUE
+> > Error: attempt to use zero-length variable name
 > > ~~~
-> > {: .output}
-> > This should yield a boolean value of TRUE since 109.25 is greater than 102.
-> {: .solution}
-{: .challenge}
-
-
-> ## Challenge 4
->
-> Clean up your working environment by deleting the mass and age
-> variables.
->
-> > ## Solution to challenge 4
-> >
-> > We can use the `rm` command to accomplish this task
+> > {: .error}
 > > 
 > > ~~~
 > > rm(age, mass)
@@ -907,14 +908,16 @@ Packages can be installed and updated from the Package tab with the Install and 
 > > install.packages("ggplot2")
 > > install.packages("plyr")
 > > install.packages("gapminder")
+> > ```
+> > 
+> > An alternate solution, to install multiple packages with a single `install.packages()` command is:
 > > ~~~
 > > {: .language-r}
-> >
-> > An alternate solution, to install multiple packages with a single `install.packages()` command is:
 > > 
 > > ~~~
 > > install.packages(c("ggplot2", "plyr", "gapminder"))
+> > ```
+> > > {: .solution}
+> > {: .challenge}
 > > ~~~
 > > {: .language-r}
-> {: .solution}
-{: .challenge}
