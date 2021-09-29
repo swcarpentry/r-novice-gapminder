@@ -277,7 +277,7 @@ x[names(x) == "a"]
 > > ```{r}
 > > x_subset <- x[x<7 & x>4]
 > > print(x_subset)
-> >```
+> > ```
 > {: .solution}
 {: .challenge}
 
@@ -289,7 +289,7 @@ x[names(x) == "a"]
 > the same name --- although R tries to avoid this --- but row names
 > must be unique.) Consider these examples:
 >
->```{r}
+> ```{r}
 > x <- 1:3
 > x
 > names(x) <- c('a', 'a', 'a')
@@ -384,7 +384,7 @@ x[! names(x) %in% c("a","c") ]
 > a clunky way (using the logical operators `==` and `|`); and
 > an elegant way (using `%in%`). See whether you can come up with all three
 > and explain how they (don't) work.
-> 
+>
 > > ## Solution to challenge 3
 > >
 > > - The **wrong** way to do this problem is `countries==seAsia`. This
@@ -774,7 +774,7 @@ be changed with the third argument, `drop = FALSE`).
 > >
 > > 1.  `gapminder` is a data.frame so needs to be subsetted on two dimensions. `gapminder[1:20, ]` subsets the data to give the first 20 rows and all columns.
 > >
-> > 2. 
+> > 2.
 > >
 > > ```{r}
 > > gapminder_small <- gapminder[c(1:9, 19:23),]
