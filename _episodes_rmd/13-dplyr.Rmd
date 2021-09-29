@@ -128,7 +128,7 @@ year_country_gdp_euro <- gapminder %>%
     select(year, country, gdpPercap)
 ```
 
-If we now want to show life expectancy of European countries but only 
+If we now want to show life expectancy of European countries but only
 for a specific year (e.g., 2007), we can do as below.
 ```{r}
 europe_lifeExp_2007 <- gapminder %>%
@@ -143,12 +143,13 @@ europe_lifeExp_2007 <- gapminder %>%
 > and `year`, but not for other Continents.  How many rows does your data frame
 > have and why?
 >
-> > ## Solution to Challenge 1
-> >```{r}
-> >year_country_lifeExp_Africa <- gapminder %>%
-> >                            filter(continent == "Africa") %>%
-> >                            select(year, country, lifeExp)
-> > ```
+>> ## Solution to Challenge 1
+>>
+>> ```{r}
+>> year_country_lifeExp_Africa <- gapminder %>%
+>>                            filter(continent == "Africa") %>%
+>>                            select(year, country, lifeExp)
+>> ```
 > {: .solution}
 {: .challenge}
 
@@ -374,7 +375,7 @@ ggplot(data = americas, mapping = aes(x = year, y = lifeExp)) +
   theme(axis.text.x = element_text(angle = 45))
 ```
 
-This code makes the right plot but it also creates an intermediate variable 
+This code makes the right plot but it also creates an intermediate variable
 (`americas`) that we might not have any other uses for. Just as we used
 `%>%` to pipe data along a chain of `dplyr` functions we can use it to pass data
 to `ggplot()`. Because `%>%` replaces the first argument in a function we don't
@@ -395,11 +396,11 @@ gapminder %>%
 
 More examples of using the function `mutate()` and the `ggplot2` package.
 ```{r}
-gapminder %>% 
+gapminder %>%
   # extract first letter of country name into new column
-  mutate(startsWith = substr(country, 1, 1)) %>% 
+  mutate(startsWith = substr(country, 1, 1)) %>%
   # only keep countries starting with A or Z
-  filter(startsWith %in% c("A", "Z")) %>% 
+  filter(startsWith %in% c("A", "Z")) %>%
   # plot lifeExp into facets
   ggplot(aes(x = year, y = lifeExp, colour = continent)) +
   geom_line() +

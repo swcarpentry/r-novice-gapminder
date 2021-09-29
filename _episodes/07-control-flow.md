@@ -116,7 +116,7 @@ x  <-  4 == 3
 if (x) {
   "4 equals 3"
 } else {
-  "4 does not equal 3"          
+  "4 does not equal 3"
 }
 ~~~
 {: .language-r}
@@ -202,31 +202,31 @@ the first element will be used
 ~~~
 {: .warning}
 
-The `if()` function only accepts singular (of length 1) inputs, and therefore 
-returns an error when you use it with a vector. The `if()` function will still 
-run, but will only evaluate the condition in the first element of the vector. 
-Therefore, to use the `if()` function, you need to make sure your input is 
-singular (of length 1).  
+The `if()` function only accepts singular (of length 1) inputs, and therefore
+returns an error when you use it with a vector. The `if()` function will still
+run, but will only evaluate the condition in the first element of the vector.
+Therefore, to use the `if()` function, you need to make sure your input is
+singular (of length 1).
 
-> ## Tip: Built in `ifelse()` function  
-> 
-> `R` accepts both `if()` and `else if()` statements structured as outlined above, 
-> but also statements using `R`'s built-in `ifelse()` function. This 
-> function accepts both singular and vector inputs and is structured as 
-> follows: 
-> 
+> ## Tip: Built in `ifelse()` function
+>
+> `R` accepts both `if()` and `else if()` statements structured as outlined above,
+> but also statements using `R`'s built-in `ifelse()` function. This
+> function accepts both singular and vector inputs and is structured as
+> follows:
+>
 > 
 > ~~~
-> # ifelse function 
-> ifelse(condition is true, perform action, perform alternative action) 
+> # ifelse function
+> ifelse(condition is true, perform action, perform alternative action)
 > ~~~
 > {: .language-r}
 >
-> where the first argument is the condition or a set of conditions to be met, the 
+> where the first argument is the condition or a set of conditions to be met, the
 > second argument is the statement that is evaluated when the condition is `TRUE`,
-> and the third statement  is the statement that is evaluated when the condition 
-> is `FALSE`.  
->  
+> and the third statement  is the statement that is evaluated when the condition
+> is `FALSE`.
+>
 > 
 > ~~~
 > y <- -3
@@ -259,14 +259,14 @@ a set of values, when the order of iteration is important, and perform the
 same operation on each, a `for()` loop will do the job.
 We saw `for()` loops in the shell lessons earlier. This is the most
 flexible of looping operations, but therefore also the hardest to use
-correctly. In general, the advice of many `R` users would be to learn about 
+correctly. In general, the advice of many `R` users would be to learn about
 `for()` loops, but to avoid using `for()` loops unless the order of iteration is
-important: i.e. the calculation at each iteration depends on the results of 
-previous iterations. If the order of iteration is not important, then you 
+important: i.e. the calculation at each iteration depends on the results of
+previous iterations. If the order of iteration is not important, then you
 should learn about vectorized alternatives, such as the `purrr` package, as they
-pay off in computational efficiency. 
+pay off in computational efficiency.
 
-The basic structure of a `for()` loop is:  
+The basic structure of a `for()` loop is:
 
 
 ~~~
@@ -349,10 +349,10 @@ for (i in 1:5) {
 ~~~
 {: .output}
 
-We notice in the output that when the first index (`i`) is set to 1, the second 
-index (`j`) iterates through its full set of indices. Once the indices of `j` 
-have been iterated through, then `i` is incremented. This process continues 
-until the last index has been used for each `for()` loop.  
+We notice in the output that when the first index (`i`) is set to 1, the second
+index (`j`) iterates through its full set of indices. Once the indices of `j`
+have been iterated through, then `i` is incremented. This process continues
+until the last index has been used for each `for()` loop.
 
 Rather than printing the results, we could write the loop output to a new object.
 
@@ -389,7 +389,7 @@ it when you are iterating through a lot of values.
 > (vector, list, matrix, data frame) as your for loop progresses.
 > Computers are very bad at handling this, so your calculations
 > can very quickly slow to a crawl. It's much better to define
-> an empty results object before hand of appropriate dimensions, rather 
+> an empty results object before hand of appropriate dimensions, rather
 > than initializing an empty object without dimensions.
 > So if you know the end result will be stored in a matrix like above,
 > create an empty matrix with 5 row and 5 columns, then at each iteration
@@ -541,8 +541,8 @@ output_vector2
 > > 
 > > ~~~
 > > for (iContinent in unique(gapminder$continent)) {
-> >   tmp <- gapminder[gapminder$continent == iContinent, ]   
-> >   cat(iContinent, mean(tmp$lifeExp, na.rm = TRUE), "\n")  
+> >   tmp <- gapminder[gapminder$continent == iContinent, ]
+> >   cat(iContinent, mean(tmp$lifeExp, na.rm = TRUE), "\n")
 > >   rm(tmp)
 > > }
 > > ~~~
@@ -560,7 +560,7 @@ output_vector2
 > > 
 > > for (iContinent in unique(gapminder$continent)) {
 > >    tmp <- mean(gapminder[gapminder$continent == iContinent, "lifeExp"])
-> >    
+> > 
 > >    if (tmp < thresholdValue){
 > >        cat("Average Life Expectancy in", iContinent, "is less than", thresholdValue, "\n")
 > >    } else {
@@ -586,10 +586,10 @@ output_vector2
 > > ~~~
 > >  lowerThreshold <- 50
 > >  upperThreshold <- 70
-> >  
+> > 
 > > for (iCountry in unique(gapminder$country)) {
 > >     tmp <- mean(gapminder[gapminder$country == iCountry, "lifeExp"])
-> >     
+> > 
 > >     if(tmp < lowerThreshold) {
 > >         cat("Average Life Expectancy in", iCountry, "is less than", lowerThreshold, "\n")
 > >     } else if(tmp > lowerThreshold && tmp < upperThreshold) {
@@ -599,23 +599,22 @@ output_vector2
 > >     }
 > >     rm(tmp)
 > > }
-> >  ```
-> > > {: .solution}
-> > {: .challenge}
-> > 
-> > > ## Challenge 5 - Advanced
-> > >
-> > > Write a script that loops over each country in the `gapminder` dataset,
-> > > tests whether the country starts with a 'B', and graphs life expectancy
-> > > against time as a line graph if the mean life expectancy is under 50 years.
-> > >
+> > ~~~
+> > {: .language-r}
+> {: .solution}
+{: .challenge}
+
+> ## Challenge 5 - Advanced
+>
+> Write a script that loops over each country in the `gapminder` dataset,
+> tests whether the country starts with a 'B', and graphs life expectancy
+> against time as a line graph if the mean life expectancy is under 50 years.
+>
 > > ## Solution for Challenge 5
-> > 
+> >
 > > We will use the `grep()` command that was introduced in the Unix Shell lesson to find countries that start with "B."
 > > Lets understand how to do this first.
 > > Following from the Unix shell section we may be tempted to try the following
-> > ~~~
-> > {: .language-r}
 > > 
 > > ~~~
 > > grep("^B", unique(gapminder$country))
@@ -641,10 +640,10 @@ output_vector2
 > > 
 > > for (iCountry in candidateCountries) {
 > >     tmp <- mean(gapminder[gapminder$country == iCountry, "lifeExp"])
-> >     
+> > 
 > >     if (tmp < thresholdValue) {
 > >         cat("Average Life Expectancy in", iCountry, "is less than", thresholdValue, "plotting life expectancy graph... \n")
-> >         
+> > 
 > >         with(subset(gapminder, country == iCountry),
 > >                 plot(year, lifeExp,
 > >                      type = "o",
@@ -656,8 +655,7 @@ output_vector2
 > >     } # end if
 > >     rm(tmp)
 > > } # end for loop
-> >  ```
-> > > {: .solution}
-> > {: .challenge}
 > > ~~~
 > > {: .language-r}
+> {: .solution}
+{: .challenge}

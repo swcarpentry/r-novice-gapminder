@@ -338,9 +338,9 @@ take.
 Typing a `?` before the name of a command will open the help page
 for that command. When using RStudio, this will open the 'Help' pane;
 if using R in the terminal, the help page will open in your browser.
-The help page will include a detailed description of the command and 
-how it works. Scrolling to the bottom of the help page will usually 
-show a collection of code examples which illustrate command usage. 
+The help page will include a detailed description of the command and
+how it works. Scrolling to the bottom of the help page will usually
+show a collection of code examples which illustrate command usage.
 We'll go through an example later.
 
 ## Comparing things
@@ -513,8 +513,8 @@ The right hand side of the assignment can be any valid R expression.
 The right hand side is *fully evaluated* before the assignment occurs.
 
 Variable names can contain letters, numbers, underscores and periods but no spaces. They
-must start with a letter or a period followed by a letter (they cannot start with a number nor an underscore). 
-Variables beginning with a period are hidden variables. 
+must start with a letter or a period followed by a letter (they cannot start with a number nor an underscore).
+Variables beginning with a period are hidden variables.
 Different people use different conventions for long variable names, these include
 
   * periods.between.words
@@ -708,12 +708,12 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x559213d62f08>
+<bytecode: 0x55d98d764f08>
 <environment: namespace:base>
 ~~~
 {: .output}
 
-What's going on here? 
+What's going on here?
 
 Like everything in R, `ls` is the name of an object, and entering the name of
 an object by itself prints the contents of the object. The object `x` that we
@@ -801,9 +801,9 @@ network). R and RStudio have functionality for managing packages:
 * You can remove a package with `remove.packages("packagename")`
 * You can make a package available for use with `library(packagename)`
 
-Packages can also be viewed, loaded, and detached in the Packages tab of the lower right panel in RStudio. Clicking on this tab will display all of the installed packages with a checkbox next to them. If the box next to a package name is checked, the package is loaded and if it is empty, the package is not loaded. Click an empty box to load that package and click a checked box to detach that package. 
+Packages can also be viewed, loaded, and detached in the Packages tab of the lower right panel in RStudio. Clicking on this tab will display all of the installed packages with a checkbox next to them. If the box next to a package name is checked, the package is loaded and if it is empty, the package is not loaded. Click an empty box to load that package and click a checked box to detach that package.
 
-Packages can be installed and updated from the Package tab with the Install and Update buttons at the top of the tab. 
+Packages can be installed and updated from the Package tab with the Install and Update buttons at the top of the tab.
 
 > ## Challenge 2
 >
@@ -908,16 +908,14 @@ Packages can be installed and updated from the Package tab with the Install and 
 > > install.packages("ggplot2")
 > > install.packages("plyr")
 > > install.packages("gapminder")
-> > ```
-> > 
-> > An alternate solution, to install multiple packages with a single `install.packages()` command is:
 > > ~~~
 > > {: .language-r}
+> >
+> > An alternate solution, to install multiple packages with a single `install.packages()` command is:
 > > 
 > > ~~~
 > > install.packages(c("ggplot2", "plyr", "gapminder"))
-> > ```
-> > > {: .solution}
-> > {: .challenge}
 > > ~~~
 > > {: .language-r}
+> {: .solution}
+{: .challenge}
