@@ -148,7 +148,7 @@ europe_lifeExp_2007 <- gapminder %>%
 > >year_country_lifeExp_Africa <- gapminder %>%
 > >                            filter(continent == "Africa") %>%
 > >                            select(year, country, lifeExp)
-> > ```
+> >```
 > {: .solution}
 {: .challenge}
 
