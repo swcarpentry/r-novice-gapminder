@@ -51,8 +51,8 @@ even find the `dplyr` grammar easier to read.
 >
 > `dplyr` package belongs to a broader family of opinionated R packages
 > specifically designed for data science called "Tidyverse". Some of these
-> packages will be covered along this course, but you can find more information
-> here: https://www.tidyverse.org/.
+> packages will be covered along this course, but you can find more 
+> complete information here: https://www.tidyverse.org/.
 {: .callout}
 
 Here we're going to cover 5 of the most commonly used functions as well as using
