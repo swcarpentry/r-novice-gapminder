@@ -708,7 +708,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x55d98d764f08>
+<bytecode: 0x55def425cf08>
 <environment: namespace:base>
 ~~~
 {: .output}
@@ -895,6 +895,7 @@ Packages can be installed and updated from the Package tab with the Install and 
 > > {: .language-r}
 > {: .solution}
 {: .challenge}
+
 
 > ## Challenge 5
 >
