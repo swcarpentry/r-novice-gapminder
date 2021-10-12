@@ -708,7 +708,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x55def425cf08>
+<bytecode: 0x562c1ea7ef08>
 <environment: namespace:base>
 ~~~
 {: .output}
@@ -865,29 +865,28 @@ Packages can be installed and updated from the Package tab with the Install and 
 > > 
 > > ~~~
 > > mass > age
-> > ```
-> > This should yield a boolean value of TRUE since `r mass` is greater than `r age`.
-> > > {: .solution}
-> > {: .challenge}
-> > 
-> > 
-> > > ## Challenge 4
-> > >
-> > > Clean up your working environment by deleting the mass and age
-> > > variables.
-> > >
-> > ## Solution to challenge 4
-> > 
-> > We can use the `rm` command to accomplish this task
 > > ~~~
 > > {: .language-r}
 > > 
 > > 
 > > 
 > > ~~~
-> > Error: attempt to use zero-length variable name
+> > [1] TRUE
 > > ~~~
-> > {: .error}
+> > {: .output}
+> > This should yield a boolean value of TRUE since 109.25 is greater than 102.
+> {: .solution}
+{: .challenge}
+
+
+> ## Challenge 4
+>
+> Clean up your working environment by deleting the mass and age
+> variables.
+>
+> > ## Solution to challenge 4
+> >
+> > We can use the `rm` command to accomplish this task
 > > 
 > > ~~~
 > > rm(age, mass)
