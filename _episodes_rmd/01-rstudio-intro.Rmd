@@ -577,7 +577,7 @@ Packages can be installed and updated from the Package tab with the Install and 
 > > One way of answering this question in R is to use the `>` to set up the following:
 > > ```{r ch3-sol}
 > > mass > age
-> >```
+> > ```
 > > This should yield a boolean value of TRUE since `r mass` is greater than `r age`.
 > {: .solution}
 {: .challenge}
