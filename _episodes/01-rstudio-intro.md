@@ -79,8 +79,15 @@ in the top left.
 
 ![RStudio layout with .R file open](../fig/01-rstudio-script.png)
 
+> ## R scripts
+> 
+> Any commands that you write in the R console can be saved in to a file
+> to be re-run again.  Files containg R code to be ran in this way are 
+> called R scripts.  R scripts have `.R` at the end of their names to 
+> let you know what they are.
+{: .callout}
 
-## Work flow within RStudio
+## Workflow within RStudio
 There are two main ways one can work within RStudio:
 
 1. Test and play within the interactive R console then copy code into
@@ -708,7 +715,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x55a84e4c7fd8>
+<bytecode: 0x5590a1ebdf08>
 <environment: namespace:base>
 ~~~
 {: .output}
