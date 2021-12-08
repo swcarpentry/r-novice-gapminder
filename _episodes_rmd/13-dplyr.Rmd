@@ -47,6 +47,14 @@ in a way that will reduce the above repetition, reduce the probability of making
 errors, and probably even save you some typing. As an added bonus, you might
 even find the `dplyr` grammar easier to read.
 
+> ## Tip: Tidyverse
+>
+> `dplyr` package belongs to a broader family of opinionated R packages
+> specifically designed for data science called "Tidyverse". Some of these
+> packages will be covered along this course, but you can find more 
+> complete information here: https://www.tidyverse.org/.
+{: .callout}
+
 Here we're going to cover 5 of the most commonly used functions as well as using
 pipes (`%>%`) to combine them.
 
