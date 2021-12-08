@@ -12,12 +12,12 @@ NULLCMD = :
 #### Start of system configuration section. ####
 
 srcdir = .
-topdir = /opt/hostedtoolcache/Ruby/2.7.4/x64/include/ruby-2.7.0
+topdir = /opt/hostedtoolcache/Ruby/2.7.5/x64/include/ruby-2.7.0
 hdrdir = $(topdir)
-arch_hdrdir = /opt/hostedtoolcache/Ruby/2.7.4/x64/include/ruby-2.7.0/x86_64-linux
+arch_hdrdir = /opt/hostedtoolcache/Ruby/2.7.5/x64/include/ruby-2.7.0/x86_64-linux
 PATH_SEPARATOR = :
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
-prefix = $(DESTDIR)/opt/hostedtoolcache/Ruby/2.7.4/x64
+prefix = $(DESTDIR)/opt/hostedtoolcache/Ruby/2.7.5/x64
 rubysitearchprefix = $(rubylibprefix)/$(sitearch)
 rubyarchprefix = $(rubylibprefix)/$(arch)
 rubylibprefix = $(libdir)/$(RUBY_BASE_NAME)
@@ -31,8 +31,8 @@ rubyhdrdir = $(includedir)/$(RUBY_VERSION_NAME)
 vendorarchdir = $(vendorlibdir)/$(sitearch)
 vendorlibdir = $(vendordir)/$(ruby_version)
 vendordir = $(rubylibprefix)/vendor_ruby
-sitearchdir = $(DESTDIR)./.gem.20211122-10665-m8pn0q
-sitelibdir = $(DESTDIR)./.gem.20211122-10665-m8pn0q
+sitearchdir = $(DESTDIR)./.gem.20211208-10607-kh6at5
+sitelibdir = $(DESTDIR)./.gem.20211208-10607-kh6at5
 sitedir = $(rubylibprefix)/site_ruby
 rubyarchdir = $(rubylibdir)/$(arch)
 rubylibdir = $(rubylibprefix)/$(ruby_version)
@@ -87,10 +87,10 @@ CCDLFLAGS = -fPIC
 CFLAGS   = $(CCDLFLAGS) -g -O2 -fPIC  $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir) 
 DEFS     = 
-CPPFLAGS = -DRUBY_EXTCONF_H=\"$(RUBY_EXTCONF_H)\" -I/opt/hostedtoolcache/Ruby/2.7.4/x64/include -DENABLE_PATH_CHECK=0 $(DEFS) $(cppflags)
+CPPFLAGS = -DRUBY_EXTCONF_H=\"$(RUBY_EXTCONF_H)\" -I/opt/hostedtoolcache/Ruby/2.7.5/x64/include -DENABLE_PATH_CHECK=0 $(DEFS) $(cppflags)
 CXXFLAGS = $(CCDLFLAGS) -g -O2  $(ARCH_FLAG)
-ldflags  = -L. -L/opt/hostedtoolcache/Ruby/2.7.4/x64/lib  -fstack-protector-strong -rdynamic -Wl,-export-dynamic  -pthread
-dldflags = -L/opt/hostedtoolcache/Ruby/2.7.4/x64/lib  -Wl,--compress-debug-sections=zlib 
+ldflags  = -L. -L/opt/hostedtoolcache/Ruby/2.7.5/x64/lib  -fstack-protector-strong -rdynamic -Wl,-export-dynamic  -pthread
+dldflags = -L/opt/hostedtoolcache/Ruby/2.7.5/x64/lib  -Wl,--compress-debug-sections=zlib 
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
 LDSHARED = $(CC) -shared
@@ -141,7 +141,7 @@ LIBS = $(LIBRUBYARG_SHARED) -lffi  -lffi -lm   -lc
 ORIG_SRCS = AbstractMemory.c ArrayType.c Buffer.c Call.c ClosurePool.c DynamicLibrary.c Function.c FunctionInfo.c LastError.c LongDouble.c MappedType.c MemoryPointer.c MethodHandle.c Platform.c Pointer.c Struct.c StructByValue.c StructLayout.c Thread.c Type.c Types.c Variadic.c ffi.c
 SRCS = $(ORIG_SRCS) 
 OBJS = AbstractMemory.o ArrayType.o Buffer.o Call.o ClosurePool.o DynamicLibrary.o Function.o FunctionInfo.o LastError.o LongDouble.o MappedType.o MemoryPointer.o MethodHandle.o Platform.o Pointer.o Struct.o StructByValue.o StructLayout.o Thread.o Type.o Types.o Variadic.o ffi.o
-HDRS = $(srcdir)/AbstractMemory.h $(srcdir)/Type.h $(srcdir)/ClosurePool.h $(srcdir)/compat.h $(srcdir)/DynamicLibrary.h $(srcdir)/rbffi.h $(srcdir)/ArrayType.h $(srcdir)/LongDouble.h $(srcdir)/Types.h $(srcdir)/MappedType.h $(srcdir)/Call.h $(srcdir)/LastError.h $(srcdir)/Pointer.h $(srcdir)/extconf.h $(srcdir)/Function.h $(srcdir)/MethodHandle.h $(srcdir)/Struct.h $(srcdir)/Platform.h $(srcdir)/StructByValue.h $(srcdir)/MemoryPointer.h $(srcdir)/rbffi_endian.h $(srcdir)/Thread.h
+HDRS = $(srcdir)/compat.h $(srcdir)/Call.h $(srcdir)/Function.h $(srcdir)/LongDouble.h $(srcdir)/StructByValue.h $(srcdir)/MethodHandle.h $(srcdir)/Platform.h $(srcdir)/ClosurePool.h $(srcdir)/rbffi_endian.h $(srcdir)/Types.h $(srcdir)/extconf.h $(srcdir)/ArrayType.h $(srcdir)/MemoryPointer.h $(srcdir)/MappedType.h $(srcdir)/Struct.h $(srcdir)/AbstractMemory.h $(srcdir)/rbffi.h $(srcdir)/DynamicLibrary.h $(srcdir)/LastError.h $(srcdir)/Type.h $(srcdir)/Pointer.h $(srcdir)/Thread.h
 LOCAL_HDRS = 
 TARGET = ffi_c
 TARGET_NAME = ffi_c
