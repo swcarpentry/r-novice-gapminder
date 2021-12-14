@@ -1,19 +1,20 @@
 ---
-title: Producing Reports With knitr
+title: "Producing Reports With knitr"
 teaching: 60
 exercises: 15
-questions:
-- "How can I integrate software and reports?"
+questions: How can I integrate software and reports?
 objectives:
 - Understand the value of writing reproducible reports
 - Learn how to recognise and compile the basic components of an R Markdown file
-- Become familiar with R code chunks, and understand their purpose, structure and options 
-- Demonstrate the use of inline chunks for weaving R outputs into text blocks, for example when discussing the results of some calculations
+- Become familiar with R code chunks, and understand their purpose, structure and
+  options
+- Demonstrate the use of inline chunks for weaving R outputs into text blocks, for
+  example when discussing the results of some calculations
 - Be aware of alternative output formats to which an R Markdown file can be exported
 keypoints:
-- "Mix reporting written in R Markdown with software written in R."
-- "Specify chunk options to control formatting."
-- "Use `knitr` to convert these documents into PDF and other formats."
+- Mix reporting written in R Markdown with software written in R.
+- Specify chunk options to control formatting.
+- Use `knitr` to convert these documents into PDF and other formats.
 source: Rmd
 ---
 
@@ -214,9 +215,9 @@ the "Knit" button in the upper-left.
 ## A bit more Markdown
 
 You can make a hyperlink like this:
-`[text to show](http://the-web-page.com)`.
+`[Carpentries Home Page](https://carpentries.org/)`.
 
-You can include an image file like this: `![caption](http://url/for/file)`
+You can include an image file like this: `![The Carpentries Logo](https://carpentries.org/assets/img/TheCarpentries.svg)`
 
 You can do subscripts (e.g., F~2~) with `F~2~` and superscripts (e.g.,
 F^2^) with `F^2^`.
