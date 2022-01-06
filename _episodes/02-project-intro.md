@@ -191,7 +191,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > > 
 > > 
 > > ~~~
-> > -rw-r--r-- 1 runner docker 80K Dec 14 16:53 data/gapminder_data.csv
+> > -rw-r--r-- 1 runner docker 80K Jan  6 22:59 data/gapminder_data.csv
 > > ~~~
 > > {: .output}
 > > The file size is 80K.
@@ -240,8 +240,31 @@ Now we have a good directory structure we will now place/save the data file in t
 > within RStudio to interact directly with the command line.
 {: .callout}
 
+### Working directory
+
+Knowing R's current working directory is important because when you need to access other files (for example, to import a data file), R will look for them relative to the current working directory.
+
+Each time you create a new RStudio Project, it will create a new directory for that project. When you open an existing `.Rproj` file, it will open that project and set R's working directory to the folder that file is in.
+
+> ## Challenge 5
+> You can check the current working directory with the `getwd()` command, or by using the menus in RStudio.
+>
+> 1. In the console, type `getwd()` ("wd" is short for "working directory") and hit Enter.
+> 2. In the Files pane, double click on the `data` folder to open it (or navigate to any other folder you wish). To get the Files pane back to the current working directory, click "More" and then select "Go To Working Directory".
+>
+> You can change the working directory with `setwd()`, or by using RStudio menus.
+>
+> 1. In the console, type `setwd("data")` and hit Enter. Type `getwd()` and hit Enter to see the new working directory.
+> 2. In the menus at the top of the RStudio window, click the "Session" menu button, and then select "Set Working Directory" and then "Choose Directory".
+> 3. In the windows navigator that opens, navigate back to the project directory, and click "Open". Note that a `setwd` command will automatically appear in the console.
+{: .challenge}
+
+> ## Tip: File does not exist errors
+>
+> When you're attempting to reference a file in your R code and you're getting errors saying the file doesn't exist, it's a good idea to check your working directory.
+> You need to either provide an absolute path to the file, or you need to make sure the file is saved in the working directory (or a subfolder of the working directory) and provide a relative path. 
+{: .callout}
+
 ### Version Control
 
 It is important to use version control with projects.  Go [here for a good lesson which describes using Git with RStudio](https://swcarpentry.github.io/git-novice/14-supplemental-rstudio/).
-
-
