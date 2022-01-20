@@ -58,7 +58,7 @@ Throughout this lesson, we're going to teach you some of the fundamentals of
 the R language as well as some best practices for organizing code for
 scientific projects that will make your life easier.
 
-We'll be using RStudio: a free, open source R Integrated Development
+We'll be using RStudio: a free, open-source R Integrated Development
 Environment (IDE). It provides a built-in editor, works on all platforms (including
 on servers) and provides many advantages such as integration with version
 control and project management.
@@ -715,7 +715,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x5564b5adefb8>
+<bytecode: 0x5654c213ffb8>
 <environment: namespace:base>
 ~~~
 {: .output}
