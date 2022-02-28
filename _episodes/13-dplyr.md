@@ -432,7 +432,8 @@ gdp_bycontinents_byyear <- gapminder %>%
 
 
 ~~~
-`summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.
+`summarise()` has grouped output by 'continent'. You can override using the
+`.groups` argument.
 ~~~
 {: .output}
 
@@ -452,7 +453,8 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 
 
 ~~~
-`summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.
+`summarise()` has grouped output by 'continent'. You can override using the
+`.groups` argument.
 ~~~
 {: .output}
 
@@ -560,7 +562,8 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 
 
 ~~~
-`summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.
+`summarise()` has grouped output by 'continent'. You can override using the
+`.groups` argument.
 ~~~
 {: .output}
 
@@ -590,7 +593,8 @@ gdp_pop_bycontinents_byyear_above25 <- gapminder %>%
 
 
 ~~~
-`summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.
+`summarise()` has grouped output by 'continent'. You can override using the
+`.groups` argument.
 ~~~
 {: .output}
 
@@ -610,7 +614,8 @@ gdp_future_bycontinents_byyear_high_lifeExp <- gapminder %>%
 
 
 ~~~
-`summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.
+`summarise()` has grouped output by 'continent'. You can override using the
+`.groups` argument.
 ~~~
 {: .output}
 

@@ -140,21 +140,6 @@ own functions. It's a good idea to separate these functions into two separate fo
 to store useful functions that you'll reuse across analyses and projects, and
 one to store the analysis scripts.
 
-> ## Tip: avoiding duplication
->
-> You may find yourself using data or analysis scripts across several projects.
-> Typically you want to avoid duplication to save space and avoid having to
-> make updates to code in multiple places.
->
-> In this case, making "symbolic links", which are essentially shortcuts to
-> files somewhere else on a filesystem, can let you use existing code without
-> having to move or copy it. Plus, any changes made to that code will only have
-> to be made once.
->
-> On Linux and OS X you can use the `ln -s` command, and on Windows you can
-> either create a shortcut or use the `mklink` command from the windows terminal.
-{: .callout}
-
 ### Save the data in the data directory
 
 Now we have a good directory structure we will now place/save the data file in the `data/` directory.
@@ -191,7 +176,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > > 
 > > 
 > > ~~~
-> > -rw-r--r-- 1 runner docker 80K Jan 20 23:52 data/gapminder_data.csv
+> > -rw-r--r-- 1 runner docker 80K Feb 28 18:06 data/gapminder_data.csv
 > > ~~~
 > > {: .output}
 > > The file size is 80K.

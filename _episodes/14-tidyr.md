@@ -284,7 +284,8 @@ gap_long$year <- as.integer(gap_long$year)
 > >
 > >
 > >~~~
-> >`summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.
+> >`summarise()` has grouped output by 'continent'. You can override using the
+> >`.groups` argument.
 > >~~~
 > >{: .output}
 > >
