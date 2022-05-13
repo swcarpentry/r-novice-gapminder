@@ -444,8 +444,15 @@ There are a few useful commands you can use to interact with the R session.
 `ls` will list all of the variables and functions stored in the global environment
 (your working R session):
 
-```{r}
+```{r eval=FALSE}
 ls()
+```
+```{r echo=FALSE}
+temp.env <- new.env()
+temp.env$x <- x
+temp.env$y <- y
+ls(temp.env)
+rm(temp.env)
 ```
 
 > ## Tip: hidden objects
