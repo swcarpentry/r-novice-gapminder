@@ -92,7 +92,7 @@ in the top left.
 There are two main ways one can work within RStudio:
 
 1. Test and play within the interactive R console then copy code into
-a .R file to run later.
+a R script(.R file) to run later.
    *  This works well when doing small tests and initially starting off.
    *  It quickly becomes laborious
 2. Start writing in a .R file and use RStudio's short cut keys for the Run command
