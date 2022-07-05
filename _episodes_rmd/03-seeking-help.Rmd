@@ -29,19 +29,34 @@ namespace (your interactive R session):
 help(function_name)
 ```
 
+For example take a look at the help file for `write.table()`, we will be using a similar function in an upcoming episode. 
+
+```{r}
+?write.table()
+```
+
 This will load up a help page in RStudio (or as plain text in R by itself).
 
 Each help page is broken down into sections:
 
  - Description: An extended description of what the function does.
- - Usage: The arguments of the function and their default values.
+ - Usage: The arguments of the function and their default values which can be changed.
  - Arguments: An explanation of the data each argument is expecting.
  - Details: Any important details to be aware of.
  - Value: The data the function returns.
  - See Also: Any related functions you might find useful.
  - Examples: Some examples for how to use the function.
 
-Different functions might have different sections, but these are the main ones you should be aware of.
+Different functions might have different sections, but these are the main ones you should be aware of. 
+
+Notice how similar functions call for the same help file: 
+
+```{r}
+?write.table()
+?write.csv()
+```
+
+This is because these functions have very similar applicability and often share the same arguments as inputs to the function. 
 
 > ## Tip: Running Examples
 >
