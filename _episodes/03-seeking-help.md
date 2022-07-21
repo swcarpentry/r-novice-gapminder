@@ -7,7 +7,7 @@ exercises: 10
 questions:
 - "How can I get help in R?"
 objectives:
-- "To be able read R help files for functions and special operators."
+- "To be able to read R help files for functions and special operators."
 - "To be able to use CRAN task views to identify packages to solve a problem."
 - "To be able to seek help from your peers."
 keypoints:
@@ -17,11 +17,11 @@ source: Rmd
 
 
 
-## Reading Help files
+## Reading Help Files
 
 R, and every package, provide help files for functions. The general syntax to search for help on any
 function, "function_name", from a specific function that is in a package loaded into your
-namespace (your interactive R session):
+namespace (your interactive R session) is:
 
 
 ~~~
@@ -30,7 +30,7 @@ help(function_name)
 ~~~
 {: .language-r}
 
-This will load up a help page in RStudio (or as plain text in R by itself).
+This will load up a help page in RStudio (or as plain text in R itself).
 
 Each help page is broken down into sections:
 
@@ -48,16 +48,16 @@ Different functions might have different sections, but these are the main ones y
 >
 > From within the function help page, you can highlight code in the 
 > Examples and hit <kbd>Ctrl</kbd>+<kbd>Return</kbd> to run it in 
-> RStudio console. This is gives you a quick way to get a feel for
+> RStudio console. This gives you a quick way to get a feel for
 > how a function works.
 {: .callout}
 
-> ## Tip: Reading help files
+> ## Tip: Reading Help Files
 >
 > One of the most daunting aspects of R is the large number of functions
 > available. It would be prohibitive, if not impossible to remember the
-> correct usage for every function you use. Luckily, the help files
-> mean you don't have to!
+> correct usage for every function you use. Luckily, using the help files
+> means you don't have to remember that!
 {: .callout}
 
 ## Special Operators
@@ -71,7 +71,7 @@ To seek help on special operators, use quotes or backticks:
 ~~~
 {: .language-r}
 
-## Getting help on packages
+## Getting Help with Packages
 
 Many packages come with "vignettes": tutorials and extended example documentation.
 Without any arguments, `vignette()` will list all vignettes for all installed packages;
@@ -85,9 +85,9 @@ RStudio also has a set of excellent
 [cheatsheets](https://rstudio.com/resources/cheatsheets/) for many packages.
 
 
-## When you kind of remember the function
+## When You Remember Part of the Function Name
 
-If you're not sure what package a function is in, or how it's specifically spelled you can do a fuzzy search:
+If you're not sure what package a function is in or how it's specifically spelled, you can do a fuzzy search:
 
 
 ~~~
@@ -104,23 +104,23 @@ to set your working directory includes "set" in its name. You can do a fuzzy sea
 ~~~
 {: .language-r}
 
-## When you have no idea where to begin
+## When You Have No Idea Where to Begin
 
 If you don't know what function or package you need to use
 [CRAN Task Views](http://cran.at.r-project.org/web/views)
 is a specially maintained list of packages grouped into
 fields. This can be a good starting point.
 
-## When your code doesn't work: seeking help from your peers
+## When Your Code Doesn't Work: Seeking Help from Your Peers
 
 If you're having trouble using a function, 9 times out of 10,
-the answers you are seeking have already been answered on
+the answers you seek have already been answered on
 [Stack Overflow](http://stackoverflow.com/). You can search using
 the `[r]` tag. Please make sure to see their page on 
 [how to ask a good question.](https://stackoverflow.com/help/how-to-ask)
 
 If you can't find the answer, there are a few useful functions to
-help you ask a question from your peers:
+help you ask your peers:
 
 
 ~~~
@@ -128,8 +128,8 @@ help you ask a question from your peers:
 ~~~
 {: .language-r}
 
-Will dump the data you're working with into a format so that it can
-be copy and pasted by anyone else into their R session.
+Will dump the data you're working with into a format that can
+be copied and pasted by others into their own R session.
 
 
 ~~~
@@ -140,9 +140,9 @@ sessionInfo()
 
 
 ~~~
-R version 4.1.2 (2021-11-01)
+R version 4.2.1 (2022-06-23)
 Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 20.04.3 LTS
+Running under: Ubuntu 20.04.4 LTS
 
 Matrix products: default
 BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
@@ -158,11 +158,11 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] knitr_1.37
+[1] knitr_1.39
 
 loaded via a namespace (and not attached):
-[1] compiler_4.1.2 magrittr_2.0.2 tools_4.1.2    stringi_1.7.6  stringr_1.4.0 
-[6] xfun_0.29      evaluate_0.15 
+[1] compiler_4.2.1 magrittr_2.0.3 tools_4.2.1    stringi_1.7.8  stringr_1.4.0 
+[6] xfun_0.31      evaluate_0.15 
 ~~~
 {: .output}
 
@@ -172,8 +172,8 @@ your issue.
 
 > ## Challenge 1
 >
-> Look at the help for the `c` function. What kind of vector do you
-> expect you will create if you evaluate the following:
+> Look at the help page for the `c` function. What kind of vector do you
+> expect will be created if you evaluate the following:
 > 
 > ~~~
 > c(1, 2, 3)
@@ -183,17 +183,17 @@ your issue.
 > {: .language-r}
 > > ## Solution to Challenge 1
 > >
-> > The `c()` function creates a vector, in which all elements are the
+> > The `c()` function creates a vector, in which all elements are of the
 > > same type. In the first case, the elements are numeric, in the
-> > second, they are characters, and in the third they are characters:
+> > second, they are characters, and in the third they are also characters:
 > > the numeric values are "coerced" to be characters.
 > {: .solution}
 {: .challenge}
 
 > ## Challenge 2
 >
-> Look at the help for the `paste` function. You'll need to use this later.
-> What is the difference between the `sep` and `collapse` arguments?
+> Look at the help for the `paste` function. You will need to use it later.
+> What's the difference between the `sep` and `collapse` arguments?
 >
 > > ## Solution to Challenge 2
 > >
@@ -279,19 +279,20 @@ your issue.
 > separator is important, especially if you are working with international
 > colleagues, because different countries have different conventions for the
 > decimal point (i.e. comma vs period).
-> hint: use `??"read table"` to look up functions related to reading in tabular data.
+> Hint: use `??"read table"` to look up functions related to reading in tabular data.
+> 
 > > ## Solution to Challenge 3
 > >
 > > The standard R function for reading tab-delimited files with a period
 > > decimal separator is read.delim(). You can also do this with
 > > `read.table(file, sep="\t")` (the period is the *default* decimal
-> > separator for `read.table()`, although you may have to change
+> > separator for `read.table()`), although you may have to change
 > > the `comment.char` argument as well if your data file contains
-> > hash (#) characters
+> > hash (#) characters.
 > {: .solution}
 {: .challenge}
 
-## Other ports of call
+## Other Resources
 
 * [Quick R](http://www.statmethods.net/)
 * [RStudio cheat sheets](http://www.rstudio.com/resources/cheatsheets/)

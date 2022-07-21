@@ -197,10 +197,9 @@ Did anyone get a warning message like this?
 
 
 ~~~
-Warning in if (gapminder$year == 2012) {: the condition has length > 1 and only
-the first element will be used
+Error in if (gapminder$year == 2012) {: the condition has length > 1
 ~~~
-{: .warning}
+{: .error}
 
 The `if()` function only accepts singular (of length 1) inputs, and therefore
 returns an error when you use it with a vector. The `if()` function will still
