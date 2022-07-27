@@ -56,7 +56,7 @@ Notice how related functions might call for the same help file:
 ?write.csv()
 ```
 
-This is because these functions have very similar applicability and often share the same arguments as inputs to the function.
+This is because these functions have very similar applicability and often share the same arguments as inputs to the function, so package authors often choose to document them together in a single help file.
 
 > ## Tip: Running Examples
 >
