@@ -49,7 +49,7 @@ Each help page is broken down into sections:
 
 Different functions might have different sections, but these are the main ones you should be aware of. 
 
-Notice how similar functions call for the same help file: 
+Notice how related functions might call for the same help file: 
 
 ```{r}
 ?write.table()
