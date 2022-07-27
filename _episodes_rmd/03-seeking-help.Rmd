@@ -183,7 +183,7 @@ your issue.
 > > `collapse` specifies that after concatenation the elements are *collapsed*
 > > together using the given separator, the result being a single string. 
 > >
-> > Its important to call the arguments explicitly by typing out the argument 
+> > It is important to call the arguments explicitly by typing out the argument 
 > > name e.g `sep = ","` so the function understands to use the "," as a 
 > > separator and not a term to concatenate.
 > > e.g. 
