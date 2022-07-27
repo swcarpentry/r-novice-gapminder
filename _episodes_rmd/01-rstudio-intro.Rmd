@@ -238,7 +238,7 @@ Functions take arguments as inputs, anything we type inside the parentheses of a
 getwd() #returns an absolute filepath
 ```
 
-doesn't require an argument, whereas for the next set of mathematical functions we will need supply the function a value into order to compute the result.
+doesn't require an argument, whereas for the next set of mathematical functions we will need to supply the function a value in order to compute the result.
 
 ```{r}
 sin(1)  # trigonometry functions
