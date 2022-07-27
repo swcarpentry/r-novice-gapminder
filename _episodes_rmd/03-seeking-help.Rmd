@@ -185,7 +185,7 @@ your issue.
 > >
 > > Its important to call the arguments explicitly by typing out the argument 
 > > name e.g `sep = ","` so the function understands to use the "," as a 
->> seperator and not a term to concatenate.
+> > separator and not a term to concatenate.
 > > e.g. 
 > > ```{r} 
 > > paste(c("a","b"), "c")
