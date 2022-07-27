@@ -41,7 +41,7 @@ cats <- data.frame(coat = c("calico", "black", "tabby"),
                     likes_string = c(1, 0, 1))
 ```
 
-We can now save `cats` as a CSV file. Its good practice to call the argument 
+We can now save `cats` as a CSV file. It is good practice to call the argument 
 names explicitly so the function knows what default values you are changing. Here we 
 are setting `row.names = FALSE`. Recall you can use `?write.csv` to pull
 up the help file to check out the argument names and their default values. 
