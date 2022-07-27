@@ -40,7 +40,7 @@ This will load up a help page in RStudio (or as plain text in R by itself).
 Each help page is broken down into sections:
 
  - Description: An extended description of what the function does.
- - Usage: The arguments of the function and their default values which can be changed.
+ - Usage: The arguments of the function and their default values (which can be changed).
  - Arguments: An explanation of the data each argument is expecting.
  - Details: Any important details to be aware of.
  - Value: The data the function returns.
