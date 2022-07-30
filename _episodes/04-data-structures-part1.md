@@ -30,9 +30,19 @@ making a toy dataset in your `data/` directory, called `feline-data.csv`:
 cats <- data.frame(coat = c("calico", "black", "tabby"),
                     weight = c(2.1, 5.0, 3.2),
                     likes_string = c(1, 0, 1))
+~~~
+{: .language-r}
+
+We can now save `cats` as a CSV file. It is good practice to call the argument 
+names explicitly so the function knows what default values you are changing. Here we 
+are setting `row.names = FALSE`. Recall you can use `?write.csv` to pull
+up the help file to check out the argument names and their default values. 
+
+~~~
 write.csv(x = cats, file = "data/feline-data.csv", row.names = FALSE)
 ~~~
 {: .language-r}
+
 The contents of the new file, `feline-data.csv`:
 
 ~~~

@@ -278,8 +278,15 @@ You can write numbers in scientific notation too:
 
 R has many built in mathematical functions. To call a function,
 we can type its name, followed by open and closing parentheses.
-Anything we type inside the parentheses is called the function's
-arguments:
+Functions take arguments as inputs, anything we type inside the parentheses of a function is considered an argument. Depending on the function, the number of arguments can vary from none to multiple. For example:
+
+
+~~~
+getwd() #returns an absolute filepath
+~~~
+{: .language-r}
+
+doesn't require an argument, whereas for the next set of mathematical functions we will need to supply the function a value in order to compute the result.
 
 
 ~~~
@@ -715,7 +722,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x55815b8d4830>
+<bytecode: 0x55e0a8181c70>
 <environment: namespace:base>
 ~~~
 {: .output}

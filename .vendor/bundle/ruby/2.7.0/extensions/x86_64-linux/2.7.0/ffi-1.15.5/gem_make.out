@@ -1,5 +1,5 @@
 current directory: /home/runner/work/r-novice-gapminder/r-novice-gapminder/.vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c
-/opt/hostedtoolcache/Ruby/2.7.6/x64/bin/ruby -I /opt/hostedtoolcache/Ruby/2.7.6/x64/lib/ruby/2.7.0 -r ./siteconf20220721-12102-1i0yxok.rb extconf.rb
+/opt/hostedtoolcache/Ruby/2.7.6/x64/bin/ruby -I /opt/hostedtoolcache/Ruby/2.7.6/x64/lib/ruby/2.7.0 -r ./siteconf20220730-11303-cyama9.rb extconf.rb
 checking for ffi_prep_closure_loc() in -lffi... yes
 checking for ffi_prep_cif_var()... yes
 checking for ffi_raw_call()... yes
@@ -12,82 +12,82 @@ current directory: /home/runner/work/r-novice-gapminder/r-novice-gapminder/.vend
 make "DESTDIR=" clean
 make[1]: Entering directory '/home/runner/work/r-novice-gapminder/r-novice-gapminder/.vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c'
 Makefile:175: warning: overriding recipe for target 'clean'
-pRV:175: warning: ignoring old recipe for target 'clean'
+Ð.<˜]U:175: warning: ignoring old recipe for target 'clean'
 Makefile:182: warning: overriding recipe for target 'distclean'
-pRV:182: warning: ignoring old recipe for target 'distclean'
+Ð.<˜]U:182: warning: ignoring old recipe for target 'distclean'
 Makefile:190: warning: overriding recipe for target 'install-so'
-pRV:190: warning: ignoring old recipe for target 'install-so'
+Ð.<˜]U:190: warning: ignoring old recipe for target 'install-so'
 Makefile:200: warning: overriding recipe for target 'pre-install-rb-default'
-pRV:200: warning: ignoring old recipe for target 'pre-install-rb-default'
+Ð.<˜]U:200: warning: ignoring old recipe for target 'pre-install-rb-default'
 Makefile:202: warning: overriding recipe for target '.sitearchdir.time'
-pRV:202: warning: ignoring old recipe for target '.sitearchdir.time'
+Ð.<˜]U:202: warning: ignoring old recipe for target '.sitearchdir.time'
 Makefile:212: warning: overriding recipe for target '.cc.o'
-pRV:212: warning: ignoring old recipe for target '.cc.o'
+Ð.<˜]U:212: warning: ignoring old recipe for target '.cc.o'
 Makefile:216: warning: overriding recipe for target '.cc.S'
-pRV:216: warning: ignoring old recipe for target '.cc.S'
+Ð.<˜]U:216: warning: ignoring old recipe for target '.cc.S'
 Makefile:220: warning: overriding recipe for target '.mm.o'
-pRV:220: warning: ignoring old recipe for target '.mm.o'
+Ð.<˜]U:220: warning: ignoring old recipe for target '.mm.o'
 Makefile:224: warning: overriding recipe for target '.mm.S'
-pRV:224: warning: ignoring old recipe for target '.mm.S'
+Ð.<˜]U:224: warning: ignoring old recipe for target '.mm.S'
 Makefile:228: warning: overriding recipe for target '.cxx.o'
-pRV:228: warning: ignoring old recipe for target '.cxx.o'
+Ð.<˜]U:228: warning: ignoring old recipe for target '.cxx.o'
 Makefile:232: warning: overriding recipe for target '.cxx.S'
-pRV:232: warning: ignoring old recipe for target '.cxx.S'
+Ð.<˜]U:232: warning: ignoring old recipe for target '.cxx.S'
 Makefile:236: warning: overriding recipe for target '.cpp.o'
-pRV:236: warning: ignoring old recipe for target '.cpp.o'
+Ð.<˜]U:236: warning: ignoring old recipe for target '.cpp.o'
 Makefile:240: warning: overriding recipe for target '.cpp.S'
-pRV:240: warning: ignoring old recipe for target '.cpp.S'
+Ð.<˜]U:240: warning: ignoring old recipe for target '.cpp.S'
 Makefile:244: warning: overriding recipe for target '.c.o'
-pRV:244: warning: ignoring old recipe for target '.c.o'
+Ð.<˜]U:244: warning: ignoring old recipe for target '.c.o'
 Makefile:248: warning: overriding recipe for target '.c.S'
-pRV:248: warning: ignoring old recipe for target '.c.S'
+Ð.<˜]U:248: warning: ignoring old recipe for target '.c.S'
 Makefile:252: warning: overriding recipe for target '.m.o'
-pRV:252: warning: ignoring old recipe for target '.m.o'
+Ð.<˜]U:252: warning: ignoring old recipe for target '.m.o'
 Makefile:256: warning: overriding recipe for target '.m.S'
-pRV:256: warning: ignoring old recipe for target '.m.S'
+Ð.<˜]U:256: warning: ignoring old recipe for target '.m.S'
 Makefile:260: warning: overriding recipe for target 'ffi_c.so'
-pRV:260: warning: ignoring old recipe for target 'ffi_c.so'
+Ð.<˜]U:260: warning: ignoring old recipe for target 'ffi_c.so'
 make[1]: Leaving directory '/home/runner/work/r-novice-gapminder/r-novice-gapminder/.vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c'
 
 current directory: /home/runner/work/r-novice-gapminder/r-novice-gapminder/.vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c
 make "DESTDIR="
 make[1]: Entering directory '/home/runner/work/r-novice-gapminder/r-novice-gapminder/.vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c'
 Makefile:175: warning: overriding recipe for target 'clean'
-p_„U:175: warning: ignoring old recipe for target 'clean'
+ÐžÀU:175: warning: ignoring old recipe for target 'clean'
 Makefile:182: warning: overriding recipe for target 'distclean'
-p_„U:182: warning: ignoring old recipe for target 'distclean'
+ÐžÀU:182: warning: ignoring old recipe for target 'distclean'
 Makefile:190: warning: overriding recipe for target 'install-so'
-p_„U:190: warning: ignoring old recipe for target 'install-so'
+ÐžÀU:190: warning: ignoring old recipe for target 'install-so'
 Makefile:200: warning: overriding recipe for target 'pre-install-rb-default'
-p_„U:200: warning: ignoring old recipe for target 'pre-install-rb-default'
+ÐžÀU:200: warning: ignoring old recipe for target 'pre-install-rb-default'
 Makefile:202: warning: overriding recipe for target '.sitearchdir.time'
-p_„U:202: warning: ignoring old recipe for target '.sitearchdir.time'
+ÐžÀU:202: warning: ignoring old recipe for target '.sitearchdir.time'
 Makefile:212: warning: overriding recipe for target '.cc.o'
-p_„U:212: warning: ignoring old recipe for target '.cc.o'
+ÐžÀU:212: warning: ignoring old recipe for target '.cc.o'
 Makefile:216: warning: overriding recipe for target '.cc.S'
-p_„U:216: warning: ignoring old recipe for target '.cc.S'
+ÐžÀU:216: warning: ignoring old recipe for target '.cc.S'
 Makefile:220: warning: overriding recipe for target '.mm.o'
-p_„U:220: warning: ignoring old recipe for target '.mm.o'
+ÐžÀU:220: warning: ignoring old recipe for target '.mm.o'
 Makefile:224: warning: overriding recipe for target '.mm.S'
-p_„U:224: warning: ignoring old recipe for target '.mm.S'
+ÐžÀU:224: warning: ignoring old recipe for target '.mm.S'
 Makefile:228: warning: overriding recipe for target '.cxx.o'
-p_„U:228: warning: ignoring old recipe for target '.cxx.o'
+ÐžÀU:228: warning: ignoring old recipe for target '.cxx.o'
 Makefile:232: warning: overriding recipe for target '.cxx.S'
-p_„U:232: warning: ignoring old recipe for target '.cxx.S'
+ÐžÀU:232: warning: ignoring old recipe for target '.cxx.S'
 Makefile:236: warning: overriding recipe for target '.cpp.o'
-p_„U:236: warning: ignoring old recipe for target '.cpp.o'
+ÐžÀU:236: warning: ignoring old recipe for target '.cpp.o'
 Makefile:240: warning: overriding recipe for target '.cpp.S'
-p_„U:240: warning: ignoring old recipe for target '.cpp.S'
+ÐžÀU:240: warning: ignoring old recipe for target '.cpp.S'
 Makefile:244: warning: overriding recipe for target '.c.o'
-p_„U:244: warning: ignoring old recipe for target '.c.o'
+ÐžÀU:244: warning: ignoring old recipe for target '.c.o'
 Makefile:248: warning: overriding recipe for target '.c.S'
-p_„U:248: warning: ignoring old recipe for target '.c.S'
+ÐžÀU:248: warning: ignoring old recipe for target '.c.S'
 Makefile:252: warning: overriding recipe for target '.m.o'
-p_„U:252: warning: ignoring old recipe for target '.m.o'
+ÐžÀU:252: warning: ignoring old recipe for target '.m.o'
 Makefile:256: warning: overriding recipe for target '.m.S'
-p_„U:256: warning: ignoring old recipe for target '.m.S'
+ÐžÀU:256: warning: ignoring old recipe for target '.m.S'
 Makefile:260: warning: overriding recipe for target 'ffi_c.so'
-p_„U:260: warning: ignoring old recipe for target 'ffi_c.so'
+ÐžÀU:260: warning: ignoring old recipe for target 'ffi_c.so'
 compiling AbstractMemory.c
 compiling ArrayType.c
 compiling Buffer.c
@@ -118,40 +118,40 @@ current directory: /home/runner/work/r-novice-gapminder/r-novice-gapminder/.vend
 make "DESTDIR=" install
 make[1]: Entering directory '/home/runner/work/r-novice-gapminder/r-novice-gapminder/.vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c'
 Makefile:175: warning: overriding recipe for target 'clean'
-pÏºÅ/V:175: warning: ignoring old recipe for target 'clean'
+Ð.T(¬U:175: warning: ignoring old recipe for target 'clean'
 Makefile:182: warning: overriding recipe for target 'distclean'
-pÏºÅ/V:182: warning: ignoring old recipe for target 'distclean'
+Ð.T(¬U:182: warning: ignoring old recipe for target 'distclean'
 Makefile:190: warning: overriding recipe for target 'install-so'
-pÏºÅ/V:190: warning: ignoring old recipe for target 'install-so'
+Ð.T(¬U:190: warning: ignoring old recipe for target 'install-so'
 Makefile:200: warning: overriding recipe for target 'pre-install-rb-default'
-pÏºÅ/V:200: warning: ignoring old recipe for target 'pre-install-rb-default'
+Ð.T(¬U:200: warning: ignoring old recipe for target 'pre-install-rb-default'
 Makefile:202: warning: overriding recipe for target '.sitearchdir.time'
-pÏºÅ/V:202: warning: ignoring old recipe for target '.sitearchdir.time'
+Ð.T(¬U:202: warning: ignoring old recipe for target '.sitearchdir.time'
 Makefile:212: warning: overriding recipe for target '.cc.o'
-pÏºÅ/V:212: warning: ignoring old recipe for target '.cc.o'
+Ð.T(¬U:212: warning: ignoring old recipe for target '.cc.o'
 Makefile:216: warning: overriding recipe for target '.cc.S'
-pÏºÅ/V:216: warning: ignoring old recipe for target '.cc.S'
+Ð.T(¬U:216: warning: ignoring old recipe for target '.cc.S'
 Makefile:220: warning: overriding recipe for target '.mm.o'
-pÏºÅ/V:220: warning: ignoring old recipe for target '.mm.o'
+Ð.T(¬U:220: warning: ignoring old recipe for target '.mm.o'
 Makefile:224: warning: overriding recipe for target '.mm.S'
-pÏºÅ/V:224: warning: ignoring old recipe for target '.mm.S'
+Ð.T(¬U:224: warning: ignoring old recipe for target '.mm.S'
 Makefile:228: warning: overriding recipe for target '.cxx.o'
-pÏºÅ/V:228: warning: ignoring old recipe for target '.cxx.o'
+Ð.T(¬U:228: warning: ignoring old recipe for target '.cxx.o'
 Makefile:232: warning: overriding recipe for target '.cxx.S'
-pÏºÅ/V:232: warning: ignoring old recipe for target '.cxx.S'
+Ð.T(¬U:232: warning: ignoring old recipe for target '.cxx.S'
 Makefile:236: warning: overriding recipe for target '.cpp.o'
-pÏºÅ/V:236: warning: ignoring old recipe for target '.cpp.o'
+Ð.T(¬U:236: warning: ignoring old recipe for target '.cpp.o'
 Makefile:240: warning: overriding recipe for target '.cpp.S'
-pÏºÅ/V:240: warning: ignoring old recipe for target '.cpp.S'
+Ð.T(¬U:240: warning: ignoring old recipe for target '.cpp.S'
 Makefile:244: warning: overriding recipe for target '.c.o'
-pÏºÅ/V:244: warning: ignoring old recipe for target '.c.o'
+Ð.T(¬U:244: warning: ignoring old recipe for target '.c.o'
 Makefile:248: warning: overriding recipe for target '.c.S'
-pÏºÅ/V:248: warning: ignoring old recipe for target '.c.S'
+Ð.T(¬U:248: warning: ignoring old recipe for target '.c.S'
 Makefile:252: warning: overriding recipe for target '.m.o'
-pÏºÅ/V:252: warning: ignoring old recipe for target '.m.o'
+Ð.T(¬U:252: warning: ignoring old recipe for target '.m.o'
 Makefile:256: warning: overriding recipe for target '.m.S'
-pÏºÅ/V:256: warning: ignoring old recipe for target '.m.S'
+Ð.T(¬U:256: warning: ignoring old recipe for target '.m.S'
 Makefile:260: warning: overriding recipe for target 'ffi_c.so'
-pÏºÅ/V:260: warning: ignoring old recipe for target 'ffi_c.so'
-/usr/bin/install -c -m 0755 ffi_c.so ./.gem.20220721-12102-15pyrrv
+Ð.T(¬U:260: warning: ignoring old recipe for target 'ffi_c.so'
+/usr/bin/install -c -m 0755 ffi_c.so ./.gem.20220730-11303-pmukzu
 make[1]: Leaving directory '/home/runner/work/r-novice-gapminder/r-novice-gapminder/.vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c'

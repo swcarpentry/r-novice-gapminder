@@ -30,19 +30,38 @@ help(function_name)
 ~~~
 {: .language-r}
 
+For example take a look at the help file for `write.table()`, we will be using a similar function in an upcoming episode. 
+
+
+~~~
+?write.table()
+~~~
+{: .language-r}
+
 This will load up a help page in RStudio (or as plain text in R itself).
 
 Each help page is broken down into sections:
 
  - Description: An extended description of what the function does.
- - Usage: The arguments of the function and their default values.
+ - Usage: The arguments of the function and their default values (which can be changed).
  - Arguments: An explanation of the data each argument is expecting.
  - Details: Any important details to be aware of.
  - Value: The data the function returns.
  - See Also: Any related functions you might find useful.
  - Examples: Some examples for how to use the function.
 
-Different functions might have different sections, but these are the main ones you should be aware of.
+Different functions might have different sections, but these are the main ones you should be aware of. 
+
+Notice how related functions might call for the same help file: 
+
+
+~~~
+?write.table()
+?write.csv()
+~~~
+{: .language-r}
+
+This is because these functions have very similar applicability and often share the same arguments as inputs to the function, so package authors often choose to document them together in a single help file.
 
 > ## Tip: Running Examples
 >
@@ -210,7 +229,11 @@ your issue.
 > > used between concatenated terms — by default, a space. The result is a
 > > vector as long as the longest argument supplied to `paste`. In contrast,
 > > `collapse` specifies that after concatenation the elements are *collapsed*
-> > together using the given separator, the result being a single string.
+> > together using the given separator, the result being a single string. 
+> >
+> > It is important to call the arguments explicitly by typing out the argument 
+> > name e.g `sep = ","` so the function understands to use the "," as a 
+> > separator and not a term to concatenate.
 > > e.g. 
 > > 
 > > ~~~
@@ -222,6 +245,20 @@ your issue.
 > > 
 > > ~~~
 > > [1] "a c" "b c"
+> > ~~~
+> > {: .output}
+> > 
+> > 
+> > 
+> > ~~~
+> > paste(c("a","b"), "c", ",")
+> > ~~~
+> > {: .language-r}
+> > 
+> > 
+> > 
+> > ~~~
+> > [1] "a c ," "b c ,"
 > > ~~~
 > > {: .output}
 > > 
