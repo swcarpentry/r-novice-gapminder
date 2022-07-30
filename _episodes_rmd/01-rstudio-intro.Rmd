@@ -234,7 +234,7 @@ R has many built in mathematical functions. To call a function,
 we can type its name, followed by open and closing parentheses.
 Functions take arguments as inputs, anything we type inside the parentheses of a function is considered an argument. Depending on the function, the number of arguments can vary from none to multiple. For example:
 
-```{r}
+```{r, eval=FALSE}
 getwd() #returns an absolute filepath
 ```
 
