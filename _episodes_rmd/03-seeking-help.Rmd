@@ -31,7 +31,7 @@ help(function_name)
 
 For example take a look at the help file for `write.table()`, we will be using a similar function in an upcoming episode. 
 
-```{r}
+```{r, eval=FALSE}
 ?write.table()
 ```
 
@@ -51,7 +51,7 @@ Different functions might have different sections, but these are the main ones y
 
 Notice how related functions might call for the same help file: 
 
-```{r}
+```{r, eval=FALSE}
 ?write.table()
 ?write.csv()
 ```
