@@ -532,7 +532,7 @@ attempt where we got a vector of numbers.
 > documentation when you start writing more complicated R projects. In fact, 
 > packages are, in essence, bundles of functions with this formal documentation. 
 > Loading your own functions through `source("functions.R")` is equivalent to 
-> loading someone else's functions (or your own one day!) through >
+> loading someone else's functions (or your own one day!) through
 > `library("package")`.
 >
 > Formal automated tests can be written using the [testthat][] package.
