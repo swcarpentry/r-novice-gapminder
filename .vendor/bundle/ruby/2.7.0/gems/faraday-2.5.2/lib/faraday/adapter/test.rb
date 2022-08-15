@@ -272,7 +272,7 @@ module Faraday
         stub, meta = stubs.match(env)
 
         unless stub
-          raise Stubs::NotFound, "no stubbed request for #{env[:method]} "\
+          raise Stubs::NotFound, "no stubbed request for #{env[:method]} " \
                                  "#{env[:url]} #{env[:body]}"
         end
 
@@ -283,7 +283,11 @@ module Faraday
           else
             stub.block.call(env, meta)
           end
-        save_response(env, status, body, headers)
+
+        # We need to explicitly pass `reason_phrase = nil` here to avoid keyword args conflicts.
+        #   See https://github.com/lostisland/faraday/issues/1444
+        # TODO: remove `nil` explicit reason_phrase once Ruby 3.0 becomes minimum req. version
+        save_response(env, status, body, headers, nil)
 
         @app.call(env)
       end

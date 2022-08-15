@@ -669,7 +669,11 @@ attempt where we got a vector of numbers.
 > files. The [roxygen2][] package allows R coders to write documentation
 > alongside the function code and then process it into the appropriate `.Rd`
 > files. You will want to switch to this more formal method of writing
-> documentation when you start writing more complicated R projects.
+> documentation when you start writing more complicated R projects. In fact, 
+> packages are, in essence, bundles of functions with this formal documentation. 
+> Loading your own functions through `source("functions.R")` is equivalent to 
+> loading someone else's functions (or your own one day!) through
+> `library("package")`.
 >
 > Formal automated tests can be written using the [testthat][] package.
 {: .callout}

@@ -62,22 +62,13 @@ module Faraday
 
       def call(env)
         super
-        http_response = connection(env) do |http|
+        connection(env) do |http|
           perform_request(http, env)
         rescue *NET_HTTP_EXCEPTIONS => e
           raise Faraday::SSLError, e if defined?(OpenSSL) && e.is_a?(OpenSSL::SSL::SSLError)
 
           raise Faraday::ConnectionFailed, e
         end
-
-        save_response(env, http_response.code.to_i,
-                      encoded_body(http_response), nil,
-                      http_response.message) do |response_headers|
-          http_response.each_header do |key, value|
-            response_headers[key] = value
-          end
-        end
-
         @app.call env
       rescue Timeout::Error, Errno::ETIMEDOUT => e
         raise Faraday::TimeoutError, e
@@ -102,53 +93,41 @@ module Faraday
       end
 
       def perform_request(http, env)
-        if env[:request].stream_response?
-          size = 0
-          yielded = false
-          http_response = request_with_wrapped_block(http, env) do |chunk|
-            if chunk.bytesize.positive? || size.positive?
-              yielded = true
-              size += chunk.bytesize
-              env[:request].on_data.call(chunk, size)
+        if env.stream_response?
+          http_response = env.stream_response do |&on_data|
+            request_with_wrapped_block(http, env, &on_data)
+          end
+          http_response.body = nil
+        else
+          http_response = request_with_wrapped_block(http, env)
+        end
+        env.response_body = encoded_body(http_response)
+        env.response.finish(env)
+        http_response
+      end
+
+      def request_with_wrapped_block(http, env)
+        # Must use Net::HTTP#start and pass it a block otherwise the server's
+        # TCP socket does not close correctly.
+        http.start do |opened_http|
+          opened_http.request create_request(env) do |response|
+            save_http_response(env, response)
+
+            if block_given?
+              response.read_body do |chunk|
+                yield(chunk)
+              end
             end
           end
-          env[:request].on_data.call(+'', 0) unless yielded
-          # Net::HTTP returns something,
-          # but it's not meaningful according to the docs.
-          http_response.body = nil
-          http_response
-        else
-          request_with_wrapped_block(http, env)
         end
       end
 
-      def request_with_wrapped_block(http, env, &block)
-        if (env[:method] == :get) && !env[:body]
-          # prefer `get` to `request` because the former handles gzip (ruby 1.9)
-          request_via_get_method(http, env, &block)
-        else
-          request_via_request_method(http, env, &block)
-        end
-      end
-
-      def request_via_get_method(http, env, &block)
-        # Must use Net::HTTP#start and pass it a block otherwise the server's
-        # TCP socket does not close correctly.
-        http.start do |opened_http|
-          opened_http.get env[:url].request_uri, env[:request_headers], &block
-        end
-      end
-
-      def request_via_request_method(http, env, &block)
-        # Must use Net::HTTP#start and pass it a block otherwise the server's
-        # TCP socket does not close correctly.
-        http.start do |opened_http|
-          if block_given?
-            opened_http.request create_request(env) do |response|
-              response.read_body(&block)
-            end
-          else
-            opened_http.request create_request(env)
+      def save_http_response(env, http_response)
+        save_response(
+          env, http_response.code.to_i, nil, nil, http_response.message, finished: false
+        ) do |response_headers|
+          http_response.each_header do |key, value|
+            response_headers[key] = value
           end
         end
       end
