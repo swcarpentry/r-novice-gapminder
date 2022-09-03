@@ -298,7 +298,7 @@ The Markdown and figure documents are then processed by the tool
 [`pandoc`](http://pandoc.org/), which converts the Markdown file into an
 html file, with the figures embedded.
 
-<img src="../fig/rmd-15-rmd_to_html_fig-1.png" title="plot of chunk rmd_to_html_fig" alt="plot of chunk rmd_to_html_fig" width="576" style="display: block; margin: auto auto auto 0;" />
+<img src="../fig/rmd-15-rmd_to_html_fig-1.png" alt="plot of chunk rmd_to_html_fig" width="576" style="display: block; margin: auto auto auto 0;" />
 
 
 

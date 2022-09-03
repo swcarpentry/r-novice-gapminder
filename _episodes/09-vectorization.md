@@ -163,7 +163,7 @@ sum_xy
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-09-ch2-sol-1.png" title="plot of chunk ch2-sol" alt="plot of chunk ch2-sol" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-09-ch2-sol-1.png" alt="plot of chunk ch2-sol" width="612" style="display: block; margin: auto;" />
 > > 
 > > ~~~
 > > countryset <- c("China","India","Indonesia")
@@ -173,7 +173,7 @@ sum_xy
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-09-ch2-sol-2.png" title="plot of chunk ch2-sol" alt="plot of chunk ch2-sol" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-09-ch2-sol-2.png" alt="plot of chunk ch2-sol" width="612" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 

@@ -651,7 +651,7 @@ ggplot(data = americas, mapping = aes(x = year, y = lifeExp)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-13-unnamed-chunk-27-1.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-13-unnamed-chunk-27-1.png" alt="plot of chunk unnamed-chunk-27" width="612" style="display: block; margin: auto;" />
 
 This code makes the right plot but it also creates an intermediate variable
 (`americas`) that we might not have any other uses for. Just as we used
@@ -674,7 +674,7 @@ gapminder %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-13-unnamed-chunk-28-1.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-13-unnamed-chunk-28-1.png" alt="plot of chunk unnamed-chunk-28" width="612" style="display: block; margin: auto;" />
 
 More examples of using the function `mutate()` and the `ggplot2` package.
 
@@ -692,7 +692,7 @@ gapminder %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-13-unnamed-chunk-29-1.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-13-unnamed-chunk-29-1.png" alt="plot of chunk unnamed-chunk-29" width="612" style="display: block; margin: auto;" />
 
 > ## Advanced Challenge
 >
