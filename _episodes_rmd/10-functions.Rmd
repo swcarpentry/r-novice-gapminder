@@ -69,8 +69,8 @@ Let's define a function `fahr_to_kelvin()` that converts temperatures from
 Fahrenheit to Kelvin:
 
 ```{r}
-fahr_to_kelvin <- function(temp) {
-  kelvin <- ((temp - 32) * (5 / 9)) + 273.15
+fahr_to_kelvin <- function(tempF) {
+  kelvin <- ((tempF - 32) * (5 / 9)) + 273.15
   return(kelvin)
 }
 ```
@@ -125,8 +125,8 @@ fahr_to_kelvin(212)
 > > and returns that temperature in Celsius
 > >
 > > ```{r}
-> > kelvin_to_celsius <- function(temp) {
-> >  celsius <- temp - 273.15
+> > kelvin_to_celsius <- function(tempK) {
+> >  celsius <- tempK - 273.15
 > >  return(celsius)
 > > }
 > > ```
@@ -142,12 +142,12 @@ Let's define two functions that will convert temperature from Fahrenheit to
 Kelvin, and Kelvin to Celsius:
 
 ```{r}
-fahr_to_kelvin <- function(temp) {
-  kelvin <- ((temp - 32) * (5 / 9)) + 273.15
+fahr_to_kelvin <- function(tempF) {
+  kelvin <- ((tempF - 32) * (5 / 9)) + 273.15
   return(kelvin)
 }
 
-kelvin_to_celsius <- function(temp) {
+kelvin_to_celsius <- function(tempK) {
   celsius <- temp - 273.15
   return(celsius)
 }
@@ -167,10 +167,10 @@ kelvin_to_celsius <- function(temp) {
 > >
 > >
 > > ```{r}
-> > fahr_to_celsius <- function(temp) {
-> >   temp_k <- fahr_to_kelvin(temp)
-> >   result <- kelvin_to_celsius(temp_k)
-> >   return(result)
+> > fahr_to_celsius <- function(tempF) {
+> >   tempK <- fahr_to_kelvin(tempF)
+> >   celsius <- kelvin_to_celsius(tempK)
+> >   return(celsius)
 > > }
 > > ```
 > {: .solution}
@@ -194,8 +194,8 @@ Let's start by re-examining `fahr_to_kelvin()`, our function for converting
 temperatures from Fahrenheit to Kelvin. It was defined like so:
 
 ```{r}
-fahr_to_kelvin <- function(temp) {
-  kelvin <- ((temp - 32) * (5 / 9)) + 273.15
+fahr_to_kelvin <- function(tempF) {
+  kelvin <- ((tempF - 32) * (5 / 9)) + 273.15
   return(kelvin)
 }
 ```
@@ -208,11 +208,11 @@ could check for this condition with an `if` statement and throw an error if the
 condition was violated. We could augment our function above like so:
 
 ```{r}
-fahr_to_kelvin <- function(temp) {
-  if (!is.numeric(temp)) {
+fahr_to_kelvin <- function(tempF) {
+  if (!is.numeric(tempF)) {
     stop("temp must be a numeric vector.")
   }
-  kelvin <- ((temp - 32) * (5 / 9)) + 273.15
+  kelvin <- ((tempF - 32) * (5 / 9)) + 273.15
   return(kelvin)
 }
 ```
@@ -231,9 +231,9 @@ We want to assert the following: `temp` is a numeric vector. We may do that like
 so:
 
 ```{r}
-fahr_to_kelvin <- function(temp) {
-  stopifnot(is.numeric(temp))
-  kelvin <- ((temp - 32) * (5 / 9)) + 273.15
+fahr_to_kelvin <- function(tempF) {
+  stopifnot(is.numeric(tempF))
+  kelvin <- ((tempF - 32) * (5 / 9)) + 273.15
   return(kelvin)
 }
 ```
@@ -242,20 +242,20 @@ It still works when given proper input.
 
 ```{r}
 # freezing point of water
-fahr_to_kelvin(temp = 32)
+fahr_to_kelvin(tempF = 32)
 ```
 
 But fails instantly if given improper input.
 
 ```{r}
 # Metric is a factor instead of numeric
-fahr_to_kelvin(temp = as.factor(32))
+fahr_to_kelvin(tempF = as.factor(32))
 ```
 
 > ## Challenge 3
 >
 > Use defensive programming to ensure that our `fahr_to_celsius()` function
-> throws an error immediately if the argument `temp` is specified
+> throws an error immediately if the argument `tempF` is specified
 > inappropriately.
 >
 >
@@ -268,10 +268,10 @@ fahr_to_kelvin(temp = as.factor(32))
 > >
 > >
 > > ```{r}
-> > fahr_to_celsius <- function(temp) {
-> >   stopifnot(is.numeric(temp))
-> >   temp_k <- fahr_to_kelvin(temp)
-> >   result <- kelvin_to_celsius(temp_k)
+> > fahr_to_celsius <- function(tempF) {
+> >   stopifnot(is.numeric(tempF))
+> >   tempK <- fahr_to_kelvin(tempF)
+> >   celsius <- kelvin_to_celsius(tempK)
 > >   return(result)
 > > }
 > > ```
