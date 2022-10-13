@@ -194,7 +194,7 @@ lines.
 > >
 > > The lines now get drawn over the points!
 > >
-> > ```{r ch3-sol, fig. alt = "Scatter plot of life expectancy vs GDP per capita with a trend line summarising the relationship between variables. The plot illustrates the possibilities for styling visualisations in ggplot2 with data points enlarged, coloured orange, and displayed without transparency."}
+> > ```{r ch3-sol, fig.alt = "Scatter plot of life expectancy vs GDP per capita with a trend line summarising the relationship between variables. The plot illustrates the possibilities for styling visualisations in ggplot2 with data points enlarged, coloured orange, and displayed without transparency."}
 > > ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country)) +
 > >  geom_point() + geom_line(mapping = aes(color=continent))
 > > ```
