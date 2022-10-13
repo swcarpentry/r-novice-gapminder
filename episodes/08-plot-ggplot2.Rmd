@@ -243,7 +243,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 We can make the line thicker by *setting* the **size** aesthetic in the
 `geom_smooth` layer:
 
-```{r lm-fit2, fig. alt = "Scatter plot of life expectancy vs GDP per capita with a trend line summarising the relationship between variables. The blue trend line is slightly thicker than in the previous figure."}
+```{r lm-fit2, fig.alt = "Scatter plot of life expectancy vs GDP per capita with a trend line summarising the relationship between variables. The blue trend line is slightly thicker than in the previous figure."}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
   geom_point(alpha = 0.5) + scale_x_log10() + geom_smooth(method="lm", size=1.5)
 ```
