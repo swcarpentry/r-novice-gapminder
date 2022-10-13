@@ -235,7 +235,7 @@ The `scale_x_log10` function applied a transformation to the coordinate system o
 We can fit a simple relationship to the data by adding another layer,
 `geom_smooth`:
 
-```{r lm-fit, fig. alt = "Scatter plot of life expectancy vs GDP per capita with a blue trend line summarising the relationship between variables, and gray shaded area indicating 95% confidence intervals for that trend line."}
+```{r lm-fit, fig.alt = "Scatter plot of life expectancy vs GDP per capita with a blue trend line summarising the relationship between variables, and gray shaded area indicating 95% confidence intervals for that trend line."}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
   geom_point(alpha = 0.5) + scale_x_log10() + geom_smooth(method="lm")
 ```
