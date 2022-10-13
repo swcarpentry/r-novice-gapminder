@@ -161,7 +161,7 @@ sessionInfo()
 ~~~
 R version 4.2.1 (2022-06-23)
 Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 20.04.4 LTS
+Running under: Ubuntu 20.04.5 LTS
 
 Matrix products: default
 BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
@@ -181,7 +181,7 @@ other attached packages:
 
 loaded via a namespace (and not attached):
 [1] compiler_4.2.1 magrittr_2.0.3 tools_4.2.1    stringi_1.7.8  stringr_1.4.1 
-[6] xfun_0.32      evaluate_0.16 
+[6] xfun_0.33      evaluate_0.17 
 ~~~
 {: .output}
 

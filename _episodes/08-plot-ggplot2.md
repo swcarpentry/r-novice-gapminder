@@ -236,7 +236,7 @@ lines.
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-08-ch3-sol-1.png" alt="plot of chunk ch3-sol" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-08-ch3-sol-1.png" alt="Scatter plot of life expectancy vs GDP per capita with a trend line summarising the relationship between variables. The plot illustrates the possibilities for styling visualisations in ggplot2 with data points enlarged, coloured orange, and displayed without transparency." width="612" style="display: block; margin: auto;" />
 > >
 > >
 > {: .solution}
@@ -296,7 +296,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 ~~~
 {: .output}
 
-<img src="../fig/rmd-08-lm-fit-1.png" alt="plot of chunk lm-fit" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-08-lm-fit-1.png" alt="Scatter plot of life expectancy vs GDP per capita with a blue trend line summarising the relationship between variables, and gray shaded area indicating 95% confidence intervals for that trend line." width="612" style="display: block; margin: auto;" />
 
 We can make the line thicker by *setting* the **size** aesthetic in the
 `geom_smooth` layer:
@@ -315,7 +315,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 ~~~
 {: .output}
 
-<img src="../fig/rmd-08-lm-fit2-1.png" alt="plot of chunk lm-fit2" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-08-lm-fit2-1.png" alt="Scatter plot of life expectancy vs GDP per capita with a trend line summarising the relationship between variables. The blue trend line is slightly thicker than in the previous figure." width="612" style="display: block; margin: auto;" />
 
 There are two ways an *aesthetic* can be specified. Here we *set* the **size**
 aesthetic by passing it as an argument to `geom_smooth`. Previously in the
@@ -351,7 +351,7 @@ variables and their visual representation.
 > > ~~~
 > > {: .output}
 > > 
-> > <img src="../fig/rmd-08-ch4a-sol-1.png" alt="plot of chunk ch4a-sol" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-08-ch4a-sol-1.png" alt="Scatter plot of life expectancy vs GDP per capita with a trend line summarising the relationship between variables. The plot illustrates the possibilities for styling visualisations in ggplot2 with data points enlarged, coloured orange, and displayed without transparency." width="612" style="display: block; margin: auto;" />
 > > 
 > {: .solution}
 {: .challenge}
