@@ -267,7 +267,7 @@ variables and their visual representation.
 > > This means that it applies to all data points on the graph and is not related to
 > > a specific variable.
 > >
-> > ```{r ch4a-sol, fig. alt = "Scatter plot of life expectancy vs GDP per capita with a trend line summarising the relationship between variables. The plot illustrates the possibilities for styling visualisations in ggplot2 with data points enlarged, coloured orange, and displayed without transparency."}
+> > ```{r ch4a-sol, fig.alt = "Scatter plot of life expectancy vs GDP per capita with a trend line summarising the relationship between variables. The plot illustrates the possibilities for styling visualisations in ggplot2 with data points enlarged, coloured orange, and displayed without transparency."}
 > > ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 > >  geom_point(size=3, color="orange") + scale_x_log10() +
 > >  geom_smooth(method="lm", size=1.5)
