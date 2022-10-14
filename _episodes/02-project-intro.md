@@ -176,7 +176,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > > 
 > > 
 > > ~~~
-> > -rw-r--r-- 1 runner docker 80K Oct 14 18:24 data/gapminder_data.csv
+> > -rw-r--r-- 1 runner docker 80K Oct 14 18:27 data/gapminder_data.csv
 > > ~~~
 > > {: .output}
 > > The file size is 80K.
