@@ -145,8 +145,9 @@ The simplest thing you could do with R is to do arithmetic:
 And R will print out the answer, with a preceding "[1]". Don't worry about this
 for now, we'll explain that later. For now think of it as indicating output.
 
-Like bash, if you type in an incomplete command, R will wait for you to
-complete it:
+If you type in an incomplete command, R will wait for you to
+complete it. If you are familiar with Unix Shell's bash, you may recognize this  
+behavior from bash.
 
 ~~~
 > 1 +
