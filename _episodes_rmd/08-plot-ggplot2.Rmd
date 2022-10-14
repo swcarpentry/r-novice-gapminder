@@ -82,7 +82,7 @@ do by adding a new **geom** layer. In our example, we used `geom_point`, which
 tells `ggplot` we want to visually represent the relationship between **x** and
 **y** as a scatterplot of points:
 
-```{r lifeExp-vs-gdpPercap-scatter2}
+```{r lifeExp-vs-gdpPercap-scatter2, fig.alt = "Scatter plot of life expectancy vs GDP per capita, showing a positive correlation between the two variables with data points added."}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ```
