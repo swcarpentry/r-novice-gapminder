@@ -94,7 +94,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter2-1.png" alt="plot of chunk lifeExp-vs-gdpPercap-scatter2" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter2-1.png" alt="Scatter plot of life expectancy vs GDP per capita, showing a positive correlation between the two variables with data points added." width="612" style="display: block; margin: auto;" />
 
 > ## Challenge 1
 >
