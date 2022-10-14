@@ -7,7 +7,7 @@ exercises: 20
 questions:
 - "How can I create publication-quality graphics in R?"
 objectives:
-- "To be able to use ggplot2 to generate publication quality graphics."
+- "To be able to use ggplot2 to generate publication-quality graphics."
 - "To apply geometry, aesthetic, and statistics layers to a ggplot plot."
 - "To manipulate the aesthetics of a plot using different colors, shapes, and lines."
 - "To improve data visualization through transforming scales and paneling by group."
@@ -33,7 +33,7 @@ package, and the [ggplot2][ggplot2] package.
 [ggplot2]: http://www.statmethods.net/advgraphs/ggplot2.html
 
 Today we'll be learning about the ggplot2 package, because
-it is the most effective for creating publication quality
+it is the most effective for creating publication-quality
 graphics.
 
 ggplot2 is built on the grammar of graphics, the idea that any plot can be
