@@ -181,7 +181,7 @@ other attached packages:
 
 loaded via a namespace (and not attached):
 [1] compiler_4.2.1 magrittr_2.0.3 tools_4.2.1    stringi_1.7.8  stringr_1.4.1 
-[6] xfun_0.33      evaluate_0.17 
+[6] xfun_0.34      evaluate_0.17 
 ~~~
 {: .output}
 
