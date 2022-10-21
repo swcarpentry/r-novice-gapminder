@@ -163,7 +163,7 @@ sum_xy
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-09-ch2-sol-1.png" alt="Scatter plot of population in millions by year." width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-09-ch2-sol-1.png" alt="Scatter plot showing populations in the millions against the year for China, India, and Indonesia, countries are not labeled." width="612" style="display: block; margin: auto;" />
 > > 
 > > ~~~
 > > countryset <- c("China","India","Indonesia")
@@ -173,7 +173,7 @@ sum_xy
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-09-ch2-sol-2.png" alt="Scatter plot of population in millions by year." width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-09-ch2-sol-2.png" alt="Scatter plot showing populations in the millions against the year for China, India, and Indonesia, countries are not labeled." width="612" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 
