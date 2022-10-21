@@ -109,7 +109,7 @@ sum_xy
 > >
 > > Refresh your plotting skills by plotting population in millions against year.
 > >
-> > ```{r ch2-sol}
+> > ```{r ch2-sol, fig.alt = "Scatter plot of population in millions by year."}
 > > ggplot(gapminder, aes(x = year, y = pop_millions)) +
 > >  geom_point()
 > > countryset <- c("China","India","Indonesia")
