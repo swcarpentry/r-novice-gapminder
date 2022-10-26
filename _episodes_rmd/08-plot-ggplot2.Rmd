@@ -73,7 +73,7 @@ pass `aes` these columns (e.g. `x = gapminder[, "gdpPercap"]`), this is because
 
 By itself, the call to `ggplot` isn't enough to draw a figure:
 
-```{r}
+```{r, fig.alt = "Plotting area with axes for a scatter plot of life expectancy vs GDP with no data points visible."}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp))
 ```
 

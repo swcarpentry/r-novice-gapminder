@@ -80,7 +80,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp))
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-08-unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-08-unnamed-chunk-2-1.png" alt="Plotting area with axes for a scatter plot of life expectancy vs GDP with no data points visible." width="612" style="display: block; margin: auto;" />
 
 We need to tell `ggplot` how we want to visually represent the data, which we
 do by adding a new **geom** layer. In our example, we used `geom_point`, which
