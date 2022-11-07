@@ -48,7 +48,7 @@ for all of these countries in under a minute!
 Please ensure you have the latest version of R and RStudio installed on your machine. This is important, as some packages used in the workshop may not install correctly (or at all) if R is not up to date.
 
 * [Download and install the latest version of R here](https://www.r-project.org/)
-* [Download and install RStudio here](https://www.rstudio.com/)
+* [Download and install RStudio here](https://www.rstudio.com/products/rstudio/download/#download)
 
 ## Introduction to RStudio
 
@@ -723,7 +723,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x561942cd5a78>
+<bytecode: 0x5644cbc309c8>
 <environment: namespace:base>
 ~~~
 {: .output}
