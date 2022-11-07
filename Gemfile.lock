@@ -21,7 +21,7 @@ GEM
     em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
-    ethon (0.15.0)
+    ethon (0.16.0)
       ffi (>= 1.15.0)
     eventmachine (1.2.7)
     execjs (2.8.1)
@@ -249,7 +249,7 @@ GEM
       unf_ext
     unf_ext (0.0.8.2)
     unicode-display_width (1.8.0)
-    zeitwerk (2.6.1)
+    zeitwerk (2.6.5)
 
 PLATFORMS
   x86_64-linux
@@ -261,4 +261,4 @@ RUBY VERSION
    ruby 2.7.6p219
 
 BUNDLED WITH
-   2.3.24
+   2.3.25
