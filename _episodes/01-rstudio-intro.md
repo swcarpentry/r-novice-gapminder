@@ -150,8 +150,9 @@ The simplest thing you could do with R is to do arithmetic:
 ~~~
 {: .output}
 
-And R will print out the answer, with a preceding "[1]". Don't worry about this
-for now, we'll explain that later. For now think of it as indicating output.
+And R will print out the answer, with a preceding "[1]". [1] is the index of 
+the first element of the line being printed in the console. For more information 
+on indexing vectors, see [Episode 6: Subsetting Data](https://swcarpentry.github.io/r-novice-gapminder/06-data-subsetting/index.html).
 
 If you type in an incomplete command, R will wait for you to
 complete it. If you are familiar with Unix Shell's bash, you may recognize this  
@@ -723,7 +724,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x5644cbc309c8>
+<bytecode: 0x55f4bcd4a458>
 <environment: namespace:base>
 ~~~
 {: .output}
