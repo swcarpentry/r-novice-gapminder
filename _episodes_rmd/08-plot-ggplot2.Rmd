@@ -150,19 +150,19 @@ Instead of adding a `geom_point` layer, we've added a `geom_line` layer.
 However, the result doesn't look quite as we might have expected: it seems to be jumping around a lot in each continent. Let's try to separate the data by country, plotting one line for each country:
 
 ```{r lifeExp-line-by}
-ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country, color=continent)) +
+ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, group=country, color=continent)) +
   geom_line()
 ```
 
 
-We've added the **by** *aesthetic*, which tells `ggplot` to draw a line for each
+We've added the **group** *aesthetic*, which tells `ggplot` to draw a line for each
 country.
 
 But what if we want to visualize both lines and points on the plot? We can
 add another layer to the plot:
 
 ```{r lifeExp-line-point}
-ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country, color=continent)) +
+ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, group=country, color=continent)) +
   geom_line() + geom_point()
 ```
 
@@ -171,7 +171,7 @@ this example, the points have been drawn *on top of* the lines. Here's a
 demonstration:
 
 ```{r lifeExp-layer-example-1}
-ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country)) +
+ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, group=country)) +
   geom_line(mapping = aes(color=continent)) + geom_point()
 ```
 
@@ -195,7 +195,7 @@ lines.
 > > The lines now get drawn over the points!
 > >
 > > ```{r ch3-sol, fig.alt = "Scatter plot of life expectancy vs GDP per capita with a trend line summarising the relationship between variables. The plot illustrates the possibilities for styling visualisations in ggplot2 with data points enlarged, coloured orange, and displayed without transparency."}
-> > ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country)) +
+> > ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, group=country)) +
 > >  geom_point() + geom_line(mapping = aes(color=continent))
 > > ```
 > >

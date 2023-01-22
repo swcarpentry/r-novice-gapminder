@@ -174,7 +174,7 @@ However, the result doesn't look quite as we might have expected: it seems to be
 
 
 ~~~
-ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country, color=continent)) +
+ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, group=country, color=continent)) +
   geom_line()
 ~~~
 {: .language-r}
@@ -182,7 +182,7 @@ ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country, color=cont
 <img src="../fig/rmd-08-lifeExp-line-by-1.png" alt="plot of chunk lifeExp-line-by" width="612" style="display: block; margin: auto;" />
 
 
-We've added the **by** *aesthetic*, which tells `ggplot` to draw a line for each
+We've added the **group** *aesthetic*, which tells `ggplot` to draw a line for each
 country.
 
 But what if we want to visualize both lines and points on the plot? We can
@@ -190,7 +190,7 @@ add another layer to the plot:
 
 
 ~~~
-ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country, color=continent)) +
+ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, group=country, color=continent)) +
   geom_line() + geom_point()
 ~~~
 {: .language-r}
@@ -203,7 +203,7 @@ demonstration:
 
 
 ~~~
-ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country)) +
+ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, group=country)) +
   geom_line(mapping = aes(color=continent)) + geom_point()
 ~~~
 {: .language-r}
@@ -231,7 +231,7 @@ lines.
 > >
 > > 
 > > ~~~
-> > ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country)) +
+> > ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, group=country)) +
 > >  geom_point() + geom_line(mapping = aes(color=continent))
 > > ~~~
 > > {: .language-r}
