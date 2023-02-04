@@ -32,12 +32,17 @@ are not necessarily the best, nor are they comprehensive, but they are
 packages we find useful, and have been chosen primarily for their
 usability.
 
-Maintainers:
+Current Maintainers:
+
+* [Naupaka Zimmerman][zimmerman_naupaka]
+* [Sehrish Kanwal](https://github.com/skanwal)
+* [Matthieu Bruneaux](https://github.com/matthieu-bruneaux)
+
+Previous Maintainers:
 
 * [David Mawdsley][mawdsley_david]
 * [Jeff Oliver][oliver_jeffrey]
 * Tom Wright
-* [Naupaka Zimmerman][zimmerman_naupaka]
 
 [gapminder]: http://www.gapminder.org/
 [lesson-example]: https://carpentries.github.io/lesson-example
