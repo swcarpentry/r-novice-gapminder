@@ -83,7 +83,7 @@ in the top left.
 > ## R scripts
 > 
 > Any commands that you write in the R console can be saved in to a file
-> to be re-run again.  Files containg R code to be ran in this way are 
+> to be re-run again.  Files containing R code to be ran in this way are 
 > called R scripts.  R scripts have `.R` at the end of their names to 
 > let you know what they are.
 {: .callout}
