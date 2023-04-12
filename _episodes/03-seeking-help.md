@@ -159,9 +159,9 @@ sessionInfo()
 
 
 ~~~
-R version 4.2.2 Patched (2022-11-10 r83330)
+R version 4.2.3 (2023-03-15)
 Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 20.04.5 LTS
+Running under: Ubuntu 20.04.6 LTS
 
 Matrix products: default
 BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
@@ -180,9 +180,9 @@ other attached packages:
 [1] knitr_1.42
 
 loaded via a namespace (and not attached):
- [1] compiler_4.2.2  magrittr_2.0.3  cli_3.6.0       tools_4.2.2    
- [5] glue_1.6.2      vctrs_0.5.2     stringi_1.7.12  stringr_1.5.0  
- [9] xfun_0.37       lifecycle_1.0.3 rlang_1.0.6     evaluate_0.20  
+ [1] compiler_4.2.3  magrittr_2.0.3  cli_3.6.1       tools_4.2.3    
+ [5] glue_1.6.2      vctrs_0.6.1     stringi_1.7.12  stringr_1.5.0  
+ [9] xfun_0.38       lifecycle_1.0.3 rlang_1.1.0     evaluate_0.20  
 ~~~
 {: .output}
 
