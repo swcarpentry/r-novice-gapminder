@@ -276,8 +276,8 @@ m * -1
 
 > ## Tip: Operations on vectors of unequal length
 >
-> Operations can also be performed on vectors of unequal legnth, through
-> a process known as *recycling*. This process repeats the smaller vector 
+> Operations can also be performed on vectors of unequal length, through
+> a process known as *recycling*. This process automatically repeats the smaller vector 
 > until it matches the length of the larger vector. R will provide a warning
 > if the larger vector is not a multiple of the smaller vector.
 >
@@ -297,6 +297,3 @@ m * -1
 >     2  4  6  5  7  9  8
 > ```
 > 
-> For more on matrix algebra, see the [Quick-R reference
-> guide](http://www.statmethods.net/advstats/matrix.html)
-{: .callout}
