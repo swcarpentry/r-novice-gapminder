@@ -508,3 +508,46 @@ m * -1
 > >
 > {: .solution}
 {: .challenge}
+
+> ## Tip: Operations on vectors of unequal length
+>
+> Operations can also be performed on vectors of unequal length, through
+> a process known as *recycling*. This process automatically repeats the smaller vector 
+> until it matches the length of the larger vector. R will provide a warning
+> if the larger vector is not a multiple of the smaller vector.
+>
+> 
+> ~~~
+> x <- c(1, 2, 3)
+> y <- c(1, 2, 3, 4, 5, 6, 7)
+> x + y
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Warning in x + y: longer object length is not a multiple of shorter object
+> length
+> ~~~
+> {: .warning}
+> 
+> 
+> 
+> ~~~
+> [1] 2 4 6 5 7 9 8
+> ~~~
+> {: .output}
+>
+> Vector `x` was recycled to match the length of vector `y`
+> 
+> 
+> ~~~
+> x:  1  2  3  1  2  3  1
+>     +  +  +  +  +  +  +
+> y:  1  2  3  4  5  6  7
+> -----------------------
+>     2  4  6  5  7  9  8
+> ~~~
+> {: .language-r}
+> 
