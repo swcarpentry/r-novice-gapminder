@@ -264,7 +264,7 @@ str(cats)
 > > ## Solution to Challenge 1
 > > 1. `human_age <- cats$age * 7`
 > > 2. `human_age <- factor(human_age)`. `as.factor(human_age)` works just as well.
-> > 3. `as.numeric(human_age)` yields `1 2 3 4 4` because factors are stored as integers (here, 1:4), each of which is associated with a label (here, 28, 35, 56, and 63). Converting the factor to a numeric vector gives us the underlying integers, not the labels. If we want the original numbers, we need to convert `human_age` to a character vector (using `as.character(human_age)`) and then to a numeric vector (why does this work?). This comes up in real life when we accidentally include a character somewhere in a column of a .csv file supposed to only contain numbers, and forget to set `stringsAsFactors=FALSE` when we read in the data.
+> > 3. `as.numeric(human_age)` yields `1 2 3 4 4` because factors are stored as integers (here, 1:4), each of which is associated with a label (here, 28, 35, 56, and 63). Converting the factor to a numeric vector gives us the underlying integers, not the labels. If we want the original numbers, we need to convert `human_age` to a character vector (using `as.character(human_age)`) and then to a numeric vector (why does this work?). This comes up in real life when we accidentally include a character somewhere in a column of a .csv file supposed to only contain numbers, and set `stringsAsFactors=TRUE` when we read in the data.
 > {: .solution}
 {: .challenge}
 
@@ -447,8 +447,7 @@ cats
 > ~~~
 > df <- data.frame(id = c("a", "b", "c"),
 >                  x = 1:3,
->                  y = c(TRUE, TRUE, FALSE),
->                  stringsAsFactors = FALSE)
+>                  y = c(TRUE, TRUE, FALSE))
 > ~~~
 > {: .language-r}
 > Make a data frame that holds the following information for yourself:
@@ -465,8 +464,7 @@ cats
 > > ~~~
 > > df <- data.frame(first = c("Grace"),
 > >                  last = c("Hopper"),
-> >                  lucky_number = c(0),
-> >                  stringsAsFactors = FALSE)
+> >                  lucky_number = c(0))
 > > df <- rbind(df, list("Marie", "Curie", 238) )
 > > df <- cbind(df, coffeetime = c(TRUE,TRUE))
 > > ~~~
