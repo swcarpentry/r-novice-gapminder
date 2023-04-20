@@ -451,8 +451,25 @@ There are a few useful commands you can use to interact with the R session.
 `ls` will list all of the variables and functions stored in the global environment
 (your working R session):
 
-```{r}
+```{r eval=FALSE}
 ls()
+```
+```{r echo=FALSE}
+# If `ls()` is left to run by itself when rendering this Rmd document (as would
+# happen if the code chunk above was evaluated), the output would contain extra
+# items ("args", "dest_md", "op", "src_md") that people following the lesson
+# would not see in their own session.
+#
+# This probably comes from the way the md episodes are generated when the
+# lesson website is built. The solution below uses a temporary environment to
+# mimick what the learners should observe when running `ls()` on their
+# machines.
+
+temp.env <- new.env()
+temp.env$x <- x
+temp.env$y <- y
+ls(temp.env)
+rm(temp.env)
 ```
 
 > ## Tip: hidden objects
