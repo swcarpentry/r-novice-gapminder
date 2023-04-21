@@ -35,12 +35,12 @@ as attachments. But this can be cumbersome, requiring a lengthy discussion to
 explain which attachment was which result.
 
 Writing formal reports with Word or [LaTeX](http://www.latex-project.org/)
-can simplify this process by incorporating both the analysis report and output graphs 
+can simplify this process by incorporating both the analysis report and output graphs
 into a single document. But tweaking formatting to make figures look correct
-and fixing obnoxious page breaks can be tedious and lead to a lengthly "whack-a-mole"
+and fixing obnoxious page breaks can be tedious and lead to a lengthy "whack-a-mole"
 game of fixing new mistakes resulting from a single formatting change.
 
-Creating a web page (as an html file) using R Markdown makes things easier.
+Creating a report as a web page (which is an html file) using R Markdown makes things easier.
 The report can be one long stream, so tall figures that wouldn't ordinarily fit on
 one page can be kept at full size and easier to read, since the reader can simply
 keep scrolling. Additionally, the formatting of and R Markdown document is simple and easy to modify, allowing you to spend

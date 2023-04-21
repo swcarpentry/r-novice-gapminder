@@ -182,7 +182,7 @@ other attached packages:
 loaded via a namespace (and not attached):
  [1] compiler_4.2.3  magrittr_2.0.3  cli_3.6.1       tools_4.2.3    
  [5] glue_1.6.2      vctrs_0.6.2     stringi_1.7.12  stringr_1.5.0  
- [9] xfun_0.38       lifecycle_1.0.3 rlang_1.1.0     evaluate_0.20  
+ [9] xfun_0.39       lifecycle_1.0.3 rlang_1.1.0     evaluate_0.20  
 ~~~
 {: .output}
 
