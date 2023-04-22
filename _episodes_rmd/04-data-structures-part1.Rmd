@@ -14,7 +14,7 @@ objectives:
 keypoints:
 - "Use `read.csv` to read tabular data in R."
 - "The basic data types in R are double, integer, complex, logical, and character."
-- "Use factors to represent categories in R."
+- "Data structures such as data frames or matrices are built on top of lists and vectors, with some added attributes."
 source: Rmd
 ---
 
@@ -44,10 +44,9 @@ making a toy dataset in your `data/` directory, called `feline-data.csv`:
 
 ```{r}
 cats <- data.frame(coat = c("calico", "black", "tabby"),
-                    weight = c(2.1, 5.0, 3.2),
-                    likes_string = c(1, 0, 1))
+                   weight = c(2.1, 5.0, 3.2),
+                   likes_string = c(1, 0, 1))
 write.csv(x = cats, file = "data/feline-data.csv", row.names = FALSE)
-write.csv(x = cats_bad, file = "data/feline-data_challenge.csv", row.names = FALSE)
 ```
 The contents of the new file, `feline-data.csv`:
 ```{r, eval=FALSE}
@@ -85,10 +84,10 @@ delimiting punctuation marks for both `read.csv` and `read.delim`.
 > In recent times, the default way how R handles textual data has changed. Text
 > data was interpreted by R automatically into a format called "factors". But
 > there is an easier format that is called "character". We will hear about 
-> factors later, and what to use them for. For now, remenber that in most cases,
+> factors later, and what to use them for. For now, remember that in most cases,
 > they are not needed and only complicate your life, which is why newer R
 > versions read in text as "character". Check now if your version of R has
-> automatically created factors and convert them to "character" format.
+> automatically created factors and convert them to "character" format:
 > 
 > 1. Check the data types of your input by typing `str(cats)` 
 > 2. In the output, look at the three-letter codes after the colons: If you see
@@ -190,8 +189,8 @@ cats$weight + 2
 What happened? 
 The `cats` data we are working with is something called a *data frame*. Data frames
 are one of the most common and versatile types of *data structures* we will work with in R.
-In this example, the columns that make up the data frame cannot be composed of different data types.
-In this case, R does not read everything in the data frame as a *double*, therefore the entire 
+A given column in a data frame cannot be composed of different data types.
+In this case, R does not read everything in the data frame column `weight` as a *double*, therefore the entire 
 column data type changes to something that is suitable for everything in the column.
 
 When R reads a csv file, it reads it in as a *data frame*. Thus, when we loaded the `cats`
@@ -375,7 +374,7 @@ cats$likes_string
 >
 > ```
 > # Read data
-> cats <- read.csv("data/feline-data-challenge.csv")
+> cats <- read.csv("data/feline-data_v2.csv")
 >
 > # 1. Print the data
 > _____
@@ -451,7 +450,7 @@ cats$likes_string
 > > ## Solution to Challenge 1.3
 > > * Weight is expressed on a continuous scale (real numbers). The R
 > >   data type for this is "double" (also known as "numeric").
-> > * The fourth row has the value "2.6 or 2.7". That is not a number
+> > * The fourth row has the value "2.3 or 2.4". That is not a number
 > >   but two, and an english word. Therefore, the "character" data type
 > >   is chosen. The whole column is now text, because all values in the same
 > >   columns have to be the same data type.
@@ -470,7 +469,7 @@ cats$likes_string
 >
 > > ## Solution to challenge 1.4
 > > The data type of the column "weight" is "character". The assigned data
-> > type is "double". Combining two data types yields the data type that
+> > type is "double". Combining two data types yields the data type that is
 > > higher in the following hierarchy: 
 > > ```
 > > logical < integer < double < complex < character
@@ -485,7 +484,7 @@ cats$likes_string
 > Coerce the column to floating point numbers. 
 >
 > > ## Tip 1.5
-> > The functions to convert data types start with `as....`. You can look
+> > The functions to convert data types start with `as.`. You can look
 > > for the function further up in the manuscript or use the RStudio 
 > > auto-complete function: Type "`as.`" and then press the TAB key.
 > {: .solution}
@@ -498,8 +497,6 @@ cats$likes_string
 > > ```
 > {: .solution}
 > 
-> TODO: Where to save the challenge data  
-> TODO: Can the text be be shortened?
 >
 {: .challenge}
 
@@ -549,15 +546,6 @@ sequence_example
 ```
 
 
-Finally, you can give names to elements in your vector:
-
-```{r}
-my_example <- 5:8
-names(my_example) <- c("a", "b", "c", "d")
-my_example
-names(my_example)
-```
-
 > ## Challenge 2
 >
 > Start by making a vector with the numbers 1 through 26.
@@ -576,7 +564,7 @@ names(my_example)
 
 Another data structure you'll want in your bag of tricks is the `list`. A list
 is simpler in some ways than the other types, because you can put anything you
-want in it. Remember *everything in the vector must be the same basic data type*,
+want in it. Remember *everything in the vector must be of the same basic data type*,
 but a list can have different data types: 
 
 ```{r}
@@ -669,6 +657,7 @@ names(pizza_price)[3] <- "call-a-pizza"
 pizza_price
 ```
 
+
 > ## Challenge 3
 > 
 > * What is the data type of the names of `pizza_price`? You can find out 
@@ -690,6 +679,7 @@ pizza_price
 {: .challenge}
 
 > ## Challenge 4
+>
 > Instead of just changing some of the names a vector/list already has, you can
 > also set all names of an object by writing code like (replace ALL CAPS text):
 > ```
@@ -708,10 +698,13 @@ pizza_price
 > > letter_no <- 1:26   # or seq(1,26)
 > > names(letter_no) <- LETTERS
 > > letter_no["B"]
+> > ```
+> {: .solution}
+{: .challenge}
 
 # Data frames
 
-We have data frames at the very beginning of this lession, they represent
+We have data frames at the very beginning of this lesson, they represent
 a table of data. We didn't go much further into detail with our example cat
 data frame:
 
@@ -773,7 +766,7 @@ typeof(cats[1,])
 str(cats[1,])
 ```
 
-> ## Challenge 3
+> ## Challenge 5
 >
 > There are several subtly different ways to call variables, observations and
 > elements from data.frames:
@@ -790,7 +783,7 @@ str(cats[1,])
 >
 > *Hint:* Use the function `typeof()` to examine what is returned in each case.
 >
-> > ## Solution to Challenge 3
+> > ## Solution to Challenge 5
 > > ```{r, eval=TRUE, echo=TRUE}
 > > cats[1]
 > > ```
@@ -881,14 +874,14 @@ nrow(matrix_example)
 ncol(matrix_example)
 ```
 
-> ## Challenge 4
+> ## Challenge 6
 >
 > What do you think will be the result of
 > `length(matrix_example)`?
 > Try it.
 > Were you right? Why / why not?
 >
-> > ## Solution to Challenge 4
+> > ## Solution to Challenge 6
 > >
 > > What do you think will be the result of
 > > `length(matrix_example)`?
@@ -904,7 +897,7 @@ ncol(matrix_example)
 {: .challenge}
 
 
-> ## Challenge 5
+> ## Challenge 7
 >
 > Make another matrix, this time containing the numbers 1:50,
 > with 5 columns and 10 rows.
@@ -913,7 +906,7 @@ ncol(matrix_example)
 > See if you can figure out how to change this.
 > (hint: read the documentation for `matrix`!)
 >
-> > ## Solution to Challenge 5
+> > ## Solution to Challenge 7
 > >
 > > Make another matrix, this time containing the numbers 1:50,
 > > with 5 columns and 10 rows.
@@ -930,7 +923,7 @@ ncol(matrix_example)
 {: .challenge}
 
 
-> ## Challenge 6
+> ## Challenge 8
 >  Create a list of length two containing a character vector for each of the sections in this part of the workshop:
 >
 >  - Data types
@@ -939,7 +932,7 @@ ncol(matrix_example)
 >  Populate each character vector with the names of the data types and data
 >  structures we've seen so far.
 >
-> > ## Solution to Challenge 6
+> > ## Solution to Challenge 8
 > > ```{r}
 > > dataTypes <- c('double', 'complex', 'integer', 'character', 'logical')
 > > dataStructures <- c('data.frame', 'vector', 'list', 'matrix')
@@ -953,7 +946,7 @@ ncol(matrix_example)
 {: .challenge}
 
 
-> ## Challenge 7
+> ## Challenge 9
 >
 > Consider the R output of the matrix below:
 > ```{r, echo=FALSE}
@@ -968,7 +961,7 @@ ncol(matrix_example)
 > 3. `matrix(c(4, 9, 10, 1, 5, 7), nrow = 2)`
 > 4. `matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)`
 >
-> > ## Solution to Challenge 7
+> > ## Solution to Challenge 9
 > >
 > > Consider the R output of the matrix below:
 > > ```{r, echo=FALSE}
