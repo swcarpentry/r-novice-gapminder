@@ -693,7 +693,7 @@ pizza_price
 > 3. Test yourself by calling `letter_no["B"]`, which should give you the number
 >    2!
 >
-> > # Solution to Challenge 4
+> > ## Solution to Challenge 4
 > > ```
 > > letter_no <- 1:26   # or seq(1,26)
 > > names(letter_no) <- LETTERS
