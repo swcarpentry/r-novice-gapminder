@@ -37,42 +37,47 @@ it is the most effective for creating publication-quality
 graphics.
 
 ggplot2 is built on the grammar of graphics, the idea that any plot can be
-expressed from the same set of components: a **data** set, a
-**coordinate system**, and a set of **geoms** -- the visual representation of data
-points.
+built from the same set of components: a **data set**,
+**mapping aesthetics**, and graphical **layers**:
 
-The key to understanding ggplot2 is thinking about a figure in layers.
-This idea may be familiar to you if you have used image editing programs like Photoshop, Illustrator, or
-Inkscape.
+* **Data sets** are the data that you, the user, provide.
 
-Let's start off with an example:
+* **Mapping aesthetics** are what connect the data to the graphics.
+They tell ggplot2 how to use your data to affect how the graph looks,
+such as changing what is plotted on the X or Y axis, or the size or
+color of different data points.
+
+* **Layers** are the actual graphical output from ggplot2. Layers
+determine what kinds of plot are shown (scatterplot, histogram, etc.),
+the coordinate system used (rectangular, polar, others), and other
+important aspects of the plot. The idea of layers of graphics may
+be familiar to you if you have used image editing programs
+like Photoshop, Illustrator, or Inkscape.
+
+Let's start off building an example using the gapminder data from earlier.
+The most basic function is `ggplot`, which lets R know that we're
+creating a new plot. Any of the arguments we give the `ggplot`
+function are the *global* options for the plot: they apply to all
+layers on the plot.
 
 
 ~~~
 library("ggplot2")
-ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
-  geom_point()
+ggplot(data = gapminder)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter-1.png" alt="plot of chunk lifeExp-vs-gdpPercap-scatter" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-08-blank-ggplot-1.png" alt="Blank plot, before adding any mapping aesthetics to ggplot()." width="612" style="display: block; margin: auto;" />
 
-So the first thing we do is call the `ggplot` function. This function lets R
-know that we're creating a new plot, and any of the arguments we give the
-`ggplot` function are the *global* options for the plot: they apply to all
-layers on the plot.
+Here we called `ggplot` and told it what data we want to show on
+our figure. This is not enough information for `ggplot` to actually
+draw anything. It only creates a blank slate for other elements
+to be added to.
 
-We've passed in two arguments to `ggplot`. First, we tell `ggplot` what data we
-want to show on our figure, in this example the gapminder data we read in
-earlier. For the second argument,  we passed in the `aes` function, which
-tells `ggplot` how variables in the **data** map to *aesthetic* properties of
-the figure, in this case the **x** and **y** locations. Here we told `ggplot` we
-want to plot the "gdpPercap" column of the gapminder data frame on the x-axis, and
-the "lifeExp" column on the y-axis. Notice that we didn't need to explicitly
-pass `aes` these columns (e.g. `x = gapminder[, "gdpPercap"]`), this is because
-`ggplot` is smart enough to know to look in the **data** for that column!
-
-By itself, the call to `ggplot` isn't enough to draw a figure:
+Now we're going to add in the **mapping aesthetics** using the
+`aes` function. `aes` tells `ggplot` how variables in the **data**
+map to *aesthetic* properties of the figure, such as which columns
+of the data should be used for the **x** and **y** locations.
 
 
 ~~~
@@ -80,12 +85,17 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp))
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-08-unnamed-chunk-2-1.png" alt="Plotting area with axes for a scatter plot of life expectancy vs GDP with no data points visible." width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-08-ggplot-with-aes-1.png" alt="Plotting area with axes for a scatter plot of life expectancy vs GDP, with no data points visible." width="612" style="display: block; margin: auto;" />
 
-We need to tell `ggplot` how we want to visually represent the data, which we
-do by adding a new **geom** layer. In our example, we used `geom_point`, which
-tells `ggplot` we want to visually represent the relationship between **x** and
-**y** as a scatterplot of points:
+Here we told `ggplot` we want to plot the "gdpPercap" column of the
+gapminder data frame on the x-axis, and the "lifeExp" column on the
+y-axis. Notice that we didn't need to explicitly pass `aes` these
+columns (e.g. `x = gapminder[, "gdpPercap"]`), this is because
+`ggplot` is smart enough to know to look in the **data** for that column!
+
+The final part of making our plot is to tell `ggplot` how we want to
+visually represent the data. We do this by adding a new **layer**
+to the plot using one of the **geom** functions.
 
 
 ~~~
@@ -94,7 +104,11 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter2-1.png" alt="Scatter plot of life expectancy vs GDP per capita, showing a positive correlation between the two variables with data points added." width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter-1.png" alt="Scatter plot of life expectancy vs GDP per capita, now showing the data points." width="612" style="display: block; margin: auto;" />
+
+Here we used `geom_point`, which tells `ggplot` we want to visually
+represent the relationship between **x** and **y** as a scatterplot of points.
+
 
 > ## Challenge 1
 >
