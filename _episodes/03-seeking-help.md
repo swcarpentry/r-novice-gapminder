@@ -159,12 +159,12 @@ sessionInfo()
 
 
 ~~~
-R version 4.2.3 (2023-03-15)
+R version 4.3.0 (2023-04-21)
 Platform: x86_64-pc-linux-gnu (64-bit)
 Running under: Ubuntu 20.04.6 LTS
 
 Matrix products: default
-BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0 
 LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
 
 locale:
@@ -173,6 +173,9 @@ locale:
  [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          
 [10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
 
+time zone: UTC
+tzcode source: system (glibc)
+
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
@@ -180,9 +183,9 @@ other attached packages:
 [1] knitr_1.42
 
 loaded via a namespace (and not attached):
- [1] compiler_4.2.3  magrittr_2.0.3  cli_3.6.1       tools_4.2.3    
+ [1] compiler_4.3.0  magrittr_2.0.3  cli_3.6.1       tools_4.3.0    
  [5] glue_1.6.2      vctrs_0.6.2     stringi_1.7.12  stringr_1.5.0  
- [9] xfun_0.39       lifecycle_1.0.3 rlang_1.1.0     evaluate_0.20  
+ [9] xfun_0.39       lifecycle_1.0.3 rlang_1.1.1     evaluate_0.20  
 ~~~
 {: .output}
 
