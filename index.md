@@ -1,6 +1,5 @@
 ---
-layout: lesson
-root: .
+site: sandpaper::sandpaper_site
 ---
 
 *an introduction to R for non-programmers using gapminder data*
@@ -17,16 +16,22 @@ task automation, and encapsulation.
 Note that this workshop will focus on teaching the fundamentals of the
 programming language R, and will not teach statistical analysis.
 
-The lesson contains more material than can be taught in a day.  The [instructor notes page]({{ page.root }}/guide) has some suggested lesson plans suitable for a one or half day workshop.
+The lesson contains more material than can be taught in a day.  The [instructor notes page](instructors/instructor-notes.md) has some suggested lesson plans suitable for a one or half day workshop.
 
 A variety of third party packages are used throughout this workshop. These
 are not necessarily the best, nor are they comprehensive, but they are
 packages we find useful, and have been chosen primarily for their
 usability.
 
-> ## Prerequisites
->
-> Understand that computers store data and instructions (programs, scripts etc.) in files.
-> Files are organised in directories (folders).
-> Know how to access files not in the working directory by specifying the path.
-{: .prereq}
+::::::::::::::::::::::::::::::::::::::::::  prereq
+
+## Prerequisites
+
+Understand that computers store data and instructions (programs, scripts etc.) in files.
+Files are organised in directories (folders).
+Know how to access files not in the working directory by specifying the path.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
