@@ -113,8 +113,8 @@ Don't worry about being correct or knowing the material back-to-front. Use
 mistakes as teaching moments: the most vital skill you can impart is how to
 debug and recover from unexpected errors.
 
-[gapminder-data]: https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv
-[gapminder-data-wide]: https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_wide.csv
+[gapminder-data]: data/gapminder_data.csv
+[gapminder-data-wide]: data/gapminder_wide.csv
 
 
 

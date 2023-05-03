@@ -411,7 +411,7 @@ of the "Help" field in the toolbar at the top of RStudio.
 
 You can make *every* number in your report reproducible. Use
 <code>\`r</code> and <code>\`</code> for an in-line code chunk,
-like so: <code>\`r round(some\_value, 2)\`</code>. The code will be
+like so: ``` ``r "r round(some_value, 2)"`` ```. The code will be
 executed and replaced with the *value* of the result.
 
 Don't let these in-line chunks get split across lines.
