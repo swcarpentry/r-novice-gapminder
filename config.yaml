@@ -14,7 +14,7 @@ carpentry: 'swc'
 title: 'R for Reproducible Scientific Analysis'
 
 # Date the lesson was created (YYYY-MM-DD, this is empty by default)
-created: 
+created: '2015-04-18'
 
 # Comma-separated list of keywords for the lesson
 keywords: 'software, data, lesson, The Carpentries'
@@ -27,7 +27,7 @@ life_cycle: 'stable'
 license: 'CC-BY 4.0'
 
 # Link to the source repository for this lesson
-source: 'https://github.com/fishtree-attempt/r-novice-gapminder/'
+source: 'https://github.com/swcarpentry/r-novice-gapminder'
 
 # Default branch of your lesson
 branch: 'main'
@@ -91,7 +91,6 @@ profiles:
 # sandpaper and varnish versions) should live
 
 
-url: https://preview.carpentries.org/r-novice-gapminder
+url: 'https://swcarpentry.github.io/r-novice-gapminder'
 analytics: carpentries
 lang: en
-workbench-beta: 'true'
