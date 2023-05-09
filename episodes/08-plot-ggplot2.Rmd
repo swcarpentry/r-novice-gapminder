@@ -464,6 +464,7 @@ ggplot(data = gapminder, mapping = aes(x = continent, y = lifeExp, fill = contin
 [lattice]: https://www.statmethods.net/advgraphs/trellis.html
 [ggplot2]: https://www.statmethods.net/advgraphs/ggplot2.html
 [cheat]: https://www.rstudio.org/links/data_visualization_cheat_sheet
+[cheat_all]: https://www.rstudio.com/resources/cheatsheets/
 [ggplot-doc]: https://ggplot2.tidyverse.org/reference/
 
 
