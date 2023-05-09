@@ -1,141 +1,165 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminder01-rstudio-intro.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/01-rstudio-intro.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminder02-project-intro.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/02-project-intro.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminder03-seeking-help.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/03-seeking-help.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminder04-data-structures-part1.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/04-data-structures-part1.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminder05-data-structures-part2.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/05-data-structures-part2.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminder06-data-subsetting.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/06-data-subsetting.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminder07-control-flow.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/07-control-flow.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminder08-plot-ggplot2.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/08-plot-ggplot2.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminder09-vectorization.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/09-vectorization.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminder10-functions.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/10-functions.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminder11-writing-data.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/11-writing-data.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminder12-plyr.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/12-plyr.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminder13-dplyr.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/13-dplyr.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminder14-tidyr.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/14-tidyr.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminder15-knitr-markdown.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/15-knitr-markdown.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminder16-wrap-up.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/16-wrap-up.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminder404.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/404.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderCODE_OF_CONDUCT.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderLICENSE.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderdiscuss.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/aio.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderindex.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/discuss.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/01-rstudio-intro.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/images.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/02-project-intro.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/index.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/03-seeking-help.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/01-rstudio-intro.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/04-data-structures-part1.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/02-project-intro.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/05-data-structures-part2.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/03-seeking-help.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/06-data-subsetting.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/04-data-structures-part1.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/07-control-flow.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/05-data-structures-part2.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/08-plot-ggplot2.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/06-data-subsetting.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/09-vectorization.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/07-control-flow.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/10-functions.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/08-plot-ggplot2.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/11-writing-data.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/09-vectorization.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/12-plyr.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/10-functions.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/13-dplyr.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/11-writing-data.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/14-tidyr.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/12-plyr.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/15-knitr-markdown.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/13-dplyr.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/16-wrap-up.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/14-tidyr.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/404.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/15-knitr-markdown.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/CODE_OF_CONDUCT.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/16-wrap-up.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/LICENSE.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/404.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/discuss.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/index.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/profiles.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/aio.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderinstructor/reference.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/discuss.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderprofiles.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/images.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-gapminderreference.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/index.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/instructor-notes.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/key-points.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/profiles.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/reference.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor-notes.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/key-points.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/profiles.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/reference.html</loc>
   </url>
 </urlset>
