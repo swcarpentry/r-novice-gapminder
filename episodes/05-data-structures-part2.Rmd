@@ -8,7 +8,6 @@ source: Rmd
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Add and remove rows or columns.
-- Remove rows with `NA` values.
 - Append two data frames.
 - Display basic properties of data frames including size and class of the columns, names, and first few rows.
 
@@ -149,7 +148,7 @@ cats
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge 2
+## Challenge 1
 
 You can create a new data frame right from within R with the following syntax:
 
@@ -170,7 +169,7 @@ Finally, use `cbind` to add a column with each person's answer to the question, 
 
 :::::::::::::::  solution
 
-## Solution to Challenge 2
+## Solution to Challenge 1
 
 ```{r}
 df <- data.frame(first = c("Grace"),
@@ -233,7 +232,7 @@ str(gapminder)
 An additional method for examining the structure of gapminder is to use the `summary` function. This function can be used on various objects in R. For data frames, `summary` yields a numeric, tabular, or descriptive summary of each column. Numeric or integer columns are described by the descriptive statistics (quartiles and mean), and character columns by its length, class, and mode.
 
 ```{r}
-summary(gapminder$country)
+summary(gapminder)
 ```
 
 Along with the `str` and `summary` functions, we can examine individual columns of the data frame with our `typeof` function:
@@ -297,7 +296,7 @@ head(gapminder)
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge 3
+## Challenge 2
 
 It's good practice to also check the last few lines of your data and some in the middle. How would you do this?
 
@@ -305,7 +304,7 @@ Searching for ones specifically in the middle isn't too hard, but we could ask f
 
 :::::::::::::::  solution
 
-## Solution to Challenge 3
+## Solution to Challenge 2
 
 To check the last few lines it's relatively simple as R already has a function for this:
 
@@ -334,7 +333,7 @@ into a script file so we can come back to it later.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge 4
+## Challenge 3
 
 Go to file -> new file -> R script, and write an R script
 to load in the gapminder dataset. Put it in the `scripts/`
@@ -345,7 +344,7 @@ as its argument (or by pressing the "source" button in RStudio).
 
 :::::::::::::::  solution
 
-## Solution to Challenge 4
+## Solution to Challenge 3
 
 The `source` function can be used to use a script within a script.
 Assume you would like to load the same type of file over and over
@@ -373,7 +372,7 @@ source(file = "scripts/load-gapminder.R")
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge 5
+## Challenge 4
 
 Read the output of `str(gapminder)` again;
 this time, use what you've learned about lists and vectors,
@@ -383,7 +382,7 @@ If there are any parts you can't interpret, discuss with your neighbors!
 
 :::::::::::::::  solution
 
-## Solution to Challenge 5
+## Solution to Challenge 4
 
 The object `gapminder` is a data frame with columns
 
@@ -400,7 +399,6 @@ The object `gapminder` is a data frame with columns
 - Use `cbind()` to add a new column to a data frame.
 - Use `rbind()` to add a new row to a data frame.
 - Remove rows from a data frame.
-- Use `na.omit()` to remove rows from a data frame with `NA` values.
 - Use `str()`, `summary()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()`, and `typeof()` to understand the structure of a data frame.
 - Read in a csv file using `read.csv()`.
 - Understand what `length()` of a data frame represents.
