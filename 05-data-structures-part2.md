@@ -8,10 +8,7 @@ source: Rmd
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Add and remove rows or columns.
-- Remove rows with `NA` values.
 - Append two data frames.
-- Understand what a `factor` is.
-- Convert a `factor` to a `character` vector and vice versa.
 - Display basic properties of data frames including size and class of the columns, names, and first few rows.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -122,111 +119,7 @@ newRow <- list("tortoiseshell", 3.3, TRUE, 9)
 cats <- rbind(cats, newRow)
 ```
 
-```{.warning}
-Warning in `[<-.factor`(`*tmp*`, ri, value = "tortoiseshell"): invalid factor
-level, NA generated
-```
-
-Looks like our attempt to use the `rbind()` function returns a warning.  Recall that, unlike errors, warnings do not necessarily stop a function from performing its intended action.  You can confirm this by taking a look at the `cats` data frame.
-
-
-```r
-cats
-```
-
-```{.output}
-    coat weight likes_string age
-1 calico    2.1            1   2
-2  black    5.0            0   3
-3  tabby    3.2            1   5
-4   <NA>    3.3            1   9
-```
-
-Notice that not only did we successfully add a new row, but there is `NA` in the column *coats* where we expected "tortoiseshell" to be.  Why did this happen?
-
-## Factors
-
-For an object containing the data type `factor`, each different value represents what is called a `level`. In our case, the `factor` "coat" has 3 levels: "black", "calico", and "tabby". R will only accept values that match one of the levels. If you add a new value, it will become `NA`.
-
-The warning is telling us that we unsuccessfully added "tortoiseshell" to our
-*coat* factor, but 3.3 (a numeric), TRUE (a logical), and 9 (a numeric) were
-successfully added to *weight*, *likes\_string*, and *age*, respectively, since
-those variables are not factors. To successfully add a cat with a
-"tortoiseshell" *coat*, add "tortoiseshell" as a possible *level* of the factor:
-
-
-```r
-levels(cats$coat)
-```
-
-```{.output}
-[1] "black"  "calico" "tabby" 
-```
-
-```r
-levels(cats$coat) <- c(levels(cats$coat), "tortoiseshell")
-cats <- rbind(cats, list("tortoiseshell", 3.3, TRUE, 9))
-```
-
-Alternatively, we can change a factor into a character vector; we lose the
-handy categories of the factor, but we can subsequently add any word we want to the
-column without babysitting the factor levels:
-
-
-```r
-str(cats)
-```
-
-```{.output}
-'data.frame':	5 obs. of  4 variables:
- $ coat        : Factor w/ 4 levels "black","calico",..: 2 1 3 NA 4
- $ weight      : num  2.1 5 3.2 3.3 3.3
- $ likes_string: int  1 0 1 1 1
- $ age         : num  2 3 5 9 9
-```
-
-```r
-cats$coat <- as.character(cats$coat)
-str(cats)
-```
-
-```{.output}
-'data.frame':	5 obs. of  4 variables:
- $ coat        : chr  "calico" "black" "tabby" NA ...
- $ weight      : num  2.1 5 3.2 3.3 3.3
- $ likes_string: int  1 0 1 1 1
- $ age         : num  2 3 5 9 9
-```
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Challenge 1
-
-Let's imagine that 1 cat year is equivalent to 7 human years.
-
-1. Create a vector called `human_age` by multiplying `cats$age` by 7.
-2. Convert `human_age` to a factor.
-3. Convert `human_age` back to a numeric vector using the `as.numeric()` function. Now divide it by 7 to get the original ages back. Explain what happened.
-
-:::::::::::::::  solution
-
-## Solution to Challenge 1
-
-1. `human_age <- cats$age * 7`
-2. `human_age <- factor(human_age)`. `as.factor(human_age)` works just as well.
-3. `as.numeric(human_age)` yields `1 2 3 4 4` because factors are stored as integers (here, 1:4), each of which is associated with a label (here, 28, 35, 56, and 63). Converting the factor to a numeric vector gives us the underlying integers, not the labels. If we want the original numbers, we need to convert `human_age` to a character vector (using `as.character(human_age)`) and then to a numeric vector (why does this work?). This comes up in real life when we accidentally include a character somewhere in a column of a .csv file supposed to only contain numbers, and set `stringsAsFactors=TRUE` when we read in the data.
-  
-  
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-## Removing rows
-
-We now know how to add rows and columns to our data frame in R—but in our
-first attempt to add a "tortoiseshell" cat to the data frame we have accidentally
-added a garbage row:
+Let's confirm that our new row was added correctly. 
 
 
 ```r
@@ -238,11 +131,28 @@ cats
 1        calico    2.1            1   2
 2         black    5.0            0   3
 3         tabby    3.2            1   5
-4          <NA>    3.3            1   9
-5 tortoiseshell    3.3            1   9
+4 tortoiseshell    3.3            1   9
 ```
 
-We can ask for a data frame minus this offending row:
+
+## Removing rows
+
+We now know how to add rows and columns to our data frame in R. Now let's learn to remove rows. 
+
+
+```r
+cats
+```
+
+```{.output}
+           coat weight likes_string age
+1        calico    2.1            1   2
+2         black    5.0            0   3
+3         tabby    3.2            1   5
+4 tortoiseshell    3.3            1   9
+```
+
+We can ask for a data frame minus the last row:
 
 
 ```r
@@ -250,39 +160,17 @@ cats[-4, ]
 ```
 
 ```{.output}
-           coat weight likes_string age
-1        calico    2.1            1   2
-2         black    5.0            0   3
-3         tabby    3.2            1   5
-5 tortoiseshell    3.3            1   9
+    coat weight likes_string age
+1 calico    2.1            1   2
+2  black    5.0            0   3
+3  tabby    3.2            1   5
 ```
 
 Notice the comma with nothing after it to indicate that we want to drop the entire fourth row.
 
-Note: we could also remove both new rows at once by putting the row numbers
-inside of a vector: `cats[c(-4,-5), ]`
+Note: we could also remove several rows at once by putting the row numbers
+inside of a vector, for example: `cats[c(-3,-4), ]`
 
-Alternatively, we can drop all rows with `NA` values:
-
-
-```r
-na.omit(cats)
-```
-
-```{.output}
-           coat weight likes_string age
-1        calico    2.1            1   2
-2         black    5.0            0   3
-3         tabby    3.2            1   5
-5 tortoiseshell    3.3            1   9
-```
-
-Let's reassign the output to `cats`, so that our changes will be permanent:
-
-
-```r
-cats <- na.omit(cats)
-```
 
 ## Removing columns
 
@@ -298,7 +186,7 @@ cats[,-4]
 1        calico    2.1            1
 2         black    5.0            0
 3         tabby    3.2            1
-5 tortoiseshell    3.3            1
+4 tortoiseshell    3.3            1
 ```
 
 Notice the comma with nothing before it, indicating we want to keep all of the rows.
@@ -316,7 +204,7 @@ cats[,!drop]
 1        calico    2.1            1
 2         black    5.0            0
 3         tabby    3.2            1
-5 tortoiseshell    3.3            1
+4 tortoiseshell    3.3            1
 ```
 
 We will cover subsetting with logical operators like `%in%` in more detail in the next episode. See the section [Subsetting through other logical operations](06-data-subsetting.Rmd)
@@ -334,15 +222,15 @@ cats
 ```
 
 ```{.output}
-            coat weight likes_string age
-1         calico    2.1            1   2
-2          black    5.0            0   3
-3          tabby    3.2            1   5
-5  tortoiseshell    3.3            1   9
-11        calico    2.1            1   2
-21         black    5.0            0   3
-31         tabby    3.2            1   5
-51 tortoiseshell    3.3            1   9
+           coat weight likes_string age
+1        calico    2.1            1   2
+2         black    5.0            0   3
+3         tabby    3.2            1   5
+4 tortoiseshell    3.3            1   9
+5        calico    2.1            1   2
+6         black    5.0            0   3
+7         tabby    3.2            1   5
+8 tortoiseshell    3.3            1   9
 ```
 
 But now the row names are unnecessarily complicated. We can remove the rownames,
@@ -368,7 +256,7 @@ cats
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge 2
+## Challenge 1
 
 You can create a new data frame right from within R with the following syntax:
 
@@ -390,7 +278,7 @@ Finally, use `cbind` to add a column with each person's answer to the question, 
 
 :::::::::::::::  solution
 
-## Solution to Challenge 2
+## Solution to Challenge 1
 
 
 ```r
@@ -413,7 +301,7 @@ now let's use those skills to digest a more realistic dataset. Let's read in the
 
 
 ```r
-gapminder <- read.csv("data/gapminder_data.csv", stringsAsFactors = TRUE)
+gapminder <- read.csv("data/gapminder_data.csv")
 ```
 
 :::::::::::::::::::::::::::::::::::::::::  callout
@@ -429,18 +317,20 @@ gapminder <- read.csv("data/gapminder_data.csv", stringsAsFactors = TRUE)
 
 ```r
 download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv", destfile = "data/gapminder_data.csv")
-gapminder <- read.csv("data/gapminder_data.csv", stringsAsFactors = TRUE)
+gapminder <- read.csv("data/gapminder_data.csv")
 ```
 
 - Alternatively, you can also read in files directly into R from the Internet by replacing the file paths with a web address in `read.csv`. One should note that in doing this no local copy of the csv file is first saved onto your computer. For example,
 
 
 ```r
-gapminder <- read.csv("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv", stringsAsFactors = TRUE)
+gapminder <- read.csv("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv")
 ```
 
 - You can read directly from excel spreadsheets without
   converting them to plain text first by using the [readxl](https://cran.r-project.org/package=readxl) package.
+  
+- The argument "stringsAsFactors" can be useful to tell R how to read strings either as factors or as character strings. In R versions after 4.0, all strings are read-in as characters by default, but in earlier versions of R, strings are read-in as factors by default. For more information, see the call-out in [the previous episode](https://swcarpentry.github.io/r-novice-gapminder/04-data-structures-part1.html#callout2). 
   
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -455,90 +345,36 @@ str(gapminder)
 
 ```{.output}
 'data.frame':	1704 obs. of  6 variables:
- $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ country  : chr  "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
  $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
  $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...
- $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
+ $ continent: chr  "Asia" "Asia" "Asia" "Asia" ...
  $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
  $ gdpPercap: num  779 821 853 836 740 ...
 ```
 
-An additional method for examining the structure of gapminder is to use the `summary` function. This function can be used on various objects in R. For data frames, `summary` yields a numeric, tabular, or descriptive summary of each column. Factor columns are summarized by the number of items in each level, numeric or integer columns by the descriptive statistics (quartiles and mean), and character columns by its length, class, and mode.
+An additional method for examining the structure of gapminder is to use the `summary` function. This function can be used on various objects in R. For data frames, `summary` yields a numeric, tabular, or descriptive summary of each column. Numeric or integer columns are described by the descriptive statistics (quartiles and mean), and character columns by its length, class, and mode.
 
 
 ```r
-summary(gapminder$country)
+summary(gapminder)
 ```
 
 ```{.output}
-             Afghanistan                  Albania                  Algeria 
-                      12                       12                       12 
-                  Angola                Argentina                Australia 
-                      12                       12                       12 
-                 Austria                  Bahrain               Bangladesh 
-                      12                       12                       12 
-                 Belgium                    Benin                  Bolivia 
-                      12                       12                       12 
-  Bosnia and Herzegovina                 Botswana                   Brazil 
-                      12                       12                       12 
-                Bulgaria             Burkina Faso                  Burundi 
-                      12                       12                       12 
-                Cambodia                 Cameroon                   Canada 
-                      12                       12                       12 
-Central African Republic                     Chad                    Chile 
-                      12                       12                       12 
-                   China                 Colombia                  Comoros 
-                      12                       12                       12 
-         Congo Dem. Rep.               Congo Rep.               Costa Rica 
-                      12                       12                       12 
-           Cote d'Ivoire                  Croatia                     Cuba 
-                      12                       12                       12 
-          Czech Republic                  Denmark                 Djibouti 
-                      12                       12                       12 
-      Dominican Republic                  Ecuador                    Egypt 
-                      12                       12                       12 
-             El Salvador        Equatorial Guinea                  Eritrea 
-                      12                       12                       12 
-                Ethiopia                  Finland                   France 
-                      12                       12                       12 
-                   Gabon                   Gambia                  Germany 
-                      12                       12                       12 
-                   Ghana                   Greece                Guatemala 
-                      12                       12                       12 
-                  Guinea            Guinea-Bissau                    Haiti 
-                      12                       12                       12 
-                Honduras          Hong Kong China                  Hungary 
-                      12                       12                       12 
-                 Iceland                    India                Indonesia 
-                      12                       12                       12 
-                    Iran                     Iraq                  Ireland 
-                      12                       12                       12 
-                  Israel                    Italy                  Jamaica 
-                      12                       12                       12 
-                   Japan                   Jordan                    Kenya 
-                      12                       12                       12 
-         Korea Dem. Rep.               Korea Rep.                   Kuwait 
-                      12                       12                       12 
-                 Lebanon                  Lesotho                  Liberia 
-                      12                       12                       12 
-                   Libya               Madagascar                   Malawi 
-                      12                       12                       12 
-                Malaysia                     Mali               Mauritania 
-                      12                       12                       12 
-               Mauritius                   Mexico                 Mongolia 
-                      12                       12                       12 
-              Montenegro                  Morocco               Mozambique 
-                      12                       12                       12 
-                 Myanmar                  Namibia                    Nepal 
-                      12                       12                       12 
-             Netherlands              New Zealand                Nicaragua 
-                      12                       12                       12 
-                   Niger                  Nigeria                   Norway 
-                      12                       12                       12 
-                    Oman                 Pakistan                   Panama 
-                      12                       12                       12 
-                 (Other) 
-                     516 
+   country               year           pop             continent        
+ Length:1704        Min.   :1952   Min.   :6.001e+04   Length:1704       
+ Class :character   1st Qu.:1966   1st Qu.:2.794e+06   Class :character  
+ Mode  :character   Median :1980   Median :7.024e+06   Mode  :character  
+                    Mean   :1980   Mean   :2.960e+07                     
+                    3rd Qu.:1993   3rd Qu.:1.959e+07                     
+                    Max.   :2007   Max.   :1.319e+09                     
+    lifeExp        gdpPercap       
+ Min.   :23.60   Min.   :   241.2  
+ 1st Qu.:48.20   1st Qu.:  1202.1  
+ Median :60.71   Median :  3531.8  
+ Mean   :59.47   Mean   :  7215.3  
+ 3rd Qu.:70.85   3rd Qu.:  9325.5  
+ Max.   :82.60   Max.   :113523.1  
 ```
 
 Along with the `str` and `summary` functions, we can examine individual columns of the data frame with our `typeof` function:
@@ -557,7 +393,7 @@ typeof(gapminder$country)
 ```
 
 ```{.output}
-[1] "integer"
+[1] "character"
 ```
 
 ```r
@@ -565,7 +401,7 @@ str(gapminder$country)
 ```
 
 ```{.output}
- Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
+ chr [1:1704] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
 ```
 
 We can also interrogate the data frame for information about its dimensions;
@@ -664,7 +500,7 @@ head(gapminder)
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge 3
+## Challenge 2
 
 It's good practice to also check the last few lines of your data and some in the middle. How would you do this?
 
@@ -672,7 +508,7 @@ Searching for ones specifically in the middle isn't too hard, but we could ask f
 
 :::::::::::::::  solution
 
-## Solution to Challenge 3
+## Solution to Challenge 2
 
 To check the last few lines it's relatively simple as R already has a function for this:
 
@@ -701,7 +537,7 @@ into a script file so we can come back to it later.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge 4
+## Challenge 3
 
 Go to file -> new file -> R script, and write an R script
 to load in the gapminder dataset. Put it in the `scripts/`
@@ -712,7 +548,7 @@ as its argument (or by pressing the "source" button in RStudio).
 
 :::::::::::::::  solution
 
-## Solution to Challenge 4
+## Solution to Challenge 3
 
 The `source` function can be used to use a script within a script.
 Assume you would like to load the same type of file over and over
@@ -726,7 +562,7 @@ Check out `?source` to find out more.
 
 ```r
 download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv", destfile = "data/gapminder_data.csv")
-gapminder <- read.csv(file = "data/gapminder_data.csv", stringsAsFactors = TRUE)
+gapminder <- read.csv(file = "data/gapminder_data.csv")
 ```
 
 To run the script and load the data into the `gapminder` variable:
@@ -742,21 +578,21 @@ source(file = "scripts/load-gapminder.R")
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge 5
+## Challenge 4
 
 Read the output of `str(gapminder)` again;
-this time, use what you've learned about factors, lists and vectors,
+this time, use what you've learned about lists and vectors,
 as well as the output of functions like `colnames` and `dim`
 to explain what everything that `str` prints out for gapminder means.
 If there are any parts you can't interpret, discuss with your neighbors!
 
 :::::::::::::::  solution
 
-## Solution to Challenge 5
+## Solution to Challenge 4
 
 The object `gapminder` is a data frame with columns
 
-- `country` and `continent` are factors.
+- `country` and `continent` are character strings.
 - `year` is an integer vector.
 - `pop`, `lifeExp`, and `gdpPercap` are numeric vectors.
 
@@ -769,8 +605,6 @@ The object `gapminder` is a data frame with columns
 - Use `cbind()` to add a new column to a data frame.
 - Use `rbind()` to add a new row to a data frame.
 - Remove rows from a data frame.
-- Use `na.omit()` to remove rows from a data frame with `NA` values.
-- Use `levels()` and `as.character()` to explore and manipulate factors.
 - Use `str()`, `summary()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()`, and `typeof()` to understand the structure of a data frame.
 - Read in a csv file using `read.csv()`.
 - Understand what `length()` of a data frame represents.
