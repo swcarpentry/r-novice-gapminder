@@ -190,7 +190,7 @@ ls -lh data/gapminder_data.csv
 ```
 
 ```{.output}
--rw-r--r-- 1 runner docker 80K May  3 15:41 data/gapminder_data.csv
+-rw-r--r-- 1 runner docker 80K May 16 21:45 data/gapminder_data.csv
 ```
 
 The file size is 80K.
@@ -271,7 +271,7 @@ You need to either provide an absolute path to the file, or you need to make sur
 
 ### Version Control
 
-It is important to use version control with projects.  Go [here for a good lesson which describes using Git with RStudio](https://swcarpentry.github.io/git-novice/14-supplemental-rstudio/).
+It is important to use version control with projects.  Go [here for a good lesson which describes using Git with RStudio](https://swcarpentry.github.io/git-novice/14-supplemental-rstudio.html).
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
