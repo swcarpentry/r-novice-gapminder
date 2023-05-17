@@ -119,9 +119,11 @@ and you make things *italics* by using underscores, like this:
 `_italics_`.
 
 You can make a bulleted list by writing a list with hyphens or
-asterisks, like this:
+asterisks with a space between the list and other text, like this:
 
 ```
+A list:
+
 * bold with double-asterisks
 * italics with underscores
 * code-type font with backticks
@@ -130,6 +132,8 @@ asterisks, like this:
 or like this:
 
 ```
+A second list:
+
 - bold with double-asterisks
 - italics with underscores
 - code-type font with backticks
