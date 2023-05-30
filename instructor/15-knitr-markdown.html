@@ -265,7 +265,7 @@
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
-        Producing Reports With knitr
+        15. Producing Reports With knitr
         </span>
       </button>
     </div><!--/div.accordion-header-->
@@ -512,12 +512,12 @@ with some number of <code>#</code> symbols:</p>
 <span><span class="co">#### Sub-sub section</span></span></code></pre>
 <p>You <em>compile</em> the R Markdown document to an html webpage by
 clicking the “Knit” button in the upper-left.</p>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <p>Create a new R Markdown document. Delete all of the R code chunks and
@@ -591,12 +591,12 @@ produced, the file names are based on the name of the code chunk that
 produced them. You can create code chunks quickly in RStudio using the
 shortcuts <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>I</kbd> on Windows and
 Linux, or <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> on Mac.</p>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2" class="callout-inner">
-<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
 </h3>
 <div class="callout-content">
 <p>Add code chunks to:</p>
@@ -681,12 +681,12 @@ begin with <code>Figs</code>.</p>
 might want to use <code>fig.path</code> to define separate prefixes for
 the figure file names, like <code>fig.path="Figs/cleaning-"</code> and
 <code>fig.path="Figs/analysis-"</code>.</p>
-<div id="challenge3" class="callout challenge">
+<div id="challenge-3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-3" class="callout-inner">
-<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"></a>
 </h3>
 <div class="callout-content">
 <p>Use chunk options to control the size of a figure and to hide the
@@ -732,12 +732,12 @@ just <code>2</code>.</p>
 <p>The <a href="https://github.com/kbroman/broman/blob/master/R/myround.R" class="external-link"><code>myround</code></a>
 function in the <a href="https://github.com/kbroman/broman" class="external-link">R/broman</a>
 package handles this.</p>
-<div id="challenge4" class="callout challenge">
+<div id="challenge-4" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-4" class="callout-inner">
-<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4"></a>
 </h3>
 <div class="callout-content">
 <p>Try out a bit of in-line R code.</p>
@@ -764,12 +764,12 @@ package handles this.</p>
 the little triangle next to the “Knit” button to get a drop-down menu.
 Or you could put <code>pdf_document</code> or <code>word_document</code>
 in the initial header of the file.</p>
-<div id="callout1" class="callout callout">
+<div id="tip-creating-pdf-documents" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-creating-pdf-documents" class="callout-inner">
-<h3 class="callout-title">Tip: Creating PDF documents<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Tip: Creating PDF documents<a class="anchor" aria-label="anchor" href="#tip-creating-pdf-documents"></a>
 </h3>
 <div class="callout-content">
 <p>Creating .pdf documents may require installation of some extra
@@ -784,22 +784,23 @@ website</a> for more information.</p>
 </div>
 </div>
 </div>
-<div id="callout2" class="callout callout">
+<div id="tip-visual-markdown-editing-in-rstudio" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-visual-markdown-editing-in-rstudio" class="callout-inner">
-<h3 class="callout-title">Tip: Visual markdown editing in RStudio<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Tip: Visual markdown editing in RStudio<a class="anchor" aria-label="anchor" href="#tip-visual-markdown-editing-in-rstudio"></a>
 </h3>
 <div class="callout-content">
-<figure>RStudio versions 1.4 and later include visual markdown editing mode.
+<p>RStudio versions 1.4 and later include visual markdown editing mode.
 In visual editing mode, markdown expressions (like
 <code>**bold words**</code>) are transformed to the formatted appearance
 (<strong>bold words</strong>) as you type. This mode also includes a
 toolbar at the top with basic formatting buttons, similar to what you
 might see in common word processing software programs. You can turn
-visual editing on and off by pressing the <img src="../fig/visual_mode_icon.png" class="figure mx-auto d-block"> button in the top right corner of your
-R Markdown document.</figure></div>
+visual editing on and off by pressing the <img src="../fig/visual_mode_icon.png" class="figure"> button in the top right corner of your
+R Markdown document.</p>
+</div>
 </div>
 </div>
 </section><section id="resources"><h2 class="section-heading">Resources<a class="anchor" aria-label="anchor" href="#resources"></a>
@@ -869,9 +870,9 @@ formats.</li>
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.17" class="external-link">sandpaper (0.11.17)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.2" class="external-link">sandpaper (0.12.2)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.17" class="external-link">varnish (0.2.17)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -893,7 +894,7 @@ formats.</li>
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/instructor/15-knitr-markdown.html",
   "dateCreated": "2015-04-18",
   "dateModified": "2023-05-17",
-  "datePublished": "2023-05-17"
+  "datePublished": "2023-05-30"
 }
 
   </script><script>

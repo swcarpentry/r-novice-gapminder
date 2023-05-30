@@ -247,7 +247,7 @@
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
-        Data Frame Manipulation with dplyr
+        13. Data Frame Manipulation with dplyr
         </span>
       </button>
     </div><!--/div.accordion-header-->
@@ -436,12 +436,12 @@ frames in a way that will reduce the above repetition, reduce the
 probability of making errors, and probably even save you some typing. As
 an added bonus, you might even find the <code>dplyr</code> grammar
 easier to read.</p>
-<div id="callout1" class="callout callout">
+<div id="tip-tidyverse" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-tidyverse" class="callout-inner">
-<h3 class="callout-title">Tip: Tidyverse<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Tip: Tidyverse<a class="anchor" aria-label="anchor" href="#tip-tidyverse"></a>
 </h3>
 <div class="callout-content">
 <p><code>dplyr</code> package belongs to a broader family of opinionated
@@ -485,9 +485,10 @@ function. This will keep only the variables you select.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">year_country_gdp</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">year</span>, <span class="va">country</span>, <span class="va">gdpPercap</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/13-dplyr-fig1.png" alt="Diagram illustrating use of select function to select two columns of a data frame" class="figure mx-auto d-block">
+<p><img src="../fig/13-dplyr-fig1.png" alt="Diagram illustrating use of select function to select two columns of a data frame" class="figure">
 If we want to remove one column only from the <code>gapminder</code>
-data, for example, removing the <code>continent</code> column.</figure><div class="codewrapper sourceCode" id="cb10">
+data, for example, removing the <code>continent</code> column.</p>
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -514,12 +515,12 @@ since in gets that from the previous pipe. <strong>Fun Fact</strong>:
 There is a good chance you have encountered pipes before in the shell.
 In R, a pipe symbol is <code>%&gt;%</code> while in the shell it is
 <code>|</code> but the concept is the same!</p>
-<div id="callout2" class="callout callout">
+<div id="tip-renaming-data-frame-columns-in-dplyr" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-renaming-data-frame-columns-in-dplyr" class="callout-inner">
-<h3 class="callout-title">Tip: Renaming data frame columns in dplyr<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Tip: Renaming data frame columns in dplyr<a class="anchor" aria-label="anchor" href="#tip-renaming-data-frame-columns-in-dplyr"></a>
 </h3>
 <div class="callout-content">
 <p>In Chapter 4 we covered how you can rename columns with base R by
@@ -575,12 +576,12 @@ for a specific year (e.g., 2007), we can do as below.</p>
 <span>  <span class="fu">filter</span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Europe"</span>, <span class="va">year</span> <span class="op">==</span> <span class="fl">2007</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">country</span>, <span class="va">lifeExp</span><span class="op">)</span></span></code></pre>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <p>Write a single command (which can span multiple lines and includes
@@ -710,12 +711,12 @@ functions (e.g. <code>mean()</code> or <code>sd()</code>) within
 </div>
 <p>That allowed us to calculate the mean gdpPercap for each continent,
 but it gets even better.</p>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2" class="callout-inner">
-<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
 </h3>
 <div class="callout-content">
 <p>Calculate the average life expectancy per country. Which has the
@@ -1072,12 +1073,12 @@ data.</p>
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="fu">vars</span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/13-dplyr-rendered-unnamed-chunk-29-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="challenge3" class="callout challenge">
+<figure><img src="../fig/13-dplyr-rendered-unnamed-chunk-29-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="advanced-challenge" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="advanced-challenge" class="callout-inner">
-<h3 class="callout-title">Advanced Challenge<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Advanced Challenge<a class="anchor" aria-label="anchor" href="#advanced-challenge"></a>
 </h3>
 <div class="callout-content">
 <p>Calculate the average life expectancy in 2002 of 2 randomly selected
@@ -1169,9 +1170,9 @@ with subsets of data.</li>
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.17" class="external-link">sandpaper (0.11.17)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.2" class="external-link">sandpaper (0.12.2)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.17" class="external-link">varnish (0.2.17)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1193,7 +1194,7 @@ with subsets of data.</li>
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/instructor/13-dplyr.html",
   "dateCreated": "2015-04-18",
   "dateModified": "2023-05-03",
-  "datePublished": "2023-05-17"
+  "datePublished": "2023-05-30"
 }
 
   </script><script>

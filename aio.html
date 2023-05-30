@@ -505,12 +505,12 @@ with version control and project management.</p>
 </ul>
 <figure><img src="fig/01-rstudio.png" alt="RStudio layout" class="figure mx-auto d-block"></figure><p>Once you open files, such as R scripts, an editor panel will also
 open in the top left.</p>
-<figure><img src="fig/01-rstudio-script.png" alt="RStudio layout with .R file open" class="figure mx-auto d-block"></figure><div id="callout1" class="callout callout">
+<figure><img src="fig/01-rstudio-script.png" alt="RStudio layout with .R file open" class="figure mx-auto d-block"></figure><div id="r-scripts" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="r-scripts" class="callout-inner">
-<h3 class="callout-title">R scripts<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">R scripts<a class="anchor" aria-label="anchor" href="#r-scripts"></a>
 </h3>
 <div class="callout-content">
 <p>Any commands that you write in the R console can be saved to a file
@@ -543,12 +543,12 @@ to the interactive R console.</li>
 <li>You will be able to run the file you create from within RStudio or
 using R’s <code>source()</code> function.</li>
 </ul>
-<div id="callout2" class="callout callout">
+<div id="tip-running-segments-of-your-code" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-running-segments-of-your-code" class="callout-inner">
-<h3 class="callout-title">Tip: Running segments of your code<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Tip: Running segments of your code<a class="anchor" aria-label="anchor" href="#tip-running-segments-of-your-code"></a>
 </h3>
 <div class="callout-content">
 <p>RStudio offers you great flexibility in running code from within the
@@ -620,12 +620,12 @@ behavior from bash.</p>
 “&gt;”, it means it’s waiting for you to complete the command. If you
 want to cancel a command you can hit <kbd>Esc</kbd> and RStudio will
 give you back the “&gt;” prompt.</p>
-<div id="callout3" class="callout callout">
+<div id="tip-canceling-commands" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-canceling-commands" class="callout-inner">
-<h3 class="callout-title">Tip: Canceling commands<a class="anchor" aria-label="anchor" href="#callout3"></a>
+<h3 class="callout-title">Tip: Canceling commands<a class="anchor" aria-label="anchor" href="#tip-canceling-commands"></a>
 </h3>
 <div class="callout-content">
 <p>If you’re using R from the command line instead of from within
@@ -864,12 +864,12 @@ usage. We’ll go through an example later.</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] TRUE</code></pre>
 </div>
-<div id="callout4" class="callout callout">
+<div id="tip-comparing-numbers" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-comparing-numbers" class="callout-inner">
-<h3 class="callout-title">Tip: Comparing Numbers<a class="anchor" aria-label="anchor" href="#callout4"></a>
+<h3 class="callout-title">Tip: Comparing Numbers<a class="anchor" aria-label="anchor" href="#tip-comparing-numbers"></a>
 </h3>
 <div class="callout-content">
 <p>A word of warning about comparing numbers: you should never use
@@ -974,12 +974,12 @@ are occasionally places where it is less confusing to use
 <code>&lt;-</code> than <code>=</code>, and it is the most common symbol
 used in the community. So the recommendation is to use
 <code>&lt;-</code>.</p>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <p>Which of the following are valid R variable names?</p>
@@ -1005,7 +1005,7 @@ used in the community. So the recommendation is to use
   Solution to challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The following can be used as R variables:</p>
 <div class="codewrapper sourceCode" id="cb44">
@@ -1097,12 +1097,12 @@ in the global environment (your working R session):</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] "x" "y"</code></pre>
 </div>
-<div id="callout5" class="callout callout">
+<div id="tip-hidden-objects" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-hidden-objects" class="callout-inner">
-<h3 class="callout-title">Tip: hidden objects<a class="anchor" aria-label="anchor" href="#callout5"></a>
+<h3 class="callout-title">Tip: hidden objects<a class="anchor" aria-label="anchor" href="#tip-hidden-objects"></a>
 </h3>
 <div class="callout-content">
 <p>Like in the shell, <code>ls</code> will hide any variables or
@@ -1214,12 +1214,12 @@ effects, or you may get an error message:</p>
 </h3>
 <pre class="error" tabindex="0"><code>Error in rm(list &lt;- ls()): ... must contain names or character strings</code></pre>
 </div>
-<div id="callout6" class="callout callout">
+<div id="tip-warnings-vs.-errors" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-warnings-vs.-errors" class="callout-inner">
-<h3 class="callout-title">Tip: Warnings vs. Errors<a class="anchor" aria-label="anchor" href="#callout6"></a>
+<h3 class="callout-title">Tip: Warnings vs. Errors<a class="anchor" aria-label="anchor" href="#tip-warnings-vs.-errors"></a>
 </h3>
 <div class="callout-content">
 <p>Pay attention when R does something unexpected! Errors, like above,
@@ -1263,12 +1263,12 @@ empty, the package is not loaded. Click an empty box to load that
 package and click a checked box to detach that package.</p>
 <p>Packages can be installed and updated from the Package tab with the
 Install and Update buttons at the top of the tab.</p>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2" class="callout-inner">
-<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
 </h3>
 <div class="callout-content">
 <p>What will be the value of each variable after each statement in the
@@ -1292,7 +1292,7 @@ following program?</p>
   Solution to challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb64">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1328,12 +1328,12 @@ value of 102 to the variable age.</p>
 </div>
 </div>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="challenge-3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-3" class="callout-inner">
-<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"></a>
 </h3>
 <div class="callout-content">
 <p>Run the code from the previous challenge, and write a command to
@@ -1348,7 +1348,7 @@ compare mass to age. Is mass larger than age?</p>
   Solution to challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>One way of answering this question in R is to use the
 <code>&gt;</code> to set up the following:</p>
@@ -1369,12 +1369,12 @@ than 102.</p>
 </div>
 </div>
 </div>
-<div id="challenge4" class="callout challenge">
+<div id="challenge-4" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-4" class="callout-inner">
-<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4"></a>
 </h3>
 <div class="callout-content">
 <p>Clean up your working environment by deleting the mass and age
@@ -1389,7 +1389,7 @@ variables.</p>
   Solution to challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>We can use the <code>rm</code> command to accomplish this task</p>
 <div class="codewrapper sourceCode" id="cb70">
@@ -1402,12 +1402,12 @@ variables.</p>
 </div>
 </div>
 </div>
-<div id="challenge5" class="callout challenge">
+<div id="challenge-5" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-5" class="callout-inner">
-<h3 class="callout-title">Challenge 5<a class="anchor" aria-label="anchor" href="#challenge5"></a>
+<h3 class="callout-title">Challenge 5<a class="anchor" aria-label="anchor" href="#challenge-5"></a>
 </h3>
 <div class="callout-content">
 <p>Install the following packages: <code>ggplot2</code>,
@@ -1422,7 +1422,7 @@ variables.</p>
   Solution to challenge 5
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>We can use the <code>install.packages()</code> command to install the
 required packages.</p>
@@ -1542,13 +1542,13 @@ your work effectively.</p>
 <p>One of the most powerful and useful aspects of RStudio is its project
 management functionality. We’ll be using this today to create a
 self-contained, reproducible project.</p>
-<div id="discussion1" class="callout discussion">
+<div id="challenge-1-creating-a-self-contained-project" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div id="challenge-1-creating-a-self-contained-project" class="callout-inner">
 <h3 class="callout-title">Challenge 1: Creating a self-contained
-project<a class="anchor" aria-label="anchor" href="#discussion1"></a>
+project<a class="anchor" aria-label="anchor" href="#challenge-1-creating-a-self-contained-project"></a>
 </h3>
 <div class="callout-content">
 <p>We’re going to create a new project in RStudio:</p>
@@ -1574,13 +1574,13 @@ relative to the project directory. RStudio projects have the added
 benefit of allowing you to open multiple projects at the same time each
 open to its own project directory. This allows you to keep multiple
 projects open without them interfering with each other.</p>
-<div id="discussion2" class="callout discussion">
+<div id="challenge-2-opening-an-rstudio-project-through-the-file-system" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div id="challenge-2-opening-an-rstudio-project-through-the-file-system" class="callout-inner">
 <h3 class="callout-title">Challenge 2: Opening an RStudio project
-through the file system<a class="anchor" aria-label="anchor" href="#discussion2"></a>
+through the file system<a class="anchor" aria-label="anchor" href="#challenge-2-opening-an-rstudio-project-through-the-file-system"></a>
 </h3>
 <div class="callout-content">
 <ol style="list-style-type: decimal">
@@ -1628,13 +1628,13 @@ output folder with different sub-directories for each separate analysis
 makes it easier later. Since many analyses are exploratory and don’t end
 up being used in the final project, and some of the analyses get shared
 between projects.</p>
-<div id="callout1" class="callout callout">
+<div id="tip-good-enough-practices-for-scientific-computing" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-good-enough-practices-for-scientific-computing" class="callout-inner">
 <h3 class="callout-title">Tip: Good Enough Practices for Scientific
-Computing<a class="anchor" aria-label="anchor" href="#callout1"></a>
+Computing<a class="anchor" aria-label="anchor" href="#tip-good-enough-practices-for-scientific-computing"></a>
 </h3>
 <div class="callout-content">
 <p><a href="https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/good-enough-practices-for-scientific-computing.pdf" class="external-link">Good
@@ -1676,12 +1676,12 @@ store the analysis scripts.</p>
 </h3>
 <p>Now we have a good directory structure we will now place/save the
 data file in the <code>data/</code> directory.</p>
-<div id="discussion3" class="callout discussion">
+<div id="challenge-3" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div id="challenge-3" class="callout-inner">
-<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#discussion3"></a>
+<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"></a>
 </h3>
 <div class="callout-content">
 <p>Download the gapminder data from <a href="data/gapminder_data.csv">here</a>.</p>
@@ -1700,12 +1700,12 @@ project.</li>
 </div>
 </div>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-4" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-4" class="callout-inner">
-<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4"></a>
 </h3>
 <div class="callout-content">
 <p>It is useful to get some general idea about the dataset, directly
@@ -1776,12 +1776,12 @@ Afghanistan,1992,16317921,Asia,41.674,649.3413952</code></pre>
 </div>
 </div>
 </div>
-<div id="callout2" class="callout callout">
+<div id="tip-command-line-in-rstudio" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-command-line-in-rstudio" class="callout-inner">
-<h3 class="callout-title">Tip: command line in RStudio<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Tip: command line in RStudio<a class="anchor" aria-label="anchor" href="#tip-command-line-in-rstudio"></a>
 </h3>
 <div class="callout-content">
 <p>The Terminal tab in the console pane provides a convenient place
@@ -1800,12 +1800,12 @@ look for them relative to the current working directory.</p>
 directory for that project. When you open an existing
 <code>.Rproj</code> file, it will open that project and set R’s working
 directory to the folder that file is in.</p>
-<div id="discussion4" class="callout discussion">
+<div id="challenge-5" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div id="challenge-5" class="callout-inner">
-<h3 class="callout-title">Challenge 5<a class="anchor" aria-label="anchor" href="#discussion4"></a>
+<h3 class="callout-title">Challenge 5<a class="anchor" aria-label="anchor" href="#challenge-5"></a>
 </h3>
 <div class="callout-content">
 <p>You can check the current working directory with the
@@ -1834,12 +1834,12 @@ automatically appear in the console.</li>
 </div>
 </div>
 </div>
-<div id="callout3" class="callout callout">
+<div id="tip-file-does-not-exist-errors" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-file-does-not-exist-errors" class="callout-inner">
-<h3 class="callout-title">Tip: File does not exist errors<a class="anchor" aria-label="anchor" href="#callout3"></a>
+<h3 class="callout-title">Tip: File does not exist errors<a class="anchor" aria-label="anchor" href="#tip-file-does-not-exist-errors"></a>
 </h3>
 <div class="callout-content">
 <p>When you’re attempting to reference a file in your R code and you’re
@@ -1964,12 +1964,12 @@ main ones you should be aware of.</p>
 often share the same arguments as inputs to the function, so package
 authors often choose to document them together in a single help
 file.</p>
-<div id="callout1" class="callout callout">
+<div id="tip-running-examples" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-running-examples" class="callout-inner">
-<h3 class="callout-title">Tip: Running Examples<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Tip: Running Examples<a class="anchor" aria-label="anchor" href="#tip-running-examples"></a>
 </h3>
 <div class="callout-content">
 <p>From within the function help page, you can highlight code in the
@@ -1979,12 +1979,12 @@ works.</p>
 </div>
 </div>
 </div>
-<div id="callout2" class="callout callout">
+<div id="tip-reading-help-files" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-reading-help-files" class="callout-inner">
-<h3 class="callout-title">Tip: Reading Help Files<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Tip: Reading Help Files<a class="anchor" aria-label="anchor" href="#tip-reading-help-files"></a>
 </h3>
 <div class="callout-content">
 <p>One of the most daunting aspects of R is the large number of
@@ -2099,12 +2099,12 @@ loaded via a namespace (and not attached):
 <p>Will print out your current version of R, as well as any packages you
 have loaded. This can be useful for others to help reproduce and debug
 your issue.</p>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <p>Look at the help page for the <code>c</code> function. What kind of
@@ -2127,7 +2127,7 @@ vector do you expect will be created if you evaluate the following:</p>
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The <code>c()</code> function creates a vector, in which all elements
 are of the same type. In the first case, the elements are numeric, in
@@ -2137,12 +2137,12 @@ characters: the numeric values are “coerced” to be characters.</p>
 </div>
 </div>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2" class="callout-inner">
-<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
 </h3>
 <div class="callout-content">
 <p>Look at the help for the <code>paste</code> function. You will need
@@ -2158,7 +2158,7 @@ to use it later. What’s the difference between the <code>sep</code> and
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>To look at the help for the <code>paste()</code> function, use:</p>
 <div class="codewrapper sourceCode" id="cb11">
@@ -2242,12 +2242,12 @@ use the “,” as a separator and not a term to concatenate. e.g.</p>
 </div>
 </div>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="challenge-3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-3" class="callout-inner">
-<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"></a>
 </h3>
 <div class="callout-content">
 <p>Use help to find a function (and its associated parameters) that you
@@ -2268,7 +2268,7 @@ reading in tabular data.</p>
   Solution to Challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>The standard R function for reading tab-delimited files with a period
 decimal separator is read.delim(). You can also do this with
@@ -2377,12 +2377,12 @@ argument names and their default values.</p>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>black,<span class="fl">5.0</span>,<span class="dv">0</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>tabby,<span class="fl">3.2</span>,<span class="dv">1</span></span></code></pre>
 </div>
-<div id="callout1" class="callout callout">
+<div id="tip-editing-text-files-in-r" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-editing-text-files-in-r" class="callout-inner">
-<h3 class="callout-title">Tip: Editing Text files in R<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Tip: Editing Text files in R<a class="anchor" aria-label="anchor" href="#tip-editing-text-files-in-r"></a>
 </h3>
 <div class="callout-content">
 <p>Alternatively, you can create <code>data/feline-data.csv</code> using
@@ -2419,12 +2419,12 @@ tabs. Of these three functions <code>read.csv</code> is the most
 commonly used. If needed it is possible to override the default
 delimiting punctuation marks for both <code>read.csv</code> and
 <code>read.delim</code>.</p>
-<div id="callout2" class="callout callout">
+<div id="check-your-data-for-factors" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="check-your-data-for-factors" class="callout-inner">
-<h3 class="callout-title">Check your data for factors<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Check your data for factors<a class="anchor" aria-label="anchor" href="#check-your-data-for-factors"></a>
 </h3>
 <div class="callout-content">
 <p>In recent times, the default way how R handles textual data has
@@ -2758,12 +2758,12 @@ character strings. If we similarly do</p>
 columns of data we load into R data.frames are all vectors</em>, and
 that’s the root of why R forces everything in a column to be the same
 basic data type.</p>
-<div id="discussion1" class="callout discussion">
+<div id="discussion-1" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div id="discussion-1" class="callout-inner">
-<h3 class="callout-title">Discussion 1<a class="anchor" aria-label="anchor" href="#discussion1"></a>
+<h3 class="callout-title">Discussion 1<a class="anchor" aria-label="anchor" href="#discussion-1"></a>
 </h3>
 <div class="callout-content">
 <p>Why is R so opinionated about what we put in our columns of data? How
@@ -2775,7 +2775,7 @@ does this help us?</p>
   Discussion 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>By keeping everything in a column the same, we allow ourselves to
 make simple assumptions about our data; if you can interpret one entry
@@ -2943,12 +2943,12 @@ using the <code>as.logical</code> function:</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1]  TRUE FALSE  TRUE</code></pre>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <p>An important part of every data analysis is cleaning the input data.
@@ -3007,7 +3007,7 @@ the data to the console</p>
   Tip 1.1
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Show the content of any variable by typing its name.</p>
 <div class="section level3">
@@ -3021,12 +3021,12 @@ the data to the console</p>
 </div>
 </div>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="overview-of-the-data-types" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="overview-of-the-data-types" class="callout-inner">
-<h3 class="callout-title">2. Overview of the data types<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">2. Overview of the data types<a class="anchor" aria-label="anchor" href="#overview-of-the-data-types"></a>
 </h3>
 <div class="callout-content">
 <p>The data type of your data is as important as the data itself. Use a
@@ -3042,7 +3042,7 @@ the <code>cats</code> table.</p>
   Tip 1.2
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>In the chapter “Data types” we saw two functions that can show data
 types. One printed just a single word, the data type name. The other
@@ -3052,12 +3052,12 @@ the second here.</p>
 </div>
 </div>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<em> (continued)</em><a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge 1<em> (continued)</em><a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <blockquote>
@@ -3086,7 +3086,7 @@ weight!</li>
   Tip 1.3
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>Scroll up to the section about the <a href="#the-type-hierarchy">type
 hierarchy</a> to review the available data types</p>
@@ -3101,7 +3101,7 @@ hierarchy</a> to review the available data types</p>
   Solution to Challenge 1.3
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <ul>
 <li>Weight is expressed on a continuous scale (real numbers). The R data
@@ -3115,12 +3115,12 @@ columns have to be the same data type.</li>
 </div>
 </div>
 </div>
-<div id="challenge4" class="callout challenge">
+<div id="correct-the-problematic-value" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="correct-the-problematic-value" class="callout-inner">
-<h3 class="callout-title">4. Correct the problematic value<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<h3 class="callout-title">4. Correct the problematic value<a class="anchor" aria-label="anchor" href="#correct-the-problematic-value"></a>
 </h3>
 <div class="callout-content">
 <p>The code to assign a new weight value to the problematic fourth row
@@ -3137,7 +3137,7 @@ type after executing to see if you were right.</p>
   Tip 1.4
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <p>Revisit the hierarchy of data types when two different data types are
 combined.</p>
@@ -3145,12 +3145,12 @@ combined.</p>
 </div>
 </div>
 </div>
-<div id="challenge5" class="callout challenge">
+<div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<em> (continued)</em><a class="anchor" aria-label="anchor" href="#challenge5"></a>
+<h3 class="callout-title">Challenge 1<em> (continued)</em><a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <blockquote>
@@ -3178,7 +3178,7 @@ yet. Coerce the column to floating point numbers.</p>
   Tip 1.5
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <p>The functions to convert data types start with <code>as.</code>. You
 can look for the function further up in the manuscript or use the
@@ -3188,12 +3188,12 @@ the TAB key.</p>
 </div>
 </div>
 </div>
-<div id="discussion2" class="callout discussion">
+<div id="challenge-1" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<em> (continued)</em><a class="anchor" aria-label="anchor" href="#discussion2"></a>
+<h3 class="callout-title">Challenge 1<em> (continued)</em><a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <blockquote>
@@ -3351,12 +3351,12 @@ arrow:</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 30 21 22 23 24 25</code></pre>
 </div>
-<div id="challenge6" class="callout challenge">
+<div id="challenge-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2" class="callout-inner">
-<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge6"></a>
+<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
 </h3>
 <div class="callout-content">
 <p>Start by making a vector with the numbers 1 through 26. Then,
@@ -3371,7 +3371,7 @@ multiply the vector by 2.</p>
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb92">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3580,12 +3580,12 @@ The same is possible for names:</p>
 <pre class="output" tabindex="0"><code> pizzasubito   pizzafresh call-a-pizza 
         5.64         6.60         4.50 </code></pre>
 </div>
-<div id="challenge7" class="callout challenge">
+<div id="challenge-3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-3" class="callout-inner">
-<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge7"></a>
+<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"></a>
 </h3>
 <div class="callout-content">
 <ul>
@@ -3603,7 +3603,7 @@ functions.</li>
   Solution to Challenge 3
   </h4>
 </button>
-<div id="collapseSolution9" class="accordion-collapse collapse" data-bs-parent="#accordionSolution9" aria-labelledby="headingSolution9">
+<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
 <div class="accordion-body">
 <p>You get the names of an object by wrapping the object name inside
 <code>names(...)</code>. Similarly, you get the data type of the names
@@ -3617,12 +3617,12 @@ read:</p>
 </div>
 </div>
 </div>
-<div id="challenge8" class="callout challenge">
+<div id="challenge-4" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-4" class="callout-inner">
-<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge8"></a>
+<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4"></a>
 </h3>
 <div class="callout-content">
 <p>Instead of just changing some of the names a vector/list already has,
@@ -3650,7 +3650,7 @@ give you the number 2!</li>
   Solution to Challenge 4
   </h4>
 </button>
-<div id="collapseSolution10" class="accordion-collapse collapse" data-bs-parent="#accordionSolution10" aria-labelledby="headingSolution10">
+<div id="collapseSolution10" class="accordion-collapse collapse" aria-labelledby="headingSolution10" data-bs-parent="#accordionSolution10">
 <div class="accordion-body">
 <pre><code><span><span class="va">letter_no</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">26</span>   <span class="co"># or seq(1,26)</span></span>
 <span><span class="fu">names</span><span class="op">(</span><span class="va">letter_no</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">LETTERS</span></span>
@@ -3811,12 +3811,12 @@ data.frame, and thus can be composed of elements of different types.</p>
  $ weight      : num 2.1
  $ likes_string: logi TRUE</code></pre>
 </div>
-<div id="challenge9" class="callout challenge">
+<div id="challenge-5" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-5" class="callout-inner">
-<h3 class="callout-title">Challenge 5<a class="anchor" aria-label="anchor" href="#challenge9"></a>
+<h3 class="callout-title">Challenge 5<a class="anchor" aria-label="anchor" href="#challenge-5"></a>
 </h3>
 <div class="callout-content">
 <p>There are several subtly different ways to call variables,
@@ -3843,7 +3843,7 @@ is returned in each case.</p>
   Solution to Challenge 5
   </h4>
 </button>
-<div id="collapseSolution11" class="accordion-collapse collapse" data-bs-parent="#accordionSolution11" aria-labelledby="headingSolution11">
+<div id="collapseSolution11" class="accordion-collapse collapse" aria-labelledby="headingSolution11" data-bs-parent="#accordionSolution11">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb138">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3955,12 +3955,12 @@ containing all the values in the first row.</p>
 </div>
 </div>
 </div>
-<div id="callout3" class="callout callout">
+<div id="tip-renaming-data-frame-columns" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-renaming-data-frame-columns" class="callout-inner">
-<h3 class="callout-title">Tip: Renaming data frame columns<a class="anchor" aria-label="anchor" href="#callout3"></a>
+<h3 class="callout-title">Tip: Renaming data frame columns<a class="anchor" aria-label="anchor" href="#tip-renaming-data-frame-columns"></a>
 </h3>
 <div class="callout-content">
 <p>Data frames have column names, which can be accessed with the
@@ -4085,12 +4085,12 @@ matrix:</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 6</code></pre>
 </div>
-<div id="challenge10" class="callout challenge">
+<div id="challenge-6" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-6" class="callout-inner">
-<h3 class="callout-title">Challenge 6<a class="anchor" aria-label="anchor" href="#challenge10"></a>
+<h3 class="callout-title">Challenge 6<a class="anchor" aria-label="anchor" href="#challenge-6"></a>
 </h3>
 <div class="callout-content">
 <p>What do you think will be the result of
@@ -4106,7 +4106,7 @@ not?</p>
   Solution to Challenge 6
   </h4>
 </button>
-<div id="collapseSolution12" class="accordion-collapse collapse" data-bs-parent="#accordionSolution12" aria-labelledby="headingSolution12">
+<div id="collapseSolution12" class="accordion-collapse collapse" aria-labelledby="headingSolution12" data-bs-parent="#accordionSolution12">
 <div class="accordion-body">
 <p>What do you think will be the result of
 <code>length(matrix_example)</code>?</p>
@@ -4129,12 +4129,12 @@ matrix.</p>
 </div>
 </div>
 </div>
-<div id="challenge11" class="callout challenge">
+<div id="challenge-7" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-7" class="callout-inner">
-<h3 class="callout-title">Challenge 7<a class="anchor" aria-label="anchor" href="#challenge11"></a>
+<h3 class="callout-title">Challenge 7<a class="anchor" aria-label="anchor" href="#challenge-7"></a>
 </h3>
 <div class="callout-content">
 <p>Make another matrix, this time containing the numbers 1:50, with 5
@@ -4152,7 +4152,7 @@ figure out how to change this. (hint: read the documentation for
   Solution to Challenge 7
   </h4>
 </button>
-<div id="collapseSolution13" class="accordion-collapse collapse" data-bs-parent="#accordionSolution13" aria-labelledby="headingSolution13">
+<div id="collapseSolution13" class="accordion-collapse collapse" aria-labelledby="headingSolution13" data-bs-parent="#accordionSolution13">
 <div class="accordion-body">
 <p>Make another matrix, this time containing the numbers 1:50, with 5
 columns and 10 rows. Did the <code>matrix</code> function fill your
@@ -4170,12 +4170,12 @@ figure out how to change this. (hint: read the documentation for
 </div>
 </div>
 </div>
-<div id="challenge12" class="callout challenge">
+<div id="challenge-8" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-8" class="callout-inner">
-<h3 class="callout-title">Challenge 8<a class="anchor" aria-label="anchor" href="#challenge12"></a>
+<h3 class="callout-title">Challenge 8<a class="anchor" aria-label="anchor" href="#challenge-8"></a>
 </h3>
 <div class="callout-content">
 <p>Create a list of length two containing a character vector for each of
@@ -4196,7 +4196,7 @@ data structures we’ve seen so far.</p>
   Solution to Challenge 8
   </h4>
 </button>
-<div id="collapseSolution14" class="accordion-collapse collapse" data-bs-parent="#accordionSolution14" aria-labelledby="headingSolution14">
+<div id="collapseSolution14" class="accordion-collapse collapse" aria-labelledby="headingSolution14" data-bs-parent="#accordionSolution14">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb173">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4214,12 +4214,12 @@ basics.</p>
 </div>
 </div>
 </div>
-<div id="challenge13" class="callout challenge">
+<div id="challenge-9" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-9" class="callout-inner">
-<h3 class="callout-title">Challenge 9<a class="anchor" aria-label="anchor" href="#challenge13"></a>
+<h3 class="callout-title">Challenge 9<a class="anchor" aria-label="anchor" href="#challenge-9"></a>
 </h3>
 <div class="callout-content">
 <p>Consider the R output of the matrix below:</p>
@@ -4250,7 +4250,7 @@ about what matrices the other commands will produce.</p>
   Solution to Challenge 9
   </h4>
 </button>
-<div id="collapseSolution15" class="accordion-collapse collapse" data-bs-parent="#accordionSolution15" aria-labelledby="headingSolution15">
+<div id="collapseSolution15" class="accordion-collapse collapse" aria-labelledby="headingSolution15" data-bs-parent="#accordionSolution15">
 <div class="accordion-body">
 <p>Consider the R output of the matrix below:</p>
 <div class="codewrapper">
@@ -4591,12 +4591,12 @@ the rownames, and R will automatically re-name them sequentially:</p>
 7         tabby    3.2            1   5
 8 tortoiseshell    3.3            1   9</code></pre>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <p>You can create a new data frame right from within R with the
@@ -4658,12 +4658,12 @@ previously:</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="fu">read.csv</span><span class="op">(</span><span class="st">"data/gapminder_data.csv"</span><span class="op">)</span></span></code></pre>
 </div>
-<div id="callout1" class="callout callout">
+<div id="miscellaneous-tips" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="miscellaneous-tips" class="callout-inner">
-<h3 class="callout-title">Miscellaneous Tips<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Miscellaneous Tips<a class="anchor" aria-label="anchor" href="#miscellaneous-tips"></a>
 </h3>
 <div class="callout-content">
 <ul>
@@ -4899,12 +4899,12 @@ lines:</p>
 5 Afghanistan 1972 13079460      Asia  36.088  739.9811
 6 Afghanistan 1977 14880372      Asia  38.438  786.1134</code></pre>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2" class="callout-inner">
-<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
 </h3>
 <div class="callout-content">
 <p>It’s good practice to also check the last few lines of your data and
@@ -4959,12 +4959,12 @@ has a function for this.</p>
 </div>
 <p>To make sure our analysis is reproducible, we should put the code
 into a script file so we can come back to it later.</p>
-<div id="challenge3" class="callout challenge">
+<div id="challenge-3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-3" class="callout-inner">
-<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"></a>
 </h3>
 <div class="callout-content">
 <p>Go to file -&gt; new file -&gt; R script, and write an R script to
@@ -5012,12 +5012,12 @@ variable:</p>
 </div>
 </div>
 </div>
-<div id="challenge4" class="callout challenge">
+<div id="challenge-4" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-4" class="callout-inner">
-<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4"></a>
 </h3>
 <div class="callout-content">
 <p>Read the output of <code>str(gapminder)</code> again; this time, use
@@ -5134,12 +5134,12 @@ structures.</p>
 <pre class="output" tabindex="0"><code>  a   b   c   d   e 
 5.4 6.2 7.1 4.8 7.5 </code></pre>
 </div>
-<div id="callout1" class="callout callout">
+<div id="atomic-vectors" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="atomic-vectors" class="callout-inner">
-<h3 class="callout-title">Atomic vectors<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Atomic vectors<a class="anchor" aria-label="anchor" href="#atomic-vectors"></a>
 </h3>
 <div class="callout-content">
 <p>In R, simple vectors containing character strings, numbers, or
@@ -5273,12 +5273,12 @@ name is also <code>NA</code>.</p>
 </h3>
 <pre class="output" tabindex="0"><code>named numeric(0)</code></pre>
 </div>
-<div id="callout2" class="callout callout">
+<div id="vector-numbering-in-r-starts-at-1" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="vector-numbering-in-r-starts-at-1" class="callout-inner">
-<h3 class="callout-title">Vector numbering in R starts at 1<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Vector numbering in R starts at 1<a class="anchor" aria-label="anchor" href="#vector-numbering-in-r-starts-at-1"></a>
 </h3>
 <div class="callout-content">
 <p>In many programming languages (C and Python, for example), the first
@@ -5316,12 +5316,12 @@ every element <em>except</em> for the one specified:</p>
 <pre class="output" tabindex="0"><code>  b   c   d 
 6.2 7.1 4.8 </code></pre>
 </div>
-<div id="callout3" class="callout callout">
+<div id="tip-order-of-operations" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-order-of-operations" class="callout-inner">
-<h3 class="callout-title">Tip: Order of operations<a class="anchor" aria-label="anchor" href="#callout3"></a>
+<h3 class="callout-title">Tip: Order of operations<a class="anchor" aria-label="anchor" href="#tip-order-of-operations"></a>
 </h3>
 <div class="callout-content">
 <p>A common trip up for novices occurs when trying to skip slices of a
@@ -5373,12 +5373,12 @@ into the variable:</p>
 <pre class="output" tabindex="0"><code>  a   b   c   e 
 5.4 6.2 7.1 7.5 </code></pre>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <p>Given the following code:</p>
@@ -5416,7 +5416,7 @@ neighbour. Did you have different strategies?</p>
   Solution to challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5531,12 +5531,12 @@ by name (remember you have to use <code>==</code> rather than
 <pre class="output" tabindex="0"><code><span>  <span class="va">a</span> </span>
 <span><span class="fl">5.4</span> </span></code></pre>
 </div>
-<div id="callout4" class="callout callout">
+<div id="tip-combining-logical-conditions" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-combining-logical-conditions" class="callout-inner">
-<h3 class="callout-title">Tip: Combining logical conditions<a class="anchor" aria-label="anchor" href="#callout4"></a>
+<h3 class="callout-title">Tip: Combining logical conditions<a class="anchor" aria-label="anchor" href="#tip-combining-logical-conditions"></a>
 </h3>
 <div class="callout-content">
 <p>We often want to combine multiple logical criteria. For example, we
@@ -5576,12 +5576,12 @@ more elements of the vector are <code>TRUE</code>).</p>
 </div>
 </div>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2" class="callout-inner">
-<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
 </h3>
 <div class="callout-content">
 <p>Given the following code:</p>
@@ -5611,7 +5611,7 @@ than 4 and less than 7.</p>
   Solution to challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb50">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5630,12 +5630,12 @@ than 4 and less than 7.</p>
 </div>
 </div>
 </div>
-<div id="callout5" class="callout callout">
+<div id="tip-non-unique-names" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-non-unique-names" class="callout-inner">
-<h3 class="callout-title">Tip: Non-unique names<a class="anchor" aria-label="anchor" href="#callout5"></a>
+<h3 class="callout-title">Tip: Non-unique names<a class="anchor" aria-label="anchor" href="#tip-non-unique-names"></a>
 </h3>
 <div class="callout-content">
 <p>You should be aware that it is possible for multiple elements in a
@@ -5694,12 +5694,12 @@ unique.) Consider these examples:</p>
 </div>
 </div>
 </div>
-<div id="callout6" class="callout callout">
+<div id="tip-getting-help-for-operators" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-getting-help-for-operators" class="callout-inner">
-<h3 class="callout-title">Tip: Getting help for operators<a class="anchor" aria-label="anchor" href="#callout6"></a>
+<h3 class="callout-title">Tip: Getting help for operators<a class="anchor" aria-label="anchor" href="#tip-getting-help-for-operators"></a>
 </h3>
 <div class="callout-content">
 <p>Remember you can search for help on operators by wrapping them in
@@ -5825,12 +5825,12 @@ change “in” to “not in”:</p>
 <pre class="output" tabindex="0"><code>  b   d   e 
 6.2 4.8 7.5 </code></pre>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="challenge-3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-3" class="callout-inner">
-<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"></a>
 </h3>
 <div class="callout-content">
 <p>Selecting elements of a vector that match any of a list of components
@@ -5868,7 +5868,7 @@ work.</p>
   Solution to challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <ul>
 <li>The <strong>wrong</strong> way to do this problem is
@@ -6057,12 +6057,12 @@ matrix, R will throw an error:</p>
 </h3>
 <pre class="error" tabindex="0"><code>Error in m[, c(3, 6)]: subscript out of bounds</code></pre>
 </div>
-<div id="callout7" class="callout callout">
+<div id="tip-higher-dimensional-arrays" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-higher-dimensional-arrays" class="callout-inner">
-<h3 class="callout-title">Tip: Higher dimensional arrays<a class="anchor" aria-label="anchor" href="#callout7"></a>
+<h3 class="callout-title">Tip: Higher dimensional arrays<a class="anchor" aria-label="anchor" href="#tip-higher-dimensional-arrays"></a>
 </h3>
 <div class="callout-content">
 <p>when dealing with multi-dimensional arrays, each argument to
@@ -6119,12 +6119,12 @@ column-wise:</p>
 </div>
 <p>Matrices can also be subsetted using their rownames and column names
 instead of their row and column indices.</p>
-<div id="challenge4" class="callout challenge">
+<div id="challenge-4" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-4" class="callout-inner">
-<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4"></a>
 </h3>
 <div class="callout-content">
 <p>Given the following code:</p>
@@ -6161,7 +6161,7 @@ instead of their row and column indices.</p>
   Solution to challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>D</p>
 </div>
@@ -6281,12 +6281,12 @@ Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
 </div>
-<div id="challenge5" class="callout challenge">
+<div id="challenge-5" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-5" class="callout-inner">
-<h3 class="callout-title">Challenge 5<a class="anchor" aria-label="anchor" href="#challenge5"></a>
+<h3 class="callout-title">Challenge 5<a class="anchor" aria-label="anchor" href="#challenge-5"></a>
 </h3>
 <div class="callout-content">
 <p>Given the following list:</p>
@@ -6309,7 +6309,7 @@ in the list.</p>
   Solution to challenge 5
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb115">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6348,12 +6348,12 @@ in the list.</p>
 </div>
 </div>
 </div>
-<div id="challenge6" class="callout challenge">
+<div id="challenge-6" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-6" class="callout-inner">
-<h3 class="callout-title">Challenge 6<a class="anchor" aria-label="anchor" href="#challenge6"></a>
+<h3 class="callout-title">Challenge 6<a class="anchor" aria-label="anchor" href="#challenge-6"></a>
 </h3>
 <div class="callout-content">
 <p>Given a linear model:</p>
@@ -6375,7 +6375,7 @@ in the list.</p>
   Solution to challenge 6
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb122">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6476,12 +6476,12 @@ the elements are mixed types):</p>
 </div>
 <p>But for a single column the result will be a vector (this can be
 changed with the third argument, <code>drop = FALSE</code>).</p>
-<div id="challenge7" class="callout challenge">
+<div id="challenge-7" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-7" class="callout-inner">
-<h3 class="callout-title">Challenge 7<a class="anchor" aria-label="anchor" href="#challenge7"></a>
+<h3 class="callout-title">Challenge 7<a class="anchor" aria-label="anchor" href="#challenge-7"></a>
 </h3>
 <div class="callout-content">
 <p>Fix each of the following common data frame subsetting errors:</p>
@@ -6542,7 +6542,7 @@ and 2007</li>
   Solution to challenge 7
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <p>Fix each of the following common data frame subsetting errors:</p>
 <ol style="list-style-type: decimal">
@@ -6603,12 +6603,12 @@ and 2007</li>
 </div>
 </div>
 </div>
-<div id="challenge8" class="callout challenge">
+<div id="challenge-8" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-8" class="callout-inner">
-<h3 class="callout-title">Challenge 8<a class="anchor" aria-label="anchor" href="#challenge8"></a>
+<h3 class="callout-title">Challenge 8<a class="anchor" aria-label="anchor" href="#challenge-8"></a>
 </h3>
 <div class="callout-content">
 <ol style="list-style-type: decimal">
@@ -6628,7 +6628,7 @@ through 23. You can do this in one or two steps.</p></li>
   Solution to challenge 8
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p><code>gapminder</code> is a data.frame so needs to be subsetted
@@ -6817,12 +6817,12 @@ is <code>FALSE</code></p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] FALSE</code></pre>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <p>Use an <code>if()</code> statement to print a suitable message
@@ -6838,7 +6838,7 @@ reporting whether there are any records from 2002 in the
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>We will first see a solution to Challenge 1 which does not use the
 <code>any()</code> function. We first obtain a logical vector describing
@@ -6901,13 +6901,13 @@ The <code>if()</code> function will still run, but will only evaluate
 the condition in the first element of the vector. Therefore, to use the
 <code>if()</code> function, you need to make sure your input is singular
 (of length 1).</p>
-<div id="callout1" class="callout callout">
+<div id="tip-built-in-ifelse-function" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-built-in-ifelse-function" class="callout-inner">
 <h3 class="callout-title">Tip: Built in <code>ifelse()</code>
-function<a class="anchor" aria-label="anchor" href="#callout1"></a>
+function<a class="anchor" aria-label="anchor" href="#tip-built-in-ifelse-function"></a>
 </h3>
 <div class="callout-content">
 <p><code>R</code> accepts both <code>if()</code> and
@@ -6940,13 +6940,13 @@ that is evaluated when the condition is <code>FALSE</code>.</p>
 </div>
 </div>
 </div>
-<div id="callout2" class="callout callout">
+<div id="tip-any-and-all" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-any-and-all" class="callout-inner">
 <h3 class="callout-title">Tip: <code>any()</code> and
-<code>all()</code><a class="anchor" aria-label="anchor" href="#callout2"></a>
+<code>all()</code><a class="anchor" aria-label="anchor" href="#tip-any-and-all"></a>
 </h3>
 <div class="callout-content">
 <p>The <code>any()</code> function will return <code>TRUE</code> if at
@@ -7077,12 +7077,12 @@ new object.</p>
 <p>This approach can be useful, but ‘growing your results’ (building the
 result object incrementally) is computationally inefficient, so avoid it
 when you are iterating through a lot of values.</p>
-<div id="callout3" class="callout callout">
+<div id="tip-dont-grow-your-results" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-dont-grow-your-results" class="callout-inner">
-<h3 class="callout-title">Tip: don’t grow your results<a class="anchor" aria-label="anchor" href="#callout3"></a>
+<h3 class="callout-title">Tip: don’t grow your results<a class="anchor" aria-label="anchor" href="#tip-dont-grow-your-results"></a>
 </h3>
 <div class="callout-content">
 <p>One of the biggest things that trips up novices and experienced R
@@ -7123,12 +7123,12 @@ more efficient.</p>
 [13] "3 c" "4 c" "5 c" "1 d" "2 d" "3 d" "4 d" "5 d" "1 e" "2 e" "3 e" "4 e"
 [25] "5 e"</code></pre>
 </div>
-<div id="callout4" class="callout callout">
+<div id="tip-while-loops" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-while-loops" class="callout-inner">
-<h3 class="callout-title">Tip: While loops<a class="anchor" aria-label="anchor" href="#callout4"></a>
+<h3 class="callout-title">Tip: While loops<a class="anchor" aria-label="anchor" href="#tip-while-loops"></a>
 </h3>
 <div class="callout-content">
 <p>Sometimes you will find yourself needing to repeat an operation as
@@ -7162,12 +7162,12 @@ never terminates.</p>
 </div>
 </div>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2" class="callout-inner">
-<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
 </h3>
 <div class="callout-content">
 <p>Compare the objects <code>output_vector</code> and
@@ -7184,7 +7184,7 @@ would you change the last block of code to make
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>We can check whether the two vectors are identical using the
 <code>all()</code> function:</p>
@@ -7249,12 +7249,12 @@ requires to change the original</p>
 </div>
 </div>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="challenge-3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-3" class="callout-inner">
-<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"></a>
 </h3>
 <div class="callout-content">
 <p>Write a script that loops through the <code>gapminder</code> data by
@@ -7270,7 +7270,7 @@ larger than 50 years.</p>
   Solution to Challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p><strong>Step 1</strong>: We want to make sure we can extract all the
 unique values of the continent vector</p>
@@ -7332,12 +7332,12 @@ life expectancy is greater than threshold:</p>
 </div>
 </div>
 </div>
-<div id="challenge4" class="callout challenge">
+<div id="challenge-4" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-4" class="callout-inner">
-<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4"></a>
 </h3>
 <div class="callout-content">
 <p>Modify the script from Challenge 3 to loop over each country. This
@@ -7353,7 +7353,7 @@ time print out whether the life expectancy is smaller than 50, between
   Solution to Challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>We modify our solution to Challenge 3 by now adding two thresholds,
 <code>lowerThreshold</code> and <code>upperThreshold</code> and
@@ -7382,12 +7382,12 @@ extending our if-else statements:</p>
 </div>
 </div>
 </div>
-<div id="challenge5" class="callout challenge">
+<div id="challenge-5---advanced" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-5---advanced" class="callout-inner">
-<h3 class="callout-title">Challenge 5 - Advanced<a class="anchor" aria-label="anchor" href="#challenge5"></a>
+<h3 class="callout-title">Challenge 5 - Advanced<a class="anchor" aria-label="anchor" href="#challenge-5---advanced"></a>
 </h3>
 <div class="callout-content">
 <p>Write a script that loops over each country in the
@@ -7404,7 +7404,7 @@ life expectancy is under 50 years.</p>
   Solution for Challenge 5
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>We will use the <code>grep()</code> command that was introduced in
 the Unix Shell lesson to find countries that start with “B.” Lets
@@ -7593,12 +7593,12 @@ we want to visually represent the data. We do this by adding a new
 we want to visually represent the relationship between
 <strong>x</strong> and <strong>y</strong> as a scatterplot of
 points.</p>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <p>Modify the example so that the figure shows how life expectancy has
@@ -7638,12 +7638,12 @@ expectancy has increased over time
 </div>
 </div>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2" class="callout-inner">
-<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
 </h3>
 <div class="callout-content">
 <p>In the previous examples and challenge we’ve used the
@@ -7735,13 +7735,13 @@ of</em> the lines. Here’s a demonstration:</p>
 <code>ggplot</code> to the <code>geom_line</code> layer so it no longer
 applies to the points. Now we can clearly see that the points are drawn
 on top of the lines.</p>
-<div id="callout1" class="callout callout">
+<div id="tip-setting-an-aesthetic-to-a-value-instead-of-a-mapping" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-setting-an-aesthetic-to-a-value-instead-of-a-mapping" class="callout-inner">
 <h3 class="callout-title">Tip: Setting an aesthetic to a value instead
-of a mapping<a class="anchor" aria-label="anchor" href="#callout1"></a>
+of a mapping<a class="anchor" aria-label="anchor" href="#tip-setting-an-aesthetic-to-a-value-instead-of-a-mapping"></a>
 </h3>
 <div class="callout-content">
 <p>So far, we’ve seen how to use an aesthetic (such as
@@ -7757,12 +7757,12 @@ function, like this: <code>geom_line(color="blue")</code>.</p>
 </div>
 </div>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="challenge-3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-3" class="callout-inner">
-<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"></a>
 </h3>
 <div class="callout-content">
 <p>Switch the order of the point and line layers from the previous
@@ -7827,13 +7827,13 @@ spaced from left to right. For example, a GDP per capita of 1,000 is the
 same horizontal distance away from a value of 10,000 as the 10,000 value
 is from 100,000. This helps to visualize the spread of the data along
 the x-axis.</p>
-<div id="callout2" class="callout callout">
+<div id="tip-reminder-setting-an-aesthetic-to-a-value-instead-of-a-mapping" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-reminder-setting-an-aesthetic-to-a-value-instead-of-a-mapping" class="callout-inner">
 <h3 class="callout-title">Tip Reminder: Setting an aesthetic to a value
-instead of a mapping<a class="anchor" aria-label="anchor" href="#callout2"></a>
+instead of a mapping<a class="anchor" aria-label="anchor" href="#tip-reminder-setting-an-aesthetic-to-a-value-instead-of-a-mapping"></a>
 </h3>
 <div class="callout-content">
 <p>Notice that we used <code>geom_point(alpha = 0.5)</code>. As the
@@ -7890,12 +7890,12 @@ generated.</code></pre>
 argument to <code>geom_smooth</code>. Previously in the lesson we’ve
 used the <code>aes</code> function to define a <em>mapping</em> between
 data variables and their visual representation.</p>
-<div id="challenge4" class="callout challenge">
+<div id="challenge-4a" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-4a" class="callout-inner">
-<h3 class="callout-title">Challenge 4a<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<h3 class="callout-title">Challenge 4a<a class="anchor" aria-label="anchor" href="#challenge-4a"></a>
 </h3>
 <div class="callout-content">
 <p>Modify the color and size of the points on the point layer in the
@@ -7935,12 +7935,12 @@ specific variable.</p>
 </div>
 </div>
 </div>
-<div id="challenge5" class="callout challenge">
+<div id="challenge-4b" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-4b" class="callout-inner">
-<h3 class="callout-title">Challenge 4b<a class="anchor" aria-label="anchor" href="#challenge5"></a>
+<h3 class="callout-title">Challenge 4b<a class="anchor" aria-label="anchor" href="#challenge-4b"></a>
 </h3>
 <div class="callout-content">
 <p>Modify your solution to Challenge 4a so that the points are now a
@@ -7989,12 +7989,12 @@ point’s color based on its continent value.</p>
 <p>Earlier we visualized the change in life expectancy over time across
 all countries in one plot. Alternatively, we can split this out over
 multiple panels by adding a layer of <strong>facet</strong> panels.</p>
-<div id="callout3" class="callout callout">
+<div id="tip" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip" class="callout-inner">
-<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#callout3"></a>
+<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#tip"></a>
 </h3>
 <div class="callout-content">
 <p>We start by making a subset of data including only countries located
@@ -8091,12 +8091,12 @@ RStudio cheat sheets can be found <a href="https://www.rstudio.com/resources/che
 if you have no idea how to change something, a quick Google search will
 usually send you to a relevant question and answer on Stack Overflow
 with reusable code to modify!</p>
-<div id="challenge6" class="callout challenge">
+<div id="challenge-5" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-5" class="callout-inner">
-<h3 class="callout-title">Challenge 5<a class="anchor" aria-label="anchor" href="#challenge6"></a>
+<h3 class="callout-title">Challenge 5<a class="anchor" aria-label="anchor" href="#challenge-5"></a>
 </h3>
 <div class="callout-content">
 <p>Generate boxplots to compare life expectancy between the different
@@ -8257,12 +8257,12 @@ of <code>y</code>:</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1]  7  9 11 13</code></pre>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <p>Let’s try this on the <code>pop</code> column of the
@@ -8280,7 +8280,7 @@ tail of the data frame to make sure it worked.</p>
   Solution to challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Let’s try this on the <code>pop</code> column of the
 <code>gapminder</code> dataset.</p>
@@ -8309,12 +8309,12 @@ tail of the data frame to make sure it worked.</p>
 </div>
 </div>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2" class="callout-inner">
-<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
 </h3>
 <div class="callout-content">
 <p>On a single graph, plot population, in millions, against year, for
@@ -8332,7 +8332,7 @@ Again, do not worry about which is which.</p>
   Solution to challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Refresh your plotting skills by plotting population in millions
 against year.</p>
@@ -8384,13 +8384,13 @@ vectorized:</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] FALSE FALSE FALSE  TRUE</code></pre>
 </div>
-<div id="callout1" class="callout callout">
+<div id="tip-some-useful-functions-for-logical-vectors" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-some-useful-functions-for-logical-vectors" class="callout-inner">
 <h3 class="callout-title">Tip: some useful functions for logical
-vectors<a class="anchor" aria-label="anchor" href="#callout1"></a>
+vectors<a class="anchor" aria-label="anchor" href="#tip-some-useful-functions-for-logical-vectors"></a>
 </h3>
 <div class="callout-content">
 <p><code>any()</code> will return <code>TRUE</code> if <em>any</em>
@@ -8429,13 +8429,13 @@ elements of a vector are <code>TRUE</code>.</p>
 [2,]   -2   -5   -8  -11
 [3,]   -3   -6   -9  -12</code></pre>
 </div>
-<div id="callout2" class="callout callout">
+<div id="tip-element-wise-vs.-matrix-multiplication" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-element-wise-vs.-matrix-multiplication" class="callout-inner">
 <h3 class="callout-title">Tip: element-wise vs. matrix
-multiplication<a class="anchor" aria-label="anchor" href="#callout2"></a>
+multiplication<a class="anchor" aria-label="anchor" href="#tip-element-wise-vs.-matrix-multiplication"></a>
 </h3>
 <div class="callout-content">
 <p>Very important: the operator <code>*</code> gives you element-wise
@@ -8472,12 +8472,12 @@ reference guide</a></p>
 </div>
 </div>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="challenge-3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-3" class="callout-inner">
-<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"></a>
 </h3>
 <div class="callout-content">
 <p>Given the following matrix:</p>
@@ -8514,7 +8514,7 @@ reference guide</a></p>
   Solution to challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Given the following matrix:</p>
 <div class="codewrapper sourceCode" id="cb28">
@@ -8570,12 +8570,12 @@ reference guide</a></p>
 </div>
 </div>
 </div>
-<div id="challenge4" class="callout challenge">
+<div id="challenge-4" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-4" class="callout-inner">
-<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4"></a>
 </h3>
 <div class="callout-content">
 <p>We’re interested in looking at the sum of the following sequence of
@@ -8599,7 +8599,7 @@ n=10,000?</p>
   Challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>We’re interested in looking at the sum of the following sequence of
 fractions:</p>
@@ -8688,13 +8688,13 @@ n=10,000?</p>
 </div>
 </div>
 </div>
-<div id="callout3" class="callout callout">
+<div id="tip-operations-on-vectors-of-unequal-length" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-operations-on-vectors-of-unequal-length" class="callout-inner">
 <h3 class="callout-title">Tip: Operations on vectors of unequal
-length<a class="anchor" aria-label="anchor" href="#callout3"></a>
+length<a class="anchor" aria-label="anchor" href="#tip-operations-on-vectors-of-unequal-length"></a>
 </h3>
 <div class="callout-content">
 <p>Operations can also be performed on vectors of unequal length,
@@ -8796,12 +8796,12 @@ again. We may also obtain similar data from a different source in the
 future.</p>
 <p>In this lesson, we’ll learn how to write a function so that we can
 repeat several operations with a single command.</p>
-<div id="callout1" class="callout callout">
+<div id="what-is-a-function" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="what-is-a-function" class="callout-inner">
-<h3 class="callout-title">What is a function?<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">What is a function?<a class="anchor" aria-label="anchor" href="#what-is-a-function"></a>
 </h3>
 <div class="callout-content">
 <p>Functions gather a sequence of operations into a whole, preserving it
@@ -8862,12 +8862,12 @@ operators to it.</p>
 assigned to those variables so that we can use them inside the function.
 Inside the function, we use a <a href="reference.html#return-statement">return statement</a> to send a
 result back to whoever asked for it.</p>
-<div id="callout2" class="callout callout">
+<div id="tip" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip" class="callout-inner">
-<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#tip"></a>
 </h3>
 <div class="callout-content">
 <p>One feature unique to R is that the return statement is not required.
@@ -8903,12 +8903,12 @@ different from calling any other function:</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 373.15</code></pre>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <p>Write a function called <code>kelvin_to_celsius()</code> that takes a
@@ -8962,12 +8962,12 @@ Fahrenheit to Kelvin, and Kelvin to Celsius:</p>
 <span>  <span class="kw">return</span><span class="op">(</span><span class="va">celsius</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2" class="callout-inner">
-<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
 </h3>
 <div class="callout-content">
 <p>Define the function to convert directly from Fahrenheit to Celsius,
@@ -9098,12 +9098,12 @@ vector. We may do that like so:</p>
 </h3>
 <pre class="error" tabindex="0"><code>Error in fahr_to_kelvin(temp = as.factor(32)): is.numeric(temp) is not TRUE</code></pre>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="challenge-3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-3" class="callout-inner">
-<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"></a>
 </h3>
 <div class="callout-content">
 <p>Use defensive programming to ensure that our
@@ -9311,12 +9311,12 @@ for later. Now, we can use it to calculate the GDP for:</p>
 </ul>
 <p>By using <code>%in%</code> instead, we can also give multiple years
 or countries to those arguments.</p>
-<div id="callout3" class="callout callout">
+<div id="tip-pass-by-value" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-pass-by-value" class="callout-inner">
-<h3 class="callout-title">Tip: Pass by value<a class="anchor" aria-label="anchor" href="#callout3"></a>
+<h3 class="callout-title">Tip: Pass by value<a class="anchor" aria-label="anchor" href="#tip-pass-by-value"></a>
 </h3>
 <div class="callout-content">
 <p>Functions in R almost always make copies of the data to operate on
@@ -9330,12 +9330,12 @@ the function, stay inside the body of the function.</p>
 </div>
 </div>
 </div>
-<div id="callout4" class="callout callout">
+<div id="tip-function-scope" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-function-scope" class="callout-inner">
-<h3 class="callout-title">Tip: Function scope<a class="anchor" aria-label="anchor" href="#callout4"></a>
+<h3 class="callout-title">Tip: Function scope<a class="anchor" aria-label="anchor" href="#tip-function-scope"></a>
 </h3>
 <div class="callout-content">
 <p>Another important concept is scoping: any variables (or functions!)
@@ -9360,12 +9360,12 @@ are not modified in any way when executing a function.</p>
 data frame with that column added. This means when we call the function
 later we can see the context for the returned GDP values, which is much
 better than in our first attempt where we got a vector of numbers.</p>
-<div id="challenge4" class="callout challenge">
+<div id="challenge-4" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-4" class="callout-inner">
-<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4"></a>
 </h3>
 <div class="callout-content">
 <p>Test out your GDP function by calculating the GDP for New Zealand in
@@ -9394,12 +9394,12 @@ better than in our first attempt where we got a vector of numbers.</p>
 </div>
 </div>
 </div>
-<div id="challenge5" class="callout challenge">
+<div id="challenge-5" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-5" class="callout-inner">
-<h3 class="callout-title">Challenge 5<a class="anchor" aria-label="anchor" href="#challenge5"></a>
+<h3 class="callout-title">Challenge 5<a class="anchor" aria-label="anchor" href="#challenge-5"></a>
 </h3>
 <div class="callout-content">
 <p>The <code>paste()</code> function can be used to combine text
@@ -9465,12 +9465,12 @@ prints out the text wrapped with the <code>wrapper</code>:</p>
 </div>
 </div>
 </div>
-<div id="callout5" class="callout callout">
+<div id="tip-1" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-1" class="callout-inner">
-<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#callout5"></a>
+<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#tip-1"></a>
 </h3>
 <div class="callout-content">
 <p>R has some unique aspects that can be exploited when performing more
@@ -9482,12 +9482,12 @@ Wickham.</p>
 </div>
 </div>
 </div>
-<div id="callout6" class="callout callout">
+<div id="tip-testing-and-documenting" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-testing-and-documenting" class="callout-inner">
-<h3 class="callout-title">Tip: Testing and documenting<a class="anchor" aria-label="anchor" href="#callout6"></a>
+<h3 class="callout-title">Tip: Testing and documenting<a class="anchor" aria-label="anchor" href="#tip-testing-and-documenting"></a>
 </h3>
 <div class="callout-content">
 <p>It’s important to both test functions and document them:
@@ -9610,12 +9610,12 @@ resolution using the arguments to this function.</p>
 <span><span class="fu">dev.off</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Open up this document and have a look.</p>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <p>Rewrite your ‘pdf’ command to print a second page in the pdf, showing
@@ -9631,7 +9631,7 @@ one panel per continent.</p>
   Solution to challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -9736,12 +9736,12 @@ Australia,1987,16257249,Oceania,76.32,21888.88903
 Australia,1992,17481977,Oceania,77.56,23424.76683</code></pre>
 </div>
 <p>That looks better!</p>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2" class="callout-inner">
-<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
 </h3>
 <div class="callout-content">
 <p>Write a data-cleaning script file that subsets the gapminder data to
@@ -9758,7 +9758,7 @@ include only data points collected since 1990.</p>
   Solution to challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -9992,12 +9992,12 @@ function. This is an anonymous function: we haven’t defined it
 elsewhere, and it has no name. It only exists in the scope of our call
 to <code>ddply</code>.</li>
 </ul>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <p>Calculate the average life expectancy per continent. Which has the
@@ -10210,12 +10210,12 @@ function.</p>
 [1] "The mean GDP per capita for Europe is 14,469.48"
 [1] "The mean GDP per capita for Oceania is 18,621.61"</code></pre>
 </div>
-<div id="callout1" class="callout callout">
+<div id="tip-printing-numbers" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-printing-numbers" class="callout-inner">
-<h3 class="callout-title">Tip: printing numbers<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Tip: printing numbers<a class="anchor" aria-label="anchor" href="#tip-printing-numbers"></a>
 </h3>
 <div class="callout-content">
 <p>The <code>format</code> function can be used to make numeric values
@@ -10223,12 +10223,12 @@ function.</p>
 </div>
 </div>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2" class="callout-inner">
-<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
 </h3>
 <div class="callout-content">
 <p>Calculate the average life expectancy per continent and year. Which
@@ -10276,12 +10276,12 @@ the lowest.</p>
 </div>
 </div>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="alternate-challenge" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="alternate-challenge" class="callout-inner">
-<h3 class="callout-title">Alternate Challenge<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Alternate Challenge<a class="anchor" aria-label="anchor" href="#alternate-challenge"></a>
 </h3>
 <div class="callout-content">
 <p>Without running them, which of the following will calculate the
@@ -10460,12 +10460,12 @@ frames in a way that will reduce the above repetition, reduce the
 probability of making errors, and probably even save you some typing. As
 an added bonus, you might even find the <code>dplyr</code> grammar
 easier to read.</p>
-<div id="callout1" class="callout callout">
+<div id="tip-tidyverse" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-tidyverse" class="callout-inner">
-<h3 class="callout-title">Tip: Tidyverse<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Tip: Tidyverse<a class="anchor" aria-label="anchor" href="#tip-tidyverse"></a>
 </h3>
 <div class="callout-content">
 <p><code>dplyr</code> package belongs to a broader family of opinionated
@@ -10512,9 +10512,10 @@ function. This will keep only the variables you select.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">year_country_gdp</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">year</span>, <span class="va">country</span>, <span class="va">gdpPercap</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/13-dplyr-fig1.png" alt="Diagram illustrating use of select function to select two columns of a data frame" class="figure mx-auto d-block">
+<p><img src="fig/13-dplyr-fig1.png" alt="Diagram illustrating use of select function to select two columns of a data frame" class="figure">
 If we want to remove one column only from the <code>gapminder</code>
-data, for example, removing the <code>continent</code> column.</figure><div class="codewrapper sourceCode" id="cb10">
+data, for example, removing the <code>continent</code> column.</p>
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -10541,12 +10542,12 @@ since in gets that from the previous pipe. <strong>Fun Fact</strong>:
 There is a good chance you have encountered pipes before in the shell.
 In R, a pipe symbol is <code>%&gt;%</code> while in the shell it is
 <code>|</code> but the concept is the same!</p>
-<div id="callout2" class="callout callout">
+<div id="tip-renaming-data-frame-columns-in-dplyr" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-renaming-data-frame-columns-in-dplyr" class="callout-inner">
-<h3 class="callout-title">Tip: Renaming data frame columns in dplyr<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Tip: Renaming data frame columns in dplyr<a class="anchor" aria-label="anchor" href="#tip-renaming-data-frame-columns-in-dplyr"></a>
 </h3>
 <div class="callout-content">
 <p>In Chapter 4 we covered how you can rename columns with base R by
@@ -10603,12 +10604,12 @@ for a specific year (e.g., 2007), we can do as below.</p>
 <span>  <span class="fu">filter</span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Europe"</span>, <span class="va">year</span> <span class="op">==</span> <span class="fl">2007</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">country</span>, <span class="va">lifeExp</span><span class="op">)</span></span></code></pre>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <p>Write a single command (which can span multiple lines and includes
@@ -10740,12 +10741,12 @@ functions (e.g. <code>mean()</code> or <code>sd()</code>) within
 </div>
 <p>That allowed us to calculate the mean gdpPercap for each continent,
 but it gets even better.</p>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2" class="callout-inner">
-<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
 </h3>
 <div class="callout-content">
 <p>Calculate the average life expectancy per country. Which has the
@@ -11106,12 +11107,12 @@ data.</p>
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="fu">vars</span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/13-dplyr-rendered-unnamed-chunk-29-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="challenge3" class="callout challenge">
+<figure><img src="fig/13-dplyr-rendered-unnamed-chunk-29-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="advanced-challenge" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="advanced-challenge" class="callout-inner">
-<h3 class="callout-title">Advanced Challenge<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Advanced Challenge<a class="anchor" aria-label="anchor" href="#advanced-challenge"></a>
 </h3>
 <div class="callout-content">
 <p>Calculate the average life expectancy in 2002 of 2 randomly selected
@@ -11275,12 +11276,12 @@ frame:</p>
  $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
  $ gdpPercap: num  779 821 853 836 740 ...</code></pre>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <p>Is gapminder a purely long, purely wide, or some intermediate
@@ -11468,12 +11469,12 @@ to split the character strings into multiple variables</p>
 <code class="sourceCode R"><span><span class="va">gap_long</span> <span class="op">&lt;-</span> <span class="va">gap_long</span> <span class="op">%&gt;%</span> <span class="fu">separate</span><span class="op">(</span><span class="va">obstype_year</span>, into <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">'obs_type'</span>, <span class="st">'year'</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span></span>
 <span><span class="va">gap_long</span><span class="op">$</span><span class="va">year</span> <span class="op">&lt;-</span> <span class="fu">as.integer</span><span class="op">(</span><span class="va">gap_long</span><span class="op">$</span><span class="va">year</span><span class="op">)</span></span></code></pre>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2" class="callout-inner">
-<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
 </h3>
 <div class="callout-content">
 <p>Using <code>gap_long</code>, calculate the mean life expectancy,
@@ -11767,12 +11768,12 @@ defined variable names. We’re now ready to pipe in
  $ pop_2002      : num [1:142] 31287142 10866106 7026113 1630347 12251209 ...
  $ pop_2007      : num [1:142] 33333216 12420476 8078314 1639131 14326203 ...</code></pre>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="challenge-3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-3" class="callout-inner">
-<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"></a>
 </h3>
 <div class="callout-content">
 <p>Take this 1 step further and create a
@@ -12074,12 +12075,12 @@ with some number of <code>#</code> symbols:</p>
 <span><span class="co">#### Sub-sub section</span></span></code></pre>
 <p>You <em>compile</em> the R Markdown document to an html webpage by
 clicking the “Knit” button in the upper-left.</p>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <p>Create a new R Markdown document. Delete all of the R code chunks and
@@ -12155,12 +12156,12 @@ produced, the file names are based on the name of the code chunk that
 produced them. You can create code chunks quickly in RStudio using the
 shortcuts <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>I</kbd> on Windows and
 Linux, or <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> on Mac.</p>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2" class="callout-inner">
-<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
 </h3>
 <div class="callout-content">
 <p>Add code chunks to:</p>
@@ -12251,12 +12252,12 @@ begin with <code>Figs</code>.</p>
 might want to use <code>fig.path</code> to define separate prefixes for
 the figure file names, like <code>fig.path="Figs/cleaning-"</code> and
 <code>fig.path="Figs/analysis-"</code>.</p>
-<div id="challenge3" class="callout challenge">
+<div id="challenge-3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-3" class="callout-inner">
-<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"></a>
 </h3>
 <div class="callout-content">
 <p>Use chunk options to control the size of a figure and to hide the
@@ -12303,12 +12304,12 @@ just <code>2</code>.</p>
 <p>The <a href="https://github.com/kbroman/broman/blob/master/R/myround.R" class="external-link"><code>myround</code></a>
 function in the <a href="https://github.com/kbroman/broman" class="external-link">R/broman</a>
 package handles this.</p>
-<div id="challenge4" class="callout challenge">
+<div id="challenge-4" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-4" class="callout-inner">
-<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4"></a>
 </h3>
 <div class="callout-content">
 <p>Try out a bit of in-line R code.</p>
@@ -12336,12 +12337,12 @@ package handles this.</p>
 the little triangle next to the “Knit” button to get a drop-down menu.
 Or you could put <code>pdf_document</code> or <code>word_document</code>
 in the initial header of the file.</p>
-<div id="callout1" class="callout callout">
+<div id="tip-creating-pdf-documents" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-creating-pdf-documents" class="callout-inner">
-<h3 class="callout-title">Tip: Creating PDF documents<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Tip: Creating PDF documents<a class="anchor" aria-label="anchor" href="#tip-creating-pdf-documents"></a>
 </h3>
 <div class="callout-content">
 <p>Creating .pdf documents may require installation of some extra
@@ -12356,22 +12357,22 @@ website</a> for more information.</p>
 </div>
 </div>
 </div>
-<div id="callout2" class="callout callout">
+<div id="tip-visual-markdown-editing-in-rstudio" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-visual-markdown-editing-in-rstudio" class="callout-inner">
-<h3 class="callout-title">Tip: Visual markdown editing in RStudio<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Tip: Visual markdown editing in RStudio<a class="anchor" aria-label="anchor" href="#tip-visual-markdown-editing-in-rstudio"></a>
 </h3>
 <div class="callout-content">
-<figure>RStudio versions 1.4 and later include visual markdown editing mode.
+<p>RStudio versions 1.4 and later include visual markdown editing mode.
 In visual editing mode, markdown expressions (like
 <code>**bold words**</code>) are transformed to the formatted appearance
 (<strong>bold words</strong>) as you type. This mode also includes a
 toolbar at the top with basic formatting buttons, similar to what you
 might see in common word processing software programs. You can turn
-visual editing on and off by pressing the <img src="fig/visual_mode_icon.png" class="figure mx-auto d-block"> button in the top right corner of your
-R Markdown document.</figure>
+visual editing on and off by pressing the <img src="fig/visual_mode_icon.png" class="figure"> button in the top right corner of your
+R Markdown document.</p>
 </div>
 </div>
 </div>
@@ -12459,13 +12460,13 @@ subfolders for your code files, manuals, data, binaries, output plots,
 etc. It can be done completely manually, or with the help of RStudio’s
 <code>New Project</code> functionality, or a designated package, such as
 <code>ProjectTemplate</code>.</p>
-<div id="callout1" class="callout callout">
+<div id="tip-projecttemplate---a-possible-solution" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-projecttemplate---a-possible-solution" class="callout-inner">
 <h3 class="callout-title">Tip: ProjectTemplate - a possible
-solution<a class="anchor" aria-label="anchor" href="#callout1"></a>
+solution<a class="anchor" aria-label="anchor" href="#tip-projecttemplate---a-possible-solution"></a>
 </h3>
 <div class="callout-content">
 <p>One way to automate the management of projects is to install the
@@ -12594,9 +12595,9 @@ style.</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.17" class="external-link">sandpaper (0.11.17)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.2" class="external-link">sandpaper (0.12.2)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.17" class="external-link">varnish (0.2.17)</a>.</p>
 			</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -12618,8 +12619,8 @@ style.</li>
   "url": "https://swcarpentry.github.io/r-novice-gapminder/aio.html",
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/aio.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2023-05-17",
-  "datePublished": "2023-05-17"
+  "dateModified": "2023-05-30",
+  "datePublished": "2023-05-30"
 }
 
   </script><script>

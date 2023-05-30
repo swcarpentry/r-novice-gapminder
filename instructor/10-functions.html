@@ -220,7 +220,7 @@
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
-        Functions Explained
+        10. Functions Explained
         </span>
       </button>
     </div><!--/div.accordion-header-->
@@ -392,12 +392,12 @@ again. We may also obtain similar data from a different source in the
 future.</p>
 <p>In this lesson, we’ll learn how to write a function so that we can
 repeat several operations with a single command.</p>
-<div id="callout1" class="callout callout">
+<div id="what-is-a-function" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="what-is-a-function" class="callout-inner">
-<h3 class="callout-title">What is a function?<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">What is a function?<a class="anchor" aria-label="anchor" href="#what-is-a-function"></a>
 </h3>
 <div class="callout-content">
 <p>Functions gather a sequence of operations into a whole, preserving it
@@ -455,12 +455,12 @@ operators to it.</p>
 assigned to those variables so that we can use them inside the function.
 Inside the function, we use a <a href="reference.html#return-statement">return statement</a> to send a
 result back to whoever asked for it.</p>
-<div id="callout2" class="callout callout">
+<div id="tip" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip" class="callout-inner">
-<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#tip"></a>
 </h3>
 <div class="callout-content">
 <p>One feature unique to R is that the return statement is not required.
@@ -496,12 +496,12 @@ different from calling any other function:</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 373.15</code></pre>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <p>Write a function called <code>kelvin_to_celsius()</code> that takes a
@@ -554,12 +554,12 @@ Fahrenheit to Kelvin, and Kelvin to Celsius:</p>
 <span>  <span class="kw">return</span><span class="op">(</span><span class="va">celsius</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2" class="callout-inner">
-<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
 </h3>
 <div class="callout-content">
 <p>Define the function to convert directly from Fahrenheit to Celsius,
@@ -688,12 +688,12 @@ vector. We may do that like so:</p>
 </h3>
 <pre class="error" tabindex="0"><code>Error in fahr_to_kelvin(temp = as.factor(32)): is.numeric(temp) is not TRUE</code></pre>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="challenge-3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-3" class="callout-inner">
-<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"></a>
 </h3>
 <div class="callout-content">
 <p>Use defensive programming to ensure that our
@@ -898,12 +898,12 @@ for later. Now, we can use it to calculate the GDP for:</p>
 <li>A single combination of year and country.</li>
 </ul><p>By using <code>%in%</code> instead, we can also give multiple years
 or countries to those arguments.</p>
-<div id="callout3" class="callout callout">
+<div id="tip-pass-by-value" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-pass-by-value" class="callout-inner">
-<h3 class="callout-title">Tip: Pass by value<a class="anchor" aria-label="anchor" href="#callout3"></a>
+<h3 class="callout-title">Tip: Pass by value<a class="anchor" aria-label="anchor" href="#tip-pass-by-value"></a>
 </h3>
 <div class="callout-content">
 <p>Functions in R almost always make copies of the data to operate on
@@ -917,12 +917,12 @@ the function, stay inside the body of the function.</p>
 </div>
 </div>
 </div>
-<div id="callout4" class="callout callout">
+<div id="tip-function-scope" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-function-scope" class="callout-inner">
-<h3 class="callout-title">Tip: Function scope<a class="anchor" aria-label="anchor" href="#callout4"></a>
+<h3 class="callout-title">Tip: Function scope<a class="anchor" aria-label="anchor" href="#tip-function-scope"></a>
 </h3>
 <div class="callout-content">
 <p>Another important concept is scoping: any variables (or functions!)
@@ -947,12 +947,12 @@ are not modified in any way when executing a function.</p>
 data frame with that column added. This means when we call the function
 later we can see the context for the returned GDP values, which is much
 better than in our first attempt where we got a vector of numbers.</p>
-<div id="challenge4" class="callout challenge">
+<div id="challenge-4" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-4" class="callout-inner">
-<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4"></a>
 </h3>
 <div class="callout-content">
 <p>Test out your GDP function by calculating the GDP for New Zealand in
@@ -981,12 +981,12 @@ better than in our first attempt where we got a vector of numbers.</p>
 </div>
 </div>
 </div>
-<div id="challenge5" class="callout challenge">
+<div id="challenge-5" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-5" class="callout-inner">
-<h3 class="callout-title">Challenge 5<a class="anchor" aria-label="anchor" href="#challenge5"></a>
+<h3 class="callout-title">Challenge 5<a class="anchor" aria-label="anchor" href="#challenge-5"></a>
 </h3>
 <div class="callout-content">
 <p>The <code>paste()</code> function can be used to combine text
@@ -1052,12 +1052,12 @@ prints out the text wrapped with the <code>wrapper</code>:</p>
 </div>
 </div>
 </div>
-<div id="callout5" class="callout callout">
+<div id="tip-1" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-1" class="callout-inner">
-<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#callout5"></a>
+<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#tip-1"></a>
 </h3>
 <div class="callout-content">
 <p>R has some unique aspects that can be exploited when performing more
@@ -1069,12 +1069,12 @@ Wickham.</p>
 </div>
 </div>
 </div>
-<div id="callout6" class="callout callout">
+<div id="tip-testing-and-documenting" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-testing-and-documenting" class="callout-inner">
-<h3 class="callout-title">Tip: Testing and documenting<a class="anchor" aria-label="anchor" href="#callout6"></a>
+<h3 class="callout-title">Tip: Testing and documenting<a class="anchor" aria-label="anchor" href="#tip-testing-and-documenting"></a>
 </h3>
 <div class="callout-content">
 <p>It’s important to both test functions and document them:
@@ -1152,9 +1152,9 @@ R.</li>
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.17" class="external-link">sandpaper (0.11.17)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.2" class="external-link">sandpaper (0.12.2)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.17" class="external-link">varnish (0.2.17)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1176,7 +1176,7 @@ R.</li>
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/instructor/10-functions.html",
   "dateCreated": "2015-04-18",
   "dateModified": "2023-05-03",
-  "datePublished": "2023-05-17"
+  "datePublished": "2023-05-30"
 }
 
   </script><script>

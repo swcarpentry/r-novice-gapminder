@@ -193,7 +193,7 @@
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
-        Control Flow
+        7. Control Flow
         </span>
       </button>
     </div><!--/div.accordion-header-->
@@ -492,12 +492,12 @@ is <code>FALSE</code></p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] FALSE</code></pre>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <p>Use an <code>if()</code> statement to print a suitable message
@@ -513,7 +513,7 @@ reporting whether there are any records from 2002 in the
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>We will first see a solution to Challenge 1 which does not use the
 <code>any()</code> function. We first obtain a logical vector describing
@@ -576,13 +576,13 @@ The <code>if()</code> function will still run, but will only evaluate
 the condition in the first element of the vector. Therefore, to use the
 <code>if()</code> function, you need to make sure your input is singular
 (of length 1).</p>
-<div id="callout1" class="callout callout">
+<div id="tip-built-in-ifelse-function" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-built-in-ifelse-function" class="callout-inner">
 <h3 class="callout-title">Tip: Built in <code>ifelse()</code>
-function<a class="anchor" aria-label="anchor" href="#callout1"></a>
+function<a class="anchor" aria-label="anchor" href="#tip-built-in-ifelse-function"></a>
 </h3>
 <div class="callout-content">
 <p><code>R</code> accepts both <code>if()</code> and
@@ -615,13 +615,13 @@ that is evaluated when the condition is <code>FALSE</code>.</p>
 </div>
 </div>
 </div>
-<div id="callout2" class="callout callout">
+<div id="tip-any-and-all" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-any-and-all" class="callout-inner">
 <h3 class="callout-title">Tip: <code>any()</code> and
-<code>all()</code><a class="anchor" aria-label="anchor" href="#callout2"></a>
+<code>all()</code><a class="anchor" aria-label="anchor" href="#tip-any-and-all"></a>
 </h3>
 <div class="callout-content">
 <p>The <code>any()</code> function will return <code>TRUE</code> if at
@@ -751,12 +751,12 @@ new object.</p>
 <p>This approach can be useful, but ‘growing your results’ (building the
 result object incrementally) is computationally inefficient, so avoid it
 when you are iterating through a lot of values.</p>
-<div id="callout3" class="callout callout">
+<div id="tip-dont-grow-your-results" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-dont-grow-your-results" class="callout-inner">
-<h3 class="callout-title">Tip: don’t grow your results<a class="anchor" aria-label="anchor" href="#callout3"></a>
+<h3 class="callout-title">Tip: don’t grow your results<a class="anchor" aria-label="anchor" href="#tip-dont-grow-your-results"></a>
 </h3>
 <div class="callout-content">
 <p>One of the biggest things that trips up novices and experienced R
@@ -797,12 +797,12 @@ more efficient.</p>
 [13] "3 c" "4 c" "5 c" "1 d" "2 d" "3 d" "4 d" "5 d" "1 e" "2 e" "3 e" "4 e"
 [25] "5 e"</code></pre>
 </div>
-<div id="callout4" class="callout callout">
+<div id="tip-while-loops" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-while-loops" class="callout-inner">
-<h3 class="callout-title">Tip: While loops<a class="anchor" aria-label="anchor" href="#callout4"></a>
+<h3 class="callout-title">Tip: While loops<a class="anchor" aria-label="anchor" href="#tip-while-loops"></a>
 </h3>
 <div class="callout-content">
 <p>Sometimes you will find yourself needing to repeat an operation as
@@ -836,12 +836,12 @@ never terminates.</p>
 </div>
 </div>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2" class="callout-inner">
-<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
 </h3>
 <div class="callout-content">
 <p>Compare the objects <code>output_vector</code> and
@@ -858,7 +858,7 @@ would you change the last block of code to make
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>We can check whether the two vectors are identical using the
 <code>all()</code> function:</p>
@@ -923,12 +923,12 @@ requires to change the original</p>
 </div>
 </div>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="challenge-3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-3" class="callout-inner">
-<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"></a>
 </h3>
 <div class="callout-content">
 <p>Write a script that loops through the <code>gapminder</code> data by
@@ -944,7 +944,7 @@ larger than 50 years.</p>
   Solution to Challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p><strong>Step 1</strong>: We want to make sure we can extract all the
 unique values of the continent vector</p>
@@ -1004,12 +1004,12 @@ life expectancy is greater than threshold:</p>
 </div>
 </div>
 </div>
-<div id="challenge4" class="callout challenge">
+<div id="challenge-4" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-4" class="callout-inner">
-<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4"></a>
 </h3>
 <div class="callout-content">
 <p>Modify the script from Challenge 3 to loop over each country. This
@@ -1025,7 +1025,7 @@ time print out whether the life expectancy is smaller than 50, between
   Solution to Challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>We modify our solution to Challenge 3 by now adding two thresholds,
 <code>lowerThreshold</code> and <code>upperThreshold</code> and
@@ -1054,12 +1054,12 @@ extending our if-else statements:</p>
 </div>
 </div>
 </div>
-<div id="challenge5" class="callout challenge">
+<div id="challenge-5---advanced" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-5---advanced" class="callout-inner">
-<h3 class="callout-title">Challenge 5 - Advanced<a class="anchor" aria-label="anchor" href="#challenge5"></a>
+<h3 class="callout-title">Challenge 5 - Advanced<a class="anchor" aria-label="anchor" href="#challenge-5---advanced"></a>
 </h3>
 <div class="callout-content">
 <p>Write a script that loops over each country in the
@@ -1076,7 +1076,7 @@ life expectancy is under 50 years.</p>
   Solution for Challenge 5
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>We will use the <code>grep()</code> command that was introduced in
 the Unix Shell lesson to find countries that start with “B.” Lets
@@ -1176,9 +1176,9 @@ base-plot to plot the evolution of average life expectancy using
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.17" class="external-link">sandpaper (0.11.17)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.2" class="external-link">sandpaper (0.12.2)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.17" class="external-link">varnish (0.2.17)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1200,7 +1200,7 @@ base-plot to plot the evolution of average life expectancy using
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/instructor/07-control-flow.html",
   "dateCreated": "2015-04-18",
   "dateModified": "2023-05-03",
-  "datePublished": "2023-05-17"
+  "datePublished": "2023-05-30"
 }
 
   </script><script>

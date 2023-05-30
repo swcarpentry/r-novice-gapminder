@@ -203,7 +203,7 @@
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
-        Creating Publication-Quality Graphics with ggplot2
+        8. Creating Publication-Quality Graphics with ggplot2
         </span>
       </button>
     </div><!--/div.accordion-header-->
@@ -459,12 +459,12 @@ we want to visually represent the data. We do this by adding a new
 we want to visually represent the relationship between
 <strong>x</strong> and <strong>y</strong> as a scatterplot of
 points.</p>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <p>Modify the example so that the figure shows how life expectancy has
@@ -503,12 +503,12 @@ expectancy has increased over time
 </div>
 </div>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2" class="callout-inner">
-<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
 </h3>
 <div class="callout-content">
 <p>In the previous examples and challenge we’ve used the
@@ -598,13 +598,13 @@ of</em> the lines. Here’s a demonstration:</p>
 <code>ggplot</code> to the <code>geom_line</code> layer so it no longer
 applies to the points. Now we can clearly see that the points are drawn
 on top of the lines.</p>
-<div id="callout1" class="callout callout">
+<div id="tip-setting-an-aesthetic-to-a-value-instead-of-a-mapping" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-setting-an-aesthetic-to-a-value-instead-of-a-mapping" class="callout-inner">
 <h3 class="callout-title">Tip: Setting an aesthetic to a value instead
-of a mapping<a class="anchor" aria-label="anchor" href="#callout1"></a>
+of a mapping<a class="anchor" aria-label="anchor" href="#tip-setting-an-aesthetic-to-a-value-instead-of-a-mapping"></a>
 </h3>
 <div class="callout-content">
 <p>So far, we’ve seen how to use an aesthetic (such as
@@ -620,12 +620,12 @@ function, like this: <code>geom_line(color="blue")</code>.</p>
 </div>
 </div>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="challenge-3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-3" class="callout-inner">
-<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"></a>
 </h3>
 <div class="callout-content">
 <p>Switch the order of the point and line layers from the previous
@@ -688,13 +688,13 @@ spaced from left to right. For example, a GDP per capita of 1,000 is the
 same horizontal distance away from a value of 10,000 as the 10,000 value
 is from 100,000. This helps to visualize the spread of the data along
 the x-axis.</p>
-<div id="callout2" class="callout callout">
+<div id="tip-reminder-setting-an-aesthetic-to-a-value-instead-of-a-mapping" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-reminder-setting-an-aesthetic-to-a-value-instead-of-a-mapping" class="callout-inner">
 <h3 class="callout-title">Tip Reminder: Setting an aesthetic to a value
-instead of a mapping<a class="anchor" aria-label="anchor" href="#callout2"></a>
+instead of a mapping<a class="anchor" aria-label="anchor" href="#tip-reminder-setting-an-aesthetic-to-a-value-instead-of-a-mapping"></a>
 </h3>
 <div class="callout-content">
 <p>Notice that we used <code>geom_point(alpha = 0.5)</code>. As the
@@ -751,12 +751,12 @@ generated.</code></pre>
 argument to <code>geom_smooth</code>. Previously in the lesson we’ve
 used the <code>aes</code> function to define a <em>mapping</em> between
 data variables and their visual representation.</p>
-<div id="challenge4" class="callout challenge">
+<div id="challenge-4a" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-4a" class="callout-inner">
-<h3 class="callout-title">Challenge 4a<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<h3 class="callout-title">Challenge 4a<a class="anchor" aria-label="anchor" href="#challenge-4a"></a>
 </h3>
 <div class="callout-content">
 <p>Modify the color and size of the points on the point layer in the
@@ -795,12 +795,12 @@ specific variable.</p>
 </div>
 </div>
 </div>
-<div id="challenge5" class="callout challenge">
+<div id="challenge-4b" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-4b" class="callout-inner">
-<h3 class="callout-title">Challenge 4b<a class="anchor" aria-label="anchor" href="#challenge5"></a>
+<h3 class="callout-title">Challenge 4b<a class="anchor" aria-label="anchor" href="#challenge-4b"></a>
 </h3>
 <div class="callout-content">
 <p>Modify your solution to Challenge 4a so that the points are now a
@@ -847,12 +847,12 @@ point’s color based on its continent value.</p>
 <hr class="half-width"><p>Earlier we visualized the change in life expectancy over time across
 all countries in one plot. Alternatively, we can split this out over
 multiple panels by adding a layer of <strong>facet</strong> panels.</p>
-<div id="callout3" class="callout callout">
+<div id="tip" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip" class="callout-inner">
-<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#callout3"></a>
+<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#tip"></a>
 </h3>
 <div class="callout-content">
 <p>We start by making a subset of data including only countries located
@@ -947,12 +947,12 @@ RStudio cheat sheets can be found <a href="https://www.rstudio.com/resources/che
 if you have no idea how to change something, a quick Google search will
 usually send you to a relevant question and answer on Stack Overflow
 with reusable code to modify!</p>
-<div id="challenge6" class="callout challenge">
+<div id="challenge-5" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-5" class="callout-inner">
-<h3 class="callout-title">Challenge 5<a class="anchor" aria-label="anchor" href="#challenge6"></a>
+<h3 class="callout-title">Challenge 5<a class="anchor" aria-label="anchor" href="#challenge-5"></a>
 </h3>
 <div class="callout-content">
 <p>Generate boxplots to compare life expectancy between the different
@@ -1035,9 +1035,9 @@ scale transformation, and grouping.</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.17" class="external-link">sandpaper (0.11.17)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.2" class="external-link">sandpaper (0.12.2)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.17" class="external-link">varnish (0.2.17)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1059,7 +1059,7 @@ scale transformation, and grouping.</li>
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/08-plot-ggplot2.html",
   "dateCreated": "2015-04-18",
   "dateModified": "2023-05-12",
-  "datePublished": "2023-05-17"
+  "datePublished": "2023-05-30"
 }
 
   </script><script>

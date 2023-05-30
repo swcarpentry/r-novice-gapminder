@@ -149,7 +149,7 @@
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
-        Project Management With RStudio
+        2. Project Management With RStudio
         </span>
       </button>
     </div><!--/div.accordion-header-->
@@ -412,13 +412,13 @@ your work effectively.</p>
 <p>One of the most powerful and useful aspects of RStudio is its project
 management functionality. We’ll be using this today to create a
 self-contained, reproducible project.</p>
-<div id="discussion1" class="callout discussion">
+<div id="challenge-1-creating-a-self-contained-project" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div id="challenge-1-creating-a-self-contained-project" class="callout-inner">
 <h3 class="callout-title">Challenge 1: Creating a self-contained
-project<a class="anchor" aria-label="anchor" href="#discussion1"></a>
+project<a class="anchor" aria-label="anchor" href="#challenge-1-creating-a-self-contained-project"></a>
 </h3>
 <div class="callout-content">
 <p>We’re going to create a new project in RStudio:</p>
@@ -442,13 +442,13 @@ relative to the project directory. RStudio projects have the added
 benefit of allowing you to open multiple projects at the same time each
 open to its own project directory. This allows you to keep multiple
 projects open without them interfering with each other.</p>
-<div id="discussion2" class="callout discussion">
+<div id="challenge-2-opening-an-rstudio-project-through-the-file-system" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div id="challenge-2-opening-an-rstudio-project-through-the-file-system" class="callout-inner">
 <h3 class="callout-title">Challenge 2: Opening an RStudio project
-through the file system<a class="anchor" aria-label="anchor" href="#discussion2"></a>
+through the file system<a class="anchor" aria-label="anchor" href="#challenge-2-opening-an-rstudio-project-through-the-file-system"></a>
 </h3>
 <div class="callout-content">
 <ol style="list-style-type: decimal"><li>Exit RStudio.</li>
@@ -490,13 +490,13 @@ output folder with different sub-directories for each separate analysis
 makes it easier later. Since many analyses are exploratory and don’t end
 up being used in the final project, and some of the analyses get shared
 between projects.</p>
-<div id="callout1" class="callout callout">
+<div id="tip-good-enough-practices-for-scientific-computing" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-good-enough-practices-for-scientific-computing" class="callout-inner">
 <h3 class="callout-title">Tip: Good Enough Practices for Scientific
-Computing<a class="anchor" aria-label="anchor" href="#callout1"></a>
+Computing<a class="anchor" aria-label="anchor" href="#tip-good-enough-practices-for-scientific-computing"></a>
 </h3>
 <div class="callout-content">
 <p><a href="https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/good-enough-practices-for-scientific-computing.pdf" class="external-link">Good
@@ -534,12 +534,12 @@ store the analysis scripts.</p>
 <h3 id="save-the-data-in-the-data-directory">Save the data in the data directory<a class="anchor" aria-label="anchor" href="#save-the-data-in-the-data-directory"></a></h3>
 <p>Now we have a good directory structure we will now place/save the
 data file in the <code>data/</code> directory.</p>
-<div id="discussion3" class="callout discussion">
+<div id="challenge-3" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div id="challenge-3" class="callout-inner">
-<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#discussion3"></a>
+<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"></a>
 </h3>
 <div class="callout-content">
 <p>Download the gapminder data from <a href="data/gapminder_data.csv">here</a>.</p>
@@ -556,12 +556,12 @@ project.</li>
 </div>
 </div>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-4" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-4" class="callout-inner">
-<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4"></a>
 </h3>
 <div class="callout-content">
 <p>It is useful to get some general idea about the dataset, directly
@@ -630,12 +630,12 @@ Afghanistan,1992,16317921,Asia,41.674,649.3413952</code></pre>
 </div>
 </div>
 </div>
-<div id="callout2" class="callout callout">
+<div id="tip-command-line-in-rstudio" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-command-line-in-rstudio" class="callout-inner">
-<h3 class="callout-title">Tip: command line in RStudio<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Tip: command line in RStudio<a class="anchor" aria-label="anchor" href="#tip-command-line-in-rstudio"></a>
 </h3>
 <div class="callout-content">
 <p>The Terminal tab in the console pane provides a convenient place
@@ -653,12 +653,12 @@ look for them relative to the current working directory.</p>
 directory for that project. When you open an existing
 <code>.Rproj</code> file, it will open that project and set R’s working
 directory to the folder that file is in.</p>
-<div id="discussion4" class="callout discussion">
+<div id="challenge-5" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div id="challenge-5" class="callout-inner">
-<h3 class="callout-title">Challenge 5<a class="anchor" aria-label="anchor" href="#discussion4"></a>
+<h3 class="callout-title">Challenge 5<a class="anchor" aria-label="anchor" href="#challenge-5"></a>
 </h3>
 <div class="callout-content">
 <p>You can check the current working directory with the
@@ -683,12 +683,12 @@ automatically appear in the console.</li>
 </ol></div>
 </div>
 </div>
-<div id="callout3" class="callout callout">
+<div id="tip-file-does-not-exist-errors" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-file-does-not-exist-errors" class="callout-inner">
-<h3 class="callout-title">Tip: File does not exist errors<a class="anchor" aria-label="anchor" href="#callout3"></a>
+<h3 class="callout-title">Tip: File does not exist errors<a class="anchor" aria-label="anchor" href="#tip-file-does-not-exist-errors"></a>
 </h3>
 <div class="callout-content">
 <p>When you’re attempting to reference a file in your R code and you’re
@@ -752,9 +752,9 @@ layout.</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.17" class="external-link">sandpaper (0.11.17)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.2" class="external-link">sandpaper (0.12.2)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.17" class="external-link">varnish (0.2.17)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -776,7 +776,7 @@ layout.</li>
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/02-project-intro.html",
   "dateCreated": "2015-04-18",
   "dateModified": "2023-05-16",
-  "datePublished": "2023-05-17"
+  "datePublished": "2023-05-30"
 }
 
   </script><script>

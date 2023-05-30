@@ -139,7 +139,7 @@
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
-        Introduction to R and RStudio
+        1. Introduction to R and RStudio
         </span>
       </button>
     </div><!--/div.accordion-header-->
@@ -435,12 +435,12 @@ with version control and project management.</p>
 <li>Files/Plots/Packages/Help/Viewer (tabbed in lower right)</li>
 </ul><figure><img src="../fig/01-rstudio.png" alt="RStudio layout" class="figure mx-auto d-block"></figure><p>Once you open files, such as R scripts, an editor panel will also
 open in the top left.</p>
-<figure><img src="../fig/01-rstudio-script.png" alt="RStudio layout with .R file open" class="figure mx-auto d-block"></figure><div id="callout1" class="callout callout">
+<figure><img src="../fig/01-rstudio-script.png" alt="RStudio layout with .R file open" class="figure mx-auto d-block"></figure><div id="r-scripts" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="r-scripts" class="callout-inner">
-<h3 class="callout-title">R scripts<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">R scripts<a class="anchor" aria-label="anchor" href="#r-scripts"></a>
 </h3>
 <div class="callout-content">
 <p>Any commands that you write in the R console can be saved to a file
@@ -464,12 +464,12 @@ to the interactive R console.</li>
 </ol><ul><li>This is a great way to start; all your code is saved for later</li>
 <li>You will be able to run the file you create from within RStudio or
 using R’s <code>source()</code> function.</li>
-</ul><div id="callout2" class="callout callout">
+</ul><div id="tip-running-segments-of-your-code" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-running-segments-of-your-code" class="callout-inner">
-<h3 class="callout-title">Tip: Running segments of your code<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Tip: Running segments of your code<a class="anchor" aria-label="anchor" href="#tip-running-segments-of-your-code"></a>
 </h3>
 <div class="callout-content">
 <p>RStudio offers you great flexibility in running code from within the
@@ -537,12 +537,12 @@ behavior from bash.</p>
 “&gt;”, it means it’s waiting for you to complete the command. If you
 want to cancel a command you can hit <kbd>Esc</kbd> and RStudio will
 give you back the “&gt;” prompt.</p>
-<div id="callout3" class="callout callout">
+<div id="tip-canceling-commands" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-canceling-commands" class="callout-inner">
-<h3 class="callout-title">Tip: Canceling commands<a class="anchor" aria-label="anchor" href="#callout3"></a>
+<h3 class="callout-title">Tip: Canceling commands<a class="anchor" aria-label="anchor" href="#tip-canceling-commands"></a>
 </h3>
 <div class="callout-content">
 <p>If you’re using R from the command line instead of from within
@@ -777,12 +777,12 @@ usage. We’ll go through an example later.</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] TRUE</code></pre>
 </div>
-<div id="callout4" class="callout callout">
+<div id="tip-comparing-numbers" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-comparing-numbers" class="callout-inner">
-<h3 class="callout-title">Tip: Comparing Numbers<a class="anchor" aria-label="anchor" href="#callout4"></a>
+<h3 class="callout-title">Tip: Comparing Numbers<a class="anchor" aria-label="anchor" href="#tip-comparing-numbers"></a>
 </h3>
 <div class="callout-content">
 <p>A word of warning about comparing numbers: you should never use
@@ -884,12 +884,12 @@ are occasionally places where it is less confusing to use
 <code>&lt;-</code> than <code>=</code>, and it is the most common symbol
 used in the community. So the recommendation is to use
 <code>&lt;-</code>.</p>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"></a>
 </h3>
 <div class="callout-content">
 <p>Which of the following are valid R variable names?</p>
@@ -915,7 +915,7 @@ used in the community. So the recommendation is to use
   Solution to challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The following can be used as R variables:</p>
 <div class="codewrapper sourceCode" id="cb44">
@@ -1005,12 +1005,12 @@ in the global environment (your working R session):</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] "x" "y"</code></pre>
 </div>
-<div id="callout5" class="callout callout">
+<div id="tip-hidden-objects" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-hidden-objects" class="callout-inner">
-<h3 class="callout-title">Tip: hidden objects<a class="anchor" aria-label="anchor" href="#callout5"></a>
+<h3 class="callout-title">Tip: hidden objects<a class="anchor" aria-label="anchor" href="#tip-hidden-objects"></a>
 </h3>
 <div class="callout-content">
 <p>Like in the shell, <code>ls</code> will hide any variables or
@@ -1122,12 +1122,12 @@ effects, or you may get an error message:</p>
 </h3>
 <pre class="error" tabindex="0"><code>Error in rm(list &lt;- ls()): ... must contain names or character strings</code></pre>
 </div>
-<div id="callout6" class="callout callout">
+<div id="tip-warnings-vs.-errors" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-warnings-vs.-errors" class="callout-inner">
-<h3 class="callout-title">Tip: Warnings vs. Errors<a class="anchor" aria-label="anchor" href="#callout6"></a>
+<h3 class="callout-title">Tip: Warnings vs. Errors<a class="anchor" aria-label="anchor" href="#tip-warnings-vs.-errors"></a>
 </h3>
 <div class="callout-content">
 <p>Pay attention when R does something unexpected! Errors, like above,
@@ -1168,12 +1168,12 @@ empty, the package is not loaded. Click an empty box to load that
 package and click a checked box to detach that package.</p>
 <p>Packages can be installed and updated from the Package tab with the
 Install and Update buttons at the top of the tab.</p>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2" class="callout-inner">
-<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
 </h3>
 <div class="callout-content">
 <p>What will be the value of each variable after each statement in the
@@ -1197,7 +1197,7 @@ following program?</p>
   Solution to challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb64">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1233,12 +1233,12 @@ value of 102 to the variable age.</p>
 </div>
 </div>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="challenge-3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-3" class="callout-inner">
-<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"></a>
 </h3>
 <div class="callout-content">
 <p>Run the code from the previous challenge, and write a command to
@@ -1253,7 +1253,7 @@ compare mass to age. Is mass larger than age?</p>
   Solution to challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>One way of answering this question in R is to use the
 <code>&gt;</code> to set up the following:</p>
@@ -1274,12 +1274,12 @@ than 102.</p>
 </div>
 </div>
 </div>
-<div id="challenge4" class="callout challenge">
+<div id="challenge-4" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-4" class="callout-inner">
-<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<h3 class="callout-title">Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4"></a>
 </h3>
 <div class="callout-content">
 <p>Clean up your working environment by deleting the mass and age
@@ -1294,7 +1294,7 @@ variables.</p>
   Solution to challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>We can use the <code>rm</code> command to accomplish this task</p>
 <div class="codewrapper sourceCode" id="cb70">
@@ -1307,12 +1307,12 @@ variables.</p>
 </div>
 </div>
 </div>
-<div id="challenge5" class="callout challenge">
+<div id="challenge-5" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-5" class="callout-inner">
-<h3 class="callout-title">Challenge 5<a class="anchor" aria-label="anchor" href="#challenge5"></a>
+<h3 class="callout-title">Challenge 5<a class="anchor" aria-label="anchor" href="#challenge-5"></a>
 </h3>
 <div class="callout-content">
 <p>Install the following packages: <code>ggplot2</code>,
@@ -1327,7 +1327,7 @@ variables.</p>
   Solution to challenge 5
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>We can use the <code>install.packages()</code> command to install the
 required packages.</p>
@@ -1400,9 +1400,9 @@ functions.</li>
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.17" class="external-link">sandpaper (0.11.17)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.2" class="external-link">sandpaper (0.12.2)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.17" class="external-link">varnish (0.2.17)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1424,7 +1424,7 @@ functions.</li>
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/instructor/01-rstudio-intro.html",
   "dateCreated": "2015-04-18",
   "dateModified": "2023-05-17",
-  "datePublished": "2023-05-17"
+  "datePublished": "2023-05-30"
 }
 
   </script><script>
