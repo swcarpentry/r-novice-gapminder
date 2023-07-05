@@ -217,9 +217,8 @@ gapminder <- read.csv("https://raw.githubusercontent.com/swcarpentry/r-novice-ga
 - You can read directly from excel spreadsheets without
   converting them to plain text first by using the [readxl](https://cran.r-project.org/package=readxl) package.
   
-- The argument "stringsAsFactors" can be useful to tell R how to read strings either as factors or as character strings. In R versions after 4.0, all strings are read-in as characters by default, but in earlier versions of R, strings are read-in as factors by default. For more information, see the call-out in [the previous episode](https://swcarpentry.github.io/r-novice-gapminder/04-data-structures-part1.html#callout2). 
+- The argument "stringsAsFactors" can be useful to tell R how to read strings either as factors or as character strings. In R versions after 4.0, all strings are read-in as characters by default, but in earlier versions of R, strings are read-in as factors by default. For more information, see the call-out in [the previous episode](https://swcarpentry.github.io/r-novice-gapminder/04-data-structures-part1.html#check-your-data-for-factors). 
   
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 Let's investigate gapminder a bit; the first thing we should always do is check
