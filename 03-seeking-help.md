@@ -160,7 +160,7 @@ sessionInfo()
 ```
 
 ```{.output}
-R version 4.3.0 (2023-04-21)
+R version 4.3.1 (2023-06-16)
 Platform: x86_64-pc-linux-gnu (64-bit)
 Running under: Ubuntu 22.04.2 LTS
 
@@ -181,8 +181,8 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 loaded via a namespace (and not attached):
-[1] compiler_4.3.0 tools_4.3.0    knitr_1.42     xfun_0.39      renv_0.17.3   
-[6] evaluate_0.20 
+[1] compiler_4.3.1    tools_4.3.1       rstudioapi_0.15.0 knitr_1.43       
+[5] xfun_0.39         renv_1.0.0        evaluate_0.21    
 ```
 
 Will print out your current version of R, as well as any packages you
