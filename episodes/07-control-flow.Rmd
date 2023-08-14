@@ -213,7 +213,7 @@ the vector are `TRUE`.
 If you want to iterate over
 a set of values, when the order of iteration is important, and perform the
 same operation on each, a `for()` loop will do the job.
-We saw `for()` loops in the shell lessons earlier. This is the most
+We saw `for()` loops [in the shell lessons](https://swcarpentry.github.io/shell-novice/05-loop.html) earlier. This is the most
 flexible of looping operations, but therefore also the hardest to use
 correctly. In general, the advice of many `R` users would be to learn about
 `for()` loops, but to avoid using `for()` loops unless the order of iteration is
