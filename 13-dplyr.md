@@ -21,7 +21,7 @@ source: Rmd
 
 
 
-Manipulation of data frames means many things to many researchers, we often
+Manipulation of data frames means many things to many researchers: we often
 select certain observations (rows) or variables (columns), we often group the
 data by a certain variable(s), or we even calculate summary statistics. We can
 do these operations using the normal base R operations:
