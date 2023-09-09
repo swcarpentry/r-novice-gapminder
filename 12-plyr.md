@@ -183,7 +183,7 @@ Let us walk through the previous code:
 ## Challenge 1
 
 Calculate the average life expectancy per continent. Which has the longest?
-Which had the shortest?
+Which has the shortest?
 
 :::::::::::::::  solution
 
