@@ -190,7 +190,7 @@ ls -lh data/gapminder_data.csv
 ```
 
 ```{.output}
--rw-r--r-- 1 runner docker 80K Aug 15 00:27 data/gapminder_data.csv
+-rw-r--r-- 1 runner docker 80K Sep  9 16:14 data/gapminder_data.csv
 ```
 
 The file size is 80K.
@@ -255,8 +255,7 @@ You can check the current working directory with the `getwd()` command, or by us
 You can change the working directory with `setwd()`, or by using RStudio menus.
 
 1. In the console, type `setwd("data")` and hit Enter. Type `getwd()` and hit Enter to see the new working directory.
-2. In the menus at the top of the RStudio window, click the "Session" menu button, and then select "Set Working Directory" and then "Choose Directory".
-3. In the windows navigator that opens, navigate back to the project directory, and click "Open". Note that a `setwd` command will automatically appear in the console.
+2. In the menus at the top of the RStudio window, click the "Session" menu button, and then select "Set Working Directory" and then "Choose Directory". Next, in the windows navigator that opens, navigate back to the project directory, and click "Open". Note that a `setwd` command will automatically appear in the console.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
