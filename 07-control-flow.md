@@ -616,7 +616,8 @@ against time as a line graph if the mean life expectancy is under 50 years.
 
 ## Solution for Challenge 5
 
-We will use the `grep()` command that was introduced in the Unix Shell lesson to find countries that start with "B."
+We will use the `grep()` command that was introduced in the [Unix Shell lesson](https://swcarpentry.github.io/shell-novice/07-find.html) 
+to find countries that start with "B."
 Lets understand how to do this first.
 Following from the Unix shell section we may be tempted to try the following
 
