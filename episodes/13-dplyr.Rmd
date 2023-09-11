@@ -29,9 +29,9 @@ data by a certain variable(s), or we even calculate summary statistics. We can
 do these operations using the normal base R operations:
 
 ```{r}
-mean(gapminder[gapminder$continent == "Africa", "gdpPercap"])
-mean(gapminder[gapminder$continent == "Americas", "gdpPercap"])
-mean(gapminder[gapminder$continent == "Asia", "gdpPercap"])
+mean(gapminder$gdpPercap[gapminder$continent == "Africa"])
+mean(gapminder$gdpPercap[gapminder$continent == "Americas"])
+mean(gapminder$gdpPercap[gapminder$continent == "Asia"])
 ```
 
 But this isn't very *nice* because there is a fair bit of repetition. Repeating
