@@ -643,7 +643,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x559911612ec0>
+<bytecode: 0x564ba2aa0630>
 <environment: namespace:base>
 ```
 
@@ -852,7 +852,7 @@ We can use the `install.packages()` command to install the required packages.
 
 
 ```r
-install.packages("ggplot2")
+install.packages("ggplot2", dependencies = TRUE)
 install.packages("plyr")
 install.packages("gapminder")
 ```
