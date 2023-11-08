@@ -7,8 +7,8 @@ source: Rmd
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Describe the purpose and use of each pane in the RStudio IDE
-- Locate buttons and options in the RStudio IDE
+- Describe the purpose and use of each pane in RStudio 
+- Locate buttons and options in RStudio 
 - Define a variable
 - Assign data to a variable
 - Manage a workspace in an interactive R session
@@ -30,18 +30,6 @@ source: Rmd
 ```{r, include=FALSE}
 ```
 
-## Motivation
-
-Science is a multi-step process: once you've designed an experiment and collected
-data, the real fun begins! This lesson will teach you how to start this process using
-R and RStudio. We will begin with raw data, perform exploratory analyses, and learn
-how to plot results graphically. This example starts with a dataset from
-[gapminder.org](https://www.gapminder.org) containing population information for many
-countries through time. Can you read the data into R? Can you plot the population for
-Senegal? Can you calculate the average income for countries on the continent of Asia?
-By the end of these lessons you will be able to do things like plot the populations
-for all of these countries in under a minute!
-
 ## Before Starting The Workshop
 
 Please ensure you have the latest version of R and RStudio installed on your machine. This is important, as some packages used in the workshop may not install correctly (or at all) if R is not up to date.
@@ -49,18 +37,31 @@ Please ensure you have the latest version of R and RStudio installed on your mac
 - [Download and install the latest version of R here](https://www.r-project.org/)
 - [Download and install RStudio here](https://www.rstudio.com/products/rstudio/download/#download)
 
-## Introduction to RStudio
 
-Welcome to the R portion of the Software Carpentry workshop.
+## Why use R and R studio?
 
-Throughout this lesson, we're going to teach you some of the fundamentals of
-the R language as well as some best practices for organizing code for
-scientific projects that will make your life easier.
+Welcome to the R portion of the Software Carpentry workshop!
 
-We'll be using RStudio: a free, open-source R Integrated Development
+Science is a multi-step process: once you've designed an experiment and collected
+data, the real fun begins with analysis! Throughout this lesson, we're going to teach you some of the fundamentals of the R language as well as some best practices for organizing code for scientific projects that will make your life easier.
+
+Although we could use a spreadsheet in Microsoft Excel or Google sheets to analyze our data, these tools are limited in their flexibility and accessibility. Critically, they also are difficult to share steps which explore and change the raw data, which is key to ["reproducible" research](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285). 
+
+Therefore, this lesson will teach you how to begin exploring your data using R and RStudio. The R program is available for Windows, Mac, and Linux operating systems, and is a freely-available where you downloaded it above. To run R, all you need is the R program. 
+
+However, to make using R easier, we will use the program RStudio, which we also downloaded above. RStudio is a free, open-source, Integrated Development
 Environment (IDE). It provides a built-in editor, works on all platforms (including
 on servers) and provides many advantages such as integration with version
 control and project management.
+
+## Overview  
+
+We will begin with raw data, perform exploratory analyses, and learn how to plot results graphically. This example starts with a dataset from [gapminder.org](https://www.gapminder.org) containing population information for many
+countries through time. Can you read the data into R? Can you plot the population for
+Senegal? Can you calculate the average income for countries on the continent of Asia?
+By the end of these lessons you will be able to do things like plot the populations
+for all of these countries in under a minute!
+
 
 **Basic layout**
 
