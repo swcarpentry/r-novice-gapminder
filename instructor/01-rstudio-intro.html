@@ -148,9 +148,9 @@
         
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#motivation">Motivation</a></li>
-<li><a href="#before-starting-the-workshop">Before Starting The Workshop</a></li>
-<li><a href="#introduction-to-rstudio">Introduction to RStudio</a></li>
+        <ul><li><a href="#before-starting-the-workshop">Before Starting The Workshop</a></li>
+<li><a href="#why-use-r-and-r-studio">Why use R and R studio?</a></li>
+<li><a href="#overview">Overview</a></li>
 <li><a href="#workflow-within-rstudio">Workflow within RStudio</a></li>
 <li><a href="#introduction-to-r">Introduction to R</a></li>
 <li><a href="#using-r-as-a-calculator">Using R as a calculator</a></li>
@@ -359,7 +359,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Introduction to R and RStudio</h1>
-        <p> Last updated on 2023-09-10 | 
+        <p> Last updated on 2023-11-08 | 
         
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/01-rstudio-intro.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -391,8 +391,8 @@
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
-<ul><li>Describe the purpose and use of each pane in the RStudio IDE</li>
-<li>Locate buttons and options in the RStudio IDE</li>
+<ul><li>Describe the purpose and use of each pane in RStudio</li>
+<li>Locate buttons and options in RStudio</li>
 <li>Define a variable</li>
 <li>Assign data to a variable</li>
 <li>Manage a workspace in an interactive R session</li>
@@ -404,19 +404,7 @@
 </div>
 </div>
 </div>
-<section id="motivation"><h2 class="section-heading">Motivation<a class="anchor" aria-label="anchor" href="#motivation"></a>
-</h2>
-<hr class="half-width"><p>Science is a multi-step process: once you’ve designed an experiment
-and collected data, the real fun begins! This lesson will teach you how
-to start this process using R and RStudio. We will begin with raw data,
-perform exploratory analyses, and learn how to plot results graphically.
-This example starts with a dataset from <a href="https://www.gapminder.org" class="external-link">gapminder.org</a> containing population
-information for many countries through time. Can you read the data into
-R? Can you plot the population for Senegal? Can you calculate the
-average income for countries on the continent of Asia? By the end of
-these lessons you will be able to do things like plot the populations
-for all of these countries in under a minute!</p>
-</section><section id="before-starting-the-workshop"><h2 class="section-heading">Before Starting The Workshop<a class="anchor" aria-label="anchor" href="#before-starting-the-workshop"></a>
+<section id="before-starting-the-workshop"><h2 class="section-heading">Before Starting The Workshop<a class="anchor" aria-label="anchor" href="#before-starting-the-workshop"></a>
 </h2>
 <hr class="half-width"><p>Please ensure you have the latest version of R and RStudio installed
 on your machine. This is important, as some packages used in the
@@ -426,17 +414,39 @@ date.</p>
 version of R here</a></li>
 <li><a href="https://www.rstudio.com/products/rstudio/download/#download" class="external-link">Download
 and install RStudio here</a></li>
-</ul></section><section id="introduction-to-rstudio"><h2 class="section-heading">Introduction to RStudio<a class="anchor" aria-label="anchor" href="#introduction-to-rstudio"></a>
+</ul></section><section id="why-use-r-and-r-studio"><h2 class="section-heading">Why use R and R studio?<a class="anchor" aria-label="anchor" href="#why-use-r-and-r-studio"></a>
 </h2>
-<hr class="half-width"><p>Welcome to the R portion of the Software Carpentry workshop.</p>
-<p>Throughout this lesson, we’re going to teach you some of the
-fundamentals of the R language as well as some best practices for
-organizing code for scientific projects that will make your life
-easier.</p>
-<p>We’ll be using RStudio: a free, open-source R Integrated Development
-Environment (IDE). It provides a built-in editor, works on all platforms
-(including on servers) and provides many advantages such as integration
-with version control and project management.</p>
+<hr class="half-width"><p>Welcome to the R portion of the Software Carpentry workshop!</p>
+<p>Science is a multi-step process: once you’ve designed an experiment
+and collected data, the real fun begins with analysis! Throughout this
+lesson, we’re going to teach you some of the fundamentals of the R
+language as well as some best practices for organizing code for
+scientific projects that will make your life easier.</p>
+<p>Although we could use a spreadsheet in Microsoft Excel or Google
+sheets to analyze our data, these tools are limited in their flexibility
+and accessibility. Critically, they also are difficult to share steps
+which explore and change the raw data, which is key to <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285" class="external-link">“reproducible”
+research</a>.</p>
+<p>Therefore, this lesson will teach you how to begin exploring your
+data using R and RStudio. The R program is available for Windows, Mac,
+and Linux operating systems, and is a freely-available where you
+downloaded it above. To run R, all you need is the R program.</p>
+<p>However, to make using R easier, we will use the program RStudio,
+which we also downloaded above. RStudio is a free, open-source,
+Integrated Development Environment (IDE). It provides a built-in editor,
+works on all platforms (including on servers) and provides many
+advantages such as integration with version control and project
+management.</p>
+</section><section id="overview"><h2 class="section-heading">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
+<hr class="half-width"><p>We will begin with raw data, perform exploratory analyses, and learn
+how to plot results graphically. This example starts with a dataset from
+<a href="https://www.gapminder.org" class="external-link">gapminder.org</a> containing
+population information for many countries through time. Can you read the
+data into R? Can you plot the population for Senegal? Can you calculate
+the average income for countries on the continent of Asia? By the end of
+these lessons you will be able to do things like plot the populations
+for all of these countries in under a minute!</p>
 <p><strong>Basic layout</strong></p>
 <p>When you first open RStudio, you will be greeted by three panels:</p>
 <ul><li>The interactive R console/Terminal (entire left)</li>
@@ -1073,7 +1083,7 @@ instead of a listing of objects.</p>
     }
     else all.names
 }
-&lt;bytecode: 0x559911612ec0&gt;
+&lt;bytecode: 0x55c3a944aa70&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 </div>
 <p>What’s going on here?</p>
@@ -1417,7 +1427,7 @@ functions.</li>
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
         <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.14.0" class="external-link">sandpaper (0.14.0)</a>,
         <a href="https://github.com/carpentries/pegboard/tree/0.7.1" class="external-link">pegboard (0.7.1)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.3.1" class="external-link">varnish (0.3.1)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.3.3" class="external-link">varnish (0.3.3)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1438,8 +1448,8 @@ functions.</li>
   "url": "https://swcarpentry.github.io/r-novice-gapminder/instructor/01-rstudio-intro.html",
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/instructor/01-rstudio-intro.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2023-09-10",
-  "datePublished": "2023-11-07"
+  "dateModified": "2023-11-08",
+  "datePublished": "2023-11-08"
 }
 
   </script><script>
