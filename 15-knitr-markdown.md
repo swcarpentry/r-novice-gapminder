@@ -227,7 +227,7 @@ You can make a hyperlink like this:
 
 You can include an image file like this: `![The Carpentries Logo](https://carpentries.org/assets/img/TheCarpentries.svg)`
 
-You can do subscripts (e.g., F~~2~~) with `F~2~` and superscripts (e.g.,
+You can do subscripts (e.g., F~2~) with `F~2~` and superscripts (e.g.,
 F^2^) with `F^2^`.
 
 If you know how to write equations in
