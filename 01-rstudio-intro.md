@@ -159,8 +159,7 @@ the first element of the line being printed in the console. For more information
 on indexing vectors, see [Episode 6: Subsetting Data](https://swcarpentry.github.io/r-novice-gapminder/06-data-subsetting/index.html).
 
 If you type in an incomplete command, R will wait for you to
-complete it. If you are familiar with Unix Shell's bash, you may recognize this  
-behavior from bash.
+complete it. If you are familiar with Unix Shell's bash, you may recognize this behavior from bash.
 
 ```r
 > 1 +
@@ -544,7 +543,7 @@ min-length
 One final thing to be aware of is that R is *vectorized*, meaning that
 variables and functions can have vectors as values. In contrast to physics and
 mathematics, a vector in R describes a set of values in a certain order of the
-same data type. For example
+same data type. For example:
 
 
 ```r
@@ -644,7 +643,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x55bec8f02a70>
+<bytecode: 0x55de69f00a80>
 <environment: namespace:base>
 ```
 
