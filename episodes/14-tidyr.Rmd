@@ -110,7 +110,7 @@ Until now, we've been using the nicely formatted original gapminder dataset, but
 'real' data (i.e. our own research data) will never be so well organized. Here
 let's start with the wide formatted version of the gapminder dataset.
 
-> Download the wide version of the gapminder data from [here](data/gapminder_wide.csv)
+> Download the wide version of the gapminder data from [this link to a csv file](data/gapminder_wide.csv)
 > and save it in your data folder.
 
 We'll load the data file and look at it. Note: we don't want our continent and

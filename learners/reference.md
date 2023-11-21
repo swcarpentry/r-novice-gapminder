@@ -343,7 +343,7 @@ not expected by the programming language.
 
 [type]{#type}
 :   The classification of something in a program (for example, the contents of a variable)
-as a kind of number (e.g. [floating-point](#float), [integer](#integer)), [string](#string),
+as a kind of number (e.g. [floating-point number](#floating-point-number), [integer](#integer)), [string](#string),
 or something else. In R the command typeof() is used to query a variables type.
 
 [while loop]{#while-loop}
