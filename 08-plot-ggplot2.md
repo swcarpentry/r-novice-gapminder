@@ -506,7 +506,7 @@ There are two nice things about `ggsave`. First, it defaults to the last plot, s
 
 This is a taste of what you can do with ggplot2. RStudio provides a
 really useful [cheat sheet][cheat] of the different layers available, and more
-extensive documentation is available on the [ggplot2 website][ggplot-doc]. All RStudio cheat sheets can be found [here][cheat_all].
+extensive documentation is available on the [ggplot2 website][ggplot-doc]. All RStudio cheat sheets are available from the [RStudio website][cheat_all].
 Finally, if you have no idea how to change something, a quick Google search will
 usually send you to a relevant question and answer on Stack Overflow with reusable
 code to modify!

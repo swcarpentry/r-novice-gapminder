@@ -447,7 +447,7 @@ transformed to the formatted appearance (**bold words**) as you type.
 This mode also includes a toolbar at the top with basic formatting buttons,
 similar to what you might see in common word processing software programs.
 You can turn visual editing on and off by pressing
-the ![](fig/visual_mode_icon.png)
+the ![](fig/visual_mode_icon.png){alt='Icon for turning on and off the visual editing mode in RStudio, which looks like a pair of compasses'}
 button in the top right corner of your R Markdown document.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::

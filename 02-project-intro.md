@@ -155,7 +155,7 @@ Now we have a good directory structure we will now place/save the data file in t
 
 ## Challenge 3
 
-Download the gapminder data from [here](data/gapminder_data.csv).
+Download the gapminder data from [this link to a csv file](data/gapminder_data.csv).
 
 1. Download the file (right mouse click on the link above -> "Save link as" / "Save file as", or click on the link and after the page loads, press <kbd>Ctrl</kbd>\+<kbd>S</kbd> or choose File -> "Save page as")
 2. Make sure it's saved under the name `gapminder_data.csv`
@@ -190,7 +190,7 @@ ls -lh data/gapminder_data.csv
 ```
 
 ```{.output}
--rw-r--r-- 1 runner docker 80K Nov 16 22:05 data/gapminder_data.csv
+-rw-r--r-- 1 runner docker 80K Nov 21 00:11 data/gapminder_data.csv
 ```
 
 The file size is 80K.
