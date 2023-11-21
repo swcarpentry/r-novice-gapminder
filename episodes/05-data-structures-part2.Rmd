@@ -138,14 +138,6 @@ cats <- rbind(cats, cats)
 cats
 ```
 
-But now the row names are unnecessarily complicated. We can remove the rownames,
-and R will automatically re-name them sequentially:
-
-```{r}
-rownames(cats) <- NULL
-cats
-```
-
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Challenge 1
