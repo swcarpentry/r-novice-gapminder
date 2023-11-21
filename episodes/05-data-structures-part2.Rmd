@@ -138,14 +138,6 @@ cats <- rbind(cats, cats)
 cats
 ```
 
-But now the row names are unnecessarily complicated. We can remove the rownames,
-and R will automatically re-name them sequentially:
-
-```{r}
-rownames(cats) <- NULL
-cats
-```
-
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Challenge 1
@@ -398,7 +390,7 @@ The object `gapminder` is a data frame with columns
 - Use `cbind()` to add a new column to a data frame.
 - Use `rbind()` to add a new row to a data frame.
 - Remove rows from a data frame.
-- Use `str()`, `summary()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()`, and `typeof()` to understand the structure of a data frame.
+- Use `str()`, `summary()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `head()`, and `typeof()` to understand the structure of a data frame.
 - Read in a csv file using `read.csv()`.
 - Understand what `length()` of a data frame represents.
 
