@@ -539,7 +539,7 @@ Check out `?source` to find out more.
 
 
 ```r
-download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv", destfile = "data/gapminder_data.csv")
+download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/main/episodes/data/gapminder_data.csv", destfile = "data/gapminder_data.csv")
 gapminder <- read.csv(file = "data/gapminder_data.csv")
 ```
 
