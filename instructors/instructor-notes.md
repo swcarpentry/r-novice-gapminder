@@ -81,7 +81,7 @@ cats <- data.frame(coat = c("calico", "black", "tabby"),
                     likes_string = c(1, 0, 1))
 ```
 
-This option can be turned off an on in the following menu setting:
+This option can be turned off and on in the following menu setting:
 Tools -> Global Options -> Code -> Display -> Enable preview of named and hexadecimal colors (under "Syntax") 
 
 ## Pulling in Data
