@@ -508,6 +508,25 @@ once:</p>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> credential.helper <span class="st">'cache --timeout=10000000'</span></span></code></pre>
 </div>
+</section><section id="rstudio-color-preview"><h2 class="section-heading">RStudio Color Preview<a class="anchor" aria-label="anchor" href="#rstudio-color-preview"></a>
+</h2>
+<hr class="half-width">
+<p>RStudio has a feature to preview the color for certain named colors
+and hexadecimal colors. This may confuse or distract learners (and
+instructors) who are not expecting it.</p>
+<p>Mainly, this is likely to come up during the episode on “Data
+Structures” with the following code block:</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cats</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span>coat <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"calico"</span>, <span class="st">"black"</span>, <span class="st">"tabby"</span><span class="op">)</span>,</span>
+<span>                    weight <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">2.1</span>, <span class="fl">5.0</span>, <span class="fl">3.2</span><span class="op">)</span>,</span>
+<span>                    likes_string <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</div>
+<p>This option can be turned off and on in the following menu setting:
+Tools -&gt; Global Options -&gt; Code -&gt; Display -&gt; Enable preview
+of named and hexadecimal colors (under “Syntax”)</p>
 </section><section id="pulling-in-data"><h2 class="section-heading">Pulling in Data<a class="anchor" aria-label="anchor" href="#pulling-in-data"></a>
 </h2>
 <hr class="half-width">
@@ -594,8 +613,8 @@ you can impart is how to debug and recover from unexpected errors.</p>
   "url": "https://swcarpentry.github.io/r-novice-gapminder/instructor-notes.html",
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/instructor-notes.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2024-01-16",
-  "datePublished": "2024-01-16"
+  "dateModified": "2024-01-19",
+  "datePublished": "2024-01-19"
 }
 
   </script><script>
