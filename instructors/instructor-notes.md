@@ -69,6 +69,21 @@ To prevent the learners from having to re-enter their password each time they pu
 $ git config --global credential.helper 'cache --timeout=10000000'
 ```
 
+## RStudio Color Preview
+
+RStudio has a feature to preview the color for certain named colors and hexadecimal colors. This may confuse or distract learners (and instructors) who are not expecting it.
+
+Mainly, this is likely to come up during the episode on "Data Structures" with the following code block:
+
+```r
+cats <- data.frame(coat = c("calico", "black", "tabby"),
+                    weight = c(2.1, 5.0, 3.2),
+                    likes_string = c(1, 0, 1))
+```
+
+This option can be turned off and on in the following menu setting:
+Tools -> Global Options -> Code -> Display -> Enable preview of named and hexadecimal colors (under "Syntax") 
+
 ## Pulling in Data
 
 The easiest way to get the data used in this lesson during a workshop is to have
