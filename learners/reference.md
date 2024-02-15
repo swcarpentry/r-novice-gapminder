@@ -220,16 +220,7 @@ behaviour of R).
 - `write.table` to write out objects in regular format
 - set `quote=FALSE` so that text isn't wrapped in `"` marks
 
-## [Split-apply-combine](episodes/12-plyr.Rmd)
-
-- Use the `xxply` family of functions to apply functions to groups within
-  some data.
-- the first letter, `a`rray , `d`ata.frame or `l`ist corresponds to the input data
-- the second letter denotes the output data structure
-- Anonymous functions (those not assigned a name) are used inside the `plyr` family
-  of functions on groups within data.
-
-## [Dataframe manipulation with dplyr](episodes/13-dplyr.Rmd)
+## [Dataframe manipulation with dplyr](episodes/12-dplyr.Rmd)
 
 - `library(dplyr)`
 - `?select` to extract variables by name.
@@ -239,7 +230,7 @@ behaviour of R).
 - `?mutate` add new variables to a data.frame.
 - Combine operations using the `?"%>%"` pipe operator.
 
-## [Dataframe manipulation with tidyr](episodes/14-tidyr.Rmd)
+## [Dataframe manipulation with tidyr](episodes/13-tidyr.Rmd)
 
 - `library(tidyr)`
 - `?pivot_longer` convert data from *wide* to *long* format.
@@ -247,7 +238,7 @@ behaviour of R).
 - `?separate` split a single value into multiple values.
 - `?unite` merge multiple values into a single value.
 
-## [Producing reports with knitr](episodes/15-knitr-markdown.Rmd)
+## [Producing reports with knitr](episodes/14-knitr-markdown.Rmd)
 
 - Value of reproducible reports
 - Basics of Markdown
@@ -256,7 +247,7 @@ behaviour of R).
 - Inline R code
 - Other output formats
 
-## [Best practices for writing good code](episodes/16-wrap-up.Rmd)
+## [Best practices for writing good code](episodes/15-wrap-up.Rmd)
 
 - Program defensively, i.e., assume that errors are going to arise, and write code to detect them when they do.
 - Write tests before writing code in order to help determine exactly what that code is supposed to do.
