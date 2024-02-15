@@ -471,7 +471,7 @@
     },
     "igraph": {
       "Package": "igraph",
-      "Version": "1.6.0",
+      "Version": "2.0.1.1",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -489,7 +489,7 @@
         "stats",
         "utils"
       ],
-      "Hash": "eef74fe28b747e52288ea9e1d3600034"
+      "Hash": "fb2999614d40fe7fd61cf569b66a2dbc"
     },
     "isoband": {
       "Package": "isoband",
