@@ -162,7 +162,7 @@ sessionInfo()
 ```{.output}
 R version 4.3.2 (2023-10-31)
 Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 22.04.3 LTS
+Running under: Ubuntu 22.04.4 LTS
 
 Matrix products: default
 BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.10.0 
@@ -182,7 +182,7 @@ attached base packages:
 
 loaded via a namespace (and not attached):
 [1] compiler_4.3.2 tools_4.3.2    yaml_2.3.8     knitr_1.45     xfun_0.41     
-[6] renv_1.0.3     evaluate_0.23 
+[6] renv_1.0.4     evaluate_0.23 
 ```
 
 Will print out your current version of R, as well as any packages you
