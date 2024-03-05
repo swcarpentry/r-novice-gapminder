@@ -352,7 +352,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Functions Explained</h1>
-        <p>Last updated on 2024-02-27 |
+        <p>Last updated on 2024-03-05 |
         
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/10-functions.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -402,13 +402,12 @@ again. We may also obtain similar data from a different source in the
 future.</p>
 <p>In this lesson, we’ll learn how to write a function so that we can
 repeat several operations with a single command.</p>
-<div id="what-is-a-function" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="what-is-a-function" class="callout-inner">
-<h3 class="callout-title">What is a function?<a class="anchor" aria-label="anchor" href="#what-is-a-function"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="what-is-a-function">What is a function?<a class="anchor" aria-label="anchor" href="#what-is-a-function"></a></h3>
 <div class="callout-content">
 <p>Functions gather a sequence of operations into a whole, preserving it
 for ongoing use. Functions provide:</p>
@@ -465,13 +464,12 @@ operators to it.</p>
 assigned to those variables so that we can use them inside the function.
 Inside the function, we use a <a href="reference.html#return-statement">return statement</a> to send a
 result back to whoever asked for it.</p>
-<div id="tip" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip" class="callout-inner">
-<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#tip"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip">Tip<a class="anchor" aria-label="anchor" href="#tip"></a></h3>
 <div class="callout-content">
 <p>One feature unique to R is that the return statement is not required.
 R automatically returns whichever variable is on the last line of the
@@ -525,7 +523,7 @@ temperature in Kelvin and returns that temperature in Celsius.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Solution to challenge 1</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Write a function called <code>kelvin_to_celsius</code> that takes a
 temperature in Kelvin and returns that temperature in Celsius</p>
@@ -581,7 +579,7 @@ prefer).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Solution to challenge 2</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Define the function to convert directly from Fahrenheit to Celsius,
 by reusing these two functions above</p>
@@ -713,7 +711,7 @@ the argument <code>temp</code> is specified inappropriately.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Solution to challenge 3</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Extend our previous definition of the function by adding in an
 explicit call to <code>stopifnot()</code>. Since
@@ -872,7 +870,7 @@ that the output is much more informative than a vector of numbers.</p>
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>calcGDP <span class="ot">&lt;-</span> <span class="cf">function</span>(dat, <span class="at">year=</span><span class="cn">NULL</span>, <span class="at">country=</span><span class="cn">NULL</span>) {</span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>calcGDP <span class="ot">&lt;-</span> <span class="cf">function</span>(dat, <span class="at">year=</span><span class="cn">NULL</span>, <span class="at">country=</span><span class="cn">NULL</span>) {</span></code></pre>
 </div>
 <p>Here we’ve added two arguments, <code>year</code>, and
 <code>country</code>. We’ve set <em>default arguments</em> for both as
@@ -902,13 +900,12 @@ for later. Now, we can use it to calculate the GDP for:</p>
 <li>A single combination of year and country.</li>
 </ul><p>By using <code>%in%</code> instead, we can also give multiple years
 or countries to those arguments.</p>
-<div id="tip-pass-by-value" class="callout callout">
+<div id="callout3" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-pass-by-value" class="callout-inner">
-<h3 class="callout-title">Tip: Pass by value<a class="anchor" aria-label="anchor" href="#tip-pass-by-value"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-pass-by-value">Tip: Pass by value<a class="anchor" aria-label="anchor" href="#tip-pass-by-value"></a></h3>
 <div class="callout-content">
 <p>Functions in R almost always make copies of the data to operate on
 inside of a function body. When we modify <code>dat</code> inside the
@@ -921,13 +918,12 @@ the function, stay inside the body of the function.</p>
 </div>
 </div>
 </div>
-<div id="tip-function-scope" class="callout callout">
+<div id="callout4" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-function-scope" class="callout-inner">
-<h3 class="callout-title">Tip: Function scope<a class="anchor" aria-label="anchor" href="#tip-function-scope"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-function-scope">Tip: Function scope<a class="anchor" aria-label="anchor" href="#tip-function-scope"></a></h3>
 <div class="callout-content">
 <p>Another important concept is scoping: any variables (or functions!)
 you create or modify inside the body of a function only exist for the
@@ -942,10 +938,10 @@ are not modified in any way when executing a function.</p>
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>  gdp <span class="ot">&lt;-</span> dat<span class="sc">$</span>pop <span class="sc">*</span> dat<span class="sc">$</span>gdpPercap</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  new <span class="ot">&lt;-</span> <span class="fu">cbind</span>(dat, <span class="at">gdp=</span>gdp)</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(new)</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>  gdp <span class="ot">&lt;-</span> dat<span class="sc">$</span>pop <span class="sc">*</span> dat<span class="sc">$</span>gdpPercap</span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>  new <span class="ot">&lt;-</span> <span class="fu">cbind</span>(dat, <span class="at">gdp=</span>gdp)</span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a>  <span class="fu">return</span>(new)</span>
+<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a><span class="er">}</span></span></code></pre>
 </div>
 <p>Finally, we calculated the GDP on our new subset, and created a new
 data frame with that column added. This means when we call the function
@@ -969,7 +965,7 @@ better than in our first attempt where we got a vector of numbers.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Solution to challenge 4</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1026,7 +1022,7 @@ space”“.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Solution to challenge 5</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>Write a function called <code>fence()</code> that takes two vectors
 as arguments, called <code>text</code> and <code>wrapper</code>, and
@@ -1052,13 +1048,12 @@ prints out the text wrapped with the <code>wrapper</code>:</p>
 </div>
 </div>
 </div>
-<div id="tip-1" class="callout callout">
+<div id="callout5" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-1" class="callout-inner">
-<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#tip-1"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-1">Tip<a class="anchor" aria-label="anchor" href="#tip-1"></a></h3>
 <div class="callout-content">
 <p>R has some unique aspects that can be exploited when performing more
 complicated operations. We will not be writing anything that requires
@@ -1069,13 +1064,12 @@ Wickham.</p>
 </div>
 </div>
 </div>
-<div id="tip-testing-and-documenting" class="callout callout">
+<div id="callout6" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-testing-and-documenting" class="callout-inner">
-<h3 class="callout-title">Tip: Testing and documenting<a class="anchor" aria-label="anchor" href="#tip-testing-and-documenting"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-testing-and-documenting">Tip: Testing and documenting<a class="anchor" aria-label="anchor" href="#tip-testing-and-documenting"></a></h3>
 <div class="callout-content">
 <p>It’s important to both test functions and document them:
 Documentation helps you, and others, understand what the purpose of your
@@ -1180,8 +1174,8 @@ R.</li>
   "url": "https://swcarpentry.github.io/r-novice-gapminder/instructor/10-functions.html",
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/instructor/10-functions.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2024-02-27",
-  "datePublished": "2024-02-27"
+  "dateModified": "2024-03-05",
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

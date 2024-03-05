@@ -349,7 +349,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Control Flow</h1>
-        <p>Last updated on 2024-02-27 |
+        <p>Last updated on 2024-03-05 |
         
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/07-control-flow.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -396,17 +396,17 @@ statements, the most commonly used approaches are the constructs:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition is true) {</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  perform action</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># if ... else</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition is true) {</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  perform action</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {  <span class="co"># that is, if the condition is false,</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  perform alternative action</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># if</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="cf">if</span> (condition is true) {</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>  perform action</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>}</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="co"># if ... else</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="cf">if</span> (condition is true) {</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>  perform action</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>} <span class="cf">else</span> {  <span class="co"># that is, if the condition is false,</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>  perform alternative action</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>}</span></code></pre>
 </div>
 <p>Say, for example, that we want R to print a message if a variable
 <code>x</code> has a particular value:</p>
@@ -584,13 +584,13 @@ The <code>if()</code> function will still run, but will only evaluate
 the condition in the first element of the vector. Therefore, to use the
 <code>if()</code> function, you need to make sure your input is singular
 (of length 1).</p>
-<div id="tip-built-in-ifelse-function" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-built-in-ifelse-function" class="callout-inner">
-<h3 class="callout-title">Tip: Built in<code>ifelse()</code>function<a class="anchor" aria-label="anchor" href="#tip-built-in-ifelse-function"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-built-in-ifelse-function">Tip: Built in <code>ifelse()</code>
+function<a class="anchor" aria-label="anchor" href="#tip-built-in-ifelse-function"></a></h3>
 <div class="callout-content">
 <p><code>R</code> accepts both <code>if()</code> and
 <code>else if()</code> statements structured as outlined above, but also
@@ -600,8 +600,8 @@ structured as follows:</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ifelse function</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(condition is true, perform action, perform alternative action)</span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># ifelse function</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="fu">ifelse</span>(condition is true, perform action, perform alternative action)</span></code></pre>
 </div>
 <p>where the first argument is the condition or a set of conditions to
 be met, the second argument is the statement that is evaluated when the
@@ -622,13 +622,14 @@ that is evaluated when the condition is <code>FALSE</code>.</p>
 </div>
 </div>
 </div>
-<div id="tip-any-and-all" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-any-and-all" class="callout-inner">
-<h3 class="callout-title">Tip:<code>any()</code>and<code>all()</code><a class="anchor" aria-label="anchor" href="#tip-any-and-all"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-any-and-all">Tip: <code>any()</code> and
+<code>all()</code>
+<a class="anchor" aria-label="anchor" href="#tip-any-and-all"></a></h3>
 <div class="callout-content">
 <p>The <code>any()</code> function will return <code>TRUE</code> if at
 least one <code>TRUE</code> value is found within a vector, otherwise it
@@ -658,9 +659,9 @@ efficiency.</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (iterator <span class="cf">in</span> set of values) {</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  do a thing</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="cf">for</span> (iterator <span class="cf">in</span> set of values) {</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>  do a thing</span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a>}</span></code></pre>
 </div>
 <p>For example:</p>
 <div class="codewrapper sourceCode" id="cb22">
@@ -758,13 +759,12 @@ new object.</p>
 <p>This approach can be useful, but ‘growing your results’ (building the
 result object incrementally) is computationally inefficient, so avoid it
 when you are iterating through a lot of values.</p>
-<div id="tip-dont-grow-your-results" class="callout callout">
+<div id="callout3" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-dont-grow-your-results" class="callout-inner">
-<h3 class="callout-title">Tip: don’t grow your results<a class="anchor" aria-label="anchor" href="#tip-dont-grow-your-results"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-dont-grow-your-results">Tip: don’t grow your results<a class="anchor" aria-label="anchor" href="#tip-dont-grow-your-results"></a></h3>
 <div class="callout-content">
 <p>One of the biggest things that trips up novices and experienced R
 users alike, is building a results object (vector, list, matrix, data
@@ -804,13 +804,12 @@ more efficient.</p>
 [13] "3 c" "4 c" "5 c" "1 d" "2 d" "3 d" "4 d" "5 d" "1 e" "2 e" "3 e" "4 e"
 [25] "5 e"</code></pre>
 </div>
-<div id="tip-while-loops" class="callout callout">
+<div id="callout4" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-while-loops" class="callout-inner">
-<h3 class="callout-title">Tip: While loops<a class="anchor" aria-label="anchor" href="#tip-while-loops"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-while-loops">Tip: While loops<a class="anchor" aria-label="anchor" href="#tip-while-loops"></a></h3>
 <div class="callout-content">
 <p>Sometimes you will find yourself needing to repeat an operation as
 long as a certain condition is met. You can do this with a
@@ -818,9 +817,9 @@ long as a certain condition is met. You can do this with a
 <div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(this condition is true){</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  do a thing</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="cf">while</span>(this condition is true){</span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>  do a thing</span>
+<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a>}</span></code></pre>
 </div>
 <p>R will interpret a condition being met as “TRUE”.</p>
 <p>As an example, here’s a while loop that generates random numbers from
@@ -1204,8 +1203,8 @@ base-plot to plot the evolution of average life expectancy using
   "url": "https://swcarpentry.github.io/r-novice-gapminder/instructor/07-control-flow.html",
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/instructor/07-control-flow.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2024-02-27",
-  "datePublished": "2024-02-27"
+  "dateModified": "2024-03-05",
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

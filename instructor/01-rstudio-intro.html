@@ -360,7 +360,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Introduction to R and RStudio</h1>
-        <p>Last updated on 2024-02-27 |
+        <p>Last updated on 2024-03-05 |
         
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/01-rstudio-intro.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -455,13 +455,12 @@ for all of these countries in under a minute!</p>
 <li>Files/Plots/Packages/Help/Viewer (tabbed in lower right)</li>
 </ul><figure><img src="../fig/01-rstudio.png" alt="RStudio layout" class="figure mx-auto d-block"></figure><p>Once you open files, such as R scripts, an editor panel will also
 open in the top left.</p>
-<figure><img src="../fig/01-rstudio-script.png" alt="RStudio layout with .R file open" class="figure mx-auto d-block"></figure><div id="r-scripts" class="callout callout">
+<figure><img src="../fig/01-rstudio-script.png" alt="RStudio layout with .R file open" class="figure mx-auto d-block"></figure><div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="r-scripts" class="callout-inner">
-<h3 class="callout-title">R scripts<a class="anchor" aria-label="anchor" href="#r-scripts"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="r-scripts">R scripts<a class="anchor" aria-label="anchor" href="#r-scripts"></a></h3>
 <div class="callout-content">
 <p>Any commands that you write in the R console can be saved to a file
 to be re-run again. Files containing R code to be ran in this way are
@@ -484,13 +483,12 @@ to the interactive R console.</li>
 </ol><ul><li>This is a great way to start; all your code is saved for later</li>
 <li>You will be able to run the file you create from within RStudio or
 using R’s <code>source()</code> function.</li>
-</ul><div id="tip-running-segments-of-your-code" class="callout callout">
+</ul><div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-running-segments-of-your-code" class="callout-inner">
-<h3 class="callout-title">Tip: Running segments of your code<a class="anchor" aria-label="anchor" href="#tip-running-segments-of-your-code"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-running-segments-of-your-code">Tip: Running segments of your code<a class="anchor" aria-label="anchor" href="#tip-running-segments-of-your-code"></a></h3>
 <div class="callout-content">
 <p>RStudio offers you great flexibility in running code from within the
 editor window. There are buttons, menu choices, and keyboard shortcuts.
@@ -545,7 +543,7 @@ behavior from bash.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">+</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">+</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -556,13 +554,12 @@ behavior from bash.</p>
 “&gt;”, it means it’s waiting for you to complete the command. If you
 want to cancel a command you can hit <kbd>Esc</kbd> and RStudio will
 give you back the “&gt;” prompt.</p>
-<div id="tip-canceling-commands" class="callout callout">
+<div id="callout3" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-canceling-commands" class="callout-inner">
-<h3 class="callout-title">Tip: Canceling commands<a class="anchor" aria-label="anchor" href="#tip-canceling-commands"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-canceling-commands">Tip: Canceling commands<a class="anchor" aria-label="anchor" href="#tip-canceling-commands"></a></h3>
 <div class="callout-content">
 <p>If you’re using R from the command line instead of from within
 RStudio, you need to use <kbd>Ctrl</kbd>+<kbd>C</kbd> instead of
@@ -796,13 +793,12 @@ usage. We’ll go through an example later.</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] TRUE</code></pre>
 </div>
-<div id="tip-comparing-numbers" class="callout callout">
+<div id="callout4" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-comparing-numbers" class="callout-inner">
-<h3 class="callout-title">Tip: Comparing Numbers<a class="anchor" aria-label="anchor" href="#tip-comparing-numbers"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-comparing-numbers">Tip: Comparing Numbers<a class="anchor" aria-label="anchor" href="#tip-comparing-numbers"></a></h3>
 <div class="callout-content">
 <p>A word of warning about comparing numbers: you should never use
 <code>==</code> to compare two numbers unless they are integers (a data
@@ -915,14 +911,14 @@ used in the community. So the recommendation is to use
 <div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>min_height</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>max.height</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>_age</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>.mass</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>MaxLength</span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>min<span class="sc">-</span>length</span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>2widths</span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>celsius2kelvin</span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a>min_height</span>
+<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a>max.height</span>
+<span id="cb43-3"><a href="#cb43-3" tabindex="-1"></a>_age</span>
+<span id="cb43-4"><a href="#cb43-4" tabindex="-1"></a>.mass</span>
+<span id="cb43-5"><a href="#cb43-5" tabindex="-1"></a>MaxLength</span>
+<span id="cb43-6"><a href="#cb43-6" tabindex="-1"></a>min<span class="sc">-</span>length</span>
+<span id="cb43-7"><a href="#cb43-7" tabindex="-1"></a><span class="dv">2</span>widths</span>
+<span id="cb43-8"><a href="#cb43-8" tabindex="-1"></a>celsius2kelvin</span></code></pre>
 </div>
 </div>
 </div>
@@ -932,7 +928,7 @@ used in the community. So the recommendation is to use
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Solution to challenge 1</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The following can be used as R variables:</p>
 <div class="codewrapper sourceCode" id="cb44">
@@ -955,9 +951,9 @@ used in the community. So the recommendation is to use
 <div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>_age</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>min<span class="sc">-</span>length</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>2widths</span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a>_age</span>
+<span id="cb46-2"><a href="#cb46-2" tabindex="-1"></a>min<span class="sc">-</span>length</span>
+<span id="cb46-3"><a href="#cb46-3" tabindex="-1"></a><span class="dv">2</span>widths</span></code></pre>
 </div>
 </div>
 </div>
@@ -1022,13 +1018,12 @@ in the global environment (your working R session):</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] "x" "y"</code></pre>
 </div>
-<div id="tip-hidden-objects" class="callout callout">
+<div id="callout5" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-hidden-objects" class="callout-inner">
-<h3 class="callout-title">Tip: hidden objects<a class="anchor" aria-label="anchor" href="#tip-hidden-objects"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-hidden-objects">Tip: hidden objects<a class="anchor" aria-label="anchor" href="#tip-hidden-objects"></a></h3>
 <div class="callout-content">
 <p>Like in the shell, <code>ls</code> will hide any variables or
 functions starting with a “.” by default. To list all objects, type
@@ -1081,7 +1076,7 @@ instead of a listing of objects.</p>
     }
     else all.names
 }
-&lt;bytecode: 0x557ba994e868&gt;
+&lt;bytecode: 0x5616fc11a8e8&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 </div>
 <p>What’s going on here?</p>
@@ -1139,13 +1134,12 @@ effects, or you may get an error message:</p>
 </h3>
 <pre class="error" tabindex="0"><code>Error in rm(list &lt;- ls()): ... must contain names or character strings</code></pre>
 </div>
-<div id="tip-warnings-vs.-errors" class="callout callout">
+<div id="callout6" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-warnings-vs.-errors" class="callout-inner">
-<h3 class="callout-title">Tip: Warnings vs. Errors<a class="anchor" aria-label="anchor" href="#tip-warnings-vs.-errors"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-warnings-vs--errors">Tip: Warnings vs. Errors<a class="anchor" aria-label="anchor" href="#tip-warnings-vs--errors"></a></h3>
 <div class="callout-content">
 <p>Pay attention when R does something unexpected! Errors, like above,
 are thrown when R cannot proceed with a calculation. Warnings on the
@@ -1212,7 +1206,7 @@ following program?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Solution to challenge 2</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb64">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1266,7 +1260,7 @@ compare mass to age. Is mass larger than age?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Solution to challenge 3</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>One way of answering this question in R is to use the
 <code>&gt;</code> to set up the following:</p>
@@ -1305,7 +1299,7 @@ variables.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Solution to challenge 4</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>We can use the <code>rm</code> command to accomplish this task</p>
 <div class="codewrapper sourceCode" id="cb70">
@@ -1336,7 +1330,7 @@ variables.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Solution to challenge 5</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>We can use the <code>install.packages()</code> command to install the
 required packages.</p>
@@ -1437,8 +1431,8 @@ functions.</li>
   "url": "https://swcarpentry.github.io/r-novice-gapminder/instructor/01-rstudio-intro.html",
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/instructor/01-rstudio-intro.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2024-02-27",
-  "datePublished": "2024-02-27"
+  "dateModified": "2024-03-05",
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

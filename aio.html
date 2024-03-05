@@ -421,7 +421,7 @@
         
 <section id="aio-01-rstudio-intro"><p>Content from <a href="01-rstudio-intro.html">Introduction to R and RStudio</a></p>
 <hr>
-<p>Last updated on 2024-02-27 |
+<p>Last updated on 2024-03-05 |
         
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/01-rstudio-intro.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -518,12 +518,12 @@ for all of these countries in under a minute!</p>
 </ul>
 <figure><img src="fig/01-rstudio.png" alt="RStudio layout" class="figure mx-auto d-block"></figure><p>Once you open files, such as R scripts, an editor panel will also
 open in the top left.</p>
-<figure><img src="fig/01-rstudio-script.png" alt="RStudio layout with .R file open" class="figure mx-auto d-block"></figure><div id="r-scripts" class="callout callout">
+<figure><img src="fig/01-rstudio-script.png" alt="RStudio layout with .R file open" class="figure mx-auto d-block"></figure><div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="r-scripts" class="callout-inner">
-<h3 class="callout-title">R scripts<a class="anchor" aria-label="anchor" href="#r-scripts"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="r-scripts">R scripts<a class="anchor" aria-label="anchor" href="#r-scripts"></a>
 </h3>
 <div class="callout-content">
 <p>Any commands that you write in the R console can be saved to a file
@@ -556,12 +556,12 @@ to the interactive R console.</li>
 <li>You will be able to run the file you create from within RStudio or
 using R’s <code>source()</code> function.</li>
 </ul>
-<div id="tip-running-segments-of-your-code" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-running-segments-of-your-code" class="callout-inner">
-<h3 class="callout-title">Tip: Running segments of your code<a class="anchor" aria-label="anchor" href="#tip-running-segments-of-your-code"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-running-segments-of-your-code">Tip: Running segments of your code<a class="anchor" aria-label="anchor" href="#tip-running-segments-of-your-code"></a>
 </h3>
 <div class="callout-content">
 <p>RStudio offers you great flexibility in running code from within the
@@ -621,7 +621,7 @@ behavior from bash.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">+</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">+</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -632,12 +632,12 @@ behavior from bash.</p>
 “&gt;”, it means it’s waiting for you to complete the command. If you
 want to cancel a command you can hit <kbd>Esc</kbd> and RStudio will
 give you back the “&gt;” prompt.</p>
-<div id="tip-canceling-commands" class="callout callout">
+<div id="callout3" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-canceling-commands" class="callout-inner">
-<h3 class="callout-title">Tip: Canceling commands<a class="anchor" aria-label="anchor" href="#tip-canceling-commands"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-canceling-commands">Tip: Canceling commands<a class="anchor" aria-label="anchor" href="#tip-canceling-commands"></a>
 </h3>
 <div class="callout-content">
 <p>If you’re using R from the command line instead of from within
@@ -876,12 +876,12 @@ usage. We’ll go through an example later.</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] TRUE</code></pre>
 </div>
-<div id="tip-comparing-numbers" class="callout callout">
+<div id="callout4" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-comparing-numbers" class="callout-inner">
-<h3 class="callout-title">Tip: Comparing Numbers<a class="anchor" aria-label="anchor" href="#tip-comparing-numbers"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-comparing-numbers">Tip: Comparing Numbers<a class="anchor" aria-label="anchor" href="#tip-comparing-numbers"></a>
 </h3>
 <div class="callout-content">
 <p>A word of warning about comparing numbers: you should never use
@@ -998,14 +998,14 @@ used in the community. So the recommendation is to use
 <div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>min_height</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>max.height</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>_age</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>.mass</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>MaxLength</span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>min<span class="sc">-</span>length</span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>2widths</span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>celsius2kelvin</span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a>min_height</span>
+<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a>max.height</span>
+<span id="cb43-3"><a href="#cb43-3" tabindex="-1"></a>_age</span>
+<span id="cb43-4"><a href="#cb43-4" tabindex="-1"></a>.mass</span>
+<span id="cb43-5"><a href="#cb43-5" tabindex="-1"></a>MaxLength</span>
+<span id="cb43-6"><a href="#cb43-6" tabindex="-1"></a>min<span class="sc">-</span>length</span>
+<span id="cb43-7"><a href="#cb43-7" tabindex="-1"></a><span class="dv">2</span>widths</span>
+<span id="cb43-8"><a href="#cb43-8" tabindex="-1"></a>celsius2kelvin</span></code></pre>
 </div>
 </div>
 </div>
@@ -1015,7 +1015,7 @@ used in the community. So the recommendation is to use
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Solution to challenge 1</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The following can be used as R variables:</p>
 <div class="codewrapper sourceCode" id="cb44">
@@ -1038,9 +1038,9 @@ used in the community. So the recommendation is to use
 <div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>_age</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>min<span class="sc">-</span>length</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>2widths</span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a>_age</span>
+<span id="cb46-2"><a href="#cb46-2" tabindex="-1"></a>min<span class="sc">-</span>length</span>
+<span id="cb46-3"><a href="#cb46-3" tabindex="-1"></a><span class="dv">2</span>widths</span></code></pre>
 </div>
 </div>
 </div>
@@ -1107,12 +1107,12 @@ in the global environment (your working R session):</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] "x" "y"</code></pre>
 </div>
-<div id="tip-hidden-objects" class="callout callout">
+<div id="callout5" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-hidden-objects" class="callout-inner">
-<h3 class="callout-title">Tip: hidden objects<a class="anchor" aria-label="anchor" href="#tip-hidden-objects"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-hidden-objects">Tip: hidden objects<a class="anchor" aria-label="anchor" href="#tip-hidden-objects"></a>
 </h3>
 <div class="callout-content">
 <p>Like in the shell, <code>ls</code> will hide any variables or
@@ -1166,7 +1166,7 @@ instead of a listing of objects.</p>
     }
     else all.names
 }
-&lt;bytecode: 0x557ba994e868&gt;
+&lt;bytecode: 0x5616fc11a8e8&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 </div>
 <p>What’s going on here?</p>
@@ -1224,12 +1224,12 @@ effects, or you may get an error message:</p>
 </h3>
 <pre class="error" tabindex="0"><code>Error in rm(list &lt;- ls()): ... must contain names or character strings</code></pre>
 </div>
-<div id="tip-warnings-vs.-errors" class="callout callout">
+<div id="callout6" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-warnings-vs.-errors" class="callout-inner">
-<h3 class="callout-title">Tip: Warnings vs. Errors<a class="anchor" aria-label="anchor" href="#tip-warnings-vs.-errors"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-warnings-vs--errors">Tip: Warnings vs. Errors<a class="anchor" aria-label="anchor" href="#tip-warnings-vs--errors"></a>
 </h3>
 <div class="callout-content">
 <p>Pay attention when R does something unexpected! Errors, like above,
@@ -1300,7 +1300,7 @@ following program?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Solution to challenge 2</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb64">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1354,7 +1354,7 @@ compare mass to age. Is mass larger than age?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Solution to challenge 3</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>One way of answering this question in R is to use the
 <code>&gt;</code> to set up the following:</p>
@@ -1393,7 +1393,7 @@ variables.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Solution to challenge 4</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>We can use the <code>rm</code> command to accomplish this task</p>
 <div class="codewrapper sourceCode" id="cb70">
@@ -1424,7 +1424,7 @@ variables.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Solution to challenge 5</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>We can use the <code>install.packages()</code> command to install the
 required packages.</p>
@@ -1471,7 +1471,7 @@ functions.</li>
 </div>
 </section></section><section id="aio-02-project-intro"><p>Content from <a href="02-project-intro.html">Project Management With RStudio</a></p>
 <hr>
-<p>Last updated on 2024-02-27 |
+<p>Last updated on 2024-03-05 |
         
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/02-project-intro.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1630,12 +1630,12 @@ output folder with different sub-directories for each separate analysis
 makes it easier later. Since many analyses are exploratory and don’t end
 up being used in the final project, and some of the analyses get shared
 between projects.</p>
-<div id="tip-good-enough-practices-for-scientific-computing" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-good-enough-practices-for-scientific-computing" class="callout-inner">
-<h3 class="callout-title">Tip: Good Enough Practices for Scientific
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-good-enough-practices-for-scientific-computing">Tip: Good Enough Practices for Scientific
 Computing<a class="anchor" aria-label="anchor" href="#tip-good-enough-practices-for-scientific-computing"></a>
 </h3>
 <div class="callout-content">
@@ -1734,18 +1734,18 @@ questions:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lh</span> data/gapminder_data.csv</span></code></pre>
+<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lh</span> data/gapminder_data.csv</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>-rw-r--r-- 1 runner docker 80K Feb 27 00:21 data/gapminder_data.csv</code></pre>
+<pre class="output" tabindex="0"><code>-rw-r--r-- 1 runner docker 80K Mar  5 00:11 data/gapminder_data.csv</code></pre>
 </div>
 <p>The file size is 80K.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> data/gapminder_data.csv</span></code></pre>
+<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> data/gapminder_data.csv</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1756,7 +1756,7 @@ questions:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> data/gapminder_data.csv</span></code></pre>
+<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">head</span> data/gapminder_data.csv</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1776,12 +1776,12 @@ Afghanistan,1992,16317921,Asia,41.674,649.3413952</code></pre>
 </div>
 </div>
 </div>
-<div id="tip-command-line-in-rstudio" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-command-line-in-rstudio" class="callout-inner">
-<h3 class="callout-title">Tip: command line in RStudio<a class="anchor" aria-label="anchor" href="#tip-command-line-in-rstudio"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-command-line-in-rstudio">Tip: command line in RStudio<a class="anchor" aria-label="anchor" href="#tip-command-line-in-rstudio"></a>
 </h3>
 <div class="callout-content">
 <p>The Terminal tab in the console pane provides a convenient place
@@ -1833,12 +1833,12 @@ command will automatically appear in the console.</li>
 </div>
 </div>
 </div>
-<div id="tip-file-does-not-exist-errors" class="callout callout">
+<div id="callout3" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-file-does-not-exist-errors" class="callout-inner">
-<h3 class="callout-title">Tip: File does not exist errors<a class="anchor" aria-label="anchor" href="#tip-file-does-not-exist-errors"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-file-does-not-exist-errors">Tip: File does not exist errors<a class="anchor" aria-label="anchor" href="#tip-file-does-not-exist-errors"></a>
 </h3>
 <div class="callout-content">
 <p>When you’re attempting to reference a file in your R code and you’re
@@ -1877,7 +1877,7 @@ layout.</li>
 </div>
 </section></section><section id="aio-03-seeking-help"><p>Content from <a href="03-seeking-help.html">Seeking Help</a></p>
 <hr>
-<p>Last updated on 2024-02-27 |
+<p>Last updated on 2024-03-05 |
         
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/03-seeking-help.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1963,12 +1963,12 @@ main ones you should be aware of.</p>
 often share the same arguments as inputs to the function, so package
 authors often choose to document them together in a single help
 file.</p>
-<div id="tip-running-examples" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-running-examples" class="callout-inner">
-<h3 class="callout-title">Tip: Running Examples<a class="anchor" aria-label="anchor" href="#tip-running-examples"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-running-examples">Tip: Running Examples<a class="anchor" aria-label="anchor" href="#tip-running-examples"></a>
 </h3>
 <div class="callout-content">
 <p>From within the function help page, you can highlight code in the
@@ -1978,12 +1978,12 @@ works.</p>
 </div>
 </div>
 </div>
-<div id="tip-reading-help-files" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-reading-help-files" class="callout-inner">
-<h3 class="callout-title">Tip: Reading Help Files<a class="anchor" aria-label="anchor" href="#tip-reading-help-files"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-reading-help-files">Tip: Reading Help Files<a class="anchor" aria-label="anchor" href="#tip-reading-help-files"></a>
 </h3>
 <div class="callout-content">
 <p>One of the most daunting aspects of R is the large number of
@@ -2093,7 +2093,7 @@ attached base packages:
 
 loaded via a namespace (and not attached):
 [1] compiler_4.3.2 tools_4.3.2    yaml_2.3.8     knitr_1.45     xfun_0.41     
-[6] renv_1.0.4     evaluate_0.23 </code></pre>
+[6] renv_1.0.5     evaluate_0.23 </code></pre>
 </div>
 <p>Will print out your current version of R, as well as any packages you
 have loaded. This can be useful for others to help reproduce and debug
@@ -2298,7 +2298,7 @@ cheat sheets</a></li>
 </div>
 </section></section><section id="aio-04-data-structures-part1"><p>Content from <a href="04-data-structures-part1.html">Data Structures</a></p>
 <hr>
-<p>Last updated on 2024-02-27 |
+<p>Last updated on 2024-03-05 |
         
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/04-data-structures-part1.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -2365,17 +2365,17 @@ argument names and their default values.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>coat,weight,likes_string</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>calico,<span class="fl">2.1</span>,<span class="dv">1</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>black,<span class="fl">5.0</span>,<span class="dv">0</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>tabby,<span class="fl">3.2</span>,<span class="dv">1</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>coat,weight,likes_string</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>calico,<span class="fl">2.1</span>,<span class="dv">1</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>black,<span class="fl">5.0</span>,<span class="dv">0</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>tabby,<span class="fl">3.2</span>,<span class="dv">1</span></span></code></pre>
 </div>
-<div id="tip-editing-text-files-in-r" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-editing-text-files-in-r" class="callout-inner">
-<h3 class="callout-title">Tip: Editing Text files in R<a class="anchor" aria-label="anchor" href="#tip-editing-text-files-in-r"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-editing-text-files-in-r">Tip: Editing Text files in R<a class="anchor" aria-label="anchor" href="#tip-editing-text-files-in-r"></a>
 </h3>
 <div class="callout-content">
 <p>Alternatively, you can create <code>data/feline-data.csv</code> using
@@ -2412,12 +2412,12 @@ tabs. Of these three functions <code>read.csv</code> is the most
 commonly used. If needed it is possible to override the default
 delimiting punctuation marks for both <code>read.csv</code> and
 <code>read.delim</code>.</p>
-<div id="check-your-data-for-factors" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="check-your-data-for-factors" class="callout-inner">
-<h3 class="callout-title">Check your data for factors<a class="anchor" aria-label="anchor" href="#check-your-data-for-factors"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="check-your-data-for-factors">Check your data for factors<a class="anchor" aria-label="anchor" href="#check-your-data-for-factors"></a>
 </h3>
 <div class="callout-content">
 <p>In recent times, the default way how R handles textual data has
@@ -2604,11 +2604,11 @@ file <code>data/feline-data_v2.csv</code>.</p>
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>coat,weight,likes_string</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>calico,<span class="fl">2.1</span>,<span class="dv">1</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>black,<span class="fl">5.0</span>,<span class="dv">0</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>tabby,<span class="fl">3.2</span>,<span class="dv">1</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>tabby,<span class="fl">2.3</span> or <span class="fl">2.4</span>,<span class="dv">1</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>coat,weight,likes_string</span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>calico,<span class="fl">2.1</span>,<span class="dv">1</span></span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a>black,<span class="fl">5.0</span>,<span class="dv">0</span></span>
+<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a>tabby,<span class="fl">3.2</span>,<span class="dv">1</span></span>
+<span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a>tabby,<span class="fl">2.3</span> or <span class="fl">2.4</span>,<span class="dv">1</span></span></code></pre>
 </div>
 <p>Load the new cats data like before, and check what type of data we
 find in the <code>weight</code> column:</p>
@@ -2766,7 +2766,7 @@ does this help us?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Discussion 1</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>By keeping everything in a column the same, we allow ourselves to
 make simple assumptions about our data; if you can interpret one entry
@@ -2996,7 +2996,7 @@ the data to the console</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Tip 1.1</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Show the content of any variable by typing its name.</p>
 <div class="section level3">
@@ -3029,7 +3029,7 @@ the <code>cats</code> table.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Tip 1.2</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>In the chapter “Data types” we saw two functions that can show data
 types. One printed just a single word, the data type name. The other
@@ -3071,7 +3071,7 @@ weight!</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Tip 1.3</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>Scroll up to the section about the <a href="#the-type-hierarchy">type
 hierarchy</a> to review the available data types</p>
@@ -3084,7 +3084,7 @@ hierarchy</a> to review the available data types</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Solution to Challenge 1.3</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <ul>
 <li>Weight is expressed on a continuous scale (real numbers). The R data
@@ -3118,7 +3118,7 @@ type after executing to see if you were right.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6">Tip 1.4</h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>Revisit the hierarchy of data types when two different data types are
 combined.</p>
@@ -3157,7 +3157,7 @@ yet. Coerce the column to floating point numbers.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7">Tip 1.5</h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <p>The functions to convert data types start with <code>as.</code>. You
 can look for the function further up in the manuscript or use the
@@ -3348,7 +3348,7 @@ multiply the vector by 2.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
   <h4 class="accordion-header" id="headingSolution8">Solution to Challenge 2</h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb92">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3578,7 +3578,7 @@ functions.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution9" aria-expanded="false" aria-controls="collapseSolution9">
   <h4 class="accordion-header" id="headingSolution9">Solution to Challenge 3</h4>
 </button>
-<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
+<div id="collapseSolution9" class="accordion-collapse collapse" data-bs-parent="#accordionSolution9" aria-labelledby="headingSolution9">
 <div class="accordion-body">
 <p>You get the names of an object by wrapping the object name inside
 <code>names(...)</code>. Similarly, you get the data type of the names
@@ -3623,7 +3623,7 @@ give you the number 2!</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution10" aria-expanded="false" aria-controls="collapseSolution10">
   <h4 class="accordion-header" id="headingSolution10">Solution to Challenge 4</h4>
 </button>
-<div id="collapseSolution10" class="accordion-collapse collapse" aria-labelledby="headingSolution10" data-bs-parent="#accordionSolution10">
+<div id="collapseSolution10" class="accordion-collapse collapse" data-bs-parent="#accordionSolution10" aria-labelledby="headingSolution10">
 <div class="accordion-body">
 <pre><code><span><span class="va">letter_no</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">26</span>   <span class="co"># or seq(1,26)</span></span>
 <span><span class="fu">names</span><span class="op">(</span><span class="va">letter_no</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">LETTERS</span></span>
@@ -3814,7 +3814,7 @@ is returned in each case.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution11" aria-expanded="false" aria-controls="collapseSolution11">
   <h4 class="accordion-header" id="headingSolution11">Solution to Challenge 5</h4>
 </button>
-<div id="collapseSolution11" class="accordion-collapse collapse" aria-labelledby="headingSolution11" data-bs-parent="#accordionSolution11">
+<div id="collapseSolution11" class="accordion-collapse collapse" data-bs-parent="#accordionSolution11" aria-labelledby="headingSolution11">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb138">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3926,12 +3926,12 @@ containing all the values in the first row.</p>
 </div>
 </div>
 </div>
-<div id="tip-renaming-data-frame-columns" class="callout callout">
+<div id="callout3" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-renaming-data-frame-columns" class="callout-inner">
-<h3 class="callout-title">Tip: Renaming data frame columns<a class="anchor" aria-label="anchor" href="#tip-renaming-data-frame-columns"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-renaming-data-frame-columns">Tip: Renaming data frame columns<a class="anchor" aria-label="anchor" href="#tip-renaming-data-frame-columns"></a>
 </h3>
 <div class="callout-content">
 <p>Data frames have column names, which can be accessed with the
@@ -4075,7 +4075,7 @@ not?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution12" aria-expanded="false" aria-controls="collapseSolution12">
   <h4 class="accordion-header" id="headingSolution12">Solution to Challenge 6</h4>
 </button>
-<div id="collapseSolution12" class="accordion-collapse collapse" aria-labelledby="headingSolution12" data-bs-parent="#accordionSolution12">
+<div id="collapseSolution12" class="accordion-collapse collapse" data-bs-parent="#accordionSolution12" aria-labelledby="headingSolution12">
 <div class="accordion-body">
 <p>What do you think will be the result of
 <code>length(matrix_example)</code>?</p>
@@ -4119,7 +4119,7 @@ figure out how to change this. (hint: read the documentation for
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution13" aria-expanded="false" aria-controls="collapseSolution13">
   <h4 class="accordion-header" id="headingSolution13">Solution to Challenge 7</h4>
 </button>
-<div id="collapseSolution13" class="accordion-collapse collapse" aria-labelledby="headingSolution13" data-bs-parent="#accordionSolution13">
+<div id="collapseSolution13" class="accordion-collapse collapse" data-bs-parent="#accordionSolution13" aria-labelledby="headingSolution13">
 <div class="accordion-body">
 <p>Make another matrix, this time containing the numbers 1:50, with 5
 columns and 10 rows. Did the <code>matrix</code> function fill your
@@ -4161,7 +4161,7 @@ data structures we’ve seen so far.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution14" aria-expanded="false" aria-controls="collapseSolution14">
   <h4 class="accordion-header" id="headingSolution14">Solution to Challenge 8</h4>
 </button>
-<div id="collapseSolution14" class="accordion-collapse collapse" aria-labelledby="headingSolution14" data-bs-parent="#accordionSolution14">
+<div id="collapseSolution14" class="accordion-collapse collapse" data-bs-parent="#accordionSolution14" aria-labelledby="headingSolution14">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb173">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4213,7 +4213,7 @@ about what matrices the other commands will produce.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution15" aria-expanded="false" aria-controls="collapseSolution15">
   <h4 class="accordion-header" id="headingSolution15">Solution to Challenge 9</h4>
 </button>
-<div id="collapseSolution15" class="accordion-collapse collapse" aria-labelledby="headingSolution15" data-bs-parent="#accordionSolution15">
+<div id="collapseSolution15" class="accordion-collapse collapse" data-bs-parent="#accordionSolution15" aria-labelledby="headingSolution15">
 <div class="accordion-body">
 <p>Consider the R output of the matrix below:</p>
 <div class="codewrapper">
@@ -4258,7 +4258,7 @@ lists and vectors, with some added attributes.</li>
 </div>
 </section></section><section id="aio-05-data-structures-part2"><p>Content from <a href="05-data-structures-part2.html">Exploring Data Frames</a></p>
 <hr>
-<p>Last updated on 2024-02-27 |
+<p>Last updated on 2024-03-05 |
         
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/05-data-structures-part2.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -4568,7 +4568,7 @@ person’s answer to the question, “Is it time for coffee break?”</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Solution to Challenge 1</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4597,12 +4597,12 @@ previously:</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="fu">read.csv</span><span class="op">(</span><span class="st">"data/gapminder_data.csv"</span><span class="op">)</span></span></code></pre>
 </div>
-<div id="miscellaneous-tips" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="miscellaneous-tips" class="callout-inner">
-<h3 class="callout-title">Miscellaneous Tips<a class="anchor" aria-label="anchor" href="#miscellaneous-tips"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="miscellaneous-tips">Miscellaneous Tips<a class="anchor" aria-label="anchor" href="#miscellaneous-tips"></a>
 </h3>
 <div class="callout-content">
 <ul>
@@ -4858,7 +4858,7 @@ could ask for a few lines at random. How would you code this?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Solution to Challenge 2</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>To check the last few lines it’s relatively simple as R already has a
 function for this:</p>
@@ -4918,7 +4918,7 @@ RStudio).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Solution to Challenge 3</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>The <code>source</code> function can be used to use a script within a
 script. Assume you would like to load the same type of file over and
@@ -4969,7 +4969,7 @@ neighbors!</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Solution to Challenge 4</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>The object <code>gapminder</code> is a data frame with columns</p>
 <ul>
@@ -5011,7 +5011,7 @@ represents.</li>
 </div>
 </section></section><section id="aio-06-data-subsetting"><p>Content from <a href="06-data-subsetting.html">Subsetting Data</a></p>
 <hr>
-<p>Last updated on 2024-02-27 |
+<p>Last updated on 2024-03-05 |
         
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/06-data-subsetting.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -5067,12 +5067,12 @@ structures.</p>
 <pre class="output" tabindex="0"><code>  a   b   c   d   e 
 5.4 6.2 7.1 4.8 7.5 </code></pre>
 </div>
-<div id="atomic-vectors" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="atomic-vectors" class="callout-inner">
-<h3 class="callout-title">Atomic vectors<a class="anchor" aria-label="anchor" href="#atomic-vectors"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="atomic-vectors">Atomic vectors<a class="anchor" aria-label="anchor" href="#atomic-vectors"></a>
 </h3>
 <div class="callout-content">
 <p>In R, simple vectors containing character strings, numbers, or
@@ -5206,12 +5206,12 @@ name is also <code>NA</code>.</p>
 </h3>
 <pre class="output" tabindex="0"><code>named numeric(0)</code></pre>
 </div>
-<div id="vector-numbering-in-r-starts-at-1" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="vector-numbering-in-r-starts-at-1" class="callout-inner">
-<h3 class="callout-title">Vector numbering in R starts at 1<a class="anchor" aria-label="anchor" href="#vector-numbering-in-r-starts-at-1"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="vector-numbering-in-r-starts-at-1">Vector numbering in R starts at 1<a class="anchor" aria-label="anchor" href="#vector-numbering-in-r-starts-at-1"></a>
 </h3>
 <div class="callout-content">
 <p>In many programming languages (C and Python, for example), the first
@@ -5249,12 +5249,12 @@ every element <em>except</em> for the one specified:</p>
 <pre class="output" tabindex="0"><code>  b   c   d 
 6.2 7.1 4.8 </code></pre>
 </div>
-<div id="tip-order-of-operations" class="callout callout">
+<div id="callout3" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-order-of-operations" class="callout-inner">
-<h3 class="callout-title">Tip: Order of operations<a class="anchor" aria-label="anchor" href="#tip-order-of-operations"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-order-of-operations">Tip: Order of operations<a class="anchor" aria-label="anchor" href="#tip-order-of-operations"></a>
 </h3>
 <div class="callout-content">
 <p>A common trip up for novices occurs when trying to skip slices of a
@@ -5462,12 +5462,12 @@ by name (remember you have to use <code>==</code> rather than
 <pre class="output" tabindex="0"><code><span>  <span class="va">a</span> </span>
 <span><span class="fl">5.4</span> </span></code></pre>
 </div>
-<div id="tip-combining-logical-conditions" class="callout callout">
+<div id="callout4" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-combining-logical-conditions" class="callout-inner">
-<h3 class="callout-title">Tip: Combining logical conditions<a class="anchor" aria-label="anchor" href="#tip-combining-logical-conditions"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-combining-logical-conditions">Tip: Combining logical conditions<a class="anchor" aria-label="anchor" href="#tip-combining-logical-conditions"></a>
 </h3>
 <div class="callout-content">
 <p>We often want to combine multiple logical criteria. For example, we
@@ -5559,12 +5559,12 @@ than 4 and less than 7.</p>
 </div>
 </div>
 </div>
-<div id="tip-non-unique-names" class="callout callout">
+<div id="callout5" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-non-unique-names" class="callout-inner">
-<h3 class="callout-title">Tip: Non-unique names<a class="anchor" aria-label="anchor" href="#tip-non-unique-names"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-non-unique-names">Tip: Non-unique names<a class="anchor" aria-label="anchor" href="#tip-non-unique-names"></a>
 </h3>
 <div class="callout-content">
 <p>You should be aware that it is possible for multiple elements in a
@@ -5623,12 +5623,12 @@ unique.) Consider these examples:</p>
 </div>
 </div>
 </div>
-<div id="tip-getting-help-for-operators" class="callout callout">
+<div id="callout6" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-getting-help-for-operators" class="callout-inner">
-<h3 class="callout-title">Tip: Getting help for operators<a class="anchor" aria-label="anchor" href="#tip-getting-help-for-operators"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-getting-help-for-operators">Tip: Getting help for operators<a class="anchor" aria-label="anchor" href="#tip-getting-help-for-operators"></a>
 </h3>
 <div class="callout-content">
 <p>Remember you can search for help on operators by wrapping them in
@@ -5984,12 +5984,12 @@ matrix, R will throw an error:</p>
 </h3>
 <pre class="error" tabindex="0"><code>Error in m[, c(3, 6)]: subscript out of bounds</code></pre>
 </div>
-<div id="tip-higher-dimensional-arrays" class="callout callout">
+<div id="callout7" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-higher-dimensional-arrays" class="callout-inner">
-<h3 class="callout-title">Tip: Higher dimensional arrays<a class="anchor" aria-label="anchor" href="#tip-higher-dimensional-arrays"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-higher-dimensional-arrays">Tip: Higher dimensional arrays<a class="anchor" aria-label="anchor" href="#tip-higher-dimensional-arrays"></a>
 </h3>
 <div class="callout-content">
 <p>when dealing with multi-dimensional arrays, each argument to
@@ -6412,7 +6412,7 @@ changed with the third argument, <code>drop = FALSE</code>).</p>
 <div class="codewrapper sourceCode" id="cb134">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a>gapminder[gapminder<span class="sc">$</span>year <span class="ot">=</span> <span class="dv">1957</span>,]</span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1" tabindex="-1"></a>gapminder[gapminder<span class="sc">$</span>year <span class="ot">=</span> <span class="dv">1957</span>,]</span></code></pre>
 </div>
 <ol start="2" style="list-style-type: decimal">
 <li>Extract all columns except 1 through to 4</li>
@@ -6585,7 +6585,7 @@ data.</li>
 </div>
 </section></section><section id="aio-07-control-flow"><p>Content from <a href="07-control-flow.html">Control Flow</a></p>
 <hr>
-<p>Last updated on 2024-02-27 |
+<p>Last updated on 2024-03-05 |
         
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/07-control-flow.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -6628,17 +6628,17 @@ statements, the most commonly used approaches are the constructs:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition is true) {</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  perform action</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># if ... else</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition is true) {</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  perform action</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {  <span class="co"># that is, if the condition is false,</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  perform alternative action</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># if</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="cf">if</span> (condition is true) {</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>  perform action</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>}</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="co"># if ... else</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="cf">if</span> (condition is true) {</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>  perform action</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>} <span class="cf">else</span> {  <span class="co"># that is, if the condition is false,</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>  perform alternative action</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>}</span></code></pre>
 </div>
 <p>Say, for example, that we want R to print a message if a variable
 <code>x</code> has a particular value:</p>
@@ -6816,12 +6816,13 @@ The <code>if()</code> function will still run, but will only evaluate
 the condition in the first element of the vector. Therefore, to use the
 <code>if()</code> function, you need to make sure your input is singular
 (of length 1).</p>
-<div id="tip-built-in-ifelse-function" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-built-in-ifelse-function" class="callout-inner">
-<h3 class="callout-title">Tip: Built in<code>ifelse()</code>function<a class="anchor" aria-label="anchor" href="#tip-built-in-ifelse-function"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-built-in-ifelse-function">Tip: Built in <code>ifelse()</code>
+function<a class="anchor" aria-label="anchor" href="#tip-built-in-ifelse-function"></a>
 </h3>
 <div class="callout-content">
 <p><code>R</code> accepts both <code>if()</code> and
@@ -6832,8 +6833,8 @@ structured as follows:</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ifelse function</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(condition is true, perform action, perform alternative action)</span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># ifelse function</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="fu">ifelse</span>(condition is true, perform action, perform alternative action)</span></code></pre>
 </div>
 <p>where the first argument is the condition or a set of conditions to
 be met, the second argument is the statement that is evaluated when the
@@ -6854,12 +6855,14 @@ that is evaluated when the condition is <code>FALSE</code>.</p>
 </div>
 </div>
 </div>
-<div id="tip-any-and-all" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-any-and-all" class="callout-inner">
-<h3 class="callout-title">Tip:<code>any()</code>and<code>all()</code><a class="anchor" aria-label="anchor" href="#tip-any-and-all"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-any-and-all">Tip: <code>any()</code> and
+<code>all()</code>
+<a class="anchor" aria-label="anchor" href="#tip-any-and-all"></a>
 </h3>
 <div class="callout-content">
 <p>The <code>any()</code> function will return <code>TRUE</code> if at
@@ -6891,9 +6894,9 @@ efficiency.</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (iterator <span class="cf">in</span> set of values) {</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  do a thing</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="cf">for</span> (iterator <span class="cf">in</span> set of values) {</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>  do a thing</span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a>}</span></code></pre>
 </div>
 <p>For example:</p>
 <div class="codewrapper sourceCode" id="cb22">
@@ -6991,12 +6994,12 @@ new object.</p>
 <p>This approach can be useful, but ‘growing your results’ (building the
 result object incrementally) is computationally inefficient, so avoid it
 when you are iterating through a lot of values.</p>
-<div id="tip-dont-grow-your-results" class="callout callout">
+<div id="callout3" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-dont-grow-your-results" class="callout-inner">
-<h3 class="callout-title">Tip: don’t grow your results<a class="anchor" aria-label="anchor" href="#tip-dont-grow-your-results"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-dont-grow-your-results">Tip: don’t grow your results<a class="anchor" aria-label="anchor" href="#tip-dont-grow-your-results"></a>
 </h3>
 <div class="callout-content">
 <p>One of the biggest things that trips up novices and experienced R
@@ -7037,12 +7040,12 @@ more efficient.</p>
 [13] "3 c" "4 c" "5 c" "1 d" "2 d" "3 d" "4 d" "5 d" "1 e" "2 e" "3 e" "4 e"
 [25] "5 e"</code></pre>
 </div>
-<div id="tip-while-loops" class="callout callout">
+<div id="callout4" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-while-loops" class="callout-inner">
-<h3 class="callout-title">Tip: While loops<a class="anchor" aria-label="anchor" href="#tip-while-loops"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-while-loops">Tip: While loops<a class="anchor" aria-label="anchor" href="#tip-while-loops"></a>
 </h3>
 <div class="callout-content">
 <p>Sometimes you will find yourself needing to repeat an operation as
@@ -7051,9 +7054,9 @@ long as a certain condition is met. You can do this with a
 <div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(this condition is true){</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  do a thing</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="cf">while</span>(this condition is true){</span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>  do a thing</span>
+<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a>}</span></code></pre>
 </div>
 <p>R will interpret a condition being met as “TRUE”.</p>
 <p>As an example, here’s a while loop that generates random numbers from
@@ -7385,7 +7388,7 @@ base-plot to plot the evolution of average life expectancy using
 </div>
 </section></section><section id="aio-08-plot-ggplot2"><p>Content from <a href="08-plot-ggplot2.html">Creating Publication-Quality Graphics with ggplot2</a></p>
 <hr>
-<p>Last updated on 2024-02-27 |
+<p>Last updated on 2024-03-05 |
         
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/08-plot-ggplot2.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -7526,7 +7529,7 @@ appear on the x-axis.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Solution to challenge 1</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Here is one possible solution:</p>
 <div class="codewrapper sourceCode" id="cb5">
@@ -7566,7 +7569,7 @@ do you see in the data? Are they what you expected?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Solution to challenge 2</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>The solution presented below adds <code>color=continent</code> to the
 call of the <code>aes</code> function. The general trend seems to
@@ -7638,12 +7641,12 @@ of</em> the lines. Here’s a demonstration:</p>
 <code>ggplot</code> to the <code>geom_line</code> layer so it no longer
 applies to the points. Now we can clearly see that the points are drawn
 on top of the lines.</p>
-<div id="tip-setting-an-aesthetic-to-a-value-instead-of-a-mapping" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-setting-an-aesthetic-to-a-value-instead-of-a-mapping" class="callout-inner">
-<h3 class="callout-title">Tip: Setting an aesthetic to a value instead
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-setting-an-aesthetic-to-a-value-instead-of-a-mapping">Tip: Setting an aesthetic to a value instead
 of a mapping<a class="anchor" aria-label="anchor" href="#tip-setting-an-aesthetic-to-a-value-instead-of-a-mapping"></a>
 </h3>
 <div class="callout-content">
@@ -7678,7 +7681,7 @@ example. What happened?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Solution to challenge 3</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>The lines now get drawn over the points!</p>
 <div class="codewrapper sourceCode" id="cb11">
@@ -7728,12 +7731,12 @@ spaced from left to right. For example, a GDP per capita of 1,000 is the
 same horizontal distance away from a value of 10,000 as the 10,000 value
 is from 100,000. This helps to visualize the spread of the data along
 the x-axis.</p>
-<div id="tip-reminder-setting-an-aesthetic-to-a-value-instead-of-a-mapping" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-reminder-setting-an-aesthetic-to-a-value-instead-of-a-mapping" class="callout-inner">
-<h3 class="callout-title">Tip Reminder: Setting an aesthetic to a value
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-reminder-setting-an-aesthetic-to-a-value-instead-of-a-mapping">Tip Reminder: Setting an aesthetic to a value
 instead of a mapping<a class="anchor" aria-label="anchor" href="#tip-reminder-setting-an-aesthetic-to-a-value-instead-of-a-mapping"></a>
 </h3>
 <div class="callout-content">
@@ -7810,7 +7813,7 @@ previous example.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Solution to challenge 4a</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>Here a possible solution: Notice that the <code>color</code> argument
 is supplied outside of the <code>aes()</code> function. This means that
@@ -7853,7 +7856,7 @@ The color argument can be used inside the aesthetic.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Solution to challenge 4b</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>Here is a possible solution: Notice that supplying the
 <code>color</code> argument inside the <code>aes()</code> functions
@@ -7886,12 +7889,12 @@ point’s color based on its continent value.</p>
 <p>Earlier we visualized the change in life expectancy over time across
 all countries in one plot. Alternatively, we can split this out over
 multiple panels by adding a layer of <strong>facet</strong> panels.</p>
-<div id="tip" class="callout callout">
+<div id="callout3" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip" class="callout-inner">
-<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#tip"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip">Tip<a class="anchor" aria-label="anchor" href="#tip"></a>
 </h3>
 <div class="callout-content">
 <p>We start by making a subset of data including only countries located
@@ -8011,7 +8014,7 @@ continents during the available years.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6">Solution to Challenge 5</h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>Here a possible solution: <code>xlab()</code> and <code>ylab()</code>
 set labels for the x and y axes, respectively The axis title, text and
@@ -8051,7 +8054,7 @@ scale transformation, and grouping.</li>
 </div>
 </section></section><section id="aio-09-vectorization"><p>Content from <a href="09-vectorization.html">Vectorization</a></p>
 <hr>
-<p>Last updated on 2024-02-27 |
+<p>Last updated on 2024-03-05 |
         
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/09-vectorization.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -8117,11 +8120,11 @@ of <code>y</code>:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">:</span>  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="sc">+</span>  <span class="sc">+</span>  <span class="sc">+</span>  <span class="sc">+</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>y<span class="sc">:</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="sc">---------------</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">7</span>  <span class="dv">9</span> <span class="dv">11</span> <span class="dv">13</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>x<span class="sc">:</span>  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>    <span class="sc">+</span>  <span class="sc">+</span>  <span class="sc">+</span>  <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>y<span class="sc">:</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="sc">---------------</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>    <span class="dv">7</span>  <span class="dv">9</span> <span class="dv">11</span> <span class="dv">13</span></span></code></pre>
 </div>
 <p>Here is how we would add two vectors together using a for loop:</p>
 <div class="codewrapper sourceCode" id="cb6">
@@ -8275,12 +8278,12 @@ vectorized:</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] FALSE FALSE FALSE  TRUE</code></pre>
 </div>
-<div id="tip-some-useful-functions-for-logical-vectors" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-some-useful-functions-for-logical-vectors" class="callout-inner">
-<h3 class="callout-title">Tip: some useful functions for logical
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-some-useful-functions-for-logical-vectors">Tip: some useful functions for logical
 vectors<a class="anchor" aria-label="anchor" href="#tip-some-useful-functions-for-logical-vectors"></a>
 </h3>
 <div class="callout-content">
@@ -8320,13 +8323,13 @@ elements of a vector are <code>TRUE</code>.</p>
 [2,]   -2   -5   -8  -11
 [3,]   -3   -6   -9  -12</code></pre>
 </div>
-<div id="tip-element-wise-vs.-matrix-multiplication" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-element-wise-vs.-matrix-multiplication" class="callout-inner">
-<h3 class="callout-title">Tip: element-wise vs. matrix
-multiplication<a class="anchor" aria-label="anchor" href="#tip-element-wise-vs.-matrix-multiplication"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-element-wise-vs--matrix-multiplication">Tip: element-wise vs. matrix
+multiplication<a class="anchor" aria-label="anchor" href="#tip-element-wise-vs--matrix-multiplication"></a>
 </h3>
 <div class="callout-content">
 <p>Very important: the operator <code>*</code> gives you element-wise
@@ -8575,12 +8578,12 @@ n=10,000?</p>
 </div>
 </div>
 </div>
-<div id="tip-operations-on-vectors-of-unequal-length" class="callout callout">
+<div id="callout3" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-operations-on-vectors-of-unequal-length" class="callout-inner">
-<h3 class="callout-title">Tip: Operations on vectors of unequal
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-operations-on-vectors-of-unequal-length">Tip: Operations on vectors of unequal
 length<a class="anchor" aria-label="anchor" href="#tip-operations-on-vectors-of-unequal-length"></a>
 </h3>
 <div class="callout-content">
@@ -8613,11 +8616,11 @@ length</code></pre>
 <div class="codewrapper sourceCode" id="cb50">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">:</span>  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">1</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    <span class="sc">+</span>  <span class="sc">+</span>  <span class="sc">+</span>  <span class="sc">+</span>  <span class="sc">+</span>  <span class="sc">+</span>  <span class="sc">+</span></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>y<span class="sc">:</span>  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="sc">-----------------------</span></span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>  <span class="dv">4</span>  <span class="dv">6</span>  <span class="dv">5</span>  <span class="dv">7</span>  <span class="dv">9</span>  <span class="dv">8</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a>x<span class="sc">:</span>  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">1</span></span>
+<span id="cb50-2"><a href="#cb50-2" tabindex="-1"></a>    <span class="sc">+</span>  <span class="sc">+</span>  <span class="sc">+</span>  <span class="sc">+</span>  <span class="sc">+</span>  <span class="sc">+</span>  <span class="sc">+</span></span>
+<span id="cb50-3"><a href="#cb50-3" tabindex="-1"></a>y<span class="sc">:</span>  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span></span>
+<span id="cb50-4"><a href="#cb50-4" tabindex="-1"></a><span class="sc">-----------------------</span></span>
+<span id="cb50-5"><a href="#cb50-5" tabindex="-1"></a>    <span class="dv">2</span>  <span class="dv">4</span>  <span class="dv">6</span>  <span class="dv">5</span>  <span class="dv">7</span>  <span class="dv">9</span>  <span class="dv">8</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -8637,7 +8640,7 @@ length</code></pre>
 </div>
 </div></section><section id="aio-10-functions"><p>Content from <a href="10-functions.html">Functions Explained</a></p>
 <hr>
-<p>Last updated on 2024-02-27 |
+<p>Last updated on 2024-03-05 |
         
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/10-functions.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -8683,12 +8686,12 @@ again. We may also obtain similar data from a different source in the
 future.</p>
 <p>In this lesson, we’ll learn how to write a function so that we can
 repeat several operations with a single command.</p>
-<div id="what-is-a-function" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="what-is-a-function" class="callout-inner">
-<h3 class="callout-title">What is a function?<a class="anchor" aria-label="anchor" href="#what-is-a-function"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="what-is-a-function">What is a function?<a class="anchor" aria-label="anchor" href="#what-is-a-function"></a>
 </h3>
 <div class="callout-content">
 <p>Functions gather a sequence of operations into a whole, preserving it
@@ -8749,12 +8752,12 @@ operators to it.</p>
 assigned to those variables so that we can use them inside the function.
 Inside the function, we use a <a href="reference.html#return-statement">return statement</a> to send a
 result back to whoever asked for it.</p>
-<div id="tip" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip" class="callout-inner">
-<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#tip"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip">Tip<a class="anchor" aria-label="anchor" href="#tip"></a>
 </h3>
 <div class="callout-content">
 <p>One feature unique to R is that the return statement is not required.
@@ -8809,7 +8812,7 @@ temperature in Kelvin and returns that temperature in Celsius.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Solution to challenge 1</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Write a function called <code>kelvin_to_celsius</code> that takes a
 temperature in Kelvin and returns that temperature in Celsius</p>
@@ -8866,7 +8869,7 @@ prefer).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Solution to challenge 2</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Define the function to convert directly from Fahrenheit to Celsius,
 by reusing these two functions above</p>
@@ -9000,7 +9003,7 @@ the argument <code>temp</code> is specified inappropriately.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Solution to challenge 3</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Extend our previous definition of the function by adding in an
 explicit call to <code>stopifnot()</code>. Since
@@ -9160,7 +9163,7 @@ that the output is much more informative than a vector of numbers.</p>
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>calcGDP <span class="ot">&lt;-</span> <span class="cf">function</span>(dat, <span class="at">year=</span><span class="cn">NULL</span>, <span class="at">country=</span><span class="cn">NULL</span>) {</span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>calcGDP <span class="ot">&lt;-</span> <span class="cf">function</span>(dat, <span class="at">year=</span><span class="cn">NULL</span>, <span class="at">country=</span><span class="cn">NULL</span>) {</span></code></pre>
 </div>
 <p>Here we’ve added two arguments, <code>year</code>, and
 <code>country</code>. We’ve set <em>default arguments</em> for both as
@@ -9192,12 +9195,12 @@ for later. Now, we can use it to calculate the GDP for:</p>
 </ul>
 <p>By using <code>%in%</code> instead, we can also give multiple years
 or countries to those arguments.</p>
-<div id="tip-pass-by-value" class="callout callout">
+<div id="callout3" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-pass-by-value" class="callout-inner">
-<h3 class="callout-title">Tip: Pass by value<a class="anchor" aria-label="anchor" href="#tip-pass-by-value"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-pass-by-value">Tip: Pass by value<a class="anchor" aria-label="anchor" href="#tip-pass-by-value"></a>
 </h3>
 <div class="callout-content">
 <p>Functions in R almost always make copies of the data to operate on
@@ -9211,12 +9214,12 @@ the function, stay inside the body of the function.</p>
 </div>
 </div>
 </div>
-<div id="tip-function-scope" class="callout callout">
+<div id="callout4" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-function-scope" class="callout-inner">
-<h3 class="callout-title">Tip: Function scope<a class="anchor" aria-label="anchor" href="#tip-function-scope"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-function-scope">Tip: Function scope<a class="anchor" aria-label="anchor" href="#tip-function-scope"></a>
 </h3>
 <div class="callout-content">
 <p>Another important concept is scoping: any variables (or functions!)
@@ -9232,10 +9235,10 @@ are not modified in any way when executing a function.</p>
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>  gdp <span class="ot">&lt;-</span> dat<span class="sc">$</span>pop <span class="sc">*</span> dat<span class="sc">$</span>gdpPercap</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  new <span class="ot">&lt;-</span> <span class="fu">cbind</span>(dat, <span class="at">gdp=</span>gdp)</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(new)</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>  gdp <span class="ot">&lt;-</span> dat<span class="sc">$</span>pop <span class="sc">*</span> dat<span class="sc">$</span>gdpPercap</span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>  new <span class="ot">&lt;-</span> <span class="fu">cbind</span>(dat, <span class="at">gdp=</span>gdp)</span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a>  <span class="fu">return</span>(new)</span>
+<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a><span class="er">}</span></span></code></pre>
 </div>
 <p>Finally, we calculated the GDP on our new subset, and created a new
 data frame with that column added. This means when we call the function
@@ -9259,7 +9262,7 @@ better than in our first attempt where we got a vector of numbers.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Solution to challenge 4</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -9316,7 +9319,7 @@ space”“.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Solution to challenge 5</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>Write a function called <code>fence()</code> that takes two vectors
 as arguments, called <code>text</code> and <code>wrapper</code>, and
@@ -9342,12 +9345,12 @@ prints out the text wrapped with the <code>wrapper</code>:</p>
 </div>
 </div>
 </div>
-<div id="tip-1" class="callout callout">
+<div id="callout5" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-1" class="callout-inner">
-<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#tip-1"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-1">Tip<a class="anchor" aria-label="anchor" href="#tip-1"></a>
 </h3>
 <div class="callout-content">
 <p>R has some unique aspects that can be exploited when performing more
@@ -9359,12 +9362,12 @@ Wickham.</p>
 </div>
 </div>
 </div>
-<div id="tip-testing-and-documenting" class="callout callout">
+<div id="callout6" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-testing-and-documenting" class="callout-inner">
-<h3 class="callout-title">Tip: Testing and documenting<a class="anchor" aria-label="anchor" href="#tip-testing-and-documenting"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-testing-and-documenting">Tip: Testing and documenting<a class="anchor" aria-label="anchor" href="#tip-testing-and-documenting"></a>
 </h3>
 <div class="callout-content">
 <p>It’s important to both test functions and document them:
@@ -9418,7 +9421,7 @@ R.</li>
 </div>
 </section></section><section id="aio-11-writing-data"><p>Content from <a href="11-writing-data.html">Writing Data</a></p>
 <hr>
-<p>Last updated on 2024-02-27 |
+<p>Last updated on 2024-03-05 |
         
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/11-writing-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -9550,7 +9553,7 @@ sure it looks OK:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> cleaned-data/gapminder-aus.csv</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">head</span> cleaned-data/gapminder-aus.csv</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -9594,7 +9597,7 @@ names.</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> cleaned-data/gapminder-aus.csv</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">head</span> cleaned-data/gapminder-aus.csv</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -9664,7 +9667,7 @@ include only data points collected since 1990.</p>
 </div>
 </section></section><section id="aio-12-plyr"><p>Content from <a href="12-plyr.html">Splitting and Combining Data Frames with plyr</a></p>
 <hr>
-<p>Last updated on 2024-02-27 |
+<p>Last updated on 2024-03-05 |
         
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/12-plyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -9883,7 +9886,7 @@ longest? Which has the shortest?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Solution to Challenge 1</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -10081,12 +10084,12 @@ function.</p>
 [1] "The mean GDP per capita for Europe is 14,469.48"
 [1] "The mean GDP per capita for Oceania is 18,621.61"</code></pre>
 </div>
-<div id="tip-printing-numbers" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-printing-numbers" class="callout-inner">
-<h3 class="callout-title">Tip: printing numbers<a class="anchor" aria-label="anchor" href="#tip-printing-numbers"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-printing-numbers">Tip: printing numbers<a class="anchor" aria-label="anchor" href="#tip-printing-numbers"></a>
 </h3>
 <div class="callout-content">
 <p>The <code>format</code> function can be used to make numeric values
@@ -10113,7 +10116,7 @@ between 1952 and 2007?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Solution to Challenge 2</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -10217,7 +10220,7 @@ average life expectancy per continent:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Solution to Alternative Challenge</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Answer 3 will calculate the average life expectancy per
 continent.</p>
@@ -10242,7 +10245,7 @@ subsets, and combine the results.</li>
 </div>
 </section></section><section id="aio-13-dplyr"><p>Content from <a href="13-dplyr.html">Data Frame Manipulation with dplyr</a></p>
 <hr>
-<p>Last updated on 2024-02-27 |
+<p>Last updated on 2024-03-05 |
         
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/13-dplyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -10327,12 +10330,12 @@ frames in a way that will reduce the above repetition, reduce the
 probability of making errors, and probably even save you some typing. As
 an added bonus, you might even find the <code>dplyr</code> grammar
 easier to read.</p>
-<div id="tip-tidyverse" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-tidyverse" class="callout-inner">
-<h3 class="callout-title">Tip: Tidyverse<a class="anchor" aria-label="anchor" href="#tip-tidyverse"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-tidyverse">Tip: Tidyverse<a class="anchor" aria-label="anchor" href="#tip-tidyverse"></a>
 </h3>
 <div class="callout-content">
 <p><code>dplyr</code> package belongs to a broader family of opinionated
@@ -10409,12 +10412,12 @@ since in gets that from the previous pipe. <strong>Fun Fact</strong>:
 There is a good chance you have encountered pipes before in the shell.
 In R, a pipe symbol is <code>%&gt;%</code> while in the shell it is
 <code>|</code> but the concept is the same!</p>
-<div id="tip-renaming-data-frame-columns-in-dplyr" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-renaming-data-frame-columns-in-dplyr" class="callout-inner">
-<h3 class="callout-title">Tip: Renaming data frame columns in dplyr<a class="anchor" aria-label="anchor" href="#tip-renaming-data-frame-columns-in-dplyr"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-renaming-data-frame-columns-in-dplyr">Tip: Renaming data frame columns in dplyr<a class="anchor" aria-label="anchor" href="#tip-renaming-data-frame-columns-in-dplyr"></a>
 </h3>
 <div class="callout-content">
 <p>In Chapter 4 we covered how you can rename columns with base R by
@@ -10596,13 +10599,13 @@ functions (e.g. <code>mean()</code> or <code>sd()</code>) within
 <figure><img src="fig/13-dplyr-fig3.png" alt="Diagram illustrating the use of group by and summarize together to create a new variable" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>continent mean_gdpPercap</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>     <span class="sc">&lt;</span>fctr<span class="sc">&gt;</span>          <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>    Africa       <span class="fl">2193.755</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>  Americas       <span class="fl">7136.110</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>      Asia       <span class="fl">7902.150</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>    Europe      <span class="fl">14469.476</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>   Oceania      <span class="fl">18621.609</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>continent mean_gdpPercap</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>     <span class="sc">&lt;</span>fctr<span class="sc">&gt;</span>          <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="dv">1</span>    Africa       <span class="fl">2193.755</span></span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a><span class="dv">2</span>  Americas       <span class="fl">7136.110</span></span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a><span class="dv">3</span>      Asia       <span class="fl">7902.150</span></span>
+<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a><span class="dv">4</span>    Europe      <span class="fl">14469.476</span></span>
+<span id="cb22-7"><a href="#cb22-7" tabindex="-1"></a><span class="dv">5</span>   Oceania      <span class="fl">18621.609</span></span></code></pre>
 </div>
 <p>That allowed us to calculate the mean gdpPercap for each continent,
 but it gets even better.</p>
@@ -11047,7 +11050,7 @@ with subsets of data.</li>
 </div>
 </section></section><section id="aio-14-tidyr"><p>Content from <a href="14-tidyr.html">Data Frame Manipulation with tidyr</a></p>
 <hr>
-<p>Last updated on 2024-02-27 |
+<p>Last updated on 2024-03-05 |
         
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/14-tidyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -11772,7 +11775,7 @@ layout.</li>
 </div>
 </section></section><section id="aio-15-knitr-markdown"><p>Content from <a href="15-knitr-markdown.html">Producing Reports With knitr</a></p>
 <hr>
-<p>Last updated on 2024-02-27 |
+<p>Last updated on 2024-03-05 |
         
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/15-knitr-markdown.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -11959,7 +11962,7 @@ itemized list).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Solution to Challenge 1</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>In RStudio, select File &gt; New file &gt; R Markdown…</p>
 <p>Delete the placeholder text and add the following:</p>
@@ -12040,7 +12043,7 @@ Linux, or <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> on Mac.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Solution to Challenge 2</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <pre>
 ```{r load-ggplot2}
@@ -12130,7 +12133,7 @@ code.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Solution to Challenge 3</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <pre>
 ```{r echo = FALSE, fig.width = 3}
@@ -12179,7 +12182,7 @@ package handles this.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Solution to Challenge 4</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>Here’s some inline code to determine that 2 + 2 = <code>4</code>.</p>
 </div>
@@ -12193,12 +12196,12 @@ package handles this.</p>
 the little triangle next to the “Knit” button to get a drop-down menu.
 Or you could put <code>pdf_document</code> or <code>word_document</code>
 in the initial header of the file.</p>
-<div id="tip-creating-pdf-documents" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-creating-pdf-documents" class="callout-inner">
-<h3 class="callout-title">Tip: Creating PDF documents<a class="anchor" aria-label="anchor" href="#tip-creating-pdf-documents"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-creating-pdf-documents">Tip: Creating PDF documents<a class="anchor" aria-label="anchor" href="#tip-creating-pdf-documents"></a>
 </h3>
 <div class="callout-content">
 <p>Creating .pdf documents may require installation of some extra
@@ -12213,12 +12216,12 @@ website</a> for more information.</p>
 </div>
 </div>
 </div>
-<div id="tip-visual-markdown-editing-in-rstudio" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-visual-markdown-editing-in-rstudio" class="callout-inner">
-<h3 class="callout-title">Tip: Visual markdown editing in RStudio<a class="anchor" aria-label="anchor" href="#tip-visual-markdown-editing-in-rstudio"></a>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-visual-markdown-editing-in-rstudio">Tip: Visual markdown editing in RStudio<a class="anchor" aria-label="anchor" href="#tip-visual-markdown-editing-in-rstudio"></a>
 </h3>
 <div class="callout-content">
 <p>RStudio versions 1.4 and later include visual markdown editing mode.
@@ -12276,7 +12279,7 @@ formats.</li>
 </div>
 </section></section><section id="aio-16-wrap-up"><p>Content from <a href="16-wrap-up.html">Writing Good Software</a></p>
 <hr>
-<p>Last updated on 2024-02-27 |
+<p>Last updated on 2024-03-05 |
         
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/16-wrap-up.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -12316,12 +12319,12 @@ subfolders for your code files, manuals, data, binaries, output plots,
 etc. It can be done completely manually, or with the help of RStudio’s
 <code>New Project</code> functionality, or a designated package, such as
 <code>ProjectTemplate</code>.</p>
-<div id="tip-projecttemplate---a-possible-solution" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-projecttemplate---a-possible-solution" class="callout-inner">
-<h3 class="callout-title">Tip: ProjectTemplate - a possible
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-projecttemplate---a-possible-solution">Tip: ProjectTemplate - a possible
 solution<a class="anchor" aria-label="anchor" href="#tip-projecttemplate---a-possible-solution"></a>
 </h3>
 <div class="callout-content">
@@ -12474,8 +12477,8 @@ style.</li>
   "url": "https://swcarpentry.github.io/r-novice-gapminder/aio.html",
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/aio.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2024-02-27",
-  "datePublished": "2024-02-27"
+  "dateModified": "2024-03-05",
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

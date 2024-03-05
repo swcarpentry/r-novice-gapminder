@@ -358,7 +358,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data Frame Manipulation with dplyr</h1>
-        <p>Last updated on 2024-02-27 |
+        <p>Last updated on 2024-03-05 |
         
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/13-dplyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -446,13 +446,12 @@ frames in a way that will reduce the above repetition, reduce the
 probability of making errors, and probably even save you some typing. As
 an added bonus, you might even find the <code>dplyr</code> grammar
 easier to read.</p>
-<div id="tip-tidyverse" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-tidyverse" class="callout-inner">
-<h3 class="callout-title">Tip: Tidyverse<a class="anchor" aria-label="anchor" href="#tip-tidyverse"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-tidyverse">Tip: Tidyverse<a class="anchor" aria-label="anchor" href="#tip-tidyverse"></a></h3>
 <div class="callout-content">
 <p><code>dplyr</code> package belongs to a broader family of opinionated
 R packages designed for data science called the “Tidyverse”. These
@@ -525,13 +524,12 @@ since in gets that from the previous pipe. <strong>Fun Fact</strong>:
 There is a good chance you have encountered pipes before in the shell.
 In R, a pipe symbol is <code>%&gt;%</code> while in the shell it is
 <code>|</code> but the concept is the same!</p>
-<div id="tip-renaming-data-frame-columns-in-dplyr" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip-renaming-data-frame-columns-in-dplyr" class="callout-inner">
-<h3 class="callout-title">Tip: Renaming data frame columns in dplyr<a class="anchor" aria-label="anchor" href="#tip-renaming-data-frame-columns-in-dplyr"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip-renaming-data-frame-columns-in-dplyr">Tip: Renaming data frame columns in dplyr<a class="anchor" aria-label="anchor" href="#tip-renaming-data-frame-columns-in-dplyr"></a></h3>
 <div class="callout-content">
 <p>In Chapter 4 we covered how you can rename columns with base R by
 assigning a value to the output of the <code>names()</code> function.
@@ -709,13 +707,13 @@ functions (e.g. <code>mean()</code> or <code>sd()</code>) within
 <figure><img src="../fig/13-dplyr-fig3.png" alt="Diagram illustrating the use of group by and summarize together to create a new variable" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>continent mean_gdpPercap</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>     <span class="sc">&lt;</span>fctr<span class="sc">&gt;</span>          <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>    Africa       <span class="fl">2193.755</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>  Americas       <span class="fl">7136.110</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>      Asia       <span class="fl">7902.150</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>    Europe      <span class="fl">14469.476</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>   Oceania      <span class="fl">18621.609</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>continent mean_gdpPercap</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>     <span class="sc">&lt;</span>fctr<span class="sc">&gt;</span>          <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="dv">1</span>    Africa       <span class="fl">2193.755</span></span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a><span class="dv">2</span>  Americas       <span class="fl">7136.110</span></span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a><span class="dv">3</span>      Asia       <span class="fl">7902.150</span></span>
+<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a><span class="dv">4</span>    Europe      <span class="fl">14469.476</span></span>
+<span id="cb22-7"><a href="#cb22-7" tabindex="-1"></a><span class="dv">5</span>   Oceania      <span class="fl">18621.609</span></span></code></pre>
 </div>
 <p>That allowed us to calculate the mean gdpPercap for each continent,
 but it gets even better.</p>
@@ -1207,8 +1205,8 @@ with subsets of data.</li>
   "url": "https://swcarpentry.github.io/r-novice-gapminder/instructor/13-dplyr.html",
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/instructor/13-dplyr.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2024-02-27",
-  "datePublished": "2024-02-27"
+  "dateModified": "2024-03-05",
+  "datePublished": "2024-03-05"
 }
 
   </script><script>
