@@ -496,7 +496,7 @@ appear on the x-axis.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Solution to challenge 1</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Here is one possible solution:</p>
 <div class="codewrapper sourceCode" id="cb5">
@@ -535,7 +535,7 @@ do you see in the data? Are they what you expected?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Solution to challenge 2</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>The solution presented below adds <code>color=continent</code> to the
 call of the <code>aes</code> function. The general trend seems to
@@ -605,13 +605,14 @@ of</em> the lines. Here’s a demonstration:</p>
 <code>ggplot</code> to the <code>geom_line</code> layer so it no longer
 applies to the points. Now we can clearly see that the points are drawn
 on top of the lines.</p>
-<div id="callout1" class="callout">
+<div id="tip-setting-an-aesthetic-to-a-value-instead-of-a-mapping" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="tip-setting-an-aesthetic-to-a-value-instead-of-a-mapping">Tip: Setting an aesthetic to a value instead
-of a mapping<a class="anchor" aria-label="anchor" href="#tip-setting-an-aesthetic-to-a-value-instead-of-a-mapping"></a></h3>
+<div id="tip-setting-an-aesthetic-to-a-value-instead-of-a-mapping" class="callout-inner">
+<h3 class="callout-title">Tip: Setting an aesthetic to a value instead
+of a mapping<a class="anchor" aria-label="anchor" href="#tip-setting-an-aesthetic-to-a-value-instead-of-a-mapping"></a>
+</h3>
 <div class="callout-content">
 <p>So far, we’ve seen how to use an aesthetic (such as
 <strong>color</strong>) as a <em>mapping</em> to a variable in the data.
@@ -644,7 +645,7 @@ example. What happened?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Solution to challenge 3</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>The lines now get drawn over the points!</p>
 <div class="codewrapper sourceCode" id="cb11">
@@ -692,13 +693,14 @@ spaced from left to right. For example, a GDP per capita of 1,000 is the
 same horizontal distance away from a value of 10,000 as the 10,000 value
 is from 100,000. This helps to visualize the spread of the data along
 the x-axis.</p>
-<div id="callout2" class="callout">
+<div id="tip-reminder-setting-an-aesthetic-to-a-value-instead-of-a-mapping" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="tip-reminder-setting-an-aesthetic-to-a-value-instead-of-a-mapping">Tip Reminder: Setting an aesthetic to a value
-instead of a mapping<a class="anchor" aria-label="anchor" href="#tip-reminder-setting-an-aesthetic-to-a-value-instead-of-a-mapping"></a></h3>
+<div id="tip-reminder-setting-an-aesthetic-to-a-value-instead-of-a-mapping" class="callout-inner">
+<h3 class="callout-title">Tip Reminder: Setting an aesthetic to a value
+instead of a mapping<a class="anchor" aria-label="anchor" href="#tip-reminder-setting-an-aesthetic-to-a-value-instead-of-a-mapping"></a>
+</h3>
 <div class="callout-content">
 <p>Notice that we used <code>geom_point(alpha = 0.5)</code>. As the
 previous tip mentioned, using a setting outside of the
@@ -773,7 +775,7 @@ previous example.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Solution to challenge 4a</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>Here a possible solution: Notice that the <code>color</code> argument
 is supplied outside of the <code>aes()</code> function. This means that
@@ -815,7 +817,7 @@ The color argument can be used inside the aesthetic.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Solution to challenge 4b</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>Here is a possible solution: Notice that supplying the
 <code>color</code> argument inside the <code>aes()</code> functions
@@ -846,12 +848,13 @@ point’s color based on its continent value.</p>
 <hr class="half-width"><p>Earlier we visualized the change in life expectancy over time across
 all countries in one plot. Alternatively, we can split this out over
 multiple panels by adding a layer of <strong>facet</strong> panels.</p>
-<div id="callout3" class="callout">
+<div id="tip" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="tip">Tip<a class="anchor" aria-label="anchor" href="#tip"></a></h3>
+<div id="tip" class="callout-inner">
+<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#tip"></a>
+</h3>
 <div class="callout-content">
 <p>We start by making a subset of data including only countries located
 in the Americas. This includes 25 countries, which will begin to clutter
@@ -966,7 +969,7 @@ continents during the available years.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6">Solution to Challenge 5</h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>Here a possible solution: <code>xlab()</code> and <code>ylab()</code>
 set labels for the x and y axes, respectively The axis title, text and
@@ -1037,7 +1040,7 @@ scale transformation, and grouping.</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.2" class="external-link">sandpaper (0.16.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.3" class="external-link">sandpaper (0.16.3)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1060,7 +1063,7 @@ scale transformation, and grouping.</li>
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/instructor/08-plot-ggplot2.html",
   "dateCreated": "2015-04-18",
   "dateModified": "2024-03-12",
-  "datePublished": "2024-03-12"
+  "datePublished": "2024-03-19"
 }
 
   </script><script>

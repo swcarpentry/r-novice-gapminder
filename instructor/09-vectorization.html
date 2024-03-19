@@ -468,7 +468,7 @@ tail of the data frame to make sure it worked.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Solution to challenge 1</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Let’s try this on the <code>pop</code> column of the
 <code>gapminder</code> dataset.</p>
@@ -518,7 +518,7 @@ Again, do not worry about which is which.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Solution to challenge 2</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Refresh your plotting skills by plotting population in millions
 against year.</p>
@@ -569,13 +569,14 @@ vectorized:</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] FALSE FALSE FALSE  TRUE</code></pre>
 </div>
-<div id="callout1" class="callout">
+<div id="tip-some-useful-functions-for-logical-vectors" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="tip-some-useful-functions-for-logical-vectors">Tip: some useful functions for logical
-vectors<a class="anchor" aria-label="anchor" href="#tip-some-useful-functions-for-logical-vectors"></a></h3>
+<div id="tip-some-useful-functions-for-logical-vectors" class="callout-inner">
+<h3 class="callout-title">Tip: some useful functions for logical
+vectors<a class="anchor" aria-label="anchor" href="#tip-some-useful-functions-for-logical-vectors"></a>
+</h3>
 <div class="callout-content">
 <p><code>any()</code> will return <code>TRUE</code> if <em>any</em>
 element of a vector is <code>TRUE</code>.<br><code>all()</code> will return <code>TRUE</code> if <em>all</em>
@@ -613,13 +614,14 @@ elements of a vector are <code>TRUE</code>.</p>
 [2,]   -2   -5   -8  -11
 [3,]   -3   -6   -9  -12</code></pre>
 </div>
-<div id="callout2" class="callout">
+<div id="tip-element-wise-vs.-matrix-multiplication" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="tip-element-wise-vs--matrix-multiplication">Tip: element-wise vs. matrix
-multiplication<a class="anchor" aria-label="anchor" href="#tip-element-wise-vs--matrix-multiplication"></a></h3>
+<div id="tip-element-wise-vs.-matrix-multiplication" class="callout-inner">
+<h3 class="callout-title">Tip: element-wise vs. matrix
+multiplication<a class="anchor" aria-label="anchor" href="#tip-element-wise-vs.-matrix-multiplication"></a>
+</h3>
 <div class="callout-content">
 <p>Very important: the operator <code>*</code> gives you element-wise
 multiplication! To do matrix multiplication, we need to use the
@@ -693,7 +695,7 @@ reference guide</a></p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Solution to challenge 3</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Given the following matrix:</p>
 <div class="codewrapper sourceCode" id="cb28">
@@ -770,7 +772,7 @@ n=10,000?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Challenge 4</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>We’re interested in looking at the sum of the following sequence of
 fractions:</p>
@@ -859,13 +861,14 @@ n=10,000?</p>
 </div>
 </div>
 </div>
-<div id="callout3" class="callout">
+<div id="tip-operations-on-vectors-of-unequal-length" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="tip-operations-on-vectors-of-unequal-length">Tip: Operations on vectors of unequal
-length<a class="anchor" aria-label="anchor" href="#tip-operations-on-vectors-of-unequal-length"></a></h3>
+<div id="tip-operations-on-vectors-of-unequal-length" class="callout-inner">
+<h3 class="callout-title">Tip: Operations on vectors of unequal
+length<a class="anchor" aria-label="anchor" href="#tip-operations-on-vectors-of-unequal-length"></a>
+</h3>
 <div class="callout-content">
 <p>Operations can also be performed on vectors of unequal length,
 through a process known as <em>recycling</em>. This process
@@ -956,7 +959,7 @@ length</code></pre>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.2" class="external-link">sandpaper (0.16.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.3" class="external-link">sandpaper (0.16.3)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -979,7 +982,7 @@ length</code></pre>
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/instructor/09-vectorization.html",
   "dateCreated": "2015-04-18",
   "dateModified": "2024-03-12",
-  "datePublished": "2024-03-12"
+  "datePublished": "2024-03-19"
 }
 
   </script><script>

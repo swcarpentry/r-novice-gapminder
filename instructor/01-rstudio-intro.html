@@ -455,12 +455,13 @@ for all of these countries in under a minute!</p>
 <li>Files/Plots/Packages/Help/Viewer (tabbed in lower right)</li>
 </ul><figure><img src="../fig/01-rstudio.png" alt="RStudio layout" class="figure mx-auto d-block"></figure><p>Once you open files, such as R scripts, an editor panel will also
 open in the top left.</p>
-<figure><img src="../fig/01-rstudio-script.png" alt="RStudio layout with .R file open" class="figure mx-auto d-block"></figure><div id="callout1" class="callout">
+<figure><img src="../fig/01-rstudio-script.png" alt="RStudio layout with .R file open" class="figure mx-auto d-block"></figure><div id="r-scripts" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="r-scripts">R scripts<a class="anchor" aria-label="anchor" href="#r-scripts"></a></h3>
+<div id="r-scripts" class="callout-inner">
+<h3 class="callout-title">R scripts<a class="anchor" aria-label="anchor" href="#r-scripts"></a>
+</h3>
 <div class="callout-content">
 <p>Any commands that you write in the R console can be saved to a file
 to be re-run again. Files containing R code to be ran in this way are
@@ -483,12 +484,13 @@ to the interactive R console.</li>
 </ol><ul><li>This is a great way to start; all your code is saved for later</li>
 <li>You will be able to run the file you create from within RStudio or
 using R’s <code>source()</code> function.</li>
-</ul><div id="callout2" class="callout">
+</ul><div id="tip-running-segments-of-your-code" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="tip-running-segments-of-your-code">Tip: Running segments of your code<a class="anchor" aria-label="anchor" href="#tip-running-segments-of-your-code"></a></h3>
+<div id="tip-running-segments-of-your-code" class="callout-inner">
+<h3 class="callout-title">Tip: Running segments of your code<a class="anchor" aria-label="anchor" href="#tip-running-segments-of-your-code"></a>
+</h3>
 <div class="callout-content">
 <p>RStudio offers you great flexibility in running code from within the
 editor window. There are buttons, menu choices, and keyboard shortcuts.
@@ -554,12 +556,13 @@ behavior from bash.</p>
 “&gt;”, it means it’s waiting for you to complete the command. If you
 want to cancel a command you can hit <kbd>Esc</kbd> and RStudio will
 give you back the “&gt;” prompt.</p>
-<div id="callout3" class="callout">
+<div id="tip-canceling-commands" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="tip-canceling-commands">Tip: Canceling commands<a class="anchor" aria-label="anchor" href="#tip-canceling-commands"></a></h3>
+<div id="tip-canceling-commands" class="callout-inner">
+<h3 class="callout-title">Tip: Canceling commands<a class="anchor" aria-label="anchor" href="#tip-canceling-commands"></a>
+</h3>
 <div class="callout-content">
 <p>If you’re using R from the command line instead of from within
 RStudio, you need to use <kbd>Ctrl</kbd>+<kbd>C</kbd> instead of
@@ -793,12 +796,13 @@ usage. We’ll go through an example later.</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] TRUE</code></pre>
 </div>
-<div id="callout4" class="callout">
+<div id="tip-comparing-numbers" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="tip-comparing-numbers">Tip: Comparing Numbers<a class="anchor" aria-label="anchor" href="#tip-comparing-numbers"></a></h3>
+<div id="tip-comparing-numbers" class="callout-inner">
+<h3 class="callout-title">Tip: Comparing Numbers<a class="anchor" aria-label="anchor" href="#tip-comparing-numbers"></a>
+</h3>
 <div class="callout-content">
 <p>A word of warning about comparing numbers: you should never use
 <code>==</code> to compare two numbers unless they are integers (a data
@@ -1018,12 +1022,13 @@ in the global environment (your working R session):</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] "x" "y"</code></pre>
 </div>
-<div id="callout5" class="callout">
+<div id="tip-hidden-objects" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="tip-hidden-objects">Tip: hidden objects<a class="anchor" aria-label="anchor" href="#tip-hidden-objects"></a></h3>
+<div id="tip-hidden-objects" class="callout-inner">
+<h3 class="callout-title">Tip: hidden objects<a class="anchor" aria-label="anchor" href="#tip-hidden-objects"></a>
+</h3>
 <div class="callout-content">
 <p>Like in the shell, <code>ls</code> will hide any variables or
 functions starting with a “.” by default. To list all objects, type
@@ -1134,12 +1139,13 @@ effects, or you may get an error message:</p>
 </h3>
 <pre class="error" tabindex="0"><code>Error in rm(list &lt;- ls()): ... must contain names or character strings</code></pre>
 </div>
-<div id="callout6" class="callout">
+<div id="tip-warnings-vs.-errors" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="tip-warnings-vs--errors">Tip: Warnings vs. Errors<a class="anchor" aria-label="anchor" href="#tip-warnings-vs--errors"></a></h3>
+<div id="tip-warnings-vs.-errors" class="callout-inner">
+<h3 class="callout-title">Tip: Warnings vs. Errors<a class="anchor" aria-label="anchor" href="#tip-warnings-vs.-errors"></a>
+</h3>
 <div class="callout-content">
 <p>Pay attention when R does something unexpected! Errors, like above,
 are thrown when R cannot proceed with a calculation. Warnings on the
@@ -1409,7 +1415,7 @@ functions.</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.2" class="external-link">sandpaper (0.16.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.3" class="external-link">sandpaper (0.16.3)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1432,7 +1438,7 @@ functions.</li>
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/instructor/01-rstudio-intro.html",
   "dateCreated": "2015-04-18",
   "dateModified": "2024-03-12",
-  "datePublished": "2024-03-12"
+  "datePublished": "2024-03-19"
 }
 
   </script><script>
