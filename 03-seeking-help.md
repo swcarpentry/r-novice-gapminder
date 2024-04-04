@@ -181,7 +181,7 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 loaded via a namespace (and not attached):
-[1] compiler_4.3.3 tools_4.3.3    yaml_2.3.8     knitr_1.45     xfun_0.42     
+[1] compiler_4.3.3 tools_4.3.3    yaml_2.3.8     knitr_1.45     xfun_0.43     
 [6] renv_1.0.5     evaluate_0.23 
 ```
 
