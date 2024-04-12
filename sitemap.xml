@@ -34,16 +34,28 @@
     <loc>https://swcarpentry.github.io/r-novice-gapminder/11-writing-data.html</loc>
   </url>
   <url>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/12-dplyr.html</loc>
+  </url>
+  <url>
     <loc>https://swcarpentry.github.io/r-novice-gapminder/12-plyr.html</loc>
   </url>
   <url>
     <loc>https://swcarpentry.github.io/r-novice-gapminder/13-dplyr.html</loc>
   </url>
   <url>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/13-tidyr.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/14-knitr-markdown.html</loc>
+  </url>
+  <url>
     <loc>https://swcarpentry.github.io/r-novice-gapminder/14-tidyr.html</loc>
   </url>
   <url>
     <loc>https://swcarpentry.github.io/r-novice-gapminder/15-knitr-markdown.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/15-wrap-up.html</loc>
   </url>
   <url>
     <loc>https://swcarpentry.github.io/r-novice-gapminder/16-wrap-up.html</loc>
@@ -103,16 +115,28 @@
     <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/11-writing-data.html</loc>
   </url>
   <url>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/12-dplyr.html</loc>
+  </url>
+  <url>
     <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/12-plyr.html</loc>
   </url>
   <url>
     <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/13-dplyr.html</loc>
   </url>
   <url>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/13-tidyr.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/14-knitr-markdown.html</loc>
+  </url>
+  <url>
     <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/14-tidyr.html</loc>
   </url>
   <url>
     <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/15-knitr-markdown.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/15-wrap-up.html</loc>
   </url>
   <url>
     <loc>https://swcarpentry.github.io/r-novice-gapminder/instructor/16-wrap-up.html</loc>

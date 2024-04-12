@@ -62,7 +62,7 @@
     </div>
     <div class="search-icon-sm">
       <!-- TODO: do not show until we have search
-        <i role="img" aria-label="search button" data-feather="search"></i>
+        <i role="img" aria-label="Search the All In One page" data-feather="search"></i>
       -->
     </div>
     <div class="desktop-nav">
@@ -93,13 +93,17 @@
 </li>
       </ul>
 </div>
+    <!--
     <form class="d-flex col-md-2 search-form">
       <fieldset disabled>
-<input class="form-control me-2 searchbox" type="search" placeholder="Search" aria-label="Search"><button class="btn btn-outline-success tablet-search-button" type="submit">
-          <i class="search-icon" data-feather="search" role="img" aria-label="search button"></i>
+      <input class="form-control me-2 searchbox" type="search" placeholder="" aria-label="">
+        <button class="btn btn-outline-success tablet-search-button"  type="submit">
+          <i class="search-icon" data-feather="search" role="img" aria-label="Search the All In One page"></i>
         </button>
       </fieldset>
-</form>
+    </form>
+    -->
+    <a class="btn btn-primary" href="../aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
   </div>
 <!--/div.container-fluid -->
 </nav><div class="col-md-12 mobile-title">
@@ -308,7 +312,7 @@
 <div class="accordion accordion-flush" id="accordionFlush13">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading13">
-        <a href="12-plyr.html">12. Splitting and Combining Data Frames with plyr</a>
+        <a href="12-dplyr.html">12. Data Frame Manipulation with dplyr</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -320,7 +324,7 @@
 <div class="accordion accordion-flush" id="accordionFlush14">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading14">
-        <a href="13-dplyr.html">13. Data Frame Manipulation with dplyr</a>
+        <a href="13-tidyr.html">13. Data Frame Manipulation with tidyr</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -332,7 +336,7 @@
 <div class="accordion accordion-flush" id="accordionFlush15">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading15">
-        <a href="14-tidyr.html">14. Data Frame Manipulation with tidyr</a>
+        <a href="14-knitr-markdown.html">14. Producing Reports With knitr</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -344,19 +348,7 @@
 <div class="accordion accordion-flush" id="accordionFlush16">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading16">
-        <a href="15-knitr-markdown.html">15. Producing Reports With knitr</a>
-    </div>
-<!--/div.accordion-header-->
-        
-  </div>
-<!--/div.accordion-item-->
-</div>
-<!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush17">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading17">
-        <a href="16-wrap-up.html">16. Writing Good Software</a>
+        <a href="15-wrap-up.html">15. Writing Good Software</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -510,53 +502,46 @@ spread
 <p aria-hidden="true">Image 1 of 1: ‘Scatter plot showing populations in the millions against the year for China, India, and Indonesia, countries are not labeled.’</p>
 <figure><img src="../fig/09-vectorization-rendered-ch2-sol-2.png" alt="Scatter plot showing populations in the millions against the year for China, India, and Indonesia, countries are not labeled." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr></section><section id="10-functions"><h2 class="section-heading"><a href="10-functions.html">Functions Explained</a></h2>
 <hr class="half-width"></section><section id="11-writing-data"><h2 class="section-heading"><a href="11-writing-data.html">Writing Data</a></h2>
-<hr class="half-width"></section><section id="12-plyr"><h2 class="section-heading"><a href="12-plyr.html">Splitting and Combining Data Frames with plyr</a></h2>
+<hr class="half-width"></section><section id="12-dplyr"><h2 class="section-heading"><a href="12-dplyr.html">Data Frame Manipulation with dplyr</a></h2>
 <hr class="half-width">
-<h3 id="12-plyr-figure-1">Figure 1</h3>
-<p aria-hidden="true">Image 1 of 1: ‘Split apply combine’</p>
-<figure><img src="../fig/12-plyr-fig1.png" alt="Split apply combine" class="figure mx-auto d-block"></figure><hr>
-<h3 id="12-plyr-figure-2">Figure 2</h3>
-<p aria-hidden="true">Image 1 of 1: ‘Full apply suite’</p>
-<figure><img src="../fig/12-plyr-fig2.png" alt="Full apply suite" class="figure mx-auto d-block"></figure><hr></section><section id="13-dplyr"><h2 class="section-heading"><a href="13-dplyr.html">Data Frame Manipulation with dplyr</a></h2>
-<hr class="half-width">
-<h3 id="13-dplyr-figure-1">Figure 1</h3>
+<h3 id="12-dplyr-figure-1">Figure 1</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Diagram illustrating use of select function to select two columns of a data frame’</p>
 <p><img src="../fig/13-dplyr-fig1.png" alt="Diagram illustrating use of select function to select two columns of a data frame" class="figure">
 If we want to remove one column only from the <code>gapminder</code>
 data, for example, removing the <code>continent</code> column.</p>
 <hr>
-<h3 id="13-dplyr-figure-2">Figure 2</h3>
+<h3 id="12-dplyr-figure-2">Figure 2</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Diagram illustrating how the group by function oraganizes a data frame into groups’</p>
 <figure><img src="../fig/13-dplyr-fig2.png" alt="Diagram illustrating how the group by function oraganizes a data frame into groups" class="figure mx-auto d-block"></figure><hr>
-<h3 id="13-dplyr-figure-3">Figure 3</h3>
+<h3 id="12-dplyr-figure-3">Figure 3</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Diagram illustrating the use of group by and summarize together to create a new variable’</p>
 <figure><img src="../fig/13-dplyr-fig3.png" alt="Diagram illustrating the use of group by and summarize together to create a new variable" class="figure mx-auto d-block"></figure><hr>
-<h3 id="13-dplyr-figure-4">Figure 4</h3>
-<figure><img src="../fig/13-dplyr-rendered-unnamed-chunk-27-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
-<h3 id="13-dplyr-figure-5">Figure 5</h3>
-<figure><img src="../fig/13-dplyr-rendered-unnamed-chunk-28-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
-<h3 id="13-dplyr-figure-6">Figure 6</h3>
-<figure><img src="../fig/13-dplyr-rendered-unnamed-chunk-29-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr></section><section id="14-tidyr"><h2 class="section-heading"><a href="14-tidyr.html">Data Frame Manipulation with tidyr</a></h2>
+<h3 id="12-dplyr-figure-4">Figure 4</h3>
+<figure><img src="../fig/12-dplyr-rendered-unnamed-chunk-27-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="12-dplyr-figure-5">Figure 5</h3>
+<figure><img src="../fig/12-dplyr-rendered-unnamed-chunk-28-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="12-dplyr-figure-6">Figure 6</h3>
+<figure><img src="../fig/12-dplyr-rendered-unnamed-chunk-29-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr></section><section id="13-tidyr"><h2 class="section-heading"><a href="13-tidyr.html">Data Frame Manipulation with tidyr</a></h2>
 <hr class="half-width">
-<h3 id="14-tidyr-figure-1">Figure 1</h3>
+<h3 id="13-tidyr-figure-1">Figure 1</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Diagram illustrating the difference between a wide versus long layout of a data frame’</p>
 <figure><img src="../fig/14-tidyr-fig1.png" alt="Diagram illustrating the difference between a wide versus long layout of a data frame" class="figure mx-auto d-block"></figure><hr>
-<h3 id="14-tidyr-figure-2">Figure 2</h3>
+<h3 id="13-tidyr-figure-2">Figure 2</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Diagram illustrating the wide format of the gapminder data frame’</p>
 <figure><img src="../fig/14-tidyr-fig2.png" alt="Diagram illustrating the wide format of the gapminder data frame" class="figure mx-auto d-block"></figure><hr>
-<h3 id="14-tidyr-figure-3">Figure 3</h3>
+<h3 id="13-tidyr-figure-3">Figure 3</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Diagram illustrating how pivot longer reorganizes a data frame from a wide to long format’</p>
 <figure><img src="../fig/14-tidyr-fig3.png" alt="Diagram illustrating how pivot longer reorganizes a data frame from a wide to long format" class="figure mx-auto d-block"></figure><hr>
-<h3 id="14-tidyr-figure-4">Figure 4</h3>
+<h3 id="13-tidyr-figure-4">Figure 4</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Diagram illustrating the long format of the gapminder data’</p>
-<figure><img src="../fig/14-tidyr-fig4.png" alt="Diagram illustrating the long format of the gapminder data" class="figure mx-auto d-block"></figure><hr></section><section id="15-knitr-markdown"><h2 class="section-heading"><a href="15-knitr-markdown.html">Producing Reports With knitr</a></h2>
+<figure><img src="../fig/14-tidyr-fig4.png" alt="Diagram illustrating the long format of the gapminder data" class="figure mx-auto d-block"></figure><hr></section><section id="14-knitr-markdown"><h2 class="section-heading"><a href="14-knitr-markdown.html">Producing Reports With knitr</a></h2>
 <hr class="half-width">
-<h3 id="15-knitr-markdown-figure-1">Figure 1</h3>
+<h3 id="14-knitr-markdown-figure-1">Figure 1</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Screenshot of the New R Markdown file dialogue box in RStudio’</p>
 <figure><img src="../fig/New_R_Markdown.png" alt="Screenshot of the New R Markdown file dialogue box in RStudio" class="figure mx-auto d-block"></figure><hr>
-<h3 id="15-knitr-markdown-figure-2">Figure 2</h3>
-<figure><img src="../fig/15-knitr-markdown-rendered-rmd_to_html_fig-1.png" style="display: block; margin: auto auto auto 0;" class="figure mx-auto d-block"></figure><hr>
-<h3 id="15-knitr-markdown-figure-3">Figure 3</h3>
+<h3 id="14-knitr-markdown-figure-2">Figure 2</h3>
+<figure><img src="../fig/14-knitr-markdown-rendered-rmd_to_html_fig-1.png" style="display: block; margin: auto auto auto 0;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="14-knitr-markdown-figure-3">Figure 3</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Icon for turning on and off the visual editing mode in RStudio, which looks like a pair of compasses’</p>
 <p>RStudio versions 1.4 and later include visual markdown editing mode.
 In visual editing mode, markdown expressions (like
@@ -566,7 +551,7 @@ toolbar at the top with basic formatting buttons, similar to what you
 might see in common word processing software programs. You can turn
 visual editing on and off by pressing the <img src="../fig/visual_mode_icon.png" alt="Icon for turning on and off the visual editing mode in RStudio, which looks like a pair of compasses" class="figure">
 button in the top right corner of your R Markdown document.</p>
-<hr></section><section id="16-wrap-up"><h2 class="section-heading"><a href="16-wrap-up.html">Writing Good Software</a></h2>
+<hr></section><section id="15-wrap-up"><h2 class="section-heading"><a href="15-wrap-up.html">Writing Good Software</a></h2>
 <hr class="half-width"></section>
 </div>
     </main>
@@ -592,7 +577,7 @@ button in the top right corner of your R Markdown document.</p>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.3" class="external-link">sandpaper (0.16.3)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.4" class="external-link">sandpaper (0.16.4)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.5" class="external-link">pegboard (0.7.5)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.2" class="external-link">varnish (1.0.2)</a></p>
 			</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -615,8 +600,8 @@ button in the top right corner of your R Markdown document.</p>
   "url": "https://swcarpentry.github.io/r-novice-gapminder/instructor/images.html",
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/instructor/images.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2024-04-09",
-  "datePublished": "2024-04-09"
+  "dateModified": "2024-04-12",
+  "datePublished": "2024-04-12"
 }
 
   </script><script>
