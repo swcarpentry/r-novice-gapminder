@@ -643,7 +643,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x55fec9bf2918>
+<bytecode: 0x55beb9d90918>
 <environment: namespace:base>
 ```
 
@@ -867,6 +867,17 @@ install.packages(c("ggplot2", "plyr", "gapminder"))
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: instructor
+
+When installing ggplot2, it may be required for some users to use the dependencies flag as a result of lazy loading affecting the install. This suggestion is not tied to any known bug discussion, and is advised based off instructor feedback/experience in resolving stochastic occurences of errors identified through delivery of this workshop:
+
+
+```r
+install.packages("ggplot2", dependencies = TRUE)
+```
+
+:::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
