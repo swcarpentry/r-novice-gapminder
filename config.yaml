@@ -70,11 +70,10 @@ episodes:
 - 09-vectorization.Rmd
 - 10-functions.Rmd
 - 11-writing-data.Rmd
-- 12-plyr.Rmd
-- 13-dplyr.Rmd
-- 14-tidyr.Rmd
-- 15-knitr-markdown.Rmd
-- 16-wrap-up.Rmd
+- 12-dplyr.Rmd
+- 13-tidyr.Rmd
+- 14-knitr-markdown.Rmd
+- 15-wrap-up.Rmd
 
 # Information for Learners
 learners: 
