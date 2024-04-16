@@ -705,6 +705,16 @@ install.packages(c("ggplot2", "plyr", "gapminder"))
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+::::::::::::::::::::::::::::::::::::: instructor
+
+When installing ggplot2, it may be required for some users to use the dependencies flag as a result of lazy loading affecting the install. This suggestion is not tied to any known bug discussion, and is advised based off instructor feedback/experience in resolving stochastic occurences of errors identified through delivery of this workshop:
+
+```{r ch5-sol3, eval=FALSE}
+install.packages("ggplot2", dependencies = TRUE)
+```
+
+:::::::::::::::::::::::::::::::::::::::::::::::::
+
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
 - Use RStudio to write and run R programs.
