@@ -56,7 +56,7 @@ if (x >= 10) {
 x
 ```
 
-```{.output}
+```output
 [1] 8
 ```
 
@@ -73,7 +73,7 @@ if (x >= 10) {
 }
 ```
 
-```{.output}
+```output
 [1] "x is less than 10"
 ```
 
@@ -92,7 +92,7 @@ if (x >= 10) {
 }
 ```
 
-```{.output}
+```output
 [1] "x is greater than 5, but less than 10"
 ```
 
@@ -110,7 +110,7 @@ if (x) {
 }
 ```
 
-```{.output}
+```output
 [1] "4 does not equal 3"
 ```
 
@@ -122,7 +122,7 @@ x <- 4 == 3
 x
 ```
 
-```{.output}
+```output
 [1] FALSE
 ```
 
@@ -186,7 +186,7 @@ if(any(gapminder$year == 2002)){
 Did anyone get a warning message like this?
 
 
-```{.error}
+```error
 Error in if (gapminder$year == 2012) {: the condition has length > 1
 ```
 
@@ -222,7 +222,7 @@ y <- -3
 ifelse(y < 0, "y is a negative number", "y is either positive or zero")
 ```
 
-```{.output}
+```output
 [1] "y is a negative number"
 ```
 
@@ -273,7 +273,7 @@ for (i in 1:10) {
 }
 ```
 
-```{.output}
+```output
 [1] 1
 [1] 2
 [1] 3
@@ -301,7 +301,7 @@ for (i in 1:5) {
 }
 ```
 
-```{.output}
+```output
 [1] "1 a"
 [1] "1 b"
 [1] "1 c"
@@ -348,7 +348,7 @@ for (i in 1:5) {
 output_vector
 ```
 
-```{.output}
+```output
  [1] "1 a" "1 b" "1 c" "1 d" "1 e" "2 a" "2 b" "2 c" "2 d" "2 e" "3 a" "3 b"
 [13] "3 c" "3 d" "3 e" "4 a" "4 b" "4 c" "4 d" "4 e" "5 a" "5 b" "5 c" "5 d"
 [25] "5 e"
@@ -394,7 +394,7 @@ output_vector2 <- as.vector(output_matrix)
 output_vector2
 ```
 
-```{.output}
+```output
  [1] "1 a" "2 a" "3 a" "4 a" "5 a" "1 b" "2 b" "3 b" "4 b" "5 b" "1 c" "2 c"
 [13] "3 c" "4 c" "5 c" "1 d" "2 d" "3 d" "4 d" "5 d" "1 e" "2 e" "3 e" "4 e"
 [25] "5 e"

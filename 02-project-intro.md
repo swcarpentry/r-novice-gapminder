@@ -189,8 +189,8 @@ By running these commands in the shell:
 ls -lh data/gapminder_data.csv
 ```
 
-```{.output}
--rw-r--r-- 1 runner docker 80K Apr 12 01:44 data/gapminder_data.csv
+```output
+-rw-r--r-- 1 runner docker 80K May 12 15:14 data/gapminder_data.csv
 ```
 
 The file size is 80K.
@@ -200,7 +200,7 @@ The file size is 80K.
 wc -l data/gapminder_data.csv
 ```
 
-```{.output}
+```output
 1705 data/gapminder_data.csv
 ```
 
@@ -211,7 +211,7 @@ There are 1705 lines. The data looks like:
 head data/gapminder_data.csv
 ```
 
-```{.output}
+```output
 country,year,pop,continent,lifeExp,gdpPercap
 Afghanistan,1952,8425333,Asia,28.801,779.4453145
 Afghanistan,1957,9240934,Asia,30.332,820.8530296

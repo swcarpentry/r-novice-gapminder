@@ -40,7 +40,7 @@ age <- c(2, 3, 5)
 cats
 ```
 
-```{.output}
+```output
     coat weight likes_string
 1 calico    2.1            1
 2  black    5.0            0
@@ -54,7 +54,7 @@ We can then add this as a column via:
 cbind(cats, age)
 ```
 
-```{.output}
+```output
     coat weight likes_string age
 1 calico    2.1            1   2
 2  black    5.0            0   3
@@ -69,7 +69,7 @@ age <- c(2, 3, 5, 12)
 cbind(cats, age)
 ```
 
-```{.error}
+```error
 Error in data.frame(..., check.names = FALSE): arguments imply differing number of rows: 3, 4
 ```
 
@@ -78,7 +78,7 @@ age <- c(2, 3)
 cbind(cats, age)
 ```
 
-```{.error}
+```error
 Error in data.frame(..., check.names = FALSE): arguments imply differing number of rows: 3, 2
 ```
 
@@ -90,7 +90,7 @@ for every row in the table:
 nrow(cats)
 ```
 
-```{.output}
+```output
 [1] 3
 ```
 
@@ -98,7 +98,7 @@ nrow(cats)
 length(age)
 ```
 
-```{.output}
+```output
 [1] 2
 ```
 
@@ -126,7 +126,7 @@ Let's confirm that our new row was added correctly.
 cats
 ```
 
-```{.output}
+```output
            coat weight likes_string age
 1        calico    2.1            1   2
 2         black    5.0            0   3
@@ -144,7 +144,7 @@ We now know how to add rows and columns to our data frame in R. Now let's learn 
 cats
 ```
 
-```{.output}
+```output
            coat weight likes_string age
 1        calico    2.1            1   2
 2         black    5.0            0   3
@@ -159,7 +159,7 @@ We can ask for a data frame minus the last row:
 cats[-4, ]
 ```
 
-```{.output}
+```output
     coat weight likes_string age
 1 calico    2.1            1   2
 2  black    5.0            0   3
@@ -181,7 +181,7 @@ We can also remove columns in our data frame. What if we want to remove the colu
 cats[,-4]
 ```
 
-```{.output}
+```output
            coat weight likes_string
 1        calico    2.1            1
 2         black    5.0            0
@@ -199,7 +199,7 @@ drop <- names(cats) %in% c("age")
 cats[,!drop]
 ```
 
-```{.output}
+```output
            coat weight likes_string
 1        calico    2.1            1
 2         black    5.0            0
@@ -221,7 +221,7 @@ cats <- rbind(cats, cats)
 cats
 ```
 
-```{.output}
+```output
            coat weight likes_string age
 1        calico    2.1            1   2
 2         black    5.0            0   3
@@ -321,7 +321,7 @@ out what the data looks like with `str`:
 str(gapminder)
 ```
 
-```{.output}
+```output
 'data.frame':	1704 obs. of  6 variables:
  $ country  : chr  "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
  $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
@@ -338,7 +338,7 @@ An additional method for examining the structure of gapminder is to use the `sum
 summary(gapminder)
 ```
 
-```{.output}
+```output
    country               year           pop             continent        
  Length:1704        Min.   :1952   Min.   :6.001e+04   Length:1704       
  Class :character   1st Qu.:1966   1st Qu.:2.794e+06   Class :character  
@@ -362,7 +362,7 @@ Along with the `str` and `summary` functions, we can examine individual columns 
 typeof(gapminder$year)
 ```
 
-```{.output}
+```output
 [1] "integer"
 ```
 
@@ -370,7 +370,7 @@ typeof(gapminder$year)
 typeof(gapminder$country)
 ```
 
-```{.output}
+```output
 [1] "character"
 ```
 
@@ -378,7 +378,7 @@ typeof(gapminder$country)
 str(gapminder$country)
 ```
 
-```{.output}
+```output
  chr [1:1704] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
 ```
 
@@ -391,7 +391,7 @@ variables in gapminder, what do you think the following will produce, and why?
 length(gapminder)
 ```
 
-```{.output}
+```output
 [1] 6
 ```
 
@@ -404,7 +404,7 @@ is a *list of vectors and factors*:
 typeof(gapminder)
 ```
 
-```{.output}
+```output
 [1] "list"
 ```
 
@@ -416,7 +416,7 @@ columns. To get the number of rows and columns in our dataset, try:
 nrow(gapminder)
 ```
 
-```{.output}
+```output
 [1] 1704
 ```
 
@@ -424,7 +424,7 @@ nrow(gapminder)
 ncol(gapminder)
 ```
 
-```{.output}
+```output
 [1] 6
 ```
 
@@ -435,7 +435,7 @@ Or, both at once:
 dim(gapminder)
 ```
 
-```{.output}
+```output
 [1] 1704    6
 ```
 
@@ -447,7 +447,7 @@ ask for them later:
 colnames(gapminder)
 ```
 
-```{.output}
+```output
 [1] "country"   "year"      "pop"       "continent" "lifeExp"   "gdpPercap"
 ```
 
@@ -466,7 +466,7 @@ to start digging into our data proper. Check out the first few lines:
 head(gapminder)
 ```
 
-```{.output}
+```output
       country year      pop continent lifeExp gdpPercap
 1 Afghanistan 1952  8425333      Asia  28.801  779.4453
 2 Afghanistan 1957  9240934      Asia  30.332  820.8530

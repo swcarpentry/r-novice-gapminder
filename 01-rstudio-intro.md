@@ -150,7 +150,7 @@ The simplest thing you could do with R is to do arithmetic:
 1 + 100
 ```
 
-```{.output}
+```output
 [1] 101
 ```
 
@@ -205,7 +205,7 @@ From highest to lowest precedence:
 3 + 5 * 2
 ```
 
-```{.output}
+```output
 [1] 13
 ```
 
@@ -218,7 +218,7 @@ intend.
 (3 + 5) * 2
 ```
 
-```{.output}
+```output
 [1] 16
 ```
 
@@ -243,7 +243,7 @@ Really small or large numbers get a scientific notation:
 2/10000
 ```
 
-```{.output}
+```output
 [1] 2e-04
 ```
 
@@ -257,7 +257,7 @@ You can write numbers in scientific notation too:
 5e3  # Note the lack of minus here
 ```
 
-```{.output}
+```output
 [1] 5000
 ```
 
@@ -279,7 +279,7 @@ doesn't require an argument, whereas for the next set of mathematical functions 
 sin(1)  # trigonometry functions
 ```
 
-```{.output}
+```output
 [1] 0.841471
 ```
 
@@ -288,7 +288,7 @@ sin(1)  # trigonometry functions
 log(1)  # natural logarithm
 ```
 
-```{.output}
+```output
 [1] 0
 ```
 
@@ -297,7 +297,7 @@ log(1)  # natural logarithm
 log10(10) # base-10 logarithm
 ```
 
-```{.output}
+```output
 [1] 1
 ```
 
@@ -306,7 +306,7 @@ log10(10) # base-10 logarithm
 exp(0.5) # e^(1/2)
 ```
 
-```{.output}
+```output
 [1] 1.648721
 ```
 
@@ -336,7 +336,7 @@ We can also do comparisons in R:
 1 == 1  # equality (note two equals signs, read as "is equal to")
 ```
 
-```{.output}
+```output
 [1] TRUE
 ```
 
@@ -345,7 +345,7 @@ We can also do comparisons in R:
 1 != 2  # inequality (read as "is not equal to")
 ```
 
-```{.output}
+```output
 [1] TRUE
 ```
 
@@ -354,7 +354,7 @@ We can also do comparisons in R:
 1 < 2  # less than
 ```
 
-```{.output}
+```output
 [1] TRUE
 ```
 
@@ -363,7 +363,7 @@ We can also do comparisons in R:
 1 <= 1  # less than or equal to
 ```
 
-```{.output}
+```output
 [1] TRUE
 ```
 
@@ -372,7 +372,7 @@ We can also do comparisons in R:
 1 > 0  # greater than
 ```
 
-```{.output}
+```output
 [1] TRUE
 ```
 
@@ -381,7 +381,7 @@ We can also do comparisons in R:
 1 >= -9 # greater than or equal to
 ```
 
-```{.output}
+```output
 [1] TRUE
 ```
 
@@ -424,7 +424,7 @@ in something called a **variable**. `x` now contains the **value** `0.025`:
 x
 ```
 
-```{.output}
+```output
 [1] 0.025
 ```
 
@@ -439,7 +439,7 @@ have appeared. Our variable `x` can be used in place of a number in any calculat
 log(x)
 ```
 
-```{.output}
+```output
 [1] -3.688879
 ```
 
@@ -550,7 +550,7 @@ same data type. For example:
 1:5
 ```
 
-```{.output}
+```output
 [1] 1 2 3 4 5
 ```
 
@@ -558,7 +558,7 @@ same data type. For example:
 2^(1:5)
 ```
 
-```{.output}
+```output
 [1]  2  4  8 16 32
 ```
 
@@ -567,7 +567,7 @@ x <- 1:5
 2^x
 ```
 
-```{.output}
+```output
 [1]  2  4  8 16 32
 ```
 
@@ -587,7 +587,7 @@ ls()
 ```
 
 
-```{.output}
+```output
 [1] "x" "y"
 ```
 
@@ -611,7 +611,7 @@ If we type `ls` by itself, R prints a bunch of code instead of a listing of obje
 ls
 ```
 
-```{.output}
+```output
 function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE, 
     pattern, sorted = TRUE) 
 {
@@ -643,7 +643,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x55beb9d90918>
+<bytecode: 0x55c789de4918>
 <environment: namespace:base>
 ```
 
@@ -658,7 +658,7 @@ created earlier contains 1, 2, 3, 4, 5:
 x
 ```
 
-```{.output}
+```output
 [1] 1 2 3 4 5
 ```
 
@@ -694,7 +694,7 @@ If instead we use `<-`, there will be unintended side effects, or you may get an
 rm(list <- ls())
 ```
 
-```{.error}
+```error
 Error in rm(list <- ls()): ... must contain names or character strings
 ```
 
@@ -804,7 +804,7 @@ One way of answering this question in R is to use the `>` to set up the followin
 mass > age
 ```
 
-```{.output}
+```output
 [1] TRUE
 ```
 

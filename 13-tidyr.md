@@ -68,7 +68,7 @@ First, lets look at the structure of our original gapminder data frame:
 str(gapminder)
 ```
 
-```{.output}
+```output
 'data.frame':	1704 obs. of  6 variables:
  $ country  : chr  "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
  $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
@@ -133,7 +133,7 @@ gap_wide <- read.csv("data/gapminder_wide.csv", stringsAsFactors = FALSE)
 str(gap_wide)
 ```
 
-```{.output}
+```output
 'data.frame':	142 obs. of  38 variables:
  $ continent     : chr  "Africa" "Africa" "Africa" "Africa" ...
  $ country       : chr  "Algeria" "Angola" "Benin" "Botswana" ...
@@ -191,7 +191,7 @@ gap_long <- gap_wide %>%
 str(gap_long)
 ```
 
-```{.output}
+```output
 tibble [5,112 × 4] (S3: tbl_df/tbl/data.frame)
  $ continent   : chr [1:5112] "Africa" "Africa" "Africa" "Africa" ...
  $ country     : chr [1:5112] "Algeria" "Algeria" "Algeria" "Algeria" ...
@@ -227,7 +227,7 @@ gap_long <- gap_wide %>%
 str(gap_long)
 ```
 
-```{.output}
+```output
 tibble [5,112 × 4] (S3: tbl_df/tbl/data.frame)
  $ continent   : chr [1:5112] "Africa" "Africa" "Africa" "Africa" ...
  $ country     : chr [1:5112] "Algeria" "Algeria" "Algeria" "Algeria" ...
@@ -266,12 +266,12 @@ gap_long %>% group_by(continent, obs_type) %>%
    summarize(means=mean(obs_values))
 ```
 
-```{.output}
+```output
 `summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.
 ```
 
-```{.output}
+```output
 # A tibble: 15 × 3
 # Groups:   continent [5]
    continent obs_type       means
@@ -314,7 +314,7 @@ gap_normal <- gap_long %>%
 dim(gap_normal)
 ```
 
-```{.output}
+```output
 [1] 1704    6
 ```
 
@@ -322,7 +322,7 @@ dim(gap_normal)
 dim(gapminder)
 ```
 
-```{.output}
+```output
 [1] 1704    6
 ```
 
@@ -330,7 +330,7 @@ dim(gapminder)
 names(gap_normal)
 ```
 
-```{.output}
+```output
 [1] "continent" "country"   "year"      "gdpPercap" "lifeExp"   "pop"      
 ```
 
@@ -338,7 +338,7 @@ names(gap_normal)
 names(gapminder)
 ```
 
-```{.output}
+```output
 [1] "country"   "year"      "pop"       "continent" "lifeExp"   "gdpPercap"
 ```
 
@@ -352,7 +352,7 @@ gap_normal <- gap_normal[, names(gapminder)]
 all.equal(gap_normal, gapminder)
 ```
 
-```{.output}
+```output
 [1] "Attributes: < Component \"class\": Lengths (3, 1) differ (string compare on first 1) >"
 [2] "Attributes: < Component \"class\": 1 string mismatch >"                                
 [3] "Component \"country\": 1704 string mismatches"                                         
@@ -366,7 +366,7 @@ all.equal(gap_normal, gapminder)
 head(gap_normal)
 ```
 
-```{.output}
+```output
 # A tibble: 6 × 6
   country  year      pop continent lifeExp gdpPercap
   <chr>   <int>    <dbl> <chr>       <dbl>     <dbl>
@@ -382,7 +382,7 @@ head(gap_normal)
 head(gapminder)
 ```
 
-```{.output}
+```output
       country year      pop continent lifeExp gdpPercap
 1 Afghanistan 1952  8425333      Asia  28.801  779.4453
 2 Afghanistan 1957  9240934      Asia  30.332  820.8530
@@ -401,7 +401,7 @@ gap_normal <- gap_normal %>% arrange(country, year)
 all.equal(gap_normal, gapminder)
 ```
 
-```{.output}
+```output
 [1] "Attributes: < Component \"class\": Lengths (3, 1) differ (string compare on first 1) >"
 [2] "Attributes: < Component \"class\": 1 string mismatch >"                                
 ```
@@ -422,7 +422,7 @@ gap_temp <- gap_long %>% unite(var_ID, continent, country, sep = "_")
 str(gap_temp)
 ```
 
-```{.output}
+```output
 tibble [5,112 × 4] (S3: tbl_df/tbl/data.frame)
  $ var_ID    : chr [1:5112] "Africa_Algeria" "Africa_Algeria" "Africa_Algeria" "Africa_Algeria" ...
  $ obs_type  : chr [1:5112] "gdpPercap" "gdpPercap" "gdpPercap" "gdpPercap" ...
@@ -437,7 +437,7 @@ gap_temp <- gap_long %>%
 str(gap_temp)
 ```
 
-```{.output}
+```output
 tibble [5,112 × 3] (S3: tbl_df/tbl/data.frame)
  $ ID_var    : chr [1:5112] "Africa_Algeria" "Africa_Algeria" "Africa_Algeria" "Africa_Algeria" ...
  $ var_names : chr [1:5112] "gdpPercap_1952" "gdpPercap_1957" "gdpPercap_1962" "gdpPercap_1967" ...
@@ -457,7 +457,7 @@ gap_wide_new <- gap_long %>%
 str(gap_wide_new)
 ```
 
-```{.output}
+```output
 tibble [142 × 37] (S3: tbl_df/tbl/data.frame)
  $ ID_var        : chr [1:142] "Africa_Algeria" "Africa_Angola" "Africa_Benin" "Africa_Botswana" ...
  $ gdpPercap_1952: num [1:142] 2449 3521 1063 851 543 ...
@@ -534,7 +534,7 @@ gap_wide_betterID <- gap_long %>%
 str(gap_wide_betterID)
 ```
 
-```{.output}
+```output
 tibble [142 × 38] (S3: tbl_df/tbl/data.frame)
  $ continent     : chr [1:142] "Africa" "Africa" "Africa" "Africa" ...
  $ country       : chr [1:142] "Algeria" "Angola" "Benin" "Botswana" ...
@@ -580,7 +580,7 @@ tibble [142 × 38] (S3: tbl_df/tbl/data.frame)
 all.equal(gap_wide, gap_wide_betterID)
 ```
 
-```{.output}
+```output
 [1] "Attributes: < Component \"class\": Lengths (1, 3) differ (string compare on first 1) >"
 [2] "Attributes: < Component \"class\": 1 string mismatch >"                                
 ```

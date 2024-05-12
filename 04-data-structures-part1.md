@@ -73,7 +73,7 @@ cats <- read.csv(file = "data/feline-data.csv")
 cats
 ```
 
-```{.output}
+```output
     coat weight likes_string
 1 calico    2.1            1
 2  black    5.0            0
@@ -128,7 +128,7 @@ them using the `$` operator:
 cats$weight
 ```
 
-```{.output}
+```output
 [1] 2.1 5.0 3.2
 ```
 
@@ -136,7 +136,7 @@ cats$weight
 cats$coat
 ```
 
-```{.output}
+```output
 [1] "calico" "black"  "tabby" 
 ```
 
@@ -148,7 +148,7 @@ We can do other operations on the columns:
 cats$weight + 2
 ```
 
-```{.output}
+```output
 [1] 4.1 7.0 5.2
 ```
 
@@ -156,7 +156,7 @@ cats$weight + 2
 paste("My cat is", cats$coat)
 ```
 
-```{.output}
+```output
 [1] "My cat is calico" "My cat is black"  "My cat is tabby" 
 ```
 
@@ -167,7 +167,7 @@ But what about
 cats$weight + cats$coat
 ```
 
-```{.error}
+```error
 Error in cats$weight + cats$coat: non-numeric argument to binary operator
 ```
 
@@ -185,7 +185,7 @@ data something is:
 typeof(cats$weight)
 ```
 
-```{.output}
+```output
 [1] "double"
 ```
 
@@ -197,7 +197,7 @@ For historic reasons, `double` is also called `numeric`.
 typeof(3.14)
 ```
 
-```{.output}
+```output
 [1] "double"
 ```
 
@@ -205,7 +205,7 @@ typeof(3.14)
 typeof(1L) # The L suffix forces the number to be an integer, since by default R uses float numbers
 ```
 
-```{.output}
+```output
 [1] "integer"
 ```
 
@@ -213,7 +213,7 @@ typeof(1L) # The L suffix forces the number to be an integer, since by default R
 typeof(1+1i)
 ```
 
-```{.output}
+```output
 [1] "complex"
 ```
 
@@ -221,7 +221,7 @@ typeof(1+1i)
 typeof(TRUE)
 ```
 
-```{.output}
+```output
 [1] "logical"
 ```
 
@@ -229,7 +229,7 @@ typeof(TRUE)
 typeof('banana')
 ```
 
-```{.output}
+```output
 [1] "character"
 ```
 
@@ -263,7 +263,7 @@ cats <- read.csv(file="data/feline-data_v2.csv")
 typeof(cats$weight)
 ```
 
-```{.output}
+```output
 [1] "character"
 ```
 
@@ -275,7 +275,7 @@ we did on them before, we run into trouble:
 cats$weight + 2
 ```
 
-```{.error}
+```error
 Error in cats$weight + 2: non-numeric argument to binary operator
 ```
 
@@ -295,7 +295,7 @@ is written by the `str()` function:
 str(cats)
 ```
 
-```{.output}
+```output
 'data.frame':	4 obs. of  3 variables:
  $ coat        : chr  "calico" "black" "tabby" "tabby"
  $ weight      : chr  "2.1" "5" "3.2" "2.3 or 2.4"
@@ -340,7 +340,7 @@ my_vector <- vector(length = 3)
 my_vector
 ```
 
-```{.output}
+```output
 [1] FALSE FALSE FALSE
 ```
 
@@ -355,7 +355,7 @@ another_vector <- vector(mode='character', length=3)
 another_vector
 ```
 
-```{.output}
+```output
 [1] "" "" ""
 ```
 
@@ -366,7 +366,7 @@ You can check if something is a vector:
 str(another_vector)
 ```
 
-```{.output}
+```output
  chr [1:3] "" "" ""
 ```
 
@@ -381,7 +381,7 @@ empty character strings. If we similarly do
 str(cats$weight)
 ```
 
-```{.output}
+```output
  num [1:3] 2.1 5 3.2
 ```
 
@@ -423,7 +423,7 @@ combine_vector <- c(2,6,3)
 combine_vector
 ```
 
-```{.output}
+```output
 [1] 2 6 3
 ```
 
@@ -446,7 +446,7 @@ coercion_vector <- c('a', TRUE)
 coercion_vector
 ```
 
-```{.output}
+```output
 [1] "a"    "TRUE"
 ```
 
@@ -455,7 +455,7 @@ another_coercion_vector <- c(0, TRUE)
 another_coercion_vector
 ```
 
-```{.output}
+```output
 [1] 0 1
 ```
 
@@ -471,7 +471,7 @@ example, combining `logical` and `character` transforms the result to
 c('a', TRUE)
 ```
 
-```{.output}
+```output
 [1] "a"    "TRUE"
 ```
 
@@ -487,7 +487,7 @@ character_vector_example <- c('0','2','4')
 character_vector_example
 ```
 
-```{.output}
+```output
 [1] "0" "2" "4"
 ```
 
@@ -496,7 +496,7 @@ character_coerced_to_double <- as.double(character_vector_example)
 character_coerced_to_double
 ```
 
-```{.output}
+```output
 [1] 0 2 4
 ```
 
@@ -505,7 +505,7 @@ double_coerced_to_logical <- as.logical(character_coerced_to_double)
 double_coerced_to_logical
 ```
 
-```{.output}
+```output
 [1] FALSE  TRUE  TRUE
 ```
 
@@ -527,7 +527,7 @@ using the `as.logical` function:
 cats$likes_string
 ```
 
-```{.output}
+```output
 [1] 1 0 1
 ```
 
@@ -536,7 +536,7 @@ cats$likes_string <- as.logical(cats$likes_string)
 cats$likes_string
 ```
 
-```{.output}
+```output
 [1]  TRUE FALSE  TRUE
 ```
 
@@ -731,7 +731,7 @@ ab_vector <- c('a', 'b')
 ab_vector
 ```
 
-```{.output}
+```output
 [1] "a" "b"
 ```
 
@@ -740,7 +740,7 @@ combine_example <- c(ab_vector, 'SWC')
 combine_example
 ```
 
-```{.output}
+```output
 [1] "a"   "b"   "SWC"
 ```
 
@@ -752,7 +752,7 @@ mySeries <- 1:10
 mySeries
 ```
 
-```{.output}
+```output
  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
@@ -760,7 +760,7 @@ mySeries
 seq(10)
 ```
 
-```{.output}
+```output
  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
@@ -768,7 +768,7 @@ seq(10)
 seq(1,10, by=0.1)
 ```
 
-```{.output}
+```output
  [1]  1.0  1.1  1.2  1.3  1.4  1.5  1.6  1.7  1.8  1.9  2.0  2.1  2.2  2.3  2.4
 [16]  2.5  2.6  2.7  2.8  2.9  3.0  3.1  3.2  3.3  3.4  3.5  3.6  3.7  3.8  3.9
 [31]  4.0  4.1  4.2  4.3  4.4  4.5  4.6  4.7  4.8  4.9  5.0  5.1  5.2  5.3  5.4
@@ -786,7 +786,7 @@ sequence_example <- 20:25
 head(sequence_example, n=2)
 ```
 
-```{.output}
+```output
 [1] 20 21
 ```
 
@@ -794,7 +794,7 @@ head(sequence_example, n=2)
 tail(sequence_example, n=4)
 ```
 
-```{.output}
+```output
 [1] 22 23 24 25
 ```
 
@@ -802,7 +802,7 @@ tail(sequence_example, n=4)
 length(sequence_example)
 ```
 
-```{.output}
+```output
 [1] 6
 ```
 
@@ -810,7 +810,7 @@ length(sequence_example)
 typeof(sequence_example)
 ```
 
-```{.output}
+```output
 [1] "integer"
 ```
 
@@ -822,7 +822,7 @@ first_element <- sequence_example[1]
 first_element
 ```
 
-```{.output}
+```output
 [1] 20
 ```
 
@@ -834,7 +834,7 @@ sequence_example[1] <- 30
 sequence_example
 ```
 
-```{.output}
+```output
 [1] 30 21 22 23 24 25
 ```
 
@@ -872,7 +872,7 @@ list_example <- list(1, "a", TRUE, 1+4i)
 list_example
 ```
 
-```{.output}
+```output
 [[1]]
 [1] 1
 
@@ -894,7 +894,7 @@ elements:
 str(list_example)
 ```
 
-```{.output}
+```output
 List of 4
  $ : num 1
  $ : chr "a"
@@ -915,7 +915,7 @@ To retrieve one of the elements of a list, use the **double bracket**:
 list_example[[2]]
 ```
 
-```{.output}
+```output
 [1] "a"
 ```
 
@@ -928,7 +928,7 @@ another_list <- list(title = "Numbers", numbers = 1:10, data = TRUE )
 another_list
 ```
 
-```{.output}
+```output
 $title
 [1] "Numbers"
 
@@ -947,7 +947,7 @@ We can access single elements by an additional way!
 another_list$title
 ```
 
-```{.output}
+```output
 [1] "Numbers"
 ```
 
@@ -976,7 +976,7 @@ The way to retrieve elements is different, though:
 pizza_price["pizzasubito"]
 ```
 
-```{.output}
+```output
 pizzasubito 
        5.64 
 ```
@@ -988,7 +988,7 @@ The approach used for the list does not work:
 pizza_price$pizzafresh
 ```
 
-```{.error}
+```error
 Error in pizza_price$pizzafresh: $ operator is invalid for atomic vectors
 ```
 
@@ -1005,7 +1005,7 @@ If you are only interested in the names, use the `names()` function:
 names(pizza_price)
 ```
 
-```{.output}
+```output
 [1] "pizzasubito" "pizzafresh"  "callapizza" 
 ```
 
@@ -1017,7 +1017,7 @@ possible for names:
 names(pizza_price)[3]
 ```
 
-```{.output}
+```output
 [1] "callapizza"
 ```
 
@@ -1026,7 +1026,7 @@ names(pizza_price)[3] <- "call-a-pizza"
 pizza_price
 ```
 
-```{.output}
+```output
  pizzasubito   pizzafresh call-a-pizza 
         5.64         6.60         4.50 
 ```
@@ -1106,7 +1106,7 @@ data frame:
 cats
 ```
 
-```{.output}
+```output
     coat weight likes_string
 1 calico    2.1         TRUE
 2  black    5.0        FALSE
@@ -1121,7 +1121,7 @@ if we run:
 typeof(cats)
 ```
 
-```{.output}
+```output
 [1] "list"
 ```
 
@@ -1144,7 +1144,7 @@ like any other list, but as a table?
 class(cats)
 ```
 
-```{.output}
+```output
 [1] "data.frame"
 ```
 
@@ -1166,7 +1166,7 @@ we have seen already, each column of data.frame is a vector.
 cats$coat
 ```
 
-```{.output}
+```output
 [1] "calico" "black"  "tabby" 
 ```
 
@@ -1174,7 +1174,7 @@ cats$coat
 cats[,1]
 ```
 
-```{.output}
+```output
 [1] "calico" "black"  "tabby" 
 ```
 
@@ -1182,7 +1182,7 @@ cats[,1]
 typeof(cats[,1])
 ```
 
-```{.output}
+```output
 [1] "character"
 ```
 
@@ -1190,7 +1190,7 @@ typeof(cats[,1])
 str(cats[,1])
 ```
 
-```{.output}
+```output
  chr [1:3] "calico" "black" "tabby"
 ```
 
@@ -1202,7 +1202,7 @@ thus can be composed of elements of different types.
 cats[1,]
 ```
 
-```{.output}
+```output
     coat weight likes_string
 1 calico    2.1         TRUE
 ```
@@ -1211,7 +1211,7 @@ cats[1,]
 typeof(cats[1,])
 ```
 
-```{.output}
+```output
 [1] "list"
 ```
 
@@ -1219,7 +1219,7 @@ typeof(cats[1,])
 str(cats[1,])
 ```
 
-```{.output}
+```output
 'data.frame':	1 obs. of  3 variables:
  $ coat        : chr "calico"
  $ weight      : num 2.1
@@ -1254,7 +1254,7 @@ Try out these examples and explain what is returned by each one.
 cats[1]
 ```
 
-```{.output}
+```output
     coat
 1 calico
 2  black
@@ -1270,7 +1270,7 @@ first column of the data frame.
 cats[[1]]
 ```
 
-```{.output}
+```output
 [1] "calico" "black"  "tabby" 
 ```
 
@@ -1282,7 +1282,7 @@ it is the contents of the first column, a *vector* of type *character*.
 cats$coat
 ```
 
-```{.output}
+```output
 [1] "calico" "black"  "tabby" 
 ```
 
@@ -1294,7 +1294,7 @@ first column of the data frame, again a *vector* of type *character*.
 cats["coat"]
 ```
 
-```{.output}
+```output
     coat
 1 calico
 2  black
@@ -1309,7 +1309,7 @@ the column name. Like example 1, the returned object is a *list*.
 cats[1, 1]
 ```
 
-```{.output}
+```output
 [1] "calico"
 ```
 
@@ -1322,7 +1322,7 @@ is a *vector* of type *character*.
 cats[, 1]
 ```
 
-```{.output}
+```output
 [1] "calico" "black"  "tabby" 
 ```
 
@@ -1335,7 +1335,7 @@ value as all the elements in this *column* and returns them as a *vector*.
 cats[1, ]
 ```
 
-```{.output}
+```output
     coat weight likes_string
 1 calico    2.1         TRUE
 ```
@@ -1361,7 +1361,7 @@ Data frames have column names, which can be accessed with the `names()` function
 names(cats)
 ```
 
-```{.output}
+```output
 [1] "coat"         "weight"       "likes_string"
 ```
 
@@ -1373,7 +1373,7 @@ names(cats)[2] <- "weight_kg"
 cats
 ```
 
-```{.output}
+```output
     coat weight_kg likes_string
 1 calico       2.1         TRUE
 2  black       5.0        FALSE
@@ -1394,7 +1394,7 @@ matrix_example <- matrix(0, ncol=6, nrow=3)
 matrix_example
 ```
 
-```{.output}
+```output
      [,1] [,2] [,3] [,4] [,5] [,6]
 [1,]    0    0    0    0    0    0
 [2,]    0    0    0    0    0    0
@@ -1408,7 +1408,7 @@ What makes it special is the `dim()` attribute:
 dim(matrix_example)
 ```
 
-```{.output}
+```output
 [1] 3 6
 ```
 
@@ -1419,7 +1419,7 @@ And similar to other data structures, we can ask things about our matrix:
 typeof(matrix_example)
 ```
 
-```{.output}
+```output
 [1] "double"
 ```
 
@@ -1427,7 +1427,7 @@ typeof(matrix_example)
 class(matrix_example)
 ```
 
-```{.output}
+```output
 [1] "matrix" "array" 
 ```
 
@@ -1435,7 +1435,7 @@ class(matrix_example)
 str(matrix_example)
 ```
 
-```{.output}
+```output
  num [1:3, 1:6] 0 0 0 0 0 0 0 0 0 0 ...
 ```
 
@@ -1443,7 +1443,7 @@ str(matrix_example)
 nrow(matrix_example)
 ```
 
-```{.output}
+```output
 [1] 3
 ```
 
@@ -1451,7 +1451,7 @@ nrow(matrix_example)
 ncol(matrix_example)
 ```
 
-```{.output}
+```output
 [1] 6
 ```
 
@@ -1477,7 +1477,7 @@ matrix_example <- matrix(0, ncol=6, nrow=3)
 length(matrix_example)
 ```
 
-```{.output}
+```output
 [1] 18
 ```
 
@@ -1560,7 +1560,7 @@ to remind people of the importance of these basics.
 Consider the R output of the matrix below:
 
 
-```{.output}
+```output
      [,1] [,2]
 [1,]    4    1
 [2,]    9    5
@@ -1583,7 +1583,7 @@ Think about what matrices the other commands will produce.
 Consider the R output of the matrix below:
 
 
-```{.output}
+```output
      [,1] [,2]
 [1,]    4    1
 [2,]    9    5

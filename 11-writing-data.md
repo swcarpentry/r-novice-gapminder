@@ -116,7 +116,7 @@ OK:
 head cleaned-data/gapminder-aus.csv
 ```
 
-```{.output}
+```output
 "country","year","pop","continent","lifeExp","gdpPercap"
 "61","Australia",1952,8691212,"Oceania",69.12,10039.59564
 "62","Australia",1957,9712569,"Oceania",70.33,10949.64959
@@ -163,7 +163,7 @@ Now lets look at the data again using our shell skills:
 head cleaned-data/gapminder-aus.csv
 ```
 
-```{.output}
+```output
 country,year,pop,continent,lifeExp,gdpPercap
 Australia,1952,8691212,Oceania,69.12,10039.59564
 Australia,1957,9712569,Oceania,70.33,10949.64959

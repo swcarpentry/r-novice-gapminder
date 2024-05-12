@@ -31,7 +31,7 @@ do these operations using the normal base R operations:
 mean(gapminder$gdpPercap[gapminder$continent == "Africa"])
 ```
 
-```{.output}
+```output
 [1] 2193.755
 ```
 
@@ -39,7 +39,7 @@ mean(gapminder$gdpPercap[gapminder$continent == "Africa"])
 mean(gapminder$gdpPercap[gapminder$continent == "Americas"])
 ```
 
-```{.output}
+```output
 [1] 7136.11
 ```
 
@@ -47,7 +47,7 @@ mean(gapminder$gdpPercap[gapminder$continent == "Americas"])
 mean(gapminder$gdpPercap[gapminder$continent == "Asia"])
 ```
 
-```{.output}
+```output
 [1] 7902.15
 ```
 
@@ -154,7 +154,7 @@ tidy_gdp <- year_country_gdp %>% rename(gdp_per_capita = gdpPercap)
 head(tidy_gdp)
 ```
 
-```{.output}
+```output
   year     country gdp_per_capita
 1 1952 Afghanistan       779.4453
 2 1957 Afghanistan       820.8530
@@ -232,7 +232,7 @@ could have used in filter.
 str(gapminder)
 ```
 
-```{.output}
+```output
 'data.frame':	1704 obs. of  6 variables:
  $ country  : chr  "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
  $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
@@ -246,7 +246,7 @@ str(gapminder)
 str(gapminder %>% group_by(continent))
 ```
 
-```{.output}
+```output
 gropd_df [1,704 × 6] (S3: grouped_df/tbl_df/tbl/data.frame)
  $ country  : chr [1:1704] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
  $ year     : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
@@ -326,7 +326,7 @@ lifeExp_bycountry %>%
    filter(mean_lifeExp == min(mean_lifeExp) | mean_lifeExp == max(mean_lifeExp))
 ```
 
-```{.output}
+```output
 # A tibble: 2 × 2
   country      mean_lifeExp
   <chr>               <dbl>
@@ -347,7 +347,7 @@ lifeExp_bycountry %>%
    head(1)
 ```
 
-```{.output}
+```output
 # A tibble: 1 × 2
   country      mean_lifeExp
   <chr>               <dbl>
@@ -360,7 +360,7 @@ lifeExp_bycountry %>%
    head(1)
 ```
 
-```{.output}
+```output
 # A tibble: 1 × 2
   country mean_lifeExp
   <chr>          <dbl>
@@ -376,7 +376,7 @@ lifeExp_bycountry %>%
    head(1)
 ```
 
-```{.output}
+```output
 # A tibble: 1 × 2
   country  mean_lifeExp
   <chr>           <dbl>
@@ -396,7 +396,7 @@ gdp_bycontinents_byyear <- gapminder %>%
     summarize(mean_gdpPercap = mean(gdpPercap))
 ```
 
-```{.output}
+```output
 `summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.
 ```
@@ -413,7 +413,7 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
               sd_pop = sd(pop))
 ```
 
-```{.output}
+```output
 `summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.
 ```
@@ -435,7 +435,7 @@ gapminder %>%
     count(continent, sort = TRUE)
 ```
 
-```{.output}
+```output
   continent  n
 1    Africa 52
 2      Asia 33
@@ -454,7 +454,7 @@ gapminder %>%
     summarize(se_le = sd(lifeExp)/sqrt(n()))
 ```
 
-```{.output}
+```output
 # A tibble: 5 × 2
   continent se_le
   <chr>     <dbl>
@@ -478,7 +478,7 @@ gapminder %>%
       se_le = sd(lifeExp)/sqrt(n()))
 ```
 
-```{.output}
+```output
 # A tibble: 5 × 5
   continent mean_le min_le max_le se_le
   <chr>       <dbl>  <dbl>  <dbl> <dbl>
@@ -506,7 +506,7 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
               sd_gdp_billion = sd(gdp_billion))
 ```
 
-```{.output}
+```output
 `summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.
 ```
@@ -533,7 +533,7 @@ gdp_pop_bycontinents_byyear_above25 <- gapminder %>%
               sd_gdp_billion = sd(gdp_billion))
 ```
 
-```{.output}
+```output
 `summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.
 ```
@@ -548,7 +548,7 @@ gdp_future_bycontinents_byyear_high_lifeExp <- gapminder %>%
               mean_gdpPercap_expected = mean(gdp_futureExpectation))
 ```
 
-```{.output}
+```output
 `summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.
 ```

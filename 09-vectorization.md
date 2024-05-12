@@ -30,7 +30,7 @@ x <- 1:4
 x * 2
 ```
 
-```{.output}
+```output
 [1] 2 4 6 8
 ```
 
@@ -44,7 +44,7 @@ y <- 6:9
 x + y
 ```
 
-```{.output}
+```output
 [1]  7  9 11 13
 ```
 
@@ -70,7 +70,7 @@ for (i in 1:4) {
 output_vector
 ```
 
-```{.output}
+```output
 [1]  7  9 11 13
 ```
 
@@ -82,7 +82,7 @@ sum_xy <- x + y
 sum_xy
 ```
 
-```{.output}
+```output
 [1]  7  9 11 13
 ```
 
@@ -114,7 +114,7 @@ gapminder$pop_millions <- gapminder$pop / 1e6
 head(gapminder)
 ```
 
-```{.output}
+```output
       country year      pop continent lifeExp gdpPercap pop_millions
 1 Afghanistan 1952  8425333      Asia  28.801  779.4453     8.425333
 2 Afghanistan 1957  9240934      Asia  30.332  820.8530     9.240934
@@ -176,7 +176,7 @@ vectorized:
 x > 2
 ```
 
-```{.output}
+```output
 [1] FALSE FALSE  TRUE  TRUE
 ```
 
@@ -188,7 +188,7 @@ a <- x > 3  # or, for clarity, a <- (x > 3)
 a
 ```
 
-```{.output}
+```output
 [1] FALSE FALSE FALSE  TRUE
 ```
 
@@ -212,7 +212,7 @@ x <- 1:4
 log(x)
 ```
 
-```{.output}
+```output
 [1] 0.0000000 0.6931472 1.0986123 1.3862944
 ```
 
@@ -224,7 +224,7 @@ m <- matrix(1:12, nrow=3, ncol=4)
 m * -1
 ```
 
-```{.output}
+```output
      [,1] [,2] [,3] [,4]
 [1,]   -1   -4   -7  -10
 [2,]   -2   -5   -8  -11
@@ -243,7 +243,7 @@ To do matrix multiplication, we need to use the `%*%` operator:
 m %*% matrix(1, nrow=4, ncol=1)
 ```
 
-```{.output}
+```output
      [,1]
 [1,]   22
 [2,]   26
@@ -254,7 +254,7 @@ m %*% matrix(1, nrow=4, ncol=1)
 matrix(1:4, nrow=1) %*% matrix(1:4, ncol=1)
 ```
 
-```{.output}
+```output
      [,1]
 [1,]   30
 ```
@@ -277,7 +277,7 @@ m <- matrix(1:12, nrow=3, ncol=4)
 m
 ```
 
-```{.output}
+```output
      [,1] [,2] [,3] [,4]
 [1,]    1    4    7   10
 [2,]    2    5    8   11
@@ -305,7 +305,7 @@ m <- matrix(1:12, nrow=3, ncol=4)
 m
 ```
 
-```{.output}
+```output
      [,1] [,2] [,3] [,4]
 [1,]    1    4    7   10
 [2,]    2    5    8   11
@@ -317,7 +317,7 @@ Write down what you think will happen when you run:
 1. `m ^ -1`
 
 
-```{.output}
+```output
           [,1]      [,2]      [,3]       [,4]
 [1,] 1.0000000 0.2500000 0.1428571 0.10000000
 [2,] 0.5000000 0.2000000 0.1250000 0.09090909
@@ -327,7 +327,7 @@ Write down what you think will happen when you run:
 2. `m * c(1, 0, -1)`
 
 
-```{.output}
+```output
      [,1] [,2] [,3] [,4]
 [1,]    1    4    7   10
 [2,]    0    0    0    0
@@ -337,7 +337,7 @@ Write down what you think will happen when you run:
 3. `m > c(0, 20)`
 
 
-```{.output}
+```output
       [,1]  [,2]  [,3]  [,4]
 [1,]  TRUE FALSE  TRUE FALSE
 [2,] FALSE  TRUE FALSE  TRUE
@@ -386,7 +386,7 @@ How about when n=10,000?
 sum(1/(1:100)^2)
 ```
 
-```{.output}
+```output
 [1] 1.634984
 ```
 
@@ -394,7 +394,7 @@ sum(1/(1:100)^2)
 sum(1/(1:1e04)^2)
 ```
 
-```{.output}
+```output
 [1] 1.644834
 ```
 
@@ -403,7 +403,7 @@ n <- 10000
 sum(1/(1:n)^2)
 ```
 
-```{.output}
+```output
 [1] 1.644834
 ```
 
@@ -417,7 +417,7 @@ inverse_sum_of_squares <- function(n) {
 inverse_sum_of_squares(100)
 ```
 
-```{.output}
+```output
 [1] 1.634984
 ```
 
@@ -425,7 +425,7 @@ inverse_sum_of_squares(100)
 inverse_sum_of_squares(10000)
 ```
 
-```{.output}
+```output
 [1] 1.644834
 ```
 
@@ -434,7 +434,7 @@ n <- 10000
 inverse_sum_of_squares(n)
 ```
 
-```{.output}
+```output
 [1] 1.644834
 ```
 
@@ -458,12 +458,12 @@ y <- c(1, 2, 3, 4, 5, 6, 7)
 x + y
 ```
 
-```{.warning}
+```warning
 Warning in x + y: longer object length is not a multiple of shorter object
 length
 ```
 
-```{.output}
+```output
 [1] 2 4 6 5 7 9 8
 ```
 
