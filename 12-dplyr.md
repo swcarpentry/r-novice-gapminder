@@ -387,13 +387,14 @@ lifeExp_bycountry %>%
 
 :::::::::::::::::::::::::
 
-The function `group_by()` allows us to group by multiple variables. Let's group by `year` and `continent`.
+The function `group_by()` allows us to group by multiple variables. If you don't `ungroup()` after summarizing with multiple grouping variables, you may get a warning telling you the data are still partially grouped. Let's group by `year` and `continent`.
 
 
 ```r
 gdp_bycontinents_byyear <- gapminder %>%
     group_by(continent, year) %>%
-    summarize(mean_gdpPercap = mean(gdpPercap))
+    summarize(mean_gdpPercap = mean(gdpPercap)) %>%
+    ungroup()
 ```
 
 ```output
@@ -410,7 +411,8 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
     summarize(mean_gdpPercap = mean(gdpPercap),
               sd_gdpPercap = sd(gdpPercap),
               mean_pop = mean(pop),
-              sd_pop = sd(pop))
+              sd_pop = sd(pop)) %>%
+    ungroup()
 ```
 
 ```output
@@ -503,7 +505,8 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
               mean_pop = mean(pop),
               sd_pop = sd(pop),
               mean_gdp_billion = mean(gdp_billion),
-              sd_gdp_billion = sd(gdp_billion))
+              sd_gdp_billion = sd(gdp_billion))  %>%
+    ungroup()
 ```
 
 ```output
@@ -530,7 +533,8 @@ gdp_pop_bycontinents_byyear_above25 <- gapminder %>%
               mean_pop = mean(pop),
               sd_pop = sd(pop),
               mean_gdp_billion = mean(gdp_billion),
-              sd_gdp_billion = sd(gdp_billion))
+              sd_gdp_billion = sd(gdp_billion))  %>%
+    ungroup()
 ```
 
 ```output
@@ -545,7 +549,8 @@ gdp_future_bycontinents_byyear_high_lifeExp <- gapminder %>%
     mutate(gdp_futureExpectation = ifelse(lifeExp > 40, gdpPercap * 1.5, gdpPercap)) %>%
     group_by(continent, year) %>%
     summarize(mean_gdpPercap = mean(gdpPercap),
-              mean_gdpPercap_expected = mean(gdp_futureExpectation))
+              mean_gdpPercap_expected = mean(gdp_futureExpectation))  %>%
+    ungroup()
 ```
 
 ```output

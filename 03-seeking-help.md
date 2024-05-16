@@ -160,8 +160,8 @@ sessionInfo()
 ```
 
 ```output
-R version 4.3.3 (2024-02-29)
-Platform: x86_64-pc-linux-gnu (64-bit)
+R version 4.4.0 (2024-04-24)
+Platform: x86_64-pc-linux-gnu
 Running under: Ubuntu 22.04.4 LTS
 
 Matrix products: default
@@ -181,7 +181,7 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 loaded via a namespace (and not attached):
-[1] compiler_4.3.3 tools_4.3.3    yaml_2.3.8     knitr_1.46     xfun_0.43     
+[1] compiler_4.4.0 tools_4.4.0    yaml_2.3.8     knitr_1.46     xfun_0.43     
 [6] renv_1.0.7     evaluate_0.23 
 ```
 
