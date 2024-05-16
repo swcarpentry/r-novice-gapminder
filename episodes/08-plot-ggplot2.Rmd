@@ -270,18 +270,15 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
   geom_point(alpha = 0.5) + scale_x_log10() + geom_smooth(method="lm")
 ```
 
-We can make the line thicker by *setting* the **size** aesthetic in the
+We can make the line thicker by *setting* the **linewidth** aesthetic in the
 `geom_smooth` layer:
 
 ```{r lm-fit2, fig.alt="Scatter plot of life expectancy vs GDP per capita with a trend line summarising the relationship between variables. The blue trend line is slightly thicker than in the previous figure."}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
-  geom_point(alpha = 0.5) + scale_x_log10() + geom_smooth(method="lm", size=1.5)
+  geom_point(alpha = 0.5) + scale_x_log10() + geom_smooth(method="lm", linewidth=1.5)
 ```
 
-There are two ways an *aesthetic* can be specified. Here we *set* the **size**
-aesthetic by passing it as an argument to `geom_smooth`. Previously in the
-lesson we've used the `aes` function to define a *mapping* between data
-variables and their visual representation.
+There are two ways an *aesthetic* can be specified. Here we *set* the **linewidth** aesthetic by passing it as an argument to `geom_smooth` and it is applied the same to the whole `geom`. Previously in the lesson we've used the `aes` function to define a *mapping* between data variables and their visual representation.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -291,6 +288,8 @@ Modify the color and size of the points on the point layer in the previous
 example.
 
 Hint: do not use the `aes` function.
+
+Hint: the equivalent of `linewidth` for points is `size`.
 
 :::::::::::::::  solution
 
@@ -304,7 +303,7 @@ a specific variable.
 ```{r ch4a-sol, fig.alt="Scatter plot of life expectancy vs GDP per capita with a trend line summarising the relationship between variables. The plot illustrates the possibilities for styling visualisations in ggplot2 with data points enlarged, coloured orange, and displayed without transparency."}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
  geom_point(size=3, color="orange") + scale_x_log10() +
- geom_smooth(method="lm", size=1.5)
+ geom_smooth(method="lm", linewidth=1.5)
 ```
 
 :::::::::::::::::::::::::
@@ -332,7 +331,7 @@ is placed inside the `aes()` call modifies a point's color based on its continen
 ```{r ch4b-sol}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp, color = continent)) +
  geom_point(size=3, shape=17) + scale_x_log10() +
- geom_smooth(method="lm", size=1.5)
+ geom_smooth(method="lm", linewidth=1.5)
 ```
 
 :::::::::::::::::::::::::
