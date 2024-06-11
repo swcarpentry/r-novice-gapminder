@@ -29,7 +29,7 @@ There are several ways you can control flow in R.
 For conditional statements, the most commonly used approaches are the constructs:
 
 
-```r
+``` r
 # if
 if (condition is true) {
   perform action
@@ -46,7 +46,7 @@ if (condition is true) {
 Say, for example, that we want R to print a message if a variable `x` has a particular value:
 
 
-```r
+``` r
 x <- 8
 
 if (x >= 10) {
@@ -56,14 +56,14 @@ if (x >= 10) {
 x
 ```
 
-```output
+``` output
 [1] 8
 ```
 
 The print statement does not appear in the console because x is not greater than 10. To print a different message for numbers less than 10, we can add an `else` statement.
 
 
-```r
+``` r
 x <- 8
 
 if (x >= 10) {
@@ -73,14 +73,14 @@ if (x >= 10) {
 }
 ```
 
-```output
+``` output
 [1] "x is less than 10"
 ```
 
 You can also test multiple conditions by using `else if`.
 
 
-```r
+``` r
 x <- 8
 
 if (x >= 10) {
@@ -92,7 +92,7 @@ if (x >= 10) {
 }
 ```
 
-```output
+``` output
 [1] "x is greater than 5, but less than 10"
 ```
 
@@ -101,7 +101,7 @@ looking for a logical element, i.e., `TRUE` or `FALSE`. This can cause some
 headaches for beginners. For example:
 
 
-```r
+``` r
 x  <-  4 == 3
 if (x) {
   "4 equals 3"
@@ -110,19 +110,19 @@ if (x) {
 }
 ```
 
-```output
+``` output
 [1] "4 does not equal 3"
 ```
 
 As we can see, the not equal message was printed because the vector x is `FALSE`
 
 
-```r
+``` r
 x <- 4 == 3
 x
 ```
 
-```output
+``` output
 [1] FALSE
 ```
 
@@ -143,28 +143,28 @@ We will first see a solution to Challenge 1 which does not use the `any()` funct
 We first obtain a logical vector describing which element of `gapminder$year` is equal to `2002`:
 
 
-```r
+``` r
 gapminder[(gapminder$year == 2002),]
 ```
 
 Then, we count the number of rows of the data.frame `gapminder` that correspond to the 2002:
 
 
-```r
+``` r
 rows2002_number <- nrow(gapminder[(gapminder$year == 2002),])
 ```
 
 The presence of any record for the year 2002 is equivalent to the request that `rows2002_number` is one or more:
 
 
-```r
+``` r
 rows2002_number >= 1
 ```
 
 Putting all together, we obtain:
 
 
-```r
+``` r
 if(nrow(gapminder[(gapminder$year == 2002),]) >= 1){
    print("Record(s) for the year 2002 found.")
 }
@@ -173,7 +173,7 @@ if(nrow(gapminder[(gapminder$year == 2002),]) >= 1){
 All this can be done more quickly with `any()`. The logical condition can be expressed as:
 
 
-```r
+``` r
 if(any(gapminder$year == 2002)){
    print("Record(s) for the year 2002 found.")
 }
@@ -186,7 +186,7 @@ if(any(gapminder$year == 2002)){
 Did anyone get a warning message like this?
 
 
-```error
+``` error
 Error in if (gapminder$year == 2012) {: the condition has length > 1
 ```
 
@@ -206,7 +206,7 @@ function accepts both singular and vector inputs and is structured as
 follows:
 
 
-```r
+``` r
 # ifelse function
 ifelse(condition is true, perform action, perform alternative action)
 ```
@@ -217,12 +217,12 @@ and the third statement  is the statement that is evaluated when the condition
 is `FALSE`.
 
 
-```r
+``` r
 y <- -3
 ifelse(y < 0, "y is a negative number", "y is either positive or zero")
 ```
 
-```output
+``` output
 [1] "y is a negative number"
 ```
 
@@ -258,7 +258,7 @@ pay off in computational efficiency.
 The basic structure of a `for()` loop is:
 
 
-```r
+``` r
 for (iterator in set of values) {
   do a thing
 }
@@ -267,13 +267,13 @@ for (iterator in set of values) {
 For example:
 
 
-```r
+``` r
 for (i in 1:10) {
   print(i)
 }
 ```
 
-```output
+``` output
 [1] 1
 [1] 2
 [1] 3
@@ -293,7 +293,7 @@ We can use a `for()` loop nested within another `for()` loop to iterate over two
 once.
 
 
-```r
+``` r
 for (i in 1:5) {
   for (j in c('a', 'b', 'c', 'd', 'e')) {
     print(paste(i,j))
@@ -301,7 +301,7 @@ for (i in 1:5) {
 }
 ```
 
-```output
+``` output
 [1] "1 a"
 [1] "1 b"
 [1] "1 c"
@@ -337,7 +337,7 @@ until the last index has been used for each `for()` loop.
 Rather than printing the results, we could write the loop output to a new object.
 
 
-```r
+``` r
 output_vector <- c()
 for (i in 1:5) {
   for (j in c('a', 'b', 'c', 'd', 'e')) {
@@ -348,7 +348,7 @@ for (i in 1:5) {
 output_vector
 ```
 
-```output
+``` output
  [1] "1 a" "1 b" "1 c" "1 d" "1 e" "2 a" "2 b" "2 c" "2 d" "2 e" "3 a" "3 b"
 [13] "3 c" "3 d" "3 e" "4 a" "4 b" "4 c" "4 d" "4 e" "5 a" "5 b" "5 c" "5 d"
 [25] "5 e"
@@ -380,7 +380,7 @@ A better way is to define your (empty) output object before filling in the value
 For this example, it looks more involved, but is still more efficient.
 
 
-```r
+``` r
 output_matrix <- matrix(nrow = 5, ncol = 5)
 j_vector <- c('a', 'b', 'c', 'd', 'e')
 for (i in 1:5) {
@@ -394,7 +394,7 @@ output_vector2 <- as.vector(output_matrix)
 output_vector2
 ```
 
-```output
+``` output
  [1] "1 a" "2 a" "3 a" "4 a" "5 a" "1 b" "2 b" "3 b" "4 b" "5 b" "1 c" "2 c"
 [13] "3 c" "4 c" "5 c" "1 d" "2 d" "3 d" "4 d" "5 d" "1 e" "2 e" "3 e" "4 e"
 [25] "5 e"
@@ -408,7 +408,7 @@ Sometimes you will find yourself needing to repeat an operation as long as a cer
 condition is met. You can do this with a `while()` loop.
 
 
-```r
+``` r
 while(this condition is true){
   do a thing
 }
@@ -450,21 +450,21 @@ the same as `output_vector`?
 We can check whether the two vectors are identical using the `all()` function:
 
 
-```r
+``` r
 all(output_vector == output_vector2)
 ```
 
 However, all the elements of `output_vector` can be found in `output_vector2`:
 
 
-```r
+``` r
 all(output_vector %in% output_vector2)
 ```
 
 and vice versa:
 
 
-```r
+``` r
 all(output_vector2 %in% output_vector)
 ```
 
@@ -476,28 +476,28 @@ The solution is to transpose the `output_matrix`. We can do it either by calling
 The first solution requires to change the original
 
 
-```r
+``` r
 output_vector2 <- as.vector(output_matrix)
 ```
 
 into
 
 
-```r
+``` r
 output_vector2 <- as.vector(t(output_matrix))
 ```
 
 The second solution requires to change
 
 
-```r
+``` r
 output_matrix[i, j] <- temp_output
 ```
 
 into
 
 
-```r
+``` r
 output_matrix[j, i] <- temp_output
 ```
 
@@ -520,7 +520,7 @@ years.
 **Step 1**:  We want to make sure we can extract all the unique values of the continent vector
 
 
-```r
+``` r
 gapminder <- read.csv("data/gapminder_data.csv")
 unique(gapminder$continent)
 ```
@@ -533,7 +533,7 @@ We can do that as follows:
 3. Return the calculated life expectancy to the user by printing the output:
 
 
-```r
+``` r
 for (iContinent in unique(gapminder$continent)) {
   tmp <- gapminder[gapminder$continent == iContinent, ]
   cat(iContinent, mean(tmp$lifeExp, na.rm = TRUE), "\n")
@@ -548,7 +548,7 @@ We need to amend (3) from above:
 3a. If the calculated life expectancy is less than some threshold (50 years), return the continent and a statement that life expectancy is less than threshold, otherwise return the continent and a statement that life expectancy is greater than threshold:
 
 
-```r
+``` r
 thresholdValue <- 50
 
 for (iContinent in unique(gapminder$continent)) {
@@ -582,7 +582,7 @@ smaller than 50, between 50 and 70, or greater than 70.
 We modify our solution to Challenge 3 by now adding two thresholds, `lowerThreshold` and `upperThreshold` and extending our if-else statements:
 
 
-```r
+``` r
  lowerThreshold <- 50
  upperThreshold <- 70
 
@@ -622,7 +622,7 @@ Lets understand how to do this first.
 Following from the Unix shell section we may be tempted to try the following
 
 
-```r
+``` r
 grep("^B", unique(gapminder$country))
 ```
 
@@ -630,7 +630,7 @@ But when we evaluate this command it returns the indices of the factor variable 
 To get the values, we must add the `value=TRUE` option to the `grep()` command:
 
 
-```r
+``` r
 grep("^B", unique(gapminder$country), value = TRUE)
 ```
 
@@ -638,7 +638,7 @@ We will now store these countries in a variable called candidateCountries, and t
 Inside the loop, we evaluate the average life expectancy for each country, and if the average life expectancy is less than 50 we use base-plot to plot the evolution of average life expectancy using `with()` and `subset()`:
 
 
-```r
+``` r
 thresholdValue <- 50
 candidateCountries <- grep("^B", unique(gapminder$country), value = TRUE)
 

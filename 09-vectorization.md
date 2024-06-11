@@ -25,12 +25,12 @@ and act on each element one at a time. This makes writing code more
 concise, easy to read, and less error prone.
 
 
-```r
+``` r
 x <- 1:4
 x * 2
 ```
 
-```output
+``` output
 [1] 2 4 6 8
 ```
 
@@ -39,19 +39,19 @@ The multiplication happened to each element of the vector.
 We can also add two vectors together:
 
 
-```r
+``` r
 y <- 6:9
 x + y
 ```
 
-```output
+``` output
 [1]  7  9 11 13
 ```
 
 Each element of `x` was added to its corresponding element of `y`:
 
 
-```r
+``` r
 x:  1  2  3  4
     +  +  +  +
 y:  6  7  8  9
@@ -62,7 +62,7 @@ y:  6  7  8  9
 Here is how we would add two vectors together using a for loop:
 
 
-```r
+``` r
 output_vector <- c()
 for (i in 1:4) {
   output_vector[i] <- x[i] + y[i]
@@ -70,19 +70,19 @@ for (i in 1:4) {
 output_vector
 ```
 
-```output
+``` output
 [1]  7  9 11 13
 ```
 
 Compare this to the output using vectorised operations.
 
 
-```r
+``` r
 sum_xy <- x + y
 sum_xy
 ```
 
-```output
+``` output
 [1]  7  9 11 13
 ```
 
@@ -109,12 +109,12 @@ Check the head or tail of the data frame to make sure
 it worked.
 
 
-```r
+``` r
 gapminder$pop_millions <- gapminder$pop / 1e6
 head(gapminder)
 ```
 
-```output
+``` output
       country year      pop continent lifeExp gdpPercap pop_millions
 1 Afghanistan 1952  8425333      Asia  28.801  779.4453     8.425333
 2 Afghanistan 1957  9240934      Asia  30.332  820.8530     9.240934
@@ -146,14 +146,14 @@ Indonesia. Again, do not worry about which is which.
 Refresh your plotting skills by plotting population in millions against year.
 
 
-```r
+``` r
 ggplot(gapminder, aes(x = year, y = pop_millions)) +
  geom_point()
 ```
 
 <img src="fig/09-vectorization-rendered-ch2-sol-1.png" alt="Scatter plot showing populations in the millions against the year for China, India, and Indonesia, countries are not labeled." style="display: block; margin: auto;" />
 
-```r
+``` r
 countryset <- c("China","India","Indonesia")
 ggplot(gapminder[gapminder$country %in% countryset,],
        aes(x = year, y = pop_millions)) +
@@ -172,23 +172,23 @@ vectorized:
 **Comparison operators**
 
 
-```r
+``` r
 x > 2
 ```
 
-```output
+``` output
 [1] FALSE FALSE  TRUE  TRUE
 ```
 
 **Logical operators**
 
 
-```r
+``` r
 a <- x > 3  # or, for clarity, a <- (x > 3)
 a
 ```
 
-```output
+``` output
 [1] FALSE FALSE FALSE  TRUE
 ```
 
@@ -207,24 +207,24 @@ Most functions also operate element-wise on vectors:
 **Functions**
 
 
-```r
+``` r
 x <- 1:4
 log(x)
 ```
 
-```output
+``` output
 [1] 0.0000000 0.6931472 1.0986123 1.3862944
 ```
 
 Vectorized operations work element-wise on matrices:
 
 
-```r
+``` r
 m <- matrix(1:12, nrow=3, ncol=4)
 m * -1
 ```
 
-```output
+``` output
      [,1] [,2] [,3] [,4]
 [1,]   -1   -4   -7  -10
 [2,]   -2   -5   -8  -11
@@ -239,22 +239,22 @@ Very important: the operator `*` gives you element-wise multiplication!
 To do matrix multiplication, we need to use the `%*%` operator:
 
 
-```r
+``` r
 m %*% matrix(1, nrow=4, ncol=1)
 ```
 
-```output
+``` output
      [,1]
 [1,]   22
 [2,]   26
 [3,]   30
 ```
 
-```r
+``` r
 matrix(1:4, nrow=1) %*% matrix(1:4, ncol=1)
 ```
 
-```output
+``` output
      [,1]
 [1,]   30
 ```
@@ -272,12 +272,12 @@ guide](https://www.statmethods.net/advstats/matrix.html)
 Given the following matrix:
 
 
-```r
+``` r
 m <- matrix(1:12, nrow=3, ncol=4)
 m
 ```
 
-```output
+``` output
      [,1] [,2] [,3] [,4]
 [1,]    1    4    7   10
 [2,]    2    5    8   11
@@ -300,12 +300,12 @@ Did you get the output you expected? If not, ask a helper!
 Given the following matrix:
 
 
-```r
+``` r
 m <- matrix(1:12, nrow=3, ncol=4)
 m
 ```
 
-```output
+``` output
      [,1] [,2] [,3] [,4]
 [1,]    1    4    7   10
 [2,]    2    5    8   11
@@ -317,7 +317,7 @@ Write down what you think will happen when you run:
 1. `m ^ -1`
 
 
-```output
+``` output
           [,1]      [,2]      [,3]       [,4]
 [1,] 1.0000000 0.2500000 0.1428571 0.10000000
 [2,] 0.5000000 0.2000000 0.1250000 0.09090909
@@ -327,7 +327,7 @@ Write down what you think will happen when you run:
 2. `m * c(1, 0, -1)`
 
 
-```output
+``` output
      [,1] [,2] [,3] [,4]
 [1,]    1    4    7   10
 [2,]    0    0    0    0
@@ -337,7 +337,7 @@ Write down what you think will happen when you run:
 3. `m > c(0, 20)`
 
 
-```output
+``` output
       [,1]  [,2]  [,3]  [,4]
 [1,]  TRUE FALSE  TRUE FALSE
 [2,] FALSE  TRUE FALSE  TRUE
@@ -356,7 +356,7 @@ We're interested in looking at the sum of the
 following sequence of fractions:
 
 
-```r
+``` r
  x = 1/(1^2) + 1/(2^2) + 1/(3^2) + ... + 1/(n^2)
 ```
 
@@ -372,7 +372,7 @@ We're interested in looking at the sum of the
 following sequence of fractions:
 
 
-```r
+``` r
  x = 1/(1^2) + 1/(2^2) + 1/(3^2) + ... + 1/(n^2)
 ```
 
@@ -382,59 +382,59 @@ Can you use vectorisation to compute x, when n=100?
 How about when n=10,000?
 
 
-```r
+``` r
 sum(1/(1:100)^2)
 ```
 
-```output
+``` output
 [1] 1.634984
 ```
 
-```r
+``` r
 sum(1/(1:1e04)^2)
 ```
 
-```output
+``` output
 [1] 1.644834
 ```
 
-```r
+``` r
 n <- 10000
 sum(1/(1:n)^2)
 ```
 
-```output
+``` output
 [1] 1.644834
 ```
 
 We can also obtain the same results using a function:
 
 
-```r
+``` r
 inverse_sum_of_squares <- function(n) {
   sum(1/(1:n)^2)
 }
 inverse_sum_of_squares(100)
 ```
 
-```output
+``` output
 [1] 1.634984
 ```
 
-```r
+``` r
 inverse_sum_of_squares(10000)
 ```
 
-```output
+``` output
 [1] 1.644834
 ```
 
-```r
+``` r
 n <- 10000
 inverse_sum_of_squares(n)
 ```
 
-```output
+``` output
 [1] 1.644834
 ```
 
@@ -452,25 +452,25 @@ until it matches the length of the larger vector. R will provide a warning
 if the larger vector is not a multiple of the smaller vector.
 
 
-```r
+``` r
 x <- c(1, 2, 3)
 y <- c(1, 2, 3, 4, 5, 6, 7)
 x + y
 ```
 
-```warning
+``` warning
 Warning in x + y: longer object length is not a multiple of shorter object
 length
 ```
 
-```output
+``` output
 [1] 2 4 6 5 7 9 8
 ```
 
 Vector `x` was recycled to match the length of vector `y`
 
 
-```r
+``` r
 x:  1  2  3  1  2  3  1
     +  +  +  +  +  +  +
 y:  1  2  3  4  5  6  7

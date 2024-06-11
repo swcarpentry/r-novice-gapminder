@@ -30,13 +30,13 @@ different subsetting operators for the different data structures.
 Let's start with the workhorse of R: a simple numeric vector.
 
 
-```r
+``` r
 x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 names(x) <- c('a', 'b', 'c', 'd', 'e')
 x
 ```
 
-```output
+``` output
   a   b   c   d   e 
 5.4 6.2 7.1 4.8 7.5 
 ```
@@ -59,21 +59,21 @@ To extract elements of a vector we can give their corresponding index, starting
 from one:
 
 
-```r
+``` r
 x[1]
 ```
 
-```output
+``` output
   a 
 5.4 
 ```
 
 
-```r
+``` r
 x[4]
 ```
 
-```output
+``` output
   d 
 4.8 
 ```
@@ -84,11 +84,11 @@ It may look different, but the square brackets operator is a function. For vecto
 We can ask for multiple elements at once:
 
 
-```r
+``` r
 x[c(1, 3)]
 ```
 
-```output
+``` output
   a   c 
 5.4 7.1 
 ```
@@ -96,11 +96,11 @@ x[c(1, 3)]
 Or slices of the vector:
 
 
-```r
+``` r
 x[1:4]
 ```
 
-```output
+``` output
   a   b   c   d 
 5.4 6.2 7.1 4.8 
 ```
@@ -108,30 +108,30 @@ x[1:4]
 the `:` operator creates a sequence of numbers from the left element to the right.
 
 
-```r
+``` r
 1:4
 ```
 
-```output
+``` output
 [1] 1 2 3 4
 ```
 
-```r
+``` r
 c(1, 2, 3, 4)
 ```
 
-```output
+``` output
 [1] 1 2 3 4
 ```
 
 We can ask for the same element multiple times:
 
 
-```r
+``` r
 x[c(1,1,3)]
 ```
 
-```output
+``` output
   a   a   c 
 5.4 5.4 7.1 
 ```
@@ -139,11 +139,11 @@ x[c(1,1,3)]
 If we ask for an index beyond the length of the vector, R will return a missing value:
 
 
-```r
+``` r
 x[6]
 ```
 
-```output
+``` output
 <NA> 
   NA 
 ```
@@ -153,11 +153,11 @@ This is a vector of length one containing an `NA`, whose name is also `NA`.
 If we ask for the 0th element, we get an empty vector:
 
 
-```r
+``` r
 x[0]
 ```
 
-```output
+``` output
 named numeric(0)
 ```
 
@@ -177,11 +177,11 @@ If we use a negative number as the index of a vector, R will return
 every element *except* for the one specified:
 
 
-```r
+``` r
 x[-2]
 ```
 
-```output
+``` output
   a   c   d   e 
 5.4 7.1 4.8 7.5 
 ```
@@ -189,11 +189,11 @@ x[-2]
 We can skip multiple elements:
 
 
-```r
+``` r
 x[c(-1, -5)]  # or x[-c(1,5)]
 ```
 
-```output
+``` output
   b   c   d 
 6.2 7.1 4.8 
 ```
@@ -207,14 +207,14 @@ slices of a vector. It's natural to try to negate a
 sequence like so:
 
 
-```r
+``` r
 x[-1:3]
 ```
 
 This gives a somewhat cryptic error:
 
 
-```error
+``` error
 Error in x[-1:3]: only 0's may be mixed with negative subscripts
 ```
 
@@ -226,11 +226,11 @@ The correct solution is to wrap that function call in brackets, so
 that the `-` operator applies to the result:
 
 
-```r
+``` r
 x[-(1:3)]
 ```
 
-```output
+``` output
   d   e 
 4.8 7.5 
 ```
@@ -241,12 +241,12 @@ To remove elements from a vector, we need to assign the result back
 into the variable:
 
 
-```r
+``` r
 x <- x[-4]
 x
 ```
 
-```output
+``` output
   a   b   c   e 
 5.4 6.2 7.1 7.5 
 ```
@@ -258,13 +258,13 @@ x
 Given the following code:
 
 
-```r
+``` r
 x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 names(x) <- c('a', 'b', 'c', 'd', 'e')
 print(x)
 ```
 
-```output
+``` output
   a   b   c   d   e 
 5.4 6.2 7.1 4.8 7.5 
 ```
@@ -272,7 +272,7 @@ print(x)
 Come up with at least 2 different commands that will produce the following output:
 
 
-```output
+``` output
   b   c   d 
 6.2 7.1 4.8 
 ```
@@ -284,31 +284,31 @@ After you find 2 different commands, compare notes with your neighbour. Did you 
 ## Solution to challenge 1
 
 
-```r
+``` r
 x[2:4]
 ```
 
-```output
+``` output
   b   c   d 
 6.2 7.1 4.8 
 ```
 
 
-```r
+``` r
 x[-c(1,5)]
 ```
 
-```output
+``` output
   b   c   d 
 6.2 7.1 4.8 
 ```
 
 
-```r
+``` r
 x[c(2,3,4)]
 ```
 
-```output
+``` output
   b   c   d 
 6.2 7.1 4.8 
 ```
@@ -322,12 +322,12 @@ x[c(2,3,4)]
 We can extract elements by using their name, instead of extracting by index:
 
 
-```r
+``` r
 x <- c(a=5.4, b=6.2, c=7.1, d=4.8, e=7.5) # we can name a vector 'on the fly'
 x[c("a", "c")]
 ```
 
-```output
+``` output
   a   c 
 5.4 7.1 
 ```
@@ -341,11 +341,11 @@ subsetting operations, but the names will always remain the same!
 We can also use any logical vector to subset:
 
 
-```r
+``` r
 x[c(FALSE, FALSE, TRUE, FALSE, TRUE)]
 ```
 
-```output
+``` output
   c   e 
 7.1 7.5 
 ```
@@ -355,11 +355,11 @@ use them to succinctly subset vectors: the following statement gives
 the same result as the previous one.
 
 
-```r
+``` r
 x[x > 7]
 ```
 
-```output
+``` output
   c   e 
 7.1 7.5 
 ```
@@ -372,11 +372,11 @@ We can use `==` to mimic the previous method of indexing by name
 (remember you have to use `==` rather than `=` for comparisons):
 
 
-```r
+``` r
 x[names(x) == "a"]
 ```
 
-```output
+``` output
   a 
 5.4 
 ```
@@ -421,13 +421,13 @@ vector are `TRUE`).
 Given the following code:
 
 
-```r
+``` r
 x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 names(x) <- c('a', 'b', 'c', 'd', 'e')
 print(x)
 ```
 
-```output
+``` output
   a   b   c   d   e 
 5.4 6.2 7.1 4.8 7.5 
 ```
@@ -439,12 +439,12 @@ Write a subsetting command to return the values in x that are greater than 4 and
 ## Solution to challenge 2
 
 
-```r
+``` r
 x_subset <- x[x<7 & x>4]
 print(x_subset)
 ```
 
-```output
+``` output
   a   b   d 
 5.4 6.2 4.8 
 ```
@@ -463,39 +463,39 @@ the same name --- although R tries to avoid this --- but row names
 must be unique.) Consider these examples:
 
 
-```r
+``` r
 x <- 1:3
 x
 ```
 
-```output
+``` output
 [1] 1 2 3
 ```
 
-```r
+``` r
 names(x) <- c('a', 'a', 'a')
 x
 ```
 
-```output
+``` output
 a a a 
 1 2 3 
 ```
 
-```r
+``` r
 x['a']  # only returns first value
 ```
 
-```output
+``` output
 a 
 1 
 ```
 
-```r
+``` r
 x[names(x) == 'a']  # returns all three values
 ```
 
-```output
+``` output
 a a a 
 1 2 3 
 ```
@@ -516,23 +516,23 @@ Remember you can search for help on operators by wrapping them in quotes:
 Skipping or removing named elements is a little harder. If we try to skip one named element by negating the string, R complains (slightly obscurely) that it doesn't know how to take the negative of a string:
 
 
-```r
+``` r
 x <- c(a=5.4, b=6.2, c=7.1, d=4.8, e=7.5) # we start again by naming a vector 'on the fly'
 x[-"a"]
 ```
 
-```error
+``` error
 Error in -"a": invalid argument to unary operator
 ```
 
 However, we can use the `!=` (not-equals) operator to construct a logical vector that will do what we want:
 
 
-```r
+``` r
 x[names(x) != "a"]
 ```
 
-```output
+``` output
   b   c   d   e 
 6.2 7.1 4.8 7.5 
 ```
@@ -540,16 +540,16 @@ x[names(x) != "a"]
 Skipping multiple named indices is a little bit harder still. Suppose we want to drop the `"a"` and `"c"` elements, so we try this:
 
 
-```r
+``` r
 x[names(x)!=c("a","c")]
 ```
 
-```warning
+``` warning
 Warning in names(x) != c("a", "c"): longer object length is not a multiple of
 shorter object length
 ```
 
-```output
+``` output
   b   c   d   e 
 6.2 7.1 4.8 7.5 
 ```
@@ -563,16 +563,16 @@ So what does `!=` actually do in this case? That's an excellent question.
 Let's take a look at the comparison component of this code:
 
 
-```r
+``` r
 names(x) != c("a", "c")
 ```
 
-```warning
+``` warning
 Warning in names(x) != c("a", "c"): longer object length is not a multiple of
 shorter object length
 ```
 
-```output
+``` output
 [1] FALSE  TRUE  TRUE  TRUE  TRUE
 ```
 
@@ -594,11 +594,11 @@ Because in this case the longer vector length (5) isn't a multiple of the shorte
 The way to get R to do what we really want (match *each* element of the left argument with *all* of the elements of the right argument) it to use the `%in%` operator. The `%in%` operator goes through each element of its left argument, in this case the names of `x`, and asks, "Does this element occur in the second argument?". Here, since we want to *exclude* values, we also need a `!` operator to change "in" to "not in":
 
 
-```r
+``` r
 x[! names(x) %in% c("a","c") ]
 ```
 
-```output
+``` output
   b   d   e 
 6.2 4.8 7.5 
 ```
@@ -617,7 +617,7 @@ is `TRUE` for all of the countries in southeast Asia and `FALSE` otherwise?
 Suppose you have these data:
 
 
-```r
+``` r
 seAsia <- c("Myanmar","Thailand","Cambodia","Vietnam","Laos")
 ## read in the gapminder data that we downloaded in episode 2
 gapminder <- read.csv("data/gapminder_data.csv", header=TRUE)
@@ -643,7 +643,7 @@ and explain how they (don't) work.
 - The **clunky** (but technically correct) way to do this problem is
 
 
-```r
+``` r
  (countries=="Myanmar" | countries=="Thailand" |
  countries=="Cambodia" | countries == "Vietnam" | countries=="Laos")
 ```
@@ -683,30 +683,30 @@ do we subset the other data structures?
 Factor subsetting works the same way as vector subsetting.
 
 
-```r
+``` r
 f <- factor(c("a", "a", "b", "c", "c", "d"))
 f[f == "a"]
 ```
 
-```output
+``` output
 [1] a a
 Levels: a b c d
 ```
 
-```r
+``` r
 f[f %in% c("b", "c")]
 ```
 
-```output
+``` output
 [1] b c c
 Levels: a b c d
 ```
 
-```r
+``` r
 f[1:3]
 ```
 
-```output
+``` output
 [1] a a b
 Levels: a b c d
 ```
@@ -715,11 +715,11 @@ Skipping elements will not remove the level
 even if no more of that category exists in the factor:
 
 
-```r
+``` r
 f[-3]
 ```
 
-```output
+``` output
 [1] a a c c d
 Levels: a b c d
 ```
@@ -731,13 +731,13 @@ it takes two arguments: the first applying to the rows, the second
 to its columns:
 
 
-```r
+``` r
 set.seed(1)
 m <- matrix(rnorm(6*4), ncol=4, nrow=6)
 m[3:4, c(3,1)]
 ```
 
-```output
+``` output
             [,1]       [,2]
 [1,]  1.12493092 -0.8356286
 [2,] -0.04493361  1.5952808
@@ -747,11 +747,11 @@ You can leave the first or second arguments blank to retrieve all the
 rows or columns respectively:
 
 
-```r
+``` r
 m[, c(3,4)]
 ```
 
-```output
+``` output
             [,1]        [,2]
 [1,] -0.62124058  0.82122120
 [2,] -2.21469989  0.59390132
@@ -765,11 +765,11 @@ If we only access one row or column, R will automatically convert the result
 to a vector:
 
 
-```r
+``` r
 m[3,]
 ```
 
-```output
+``` output
 [1] -0.8356286  0.5757814  1.1249309  0.9189774
 ```
 
@@ -777,11 +777,11 @@ If you want to keep the output as a matrix, you need to specify a *third* argume
 `drop = FALSE`:
 
 
-```r
+``` r
 m[3, , drop=FALSE]
 ```
 
-```output
+``` output
            [,1]      [,2]     [,3]      [,4]
 [1,] -0.8356286 0.5757814 1.124931 0.9189774
 ```
@@ -790,11 +790,11 @@ Unlike vectors, if we try to access a row or column outside of the matrix,
 R will throw an error:
 
 
-```r
+``` r
 m[, c(3,6)]
 ```
 
-```error
+``` error
 Error in m[, c(3, 6)]: subscript out of bounds
 ```
 
@@ -812,11 +812,11 @@ Because matrices are vectors, we can
 also subset using only one argument:
 
 
-```r
+``` r
 m[5]
 ```
 
-```output
+``` output
 [1] 0.3295078
 ```
 
@@ -825,11 +825,11 @@ are laid out in *column-major format* by default. That is the elements of the
 vector are arranged column-wise:
 
 
-```r
+``` r
 matrix(1:6, nrow=2, ncol=3)
 ```
 
-```output
+``` output
      [,1] [,2] [,3]
 [1,]    1    3    5
 [2,]    2    4    6
@@ -838,11 +838,11 @@ matrix(1:6, nrow=2, ncol=3)
 If you wish to populate the matrix by row, use `byrow=TRUE`:
 
 
-```r
+``` r
 matrix(1:6, nrow=2, ncol=3, byrow=TRUE)
 ```
 
-```output
+``` output
      [,1] [,2] [,3]
 [1,]    1    2    3
 [2,]    4    5    6
@@ -858,12 +858,12 @@ instead of their row and column indices.
 Given the following code:
 
 
-```r
+``` r
 m <- matrix(1:18, nrow=3, ncol=6)
 print(m)
 ```
 
-```output
+``` output
      [,1] [,2] [,3] [,4] [,5] [,6]
 [1,]    1    4    7   10   13   16
 [2,]    2    5    8   11   14   17
@@ -901,12 +901,12 @@ Using `[` will always return a list. If you want to *subset* a list, but not
 *extract* an element, then you will likely use `[`.
 
 
-```r
+``` r
 xlist <- list(a = "Software Carpentry", b = 1:10, data = head(mtcars))
 xlist[1]
 ```
 
-```output
+``` output
 $a
 [1] "Software Carpentry"
 ```
@@ -920,11 +920,11 @@ in each element of the list, not the individual elements within those
 data structures.
 
 
-```r
+``` r
 xlist[1:2]
 ```
 
-```output
+``` output
 $a
 [1] "Software Carpentry"
 
@@ -936,11 +936,11 @@ To extract individual elements of a list, you need to use the double-square
 bracket function: `[[`.
 
 
-```r
+``` r
 xlist[[1]]
 ```
 
-```output
+``` output
 [1] "Software Carpentry"
 ```
 
@@ -949,44 +949,44 @@ Notice that now the result is a vector, not a list.
 You can't extract more than one element at once:
 
 
-```r
+``` r
 xlist[[1:2]]
 ```
 
-```error
+``` error
 Error in xlist[[1:2]]: subscript out of bounds
 ```
 
 Nor use it to skip elements:
 
 
-```r
+``` r
 xlist[[-1]]
 ```
 
-```error
+``` error
 Error in xlist[[-1]]: invalid negative subscript in get1index <real>
 ```
 
 But you can use names to both subset and extract elements:
 
 
-```r
+``` r
 xlist[["a"]]
 ```
 
-```output
+``` output
 [1] "Software Carpentry"
 ```
 
 The `$` function is a shorthand way for extracting elements by name:
 
 
-```r
+``` r
 xlist$data
 ```
 
-```output
+``` output
                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
@@ -1003,7 +1003,7 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 Given the following list:
 
 
-```r
+``` r
 xlist <- list(a = "Software Carpentry", b = 1:10, data = head(mtcars))
 ```
 
@@ -1015,29 +1015,29 @@ Hint: the number 2 is contained within the "b" item in the list.
 ## Solution to challenge 5
 
 
-```r
+``` r
 xlist$b[2]
 ```
 
-```output
+``` output
 [1] 2
 ```
 
 
-```r
+``` r
 xlist[[2]][2]
 ```
 
-```output
+``` output
 [1] 2
 ```
 
 
-```r
+``` r
 xlist[["b"]][2]
 ```
 
-```output
+``` output
 [1] 2
 ```
 
@@ -1052,7 +1052,7 @@ xlist[["b"]][2]
 Given a linear model:
 
 
-```r
+``` r
 mod <- aov(pop ~ lifeExp, data=gapminder)
 ```
 
@@ -1063,12 +1063,12 @@ Extract the residual degrees of freedom (hint: `attributes()` will help you)
 ## Solution to challenge 6
 
 
-```r
+``` r
 attributes(mod) ## `df.residual` is one of the names of `mod`
 ```
 
 
-```r
+``` r
 mod$df.residual
 ```
 
@@ -1085,11 +1085,11 @@ apply. However they are also two dimensional objects:
 element corresponds to a column. The resulting object will be a data frame:
 
 
-```r
+``` r
 head(gapminder[3])
 ```
 
-```output
+``` output
        pop
 1  8425333
 2  9240934
@@ -1102,33 +1102,33 @@ head(gapminder[3])
 Similarly, `[[` will act to extract *a single column*:
 
 
-```r
+``` r
 head(gapminder[["lifeExp"]])
 ```
 
-```output
+``` output
 [1] 28.801 30.332 31.997 34.020 36.088 38.438
 ```
 
 And `$` provides a convenient shorthand to extract columns by name:
 
 
-```r
+``` r
 head(gapminder$year)
 ```
 
-```output
+``` output
 [1] 1952 1957 1962 1967 1972 1977
 ```
 
 With two arguments, `[` behaves the same way as for matrices:
 
 
-```r
+``` r
 gapminder[1:3,]
 ```
 
-```output
+``` output
       country year      pop continent lifeExp gdpPercap
 1 Afghanistan 1952  8425333      Asia  28.801  779.4453
 2 Afghanistan 1957  9240934      Asia  30.332  820.8530
@@ -1139,11 +1139,11 @@ If we subset a single row, the result will be a data frame (because
 the elements are mixed types):
 
 
-```r
+``` r
 gapminder[3,]
 ```
 
-```output
+``` output
       country year      pop continent lifeExp gdpPercap
 3 Afghanistan 1962 10267083      Asia  31.997  853.1007
 ```
@@ -1160,21 +1160,21 @@ Fix each of the following common data frame subsetting errors:
 1. Extract observations collected for the year 1957
   
   
-  ```r
+  ``` r
   gapminder[gapminder$year = 1957,]
   ```
 
 2. Extract all columns except 1 through to 4
   
   
-  ```r
+  ``` r
   gapminder[,-1:4]
   ```
 
 3. Extract the rows where the life expectancy is longer the 80 years
   
   
-  ```r
+  ``` r
   gapminder[gapminder$lifeExp > 80]
   ```
 
@@ -1182,7 +1182,7 @@ Fix each of the following common data frame subsetting errors:
   (`continent` and `lifeExp`).
   
   
-  ```r
+  ``` r
   gapminder[1, 4, 5]
   ```
 
@@ -1190,7 +1190,7 @@ Fix each of the following common data frame subsetting errors:
   and 2007
   
   
-  ```r
+  ``` r
   gapminder[gapminder$year == 2002 | 2007,]
   ```
 
@@ -1203,7 +1203,7 @@ Fix each of the following common data frame subsetting errors:
 1. Extract observations collected for the year 1957
   
   
-  ```r
+  ``` r
   # gapminder[gapminder$year = 1957,]
   gapminder[gapminder$year == 1957,]
   ```
@@ -1211,7 +1211,7 @@ Fix each of the following common data frame subsetting errors:
 2. Extract all columns except 1 through to 4
   
   
-  ```r
+  ``` r
   # gapminder[,-1:4]
   gapminder[,-c(1:4)]
   ```
@@ -1219,7 +1219,7 @@ Fix each of the following common data frame subsetting errors:
 3. Extract the rows where the life expectancy is longer than 80 years
   
   
-  ```r
+  ``` r
   # gapminder[gapminder$lifeExp > 80]
   gapminder[gapminder$lifeExp > 80,]
   ```
@@ -1228,7 +1228,7 @@ Fix each of the following common data frame subsetting errors:
   (`continent` and `lifeExp`).
   
   
-  ```r
+  ``` r
   # gapminder[1, 4, 5]
   gapminder[1, c(4, 5)]
   ```
@@ -1237,7 +1237,7 @@ Fix each of the following common data frame subsetting errors:
   and 2007
   
   
-  ```r
+  ``` r
   # gapminder[gapminder$year == 2002 | 2007,]
   gapminder[gapminder$year == 2002 | gapminder$year == 2007,]
   gapminder[gapminder$year %in% c(2002, 2007),]
@@ -1264,7 +1264,7 @@ Fix each of the following common data frame subsetting errors:
 
 2. 
 
-```r
+``` r
 gapminder_small <- gapminder[c(1:9, 19:23),]
 ```
 

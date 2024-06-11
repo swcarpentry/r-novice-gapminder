@@ -29,7 +29,7 @@ such as you may already have in a spreadsheet or a CSV file. Let's start by
 making a toy dataset in your `data/` directory, called `feline-data.csv`:
 
 
-```r
+``` r
 cats <- data.frame(coat = c("calico", "black", "tabby"),
                     weight = c(2.1, 5.0, 3.2),
                     likes_string = c(1, 0, 1))
@@ -41,14 +41,14 @@ are setting `row.names = FALSE`. Recall you can use `?write.csv` to pull
 up the help file to check out the argument names and their default values.
 
 
-```r
+``` r
 write.csv(x = cats, file = "data/feline-data.csv", row.names = FALSE)
 ```
 
 The contents of the new file, `feline-data.csv`:
 
 
-```r
+``` r
 coat,weight,likes_string
 calico,2.1,1
 black,5.0,0
@@ -68,12 +68,12 @@ or within RStudio with the **File -> New File -> Text File** menu item.
 We can load this into R via the following:
 
 
-```r
+``` r
 cats <- read.csv(file = "data/feline-data.csv")
 cats
 ```
 
-```output
+``` output
     coat weight likes_string
 1 calico    2.1            1
 2  black    5.0            0
@@ -124,50 +124,50 @@ We can begin exploring our dataset right away, pulling out columns by specifying
 them using the `$` operator:
 
 
-```r
+``` r
 cats$weight
 ```
 
-```output
+``` output
 [1] 2.1 5.0 3.2
 ```
 
-```r
+``` r
 cats$coat
 ```
 
-```output
+``` output
 [1] "calico" "black"  "tabby" 
 ```
 
 We can do other operations on the columns:
 
 
-```r
+``` r
 ## Say we discovered that the scale weighs two Kg light:
 cats$weight + 2
 ```
 
-```output
+``` output
 [1] 4.1 7.0 5.2
 ```
 
-```r
+``` r
 paste("My cat is", cats$coat)
 ```
 
-```output
+``` output
 [1] "My cat is calico" "My cat is black"  "My cat is tabby" 
 ```
 
 But what about
 
 
-```r
+``` r
 cats$weight + cats$coat
 ```
 
-```error
+``` error
 Error in cats$weight + cats$coat: non-numeric argument to binary operator
 ```
 
@@ -181,11 +181,11 @@ important concept in programming called *data types*. We can ask what type of
 data something is:
 
 
-```r
+``` r
 typeof(cats$weight)
 ```
 
-```output
+``` output
 [1] "double"
 ```
 
@@ -193,43 +193,43 @@ There are 5 main types: `double`, `integer`, `complex`, `logical` and `character
 For historic reasons, `double` is also called `numeric`.
 
 
-```r
+``` r
 typeof(3.14)
 ```
 
-```output
+``` output
 [1] "double"
 ```
 
-```r
+``` r
 typeof(1L) # The L suffix forces the number to be an integer, since by default R uses float numbers
 ```
 
-```output
+``` output
 [1] "integer"
 ```
 
-```r
+``` r
 typeof(1+1i)
 ```
 
-```output
+``` output
 [1] "complex"
 ```
 
-```r
+``` r
 typeof(TRUE)
 ```
 
-```output
+``` output
 [1] "logical"
 ```
 
-```r
+``` r
 typeof('banana')
 ```
 
-```output
+``` output
 [1] "character"
 ```
 
@@ -241,12 +241,12 @@ A user has added details of another cat. This information is in the file
 `data/feline-data_v2.csv`.
 
 
-```r
+``` r
 file.show("data/feline-data_v2.csv")
 ```
 
 
-```r
+``` r
 coat,weight,likes_string
 calico,2.1,1
 black,5.0,0
@@ -258,12 +258,12 @@ Load the new cats data like before, and check what type of data we find in the
 `weight` column:
 
 
-```r
+``` r
 cats <- read.csv(file="data/feline-data_v2.csv")
 typeof(cats$weight)
 ```
 
-```output
+``` output
 [1] "character"
 ```
 
@@ -271,11 +271,11 @@ Oh no, our weights aren't the double type anymore! If we try to do the same math
 we did on them before, we run into trouble:
 
 
-```r
+``` r
 cats$weight + 2
 ```
 
-```error
+``` error
 Error in cats$weight + 2: non-numeric argument to binary operator
 ```
 
@@ -291,11 +291,11 @@ csv file, it is stored as a data frame. We can recognize data frames by the firs
 is written by the `str()` function:
 
 
-```r
+``` r
 str(cats)
 ```
 
-```output
+``` output
 'data.frame':	4 obs. of  3 variables:
  $ coat        : chr  "calico" "black" "tabby" "tabby"
  $ weight      : chr  "2.1" "5" "3.2" "2.3 or 2.4"
@@ -323,7 +323,7 @@ tabby,3.2,1
 And back in RStudio:
 
 
-```r
+``` r
 cats <- read.csv(file="data/feline-data.csv")
 ```
 
@@ -335,12 +335,12 @@ To better understand this behavior, let's meet another of the data structures:
 the *vector*.
 
 
-```r
+``` r
 my_vector <- vector(length = 3)
 my_vector
 ```
 
-```output
+``` output
 [1] FALSE FALSE FALSE
 ```
 
@@ -350,23 +350,23 @@ you don't choose the datatype, it'll default to `logical`; or, you can declare
 an empty vector of whatever type you like.
 
 
-```r
+``` r
 another_vector <- vector(mode='character', length=3)
 another_vector
 ```
 
-```output
+``` output
 [1] "" "" ""
 ```
 
 You can check if something is a vector:
 
 
-```r
+``` r
 str(another_vector)
 ```
 
-```output
+``` output
  chr [1:3] "" "" ""
 ```
 
@@ -377,11 +377,11 @@ case `[1:3]`; and a few examples of what's actually in the vector - in this case
 empty character strings. If we similarly do
 
 
-```r
+``` r
 str(cats$weight)
 ```
 
-```output
+``` output
  num [1:3] 2.1 5 3.2
 ```
 
@@ -418,19 +418,19 @@ our lives easier in R.
 You can also make vectors with explicit contents with the combine function:
 
 
-```r
+``` r
 combine_vector <- c(2,6,3)
 combine_vector
 ```
 
-```output
+``` output
 [1] 2 6 3
 ```
 
 Given what we've learned so far, what do you think the following will produce?
 
 
-```r
+``` r
 quiz_vector <- c(2,6,'3')
 ```
 
@@ -441,21 +441,21 @@ be combined into a single vector, it will force them all to be the same
 type. Consider:
 
 
-```r
+``` r
 coercion_vector <- c('a', TRUE)
 coercion_vector
 ```
 
-```output
+``` output
 [1] "a"    "TRUE"
 ```
 
-```r
+``` r
 another_coercion_vector <- c(0, TRUE)
 another_coercion_vector
 ```
 
-```output
+``` output
 [1] 0 1
 ```
 
@@ -467,11 +467,11 @@ example, combining `logical` and `character` transforms the result to
 `character`:
 
 
-```r
+``` r
 c('a', TRUE)
 ```
 
-```output
+``` output
 [1] "a"    "TRUE"
 ```
 
@@ -482,30 +482,30 @@ You can try to force
 coercion against this flow using the `as.` functions:
 
 
-```r
+``` r
 character_vector_example <- c('0','2','4')
 character_vector_example
 ```
 
-```output
+``` output
 [1] "0" "2" "4"
 ```
 
-```r
+``` r
 character_coerced_to_double <- as.double(character_vector_example)
 character_coerced_to_double
 ```
 
-```output
+``` output
 [1] 0 2 4
 ```
 
-```r
+``` r
 double_coerced_to_logical <- as.logical(character_coerced_to_double)
 double_coerced_to_logical
 ```
 
-```output
+``` output
 [1] FALSE  TRUE  TRUE
 ```
 
@@ -523,20 +523,20 @@ exactly what our data represents. We can 'coerce' this column to be `logical` by
 using the `as.logical` function:
 
 
-```r
+``` r
 cats$likes_string
 ```
 
-```output
+``` output
 [1] 1 0 1
 ```
 
-```r
+``` r
 cats$likes_string <- as.logical(cats$likes_string)
 cats$likes_string
 ```
 
-```output
+``` output
 [1]  TRUE FALSE  TRUE
 ```
 
@@ -726,49 +726,49 @@ auto-complete function: Type "`as.`" and then press the TAB key.
 The combine function, `c()`, will also append things to an existing vector:
 
 
-```r
+``` r
 ab_vector <- c('a', 'b')
 ab_vector
 ```
 
-```output
+``` output
 [1] "a" "b"
 ```
 
-```r
+``` r
 combine_example <- c(ab_vector, 'SWC')
 combine_example
 ```
 
-```output
+``` output
 [1] "a"   "b"   "SWC"
 ```
 
 You can also make series of numbers:
 
 
-```r
+``` r
 mySeries <- 1:10
 mySeries
 ```
 
-```output
+``` output
  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
-```r
+``` r
 seq(10)
 ```
 
-```output
+``` output
  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
-```r
+``` r
 seq(1,10, by=0.1)
 ```
 
-```output
+``` output
  [1]  1.0  1.1  1.2  1.3  1.4  1.5  1.6  1.7  1.8  1.9  2.0  2.1  2.2  2.3  2.4
 [16]  2.5  2.6  2.7  2.8  2.9  3.0  3.1  3.2  3.3  3.4  3.5  3.6  3.7  3.8  3.9
 [31]  4.0  4.1  4.2  4.3  4.4  4.5  4.6  4.7  4.8  4.9  5.0  5.1  5.2  5.3  5.4
@@ -781,60 +781,60 @@ seq(1,10, by=0.1)
 We can ask a few questions about vectors:
 
 
-```r
+``` r
 sequence_example <- 20:25
 head(sequence_example, n=2)
 ```
 
-```output
+``` output
 [1] 20 21
 ```
 
-```r
+``` r
 tail(sequence_example, n=4)
 ```
 
-```output
+``` output
 [1] 22 23 24 25
 ```
 
-```r
+``` r
 length(sequence_example)
 ```
 
-```output
+``` output
 [1] 6
 ```
 
-```r
+``` r
 typeof(sequence_example)
 ```
 
-```output
+``` output
 [1] "integer"
 ```
 
 We can get individual elements of a vector by using the bracket notation:
 
 
-```r
+``` r
 first_element <- sequence_example[1]
 first_element
 ```
 
-```output
+``` output
 [1] 20
 ```
 
 To change a single element, use the bracket on the other side of the arrow:
 
 
-```r
+``` r
 sequence_example[1] <- 30
 sequence_example
 ```
 
-```output
+``` output
 [1] 30 21 22 23 24 25
 ```
 
@@ -850,7 +850,7 @@ Then, multiply the vector by 2.
 ### Solution to Challenge 2
 
 
-```r
+``` r
 x <- 1:26
 x <- x * 2
 ```
@@ -867,12 +867,12 @@ want in it. Remember *everything in the vector must be of the same basic data ty
 but a list can have different data types:
 
 
-```r
+``` r
 list_example <- list(1, "a", TRUE, 1+4i)
 list_example
 ```
 
-```output
+``` output
 [[1]]
 [1] 1
 
@@ -890,11 +890,11 @@ When printing the object structure with `str()`, we see the data types of all
 elements:
 
 
-```r
+``` r
 str(list_example)
 ```
 
-```output
+``` output
 List of 4
  $ : num 1
  $ : chr "a"
@@ -911,11 +911,11 @@ We will see another example that will maybe surprise you in the next chapter.
 To retrieve one of the elements of a list, use the **double bracket**:
 
 
-```r
+``` r
 list_example[[2]]
 ```
 
-```output
+``` output
 [1] "a"
 ```
 
@@ -923,12 +923,12 @@ The elements of lists also can have **names**, they can be given by prepending
 them to the values, separated by an equals sign:
 
 
-```r
+``` r
 another_list <- list(title = "Numbers", numbers = 1:10, data = TRUE )
 another_list
 ```
 
-```output
+``` output
 $title
 [1] "Numbers"
 
@@ -943,11 +943,11 @@ This results in a **named list**. Now we have a new function of our object!
 We can access single elements by an additional way!
 
 
-```r
+``` r
 another_list$title
 ```
 
-```output
+``` output
 [1] "Numbers"
 ```
 
@@ -965,18 +965,18 @@ We have already seen how to generate a named list. The way to generate a named
 vector is very similar. You have seen this function before:
 
 
-```r
+``` r
 pizza_price <- c( pizzasubito = 5.64, pizzafresh = 6.60, callapizza = 4.50 )
 ```
 
 The way to retrieve elements is different, though:
 
 
-```r
+``` r
 pizza_price["pizzasubito"]
 ```
 
-```output
+``` output
 pizzasubito 
        5.64 
 ```
@@ -984,11 +984,11 @@ pizzasubito
 The approach used for the list does not work:
 
 
-```r
+``` r
 pizza_price$pizzafresh
 ```
 
-```error
+``` error
 Error in pizza_price$pizzafresh: $ operator is invalid for atomic vectors
 ```
 
@@ -1001,11 +1001,11 @@ a list, but it is actually in a vector.
 If you are only interested in the names, use the `names()` function:
 
 
-```r
+``` r
 names(pizza_price)
 ```
 
-```output
+``` output
 [1] "pizzasubito" "pizzafresh"  "callapizza" 
 ```
 
@@ -1013,20 +1013,20 @@ We have seen how to access and change single elements of a vector. The same is
 possible for names:
 
 
-```r
+``` r
 names(pizza_price)[3]
 ```
 
-```output
+``` output
 [1] "callapizza"
 ```
 
-```r
+``` r
 names(pizza_price)[3] <- "call-a-pizza"
 pizza_price
 ```
 
-```output
+``` output
  pizzasubito   pizzafresh call-a-pizza 
         5.64         6.60         4.50 
 ```
@@ -1102,11 +1102,11 @@ a table of data. We didn't go much further into detail with our example cat
 data frame:
 
 
-```r
+``` r
 cats
 ```
 
-```output
+``` output
     coat weight likes_string
 1 calico    2.1         TRUE
 2  black    5.0        FALSE
@@ -1117,11 +1117,11 @@ We can now understand something a bit surprising in our data.frame; what happens
 if we run:
 
 
-```r
+``` r
 typeof(cats)
 ```
 
-```output
+``` output
 [1] "list"
 ```
 
@@ -1140,11 +1140,11 @@ How is this "special"-ness written into the object, so that R does not treat it
 like any other list, but as a table?
 
 
-```r
+``` r
 class(cats)
 ```
 
-```output
+``` output
 [1] "data.frame"
 ```
 
@@ -1162,35 +1162,35 @@ In our `cats` example, we have an integer, a double and a logical variable. As
 we have seen already, each column of data.frame is a vector.
 
 
-```r
+``` r
 cats$coat
 ```
 
-```output
+``` output
 [1] "calico" "black"  "tabby" 
 ```
 
-```r
+``` r
 cats[,1]
 ```
 
-```output
+``` output
 [1] "calico" "black"  "tabby" 
 ```
 
-```r
+``` r
 typeof(cats[,1])
 ```
 
-```output
+``` output
 [1] "character"
 ```
 
-```r
+``` r
 str(cats[,1])
 ```
 
-```output
+``` output
  chr [1:3] "calico" "black" "tabby"
 ```
 
@@ -1198,28 +1198,28 @@ Each row is an *observation* of different variables, itself a data.frame, and
 thus can be composed of elements of different types.
 
 
-```r
+``` r
 cats[1,]
 ```
 
-```output
+``` output
     coat weight likes_string
 1 calico    2.1         TRUE
 ```
 
-```r
+``` r
 typeof(cats[1,])
 ```
 
-```output
+``` output
 [1] "list"
 ```
 
-```r
+``` r
 str(cats[1,])
 ```
 
-```output
+``` output
 'data.frame':	1 obs. of  3 variables:
  $ coat        : chr "calico"
  $ weight      : num 2.1
@@ -1250,11 +1250,11 @@ Try out these examples and explain what is returned by each one.
 ### Solution to Challenge 5
 
 
-```r
+``` r
 cats[1]
 ```
 
-```output
+``` output
     coat
 1 calico
 2  black
@@ -1266,11 +1266,11 @@ returns the first slice of the list, as another list. In this case it is the
 first column of the data frame.
 
 
-```r
+``` r
 cats[[1]]
 ```
 
-```output
+``` output
 [1] "calico" "black"  "tabby" 
 ```
 
@@ -1278,11 +1278,11 @@ The double brace `[[1]]` returns the contents of the list item. In this case
 it is the contents of the first column, a *vector* of type *character*.
 
 
-```r
+``` r
 cats$coat
 ```
 
-```output
+``` output
 [1] "calico" "black"  "tabby" 
 ```
 
@@ -1290,11 +1290,11 @@ This example uses the `$` character to address items by name. *coat* is the
 first column of the data frame, again a *vector* of type *character*.
 
 
-```r
+``` r
 cats["coat"]
 ```
 
-```output
+``` output
     coat
 1 calico
 2  black
@@ -1305,11 +1305,11 @@ Here we are using a single brace `["coat"]` replacing the index number with
 the column name. Like example 1, the returned object is a *list*.
 
 
-```r
+``` r
 cats[1, 1]
 ```
 
-```output
+``` output
 [1] "calico"
 ```
 
@@ -1318,11 +1318,11 @@ coordinates. The returned object is the value in row 1, column 1. The object
 is a *vector* of type *character*.
 
 
-```r
+``` r
 cats[, 1]
 ```
 
-```output
+``` output
 [1] "calico" "black"  "tabby" 
 ```
 
@@ -1331,11 +1331,11 @@ coordinates. The row coordinate is not specified, R interprets this missing
 value as all the elements in this *column* and returns them as a *vector*.
 
 
-```r
+``` r
 cats[1, ]
 ```
 
-```output
+``` output
     coat weight likes_string
 1 calico    2.1         TRUE
 ```
@@ -1357,23 +1357,23 @@ values in the first row.
 Data frames have column names, which can be accessed with the `names()` function.
 
 
-```r
+``` r
 names(cats)
 ```
 
-```output
+``` output
 [1] "coat"         "weight"       "likes_string"
 ```
 
 If you want to rename the second column of `cats`, you can assign a new name to the second element of `names(cats)`.
 
 
-```r
+``` r
 names(cats)[2] <- "weight_kg"
 cats
 ```
 
-```output
+``` output
     coat weight_kg likes_string
 1 calico       2.1         TRUE
 2  black       5.0        FALSE
@@ -1389,12 +1389,12 @@ cats
 Last but not least is the matrix. We can declare a matrix full of zeros:
 
 
-```r
+``` r
 matrix_example <- matrix(0, ncol=6, nrow=3)
 matrix_example
 ```
 
-```output
+``` output
      [,1] [,2] [,3] [,4] [,5] [,6]
 [1,]    0    0    0    0    0    0
 [2,]    0    0    0    0    0    0
@@ -1404,54 +1404,54 @@ matrix_example
 What makes it special is the `dim()` attribute:
 
 
-```r
+``` r
 dim(matrix_example)
 ```
 
-```output
+``` output
 [1] 3 6
 ```
 
 And similar to other data structures, we can ask things about our matrix:
 
 
-```r
+``` r
 typeof(matrix_example)
 ```
 
-```output
+``` output
 [1] "double"
 ```
 
-```r
+``` r
 class(matrix_example)
 ```
 
-```output
+``` output
 [1] "matrix" "array" 
 ```
 
-```r
+``` r
 str(matrix_example)
 ```
 
-```output
+``` output
  num [1:3, 1:6] 0 0 0 0 0 0 0 0 0 0 ...
 ```
 
-```r
+``` r
 nrow(matrix_example)
 ```
 
-```output
+``` output
 [1] 3
 ```
 
-```r
+``` r
 ncol(matrix_example)
 ```
 
-```output
+``` output
 [1] 6
 ```
 
@@ -1472,12 +1472,12 @@ What do you think will be the result of
 `length(matrix_example)`?
 
 
-```r
+``` r
 matrix_example <- matrix(0, ncol=6, nrow=3)
 length(matrix_example)
 ```
 
-```output
+``` output
 [1] 18
 ```
 
@@ -1513,7 +1513,7 @@ See if you can figure out how to change this.
 (hint: read the documentation for `matrix`!)
 
 
-```r
+``` r
 x <- matrix(1:50, ncol=5, nrow=10)
 x <- matrix(1:50, ncol=5, nrow=10, byrow = TRUE) # to fill by row
 ```
@@ -1539,7 +1539,7 @@ structures we've seen so far.
 ### Solution to Challenge 8
 
 
-```r
+``` r
 dataTypes <- c('double', 'complex', 'integer', 'character', 'logical')
 dataStructures <- c('data.frame', 'vector', 'list', 'matrix')
 answer <- list(dataTypes, dataStructures)
@@ -1560,7 +1560,7 @@ to remind people of the importance of these basics.
 Consider the R output of the matrix below:
 
 
-```output
+``` output
      [,1] [,2]
 [1,]    4    1
 [2,]    9    5
@@ -1583,7 +1583,7 @@ Think about what matrices the other commands will produce.
 Consider the R output of the matrix below:
 
 
-```output
+``` output
      [,1] [,2]
 [1,]    4    1
 [2,]    9    5
@@ -1595,7 +1595,7 @@ each command and try to figure out the correct one before typing them.
 Think about what matrices the other commands will produce.
 
 
-```r
+``` r
 matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)
 ```
 

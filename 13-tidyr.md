@@ -48,7 +48,7 @@ First install the packages if you haven't already done so (you probably
 installed dplyr in the previous lesson):
 
 
-```r
+``` r
 #install.packages("tidyr")
 #install.packages("dplyr")
 ```
@@ -56,7 +56,7 @@ installed dplyr in the previous lesson):
 Load the packages
 
 
-```r
+``` r
 library("tidyr")
 library("dplyr")
 ```
@@ -64,11 +64,11 @@ library("dplyr")
 First, lets look at the structure of our original gapminder data frame:
 
 
-```r
+``` r
 str(gapminder)
 ```
 
-```output
+``` output
 'data.frame':	1704 obs. of  6 variables:
  $ country  : chr  "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
  $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
@@ -128,12 +128,12 @@ country columns to be factors, so we use the stringsAsFactors argument for
 `read.csv()` to disable that.
 
 
-```r
+``` r
 gap_wide <- read.csv("data/gapminder_wide.csv", stringsAsFactors = FALSE)
 str(gap_wide)
 ```
 
-```output
+``` output
 'data.frame':	142 obs. of  38 variables:
  $ continent     : chr  "Africa" "Africa" "Africa" "Africa" ...
  $ country       : chr  "Algeria" "Angola" "Benin" "Botswana" ...
@@ -182,7 +182,7 @@ To change this very wide data frame layout back to our nice, intermediate (or lo
 ![](fig/14-tidyr-fig3.png){alt='Diagram illustrating how pivot longer reorganizes a data frame from a wide to long format'}
 
 
-```r
+``` r
 gap_long <- gap_wide %>%
   pivot_longer(
     cols = c(starts_with('pop'), starts_with('lifeExp'), starts_with('gdpPercap')),
@@ -191,7 +191,7 @@ gap_long <- gap_wide %>%
 str(gap_long)
 ```
 
-```output
+``` output
 tibble [5,112 × 4] (S3: tbl_df/tbl/data.frame)
  $ continent   : chr [1:5112] "Africa" "Africa" "Africa" "Africa" ...
  $ country     : chr [1:5112] "Algeria" "Algeria" "Algeria" "Algeria" ...
@@ -218,7 +218,7 @@ names as strings.
 ![](fig/14-tidyr-fig4.png){alt='Diagram illustrating the long format of the gapminder data'}
 
 
-```r
+``` r
 gap_long <- gap_wide %>%
   pivot_longer(
     cols = c(-continent, -country),
@@ -227,7 +227,7 @@ gap_long <- gap_wide %>%
 str(gap_long)
 ```
 
-```output
+``` output
 tibble [5,112 × 4] (S3: tbl_df/tbl/data.frame)
  $ continent   : chr [1:5112] "Africa" "Africa" "Africa" "Africa" ...
  $ country     : chr [1:5112] "Algeria" "Algeria" "Algeria" "Algeria" ...
@@ -244,7 +244,7 @@ type (`pop`,`lifeExp`, or `gdpPercap`) and the `year`. We can use the
 `separate()` function to split the character strings into multiple variables
 
 
-```r
+``` r
 gap_long <- gap_long %>% separate(obstype_year, into = c('obs_type', 'year'), sep = "_")
 gap_long$year <- as.integer(gap_long$year)
 ```
@@ -261,17 +261,17 @@ Using `gap_long`, calculate the mean life expectancy, population, and gdpPercap 
 ## Solution to Challenge 2
 
 
-```r
+``` r
 gap_long %>% group_by(continent, obs_type) %>%
    summarize(means=mean(obs_values))
 ```
 
-```output
+``` output
 `summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.
 ```
 
-```output
+``` output
 # A tibble: 15 × 3
 # Groups:   continent [5]
    continent obs_type       means
@@ -308,37 +308,37 @@ output columns in the widened data frame. The corresponding values will be added
 from the column named in the `values_from` argument.
 
 
-```r
+``` r
 gap_normal <- gap_long %>%
   pivot_wider(names_from = obs_type, values_from = obs_values)
 dim(gap_normal)
 ```
 
-```output
+``` output
 [1] 1704    6
 ```
 
-```r
+``` r
 dim(gapminder)
 ```
 
-```output
+``` output
 [1] 1704    6
 ```
 
-```r
+``` r
 names(gap_normal)
 ```
 
-```output
+``` output
 [1] "continent" "country"   "year"      "gdpPercap" "lifeExp"   "pop"      
 ```
 
-```r
+``` r
 names(gapminder)
 ```
 
-```output
+``` output
 [1] "country"   "year"      "pop"       "continent" "lifeExp"   "gdpPercap"
 ```
 
@@ -347,12 +347,12 @@ the original `gapminder`, but the order of the variables is different. Let's fix
 that before checking if they are `all.equal()`.
 
 
-```r
+``` r
 gap_normal <- gap_normal[, names(gapminder)]
 all.equal(gap_normal, gapminder)
 ```
 
-```output
+``` output
 [1] "Attributes: < Component \"class\": Lengths (3, 1) differ (string compare on first 1) >"
 [2] "Attributes: < Component \"class\": 1 string mismatch >"                                
 [3] "Component \"country\": 1704 string mismatches"                                         
@@ -362,11 +362,11 @@ all.equal(gap_normal, gapminder)
 [7] "Component \"gdpPercap\": Mean relative difference: 1.162302"                           
 ```
 
-```r
+``` r
 head(gap_normal)
 ```
 
-```output
+``` output
 # A tibble: 6 × 6
   country  year      pop continent lifeExp gdpPercap
   <chr>   <int>    <dbl> <chr>       <dbl>     <dbl>
@@ -378,11 +378,11 @@ head(gap_normal)
 6 Algeria  1977 17152804 Africa       58.0     4910.
 ```
 
-```r
+``` r
 head(gapminder)
 ```
 
-```output
+``` output
       country year      pop continent lifeExp gdpPercap
 1 Afghanistan 1952  8425333      Asia  28.801  779.4453
 2 Afghanistan 1957  9240934      Asia  30.332  820.8530
@@ -396,12 +396,12 @@ We're almost there, the original was sorted by `country`, then
 `year`.
 
 
-```r
+``` r
 gap_normal <- gap_normal %>% arrange(country, year)
 all.equal(gap_normal, gapminder)
 ```
 
-```output
+``` output
 [1] "Attributes: < Component \"class\": Lengths (3, 1) differ (string compare on first 1) >"
 [2] "Attributes: < Component \"class\": 1 string mismatch >"                                
 ```
@@ -417,12 +417,12 @@ combinations) and we also need to unify our ID variables to simplify the process
 of defining `gap_wide`.
 
 
-```r
+``` r
 gap_temp <- gap_long %>% unite(var_ID, continent, country, sep = "_")
 str(gap_temp)
 ```
 
-```output
+``` output
 tibble [5,112 × 4] (S3: tbl_df/tbl/data.frame)
  $ var_ID    : chr [1:5112] "Africa_Algeria" "Africa_Algeria" "Africa_Algeria" "Africa_Algeria" ...
  $ obs_type  : chr [1:5112] "gdpPercap" "gdpPercap" "gdpPercap" "gdpPercap" ...
@@ -430,14 +430,14 @@ tibble [5,112 × 4] (S3: tbl_df/tbl/data.frame)
  $ obs_values: num [1:5112] 2449 3014 2551 3247 4183 ...
 ```
 
-```r
+``` r
 gap_temp <- gap_long %>%
     unite(ID_var, continent, country, sep = "_") %>%
     unite(var_names, obs_type, year, sep = "_")
 str(gap_temp)
 ```
 
-```output
+``` output
 tibble [5,112 × 3] (S3: tbl_df/tbl/data.frame)
  $ ID_var    : chr [1:5112] "Africa_Algeria" "Africa_Algeria" "Africa_Algeria" "Africa_Algeria" ...
  $ var_names : chr [1:5112] "gdpPercap_1952" "gdpPercap_1957" "gdpPercap_1962" "gdpPercap_1967" ...
@@ -449,7 +449,7 @@ Using `unite()` we now have a single ID variable which is a combination of
 pipe in `pivot_wider()`
 
 
-```r
+``` r
 gap_wide_new <- gap_long %>%
   unite(ID_var, continent, country, sep = "_") %>%
   unite(var_names, obs_type, year, sep = "_") %>%
@@ -457,7 +457,7 @@ gap_wide_new <- gap_long %>%
 str(gap_wide_new)
 ```
 
-```output
+``` output
 tibble [142 × 37] (S3: tbl_df/tbl/data.frame)
  $ ID_var        : chr [1:142] "Africa_Algeria" "Africa_Angola" "Africa_Benin" "Africa_Botswana" ...
  $ gdpPercap_1952: num [1:142] 2449 3521 1063 851 543 ...
@@ -510,7 +510,7 @@ Take this 1 step further and create a `gap_ludicrously_wide` format data by pivo
 ## Solution to Challenge 3
 
 
-```r
+``` r
 gap_ludicrously_wide <- gap_long %>%
    unite(var_names, obs_type, year, country, sep = "_") %>%
    pivot_wider(names_from = var_names, values_from = obs_values)
@@ -524,7 +524,7 @@ Now we have a great 'wide' format data frame, but the `ID_var` could be more
 usable, let's separate it into 2 variables with `separate()`
 
 
-```r
+``` r
 gap_wide_betterID <- separate(gap_wide_new, ID_var, c("continent", "country"), sep="_")
 gap_wide_betterID <- gap_long %>%
     unite(ID_var, continent, country, sep = "_") %>%
@@ -534,7 +534,7 @@ gap_wide_betterID <- gap_long %>%
 str(gap_wide_betterID)
 ```
 
-```output
+``` output
 tibble [142 × 38] (S3: tbl_df/tbl/data.frame)
  $ continent     : chr [1:142] "Africa" "Africa" "Africa" "Africa" ...
  $ country       : chr [1:142] "Algeria" "Angola" "Benin" "Botswana" ...
@@ -576,11 +576,11 @@ tibble [142 × 38] (S3: tbl_df/tbl/data.frame)
  $ pop_2007      : num [1:142] 33333216 12420476 8078314 1639131 14326203 ...
 ```
 
-```r
+``` r
 all.equal(gap_wide, gap_wide_betterID)
 ```
 
-```output
+``` output
 [1] "Attributes: < Component \"class\": Lengths (1, 3) differ (string compare on first 1) >"
 [2] "Attributes: < Component \"class\": 1 string mismatch >"                                
 ```

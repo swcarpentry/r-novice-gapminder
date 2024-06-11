@@ -146,11 +146,11 @@ returns a result.
 The simplest thing you could do with R is to do arithmetic:
 
 
-```r
+``` r
 1 + 100
 ```
 
-```output
+``` output
 [1] 101
 ```
 
@@ -201,11 +201,11 @@ From highest to lowest precedence:
 - Subtract: `-`
 
 
-```r
+``` r
 3 + 5 * 2
 ```
 
-```output
+``` output
 [1] 13
 ```
 
@@ -214,11 +214,11 @@ evaluation if it differs from the default, or to make clear what you
 intend.
 
 
-```r
+``` r
 (3 + 5) * 2
 ```
 
-```output
+``` output
 [1] 16
 ```
 
@@ -226,7 +226,7 @@ This can get unwieldy when not needed, but clarifies your intentions.
 Remember that others may later read your code.
 
 
-```r
+``` r
 (3 + (5 * (2 ^ 2))) # hard to read
 3 + 5 * 2 ^ 2       # clear, if you remember the rules
 3 + 5 * (2 ^ 2)     # if you forget some rules, this might help
@@ -239,11 +239,11 @@ The text after each line of code is called a
 Really small or large numbers get a scientific notation:
 
 
-```r
+``` r
 2/10000
 ```
 
-```output
+``` output
 [1] 2e-04
 ```
 
@@ -253,11 +253,11 @@ is shorthand for `2 * 10^(-4)`.
 You can write numbers in scientific notation too:
 
 
-```r
+``` r
 5e3  # Note the lack of minus here
 ```
 
-```output
+``` output
 [1] 5000
 ```
 
@@ -268,45 +268,45 @@ we can type its name, followed by open and closing parentheses.
 Functions take arguments as inputs, anything we type inside the parentheses of a function is considered an argument. Depending on the function, the number of arguments can vary from none to multiple. For example:
 
 
-```r
+``` r
 getwd() #returns an absolute filepath
 ```
 
 doesn't require an argument, whereas for the next set of mathematical functions we will need to supply the function a value in order to compute the result.
 
 
-```r
+``` r
 sin(1)  # trigonometry functions
 ```
 
-```output
+``` output
 [1] 0.841471
 ```
 
 
-```r
+``` r
 log(1)  # natural logarithm
 ```
 
-```output
+``` output
 [1] 0
 ```
 
 
-```r
+``` r
 log10(10) # base-10 logarithm
 ```
 
-```output
+``` output
 [1] 1
 ```
 
 
-```r
+``` r
 exp(0.5) # e^(1/2)
 ```
 
-```output
+``` output
 [1] 1.648721
 ```
 
@@ -332,56 +332,56 @@ We'll go through an example later.
 We can also do comparisons in R:
 
 
-```r
+``` r
 1 == 1  # equality (note two equals signs, read as "is equal to")
 ```
 
-```output
+``` output
 [1] TRUE
 ```
 
 
-```r
+``` r
 1 != 2  # inequality (read as "is not equal to")
 ```
 
-```output
+``` output
 [1] TRUE
 ```
 
 
-```r
+``` r
 1 < 2  # less than
 ```
 
-```output
+``` output
 [1] TRUE
 ```
 
 
-```r
+``` r
 1 <= 1  # less than or equal to
 ```
 
-```output
+``` output
 [1] TRUE
 ```
 
 
-```r
+``` r
 1 > 0  # greater than
 ```
 
-```output
+``` output
 [1] TRUE
 ```
 
 
-```r
+``` r
 1 >= -9 # greater than or equal to
 ```
 
-```output
+``` output
 [1] TRUE
 ```
 
@@ -412,7 +412,7 @@ Further reading: [http://floating-point-gui.de/](https://floating-point-gui.de/)
 We can store values in variables using the assignment operator `<-`, like this:
 
 
-```r
+``` r
 x <- 1/40
 ```
 
@@ -420,11 +420,11 @@ Notice that assignment does not print a value. Instead, we stored it for later
 in something called a **variable**. `x` now contains the **value** `0.025`:
 
 
-```r
+``` r
 x
 ```
 
-```output
+``` output
 [1] 0.025
 ```
 
@@ -435,18 +435,18 @@ Look for the `Environment` tab in the top right panel of RStudio, and you will s
 have appeared. Our variable `x` can be used in place of a number in any calculation that expects a number:
 
 
-```r
+``` r
 log(x)
 ```
 
-```output
+``` output
 [1] -3.688879
 ```
 
 Notice also that variables can be reassigned:
 
 
-```r
+``` r
 x <- 100
 ```
 
@@ -455,7 +455,7 @@ x <- 100
 Assignment values can contain the variable being assigned to:
 
 
-```r
+``` r
 x <- x + 1 #notice how RStudio updates its description of x on the top right tab
 y <- x * 2
 ```
@@ -477,7 +477,7 @@ What you use is up to you, but **be consistent**.
 It is also possible to use the `=` operator for assignment:
 
 
-```r
+``` r
 x = 1/40
 ```
 
@@ -493,7 +493,7 @@ symbol used in the community. So the recommendation is to use `<-`.
 Which of the following are valid R variable names?
 
 
-```r
+``` r
 min_height
 max.height
 _age
@@ -511,7 +511,7 @@ celsius2kelvin
 The following can be used as R variables:
 
 
-```r
+``` r
 min_height
 max.height
 MaxLength
@@ -521,14 +521,14 @@ celsius2kelvin
 The following creates a hidden variable:
 
 
-```r
+``` r
 .mass
 ```
 
 The following will not be able to be used to create a variable
 
 
-```r
+``` r
 _age
 min-length
 2widths
@@ -546,28 +546,28 @@ mathematics, a vector in R describes a set of values in a certain order of the
 same data type. For example:
 
 
-```r
+``` r
 1:5
 ```
 
-```output
+``` output
 [1] 1 2 3 4 5
 ```
 
-```r
+``` r
 2^(1:5)
 ```
 
-```output
+``` output
 [1]  2  4  8 16 32
 ```
 
-```r
+``` r
 x <- 1:5
 2^x
 ```
 
-```output
+``` output
 [1]  2  4  8 16 32
 ```
 
@@ -582,12 +582,12 @@ There are a few useful commands you can use to interact with the R session.
 (your working R session):
 
 
-```r
+``` r
 ls()
 ```
 
 
-```output
+``` output
 [1] "x" "y"
 ```
 
@@ -607,11 +607,11 @@ needed to give the parentheses to tell R to call the function.
 If we type `ls` by itself, R prints a bunch of code instead of a listing of objects.
 
 
-```r
+``` r
 ls
 ```
 
-```output
+``` output
 function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE, 
     pattern, sorted = TRUE) 
 {
@@ -643,7 +643,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x556c884f0d70>
+<bytecode: 0x5582e5f54d90>
 <environment: namespace:base>
 ```
 
@@ -654,11 +654,11 @@ an object by itself prints the contents of the object. The object `x` that we
 created earlier contains 1, 2, 3, 4, 5:
 
 
-```r
+``` r
 x
 ```
 
-```output
+``` output
 [1] 1 2 3 4 5
 ```
 
@@ -668,7 +668,7 @@ more about how functions work and start writing our own later.
 You can use `rm` to delete objects you no longer need:
 
 
-```r
+``` r
 rm(x)
 ```
 
@@ -676,7 +676,7 @@ If you have lots of things in your environment and want to delete all of them,
 you can pass the results of `ls` to the `rm` function:
 
 
-```r
+``` r
 rm(list = ls())
 ```
 
@@ -690,11 +690,11 @@ use the `=` operator!!
 If instead we use `<-`, there will be unintended side effects, or you may get an error message:
 
 
-```r
+``` r
 rm(list <- ls())
 ```
 
-```error
+``` error
 Error in rm(list <- ls()): ... must contain names or character strings
 ```
 
@@ -739,7 +739,7 @@ What will be the value of each variable  after each
 statement in the following program?
 
 
-```r
+``` r
 mass <- 47.5
 age <- 122
 mass <- mass * 2.3
@@ -751,21 +751,21 @@ age <- age - 20
 ## Solution to challenge 2
 
 
-```r
+``` r
 mass <- 47.5
 ```
 
 This will give a value of 47.5 for the variable mass
 
 
-```r
+``` r
 age <- 122
 ```
 
 This will give a value of 122 for the variable age
 
 
-```r
+``` r
 mass <- mass * 2.3
 ```
 
@@ -773,7 +773,7 @@ This will multiply the existing value of 47.5 by 2.3 to give a new value of
 109.25 to the variable mass.
 
 
-```r
+``` r
 age <- age - 20
 ```
 
@@ -800,11 +800,11 @@ compare mass to age. Is mass larger than age?
 One way of answering this question in R is to use the `>` to set up the following:
 
 
-```r
+``` r
 mass > age
 ```
 
-```output
+``` output
 [1] TRUE
 ```
 
@@ -830,7 +830,7 @@ variables.
 We can use the `rm` command to accomplish this task
 
 
-```r
+``` r
 rm(age, mass)
 ```
 
@@ -851,7 +851,7 @@ Install the following packages: `ggplot2`, `plyr`, `gapminder`
 We can use the `install.packages()` command to install the required packages.
 
 
-```r
+``` r
 install.packages("ggplot2")
 install.packages("plyr")
 install.packages("gapminder")
@@ -860,7 +860,7 @@ install.packages("gapminder")
 An alternate solution, to install multiple packages with a single `install.packages()` command is:
 
 
-```r
+``` r
 install.packages(c("ggplot2", "plyr", "gapminder"))
 ```
 
@@ -873,7 +873,7 @@ install.packages(c("ggplot2", "plyr", "gapminder"))
 When installing ggplot2, it may be required for some users to use the dependencies flag as a result of lazy loading affecting the install. This suggestion is not tied to any known bug discussion, and is advised based off instructor feedback/experience in resolving stochastic occurences of errors identified through delivery of this workshop:
 
 
-```r
+``` r
 install.packages("ggplot2", dependencies = TRUE)
 ```
 

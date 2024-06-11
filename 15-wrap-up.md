@@ -36,7 +36,7 @@ work as well as be able to share your work with collaborators.
 3. Initialise the project:
 
 
-```r
+``` r
 install.packages("ProjectTemplate")
 library("ProjectTemplate")
 create.project("../my_project_2", merge.strategy = "allow.non.conflict")

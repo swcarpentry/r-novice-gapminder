@@ -28,7 +28,7 @@ function, "function\_name", from a specific function that is in a package loaded
 namespace (your interactive R session) is:
 
 
-```r
+``` r
 ?function_name
 help(function_name)
 ```
@@ -36,7 +36,7 @@ help(function_name)
 For example take a look at the help file for `write.table()`, we will be using a similar function in an upcoming episode.
 
 
-```r
+``` r
 ?write.table()
 ```
 
@@ -57,7 +57,7 @@ Different functions might have different sections, but these are the main ones y
 Notice how related functions might call for the same help file:
 
 
-```r
+``` r
 ?write.table()
 ?write.csv()
 ```
@@ -93,7 +93,7 @@ means you don't have to remember that!
 To seek help on special operators, use quotes or backticks:
 
 
-```r
+``` r
 ?"<-"
 ?`<-`
 ```
@@ -116,7 +116,7 @@ RStudio also has a set of excellent
 If you're not sure what package a function is in or how it's specifically spelled, you can do a fuzzy search:
 
 
-```r
+``` r
 ??function_name
 ```
 
@@ -124,7 +124,7 @@ A fuzzy search is when you search for an approximate string match. For example, 
 to set your working directory includes "set" in its name. You can do a fuzzy search to help you identify the function:
 
 
-```r
+``` r
 ??set
 ```
 
@@ -147,7 +147,7 @@ If you can't find the answer, there are a few useful functions to
 help you ask your peers:
 
 
-```r
+``` r
 ?dput
 ```
 
@@ -155,11 +155,11 @@ Will dump the data you're working with into a format that can
 be copied and pasted by others into their own R session.
 
 
-```r
+``` r
 sessionInfo()
 ```
 
-```output
+``` output
 R version 4.4.0 (2024-04-24)
 Platform: x86_64-pc-linux-gnu
 Running under: Ubuntu 22.04.4 LTS
@@ -181,7 +181,7 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 loaded via a namespace (and not attached):
-[1] compiler_4.4.0 tools_4.4.0    yaml_2.3.8     knitr_1.46     xfun_0.43     
+[1] compiler_4.4.0 tools_4.4.0    yaml_2.3.8     knitr_1.47     xfun_0.44     
 [6] renv_1.0.7     evaluate_0.23 
 ```
 
@@ -197,7 +197,7 @@ Look at the help page for the `c` function. What kind of vector do you
 expect will be created if you evaluate the following:
 
 
-```r
+``` r
 c(1, 2, 3)
 c('d', 'e', 'f')
 c(1, 2, 'f')
@@ -232,7 +232,7 @@ What's the difference between the `sep` and `collapse` arguments?
 To look at the help for the `paste()` function, use:
 
 
-```r
+``` r
 help("paste")
 ?paste
 ```
@@ -251,43 +251,43 @@ separator and not a term to concatenate.
 e.g.
 
 
-```r
+``` r
 paste(c("a","b"), "c")
 ```
 
-```output
+``` output
 [1] "a c" "b c"
 ```
 
-```r
+``` r
 paste(c("a","b"), "c", ",")
 ```
 
-```output
+``` output
 [1] "a c ," "b c ,"
 ```
 
-```r
+``` r
 paste(c("a","b"), "c", sep = ",")
 ```
 
-```output
+``` output
 [1] "a,c" "b,c"
 ```
 
-```r
+``` r
 paste(c("a","b"), "c", collapse = "|")
 ```
 
-```output
+``` output
 [1] "a c|b c"
 ```
 
-```r
+``` r
 paste(c("a","b"), "c", sep = ",", collapse = "|")
 ```
 
-```output
+``` output
 [1] "a,c|b,c"
 ```
 

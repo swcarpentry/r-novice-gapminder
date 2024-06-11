@@ -60,7 +60,7 @@ functions-lesson.R.
 The general structure of a function is:
 
 
-```r
+``` r
 my_function <- function(parameters) {
   # perform action
   # return value
@@ -71,7 +71,7 @@ Let's define a function `fahr_to_kelvin()` that converts temperatures from
 Fahrenheit to Kelvin:
 
 
-```r
+``` r
 fahr_to_kelvin <- function(temp) {
   kelvin <- ((temp - 32) * (5 / 9)) + 273.15
   return(kelvin)
@@ -109,22 +109,22 @@ Let's try running our function.
 Calling our own function is no different from calling any other function:
 
 
-```r
+``` r
 # freezing point of water
 fahr_to_kelvin(32)
 ```
 
-```output
+``` output
 [1] 273.15
 ```
 
 
-```r
+``` r
 # boiling point of water
 fahr_to_kelvin(212)
 ```
 
-```output
+``` output
 [1] 373.15
 ```
 
@@ -145,7 +145,7 @@ Write a function called `kelvin_to_celsius` that takes a temperature in Kelvin
 and returns that temperature in Celsius
 
 
-```r
+``` r
 kelvin_to_celsius <- function(temp) {
  celsius <- temp - 273.15
  return(celsius)
@@ -165,7 +165,7 @@ Let's define two functions that will convert temperature from Fahrenheit to
 Kelvin, and Kelvin to Celsius:
 
 
-```r
+``` r
 fahr_to_kelvin <- function(temp) {
   kelvin <- ((temp - 32) * (5 / 9)) + 273.15
   return(kelvin)
@@ -193,7 +193,7 @@ Define the function to convert directly from Fahrenheit to Celsius,
 by reusing these two functions above
 
 
-```r
+``` r
 fahr_to_celsius <- function(temp) {
   temp_k <- fahr_to_kelvin(temp)
   result <- kelvin_to_celsius(temp_k)
@@ -223,7 +223,7 @@ Let's start by re-examining `fahr_to_kelvin()`, our function for converting
 temperatures from Fahrenheit to Kelvin. It was defined like so:
 
 
-```r
+``` r
 fahr_to_kelvin <- function(temp) {
   kelvin <- ((temp - 32) * (5 / 9)) + 273.15
   return(kelvin)
@@ -238,7 +238,7 @@ could check for this condition with an `if` statement and throw an error if the
 condition was violated. We could augment our function above like so:
 
 
-```r
+``` r
 fahr_to_kelvin <- function(temp) {
   if (!is.numeric(temp)) {
     stop("temp must be a numeric vector.")
@@ -262,7 +262,7 @@ We want to assert the following: `temp` is a numeric vector. We may do that like
 so:
 
 
-```r
+``` r
 fahr_to_kelvin <- function(temp) {
   stopifnot(is.numeric(temp))
   kelvin <- ((temp - 32) * (5 / 9)) + 273.15
@@ -273,24 +273,24 @@ fahr_to_kelvin <- function(temp) {
 It still works when given proper input.
 
 
-```r
+``` r
 # freezing point of water
 fahr_to_kelvin(temp = 32)
 ```
 
-```output
+``` output
 [1] 273.15
 ```
 
 But fails instantly if given improper input.
 
 
-```r
+``` r
 # Metric is a factor instead of numeric
 fahr_to_kelvin(temp = as.factor(32))
 ```
 
-```error
+``` error
 Error in fahr_to_kelvin(temp = as.factor(32)): is.numeric(temp) is not TRUE
 ```
 
@@ -312,7 +312,7 @@ functions, checking inside here makes adding checks to the two component
 functions redundant.
 
 
-```r
+``` r
 fahr_to_celsius <- function(temp) {
   stopifnot(is.numeric(temp))
   temp_k <- fahr_to_kelvin(temp)
@@ -331,7 +331,7 @@ Now, we're going to define a function that calculates the Gross Domestic Product
 of a nation from the data available in our dataset:
 
 
-```r
+``` r
 # Takes a dataset and multiplies the population column
 # with the GDP per capita column.
 calcGDP <- function(dat) {
@@ -356,11 +356,11 @@ This `return()` function is optional: R will automatically return the results of
 whatever command is executed on the last line of the function.
 
 
-```r
+``` r
 calcGDP(head(gapminder))
 ```
 
-```output
+``` output
 [1]  6567086330  7585448670  8758855797  9648014150  9678553274 11697659231
 ```
 
@@ -368,7 +368,7 @@ That's not very informative. Let's add some more arguments so we can extract
 that per year and country.
 
 
-```r
+``` r
 # Takes a dataset and multiplies the population column
 # with the GDP per capita column.
 calcGDP <- function(dat, year=NULL, country=NULL) {
@@ -390,7 +390,7 @@ If you've been writing these functions down into a separate R script
 `source()` function:
 
 
-```r
+``` r
 source("functions/functions-lesson.R")
 ```
 
@@ -405,11 +405,11 @@ than a vector of numbers.
 Let's take a look at what happens when we specify the year:
 
 
-```r
+``` r
 head(calcGDP(gapminder, year=2007))
 ```
 
-```output
+``` output
        country year      pop continent lifeExp  gdpPercap          gdp
 12 Afghanistan 2007 31889923      Asia  43.828   974.5803  31079291949
 24     Albania 2007  3600523    Europe  76.423  5937.0295  21376411360
@@ -422,11 +422,11 @@ head(calcGDP(gapminder, year=2007))
 Or for a specific country:
 
 
-```r
+``` r
 calcGDP(gapminder, country="Australia")
 ```
 
-```output
+``` output
      country year      pop continent lifeExp gdpPercap          gdp
 61 Australia 1952  8691212   Oceania  69.120  10039.60  87256254102
 62 Australia 1957  9712569   Oceania  70.330  10949.65 106349227169
@@ -445,11 +445,11 @@ calcGDP(gapminder, country="Australia")
 Or both:
 
 
-```r
+``` r
 calcGDP(gapminder, year=2007, country="Australia")
 ```
 
-```output
+``` output
      country year      pop continent lifeExp gdpPercap          gdp
 72 Australia 2007 20434176   Oceania  81.235  34435.37 703658358894
 ```
@@ -457,7 +457,7 @@ calcGDP(gapminder, year=2007, country="Australia")
 Let's walk through the body of the function:
 
 
-```r
+``` r
 calcGDP <- function(dat, year=NULL, country=NULL) {
 ```
 
@@ -467,7 +467,7 @@ in the function definition. This means that those arguments will
 take on those values unless the user specifies otherwise.
 
 
-```r
+``` r
   if(!is.null(year)) {
     dat <- dat[dat$year %in% year, ]
   }
@@ -522,7 +522,7 @@ not modified in any way when executing a function.
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-```r
+``` r
   gdp <- dat$pop * dat$gdpPercap
   new <- cbind(dat, gdp=gdp)
   return(new)
@@ -546,7 +546,7 @@ does this differ from New Zealand's GDP in 1952?
 ## Solution to challenge 4
 
 
-```r
+``` r
   calcGDP(gapminder, year = c(1952, 1987), country = "New Zealand")
 ```
 
@@ -567,12 +567,12 @@ GDP for New Zealand in 1952: 21058193787
 The `paste()` function can be used to combine text together, e.g:
 
 
-```r
+``` r
 best_practice <- c("Write", "programs", "for", "people", "not", "computers")
 paste(best_practice, collapse=" ")
 ```
 
-```output
+``` output
 [1] "Write programs for people not computers"
 ```
 
@@ -580,7 +580,7 @@ Write a function called `fence()` that takes two vectors as arguments, called
 `text` and `wrapper`, and prints out the text wrapped with the `wrapper`:
 
 
-```r
+``` r
 fence(text=best_practice, wrapper="***")
 ```
 
@@ -597,7 +597,7 @@ called `text` and `wrapper`, and prints out the text wrapped with the
 `wrapper`:
 
 
-```r
+``` r
 fence <- function(text, wrapper){
   text <- c(wrapper, text, wrapper)
   result <- paste(text, collapse = " ")
@@ -607,7 +607,7 @@ best_practice <- c("Write", "programs", "for", "people", "not", "computers")
 fence(text=best_practice, wrapper="***")
 ```
 
-```output
+``` output
 [1] "*** Write programs for people not computers ***"
 ```
 

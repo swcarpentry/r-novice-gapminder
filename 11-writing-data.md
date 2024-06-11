@@ -25,7 +25,7 @@ You have already seen how to save the most recent plot you create in `ggplot2`,
 using the command `ggsave`. As a refresher:
 
 
-```r
+``` r
 ggsave("My_most_recent_plot.pdf")
 ```
 
@@ -45,7 +45,7 @@ In this case you can use a more flexible approach. The function
 using the arguments to this function.
 
 
-```r
+``` r
 pdf("Life_Exp_vs_time.pdf", width=12, height=4)
 ggplot(data=gapminder, aes(x=year, y=lifeExp, colour=country)) +
   geom_line() +
@@ -71,7 +71,7 @@ of the same data with one panel per continent.
 ## Solution to challenge 1
 
 
-```r
+``` r
 pdf("Life_Exp_vs_time.pdf", width = 12, height = 4)
 p <- ggplot(data = gapminder, aes(x = year, y = lifeExp, colour = country)) +
   geom_line() +
@@ -99,7 +99,7 @@ Let's create a data-cleaning script, for this analysis, we
 only want to focus on the gapminder data for Australia:
 
 
-```r
+``` r
 aust_subset <- gapminder[gapminder$country == "Australia",]
 
 write.table(aust_subset,
@@ -112,11 +112,11 @@ Let's switch back to the shell to take a look at the data to make sure it looks
 OK:
 
 
-```bash
+``` bash
 head cleaned-data/gapminder-aus.csv
 ```
 
-```output
+``` output
 "country","year","pop","continent","lifeExp","gdpPercap"
 "61","Australia",1952,8691212,"Oceania",69.12,10039.59564
 "62","Australia",1957,9712569,"Oceania",70.33,10949.64959
@@ -137,7 +137,7 @@ Let's look at the help file to work out how to change this
 behaviour.
 
 
-```r
+``` r
 ?write.table
 ```
 
@@ -148,7 +148,7 @@ column names.
 Let's fix this:
 
 
-```r
+``` r
 write.table(
   gapminder[gapminder$country == "Australia",],
   file="cleaned-data/gapminder-aus.csv",
@@ -159,11 +159,11 @@ write.table(
 Now lets look at the data again using our shell skills:
 
 
-```bash
+``` bash
 head cleaned-data/gapminder-aus.csv
 ```
 
-```output
+``` output
 country,year,pop,continent,lifeExp,gdpPercap
 Australia,1952,8691212,Oceania,69.12,10039.59564
 Australia,1957,9712569,Oceania,70.33,10949.64959
@@ -193,7 +193,7 @@ in the `cleaned-data/` directory.
 ## Solution to challenge 2
 
 
-```r
+``` r
 write.table(
   gapminder[gapminder$year > 1990, ],
   file = "cleaned-data/gapminder-after1990.csv",

@@ -27,27 +27,27 @@ data by a certain variable(s), or we even calculate summary statistics. We can
 do these operations using the normal base R operations:
 
 
-```r
+``` r
 mean(gapminder$gdpPercap[gapminder$continent == "Africa"])
 ```
 
-```output
+``` output
 [1] 2193.755
 ```
 
-```r
+``` r
 mean(gapminder$gdpPercap[gapminder$continent == "Americas"])
 ```
 
-```output
+``` output
 [1] 7136.11
 ```
 
-```r
+``` r
 mean(gapminder$gdpPercap[gapminder$continent == "Asia"])
 ```
 
-```output
+``` output
 [1] 7902.15
 ```
 
@@ -87,14 +87,14 @@ pipes (`%>%`) to combine them.
 If you have have not installed this package earlier, please do so:
 
 
-```r
+``` r
 install.packages('dplyr')
 ```
 
 Now let's load the package:
 
 
-```r
+``` r
 library("dplyr")
 ```
 
@@ -105,7 +105,7 @@ our data frame we could use the `select()` function. This will keep only the
 variables you select.
 
 
-```r
+``` r
 year_country_gdp <- select(gapminder, year, country, gdpPercap)
 ```
 
@@ -114,7 +114,7 @@ If we want to remove one column only from the `gapminder` data, for example,
 removing the `continent` column.
 
 
-```r
+``` r
 smaller_gapminder_data <- select(gapminder, -continent)
 ```
 
@@ -125,7 +125,7 @@ is unlike anything we've seen in R before, let's repeat what we've done above
 using pipes.
 
 
-```r
+``` r
 year_country_gdp <- gapminder %>% select(year, country, gdpPercap)
 ```
 
@@ -148,13 +148,13 @@ Within a pipeline, the syntax is `rename(new_name = old_name)`.
 For example, we may want to rename the gdpPercap column name from our `select()` statement above.
 
 
-```r
+``` r
 tidy_gdp <- year_country_gdp %>% rename(gdp_per_capita = gdpPercap)
 
 head(tidy_gdp)
 ```
 
-```output
+``` output
   year     country gdp_per_capita
 1 1952 Afghanistan       779.4453
 2 1957 Afghanistan       820.8530
@@ -172,7 +172,7 @@ If we now want to move forward with the above, but only with European
 countries, we can combine `select` and `filter`
 
 
-```r
+``` r
 year_country_gdp_euro <- gapminder %>%
     filter(continent == "Europe") %>%
     select(year, country, gdpPercap)
@@ -182,7 +182,7 @@ If we now want to show life expectancy of European countries but only
 for a specific year (e.g., 2007), we can do as below.
 
 
-```r
+``` r
 europe_lifeExp_2007 <- gapminder %>%
   filter(continent == "Europe", year == 2007) %>%
   select(country, lifeExp)
@@ -202,7 +202,7 @@ have and why?
 ## Solution to Challenge 1
 
 
-```r
+``` r
 year_country_lifeExp_Africa <- gapminder %>%
                            filter(continent == "Africa") %>%
                            select(year, country, lifeExp)
@@ -228,11 +228,11 @@ can use `group_by()`, which will essentially use every unique criteria that you
 could have used in filter.
 
 
-```r
+``` r
 str(gapminder)
 ```
 
-```output
+``` output
 'data.frame':	1704 obs. of  6 variables:
  $ country  : chr  "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
  $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
@@ -242,11 +242,11 @@ str(gapminder)
  $ gdpPercap: num  779 821 853 836 740 ...
 ```
 
-```r
+``` r
 str(gapminder %>% group_by(continent))
 ```
 
-```output
+``` output
 gropd_df [1,704 × 6] (S3: grouped_df/tbl_df/tbl/data.frame)
  $ country  : chr [1:1704] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
  $ year     : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
@@ -284,7 +284,7 @@ original data frame into multiple pieces, then we can run functions
 (e.g. `mean()` or `sd()`) within `summarize()`.
 
 
-```r
+``` r
 gdp_bycontinents <- gapminder %>%
     group_by(continent) %>%
     summarize(mean_gdpPercap = mean(gdpPercap))
@@ -293,7 +293,7 @@ gdp_bycontinents <- gapminder %>%
 ![](fig/13-dplyr-fig3.png){alt='Diagram illustrating the use of group by and summarize together to create a new variable'}
 
 
-```r
+``` r
 continent mean_gdpPercap
      <fctr>          <dbl>
 1    Africa       2193.755
@@ -318,7 +318,7 @@ expectancy and which has the shortest average life expectancy?
 ## Solution to Challenge 2
 
 
-```r
+``` r
 lifeExp_bycountry <- gapminder %>%
    group_by(country) %>%
    summarize(mean_lifeExp = mean(lifeExp))
@@ -326,7 +326,7 @@ lifeExp_bycountry %>%
    filter(mean_lifeExp == min(mean_lifeExp) | mean_lifeExp == max(mean_lifeExp))
 ```
 
-```output
+``` output
 # A tibble: 2 × 2
   country      mean_lifeExp
   <chr>               <dbl>
@@ -341,26 +341,26 @@ the `dplyr` package. You can use `desc()` inside `arrange()` to sort in
 descending order.
 
 
-```r
+``` r
 lifeExp_bycountry %>%
    arrange(mean_lifeExp) %>%
    head(1)
 ```
 
-```output
+``` output
 # A tibble: 1 × 2
   country      mean_lifeExp
   <chr>               <dbl>
 1 Sierra Leone         36.8
 ```
 
-```r
+``` r
 lifeExp_bycountry %>%
    arrange(desc(mean_lifeExp)) %>%
    head(1)
 ```
 
-```output
+``` output
 # A tibble: 1 × 2
   country mean_lifeExp
   <chr>          <dbl>
@@ -370,13 +370,13 @@ lifeExp_bycountry %>%
 Alphabetical order works too
 
 
-```r
+``` r
 lifeExp_bycountry %>%
    arrange(desc(country)) %>%
    head(1)
 ```
 
-```output
+``` output
 # A tibble: 1 × 2
   country  mean_lifeExp
   <chr>           <dbl>
@@ -390,13 +390,13 @@ lifeExp_bycountry %>%
 The function `group_by()` allows us to group by multiple variables. Let's group by `year` and `continent`.
 
 
-```r
+``` r
 gdp_bycontinents_byyear <- gapminder %>%
     group_by(continent, year) %>%
     summarize(mean_gdpPercap = mean(gdpPercap))
 ```
 
-```output
+``` output
 `summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.
 ```
@@ -404,7 +404,7 @@ gdp_bycontinents_byyear <- gapminder %>%
 That is already quite powerful, but it gets even better! You're not limited to defining 1 new variable in `summarize()`.
 
 
-```r
+``` r
 gdp_pop_bycontinents_byyear <- gapminder %>%
     group_by(continent, year) %>%
     summarize(mean_gdpPercap = mean(gdpPercap),
@@ -413,7 +413,7 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
               sd_pop = sd(pop))
 ```
 
-```output
+``` output
 `summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.
 ```
@@ -429,13 +429,13 @@ of one or more columns that contain the groups we are interested in, and we can
 optionally sort the results in descending order by adding `sort=TRUE`:
 
 
-```r
+``` r
 gapminder %>%
     filter(year == 2002) %>%
     count(continent, sort = TRUE)
 ```
 
-```output
+``` output
   continent  n
 1    Africa 52
 2      Asia 33
@@ -448,13 +448,13 @@ If we need to use the number of observations in calculations, the `n()` function
 is useful. It will return the total number of observations in the current group rather than counting the number of observations in each group within a specific column. For instance, if we wanted to get the standard error of the life expectency per continent:
 
 
-```r
+``` r
 gapminder %>%
     group_by(continent) %>%
     summarize(se_le = sd(lifeExp)/sqrt(n()))
 ```
 
-```output
+``` output
 # A tibble: 5 × 2
   continent se_le
   <chr>     <dbl>
@@ -468,7 +468,7 @@ gapminder %>%
 You can also chain together several summary operations; in this case calculating the `minimum`, `maximum`, `mean` and `se` of each continent's per-country life-expectancy:
 
 
-```r
+``` r
 gapminder %>%
     group_by(continent) %>%
     summarize(
@@ -478,7 +478,7 @@ gapminder %>%
       se_le = sd(lifeExp)/sqrt(n()))
 ```
 
-```output
+``` output
 # A tibble: 5 × 5
   continent mean_le min_le max_le se_le
   <chr>       <dbl>  <dbl>  <dbl> <dbl>
@@ -494,7 +494,7 @@ gapminder %>%
 We can also create new variables prior to (or even after) summarizing information using `mutate()`.
 
 
-```r
+``` r
 gdp_pop_bycontinents_byyear <- gapminder %>%
     mutate(gdp_billion = gdpPercap*pop/10^9) %>%
     group_by(continent,year) %>%
@@ -506,7 +506,7 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
               sd_gdp_billion = sd(gdp_billion))
 ```
 
-```output
+``` output
 `summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.
 ```
@@ -519,7 +519,7 @@ This easy-to-read statement is a fast and powerful way of discarding certain dat
 of the data frame will not change) or for updating values depending on this given condition.
 
 
-```r
+``` r
 ## keeping all data but "filtering" after a certain condition
 # calculate GDP only for people with a life expectation above 25
 gdp_pop_bycontinents_byyear_above25 <- gapminder %>%
@@ -533,12 +533,12 @@ gdp_pop_bycontinents_byyear_above25 <- gapminder %>%
               sd_gdp_billion = sd(gdp_billion))
 ```
 
-```output
+``` output
 `summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.
 ```
 
-```r
+``` r
 ## updating only if certain condition is fullfilled
 # for life expectations above 40 years, the gpd to be expected in the future is scaled
 gdp_future_bycontinents_byyear_high_lifeExp <- gapminder %>%
@@ -548,7 +548,7 @@ gdp_future_bycontinents_byyear_high_lifeExp <- gapminder %>%
               mean_gdpPercap_expected = mean(gdp_futureExpectation))
 ```
 
-```output
+``` output
 `summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.
 ```
@@ -558,12 +558,12 @@ gdp_future_bycontinents_byyear_high_lifeExp <- gapminder %>%
 First install and load ggplot2:
 
 
-```r
+``` r
 install.packages('ggplot2')
 ```
 
 
-```r
+``` r
 library("ggplot2")
 ```
 
@@ -572,7 +572,7 @@ a layer of facet panels using `ggplot2`. Here is the code we used (with some
 extra comments):
 
 
-```r
+``` r
 # Filter countries located in the Americas
 americas <- gapminder[gapminder$continent == "Americas", ]
 # Make the plot
@@ -593,7 +593,7 @@ need to specify the `data =` argument in the `ggplot()` function. By combining
 new variables or modifying the data.
 
 
-```r
+``` r
 gapminder %>%
   # Filter countries located in the Americas
   filter(continent == "Americas") %>%
@@ -609,7 +609,7 @@ gapminder %>%
 More examples of using the function `mutate()` and the `ggplot2` package.
 
 
-```r
+``` r
 gapminder %>%
   # extract first letter of country name into new column
   mutate(startsWith = substr(country, 1, 1)) %>%
@@ -638,7 +638,7 @@ similar syntax to other dplyr functions.
 ## Solution to Advanced Challenge
 
 
-```r
+``` r
 lifeExp_2countries_bycontinents <- gapminder %>%
    filter(year==2002) %>%
    group_by(continent) %>%

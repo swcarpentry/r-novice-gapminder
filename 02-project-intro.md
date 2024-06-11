@@ -185,33 +185,33 @@ shell to answer the following questions:
 By running these commands in the shell:
 
 
-```sh
+``` sh
 ls -lh data/gapminder_data.csv
 ```
 
-```output
--rw-r--r-- 1 runner docker 80K May 21 00:17 data/gapminder_data.csv
+``` output
+-rw-r--r-- 1 runner docker 80K Jun 11 09:50 data/gapminder_data.csv
 ```
 
 The file size is 80K.
 
 
-```sh
+``` sh
 wc -l data/gapminder_data.csv
 ```
 
-```output
+``` output
 1705 data/gapminder_data.csv
 ```
 
 There are 1705 lines. The data looks like:
 
 
-```sh
+``` sh
 head data/gapminder_data.csv
 ```
 
-```output
+``` output
 country,year,pop,continent,lifeExp,gdpPercap
 Afghanistan,1952,8425333,Asia,28.801,779.4453145
 Afghanistan,1957,9240934,Asia,30.332,820.8530296

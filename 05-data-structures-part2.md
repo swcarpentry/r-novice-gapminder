@@ -35,12 +35,12 @@ new column, we can start by making a new vector:
 
 
 
-```r
+``` r
 age <- c(2, 3, 5)
 cats
 ```
 
-```output
+``` output
     coat weight likes_string
 1 calico    2.1            1
 2  black    5.0            0
@@ -50,11 +50,11 @@ cats
 We can then add this as a column via:
 
 
-```r
+``` r
 cbind(cats, age)
 ```
 
-```output
+``` output
     coat weight likes_string age
 1 calico    2.1            1   2
 2  black    5.0            0   3
@@ -64,21 +64,21 @@ cbind(cats, age)
 Note that if we tried to add a vector of ages with a different number of entries than the number of rows in the data frame, it would fail:
 
 
-```r
+``` r
 age <- c(2, 3, 5, 12)
 cbind(cats, age)
 ```
 
-```error
+``` error
 Error in data.frame(..., check.names = FALSE): arguments imply differing number of rows: 3, 4
 ```
 
-```r
+``` r
 age <- c(2, 3)
 cbind(cats, age)
 ```
 
-```error
+``` error
 Error in data.frame(..., check.names = FALSE): arguments imply differing number of rows: 3, 2
 ```
 
@@ -86,26 +86,26 @@ Why didn't this work? Of course, R wants to see one element in our new column
 for every row in the table:
 
 
-```r
+``` r
 nrow(cats)
 ```
 
-```output
+``` output
 [1] 3
 ```
 
-```r
+``` r
 length(age)
 ```
 
-```output
+``` output
 [1] 2
 ```
 
 So for it to work we need to have `nrow(cats)` = `length(age)`. Let's overwrite the content of cats with our new data frame.
 
 
-```r
+``` r
 age <- c(2, 3, 5)
 cats <- cbind(cats, age)
 ```
@@ -114,7 +114,7 @@ Now how about adding rows? We already know that the rows of a
 data frame are lists:
 
 
-```r
+``` r
 newRow <- list("tortoiseshell", 3.3, TRUE, 9)
 cats <- rbind(cats, newRow)
 ```
@@ -122,11 +122,11 @@ cats <- rbind(cats, newRow)
 Let's confirm that our new row was added correctly. 
 
 
-```r
+``` r
 cats
 ```
 
-```output
+``` output
            coat weight likes_string age
 1        calico    2.1            1   2
 2         black    5.0            0   3
@@ -140,11 +140,11 @@ cats
 We now know how to add rows and columns to our data frame in R. Now let's learn to remove rows. 
 
 
-```r
+``` r
 cats
 ```
 
-```output
+``` output
            coat weight likes_string age
 1        calico    2.1            1   2
 2         black    5.0            0   3
@@ -155,11 +155,11 @@ cats
 We can ask for a data frame minus the last row:
 
 
-```r
+``` r
 cats[-4, ]
 ```
 
-```output
+``` output
     coat weight likes_string age
 1 calico    2.1            1   2
 2  black    5.0            0   3
@@ -177,11 +177,11 @@ inside of a vector, for example: `cats[c(-3,-4), ]`
 We can also remove columns in our data frame. What if we want to remove the column "age". We can remove it in two ways, by variable number or by index.
 
 
-```r
+``` r
 cats[,-4]
 ```
 
-```output
+``` output
            coat weight likes_string
 1        calico    2.1            1
 2         black    5.0            0
@@ -194,12 +194,12 @@ Notice the comma with nothing before it, indicating we want to keep all of the r
 Alternatively, we can drop the column by using the index name and the `%in%` operator. The `%in%` operator goes through each element of its left argument, in this case the names of `cats`, and asks, "Does this element occur in the second argument?"
 
 
-```r
+``` r
 drop <- names(cats) %in% c("age")
 cats[,!drop]
 ```
 
-```output
+``` output
            coat weight likes_string
 1        calico    2.1            1
 2         black    5.0            0
@@ -216,12 +216,12 @@ vectors and rows are lists.* We can also glue two data frames
 together with `rbind`:
 
 
-```r
+``` r
 cats <- rbind(cats, cats)
 cats
 ```
 
-```output
+``` output
            coat weight likes_string age
 1        calico    2.1            1   2
 2         black    5.0            0   3
@@ -240,7 +240,7 @@ cats
 You can create a new data frame right from within R with the following syntax:
 
 
-```r
+``` r
 df <- data.frame(id = c("a", "b", "c"),
                  x = 1:3,
                  y = c(TRUE, TRUE, FALSE))
@@ -260,7 +260,7 @@ Finally, use `cbind` to add a column with each person's answer to the question, 
 ## Solution to Challenge 1
 
 
-```r
+``` r
 df <- data.frame(first = c("Grace"),
                  last = c("Hopper"),
                  lucky_number = c(0))
@@ -279,7 +279,7 @@ now let's use those skills to digest a more realistic dataset. Let's read in the
 `gapminder` dataset that we downloaded previously:
 
 
-```r
+``` r
 gapminder <- read.csv("data/gapminder_data.csv")
 ```
 
@@ -294,7 +294,7 @@ gapminder <- read.csv("data/gapminder_data.csv")
   The `read.csv` function can then be executed to read the downloaded file from the download location, for example,
 
 
-```r
+``` r
 download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/main/episodes/data/gapminder_data.csv", destfile = "data/gapminder_data.csv")
 gapminder <- read.csv("data/gapminder_data.csv")
 ```
@@ -302,7 +302,7 @@ gapminder <- read.csv("data/gapminder_data.csv")
 - Alternatively, you can also read in files directly into R from the Internet by replacing the file paths with a web address in `read.csv`. One should note that in doing this no local copy of the csv file is first saved onto your computer. For example,
 
 
-```r
+``` r
 gapminder <- read.csv("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/main/episodes/data/gapminder_data.csv")
 ```
 
@@ -317,11 +317,11 @@ Let's investigate gapminder a bit; the first thing we should always do is check
 out what the data looks like with `str`:
 
 
-```r
+``` r
 str(gapminder)
 ```
 
-```output
+``` output
 'data.frame':	1704 obs. of  6 variables:
  $ country  : chr  "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
  $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
@@ -334,11 +334,11 @@ str(gapminder)
 An additional method for examining the structure of gapminder is to use the `summary` function. This function can be used on various objects in R. For data frames, `summary` yields a numeric, tabular, or descriptive summary of each column. Numeric or integer columns are described by the descriptive statistics (quartiles and mean), and character columns by its length, class, and mode.
 
 
-```r
+``` r
 summary(gapminder)
 ```
 
-```output
+``` output
    country               year           pop             continent        
  Length:1704        Min.   :1952   Min.   :6.001e+04   Length:1704       
  Class :character   1st Qu.:1966   1st Qu.:2.794e+06   Class :character  
@@ -358,27 +358,27 @@ summary(gapminder)
 Along with the `str` and `summary` functions, we can examine individual columns of the data frame with our `typeof` function:
 
 
-```r
+``` r
 typeof(gapminder$year)
 ```
 
-```output
+``` output
 [1] "integer"
 ```
 
-```r
+``` r
 typeof(gapminder$country)
 ```
 
-```output
+``` output
 [1] "character"
 ```
 
-```r
+``` r
 str(gapminder$country)
 ```
 
-```output
+``` output
  chr [1:1704] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
 ```
 
@@ -387,11 +387,11 @@ remembering that `str(gapminder)` said there were 1704 observations of 6
 variables in gapminder, what do you think the following will produce, and why?
 
 
-```r
+``` r
 length(gapminder)
 ```
 
-```output
+``` output
 [1] 6
 ```
 
@@ -400,11 +400,11 @@ number of rows it has (1704), but this is not the case; remember, a data frame
 is a *list of vectors and factors*:
 
 
-```r
+``` r
 typeof(gapminder)
 ```
 
-```output
+``` output
 [1] "list"
 ```
 
@@ -412,30 +412,30 @@ When `length` gave us 6, it's because gapminder is built out of a list of 6
 columns. To get the number of rows and columns in our dataset, try:
 
 
-```r
+``` r
 nrow(gapminder)
 ```
 
-```output
+``` output
 [1] 1704
 ```
 
-```r
+``` r
 ncol(gapminder)
 ```
 
-```output
+``` output
 [1] 6
 ```
 
 Or, both at once:
 
 
-```r
+``` r
 dim(gapminder)
 ```
 
-```output
+``` output
 [1] 1704    6
 ```
 
@@ -443,11 +443,11 @@ We'll also likely want to know what the titles of all the columns are, so we can
 ask for them later:
 
 
-```r
+``` r
 colnames(gapminder)
 ```
 
-```output
+``` output
 [1] "country"   "year"      "pop"       "continent" "lifeExp"   "gdpPercap"
 ```
 
@@ -462,11 +462,11 @@ Once we're happy that the data types and structures seem reasonable, it's time
 to start digging into our data proper. Check out the first few lines:
 
 
-```r
+``` r
 head(gapminder)
 ```
 
-```output
+``` output
       country year      pop continent lifeExp gdpPercap
 1 Afghanistan 1952  8425333      Asia  28.801  779.4453
 2 Afghanistan 1957  9240934      Asia  30.332  820.8530
@@ -538,7 +538,7 @@ script to use the function of that script without writing everything again.
 Check out `?source` to find out more.
 
 
-```r
+``` r
 download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/main/episodes/data/gapminder_data.csv", destfile = "data/gapminder_data.csv")
 gapminder <- read.csv(file = "data/gapminder_data.csv")
 ```
@@ -546,7 +546,7 @@ gapminder <- read.csv(file = "data/gapminder_data.csv")
 To run the script and load the data into the `gapminder` variable:
 
 
-```r
+``` r
 source(file = "scripts/load-gapminder.R")
 ```
 
