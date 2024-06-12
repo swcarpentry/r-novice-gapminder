@@ -350,7 +350,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Creating Publication-Quality Graphics with ggplot2</h1>
-        <p>Last updated on 2024-06-11 |
+        <p>Last updated on 2024-06-12 |
         
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/08-plot-ggplot2.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -723,23 +723,14 @@ continent with
 <pre class="output" tabindex="0"><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
 <figure><img src="fig/08-plot-ggplot2-rendered-lm-fit-1.png" alt="Scatter plot of life expectancy vs GDP per capita with a blue trend line summarising the relationship between variables, and gray shaded area indicating 95% confidence intervals for that trend line." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>We can make the line thicker by <em>setting</em> the
-<strong>size</strong> aesthetic in the <code>geom_smooth</code>
+<strong>linewidth</strong> aesthetic in the <code>geom_smooth</code>
 layer:</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdpPercap</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span> <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_smooth</span><span class="op">(</span>method<span class="op">=</span><span class="st">"lm"</span>, size<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">WARNING<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="warning" tabindex="0"><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-ℹ Please use `linewidth` instead.
-This warning is displayed once every 8 hours.
-Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-generated.</code></pre>
+<span>  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span> <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_smooth</span><span class="op">(</span>method<span class="op">=</span><span class="st">"lm"</span>, linewidth<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -747,10 +738,11 @@ generated.</code></pre>
 <pre class="output" tabindex="0"><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
 <figure><img src="fig/08-plot-ggplot2-rendered-lm-fit2-1.png" alt="Scatter plot of life expectancy vs GDP per capita with a trend line summarising the relationship between variables. The blue trend line is slightly thicker than in the previous figure." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>There are two ways an <em>aesthetic</em> can be specified. Here we
-<em>set</em> the <strong>size</strong> aesthetic by passing it as an
-argument to <code>geom_smooth</code>. Previously in the lesson we’ve
-used the <code>aes</code> function to define a <em>mapping</em> between
-data variables and their visual representation.</p>
+<em>set</em> the <strong>linewidth</strong> aesthetic by passing it as
+an argument to <code>geom_smooth</code> and it is applied the same to
+the whole <code>geom</code>. Previously in the lesson we’ve used the
+<code>aes</code> function to define a <em>mapping</em> between data
+variables and their visual representation.</p>
 <div id="challenge-4a" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -762,6 +754,8 @@ data variables and their visual representation.</p>
 <p>Modify the color and size of the points on the point layer in the
 previous example.</p>
 <p>Hint: do not use the <code>aes</code> function.</p>
+<p>Hint: the equivalent of <code>linewidth</code> for points is
+<code>size</code>.</p>
 </div>
 </div>
 </div>
@@ -776,13 +770,13 @@ previous example.</p>
 is supplied outside of the <code>aes()</code> function. This means that
 it applies to all data points on the graph and is not related to a
 specific variable.</p>
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdpPercap</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span> <span class="fu">geom_point</span><span class="op">(</span>size<span class="op">=</span><span class="fl">3</span>, color<span class="op">=</span><span class="st">"orange"</span><span class="op">)</span> <span class="op">+</span> <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span> <span class="fu">geom_smooth</span><span class="op">(</span>method<span class="op">=</span><span class="st">"lm"</span>, size<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span></span></code></pre>
+<span> <span class="fu">geom_smooth</span><span class="op">(</span>method<span class="op">=</span><span class="st">"lm"</span>, linewidth<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -821,13 +815,13 @@ argument, as you can see, modifies all data points the same way (it is
 outside the <code>aes()</code> call) while the <code>color</code>
 argument which is placed inside the <code>aes()</code> call modifies a
 point’s color based on its continent value.</p>
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdpPercap</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span> <span class="fu">geom_point</span><span class="op">(</span>size<span class="op">=</span><span class="fl">3</span>, shape<span class="op">=</span><span class="fl">17</span><span class="op">)</span> <span class="op">+</span> <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span> <span class="fu">geom_smooth</span><span class="op">(</span>method<span class="op">=</span><span class="st">"lm"</span>, size<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span></span></code></pre>
+<span> <span class="fu">geom_smooth</span><span class="op">(</span>method<span class="op">=</span><span class="st">"lm"</span>, linewidth<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -859,7 +853,7 @@ customizable.</p>
 </div>
 </div>
 </div>
-<div class="codewrapper sourceCode" id="cb23">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -886,7 +880,7 @@ names we used in the <code>aes</code> specification. Thus below the
 color legend title is set using <code>color = "Continent"</code>, while
 the title of a fill legend would be set using
 <code>fill = "MyTitle"</code>.</p>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -911,7 +905,7 @@ assign it to a variable <code>lifeExp_plot</code>, then tell
 <code>ggsave</code> to save that plot in <code>png</code> format to a
 directory called <code>results</code>. (Make sure you have a
 <code>results/</code> folder in your working directory.)</p>
-<div class="codewrapper sourceCode" id="cb25">
+<div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -970,7 +964,7 @@ continents during the available years.</p>
 set labels for the x and y axes, respectively The axis title, text and
 ticks are attributes of the theme and must be modified within a
 <code>theme()</code> call.</p>
-<div class="codewrapper sourceCode" id="cb26">
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1057,8 +1051,8 @@ scale transformation, and grouping.</li>
   "url": "https://swcarpentry.github.io/r-novice-gapminder/08-plot-ggplot2.html",
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/08-plot-ggplot2.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2024-06-11",
-  "datePublished": "2024-06-11"
+  "dateModified": "2024-06-12",
+  "datePublished": "2024-06-12"
 }
 
   </script><script>
