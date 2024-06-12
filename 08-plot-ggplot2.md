@@ -321,21 +321,13 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 
 <img src="fig/08-plot-ggplot2-rendered-lm-fit-1.png" alt="Scatter plot of life expectancy vs GDP per capita with a blue trend line summarising the relationship between variables, and gray shaded area indicating 95% confidence intervals for that trend line." style="display: block; margin: auto;" />
 
-We can make the line thicker by *setting* the **size** aesthetic in the
+We can make the line thicker by *setting* the **linewidth** aesthetic in the
 `geom_smooth` layer:
 
 
 ``` r
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
-  geom_point(alpha = 0.5) + scale_x_log10() + geom_smooth(method="lm", size=1.5)
-```
-
-``` warning
-Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-ℹ Please use `linewidth` instead.
-This warning is displayed once every 8 hours.
-Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-generated.
+  geom_point(alpha = 0.5) + scale_x_log10() + geom_smooth(method="lm", linewidth=1.5)
 ```
 
 ``` output
@@ -344,10 +336,7 @@ generated.
 
 <img src="fig/08-plot-ggplot2-rendered-lm-fit2-1.png" alt="Scatter plot of life expectancy vs GDP per capita with a trend line summarising the relationship between variables. The blue trend line is slightly thicker than in the previous figure." style="display: block; margin: auto;" />
 
-There are two ways an *aesthetic* can be specified. Here we *set* the **size**
-aesthetic by passing it as an argument to `geom_smooth`. Previously in the
-lesson we've used the `aes` function to define a *mapping* between data
-variables and their visual representation.
+There are two ways an *aesthetic* can be specified. Here we *set* the **linewidth** aesthetic by passing it as an argument to `geom_smooth` and it is applied the same to the whole `geom`. Previously in the lesson we've used the `aes` function to define a *mapping* between data variables and their visual representation.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -357,6 +346,8 @@ Modify the color and size of the points on the point layer in the previous
 example.
 
 Hint: do not use the `aes` function.
+
+Hint: the equivalent of `linewidth` for points is `size`.
 
 :::::::::::::::  solution
 
@@ -371,7 +362,7 @@ a specific variable.
 ``` r
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
  geom_point(size=3, color="orange") + scale_x_log10() +
- geom_smooth(method="lm", size=1.5)
+ geom_smooth(method="lm", linewidth=1.5)
 ```
 
 ``` output
@@ -406,7 +397,7 @@ is placed inside the `aes()` call modifies a point's color based on its continen
 ``` r
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp, color = continent)) +
  geom_point(size=3, shape=17) + scale_x_log10() +
- geom_smooth(method="lm", size=1.5)
+ geom_smooth(method="lm", linewidth=1.5)
 ```
 
 ``` output
