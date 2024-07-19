@@ -8,10 +8,10 @@
 # lc: Library Carpentry
 # cp: Carpentries (to use for instructor training for instance)
 # incubator: The Carpentries Incubator
-carpentry: 'swc'
+#carpentry: 'swc'
 
 # Overall title for pages.
-title: 'R for Reproducible Scientific Analysis'
+title: 'R for AMR Epidemiology'
 
 # Date the lesson was created (YYYY-MM-DD, this is empty by default)
 created: '2015-04-18'
@@ -33,7 +33,7 @@ source: 'https://github.com/swcarpentry/r-novice-gapminder'
 branch: 'main'
 
 # Who to contact if there are any issues
-contact: 'team@carpentries.org'
+contact: 'ARC.Education@ucl.ac.uk'
 
 # Navigation ------------------------------------------------
 #
