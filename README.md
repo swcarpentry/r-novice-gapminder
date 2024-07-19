@@ -4,7 +4,7 @@
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/swcarpentry/r-novice-gapminder/binder?urlpath=rstudio)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3265164.svg)](https://doi.org/10.5281/zenodo.3265164)
 
-# R for Reproducible Scientific Analysis
+# R for AMR Epidemiology adapted from R for Reproducible Scientific Analysis
 
 An introduction to R for non-programmers using the [Gapminder][gapminder] data.
 Please see [https://swcarpentry.github.io/r-novice-gapminder](https://swcarpentry.github.io/r-novice-gapminder) for a rendered version of this material,
