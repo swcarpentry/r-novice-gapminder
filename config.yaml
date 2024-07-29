@@ -64,16 +64,25 @@ episodes:
 - 03-seeking-help.Rmd
 - 04-data-structures-part1.Rmd
 - 05-data-structures-part2.Rmd
-- 06-data-subsetting.Rmd
-- 07-control-flow.Rmd
-- 08-plot-ggplot2.Rmd
-- 09-vectorization.Rmd
-- 10-functions.Rmd
-- 11-writing-data.Rmd
-- 12-dplyr.Rmd
-- 13-tidyr.Rmd
-- 14-knitr-markdown.Rmd
-- 15-wrap-up.Rmd
+# Git intro materials to go here
+- 14-data-subsetting.Rmd
+# - 07-control-flow.Rmd
+- 15-plot-ggplot2.Rmd
+# - 09-vectorization.Rmd
+# - 10-functions.Rmd
+- 16-writing-data.Rmd
+# 17-remotes in GH
+# 18-collaborating
+# 19-conflicts
+- 20-dplyr.Rmd
+- 21-tidyr.Rmd
+# basic stats
+- 22-knitr-markdown.Rmd 
+# 23-regression
+# 24-logregression
+# 25-broom
+# 26-r-sql
+- 27-wrap-up.Rmd
 
 # Information for Learners
 learners: 
