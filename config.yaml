@@ -64,16 +64,23 @@ episodes:
 - 03-seeking-help.Rmd
 - 04-data-structures-part1.Rmd
 - 05-data-structures-part2.Rmd
-# Git intro materials to go here
+- 06-filedir.md
+- 07-basics.md
+- 08-setup.md
+- 09-create.md
+- 10-changes.md
+- 11-history.md
+- 12-ignore.md
+- 13-supplemental-rstudio.md
 - 14-data-subsetting.Rmd
 # - 07-control-flow.Rmd
 - 15-plot-ggplot2.Rmd
 # - 09-vectorization.Rmd
 # - 10-functions.Rmd
 - 16-writing-data.Rmd
-# 17-remotes in GH
-# 18-collaborating
-# 19-conflicts
+- 17-github.md
+- 18-collab.md
+- 19-conflict.md
 - 20-dplyr.Rmd
 - 21-tidyr.Rmd
 # basic stats
