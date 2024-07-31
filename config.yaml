@@ -106,6 +106,6 @@ profiles:
 # sandpaper and varnish versions) should live
 
 
-url: 'https://UCL.github.io/R-AMR-Epidemiology'
+url: 'https://UCL-ARC.github.io/R-AMR-Epidemiology'
 analytics: carpentries
 lang: en
