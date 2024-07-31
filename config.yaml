@@ -106,6 +106,6 @@ profiles:
 # sandpaper and varnish versions) should live
 
 
-url: 'https://swcarpentry.github.io/r-novice-gapminder'
+url: 'https://UCL.github.io/R-AMR-Epidemiology'
 analytics: carpentries
 lang: en
