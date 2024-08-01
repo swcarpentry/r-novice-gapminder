@@ -1,4 +1,4 @@
-![Build and Deploy Website](https://github.com/ucl-arc/r-amr-epidemiology/workflows/Build%20and%20Deploy%20Website/badge.svg)
+[![01 Build and Deploy Site](https://github.com/UCL-ARC/r-amr-epidemiology/actions/workflows/sandpaper-main.yaml/badge.svg)](https://github.com/UCL-ARC/r-amr-epidemiology/actions/workflows/sandpaper-main.yaml)
 
 # R for AMR Epidemiology adapted from R for Reproducible Scientific Analysis
 
