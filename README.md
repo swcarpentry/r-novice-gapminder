@@ -1,13 +1,9 @@
-[![Create a Slack Account with us](https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg)](https://slack-invite.carpentries.org/)
-![Build and Deploy Website](https://github.com/swcarpentry/r-novice-gapminder/workflows/Build%20and%20Deploy%20Website/badge.svg)
-[![Slack Status](https://img.shields.io/badge/Slack_Channel-swc--r--gapminder-E01563.svg)](https://carpentries.slack.com/messages/C9Y0M3YKG)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/swcarpentry/r-novice-gapminder/binder?urlpath=rstudio)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3265164.svg)](https://doi.org/10.5281/zenodo.3265164)
+![Build and Deploy Website](https://github.com/ucl-arc/r-amr-epidemiology/workflows/Build%20and%20Deploy%20Website/badge.svg)
 
 # R for AMR Epidemiology adapted from R for Reproducible Scientific Analysis
 
 An introduction to R for non-programmers using the [Gapminder][gapminder] data.
-Please see [https://swcarpentry.github.io/r-novice-gapminder](https://swcarpentry.github.io/r-novice-gapminder) for a rendered version of this material,
+Please see [https://ucl-arc.github.io/r-amr-epidemiology](https://ucl-arc.github.io/r-amr-epidemiology) for a rendered version of this material,
 [the lesson template documentation][lesson-example]
 for instructions on formatting, building, and submitting material,
 or run `make` in this directory for a list of helpful commands.
