@@ -327,7 +327,7 @@ ggplot(lon_dims_imd_2019, aes(Income_london_rank, health_london_rank)) +
 Having decided that a further investigation of this relationship is worthwhile, we can create a linear model with the function `lm()`.
 
 ``` {r}
-modelone <- lm(gapminder$gdpPercap ~ gapminder$lifeExp)
+modelone <- lm(lon_dims_imd_2019$Income_london_rank ~ lon_dims_imd_2019$health_london_rank)
 summary(modelone)
 ```
 
@@ -349,6 +349,6 @@ summary(modelttest)
 Use the `lm()` function to model the relationship between `gapminder$gdpGroup`
 and `gapminder$pop`. Compare the results with the ANOVA carried out earlier.
 
-## Lunch
+## Break
 
--   Feel free to explore the handout and go through the exercises again.
+-   We will explore regression models in more detail during the rest of the day
