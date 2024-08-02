@@ -33,11 +33,14 @@ source: Rmd
 ```{r libraries, message=FALSE, warning=FALSE}
 # We will need these libraries and this data later.
 library(tidyverse)
-library(lubridate)
-library(gapminder)
+# loading data
+lon_dims_imd_2019 <- read.csv("../data/CDRC/English_IMD_2019_Domains_rebased_London_by_CDRC.csv")
+# Commenting out as not used in this version
+#library(lubridate)
+#library(gapminder)
 # create a binary membership variable for europe (for later examples)
-gapminder <- gapminder %>%
-  mutate(european = continent == "Europe")
+#gapminder <- gapminder %>%
+#  mutate(european = continent == "Europe")
 ```
 
 We are going to use the data from the gapminder package.  We have added a variable *European* indicating if a country is in Europe.
@@ -70,7 +73,7 @@ How do we convey information on what your data looks like, using numbers or figu
 First establish the distribution of the data. You can visualise this with a histogram.
 
 ```{r}
-ggplot(gapminder, aes(x = gdpPercap)) +
+ggplot(lon_dims_imd_2019, aes(x=barriers_london_rank)) +
   geom_histogram()
 ```
 
@@ -81,7 +84,7 @@ What is the distribution of this data?
 The raw values are difficult to visualise, so we can take the log of the values and log those.  Try this command
 
 ```{r include=TRUE}
-ggplot(data = gapminder, aes(log(pop))) +
+ggplot(lon_dims_imd_2019, aes(x=log(barriers_london_rank))) +
   geom_histogram()
 ```
 
@@ -139,18 +142,18 @@ Get them to plot the graphs. Explain that we are generating random data from dif
 ### Calculating mean and standard deviation
 
 ```{r}
-mean(gapminder$pop, na.rm = TRUE)
+mean(lon_dims_imd_2019$barriers_london_rank,na.rm=TRUE)
 ```
 
 Calculate the standard deviation and confirm that it is the square root of the variance:
 
 ```{r}
-sdpopulation <- sd(gapminder$pop, na.rm = TRUE)
-print(sdpopulation)
+sdbarriers <- sd(lon_dims_imd_2019$barriers_london_rank, na.rm = TRUE)
+print(sdbarriers)
 
-varpopulation <- var(gapminder$pop, na.rm = TRUE)
-print(varpopulation)
-sqrt(varpopulation) == sdpopulation
+varbarriers <- var(lon_dims_imd_2019$barriers_london_rank, na.rm = TRUE)
+print(varbarriers)
+sqrt(varbarriers) == sdbarriers
 ```
 
 The `na.rm` argument tells R to ignore missing values in the variable.
@@ -158,11 +161,11 @@ The `na.rm` argument tells R to ignore missing values in the variable.
 ### Calculating median and interquartile range
 
 ```{r}
-median(gapminder$pop, na.rm = TRUE)
+median(lon_dims_imd_2019$barriers_london_rank, na.rm = TRUE)
 ```
 
 ```{r}
-IQR(gapminder$gdpPercap, na.rm = TRUE)
+IQR(lon_dims_imd_2019$barriers_london_rank, na.rm = TRUE)
 ```
 
 Again, we ignore the missing values.
@@ -172,22 +175,22 @@ Again, we ignore the missing values.
 -   Frequencies
 
 ```{r}
-table(gapminder$continent)
+table(lon_dims_imd_2019$la19nm)
 ```
 
 -   Proportions
 
 ```{r}
-continenttable <- table(gapminder$continent)
-prop.table(continenttable)
+areastable <- table(lon_dims_imd_2019$la19nm)
+prop.table(areastable)
 ```
 
 Contingency tables of frequencies can also be tabulated with **table()**. For example:
 
 ```{r}
 table(
-    gapminder$country[gapminder$year == 2007],
-    gapminder$continent[gapminder$year == 2007]
+   lon_dims_imd_2019$la19nm, 
+  lon_dims_imd_2019$IDAOP_london_decile
 )
 ```
 
@@ -244,12 +247,13 @@ It all starts with a hypothesis
 
 ## Comparing means
 
-Is there an absolute difference between the populations of European vs non-European countries?
+Is there an absolute difference between the income ranks of the Lower-layer Super Output Areas
 
 ```{r}
-gapminder %>%
-  group_by(european) %>%
-  summarise(av.popn = mean(pop, na.rm = TRUE))
+lon_dims_imd_2019 %>%
+  group_by(la19nm) %>%
+  summarise(avg = mean(Income_london_rank)) %>%
+  arrange(la19nm, .locale = "en")
 ```
 
 
@@ -270,6 +274,7 @@ Is the difference between heights statistically significant?
 ## Doing a t-test
 
 ```{r}
+# Example to be changed
 t.test(pop ~ european, data = gapminder)$statistic
 t.test(pop ~ european, data = gapminder)$parameter
 ```
@@ -291,14 +296,15 @@ Testing supported the rejection of the null hypothesis that there is no differen
 While the t-test is sufficient where there are two levels of the IV, for situations where there are more than two, we use the **ANOVA** family of procedures. To show this, we will create a variable that subsets our data by *per capita GDP* levels. If the ANOVA result is statistically significant, we will use a post-hoc test method to do pairwise comparisons (here Tukey's Honest Significant Differences.)
 
 ```{r}
-quantile(gapminder$gdpPercap)
-IQR(gapminder$gdpPercap)
+#quantile(gapminder$gdpPercap)
+#IQR(gapminder$gdpPercap)
 
-gapminder$gdpGroup <- cut(gapminder$gdpPercap, breaks = c(241.1659, 1202.0603, 3531.8470, 9325.4623, 113523.1329), labels = FALSE)
+#gapminder$gdpGroup <- cut(gapminder$gdpPercap, breaks = c(241.1659, 1202.0603, 3531.8470, 9325.4623, 113523.1329), labels = FALSE)
 
-gapminder$gdpGroup <- factor(gapminder$gdpGroup)
+#gapminder$gdpGroup <- factor(gapminder$gdpGroup)
 
-anovamodel <- aov(gapminder$pop ~ gapminder$gdpGroup)
+#anovamodel <- aov(gapminder$pop ~ gapminder$gdpGroup)
+anovamodel <- aov(lon_dims_imd_2019$health_london_rank ~ lon_dims_imd_2019$la19nm)
 summary(anovamodel)
 
 TukeyHSD(anovamodel)
@@ -306,12 +312,14 @@ TukeyHSD(anovamodel)
 
 # Regression Modelling
 
-The most common use of regression modelling is to explore the relationship between two continuous variables, for example between `gdpPercap` and `lifeExp` in our data. We can first determine whether there is any significant correlation between the values, and if there is, plot the relationship.
+The most common use of regression modelling is to explore the relationship between two continuous variables, for example between `Income_london_rank` and `health_london_rank` in our data. We can first determine whether there is any significant correlation between the values, and if there is, plot the relationship.
 
 ```{r}
-cor.test(gapminder$gdpPercap, gapminder$lifeExp)
+#cor.test(gapminder$gdpPercap, gapminder$lifeExp)
+cor.test(lon_dims_imd_2019$Income_london_rank, lon_dims_imd_2019$health_london_rank)
 
-ggplot(gapminder, aes(gdpPercap, log(lifeExp))) +
+#ggplot(gapminder, aes(gdpPercap, log(lifeExp))) +
+ggplot(lon_dims_imd_2019, aes(Income_london_rank, health_london_rank)) +
   geom_point() +
   geom_smooth()
 ```
