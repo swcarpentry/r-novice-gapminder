@@ -34,7 +34,7 @@ source: Rmd
 # We will need these libraries and this data later.
 library(tidyverse)
 # loading data
-lon_dims_imd_2019 <- read.csv("../data/CDRC/English_IMD_2019_Domains_rebased_London_by_CDRC.csv")
+lon_dims_imd_2019 <- read.csv("data/English_IMD_2019_Domains_rebased_London_by_CDRC.csv")
 # Commenting out as not used in this version
 # library(lubridate)
 library(gapminder)
