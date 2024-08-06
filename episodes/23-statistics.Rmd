@@ -275,8 +275,8 @@ Is the difference between heights statistically significant?
 
 ```{r}
 # Example to be changed
-t.test(pop ~ european, data = gapminder)$statistic
-t.test(pop ~ european, data = gapminder)$parameter
+#t.test(pop ~ european, data = gapminder)$statistic
+#t.test(pop ~ european, data = gapminder)$parameter
 ```
 
 Notice that the summary()** of the test contains more data than is output by default.
