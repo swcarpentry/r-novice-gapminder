@@ -38,9 +38,8 @@ lon_dims_imd_2019 <- read.csv("data/English_IMD_2019_Domains_rebased_London_by_C
 # Commenting out as not used in this version
 # library(lubridate)
 library(gapminder)
-# create a binary membership variable for europe (for later examples)
-gapminder <- gapminder %>%
-  mutate(european = continent == "Europe")
+# create a binary membership variable for City of London (for later examples)
+lon_dims_imd_2019 <- lon_dims_imd_2019 %>% mutate(city = la19nm == "City of London")
 ```
 
 We are going to use the data from the gapminder package.  We have added a variable *European* indicating if a country is in Europe.
@@ -257,7 +256,7 @@ lon_dims_imd_2019 %>%
 ```
 
 
-Is the difference between heights statistically significant?
+Is the difference between the income ranks statistically significant?
 
 ## t-test
 
@@ -274,9 +273,9 @@ Is the difference between heights statistically significant?
 ## Doing a t-test
 
 ```{r}
-# Example to be changed
-# t.test(pop ~ european, data = gapminder)$statistic
-# t.test(pop ~ european, data = gapminder)$parameter
+
+ t.test(health_london_rank ~ city, data = lon_dims_imd_2019)$statistic
+ t.test(health_london_rank ~ city, data = lon_dims_imd_2019)$parameter
 ```
 
 Notice that the summary()** of the test contains more data than is output by default.
@@ -286,8 +285,8 @@ Write a paragraph in markdown format reporting this test result including the t-
 
 ### t-test result
 
-Testing supported the rejection of the null hypothesis that there is no difference between mean populations of European and non-European participants (**t**=`r round(t.test(pop ~european, data = gapminder)$statistic,4)`, **df**= `r round(t.test(pop ~european, data = gapminder)$parameter,4)`,
-**p**= `r round( t.test(pop ~european, data = gapminder)$p.value,4)`).
+Testing supported the rejection of the null hypothesis that there is no difference between mean health rank of City of London and non-City of London areas (**t**=`r round(tt.test(health_london_rank ~ city, data = lon_dims_imd_2019)$statistic,4)`, **df**= `r round(t.test(health_london_rank ~ city, data = lon_dims_imd_2019)$parameter,4)`,
+**p**= `r round( t.test(health_london_rank ~ city, data = lon_dims_imd_2019)$p.value,4)`).
 
 (Can you get p to display to four places?  Cf *format()*.)
 
