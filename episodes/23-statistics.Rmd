@@ -335,18 +335,18 @@ summary(modelone)
 Run the following code chunk and compare the results to the t test conducted earlier.
 
 ```{r}
-gapminder %>%
-  mutate(european = factor(european))
+lon_dims_imd_2019 %>%
+  mutate(city = factor(city))
 
-modelttest <- lm(gapminder$pop ~ gapminder$european)
+modelttest <- lm(lon_dims_imd_2019$health_london_rank ~ lon_dims_imd_2019$city)
 
 summary(modelttest)
 ```
 
 ## Regression with a categorical IV (ANOVA)
 
-Use the `lm()` function to model the relationship between `gapminder$gdpGroup`
-and `gapminder$pop`. Compare the results with the ANOVA carried out earlier.
+Use the `lm()` function to model the relationship between `lon_dims_imd_2019$la19nm`
+and `lon_dims_imd_2019$health_london_rank`. Compare the results with the ANOVA carried out earlier.
 
 ## Break
 
