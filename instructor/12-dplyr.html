@@ -352,10 +352,10 @@
               </div>
             </div>
 
-            <hr class="half-width"><div class="accordion accordion-flush resources" id="accordionFlush12">
+            <hr class="half-width"><div class="accordion accordion-flush lesson-resources" id="accordionFlush12">
               <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingTwelve">
-                  <button class="accordion-button collapsed" id="resources" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwelve" aria-expanded="false" aria-controls="flush-collapseTwelve">
+                  <button class="accordion-button collapsed" id="lesson-resources" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwelve" aria-expanded="false" aria-controls="flush-collapseTwelve">
                     RESOURCES
                   </button>
                 </h2>
@@ -375,7 +375,7 @@
                 </div>
               </div>
             </div>
-            <hr class="half-width resources"><a href="../instructor/aio.html">See all in one page</a>
+            <hr class="half-width lesson-resources"><a href="../instructor/aio.html">See all in one page</a>
 
 
             <hr class="d-none d-sm-block d-md-none"><div class="d-grid gap-1">
@@ -486,8 +486,7 @@ operations:</p>
 <p>But this isn’t very <em>nice</em> because there is a fair bit of
 repetition. Repeating yourself will cost you time, both now and later,
 and potentially introduce some nasty bugs.</p>
-<section><h2 class="section-heading" id="the-dplyr-package">The <code>dplyr</code> package<a class="anchor" aria-label="anchor" href="#the-dplyr-package"></a>
-<a class="anchor" aria-label="anchor" href="#the-dplyr-package"></a></h2>
+<section><h2 class="section-heading" id="the-dplyr-package">The <code>dplyr</code> package<a class="anchor" aria-label="anchor" href="#the-dplyr-package"></a></h2>
 <hr class="half-width"><p>Luckily, the <a href="https://cran.r-project.org/package=dplyr" class="external-link"><code>dplyr</code></a>
 package provides a number of very useful functions for manipulating data
 frames in a way that will reduce the above repetition, reduce the
@@ -499,8 +498,7 @@ easier to read.</p>
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-tidyverse" class="callout-inner">
-<h3 class="callout-title">Tip: Tidyverse<a class="anchor" aria-label="anchor" href="#tip-tidyverse"></a>
-</h3>
+<h3 class="callout-title">Tip: Tidyverse</h3>
 <div class="callout-content">
 <p><code>dplyr</code> package belongs to a broader family of opinionated
 R packages designed for data science called the “Tidyverse”. These
@@ -532,8 +530,7 @@ so:</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></span></code></pre>
 </div>
-</section><section><h2 class="section-heading" id="using-select">Using select()<a class="anchor" aria-label="anchor" href="#using-select"></a>
-<a class="anchor" aria-label="anchor" href="#using-select"></a></h2>
+</section><section><h2 class="section-heading" id="using-select">Using select()<a class="anchor" aria-label="anchor" href="#using-select"></a></h2>
 <hr class="half-width"><p>If, for example, we wanted to move forward with only a few of the
 variables in our data frame we could use the <code>select()</code>
 function. This will keep only the variables you select.</p>
@@ -578,8 +575,7 @@ In R, a pipe symbol is <code>%&gt;%</code> while in the shell it is
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip-renaming-data-frame-columns-in-dplyr" class="callout-inner">
-<h3 class="callout-title">Tip: Renaming data frame columns in dplyr<a class="anchor" aria-label="anchor" href="#tip-renaming-data-frame-columns-in-dplyr"></a>
-</h3>
+<h3 class="callout-title">Tip: Renaming data frame columns in dplyr</h3>
 <div class="callout-content">
 <p>In Chapter 4 we covered how you can rename columns with base R by
 assigning a value to the output of the <code>names()</code> function.
@@ -611,8 +607,7 @@ statement above.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="using-filter">Using filter()<a class="anchor" aria-label="anchor" href="#using-filter"></a>
-<a class="anchor" aria-label="anchor" href="#using-filter"></a></h2>
+</section><section><h2 class="section-heading" id="using-filter">Using filter()<a class="anchor" aria-label="anchor" href="#using-filter"></a></h2>
 <hr class="half-width"><p>If we now want to move forward with the above, but only with European
 countries, we can combine <code>select</code> and
 <code>filter</code></p>
@@ -639,8 +634,7 @@ for a specific year (e.g., 2007), we can do as below.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1" class="callout-inner">
-<h3 class="callout-title">Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"></a>
-</h3>
+<h3 class="callout-title">Challenge 1</h3>
 <div class="callout-content">
 <p>Write a single command (which can span multiple lines and includes
 pipes) that will produce a data frame that has the African values for
@@ -678,8 +672,7 @@ gapminder data frame to the <code>select()</code> function.
 case. If we used ‘select’ first, filter would not be able to find the
 variable continent since we would have removed it in the previous
 step.</p>
-</section><section><h2 class="section-heading" id="using-group_by">Using group_by()<a class="anchor" aria-label="anchor" href="#using-group_by"></a>
-<a class="anchor" aria-label="anchor" href="#using-group_by"></a></h2>
+</section><section><h2 class="section-heading" id="using-group_by">Using group_by()<a class="anchor" aria-label="anchor" href="#using-group_by"></a></h2>
 <hr class="half-width"><p>Now, we were supposed to be reducing the error prone repetitiveness
 of what can be done with base R, but up to now we haven’t done that
 since we would have to repeat the above for each continent. Instead of
@@ -738,8 +731,7 @@ original <code>gapminder</code> (<code>data.frame</code>). A
 each item in the <code>list</code>is a <code>data.frame</code> which
 contains only the rows that correspond to the a particular value
 <code>continent</code> (at least in the example above).</p>
-<figure><img src="../fig/13-dplyr-fig2.png" alt="Diagram illustrating how the group by function oraganizes a data frame into groups" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="using-summarize">Using summarize()<a class="anchor" aria-label="anchor" href="#using-summarize"></a>
-<a class="anchor" aria-label="anchor" href="#using-summarize"></a></h2>
+<figure><img src="../fig/13-dplyr-fig2.png" alt="Diagram illustrating how the group by function oraganizes a data frame into groups" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="using-summarize">Using summarize()<a class="anchor" aria-label="anchor" href="#using-summarize"></a></h2>
 <hr class="half-width"><p>The above was a bit on the uneventful side but
 <code>group_by()</code> is much more exciting in conjunction with
 <code>summarize()</code>. This will allow us to create new variable(s)
@@ -774,8 +766,7 @@ but it gets even better.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2" class="callout-inner">
-<h3 class="callout-title">Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"></a>
-</h3>
+<h3 class="callout-title">Challenge 2</h3>
 <div class="callout-content">
 <p>Calculate the average life expectancy per country. Which has the
 longest average life expectancy and which has the shortest average life
@@ -906,8 +897,7 @@ limited to defining 1 new variable in <code>summarize()</code>.</p>
 <pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.</code></pre>
 </div>
-</section><section><h2 class="section-heading" id="count-and-n">count() and n()<a class="anchor" aria-label="anchor" href="#count-and-n"></a>
-<a class="anchor" aria-label="anchor" href="#count-and-n"></a></h2>
+</section><section><h2 class="section-heading" id="count-and-n">count() and n()<a class="anchor" aria-label="anchor" href="#count-and-n"></a></h2>
 <hr class="half-width"><p>A very common operation is to count the number of observations for
 each group. The <code>dplyr</code> package comes with two related
 functions that help with this.</p>
@@ -988,8 +978,7 @@ life-expectancy:</p>
 4 Europe       71.9   43.6   81.8 0.286
 5 Oceania      74.3   69.1   81.2 0.775</code></pre>
 </div>
-</section><section><h2 class="section-heading" id="using-mutate">Using mutate()<a class="anchor" aria-label="anchor" href="#using-mutate"></a>
-<a class="anchor" aria-label="anchor" href="#using-mutate"></a></h2>
+</section><section><h2 class="section-heading" id="using-mutate">Using mutate()<a class="anchor" aria-label="anchor" href="#using-mutate"></a></h2>
 <hr class="half-width"><p>We can also create new variables prior to (or even after) summarizing
 information using <code>mutate()</code>.</p>
 <div class="codewrapper sourceCode" id="cb41">
@@ -1012,8 +1001,7 @@ information using <code>mutate()</code>.</p>
 <pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.</code></pre>
 </div>
-</section><section><h2 class="section-heading" id="connect-mutate-with-logical-filtering-ifelse">Connect mutate with logical filtering: ifelse<a class="anchor" aria-label="anchor" href="#connect-mutate-with-logical-filtering-ifelse"></a>
-<a class="anchor" aria-label="anchor" href="#connect-mutate-with-logical-filtering-ifelse"></a></h2>
+</section><section><h2 class="section-heading" id="connect-mutate-with-logical-filtering-ifelse">Connect mutate with logical filtering: ifelse<a class="anchor" aria-label="anchor" href="#connect-mutate-with-logical-filtering-ifelse"></a></h2>
 <hr class="half-width"><p>When creating new variables, we can hook this with a logical
 condition. A simple combination of <code>mutate()</code> and
 <code>ifelse()</code> facilitates filtering right where it is needed: in
@@ -1061,7 +1049,7 @@ values depending on this given condition.</p>
 <pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.</code></pre>
 </div>
-</section><section><h2 class="section-heading" id="combining-dplyr-and-ggplot2">Combining <code>dplyr</code> and <code>ggplot2</code><a class="anchor" aria-label="anchor" href="#combining-dplyr-and-ggplot2"></a>
+</section><section><h2 class="section-heading" id="combining-dplyr-and-ggplot2">Combining <code>dplyr</code> and <code>ggplot2</code>
 <a class="anchor" aria-label="anchor" href="#combining-dplyr-and-ggplot2"></a></h2>
 <hr class="half-width"><p>First install and load ggplot2:</p>
 <div class="codewrapper sourceCode" id="cb47">
@@ -1136,8 +1124,7 @@ data.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="advanced-challenge" class="callout-inner">
-<h3 class="callout-title">Advanced Challenge<a class="anchor" aria-label="anchor" href="#advanced-challenge"></a>
-</h3>
+<h3 class="callout-title">Advanced Challenge</h3>
 <div class="callout-content">
 <p>Calculate the average life expectancy in 2002 of 2 randomly selected
 countries for each continent. Then arrange the continent names in
@@ -1171,8 +1158,7 @@ similar syntax to other dplyr functions.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="other-great-resources">Other great resources<a class="anchor" aria-label="anchor" href="#other-great-resources"></a>
-<a class="anchor" aria-label="anchor" href="#other-great-resources"></a></h2>
+</section><section><h2 class="section-heading" id="other-great-resources">Other great resources<a class="anchor" aria-label="anchor" href="#other-great-resources"></a></h2>
 <hr class="half-width"><ul><li>
 <a href="https://r4ds.hadley.nz/" class="external-link">R for Data Science</a> (online
 book)</li>
@@ -1190,8 +1176,7 @@ wrangling with R and RStudio</a> (online video)</li>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
-</h3>
+<h3 class="callout-title">Key Points</h3>
 <div class="callout-content">
 <ul><li>Use the <code>dplyr</code> package to manipulate data frames.</li>
 <li>Use <code>select()</code> to choose variables from a data
@@ -1239,7 +1224,7 @@ with subsets of data.</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.5" class="external-link">sandpaper (0.16.5)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.3" class="external-link">varnish (1.0.3)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.6" class="external-link">sandpaper (0.16.6)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.4" class="external-link">varnish (1.0.4)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1262,7 +1247,7 @@ with subsets of data.</li>
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/instructor/12-dplyr.html",
   "dateCreated": "2015-04-18",
   "dateModified": "2024-08-08",
-  "datePublished": "2024-08-20"
+  "datePublished": "2024-08-27"
 }
 
   </script><script>
