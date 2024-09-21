@@ -474,6 +474,7 @@ lifeExp_2countries_bycontinents <- gapminder %>%
 - [Data Wrangling Cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) (pdf file)
 - [Introduction to dplyr](https://dplyr.tidyverse.org/) (online documentation)
 - [Data wrangling with R and RStudio](https://www.rstudio.com/resources/webinars/data-wrangling-with-r-and-rstudio/) (online video)
+- [Tidyverse Skills for Data Science](https://jhudatascience.org/tidyversecourse/) (online book)
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
