@@ -32,7 +32,7 @@ making a toy dataset in your `data/` directory, called `feline-data.csv`:
 ``` r
 cats <- data.frame(coat = c("calico", "black", "tabby"),
                     weight = c(2.1, 5.0, 3.2),
-                    likes_string = c(1, 0, 1))
+                    likes_catnip = c(1, 0, 1))
 ```
 
 We can now save `cats` as a CSV file. It is good practice to call the argument
@@ -49,7 +49,7 @@ The contents of the new file, `feline-data.csv`:
 
 
 ``` r
-coat,weight,likes_string
+coat,weight,likes_catnip
 calico,2.1,1
 black,5.0,0
 tabby,3.2,1
@@ -74,7 +74,7 @@ cats
 ```
 
 ``` output
-    coat weight likes_string
+    coat weight likes_catnip
 1 calico    2.1            1
 2  black    5.0            0
 3  tabby    3.2            1
@@ -247,7 +247,7 @@ file.show("data/feline-data_v2.csv")
 
 
 ``` r
-coat,weight,likes_string
+coat,weight,likes_catnip
 calico,2.1,1
 black,5.0,0
 tabby,3.2,1
@@ -314,7 +314,7 @@ while we investigate this behavior further:
 feline-data.csv:
 
 ```
-coat,weight,likes_string
+coat,weight,likes_catnip
 calico,2.1,1
 black,5.0,0
 tabby,3.2,1
@@ -516,7 +516,7 @@ may well be to blame; make sure everything is the same type in your vectors and
 your columns of data.frames, or you will get nasty surprises!
 
 But coercion can also be very useful! For example, in our `cats` data
-`likes_string` is numeric, but we know that the 1s and 0s actually represent
+`likes_catnip` is numeric, but we know that the 1s and 0s actually represent
 `TRUE` and `FALSE` (a common way of representing them). We should use the
 `logical` datatype here, which has two states: `TRUE` or `FALSE`, which is
 exactly what our data represents. We can 'coerce' this column to be `logical` by
@@ -524,7 +524,7 @@ using the `as.logical` function:
 
 
 ``` r
-cats$likes_string
+cats$likes_catnip
 ```
 
 ``` output
@@ -532,8 +532,8 @@ cats$likes_string
 ```
 
 ``` r
-cats$likes_string <- as.logical(cats$likes_string)
-cats$likes_string
+cats$likes_catnip <- as.logical(cats$likes_catnip)
+cats$likes_catnip
 ```
 
 ``` output
@@ -1107,7 +1107,7 @@ cats
 ```
 
 ``` output
-    coat weight likes_string
+    coat weight likes_catnip
 1 calico    2.1         TRUE
 2  black    5.0        FALSE
 3  tabby    3.2         TRUE
@@ -1203,7 +1203,7 @@ cats[1,]
 ```
 
 ``` output
-    coat weight likes_string
+    coat weight likes_catnip
 1 calico    2.1         TRUE
 ```
 
@@ -1223,7 +1223,7 @@ str(cats[1,])
 'data.frame':	1 obs. of  3 variables:
  $ coat        : chr "calico"
  $ weight      : num 2.1
- $ likes_string: logi TRUE
+ $ likes_catnip: logi TRUE
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
@@ -1336,7 +1336,7 @@ cats[1, ]
 ```
 
 ``` output
-    coat weight likes_string
+    coat weight likes_catnip
 1 calico    2.1         TRUE
 ```
 
@@ -1362,7 +1362,7 @@ names(cats)
 ```
 
 ``` output
-[1] "coat"         "weight"       "likes_string"
+[1] "coat"         "weight"       "likes_catnip"
 ```
 
 If you want to rename the second column of `cats`, you can assign a new name to the second element of `names(cats)`.
@@ -1374,7 +1374,7 @@ cats
 ```
 
 ``` output
-    coat weight_kg likes_string
+    coat weight_kg likes_catnip
 1 calico       2.1         TRUE
 2  black       5.0        FALSE
 3  tabby       3.2         TRUE
