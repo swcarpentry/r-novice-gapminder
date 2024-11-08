@@ -398,7 +398,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data Structures</h1>
-        <p>Last updated on 2024-11-05 |
+        <p>Last updated on 2024-11-08 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/04-data-structures-part1.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -451,7 +451,7 @@ directory, called <code>feline-data.csv</code>:</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cats</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span>coat <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"calico"</span>, <span class="st">"black"</span>, <span class="st">"tabby"</span><span class="op">)</span>,</span>
 <span>                    weight <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">2.1</span>, <span class="fl">5.0</span>, <span class="fl">3.2</span><span class="op">)</span>,</span>
-<span>                    likes_string <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<span>                    likes_catnip <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <p>We can now save <code>cats</code> as a CSV file. It is good practice
 to call the argument names explicitly so the function knows what default
@@ -469,7 +469,7 @@ argument names and their default values.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>coat,weight,likes_string</span>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>coat,weight,likes_catnip</span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>calico,<span class="fl">2.1</span>,<span class="dv">1</span></span>
 <span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>black,<span class="fl">5.0</span>,<span class="dv">0</span></span>
 <span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>tabby,<span class="fl">3.2</span>,<span class="dv">1</span></span></code></pre>
@@ -498,7 +498,7 @@ File -&gt; Text File</strong> menu item.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>    coat weight likes_string
+<pre class="output" tabindex="0"><code>    coat weight likes_catnip
 1 calico    2.1            1
 2  black    5.0            0
 3  tabby    3.2            1</code></pre>
@@ -703,7 +703,7 @@ file <code>data/feline-data_v2.csv</code>.</p>
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>coat,weight,likes_string</span>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>coat,weight,likes_catnip</span>
 <span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>calico,<span class="fl">2.1</span>,<span class="dv">1</span></span>
 <span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a>black,<span class="fl">5.0</span>,<span class="dv">0</span></span>
 <span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a>tabby,<span class="fl">3.2</span>,<span class="dv">1</span></span>
@@ -771,7 +771,7 @@ versatile), but everything in a given column needs to be the same type
 behave. For now, let’s remove that extra line from our cats data and
 reload it, while we investigate this behavior further:</p>
 <p>feline-data.csv:</p>
-<pre><code>coat,weight,likes_string
+<pre><code>coat,weight,likes_catnip
 calico,2.1,1
 black,5.0,0
 tabby,3.2,1</code></pre>
@@ -1001,7 +1001,7 @@ to look like, type coercion may well be to blame; make sure everything
 is the same type in your vectors and your columns of data.frames, or you
 will get nasty surprises!</p>
 <p>But coercion can also be very useful! For example, in our
-<code>cats</code> data <code>likes_string</code> is numeric, but we know
+<code>cats</code> data <code>likes_catnip</code> is numeric, but we know
 that the 1s and 0s actually represent <code>TRUE</code> and
 <code>FALSE</code> (a common way of representing them). We should use
 the <code>logical</code> datatype here, which has two states:
@@ -1012,7 +1012,7 @@ using the <code>as.logical</code> function:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">cats</span><span class="op">$</span><span class="va">likes_string</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">cats</span><span class="op">$</span><span class="va">likes_catnip</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1023,8 +1023,8 @@ using the <code>as.logical</code> function:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">cats</span><span class="op">$</span><span class="va">likes_string</span> <span class="op">&lt;-</span> <span class="fu">as.logical</span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">likes_string</span><span class="op">)</span></span>
-<span><span class="va">cats</span><span class="op">$</span><span class="va">likes_string</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">cats</span><span class="op">$</span><span class="va">likes_catnip</span> <span class="op">&lt;-</span> <span class="fu">as.logical</span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">likes_catnip</span><span class="op">)</span></span>
+<span><span class="va">cats</span><span class="op">$</span><span class="va">likes_catnip</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1735,7 +1735,7 @@ our example cat data frame:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>    coat weight likes_string
+<pre class="output" tabindex="0"><code>    coat weight likes_catnip
 1 calico    2.1         TRUE
 2  black    5.0        FALSE
 3  tabby    3.2         TRUE</code></pre>
@@ -1843,7 +1843,7 @@ data.frame, and thus can be composed of elements of different types.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>    coat weight likes_string
+<pre class="output" tabindex="0"><code>    coat weight likes_catnip
 1 calico    2.1         TRUE</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb134">
@@ -1869,7 +1869,7 @@ data.frame, and thus can be composed of elements of different types.</p>
 <pre class="output" tabindex="0"><code>'data.frame':	1 obs. of  3 variables:
  $ coat        : chr "calico"
  $ weight      : num 2.1
- $ likes_string: logi TRUE</code></pre>
+ $ likes_catnip: logi TRUE</code></pre>
 </div>
 <div id="challenge-5" class="callout challenge">
 <div class="callout-square">
@@ -2002,7 +2002,7 @@ returns them as a <em>vector</em>.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>    coat weight likes_string
+<pre class="output" tabindex="0"><code>    coat weight likes_catnip
 1 calico    2.1         TRUE</code></pre>
 </div>
 <p>Again we use the single brace with row and column coordinates. The
@@ -2030,7 +2030,7 @@ containing all the values in the first row.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] "coat"         "weight"       "likes_string"</code></pre>
+<pre class="output" tabindex="0"><code>[1] "coat"         "weight"       "likes_catnip"</code></pre>
 </div>
 <p>If you want to rename the second column of <code>cats</code>, you can
 assign a new name to the second element of <code>names(cats)</code>.</p>
@@ -2044,7 +2044,7 @@ assign a new name to the second element of <code>names(cats)</code>.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>    coat weight_kg likes_string
+<pre class="output" tabindex="0"><code>    coat weight_kg likes_catnip
 1 calico       2.1         TRUE
 2  black       5.0        FALSE
 3  tabby       3.2         TRUE</code></pre>
@@ -2395,8 +2395,8 @@ lists and vectors, with some added attributes.</li>
   "url": "https://swcarpentry.github.io/r-novice-gapminder/instructor/04-data-structures-part1.html",
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/instructor/04-data-structures-part1.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2024-11-05",
-  "datePublished": "2024-11-05"
+  "dateModified": "2024-11-08",
+  "datePublished": "2024-11-08"
 }
 
   </script><script>

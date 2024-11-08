@@ -2351,7 +2351,7 @@ cheat sheets</a></li>
 </div>
 </section></section><section id="aio-04-data-structures-part1"><p>Content from <a href="04-data-structures-part1.html">Data Structures</a></p>
 <hr>
-<p>Last updated on 2024-11-05 |
+<p>Last updated on 2024-11-08 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/04-data-structures-part1.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 55 minutes</p>
@@ -2401,7 +2401,7 @@ directory, called <code>feline-data.csv</code>:</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cats</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span>coat <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"calico"</span>, <span class="st">"black"</span>, <span class="st">"tabby"</span><span class="op">)</span>,</span>
 <span>                    weight <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">2.1</span>, <span class="fl">5.0</span>, <span class="fl">3.2</span><span class="op">)</span>,</span>
-<span>                    likes_string <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<span>                    likes_catnip <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <p>We can now save <code>cats</code> as a CSV file. It is good practice
 to call the argument names explicitly so the function knows what default
@@ -2419,7 +2419,7 @@ argument names and their default values.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>coat,weight,likes_string</span>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>coat,weight,likes_catnip</span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>calico,<span class="fl">2.1</span>,<span class="dv">1</span></span>
 <span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>black,<span class="fl">5.0</span>,<span class="dv">0</span></span>
 <span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>tabby,<span class="fl">3.2</span>,<span class="dv">1</span></span></code></pre>
@@ -2448,7 +2448,7 @@ File -&gt; Text File</strong> menu item.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>    coat weight likes_string
+<pre class="output" tabindex="0"><code>    coat weight likes_catnip
 1 calico    2.1            1
 2  black    5.0            0
 3  tabby    3.2            1</code></pre>
@@ -2656,7 +2656,7 @@ file <code>data/feline-data_v2.csv</code>.</p>
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>coat,weight,likes_string</span>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>coat,weight,likes_catnip</span>
 <span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>calico,<span class="fl">2.1</span>,<span class="dv">1</span></span>
 <span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a>black,<span class="fl">5.0</span>,<span class="dv">0</span></span>
 <span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a>tabby,<span class="fl">3.2</span>,<span class="dv">1</span></span>
@@ -2724,7 +2724,7 @@ versatile), but everything in a given column needs to be the same type
 behave. For now, let’s remove that extra line from our cats data and
 reload it, while we investigate this behavior further:</p>
 <p>feline-data.csv:</p>
-<pre><code>coat,weight,likes_string
+<pre><code>coat,weight,likes_catnip
 calico,2.1,1
 black,5.0,0
 tabby,3.2,1</code></pre>
@@ -2957,7 +2957,7 @@ to look like, type coercion may well be to blame; make sure everything
 is the same type in your vectors and your columns of data.frames, or you
 will get nasty surprises!</p>
 <p>But coercion can also be very useful! For example, in our
-<code>cats</code> data <code>likes_string</code> is numeric, but we know
+<code>cats</code> data <code>likes_catnip</code> is numeric, but we know
 that the 1s and 0s actually represent <code>TRUE</code> and
 <code>FALSE</code> (a common way of representing them). We should use
 the <code>logical</code> datatype here, which has two states:
@@ -2968,7 +2968,7 @@ using the <code>as.logical</code> function:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">cats</span><span class="op">$</span><span class="va">likes_string</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">cats</span><span class="op">$</span><span class="va">likes_catnip</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2979,8 +2979,8 @@ using the <code>as.logical</code> function:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">cats</span><span class="op">$</span><span class="va">likes_string</span> <span class="op">&lt;-</span> <span class="fu">as.logical</span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">likes_string</span><span class="op">)</span></span>
-<span><span class="va">cats</span><span class="op">$</span><span class="va">likes_string</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">cats</span><span class="op">$</span><span class="va">likes_catnip</span> <span class="op">&lt;-</span> <span class="fu">as.logical</span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">likes_catnip</span><span class="op">)</span></span>
+<span><span class="va">cats</span><span class="op">$</span><span class="va">likes_catnip</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3713,7 +3713,7 @@ our example cat data frame:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>    coat weight likes_string
+<pre class="output" tabindex="0"><code>    coat weight likes_catnip
 1 calico    2.1         TRUE
 2  black    5.0        FALSE
 3  tabby    3.2         TRUE</code></pre>
@@ -3821,7 +3821,7 @@ data.frame, and thus can be composed of elements of different types.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>    coat weight likes_string
+<pre class="output" tabindex="0"><code>    coat weight likes_catnip
 1 calico    2.1         TRUE</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb134">
@@ -3847,7 +3847,7 @@ data.frame, and thus can be composed of elements of different types.</p>
 <pre class="output" tabindex="0"><code>'data.frame':	1 obs. of  3 variables:
  $ coat        : chr "calico"
  $ weight      : num 2.1
- $ likes_string: logi TRUE</code></pre>
+ $ likes_catnip: logi TRUE</code></pre>
 </div>
 <div id="challenge-5" class="callout challenge">
 <div class="callout-square">
@@ -3982,7 +3982,7 @@ returns them as a <em>vector</em>.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>    coat weight likes_string
+<pre class="output" tabindex="0"><code>    coat weight likes_catnip
 1 calico    2.1         TRUE</code></pre>
 </div>
 <p>Again we use the single brace with row and column coordinates. The
@@ -4010,7 +4010,7 @@ containing all the values in the first row.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] "coat"         "weight"       "likes_string"</code></pre>
+<pre class="output" tabindex="0"><code>[1] "coat"         "weight"       "likes_catnip"</code></pre>
 </div>
 <p>If you want to rename the second column of <code>cats</code>, you can
 assign a new name to the second element of <code>names(cats)</code>.</p>
@@ -4024,7 +4024,7 @@ assign a new name to the second element of <code>names(cats)</code>.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>    coat weight_kg likes_string
+<pre class="output" tabindex="0"><code>    coat weight_kg likes_catnip
 1 calico       2.1         TRUE
 2  black       5.0        FALSE
 3  tabby       3.2         TRUE</code></pre>
@@ -4638,7 +4638,7 @@ person’s answer to the question, “Is it time for coffee break?”</p>
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4928,7 +4928,7 @@ could ask for a few lines at random. How would you code this?</p>
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>To check the last few lines it’s relatively simple as R already has a
 function for this:</p>
@@ -4989,7 +4989,7 @@ RStudio).</p>
   Solution to Challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>The <code>source</code> function can be used to use a script within a
 script. Assume you would like to load the same type of file over and
@@ -5041,7 +5041,7 @@ neighbors!</p>
   Solution to Challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>The object <code>gapminder</code> is a data frame with columns</p>
 <ul>
@@ -6827,7 +6827,7 @@ reporting whether there are any records from 2002 in the
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>We will first see a solution to Challenge 1 which does not use the
 <code>any()</code> function. We first obtain a logical vector describing
@@ -7170,7 +7170,7 @@ would you change the last block of code to make
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>We can check whether the two vectors are identical using the
 <code>all()</code> function:</p>
@@ -7255,7 +7255,7 @@ larger than 50 years.</p>
   Solution to Challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p><strong>Step 1</strong>: We want to make sure we can extract all the
 unique values of the continent vector</p>
@@ -7337,7 +7337,7 @@ time print out whether the life expectancy is smaller than 50, between
   Solution to Challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>We modify our solution to Challenge 3 by now adding two thresholds,
 <code>lowerThreshold</code> and <code>upperThreshold</code> and
@@ -7387,7 +7387,7 @@ life expectancy is under 50 years.</p>
   Solution for Challenge 5
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>We will use the <code>grep()</code> command that was introduced in
 the <a href="https://swcarpentry.github.io/shell-novice/07-find.html" class="external-link">Unix
@@ -8246,7 +8246,7 @@ tail of the data frame to make sure it worked.</p>
   Solution to challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Let’s try this on the <code>pop</code> column of the
 <code>gapminder</code> dataset.</p>
@@ -8297,7 +8297,7 @@ Again, do not worry about which is which.</p>
   Solution to challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Refresh your plotting skills by plotting population in millions
 against year.</p>
@@ -8474,7 +8474,7 @@ reference guide</a></p>
   Solution to challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Given the following matrix:</p>
 <div class="codewrapper sourceCode" id="cb28">
@@ -8558,7 +8558,7 @@ n=10,000?</p>
   Challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>We’re interested in looking at the sum of the following sequence of
 fractions:</p>
@@ -9984,7 +9984,7 @@ why?</p>
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -10118,7 +10118,7 @@ expectancy?</p>
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -10486,7 +10486,7 @@ similar syntax to other dplyr functions.</p>
   Solution to Advanced Challenge
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb52">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -11461,7 +11461,7 @@ itemized list).</p>
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>In RStudio, select File &gt; New file &gt; R Markdown…</p>
 <p>Delete the placeholder text and add the following:</p>
@@ -11543,7 +11543,7 @@ Linux, or <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> on Mac.</p>
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <pre>
 ```{r load-ggplot2}
@@ -11634,7 +11634,7 @@ code.</p>
   Solution to Challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <pre>
 ```{r echo = FALSE, fig.width = 3}
@@ -11684,7 +11684,7 @@ package handles this.</p>
   Solution to Challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>Here’s some inline code to determine that 2 + 2 = <code>4</code>.</p>
 </div>
@@ -11974,8 +11974,8 @@ style.</li>
   "url": "https://swcarpentry.github.io/r-novice-gapminder/instructor/aio.html",
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/instructor/aio.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2024-11-05",
-  "datePublished": "2024-11-05"
+  "dateModified": "2024-11-08",
+  "datePublished": "2024-11-08"
 }
 
   </script><script>
