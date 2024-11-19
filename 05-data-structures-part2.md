@@ -41,7 +41,7 @@ cats
 ```
 
 ``` output
-    coat weight likes_string
+    coat weight likes_catnip
 1 calico    2.1            1
 2  black    5.0            0
 3  tabby    3.2            1
@@ -55,7 +55,7 @@ cbind(cats, age)
 ```
 
 ``` output
-    coat weight likes_string age
+    coat weight likes_catnip age
 1 calico    2.1            1   2
 2  black    5.0            0   3
 3  tabby    3.2            1   5
@@ -127,7 +127,7 @@ cats
 ```
 
 ``` output
-           coat weight likes_string age
+           coat weight likes_catnip age
 1        calico    2.1            1   2
 2         black    5.0            0   3
 3         tabby    3.2            1   5
@@ -145,7 +145,7 @@ cats
 ```
 
 ``` output
-           coat weight likes_string age
+           coat weight likes_catnip age
 1        calico    2.1            1   2
 2         black    5.0            0   3
 3         tabby    3.2            1   5
@@ -160,7 +160,7 @@ cats[-4, ]
 ```
 
 ``` output
-    coat weight likes_string age
+    coat weight likes_catnip age
 1 calico    2.1            1   2
 2  black    5.0            0   3
 3  tabby    3.2            1   5
@@ -182,7 +182,7 @@ cats[,-4]
 ```
 
 ``` output
-           coat weight likes_string
+           coat weight likes_catnip
 1        calico    2.1            1
 2         black    5.0            0
 3         tabby    3.2            1
@@ -200,7 +200,7 @@ cats[,!drop]
 ```
 
 ``` output
-           coat weight likes_string
+           coat weight likes_catnip
 1        calico    2.1            1
 2         black    5.0            0
 3         tabby    3.2            1
@@ -222,7 +222,7 @@ cats
 ```
 
 ``` output
-           coat weight likes_string age
+           coat weight likes_catnip age
 1        calico    2.1            1   2
 2         black    5.0            0   3
 3         tabby    3.2            1   5

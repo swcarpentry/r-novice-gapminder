@@ -160,7 +160,7 @@ sessionInfo()
 ```
 
 ``` output
-R version 4.4.1 (2024-06-14)
+R version 4.4.2 (2024-10-31)
 Platform: x86_64-pc-linux-gnu
 Running under: Ubuntu 22.04.5 LTS
 
@@ -181,7 +181,7 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 loaded via a namespace (and not attached):
-[1] compiler_4.4.1 tools_4.4.1    yaml_2.3.10    knitr_1.48     xfun_0.49     
+[1] compiler_4.4.2 tools_4.4.2    yaml_2.3.10    knitr_1.48     xfun_0.49     
 [6] renv_1.0.11    evaluate_1.0.1
 ```
 
