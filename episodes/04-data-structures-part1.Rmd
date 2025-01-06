@@ -164,16 +164,17 @@ No matter how
 complicated our analyses become, all data in R is interpreted as one of these
 basic data types. This strictness has some really important consequences.
 
-A user has added details of another cat. We can add an additional row to our cats `data.frame` using `rbind`.
+A user has provided details of another cat. We can add an additional row to our cats table using `rbind()`.
 
 ```{r}
 additional_cat <- data.frame(coat = "tabby", weight = "2.3 or 2.4", likes_catnip = 1)
+additional_cat
 cats2 <- rbind(cats, additional_cat)
 cats2
 ```
 
 Let's check what type of data we find in the
-`weight` column of our new object:
+`weight` column of our new `cats2` object:
 
 ```{r}
 typeof(cats2$weight)
@@ -187,10 +188,10 @@ cats2$weight + 2
 ```
 
 What happened?
-The `cats` data we are working with is something called a *data frame*. Data frames
+The `cats` (and `cats2`) data we are working with is something called a *data frame*. Data frames
 are one of the most common and versatile types of *data structures* we will work with in R.
 A given column in a data frame cannot be composed of different data types.
-In this case, R does not read everything in the data frame column `weight` as a *double*, therefore the entire
+In this case, R cannot store everything in the data frame column `weight` as a *double* anymore once we add the row for the additional cat (because its weight is `2.3 or 2.4`), therefore the entire
 column data type changes to something that is suitable for everything in the column.
 
 When R reads a csv file, it reads it in as a *data frame*. Thus, when we loaded the `cats`
@@ -206,28 +207,7 @@ same number of rows. Different columns in a data frame can be made up of differe
 data types (this is what makes them so versatile), but everything in a given
 column needs to be the same type (e.g., vector, factor, or list).
 
-Let's explore more about different data structures and how they behave.
-For now, let's remove that extra line from our cats data and reload it,
-while we investigate this behavior further:
-
-feline-data.csv:
-
-```
-coat,weight,likes_catnip
-calico,2.1,1
-black,5.0,0
-tabby,3.2,1
-```
-
-And back in RStudio:
-
-```{r, eval=FALSE}
-cats <- read.csv(file="data/feline-data.csv")
-```
-
-```{r, include=FALSE}
-cats <- cats_orig
-```
+Let's explore more about different data structures and how they behave. For now, we will focus on our original data frame `cats` (and we can forget about `cats2` for the rest of this episode).
 
 ### Vectors and Type Coercion
 
