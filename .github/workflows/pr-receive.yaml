@@ -109,21 +109,21 @@ jobs:
       - name: "Upload PR"
         uses: actions/upload-artifact@v4
         with:
-          name: pr
+          name: pr-${{ github.run_id }}
           path: ${{ env.PR }}
           overwrite: true
 
       - name: "Upload Diff"
         uses: actions/upload-artifact@v4
         with:
-          name: diff
+          name: diff-${{ github.run_id }}
           path: ${{ env.CHIVE }}
           retention-days: 1
 
       - name: "Upload Build"
         uses: actions/upload-artifact@v4
         with:
-          name: built
+          name: built-${{ github.run_id }}
           path: ${{ env.MD }}
           retention-days: 1
 
