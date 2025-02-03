@@ -1,6 +1,6 @@
 "file" "checksum" "built" "date"
 "CODE_OF_CONDUCT.md" "c93c83c630db2fe2462240bf72552548" "site/built/CODE_OF_CONDUCT.md" "2025-02-03"
-"LICENSE.md" "ea0c0c96819430451d30c4cb669e0c64" "site/built/LICENSE.md" "2025-02-03"
+"LICENSE.md" "e94126b93e27bae014999c2e84ee93f8" "site/built/LICENSE.md" "2025-02-03"
 "config.yaml" "8b9d63dd3c46d5b4d5fa4219b51a0dfc" "site/built/config.yaml" "2025-02-03"
 "index.md" "86c8fb559b13d1695d55b52dd6cbf574" "site/built/index.md" "2025-02-03"
 "episodes/01-rstudio-intro.Rmd" "04f6b758558750cef962768d78dd63b0" "site/built/01-rstudio-intro.md" "2025-02-03"
