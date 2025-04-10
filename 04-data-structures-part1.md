@@ -80,7 +80,7 @@ cats
 3  tabby    3.2            1
 ```
 
-The `read.table` function is used for reading in tabular data stored in a text
+The `read.csv` function is used for reading in tabular data stored in a text
 file where the columns of data are separated by punctuation characters such as
 CSV files (csv = comma-separated values). Tabs and commas are the most common
 punctuation characters used to separate or delimit data points in csv files.
