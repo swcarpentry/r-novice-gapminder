@@ -1929,7 +1929,7 @@ layout.</li>
 </div>
 </section></section><section id="aio-03-seeking-help"><p>Content from <a href="03-seeking-help.html">Seeking Help</a></p>
 <hr>
-<p>Last updated on 2025-04-22 |
+<p>Last updated on 2025-04-29 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/03-seeking-help.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 20 minutes</p>
@@ -2096,15 +2096,43 @@ you identify the function:</p>
 <p>If you don’t know what function or package you need to use <a href="https://cran.at.r-project.org/web/views" class="external-link">CRAN Task Views</a> is a
 specially maintained list of packages grouped into fields. This can be a
 good starting point.</p>
-</section><section><h2 class="section-heading" id="when-your-code-doesnt-work-seeking-help-from-your-peers">When Your Code Doesn’t Work: Seeking Help from Your Peers<a class="anchor" aria-label="anchor" href="#when-your-code-doesnt-work-seeking-help-from-your-peers"></a>
+</section><section><h2 class="section-heading" id="other-ways-to-get-help">Other ways to get help<a class="anchor" aria-label="anchor" href="#other-ways-to-get-help"></a>
 </h2>
 <hr class="half-width">
-<p>If you’re having trouble using a function, 9 times out of 10, the
-answers you seek have already been answered on <a href="https://stackoverflow.com/" class="external-link">Stack Overflow</a>. You can search
-using the <code>[r]</code> tag. Please make sure to see their page on <a href="https://stackoverflow.com/help/how-to-ask" class="external-link">how to ask a good
-question.</a></p>
-<p>If you can’t find the answer, there are a few useful functions to
-help you ask your peers:</p>
+<p>There are several other ways that people often get help when they are
+stuck with their R code.</p>
+<ul>
+<li>Search the internet: paste the last line of your error message or
+“R” and a short description of what you want to do into your favourite
+search engine and you will usually find several examples where other
+people have encountered the same problem and came looking for help.
+<ul>
+<li>StackOverflow can be particularly helpful for this: answers to
+questions are presented as a ranked thread ordered according to how
+useful other users found them to be. You can search using the
+<code>[r]</code> tag.</li>
+<li>
+<strong>Take care</strong>: copying and pasting code written by
+somebody else is risky unless you understand exactly what it is
+doing!</li>
+</ul>
+</li>
+<li>Ask somebody “in the real world”. If you have a colleague or friend
+with more expertise in R than you have, show them the problem you are
+having and ask them for help.</li>
+<li>Sometimes, the act of articulating your question can help you to
+identify what is going wrong. This is known as <a href="https://en.wikipedia.org/wiki/Rubber_duck_debugging" class="external-link">“rubber duck
+debugging”</a> among programmers.</li>
+</ul>
+<div class="section level3">
+<h3 id="formulating-your-question">Formulating your question<a class="anchor" aria-label="anchor" href="#formulating-your-question"></a>
+</h3>
+<p>The StackOverflow page on <a href="https://stackoverflow.com/help/how-to-ask" class="external-link">how to ask a good
+question</a> has tips on what information to include when posting a
+question on StackOverflow. Some of these are specific to StackOverflow
+but others are also relevant if you’re asking a colleague or friend for
+help, or even if just articulating your question to yourself.</p>
+<p>R has a few useful functions to help you formulate your question:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -2149,6 +2177,102 @@ loaded via a namespace (and not attached):
 <p>Will print out your current version of R, as well as any packages you
 have loaded. This can be useful for others to help reproduce and debug
 your issue.</p>
+</div>
+<div class="section level3">
+<h3 id="generative-ai">Generative AI<a class="anchor" aria-label="anchor" href="#generative-ai"></a>
+</h3>
+<div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
+  <h3 class="accordion-header" id="headingInstructor1">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>
+  Choose how to teach this section
+  </h3>
+</button>
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div class="accordion-body">
+<p>The section on generative AI is intended to be concise but
+Instructors may choose to devote more time to the topic in a
+workshop.</p>
+<p>Depending on your own level of experience and comfort with talking
+about and using these tools, you could choose to do any of the
+following:</p>
+<ul>
+<li><p>Explain how large language models work and are trained, and/or
+the difference between generative AI, other forms of AI that currently
+exist, and the limits of what LLMs can do (e.g., they can’t
+“reason”).</p></li>
+<li><p>Demonstrate how you recommend that learners use generative
+AI.</p></li>
+<li><p>Discuss the ethical concerns listed below, as well as others that
+you are aware of, to help learners make an informed choice about whether
+or not to use generative AI tools.</p></li>
+</ul>
+<p>This is a fast-moving technology. If you are preparing to teach this
+section and you feel it has become outdated, please open an issue on the
+lesson repository to let the Maintainers know and/or a pull request to
+suggest updates and improvements.</p>
+</div>
+</div>
+</div>
+</div>
+<p>It is increasingly common for people to use <em>generative AI</em>
+chatbots such as ChatGPT to get help while coding. You will probably
+receive some useful guidance by presenting your error message to the
+chatbot and asking it what went wrong. However, the way this help is
+provided by the chatbot is different. Answers on StackOverflow have
+(probably) been given by a human as a direct response to the question
+asked. But generative AI chatbots, which are based on an advanced
+statistical model, respond by generating the <em>most likely</em>
+sequence of text that would follow the prompt they are given.</p>
+<p>While responses from generative AI tools can often be helpful, they
+are not always reliable. These tools sometimes generate plausible but
+incorrect or misleading information, so (just as with an answer found on
+the internet) it is essential to verify their accuracy. You need the
+knowledge and skills to be able to understand these responses, to judge
+whether or not they are accurate, and to fix any errors in the code it
+offers you.</p>
+<p>In addition to asking for help, programmers can use generative AI
+tools to generate code from scratch; extend, improve and reorganise
+existing code; translate code between programming languages; figure out
+what terms to use in a search of the internet; and more. However, there
+are drawbacks that you should be aware of.</p>
+<p>The models used by these tools have been “trained” on very large
+volumes of data, much of it taken from the internet, and the responses
+they produce reflect that training data, and may recapitulate its
+inaccuracies or biases. The environmental costs (energy and water use)
+of LLMs are a lot higher than other technologies, both during
+development (known as training) and when an individual user uses one
+(also called inference). For more information see the <a href="https://huggingface.co/blog/sasha/ai-environment-primer" class="external-link">AI
+Environmental Impact Primer</a> developed by researchers at HuggingFace,
+an AI hosting platform. Concerns also exist about the way the data for
+this training was obtained, with questions raised about whether the
+people developing the LLMs had permission to use it. Other ethical
+concerns have also been raised, such as reports that workers were
+exploited during the training process.</p>
+<p><strong>We recommend that you avoid getting help from generative AI
+during the workshop</strong> for several reasons:</p>
+<ol style="list-style-type: decimal">
+<li>For most problems you will encounter at this stage, help and answers
+can be found among the first results returned by searching the
+internet.</li>
+<li>The foundational knowledge and skills you will learn in this lesson
+by writing and fixing your own programs are essential to be able to
+evaluate the correctness and safety of any code you receive from online
+help or a generative AI chatbot. If you choose to use these tools in the
+future, the expertise you gain from learning and practising these
+fundamentals on your own will help you use them more effectively.</li>
+<li>As you start out with programming, the mistakes you make will be the
+kinds that have also been made – and overcome! – by everybody else who
+learned to program before you. Since these mistakes and the questions
+you are likely to have at this stage are common, they are also better
+represented than other, more specialised problems and tasks in the data
+that was used to train generative AI tools. This means that a generative
+AI chatbot is <em>more likely to produce accurate responses</em> to
+questions that novices ask, which could give you a false impression of
+how reliable they will be when you are ready to do things that are more
+advanced.</li>
+</ol>
 <div id="challenge-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -2327,7 +2451,8 @@ as well if your data file contains hash (#) characters.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="other-resources">Other Resources<a class="anchor" aria-label="anchor" href="#other-resources"></a>
+</div>
+</section><section><h2 class="section-heading" id="resources">Resources<a class="anchor" aria-label="anchor" href="#resources"></a>
 </h2>
 <hr class="half-width">
 <ul>
@@ -5417,7 +5542,7 @@ neighbour. Did you have different strategies?</p>
   Solution to challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5610,7 +5735,7 @@ than 4 and less than 7.</p>
   Solution to challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb50">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5864,7 +5989,7 @@ work.</p>
   Solution to challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <ul>
 <li>The <strong>wrong</strong> way to do this problem is
@@ -6155,7 +6280,7 @@ instead of their row and column indices.</p>
   Solution to challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>D</p>
 </div>
@@ -6302,7 +6427,7 @@ in the list.</p>
   Solution to challenge 5
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb115">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6367,7 +6492,7 @@ in the list.</p>
   Solution to challenge 6
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb122">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6533,7 +6658,7 @@ and 2007</li>
   Solution to challenge 7
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <p>Fix each of the following common data frame subsetting errors:</p>
 <ol style="list-style-type: decimal">
@@ -6618,7 +6743,7 @@ through 23. You can do this in one or two steps.</p></li>
   Solution to challenge 8
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p><code>gapminder</code> is a data.frame so needs to be subsetted
@@ -6827,7 +6952,7 @@ reporting whether there are any records from 2002 in the
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>We will first see a solution to Challenge 1 which does not use the
 <code>any()</code> function. We first obtain a logical vector describing
@@ -7170,7 +7295,7 @@ would you change the last block of code to make
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>We can check whether the two vectors are identical using the
 <code>all()</code> function:</p>
@@ -7255,7 +7380,7 @@ larger than 50 years.</p>
   Solution to Challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p><strong>Step 1</strong>: We want to make sure we can extract all the
 unique values of the continent vector</p>
@@ -7337,7 +7462,7 @@ time print out whether the life expectancy is smaller than 50, between
   Solution to Challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>We modify our solution to Challenge 3 by now adding two thresholds,
 <code>lowerThreshold</code> and <code>upperThreshold</code> and
@@ -7387,7 +7512,7 @@ life expectancy is under 50 years.</p>
   Solution for Challenge 5
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>We will use the <code>grep()</code> command that was introduced in
 the <a href="https://swcarpentry.github.io/shell-novice/07-find.html" class="external-link">Unix
@@ -7604,7 +7729,7 @@ appear on the x-axis.</p>
   Solution to challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Here is one possible solution:</p>
 <div class="codewrapper sourceCode" id="cb5">
@@ -7645,7 +7770,7 @@ do you see in the data? Are they what you expected?</p>
   Solution to challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>The solution presented below adds <code>color=continent</code> to the
 call of the <code>aes</code> function. The general trend seems to
@@ -7756,7 +7881,7 @@ example. What happened?</p>
   Solution to challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>The lines now get drawn over the points!</p>
 <div class="codewrapper sourceCode" id="cb11">
@@ -7881,7 +8006,7 @@ previous example.</p>
   Solution to challenge 4a
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>Here a possible solution: Notice that the <code>color</code> argument
 is supplied outside of the <code>aes()</code> function. This means that
@@ -7925,7 +8050,7 @@ The color argument can be used inside the aesthetic.</p>
   Solution to challenge 4b
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>Here is a possible solution: Notice that supplying the
 <code>color</code> argument inside the <code>aes()</code> functions
@@ -8083,7 +8208,7 @@ continents during the available years.</p>
   Solution to Challenge 5
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <p>Here a possible solution: <code>xlab()</code> and <code>ylab()</code>
 set labels for the x and y axes, respectively The axis title, text and
@@ -8246,7 +8371,7 @@ tail of the data frame to make sure it worked.</p>
   Solution to challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Let’s try this on the <code>pop</code> column of the
 <code>gapminder</code> dataset.</p>
@@ -8297,7 +8422,7 @@ Again, do not worry about which is which.</p>
   Solution to challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Refresh your plotting skills by plotting population in millions
 against year.</p>
@@ -8474,7 +8599,7 @@ reference guide</a></p>
   Solution to challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Given the following matrix:</p>
 <div class="codewrapper sourceCode" id="cb28">
@@ -8558,7 +8683,7 @@ n=10,000?</p>
   Challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>We’re interested in looking at the sum of the following sequence of
 fractions:</p>
@@ -8878,7 +9003,7 @@ temperature in Kelvin and returns that temperature in Celsius.</p>
   Solution to challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Write a function called <code>kelvin_to_celsius</code> that takes a
 temperature in Kelvin and returns that temperature in Celsius</p>
@@ -8936,7 +9061,7 @@ prefer).</p>
   Solution to challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Define the function to convert directly from Fahrenheit to Celsius,
 by reusing these two functions above</p>
@@ -9071,7 +9196,7 @@ the argument <code>temp</code> is specified inappropriately.</p>
   Solution to challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Extend our previous definition of the function by adding in an
 explicit call to <code>stopifnot()</code>. Since
@@ -9329,7 +9454,7 @@ better than in our first attempt where we got a vector of numbers.</p>
   Solution to challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -9387,7 +9512,7 @@ space”“.</p>
   Solution to challenge 5
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>Write a function called <code>fence()</code> that takes two vectors
 as arguments, called <code>text</code> and <code>wrapper</code>, and
@@ -9984,7 +10109,7 @@ why?</p>
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -10118,7 +10243,7 @@ expectancy?</p>
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -10486,7 +10611,7 @@ similar syntax to other dplyr functions.</p>
   Solution to Advanced Challenge
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb52">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -10659,7 +10784,7 @@ format?</p>
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The original gapminder data.frame is in an intermediate format. It is
 not purely long since it had multiple observation variables
@@ -10853,7 +10978,7 @@ learned in the <code>dplyr</code> lesson</p>
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -11151,7 +11276,7 @@ frame should only have 5 rows.</p>
   Solution to Challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -11461,7 +11586,7 @@ itemized list).</p>
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>In RStudio, select File &gt; New file &gt; R Markdown…</p>
 <p>Delete the placeholder text and add the following:</p>
@@ -11543,7 +11668,7 @@ Linux, or <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> on Mac.</p>
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <pre>
 ```{r load-ggplot2}
@@ -11634,7 +11759,7 @@ code.</p>
   Solution to Challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <pre>
 ```{r echo = FALSE, fig.width = 3}
@@ -11684,7 +11809,7 @@ package handles this.</p>
   Solution to Challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>Here’s some inline code to determine that 2 + 2 = <code>4</code>.</p>
 </div>
