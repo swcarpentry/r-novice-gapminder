@@ -25,7 +25,7 @@ Some suggested paths through the material are:
 - 08 Creating Publication-Quality Graphics with ggplot2
 - 10 Functions Explained
 - 13 Dataframe Manipulation with dplyr
-- 15 Producing Reports With knitr
+- 14 Producing Reports With knitr
 
 (suggested by [@naupaka](https://github.com/swcarpentry/r-novice-gapminder/issues/104#issuecomment-312547509))
 
@@ -38,7 +38,7 @@ Some suggested paths through the material are:
 - 09 Vectorization
 - 08 Creating Publication-Quality Graphics with ggplot2 *OR*
   13 Dataframe Manipulation with dplyr
-- 15 Producing Reports With knitr
+- 14 Producing Reports With knitr
 
 A half day course could consist of (suggested by [@karawoo](https://github.com/swcarpentry/r-novice-gapminder/issues/104#issuecomment-277599864)):
 
