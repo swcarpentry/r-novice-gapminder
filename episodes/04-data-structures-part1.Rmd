@@ -375,7 +375,7 @@ _____(cats)
 # 4. Correct the 4th weight data point with the mean of the two given values
 cats2$weight[4] <- 2.35
 #    print the data again to see the effect
-cats
+cats2
 
 # 5. Convert the weight to the right data type
 cats2$weight <- ______________(cats2$weight)
