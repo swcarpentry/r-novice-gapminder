@@ -701,13 +701,13 @@ You get the names of an object by wrapping the object name inside
 wrapping the whole code in `typeof(...)`:
 
 ```
-typeof(names(pizza))
+typeof(names(pizza_price))
 ```
 
 alternatively, use a new variable if this is easier for you to read:
 
 ```
-n <- names(pizza)
+n <- names(pizza_price)
 typeof(n)
 ```
 
