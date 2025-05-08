@@ -549,7 +549,7 @@ Using the object `cats2`:
 _____
 
 # 2. Show an overview of the table with all data types
-_____(cats)
+_____(cats2)
 
 # 3. The "weight" column has the incorrect data type __________.
 #    The correct data type is: ____________.
