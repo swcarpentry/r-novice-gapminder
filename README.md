@@ -36,6 +36,7 @@ Current Maintainers:
 - [Naupaka Zimmerman][zimmerman_naupaka]
 - [Sehrish Kanwal](https://github.com/skanwal)
 - [Matthieu Bruneaux](https://github.com/matthieu-bruneaux)
+- [Craig Gross](https://github.com/cgross95)
 
 Previous Maintainers:
 
