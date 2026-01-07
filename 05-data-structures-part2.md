@@ -70,7 +70,8 @@ cbind(cats, age)
 ```
 
 ``` error
-Error in data.frame(..., check.names = FALSE): arguments imply differing number of rows: 3, 4
+Error in `data.frame()`:
+! arguments imply differing number of rows: 3, 4
 ```
 
 ``` r
@@ -79,7 +80,8 @@ cbind(cats, age)
 ```
 
 ``` error
-Error in data.frame(..., check.names = FALSE): arguments imply differing number of rows: 3, 2
+Error in `data.frame()`:
+! arguments imply differing number of rows: 3, 2
 ```
 
 Why didn't this work? Of course, R wants to see one element in our new column

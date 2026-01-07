@@ -291,7 +291,8 @@ fahr_to_kelvin(temp = as.factor(32))
 ```
 
 ``` error
-Error in fahr_to_kelvin(temp = as.factor(32)): is.numeric(temp) is not TRUE
+Error in `fahr_to_kelvin()`:
+! is.numeric(temp) is not TRUE
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge

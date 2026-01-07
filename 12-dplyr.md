@@ -582,7 +582,7 @@ ggplot(data = americas, mapping = aes(x = year, y = lifeExp)) +
   theme(axis.text.x = element_text(angle = 45))
 ```
 
-<img src="fig/12-dplyr-rendered-unnamed-chunk-27-1.png" style="display: block; margin: auto;" />
+<img src="fig/12-dplyr-rendered-unnamed-chunk-27-1.png" alt="" style="display: block; margin: auto;" />
 
 This code makes the right plot but it also creates an intermediate variable
 (`americas`) that we might not have any other uses for. Just as we used
@@ -604,7 +604,7 @@ gapminder %>%
   theme(axis.text.x = element_text(angle = 45))
 ```
 
-<img src="fig/12-dplyr-rendered-unnamed-chunk-28-1.png" style="display: block; margin: auto;" />
+<img src="fig/12-dplyr-rendered-unnamed-chunk-28-1.png" alt="" style="display: block; margin: auto;" />
 
 More examples of using the function `mutate()` and the `ggplot2` package.
 
@@ -622,7 +622,7 @@ gapminder %>%
   theme_minimal()
 ```
 
-<img src="fig/12-dplyr-rendered-unnamed-chunk-29-1.png" style="display: block; margin: auto;" />
+<img src="fig/12-dplyr-rendered-unnamed-chunk-29-1.png" alt="" style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 

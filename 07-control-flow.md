@@ -187,7 +187,8 @@ Did anyone get a warning message like this?
 
 
 ``` error
-Error in if (gapminder$year == 2012) {: the condition has length > 1
+Error in `if (gapminder$year == 2012) ...`:
+! the condition has length > 1
 ```
 
 The `if()` function only accepts singular (of length 1) inputs, and therefore

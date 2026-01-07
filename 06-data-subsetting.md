@@ -215,7 +215,8 @@ This gives a somewhat cryptic error:
 
 
 ``` error
-Error in x[-1:3]: only 0's may be mixed with negative subscripts
+Error in `x[-1:3]`:
+! only 0's may be mixed with negative subscripts
 ```
 
 But remember the order of operations. `:` is really a function.
@@ -522,7 +523,8 @@ x[-"a"]
 ```
 
 ``` error
-Error in -"a": invalid argument to unary operator
+Error in `-"a"`:
+! invalid argument to unary operator
 ```
 
 However, we can use the `!=` (not-equals) operator to construct a logical vector that will do what we want:
@@ -795,7 +797,8 @@ m[, c(3,6)]
 ```
 
 ``` error
-Error in m[, c(3, 6)]: subscript out of bounds
+Error in `m[, c(3, 6)]`:
+! subscript out of bounds
 ```
 
 :::::::::::::::::::::::::::::::::::::::::  callout
@@ -954,7 +957,8 @@ xlist[[1:2]]
 ```
 
 ``` error
-Error in xlist[[1:2]]: subscript out of bounds
+Error in `xlist[[1:2]]`:
+! subscript out of bounds
 ```
 
 Nor use it to skip elements:
@@ -965,7 +969,8 @@ xlist[[-1]]
 ```
 
 ``` error
-Error in xlist[[-1]]: invalid negative subscript in get1index <real>
+Error in `xlist[[-1]]`:
+! invalid negative subscript in get1index <real>
 ```
 
 But you can use names to both subset and extract elements:

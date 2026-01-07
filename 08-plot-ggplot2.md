@@ -185,7 +185,7 @@ ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, color=continent)) +
   geom_line()
 ```
 
-<img src="fig/08-plot-ggplot2-rendered-lifeExp-line-1.png" style="display: block; margin: auto;" />
+<img src="fig/08-plot-ggplot2-rendered-lifeExp-line-1.png" alt="" style="display: block; margin: auto;" />
 
 Instead of adding a `geom_point` layer, we've added a `geom_line` layer.
 
@@ -197,7 +197,7 @@ ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, group=country, color=c
   geom_line()
 ```
 
-<img src="fig/08-plot-ggplot2-rendered-lifeExp-line-by-1.png" style="display: block; margin: auto;" />
+<img src="fig/08-plot-ggplot2-rendered-lifeExp-line-by-1.png" alt="" style="display: block; margin: auto;" />
 
 We've added the **group** *aesthetic*, which tells `ggplot` to draw a line for each
 country.
@@ -211,7 +211,7 @@ ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, group=country, color=c
   geom_line() + geom_point()
 ```
 
-<img src="fig/08-plot-ggplot2-rendered-lifeExp-line-point-1.png" style="display: block; margin: auto;" />
+<img src="fig/08-plot-ggplot2-rendered-lifeExp-line-point-1.png" alt="" style="display: block; margin: auto;" />
 
 It's important to note that each layer is drawn on top of the previous layer. In
 this example, the points have been drawn *on top of* the lines. Here's a
@@ -223,7 +223,7 @@ ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, group=country)) +
   geom_line(mapping = aes(color=continent)) + geom_point()
 ```
 
-<img src="fig/08-plot-ggplot2-rendered-lifeExp-layer-example-1-1.png" style="display: block; margin: auto;" />
+<img src="fig/08-plot-ggplot2-rendered-lifeExp-layer-example-1-1.png" alt="" style="display: block; margin: auto;" />
 
 In this example, the *aesthetic* mapping of **color** has been moved from the
 global plot options in `ggplot` to the `geom_line` layer so it no longer applies
@@ -275,7 +275,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ```
 
-<img src="fig/08-plot-ggplot2-rendered-lifeExp-vs-gdpPercap-scatter3-1.png" style="display: block; margin: auto;" />
+<img src="fig/08-plot-ggplot2-rendered-lifeExp-vs-gdpPercap-scatter3-1.png" alt="" style="display: block; margin: auto;" />
 
 Currently it's hard to see the relationship between the points due to some strong
 outliers in GDP per capita. We can change the scale of units on the x axis using
@@ -404,7 +404,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp, color = conti
 `geom_smooth()` using formula = 'y ~ x'
 ```
 
-<img src="fig/08-plot-ggplot2-rendered-ch4b-sol-1.png" style="display: block; margin: auto;" />
+<img src="fig/08-plot-ggplot2-rendered-ch4b-sol-1.png" alt="" style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::
 
@@ -438,7 +438,7 @@ ggplot(data = americas, mapping = aes(x = year, y = lifeExp)) +
   theme(axis.text.x = element_text(angle = 45))
 ```
 
-<img src="fig/08-plot-ggplot2-rendered-facet-1.png" style="display: block; margin: auto;" />
+<img src="fig/08-plot-ggplot2-rendered-facet-1.png" alt="" style="display: block; margin: auto;" />
 
 The `facet_wrap` layer took a "formula" as its argument, denoted by the tilde
 (~). This tells R to draw a panel for each unique value in the country column
@@ -470,7 +470,7 @@ ggplot(data = americas, mapping = aes(x = year, y = lifeExp, color=continent)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
-<img src="fig/08-plot-ggplot2-rendered-theme-1.png" style="display: block; margin: auto;" />
+<img src="fig/08-plot-ggplot2-rendered-theme-1.png" alt="" style="display: block; margin: auto;" />
 
 ## Exporting the plot
 
@@ -531,7 +531,7 @@ ggplot(data = gapminder, mapping = aes(x = continent, y = lifeExp, fill = contin
        axis.ticks.x = element_blank())
 ```
 
-<img src="fig/08-plot-ggplot2-rendered-ch5-sol-1.png" style="display: block; margin: auto;" />
+<img src="fig/08-plot-ggplot2-rendered-ch5-sol-1.png" alt="" style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::
 
