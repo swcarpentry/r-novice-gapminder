@@ -409,7 +409,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Producing Reports With knitr</h1>
-        <p>Last updated on 2026-01-20 |
+        <p>Last updated on 2026-01-27 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/14-knitr-markdown.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -633,9 +633,7 @@ document.</p>
 <p>The main code chunks look like this:</p>
 <pre>
 ```{r load_data}
-gapminder &lt;- read.csv("gapminder.csv")
-```
-</pre>
+gapminder
 <p>That is, you place a chunk of R code between <code>```{r
 chunk_name}</code> and <code>```</code>. You should give each chunk a
 unique name, as they will help you to fix errors and, if any graphs are
@@ -674,19 +672,18 @@ library("ggplot2")
 </pre>
 <pre>
 ```{r read-gapminder-data}
-gapminder &lt;- read.csv("gapminder.csv")
-```
-</pre>
+gapminder
 <pre>
 ```{r make-plot}
 plot(lifeExp ~ year, data = gapminder)
 ```
 </pre>
+</pre>
 </div>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="how-things-get-compiled">How things get compiled<a class="anchor" aria-label="anchor" href="#how-things-get-compiled"></a></h2>
+</pre></section><section><h2 class="section-heading" id="how-things-get-compiled">How things get compiled<a class="anchor" aria-label="anchor" href="#how-things-get-compiled"></a></h2>
 <hr class="half-width"><p>When you press the “Knit” button, the R Markdown document is
 processed by <a href="https://yihui.name/knitr" class="external-link"><code>knitr</code></a>
 and a plain Markdown document is produced (as well as, potentially, a
@@ -925,7 +922,7 @@ formats.</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.18.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.0.9)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.18.4" class="external-link">sandpaper (0.18.4)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.9" class="external-link">varnish (1.0.9)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -947,7 +944,7 @@ formats.</li>
   "url": "https://swcarpentry.github.io/r-novice-gapminder/14-knitr-markdown.html",
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/14-knitr-markdown.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2026-01-20",
+  "dateModified": "2026-01-27",
   "datePublished": "2026-01-27"
 }
 
