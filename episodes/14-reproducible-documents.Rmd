@@ -1,5 +1,5 @@
 ---
-title: Producing Reports With knitr
+title: Producing Reproducible Reports
 teaching: 60
 exercises: 15
 source: Rmd
@@ -44,8 +44,8 @@ game of fixing new mistakes resulting from a single formatting change.
 Creating a report as a web page (which is an html file) using R Markdown makes things easier.
 The report can be one long stream, so tall figures that wouldn't ordinarily fit on
 one page can be kept at full size and easier to read, since the reader can simply
-keep scrolling. Additionally, the formatting of and R Markdown document is simple and easy to modify, allowing you to spend
-more time on your analyses instead of writing reports.
+keep scrolling. Additionally, the formatting of and R Markdown document is simple and easy to modify,
+allowing you to spend more time on your analyses instead of writing reports.
 
 ## Literate programming
 
@@ -62,9 +62,12 @@ be executed, and graphs or other results will be inserted into the final documen
 
 This sort of idea has been called "literate programming".
 
-`knitr` allows you to mix basically any type of text with code from different programming languages, but we recommend that you use `R Markdown`, which mixes Markdown
-with R. [Markdown](https://www.markdownguide.org/) is a light-weight mark-up language for creating web
-pages.
+`knitr` allows you to mix text with code from different programming languages,
+but we recommend that you use `R Markdown`, which mixes Markdown with R.
+[Markdown](https://www.markdownguide.org/) is a light-weight mark-up language for creating web pages.
+
+You can either create `R Markdown` files directly or use
+[`quarto`](https://quarto.org/docs/computations/r.html) to create your documents.
 
 ## Creating an R Markdown file
 
@@ -75,10 +78,25 @@ you'll get a dialog box like this:
 
 You can stick with the default (HTML output), but give it a title.
 
+## Creating a Quarto Document
+
+Within RStudio, click File > New File > Quarto Document... and
+you'll get a dialog box like this:
+
+![](fig/New_Quarto_Document.png){alt='Screenshot of the New Quarto Document dialogue box in RStudio'}
+
+You can stick with the default (HTML output), but give it a title. Be
+sure to uncheck the visual editor checkbox and choose the Knitr engine.
+
 ## Basic components of R Markdown
 
-The initial chunk of text (header) contains instructions for R to specify what kind of document will be created, and the options chosen. You can use the header to give your document a title, author, date, and tell it what type of output you want
-to produce. In this case, we're creating an html document.
+The initial chunk of text (header) contains instructions for R to specify
+what kind of document will be created, and the options chosen. You can use
+the header to give your document a title, author, date, and tell it what
+type of output you want to produce. In this case, we're creating an html
+document.
+
+For an R Markdown document, you should get:
 
 ```
 ---
@@ -86,6 +104,16 @@ title: "Initial R Markdown document"
 author: "Karl Broman"
 date: "April 23, 2015"
 output: html_document
+---
+```
+
+For a Quarto document, you should get:
+
+```
+---
+title: "Initial Quarto Document"
+author: "Karl Broman"
+format: html
 ---
 ```
 
@@ -181,7 +209,7 @@ the "Knit" button in the upper-left.
 
 ## Challenge 1
 
-Create a new R Markdown document. Delete all of the R code chunks
+Create a new R Markdown or Quarto document. Delete all of the R code chunks
 and write a bit of Markdown (some sections, some italicized
 text, and an itemized list).
 
@@ -191,7 +219,8 @@ Convert the document to a webpage.
 
 ## Solution to Challenge 1
 
-In RStudio, select File > New file > R Markdown...
+For R Markdown in RStudio, select File > New file > R Markdown...
+and for Quarto in Rstudio, select File > New File > Quarto Document...
 
 Delete the placeholder text and add the following:
 
@@ -303,7 +332,7 @@ plot(lifeExp ~ year, data = gapminder)
 
 ## How things get compiled
 
-When you press the "Knit" button, the R Markdown document is
+When you press the "Knit" button, the R Markdown or Quarto document is
 processed by [`knitr`](https://yihui.name/knitr) and a plain Markdown
 document is produced (as well as, potentially, a set of figure files): the R code is executed
 and replaced by both the input and the output; if figures are
@@ -480,7 +509,9 @@ This mode also includes a toolbar at the top with basic formatting buttons,
 similar to what you might see in common word processing software programs.
 You can turn visual editing on and off by pressing
 the ![](fig/visual_mode_icon.png){alt='Icon for turning on and off the visual editing mode in RStudio, which looks like a pair of compasses'}
-button in the top right corner of your R Markdown document.
+button in the top right corner of your R Markdown document or switching between
+the source and visual modes ![](fig/source_visual_buttons.png){alt='Buttons for changing between source and visual editing modes in RStudio'}
+in the top left of the RStudio window.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
