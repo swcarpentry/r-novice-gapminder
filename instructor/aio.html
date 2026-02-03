@@ -472,7 +472,7 @@
         
 <section id="aio-01-rstudio-intro"><p>Content from <a href="01-rstudio-intro.html">Introduction to R and RStudio</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-02-03 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/01-rstudio-intro.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 55 minutes</p>
@@ -1218,7 +1218,7 @@ instead of a listing of objects.</p>
     }
     else all.names
 }
-&lt;bytecode: 0x555d2c6edf90&gt;
+&lt;bytecode: 0x55d0f4125360&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 </div>
 <p>What’s going on here?</p>
@@ -1545,7 +1545,7 @@ functions.</li>
 </div>
 </section></section><section id="aio-02-project-intro"><p>Content from <a href="02-project-intro.html">Project Management With RStudio</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-02-03 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/02-project-intro.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 30 minutes</p>
@@ -1816,7 +1816,7 @@ questions:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>-rw-r--r-- 1 runner runner 80K Jan 27 00:24 data/gapminder_data.csv</code></pre>
+<pre class="output" tabindex="0"><code>-rw-r--r-- 1 root root 80K Feb  3 00:27 data/gapminder_data.csv</code></pre>
 </div>
 <p>The file size is 80K.</p>
 <div class="codewrapper sourceCode" id="cb3">
@@ -1953,7 +1953,7 @@ layout.</li>
 </div>
 </section></section><section id="aio-03-seeking-help"><p>Content from <a href="03-seeking-help.html">Seeking Help</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-02-03 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/03-seeking-help.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 20 minutes</p>
@@ -2178,27 +2178,29 @@ copied and pasted by others into their own R session.</p>
 </h3>
 <pre class="output" tabindex="0"><code>R version 4.5.2 (2025-10-31)
 Platform: x86_64-pc-linux-gnu
-Running under: Ubuntu 22.04.5 LTS
+Running under: Ubuntu 24.04.3 LTS
 
 Matrix products: default
-BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.10.0
-LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.10.0  LAPACK version 3.10.0
+BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3
+LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so;  LAPACK version 3.12.0
 
 locale:
- [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8
- [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8
- [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C
-[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C
 
-time zone: UTC
+time zone: Etc/UTC
 tzcode source: system (glibc)
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base
 
 loaded via a namespace (and not attached):
-[1] compiler_4.5.2 cli_3.6.5      tools_4.5.2    yaml_2.3.12    knitr_1.51
-[6] xfun_0.55      rlang_1.1.6    renv_1.1.6     evaluate_1.0.5</code></pre>
+ [1] compiler_4.5.2 cli_3.6.5      tools_4.5.2    otel_0.2.0     yaml_2.3.12
+ [6] knitr_1.51     xfun_0.55      rlang_1.1.6    renv_1.1.6     evaluate_1.0.5</code></pre>
 </div>
 <p>Will print out your current version of R, as well as any packages you
 have loaded. This can be useful for others to help reproduce and debug
@@ -2215,7 +2217,7 @@ your issue.</p>
   Choose how to teach this section
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>The section on generative AI is intended to be concise but
 Instructors may choose to devote more time to the topic in a
@@ -2327,7 +2329,7 @@ vector do you expect will be created if you evaluate the following:</p>
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The <code>c()</code> function creates a vector, in which all elements
 are of the same type. In the first case, the elements are numeric, in
@@ -2358,7 +2360,7 @@ to use it later. What’s the difference between the <code>sep</code> and
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>To look at the help for the <code>paste()</code> function, use:</p>
 <div class="codewrapper sourceCode" id="cb11">
@@ -2468,7 +2470,7 @@ reading in tabular data.</p>
   Solution to Challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>The standard R function for reading tab-delimited files with a period
 decimal separator is read.delim(). You can also do this with
@@ -2505,7 +2507,7 @@ cheat sheets</a></li>
 </div>
 </section></section><section id="aio-04-data-structures-part1"><p>Content from <a href="04-data-structures-part1.html">Data Structures</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-02-03 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/04-data-structures-part1.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 55 minutes</p>
@@ -4501,7 +4503,7 @@ lists and vectors, with some added attributes.</li>
 </div>
 </section></section><section id="aio-05-data-structures-part2"><p>Content from <a href="05-data-structures-part2.html">Exploring Data Frames</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-02-03 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/05-data-structures-part2.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 30 minutes</p>
@@ -5264,7 +5266,7 @@ represents.</li>
 </div>
 </section></section><section id="aio-06-data-subsetting"><p>Content from <a href="06-data-subsetting.html">Subsetting Data</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-02-03 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/06-data-subsetting.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 50 minutes</p>
@@ -6859,7 +6861,7 @@ data.</li>
 </div>
 </section></section><section id="aio-07-control-flow"><p>Content from <a href="07-control-flow.html">Control Flow</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-02-03 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/07-control-flow.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 65 minutes</p>
@@ -7673,7 +7675,7 @@ base-plot to plot the evolution of average life expectancy using
 </div>
 </section></section><section id="aio-08-plot-ggplot2"><p>Content from <a href="08-plot-ggplot2.html">Creating Publication-Quality Graphics with ggplot2</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-02-03 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/08-plot-ggplot2.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 80 minutes</p>
@@ -8345,7 +8347,7 @@ scale transformation, and grouping.</li>
 </div>
 </section></section><section id="aio-09-vectorization"><p>Content from <a href="09-vectorization.html">Vectorization</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-02-03 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/09-vectorization.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 25 minutes</p>
@@ -8939,7 +8941,7 @@ length</code></pre>
 </div>
 </div></section><section id="aio-10-functions"><p>Content from <a href="10-functions.html">Functions Explained</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-02-03 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/10-functions.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 60 minutes</p>
@@ -9731,7 +9733,7 @@ R.</li>
 </div>
 </section></section><section id="aio-11-writing-data"><p>Content from <a href="11-writing-data.html">Writing Data</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-02-03 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/11-writing-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 20 minutes</p>
@@ -9822,7 +9824,7 @@ one panel per continent.</p>
   Solution to challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -9949,7 +9951,7 @@ include only data points collected since 1990.</p>
   Solution to challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -9981,7 +9983,7 @@ include only data points collected since 1990.</p>
 </div>
 </section></section><section id="aio-12-dplyr"><p>Content from <a href="12-dplyr.html">Data Frame Manipulation with dplyr</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-02-03 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/12-dplyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 55 minutes</p>
@@ -10234,7 +10236,7 @@ why?</p>
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -10369,7 +10371,7 @@ expectancy?</p>
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -10738,7 +10740,7 @@ similar syntax to other dplyr functions.</p>
   Solution to Advanced Challenge
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb52">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -10796,7 +10798,7 @@ with subsets of data.</li>
 </div>
 </section></section><section id="aio-13-tidyr"><p>Content from <a href="13-tidyr.html">Data Frame Manipulation with tidyr</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-02-03 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/13-tidyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 45 minutes</p>
@@ -10912,7 +10914,7 @@ format?</p>
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The original gapminder data.frame is in an intermediate format. It is
 not purely long since it had multiple observation variables
@@ -11107,7 +11109,7 @@ learned in the <code>dplyr</code> lesson</p>
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -11406,7 +11408,7 @@ frame should only have 5 rows.</p>
   Solution to Challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -11527,7 +11529,7 @@ layout.</li>
 </div>
 </section></section><section id="aio-14-knitr-markdown"><p>Content from <a href="14-knitr-markdown.html">Producing Reports With knitr</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-02-03 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/14-knitr-markdown.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 75 minutes</p>
@@ -11717,7 +11719,7 @@ itemized list).</p>
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>In RStudio, select File &gt; New file &gt; R Markdown…</p>
 <p>Delete the placeholder text and add the following:</p>
@@ -11768,7 +11770,9 @@ document.</p>
 <p>The main code chunks look like this:</p>
 <pre>
 ```{r load_data}
-gapminder
+gapminder &lt;- read.csv("gapminder.csv")
+```
+</pre>
 <p>That is, you place a chunk of R code between <code>```{r
 chunk_name}</code> and <code>```</code>. You should give each chunk a
 unique name, as they will help you to fix errors and, if any graphs are
@@ -11800,7 +11804,7 @@ Linux, or <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> on Mac.</p>
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <pre>
 ```{r load-ggplot2}
@@ -11809,18 +11813,19 @@ library("ggplot2")
 </pre>
 <pre>
 ```{r read-gapminder-data}
-gapminder
+gapminder &lt;- read.csv("gapminder.csv")
+```
+</pre>
 <pre>
 ```{r make-plot}
 plot(lifeExp ~ year, data = gapminder)
 ```
 </pre>
-</pre>
 </div>
 </div>
 </div>
 </div>
-</pre></section><section><h2 class="section-heading" id="how-things-get-compiled">How things get compiled<a class="anchor" aria-label="anchor" href="#how-things-get-compiled"></a>
+</section><section><h2 class="section-heading" id="how-things-get-compiled">How things get compiled<a class="anchor" aria-label="anchor" href="#how-things-get-compiled"></a>
 </h2>
 <hr class="half-width">
 <p>When you press the “Knit” button, the R Markdown document is
@@ -11892,7 +11897,7 @@ code.</p>
   Solution to Challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <pre>
 ```{r echo = FALSE, fig.width = 3}
@@ -11943,7 +11948,7 @@ package handles this.</p>
   Solution to Challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>Here’s some inline code to determine that 2 + 2 = <code>4</code>.</p>
 </div>
@@ -12039,7 +12044,7 @@ formats.</li>
 </div>
 </section></section><section id="aio-15-wrap-up"><p>Content from <a href="15-wrap-up.html">Writing Good Software</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-02-03 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/15-wrap-up.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 15 minutes</p>
@@ -12216,7 +12221,7 @@ style.</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.18.4" class="external-link">sandpaper (0.18.4)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.9" class="external-link">varnish (1.0.9)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.18.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.0.9)</a></p>
 		</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -12239,8 +12244,8 @@ style.</li>
   "url": "https://swcarpentry.github.io/r-novice-gapminder/instructor/aio.html",
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/instructor/aio.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2026-01-27",
-  "datePublished": "2026-01-27"
+  "dateModified": "2026-02-03",
+  "datePublished": "2026-02-03"
 }
 
   </script><script>
