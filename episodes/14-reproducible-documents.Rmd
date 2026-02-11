@@ -66,17 +66,8 @@ This sort of idea has been called "literate programming".
 but we recommend that you use `R Markdown`, which mixes Markdown with R.
 [Markdown](https://www.markdownguide.org/) is a light-weight mark-up language for creating web pages.
 
-You can either create `R Markdown` files directly or use
-[`quarto`](https://quarto.org/docs/computations/r.html) to create your documents.
-
-## Creating an R Markdown file
-
-Within RStudio, click File → New File → R Markdown and
-you'll get a dialog box like this:
-
-![](fig/New_R_Markdown.png){alt='Screenshot of the New R Markdown file dialogue box in RStudio'}
-
-You can stick with the default (HTML output), but give it a title.
+You will use [`quarto`](https://quarto.org/docs/computations/r.html) to create your documents.
+`quarto` will call `knitr` to generate the output format.
 
 ## Creating a Quarto Document
 
@@ -88,26 +79,25 @@ you'll get a dialog box like this:
 You can stick with the default (HTML output), but give it a title. Be
 sure to uncheck the visual editor checkbox and choose the Knitr engine.
 
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+It is possible to use R Markdown directly and not use the newer Quarto
+interface.  This lesson will focus on using Quarto, but if you would like
+to try creating an R Markdown document, within RStudio,
+click File → New File → R Markdown and
+you'll get a dialog box like this:
+
+![](fig/New_R_Markdown.png){alt='Screenshot of the New R Markdown file dialogue box in RStudio'}
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 ## Basic components of R Markdown
 
 The initial chunk of text (header) contains instructions for R to specify
 what kind of document will be created, and the options chosen. You can use
 the header to give your document a title, author, date, and tell it what
 type of output you want to produce. In this case, we're creating an html
-document.
-
-For an R Markdown document, you should get:
-
-```
----
-title: "Initial R Markdown document"
-author: "Karl Broman"
-date: "April 23, 2015"
-output: html_document
----
-```
-
-For a Quarto document, you should get:
+document.  You should get:
 
 ```
 ---
@@ -203,13 +193,13 @@ with some number of `#` symbols:
 ```
 
 You *compile* the R Markdown document to an html webpage by clicking
-the "Knit" button in the upper-left.
+the "Render" button in the upper-left.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Challenge 1
 
-Create a new R Markdown or Quarto document. Delete all of the R code chunks
+Create a Quarto document. Delete all of the R code chunks
 and write a bit of Markdown (some sections, some italicized
 text, and an itemized list).
 
@@ -219,8 +209,7 @@ Convert the document to a webpage.
 
 ## Solution to Challenge 1
 
-For R Markdown in RStudio, select File > New file > R Markdown...
-and for Quarto in Rstudio, select File > New File > Quarto Document...
+From Quarto in Rstudio, select File > New File > Quarto Document...
 
 Delete the placeholder text and add the following:
 
@@ -242,7 +231,7 @@ This report uses the *gapminder* dataset, which has columns that include:
 
 ```
 
-Then click the 'Knit' button on the toolbar to generate an html document (webpage).
+Then click the "Render" button on the toolbar to generate an html document (webpage).
 
 
 
@@ -332,11 +321,11 @@ plot(lifeExp ~ year, data = gapminder)
 
 ## How things get compiled
 
-When you press the "Knit" button, the R Markdown or Quarto document is
+When you press the "Render" button, the Quarto document is
 processed by [`knitr`](https://yihui.name/knitr) and a plain Markdown
-document is produced (as well as, potentially, a set of figure files): the R code is executed
-and replaced by both the input and the output; if figures are
-produced, links to those figures are included.
+document is produced (as well as, potentially, a set of figure files):
+the R code is executed and replaced by both the input and the output;
+if figures are produced, links to those figures are included.
 
 The Markdown and figure documents are then processed by the tool
 [`pandoc`](https://pandoc.org/), which converts the Markdown file into an
@@ -479,10 +468,9 @@ Here's some inline code to determine that 2 + 2 = ```r 2+2```.
 
 ## Other output options
 
-You can also convert R Markdown to a PDF or a Word document. Click the
-little triangle next to the "Knit" button to get a drop-down
-menu. Or you could put `pdf_document` or `word_document` in the initial header
-of the file.
+You can also convert R Markdown to a PDF or a Word document.
+Replace `format: html` by `format: pdf` or `format: docx`,
+in the initial header of the file.
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
@@ -491,7 +479,7 @@ of the file.
 Creating .pdf documents may require installation of some extra software. The R
 package `tinytex` provides some tools to help make this process easier for R users.
 With `tinytex` installed, run `tinytex::install_tinytex()` to install the required
-software (you'll only need to do this once) and then when you knit to pdf `tinytex`
+software (you'll only need to do this once) and then when you generate a pdf `tinytex`
 will automatically detect and install any additional LaTeX packages that are needed to
 produce the pdf document. Visit the [tinytex website](https://yihui.org/tinytex/)
 for more information.
@@ -502,16 +490,14 @@ for more information.
 
 ## Tip: Visual markdown editing in RStudio
 
-RStudio versions 1.4 and later include visual markdown editing mode.
 In visual editing mode, markdown expressions (like `**bold words**`) are
 transformed to the formatted appearance (**bold words**) as you type.
 This mode also includes a toolbar at the top with basic formatting buttons,
 similar to what you might see in common word processing software programs.
-You can turn visual editing on and off by pressing
-the ![](fig/visual_mode_icon.png){alt='Icon for turning on and off the visual editing mode in RStudio, which looks like a pair of compasses'}
-button in the top right corner of your R Markdown document or switching between
-the source and visual modes ![](fig/source_visual_buttons.png){alt='Buttons for changing between source and visual editing modes in RStudio'}
-in the top left of the RStudio window.
+You can switch between source and visual modes by pressing the buttons
+in the top left of the RStudio window
+![](fig/source_visual_buttons.png){alt='Buttons for changing between source and visual editing modes in RStudio'}
+
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -531,7 +517,7 @@ in the top left of the RStudio window.
 
 - Mix reporting written in R Markdown with software written in R.
 - Specify chunk options to control formatting.
-- Use `knitr` to convert these documents into PDF and other formats.
+- Convert these documents into web pages and other formats.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
