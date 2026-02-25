@@ -8,10 +8,10 @@ source: Rmd
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Understand the value of writing reproducible reports
-- Learn how to recognise and compile the basic components of an R Markdown file
+- Learn how to recognise and compile the basic components of a Quarto file
 - Become familiar with R code chunks, and understand their purpose, structure and options
 - Demonstrate the use of inline chunks for weaving R outputs into text blocks, for example when discussing the results of some calculations
-- Be aware of alternative output formats to which an R Markdown file can be exported
+- Be aware of alternative output formats to which a Quarto file can be exported
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -41,10 +41,10 @@ into a single document. But tweaking formatting to make figures look correct
 and fixing obnoxious page breaks can be tedious and lead to a lengthy "whack-a-mole"
 game of fixing new mistakes resulting from a single formatting change.
 
-Creating a report as a web page (which is an html file) using R Markdown makes things easier.
+Creating a report as a web page (which is an html file) using Quarto makes things easier.
 The report can be one long stream, so tall figures that wouldn't ordinarily fit on
 one page can be kept at full size and easier to read, since the reader can simply
-keep scrolling. Additionally, the formatting of and R Markdown document is simple and easy to modify,
+keep scrolling. Additionally, the formatting of a Quarto document is simple and easy to modify,
 allowing you to spend more time on your analyses instead of writing reports.
 
 ## Literate programming
@@ -63,7 +63,7 @@ be executed, and graphs or other results will be inserted into the final documen
 This sort of idea has been called "literate programming".
 
 `knitr` allows you to mix text with code from different programming languages,
-but we recommend that you use `R Markdown`, which mixes Markdown with R.
+but we recommend that you use Quarto, which mixes Markdown with a programming language (in this case, R).
 [Markdown](https://www.markdownguide.org/) is a light-weight mark-up language for creating web pages.
 
 You will use [`quarto`](https://quarto.org/docs/computations/r.html) to create your documents.
@@ -71,7 +71,7 @@ You will use [`quarto`](https://quarto.org/docs/computations/r.html) to create y
 
 ## Creating a Quarto Document
 
-Within RStudio, click File > New File > Quarto Document... and
+Within RStudio, click File → New File → Quarto Document... and
 you'll get a dialog box like this:
 
 ![](fig/New_Quarto_Document.png){alt='Screenshot of the New Quarto Document dialogue box in RStudio'}
@@ -209,7 +209,7 @@ Convert the document to a webpage.
 
 ## Solution to Challenge 1
 
-From Quarto in Rstudio, select File > New File > Quarto Document...
+In Rstudio, select File > New File > Quarto Document...
 
 Delete the placeholder text and add the following:
 
@@ -264,7 +264,8 @@ toolbar at the top of RStudio.
 ## R code chunks
 
 The real power of Markdown comes from
-mixing markdown with chunks of code. This is R Markdown. When
+The real power of Quarto comes from
+mixing Markdown with chunks of code. When
 processed, the R code will be executed; if they produce figures, the
 figures will be inserted in the final document.
 
@@ -274,11 +275,21 @@ The main code chunks look like this:
 &#96;&#96;&#96;{r load_data}
 gapminder <- read.csv("gapminder.csv")
 &#96;&#96;&#96;
+<pre>
+&#96;&#96;&#96;{r}
+#| label: load_data
+gapminder <- read.csv("gapminder.csv")
+&#96;&#96;&#96;
 </pre>
 
 That is, you place a chunk of R code between <code>\`\`\`{r chunk\_name}</code>
 and <code>\`\`\`</code>. You should give each chunk
 a unique name, as they will help you to fix errors and, if any graphs are
+produced, the file names are based on the name of the code chunk that
+produced them. You can create code chunks quickly in RStudio using the shortcuts
+That is, you place a chunk of R code between <code>\`\`\`{r}</code>
+and <code>\`\`\`</code>. You should give each chunk
+a unique label by adding the line `#| label: chunk\_label` after the start of each chunk, as they will help you to fix errors and, if any graphs are
 produced, the file names are based on the name of the code chunk that
 produced them. You can create code chunks quickly in RStudio using the shortcuts
 <kbd>Ctrl</kbd>\+<kbd>Alt</kbd>\+<kbd>I</kbd> on Windows and Linux, or <kbd>Cmd</kbd>\+<kbd>Option</kbd>\+<kbd>I</kbd> on Mac.
@@ -298,19 +309,22 @@ Add code chunks to:
 ## Solution to Challenge 2
 
 <pre>
-&#96;&#96;&#96;{r load-ggplot2}
+&#96;&#96;&#96;{r}
+#| label: load-ggplot2
 library("ggplot2")
 &#96;&#96;&#96;
 </pre>
 
 <pre>
-&#96;&#96;&#96;{r read-gapminder-data}
+&#96;&#96;&#96;{r}
+#| label: read-gapminder-data
 gapminder <- read.csv("gapminder.csv")
 &#96;&#96;&#96;
 </pre>
 
 <pre>
-&#96;&#96;&#96;{r make-plot}
+&#96;&#96;&#96;{r}
+#| label: make-plot
 plot(lifeExp ~ year, data = gapminder)
 &#96;&#96;&#96;
 </pre>
@@ -331,7 +345,7 @@ The Markdown and figure documents are then processed by the tool
 [`pandoc`](https://pandoc.org/), which converts the Markdown file into an
 html file, with the figures embedded.
 
-```{r rmd_to_html_fig, fig.width=8, fig.height=3, fig.align="left", echo=FALSE}
+```{r qmd_to_html_fig, fig.width=8, fig.height=3, fig.align="left", echo=FALSE}
 par(mar=rep(0, 4), bty="n", cex=1.5)
 plot(0, 0, type="n", xlab="", ylab="", xaxt="n", yaxt="n",
      xlim=c(0, 100), ylim=c(0, 100))
@@ -340,7 +354,7 @@ yh <- 35
 xm <- 12
 ym <- 50
 rect(xm-xw/2, ym-yh/2, xm+xw/2, ym+yh/2, lwd=2)
-text(xm, ym, ".Rmd")
+text(xm, ym, ".qmd")
 
 xm <- 50
 ym <- 80
@@ -375,12 +389,26 @@ treated. Here are some examples:
 - Use `warning=FALSE` and `message=FALSE` to hide any warnings or
   messages produced.
 - Use `fig.height` and `fig.width` to control the size of the figures
-  produced (in inches).
+- Use `echo: false` to avoid having the code itself shown.
+- Use `results: "hide"` to avoid having any results printed.
+- Use `eval: false` to have the code shown but not evaluated.
+- Use `warning: false` and `message: false` to hide any warnings or
+messages produced.
+- Use `fig.height` and `fig.width` to control the size of the figures
+produced (in inches).
 
 So you might write:
 
 <pre>
 &#96;&#96;&#96;{r load_libraries, echo=FALSE, message=FALSE}
+library("dplyr")
+library("ggplot2")
+&#96;&#96;&#96;
+<pre>
+&#96;&#96;&#96;{r}
+#| label: load_libraries
+#| echo: false
+#| message: false
 library("dplyr")
 library("ggplot2")
 &#96;&#96;&#96;
@@ -394,7 +422,8 @@ repeatedly; for this, you can set *global* chunk options, like so:
 knitr::opts_chunk$set(fig.path="Figs/", message=FALSE, warning=FALSE,
                       echo=FALSE, results="hide", fig.width=11)
 &#96;&#96;&#96;
-</pre>
+repeatedly; for this, you can set *global* chunk options using the `knitr` tag in the header, like so:
+
 
 The `fig.path` option defines where the figures will be saved. The `/`
 here is really important; without it, the figures would be saved in
@@ -402,7 +431,7 @@ the standard place but just with names that begin with `Figs`.
 
 If you have multiple R Markdown files in a common directory, you might
 want to use `fig.path` to define separate prefixes for the figure file
-names, like `fig.path="Figs/cleaning-"` and `fig.path="Figs/analysis-"`.
+names, like `fig.path: "Figs/cleaning-"` and `fig.path: "Figs/analysis-"`.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -417,6 +446,12 @@ code.
 
 <pre>
 &#96;&#96;&#96;{r echo = FALSE, fig.width = 3}
+plot(faithful)
+&#96;&#96;&#96;
+<pre>
+&#96;&#96;&#96;{r}
+#| echo: false
+#| fig.width: 3
 plot(faithful)
 &#96;&#96;&#96;
 </pre>
@@ -440,7 +475,9 @@ Don't let these in-line chunks get split across lines.
 
 Perhaps precede the paragraph with a larger code chunk that does
 calculations and defines variables, with `include=FALSE` for that larger
-chunk (which is the same as `echo=FALSE` and `results="hide"`).
+Perhaps precede the paragraph with a larger code chunk that does
+calculations and defines variables, with `include: false` for that larger
+chunk (which is the same as `echo: false` and `results: "hide"`).
 
 Rounding can produce differences in output in such situations. You may want
 `2.0`, but `round(2.03, 1)` will give just `2`.
