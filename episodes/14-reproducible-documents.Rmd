@@ -272,10 +272,6 @@ figures will be inserted in the final document.
 The main code chunks look like this:
 
 <pre>
-&#96;&#96;&#96;{r load_data}
-gapminder <- read.csv("gapminder.csv")
-&#96;&#96;&#96;
-<pre>
 &#96;&#96;&#96;{r}
 #| label: load_data
 gapminder <- read.csv("gapminder.csv")
@@ -400,11 +396,6 @@ produced (in inches).
 So you might write:
 
 <pre>
-&#96;&#96;&#96;{r load_libraries, echo=FALSE, message=FALSE}
-library("dplyr")
-library("ggplot2")
-&#96;&#96;&#96;
-<pre>
 &#96;&#96;&#96;{r}
 #| label: load_libraries
 #| echo: false
@@ -422,6 +413,7 @@ repeatedly; for this, you can set *global* chunk options, like so:
 knitr::opts_chunk$set(fig.path="Figs/", message=FALSE, warning=FALSE,
                       echo=FALSE, results="hide", fig.width=11)
 &#96;&#96;&#96;
+</pre>
 repeatedly; for this, you can set *global* chunk options using the `knitr` tag in the header, like so:
 
 
@@ -448,6 +440,7 @@ code.
 &#96;&#96;&#96;{r echo = FALSE, fig.width = 3}
 plot(faithful)
 &#96;&#96;&#96;
+</pre>
 <pre>
 &#96;&#96;&#96;{r}
 #| echo: false
