@@ -91,7 +91,7 @@ you'll get a dialog box like this:
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Basic components of R Markdown
+## Basic components of a Quarto document
 
 The initial chunk of text (header) contains instructions for R to specify
 what kind of document will be created, and the options chosen. You can use
@@ -192,7 +192,7 @@ with some number of `#` symbols:
 #### Sub-sub section
 ```
 
-You *compile* the R Markdown document to an html webpage by clicking
+You *compile* the Quarto document to an html webpage by clicking
 the "Render" button in the upper-left.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
