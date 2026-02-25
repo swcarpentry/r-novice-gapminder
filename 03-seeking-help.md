@@ -189,7 +189,7 @@ attached base packages:
 
 loaded via a namespace (and not attached):
  [1] compiler_4.5.2 cli_3.6.5      tools_4.5.2    otel_0.2.0     yaml_2.3.12   
- [6] knitr_1.51     xfun_0.55      rlang_1.1.6    renv_1.1.6     evaluate_1.0.5
+ [6] knitr_1.51     xfun_0.56      rlang_1.1.7    renv_1.1.7     evaluate_1.0.5
 ```
 
 Will print out your current version of R, as well as any packages you
