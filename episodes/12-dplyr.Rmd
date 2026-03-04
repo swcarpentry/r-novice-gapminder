@@ -448,7 +448,7 @@ gapminder %>%
 
 Calculate the average life expectancy in 2002 of 2 randomly selected countries
 for each continent. Then arrange the continent names in reverse order.
-**Hint:** Use the `dplyr` functions `arrange()` and `sample_n()`, they have
+**Hint:** Use the `dplyr` functions `arrange()` and `slice_sample()`, they have
 similar syntax to other dplyr functions.
 
 :::::::::::::::  solution
@@ -459,7 +459,7 @@ similar syntax to other dplyr functions.
 lifeExp_2countries_bycontinents <- gapminder %>%
    filter(year==2002) %>%
    group_by(continent) %>%
-   sample_n(2) %>%
+   slice_sample(n=2) %>%
    summarize(mean_lifeExp=mean(lifeExp)) %>%
    arrange(desc(mean_lifeExp))
 ```
