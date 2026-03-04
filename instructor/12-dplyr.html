@@ -407,7 +407,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data Frame Manipulation with dplyr</h1>
-        <p>Last updated on 2026-03-03 |
+        <p>Last updated on 2026-03-04 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/12-dplyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -655,7 +655,7 @@ why?</p>
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -786,7 +786,7 @@ expectancy?</p>
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1135,8 +1135,8 @@ data.</p>
 <p>Calculate the average life expectancy in 2002 of 2 randomly selected
 countries for each continent. Then arrange the continent names in
 reverse order. <strong>Hint:</strong> Use the <code>dplyr</code>
-functions <code>arrange()</code> and <code>sample_n()</code>, they have
-similar syntax to other dplyr functions.</p>
+functions <code>arrange()</code> and <code>slice_sample()</code>, they
+have similar syntax to other dplyr functions.</p>
 </div>
 </div>
 </div>
@@ -1147,7 +1147,7 @@ similar syntax to other dplyr functions.</p>
   Solution to Advanced Challenge
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb52">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1156,7 +1156,7 @@ similar syntax to other dplyr functions.</p>
 <code class="sourceCode R"><span><span class="va">lifeExp_2countries_bycontinents</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op">%&gt;%</span></span>
 <span>   <span class="fu">filter</span><span class="op">(</span><span class="va">year</span><span class="op">==</span><span class="fl">2002</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>   <span class="fu">group_by</span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>   <span class="fu">sample_n</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>   <span class="fu">slice_sample</span><span class="op">(</span>n<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>   <span class="fu">summarize</span><span class="op">(</span>mean_lifeExp<span class="op">=</span><span class="fu">mean</span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>   <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">mean_lifeExp</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
@@ -1257,8 +1257,8 @@ with subsets of data.</li>
   "url": "https://swcarpentry.github.io/r-novice-gapminder/instructor/12-dplyr.html",
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/instructor/12-dplyr.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2026-03-03",
-  "datePublished": "2026-03-03"
+  "dateModified": "2026-03-04",
+  "datePublished": "2026-03-04"
 }
 
   </script><script>
