@@ -267,8 +267,12 @@ gap_long %>% group_by(continent, obs_type) %>%
 ```
 
 ``` output
-`summarise()` has grouped output by 'continent'. You can override using the
-`.groups` argument.
+`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by continent and obs_type.
+ℹ Output is grouped by continent.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(continent, obs_type))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.
 ```
 
 ``` output
