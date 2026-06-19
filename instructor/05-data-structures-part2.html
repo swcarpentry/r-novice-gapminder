@@ -58,7 +58,7 @@
         </ul></div>
     </div>
   </div>
-  <hr></header><nav class="navbar navbar-expand-xl bottom-nav software" aria-label="Main Navigation"><div class="container-fluid nav-container">
+</header><nav class="navbar navbar-expand-xl bottom-nav software" aria-label="Main Navigation"><div class="container-fluid nav-container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle Navigation">
       <span class="navbar-toggler-icon"></span>
       <span class="menu-title">Menu</span>
@@ -107,12 +107,8 @@
     -->
     <a id="search-button" class="btn btn-primary" href="../instructor/aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
   </div><!--/div.container-fluid -->
-</nav><aside class="col-md-12 lesson-progress"><div style="width: 24%" class="percentage">
-    24%
-  </div>
-  <div class="progress software">
-    <div class="progress-bar software" role="progressbar" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="24" style="width: 24%">
-    </div>
+</nav><aside class="col-md-12 lesson-progress"><div class="progress software">
+    <div class="progress-bar software" role="progressbar" style="width: 24%" aria-valuenow="24" aria-valuemin="0" aria-valuemax="100" aria-label="Lesson Progress">24%</div>
   </div>
 </aside><div class="container">
       <div class="row">
@@ -168,7 +164,7 @@
               </div><!--div.sidenav-view-selector -->
             </div><!--/div.col -->
 
-            <hr></div><!--/div.mobile-row -->
+          </div><!--/div.mobile-row -->
 
           <div class="accordion accordion-flush" id="accordion-chapters-toggle">
             <div class="accordion-item">
@@ -382,8 +378,8 @@
         <!-- START: inst/pkgdown/templates/content-instructor.html -->
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Previous and Next Chapter Top"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link" href="../instructor/04-data-structures-part1.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="../instructor/06-data-subsetting.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link" href="../instructor/04-data-structures-part1.html" rel="prev"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
+        <a class="chapter-link float-end" href="../instructor/06-data-subsetting.html" rel="next">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
@@ -396,9 +392,9 @@
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
-      <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
+    </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Exploring Data Frames</h1>
-        <p>Last updated on 2026-04-21 |
+        <p>Last updated on 2026-06-19 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/05-data-structures-part2.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -812,13 +808,13 @@ and mean), and character columns by its length, class, and mode.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>   country               year           pop             continent
- Length:1704        Min.   :1952   Min.   :6.001e+04   Length:1704
- Class :character   1st Qu.:1966   1st Qu.:2.794e+06   Class :character
- Mode  :character   Median :1980   Median :7.024e+06   Mode  :character
-                    Mean   :1980   Mean   :2.960e+07
-                    3rd Qu.:1993   3rd Qu.:1.959e+07
-                    Max.   :2007   Max.   :1.319e+09
+<pre class="output" tabindex="0"><code>      country          year           pop                continent
+ Length   :1704   Min.   :1952   Min.   :6.001e+04   Length   :1704
+ N.unique : 142   1st Qu.:1966   1st Qu.:2.794e+06   N.unique :   5
+ N.blank  :   0   Median :1980   Median :7.024e+06   N.blank  :   0
+ Min.nchar:   4   Mean   :1980   Mean   :2.960e+07   Min.nchar:   4
+ Max.nchar:  24   3rd Qu.:1993   3rd Qu.:1.959e+07   Max.nchar:   8
+                  Max.   :2007   Max.   :1.319e+09
     lifeExp        gdpPercap
  Min.   :23.60   Min.   :   241.2
  1st Qu.:48.20   1st Qu.:  1202.1
@@ -1177,7 +1173,7 @@ represents.</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.1.0)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.1.1)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1199,8 +1195,8 @@ represents.</li>
   "url": "https://swcarpentry.github.io/r-novice-gapminder/instructor/05-data-structures-part2.html",
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/instructor/05-data-structures-part2.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2026-04-21",
-  "datePublished": "2026-05-19"
+  "dateModified": "2026-06-19",
+  "datePublished": "2026-06-19"
 }
 
   </script><script>
