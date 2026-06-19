@@ -341,13 +341,13 @@ summary(gapminder)
 ```
 
 ``` output
-   country               year           pop             continent        
- Length:1704        Min.   :1952   Min.   :6.001e+04   Length:1704       
- Class :character   1st Qu.:1966   1st Qu.:2.794e+06   Class :character  
- Mode  :character   Median :1980   Median :7.024e+06   Mode  :character  
-                    Mean   :1980   Mean   :2.960e+07                     
-                    3rd Qu.:1993   3rd Qu.:1.959e+07                     
-                    Max.   :2007   Max.   :1.319e+09                     
+      country          year           pop                continent   
+ Length   :1704   Min.   :1952   Min.   :6.001e+04   Length   :1704  
+ N.unique : 142   1st Qu.:1966   1st Qu.:2.794e+06   N.unique :   5  
+ N.blank  :   0   Median :1980   Median :7.024e+06   N.blank  :   0  
+ Min.nchar:   4   Mean   :1980   Mean   :2.960e+07   Min.nchar:   4  
+ Max.nchar:  24   3rd Qu.:1993   3rd Qu.:1.959e+07   Max.nchar:   8  
+                  Max.   :2007   Max.   :1.319e+09                   
     lifeExp        gdpPercap       
  Min.   :23.60   Min.   :   241.2  
  1st Qu.:48.20   1st Qu.:  1202.1  
