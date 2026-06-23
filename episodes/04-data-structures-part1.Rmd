@@ -416,7 +416,7 @@ print(cats2)
 
 The data type of your data is as important as the data itself. Use a
 function we saw earlier to print out the data types of all columns of the
-`cats2` `data.frame`.
+`cats2` dataframe.
 
 :::::::::::::::  solution
 
