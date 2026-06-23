@@ -337,11 +337,10 @@ Once opened we can, for example, sort, filter, and search the data frame.
 
 :::::::::::::::::::::::::::::::::::::::::
 
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
 To make sure our analysis is reproducible, we should put the code
 into a script file so we can come back to it later.
+
+:::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Challenge 3
 
