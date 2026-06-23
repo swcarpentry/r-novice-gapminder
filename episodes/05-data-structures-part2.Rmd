@@ -317,8 +317,6 @@ gapminder[sample(nrow(gapminder), 5), ]
 
 :::::::::::::::::::::::::
 
-To make sure our analysis is reproducible, we should put the code
-into a script file so we can come back to it later.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -341,6 +339,9 @@ Once opened we can, for example, sort, filter, and search the table.
 
 
 :::::::::::::::::::::::::::::::::::::::  challenge
+
+To make sure our analysis is reproducible, we should put the code
+into a script file so we can come back to it later.
 
 ## Challenge 3
 
