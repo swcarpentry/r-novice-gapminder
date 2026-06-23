@@ -333,7 +333,7 @@ The data viewer can be invoked by using the `View()` function. Typically this wo
 View(gapminder)
 ```
 
-Once opened we can, for example, sort, filter, and search the table.
+Once opened we can, for example, sort, filter, and search the data frame.
 
 :::::::::::::::::::::::::::::::::::::::::
 
