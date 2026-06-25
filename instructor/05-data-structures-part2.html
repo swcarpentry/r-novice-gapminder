@@ -394,7 +394,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Exploring Data Frames</h1>
-        <p>Last updated on 2026-06-19 |
+        <p>Last updated on 2026-06-25 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/05-data-structures-part2.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -452,7 +452,7 @@ we want to add a new column, we can start by making a new vector:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>    coat weight likes_catnip
+<pre class="output" tabindex="0"><code>    coat weight likes_string
 1 calico    2.1            1
 2  black    5.0            0
 3  tabby    3.2            1</code></pre>
@@ -467,7 +467,7 @@ we want to add a new column, we can start by making a new vector:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>    coat weight likes_catnip age
+<pre class="output" tabindex="0"><code>    coat weight likes_string age
 1 calico    2.1            1   2
 2  black    5.0            0   3
 3  tabby    3.2            1   5</code></pre>
@@ -553,7 +553,7 @@ frame are lists:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>           coat weight likes_catnip age
+<pre class="output" tabindex="0"><code>           coat weight likes_string age
 1        calico    2.1            1   2
 2         black    5.0            0   3
 3         tabby    3.2            1   5
@@ -571,7 +571,7 @@ let’s learn to remove rows.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>           coat weight likes_catnip age
+<pre class="output" tabindex="0"><code>           coat weight likes_string age
 1        calico    2.1            1   2
 2         black    5.0            0   3
 3         tabby    3.2            1   5
@@ -587,7 +587,7 @@ let’s learn to remove rows.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>    coat weight likes_catnip age
+<pre class="output" tabindex="0"><code>    coat weight likes_string age
 1 calico    2.1            1   2
 2  black    5.0            0   3
 3  tabby    3.2            1   5</code></pre>
@@ -610,7 +610,7 @@ number or by index.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>           coat weight likes_catnip
+<pre class="output" tabindex="0"><code>           coat weight likes_string
 1        calico    2.1            1
 2         black    5.0            0
 3         tabby    3.2            1
@@ -633,7 +633,7 @@ argument?”</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>           coat weight likes_catnip
+<pre class="output" tabindex="0"><code>           coat weight likes_string
 1        calico    2.1            1
 2         black    5.0            0
 3         tabby    3.2            1
@@ -656,7 +656,7 @@ data frames together with <code>rbind</code>:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>           coat weight likes_catnip age
+<pre class="output" tabindex="0"><code>           coat weight likes_string age
 1        calico    2.1            1   2
 2         black    5.0            0   3
 3         tabby    3.2            1   5
@@ -702,7 +702,7 @@ person’s answer to the question, “Is it time for coffee break?”</p>
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -986,7 +986,7 @@ could ask for a few lines at random. How would you code this?</p>
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>To check the last few lines it’s relatively simple as R already has a
 function for this:</p>
@@ -1021,6 +1021,30 @@ has a function for this.</p>
 </div>
 </div>
 </div>
+<div id="interactively-exploring-data-frames" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="interactively-exploring-data-frames" class="callout-inner">
+<h3 class="callout-title">Interactively Exploring Data Frames</h3>
+<div class="callout-content">
+<p>RStudio has a built-in data viewer that allows us to interactively
+explore a data frame.</p>
+<p>The data viewer can be invoked by using the <code>View()</code>
+function. Typically this would be entered in the RStudio console to open
+the data viewer in the top left pane:</p>
+<div class="codewrapper sourceCode" id="cb58">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">View</span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span></span></code></pre>
+</div>
+<p>Once opened we can, for example, sort, filter, and search the data
+frame.</p>
+</div>
+</div>
+</div>
 <p>To make sure our analysis is reproducible, we should put the code
 into a script file so we can come back to it later.</p>
 <div id="challenge-3" class="callout challenge">
@@ -1047,7 +1071,7 @@ RStudio).</p>
   Solution to Challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>The <code>source</code> function can be used to use a script within a
 script. Assume you would like to load the same type of file over and
@@ -1057,7 +1081,7 @@ again you could just write it once and save it as a script. Then, you
 can use <code>source("Your_Script_containing_the_load_function")</code>
 in a new script to use the function of that script without writing
 everything again. Check out <code>?source</code> to find out more.</p>
-<div class="codewrapper sourceCode" id="cb58">
+<div class="codewrapper sourceCode" id="cb59">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1066,7 +1090,7 @@ everything again. Check out <code>?source</code> to find out more.</p>
 </div>
 <p>To run the script and load the data into the <code>gapminder</code>
 variable:</p>
-<div class="codewrapper sourceCode" id="cb59">
+<div class="codewrapper sourceCode" id="cb60">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1100,7 +1124,7 @@ neighbors!</p>
   Solution to Challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>The object <code>gapminder</code> is a data frame with columns</p>
 <ul><li>
@@ -1195,8 +1219,8 @@ represents.</li>
   "url": "https://swcarpentry.github.io/r-novice-gapminder/instructor/05-data-structures-part2.html",
   "identifier": "https://swcarpentry.github.io/r-novice-gapminder/instructor/05-data-structures-part2.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2026-06-19",
-  "datePublished": "2026-06-23"
+  "dateModified": "2026-06-25",
+  "datePublished": "2026-06-25"
 }
 
   </script><script>
