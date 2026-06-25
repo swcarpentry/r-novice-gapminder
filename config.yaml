@@ -72,7 +72,7 @@ episodes:
 - 11-writing-data.Rmd
 - 12-dplyr.Rmd
 - 13-tidyr.Rmd
-- 14-knitr-markdown.Rmd
+- 14-reproducible-documents.Rmd
 - 15-wrap-up.Rmd
 
 # Information for Learners

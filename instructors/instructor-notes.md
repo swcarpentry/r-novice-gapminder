@@ -25,7 +25,7 @@ Some suggested paths through the material are:
 - 08 Creating Publication-Quality Graphics with ggplot2
 - 10 Functions Explained
 - 13 Dataframe Manipulation with dplyr
-- 14 Producing Reports With knitr
+- 14 Producing Reproducible Reports
 
 (suggested by [@naupaka](https://github.com/swcarpentry/r-novice-gapminder/issues/104#issuecomment-312547509))
 
@@ -38,7 +38,7 @@ Some suggested paths through the material are:
 - 09 Vectorization
 - 08 Creating Publication-Quality Graphics with ggplot2 *OR*
   13 Dataframe Manipulation with dplyr
-- 14 Producing Reports With knitr
+- 14 Producing Reproducible Reports
 
 A half day course could consist of (suggested by [@karawoo](https://github.com/swcarpentry/r-novice-gapminder/issues/104#issuecomment-277599864)):
 
@@ -91,6 +91,13 @@ attendees download the raw data from [gapminder-data] and
 [gapminder-data-wide].
 
 Attendees can use the `File - Save As` dialog in their browser to save the file.
+
+## Reproducible Documents
+
+It is possible to do this section entirely using R Markdown and `knitr` without
+using `Quarto` if you prefer this.  Setup for this is mentioned in a callout.
+It is expected that `Quarto` will be more actively developed and so it is used
+in the lesson.
 
 ## Overall
 
