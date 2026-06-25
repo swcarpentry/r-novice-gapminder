@@ -41,7 +41,7 @@ cats
 ```
 
 ``` output
-    coat weight likes_catnip
+    coat weight likes_string
 1 calico    2.1            1
 2  black    5.0            0
 3  tabby    3.2            1
@@ -55,7 +55,7 @@ cbind(cats, age)
 ```
 
 ``` output
-    coat weight likes_catnip age
+    coat weight likes_string age
 1 calico    2.1            1   2
 2  black    5.0            0   3
 3  tabby    3.2            1   5
@@ -129,7 +129,7 @@ cats
 ```
 
 ``` output
-           coat weight likes_catnip age
+           coat weight likes_string age
 1        calico    2.1            1   2
 2         black    5.0            0   3
 3         tabby    3.2            1   5
@@ -147,7 +147,7 @@ cats
 ```
 
 ``` output
-           coat weight likes_catnip age
+           coat weight likes_string age
 1        calico    2.1            1   2
 2         black    5.0            0   3
 3         tabby    3.2            1   5
@@ -162,7 +162,7 @@ cats[-4, ]
 ```
 
 ``` output
-    coat weight likes_catnip age
+    coat weight likes_string age
 1 calico    2.1            1   2
 2  black    5.0            0   3
 3  tabby    3.2            1   5
@@ -184,7 +184,7 @@ cats[,-4]
 ```
 
 ``` output
-           coat weight likes_catnip
+           coat weight likes_string
 1        calico    2.1            1
 2         black    5.0            0
 3         tabby    3.2            1
@@ -202,7 +202,7 @@ cats[,!drop]
 ```
 
 ``` output
-           coat weight likes_catnip
+           coat weight likes_string
 1        calico    2.1            1
 2         black    5.0            0
 3         tabby    3.2            1
@@ -224,7 +224,7 @@ cats
 ```
 
 ``` output
-           coat weight likes_catnip age
+           coat weight likes_string age
 1        calico    2.1            1   2
 2         black    5.0            0   3
 3         tabby    3.2            1   5
@@ -510,7 +510,26 @@ gapminder[sample(nrow(gapminder), 5), ]
 
 :::::::::::::::::::::::::
 
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Interactively Exploring Data Frames
+
+RStudio has a built-in data viewer that allows us to interactively explore a data frame.
+
+The data viewer can be invoked by using the `View()` function. Typically this would be entered in the RStudio console to open the data viewer in the top left pane:
+
+
+``` r
+View(gapminder)
+```
+
+Once opened we can, for example, sort, filter, and search the data frame.
+
+:::::::::::::::::::::::::::::::::::::::::
 
 To make sure our analysis is reproducible, we should put the code
 into a script file so we can come back to it later.
