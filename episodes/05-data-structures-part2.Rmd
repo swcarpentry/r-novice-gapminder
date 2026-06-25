@@ -317,7 +317,25 @@ gapminder[sample(nrow(gapminder), 5), ]
 
 :::::::::::::::::::::::::
 
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Interactively Exploring Data Frames
+
+RStudio has a built-in data viewer that allows us to interactively explore a data frame.
+
+The data viewer can be invoked by using the `View()` function. Typically this would be entered in the RStudio console to open the data viewer in the top left pane:
+
+```{r, eval=FALSE, echo=TRUE}
+View(gapminder)
+```
+
+Once opened we can, for example, sort, filter, and search the data frame.
+
+:::::::::::::::::::::::::::::::::::::::::
 
 To make sure our analysis is reproducible, we should put the code
 into a script file so we can come back to it later.
