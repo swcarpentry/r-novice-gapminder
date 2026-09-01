@@ -1,0 +1,64 @@
+\documentclass[convert]{standalone}
+
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{colortbl}
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\arraystretch}{2.2}
+
+\begin{document}
+
+\begin{tabular}{crccccc}
+
+&                     
+& \multicolumn{4}{c}{Output} 
+\\ 
+
+& %\cellcolor[gray]{0.7} 
+& \cellcolor[gray]{0.7}array 
+& \cellcolor[gray]{0.7}data frame 
+& \cellcolor[gray]{0.7}list 
+& \cellcolor[gray]{0.7}nothing 
+\\
+
+& \cellcolor[gray]{0.7}array      
+& aaply 
+& adply 
+& alply 
+& a\_ply 
+\\ 
+
+& \cellcolor[gray]{0.7}data frame         
+& daply 
+& ddply 
+& dlply 
+& d\_ply 
+\\ 
+
+& \cellcolor[gray]{0.7} list
+& laply 
+& ldply 
+& llply 
+& l\_ply 
+\\ 
+
+& \cellcolor[gray]{0.7}n replicates
+& raply 
+& rdply 
+& rlply 
+& r\_ply 
+\\ 
+
+\multirow{-5}{*}{\rotatebox[origin=c]{90}{Input}} 
+& \cellcolor[gray]{0.7}function arguments  
+& maply 
+& mdply 
+& mlply 
+& m\_ply 
+\\ 
+
+\end{tabular}
+
+
+\end{document}
