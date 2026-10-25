@@ -105,7 +105,7 @@ represent the relationship between **x** and **y** as a scatterplot of points.
 Modify the example so that the figure shows how life expectancy has
 changed over time:
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, fig.alt="Scatter plot of life expectancy versus GDP per capita, shown as a starting point for modifying the plot to show change over time."}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) + geom_point()
 ```
 
@@ -118,7 +118,7 @@ on the x-axis.
 
 Here is one possible solution:
 
-```{r ch1-sol, fig.cap="Binned scatterplot of life expectancy versus year showing how life expectancy has increased over time"}
+```{r ch1-sol, fig.cap="Binned scatterplot of life expectancy versus year showing how life expectancy has increased over time", fig.alt="Binned scatterplot of life expectancy versus year showing how life expectancy has increased over time"}
 ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp)) + geom_point()
 ```
 
@@ -145,7 +145,7 @@ function. The general trend seems to indicate an increased life expectancy
 over the years. On continents with stronger economies we find a longer life
 expectancy.
 
-```{r ch2-sol, fig.cap="Binned scatterplot of life expectancy vs year with color-coded continents showing value of 'aes' function"}
+```{r ch2-sol, fig.cap="Binned scatterplot of life expectancy vs year with color-coded continents showing value of 'aes' function", fig.alt="Binned scatterplot of life expectancy vs year with color-coded continents showing value of 'aes' function"}
 ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp, color=continent)) +
   geom_point()
 ```
@@ -159,7 +159,7 @@ ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp, color=continent)) 
 Using a scatterplot probably isn't the best for visualizing change over time.
 Instead, let's tell `ggplot` to visualize the data as a line plot:
 
-```{r lifeExp-line}
+```{r lifeExp-line, fig.alt="Line plot of life expectancy over time, with a separate color for each continent."}
 ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, color=continent)) +
   geom_line()
 ```
@@ -168,7 +168,7 @@ Instead of adding a `geom_point` layer, we've added a `geom_line` layer.
 
 However, the result doesn't look quite as we might have expected: it seems to be jumping around a lot in each continent. Let's try to separate the data by country, plotting one line for each country:
 
-```{r lifeExp-line-by}
+```{r lifeExp-line-by, fig.alt="Line plot of life expectancy over time, with one line per country and lines colored by continent."}
 ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, group=country, color=continent)) +
   geom_line()
 ```
@@ -179,7 +179,7 @@ country.
 But what if we want to visualize both lines and points on the plot? We can
 add another layer to the plot:
 
-```{r lifeExp-line-point}
+```{r lifeExp-line-point, fig.alt="Line plot of life expectancy over time, with one line and data points per country, colored by continent."}
 ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, group=country, color=continent)) +
   geom_line() + geom_point()
 ```
@@ -188,7 +188,7 @@ It's important to note that each layer is drawn on top of the previous layer. In
 this example, the points have been drawn *on top of* the lines. Here's a
 demonstration:
 
-```{r lifeExp-layer-example-1}
+```{r lifeExp-layer-example-1, fig.alt="Line plot of life expectancy over time, with one line and data points per country; lines are colored by continent."}
 ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, group=country)) +
   geom_line(mapping = aes(color=continent)) + geom_point()
 ```
@@ -234,7 +234,7 @@ ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, group=country)) +
 ggplot2 also makes it easy to overlay statistical models over the data. To
 demonstrate we'll go back to our first example:
 
-```{r lifeExp-vs-gdpPercap-scatter3, message=FALSE}
+```{r lifeExp-vs-gdpPercap-scatter3, message=FALSE, fig.alt="Scatter plot of life expectancy versus GDP per capita, with points clustered at lower GDP per capita and higher life expectancy."}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ```
@@ -246,7 +246,7 @@ visual values of an aesthetic. We can also modify the transparency of the
 points, using the *alpha* function, which is especially helpful when you have
 a large amount of data which is very clustered.
 
-```{r axis-scale, fig.cap="Scatterplot of GDP vs life expectancy showing logarithmic x-axis data spread"}
+```{r axis-scale, fig.cap="Scatterplot of GDP vs life expectancy showing logarithmic x-axis data spread", fig.alt="Scatterplot of GDP vs life expectancy showing logarithmic x-axis data spread"}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
   geom_point(alpha = 0.5) + scale_x_log10()
 ```
@@ -328,7 +328,7 @@ connect it to a certain variable. The `shape` argument, as you can see, modifies
 data points the same way (it is outside the `aes()` call) while the `color` argument which
 is placed inside the `aes()` call modifies a point's color based on its continent value.
 
-```{r ch4b-sol}
+```{r ch4b-sol, fig.alt="Scatter plot of life expectancy versus GDP per capita, with points shaped by a fixed symbol and colored by continent, plus continent-specific trend lines."}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp, color = continent)) +
  geom_point(size=3, shape=17) + scale_x_log10() +
  geom_smooth(method="lm", linewidth=1.5)
@@ -357,7 +357,7 @@ ggplot2 is customizable.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-```{r facet}
+```{r facet, fig.alt="Small-multiple line plots of life expectancy over time, with a separate panel for each country in the Americas."}
 americas <- gapminder[gapminder$continent == "Americas",]
 ggplot(data = americas, mapping = aes(x = year, y = lifeExp)) +
   geom_line() +
@@ -382,7 +382,7 @@ are set using the same names we used in the `aes` specification. Thus below
 the color legend title is set using `color = "Continent"`, while the title
 of a fill legend would be set using `fill = "MyTitle"`.
 
-```{r theme}
+```{r theme, fig.alt="Small-multiple line plots of life expectancy over time, with a separate panel for each country and a continent color legend."}
 ggplot(data = americas, mapping = aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country) +
   labs(
@@ -404,7 +404,7 @@ if (!dir.exists("results")) {
 }
 ```
 
-```{r save}
+```{r save, fig.alt="Small-multiple line plots of life expectancy over time for countries in the Americas, saved as a PNG file."}
 lifeExp_plot <- ggplot(data = americas, mapping = aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country) +
   labs(
@@ -446,7 +446,7 @@ Here a possible solution:
 `xlab()` and `ylab()` set labels for the x and y axes, respectively
 The axis title, text and ticks are attributes of the theme and must be modified within a `theme()` call.
 
-```{r ch5-sol}
+```{r ch5-sol, fig.alt="Boxplots of life expectancy by continent, split into panels by year; x-axis labels are removed."}
 ggplot(data = gapminder, mapping = aes(x = continent, y = lifeExp, fill = continent)) +
  geom_boxplot() + facet_wrap(~year) +
  ylab("Life Expectancy") +
@@ -473,5 +473,4 @@ ggplot(data = gapminder, mapping = aes(x = continent, y = lifeExp, fill = contin
 - Think about graphics in layers: aesthetics, geometry, statistics, scale transformation, and grouping.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
 

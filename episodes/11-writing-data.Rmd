@@ -47,7 +47,7 @@ In this case you can use a more flexible approach. The function
 `pdf` creates a new pdf device. You can control the size and resolution
 using the arguments to this function.
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, fig.alt="Line plot of life expectancy over time for each country, with the legend hidden."}
 pdf("Life_Exp_vs_time.pdf", width=12, height=4)
 ggplot(data=gapminder, aes(x=year, y=lifeExp, colour=country)) +
   geom_line() +
@@ -72,7 +72,7 @@ of the same data with one panel per continent.
 
 ## Solution to challenge 1
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, fig.alt="Two-page PDF containing line plots of life expectancy over time for each country, first overall and then split into panels by continent."}
 pdf("Life_Exp_vs_time.pdf", width = 12, height = 4)
 p <- ggplot(data = gapminder, aes(x = year, y = lifeExp, colour = country)) +
   geom_line() +
@@ -186,5 +186,4 @@ unlink("cleaned-data", recursive=TRUE)
 - Use `write.table` to save tabular data.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
 
