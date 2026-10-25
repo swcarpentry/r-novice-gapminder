@@ -313,7 +313,7 @@ The Markdown and figure documents are then processed by the tool
 [`pandoc`](https://pandoc.org/), which converts the Markdown file into an
 html file, with the figures embedded.
 
-```{r rmd_to_html_fig, fig.width=8, fig.height=3, fig.align="left", echo=FALSE fig.cap="The process of converting an R Markdown document to an html webpage."}
+```{r rmd_to_html_fig, fig.width=8, fig.height=3, fig.align="left", echo=FALSE, fig.alt="The process of converting an R Markdown document to an html webpage."}
 par(mar = rep(0, 4), bty = "n", cex = 1.5)
 plot(0, 0,
   type = "n", xlab = "", ylab = "", xaxt = "n", yaxt = "n",
