@@ -71,10 +71,11 @@ You will use [`quarto`](https://quarto.org/docs/computations/r.html) to create y
 
 ## Creating a Quarto Document
 
-If the Quarto package has not been installed, please install it:
+If the Quarto and rmarkdown packages have not been installed, please install them:
 
 ```{r, eval=FALSE}
 install.packages("quarto")
+install.packages("rmarkdown")
 ```
 
 Within RStudio, click File → New File → Quarto Document... and
