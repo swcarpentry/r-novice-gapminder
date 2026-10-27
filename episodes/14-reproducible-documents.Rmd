@@ -71,6 +71,12 @@ You will use [`quarto`](https://quarto.org/docs/computations/r.html) to create y
 
 ## Creating a Quarto Document
 
+If the Quarto package has not been installed, please install it:
+
+```{r, eval=FALSE}
+install.packages("quarto")
+```
+
 Within RStudio, click File → New File → Quarto Document... and
 you'll get a dialog box like this:
 
@@ -419,7 +425,6 @@ knitr::opts_chunk$set(fig.path="Figs/", message=FALSE, warning=FALSE,
                       echo=FALSE, results="hide", fig.width=11)
 &#96;&#96;&#96;
 </pre>
-repeatedly; for this, you can set *global* chunk options using the `knitr` tag in the header, like so:
 
 
 The `fig.path` option defines where the figures will be saved. The `/`
