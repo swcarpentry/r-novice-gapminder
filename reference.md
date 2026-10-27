@@ -238,7 +238,7 @@ behaviour of R).
 - `?separate` split a single value into multiple values.
 - `?unite` merge multiple values into a single value.
 
-## [Producing reports with knitr](episodes/14-knitr-markdown.Rmd)
+## [Producing Reproducible Reports](episodes/14-reproducible-documents.Rmd) 
 
 - Value of reproducible reports
 - Basics of Markdown
