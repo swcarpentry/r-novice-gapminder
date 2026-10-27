@@ -159,7 +159,7 @@ ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp, color=continent)) 
 Using a scatterplot probably isn't the best for visualizing change over time.
 Instead, let's tell `ggplot` to visualize the data as a line plot:
 
-```{r lifeExp-line, fig.alt="Line plot of life expectancy over time, with a separate color for each continent."}
+```{r lifeExp-line, fig.alt="Line plot of life expectancy over time, with one line per continent and lines colored by continent."}
 ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, color=continent)) +
   geom_line()
 ```
