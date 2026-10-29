@@ -421,7 +421,7 @@ In the plotting lesson we looked at how to make a multi-panel figure by adding
 a layer of facet panels using `ggplot2`. Here is the code we used (with some
 extra comments):
 
-```{r}
+```{r, fig.alt="Small-multiple line plots of life expectancy over time, with a separate panel for each country in the Americas."}
 # Filter countries located in the Americas
 americas <- gapminder[gapminder$continent == "Americas", ]
 # Make the plot
@@ -439,7 +439,7 @@ need to specify the `data =` argument in the `ggplot()` function. By combining
 `dplyr` and `ggplot2` functions we can make the same figure without creating any
 new variables or modifying the data.
 
-```{r}
+```{r, fig.alt="Small-multiple line plots of life expectancy over time, with a separate panel for each country in the Americas, created with a dplyr pipe."}
 gapminder %>%
   # Filter countries located in the Americas
   filter(continent == "Americas") %>%
@@ -452,7 +452,7 @@ gapminder %>%
 
 More examples of using the function `mutate()` and the `ggplot2` package.
 
-```{r}
+```{r, fig.alt="Small-multiple line plots of life expectancy over time for countries whose names start with A or Z, colored by continent."}
 gapminder %>%
   # extract first letter of country name into new column
   mutate(startsWith = substr(country, 1, 1)) %>%
@@ -508,5 +508,4 @@ lifeExp_2countries_bycontinents <- gapminder %>%
 - Use `mutate()` to create new variables.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
 
