@@ -1824,7 +1824,7 @@ questions:</p>
   Solution to Challenge 4
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>By running these commands in the shell:</p>
 <div class="codewrapper sourceCode" id="cb1">
@@ -7076,7 +7076,7 @@ reporting whether there are any records from 2002 in the
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>We will first see a solution to Challenge 1 which does not use the
 <code>any()</code> function. We first obtain a logical vector describing
@@ -7425,7 +7425,7 @@ would you change the last block of code to make
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>We can check whether the two vectors are identical using the
 <code>all()</code> function:</p>
@@ -7511,7 +7511,7 @@ larger than 50 years.</p>
   Solution to Challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p><strong>Step 1</strong>: We want to make sure we can extract all the
 unique values of the continent vector</p>
@@ -7594,7 +7594,7 @@ time print out whether the life expectancy is smaller than 50, between
   Solution to Challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>We modify our solution to Challenge 3 by now adding two thresholds,
 <code>lowerThreshold</code> and <code>upperThreshold</code> and
@@ -7645,7 +7645,7 @@ life expectancy is under 50 years.</p>
   Solution for Challenge 5
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>We will use the <code>grep()</code> command that was introduced in
 the <a href="https://swcarpentry.github.io/shell-novice/07-find.html" class="external-link">Unix
@@ -7719,7 +7719,7 @@ base-plot to plot the evolution of average life expectancy using
 </div>
 </section></section><section id="aio-08-plot-ggplot2"><p>Content from <a href="08-plot-ggplot2.html">Creating Publication-Quality Graphics with ggplot2</a></p>
 <hr>
-<p>Last updated on 2026-10-26 |
+<p>Last updated on 2026-10-29 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/08-plot-ggplot2.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 80 minutes</p>
@@ -7849,7 +7849,8 @@ changed over time:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdpPercap</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdpPercap</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Hint: the gapminder dataset has a column called “year”, which should
 appear on the x-axis.</p>
@@ -7863,14 +7864,15 @@ appear on the x-axis.</p>
   Solution to challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Here is one possible solution:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <figure style="text-align: center"><img src="../fig/08-plot-ggplot2-rendered-ch1-sol-1.png" alt="Binned scatterplot of life expectancy versus year showing how life expectancy has increased over time" class="figure mx-auto d-block"><figcaption>
 Binned scatterplot of life expectancy versus year showing how life
@@ -7905,7 +7907,7 @@ do you see in the data? Are they what you expected?</p>
   Solution to challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>The solution presented below adds <code>color=continent</code> to the
 call of the <code>aes</code> function. The general trend seems to
@@ -7915,7 +7917,7 @@ stronger economies we find a longer life expectancy.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color<span class="op">=</span><span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <figure style="text-align: center"><img src="../fig/08-plot-ggplot2-rendered-ch2-sol-1.png" alt="Binned scatterplot of life expectancy vs year with color-coded continents showing value of 'aes' function" class="figure mx-auto d-block"><figcaption>
@@ -7936,10 +7938,10 @@ as a line plot:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">year</span>, y<span class="op">=</span><span class="va">lifeExp</span>, color<span class="op">=</span><span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/08-plot-ggplot2-rendered-lifeExp-line-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Instead of adding a <code>geom_point</code> layer, we’ve added a
+<figure><img src="../fig/08-plot-ggplot2-rendered-lifeExp-line-1.png" alt="Line plot of life expectancy over time, with one line per continent and lines colored by continent." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Instead of adding a <code>geom_point</code> layer, we’ve added a
 <code>geom_line</code> layer.</p>
 <p>However, the result doesn’t look quite as we might have expected: it
 seems to be jumping around a lot in each continent. Let’s try to
@@ -7948,10 +7950,10 @@ separate the data by country, plotting one line for each country:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">year</span>, y<span class="op">=</span><span class="va">lifeExp</span>, group<span class="op">=</span><span class="va">country</span>, color<span class="op">=</span><span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, group <span class="op">=</span> <span class="va">country</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/08-plot-ggplot2-rendered-lifeExp-line-by-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>We’ve added the <strong>group</strong> <em>aesthetic</em>, which
+<figure><img src="../fig/08-plot-ggplot2-rendered-lifeExp-line-by-1.png" alt="Line plot of life expectancy over time, with one line per country and lines colored by continent." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>We’ve added the <strong>group</strong> <em>aesthetic</em>, which
 tells <code>ggplot</code> to draw a line for each country.</p>
 <p>But what if we want to visualize both lines and points on the plot?
 We can add another layer to the plot:</p>
@@ -7959,20 +7961,22 @@ We can add another layer to the plot:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">year</span>, y<span class="op">=</span><span class="va">lifeExp</span>, group<span class="op">=</span><span class="va">country</span>, color<span class="op">=</span><span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, group <span class="op">=</span> <span class="va">country</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/08-plot-ggplot2-rendered-lifeExp-line-point-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>It’s important to note that each layer is drawn on top of the
+<figure><img src="../fig/08-plot-ggplot2-rendered-lifeExp-line-point-1.png" alt="Line plot of life expectancy over time, with one line and data points per country, colored by continent." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>It’s important to note that each layer is drawn on top of the
 previous layer. In this example, the points have been drawn <em>on top
 of</em> the lines. Here’s a demonstration:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">year</span>, y<span class="op">=</span><span class="va">lifeExp</span>, group<span class="op">=</span><span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_line</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>color<span class="op">=</span><span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, group <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/08-plot-ggplot2-rendered-lifeExp-layer-example-1-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>In this example, the <em>aesthetic</em> mapping of
+<figure><img src="../fig/08-plot-ggplot2-rendered-lifeExp-layer-example-1-1.png" alt="Line plot of life expectancy over time, with one line and data points per country; lines are colored by continent." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>In this example, the <em>aesthetic</em> mapping of
 <strong>color</strong> has been moved from the global plot options in
 <code>ggplot</code> to the <code>geom_line</code> layer so it no longer
 applies to the points. Now we can clearly see that the points are drawn
@@ -8019,15 +8023,16 @@ example. What happened?</p>
   Solution to challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>The lines now get drawn over the points!</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">year</span>, y<span class="op">=</span><span class="va">lifeExp</span>, group<span class="op">=</span><span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span> <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_line</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>color<span class="op">=</span><span class="va">continent</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, group <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="../fig/08-plot-ggplot2-rendered-ch3-sol-1.png" alt="Scatter plot of life expectancy vs GDP per capita with a trend line summarising the relationship between variables. The plot illustrates the possibilities for styling visualisations in ggplot2 with data points enlarged, coloured orange, and displayed without transparency." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure>
 </div>
@@ -8046,7 +8051,7 @@ data. To demonstrate we’ll go back to our first example:</p>
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdpPercap</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/08-plot-ggplot2-rendered-lifeExp-vs-gdpPercap-scatter3-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Currently it’s hard to see the relationship between the points due to
+<figure><img src="../fig/08-plot-ggplot2-rendered-lifeExp-vs-gdpPercap-scatter3-1.png" alt="Scatter plot of life expectancy versus GDP per capita, with points clustered at lower GDP per capita and higher life expectancy." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Currently it’s hard to see the relationship between the points due to
 some strong outliers in GDP per capita. We can change the scale of units
 on the x axis using the <em>scale</em> functions. These control the
 mapping between the data values and visual values of an aesthetic. We
@@ -8058,7 +8063,8 @@ data which is very clustered.</p>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdpPercap</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span> <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+<span>  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <figure style="text-align: center"><img src="../fig/08-plot-ggplot2-rendered-axis-scale-1.png" alt="Scatterplot of GDP vs life expectancy showing logarithmic x-axis data spread" class="figure mx-auto d-block"><figcaption>
 Scatterplot of GDP vs life expectancy showing logarithmic x-axis data
@@ -8096,7 +8102,9 @@ continent with
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdpPercap</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span> <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_smooth</span><span class="op">(</span>method<span class="op">=</span><span class="st">"lm"</span><span class="op">)</span></span></code></pre>
+<span>  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -8111,7 +8119,9 @@ layer:</p>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdpPercap</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span> <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_smooth</span><span class="op">(</span>method<span class="op">=</span><span class="st">"lm"</span>, linewidth<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span></span></code></pre>
+<span>  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, linewidth <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -8147,7 +8157,7 @@ previous example.</p>
   Solution to challenge 4a
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>Here a possible solution: Notice that the <code>color</code> argument
 is supplied outside of the <code>aes()</code> function. This means that
@@ -8158,8 +8168,9 @@ specific variable.</p>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdpPercap</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span> <span class="fu">geom_point</span><span class="op">(</span>size<span class="op">=</span><span class="fl">3</span>, color<span class="op">=</span><span class="st">"orange"</span><span class="op">)</span> <span class="op">+</span> <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span> <span class="fu">geom_smooth</span><span class="op">(</span>method<span class="op">=</span><span class="st">"lm"</span>, linewidth<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span></span></code></pre>
+<span>  <span class="fu">geom_point</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span>, color <span class="op">=</span> <span class="st">"orange"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, linewidth <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -8192,7 +8203,7 @@ The color argument can be used inside the aesthetic.</p>
   Solution to challenge 4b
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>Here is a possible solution: Notice that supplying the
 <code>color</code> argument inside the <code>aes()</code> functions
@@ -8206,15 +8217,16 @@ point’s color based on its continent value.</p>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdpPercap</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span> <span class="fu">geom_point</span><span class="op">(</span>size<span class="op">=</span><span class="fl">3</span>, shape<span class="op">=</span><span class="fl">17</span><span class="op">)</span> <span class="op">+</span> <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span> <span class="fu">geom_smooth</span><span class="op">(</span>method<span class="op">=</span><span class="st">"lm"</span>, linewidth<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span></span></code></pre>
+<span>  <span class="fu">geom_point</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span>, shape <span class="op">=</span> <span class="fl">17</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, linewidth <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
-<figure><img src="../fig/08-plot-ggplot2-rendered-ch4b-sol-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure>
+<figure><img src="../fig/08-plot-ggplot2-rendered-ch4b-sol-1.png" alt="Scatter plot of life expectancy versus GDP per capita, with points shaped by a fixed symbol and colored by continent, plus continent-specific trend lines." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure>
 </div>
 </div>
 </div>
@@ -8245,13 +8257,13 @@ customizable.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">americas</span> <span class="op">&lt;-</span> <span class="va">gapminder</span><span class="op">[</span><span class="va">gapminder</span><span class="op">$</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Americas"</span>,<span class="op">]</span></span>
+<code class="sourceCode R"><span><span class="va">americas</span> <span class="op">&lt;-</span> <span class="va">gapminder</span><span class="op">[</span><span class="va">gapminder</span><span class="op">$</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Americas"</span>, <span class="op">]</span></span>
 <span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">americas</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">facet_wrap</span><span class="op">(</span> <span class="op">~</span> <span class="va">country</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">country</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">45</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/08-plot-ggplot2-rendered-facet-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The <code>facet_wrap</code> layer took a “formula” as its argument,
+<figure><img src="../fig/08-plot-ggplot2-rendered-facet-1.png" alt="Small-multiple line plots of life expectancy over time, with a separate panel for each country in the Americas." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The <code>facet_wrap</code> layer took a “formula” as its argument,
 denoted by the tilde (~). This tells R to draw a panel for each unique
 value in the country column of the gapminder dataset.</p>
 </section><section><h2 class="section-heading" id="modifying-text">Modifying text<a class="anchor" aria-label="anchor" href="#modifying-text"></a>
@@ -8273,17 +8285,18 @@ the title of a fill legend would be set using
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">americas</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color<span class="op">=</span><span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">facet_wrap</span><span class="op">(</span> <span class="op">~</span> <span class="va">country</span><span class="op">)</span> <span class="op">+</span></span>
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">americas</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">country</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">labs</span><span class="op">(</span></span>
-<span>    x <span class="op">=</span> <span class="st">"Year"</span>,              <span class="co"># x axis title</span></span>
-<span>    y <span class="op">=</span> <span class="st">"Life expectancy"</span>,   <span class="co"># y axis title</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Figure 1"</span>,      <span class="co"># main title of figure</span></span>
-<span>    color <span class="op">=</span> <span class="st">"Continent"</span>      <span class="co"># title of legend</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Year"</span>, <span class="co"># x axis title</span></span>
+<span>    y <span class="op">=</span> <span class="st">"Life expectancy"</span>, <span class="co"># y axis title</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Figure 1"</span>, <span class="co"># main title of figure</span></span>
+<span>    color <span class="op">=</span> <span class="st">"Continent"</span> <span class="co"># title of legend</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span>, hjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/08-plot-ggplot2-rendered-theme-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="exporting-the-plot">Exporting the plot<a class="anchor" aria-label="anchor" href="#exporting-the-plot"></a>
+<figure><img src="../fig/08-plot-ggplot2-rendered-theme-1.png" alt="Small-multiple line plots of life expectancy over time, with a separate panel for each country and a continent color legend." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="exporting-the-plot">Exporting the plot<a class="anchor" aria-label="anchor" href="#exporting-the-plot"></a>
 </h2>
 <hr class="half-width">
 <p>The <code>ggsave()</code> function allows you to export a plot
@@ -8299,13 +8312,14 @@ directory called <code>results</code>. (Make sure you have a
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">lifeExp_plot</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">americas</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color<span class="op">=</span><span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">facet_wrap</span><span class="op">(</span> <span class="op">~</span> <span class="va">country</span><span class="op">)</span> <span class="op">+</span></span>
+<code class="sourceCode R"><span><span class="va">lifeExp_plot</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">americas</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">country</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">labs</span><span class="op">(</span></span>
-<span>    x <span class="op">=</span> <span class="st">"Year"</span>,              <span class="co"># x axis title</span></span>
-<span>    y <span class="op">=</span> <span class="st">"Life expectancy"</span>,   <span class="co"># y axis title</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Figure 1"</span>,      <span class="co"># main title of figure</span></span>
-<span>    color <span class="op">=</span> <span class="st">"Continent"</span>      <span class="co"># title of legend</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Year"</span>, <span class="co"># x axis title</span></span>
+<span>    y <span class="op">=</span> <span class="st">"Life expectancy"</span>, <span class="co"># y axis title</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Figure 1"</span>, <span class="co"># main title of figure</span></span>
+<span>    color <span class="op">=</span> <span class="st">"Continent"</span> <span class="co"># title of legend</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span>, hjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -8352,7 +8366,7 @@ continents during the available years.</p>
   Solution to Challenge 5
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <p>Here a possible solution: <code>xlab()</code> and <code>ylab()</code>
 set labels for the x and y axes, respectively The axis title, text and
@@ -8363,13 +8377,16 @@ ticks are attributes of the theme and must be modified within a
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">continent</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, fill <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span> <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">year</span><span class="op">)</span> <span class="op">+</span></span>
-<span> <span class="fu">ylab</span><span class="op">(</span><span class="st">"Life Expectancy"</span><span class="op">)</span> <span class="op">+</span></span>
-<span> <span class="fu">theme</span><span class="op">(</span>axis.title.x<span class="op">=</span><span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>,</span>
-<span>       axis.text.x <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>,</span>
-<span>       axis.ticks.x <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<span>  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">year</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ylab</span><span class="op">(</span><span class="st">"Life Expectancy"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme</span><span class="op">(</span></span>
+<span>    axis.title.x <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    axis.text.x <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    axis.ticks.x <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/08-plot-ggplot2-rendered-ch5-sol-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure>
+<figure><img src="../fig/08-plot-ggplot2-rendered-ch5-sol-1.png" alt="Boxplots of life expectancy by continent, split into panels by year; x-axis labels are removed." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure>
 </div>
 </div>
 </div>
@@ -8516,7 +8533,7 @@ tail of the data frame to make sure it worked.</p>
   Solution to challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Let’s try this on the <code>pop</code> column of the
 <code>gapminder</code> dataset.</p>
@@ -8568,7 +8585,7 @@ Again, do not worry about which is which.</p>
   Solution to challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Refresh your plotting skills by plotting population in millions
 against year.</p>
@@ -8750,7 +8767,7 @@ reference guide</a></p>
   Solution to challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Given the following matrix:</p>
 <div class="codewrapper sourceCode" id="cb28">
@@ -8835,7 +8852,7 @@ n=10,000?</p>
   Challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>We’re interested in looking at the sum of the following sequence of
 fractions:</p>
@@ -9777,7 +9794,7 @@ R.</li>
 </div>
 </section></section><section id="aio-11-writing-data"><p>Content from <a href="11-writing-data.html">Writing Data</a></p>
 <hr>
-<p>Last updated on 2026-10-26 |
+<p>Last updated on 2026-10-29 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/11-writing-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 20 minutes</p>
@@ -9837,8 +9854,8 @@ resolution using the arguments to this function.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">pdf</span><span class="op">(</span><span class="st">"Life_Exp_vs_time.pdf"</span>, width<span class="op">=</span><span class="fl">12</span>, height<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span>data<span class="op">=</span><span class="va">gapminder</span>, <span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">year</span>, y<span class="op">=</span><span class="va">lifeExp</span>, colour<span class="op">=</span><span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<code class="sourceCode R"><span><span class="fu">pdf</span><span class="op">(</span><span class="st">"Life_Exp_vs_time.pdf"</span>, width <span class="op">=</span> <span class="fl">12</span>, height <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, colour <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span>
 <span></span>
@@ -9900,11 +9917,11 @@ to focus on the gapminder data for Australia:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">aust_subset</span> <span class="op">&lt;-</span> <span class="va">gapminder</span><span class="op">[</span><span class="va">gapminder</span><span class="op">$</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Australia"</span>,<span class="op">]</span></span>
+<code class="sourceCode R"><span><span class="va">aust_subset</span> <span class="op">&lt;-</span> <span class="va">gapminder</span><span class="op">[</span><span class="va">gapminder</span><span class="op">$</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Australia"</span>, <span class="op">]</span></span>
 <span></span>
 <span><span class="fu">write.table</span><span class="op">(</span><span class="va">aust_subset</span>,</span>
-<span>  file<span class="op">=</span><span class="st">"cleaned-data/gapminder-aus.csv"</span>,</span>
-<span>  sep<span class="op">=</span><span class="st">","</span></span>
+<span>  file <span class="op">=</span> <span class="st">"cleaned-data/gapminder-aus.csv"</span>,</span>
+<span>  sep <span class="op">=</span> <span class="st">","</span></span>
 <span><span class="op">)</span></span></code></pre>
 </div>
 <p>Let’s switch back to the shell to take a look at the data to make
@@ -9947,9 +9964,9 @@ names.</p>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">write.table</span><span class="op">(</span></span>
-<span>  <span class="va">gapminder</span><span class="op">[</span><span class="va">gapminder</span><span class="op">$</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Australia"</span>,<span class="op">]</span>,</span>
-<span>  file<span class="op">=</span><span class="st">"cleaned-data/gapminder-aus.csv"</span>,</span>
-<span>  sep<span class="op">=</span><span class="st">","</span>, quote<span class="op">=</span><span class="cn">FALSE</span>, row.names<span class="op">=</span><span class="cn">FALSE</span></span>
+<span>  <span class="va">gapminder</span><span class="op">[</span><span class="va">gapminder</span><span class="op">$</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Australia"</span>, <span class="op">]</span>,</span>
+<span>  file <span class="op">=</span> <span class="st">"cleaned-data/gapminder-aus.csv"</span>,</span>
+<span>  sep <span class="op">=</span> <span class="st">","</span>, quote <span class="op">=</span> <span class="cn">FALSE</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre>
 </div>
 <p>Now lets look at the data again using our shell skills:</p>
@@ -10783,7 +10800,7 @@ the code we used (with some extra comments):</p>
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span> <span class="op">~</span> <span class="va">country</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">45</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/12-dplyr-rendered-unnamed-chunk-27-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>This code makes the right plot but it also creates an intermediate
+<figure><img src="../fig/12-dplyr-rendered-unnamed-chunk-27-1.png" alt="Small-multiple line plots of life expectancy over time, with a separate panel for each country in the Americas." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>This code makes the right plot but it also creates an intermediate
 variable (<code>americas</code>) that we might not have any other uses
 for. Just as we used <code>%&gt;%</code> to pipe data along a chain of
 <code>dplyr</code> functions we can use it to pass data to
@@ -10806,7 +10823,7 @@ data.</p>
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span> <span class="op">~</span> <span class="va">country</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">45</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/12-dplyr-rendered-unnamed-chunk-28-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>More examples of using the function <code>mutate()</code> and the
+<figure><img src="../fig/12-dplyr-rendered-unnamed-chunk-28-1.png" alt="Small-multiple line plots of life expectancy over time, with a separate panel for each country in the Americas, created with a dplyr pipe." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>More examples of using the function <code>mutate()</code> and the
 <code>ggplot2</code> package.</p>
 <div class="codewrapper sourceCode" id="cb52">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -10823,7 +10840,7 @@ data.</p>
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="fu">vars</span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/12-dplyr-rendered-unnamed-chunk-29-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="advanced-challenge" class="callout challenge">
+<figure><img src="../fig/12-dplyr-rendered-unnamed-chunk-29-1.png" alt="Small-multiple line plots of life expectancy over time for countries whose names start with A or Z, colored by continent." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="advanced-challenge" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
@@ -11639,7 +11656,7 @@ layout.</li>
 </div>
 </section></section><section id="aio-14-knitr-markdown"><p>Content from <a href="14-knitr-markdown.html">Producing Reports With knitr</a></p>
 <hr>
-<p>Last updated on 2026-10-26 |
+<p>Last updated on 2026-10-29 |
 
         <a href="https://github.com/swcarpentry/r-novice-gapminder/edit/main/episodes/14-knitr-markdown.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 75 minutes</p>
@@ -11829,7 +11846,7 @@ itemized list).</p>
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>In RStudio, select File &gt; New file &gt; R Markdown…</p>
 <p>Delete the placeholder text and add the following:</p>
@@ -11914,7 +11931,7 @@ Linux, or <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> on Mac.</p>
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <pre>
 ```{r load-ggplot2}
@@ -11946,7 +11963,7 @@ input and the output; if figures are produced, links to those figures
 are included.</p>
 <p>The Markdown and figure documents are then processed by the tool <a href="https://pandoc.org/" class="external-link"><code>pandoc</code></a>, which converts the
 Markdown file into an html file, with the figures embedded.</p>
-<figure><img src="../fig/14-knitr-markdown-rendered-rmd_to_html_fig-1.png" alt="" style="display: block; margin: auto auto auto 0;" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="chunk-options">Chunk options<a class="anchor" aria-label="anchor" href="#chunk-options"></a>
+<figure><img src="../fig/14-knitr-markdown-rendered-rmd_to_html_fig-1.png" alt="The process of converting an R Markdown document to an html webpage." style="display: block; margin: auto auto auto 0;" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="chunk-options">Chunk options<a class="anchor" aria-label="anchor" href="#chunk-options"></a>
 </h2>
 <hr class="half-width">
 <p>There are a variety of options to affect how the code chunks are
@@ -12007,7 +12024,7 @@ code.</p>
   Solution to Challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <pre>
 ```{r echo = FALSE, fig.width = 3}
@@ -12058,7 +12075,7 @@ package handles this.</p>
   Solution to Challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>Here’s some inline code to determine that 2 + 2 = <code>4</code>.</p>
 </div>
