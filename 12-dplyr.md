@@ -139,6 +139,29 @@ shell it is `|` but the concept is the same!
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
+## Optional: The native R pipe `|>`
+
+Starting with R 4.1.0, R has a built-in pipe operator, `|>`, which serves a
+similar purpose to the `%>%` pipe from **magrittr** and **dplyr**.
+
+```r
+gapminder |>
+  select(country, year, lifeExp)
+```
+
+A few useful differences to keep in mind:
+
+* `|>` is built into R, so you do not need to load **magrittr** or **dplyr** just to use the pipe.
+* With `|>`, functions normally need to be called with parentheses: `gapminder |> nrow()`.
+* `%>%` provides some additional flexibility, particularly through its `.` placeholder. The native pipe has somewhat different rules for placing the piped value within a function call.
+
+Both pipes are widely used. In this lesson, we continue to use `%>%` so that the examples are consistent with the **tidyverse** syntax introduced here.
+For a compact comparison, see Aedin Culhane's [summary](https://twitter.com/AedinCulhane/status/1398007351387508736?s=20).
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
 ## Tip: Renaming data frame columns in dplyr
 
 In Chapter 4 we covered how you can rename columns with base R by assigning a value to the output of the `names()` function.
